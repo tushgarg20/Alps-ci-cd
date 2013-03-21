@@ -1,0 +1,26 @@
+Cluster,Source,Destination,Cdyn Reduction
+EU,Gen8,Gen8,1
+EU,Gen8,Gen8SoC,1
+EU,Gen8,Gen9LPClient,0.835
+EU,Gen8,Gen9LPSoC,0.835
+EU,Gen8,Gen10LP,0.79325
+EU,Gen8SoC,Gen8,NA
+EU,Gen8SoC,Gen8SoC,1
+EU,Gen8SoC,Gen9LPClient,0.835
+EU,Gen8SoC,Gen9LPSoC,0.835
+EU,Gen8SoC,Gen10LP,0.79325
+EU,Gen9LPClient,Gen8,NA
+EU,Gen9LPClient,Gen8SoC,NA
+EU,Gen9LPClient,Gen9LPClient,1
+EU,Gen9LPClient,Gen9LPSoC,1
+EU,Gen9LPClient,Gen10LP,0.95
+EU,Gen9LPSoC,Gen8,NA
+EU,Gen9LPSoC,Gen8SoC,NA
+EU,Gen9LPSoC,Gen9LPClient,NA
+EU,Gen9LPSoC,Gen9LPSoC,1
+EU,Gen9LPSoC,Gen10LP,0.95
+EU,Gen10LP,Gen8,NA
+EU,Gen10LP,Gen8SoC,NA
+EU,Gen10LP,Gen9LPClient,NA
+EU,Gen10LP,Gen9LPSoC,NA
+EU,Gen10LP,Gen10LP,1

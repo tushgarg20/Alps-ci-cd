@@ -1,0 +1,6 @@
+Gen,Source ,Destination,Cdyn Reduction
+Gen8,A0,B0,0.9215
+Gen8SoC,A0,B0,1
+Gen9LPClient,A0,B0,1
+Gen9LPSoC,A0,B0,1
+Gen10LP,A0,B0,1

@@ -1,0 +1,80 @@
+--- # ALPS Formula File version WW07.1 2013
+
+ # R == Residency
+ # C == Cdyn weight
+
+EU:
+  TC:
+    PS0_TC: R * C
+    PS1_TC: R * C
+    PS2_TC: R * C
+
+  GRF:
+     PS2_GRF_READ: R * C
+     PS2_GRF_WRITE: R * C
+
+  FPU:
+     PS0_EU_FPU: R * C
+     PS1_EU_FPU: R * C
+     PS2_EU_FPU:
+      FPU_mad_fp16: R[PS2_EU_FPU] * R * C
+      FPU_mul_fp16: R[PS2_EU_FPU] * R * C
+      FPU_add_fp16: R[PS2_EU_FPU] * R * C
+      FPU_mov_fp16: R[PS2_EU_FPU] * R * C
+      FPU_sel_fp16: R[PS2_EU_FPU] * R * C
+      FPU_pln_fp32: R[PS2_EU_FPU] * R * C
+      FPU_mad_fp32: R[PS2_EU_FPU] * R * C
+      FPU_mul_fp32: R[PS2_EU_FPU] * R * C
+      FPU_add_fp32: R[PS2_EU_FPU] * R * C
+      FPU_mov_fp32: R[PS2_EU_FPU] * R * C
+      FPU_sel_fp32: R[PS2_EU_FPU] * R * C
+
+  EM:
+    PS0_EU_EM: R *C
+    PS1_EU_EM: R * C
+    PS2_EU_EM:
+      EM_mad_fp16: R[PS2_EU_EM] * R * C
+      EM_mul_fp16: R[PS2_EU_EM] * R * C
+      EM_add_fp16: R[PS2_EU_EM] * R * C
+      EM_mov_fp16: R[PS2_EU_EM] * R * C
+      EM_sel_fp16: R[PS2_EU_EM] * R * C
+      EM_pln_fp32: R[PS2_EU_EM] * R * C
+      EM_mad_fp32: R[PS2_EU_EM] * R * C
+      EM_mul_fp32: R[PS2_EU_EM] * R * C
+      EM_add_fp32: R[PS2_EU_EM] * R * C
+      EM_mov_fp32: R[PS2_EU_EM] * R * C
+      EM_sel_fp32: R[PS2_EU_EM] * R * C
+      EM_transc_fp32: R[PS2_EU_EM] * R * C
+
+  GA:
+    PS0_GA: R *C
+    PS1_GA: R * C
+    PS2_GA:
+       PS2_GA_EM1Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_EM2Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_EM3Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_FPU1Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_FPU2Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_FPU3Src_SinglePipe: R[PS2_GA] * R * C
+       PS2_GA_EM1Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM1Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM1Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM2Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM2Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM2Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM3Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM3Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM3Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
+
+  DOP:
+    PS0_EU_DOP: R * C
+    PS1_EU_DOP: R * C
+    PS2_EU_DOP: R * C
+
+  DFX:
+    PS0_EU_DFX : R * C
+    PS2_EU_DFX : R * C
+
+  SMALL:
+    PS0_EU_SMALL : R * C
+    PS2_EU_SMALL : R * C

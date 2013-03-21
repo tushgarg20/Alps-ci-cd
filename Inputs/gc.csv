@@ -1,0 +1,100 @@
+Unit, Cluster,Gen9LPClient
+LTCC, L3 Bank,21410
+LSLM, L3 Bank,285940
+SmallUnits, L3 Bank,134170
+LSQD, L3 Bank,341580
+DFX, L3 Bank,36450
+LSQC, L3 Bank,356340
+LTCD, L3 Bank,796610
+SmallUnits, GAM/GA,355220
+GAMT, GAM/GA,1414230
+GAMD, GAM/GA,1255130
+DFX, GAM/GA,268350
+GAMW, GAM/GA,1762650
+SmallUnits, Rest Subslice,239860
+IC, Rest Subslice,321410
+DFX, Rest Subslice,422190
+BC, Rest Subslice,702770
+MA, Rest Subslice,84235
+DAPRSS, Rest Subslice,598370
+PSD, Rest Subslice,673360
+TDL, Rest Subslice,474080
+SmallUnits, Media PG,21136030
+DFX, Media PG,1134790
+SC, 3D Sampler,434760
+ST, 3D Sampler,188670
+SI, 3D Sampler,401520
+SO_ROW0, 3D Sampler,83000
+SVSM, 3D Sampler,171300
+SO_ROW1, 3D Sampler,90990
+MT, 3D Sampler,392470
+FT, 3D Sampler,190540
+PL, 3D Sampler,555410
+FL, 3D Sampler,1134520
+DG, 3D Sampler,267430
+SO, 3D Sampler,125560
+DM, 3D Sampler,1179710
+SmallUnits, GTI,3392430
+DFX, GTI,547290
+CC, Slice Common,655900
+TDC, Slice Common,209310
+WMBE, Slice Common,1000070
+RCPFE, Slice Common,749670
+DAPRSC, Slice Common,483110
+SBE, Slice Common,1362960
+HIZ, Slice Common,1990900
+RCPBCOM, Slice Common,588850
+RCC, Slice Common,804960
+DAPB, Slice Common,200430
+SVL, Slice Common,114900
+SARB, Slice Common,216780
+SmallUnits, Slice Common,735220
+IZ, Slice Common,1258070
+RCPBPIX, Slice Common,1952890
+STC, Slice Common,783820
+DFX, Slice Common,549710
+RCZ, Slice Common,1191080
+WMFE, Slice Common,208800
+MSC, Slice Common,1062560
+SmallUnits, L3 Node,75220
+LNE, L3 Node,607480
+LNI, L3 Node,854440
+SmallUnits, HDC,109850
+HDCRET, HDC,704150
+HDCREQCMD1, HDC,539230
+HDCTLB, HDC,474580
+HDCREQDATA, HDC,329600
+HDCREQCMD2, HDC,813070
+GW, HDC,277500
+SmallUnits, Media Idle,2640390
+DFX, Media Idle,1074660
+TE, Fixed Function,112290
+VF, Fixed Function,704130
+SOL, Fixed Function,275350
+URBM, Fixed Function,191900
+VSFE, Fixed Function,415320
+TDG, Fixed Function,170370
+RS, Fixed Function,317140
+TETG, Fixed Function,52560
+VFE, Fixed Function,100080
+TSG, Fixed Function,421880
+HS, Fixed Function,324650
+VSBE, Fixed Function,669050
+GS, Fixed Function,749930
+SDE, Fixed Function,74280
+SVG, Fixed Function,77460
+CS, Fixed Function,458980
+SmallUnits, Fixed Function,2040580
+OA, Fixed Function,147500
+TDS, Fixed Function,799490
+SF, Fixed Function,1293090
+DFX, Fixed Function,495590
+CL, Fixed Function,1084600
+TC, EU,471910
+EU_SMALL, EU,16120
+GA, EU,233790
+EM, EU,516520
+EU_DFX, EU,34090
+FPU, EU,516520
+EU_DOP, EU,1
+SmallUnits, Media Sampler,2897030
