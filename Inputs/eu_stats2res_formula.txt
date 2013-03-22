@@ -177,3 +177,12 @@
 #SMALL				
 	PS0_EU_SMALL	=	PS0_TC + PS1_TC	#Approximated SMALL using TC residencies
 	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated SMALL using TC residencies
+
+#INSTANCE
+	num_FPU = COUNT('S\d+.SS\d+.R\d+.uEU_\d+.Pipelines.FpuLatencyQ.pushed')
+	num_EM = COUNT('S\d+.SS\d+.R\d+.uEU_\d+.Pipelines.EmLatencyQ.pushed')
+	num_TC = COUNT('@ANY_EU@pwr_ThdControllerIdle\.CrClock')
+	num_GRF = COUNT('@ANY_EUPIPE@pwr_GrfReadAccesses\.CrClock')
+	num_GA = COUNT('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')
+	num_SMALL = numEUs
+	num_DFX = numEUs

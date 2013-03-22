@@ -96,8 +96,11 @@ def get_base_config(stat):
             elif('A0' in cdyn_hash[stat][config]):
                 return config,'A0'
             else:
+                print "Stepping is unknown for " + stat + " for config - " + config
                 return config, None
         i = i-1
+
+    print "Not able to find matching cdyn weight for " + stat
     return None,None
     
 def get_eff_cdyn(cluster,unit,stat):
@@ -116,9 +119,17 @@ def get_eff_cdyn(cluster,unit,stat):
         voltage_sf = 0
     stepping_sf = stepping_hash[base_cfg]['A0']['B0'] if stepping =='A0' else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
-    instances = I[unit]
+    if(unit not in I):
+        print "Number of instances for " + unit + " are unknown"
+        instances = 0
+    else:
+        instances = I[unit]
     if(cdyn_type == 'syn'):
-        newproduct_gc = new_gc[cluster][unit][cfg]
+        if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
+            print "Gate count is not available for " + cluster + " , " + unit
+            newproduct_gc = 0
+        else:
+            newproduct_gc = new_gc[cluster][unit][cfg]
     else:
         newproduct_gc = 1
     gc_sf = newproduct_gc/ref_gc
