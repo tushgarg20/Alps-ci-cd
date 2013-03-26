@@ -50,21 +50,21 @@ EU:
     PS0_GA: R *C
     PS1_GA: R * C
     PS2_GA:
-       PS2_GA_EM1Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_EM2Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_EM3Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_FPU1Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_FPU2Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_FPU3Src_SinglePipe: R[PS2_GA] * R * C
-       PS2_GA_EM1Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM1Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM1Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM2Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM2Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM2Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM3Src_FPU1Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM3Src_FPU2Src_DualPipe: R[PS2_GA] * R * C
-       PS2_GA_EM3Src_FPU3Src_DualPipe: R[PS2_GA] * R * C
+       PS2_GA_EM1Src_SinglePipe: R * C
+       PS2_GA_EM2Src_SinglePipe: R * C
+       PS2_GA_EM3Src_SinglePipe: R * C
+       PS2_GA_FPU1Src_SinglePipe: R * C
+       PS2_GA_FPU2Src_SinglePipe: R * C
+       PS2_GA_FPU3Src_SinglePipe: R * C
+       PS2_GA_EM1Src_FPU1Src_DualPipe: R * C
+       PS2_GA_EM1Src_FPU2Src_DualPipe: R * C
+       PS2_GA_EM1Src_FPU3Src_DualPipe: R * C
+       PS2_GA_EM2Src_FPU1Src_DualPipe: R * C
+       PS2_GA_EM2Src_FPU2Src_DualPipe: R * C
+       PS2_GA_EM2Src_FPU3Src_DualPipe: R * C
+       PS2_GA_EM3Src_FPU1Src_DualPipe: R * C
+       PS2_GA_EM3Src_FPU2Src_DualPipe: R * C
+       PS2_GA_EM3Src_FPU3Src_DualPipe: R * C
 
   DOP:
     PS0_EU_DOP: R * C
@@ -78,3 +78,51 @@ EU:
   SMALL:
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
+
+EU_Utilization: R
+EU_IPC: R
+
+L3_Bank:
+   LTCD-DATA:
+    PS0_LTCD_Data: R * C
+    PS2_LTCD_Data_Read: R * C
+    PS2_LTCD_Data_Write: R * C
+    PS2_LTCD_Data_HB_Read: R * C
+    PS2_LTCD_Data_HB_Write: R * C
+
+   LTCD-TAG:
+    PS0_LTCD_Tag: R * C
+    PS2_LTCD_Tag_SLM_ECC_NoTagRead: R * C
+    PS2_LTCD_Tag_SLM_ECC_NoTagWrite: R * C
+
+   LSQD:
+    PS0_LSQD: R * C
+    PS1_LSQD: R * C
+    PS2_LSQD_nonatomics: R * C
+    PS2_LSQD_atomics: R * C
+
+   LSQC:
+    PS0_LSQC: R * C
+    PS1_LSQC: R * C
+    PS2_LSQC: R * C
+
+   LTCC:
+    PS0_LTCC: R * C
+    PS1_LTCC: R * C
+    PS2_LTCC: R * C
+
+   LNI:
+    PS0_LNI: R * C
+    PS1_LNI: R * C
+    PS2_LNI: R * C
+
+   LNE:
+    PS0_LNE: R * C
+    PS1_LNE: R * C
+    PS2_LNE: R * C
+
+   LNICS:
+    PS0_LNICS: R * C
+
+   LNECS:
+    PS0_LNECS: R * C

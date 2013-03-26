@@ -1,127 +1,167 @@
-State,Source,Stepping,Weight,Type,RefGC,Comments
-PS0_EU_DOP,Gen9LPClient,A0,0,syn ,1,DOP gated
-PS1_EU_DOP,Gen9LPClient,A0,0,syn ,1,DOP gated
-PS2_EU_DOP,Gen9LPClient,A0,7,syn ,1,DOP ungated
-PS0_EU_FPU,Gen9LPClient,A0,0,syn ,471426.7,DOP gated
-PS2_EU_FPU,Gen9LPClient,A0,0,syn ,471426.7,Not used
-PS1_EU_FPU,Gen9LPClient,A0,0,syn ,471426.7,DOP gated
-FPU_pln_fp16,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be HF
-FPU_mad_fp16,Gen9LPClient,A0,45.3327,syn ,471426.7,Scaled based on FP32+/FP32+-
-FPU_mul_fp16,Gen9LPClient,A0,36.5008,syn ,471426.7,
-FPU_add_fp16,Gen9LPClient,A0,24.9554,syn ,471426.7,
-FPU_mov_fp16,Gen9LPClient,A0,13.8453,syn ,471426.7,
-FPU_sel_fp16,Gen9LPClient,A0,13.8453,syn ,471426.7,Approximated using MOV FP16
-FPU_pln_fp32,Gen9LPClient,A0,73.6468,syn ,471426.7,
-FPU_mad_fp32,Gen9LPClient,A0,54.9805,syn ,471426.7,45.33272927
-FPU_mul_fp32,Gen9LPClient,A0,46.3407,syn ,471426.7,
-FPU_add_fp32,Gen9LPClient,A0,34.791,syn ,471426.7,
-FPU_mov_fp32,Gen9LPClient,A0,13.8675,syn ,471426.7,
-FPU_sel_fp32,Gen9LPClient,A0,13.8675,syn ,471426.7,Approximated using MOV FP32
-FPU_pln_fp64,Gen9LPClient,A0,0,syn ,471426.7,Can PLN be FP64?
-FPU_mad_fp64,Gen9LPClient,A0,41.9014,syn ,471426.7,
-FPU_mul_fp64,Gen9LPClient,A0,41.8857,syn ,471426.7,
-FPU_add_fp64,Gen9LPClient,A0,22.2039,syn ,471426.7,
-FPU_mov_fp64,Gen9LPClient,A0,17.5566,syn ,471426.7,
-FPU_sel_fp64,Gen9LPClient,A0,17.5566,syn ,471426.7,Approximated using MOV FP64
-FPU_pln_int16,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be HF
-FPU_mad_int16,Gen9LPClient,A0,45.3327,syn ,471426.7,Approximated using MAD FP16
-FPU_mul_int16,Gen9LPClient,A0,57.8908,syn ,471426.7,
-FPU_add_int16,Gen9LPClient,A0,38.9012,syn ,471426.7,
-FPU_mov_int16,Gen9LPClient,A0,14.8019,syn ,471426.7,Approximating using INT32 - following same trend as FP
-FPU_sel_int16,Gen9LPClient,A0,14.8019,syn ,471426.7,Approximated using MOV INT16
-FPU_pln_int32,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be INT
-FPU_mad_int32,Gen9LPClient,A0,54.9805,syn ,471426.7,Approximated using MAD FP32
-FPU_mul_int32,Gen9LPClient,A0,53.8033,syn ,471426.7,
-FPU_add_int32,Gen9LPClient,A0,26.388,syn ,471426.7,
-FPU_mov_int32,Gen9LPClient,A0,14.8019,syn ,471426.7,
-FPU_sel_int32,Gen9LPClient,A0,14.8019,syn ,471426.7,Approximated using MOV INT32
-FPU_pln_int64,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be INT
-FPU_mad_int64,Gen9LPClient,A0,41.9014,syn ,471426.7,Approximated using MAD FP64
-FPU_mul_int64,Gen9LPClient,A0,41.8857,syn ,471426.7,Approximated using MUL FP64
-FPU_add_int64,Gen9LPClient,A0,22.2039,syn ,471426.7,Approximated using ADD FP64
-FPU_mov_int64,Gen9LPClient,A0,17.5566,syn ,471426.7,Approximated using MOV FP64
-FPU_sel_int64,Gen9LPClient,A0,17.5566,syn ,471426.7,Approximated using MOV FP64
-FPU_pln_bypass,Gen9LPClient,A0,0,syn ,471426.7,PLN does not have a bypass
-FPU_mad_bypass,Gen9LPClient,A0,28.4811,syn ,471426.7,Mul: 1 operand 0
-FPU_mul_bypass,Gen9LPClient,A0,19.3912,syn ,471426.7,Mul: 1 operand 0
-FPU_add_bypass,Gen9LPClient,A0,17.8596,syn ,471426.7,Add: 1 operand 0
-FPU_mov_bypass,Gen9LPClient,A0,0,syn ,471426.7,MOV does not have a bypass
-FPU_sel_bypass,Gen9LPClient,A0,0,syn ,471426.7,SEL does not have a bypass
-PS0_EU_EM ,Gen9LPClient,A0,0,syn ,471426.7,DOP gated
-PS2_EU_EM,Gen9LPClient,A0,0,syn ,471426.7,Not used
-PS1_EU_EM,Gen9LPClient,A0,0,syn ,471426.7,DOP ungated
-EM_pln_fp16,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be HF
-EM_mad_fp16,Gen9LPClient,A0,40.72104787,syn ,471426.7,Scaled based on FP32+/FP32+-
-EM_mul_fp16,Gen9LPClient,A0,31.5693,syn ,471426.7,
-EM_add_fp16,Gen9LPClient,A0,23.9012,syn ,471426.7,
-EM_mov_fp16,Gen9LPClient,A0,12.5549,syn ,471426.7,
-EM_sel_fp16,Gen9LPClient,A0,12.5549,syn ,471426.7,Approximated using MOV FP16
-EM_transc_fp16,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_fp32,Gen9LPClient,A0,66.6449,syn ,471426.7,
-EM_mad_fp32,Gen9LPClient,A0,53.0589,syn ,471426.7,40.72104787
-EM_mul_fp32,Gen9LPClient,A0,45.0759,syn ,471426.7,
-EM_add_fp32,Gen9LPClient,A0,33.6933,syn ,471426.7,
-EM_mov_fp32,Gen9LPClient,A0,10.5854,syn ,471426.7,
-EM_sel_fp32,Gen9LPClient,A0,10.5854,syn ,471426.7,Approximated using MOV FP32
-EM_transc_fp32,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_fp64,Gen9LPClient,A0,0,syn ,471426.7,Can PLN be FP64?
-EM_mad_fp64,Gen9LPClient,A0,39.8637,syn ,471426.7,
-EM_mul_fp64,Gen9LPClient,A0,39.3184,syn ,471426.7,
-EM_add_fp64,Gen9LPClient,A0,18.7795,syn ,471426.7,
-EM_mov_fp64,Gen9LPClient,A0,15.3374,syn ,471426.7,
-EM_sel_fp64,Gen9LPClient,A0,15.3374,syn ,471426.7,Approximated using MOV FP64
-EM_transc_fp64,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_int16,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be HF
-EM_mad_int16,Gen9LPClient,A0,40.72104787,syn ,471426.7,Approximated using MAD FP16
-EM_mul_int16,Gen9LPClient,A0,49.8405,syn ,471426.7,
-EM_add_int16,Gen9LPClient,A0,28.6283,syn ,471426.7,
-EM_mov_int16,Gen9LPClient,A0,13.51228614,syn ,471426.7,Scaled based on FP16/FP32
-EM_sel_int16,Gen9LPClient,A0,13.51228614,syn ,471426.7,Approximated using MOV INT16
-EM_transc_int16,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_int32,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be INT
-EM_mad_int32,Gen9LPClient,A0,53.0589,syn ,471426.7,Approximated using MAD FP32
-EM_mul_int32,Gen9LPClient,A0,47.1087,syn ,471426.7,
-EM_add_int32,Gen9LPClient,A0,20.9924,syn ,471426.7,
-EM_mov_int32,Gen9LPClient,A0,11.3926,syn ,471426.7,13.51228614
-EM_sel_int32,Gen9LPClient,A0,11.3926,syn ,471426.7,Approximated using MOV INT32
-EM_transc_int32,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_int64,Gen9LPClient,A0,0,syn ,471426.7,PLN cannot be INT
-EM_mad_int64,Gen9LPClient,A0,39.8637,syn ,471426.7,Approximated using MAD FP64
-EM_mul_int64,Gen9LPClient,A0,39.3184,syn ,471426.7,Approximated using MUL FP64
-EM_add_int64,Gen9LPClient,A0,18.7795,syn ,471426.7,Approximated using ADD FP64
-EM_mov_int64,Gen9LPClient,A0,15.3374,syn ,471426.7,Approximated using MOV FP64
-EM_sel_int64,Gen9LPClient,A0,15.3374,syn ,471426.7,Approximated using MOV FP64
-EM_transc_int64,Gen9LPClient,A0,0,syn ,471426.7,Not generated
-EM_pln_bypass,Gen9LPClient,A0,0,syn ,471426.7,PLN does not have a bypass
-EM_mad_bypass,Gen9LPClient,A0,24.3423,syn ,471426.7,Mul: 1 operand 0
-EM_mul_bypass,Gen9LPClient,A0,16.318,syn ,471426.7,Mul: 1 operand 0
-EM_add_bypass,Gen9LPClient,A0,16.3223,syn ,471426.7,Add: 1 operand 0
-EM_mov_bypass,Gen9LPClient,A0,0,syn ,471426.7,MOV does not have a bypass
-EM_sel_bypass,Gen9LPClient,A0,0,syn ,471426.7,SEL does not have a bypass
-EM_transc_bypass,Gen9LPClient,A0,0,syn ,471426.7,TRANSC does not have a bypass
-PS0_GA,Gen9LPClient,A0,0,syn ,239608.1,DOP gated
-PS1_GA,Gen9LPClient,A0,0,syn ,239608.1,DOP gated
-GA_EM1Src_SinglePipe,Gen9LPClient,A0,25.85,syn ,239608.1,
-GA_EM2Src_SinglePipe,Gen9LPClient,A0,28.47,syn ,239608.1,Approximated using MAC/SAD/SADA2 (to keep model unbiased)
-GA_EM3Src_SinglePipe,Gen9LPClient,A0,31.09,syn ,239608.1,
-GA_FPU1Src_SinglePipe,Gen9LPClient,A0,25.85,syn ,239608.1,
-GA_FPU2Src_SinglePipe,Gen9LPClient,A0,28.47,syn ,239608.1,Approximated using MAC/SAD/SADA2
-GA_FPU3Src_SinglePipe,Gen9LPClient,A0,31.09,syn ,239608.1,
-GA_EM1Src_FPU1Src_DualPipe,Gen9LPClient,A0,39.85,syn ,239608.1,Approximated using average of 1-1 (MOV FP32*)
-GA_EM1Src_FPU2Src_DualPipe,Gen9LPClient,A0,41.18,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM1Src_FPU3Src_DualPipe,Gen9LPClient,A0,42.49,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM2Src_FPU1Src_DualPipe,Gen9LPClient,A0,41.18,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM2Src_FPU2Src_DualPipe,Gen9LPClient,A0,42.53,syn ,239608.1,Approximated using average of 2-2 (MUL/ADD/CMP FP32*)
-GA_EM2Src_FPU3Src_DualPipe,Gen9LPClient,A0,43.8,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM3Src_FPU1Src_DualPipe,Gen9LPClient,A0,42.49,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM3Src_FPU2Src_DualPipe,Gen9LPClient,A0,43.8,syn ,239608.1,Using line fitted with (1-1, 2-2, 3-3)
-GA_EM3Src_FPU3Src_DualPipe,Gen9LPClient,A0,45.09,syn ,239608.1,Approximated using average of 2-2 (MAD FP32*)
-PS0_TC,Gen9LPClient,A0,0,syn ,496118.1,DOP gated
-PS1_TC,Gen9LPClient,A0,0,syn ,496118.1,DOP ungated
-PS2_TC,Gen9LPClient,A0,22,syn ,496118.1,Assuming no dependency
-PS2_GRF_READ,Gen9LPClient,A0,12.246,ebb,1,Approximated using MAD FP32
-PS2_GRF_WRITE,Gen9LPClient,A0,12.246,ebb,1,Approximated using MAD FP32
-PS0_EU_DFX,Gen9LPClient,A0,0,syn ,52387.38,DOP gated
-PS2_EU_DFX,Gen9LPClient,A0,2.645,syn ,52387.38,Approximated as average 
-PS0_EU_SMALL,Gen9LPClient,A0,0,syn ,7973.86,DOP gated
-PS2_EU_SMALL,Gen9LPClient,A0,3.361,syn ,7973.86,Approximated as average 
+State,Source,Stepping,Weight,Type,Reference_GC
+PS0_EU_FPU,Gen8,A0,0.075,syn,397435
+PS2_EU_FPU,Gen8,A0,0,syn,397435
+PS1_EU_FPU,Gen8,A0,0.075,syn,397435
+FPU_pln_fp16,Gen8,A0,75.765,syn,397435
+FPU_mad_fp16,Gen8,A0,33.409,syn,397435
+FPU_mul_fp16,Gen8,A0,30.955,syn,397435
+FPU_add_fp16,Gen8,A0,28.014,syn,397435
+FPU_mov_fp16,Gen8,A0,11.275,syn,397435
+FPU_sel_fp16,Gen8,A0,11.275,syn,397435
+FPU_pln_fp32,Gen8,A0,126.275,syn,397435
+FPU_mad_fp32,Gen8,A0,47.267,syn,397435
+FPU_mul_fp32,Gen8,A0,41.895,syn,397435
+FPU_add_fp32,Gen8,A0,28.519,syn,397435
+FPU_mov_fp32,Gen8,A0,18.791,syn,397435
+FPU_sel_fp32,Gen8,A0,18.791,syn,397435
+FPU_pln_fp64,Gen8,A0,0,syn,397435
+FPU_mad_fp64,Gen8,A0,0,syn,397435
+FPU_mul_fp64,Gen8,A0,0,syn,397435
+FPU_add_fp64,Gen8,A0,0,syn,397435
+FPU_mov_fp64,Gen8,A0,0,syn,397435
+FPU_sel_fp64,Gen8,A0,0,syn,397435
+FPU_pln_int16,Gen8,A0,107.333,syn,397435
+FPU_mad_int16,Gen8,A0,40.178,syn,397435
+FPU_mul_int16,Gen8,A0,41.895,syn,397435
+FPU_add_int16,Gen8,A0,28.519,syn,397435
+FPU_mov_int16,Gen8,A0,15.973,syn,397435
+FPU_sel_int16,Gen8,A0,15.973,syn,397435
+FPU_pln_int32,Gen8,A0,113.647,syn,397435
+FPU_mad_int32,Gen8,A0,42.541,syn,397435
+FPU_mul_int32,Gen8,A0,86.866,syn,397435
+FPU_add_int32,Gen8,A0,40.206,syn,397435
+FPU_mov_int32,Gen8,A0,16.912,syn,397435
+FPU_sel_int32,Gen8,A0,16.912,syn,397435
+FPU_pln_int64,Gen8,A0,0,syn,397435
+FPU_mad_int64,Gen8,A0,0,syn,397435
+FPU_mul_int64,Gen8,A0,0,syn,397435
+FPU_add_int64,Gen8,A0,0,syn,397435
+FPU_mov_int64,Gen8,A0,0,syn,397435
+FPU_sel_int64,Gen8,A0,0,syn,397435
+FPU_pln_bypass,Gen8,A0,146.502,syn,397435
+FPU_mad_bypass,Gen8,A0,47.085,syn,397435
+FPU_mul_bypass,Gen8,A0,20.751,syn,397435
+FPU_add_bypass,Gen8,A0,22.526,syn,397435
+FPU_mov_bypass,Gen8,A0,0,syn,397435
+FPU_sel_bypass,Gen8,A0,0,syn,397435
+PS0_EU_EM,Gen8,A0,0.075,syn,397435
+PS2_EU_EM,Gen8,A0,0,syn,397435
+PS1_EU_EM,Gen8,A0,0.075,syn,397435
+EM_pln_fp16,Gen8,A0,70.628,syn,397435
+EM_mad_fp16,Gen8,A0,27.967,syn,397435
+EM_mul_fp16,Gen8,A0,24.364,syn,397435
+EM_add_fp16,Gen8,A0,22.423,syn,397435
+EM_mov_fp16,Gen8,A0,9.227,syn,397435
+EM_sel_fp16,Gen8,A0,9.227,syn,397435
+EM_transc_fp16,Gen8,A0,7.467,syn,397435
+EM_pln_fp32,Gen8,A0,117.714,syn,397435
+EM_mad_fp32,Gen8,A0,40.194,syn,397435
+EM_mul_fp32,Gen8,A0,35.079,syn,397435
+EM_add_fp32,Gen8,A0,23.832,syn,397435
+EM_mov_fp32,Gen8,A0,15.378,syn,397435
+EM_sel_fp32,Gen8,A0,15.378,syn,397435
+EM_transc_fp32,Gen8,A0,12.446,syn,397435
+EM_pln_fp64,Gen8,A0,0,syn,397435
+EM_mad_fp64,Gen8,A0,0,syn,397435
+EM_mul_fp64,Gen8,A0,0,syn,397435
+EM_add_fp64,Gen8,A0,0,syn,397435
+EM_mov_fp64,Gen8,A0,0,syn,397435
+EM_sel_fp64,Gen8,A0,0,syn,397435
+EM_transc_fp64,Gen8,A0,0,syn,397435
+EM_pln_int16,Gen8,A0,100.057,syn,397435
+EM_mad_int16,Gen8,A0,34.165,syn,397435
+EM_mul_int16,Gen8,A0,35.079,syn,397435
+EM_add_int16,Gen8,A0,23.832,syn,397435
+EM_mov_int16,Gen8,A0,13.072,syn,397435
+EM_sel_int16,Gen8,A0,13.072,syn,397435
+EM_transc_int16,Gen8,A0,17.631,syn,397435
+EM_pln_int32,Gen8,A0,105.942,syn,397435
+EM_mad_int32,Gen8,A0,36.174,syn,397435
+EM_mul_int32,Gen8,A0,72.003,syn,397435
+EM_add_int32,Gen8,A0,31.084,syn,397435
+EM_mov_int32,Gen8,A0,13.84,syn,397435
+EM_sel_int32,Gen8,A0,13.84,syn,397435
+EM_transc_int32,Gen8,A0,18.668,syn,397435
+EM_pln_int64,Gen8,A0,0,syn,397435
+EM_mad_int64,Gen8,A0,0,syn,397435
+EM_mul_int64,Gen8,A0,0,syn,397435
+EM_add_int64,Gen8,A0,0,syn,397435
+EM_mov_int64,Gen8,A0,0,syn,397435
+EM_sel_int64,Gen8,A0,0,syn,397435
+EM_transc_int64,Gen8,A0,0,syn,397435
+EM_pln_bypass,Gen8,A0,146.502,syn,397435
+EM_mad_bypass,Gen8,A0,39.73,syn,397435
+EM_mul_bypass,Gen8,A0,17.043,syn,397435
+EM_add_bypass,Gen8,A0,18.546,syn,397435
+EM_mov_bypass,Gen8,A0,0,syn,397435
+EM_sel_bypass,Gen8,A0,0,syn,397435
+EM_transc_bypass,Gen8,A0,0,syn,397435
+PS0_GA,Gen8,A0,1.294849314,syn,228117
+PS1_GA,Gen9,A1,1.295,syn,228117
+PS2_GA,Gen8,A0,0,syn,228117
+PS2_GA_EM1Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_EM2Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_EM3Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_FPU1Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_FPU2Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_FPU3Src_SinglePipe,Gen8,A0,0,syn,228117
+PS2_GA_EM1Src_FPU1Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM1Src_FPU2Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM1Src_FPU3Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM2Src_FPU1Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM2Src_FPU2Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM2Src_FPU3Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM3Src_FPU1Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM3Src_FPU2Src_DualPipe,Gen8,A0,0,syn,228117
+PS2_GA_EM3Src_FPU3Src_DualPipe,Gen8,A0,0,syn,228117
+PS0_TC,Gen8,A0,2.857,syn,479003
+PS1_TC,Gen8,A0,13.88,syn,479003
+PS2_TC,Gen8,A0,25.811,syn,479003
+PS2_GRF_READ,Gen8,A0,19.693,ebb,1
+PS2_GRF_WRITE,Gen8,A0,19.174,ebb,1
+PS0_EU_SMALL,Gen8,A0,0.835,syn,41011
+PS1_EU_SMALL,Gen8,A0,1.359,syn,41011
+PS2_EU_SMALL,Gen8,A0,3.371,syn,41011
+PS0_Glue,Gen8,A0,0.963,syn,20293
+PS1_Glue,Gen8,A0,1.295,syn,20293
+PS2_Glue,Gen8,A0,3.296,syn,20293
+PS0_EU_DFX,Gen8,A0,0.963,syn,20293
+PS1_EU_DFX,Gen8,A0,1.295,syn,20293
+PS2_EU_DFX,Gen8,A0,3.296,syn,20293
+PS0_LTCD_Data,Gen8,A0,0,ebb,1
+PS2_LTCD_Data_Read,Gen8,A0,140.4,ebb,1
+PS2_LTCD_Data_Write,Gen8,A0,192.1,ebb,1
+PS2_LTCD_Data_HB_Write,Gen8,A0,298.88,ebb,1
+PS2_LTCD_Data_HB_Read,Gen8,A0,298.88,ebb,1
+PS0_LTCD_Tag,Gen8,A0,7.08,ebb,1
+PS2_LTCD_Tag_NonSLM_ECC_NoTagRead,Gen8,A0,102.94,ebb,1
+PS2_LTCD_Tag_NonSLM_ECC_NoTagWrite,Gen8,A0,102.94,ebb,1
+PS2_LTCD_Tag_SLM_ECC_NoTagRead,Gen8,A0,0,ebb,1
+PS2_LTCD_Tag_SLM_ECC_NoTagWrite,Gen8,A0,0,ebb,1
+PS0_LSQD,Gen8,A0,0.62,syn,293227
+PS1_LSQD,Gen8,A0,41.96,syn,293227
+PS2_LSQD_nonatomics,Gen8,A0,106.02,syn,293227
+PS2_LSQD_atomics,Gen8,A0,122.87,syn,293227
+PS0_LSQC,Gen8,A0,1.37,syn,305173
+PS1_LSQC,Gen8,A0,30.72,syn,305173
+PS2_LSQC,Gen8,A0,43.53,syn,305173
+PS0_LTCC,Gen8,A0,1.37,syn,17292.8
+PS1_LTCC,Gen8,A0,30.72,syn,17292.8
+PS2_LTCC,Gen8,A0,43.53,syn,17292.8
+PS0_LNI,Gen8,A0,15.67,syn,780922
+PS1_LNI,Gen8,A0,45.54,syn,780922
+PS2_LNI,Gen8,A0,195.42,syn,780922
+PS0_LNE,Gen8,A0,7.83,syn,467244
+PS1_LNE,Gen8,A0,46.63,syn,467244
+PS2_LNE,Gen8,A0,203.27,syn,467244
+PS0_LNICS,Gen8,A0,0,syn,40442.5
+PS0_LNECS,Gen8,A0,0,syn,40442.5
+PS0_EU_DOP,Gen8,A0,1,syn,1
+PS1_EU_DOP,Gen8,A0,1,syn,1
+PS2_EU_DOP,Gen8,A0,1,syn,1
+PS0_L3_Small,Gen8,A0,1,syn,149246.2
+PS1_L3_Small,Gen8,A0,1,syn,149246.2
+PS2_L3_Small,Gen8,A0,1,syn,149246.2
+PS0_LNE_Small,Gen8,A0,1,syn,80885
+PS1_LNE_Small,Gen8,A0,1,syn,80885
+PS2_LNE_Small,Gen8,A0,1,syn,80885
