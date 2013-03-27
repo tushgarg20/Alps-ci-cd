@@ -16,7 +16,7 @@ parser.add_option("-r","--residency",dest="residency_file",
 parser.add_option("-o","--output",dest="output_file",
                   help="Name of output YAML file")
 parser.add_option("-a","--architecture",dest="dest_config",
-                  help="Specify target architecture. For e.g. Gen9LPCLient,Gen8SoC")
+                  help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
 
 (options,args) = parser.parse_args()
 ##print options.input_file
@@ -36,23 +36,23 @@ voltage_hash = {}
 cdyn_cagr_hash = {'syn':{},'ebb':{}}
 stepping_hash = {}
 cfg = options.dest_config.lower()
-
-
-if cfg.find('bdw') >=0:
-    cfg="Gen8"
-if cfg.find('chv') >=0:
-            cfg="Gen8SoC"
-if cfg.find('skl') >=0:
-           cfg="Gen9LPClient"
-if cfg.find('bxt') >=0:
-         cfg="Gen9LPSoc"
-if cfg.find('cnl') >=0:
-         cfg="Gen10LP"
-
-
-
 #path = []
 paths = []
+
+if cfg.find('bdw') > -1 :
+    cfg ='Gen8'
+elif cfg.find('skl') > -1 :
+    cfg ='Gen9LPClient'
+elif cfg.find('chv') > -1 :
+    cfg ='Gen8SoC'
+elif cfg.find('bxt') > -1 :
+    cfg ='Gen9LPSoC'
+elif cfg.find('cnl') > -1 :
+    cfg ='Gen10LP'
+else:
+    print cfg + " --> Config not supported\n";
+    exit(1);
+
 
 #################################
 # Subroutines

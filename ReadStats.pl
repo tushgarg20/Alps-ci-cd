@@ -1,4 +1,11 @@
 #!/usr/bin/perl
+###############################################################
+###############################################################
+###                                                         ###
+###   This script requires gunzip ( http://www.gzip.org )   ###
+###                                                         ###
+###############################################################
+###############################################################
 use strict;
 
 my @input;
@@ -16,7 +23,7 @@ while(@ARGV)
   if($a eq '-e'){ $err=shift; next;}
   if($a eq '-d'){ $dbg=1; next;}
   if($a=~/^-/){ $bad=1; last;}
-  if(!scalar @input){ push @input, $a; next;}
+  if($a=~/\.stat$/ || $a=~/\.stats$/ || $a=~/\.stat\.gz$/ || $a=~/\.stats\.gz$/){ push @input, $a; next;}
   push @forml, $a;
 }
 
@@ -32,7 +39,6 @@ $bad=1 if !scalar @forml;
 
 die "USAGE:\tReadStats.pl [options] <gsim.stat> <formula.txt> [<formula1.txt> [<formula2.txt> ...]] \noptions:\t-csv\t-- output in csv format\n" if $bad;
 
-my $fname=$input[0];
 my @list;
 my %var;
 my %unit;
@@ -149,23 +155,25 @@ foreach my $v(@vars)
 ###
 ### Read stat file
 ###
-open FILE,"<$fname" or die "Cannot open $fname\n";
-foreach my $line(<FILE>)
-{ chomp $line; $line=~s/#.*$//; $line=~s/^\s+//; $line=~s/\s+$//;
-  next unless $line=~/^(\S+)\s+(\S+)/;
-  my $st=$1; my $val=$2;
-  $data{$st}=$val;
-  foreach my $x(keys %wc)
-  { next unless $st=~/$wc{$x}/;
-    $data{$x}=$data{$x}.',' if $data{$x} ne '';
-    $data{$x}=$data{$x}.$data{$st};
+foreach my $fname(@input)
+{ open FILE, $fname=~/\.gz$/ ? "gunzip -c $fname|" : "<$fname" or die "Cannot open $fname\n";
+  foreach my $line(<FILE>)
+  { chomp $line; $line=~s/#.*$//; $line=~s/^\s+//; $line=~s/\s+$//;
+    next unless $line=~/^(\S+)\s+(\S+)/;
+    my $st=$1; my $val=$2;
+    $data{$st}=$val;
+    foreach my $x(keys %wc)
+    { next unless $st=~/$wc{$x}/;
+      $data{$x}=$data{$x}.',' if $data{$x} ne '';
+      $data{$x}=$data{$x}.$data{$st};
+    }
+    if($var{$st})
+    { print STDERR "##### $eqfn{$st} line $eqln{$st} - Name conflict:\t$st\n";
+      $bad{$st}=1;
+    }
   }
-  if($var{$st})
-  { print STDERR "##### $eqfn{$st} line $eqln{$st} - Name conflict:\t$st\n";
-    $bad{$st}=1;
-  }
+  close FILE;
 }
-close FILE;
 
 foreach my $x(sort keys %wc)
 { next if $data{$x};
@@ -183,23 +191,30 @@ foreach my $st(@vars)
     $bad{$st}=1; last;
   }
   next if $bad{$st};
-  my $tmp;
-  my $expr;
-  $tmp=$eq{$st};
-  while($tmp=~s/(.*?)('[^']+')//)
-  { my $x=$2; $expr.=$1;
-    $expr.=$data{$x};
-  }
-  $tmp=$expr.$tmp; $expr='';
-  while($tmp=~s/(.*?)([\w\.]+)//)
-  { my $x=$2; $expr.=$1;
-    $expr.=($data{$x} eq '')?$x:$data{$x};
-  }
-  $expr.=$tmp;
+  my $val;
+  my @eqq=split /\s*\?=\s*/, $eq{$st}; ### "?=" feature
+  foreach my $eq(@eqq)
+  { my $tmp;
+    my $expr;
+    $tmp=$eq;
+    while($tmp=~s/(.*?)('[^']+')//)
+    { my $x=$2; $expr.=$1;
+      $expr.=$data{$x};
+    }
+    $tmp=$expr.$tmp; $expr='';
+    while($tmp=~s/(.*?)([\w\.]+)//)
+    { my $x=$2; $expr.=$1;
+      $expr.=($data{$x} eq '')?$x:$data{$x};
+    }
+    $expr.=$tmp;
 
-  my $val=eval($expr);
+    $val=eval($expr);
+    last if $val ne '';
+    print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq\n" if $dbg;
+  }
+
   if($val eq '')
-  { print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq{$st}\n";
+  { print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq{$st}\n" unless $dbg;
     $bad{$st}=1;
     next;
   }
