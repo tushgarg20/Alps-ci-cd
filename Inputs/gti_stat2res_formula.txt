@@ -1,3 +1,4 @@
+#WW13-3: Temporary Hacks to instance count to fix build_alps issues (sashi)
 #Unit	GSIM residency		
 #Generic			
 	 @ANY_GTI@	=	p0.gti0.
@@ -8,6 +9,9 @@
 			
 #Instance Counts			
 	numGTIs	=	COUNT('@ANY_GTI@gclk_cycles')
+    num_GTI = 1
+    num_DOP1X = 1
+    num_DOP2X = 1
 			
 #GTI			
 	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0

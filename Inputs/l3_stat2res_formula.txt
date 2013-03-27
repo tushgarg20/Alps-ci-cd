@@ -1,19 +1,20 @@
+#WW13-3: Temporary Hacks to instance count to fix build_alps issues (sashi)_
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	numL3Banks	=	knob.S0.uL3.NumBanks	
 	num_L3_Slices	=	knob.S0.uL3.NumSlices	
 	num_L3_SubSlices	=	knob.S0.uL3.NumSubSlices	
-	num_L3_LTCD_Data	=	num_L3_Slices * numL3Banks	
-	num_L3_LTCD_Tag	=	num_L3_Slices * numL3Banks	
-	num_L3_LSQD	=	num_L3_Slices * numL3Banks	
-	num_L3_LSQC	=	num_L3_Slices * numL3Banks	
-	num_L3_LTCC	=	num_L3_Slices * numL3Banks	
-	num_L3_LSLM	=	num_L3_Slices * numL3Banks	
-	num_L3_LNI	=	num_L3_Slices	
-	num_L3_LNE	=	num_L3_Slices	
-	num_L3_LNICS	=	num_L3_Slices	
-	num_L3_LNECS	=	num_L3_Slices	
-	num_L3_L3Other	=	num_L3_Slices * numL3Banks	#Glue/Small
+	num_LTCDData	=	num_L3_Slices * numL3Banks	
+	num_LTCDTag	=	num_L3_Slices * numL3Banks	
+	num_LSQD	=	num_L3_Slices * numL3Banks	
+	num_LSQC	=	num_L3_Slices * numL3Banks	
+	num_LTCC	=	num_L3_Slices * numL3Banks	
+	num_LSLM	=	num_L3_Slices * numL3Banks	
+	num_LNI	=	num_L3_Slices	
+	num_LNE	=	num_L3_Slices	
+	num_LNICS	=	num_L3_Slices	
+	num_LNECS	=	num_L3_Slices	
+	num_L3Other	=	num_L3_Slices * numL3Banks	#Glue/Small
 #Generic				
 	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
 	 @CLOCKS@	=	CrClock.Clocks	
