@@ -36,9 +36,24 @@ process_hash = {}
 voltage_hash = {}
 cdyn_cagr_hash = {'syn':{},'ebb':{}}
 stepping_hash = {}
-cfg = options.dest_config
+cfg = options.dest_config.lower()
 #path = []
 paths = []
+
+if cfg.find('bdw') > -1 :
+    cfg ='Gen8'
+elif cfg.find('skl') > -1 :
+    cfg ='Gen9LPClient'
+elif cfg.find('chv') > -1 :
+    cfg ='Gen8SoC'
+elif cfg.find('bxt') > -1 :
+    cfg ='Gen9LPSoC'
+elif cfg.find('cnl') > -1 :
+    cfg ='Gen10LP'
+else:
+    print cfg + " --> Config not supported\n";
+    exit(1);
+
 
 #################################
 # Subroutines
