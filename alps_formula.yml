@@ -83,14 +83,14 @@ EU_Utilization: R
 EU_IPC: R
 
 L3_Bank:
-   LTCD-DATA:
+   LTCDData:
     PS0_LTCD_Data: R * C
     PS2_LTCD_Data_Read: R * C
     PS2_LTCD_Data_Write: R * C
     PS2_LTCD_Data_HB_Read: R * C
     PS2_LTCD_Data_HB_Write: R * C
 
-   LTCD-TAG:
+   LTCDTag:
     PS0_LTCD_Tag: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagRead: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagWrite: R * C
