@@ -183,23 +183,30 @@ foreach my $st(@vars)
     $bad{$st}=1; last;
   }
   next if $bad{$st};
-  my $tmp;
-  my $expr;
-  $tmp=$eq{$st};
-  while($tmp=~s/(.*?)('[^']+')//)
-  { my $x=$2; $expr.=$1;
-    $expr.=$data{$x};
-  }
-  $tmp=$expr.$tmp; $expr='';
-  while($tmp=~s/(.*?)([\w\.]+)//)
-  { my $x=$2; $expr.=$1;
-    $expr.=($data{$x} eq '')?$x:$data{$x};
-  }
-  $expr.=$tmp;
+  my $val;
+  my @eqq=split /\s*\?=\s*/, $eq{$st}; ### "?=" feature
+  foreach my $eq(@eqq)
+  { my $tmp;
+    my $expr;
+    $tmp=$eq;
+    while($tmp=~s/(.*?)('[^']+')//)
+    { my $x=$2; $expr.=$1;
+      $expr.=$data{$x};
+    }
+    $tmp=$expr.$tmp; $expr='';
+    while($tmp=~s/(.*?)([\w\.]+)//)
+    { my $x=$2; $expr.=$1;
+      $expr.=($data{$x} eq '')?$x:$data{$x};
+    }
+    $expr.=$tmp;
 
-  my $val=eval($expr);
+    $val=eval($expr);
+    last if $val ne '';
+    print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq\n" if $dbg;
+  }
+
   if($val eq '')
-  { print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq{$st}\n";
+  { print STDERR "##### $eqfn{$st} line $eqln{$st} - Cannot evaluate:\t$st = $eq{$st}\n" unless $dbg;
     $bad{$st}=1;
     next;
   }
