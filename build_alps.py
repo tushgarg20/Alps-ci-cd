@@ -17,7 +17,7 @@ parser.add_option("-r","--residency",dest="residency_file",
 parser.add_option("-o","--output",dest="output_file",
                   help="Name of output YAML file")
 parser.add_option("-a","--architecture",dest="dest_config",
-                  help="Specify target architecture. For e.g. Gen9LPCLient,Gen8SoC")
+                  help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
 
 (options,args) = parser.parse_args()
 ##print options.input_file
