@@ -2,7 +2,6 @@ from optparse import OptionParser
 import yaml
 import re
 
-
 #############################
 # Command Line Arguments
 #############################
@@ -36,7 +35,22 @@ process_hash = {}
 voltage_hash = {}
 cdyn_cagr_hash = {'syn':{},'ebb':{}}
 stepping_hash = {}
-cfg = options.dest_config
+cfg = options.dest_config.lower()
+
+
+if cfg.find('bdw') >=0:
+    cfg="Gen8"
+if cfg.find('chv') >=0:
+            cfg="Gen8SoC"
+if cfg.find('skl') >=0:
+           cfg="Gen9LPClient"
+if cfg.find('bxt') >=0:
+         cfg="Gen9LPSoc"
+if cfg.find('cnl') >=0:
+         cfg="Gen10LP"
+
+
+
 #path = []
 paths = []
 
@@ -97,11 +111,8 @@ def get_base_config(stat):
             elif('A0' in cdyn_hash[stat][config]):
                 return config,'A0'
             else:
-                print "Stepping is unknown for " + stat + " for config - " + config
                 return config, None
         i = i-1
-
-    print "Not able to find matching cdyn weight for " + stat
     return None,None
     
 def get_eff_cdyn(cluster,unit,stat):
@@ -120,17 +131,9 @@ def get_eff_cdyn(cluster,unit,stat):
         voltage_sf = 0
     stepping_sf = stepping_hash[base_cfg]['A0']['B0'] if stepping =='A0' else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
-    if(unit not in I):
-        print "Number of instances for " + unit + " are unknown"
-        instances = 0
-    else:
-        instances = I[unit]
+    instances = I[unit]
     if(cdyn_type == 'syn'):
-        if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
-            print "Gate count is not available for " + cluster + " , " + unit
-            newproduct_gc = 0
-        else:
-            newproduct_gc = new_gc[cluster][unit][cfg]
+        newproduct_gc = new_gc[cluster][unit][cfg]
     else:
         newproduct_gc = 1
     gc_sf = newproduct_gc/ref_gc
@@ -244,7 +247,6 @@ for line in gc_file:
         new_gc[data[1]][data[0]] = {}
     for i in range(2,length):
         new_gc[data[1]][data[0]][header_data[i-2]] = float(data[i])
-        
 gc_file.close()
 #print new_gc
 
@@ -314,17 +316,13 @@ stepping_file.close()
 #############################
 # Parse ALPS Formula File
 #############################
-formula_files = get_data(input_hash['ALPS_formula_file'],",")
-for ff in formula_files:
-    f = open(ff,'r')
-    yaml_data = yaml.load(f)
-    f.close()
-    ##print yaml_data
-    dfs(yaml_data)
-
+f = open('alps_formula.yml')
+yaml_data = yaml.load(f)
+f.close()
+##print yaml_data
+dfs(yaml_data)
 output_list = paths + []
 output_yaml_data = {'GT':{}}
-overview_data = {'cdyn':{}}
 
 for path in output_list:
     path[-1] = eval_formula(path)
