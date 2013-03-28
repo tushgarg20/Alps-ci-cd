@@ -31,7 +31,7 @@ log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
 stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 
-read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, stat, '/p/gat/tools/gsim_alps/Inputs/eu_stats2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt']
+read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat, '/p/gat/tools/gsim_alps/Inputs/eu_stats2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt']
 
 build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
 
