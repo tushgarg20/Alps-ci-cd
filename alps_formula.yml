@@ -203,10 +203,5 @@ GTI:
    # PS0_GTI_GLUE: R * C
    # PS2_GTI_GLUE: R * C
     
-    DOP1X:
-     PS2_GTI_DOP_1X: R * C
-     
-    DOP2X:
-     PS2_GTI_DOP_2X: R * C
  
 PS2_GTI_BW : R
