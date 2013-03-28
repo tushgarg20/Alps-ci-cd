@@ -16,36 +16,59 @@ parser.add_option("-p","--prefix",dest="prefix", default='psim',
                   help="OutFilePrefix used to run gsim [default: %default]")
 parser.add_option("-o","--output-dir",dest="output_dir",default=None,
                   help="Path to the output directory where stat exists [default: %default]")
+parser.add_option("-i","--input",dest="input", default='/p/gat/tools/gsim_alps/inputs.txt',
+                  help="Path to inputs.txt [default: %default]")
+parser.add_option("-f","--formula",dest="formula", default='formula.txt',
+                  help="List all formulae to use seperated by space Format: \"<path_to_formula> <path_to_formula>...\"   [default: Formulae from central repo]")
+parser.add_option("-l","--local",action="store_true",dest="run_local",default=False,
+                  help="Run users scripts from current path [default: %default]")
+parser.add_option("-b","--only-build-alps",action="store_true",dest="build_alps_only",default=False,
+                  help="Run users scripts from current path [default: %default]")
 parser.add_option("-a","--architecture",action="store", dest="dest_config", default=None,
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg or just specify the three letter acronym For E.g. BDW, SKL, CNL, BXT [default: %default]")
 
 (options,args) = parser.parse_args()
 
 print options.wl_name
-print options.prefix
+#print options.prefix
 print options.output_dir
 print options.dest_config
+#print options.formula
+#print options.run_local
+#print options.input
 
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
 stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 
-read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat, '/p/gat/tools/gsim_alps/Inputs/eu_stats2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt']
+if not options.run_local:
+    read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat]
+    if options.formula == 'formula.txt':
+        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stats2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt']
+    else:
+        for line in options.formula.split():
+            read_stats_cmd += [ line ]
+    build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
 
-build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
+else:
+    read_stats_cmd = ['ReadStats.pl','-csv','-o', res, '-e', log, stat]
+    for line in options.formula.split():
+        read_stats_cmd += [ line ]
+    build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', 'build_alps.py', '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
 
-try:
-    process = subprocess.Popen(read_stats_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
-    output = process.communicate()[0]
-    print output
-    ExitCode = process.wait()
-except Exception:
-    print 'Error: Read_stats failed to open subprocess'
+if not options.build_alps_only:
+    try:
+        process = subprocess.Popen(read_stats_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+        output = process.communicate()[0]
+        print output
+        ExitCode = process.wait()
+    except Exception:
+        print 'Error: Read_stats failed to open subprocess'
 
-if ExitCode > 1:
-    print "ReadStats failed with exitcode : ", ExitCode 
-    exit(ExitCode) 
+    if ExitCode > 1:
+        print "ReadStats failed with exitcode : ", ExitCode 
+        exit(ExitCode) 
 
 try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
