@@ -228,7 +228,7 @@ foreach my $st(@list)
 { next if $st=~/^\./ && !$dbg;
   my $val=$data{$st};
   next if $val eq '';
-  $val=sprintf("%.2f",$val) unless $val eq int($val);
+  $val=sprintf("%.6f",$val) unless $val eq int($val);
   if($csv)
   { print "$st,$val\n";
   }
