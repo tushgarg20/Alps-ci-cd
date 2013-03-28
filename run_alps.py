@@ -12,12 +12,12 @@ import subprocess
 parser = OptionParser()
 parser.add_option("-w","--workload",action="store",dest="wl_name", default=None,
                   help="workload name [default: %default] ")
-parser.add_option("-p","--prefix",dest="prefix", default=None,
+parser.add_option("-p","--prefix",dest="prefix", default='psim',
                   help="OutFilePrefix used to run gsim [default: %default]")
 parser.add_option("-o","--output-dir",dest="output_dir",default=None,
                   help="Path to the output directory where stat exists [default: %default]")
 parser.add_option("-a","--architecture",action="store", dest="dest_config", default=None,
-                  help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg [default: %default]")
+                  help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg or just specify the three letter acronym For E.g. BDW, SKL, CNL, BXT [default: %default]")
 
 (options,args) = parser.parse_args()
 
