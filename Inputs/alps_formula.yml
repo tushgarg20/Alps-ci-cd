@@ -28,7 +28,31 @@ EU:
       FPU_add_fp32: R[PS2_EU_FPU] * R * C
       FPU_mov_fp32: R[PS2_EU_FPU] * R * C
       FPU_sel_fp32: R[PS2_EU_FPU] * R * C
-
+      FPU_mad_fp64: R[PS2_EU_FPU] * R * C
+      FPU_mul_fp64: R[PS2_EU_FPU] * R * C
+      FPU_add_fp64: R[PS2_EU_FPU] * R * C
+      FPU_mov_fp64: R[PS2_EU_FPU] * R * C
+      FPU_sel_fp64: R[PS2_EU_FPU] * R * C
+      FPU_mad_int16: R[PS2_EU_FPU] * R * C
+      FPU_mul_int16: R[PS2_EU_FPU] * R * C
+      FPU_add_int16: R[PS2_EU_FPU] * R * C
+      FPU_mov_int16: R[PS2_EU_FPU] * R * C
+      FPU_sel_int16: R[PS2_EU_FPU] * R * C
+      FPU_mad_int32: R[PS2_EU_FPU] * R * C
+      FPU_mul_int32: R[PS2_EU_FPU] * R * C
+      FPU_add_int32: R[PS2_EU_FPU] * R * C
+      FPU_mov_int32: R[PS2_EU_FPU] * R * C
+      FPU_sel_int32: R[PS2_EU_FPU] * R * C
+      FPU_mad_int64: R[PS2_EU_FPU] * R * C
+      FPU_mul_int64: R[PS2_EU_FPU] * R * C
+      FPU_add_int64: R[PS2_EU_FPU] * R * C
+      FPU_mov_int64: R[PS2_EU_FPU] * R * C
+      FPU_sel_int64: R[PS2_EU_FPU] * R * C
+      FPU_pln_bypass: R[PS2_EU_FPU] * R * C
+      FPU_mad_bypass: R[PS2_EU_FPU] * R * C
+      FPU_mul_bypass: R[PS2_EU_FPU] * R * C
+      FPU_add_bypass: R[PS2_EU_FPU] * R * C
+  
   EM:
     PS0_EU_EM: R *C
     PS1_EU_EM: R * C
@@ -45,6 +69,30 @@ EU:
       EM_mov_fp32: R[PS2_EU_EM] * R * C
       EM_sel_fp32: R[PS2_EU_EM] * R * C
       EM_transc_fp32: R[PS2_EU_EM] * R * C
+      EM_mad_fp64: R[PS2_EU_EM] * R * C
+      EM_mul_fp64: R[PS2_EU_EM] * R * C
+      EM_add_fp64: R[PS2_EU_EM] * R * C
+      EM_mov_fp64: R[PS2_EU_EM] * R * C
+      EM_sel_fp64: R[PS2_EU_EM] * R * C
+      EM_mad_int16: R[PS2_EU_EM] * R * C
+      EM_mul_int16: R[PS2_EU_EM] * R * C
+      EM_add_int16: R[PS2_EU_EM] * R * C
+      EM_mov_int16: R[PS2_EU_EM] * R * C
+      EM_sel_int16: R[PS2_EU_EM] * R * C
+      EM_mad_int32: R[PS2_EU_EM] * R * C
+      EM_mul_int32: R[PS2_EU_EM] * R * C
+      EM_add_int32: R[PS2_EU_EM] * R * C
+      EM_mov_int32: R[PS2_EU_EM] * R * C
+      EM_sel_int32: R[PS2_EU_EM] * R * C
+      EM_mad_int64: R[PS2_EU_EM] * R * C
+      EM_mul_int64: R[PS2_EU_EM] * R * C
+      EM_add_int64: R[PS2_EU_EM] * R * C
+      EM_mov_int64: R[PS2_EU_EM] * R * C
+      EM_sel_int64: R[PS2_EU_EM] * R * C
+      EM_pln_bypass: R[PS2_EU_EM] * R * C
+      EM_mad_bypass: R[PS2_EU_EM] * R * C
+      EM_mul_bypass: R[PS2_EU_EM] * R * C
+      EM_add_bypass: R[PS2_EU_EM] * R * C
 
   GA:
     PS0_GA: R *C
@@ -71,10 +119,6 @@ EU:
     PS1_EU_DOP: R * C
     PS2_EU_DOP: R * C
 
-  DFX:
-    PS0_EU_DFX : R * C
-    PS2_EU_DFX : R * C
-
   SMALL:
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
@@ -94,6 +138,10 @@ L3_Bank:
     PS0_LTCD_Tag: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagRead: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagWrite: R * C
+    PS2_LTCD_Tag_NonSLM_ECC_TagRead: R * C
+    PS2_LTCD_Tag_NonSLM_ECC_TagWrite: R * C
+    PS2_LTCD_Tag_NonSLM_ECC_NoTagRead: R * C
+    PS2_LTCD_Tag_NonSLM_ECC_NoTagWrite: R * C
 
    LSQD:
     PS0_LSQD: R * C
@@ -110,6 +158,12 @@ L3_Bank:
     PS0_LTCC: R * C
     PS1_LTCC: R * C
     PS2_LTCC: R * C
+ 
+   LSLM:
+    PS0_LSLM: R * C
+    PS1_LSLM: R * C
+    PS2_LSLM_Atomics: R * C
+    PS2_LSLM_NonAtomics: R * C
 
    LNI:
     PS0_LNI: R * C
@@ -123,6 +177,36 @@ L3_Bank:
 
    LNICS:
     PS0_LNICS: R * C
-
+    PS1_LNICS: R * C
+    PS2_LNICS: R * C
+   
    LNECS:
     PS0_LNECS: R * C
+    PS1_LNECS: R * C
+    PS2_LNECS: R * C
+    
+   L3BankOther:
+    PS0_L3BankOther: R * C
+    PS1_L3BankOther: R * C
+    PS2_L3BankOther: R * C
+
+PS2_LNI_BW: R
+
+PS2_LNE_BW: R
+
+GTI:
+   GTI:
+    PS0_GTI: R * C
+    PS2_GTI: R[PS2_GTI_BW] * R * C
+
+   #Glue:
+   # PS0_GTI_GLUE: R * C
+   # PS2_GTI_GLUE: R * C
+    
+    DOP1X:
+     PS2_GTI_DOP_1X: R * C
+     
+    DOP2X:
+     PS2_GTI_DOP_2X: R * C
+ 
+PS2_GTI_BW : R
