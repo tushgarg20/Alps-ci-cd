@@ -316,7 +316,7 @@ stepping_file.close()
 #############################
 # Parse ALPS Formula File
 #############################
-f = open('alps_formula.yml')
+f = open(input_hash['ALPS_formula_file'])
 yaml_data = yaml.load(f)
 f.close()
 ##print yaml_data
