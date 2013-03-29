@@ -142,7 +142,7 @@
 	EM_add_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@ADD@\.@BYPASS@') / (EM_total_count)) : 0	
 	EM_pln_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@PLN@\.@BYPASS@') / (EM_total_count)) : 0	
 #GA				
-	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
+	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@) - PS0_EU_DOP	
 	PS1_GA	=	0	#GA does not have a stall
 	PS2_GA_EM1Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
 	PS2_GA_EM2Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
