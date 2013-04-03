@@ -3,14 +3,14 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	numEUs	=	SUM('knob\.S\d+\.SS\d+\.R\d+\.NumEus')	#This includes Slices & SubSlices
-    num_DOP =   numEUs
-	num_FPU	=	numEUs	
-	num_EM	=	numEUs	
-	num_GA	=	numEUs	
-	num_TC	=	numEUs	
-	num_GRF	=	numEUs	
-	num_DFX	=	numEUs	
-	num_SMALL =	numEUs	
+	num_EU_DOP	=   numEUs
+	num_EU_FPU	=	numEUs	
+	num_EU_EM	=	numEUs	
+	num_EU_GA	=	numEUs	
+	num_EU_TC	=	numEUs	
+	num_EU_GRF	=	numEUs	
+	num_EU_DFX	=	numEUs	
+	num_EU_SMALL	=	numEUs	
 #Generic				
 	 @ANY_EU@	=	S\d+\.SS\d+\.R\d+\.uEU_\d+\.	
 	 @ANY_EUPIPE@	=	 @ANY_EU@Pipelines\.	

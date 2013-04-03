@@ -9,7 +9,7 @@
 			
 #Instance Counts			
 	numGTIs	=	COUNT('@ANY_GTI@gclk_cycles')
-    num_GTI = 1
+    num_GTI_GTI = 1
     num_DOP1X = 1
     num_DOP2X = 1
 			

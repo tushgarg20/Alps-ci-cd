@@ -19,10 +19,6 @@ parser.add_option("-a","--architecture",dest="dest_config",
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
 
 (options,args) = parser.parse_args()
-##print options.input_file
-##print options.residency_file
-##print options.output_file
-##print options.dest_config
 
 #################################
 # Global Variables
@@ -52,7 +48,6 @@ elif cfg.find('cnl') > -1 :
 else:
     print cfg + " --> Config not supported\n";
     exit(1);
-
 
 #################################
 # Subroutines
@@ -111,8 +106,11 @@ def get_base_config(stat):
             elif('A0' in cdyn_hash[stat][config]):
                 return config,'A0'
             else:
+                print "Stepping is unknown for " + stat + " for config - " + config
                 return config, None
         i = i-1
+
+    print "Not able to find matching cdyn weight for " + stat
     return None,None
     
 def get_eff_cdyn(cluster,unit,stat):
@@ -131,15 +129,25 @@ def get_eff_cdyn(cluster,unit,stat):
         voltage_sf = 0
     stepping_sf = stepping_hash[base_cfg]['A0']['B0'] if stepping =='A0' else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
-    instances = I[unit]
+    instances = 0
+    newproduct_gc = 1
+    instance_string = cluster + "_" + unit
+    if(instance_string not in I):
+        print "Number of instances for " + unit + " are unknown"
+        instances = 0
+    else:
+        instances = I[instance_string]
     if(cdyn_type == 'syn'):
-        newproduct_gc = new_gc[cluster][unit][cfg]
+        if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
+            print "Gate count is not available for " + cluster + " , " + unit
+            newproduct_gc = 0
+        else:
+            newproduct_gc = new_gc[cluster][unit][cfg]
     else:
         newproduct_gc = 1
+    
     gc_sf = newproduct_gc/ref_gc
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
-        
-    #print base_cdyn, eff_cdyn
     return eff_cdyn
 
 def eval_formula(alist):
@@ -193,8 +201,6 @@ for line in infile:
     data = get_data(line,"=")
     input_hash[data[0]] = data[1]
 
-#print input_hash
-
 ##############################
 # Parsing Residency File
 ##############################
@@ -204,13 +210,12 @@ for line in resfile:
     data = get_data(line,",")
     test = data[0]
     if(re.search(r'^num_.*',test)):
-        I[data[0].split("_")[1]] = float(data[1])
+        key_data = test.split("_")
+        del(key_data[0])
+        I["_".join(key_data)] = float(data[1])
     else:
         R[data[0]] = float(data[1])
 resfile.close()
-#for key in R:
-    #print key + "," + R[key]
-#print I
 
 ##############################
 # Parsing Cdyn File
@@ -230,7 +235,6 @@ for line in cdyn_file:
     cdyn_hash[data[0]][data[1]][data[2]]['type'] = data[4]
     cdyn_hash[data[0]][data[1]][data[2]]['ref_gc'] = float(data[5])
 cdyn_file.close()
-#print cdyn_hash
 
 ################################
 # Parsing Gate Count File
@@ -248,7 +252,6 @@ for line in gc_file:
     for i in range(2,length):
         new_gc[data[1]][data[0]][header_data[i-2]] = float(data[i])
 gc_file.close()
-#print new_gc
 
 ################################
 # Parsing Scaling Factor Files
@@ -264,7 +267,6 @@ for line in process_file:
         process_hash[data[0]][data[1]] = {}
     process_hash[data[0]][data[1]] = float(data[2]) if data[2] != 'NA' else data[2]
 process_file.close()
-#print process_hash
 
 voltage_file = open(input_hash['Voltage_Scaling_Factors'],'r')
 first_line = voltage_file.readline()
@@ -276,7 +278,6 @@ for line in voltage_file:
         voltage_hash[data[0]][data[1]] = {}
     voltage_hash[data[0]][data[1]] = float(data[2]) if data[2] != 'NA' else data[2]
 voltage_file.close()
-#print voltage_hash
 
 syn_cdyn_cagr_file = open(input_hash['syn_cdyn_cagr'],'r')
 first_line = syn_cdyn_cagr_file.readline()
@@ -288,7 +289,6 @@ for line in syn_cdyn_cagr_file:
         cdyn_cagr_hash['syn'][data[0]][data[1]] = {}
     cdyn_cagr_hash['syn'][data[0]][data[1]][data[2]] = float(data[3]) if data[3]!='NA' else data[3]
 syn_cdyn_cagr_file.close()
-#print cdyn_cagr_hash['syn']
 
 ebb_cdyn_cagr_file = open(input_hash['ebb_cdyn_cagr'],'r')
 first_line = ebb_cdyn_cagr_file.readline()
@@ -300,7 +300,6 @@ for line in ebb_cdyn_cagr_file:
         cdyn_cagr_hash['ebb'][data[0]][data[1]] = {}
     cdyn_cagr_hash['ebb'][data[0]][data[1]][data[2]] = float(data[3]) if data[3]!='NA' else data[3]
 ebb_cdyn_cagr_file.close()
-#print cdyn_cagr_hash['ebb']
 
 stepping_file = open(input_hash['cdyn_stepping'],'r')
 first_line = stepping_file.readline()
@@ -316,11 +315,13 @@ stepping_file.close()
 #############################
 # Parse ALPS Formula File
 #############################
-f = open(input_hash['ALPS_formula_file'])
-yaml_data = yaml.load(f)
-f.close()
-##print yaml_data
-dfs(yaml_data)
+formula_files = get_data(input_hash['ALPS_formula_file'],",")
+for ff in formula_files:
+    f = open(ff,'r')
+    yaml_data = yaml.load(f)
+    f.close()
+    dfs(yaml_data)
+
 output_list = paths + []
 output_yaml_data = {'GT':{}}
 
@@ -335,17 +336,10 @@ for path in output_list:
         if(i == len(path)-2):
             d[path[i]] = float('%.3f'%float(path[i+1]))
             break
-        else:
-            if(path[i] in d):
-                d = d[path[i]]
-                i = i+1
-                continue
-            else:
-                d[path[i]] = {}
+        if(path[i] not in d):
+            d[path[i]] = {}
         d = d[path[i]]
         i = i+1
-
-#print output_yaml_data
 
 ####################################
 # Generating output YAML file
@@ -353,5 +347,4 @@ for path in output_list:
 of = open(options.output_file,'w')
 yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
-
 
