@@ -45,7 +45,7 @@ yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 if not options.run_local:
     read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat]
     if options.formula == 'formula.txt':
-        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stats2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt']
+        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt']
     else:
         for line in options.formula.split():
             read_stats_cmd += [ line ]
