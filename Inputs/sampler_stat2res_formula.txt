@@ -9,7 +9,8 @@
 	num_Sampler_DG	=	numSamplers	
 	num_Sampler_SI	=	numSamplers	
 	num_Sampler_SO	=	numSamplers	
-	num_Sampler_DM_BDM	=	numSamplers	
+	num_Sampler_DM	=	numSamplers	
+	num_Sampler_BDM	=	numSamplers	
 	num_Sampler_FT	=	numSamplers	
 	num_Sampler_MT	=	numSamplers	
 	num_Sampler_MT_Cache	=	numSamplers	
@@ -160,13 +161,13 @@
 	PS0_SO	=	SUM('@ANY_SAMPLER@pwr_so_idle\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS1_SO	=	1 - (PS0_SO + PS2_SO_ANYPIXELMODE)	
 	PS2_SO_ANYPIXELMODE	=	(SUM('@ANY_SAMPLER@SO-RowOutBuffer0\.popped') + SUM('@ANY_SAMPLER@SO-RowOutBuffer1\.popped'))/ (2 * numSamplers * @CLOCKS@)	
-#DM_BDM				
+#DM				
 	PS0_DM	=	SUM('@ANY_SAMPLER@pwr_dm_idle\.CrClock') / (numSamplers * @CLOCKS@)	
-	PS1_DM	=	1- (PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7-SRGB + PS2_DM_ETC + PS2_DM_Else + PS2_DM_HIZ + PS2_DM_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Bypass + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Compressed_BYPASS)	
+	PS1_DM	=	1- (PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7_SRGB + PS2_DM_ETC + PS2_DM_Else + PS2_DM_HIZ + PS2_DM_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Bypass + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Compressed_BYPASS)	
 	PS2_DM_BC1_5	=	SUM('@ANY_SAMPLER@pwr_dm_BC1-5\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_BC6_7	=	SUM('@ANY_SAMPLER@pwr_dm_BC6-7\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_BC1_3_SRGB	=	SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB\.CrClock') / (numSamplers * @CLOCKS@)	
-	PS2_DM_BC7-SRGB	=	SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock') / (numSamplers * @CLOCKS@)	
+	PS2_DM_BC7_SRGB	=	SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_ETC	=	SUM('@ANY_SAMPLER@pwr_dm_ETC\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_Else	=	SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_HIZ	=	0	#Not currently supported in GSIM
@@ -180,6 +181,16 @@
 	PS2_DM_Expanded	=	SUM('@ANY_SAMPLER@pwr_dm_expanded\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_Expanded_BYPASS	=	SUM('@ANY_SAMPLER@pwr_dm_bypass_expanded\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_Compressed_BYPASS	=	SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock') / (numSamplers * @CLOCKS@)	
+
+#BDM
+	.temp_PS2_BDM_Expanded_BYPASS = SUM('@ANY_SAMPLER@pwr_dm_bypass_expanded\.CrClock') / (numSamplers * @CLOCKS@)
+	.temp_PS2_BDM_Compressed_BYPASS = SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock') / (numSamplers * @CLOCKS@)
+	PS0_BDM			= 1 - (.temp_PS2_BDM_Expanded_BYPASS + .temp_PS2_BDM_Compressed_BYPASS)
+	PS1_BDM			= 	0
+	PS2_BDM_Expanded_BYPASS  =       .temp_PS2_BDM_Expanded_BYPASS
+        PS2_BDM_Compressed_BYPASS        =       .temp_PS2_BDM_Compressed_BYPASS
+
+
 #FT				
 	PS0_FT	=	SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS1_FT	=	1 - (PS0_FT + PS2_FT)	
