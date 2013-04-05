@@ -182,15 +182,6 @@
 	PS2_DM_Expanded_BYPASS	=	SUM('@ANY_SAMPLER@pwr_dm_bypass_expanded\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_DM_Compressed_BYPASS	=	SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock') / (numSamplers * @CLOCKS@)	
 
-#BDM
-	.temp_PS2_BDM_Expanded_BYPASS = SUM('@ANY_SAMPLER@pwr_dm_bypass_expanded\.CrClock') / (numSamplers * @CLOCKS@)
-	.temp_PS2_BDM_Compressed_BYPASS = SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock') / (numSamplers * @CLOCKS@)
-	PS0_BDM			= 1 - (.temp_PS2_BDM_Expanded_BYPASS + .temp_PS2_BDM_Compressed_BYPASS)
-	PS1_BDM			= 	0
-	PS2_BDM_Expanded_BYPASS  =       .temp_PS2_BDM_Expanded_BYPASS
-        PS2_BDM_Compressed_BYPASS        =       .temp_PS2_BDM_Compressed_BYPASS
-
-
 #FT				
 	PS0_FT	=	SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS1_FT	=	1 - (PS0_FT + PS2_FT)	
