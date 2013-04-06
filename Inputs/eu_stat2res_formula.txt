@@ -1,16 +1,14 @@
-#WW13-3: Temporary Hacks to instance count to fix build_alps issues (sashi)
-#WW13-4: change num_DOP to numEUs
 #Unit	GSIM residency			Comments
 #Instance Counts				
+	FPS	=	(knob.CrClock.multiplier * 1000000) / CrClock.Clocks	
 	numEUs	=	SUM('knob\.S\d+\.SS\d+\.R\d+\.NumEus')	#This includes Slices & SubSlices
-	num_EU_DOP	=   numEUs
 	num_EU_FPU	=	numEUs	
 	num_EU_EM	=	numEUs	
 	num_EU_GA	=	numEUs	
 	num_EU_TC	=	numEUs	
 	num_EU_GRF	=	numEUs	
 	num_EU_DFX	=	numEUs	
-	num_EU_SMALL	=	numEUs	
+	num_EU_Small	=	numEUs	
 #Generic				
 	 @ANY_EU@	=	S\d+\.SS\d+\.R\d+\.uEU_\d+\.	
 	 @ANY_EUPIPE@	=	 @ANY_EU@Pipelines\.	
@@ -142,7 +140,7 @@
 	EM_add_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@ADD@\.@BYPASS@') / (EM_total_count)) : 0	
 	EM_pln_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@PLN@\.@BYPASS@') / (EM_total_count)) : 0	
 #GA				
-	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@) - PS0_EU_DOP	
+	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
 	PS1_GA	=	0	#GA does not have a stall
 	PS2_GA_EM1Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
 	PS2_GA_EM2Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
