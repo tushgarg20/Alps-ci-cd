@@ -9,7 +9,7 @@
 	num_Sampler_DG	=	numSamplers	
 	num_Sampler_SI	=	numSamplers	
 	num_Sampler_SO	=	numSamplers	
-	num_Sampler_DM_BDM	=	numSamplers	
+	num_Sampler_DM	=	numSamplers	
 	num_Sampler_FT	=	numSamplers	
 	num_Sampler_MT	=	numSamplers	
 	num_Sampler_MT_Cache	=	numSamplers	

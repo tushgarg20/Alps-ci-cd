@@ -205,3 +205,187 @@ GTI:
     
  
 PS2_GTI_BW : R
+
+Sampler:
+   FL:
+    PS0_FL: R * C
+    PS1_FL: R * C
+    PS2_FL:
+     PS2_FL_Gather4: R * C
+     PS2_FL_SampleC_Gather4C: R * C
+     PS2_FL_SampleC_Gather4C_Bypass: R * C
+     PS2_FL_Nearest_Gather4_Bypass: R * C
+     PS2_FL_Data_Dep_Bypass_Bilinear: R * C
+     PS2_FL_Data_Dep_Bypass_Trilinear: R * C
+     PS2_FL_Data_Dep_Bypass_Aniso: R * C
+     PS2_FL_Data_Dep_Bypass_FastAniso: R * C
+     PS2_FL_Data_Dep_Bypass_FastLinear: R * C
+     PS2_FL_Data_Dep_Bypass_Else: R * C
+     PS2_FL_Bilinear_Float16: R * C
+     PS2_FL_Bilinear_Float32: R * C
+     PS2_FL_Bilinear_Else: R * C
+     PS2_FL_Trilinear_Float16: R * C
+     PS2_FL_Trilinear_Float32: R * C
+     PS2_FL_Trilinear_Else: R * C
+     PS2_FL_Aniso_Float16: R * C
+     PS2_FL_Aniso_Float32: R * C
+     PS2_FL_Aniso_Else: R * C
+     PS2_FL_FastAniso_Float16: R * C
+     PS2_FL_FastAniso_Float32: R * C
+     PS2_FL_FastAniso_Else: R * C
+     PS2_FL_FastLinear_Float16: R * C
+     PS2_FL_FastLinear_Float32: R * C
+     PS2_FL_FastLinear_Else: R * C
+     PS2_FL_Else: R * C
+
+   PL:
+    PS0_PL: R * C
+    PS1_PL: R * C
+    PS2_PL:
+     PS2_PL_Sample_L: R * C
+     PS2_PL_Sample_L_MipCount0: R * C
+     PS2_PL_Gather4PO: R * C
+     PS2_PL_LD: R * C
+     PS2_PL_Bilinear: R * C
+     PS2_PL_Bilinear_EWA: R * C
+     PS2_PL_Trilinear: R * C
+     PS2_PL_Trilinear_EWA: R * C
+     PS2_PL_Aniso: R * C
+     PS2_PL_Aniso_EWA: R * C
+     PS2_PL_Else: R * C
+
+   SC:
+    PS0_SC: R * C
+    PS1_SC: R * C
+    PS2_SC:
+     PS2_SC_NearestMode_32BPT: R * C
+     PS2_SC_NearestMode_64BPT: R * C
+     PS2_SC_NearestMode_128BPT: R * C
+     PS2_SC_FastLinear_32BPT: R * C
+     PS2_SC_FastLinear_64BPT: R * C
+     PS2_SC_FastLinear_128BPT: R * C
+     PS2_SC_FastAniso_32BPT: R * C
+     PS2_SC_FastAniso_64BPT: R * C
+     PS2_SC_FastAniso_128BPT: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_32BPT: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_64BPT: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_128BPT: R * C
+     PS2_SC_Else: R * C
+
+   SC_Cache:
+     PS0_SC_DataRam_IDLE: R * C
+     PS2_SC_DataRam_READ: R * C
+     PS2_SC_DataRam_WRITE: R * C
+     PS0_SC_LatFifo_IDLE: R * C
+     PS2_SC_LatFifo_READ: R * C
+     PS2_SC_LatFifo_WRITE: R * C
+     PS2_SC_LatFifo_READWRITE: R * C
+
+   ST:
+    PS0_ST: R * C
+    PS1_ST: R * C
+    PS2_ST:
+     PS2_ST_1Bank_Enable : R * C
+     PS2_ST_2Bank_Enable : R * C
+     PS2_ST_3Bank_Enable : R * C
+     PS2_ST_4Bank_Enable : R * C
+     PS2_ST_1Bank_Enable_SameADD: R * C
+
+   DG:
+    PS0_DG: R * C
+    PS1_DG: R * C
+    PS2_DG:
+     PS2_DG_Volumetric_32BPT: R * C
+     PS2_DG_Volumetric_64BPT: R * C
+     PS2_DG_Volumetric_128BPT: R * C
+     PS2_DG_Gather4_32BPT: R * C
+     PS2_DG_Gather4_64BPT: R * C
+     PS2_DG_Gather4_128BPT: R * C
+     PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT: R * C
+     PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT: R * C
+     PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT: R * C
+     PS2_DG_AnisoGreaterThan_8way_32BPT: R * C
+     PS2_DG_AnisoGreaterThan_8way_64BPT: R * C
+     PS2_DG_AnisoGreaterThan_8way_128BPT: R * C
+     PS2_DG_Trilinear_32BPT: R * C
+     PS2_DG_Trilinear_64BPT: R * C
+     PS2_DG_Trilinear_128BPT: R * C
+     PS2_DG_Bilinear_32BPT: R * C
+     PS2_DG_Bilinear_64BPT: R * C
+     PS2_DG_Bilinear_128BPT: R * C
+     PS2_DG_FastLinear_32BPT: R * C
+     PS2_DG_FastLinear_64BPT: R * C
+     PS2_DG_FastLinear_128BPT: R * C
+     PS2_DG_BabyDG_Enable: R * C
+     PS2_DG_Else: R * C
+
+   SI:
+    PS0_SI: R * C
+    PS1_SI: R * C
+    PS2_SI_ANYPIXELMODE: R * C
+
+   SO:
+    PS0_SO: R * C
+    PS1_SO: R * C
+    PS2_SO_ANYPIXELMODE: R * C
+
+   DM:
+    PS0_DM: R * C
+    PS1_DM: R * C
+    PS2_DM_BDM:
+     PS2_DM_BC1_5: R * C
+     PS2_DM_BC6_7: R * C
+     PS2_DM_BC1_3_SRGB: R * C
+     PS2_DM_BC7_SRGB: R * C
+     PS2_DM_ETC: R * C
+     PS2_DM_Else: R * C
+     PS2_DM_HIZ: R * C
+     PS2_DM_Z: R * C
+     PS2_DM_LOSSLESS: R * C
+     PS2_DM_ASTC_LDR_2D: R * C
+     PS2_DM_ASTC_LDR_3D: R * C
+     PS2_DM_ASTC_HDR_2D: R * C
+     PS2_DM_ASTC_HDR_3D: R * C
+     PS2_DM_Expanded: R * C
+     PS2_DM_Expanded_BYPASS: R * C
+     PS2_DM_Compressed_BYPASS: R * C
+
+   FT:
+    PS0_FT: R * C
+    PS1_FT: R * C
+    PS2_FT: R * C
+
+   MT:
+    PS0_MT: R * C
+    PS1_MT: R * C
+    PS2_MT:
+     PS2_MT_BYPASS: R * C
+     PS2_MT_Tile_X: R * C
+     PS2_MT_Tile_Y: R * C
+     PS2_MT_Tile_else: R * C
+
+   MT_Cache:
+    PS0_MT_LatFifo_IDLE: R * C
+    PS2_MT_Cache:
+     PS2_MT_LatFifo_READ: R * C
+     PS2_MT_LatFifo_WRITE: R * C
+     PS2_MT_LatFifo_READWRITE: R * C
+     PS0_MT_DataRam_IDLE: R * C
+     PS2_MT_DataRam_READ: R * C
+     PS2_MT_DataRam_WRITE: R * C
+     PS2_MT_DataRam_READWRITE: R * C
+
+   SVSM:
+    PS0_SVSM: R * C
+    PS1_SVSM: R * C
+    PS2_SVSM: R * C
+
+   Media:
+    PS0_Media: R * C
+    PS1_Media: R * C
+    PS2_Media: R * C
+
+   Glue:
+    PS0_Glue: R * C
+    PS1_Glue: R * C
+    PS2_Glue: R * C
