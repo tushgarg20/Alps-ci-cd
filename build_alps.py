@@ -121,6 +121,17 @@ def get_eff_cdyn(cluster,unit,stat):
     base_cdyn = cdyn_hash[stat][base_cfg][stepping]['weight']
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
     ref_gc = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
+
+    if(ref_gc == None): #If ref gc is not present in cdyn sheet, picking it from gc sheet
+        if(cdyn_type == 'syn'):
+            if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
+                print "Reference gate count is not available for " + cluster + " , " + unit
+                ref_gc = 0
+            else:
+                ref_gc = new_gc[cluster][unit][cfg]
+        else:
+            ref_gc = 1
+
     process_sf = process_hash[base_cfg][cfg]
     if(process_sf == 'NA'):
         process_sf = 0
@@ -323,28 +334,61 @@ for ff in formula_files:
     dfs(yaml_data)
 
 output_list = paths + []
-output_yaml_data = {'GT':{}}
+output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
+output_cdyn_data = {'GT':{}}
 
 for path in output_list:
     path[-1] = eval_formula(path)
-    d = output_yaml_data['GT']
+    d = output_yaml_data['ALPS Model(pF)']['GT']
+    cdyn_d = output_cdyn_data['GT']
     i = 0
     while(True):
-        if('cdyn' not in d):
-            d['cdyn'] = 0
-        d['cdyn'] += path[-1]
+        if('cdyn' not in cdyn_d and i < 3):
+            cdyn_d['cdyn'] = 0
+        if(i < 3):
+            cdyn_d['cdyn'] += path[-1]
+        if('total' not in d and i >= 3):
+            d['total'] = 0
+        if(i >= 3):
+            d['total'] += path[-1]
+            d['total'] = float('%.3f'%float(d['total']))
         if(i == len(path)-2):
             d[path[i]] = float('%.3f'%float(path[i+1]))
             break
         if(path[i] not in d):
             d[path[i]] = {}
+        if(path[i] not in cdyn_d and i < 2):
+            cdyn_d[path[i]] = {}
         d = d[path[i]]
+        if(i < 2):
+            cdyn_d = cdyn_d[path[i]]
         i = i+1
+
+#######################################
+# Creating Overview datastructures
+#######################################
+gt_cdyn = {}
+cluster_cdyn_numbers = {'cluster_cdyn_numbers(pF)':{}}
+unit_cdyn_numbers = {'unit_cdyn_numbers(pF)':{}}
+gt_cdyn['Total_GT_Cdyn(nF)'] = float('%.3f'%float(output_cdyn_data['GT']['cdyn']/1000))
+for cluster in output_cdyn_data['GT']:
+    if(cluster == 'cdyn'):
+        continue
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster] = float('%.3f'%float(output_cdyn_data['GT'][cluster]['cdyn']))
+    unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster] = {}
+    for unit in output_cdyn_data['GT'][cluster]:
+        if(unit == 'cdyn'):
+            continue
+        unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster][unit] = float('%.3f'%float(output_cdyn_data['GT'][cluster][unit]['cdyn']))
+
 
 ####################################
 # Generating output YAML file
 ####################################
 of = open(options.output_file,'w')
+yaml.dump(gt_cdyn,of,default_flow_style=False)
+yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
+yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
 
