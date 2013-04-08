@@ -32,7 +32,6 @@ parser.add_option("-a","--architecture",action="store", dest="dest_config", defa
 print options.wl_name
 print options.output_dir
 print options.dest_config
-#print options.prefix
 
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
