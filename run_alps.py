@@ -30,12 +30,8 @@ parser.add_option("-a","--architecture",action="store", dest="dest_config", defa
 (options,args) = parser.parse_args()
 
 print options.wl_name
-#print options.prefix
 print options.output_dir
 print options.dest_config
-#print options.formula
-#print options.run_local
-#print options.input
 
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
