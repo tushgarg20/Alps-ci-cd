@@ -122,7 +122,7 @@ def get_eff_cdyn(cluster,unit,stat):
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
     ref_gc = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
 
-    if(ref_gc == None): #If ref gc is not present in cdyn sheet, picking it from gc sheet
+    if(ref_gc == ''): #If ref gc is not present in cdyn sheet, picking it from gc sheet
         if(cdyn_type == 'syn'):
             if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
                 print "Reference gate count is not available for " + cluster + " , " + unit
