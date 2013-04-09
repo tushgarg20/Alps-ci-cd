@@ -1,3 +1,4 @@
+#WW15.2
 #Unit	GSIM residency			
 #Instance Counts				
 	numSamplers	=	knob.global.NumSlices * knob.S0.NumSubSlices	
