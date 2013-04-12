@@ -29,7 +29,7 @@ parser.add_option("-a","--architecture",action="store", dest="dest_config", defa
 
 (options,args) = parser.parse_args()
 
-print "Building Alps model\n";
+print "Building Alps model \n";
 print options.wl_name
 print options.output_dir
 print options.dest_config
