@@ -1,30 +1,29 @@
-#WW13-3: Temporary Hacks to instance count to fix build_alps issues (sashi)
-#Unit	GSIM residency		
-#Generic			
-	 @ANY_GTI@	=	p0.gti0.
-	 @CLOCKS@	=	 @ANY_GTI@gclk_cycles
-	 @RD_BW_PCLK@	=	1
-	 @WR_BW_PCLK@	=	1
-	 @BW_PCLK@	=	 @RD_BW_PCLK@ + @WR_BW_PCLK@
-			
-#Instance Counts			
-	numGTIs	=	COUNT('@ANY_GTI@gclk_cycles')
-    num_GTI_GTI = 1
-    num_DOP1X = 1
-    num_DOP2X = 1
-			
-#GTI			
-	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0
-	.temp_PS0_GTI	=	.temp_gti_superq_empty/(numGTIs * @CLOCKS@)
-	.temp_gti_bw_clks	=	 @CLOCKS@ - (.temp_gti_superq_empty/numGTIs)
-	PS0_GTI	=	.temp_PS0_GTI
-	PS2_GTI	=	1 - .temp_PS0_GTI
-	.temp_gti_rd_reqs	=	(SUM('@ANY_GTI@gt_rd_reqs') > 0) ? SUM('@ANY_GTI@gt_rd_reqs') : 0
-	.temp_gti_wr_reqs	=	(SUM('@ANY_GTI@gt_wr_reqs') > 0) ? SUM('@ANY_GTI@gt_wr_reqs') : 0
-	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@BW_PCLK@ * .temp_gti_bw_clks)
-			
-	PS0_GTI_GLUE	=	.temp_PS0_GTI
-	PS2_GTI_GLUE	=	1-.temp_PS0_GTI
-			
-	PS2_GTI_DOP_1X	=	1
-	PS2_GTI_DOP_2X	=	1
+#Unit	GSIM residency			Comments
+#Generic				
+	 @ANY_GTI@	=	p0.gti0.	
+	 @CLOCKS@	=	 @ANY_GTI@gclk_cycles	
+	 @RD_BW_PCLK@	=	1	
+	 @WR_BW_PCLK@	=	1	
+	 @BW_PCLK@	=	 @RD_BW_PCLK@ + @WR_BW_PCLK@	
+				
+#Instance Counts				
+	numGTIs	=	COUNT('@ANY_GTI@gclk_cycles')	
+				
+#GTI				
+	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0	
+	.temp_PS0_GTI	=	.temp_gti_superq_empty/(numGTIs * @CLOCKS@)	
+	.temp_gti_superq_full	=	(SUM('@ANY_GTI@gti_superq_full_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_full_cycles') : 0	
+	.temp_PS1_GTI	=	.temp_gti_superq_full/(numGTIs * @CLOCKS@)	
+	.temp_gti_bw_clks	=	 @CLOCKS@ - ((.temp_gti_superq_empty + .temp_gti_superq_full)/numGTIs) 	
+	PS0_GTI	=	.temp_PS0_GTI	
+	PS1_GTI	=	.temp_PS1_GTI	
+	PS2_GTI	=	1 - .temp_PS0_GTI	
+	.temp_gti_rd_reqs	=	(SUM('@ANY_GTI@gt_rd_reqs') > 0) ? SUM('@ANY_GTI@gt_rd_reqs') : 0	
+	.temp_gti_wr_reqs	=	(SUM('@ANY_GTI@gt_wr_reqs') > 0) ? SUM('@ANY_GTI@gt_wr_reqs') : 0	
+	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@BW_PCLK@ * .temp_gti_bw_clks)	
+				
+	PS0_GTI_GLUE	=	.temp_PS0_GTI	
+	PS2_GTI_GLUE	=	1-.temp_PS0_GTI	
+				
+	PS2_GTI_DOP_1X	=	1	
+	PS2_GTI_DOP_2X	=	1	
