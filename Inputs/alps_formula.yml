@@ -197,11 +197,16 @@ PS2_LNE_BW: R
 GTI:
    GTI:
     PS0_GTI: R * C
+    PS1_GTI: R * C
     PS2_GTI: R[PS2_GTI_BW] * R * C
 
-   #Glue:
-   # PS0_GTI_GLUE: R * C
-   # PS2_GTI_GLUE: R * C
+   DOP:
+    PS2_GTI_DOP_1X: R * C	
+    PS2_GTI_DOP_2X: R * C	
+
+   Glue:
+    PS0_GTI_GLUE: R * C
+    PS2_GTI_GLUE: R * C
     
  
 PS2_GTI_BW : R
