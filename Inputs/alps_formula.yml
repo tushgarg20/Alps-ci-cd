@@ -200,13 +200,13 @@ GTI:
     PS1_GTI: R * C
     PS2_GTI: R[PS2_GTI_BW] * R * C
 
-   DOP:
-    PS2_GTI_DOP_1X: R * C	
-    PS2_GTI_DOP_2X: R * C	
+   #DOP:
+   # PS2_GTI_DOP_1X: R * C	
+   # PS2_GTI_DOP_2X: R * C	
 
-   Glue:
-    PS0_GTI_GLUE: R * C
-    PS2_GTI_GLUE: R * C
+   #Glue:
+   # PS0_GTI_GLUE: R * C
+   # PS2_GTI_GLUE: R * C
     
  
 PS2_GTI_BW : R
@@ -380,17 +380,17 @@ Sampler:
      PS2_MT_DataRam_WRITE: R * C
      PS2_MT_DataRam_READWRITE: R * C
 
-   SVSM:
-    PS0_SVSM: R * C
-    PS1_SVSM: R * C
-    PS2_SVSM: R * C
+   #SVSM:
+   # PS0_SVSM: R * C
+   # PS1_SVSM: R * C
+   # PS2_SVSM: R * C
 
-   Media:
-    PS0_Media: R * C
-    PS1_Media: R * C
-    PS2_Media: R * C
+   #Media:
+   # PS0_Media: R * C
+   # PS1_Media: R * C
+   # PS2_Media: R * C
 
-   Glue:
-    PS0_Glue: R * C
-    PS1_Glue: R * C
-    PS2_Glue: R * C
+   #Glue:
+   # PS0_Glue: R * C
+   # PS1_Glue: R * C
+   # PS2_Glue: R * C
