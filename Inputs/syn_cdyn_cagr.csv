@@ -43,3 +43,13 @@ Sampler,Gen9LPClient,Gen8SoC,NA
 Sampler,Gen9LPClient,Gen9LPClient,1
 Sampler,Gen9LPClient,Gen9LPSoC,0.9
 Sampler,Gen9LPClient,Gen10LP,0.95
+Z,Gen8,Gen8,1
+Z,Gen8,Gen8SoC,0.9
+Z,Gen8,Gen9LPClient,0.835
+Z,Gen8,Gen9LPSoC,0.835
+Z,Gen8,Gen10LP,0.79325
+Z,Gen9LPClient,Gen8,NA
+Z,Gen9LPClient,Gen8SoC,NA
+Z,Gen9LPClient,Gen9LPClient,1
+Z,Gen9LPClient,Gen9LPSoC,0.9
+Z,Gen9LPClient,Gen10LP,0.95
