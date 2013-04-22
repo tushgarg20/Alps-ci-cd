@@ -19,6 +19,7 @@
 	 @3DPIPEDISABLED@	=	uCS.pwr_3DPipeDisabled.CrClock	
 	 @HIZIPTYPE@	=	(8x8|8x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	
+	 @IZTEST@	=	(Accept|Deferred)	
 				
 #HIZ				
 	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_idle.CrClock')/(@CLOCKS@ * num_HIZ)):0	
@@ -67,16 +68,10 @@
 	PS0_IZ	=	(SUM('@ANY_IZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_idle.CrClock')/(@CLOCKS@ * num_IZ)):0	
 	PS0_IZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
 	PS1_IZ	=	(SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') - SUM('@ANY_IZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_CMP_ACCEPT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.Accept') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.Accept')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_CMP_DEFER	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.Deferred') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.Deferred')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_EXP_ACCEPT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.Accept') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.Accept')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_EXP_DEFER	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.Deferred') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.Deferred')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_UNCMP_ACCEPT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Accept') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Accept')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_UNCMP_FAIL	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Fail') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Fail')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_UNCMP_DEFER	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Deferred') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Uncompressed.Deferred')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_DIS_CMP	=	0	#Not yet implemented in GSIM
-	PS2_IZ_DIS_EXP	=	0	#Not yet implemented in GSIM
-	PS2_IZ_DIS_UNCMP	=	0	#Not yet implemented in GSIM
+	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_EN_UNCMP_DEPTHPRESENT	=	0	#Not implemented in GSIM yet
+	PS2_IZ_EN_UNCMP_NODEPTHPRESENT	=	0	#Not implemented in GSIM yet
 	PS2_IZ_ZMARKERS	=	(SUM('@ANY_IZ@pwr_IzMarkers.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_IzMarkers.CrClock')/(@CLOCKS@ * num_IZ)):0	
 				
 #IZ - Latency FIFO				
