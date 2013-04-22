@@ -7,14 +7,14 @@
 	 @BW_PCLK@	=	 @RD_BW_PCLK@ + @WR_BW_PCLK@	
 				
 #Instance Counts				
-	num_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
+	num_GTI_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
 				
 #GTI				
 	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0	
-	.temp_PS0_GTI	=	.temp_gti_superq_empty/(num_GTI * @CLOCKS@)	
+	.temp_PS0_GTI	=	.temp_gti_superq_empty/(num_GTI_GTI * @CLOCKS@)	
 	.temp_gti_superq_full	=	(SUM('@ANY_GTI@gti_superq_full_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_full_cycles') : 0	
-	.temp_PS1_GTI	=	.temp_gti_superq_full/(num_GTI * @CLOCKS@)	
-	.temp_gti_bw_clks	=	 @CLOCKS@ - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI) 	
+	.temp_PS1_GTI	=	.temp_gti_superq_full/(num_GTI_GTI * @CLOCKS@)	
+	.temp_gti_bw_clks	=	 @CLOCKS@ - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
 	PS0_GTI	=	.temp_PS0_GTI	
 	PS1_GTI	=	.temp_PS1_GTI	
 	PS2_GTI	=	1 - .temp_PS0_GTI	

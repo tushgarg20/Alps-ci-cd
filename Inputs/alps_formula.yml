@@ -468,6 +468,7 @@ Z:
     PS0_STC: R * C
     PS0_STC_DOP: R * C
     PS1_STC: R * C
+    PS2_STC:
      PS2_STC_ALLOC_HITS: R * C
      PS2_STC_ALLOC_MISSES: R * C
      PS2_STC_CACHE_READ: R * C

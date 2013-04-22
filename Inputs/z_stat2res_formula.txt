@@ -2,10 +2,10 @@
 #Instance Counts				
 				
 	numSlices	=	knob.global.NumSlices	
-	num_HIZ	=	numSlices	
-	num_IZ	=	numSlices	
-	num_RCZ	=	numSlices	
-	num_STC	=	numSlices	
+	num_Z_HIZ	=	numSlices	
+	num_Z_IZ	=	numSlices	
+	num_Z_RCZ	=	numSlices	
+	num_Z_STC	=	numSlices	
 				
 #Generic				
 	 @ANY_HIZ@	=	S\d+\.uHZ\.	
@@ -22,96 +22,96 @@
 	 @IZTEST@	=	(Accept|Deferred)	
 				
 #HIZ				
-	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_idle.CrClock')/(@CLOCKS@ * num_HIZ)):0	
+	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_idle.CrClock')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS0_HIZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_HIZ	=	(SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') >= 0)?((SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') - SUM('@ANY_HIZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZSTC_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZSTC_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Pass')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_ZSTC_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_STCONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_EN_STCONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_DIS_ZSTC	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth_Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth_Stencil.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_DIS_ZONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_DIS_STCONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Stencil.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_FULLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.fully_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.fully_lit')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_PARTIALLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.partially_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.partially_lit')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x8_RESOLVE	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.resolve') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.resolve')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Pass')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZSTC_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZSTC_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Pass')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_ZSTC_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_STCONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Fail')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_EN_STCONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Ambig')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_DIS_ZSTC	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth_Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth_Stencil.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_DIS_ZONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_DIS_STCONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Stencil.NA')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_FULLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.fully_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.fully_lit')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_PARTIALLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.partially_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.partially_lit')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_8x4_RESOLVE	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.resolve') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.resolve')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_RAWSTALLEN	=	(SUM('@ANY_HIZ@pwr_@HIZIPTYPE@_RawStalls.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_@HIZIPTYPE@_RawStalls.CrClock')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_ZMARKERS	=	(SUM('@ANY_HIZ@pwr_Markers') >= 0)?(SUM('@ANY_HIZ@pwr_Markers')/(@CLOCKS@ * num_HIZ)):0	
+	PS1_HIZ	=	(SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') >= 0)?((SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') - SUM('@ANY_HIZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZSTC_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZSTC_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_ZSTC_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth_Stencil.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_STCONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_EN_STCONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Stencil.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_DIS_ZSTC	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth_Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth_Stencil.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_DIS_ZONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Depth.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_DIS_STCONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.disabled.Stencil.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_FULLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.fully_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.fully_lit')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_PARTIALLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.partially_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.partially_lit')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x8_RESOLVE	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.resolve') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x8.resolve')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZSTC_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZSTC_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_ZSTC_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Depth_Stencil.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_STCONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_EN_STCONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.enabled.Stencil.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_DIS_ZSTC	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth_Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth_Stencil.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_DIS_ZONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Depth.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_DIS_STCONLY	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Stencil.NA') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x4.disabled.Stencil.NA')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_FULLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.fully_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.fully_lit')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_PARTIALLYLIT	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.partially_lit') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.partially_lit')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_8x4_RESOLVE	=	(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.resolve') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.8x4.resolve')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_RAWSTALLEN	=	(SUM('@ANY_HIZ@pwr_@HIZIPTYPE@_RawStalls.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_@HIZIPTYPE@_RawStalls.CrClock')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_ZMARKERS	=	(SUM('@ANY_HIZ@pwr_Markers') >= 0)?(SUM('@ANY_HIZ@pwr_Markers')/(@CLOCKS@ * num_Z_HIZ)):0	
 				
 #HIZ - Cache				
-	PS2_HIZ_CACHE_READ	=	(SUM('@ANY_HIZCACHE@ReadRequests') >= 0)?(SUM('@ANY_HIZCACHE@ReadRequests')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_CACHE_WRITE	=	(SUM('@ANY_HIZCACHE@WriteRequests') >= 0)?(SUM('@ANY_HIZCACHE@WriteRequests')/(@CLOCKS@ * num_HIZ)):0	
+	PS2_HIZ_CACHE_READ	=	(SUM('@ANY_HIZCACHE@ReadRequests') >= 0)?(SUM('@ANY_HIZCACHE@ReadRequests')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_CACHE_WRITE	=	(SUM('@ANY_HIZCACHE@WriteRequests') >= 0)?(SUM('@ANY_HIZCACHE@WriteRequests')/(@CLOCKS@ * num_Z_HIZ)):0	
 				
 #HIZ - Latency FIFO				
-	PS2_HIZ_LATFIFO_READ	=	(SUM('@ANY_HIZ@AllocationWaitBuffer.popped') >= 0)?(SUM('@ANY_HIZ@AllocationWaitBuffer.popped')/(@CLOCKS@ * num_HIZ)):0	
-	PS2_HIZ_LATFIFO_WRITE	=	(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed') >= 0)?(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed')/(@CLOCKS@ * num_HIZ)):0	
+	PS2_HIZ_LATFIFO_READ	=	(SUM('@ANY_HIZ@AllocationWaitBuffer.popped') >= 0)?(SUM('@ANY_HIZ@AllocationWaitBuffer.popped')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS2_HIZ_LATFIFO_WRITE	=	(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed') >= 0)?(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed')/(@CLOCKS@ * num_Z_HIZ)):0	
 				
 #IZ				
-	PS0_IZ	=	(SUM('@ANY_IZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_idle.CrClock')/(@CLOCKS@ * num_IZ)):0	
+	PS0_IZ	=	(SUM('@ANY_IZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_idle.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS0_IZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_IZ	=	(SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') - SUM('@ANY_IZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@')/(@CLOCKS@ * num_IZ)):0	
+	PS1_IZ	=	(SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') - SUM('@ANY_IZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS2_IZ_EN_UNCMP_DEPTHPRESENT	=	0	#Not implemented in GSIM yet
 	PS2_IZ_EN_UNCMP_NODEPTHPRESENT	=	0	#Not implemented in GSIM yet
-	PS2_IZ_ZMARKERS	=	(SUM('@ANY_IZ@pwr_IzMarkers.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_IzMarkers.CrClock')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_ZMARKERS	=	(SUM('@ANY_IZ@pwr_IzMarkers.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_IzMarkers.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - Latency FIFO				
-	PS2_IZ_LATFIFO_READ	=	(SUM('@ANY_IZ@ZAllocWaitBuffer.popped') >= 0)?(SUM('@ANY_IZ@ZAllocWaitBuffer.popped')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_LATFIFO_WRITE	=	(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed') >= 0)?(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_LATFIFO_READ	=	(SUM('@ANY_IZ@ZAllocWaitBuffer.popped') >= 0)?(SUM('@ANY_IZ@ZAllocWaitBuffer.popped')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_LATFIFO_WRITE	=	(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed') >= 0)?(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - Z Coefficiency FIFO				
-	PS2_IZ_ZCOEFFFIFO_READ	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_ZCOEFFFIFO_WRITE	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_ZCOEFFFIFO_READ	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_ZCOEFFFIFO_WRITE	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - Poly FIFO 				
-	PS2_IZ_POLYFIFO_READ	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_POLYFIFO_WRITE	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_POLYFIFO_READ	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_POLYFIFO_WRITE	=	(SUM('@ANY_WM@WmInputObjectCount') >= 0)?(SUM('@ANY_WM@WmInputObjectCount')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - Bary Coefficiency FIFO				
-	PS2_IZ_BARYCOEFFIFO_READ	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_BARYCOEFFIFO_WRITE	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_BARYCOEFFIFO_READ	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_BARYCOEFFIFO_WRITE	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - W Coefficiency FIFO				
-	PS2_IZ_WCOEFFIFO_READ	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_IZ)):0	
-	PS2_IZ_WCOEFFIFO_WRITE	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_IZ)):0	
+	PS2_IZ_WCOEFFIFO_READ	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_WCOEFFIFO_WRITE	=	(SUM('@ANY_WM@RasterSpanOutBuffer.pushed') >= 0)?(SUM('@ANY_WM@RasterSpanOutBuffer.pushed')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #RCZ				
-	PS0_RCZ	=	(SUM('@ANY_RCZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_RCZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_RCZ)):0	
+	PS0_RCZ	=	(SUM('@ANY_RCZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_RCZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_RCZ)):0	
 	PS0_RCZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_RCZ	=	(SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_RCZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_RCZ)):0	
-	PS2_RCZ_ALLOC_HITS	=	(SUM('@ANY_RCZ@AllocHits') >= 0)?(SUM('@ANY_RCZ@AllocHits')/(@CLOCKS@ * num_RCZ)):0	
-	PS2_RCZ_ALLOC_MISSES	=	(SUM('@ANY_RCZ@AllocMisses') >= 0)?(SUM('@ANY_RCZ@AllocMisses')/(@CLOCKS@ * num_RCZ)):0	
+	PS1_RCZ	=	(SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_RCZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_RCZ)):0	
+	PS2_RCZ_ALLOC_HITS	=	(SUM('@ANY_RCZ@AllocHits') >= 0)?(SUM('@ANY_RCZ@AllocHits')/(@CLOCKS@ * num_Z_RCZ)):0	
+	PS2_RCZ_ALLOC_MISSES	=	(SUM('@ANY_RCZ@AllocMisses') >= 0)?(SUM('@ANY_RCZ@AllocMisses')/(@CLOCKS@ * num_Z_RCZ)):0	
 				
 #RCZ - Cache				
-	PS2_RCZ_CACHE_READ	=	(SUM('@ANY_RCZ@ReadRequests') >= 0)?(SUM('@ANY_RCZ@ReadRequests')/(@CLOCKS@ * num_RCZ)):0	
-	PS2_RCZ_CACHE_WRITE	=	(SUM('@ANY_RCZ@WriteRequests') >= 0)?(SUM('@ANY_RCZ@WriteRequests')/(@CLOCKS@ * num_RCZ)):0	
+	PS2_RCZ_CACHE_READ	=	(SUM('@ANY_RCZ@ReadRequests') >= 0)?(SUM('@ANY_RCZ@ReadRequests')/(@CLOCKS@ * num_Z_RCZ)):0	
+	PS2_RCZ_CACHE_WRITE	=	(SUM('@ANY_RCZ@WriteRequests') >= 0)?(SUM('@ANY_RCZ@WriteRequests')/(@CLOCKS@ * num_Z_RCZ)):0	
 				
 #STC				
-	PS0_STC	=	(SUM('@ANY_STC@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_STC@pwr_Idle.CrClock')/(@CLOCKS@ * num_STC)):0	
+	PS0_STC	=	(SUM('@ANY_STC@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_STC@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_STC)):0	
 	PS0_STC_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_STC	=	(SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') - SUM('@ANY_STC@pwr_Idle.CrClock'))/(@CLOCKS@ * num_STC)):0	
-	PS2_STC_ALLOC_HITS	=	(SUM('@ANY_STC@AllocHits') >= 0)?(SUM('@ANY_STC@AllocHits')/(@CLOCKS@ * num_STC)):0	
-	PS2_STC_ALLOC_MISSES	=	(SUM('@ANY_STC@AllocMisses') >= 0)?(SUM('@ANY_STC@AllocMisses')/(@CLOCKS@ * num_STC)):0	
+	PS1_STC	=	(SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') - SUM('@ANY_STC@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_STC)):0	
+	PS2_STC_ALLOC_HITS	=	(SUM('@ANY_STC@AllocHits') >= 0)?(SUM('@ANY_STC@AllocHits')/(@CLOCKS@ * num_Z_STC)):0	
+	PS2_STC_ALLOC_MISSES	=	(SUM('@ANY_STC@AllocMisses') >= 0)?(SUM('@ANY_STC@AllocMisses')/(@CLOCKS@ * num_Z_STC)):0	
 				
 #STC - Cache				
-	PS2_STC_CACHE_READ	=	(SUM('@ANY_STC@ReadRequests') >= 0)?(SUM('@ANY_STC@ReadRequests')/(@CLOCKS@ * num_STC)):0	
-	PS2_STC_CACHE_WRITE	=	(SUM('@ANY_STC@WriteRequests') >= 0)?(SUM('@ANY_STC@WriteRequests')/(@CLOCKS@ * num_STC)):0	
+	PS2_STC_CACHE_READ	=	(SUM('@ANY_STC@ReadRequests') >= 0)?(SUM('@ANY_STC@ReadRequests')/(@CLOCKS@ * num_Z_STC)):0	
+	PS2_STC_CACHE_WRITE	=	(SUM('@ANY_STC@WriteRequests') >= 0)?(SUM('@ANY_STC@WriteRequests')/(@CLOCKS@ * num_Z_STC)):0	
