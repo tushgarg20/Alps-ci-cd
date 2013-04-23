@@ -14,7 +14,7 @@
 	 @ANY_EUPIPE@	=	 @ANY_EU@Pipelines\.	
 	 @CLOCKS@	=	CrClock.Clocks	
 	 @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2)	
-	 @HP@	=	(sf|w|uw)	#Temporary hack. Removeafter GSIM fix
+	 @HP@	=	(hf|w|uw)	#Temporary hack. Removeafter GSIM fix
 	FPU_simd1_count	=	SUM('S\d+\.SS\d+\.R\d+\.uEU_\d+\.Pipelines\.pwr_InstIssued\.CrClock\.Fpu\..*\.1\..*\.(exec|@BYPASS@)')	
 	FPU_simd2_count	=	SUM('S\d+\.SS\d+\.R\d+\.uEU_\d+\.Pipelines\.pwr_InstIssued\.CrClock\.Fpu\..*\.2\..*\.(exec|@BYPASS@)')	
 	FPU_simd4_count	=	SUM('S\d+\.SS\d+\.R\d+\.uEU_\d+\.Pipelines\.pwr_InstIssued\.CrClock\.Fpu\..*\.4\..*\.(exec|@BYPASS@)')	
@@ -60,18 +60,18 @@
 	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) + (FPU_simd2_count/2) + ((FPU_simd4_count + FPU_simd8_count + FPU_simd16_count + FPU_simd32_count)/4) + ((FPU_simd8_hp_count + FPU_simd16_hp_count + FPU_simd32_hp_count)/8))/(numEUs * @CLOCKS@)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU	=	1 - PS0_EU_FPU - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU	=	.temp_PS2_EU_FPU	
-	FPU_mad_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAD@\.exec') / (FPU_total_count)) : 0	
-	FPU_mul_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MUL@\.exec') / (FPU_total_count)) : 0	
-	FPU_add_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@ADD@\.exec') / (FPU_total_count)) : 0	
-	FPU_mov_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MOV@\.exec') / (FPU_total_count)) : 0	
-	FPU_sel_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SEL@\.exec') / (FPU_total_count)) : 0	
-	FPU_pln_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@PLN@\.exec') / (FPU_total_count)) : 0	
-	FPU_mad_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@MAD@\.exec') / (FPU_total_count)) : 0	
-	FPU_mul_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@MUL@\.exec') / (FPU_total_count)) : 0	
-	FPU_add_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@ADD@\.exec') / (FPU_total_count)) : 0	
-	FPU_mov_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@MOV@\.exec') / (FPU_total_count)) : 0	
-	FPU_sel_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@SEL@\.exec') / (FPU_total_count)) : 0	
-	FPU_transc_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.f\.\d+\.@TRANS@\.exec') / (FPU_total_count)) : 0	#NA. Should be 0. No TransC on FPU
+	FPU_mad_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec') / (FPU_total_count)) : 0	
+	FPU_mul_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec') / (FPU_total_count)) : 0	
+	FPU_add_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@ADD@\.exec') / (FPU_total_count)) : 0	
+	FPU_mov_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MOV@\.exec') / (FPU_total_count)) : 0	
+	FPU_sel_fp16	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@SEL@\.exec') / (FPU_total_count)) : 0	
+	FPU_pln_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@PLN@\.exec') / (FPU_total_count)) : 0	
+	FPU_mad_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAD@\.exec') / (FPU_total_count)) : 0	
+	FPU_mul_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MUL@\.exec') / (FPU_total_count)) : 0	
+	FPU_add_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@ADD@\.exec') / (FPU_total_count)) : 0	
+	FPU_mov_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MOV@\.exec') / (FPU_total_count)) : 0	
+	FPU_sel_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SEL@\.exec') / (FPU_total_count)) : 0	
+	FPU_transc_fp32	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@TRANS@\.exec') / (FPU_total_count)) : 0	#NA. Should be 0. No TransC on FPU
 	FPU_mad_fp64	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MAD@\.exec') / (FPU_total_count)) : 0	
 	FPU_mul_fp64	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MUL@\.exec') / (FPU_total_count)) : 0	
 	FPU_add_fp64	=	(FPU_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@ADD@\.exec') / (FPU_total_count)) : 0	
@@ -102,18 +102,18 @@
 	.temp_PS2_EU_EM	=	(( EM_simd1_count/1) + (EM_simd2_count/2) + ((EM_simd4_count + EM_simd8_count + EM_simd16_count + EM_simd32_count)/4) + ((EM_simd8_hp_count + EM_simd16_hp_count + EM_simd32_hp_count)/8))/(numEUs * @CLOCKS@)	#EM Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_EM	=	1 - PS0_EU_EM - .temp_PS2_EU_EM - PS0_EU_DOP - PS1_EU_DOP	#EM stall - sparse scenario: (Total Clocks - EM executed clocks - EM Idle clocks - EU idle DOP gated clocks - EU stalled DOP gated clocks)
 	PS2_EU_EM	=	.temp_PS2_EU_EM	
-	EM_mad_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MAD@\.exec') / (EM_total_count)) : 0	
-	EM_mul_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MUL@\.exec') / (EM_total_count)) : 0	
-	EM_add_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@ADD@\.exec') / (EM_total_count)) : 0	
-	EM_mov_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MOV@\.exec') / (EM_total_count)) : 0	
-	EM_sel_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@SEL@\.exec') / (EM_total_count)) : 0	
-	EM_pln_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@PLN@\.exec') / (EM_total_count)) : 0	
-	EM_mad_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@MAD@\.exec') / (EM_total_count)) : 0	
-	EM_mul_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@MUL@\.exec') / (EM_total_count)) : 0	
-	EM_add_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@ADD@\.exec') / (EM_total_count)) : 0	
-	EM_mov_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@MOV@\.exec') / (EM_total_count)) : 0	
-	EM_sel_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@SEL@\.exec') / (EM_total_count)) : 0	
-	EM_transc_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.f\.\d+\.@TRANS@\.exec') / (EM_total_count)) : 0	
+	EM_mad_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MAD@\.exec') / (EM_total_count)) : 0	
+	EM_mul_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MUL@\.exec') / (EM_total_count)) : 0	
+	EM_add_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@ADD@\.exec') / (EM_total_count)) : 0	
+	EM_mov_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MOV@\.exec') / (EM_total_count)) : 0	
+	EM_sel_fp16	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@SEL@\.exec') / (EM_total_count)) : 0	
+	EM_pln_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@PLN@\.exec') / (EM_total_count)) : 0	
+	EM_mad_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MAD@\.exec') / (EM_total_count)) : 0	
+	EM_mul_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MUL@\.exec') / (EM_total_count)) : 0	
+	EM_add_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@ADD@\.exec') / (EM_total_count)) : 0	
+	EM_mov_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MOV@\.exec') / (EM_total_count)) : 0	
+	EM_sel_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@SEL@\.exec') / (EM_total_count)) : 0	
+	EM_transc_fp32	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@TRANS@\.exec') / (EM_total_count)) : 0	
 	EM_mad_fp64	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MAD@\.exec') / (EM_total_count)) : 0	
 	EM_mul_fp64	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MUL@\.exec') / (EM_total_count)) : 0	
 	EM_add_fp64	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@ADD@\.exec') / (EM_total_count)) : 0	
@@ -140,7 +140,7 @@
 	EM_add_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@ADD@\.@BYPASS@') / (EM_total_count)) : 0	
 	EM_pln_bypass	=	(EM_total_count > 0) ? (SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\..*\.\d+\.@PLN@\.@BYPASS@') / (EM_total_count)) : 0	
 #GA				
-	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
+	PS0_GA	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@) - PS0_EU_DOP	
 	PS1_GA	=	0	#GA does not have a stall
 	PS2_GA_EM1Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
 	PS2_GA_EM2Src_SinglePipe	=	SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock') / (numEUs * @CLOCKS@)	
@@ -160,7 +160,7 @@
 				
 #TC				
 	PS0_TC	=	SUM('@ANY_EU@pwr_ThdControllerIdle\.CrClock') / (numEUs * @CLOCKS@) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
-	PS1_TC	=	SUM('@ANY_EU@Arb\.pwr_ThdControllerStalled\.CrClock') / (numEUs * @CLOCKS@) - PS1_EU_DOP	#Subtracted EU stalled DOP gated clocks
+	PS1_TC	=	SUM('@ANY_EU@Arb\.pwr_ThdControllerDopStalled_unfiltered_count\.CrClock') / (numEUs * @CLOCKS@) - PS1_EU_DOP	#Updated PS1_TC based on the new GSIM stat & subtracted EU stalled DOP gated clocks based on the new definition
 	PS2_TC	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 				
 #GRF				
@@ -169,7 +169,7 @@
 	PS2_GRF_WRITE	=	SUM('@ANY_EUPIPE@pwr_GrfWriteAccesses\.CrClock') / (numEUs * @CLOCKS@)	#GRF writes should be at 256 bit granularity(0?2)
 				
 #IPC				
-	EU_Utilization	=	PS2_EU_EM + PS2_EU_FPU	# SUM of EM/FPU active residencies
+	EU_Utilization	=	(PS2_EU_EM + PS2_EU_FPU) / 2	# Changed from SUM to AVG of EM/FPU active residencies
 	EU_IPC	=	numEUs * EU_Utilization	
 				
 #DFX				
@@ -182,5 +182,5 @@
 				
 #DOP				
 	PS0_EU_DOP	=	(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock'))/ (numEUs * @CLOCKS@)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes
-	PS1_EU_DOP	=	(SUM('@ANY_EU@pwr_EuDopGatedStalled\.CrClock'))/ (numEUs * @CLOCKS@)	#Added this back because PS0_EU_FPU < PS0_EU_DOP + PS1_EU_DOP. This should be per EU to subtract from Em/Fpu pipes
+	PS1_EU_DOP	=	SUM('@ANY_EU@Arb\.pwr_ThdControllerDopStalled\.CrClock') / (numEUs * @CLOCKS@)	# Updated definition of EU DOP stall - TC is stalled and the rest of the EU is either idle/stalled
 	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP
