@@ -1,5 +1,5 @@
-from optparse import OptionParser
-import yaml
+from lib.optparse_ext import OptionParser
+import lib.yaml as yaml
 import re
 
 #############################
@@ -46,7 +46,7 @@ elif cfg.find('bxt') > -1 :
 elif cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 else:
-    print cfg + " --> Config not supported\n";
+    print (cfg, "--> Config not supported\n");
     exit(1);
 
 #################################
@@ -95,7 +95,7 @@ def split_string(source, splitlist):
 
 def get_base_config(stat):
     if(stat not in cdyn_hash):
-        print "No cdyn weight is available for " + stat
+        print ("No cdyn weight is available for", stat)
         return None,None
     i = cdyn_precedence.index(cfg)
     while(i >= 0):
@@ -106,18 +106,18 @@ def get_base_config(stat):
             elif('A0' in cdyn_hash[stat][config]):
                 return config,'A0'
             else:
-                print "Stepping is unknown for " + stat + " for config - " + config
+                print ("Stepping is unknown for", stat, " for config - ", config)
                 return config, None
         i = i-1
 
-    print "Not able to find matching cdyn weight for " + stat
+    print ("Not able to find matching cdyn weight for", stat)
     return None,None
     
 def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
     if(base_cfg == None or stepping == None):
         return 0
-    #print stat,base_cfg,stepping
+    #print (stat,base_cfg,stepping)
     base_cdyn = cdyn_hash[stat][base_cfg][stepping]['weight']
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
     ref_gc = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
@@ -125,7 +125,7 @@ def get_eff_cdyn(cluster,unit,stat):
     if(ref_gc == ''): #If ref gc is not present in cdyn sheet, picking it from gc sheet
         if(cdyn_type == 'syn'):
             if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
-                print "Reference gate count is not available for " + cluster + " , " + unit
+                print ("Reference gate count is not available for", cluster, ",", unit)
                 ref_gc = 0
             else:
                 ref_gc = new_gc[cluster][unit][cfg]
@@ -144,13 +144,13 @@ def get_eff_cdyn(cluster,unit,stat):
     newproduct_gc = 1
     instance_string = cluster + "_" + unit
     if(instance_string not in I):
-        print "Number of instances for " + unit + " are unknown"
+        print ("Number of instances for", unit, "are unknown")
         instances = 0
     else:
         instances = I[instance_string]
     if(cdyn_type == 'syn'):
         if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
-            print "Gate count is not available for " + cluster + " , " + unit
+            print ("Gate count is not available for", cluster, ",", unit)
             newproduct_gc = 0
         else:
             newproduct_gc = new_gc[cluster][unit][cfg]
@@ -188,7 +188,7 @@ def eval_formula(alist):
     for elem in res_vars:
         key = split_string(elem,"[]")[2]
         if(key not in R):
-            print "Residency for " + key + " is not there!!"
+            print ("Residency for", key, "is not there!!")
             return 0
 
     for elem in cdyn_vars:
