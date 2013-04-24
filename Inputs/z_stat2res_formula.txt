@@ -20,11 +20,12 @@
 	 @HIZIPTYPE@	=	(8x8|8x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	
 	 @IZTEST@	=	(Accept|Deferred)	
+	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
 				
 #HIZ				
-	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_idle.CrClock')/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS0_HIZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_HIZ	=	(SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') >= 0)?((SUM('@ANY_HIZ@pwr_idleOrStalled.CrClock') - SUM('@ANY_HIZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS1_HIZ	=	(SUM('@ANY_HIZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_HIZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_HIZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS2_HIZ_8x8_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS2_HIZ_8x8_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
@@ -65,13 +66,13 @@
 	PS2_HIZ_LATFIFO_WRITE	=	(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed') >= 0)?(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed')/(@CLOCKS@ * num_Z_HIZ)):0	
 				
 #IZ				
-	PS0_IZ	=	(SUM('@ANY_IZ@pwr_idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_idle.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS0_IZ	=	(SUM('@ANY_IZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS0_IZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_IZ	=	(SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_idleOrtalled.CrClock') - SUM('@ANY_IZ@pwr_idle.CrClock'))/(@CLOCKS@ * num_Z_IZ)):0	
-	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@')/(@CLOCKS@ * num_Z_IZ)):0	
-	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@')/(@CLOCKS@ * num_Z_IZ)):0	
-	PS2_IZ_EN_UNCMP_DEPTHPRESENT	=	0	#Not implemented in GSIM yet
-	PS2_IZ_EN_UNCMP_NODEPTHPRESENT	=	0	#Not implemented in GSIM yet
+	PS1_IZ	=	(SUM('@ANY_IZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_IZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@.@IZDEPTH@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@.@IZDEPTH@')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@.@IZDEPTH@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@.@IZDEPTH@')/(@CLOCKS@ * num_Z_IZ)):0	
+	PS2_IZ_EN_UNCMP_DEPTHPRESENT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthPresent') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthPresent')/(@CLOCKS@ * num_Z_IZ)):0	#Not implemented in GSIM yet
+	PS2_IZ_EN_UNCMP_NODEPTHPRESENT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthNotPresent') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthNotPresent')/(@CLOCKS@ * num_Z_IZ)):0	#Not implemented in GSIM yet
 	PS2_IZ_ZMARKERS	=	(SUM('@ANY_IZ@pwr_IzMarkers.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_IzMarkers.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
 				
 #IZ - Latency FIFO				
