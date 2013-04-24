@@ -19,7 +19,7 @@
 	 @3DPIPEDISABLED@	=	uCS.pwr_3DPipeDisabled.CrClock	
 	 @HIZIPTYPE@	=	(8x8|8x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	
-	 @IZTEST@	=	(Accept|Deferred)	
+	 @IZTEST@	=	(Accept|Fail|Deferred)	
 	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
 				
 #HIZ				
