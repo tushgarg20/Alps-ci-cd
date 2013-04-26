@@ -47,13 +47,13 @@ if not options.run_local:
     else:
         for line in options.formula.split():
             read_stats_cmd += [ line ]
-    build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
 
 else:
     read_stats_cmd = ['ReadStats.pl','-csv','-o', res, '-e', log, stat]
     for line in options.formula.split():
         read_stats_cmd += [ line ]
-    build_alps_cmd = ['/usr/intel/pkgs/python/2.5/bin/python', 'build_alps.py', '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', 'build_alps.py', '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
 
 if not options.build_alps_only:
     try:
