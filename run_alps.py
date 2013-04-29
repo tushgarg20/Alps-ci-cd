@@ -1,4 +1,4 @@
-from optparse import OptionParser
+from lib.optparse_ext import OptionParser
 import shlex 
 import subprocess
 
@@ -31,10 +31,10 @@ parser.add_option("-d","--dir",action="store", dest="user_dir", default='.',
 
 (options,args) = parser.parse_args()
 
-print "Building Alps model \n";
-print options.wl_name
-print options.output_dir
-print options.dest_config
+print ("Building Alps model \n")
+print (options.wl_name)
+print (options.output_dir)
+print (options.dest_config)
 
 
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
@@ -67,23 +67,23 @@ if not options.build_alps_only:
     try:
         process = subprocess.Popen(read_stats_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
         output = process.communicate()[0]
-        print output
+        #print (output)
         ExitCode = process.wait()
     except Exception:
-        print 'Error: Read_stats failed to open subprocess'
+        print ('Error: Read_stats failed to open subprocess')
 
     if ExitCode > 1:
-        print "ReadStats failed with exitcode : ", ExitCode 
+        print ("ReadStats failed with exitcode : ", ExitCode)
         exit(ExitCode) 
 
 try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
     output = process.communicate()[0]
     ExitCode = process.wait()
-    print output
+    #print (output)
 except Exception:
-    print 'Error: build_alps failed to open subprocess' 
+    print ('Error: build_alps failed to open subprocess')
 
 if ExitCode > 1:
-    print "build_alps failed with exitcode : ", ExitCode 
+    print ("build_alps failed with exitcode : ", ExitCode) 
     exit(ExitCode) 

@@ -34,6 +34,8 @@ stepping_hash = {}
 cfg = options.dest_config.lower()
 #path = []
 paths = []
+log_file = options.output_file + ".log"
+lf = open(log_file,'w')
 
 if cfg.find('bdw') > -1 :
     cfg ='Gen8'
@@ -95,7 +97,7 @@ def split_string(source, splitlist):
 
 def get_base_config(stat):
     if(stat not in cdyn_hash):
-        print ("No cdyn weight is available for", stat)
+        print ("No cdyn weight is available for", stat, file=lf)
         return None,None
     i = cdyn_precedence.index(cfg)
     while(i >= 0):
@@ -106,11 +108,11 @@ def get_base_config(stat):
             elif('A0' in cdyn_hash[stat][config]):
                 return config,'A0'
             else:
-                print ("Stepping is unknown for", stat, " for config - ", config)
+                print ("Stepping is unknown for", stat, " for config - ", config, file=lf)
                 return config, None
         i = i-1
 
-    print ("Not able to find matching cdyn weight for", stat)
+    print ("Not able to find matching cdyn weight for", stat, file=lf)
     return None,None
     
 def get_eff_cdyn(cluster,unit,stat):
@@ -144,13 +146,13 @@ def get_eff_cdyn(cluster,unit,stat):
     newproduct_gc = 1
     instance_string = cluster + "_" + unit
     if(instance_string not in I):
-        print ("Number of instances for", unit, "are unknown")
+        print ("Number of instances for", unit, "are unknown",file=lf)
         instances = 0
     else:
         instances = I[instance_string]
     if(cdyn_type == 'syn'):
         if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
-            print ("Gate count is not available for", cluster, ",", unit)
+            print ("Gate count is not available for", cluster, ",", unit, file=lf)
             newproduct_gc = 0
         else:
             newproduct_gc = new_gc[cluster][unit][cfg]
@@ -188,7 +190,7 @@ def eval_formula(alist):
     for elem in res_vars:
         key = split_string(elem,"[]")[2]
         if(key not in R):
-            print ("Residency for", key, "is not there!!")
+            print ("Residency for", key, "is not there!!", file=lf)
             return 0
 
     for elem in cdyn_vars:
@@ -391,4 +393,5 @@ yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
-
+print("Exit",file=lf)
+lf.close()
