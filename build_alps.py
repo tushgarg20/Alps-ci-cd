@@ -34,6 +34,7 @@ stepping_hash = {}
 cfg = options.dest_config.lower()
 #path = []
 paths = []
+linest_coeff = {}
 log_file = options.output_file + ".log"
 lf = open(log_file,'w')
 
@@ -163,6 +164,54 @@ def get_eff_cdyn(cluster,unit,stat):
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     return eff_cdyn
 
+def get_linest_coeff(data_points):
+    slope,intercept = 0,0
+    sigma_xy = 0
+    sigma_sqrx = 0
+    sigma_x = 0
+    sigma_y = 0
+    n = len(data_points)
+    for elem in data_points:
+        sigma_x += elem[0]
+        sigma_y += elem[1]
+        sigma_xy += elem[0] * elem[1]
+        sigma_sqrx += elem[0]**2
+    mean_x = sigma_x/n
+    mean_y = sigma_y/n
+    slope = (sigma_xy - (n * mean_x * mean_y))/(sigma_sqrx - (n * mean_x * mean_x))
+    intercept = mean_y - (slope * mean_x)
+    return slope,intercept
+
+def eval_linest(key_tuple,cluster,unit):
+    k_cdyn, k_res = key_tuple[0],key_tuple[1]
+    if(k_res not in R):
+        print ("Residency for", k_res, "is not there!!",file=lf)
+        return 0
+    if(k_cdyn in linest_coeff):
+        return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
+    
+    cdyn_list = []
+    data_points = []
+
+    for cdyn in cdyn_hash:                             
+        if(re.search(k_cdyn+'_\d+%',cdyn) and cdyn not in cdyn_list):
+            cdyn_list.append(cdyn)
+    for cdyn in cdyn_list:
+        cdyn_val = get_eff_cdyn(cluster,unit,cdyn)
+        matchObj = re.search(k_cdyn+'_(\d+)%',cdyn)
+        x_val = float(matchObj.group(1))/100
+        if(cdyn_val > 0):
+            data_points.append([x_val,cdyn_val])
+
+    if(len(data_points) == 0):
+        return 0
+    if(len(data_points) == 1):
+        return data_points[0][1]
+    
+    linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
+    linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
+    return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
+
 def eval_formula(alist):
     result = 0
     formula = alist[-1]
@@ -173,6 +222,7 @@ def eval_formula(alist):
     formula_data = split_string(formula,"+-/*()")
     cdyn_vars = []
     res_vars = []
+    linest_vars = []
     i = 0
     while(i < len(formula_data)):
         if(formula_data[i] == 'R'):
@@ -185,6 +235,15 @@ def eval_formula(alist):
             res_vars.append(formula_data[i])
         elif(re.search(r'^C\[.*\]',formula_data[i])):
             cdyn_vars.append(formula_data[i])
+        elif(re.search(r'^LINEST\[.*,.*\]',formula_data[i])):
+            matchObj = re.search(r'^LINEST\[(.*),(.*)\]',formula_data[i])
+            cdyn_var = matchObj.group(1)
+            res_var = matchObj.group(2)
+            if(cdyn_var == 'C'):
+                cdyn_var = 'C['+power_stat+']'
+            if(res_var == 'R'):
+                res_var = 'R['+power_stat+']'
+            linest_vars.append((i,(cdyn_var,res_var)))
         i = i+1
 
     for elem in res_vars:
@@ -196,6 +255,11 @@ def eval_formula(alist):
     for elem in cdyn_vars:
         key = split_string(elem,"[]")[2]
         C[key] = get_eff_cdyn(cluster,unit,key)
+
+    for elem in linest_vars:
+        c_key = split_string(elem[1][0],"[]")[2]
+        r_key = split_string(elem[1][1],"[]")[2]
+        formula_data[elem[0]] = str(eval_linest((c_key,r_key),cluster,unit))
 
     formula = "".join(formula_data)
     formula = formula.replace("[","['")
