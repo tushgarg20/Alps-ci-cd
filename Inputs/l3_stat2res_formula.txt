@@ -1,18 +1,17 @@
-#WW13-3: Temporary Hacks to instance count to fix build_alps issues (sashi)_
-#WW13-4: Changed num_L3Other to num_L3BankOther
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	numL3Banks	=	knob.S0.uL3.NumBanks	
 	num_L3_Slices	=	knob.S0.uL3.NumSlices	
 	num_L3_SubSlices	=	knob.S0.uL3.NumSubSlices	
-	num_L3_Bank_LTCDData	=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LTCDTag	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_EBB	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Data	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Tag	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LSQD	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LSQC	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LTCC	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LSLM	=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LNI		=	num_L3_Slices	
-	num_L3_Bank_LNE		=	num_L3_Slices	
+	num_L3_Bank_LNI	=	num_L3_Slices	
+	num_L3_Bank_LNE	=	num_L3_Slices	
 	num_L3_Bank_LNICS	=	num_L3_Slices	
 	num_L3_Bank_LNECS	=	num_L3_Slices	
 	num_L3_Bank_L3BankOther	=	num_L3_Slices * numL3Banks	#Glue/Small
@@ -24,26 +23,31 @@
 	.temp_LNE_max1	=	MIN(6, (num_L3_SubSlices + 3))	
 	.temp_LNE_max2	=	MIN(4, (num_L3_SubSlices + 3))	
 	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
-#LTCD-Data				
-	PS0_LTCD_Data	=	SUM('@ANY_L3BANK@DataIdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
-	PS1_LTCD_Data	=	1-(PS0_LTCD_Data + PS2_LTCD_Data_Read + PS2_LTCD_Data_Write + PS2_LTCD_Data_HB_Read + PS2_LTCD_Data_HB_Write)	
-	PS2_LTCD_Data_Read	=	(SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	
-	PS2_LTCD_Data_Write	=	(SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	
-	PS2_LTCD_Data_HB_Read	=	(SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW') + SUM('@ANY_L3BANK@HBDataRamSlmRdDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	
-	PS2_LTCD_Data_HB_Write	=	(SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW') + SUM('@ANY_L3BANK@HBDataRamSlmWrDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	
-#LTCD_Tag/Data-Synth				
-	PS0_LTCD_Tag	=	SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
+#LTCD_EBB				
+	PS0_LTCD_EBB	=	SUM('@ANY_L3BANK@DataIdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
+	PS1_LTCD_EBB	=	1-(PS0_LTCD_EBB + PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	
+	PS2_LTCD_EBB_Read	=	(SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_EBB_Write	=	(SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_EBB_HB_Read	=	(SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW') + SUM('@ANY_L3BANK@HBDataRamSlmRdDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	
+	PS2_LTCD_EBB_HB_Write	=	(SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW') + SUM('@ANY_L3BANK@HBDataRamSlmWrDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	
+#LTCD_Data_Syn				
+	PS0_LTCD_Data	=	SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
 	.URB_HB_bank_reads	=	(SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	#Using HB data read/write stats to be consistent
 	.URB_HB_bank_writes	=	(SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	#Using HB data read/write stats to be consistent
 	.URB_bank_reads	=	((SUM('@ANY_L3BANK@UrbRd') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) - .URB_HB_bank_reads	#Normal Bank reads = Total URB reads - HB reads
 	.URB_bank_writes	=	((SUM('@ANY_L3BANK@UrbWr') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) - .URB_HB_bank_writes	#Normal Bank writes = Total URB writes - HB writes
-	PS1_LTCD_Tag	=	1 - (PS0_LTCD_Tag + PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite + PS2_LTCD_Tag_NonSLM_ECC_NoTagRead + PS2_LTCD_Tag_NonSLM_ECC_NoTagWrite + PS2_LTCD_Tag_SLM_ECC_NoTagRead + PS2_LTCD_Tag_SLM_ECC_NoTagWrite)	
-	PS2_LTCD_Tag_NonSLM_ECC_TagRead	=	PS2_LTCD_Data_Read - .URB_bank_reads	#Tag Reads = Total Normal Bank reads - URB Normal bank reads
-	PS2_LTCD_Tag_NonSLM_ECC_TagWrite	=	PS2_LTCD_Data_Write - .URB_bank_writes	#Tag Writes = Total Normal Bank writes - URB Normal bank writes
-	PS2_LTCD_Tag_NonSLM_ECC_NoTagRead	=	(SUM('@ANY_L3BANK@UrbRd') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
-	PS2_LTCD_Tag_NonSLM_ECC_NoTagWrite	=	(SUM('@ANY_L3BANK@UrbWr') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Writes
-	PS2_LTCD_Tag_SLM_ECC_NoTagRead	=	(SUM('@ANY_L3BANK@HBDataRamSlmRdDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	# Total SLM Reads
-	PS2_LTCD_Tag_SLM_ECC_NoTagWrite	=	(SUM('@ANY_L3BANK@HBDataRamSlmWrDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	# Total SLM Writes
+	PS1_LTCD_Data	=	1 - (PS0_LTCD_Data + PS2_LTCD_Data_NonSLM_ECC_TagRead + PS2_LTCD_Data_NonSLM_ECC_TagWrite + PS2_LTCD_Data_NonSLM_ECC_NoTagRead + PS2_LTCD_Data_NonSLM_ECC_NoTagWrite + PS2_LTCD_Data_SLM_ECC_NoTagRead + PS2_LTCD_Data_SLM_ECC_NoTagWrite)	
+	PS2_LTCD_Data_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	
+	PS2_LTCD_Data_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	
+	PS2_LTCD_Data_NonSLM_ECC_NoTagRead	=	(SUM('@ANY_L3BANK@UrbRd') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(SUM('@ANY_L3BANK@UrbWr') + SUM('@ANY_L3BANK@UrbAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
+	PS2_LTCD_Data_SLM_ECC_NoTagRead	=	(SUM('@ANY_L3BANK@HBDataRamSlmRdDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	# Total URB (Non SLM - No Tag) Writes
+	PS2_LTCD_Data_SLM_ECC_NoTagWrite	=	(SUM('@ANY_L3BANK@HBDataRamSlmWrDW') + SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW')) / (16 * (@CLOCKS@ * num_L3_Slices * numL3Banks))	# Total SLM Reads
+#LTCD_Tag_Syn				# Total SLM Writes
+	PS0_LTCD_Tag	=	SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
+	PS1_LTCD_Tag	=	1 - (PS0_LTCD_Tag + PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite)	
+	PS2_LTCD_Tag_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	#Tag Reads = Total Normal Bank reads - URB Normal bank reads
+	PS2_LTCD_Tag_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	#Tag Writes = Total Normal Bank writes - URB Normal bank writes
 #LSQD				
 	PS0_LSQD	=	SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices * numL3Banks)	
 	PS1_LSQD	=	1 - (PS0_LSQD + PS2_LSQD_nonatomics + PS2_LSQD_atomics)	
