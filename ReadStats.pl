@@ -248,13 +248,13 @@ sub read_formula
   elsif($equation=~/^(\S+)\s*=\s*(.*)\s*$/)
   { $st=$1; $eq=$2;
   }
-  if($eq eq '' || !$st=~/^@\w+@$|^\.?[a-zA-Z_][\w\.]+$/)
+  if($eq eq '' || !$st=~/^@\w+@$|^\.?[a-zA-Z_][\w\.]*$/)
   { print STDERR "##### $file line $line - Incorrect syntax, line ignored:\t$equation\n";
     return;
   }
   while($eq=~/^([^@]*)@([^@]*)@(.*)$/)
   { if($mac{$2} eq '')
-    { print STDERR "##### $file line $line - Macro not defined, line ignored:\t$2\n";
+    { print STDERR "##### $file line $line - Macro not defined, line ignored:\t@$2@\n";
       return;
     }
     $eq=$1.$mac{$2}.$3;
@@ -273,6 +273,7 @@ sub read_formula
       my $tmp=$eq;
       while($tmp=~s/'([^']*)'/ /)
       { $wc{"'$1'"}=$1;
+        if($wcfn{"'$1'"} eq ''){ $wcfn{"'$1'"}=$file; $wcln{"'$1'"}=$line;}
       }
       while($tmp=~s/([\w\.]+)//)
       { $var{$st}{$1}=1;
