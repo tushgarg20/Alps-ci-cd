@@ -123,7 +123,7 @@
 	PS0_SC_DataRam_IDLE	=	1 - (PS2_SC_DataRam_READ + PS2_SC_DataRam_WRITE)	#No stall in SC
 	PS2_SC_DataRam_READ	=	(SUM('@ANY_SAMPLER@pwr_sc_Bank0\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank1\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank2\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank3\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank4\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank5\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank6\.CrClock') + SUM('@ANY_SAMPLER@pwr_sc_Bank7\.CrClock')) / (8 * numSamplers * @CLOCKS@)	# 8 banks in SC
 	PS2_SC_DataRam_WRITE	=	SUM('@ANY_SAMPLER@pwr_sc_data_ram_write\.CrClock') / (numSamplers * @CLOCKS@)	
-	PS0_SC_LatFifo_IDLE	=	1 - (PS2_SC_LatFifo_READ + PS2_SC_LatFifo_WRITE)	
+	PS0_SC_LatFifo_IDLE	=	SUM('@ANY_SAMPLER@pwr_sc_latfifo_idle\.CrClock') / (numSamplers * @CLOCKS@)	
 	PS2_SC_LatFifo_READ	=	SUM('@ANY_SAMPLER@SC-LatencyFifo\.pushed') / (numSamplers * @CLOCKS@)	
 	PS2_SC_LatFifo_WRITE	=	SUM('@ANY_SAMPLER@SC-LatencyFifo\.popped') / (numSamplers * @CLOCKS@)	
 #ST				
@@ -189,7 +189,7 @@
 	PS2_DM_Compressed_BYPASS	=	SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock') / (numSamplers * @CLOCKS@)	
 #FT				
 	PS0_FT	=	SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock') / (numSamplers * @CLOCKS@)	
-	PS1_FT	=	(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle_ungated_count\.CrClock') - SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * @CLOCKS@)	
+	PS1_FT	=	(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock') - SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * @CLOCKS@)	
 	PS2_FT	=	1 - PS0_FT - PS1_FT	
 #MT				
 	PS0_MT	=	SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock') / (numSamplers * @CLOCKS@)	
