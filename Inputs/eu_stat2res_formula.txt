@@ -54,6 +54,22 @@
 	 @MOV@	=	(mov|movi)	
 	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop)	#club sel with mov - add control flow separately
 	 @TRANS@	=	(math)	#Transcendentals
+	.avg_EMSrc1_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc0Tgl\.CrClock')/numEUs)?=0	
+	.avg_EMSrc2_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1Tgl\.CrClock')/numEUs)?=0	
+	.avg_EMSrc3_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2Tgl\.CrClock')/numEUs)?=0	
+	.avg_EMSrc4_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1aTgl\.CrClock')/numEUs)?=0	
+	.avg_EMSrc5_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2aTgl\.CrClock')/numEUs)?=0	
+	.avg_EMSrc6_toggle	=	(SUM('@ANY_EUPIPE@pwr_Em_WriteTgl\.CrClock')/numEUs)?=0	
+	.max_EM_toggle	=	MAX(.avg_EMSrc1_toggle, .avg_EMSrc2_toggle, .avg_EMSrc3_toggle, .avg_EMSrc4_toggle, .avg_EMSrc5_toggle, .avg_EMSrc6_toggle)	
+	EM_toggle_rate	=	(.max_EM_toggle / (32 * 4 * @CLOCKS@))	#Source bus width is 32 * 4 lanes = 128 bits
+	.avg_FPUSrc1_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock')/numEUs)?=0	
+	.avg_FPUSrc2_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock')/numEUs)?=0	
+	.avg_FPUSrc3_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock')/numEUs)?=0	
+	.avg_FPUSrc4_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1aTgl\.CrClock')/numEUs)?=0	
+	.avg_FPUSrc5_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2aTgl\.CrClock')/numEUs)?=0	
+	.avg_FPUSrc6_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock')/numEUs)?=0	
+	.max_FPU_toggle	=	MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle, .avg_FPUSrc5_toggle, .avg_FPUSrc6_toggle)	
+	FPU_toggle_rate	=	(.max_FPU_toggle / (32 * 4 * @CLOCKS@))	#Source bus width is 32 * 4 lanes = 128 bits
 				
 #FPU				
 	PS0_EU_FPU 	=	SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock')/(numEUs * @CLOCKS@) - PS0_EU_DOP	#DOP Clock ungated
