@@ -42,7 +42,7 @@
 #RCPFE				
 	PS0_RCPFE	=	(SUM('@ANY_PB@pwr_Rcpfe_Idle.CrClock') >= 0)?(SUM('@ANY_PB@pwr_Rcpfe_Idle.CrClock')/(@CLOCKS@ * num_COLOR_RCPFE)):0	
 	PS0_RCPFE_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_RCPFE	=	(SUM('@ANY_PB@pwr_Rcpfe_Stalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpfe_Stalled.CrClock') - SUM('@ANY_PB@pwr_Rcpfe_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPFE)):0	
+	PS1_RCPFE	=	(SUM('@ANY_PB@pwr_Rcpfe_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpfe_IdleOrStalled.CrClock') - SUM('@ANY_PB@pwr_Rcpfe_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPFE)):0	
 	PS2_RCPFE_NOMSAA_2PPC_WRT_ZPASS	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.ZPASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.ZPASS')/(@CLOCKS@ * num_COLOR_RCPFE)):0	
 	PS2_RCPFE_NOMSAA_2PPC_WRT_ZFAIL	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.ZFAIL') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.ZFAIL')/(@CLOCKS@ * num_COLOR_RCPFE)):0	
 	PS2_RCPFE_NOMSAA_2PPC_WRT_NOZPASS	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.NOZPASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.NOZPASS')/(@CLOCKS@ * num_COLOR_RCPFE)):0	
@@ -109,7 +109,7 @@
 #RCPBCOM				
 	PS0_RCPBCOM	=	(SUM('@ANY_PB@pwr_Rcpbcom_Idle.CrClock') >= 0)?(SUM('@ANY_PB@pwr_Rcpbcom_Idle.CrClock')/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
 	PS0_RCPBCOM_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_RCPBCOM	=	(SUM('@ANY_PB@pwr_Rcpbcom_Stalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpbcom_Stalled.CrClock') - SUM('@ANY_PB@pwr_Rcpbcom_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
+	PS1_RCPBCOM	=	(SUM('@ANY_PB@pwr_Rcpbcom_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpbcom_IdleOrStalled.CrClock') - SUM('@ANY_PB@pwr_Rcpbcom_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
 	PS2_RCPBCOM_NOMSAA_2PPC_WRT	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
 	PS2_RCPBCOM_NOMSAA_2PPC_BLD	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.BLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.BLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
 	PS2_RCPBCOM_NOMSAA_4PPC_WRT	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY4PPC@.NOBLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY4PPC@.NOBLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBCOM)):0	
@@ -128,7 +128,7 @@
 #RCPBPIX				
 	PS0_RCPBPIX	=	(SUM('@ANY_PB@pwr_Rcpbpix_Idle.CrClock') >= 0)?(SUM('@ANY_PB@pwr_Rcpbpix_Idle.CrClock')/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
 	PS0_RCPBPIX_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_RCPBPIX	=	(SUM('@ANY_PB@pwr_Rcpbpix_Stalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpbpix_Stalled.CrClock') - SUM('@ANY_PB@pwr_Rcpbpix_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
+	PS1_RCPBPIX	=	(SUM('@ANY_PB@pwr_Rcpbpix_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_PB@pwr_Rcpbpix_IdleOrStalled.CrClock') - SUM('@ANY_PB@pwr_Rcpbpix_Idle.CrClock'))/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
 	PS2_RCPBPIX_NOMSAA_2PPC_WRT	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.NOBLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
 	PS2_RCPBPIX_NOMSAA_2PPC_BLD	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.BLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY2PPC@.BLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
 	PS2_RCPBPIX_NOMSAA_4PPC_WRT	=	(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY4PPC@.NOBLEND.@ANYZ@PASS') >= 0)?(SUM('@ANY_PB@pwr_ColorPacket.CrClock.@ANYNONMSAA@.@ANY4PPC@.NOBLEND.@ANYZ@PASS')/(@CLOCKS@ * num_COLOR_RCPBPIX)):0	
