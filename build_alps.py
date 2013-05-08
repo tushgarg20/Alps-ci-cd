@@ -402,11 +402,19 @@ for ff in formula_files:
 output_list = paths + []
 output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
 output_cdyn_data = {'GT':{}}
+gt_cdyn = {}
+key_stats = {'key_stats':{}}
 
 for path in output_list:
     path[-1] = eval_formula(path)
     d = output_yaml_data['ALPS Model(pF)']['GT']
     cdyn_d = output_cdyn_data['GT']
+    if(len(path) == 2):
+        if(path[0] == 'FPS'):
+            gt_cdyn['FPS'] = float('%.3f'%float(path[-1]))
+        else:
+            key_stats['key_stats'][path[0]] = float('%.3f'%float(path[1]))
+        continue
     i = 0
     while(True):
         if('cdyn' not in cdyn_d and i < 3):
@@ -433,7 +441,6 @@ for path in output_list:
 #######################################
 # Creating Overview datastructures
 #######################################
-gt_cdyn = {}
 cluster_cdyn_numbers = {'cluster_cdyn_numbers(pF)':{}}
 unit_cdyn_numbers = {'unit_cdyn_numbers(pF)':{}}
 gt_cdyn['Total_GT_Cdyn(nF)'] = float('%.3f'%float(output_cdyn_data['GT']['cdyn']/1000))
@@ -455,6 +462,7 @@ of = open(options.output_file,'w')
 yaml.dump(gt_cdyn,of,default_flow_style=False)
 yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
+yaml.dump(key_stats,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
 print("Exit",file=lf)

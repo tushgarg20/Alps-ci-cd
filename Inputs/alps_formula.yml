@@ -3,6 +3,8 @@
  # R == Residency
  # C == Cdyn weight
 
+FPS: R
+
 EU:
   TC:
     PS0_TC: R * C
