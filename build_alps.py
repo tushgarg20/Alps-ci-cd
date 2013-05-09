@@ -1,6 +1,7 @@
 from lib.optparse_ext import OptionParser
 import lib.yaml as yaml
 import re
+import sys
 
 #############################
 # Command Line Arguments
@@ -52,6 +53,9 @@ else:
     print (cfg, "--> Config not supported\n");
     exit(1);
 
+print("Command Line -->",file=lf)
+print (" ".join(sys.argv),file=lf)
+print("",file=lf)
 #################################
 # Subroutines
 #################################
