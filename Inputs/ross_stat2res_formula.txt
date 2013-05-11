@@ -1,0 +1,67 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numROSS	=	knob.global.NumSlices * knob.S0.NumSubSlices	
+	numEURows	=	knob.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
+	num_ROSS_BC	=	numROSS	
+	num_ROSS_PSD	=	numROSS	
+	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
+	num_ROSS_TDL	=	numROSS	
+	num_ROSS_IC	=	numROSS	
+	num_ROSS_DAPRSS	=	numROSS	
+	num_ROSS_GWL	=	numROSS	
+#Generic				
+	 @CLOCKS@	=	CrClock.Clocks	
+	 @ANY_BC@	=	S\d+\.SS\d+\.uBC\.	
+	 @ANY_PSD@	=	S\d+\.SS\d+\.uPSD\.	
+	 @ANY_MA_IN@	=	S\d+\.SS\d+\.R\d+\.uMAI\.	
+	 @ANY_MA_OUT@	=	S\d+\.SS\d+\.R\d+\.uMAO\.	
+	 @ANY_TDL@	=	S\d+\.SS\d+\.uTDL\.	
+	 @ANY_ICACHE@	=	S\d+\.SS\d+\.uICACHE\.	
+	 @ANY_DAPRF@	=	S\d+\.SS\d+\.uDAPRF\.	
+	 @ANY_GWC@	=	Med\.uGWC\.	
+#BC				
+	PS0_BC	=	(SUM('@ANY_BC@pwr_bc_idle\.CrClock') / (numROSS * @CLOCKS@)) - PS0_BC_DOP	
+	PS0_BC_DOP	=	SUM('uCS\.pwr_3DPipeDisabled\.CrClock') / @CLOCKS@	
+	PS1_BC	=	1 - (PS0_BC + PS0_BC_DOP + PS2_BC_COMPUTE + PS2_BC_FLOWTHROUGH)	
+	PS2_BC_COMPUTE	=	SUM('@ANY_BC@pwr_bc_active_compute\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_BC_FLOWTHROUGH	=	SUM('@ANY_BC@pwr_bc_active_flowthrough\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_BC_BARYRAM_READ	=	0	#No GSIM model
+	PS2_BC_BARYRAM_WRITE	=	0	#No GSIM model
+#PSD				
+	PS0_PSD	=	(SUM('@ANY_PSD@pwr_psd_idle\.CrClock') / (numROSS * @CLOCKS@)) - PS0_PSD_DOP	
+	PS0_PSD_DOP	=	SUM('uCS\.pwr_3DPipeDisabled\.CrClock') / @CLOCKS@	
+	PS1_PSD	=	(1 - PS0_PSD + PS0_PSD_DOP + PS2_PSD_THREADDISPATCH + PS2_PSD_NOTHREADDISPATCH + PS2_PSD_WAITINGONFLUSH)	
+	PS2_PSD_THREADDISPATCH	=	SUM('@ANY_PSD@pwr_PsdActiveThreadDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_PSD_NOTHREADDISPATCH	=	SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_PSD_WAITINGONFLUSH	=	SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock') / (numROSS * @CLOCKS@)	
+#PSD SCOREBOARD				
+	PS0_PSD_SCOREBOARD	=	0	
+	PS2_PSD_SCOREBOARD_READ	=	SUM('@ANY_PSD@pwr_PsdScoreboardRead\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_PSD_SCOREBOARD_WRITE	=	SUM('@ANY_PSD@pwr_PsdScoreboardWrite\.CrClock') / (numROSS * @CLOCKS@)	
+#PSD BARY PAYLOAD RAM				
+	PS0_PSD_BARYPAYLDASMRAM	=	0	
+	PS2_PSD_BARYPAYLDASMRAM_READ	=	SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock') / (numROSS * @CLOCKS@)	
+#MA IN				
+	PS0_MA_IN	=	SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock') / (numEURows * numROSS * @CLOCKS@)	
+	PS1_MA_IN	=	1 - PS0_MA_IN - PS2_MA_IN	
+	PS2_MA_IN	=	SUM('@ANY_MA_IN@pwr_MAIn_Active\.CrClock') / (numEURows * numROSS * @CLOCKS@)	
+#MA OUT				
+	PS0_MA_OUT	=	SUM('@ANY_MA_OUT@pwr_MAOut_Idle\.CrClock') / (numEURows * numROSS * @CLOCKS@)	
+	PS1_MA_OUT	=	1 - PS0_MA_OUT - PS2_MA_OUT	
+	PS2_MA_OUT	=	SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock') / (numEURows * numROSS * @CLOCKS@)	
+#TDL				
+	PS0_TDL	=	SUM(@ANY_TDL@pwr_TDL_Idle\.CrClock') / (numROSS * @CLOCKS@)	
+	PS1_TDL	=	(1 - PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH)	
+	PS2_TDL_PSDDISPATCH	=	SUM(@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_TDL_NONPSDDISPATCH		SUM(@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+#IC				
+	PS0_IC	=	SUM(@ANY_ICACHE@pwr_IC_Idle\.CrClock') / (numROSS * @CLOCKS@)	
+	PS1_IC	=	1 - PS0_IC - PS2_IC	
+	PS2_IC	=	SUM(@ANY_ICACHE@pwr_IC_Active\.CrClock') / (numROSS * @CLOCKS@)	
+#IC DATARAM				
+	PS0_IC_DATARAM	=	0	
+	PS2_IC_DATARAM_READ	=	SUM(@ANY_ICACHE@pwr_IC_Reads\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC_DATARAM_FRONTBUFFER_READ	=	SUM(@ANY_ICACHE@pwr_IC_Front_Buffer_Hits\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC_DATARAM_WRITE	=	SUM(@ANY_ICACHE@pwr_IC_Writes\.CrClock') / (numROSS * @CLOCKS@)
