@@ -36,7 +36,6 @@ print (options.wl_name)
 print (options.output_dir)
 print (options.dest_config)
 
-
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
 stat = options.output_dir + '/' + options.prefix + '.stat'
