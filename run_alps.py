@@ -22,6 +22,8 @@ parser.add_option("-f","--formula",dest="formula", default='formula.txt',
                   help="List all formulae to use seperated by space Format: \"<path_to_formula> <path_to_formula>...\"   [default: Formulae from central repo]")
 parser.add_option("-l","--local",action="store_true",dest="run_local",default=False,
                   help="Run users scripts from user_dir [default: %default]")
+parser.add_option("-q","--quiet",action="store_true",dest="quiet",default=False,
+                  help="Run quietly [default: %default]")
 parser.add_option("-b","--only-build-alps",action="store_true",dest="build_alps_only",default=False,
                   help="Run users scripts from current path [default: %default]")
 parser.add_option("-a","--architecture",action="store", dest="dest_config", default=None,
@@ -31,10 +33,11 @@ parser.add_option("-d","--dir",action="store", dest="user_dir", default='.',
 
 (options,args) = parser.parse_args()
 
-print ("Building Alps model \n")
-print (options.wl_name)
-print (options.output_dir)
-print (options.dest_config)
+if not options.quiet:
+    print ("Building Alps model \n")
+    print (options.wl_name)
+    print (options.output_dir)
+    print (options.dest_config)
 
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
