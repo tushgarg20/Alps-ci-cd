@@ -618,5 +618,60 @@ COLOR:
      PS2_DAPB_MSAA_RTR: R * C
      PS2_DAPB_DIS: R * C
 
+HDC:
+   HDCREQCMD1:
+    PS0_HDC_ReqCmd1_DOP: R * C
+    PS0_HDC_ReqCmd1: R * C
+    PS1_HDC_ReqCmd1: R * C
+    PS2_HDC_ReqCmd1:
+     PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write: R * C
+     PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
+     PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
+   HDCREQCMD2:
+    PS0_HDC_ReqCmd2_DOP: R * C
+    PS0_HDC_ReqCmd2: R * C
+    PS1_HDC_ReqCmd2: R * C
+    PS2_HDC_ReqCmd2:
+      PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Read: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Write: R * C
+      PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
+      PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
+   HDCREQDATA:
+    PS0_HDC_ReqData_DOP: R * C
+    PS0_HDC_ReqData: R * C
+    PS1_HDC_ReqData: R * C
+    PS2_HDC_ReqData:
+      PS2_HDC_ReqData_Sequenced_Typed_Write: R * C
+      PS2_HDC_ReqData_Sequenced_Else_Data_Write: R * C
+      PS2_HDC_ReqData_Sequenced_Else_SLM_Write: R * C
+      PS2_HDC_ReqData_NonSequenced_Write: R * C
+   HDCRET:
+    PS0_HDC_Ret_DOP: R * C
+    PS0_HDC_Ret: R * C
+    PS1_HDC_Ret: R * C
+    PS2_HDC_Ret:
+      PS2_HDC_Ret_Sequenced_Typed_Read: R * C
+      PS2_HDC_Ret_Sequenced_Else_Data_Read: R * C
+      PS2_HDC_Ret_Sequenced_Else_SLM_Read: R * C
+      PS2_HDC_Ret_NonSequenced_Read: R * C
+   HDCTLB:
+    PS0_HDCTLB_DOP: R * C
+    PS0_HDCTLB: R * C
+    PS1_HDCTLB: R * C
+    PS2_HDCTLB:
+     PS2_HDCTLB_Read_Hit: R * C
+     PS2_HDCTLB_Read_Miss: R * C
+     PS2_HDCTLB_Write_Hit: R * C
+     PS2_HDCTLB_Write_Miss: R * C
+
 
 
