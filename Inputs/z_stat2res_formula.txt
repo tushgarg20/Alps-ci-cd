@@ -25,7 +25,7 @@
 #HIZ				
 	PS0_HIZ	=	(SUM('@ANY_HIZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_HIZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS0_HIZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_HIZ	=	(SUM('@ANY_HIZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_HIZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_HIZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_HIZ)):0	
+	PS1_HIZ	=	1 - (PS0_HIZ + PS0_HIZ_DOP + PS2_HIZ_8x8_EN_ZONLY_FAIL + PS2_HIZ_8x8_EN_ZONLY_Accept + PS2_HIZ_8x8_EN_ZONLY_AMBIG + PS2_HIZ_8x8_EN_ZSTC_FAIL + PS2_HIZ_8x8_EN_ZSTC_Accept + PS2_HIZ_8x8_EN_ZSTC_AMBIG + PS2_HIZ_8x8_EN_STCONLY_FAIL + PS2_HIZ_8x8_EN_STCONLY_AMBIG + PS2_HIZ_8x8_DIS_ZSTC + PS2_HIZ_8x8_DIS_ZONLY + PS2_HIZ_8x8_DIS_STCONLY + PS2_HIZ_8x8_FULLYLIT + PS2_HIZ_8x8_PARTIALLYLIT + PS2_HIZ_8x8_RESOLVE + PS2_HIZ_8x4_EN_ZONLY_FAIL + PS2_HIZ_8x4_EN_ZONLY_Accept + PS2_HIZ_8x4_EN_ZONLY_AMBIG + PS2_HIZ_8x4_EN_ZSTC_FAIL + PS2_HIZ_8x4_EN_ZSTC_Accept + PS2_HIZ_8x4_EN_ZSTC_AMBIG + PS2_HIZ_8x4_EN_STCONLY_FAIL + PS2_HIZ_8x4_EN_STCONLY_AMBIG + PS2_HIZ_8x4_DIS_ZSTC + PS2_HIZ_8x4_DIS_ZONLY + PS2_HIZ_8x4_DIS_STCONLY + PS2_HIZ_8x4_FULLYLIT + PS2_HIZ_8x4_PARTIALLYLIT + PS2_HIZ_8x4_RESOLVE + PS2_HIZ_RAWSTALLEN + PS2_HIZ_ZMARKERS)	
 	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Fail')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS2_HIZ_8x8_EN_ZONLY_Accept	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Pass')/(@CLOCKS@ * num_Z_HIZ)):0	
 	PS2_HIZ_8x8_EN_ZONLY_AMBIG	=	(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig') >= 0)?(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.8x8.enabled.Depth.Ambig')/(@CLOCKS@ * num_Z_HIZ)):0	
@@ -68,7 +68,7 @@
 #IZ				
 	PS0_IZ	=	(SUM('@ANY_IZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_IZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS0_IZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_IZ	=	(SUM('@ANY_IZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_IZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_IZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_IZ)):0	
+	PS1_IZ	=	1 - (PS0_IZ + PS0_IZ_DOP + PS2_IZ_EN_CMP + PS2_IZ_EN_EXP + PS2_IZ_EN_UNCMP_DEPTHPRESENT + PS2_IZ_EN_UNCMP_NODEPTHPRESENT + PS2_IZ_ZMARKERS)	
 	PS2_IZ_EN_CMP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@.@IZDEPTH@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Compressed.@IZTEST@.@IZDEPTH@')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS2_IZ_EN_EXP	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@.@IZDEPTH@') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.Expanded.@IZTEST@.@IZDEPTH@')/(@CLOCKS@ * num_Z_IZ)):0	
 	PS2_IZ_EN_UNCMP_DEPTHPRESENT	=	(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthPresent') >= 0)?(SUM('@ANY_IZ@pwr_IzSpans.CrClock.@IZIPTYPE@.UnCompressed.@IZTEST@.DepthPresent')/(@CLOCKS@ * num_Z_IZ)):0	#Not implemented in GSIM yet
@@ -98,7 +98,7 @@
 #RCZ				
 	PS0_RCZ	=	(SUM('@ANY_RCZ@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_RCZ@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_RCZ)):0	
 	PS0_RCZ_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_RCZ	=	(SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_RCZ@pwr_IdleOrStalled.CrClock') - SUM('@ANY_RCZ@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_RCZ)):0	
+	PS1_RCZ	=	1 - (PS0_RCZ + PS0_RCZ_DOP + PS2_RCZ_ALLOC_HITS + PS2_RCZ_ALLOC_MISSES)	
 	PS2_RCZ_ALLOC_HITS	=	(SUM('@ANY_RCZ@AllocHits') >= 0)?(SUM('@ANY_RCZ@AllocHits')/(@CLOCKS@ * num_Z_RCZ)):0	
 	PS2_RCZ_ALLOC_MISSES	=	(SUM('@ANY_RCZ@AllocMisses') >= 0)?(SUM('@ANY_RCZ@AllocMisses')/(@CLOCKS@ * num_Z_RCZ)):0	
 				
@@ -109,7 +109,7 @@
 #STC				
 	PS0_STC	=	(SUM('@ANY_STC@pwr_Idle.CrClock') >= 0)?(SUM('@ANY_STC@pwr_Idle.CrClock')/(@CLOCKS@ * num_Z_STC)):0	
 	PS0_STC_DOP	=	(@3DPIPEDISABLED@ >= 0)?(@3DPIPEDISABLED@/@CLOCKS@):0	
-	PS1_STC	=	(SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') >= 0)?((SUM('@ANY_STC@pwr_IdleOrStalled.CrClock') - SUM('@ANY_STC@pwr_Idle.CrClock'))/(@CLOCKS@ * num_Z_STC)):0	
+	PS1_STC	=	1 - (PS0_STC + PS0_STC_DOP + PS2_STC_ALLOC_HITS + PS2_STC_ALLOC_MISSES)	
 	PS2_STC_ALLOC_HITS	=	(SUM('@ANY_STC@AllocHits') >= 0)?(SUM('@ANY_STC@AllocHits')/(@CLOCKS@ * num_Z_STC)):0	
 	PS2_STC_ALLOC_MISSES	=	(SUM('@ANY_STC@AllocMisses') >= 0)?(SUM('@ANY_STC@AllocMisses')/(@CLOCKS@ * num_Z_STC)):0	
 				
