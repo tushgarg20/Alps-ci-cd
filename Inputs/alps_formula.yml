@@ -673,5 +673,72 @@ HDC:
      PS2_HDCTLB_Write_Hit: R * C
      PS2_HDCTLB_Write_Miss: R * C
 
+ROSC:
+   WMFE:
+    PS0_WMFE: R * C 
+    PS0_WMFE_DOP: R * C 
+    PS1_WMFE: R * C
+    PS2_WMFE:
+     PS2_WMFE_NULLTOPSC: R * C 
+     PS2_WMFE_NOTNULLTOPSC: R * C 
+     PS2_WMFE_POLYFIFO_READ: R * C 
+     PS2_WMFE_POLYFIFO_WRITE: R * C 
+   WMBE:
+    PS0_WMBE: R * C 
+    PS0_WMBE_DOP: R * C 
+    PS1_WMBE: R * C
+    PS2_WMBE:
+     PS2_WMBE_MSAA_FULLYLIT: R * C 
+     PS2_WMBE_MSAA_PARTIALLYLIT: R * C 
+     PS2_WMBE_NOMSAA_FULLYLIT: R * C 
+     PS2_WMBE_NOMSAA_PARTIALLYLIT: R * C 
+     PS2_WMBE_NULLTOPSC: R * C 
+     PS2_WMBE_ANTIALIASING: R * C 
+   SBE:
+    PS0_SBE_FETCH: R * C 
+    PS0_SBE_FETCH_DOP: R * C 
+    PS1_SBE_FETCH: R * C 
+    PS2_SBE_FETCH: R * C 
+    PS0_SBE_REPLAY: R * C 
+    PS0_SBE_REPLAY_DOP: R * C 
+    PS1_SBE_REPLAY: R * C 
+    PS2_SBE_REPLAY: R * C 
+    PS0_SBE_CALC: R * C 
+    PS0_SBE_CALC_DOP: R * C 
+    PS1_SBE_CALC: R * C 
+    PS2_SBE_CALC: R * C 
+    PS0_SBE_OTHER: R * C 
+    PS0_SBE_OTHER_DOP: R * C 
+    PS1_SBE_OTHER: R * C 
+    PS2_SBE_OTHER: R * C 
+   TDC:
+    PS0_TDC: R * C 
+    PS1_TDC: R * C 
+    PS2_TDC: R * C 
+   SVL:
+    PS0_SVL: R * C 
+    PS1_SVL: R * C 
+    PS2_SVL: R * C 
+   SARB:
+    PS0_SARB: R * C 
+    PS1_SARB: R * C 
+    PS2_SARB: R * C 
+   DOP:
+    PS0_ROSC_DOP: R * C 
+    PS2_ROSC_DOP: R * C 
+   GLUE:
+    PS0_ROSC_GLUE_DOP: R * C 
+    PS0_ROSC_GLUE: R * C 
+    PS2_ROSC_GLUE: R * C 
+   SMALL:
+    PS0_ROSC_SMALL_DOP: R * C 
+    PS0_ROSC_SMALL: R * C 
+    PS2_ROSC_SMALL: R * C 
+   DFX:
+    PS0_ROSC_DFX_DOP: R * C 
+    PS0_ROSC_DFX: R * C 
+    PS2_ROSC_DFX: R * C 
+   
+
 
 
