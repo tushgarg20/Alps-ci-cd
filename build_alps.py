@@ -1,6 +1,7 @@
 from lib.optparse_ext import OptionParser
 import lib.yaml as yaml
 import re
+import os
 import sys
 
 #############################
@@ -56,6 +57,8 @@ else:
 print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
+
+scripts_dir = os.path.abspath(os.path.dirname(__file__))
 #################################
 # Subroutines
 #################################
@@ -280,7 +283,7 @@ input_hash = {}
 infile = open(options.input_file,'r')
 for line in infile:
     data = get_data(line,"=")
-    input_hash[data[0]] = data[1]
+    input_hash[data[0]] = scripts_dir + "/" + data[1]
 
 ##############################
 # Parsing Residency File
