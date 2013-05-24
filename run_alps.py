@@ -30,6 +30,8 @@ parser.add_option("-a","--architecture",action="store", dest="dest_config", defa
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg or just specify the three letter acronym For E.g. BDW, SKL, CNL, BXT [default: %default]")
 parser.add_option("-d","--dir",action="store", dest="user_dir", default='.',
                   help=" user_dir where stat2res and build_alps scripts exist ( only used when --local is enabled) [default: %default]")
+parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
+                  help="Run build_alps in debug mode [default: %default]")
 
 (options,args) = parser.parse_args()
 
@@ -51,7 +53,10 @@ if not options.run_local:
     else:
         for line in options.formula.split():
             read_stats_cmd += [ line ]
-    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if not options.run_debug:
+        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
+    else:
+        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml , '--debug']
 
 else:
     read_stats_script = options.user_dir + '/ReadStats.pl'
@@ -63,7 +68,10 @@ else:
     else:
         read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt']
 
-    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if not options.run_debug:
+        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    else:
+        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml , '--debug']
 
 if not options.build_alps_only:
     try:
