@@ -1,0 +1,27 @@
+STAPS documentation - WIP
+
+
+STAPS is a tool inside Keiko (inside the Coho code) that can dump the Cdyn values (and other statistics) every X cycles. It gets as an input the ALPS formulas so it calculates them every X cycles. You may call it ALPS that runs every X cycle during the Keiko runtime.
+This is used to get the dynamic Cdyn over a full trace, calculated every X cycles window.
+ 
+It is used by SAMPA to choose the right 10,000 cycles window piece of code to copy into a snippet. That snippet is then used in ASPEN (that can’t run long traces). The “right 10,000 cycles window” is basically a representative short piece of code for the full trace. You can call it tracing the traces.
+STAPS is also used in studies and other places where dynamic Cdyn values are needed (like when running and developing in Keiko the di/dt virus).
+ 
+The STAPS code was coded by a student of Aviad Cohen a few years ago. Its purpose was for developing a higher level simulator on top of Keiko that can change volt/freq based on dynamic behavior of power and temperature (like today we have APPS and Fox2). Since then he had left Intel but we (and Oregon) are still using it for SAMPA and other stuff.
+
+
+The Perl scripts of ALPS are using Coho’s final stat file at the end of the run to calculate power. These stat files have only the total activity of the trace. So the power calculation gives the average power of the trace.
+To get a plot of the power over time, we specifically implemented inside Coho a tool we call “STAPS”. Running Coho as usual with a few added knobs will activate STAPS and thus will produce at the end of the run an additional file with data sampled in predefined intervals.
+So basically, ALPS formulas also exist (in a different format) under Coho and I make sure to update them from time to time. This special format is actually being output as a side effect of any regular Perl ALPS run.
+
+Running Coho with the “help” knob will give you explanation about all of Coho’s knobs including the ones for STAPS.
+
+Here’s the command line (add these knobs to your Coho command line):
+-staps_output_interval <interval size in cycles> -staps_formula_file <ALPS formula file in Coho format> -staps_aliases_file <ALPS formula aliases file in Coho format> -staps_output_filter "<phrase to grep in the stats you want>"
+ 
+For example:
+-staps_output_interval 1000 -staps_formula_file config/power_formulas.gesher.formulas -staps_aliases_file config/power_formulas.gesher.aliases -staps_output_filter ".power"
+ 
+The formulas files are in the syntax that exists in Coho (in the config directory).
+
+By the way, these power formulas are being calculated anyway at the end of any Coho run and being dumped to the end of the stat file as the average power of the whole trace.

@@ -1,0 +1,83 @@
++-----------------------------------------------------------------------------+
+| Logfile        : alp_soc.log                                                |
+| Job id         : 119949002                  Class: SLES10_2G_nosusp Qslot: /MPS/indigo|
+| Executed on    : inlc2560                   Pool : SRR_NBP                  |
+| Queueing time  : Mon Jun  4 17:19:40 2012                                   |
+| Starting time  : Mon Jun  4 17:19:45 2012          Qwait:   0h:00m:05s      |
+| Command        : g /nfs/iind/disks/mmgarch.17/ssrini2/Genny7Stuff/Alps_GT/Gennysim7_scripts/runall.pl -i /nfs/iind/disks/mmgarch.17/ssrini2/Genny7Stuff/Gennysim_colorinl3_SOC/tl_12ww16_lp_pruned_for_power.tlist -odir /nfs/iind/disks/mmgarch.17/ssrini2/Genny7Stuff/Alps_GT/Gennysim7_scripts/GT3_BASE_WLV3X5_WW23 -ofile test.csv |
++-----------------------------------------------------------------------------+
+test.csv
+##############################
+Gen7            	 -- 	 1
+Gen7.5          	 -- 	 2
+Gen8            	 -- 	 3
+Gen9            	 -- 	 4
+Vlv1(2EUs,3:1)  	 -- 	 5
+Vlv2(4EUs,3:2)  	 -- 	 6
+Vlv3(6EUs,1:1)  	 -- 	 7
+Vlv4(4EUs,1:1)  	 -- 	 8
+CHV (4EUs,8EUs) 	 -- 	 9
+CHV (16EUs)     	 -- 	 10
+WLV (16EUs)     	 -- 	 11
+BRX (4EUs)      	 -- 	 12
+CHV (GT0)       	 -- 	 13
+##############################
+Enter your choice: dx10_3dmkva_entry_gt1_gfxbench-20110712__gen7si-aub-BR-1109-03K8_00588.GT3_L3_512K.stat
+
+Processing fixfunction
+
+Processing slice
+
+Processing eu
+
+Processing halfslice
+
+Processing sampler
+
+Processing l3cache
+
+Processing gti
+
+Processing media
+
+-------------------------
+dx10_3dmkva_entry_gt1_gfxbench-20110712__gen7si-aub-BR-1109-03K8_01850.GT3_L3_512K.stat
+
+Processing fixfunction
+
+Processing slice
+
+Processing eu
+
+Processing halfslice
+
+Processing sampler
+
+Processing l3cache
+
+Processing gti
+
+Processing media
+
+-------------------------
+dx10_3dmkva_entry_gt1_gfxbench-20110712__gen7si-aub-BR-1109-03K8_02138.GT3_L3_512K.stat
+
+Processing fixfunction
+
+Processing slice
+
+Processing eu
+
+Processing halfslice
+
+Processing sampler
+
+Processing l3cache
++-----------------------------------------------------------------------------+
+| Exit Status    : -8                                                         |
+  NB: Job killed by a specific remote request
+| Finishing time : Mon Jun  4 17:49:33 2012                                   |
+| CPU time       : Usr 565.29s Sys 2.95s   WC  0h:29m:47s                     |
+| Rusage Stats   : Mem:58     PF:  245633/1  CSv/f:  0/0     Swaps:0          |
+|                :           Msg:    0/0     IOops:  0/0     Sigs :0          |
++-----------------------------------------------------------------------------+
