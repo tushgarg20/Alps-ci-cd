@@ -1,0 +1,104 @@
+ALPS documentation
+
+This alps has many names:
+	"alps.pl" tool
+	"Perl alps"
+	"stand-alone alps"
+	"external alps"
+This is NOT the "keiko internal alps" which is coded in C inside Keiko's code.
+
+Tool location:
+	The tool is located either in the private IDC location (which is the latest IDC version):
+		/nfs/iil/proj/mpgarch/skl_pwer_01/ALPS/tool/official_latest/
+	Or inside the Keiko repository (which gets synched with the private version every once in a while):
+		/keiko/coho/bin/ALPS/
+
+Permissions:
+	The group permissions needed to access the private IDC repository: "arch_gst".
+
+Tool files (scripts and configuration):
+	Executable:
+		/scripts/alps.pl
+	Configs:
+		The config files are located under this hierarchy:
+			/config/<architecture name>/<config file>
+		For example (there are many other configs so choose what you need):
+			/config/<snb or skl>/<gesher_1core_0gt_3slc.cfg or skl_1core_2slc.cfg>
+
+Formulas:
+	Location:
+		The formulas can be found inside the Keiko repository:
+			keiko/coho/bin/ALPS/formulas/
+	Under the formulas location, you can find the formulas structure per architecture. For example:
+		/<gsr_idc_update or skl_golden_cpr1>/formulas/formulas_file_list.txt
+	Ownership in SKL:
+		The formulas are owned and maintained in a repository in the design by the SPOs and Muhamad Abozaed's team.
+		Arik Gihon from Shay Levi's Arch power team is the owner of the formulas for Arch. He updates them in Keiko once in a while to be the latest as in the design repository.
+
+Stats files:
+	You will need to run your traces on Keiko with the relevant knobs set to dump the required stats for the power formulas. This will make sure that all the required stats that ALPS needs will come out.
+	Otherwise, formulas with missing stats will result in "0" which will typically show lower power in the relevant fubs.
+	Histograms:
+		By default, histograms dump is not enabled since they consume a lot of space.
+		To be on the safe side, you can dump all histograms using the knob:
+			-core_histo_enable_all 1
+		It is possible to run Keiko with only the required histograms enabled using the "-core_histo_enable "<string list of histograms names>"" knob.
+			In this case you need to know what those histograms are (the histograms used by your formulas) and they pottentially be different per formulas files you use.
+	Other required stats:
+		To enable many other required stats which are not dumped by default, use the formula enable knob:
+			-formula_enable 1
+
+Explanation about the high level flow from Keiko to ALPS:
+	You will need to run your traces on Keiko with the needed histograms and/or other knobs enabled.
+	Then, you run ALPS script on the stats files to get the power rollup files.
+	You should always make sure you're using the latest formulas that match to the Keiko version you're using!
+		Older formulas may result in broken counters which had their names changed in newer Keiko versions.
+		The quality of the Cdyn numbers is dependent on this. Typically, broken formulas/keiko will result in lower Cdyn (since ALPS evaluates broken formulas to "0".
+
+ALPS command line:
+	ALPS command line template:
+		scripts/alps.pl -exp <experiment name> -o <output dir> -powerformulaslist <formulas_file_list.txt file> -logs <stats files> -TDP 5% -cfg <alps config file>
+	ALPS command line template for SKL Client (example from IDC site):
+		scripts/alps.pl -exp <experiment name> -o <output dir> -powerformulaslist /p/skl/power_rollups/power/alps/dev_txt/latest/formulas/skl_golden/formulas/formulas_file_list.txt -logs <stats files> -TDP 5% -cfg config/skl/skl_1core_0gt_3slc.cfg
+	ALPS command line template for SKL Server (example from IDC site):
+		scripts/alps.pl -exp <experiment name> -o <output dir> -powerformulaslist /p/skl/power_rollups/power/alps/dev_txt/latest/formulas/skl_golden_servers/formulas/formulas_file_list.txt -logs <stats files> -TDP 5% -cfg config/skl/skl_srv_1core_0gt_1slc.cfg
+	Raw ALPS command line example from IDC site:
+		/nfs/iil/proj/mpgarch/skl_pwer_01/ALPS/tool/official_latest/scripts/alps.pl -exp skl_golden_CFG_skl_TRCL_09Q4ww52_ST_REP_keiko110220 -o /p/skl/power_rollups/power/alps/dev_txt/latest/results/skl_golden_CFG_skl_TRCL_09Q4ww52_ST_REP_keiko110220/results -powerformulaslist /p/skl/power_rollups/power/alps/dev_txt/latest/formulas/skl_golden/formulas/formulas_file_list.txt -logs "/nfs/site/proj/mpgarch/proj_work_01/jhillel_work/traces_stats/Arch_TRCL_study_09Q4ww52_ST_REP_110220main_CFG_snb_ivb_hsw_skl/*.skl.gz" -TDP 5% -cfg /nfs/iil/proj/mpgarch/skl_pwer_01/ALPS/tool/official_latest/config/skl/skl_1core_0gt_3slc.cfg
+
+Formulas in the current IDC SKL project environment (when this documentation was written - 2012):
+	The power formulas used in the examples above are for SKL without any power savings (skl_golden and skl_golden_servers).
+	There are ongoing models that include some of the power savings features and also some fubs names changes (these are design milestones "cpr1", "cdr0a" and "cdr0b"). The latest is "cdr0b". The models are:
+		skl_golden_cpr1
+		skl_golden_cpr1_servers
+		skl_golden_cdr0a
+		skl_golden_cdr0a_servers
+		skl_golden_cdr0b
+		skl_golden_cdr0b_servers
+
+Extra optional knobs:
+	-logs_extension_to_remove_from_file_name
+		This knob chooses what string to remove from the end of the stats files names. This is useful for removing the config string that usually is added to the stats file name.
+		Alps will automatically remove ".gz" extention and ".stat[s]" extention from the name. This knob is for removing anything else in addition to that.
+		The value of this knob is a string which is a regular expression.
+		By default, this knob's value is "\\.\\w+" which removes any extention from the stats file name. Which means it will normally remove the config name from the stats file name.
+		For example, for a stats file name "long_trace_name.skl_client.gz", the ".gz" is removed anyway, and the ".skl_client" is removed as the default of this knob.
+		If you don't want alps to remove anything other than the ".gz" and ".stats" extention, then set this knob to "".
+		Note that alps will fail if you give it two stats files which, after this extention removal, will have the same name. That's to protect the user from getting two results entries in the final rollup with the same stats name.
+	-coho_prep
+		Boolean knob that will tell alps to only read the formulas and dump them to the formulas syntax that is used by the internal Keiko alps.
+		This way you don't need to run any stats power calculation, but rather only convert one formulas syntax to another.
+	-calc_power_even_if_zero_ipc
+		Boolean knob that tell alps to rollup power for a stats file even if the core's IPC in that test is 0 (or couldn't be calculated).
+
+HSD
+	There is an HSD entry for ALPS tool (currently under Skylake tools HSD). Please use it for any bugs/issues requests for the tool.
+	To gain access to the HSD tool:
+		Please fill the access form in: http://goto.intel.com/sklhsdaccess
+		Please use:
+			- ip_access_method: hsd
+			- ip_domain: HSD.Arch
+			- ip_sub_domain: Tools Focus
+	To open a ticket:
+		Goto: http://goto.intel.com/sklhsd
+		"Add New" in the "Tools" section in the "Main" menu on the left side.
+		In "Tool" name, select "ALPS" and fill the form.

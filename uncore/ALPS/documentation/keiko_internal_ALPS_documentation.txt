@@ -1,0 +1,110 @@
+Keiko Internal ALPS documentation
+
+This is the "keiko internal alps" which is coded in C inside Keiko's code.
+This is NOT the external ALPS tool written in PERL for post processing Keiko stats files.
+
+Explanation about the high level flow of the tool;
+	This tool is activated as part of the Keiko run, using the relevant knobs. You will need to run your traces on Keiko using the normal command line of Keiko with some additional knobs.
+	It takes as in input the ALPS formulas files in some specific syntax and calculates their values using the Keiko counters at the end of the Keiko run.
+	The formulas calculated values are dumped together with the Keiko regular counters into the final regular Keiko stats files, at the end of the stats files.
+	Example of the values dumped in the stats files (values are typically Cdyn at [pF] units):
+		p0.c0.exe.agu.agdecflts.load_uops.power 		5.212103
+		p0.c0.exe.agu.agdecflts.store_uops.power 		1.114198
+		p0.c0.exe.agu.agdecflts.Idle.power 		2.047500
+		p0.c0.exe.agu.agdecflts.Active.power 		6.326301
+		p0.c0.exe.agu.agdecflts.Total.power 		8.373801
+		p0.c0.exe.agu.aglad.load_uops.power 		2.743872
+		p0.c0.exe.agu.aglad.store_uops.power 		0.544580
+		p0.c0.exe.agu.aglad.Idle.power 		0.793000
+		p0.c0.exe.agu.aglad.Active.power 		3.288451
+		p0.c0.exe.agu.aglad.Total.power 		4.081451
+		p0.c0.exe.agu.Idle.power 		2.8405
+		p0.c0.exe.agu.Active.power 		9.614752
+		p0.c0.exe.agu.Total.power 		12.455252
+
+	You should always make sure you're using the latest formulas that match to the Keiko version you're using!
+		Older formulas may result in broken counters which had their names changed in newer Keiko versions.
+		The quality of the Cdyn numbers is dependent on this. Typically, broken formulas/keiko will result in lower Cdyn (since ALPS evaluates broken formulas to "0".
+
+The tool accepts as an input two text formulas files, which have the same syntax but used for different purposes:
+	Aliases formulas file --> A file containing some high level formulas typically used for aliasing formulas as easy names reference for usage inside the full power formulas.
+		Name of file, for example:
+			power_formulas.skylake.aliases
+		Content for example:
+			cdyn_scaling_1268_to_1270 : 0.73
+			p0.c0.CORE.cycle_cnt : (cycles/2)
+			p0.c0.voltage : 1
+			p0.c0.frequency : 1
+			p0.c0.v_sqr_f : ( p0.c0.voltage * p0.c0.voltage * p0.c0.frequency )
+			p0.c0.UNDEFINED : 0
+			p0.UNDEFINED : 0
+			p0.c0.UNKNOWN : 0
+			p0.UNKNOWN : 0
+			UNKNOWN : 0
+	Full formulas file --> The full ALPS power formulas.
+		Name of file, for example:
+			power_formulas.skylake.formulas
+		Content for example:
+			p0.c0.exe.agu.agdecflts.load_uops.power : ((p0.c0.execute_agu_load) / ((cycles/2))) * (2.704) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.agdecflts.store_uops.power : ((p0.c0.execute_agu_sta) / ((cycles/2))) * (1.157) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.agdecflts.Idle.power : (((cycles/2)) / ((cycles/2))) * (2.0475) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.agdecflts.Active.power : p0.c0.exe.agu.agdecflts.load_uops.power + p0.c0.exe.agu.agdecflts.store_uops.power
+			p0.c0.exe.agu.agdecflts.Total.power : p0.c0.exe.agu.agdecflts.Active.power + p0.c0.exe.agu.agdecflts.Idle.power
+			p0.c0.exe.agu.aglad.load_uops.power : ((p0.c0.execute_agu_load) / ((cycles/2))) * (1.4235) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.aglad.store_uops.power : ((p0.c0.execute_agu_sta) / ((cycles/2))) * (0.5655) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.aglad.Idle.power : (((cycles/2)) / ((cycles/2))) * (0.793) * (1) * (p0.c0.v_sqr_f)
+			p0.c0.exe.agu.aglad.Active.power : p0.c0.exe.agu.aglad.load_uops.power + p0.c0.exe.agu.aglad.store_uops.power
+			p0.c0.exe.agu.aglad.Total.power : p0.c0.exe.agu.aglad.Active.power + p0.c0.exe.agu.aglad.Idle.power
+			p0.c0.exe.agu.Idle.power : p0.c0.exe.agu.agdecflts.Idle.power + p0.c0.exe.agu.aglad.Idle.power
+			p0.c0.exe.agu.Active.power : p0.c0.exe.agu.agdecflts.Active.power + p0.c0.exe.agu.aglad.Active.power
+			p0.c0.exe.agu.Total.power : p0.c0.exe.agu.Active.power + p0.c0.exe.agu.Idle.power
+
+Keiko command line knobs:
+	To activate the tool use:
+		-formula_enable 1
+	To choose the formulas files use: 
+		-formula_file  <aliases formulas file>
+		-formula_file2 <full formulas file>
+	For example:
+		 -formula_enable 1 -formula_file keiko/coho/config/power_formulas.skylake.aliases -formula_file2 keiko/coho/config/power_formulas.skylake.formulas
+	Note:
+		Normally, projects teams should make sure to put the right default values (formulas files pointers) of these knobs in the default Keiko config files of the project.
+		So you'll just need to use "-formula_enable 1" to activate it. But it's the user's responsibility to make sure it really does use the right formulas.
+
+Formulas location:
+	Caveat:
+		This is only an example and for when this documentation was written. It is the user's responsibility to choose the right formulas together with the project's power team!
+	The formulas can be typically found in the Keiko config dir:
+		keiko/coho/config/
+	Current known formulas files are (for example):
+		power_formulas.crw.aliases
+		power_formulas.crw.formulas
+		power_formulas.gesher.aliases
+		power_formulas.gesher.formulas
+		power_formulas.hastycore.aliases
+		power_formulas.hastycore.formulas
+		power_formulas.hastycore.hsw.formulas
+		power_formulas.hastycore.hsx.formulas
+		power_formulas.hastycore.pfh_a.formulas
+		power_formulas.hastycore.pfh_b.formulas
+		power_formulas.haswell.aliases
+		power_formulas.haswell.formulas
+		power_formulas.skylake.aliases
+		power_formulas.skylake.formulas
+		power_formulas.skylake_server.aliases
+		power_formulas.skylake_server.formulas
+
+
+
+HSD
+	There is an HSD entry for ALPS tool (currently under Skylake tools HSD). Please use it for any bugs/issues requests for the tool.
+	To gain access to the HSD tool:
+		Please fill the access form in: http://goto.intel.com/sklhsdaccess
+		Please use:
+			- ip_access_method: hsd
+			- ip_domain: HSD.Arch
+			- ip_sub_domain: Tools Focus
+	To open a ticket:
+		Goto: http://goto.intel.com/sklhsd
+		"Add New" in the "Tools" section in the "Main" menu on the left side.
+		In "Tool" name, select "ALPS" and fill the form.

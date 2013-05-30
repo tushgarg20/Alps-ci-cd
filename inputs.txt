@@ -1,8 +1,8 @@
-ALPS_formula_file = /p/gat/tools/gsim_alps/Inputs/alps_formula.yml
-Cdyn = /p/gat/tools/gsim_alps/Inputs/cdyn.csv
-GateCount = /p/gat/tools/gsim_alps/Inputs/gc.csv
-Process_Scaling_Factors = /p/gat/tools/gsim_alps/Inputs/process.csv
-Voltage_Scaling_Factors = /p/gat/tools/gsim_alps/Inputs/voltage.csv
-syn_cdyn_cagr = /p/gat/tools/gsim_alps/Inputs/syn_cdyn_cagr.csv
-ebb_cdyn_cagr = /p/gat/tools/gsim_alps/Inputs/ebb_cdyn_cagr.csv
-cdyn_stepping = /p/gat/tools/gsim_alps/Inputs/stepping.csv
+ALPS_formula_file = Inputs/alps_formula.yml
+Cdyn = Inputs/cdyn.csv
+GateCount = Inputs/gc.csv
+Process_Scaling_Factors = Inputs/process.csv
+Voltage_Scaling_Factors = Inputs/voltage.csv
+syn_cdyn_cagr = Inputs/syn_cdyn_cagr.csv
+ebb_cdyn_cagr = Inputs/ebb_cdyn_cagr.csv
+cdyn_stepping = Inputs/stepping.csv

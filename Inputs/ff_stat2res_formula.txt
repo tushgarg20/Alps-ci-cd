@@ -1,0 +1,203 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numFF	=	1	#One Vertex pipeline
+	num_FF_CS	=	numFF	
+	num_FF_RS	=	numFF	
+	num_FF_RS_Cache	=	numFF	
+	num_FF_VF	=	numFF	
+	num_FF_VFBE1	=	numFF	
+	num_FF_VFBE2	=	numFF	
+	num_FF_VF_Cache	=	numFF	
+	num_FF_VSFE	=	numFF	
+	num_FF_VSBE	=	numFF	
+	num_FF_VS_Cache	=	numFF	
+	num_FF_HS	=	numFF	
+	num_FF_HS_Cache	=	numFF	
+	num_FF_TE	=	numFF	
+	num_FF_TDS	=	numFF	
+	num_FF_TDS_Cache	=	numFF	
+	num_FF_GS	=	numFF	
+	num_FF_GS_Cache	=	numFF	
+	num_FF_SOL	=	numFF	
+	num_FF_SOL_Cache	=	numFF	
+	num_FF_CL	=	numFF	
+	num_FF_SF	=	numFF	
+	num_FF_SDE	=	numFF	
+	num_FF_TDG	=	numFF	
+	num_FF_URBM	=	numFF	
+	num_FF_SVG	=	numFF	
+	num_FF_VFE	=	numFF	
+	num_FF_TSG	=	numFF	
+	num_FF_OACS	=	numFF	
+	num_FF_Small	=	numFF	
+	num_FF_Glue	=	numFF	
+#Generic				
+	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
+	 @CLOCKS@	=	CrClock.Clocks	
+	 @2XCLOCKS@	=	2xCrClock.Clocks	
+	 @GEOCLOCKS@	=	GeoClock.Clocks	
+	 @2XGEOCLOCKS@	=	2xGeoClock.Clocks	
+	 @3DPIPEDISABLE@	=	uCS.pwr_3DPipeDisabled.CrClock/@CLOCKS@	
+#CS				
+	PS0_CS	=	uCS.pwr_cs_idle.CrClock/@CLOCKS@	 # GSim really only has a stub for CS.
+	PS1_CS	=	uCS.pwr_cs_stall.CrClock/@CLOCKS@	
+	PS2_CS	=	1 - PS0_CS - PS1_CS	
+#RS				
+	PS0_RS	=	0	 # No GSIM model
+	PS1_RS	=	0	
+	PS2_RS	=	0	
+#RS Cache				
+	PS0_DX9_Cache_Idle	=	0	 # No GSIM model
+	PS0_DX9_Cache_Read	=	0	
+	PS0_DX9_Cache_Write	=	0	
+	PS0_DX9_Cache_ReadWrite	=	0	
+	PS0_BTGEN_Cache_Idle	=	0	
+	PS0_BTGEN_Cache_Read	=	0	
+	PS0_BTGEN_Cache_Write	=	0	
+	PS0_BTGEN_Cache_ReadWrite	=	0	
+#VF				
+	PS0_VF_DOP	=	 @3DPIPEDISABLE@	
+	PS0_VF	=	(Geo.uVF.pwr_vf_idle.GeoClock / @GEOCLOCKS@) - PS0_VF_DOP	
+	PS1_VF	=	1 - (PS0_VF_DOP + PS0_VF + PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped)	
+	PS2_VF_Indexed	=	Geo.uVF.pwr_vf_active_indexed.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_VF_Sequential	=	Geo.uVF.pwr_vf_active_sequential.2xGeoClock / @2XGEOCLOCKS@	
+	.temp_vf_active_control1x	=	Geo.uVF.pwr_vf_active_control1x.GeoClock / @GEOCLOCKS@	
+	.temp_vf_active_control2x	=	Geo.uVF.pwr_vf_active_control2x.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_VF_Control	=	.temp_vf_active_control1x + .temp_vf_active_control2x	# Added to catch control packets
+	PS2_VF_Dropped	=	Geo.uVF.pwr_vf_active_dropped.2xGeoClock / @2XGEOCLOCKS@	# Added to catch verts dropped because of cut, dangling, or auto-strip.
+#VFBE1				
+	PS0_VFBE1_DOP	=	 @3DPIPEDISABLE@	
+	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVsVtxPipes	
+	.temp_vertex_pipe_clocks	=	.temp_num_vertex_pipes * @GEOCLOCKS@	
+	PS0_VFBE1	=	(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock') / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	# "Not active" rollup of all structures.
+	PS1_VFBE1	=	(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock') - SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks	
+	PS2_VFBE1	=	1 - (PS0_VFBE1_DOP + PS0_VFBE1 + PS1_VFBE1)	
+#VFBE2				
+	PS0_VFBE2_DOP	=	 @3DPIPEDISABLE@	# same as VFBE1
+	PS0_VFBE2	=	(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock') / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	
+	PS1_VFBE2	=	(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock') - SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks	
+	PS2_VFBE2	=	1 - (PS0_VFBE1_DOP + PS0_VFBE1 + PS1_VFBE1)	
+#VF Cache				
+	PS0_VF_Cache_Idle	=	SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_idle\.GeoClock') / .temp_vertex_pipe_clocks	
+	PS2_VF_Cache_Read	=	SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_read\.GeoClock') / .temp_vertex_pipe_clocks	
+	PS2_VF_Cache_Write	=	SUM('Geo\.uVF\.VtxPipe_\d+\.VfAttribMissResp\.popped') / .temp_vertex_pipe_clocks	
+	PS0_VF_URBFifo_Idle	=	SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_idle\.GeoClock') / .temp_vertex_pipe_clocks	
+	PS2_VF_URBFifo_Read	=	SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_read\.GeoClock') / .temp_vertex_pipe_clocks	
+	PS2_VF_URBFifo_Write	=	SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_write\.GeoClock') / .temp_vertex_pipe_clocks	
+				
+#VSFE				
+	PS0_VSFE_DOP	=	 @3DPIPEDISABLE@	
+	PS0_VSFE	=	(Geo.uVS.pwr_vsfe_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_VSFE_DOP	
+	PS1_VSFE	=	(Geo.uVS.pwr_vsfe_stalled_or_idle.2xGeoClock - Geo.uVS.pwr_vsfe_idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_VSFE	=	1 - PS0_VSFE_DOP - PS0_VSFE - PS1_VSFE	
+#VSBE				
+	PS0_VSBE_DOP	=	 @3DPIPEDISABLE@	
+	PS0_VSBE	=	(Geo.uVS.pwr_vsbe_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_VSBE_DOP	
+	PS1_VSBE	=	(Geo.uVS.pwr_vsbe_stalled_or_idle.2xGeoClock - Geo.uVS.pwr_vsbe_idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_VSBE	=	1 - PS0_VSBE_DOP - PS0_VSBE - PS1_VSBE	
+#VS Cache				
+	PS0_VS_Cache_Idle	=	1 - (Geo.uVS.pwr_vscache_active.2xGeoClock / @2XGEOCLOCKS@ )	
+	PS2_VS_Cache_Read	=	Geo.uVS.pwr_vscache_read.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_VS_Cache_Write	=	Geo.uVS.pwr_vscache_write.2xGeoClock / @2XGEOCLOCKS@	
+#HS				
+	PS0_HS_DOP	=	 @3DPIPEDISABLE@	
+	PS0_HS	=	(Geo.uHS.pwr_hs_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_HS_DOP	
+	PS1_HS	=	Geo.uHS.pwr_hs_stalled_or_idle_ungated_count.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_HS_Enabled	=	Geo.uHS.pwr_hs_active_enabled.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_HS_Disabled	=	Geo.uHS.pwr_hs_active_disabled.2xGeoClock / @2XGEOCLOCKS@	
+#HS Cache				
+	PS0_HS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
+	PS2_HS_Cache_Read	=	Geo.uHS.pwr_hs_deref_ram_reads.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_HS_Cache_Write	=	Geo.uHS.pwr_hs_deref_ram_writes.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_HS_Cache_ReadWrite	=	Geo.uHS.pwr_hs_deref_ram_read_write.2xGeoClock / @2XGEOCLOCKS@	
+#TE				
+	PS0_TE_DOP	=	 @3DPIPEDISABLE@	
+	PS0_TE	=	(Geo.uTE.pwr_te_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_TE_DOP	
+	PS1_TE	=	1 - (PS0_TE_DOP + PS0_TE + PS2_TE_Enabled + PS2_TE_Disabled)	
+	PS2_TE_Enabled	=	Geo.uTE.pwr_te_active_enabled.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_TE_Disabled	=	Geo.uTE.pwr_te_active_disabled.2xGeoClock / @2XGEOCLOCKS@	
+#TDS				
+	PS0_TDS_DOP	=	 @3DPIPEDISABLE@	
+	PS0_TDS	=	(Geo.uDS.pwr_ds_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_TDS_DOP	
+	PS1_TDS	=	(Geo.uDS.pwr_ds_stalled_or_idle_ungated_count.2xGeoClock - Geo.uDS.pwr_ds_idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_TDS_Enabled	=	1 - (PS0_TDS_DOP + PS0_TDS + PS1_TDS + PS2_TDS_Disabled)	
+	PS2_TDS_Disabled	=	Geo.uDS.pwr_ds_active_disabled.2xGeoClock / @2XGEOCLOCKS@	
+#TDS Cache				
+	PS0_TDS_Cache_Idle	=	0	# 0 Cdyn for PS0 Domain Shader EBB
+	PS2_TDS_Cache_Read	=	(Geo.uDS.pwr_ds_interior_cache_reads.2xGeoClock + Geo.uDS.pwr_ds_exterior_cache_reads.2xGeoClock) / (2 * @2XGEOCLOCKS@)	
+	PS2_TDS_Cache_Write	=	(Geo.uDS.pwr_ds_interior_cache_writes.2xGeoClock + Geo.uDS.pwr_ds_exterior_cache_writes.2xGeoClock) / (2 * @2XGEOCLOCKS@)	
+	PS2_TDS_Cache_ReadWrite	=	(Geo.uDS.pwr_ds_interior_cache_read_write.2xGeoClock + Geo.uDS.pwr_ds_exterior_cache_read_write.2xGeoClock) / (2 * @2XGEOCLOCKS@)	
+#GS				
+	PS0_GS_DOP	=	 @3DPIPEDISABLE@	
+	PS0_GS	=	(Geo.uGS.pwr_gs_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_GS_DOP	
+	PS1_GS	=	(Geo.uGS.pwr_gs_stalled_or_idle.2xGeoClock  - Geo.uGS.pwr_gs_idle.2xGeoClock)/ @2XGEOCLOCKS@	
+	PS2_GS_Enabled	=	1 - (PS0_GS_DOP + PS0_GS + PS1_GS + PS2_GS_Disabled)	
+	PS2_GS_Disabled	=	Geo.uGS.pwr_gs_active_disabled.2xGeoClock / @2XGEOCLOCKS@	
+#GS Cache				
+	PS0_GS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
+	PS2_GS_Cache_Read	=	Geo.uGS.pwr_gs_deref_ram_reads.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_GS_Cache_Write	=	Geo.uGS.pwr_gs_deref_ram_writes.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_GS_Cache_ReadWrite	=	Geo.uGS.pwr_gs_deref_ram_read_write.2xGeoClock / @2XGEOCLOCKS@	
+#SOL				
+	PS0_SOL_DOP	=	 @3DPIPEDISABLE@	#Stub model
+	PS0_SOL	=	(Geo.uSOL.pwr_sol_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_SOL_DOP	
+	PS1_SOL	=	(Geo.uSOL.pwr_sol_stalled_or_idle.2xGeoClock - Geo.uSOL.pwr_sol_idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_SOL_Enabled	=	Geo.uSOL.pwr_sol_active_enabled.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_SOL_Disabled	=	1 - (PS0_SOL_DOP + PS0_SOL + PS1_SOL + PS2_SOL_Enabled)	
+#SOL Cache				
+	PS0_SOL_Cache_Idle	=	0	#NO GSIM model
+	PS2_SOL_Cache_Read	=	0	
+	PS2_SOL_Cache_Write	=	0	
+	PS2_SOL_Cache_ReadWrite	=	0	
+#CL				
+	PS0_CL_DOP	=	 @3DPIPEDISABLE@	#No GSIM model - approximating with SOL
+	PS0_CL	=	(Geo.uSOL.pwr_sol_idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_CL_DOP	
+	PS1_CL	=	(Geo.uSOL.pwr_sol_stalled_or_idle.2xGeoClock - Geo.uSOL.pwr_sol_idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_CL	=	1 - (PS0_CL_DOP + PS0_CL + PS1_CL)	
+				
+#SF				
+	PS0_SF_DOP	=	 @3DPIPEDISABLE@	
+	PS0_SF	=	(Geo.uSF.pwr_SF_Idle.2xGeoClock / @2XGEOCLOCKS@) - PS0_SF_DOP	
+	PS1_SF	=	(Geo.uSF.pwr_SF_Stalled_or_Idle.2xGeoClock - Geo.uSF.pwr_SF_Idle.2xGeoClock) / @2XGEOCLOCKS@	
+	PS2_SF_Culled	=	(Geo.uSF.SF_SimpleCulled + Geo.uSF.SF_ComplexCulled) / @2XGEOCLOCKS@	
+	PS2_SF_NotCulled_FastClip	=	Geo.uSF.pwr_SF_NotCulled_FastClip.2xGeoClock / @2XGEOCLOCKS@	
+	PS2_SF_NotCulled_NotFastClip	=	Geo.uSF.pwr_SF_NotCulled_NotFastClip.2xGeoClock / @2XGEOCLOCKS@	
+#SDE				
+	PS0_SDE_DOP	=	 @3DPIPEDISABLE@	
+	PS0_SDE	=	(Geo.uSDE.pwr_SDE_Idle.CrClock / @CLOCKS@) - PS0_SDE_DOP	
+	PS1_SDE	=	(Geo.uSDE.pwr_SDE_Idle.CrClock - Geo.uSDE.pwr_SDE_Idle.CrClock) / @CLOCKS@	
+	PS2_SDE_Culled	=	Geo.uSDE.pwr_SDE_Culled.CrClock / @CLOCKS@	
+	PS2_SDE_NotCulled	=	Geo.uSDE.pwr_SDE_NotCulled.CrClock / @CLOCKS@	
+#TDG				
+	PS0_TDG	=	uTDG.Idle.CrClock / @CLOCKS@	
+	PS1_TDG	=	(uTDG.IdleOrStalled.CrClock - uTDG.Idle.CrClock) / @CLOCKS@	
+	PS2_TDG	=	1 - PS0_TDG - PS1_TDG	
+#URBM				
+	PS0_URBM_DOP	=	0	#No GSIM model
+	PS0_URBM	=	0	
+	PS1_URBM	=	0	
+	PS2_URBM	=	0	
+#SVG				
+	PS0_SVG	=	0	#No GSIM model
+	PS1_SVG	=	0	
+	PS2_SVG	=	0	
+#VFE				
+	PS0_VFE	=	Med.uVFE.pwr_Idle.CrClock / @CLOCKS@	#Media GPGPU
+	PS1_VFE	=	(Med.uVFE.pwr_IdleOrStalled.CrClock - Med.uVFE.pwr_Idle.CrClock) / @CLOCKS@	
+	PS2_VFE	=	1 - PS0_VFE - PS1_VFE	
+#TSG				
+	PS0_TSG	=	Med.uTSG.pwr_Idle.CrClock / @CLOCKS@	#Media GPGPU
+	PS1_TSG	=	(Med.uTSG.pwr_IdleOrStalled.CrClock - Med.uTSG.pwr_Idle.CrClock) / @CLOCKS@	
+	PS2_TSG	=	1 - PS0_TSG - PS1_TSG	
+#OACS				
+	PS0_OACS	=	0	#No GSIM model
+	PS1_OACS	=	0	
+	PS2_OACS	=	0	
+#Small				
+	PS0_Small	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
+	PS1_Small	=	PS1_VF	
+	PS2_Small	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+#Glue				
+	PS0_Glue	=	PS0_VF_DOP + PS0_VF	#Approximating Glue units with VF residencies
+	PS1_Glue	=	PS1_VF	
+	PS2_Glue	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped

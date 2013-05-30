@@ -1,6 +1,7 @@
 from lib.optparse_ext import OptionParser
 import lib.yaml as yaml
 import re
+import os
 import sys
 
 #############################
@@ -18,6 +19,8 @@ parser.add_option("-o","--output",dest="output_file",
                   help="Name of output YAML file")
 parser.add_option("-a","--architecture",dest="dest_config",
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
+parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
+                  help="Run build_alps in debug mode [default: %default]")
 
 (options,args) = parser.parse_args()
 
@@ -37,7 +40,11 @@ cfg = options.dest_config.lower()
 paths = []
 linest_coeff = {}
 log_file = options.output_file + ".log"
+debug_file = options.output_file + ".cdyn.log"
 lf = open(log_file,'w')
+if (options.run_debug):
+    df = open(debug_file,'w')
+    print("Weight,Config,Stepping",file=df)
 
 if cfg.find('bdw') > -1 :
     cfg ='Gen8'
@@ -56,6 +63,8 @@ else:
 print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
+
+scripts_dir = os.path.abspath(os.path.dirname(__file__))
 #################################
 # Subroutines
 #################################
@@ -124,7 +133,9 @@ def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
     if(base_cfg == None or stepping == None):
         return 0
-    #print (stat,base_cfg,stepping)
+    if(options.run_debug):
+        print ("{0},{1},{2}".format(stat,base_cfg,stepping),file=df)
+        #print (stat,",",base_cfg,",",stepping,file=df)
     base_cdyn = cdyn_hash[stat][base_cfg][stepping]['weight']
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
     ref_gc = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
@@ -280,7 +291,7 @@ input_hash = {}
 infile = open(options.input_file,'r')
 for line in infile:
     data = get_data(line,"=")
-    input_hash[data[0]] = data[1]
+    input_hash[data[0]] = scripts_dir + "/" + data[1]
 
 ##############################
 # Parsing Residency File

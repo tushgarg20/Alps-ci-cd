@@ -1,0 +1,5 @@
+UNCORE/uncore.formula.latest.skl_golden.xls
+#../GT/gen9/gen9_gt3_alps7_ww24_avgAR.xls
+SA/sa.formula.latest.skl_golden.xls
+#HASTY/hasty_mpowell_ww36.xls
+FC_ST/FC_ST.formula.latest.skl_golden.xls
