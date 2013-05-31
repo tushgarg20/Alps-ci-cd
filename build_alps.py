@@ -58,6 +58,12 @@ elif cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 else:
     print (cfg, "--> Config not supported\n");
+    print("Command Line -->",file=lf)
+    print (" ".join(sys.argv),file=lf)
+    print("",file=lf)
+    print ("Config not Supported",file=lf)
+    print("Exit",file=lf)
+    lf.close()
     exit(1);
 
 print("Command Line -->",file=lf)

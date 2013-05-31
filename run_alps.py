@@ -49,7 +49,7 @@ yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 if not options.run_local:
     read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat]
     if options.formula == 'formula.txt':
-        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt']
+        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/ross_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/rosc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/hdc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/z_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/color_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/other_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gam_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/ff_stat2res_formula.txt']
     else:
         for line in options.formula.split():
             read_stats_cmd += [ line ]
@@ -66,7 +66,7 @@ else:
         for line in options.formula.split():
             read_stats_cmd += [ line ]
     else:
-        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt']
+        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/ross_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/rosc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/hdc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/z_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/color_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/other_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gam_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/ff_stat2res_formula.txt']
 
     if not options.run_debug:
         build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
