@@ -64,7 +64,7 @@ else:
     print ("Config not Supported",file=lf)
     print("Exit",file=lf)
     lf.close()
-    exit(1);
+    exit(2);
 
 print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
