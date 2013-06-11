@@ -148,11 +148,11 @@ def get_eff_cdyn(cluster,unit,stat):
 
     if(ref_gc == ''): #If ref gc is not present in cdyn sheet, picking it from gc sheet
         if(cdyn_type == 'syn'):
-            if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
+            if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (base_cfg not in new_gc[cluster][unit])):
                 print ("Reference gate count is not available for", cluster, ",", unit, file=lf)
                 ref_gc = 0
             else:
-                ref_gc = new_gc[cluster][unit][cfg]
+                ref_gc = new_gc[cluster][unit][base_cfg]
         else:
             ref_gc = 1
 
@@ -180,8 +180,8 @@ def get_eff_cdyn(cluster,unit,stat):
             newproduct_gc = new_gc[cluster][unit][cfg]
     else:
         newproduct_gc = 1
-    
-    gc_sf = newproduct_gc/ref_gc
+     
+    gc_sf = newproduct_gc/ref_gc if ref_gc > 0 else 0
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     return eff_cdyn
 
