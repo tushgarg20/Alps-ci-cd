@@ -8,6 +8,9 @@
 				
 #Instance Counts				
 	num_GTI_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
+	num_GTI_GLUE	=	num_GTI_GTI	
+	num_GTI_DOP	=	num_GTI_GTI	
+				
 				
 #GTI				
 	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0	
