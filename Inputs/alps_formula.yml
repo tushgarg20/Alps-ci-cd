@@ -202,13 +202,13 @@ GTI:
     PS1_GTI: R * C
     PS2_GTI: R[PS2_GTI_BW] * R * C
 
-   #DOP:
-   # PS2_GTI_DOP_1X: R * C	
-   # PS2_GTI_DOP_2X: R * C	
+   DOP:
+    PS2_GTI_DOP_1X: R * C	
+    PS2_GTI_DOP_2X: R * C	
 
-   #Glue:
-   # PS0_GTI_GLUE: R * C
-   # PS2_GTI_GLUE: R * C
+   Glue:
+    PS0_GTI_GLUE: R * C
+    PS2_GTI_GLUE: R * C
     
  
 PS2_GTI_BW : R
@@ -396,7 +396,74 @@ Sampler:
    # PS0_Glue: R * C
    # PS1_Glue: R * C
    # PS2_Glue: R * C
-
+ROSS:
+  BC:
+    PS0_BC: R * C
+    PS0_BC_DOP: R * C
+    PS1_BC: R * C
+    PS2_BC:
+     PS2_BC_COMPUTE: R * C
+     PS2_BC_FLOWTHROUGH: R * C
+     PS2_BC_BARYRAM_READ: R * C
+     PS2_BC_BARYRAM_WRITE: R * C
+  PSD:
+    PS0_PSD: R * C
+    PS0_PSD_DOP: R * C
+    PS1_PSD: R * C
+    PS2_PSD:
+     PS2_PSD_THREADDISPATCH: R * C
+     PS2_PSD_NOTHREADDISPATCH: R * C
+     PS2_PSD_WAITINGONFLUSH: R * C
+    # PS0_PSD_SCOREBOARD: R * C
+    # PS2_PSD_SCOREBOARD_READ: R * C
+    # PS2_PSD_SCOREBOARD_WRITE: R * C	
+    #PS0_PSD_BARYPAYLDASMRAM: R * C
+    #PS2_PSD_BARYPAYLDASMRAM_READ: R * C
+    #PS2_PSD_BARYPAYLDASMRAM_WRITE: R * C
+  MA_IN:
+    PS0_MA_IN: R * C
+    PS1_MA_IN: R * C
+    PS2_MA_IN: R * C
+  MA_OUT:
+    PS0_MA_OUT: R * C
+    PS1_MA_OUT: R * C
+    PS2_MA_OUT: R * C
+  TDL:
+    PS0_TDL: R * C
+    PS1_TDL: R * C
+    PS2_TDL:
+     PS2_TDL_PSDDISPATCH: R * C
+     PS2_TDL_NONPSDDISPATCH: R * C
+  IC:
+    PS0_IC: R * C
+    PS1_IC: R * C
+    PS2_IC: R * C
+#    PS0_IC_DATARAM: R * C
+#   PS2_IC_DATARAM_READ: R * C
+#    PS2_IC_DATARAM_FRONTBUFFER_READ: R * C
+#   PS2_IC_DATARAM_WRITE: R * C
+  DAPRSS:
+    PS0_DAPRSS: R * C
+    PS0_DAPRSS_DOP: R * C
+    PS1_DAPRSS: R * C
+    PS2_DAPRSS:
+     PS2_DAPRSS_WRITEFLUSH: R * C
+     PS2_DAPRSS_RENDERTARGETWRITE: R * C
+     PS2_DAPRSS_CLEARRESOLVE: R * C
+     PS2_DAPRSS_RENDERTARGETREAD: R * C
+     PS2_DAPRSS_ELSE: R * C
+    #PS0_DAPRSS_BYPASSRAM: R * C
+    #PS2_DAPRSS_BYPASSRAM_READ: R * C
+    #PS2_DAPRSS_BYPASSRAM_WRITE: R * C
+  GWL:
+    PS0_GWL: R * C
+    PS1_GWL: R * C
+    PS2_GWL: R * C
+    #PS0_ROSS_SMALL_DOP: R * C
+    #PS0_ROSS_SMALL: R * C
+    #PS2_ROSS_SMALL: R * C
+    #PS0_ROSS_GLUE_DOP: R * C
+    #PS0_ROSS_GLUE: R * C
 Z:
    HIZ:
     PS0_HIZ: R * C
@@ -446,7 +513,9 @@ Z:
      PS2_IZ_EN_EXP: R * C
      PS2_IZ_EN_UNCMP_DEPTHPRESENT: R * C
      PS2_IZ_EN_UNCMP_NODEPTHPRESENT: R * C
-     PS2_IZ_ZMARKERS: R * C
+     PS2_IZ_ZMARKERS: R * C 
+   IZ_Cache:
+    PS2_IZ_Cache:
      PS2_IZ_LATFIFO_READ: R * C
      PS2_IZ_LATFIFO_WRITE: R * C
      PS2_IZ_ZCOEFFFIFO_READ: R * C
@@ -464,6 +533,8 @@ Z:
     PS2_RCZ:
      PS2_RCZ_ALLOC_HITS: R * C
      PS2_RCZ_ALLOC_MISSES: R * C
+   RCZ_Cache:
+    PS2_RCZ_Cache:    
      PS2_RCZ_CACHE_READ: R * C
      PS2_RCZ_CACHE_WRITE: R * C
    STC:
@@ -473,6 +544,8 @@ Z:
     PS2_STC:
      PS2_STC_ALLOC_HITS: R * C
      PS2_STC_ALLOC_MISSES: R * C
+   STC_Cache:
+    PS2_STC_Cache:
      PS2_STC_CACHE_READ: R * C
      PS2_STC_CACHE_WRITE: R * C
 
@@ -537,6 +610,8 @@ COLOR:
      PS2_RCPFE_MSAA_8PPC_BLD_NOZPASS: R * C
      PS2_RCPFE_MSAA_8PPC_BLD_NOZFAIL: R * C
      PS2_RCPFE_MSAA_RTR: R * C
+   RCPFE_Cache:
+    PS2_RCPFE_Cache:
      PS2_RCPFE_COLORLATFIFO_READ: R * C
      PS2_RCPFE_COLORLATFIFO_WRITE: R * C
      PS2_RCPFE_MCSLATFIFO_READ: R * C
@@ -586,6 +661,8 @@ COLOR:
     PS2_RCC:
      PS2_RCC_ALLOC_HITS: R * C
      PS2_RCC_ALLOC_MISSES: R * C
+   RCC_Cache:
+    PS2_RCC_Cache:
      PS2_RCC_CACHE_READ: R * C
      PS2_RCC_CACHE_WRITE: R * C
    MSC:
@@ -599,6 +676,8 @@ COLOR:
      PS2_MSC_NOMSAA_8PPC_DATA: R * C
      PS2_MSC_MSAA_4PPC_DATA: R * C
      PS2_MSC_MSAA_8PPC_DATA: R * C
+    MSC_Cache:
+    PS2_MSC_Cache:
      PS2_MSC_CACHE_READ: R * C
      PS2_MSC_CACHE_WRITE: R * C
    CC:
@@ -748,8 +827,9 @@ GAM:
      PS2_GAMTLB_Miss: R * C
      PS2_GAMTLB_HitNotPresent: R * C
      PS2_GAMTLB_Bypass: R * C
-     PS2_GAMTLB_EBB_WRITE: R * C
-     PS2_GAMTLB_EBB_READ: R * C
+   GAMTLB_EBB:
+    PS2_GAMTLB_EBB_WRITE: R * C
+    PS2_GAMTLB_EBB_READ: R * C
    GAMD:
     PS0_GAMD: R * C
     PS1_GAMD: R * C
@@ -757,8 +837,9 @@ GAM:
      PS2_GAMD_READ: R * C
      PS2_GAMD_WRITE_Media: R * C
      PS2_GAMD_WRITE: R * C
-     PS2_GAMD_Cache_READ: R * C
-     PS2_GAMD_Cache_WRITE: R * C
+   GAMD_Cache: 
+    PS2_GAMD_Cache_READ: R * C
+    PS2_GAMD_Cache_WRITE: R * C
    GAMW:
     PS0_GAMW: R * C
     PS1_GAMW: R * C
@@ -768,6 +849,7 @@ GAM:
      PS2_GAMW_One_Walk: R * C
      PS2_GAMW_Two_Walk: R * C
      PS2_GAMW_Three_Walk: R * C
+    GAMW_EBB: 
      PS2_GAMW_READ: R * C
      PS2_GAMW_WRITE: R * C
      PS2_GAMW_TLB_PEND_READ: R * C
@@ -977,3 +1059,5 @@ Other:
     PS2_ClockSpine: R * C
    WIDI:
     PS0_WIDI: R * C
+   Blitter:
+    PS0_Blitter: R * C
