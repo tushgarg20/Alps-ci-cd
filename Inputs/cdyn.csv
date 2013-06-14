@@ -308,9 +308,9 @@ PS2_L3_Small,Gen8,A0,1,syn,149246.2,
 PS0_LNE_Small,Gen8,A0,1,syn,80885,
 PS1_LNE_Small,Gen8,A0,1,syn,80885,
 PS2_LNE_Small,Gen8,A0,1,syn,80885,
-PS0_GTI,Gen8,A0,135.6225,syn ,3492673.48,Using BDW*1.07
-PS1_GTI,Gen8,A0,307.26,syn ,3492673.48,Using BDW*1.07
-PS2_GTI,Gen8,A0,1275.675,syn ,3492673.48,Approximated using extrapolated 100% BW Cdyn
+PS0_GTI,Gen8,A0,135.6225,syn ,3053187,Using BDW*1.07
+PS1_GTI,Gen8,A0,307.26,syn ,3053187,Using BDW*1.07
+PS2_GTI,Gen8,A0,1275.675,syn ,3053187,Approximated using extrapolated 100% BW Cdyn
 PS0_GTI_GLUE,Gen8,A0,3.07304,syn ,1,Using BDW*1.07
 PS2_GTI_GLUE,Gen8,A0,6.8587,syn ,1,Using BDW*1.07
 PS2_GTI_DOP_1X,Gen8,A0,48.7385,syn ,1,Using BDW*1.07

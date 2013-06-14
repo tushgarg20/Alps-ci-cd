@@ -129,14 +129,14 @@ EU_Utilization: R
 EU_IPC: R
 
 L3_Bank:
-   LTCDData:
+   LTCD_Data:
     PS0_LTCD_Data: R * C
     PS2_LTCD_Data_Read: R * C
     PS2_LTCD_Data_Write: R * C
     PS2_LTCD_Data_HB_Read: R * C
     PS2_LTCD_Data_HB_Write: R * C
 
-   LTCDTag:
+   LTCD_Tag:
     PS0_LTCD_Tag: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagRead: R * C
     PS2_LTCD_Tag_SLM_ECC_NoTagWrite: R * C
@@ -201,16 +201,12 @@ GTI:
     PS0_GTI: R * C
     PS1_GTI: R * C
     PS2_GTI: R[PS2_GTI_BW] * R * C
-
    DOP:
-    PS2_GTI_DOP_1X: R * C	
-    PS2_GTI_DOP_2X: R * C	
-
-   Glue:
+    PS2_GTI_DOP_1X: R * C
+    PS2_GTI_DOP_2X: R * C
+   GLUE:
     PS0_GTI_GLUE: R * C
     PS2_GTI_GLUE: R * C
-    
- 
 PS2_GTI_BW : R
 
 Sampler:
@@ -677,9 +673,9 @@ COLOR:
      PS2_MSC_MSAA_4PPC_DATA: R * C
      PS2_MSC_MSAA_8PPC_DATA: R * C
     MSC_Cache:
-    PS2_MSC_Cache:
-     PS2_MSC_CACHE_READ: R * C
-     PS2_MSC_CACHE_WRITE: R * C
+     PS2_MSC_Cache:
+      PS2_MSC_CACHE_READ: R * C
+      PS2_MSC_CACHE_WRITE: R * C
    CC:
     PS0_CC: R * C
     PS0_CC_DOP: R * C
