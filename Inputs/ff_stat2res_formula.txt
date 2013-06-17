@@ -31,6 +31,7 @@
 	num_FF_OACS	=	numFF	
 	num_FF_Small	=	numFF	
 	num_FF_Glue	=	numFF	
+	num_FF_DOP	=	numFF	
 #Generic				
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
 	 @CLOCKS@	=	CrClock.Clocks	
@@ -194,10 +195,14 @@
 	PS1_OACS	=	0	
 	PS2_OACS	=	0	
 #Small				
-	PS0_Small	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
-	PS1_Small	=	PS1_VF	
-	PS2_Small	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+	PS0_FF_Small	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
+	PS1_FF_Small	=	PS1_VF	
+	PS2_FF_Small	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #Glue				
-	PS0_Glue	=	PS0_VF_DOP + PS0_VF	#Approximating Glue units with VF residencies
-	PS1_Glue	=	PS1_VF	
-	PS2_Glue	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped
+	PS0_FF_Glue	=	PS0_VF_DOP + PS0_VF	#Approximating Glue units with VF residencies
+	PS1_FF_Glue	=	PS1_VF	
+	PS2_FF_Glue	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+#DOP				
+	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
+	PS1_FF_DOP	=	0	
+	PS2_FF_DOP	=	 @3DPIPEDISABLE@

@@ -4,12 +4,19 @@
 	numEURows	=	knob.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 	num_ROSS_BC	=	numROSS	
 	num_ROSS_PSD	=	numROSS	
+	num_ROSS_PSD_Scoreboard	=	numROSS	
+	num_ROSS_PSD_BaryPayloadRAM	=	numROSS	
 	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
 	num_ROSS_TDL	=	numROSS	
 	num_ROSS_IC	=	numROSS	
+	num_ROSS_IC_DataRAM	=	numROSS	
 	num_ROSS_DAPRSS	=	numROSS	
+	num_ROSS_DAPRSS_BypassRAM	=	numROSS	
 	num_ROSS_GWL	=	numROSS	
+	num_ROSS_Glue	=	numROSS	
+	num_ROSS_DFX	=	numROSS	
+	num_ROSS_DOP	=	numROSS	
 #Generic				
 	 @CLOCKS@	=	CrClock.Clocks	
 	 @ANY_BC@	=	S\d+\.SS\d+\.uBC\.	
@@ -91,7 +98,14 @@
 	.temp_PS2_TDL	=	PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH	
 	.temp_PS2_DAPRSS	=	PS2_DAPRSS_WRITEFLUSH + PS2_DAPRSS_RENDERTARGETWRITE + PS2_DAPRSS_CLEARRESOLVE + PS2_DAPRSS_RENDERTARGETREAD + PS2_DAPRSS_ELSE	
 	PS2_ROSS_SMALL	=	MAX(.temp_PS2_BC, .temp_PS2_PSD, PS2_MA_IN, PS2_MA_OUT, .temp_PS2_TDL, PS2_IC, .temp_PS2_DAPRSS, PS2_GWL)	
-				
 #Glue				
 	PS0_ROSS_GLUE_DOP	=	uCS.pwr_3DPipeDisabled.CrClock/@CLOCKS@	
-	PS0_ROSS_GLUE	=	PS0_ROSS_SMALL
+	PS0_ROSS_GLUE	=	PS0_ROSS_SMALL	
+	PS2_ROSS_GLUE	=	PS2_ROSS_SMALL	
+#Dfx				
+	PS0_ROSS_DFX_DOP	=	uCS.pwr_3DPipeDisabled.CrClock/@CLOCKS@	
+	PS0_ROSS_DFX	=	PS0_ROSS_SMALL	
+	PS2_ROSS_DFX	=	PS2_ROSS_SMALL	
+#DOP				
+	PS0_ROSS_DOP	=	1 - PS2_ROSS_DOP	
+	PS2_ROSS_DOP	=	uCS.pwr_3DPipeDisabled.CrClock/@CLOCKS@
