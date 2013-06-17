@@ -113,3 +113,13 @@ Other,Gen9LPClient,Gen8SoC,NA
 Other,Gen9LPClient,Gen9LPClient,1
 Other,Gen9LPClient,Gen9LPSoC,0.9
 Other,Gen9LPClient,Gen10LP,0.95
+ROSS,Gen8,Gen8,1
+ROSS,Gen8,Gen8SoC,0.9
+ROSS,Gen8,Gen9LPClient,0.835
+ROSS,Gen8,Gen9LPSoC,0.835
+ROSS,Gen8,Gen10LP,0.79325
+ROSS,Gen9LPClient,Gen8,NA
+ROSS,Gen9LPClient,Gen8SoC,NA
+ROSS,Gen9LPClient,Gen9LPClient,1
+ROSS,Gen9LPClient,Gen9LPSoC,0.9
+ROSS,Gen9LPClient,Gen10LP,0.95

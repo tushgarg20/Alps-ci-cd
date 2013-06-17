@@ -6,6 +6,10 @@
 	num_Z_IZ	=	numSlices	
 	num_Z_RCZ	=	numSlices	
 	num_Z_STC	=	numSlices	
+	num_Z_HIZ_Cache	=	numSlices	
+	num_Z_IZ_Cache	=	numSlices	
+	num_Z_RCZ_Cache	=	numSlices	
+	num_Z_STC_Cache	=	numSlices	
 				
 #Generic				
 	 @ANY_HIZ@	=	S\d+\.uHZ\.	

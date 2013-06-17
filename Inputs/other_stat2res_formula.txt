@@ -4,8 +4,9 @@
 	num_Other_GTP24C			=	1
 	num_Other_ClockSpine		=	1
 	num_Other_WIDI				=	1
-			
+	num_Other_Blitter		=         1
 PS0_GTP24C = 1
 PS0_RoutingChannel = 1
 PS2_ClockSpine = 1
 PS0_WIDI = 1
+PS0_Blitter = 1

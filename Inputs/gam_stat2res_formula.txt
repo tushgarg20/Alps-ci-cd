@@ -17,6 +17,9 @@
 	num_GAM_SMALL	=	numGAM
 	num_GAM_DFX	=	numGAM
 	num_GAM_GAPS	=	numSlices
+	num_GAM_GAMD_Cache  =       numGAM
+	num_GAM_GAMTLB_EBB  =       numGAM
+	num_GAM_GAMW_EBB    =       numGAM
 	 @CLOCKS@	=	CrClock.Clocks
 	 @2XCLOCKS@	=	2xCrClock.Clocks
 	 @GAM@	=	uGAM

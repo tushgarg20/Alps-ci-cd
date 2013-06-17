@@ -11,6 +11,9 @@
 	num_COLOR_MSC	=	numSlices	
 	num_COLOR_CC	=	numSlices	
 	num_COLOR_DAPB	=	numSlices	
+	num_COLOR_RCPFE_Cache	=	numSlices	
+	num_COLOR_RCC_Cache	=	numSlices	
+	num_COLOR_MSC_Cache	=	numSlices	
 				
 				
 #Generic				
