@@ -72,6 +72,7 @@
 	.avg_FPUSrc6_toggle	=	(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock')/numEUs)?=0	
 	.max_FPU_toggle	=	MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle, .avg_FPUSrc5_toggle, .avg_FPUSrc6_toggle)	
 	FPU_toggle_rate	=	(.max_FPU_toggle / (32 * 4 * @CLOCKS@))	#Source bus width is 32 * 4 lanes = 128 bits
+	GA_toggle_rate	=	MAX(EM_toggle_rate, FPU_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 				
 #FPU				
 	PS0_EU_FPU 	=	SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock')/(numEUs * @CLOCKS@) - PS0_EU_DOP	#DOP Clock ungated
