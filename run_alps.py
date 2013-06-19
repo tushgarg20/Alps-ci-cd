@@ -1,6 +1,7 @@
 from lib.optparse_ext import OptionParser
 import shlex 
 import subprocess
+import lib.yaml as yaml
 
 
 #############################
@@ -16,10 +17,12 @@ parser.add_option("-p","--prefix",dest="prefix", default='psim',
                   help="OutFilePrefix used to run gsim [default: %default]")
 parser.add_option("-o","--output-dir",dest="output_dir",default=None,
                   help="Path to the output directory where stat exists [default: %default]")
-parser.add_option("-i","--input",dest="input", default='/p/gat/tools/gsim_alps/inputs.txt',
-                  help="Path to inputs.txt [default: %default]")
-parser.add_option("-f","--formula",dest="formula", default='formula.txt',
-                  help="List all formulae to use seperated by space Format: \"<path_to_formula> <path_to_formula>...\"   [default: Formulae from central repo]")
+parser.add_option("-c","--cfg",dest="alps_config", default='/p/gat/tools/gsim_alps/alps_cfg.yaml',
+                  help="Path to ALPS Config File (alps_cfg.yaml) [default: %default]")
+# parser.add_option("-i","--input",dest="input", default='/p/gat/tools/gsim_alps/inputs.txt',
+#                   help="Path to inputs.txt [default: %default]")
+# parser.add_option("-f","--formula",dest="formula", default='formula.txt',
+#                   help="List all formulae to use seperated by space Format: \"<path_to_formula> <path_to_formula>...\"   [default: Formulae from central repo]")
 parser.add_option("-l","--local",action="store_true",dest="run_local",default=False,
                   help="Run users scripts from user_dir [default: %default]")
 parser.add_option("-q","--quiet",action="store_true",dest="quiet",default=False,
@@ -35,6 +38,13 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 
 (options,args) = parser.parse_args()
 
+#######################################
+# Parsing ALPS CFG File
+#######################################
+f = open(options.alps_config,'r')
+cfg_data = yaml.load(f)
+f.close()
+
 if not options.quiet:
     print ("Building Alps model \n")
     print (options.wl_name)
@@ -48,30 +58,27 @@ yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 
 if not options.run_local:
     read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat]
-    if options.formula == 'formula.txt':
-        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/ross_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/rosc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/hdc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/z_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/color_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/other_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gam_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/ff_stat2res_formula.txt']
-    else:
-        for line in options.formula.split():
-            read_stats_cmd += [ line ]
-    if not options.run_debug:
-        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml ]
-    else:
-        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', '/p/gat/tools/gsim_alps/inputs.txt', '-r', res, '-a', options.dest_config, '-o', yaml , '--debug']
+    for formula in cfg_data['Stat2Res Formula Files']:
+        formula_file = '/p/gat/tools/gsim_alps/' + formula
+        read_stats_cmd += [formula_file]
+   
+    input_file = '/p/gat/tools/gsim_alps/' + cfg_data['ALPS Input File'][0]
+    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.run_debug):
+        build_alps_cmd += ['--debug']
 
 else:
     read_stats_script = options.user_dir + '/ReadStats.pl'
     build_alps_script = options.user_dir + '/build_alps.py'
     read_stats_cmd = [read_stats_script,'-csv','-o', res, '-e', log, stat]
-    if options.formula != 'formula.txt':
-        for line in options.formula.split():
-            read_stats_cmd += [ line ]
-    else:
-        read_stats_cmd += ['/p/gat/tools/gsim_alps/Inputs/ross_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/rosc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/sampler_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/hdc_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/eu_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/z_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/color_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/l3_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gti_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/other_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/gam_stat2res_formula.txt', '/p/gat/tools/gsim_alps/Inputs/ff_stat2res_formula.txt']
+    for formula in cfg_data['Stat2Res Formula Files']:
+        formula_file = options.user_dir + '/' + formula
+        read_stats_cmd += [formula_file]
 
-    if not options.run_debug:
-        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml ]
-    else:
-        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', options.input, '-r', res, '-a', options.dest_config, '-o', yaml , '--debug']
+    input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
+    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.run_debug):
+        build_alps_cmd += ['--debug']
 
 if not options.build_alps_only:
     try:
