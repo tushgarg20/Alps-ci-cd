@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	FPS	=	(knob.CrClock.multiplier * 1000000) / CrClock.Clocks	
-	numEUs	=	SUM('knob\.S\d+\.SS\d+\.NumEus')	#This includes Slices & SubSlices
+	numEUs	=	SUM('knob\.S\d+\.SS\d+\.R\d+\.NumEus')	#This includes Slices & SubSlices
 	num_EU_FPU	=	numEUs	
 	num_EU_EM	=	numEUs	
 	num_EU_GA	=	numEUs	
