@@ -8,8 +8,8 @@
 	num_EU_TC	=	numEUs	
 	num_EU_GRF	=	numEUs	
 	num_EU_DFX	=	numEUs	
-	num_EU_Small	=	numEUs	
-	num_EU_Glue	=	numEUs	
+	num_EU_SMALL	=	numEUs	
+	num_EU_GLUE	=	numEUs	
 	num_EU_DOP	=	numEUs	
 #Generic				
 	 @ANY_EU@	=	S\d+\.SS\d+\.R\d+\.uEU_\d+\.	

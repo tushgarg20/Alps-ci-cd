@@ -29,8 +29,8 @@
 	num_FF_VFE	=	numFF	
 	num_FF_TSG	=	numFF	
 	num_FF_OACS	=	numFF	
-	num_FF_Small	=	numFF	
-	num_FF_Glue	=	numFF	
+	num_FF_SMALL	=	numFF	
+	num_FF_GLUE	=	numFF	
 	num_FF_DOP	=	numFF	
 #Generic				
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
@@ -194,14 +194,14 @@
 	PS0_OACS	=	0	#No GSIM model
 	PS1_OACS	=	0	
 	PS2_OACS	=	0	
-#Small				
-	PS0_FF_Small	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
-	PS1_FF_Small	=	PS1_VF	
-	PS2_FF_Small	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
-#Glue				
-	PS0_FF_Glue	=	PS0_VF_DOP + PS0_VF	#Approximating Glue units with VF residencies
-	PS1_FF_Glue	=	PS1_VF	
-	PS2_FF_Glue	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+#SMALL				
+	PS0_FF_SMALL	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
+	PS1_FF_SMALL	=	PS1_VF	
+	PS2_FF_SMALL	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+#GLUE				
+	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
+	PS1_FF_GLUE	=	PS1_VF	
+	PS2_FF_GLUE	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DOP				
 	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
 	PS1_FF_DOP	=	0	

@@ -14,11 +14,11 @@
 	num_L3_Bank_LNE	=	num_L3_Slices	
 	num_L3_Bank_LNICS	=	num_L3_Slices	
 	num_L3_Bank_LNECS	=	num_L3_Slices	
-	num_L3_Bank_L3BankOther	=	num_L3_Slices * numL3Banks	#Glue/Small
-	num_L3_Bank_Dop	=	num_L3_Slices	
-	num_L3_Bank_Dfx	=	num_L3_Slices	
-	num_L3_Bank_Small	=	num_L3_Slices	
-	num_L3_Bank_Glue	=	num_L3_Slices	
+	num_L3_Bank_L3BankOther	=	num_L3_Slices * numL3Banks	#GLUE/Small
+	num_L3_Bank_DOP	=	num_L3_Slices	
+	num_L3_Bank_DFX	=	num_L3_Slices	
+	num_L3_Bank_SMALL	=	num_L3_Slices	
+	num_L3_Bank_GLUE	=	num_L3_Slices	
 #Generic				
 	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
 	 @CLOCKS@	=	CrClock.Clocks	
@@ -106,17 +106,17 @@
 	PS2_L3BankOther	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))	
 #L3DOP				
 	PS0_L3_Bank_DOP	=	0	
-	PS1_L3_Bank_DOP	=	-	
+	PS1_L3_Bank_DOP	=	0	
 	PS2_L3_Bank_DOP	=	1	#No DOP gating in L3
 #L3DFX				
-	PS0_L3_Bank_Dfx	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
-	PS1_L3_Bank_Dfx	=	1 - PS0_L3_Bank_Dfx - PS2_L3_Bank_Dfx	
-	PS2_L3_Bank_Dfx	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))	
+	PS0_L3_Bank_DFX	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
+	PS1_L3_Bank_DFX	=	1 - PS0_L3_Bank_Dfx - PS2_L3_Bank_Dfx	
+	PS2_L3_Bank_DFX	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))	
 #L3SMALL				
-	PS0_L3_Bank_Small	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
-	PS1_L3_Bank_Small	=	1 - PS0_L3_Bank_Small - PS2_L3_Bank_Small	
-	PS2_L3_Bank_Small	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))	
+	PS0_L3_Bank_SMALL	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
+	PS1_L3_Bank_SMALL	=	1 - PS0_L3_Bank_Small - PS2_L3_Bank_Small	
+	PS2_L3_Bank_SMALL	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))	
 #L3GLUE				
-	PS0_L3_Bank_Glue	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
-	PS1_L3_Bank_Glue	=	1 - PS0_L3_Bank_Glue - PS2_L3_Bank_Glue	
-	PS2_L3_Bank_Glue	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))
+	PS0_L3_Bank_GLUE	=	SUM('S\d+.uL3\.IdleCount.2xCrClock') / (@2XCLOCKS@ * num_L3_Slices)	
+	PS1_L3_Bank_GLUE	=	1 - PS0_L3_Bank_GLUE - PS2_L3_Bank_GLUE	
+	PS2_L3_Bank_GLUE	=	((SUM('@ANY_L3BANK@DataRamRd') + SUM('@ANY_L3BANK@DataRamWr') + SUM('@ANY_L3BANK@DataRamAtomic')) / (@CLOCKS@ * num_L3_Slices * numL3Banks)) + ((SUM('@ANY_L3BANK@HBDataRamUrbRdDW') + SUM('@ANY_L3BANK@HBDataRamUrbWrDW') + SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) / (16 * @CLOCKS@ * num_L3_Slices * numL3Banks))
