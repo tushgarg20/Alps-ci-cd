@@ -31,6 +31,7 @@
 	num_FF_OACS	=	numFF	
 	num_FF_SMALL	=	numFF	
 	num_FF_GLUE	=	numFF	
+	num_FF_DFX	=	numFF	
 	num_FF_DOP	=	numFF	
 #Generic				
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
@@ -202,6 +203,10 @@
 	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
 	PS1_FF_GLUE	=	PS1_VF	
 	PS2_FF_GLUE	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
+#DFX				
+	PS0_FF_DFX	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
+	PS1_FF_DFX	=	PS1_VF	
+	PS2_FF_DFX	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DOP				
 	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
 	PS1_FF_DOP	=	0	

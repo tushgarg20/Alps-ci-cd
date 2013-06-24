@@ -14,7 +14,7 @@
 	num_ROSS_DAPRSS	=	numROSS	
 	num_ROSS_DAPRSS_BypassRAM	=	numROSS	
 	num_ROSS_GWL	=	numROSS	
-	num_ROSS_Glue	=	numROSS	
+	num_ROSS_GLUE	=	numROSS	
 	num_ROSS_DFX	=	numROSS	
 	num_ROSS_DOP	=	numROSS	
 #Generic				
@@ -59,19 +59,19 @@
 	PS1_MA_OUT	=	1 - PS0_MA_OUT - PS2_MA_OUT	
 	PS2_MA_OUT	=	SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock') / (numEURows * numROSS * @CLOCKS@)	
 #TDL				
-	PS0_TDL	=	SUM(@ANY_TDL@pwr_TDL_Idle\.CrClock') / (numROSS * @CLOCKS@)	
+	PS0_TDL	=	SUM('@ANY_TDL@pwr_TDL_Idle\.CrClock') / (numROSS * @CLOCKS@)	
 	PS1_TDL	=	(1 - PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH)	
-	PS2_TDL_PSDDISPATCH	=	SUM(@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
-	PS2_TDL_NONPSDDISPATCH		SUM(@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_TDL_PSDDISPATCH	=	SUM('@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_TDL_NONPSDDISPATCH	=	SUM('@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock') / (numROSS * @CLOCKS@)	
 #IC				
-	PS0_IC	=	SUM(@ANY_ICACHE@pwr_IC_Idle\.CrClock') / (numROSS * @CLOCKS@)	
+	PS0_IC	=	SUM('@ANY_ICACHE@pwr_IC_Idle\.CrClock') / (numROSS * @CLOCKS@)	
 	PS1_IC	=	1 - PS0_IC - PS2_IC	
-	PS2_IC	=	SUM(@ANY_ICACHE@pwr_IC_Active\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC	=	SUM('@ANY_ICACHE@pwr_IC_Active\.CrClock') / (numROSS * @CLOCKS@)	
 #IC DATARAM				
 	PS0_IC_DATARAM	=	0	
-	PS2_IC_DATARAM_READ	=	SUM(@ANY_ICACHE@pwr_IC_Reads\.CrClock') / (numROSS * @CLOCKS@)	
-	PS2_IC_DATARAM_FRONTBUFFER_READ	=	SUM(@ANY_ICACHE@pwr_IC_Front_Buffer_Hits\.CrClock') / (numROSS * @CLOCKS@)	
-	PS2_IC_DATARAM_WRITE	=	SUM(@ANY_ICACHE@pwr_IC_Writes\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC_DATARAM_READ	=	SUM('@ANY_ICACHE@pwr_IC_Reads\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC_DATARAM_FRONTBUFFER_READ	=	SUM('@ANY_ICACHE@pwr_IC_Front_Buffer_Hits\.CrClock') / (numROSS * @CLOCKS@)	
+	PS2_IC_DATARAM_WRITE	=	SUM('@ANY_ICACHE@pwr_IC_Writes\.CrClock') / (numROSS * @CLOCKS@)	
 				
 #DAPRSS				
 	PS0_DAPRSS	=	(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock') / (numROSS * @CLOCKS@)) - PS0_DAPRSS_DOP	
@@ -98,7 +98,7 @@
 	.temp_PS2_TDL	=	PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH	
 	.temp_PS2_DAPRSS	=	PS2_DAPRSS_WRITEFLUSH + PS2_DAPRSS_RENDERTARGETWRITE + PS2_DAPRSS_CLEARRESOLVE + PS2_DAPRSS_RENDERTARGETREAD + PS2_DAPRSS_ELSE	
 	PS2_ROSS_SMALL	=	MAX(.temp_PS2_BC, .temp_PS2_PSD, PS2_MA_IN, PS2_MA_OUT, .temp_PS2_TDL, PS2_IC, .temp_PS2_DAPRSS, PS2_GWL)	
-#Glue				
+#GLUE				
 	PS0_ROSS_GLUE_DOP	=	uCS.pwr_3DPipeDisabled.CrClock/@CLOCKS@	
 	PS0_ROSS_GLUE	=	PS0_ROSS_SMALL	
 	PS2_ROSS_GLUE	=	PS2_ROSS_SMALL	

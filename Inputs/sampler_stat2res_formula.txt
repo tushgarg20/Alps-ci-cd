@@ -240,6 +240,6 @@
 	PS1_Media	=	0	
 	PS2_Media	=	0	
 #GLUE				
-	PS0_GLUE	=	1	
-	PS1_GLUE	=	0	
-	PS2_GLUE	=	0
+	PS0_Sampler_GLUE	=	1	
+	PS1_Sampler_GLUE	=	0	
+	PS2_Sampler_GLUE	=	0
