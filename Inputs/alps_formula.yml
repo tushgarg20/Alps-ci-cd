@@ -120,10 +120,10 @@ EU:
     PS0_EU_DOP: R * C
     PS1_EU_DOP: R * C
     PS2_EU_DOP: R * C
-  Small:
+  SMALL:
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
-  Glue:
+  GLUE:
     PS0_EU_GLUE: R * C
     PS2_EU_GLUE: R * C
   DFX:
@@ -202,17 +202,17 @@ L3_Bank:
     PS1_L3_Bank_DOP: R * C
     PS2_L3_Bank_DOP: R * C
    DFX:
-    PS0_L3_Bank_Dfx: R * C
-    PS1_L3_Bank_Dfx: R * C
-    PS2_L3_Bank_Dfx: R * C
-   Small:
-    PS0_L3_Bank_Small: R * C
-    PS1_L3_Bank_Small: R * C
-    PS2_L3_Bank_Small: R * C
-   Glue:
-    PS0_L3_Bank_Glue: R * C
-    PS1_L3_Bank_Glue: R * C
-    PS2_L3_Bank_Glue: R * C
+    PS0_L3_Bank_DFX: R * C
+    PS1_L3_Bank_DFX: R * C
+    PS2_L3_Bank_DFX: R * C
+   SMALL:
+    PS0_L3_Bank_SMALL: R * C
+    PS1_L3_Bank_SMALL: R * C
+    PS2_L3_Bank_SMALL: R * C
+   GLUE:
+    PS0_L3_Bank_GLUE: R * C
+    PS1_L3_Bank_GLUE: R * C
+    PS2_L3_Bank_GLUE: R * C
 PS2_LNI_BW: R
 PS2_LNE_BW: R
 PS2_LNICS_BW: R
@@ -240,8 +240,10 @@ Sampler:
      PS2_FL_Data_Dep_Bypass_Nearest: R * C
      PS2_FL_Data_Dep_Bypass_Bilinear: R * C
      PS2_FL_Data_Dep_Bypass_Trilinear: R * C
-     PS2_FL_Data_Dep_Bypass_Aniso: R * C
-     PS2_FL_Data_Dep_Bypass_FastAniso: R * C
+     PS2_FL_Data_Dep_Bypass_LinearAniso: R * C
+     PS2_FL_Data_Dep_Bypass_NonLinearAniso: R * C
+     PS2_FL_Data_Dep_Bypass_LinearFastAniso: R * C
+     PS2_FL_Data_Dep_Bypass_NonLinearFastAniso: R * C
      PS2_FL_Data_Dep_Bypass_FastLinear: R * C
      PS2_FL_Data_Dep_Bypass_Else: R * C
      PS2_FL_Nearest_Float16: R * C
@@ -253,12 +255,18 @@ Sampler:
      PS2_FL_Trilinear_Float16: R * C
      PS2_FL_Trilinear_Float32: R * C
      PS2_FL_Trilinear_Else: R * C
-     PS2_FL_Aniso_Float16: R * C
-     PS2_FL_Aniso_Float32: R * C
-     PS2_FL_Aniso_Else: R * C
-     PS2_FL_FastAniso_Float16: R * C
-     PS2_FL_FastAniso_Float32: R * C
-     PS2_FL_FastAniso_Else: R * C
+     PS2_FL_LinearAniso_Float16: R * C
+     PS2_FL_LinearAniso_Float32: R * C
+     PS2_FL_LinearAniso_Else: R * C
+     PS2_FL_NonLinearAniso_Float16: R * C
+     PS2_FL_NonLinearAniso_Float32: R * C
+     PS2_FL_NonLinearAniso_Else: R * C
+     PS2_FL_LinearFastAniso_Float16: R * C
+     PS2_FL_LinearFastAniso_Float32: R * C
+     PS2_FL_LinearFastAniso_Else: R * C
+     PS2_FL_NonLinearFastAniso_Float16: R * C
+     PS2_FL_NonLinearFastAniso_Float32: R * C
+     PS2_FL_NonLinearFastAniso_Else: R * C
      PS2_FL_FastLinear_Float16: R * C
      PS2_FL_FastLinear_Float32: R * C
      PS2_FL_FastLinear_Else: R * C
@@ -275,8 +283,10 @@ Sampler:
      PS2_PL_Bilinear_EWA: R * C
      PS2_PL_Trilinear: R * C
      PS2_PL_Trilinear_EWA: R * C
-     PS2_PL_Aniso: R * C
-     PS2_PL_Aniso_EWA: R * C
+     PS2_PL_LinearAniso: R * C
+     PS2_PL_LinearAniso_EWA: R * C
+     PS2_PL_NonLinearAniso: R * C
+     PS2_PL_NonLinearAniso_EWA: R * C
      PS2_PL_Else: R * C
    SC:
     PS0_SC: R * C
@@ -288,9 +298,12 @@ Sampler:
      PS2_SC_FastLinear_32BPT: R * C
      PS2_SC_FastLinear_64BPT: R * C
      PS2_SC_FastLinear_128BPT: R * C
-     PS2_SC_FastAniso_32BPT: R * C
-     PS2_SC_FastAniso_64BPT: R * C
-     PS2_SC_FastAniso_128BPT: R * C
+     PS2_SC_LinearFastAniso_32BPT: R * C
+     PS2_SC_LinearFastAniso_64BPT: R * C
+     PS2_SC_LinearFastAniso_128BPT: R * C
+     PS2_SC_NonLinearFastAniso_32BPT: R * C
+     PS2_SC_NonLinearFastAniso_64BPT: R * C
+     PS2_SC_NonLinearFastAniso_128BPT: R * C
      PS2_SC_Bilinear_Trilinear_Aniso_32BPT: R * C
      PS2_SC_Bilinear_Trilinear_Aniso_64BPT: R * C
      PS2_SC_Bilinear_Trilinear_Aniso_128BPT: R * C
@@ -402,9 +415,9 @@ Sampler:
     PS1_Media: R * C
     PS2_Media: R * C
    Glue:
-    PS0_Glue: R * C
-    PS1_Glue: R * C
-    PS2_Glue: R * C
+    PS0_Sampler_GlUE: R * C
+    PS1_Sampler_GLUE: R * C
+    PS2_Sampler_GLUE: R * C
 ROSS:
    BC:
     PS0_BC: R * C
@@ -777,6 +790,21 @@ HDC:
      PS2_HDCTLB_Read_Miss: R * C
      PS2_HDCTLB_Write_Hit: R * C
      PS2_HDCTLB_Write_Miss: R * C
+   SMALL:
+    PS0_HDC_SMALL: R * C
+    PS1_HDC_SMALL: R * C
+    PS2_HDC_SMALL: R * C
+   GLUE:
+    PS0_HDC_GLUE: R * C
+    PS1_HDC_GLUE: R * C
+    PS2_HDC_GLUE: R * C
+   DOP:
+    PS0_HDC_DOP: R * C
+    PS2_HDC_DOP: R * C
+   DFX:
+    PS0_HDC_DFX: R * C
+    PS1_HDC_DFX: R * C
+    PS2_HDC_DFX: R * C  
 ROSC:
    WMFE:
     PS0_WMFE: R * C 
@@ -1079,18 +1107,22 @@ FF:
     PS0_TSG: R * C
     PS1_TSG: R * C
     PS2_TSG: R * C
-   Small:
-    PS0_Small: R * C
-    PS1_Small: R * C
-    PS2_Small: R * C
-   Glue:
-    PS0_Glue: R * C
-    PS1_Glue: R * C
-    PS2_Glue: R * C
+   SMALL:
+    PS0_FF_SMALL: R * C
+    PS1_FF_SMALL: R * C
+    PS2_FF_SMALL: R * C
+   GLUE:
+    PS0_FF_GLUE: R * C
+    PS1_FF_GLUE: R * C
+    PS2_FF_GLUE: R * C
    DOP:
-    PS0_DOP: R * C
-    PS1_DOP: R * C
-    PS2_DOP: R * C 
+    PS0_FF_DOP: R * C
+    PS1_FF_DOP: R * C
+    PS2_FF_DOP: R * C
+   DFX:
+    PS0_FF_DFX: R * C
+    PS1_FF_DFX: R * C
+    PS2_FF_DFX: R * C
 Other:
    GTP24C:
     PS0_GTP24C: R * C
