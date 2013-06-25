@@ -221,7 +221,7 @@ GTI:
    GTI:
     PS0_GTI: R * C
     PS1_GTI: R * C
-    PS2_GTI: R[PS2_GTI_BW] * R * C
+    PS2_GTI: R * LINEST[C,R[PS2_GTI_BW]]
    DOP:
     PS2_GTI_DOP_1X: R * C
     PS2_GTI_DOP_2X: R * C
@@ -493,7 +493,7 @@ ROSS:
     PS0_ROSS_SMALL_DOP: R * C
     PS0_ROSS_SMALL: R * C
     PS2_ROSS_SMALL: R * C
-   Glue: 
+   GLUE: 
     PS0_ROSS_GLUE_DOP: R * C
     PS0_ROSS_GLUE: R * C
     PS2_ROSS_GLUE: R * C
