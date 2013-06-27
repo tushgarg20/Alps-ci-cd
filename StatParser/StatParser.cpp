@@ -203,7 +203,7 @@ int main(int argc, char** argv)
     std::string S;
 
     if(!errfile.empty())
-    {   err.open(outfile.c_str());
+    {   err.open(errfile.c_str());
         if(err.is_open()) std::cerr.rdbuf(err.rdbuf());
         else std::cerr<<"Cannot open "<<errfile<<"\n";
     }
