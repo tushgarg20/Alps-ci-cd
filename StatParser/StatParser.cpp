@@ -255,6 +255,8 @@ int main(int argc, char** argv)
 
     std::vector<CParser::CError> Err=P.CheckDependencies();
     for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+
+    std::cout.precision(20);
     
     if(!statfile.empty())
     {   CStatReaderManager STM(statfile.c_str());
