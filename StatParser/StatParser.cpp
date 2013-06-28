@@ -117,7 +117,7 @@ CStatReaderManager::CStatReaderManager(const char*fname)
 }
 
 CParser::CReader* CStatReaderManager::FindReader(std::string str)
-{   return values.find(str)==values.end() ? 0 : new CStatReader(values[str]);
+{   return new CStatReader(values.find(str)==values.end() ? 0 : values[str]);
 }
 
 std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegEx(std::string str)
