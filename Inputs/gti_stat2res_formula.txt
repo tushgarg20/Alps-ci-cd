@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Generic				
 	 @ANY_GTI@	=	p0.gti0.	
-	 @CLOCKS@	=	 @ANY_GTI@gclk_cycles	
+	.Clk	=	D(@ANY_GTI@gclk_cycles)	
 	 @RD_BW_PCLK@	=	1	
 	 @WR_BW_PCLK@	=	1	
 	 @BW_PCLK@	=	 @RD_BW_PCLK@ + @WR_BW_PCLK@	
@@ -13,16 +13,16 @@
 				
 				
 #GTI				
-	.temp_gti_superq_empty	=	(SUM('@ANY_GTI@gti_superq_empty_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_empty_cycles') : 0	
-	.temp_PS0_GTI	=	.temp_gti_superq_empty/(num_GTI_GTI * @CLOCKS@)	
-	.temp_gti_superq_full	=	(SUM('@ANY_GTI@gti_superq_full_cycles') > 0) ? SUM('@ANY_GTI@gti_superq_full_cycles') : 0	
-	.temp_PS1_GTI	=	.temp_gti_superq_full/(num_GTI_GTI * @CLOCKS@)	
-	.temp_gti_bw_clks	=	 @CLOCKS@ - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
+	.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@gti_superq_empty_cycles'))	
+	.temp_PS0_GTI	=	.temp_gti_superq_empty/(.Clk * num_GTI_GTI)	
+	.temp_gti_superq_full	=	D(SUM('@ANY_GTI@gti_superq_full_cycles'))	
+	.temp_PS1_GTI	=	.temp_gti_superq_full/(.Clk * num_GTI_GTI)	
+	.temp_gti_bw_clks	=	 .Clk - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
 	PS0_GTI	=	.temp_PS0_GTI	
 	PS1_GTI	=	.temp_PS1_GTI	
-	PS2_GTI	=	1 - .temp_PS0_GTI	
-	.temp_gti_rd_reqs	=	(SUM('@ANY_GTI@gt_rd_reqs') > 0) ? SUM('@ANY_GTI@gt_rd_reqs') : 0	
-	.temp_gti_wr_reqs	=	(SUM('@ANY_GTI@gt_wr_reqs') > 0) ? SUM('@ANY_GTI@gt_wr_reqs') : 0	
+	PS2_GTI	=	1 - (.temp_PS0_GTI + .temp_PS1_GTI)	
+	.temp_gti_rd_reqs	=	D(SUM('@ANY_GTI@gt_rd_reqs'))	
+	.temp_gti_wr_reqs	=	D(SUM('@ANY_GTI@gt_wr_reqs'))	
 	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@BW_PCLK@ * .temp_gti_bw_clks)	
 				
 	PS0_GTI_GLUE	=	.temp_PS0_GTI	
