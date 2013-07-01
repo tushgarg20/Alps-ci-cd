@@ -10,13 +10,16 @@ public:
     struct CReader
     {   virtual ~CReader(){}
         virtual bool IsConst(){ return false;}
+        virtual bool IsDefault(){ return false;}
         virtual bool IsDynamic(){ return false;}
         virtual double Value()=0;
     };
     struct CReaderManager
-    {   virtual ~CReaderManager(){}
+    {   virtual ~CReaderManager(){ for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;}
         virtual CReader* FindReader(std::string)=0;
         virtual std::map<std::string, CReader*> FindRegEx(std::string)=0;
+    protected:
+        std::map<std::string, CParser::CReader*> readers;
     };
     struct CLocation
     {   std::string file;
@@ -262,7 +265,6 @@ protected:
     std::map<std::string, CRegEx*> regexes;
     std::vector<CVariable*> vars;     // evaluation order
     std::vector<CVariable*> var_list; // output order
-    std::vector<CVariable*> readers; // output order
     std::vector<CDiffNode*> diffs;
     std::vector<CToken> tokens;
     unsigned token_ptr;

@@ -740,10 +740,12 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
     {   CVariable* V=J->second;
         CReader* R=RM->FindReader(V->name);
         if(R)
-        {   if(!V->formula.empty() && !R->IsDynamic()) Err.push_back(CError(V->file, V->line, std::string("variable name conflict: ")+V->name));
+        {   if(!V->formula.empty())
+            {   if(R->IsDynamic()) V->reader=R;
+                if(!R->IsDynamic() && !R->IsDefault()) Err.push_back(CError(V->file, V->line, std::string("variable name conflict: ")+V->name));
+            }
             else
             {   V->reader=R;
-                readers.push_back(V);
             }
         }
         else if(V->formula.empty())
@@ -766,8 +768,7 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
 }
 
 void CParser::Execute()
-{   //for(unsigned i=0;i<readers.size();i++) readers[i]->value=readers[i]->reader->Value();
-    for(unsigned i=0;i<vars.size();i++)
+{   for(unsigned i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
         V->na=true;

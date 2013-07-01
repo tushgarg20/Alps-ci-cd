@@ -6,6 +6,17 @@
 #include <boost/iostreams/filter/gzip.hpp>
 #include "ExprParser.h"
 
+/// Default reader -- return 0 if the stat not found
+
+class CDefaultReader : public CParser::CReader
+{   double value;
+public:
+    CDefaultReader(double d=0) : value(d) {}
+    bool IsConst(){ return true;}
+    bool IsDefault(){ return true;}
+    double Value(){ return value;}
+};
+
 /// Timegraph reader
 
 class CTimegraphReaderManager : public CParser::CReaderManager
@@ -14,7 +25,6 @@ class CTimegraphReaderManager : public CParser::CReaderManager
     std::vector<std::string> names;
     std::vector<double> values;
     std::map<std::string, int> by_name;
-    std::map<std::string, CParser::CReader*> readers;
     friend class CTimegraphReader;
 public:
     CTimegraphReaderManager(const char*);
@@ -34,7 +44,6 @@ public:
 
 CTimegraphReaderManager::~CTimegraphReaderManager()
 {   file.close();
-    for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;
 }
 
 CTimegraphReaderManager::CTimegraphReaderManager(const char*fname)
@@ -61,8 +70,9 @@ bool CTimegraphReaderManager::ReadLine()
 }
 
 CParser::CReader* CTimegraphReaderManager::FindReader(std::string name)
-{   if(by_name.find(name)==by_name.end()) return 0;
-    if(readers.find(name)==readers.end()) readers[name]=new CTimegraphReader(this, by_name[name]);
+{   if(readers.find(name)!=readers.end()) return readers[name];
+    if(by_name.find(name)!=by_name.end()) readers[name]=new CTimegraphReader(this, by_name[name]);
+    else readers[name]=new CDefaultReader;
     return readers[name];
 }
 
@@ -71,7 +81,8 @@ std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegEx(std:
     boost::regex re(str);
     for(std::map<std::string, int>::iterator J=by_name.begin();J!=by_name.end();J++)
     {   if(!boost::regex_match(J->first, re)) continue;
-        M[J->first]=FindReader(J->first);
+        if(readers.find(str)==readers.end()) readers[J->first]=new CTimegraphReader(this, J->second);
+        M[J->first]=readers[J->first];
     }
     return M;
 }
@@ -80,10 +91,8 @@ std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegEx(std:
 
 class CStatReaderManager : public CParser::CReaderManager
 {   std::map<std::string, double> values;
-    std::vector<CParser::CReader*> readers;
 public:
     CStatReaderManager(const char*);
-    ~CStatReaderManager(){ for(unsigned i=0;i<readers.size();i++) delete readers[i];}
     CParser::CReader* FindReader(std::string);
     std::map<std::string, CParser::CReader*> FindRegEx(std::string);
 };
@@ -92,6 +101,7 @@ class CStatReader : public CParser::CReader
 {   double value;
 public:
     CStatReader(double d) : value(d) {}
+    bool IsConst(){ return true;}
     double Value(){ return value;}
 };
 
@@ -117,7 +127,10 @@ CStatReaderManager::CStatReaderManager(const char*fname)
 }
 
 CParser::CReader* CStatReaderManager::FindReader(std::string str)
-{   return new CStatReader(values.find(str)==values.end() ? 0 : values[str]);
+{   if(readers.find(str)!=readers.end()) return readers[str];
+    if(values.find(str)!=values.end()) readers[str]=new CStatReader(values[str]);
+    else readers[str]=new CDefaultReader;
+    return readers[str];
 }
 
 std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegEx(std::string str)
@@ -125,7 +138,8 @@ std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegEx(std::stri
     boost::regex re(str);
     for(std::map<std::string, double>::iterator J=values.begin();J!=values.end();J++)
     {   if(!boost::regex_match(J->first, re)) continue;
-        M[J->first]=new CStatReader(J->second);
+        if(readers.find(str)==readers.end()) readers[J->first]=new CStatReader(J->second);
+        M[J->first]=readers[J->first];
     }
     return M;
 }
