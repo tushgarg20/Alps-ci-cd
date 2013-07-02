@@ -3,6 +3,7 @@ import lib.yaml as yaml
 import re
 import os
 import sys
+from copy import deepcopy
 
 #############################
 # Command Line Arguments
@@ -457,7 +458,7 @@ for ff in formula_files:
     f.close()
     dfs(yaml_data)
 
-output_list = paths + []
+output_list = deepcopy(paths)
 output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
 output_cdyn_data = {'GT':{}}
 gt_cdyn = {}
