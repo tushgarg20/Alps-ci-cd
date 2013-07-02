@@ -1,6 +1,7 @@
 from lib.optparse_ext import OptionParser
 import shlex 
 import subprocess
+import os
 import lib.yaml as yaml
 
 
@@ -57,10 +58,10 @@ stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 
 if not options.run_local:
-    read_stats_cmd = ['/p/gat/tools/gsim_alps/ReadStats.pl','-csv','-o', res, '-e', log, stat]
+    stat_parser_cmd = ['/p/gat/tools/gsim_alps/StatParser/StatParser','-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
         formula_file = '/p/gat/tools/gsim_alps/' + formula
-        read_stats_cmd += [formula_file]
+        stat_parser_cmd += ['-i', formula_file]
    
     input_file = '/p/gat/tools/gsim_alps/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
@@ -68,12 +69,23 @@ if not options.run_local:
         build_alps_cmd += ['--debug']
 
 else:
-    read_stats_script = options.user_dir + '/ReadStats.pl'
+    try:
+        process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+        output = process.communicate()[0]
+        ExitCode = process.wait()
+    except Exception:
+        print ('Error: StatParser compile failed to open subprocess')
+
+    if ExitCode > 1:
+        print ("StatParser compile failed with exitcode : ", ExitCode)
+        exit(ExitCode) 
+
+    stat_parser_script = options.user_dir + '/StatParser/StatParser'
     build_alps_script = options.user_dir + '/build_alps.py'
-    read_stats_cmd = [read_stats_script,'-csv','-o', res, '-e', log, stat]
+    stat_parser_cmd = [stat_parser_script,'-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
         formula_file = options.user_dir + '/' + formula
-        read_stats_cmd += [formula_file]
+        stat_parser_cmd += ['-i', formula_file]
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
@@ -82,22 +94,22 @@ else:
 
 if not options.build_alps_only:
     try:
-        process = subprocess.Popen(read_stats_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+        env_vars = os.environ
+        env_vars['LD_LIBRARY_PATH'] = '/p/gat/tools/boost/1.43.0/gcc4.3/lib64/'
+        process = subprocess.Popen(stat_parser_cmd, env=env_vars, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
         output = process.communicate()[0]
-        #print (output)
         ExitCode = process.wait()
     except Exception:
-        print ('Error: Read_stats failed to open subprocess')
+        print ('Error: StatParser failed to open subprocess')
 
     if ExitCode > 1:
-        print ("ReadStats failed with exitcode : ", ExitCode)
+        print ("StatParser failed with exitcode : ", ExitCode)
         exit(ExitCode) 
 
 try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
     output = process.communicate()[0]
     ExitCode = process.wait()
-    #print (output)
 except Exception:
     print ('Error: build_alps failed to open subprocess')
 
