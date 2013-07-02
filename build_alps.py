@@ -185,6 +185,28 @@ def get_eff_cdyn(cluster,unit,stat):
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     return eff_cdyn
 
+def which_cfg_to_use(track_cfg):
+    base_i = cdyn_precedence.index(cfg)
+    cfg_list = []
+    stepping_hash = {}
+    for pair in track_cfg:
+        if ((pair[0] not in cdyn_precedence) or (pair[1] != 'A0' and pair[1] != 'B0')):
+            continue
+        i = cdyn_precedence.index(pair[0])
+        if ((i <= base_i) and (i not in cfg_list)):
+            cfg_list.append(i)
+            if(pair[0] not in stepping_hash):
+                stepping_hash[pair[0]] = []
+            stepping_hash[pair[0]].append(pair[1])
+
+    if(len(cfg_list) == 0):
+        return None,None
+    use_cfg = cdyn_precedence[max(cfg_list)]
+    if(len(stepping_hash[use_cfg]) == 0):
+        return None,None
+    use_stepping = max(stepping_hash[use_cfg])
+    return use_cfg,use_stepping
+
 def get_linest_coeff(data_points):
     slope,intercept = 0,0
     sigma_xy = 0
@@ -213,11 +235,26 @@ def eval_linest(key_tuple,cluster,unit):
     
     cdyn_list = []
     data_points = []
+    track_cfg = []
 
     for cdyn in cdyn_hash:                             
         if(re.search(k_cdyn+'_\d+%',cdyn) and cdyn not in cdyn_list):
             cdyn_list.append(cdyn)
+            for config in cdyn_hash[cdyn]:
+                for stepping in cdyn_hash[cdyn][config]:
+                    if((config,stepping) not in track_cfg):
+                        track_cfg.append((config,stepping))
+
+    #print("{0}: {1}".format(k_cdyn,track_cfg))
+    use_cfg,use_stepping = which_cfg_to_use(track_cfg)
+    if(use_cfg == None or use_stepping == None):
+        print("No toggle rate cdyn number is available for ",k_cdyn,file=lf)
+        return 0
+    #print(cfg,stepping)
+
     for cdyn in cdyn_list:
+        if(use_cfg not in cdyn_hash[cdyn] or use_stepping not in cdyn_hash[cdyn][use_cfg]):
+            continue
         cdyn_val = get_eff_cdyn(cluster,unit,cdyn)
         matchObj = re.search(k_cdyn+'_(\d+)%',cdyn)
         x_val = float(matchObj.group(1))/100
