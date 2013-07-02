@@ -15,7 +15,7 @@
 #Generic				
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
 	 .CrClk	=	D(CrClock.Clocks)	
-	 .CrClk2x	=	D(2xCrClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	 @SEQUENCED_TYPE_READ@	=	(TypedSurfRead|TypedAtomicOp|TypedAtomicOp4x2)	
 	 @SEQUENCED_TYPE_WRITE@	=	(TypedSurfWrite|TypedAtomicOp|TypedAtomicOp4x2)	
 	 @SEQUENCED_ELSE_READ@	=	(DWordScatteredRead|ByteScatteredRead|ScatteredRead_A64|UntypedSurfRead|UntypedSurfRead_A64|UntypedAtomicOp|UntypedAtomicOp4x2|UntypedAtomicFloatAdd|UntypedAtomicOp_A64|UntypedAtomicOp4x2_A64|UntypedAtomicFloatAdd_A64)	
@@ -86,4 +86,4 @@
 #HDCDfx				
 	PS0_HDC_DFX	=	PS0_HDC_GLUE	
 	PS1_HDC_DFX	=	PS1_HDC_GLUE	
-	PS2_HDC_DFX	=	PS2_HDC_GLUE
+	PS2_HDC_DFX	=	PS2_HDC_GLUE	

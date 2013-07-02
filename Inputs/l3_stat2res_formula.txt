@@ -22,7 +22,7 @@
 #Generic				
 	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
 	 .CrClk	=	D(CrClock.Clocks)	
-	 .CrClk2x	=	D(2xCrClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	LNI_max_ports	=	numL3Banks * 2	#Max ports availabe for LNI
 	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
 	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
@@ -119,4 +119,4 @@
 #L3GLUE				
 	PS0_L3_Bank_GLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS1_L3_Bank_GLUE	=	1 - PS0_L3_Bank_GLUE - PS2_L3_Bank_GLUE	
-	PS2_L3_Bank_GLUE	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))
+	PS2_L3_Bank_GLUE	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
