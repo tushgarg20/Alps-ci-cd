@@ -2,6 +2,7 @@ from lib.optparse_ext import OptionParser
 import shlex 
 import subprocess
 import os
+import sys
 import lib.yaml as yaml
 
 
@@ -56,6 +57,35 @@ res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
 stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
+runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
+
+alps_log = open(runalps_log,'w')
+if not options.run_local:
+    wd = '/p/gat/tools/gsim_alps'
+else:
+    wd = options.user_dir
+
+try:
+    process = subprocess.Popen(['git','describe','--tags'], cwd='%s/' % (wd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+    tag = process.communicate()[0]
+    tag = (tag.rstrip()).decode("utf-8")
+    ExitCode = process.wait()
+except Exception:
+    print("Not able to read git tag")
+
+print ("Scripts Location:",os.path.abspath(wd),file=alps_log)
+print ("Git Tag:",tag,file=alps_log)
+print ("",file=alps_log)
+print ("Output Directory:",os.path.abspath(options.output_dir),file=alps_log)
+print ("StatFile: {0}.stat".format(options.prefix),file=alps_log)
+print ("ResidencyFile: {0}_res.csv".format(options.wl_name),file=alps_log)
+print ("ALPS Model: alps_{0}.yaml".format(options.wl_name),file=alps_log)
+print ("Destination Architecture: {0}".format(options.dest_config),file=alps_log)
+print ("",file=alps_log)
+print("Command Line -->",file=alps_log)
+print (" ".join(sys.argv),file=alps_log)
+print("",file=alps_log)
+alps_log.close()
 
 if not options.run_local:
     stat_parser_cmd = ['/p/gat/tools/gsim_alps/StatParser/StatParser','-csv','-o', res, '-e', log, '-s', stat]

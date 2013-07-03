@@ -345,6 +345,7 @@ resfile = open(options.residency_file,'r')
 for line in resfile:
     data = get_data(line,",")
     test = data[0]
+    print(test)
     if(re.search(r'^num_.*',test)):
         key_data = test.split("_")
         del(key_data[0])
@@ -526,3 +527,5 @@ yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
 print("Exit",file=lf)
 lf.close()
+if(options.run_debug):
+    df.close()
