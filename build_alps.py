@@ -345,7 +345,6 @@ resfile = open(options.residency_file,'r')
 for line in resfile:
     data = get_data(line,",")
     test = data[0]
-    print(test)
     if(re.search(r'^num_.*',test)):
         key_data = test.split("_")
         del(key_data[0])
