@@ -21,7 +21,7 @@
 	num_GAM_GAMTLB_EBB  	=	numGAM
 	num_GAM_GAMW_EBB    	=	numGAM
 	 @CLOCKS@	=	D(CrClock.Clocks)
-	 @2XCLOCKS@	=	D(SUM('2xCrClock.Clocks'))
+	 @2XCLOCKS@	=	D(SUM('2xCrClock\.Clocks'))
 	 @GAM@	=	uGAM
 			
 #GAMTLB			

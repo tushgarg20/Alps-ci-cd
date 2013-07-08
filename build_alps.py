@@ -526,3 +526,5 @@ yaml.dump(output_yaml_data,of,default_flow_style=False)
 of.close()
 print("Exit",file=lf)
 lf.close()
+if(options.run_debug):
+    df.close()

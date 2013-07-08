@@ -187,9 +187,9 @@
 	PS2_CC_DIS	=	D(SUM('@ANY_RCC@pwr_CCOff.CrClock')) / .Clk.num_COLOR_CC	
 				
 #DAPB				
-	PS0_DAPB	=	PS0_DAPRSC	#GSIM doesnt model this as yet
+	PS0_DAPB	=	PS0_DAPRSC	#GSIM does not model this as yet
 	PS0_DAPB_DOP	=	.DOP	
-	PS1_DAPB	=	0	#GSIM doesnt model this as yet
+	PS1_DAPB	=	0	#GSIM does not model this as yet
 	PS2_DAPB_NOMSAA_RTR	=	D(SUM('@ANY_PB@pwr_nonMsaaSurfaceRead.CrClock')) / .Clk.num_COLOR_DAPB	
 	PS2_DAPB_MSAA_RTR	=	D(SUM('@ANY_PB@pwr_MsaaSurfaceRead.CrClock')) / .Clk.num_COLOR_DAPB	
-	PS2_DAPB_DIS	=	1 - PS0_DAPB - PS0_DAPB_DOP - PS1_DAPB - PS2_DAPB_NOMSAA_RTR - PS2_DAPB_MSAA_RTR	#GSIM doesnt model this as yet
+	PS2_DAPB_DIS	=	1 - PS0_DAPB - PS0_DAPB_DOP - PS1_DAPB - PS2_DAPB_NOMSAA_RTR - PS2_DAPB_MSAA_RTR	#GSIM does not model this as yet

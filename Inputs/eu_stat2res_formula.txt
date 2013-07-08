@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
-	numEUs	=	D(SUM('knob\.S\d+\.SS\d+\.R\d+\.NumEus'))	#This includes Slices & SubSlices
+	numEUs	=	SUM('knob\.S\d+\.SS\d+\.R\d+\.NumEus')	#This includes Slices & SubSlices
 	num_EU_FPU	=	numEUs	
 	num_EU_EM	=	numEUs	
 	num_EU_GA	=	numEUs	
@@ -65,7 +65,7 @@
 	.max_EM_toggle	=	MAX(.avg_EMSrc1_toggle, .avg_EMSrc2_toggle, .avg_EMSrc3_toggle, .avg_EMSrc4_toggle, .avg_EMSrc5_toggle, .avg_EMSrc6_toggle)	
 	.avg_EU_idle_stall_clocks	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')))/(numEUs)	
 	.avg_EU_active_clocks	=	.CrClk - .avg_EU_idle_stall_clocks	
-	EM_toggle_rate	=	(.max_EM_toggle / (32 * 4 * .avg_EU_active_clocks))	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	EM_toggle_rate	=	(.max_EM_toggle / (32 * 4 * .temp_PS2_EU_EM * .CrClk))	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 	.avg_FPUSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
@@ -73,7 +73,7 @@
 	.avg_FPUSrc5_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2aTgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc6_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock'))/numEUs)?=0	
 	.max_FPU_toggle	=	MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle, .avg_FPUSrc5_toggle, .avg_FPUSrc6_toggle)	
-	FPU_toggle_rate	=	(.max_FPU_toggle / (32 * 4 * .avg_EU_active_clocks))	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	FPU_toggle_rate	=	(.max_FPU_toggle / (32 * 4 * .temp_PS2_EU_FPU * .CrClk))	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 	GA_toggle_rate	=	MAX(EM_toggle_rate, FPU_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 				
 #FPU				
@@ -186,8 +186,8 @@
 				
 #GRF				
 	PS0_GRF	=	0	#no PS0 for GRF
-	PS2_GRF_READ	=	D(SUM('@ANY_EUPIPE@pwr_GrfReadAccesses\.CrClock')) / (numEUs * .CrClk)	#GRF reads should be at 256 bit granularity (0?4)
-	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPE@pwr_GrfWriteAccesses\.CrClock')) / (numEUs * .CrClk)	#GRF writes should be at 256 bit granularity(0?2)
+	PS2_GRF_READ	=	D(SUM('@ANY_EUPIPE@pwr_GrfReadAccesses\.CrClock')) / (numEUs * .CrClk)	#GRF reads should be at 256 bit granularity (0,4)
+	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPE@pwr_GrfWriteAccesses\.CrClock')) / (numEUs * .CrClk)	#GRF writes should be at 256 bit granularity(0,2)
 				
 #IPC				
 	EU_Utilization	=	(PS2_EU_EM + PS2_EU_FPU) / 2	# Changed from SUM to AVG of EM/FPU active residencies
@@ -208,4 +208,4 @@
 #DOP				
 	PS0_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes
 	PS1_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')) - D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP stall = DOP idle or stall - DOP idle
-	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP
+	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP	

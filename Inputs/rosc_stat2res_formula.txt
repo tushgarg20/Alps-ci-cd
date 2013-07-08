@@ -17,9 +17,6 @@
 	 @ANY_WM@	=	S\d+\.uWM\.	
 	 @ANY_WMBEPACKETS@	=	pwr_WmBePackets\.CrClock	
 	 @ANY_SBE@	=	S\d+\.uSBE\.	
-	 @CLOCKS@	=	CrClock.Clocks	
-	 @2XCLOCKS@	=	2xCrClock.Clocks	
-	 @3DPIPEDISABLED@	=	uCS.pwr_3DPipeDisabled.CrClock	
 	.DOP	=	D(uCS.pwr_3DPipeDisabled.CrClock)/.Clk	
 	.Clk	=	D(CrClock.Clocks)	
 	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
@@ -102,3 +99,4 @@
 	PS0_ROSC_DFX_DOP	=	.DOP	
 	PS0_ROSC_DFX	=	PS0_WMBE	
 	PS2_ROSC_DFX	=	1 - (PS0_ROSC_DFX_DOP + PS0_ROSC_DFX)	
+

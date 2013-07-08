@@ -3,3 +3,6 @@ CFLAGS= -lboost_iostreams -lboost_regex -lz -I/p/gat/tools/boost/1.43.0/include 
 
 all:
 	$(CC) $(CFLAGS) StatParser.cpp ExprParser.cpp -o StatParser
+
+clean:
+	rm -f StatParser
