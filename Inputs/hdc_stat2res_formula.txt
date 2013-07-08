@@ -23,8 +23,8 @@
 	 @NONSEQUENCED_READ@	=	(OWordBlockRead|UnalignedOWordBlockRead|OWordDualBlockRead|TransposeRead|MediaBlockRead|AtomicCounterOp|AtomicCounterOp4x2|BlockRead_A64|ScratchOWordBlockRead|ScratchDWordScatteredRead|RenderTargetRead|ReadSurfaceInfo|UrbHWordRead|UrbOWordRead|UrbSimd8Read|UrbAtomicMov|UrbAtomicInc|UrbAtomicAdd)	
 	 @NONSEQUENCED_WRITE@	=	(MemoryFence|OWordBlockWrite|OWordDualBlockWrite|MediaBlockWrite_NIECP|AtomicCounterOp|AtomicCounterOp4x2|BlockWrite_A64|ScratchOWordBlockWrite|ScratchDWordScatteredWrite|UrbHWordWrite|UrbOWordWrite|UrbSimd8Write|UrbAtomicMov|UrbAtomicInc|UrbAtomicAdd)	
 #HDCREQCMD1				
-	PS0_HDC_ReqCmd1_DOP	=	D(SUM('@ANY_HDC@HDCReq_cmd_idle\.CrClock')) / (numHDCs * .CrClk)	# Not Implemented yet
-	PS0_HDC_ReqCmd1	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_cmd_idle\.CrClock'))) / (numHDCs * .CrClk)	# Not Implemented yet
+	PS0_HDC_ReqCmd1_DOP	=	D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock')) / (numHDCs * .CrClk)	# Not Implemented yet
+	PS0_HDC_ReqCmd1	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock'))) / (numHDCs * .CrClk)	# Not Implemented yet
 	PS1_HDC_ReqCmd1	=	1 - (PS0_HDC_ReqCmd1_DOP + PS0_HDC_ReqCmd1 + PS2_HDC_ReqCmd1_Sequenced_Typed_Read + PS2_HDC_ReqCmd1_Sequenced_Typed_Write + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write + PS2_HDC_ReqCmd1_NonSequenced_Read + PS2_HDC_ReqCmd1_NonSequenced_Write)	
 	PS2_HDC_ReqCmd1_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_Sequenced_Typed_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_WRITE@')) / (numHDCs * .CrClk)	
@@ -35,8 +35,8 @@
 	PS2_HDC_ReqCmd1_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
 #HDCREQCMD2				
-	PS0_HDC_ReqCmd2_DOP	=	D(SUM('@ANY_HDC@HDCReq_cmd_idle\.CrClock')) / (numHDCs * .CrClk)	
-	PS0_HDC_ReqCmd2	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_cmd_idle\.CrClock'))) / (numHDCs * .CrClk)	
+	PS0_HDC_ReqCmd2_DOP	=	D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock')) / (numHDCs * .CrClk)	
+	PS0_HDC_ReqCmd2	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock'))) / (numHDCs * .CrClk)	
 	PS1_HDC_ReqCmd2	=	1 - (PS0_HDC_ReqCmd2_DOP + PS0_HDC_ReqCmd2 + PS2_HDC_ReqCmd2_Sequenced_Typed_Read + PS2_HDC_ReqCmd2_Sequenced_Typed_Write + PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read + PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write + PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Read + PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Write + PS2_HDC_ReqCmd2_NonSequenced_Read + PS2_HDC_ReqCmd2_NonSequenced_Write)	
 	PS2_HDC_ReqCmd2_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd2_Sequenced_Typed_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_WRITE@')) / (numHDCs * .CrClk)	
@@ -48,8 +48,8 @@
 	PS2_HDC_ReqCmd2_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
 				
 #HDCREQDATA				
-	PS0_HDC_ReqData_DOP	=	D(SUM('@ANY_HDC@HDCReq_dataret_idle\.CrClock')) / (numHDCs * .CrClk)	
-	PS0_HDC_ReqData	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_dataret_idle\.CrClock'))) / (numHDCs * .CrClk)	
+	PS0_HDC_ReqData_DOP	=	D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)	
+	PS0_HDC_ReqData	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock'))) / (numHDCs * .CrClk)	
 	PS1_HDC_ReqData	=	1 - (PS0_HDC_ReqData_DOP + PS0_HDC_ReqData + PS2_HDC_ReqData_Sequenced_Typed_Write + PS2_HDC_ReqData_Sequenced_Else_Data_Write + PS2_HDC_ReqData_Sequenced_Else_SLM_Write + PS2_HDC_ReqData_NonSequenced_Write)	
 	PS2_HDC_ReqData_Sequenced_Typed_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_WRITE@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqData_Sequenced_Else_Data_Write	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_WRITE@')) / (numHDCs * .CrClk)	
@@ -57,8 +57,8 @@
 	PS2_HDC_ReqData_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
 				
 #HDCRET				
-	PS0_HDC_Ret_DOP	=	D(SUM('@ANY_HDC@HDCReq_dataret_idle\.CrClock')) / (numHDCs * .CrClk)	
-	PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_dataret_idle\.CrClock'))) / (numHDCs * .CrClk)	
+	PS0_HDC_Ret_DOP	=	D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)	
+	PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock'))) / (numHDCs * .CrClk)	
 	PS1_HDC_Ret	=	1 - (PS0_HDC_Ret_DOP + PS0_HDC_Ret + PS2_HDC_Ret_Sequenced_Typed_Read + PS2_HDC_Ret_Sequenced_Else_Data_Read + PS2_HDC_Ret_Sequenced_Else_SLM_Read + PS2_HDC_Ret_NonSequenced_Read)	
 	PS2_HDC_Ret_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_Ret_Sequenced_Else_Data_Read	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
