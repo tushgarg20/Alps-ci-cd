@@ -14,6 +14,7 @@ CParser::CParser()
 CParser::~CParser()
 {   for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++) delete J->second;
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++) delete J->second;
+    for(unsigned i=0;i<var_list.size();i++) delete var_list[i];
 }
 
 void CParser::Start(const char*f){ Finish(); current_file=f; current_line=0; formula_line=0; pending.erase();}
@@ -64,7 +65,7 @@ void CParser::ReadLine(const char*str)
     CVariable* V = all_vars.find(var)==all_vars.end() ? new CVariable(current_file, formula_line, var) : all_vars[var];
     V->file=current_file; V->line=formula_line;
     variables[var]=V; all_vars[var]=V;
-    if(V!=dot){ vars.push_back(V); var_list.push_back(V);}
+    if(V!=dot){ vars.push_back(V); var_list.push_back(new CPlainVariable(V));}
     ScanDependencies(V, right);
     SetFormula(V, right);
     V->bad=true; V->na=true;
@@ -615,20 +616,22 @@ CParser::CNode* CParser::CBinaryNode::Flatten()
 }
 
 double CParser::CBinaryNode::Evaluate()
-{   switch(T)
-    {   case CBinaryNode::PLUS:  return N1->Evaluate() + N2->Evaluate();
-        case CBinaryNode::MINUS: return N1->Evaluate() - N2->Evaluate();
-        case CBinaryNode::MUL:   return N1->Evaluate() * N2->Evaluate();
-        case CBinaryNode::DIV:   return N1->Evaluate() / N2->Evaluate();
-        case CBinaryNode::MOD:   return (double)((int64_t)N1->Evaluate() % (int64_t)N2->Evaluate());
-        case CBinaryNode::LT:    return (double)(N1->Evaluate() < N2->Evaluate());
-        case CBinaryNode::GT:    return (double)(N1->Evaluate() > N2->Evaluate());
-        case CBinaryNode::LTE:   return (double)(N1->Evaluate() <= N2->Evaluate());
-        case CBinaryNode::GTE:   return (double)(N1->Evaluate() >= N2->Evaluate());
-        case CBinaryNode::EQ:    return (double)(N1->Evaluate() == N2->Evaluate());
-        case CBinaryNode::NE:    return (double)(N1->Evaluate() != N2->Evaluate());
-        case CBinaryNode::AND:   return (double)(N1->Evaluate() && N2->Evaluate());
-        case CBinaryNode::OR:    return (double)(N1->Evaluate() || N2->Evaluate());
+{   double x1=N1->Evaluate();
+    double x2=N2->Evaluate();
+    switch(T)
+    {   case CBinaryNode::PLUS:  return x1 + x2;
+        case CBinaryNode::MINUS: return x1 - x2;
+        case CBinaryNode::MUL:   return x1 * x2;
+        case CBinaryNode::DIV:   if(!x2) throw 0; return x1 / x2;
+        case CBinaryNode::MOD:   return (double)((int64_t)x1 % (int64_t)x2);
+        case CBinaryNode::LT:    return (double)(x1 < x2);
+        case CBinaryNode::GT:    return (double)(x1 > x2);
+        case CBinaryNode::LTE:   return (double)(x1 <= x2);
+        case CBinaryNode::GTE:   return (double)(x1 >= x2);
+        case CBinaryNode::EQ:    return (double)(x1 == x2);
+        case CBinaryNode::NE:    return (double)(x1 != x2);
+        case CBinaryNode::AND:   return (double)(x1 && x2);
+        case CBinaryNode::OR:    return (double)(x1 || x2);
         default: throw 0;
     }
 }

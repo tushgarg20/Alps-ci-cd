@@ -284,13 +284,16 @@ int main(int argc, char** argv)
 
         P.Execute();
         for(int i=0;i<P.Size();i++)
-        {   if(!dbg && P.Name(i)[0]=='.') continue;
-            std::cout<<P.Name(i)<<(csv?",":"\t");
-            if(P.Bad(i)) std::cout<<"n/a";
-            else std::cout<<P.Value(i);
-            std::cout<<(csv?",":"\t");
-            if(comm.find(P.Name(i))!=comm.end()) std::cout<<comm[P.Name(i)];
-            std::cout<<"\n";
+        {   const CParser::CReport* R=P.Report(i);
+            for(int j=0;j<R->Size();j++)
+            {   if(!dbg && R->Name(j)[0]=='.') continue;
+                std::cout<<R->Name(j)<<(csv?",":"\t");
+                if(R->Bad(j)) std::cout<<"n/a";
+                else std::cout<<R->Value(j);
+                std::cout<<(csv?",":"\t");
+                if(comm.find(R->Name(j))!=comm.end()) std::cout<<comm[R->Name(j)];
+                std::cout<<"\n";
+            }
         }
     }
     else if(!timegraph.empty())
@@ -305,9 +308,12 @@ int main(int argc, char** argv)
         
         bool separate=false;
         for(int i=0;i<P.Size();i++)
-        {   if(dbg && P.Name(i)[0]=='.') continue;
-            std::cout<<(separate?(csv?",":"\t"):"")<<P.Name(i);
-            separate=true;
+        {   const CParser::CReport* R=P.Report(i);
+            for(int j=0;j<R->Size();j++)
+            {   if(dbg && R->Name(j)[0]=='.') continue;
+                std::cout<<(separate?(csv?",":"\t"):"")<<R->Name(j);
+                separate=true;
+            }
         }
         std::cout<<"\n";
 
@@ -315,11 +321,14 @@ int main(int argc, char** argv)
         {   P.Execute();
             separate=false;    
             for(int i=0;i<P.Size();i++)
-            {   if(dbg && P.Name(i)[0]=='.') continue;
-                std::cout<<(separate?(csv?",":"\t"):"");
-                if(P.Bad(i)) std::cout<<"n/a";
-                else std::cout<<P.Value(i);
-                separate=true;
+            {   const CParser::CReport* R=P.Report(i);
+                for(int j=0;j<R->Size();j++)
+                {   if(dbg && R->Name(j)[0]=='.') continue;
+                    std::cout<<(separate?(csv?",":"\t"):"");
+                    if(R->Bad(j)) std::cout<<"n/a";
+                    else std::cout<<R->Value(j);
+                    separate=true;
+                }
             }
             std::cout<<"\n";
         }

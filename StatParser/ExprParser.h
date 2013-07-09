@@ -217,6 +217,21 @@ public:
     {   CCountNode(CNode* n) : CWalker(n) {}
         void Visit(CNode* n){ value++;}
     };
+    struct CReport
+    {   virtual int Size() const = 0;
+        virtual std::string Name(int) const = 0;
+        virtual double Value(int) const = 0;
+        virtual bool Bad(int) const = 0;
+    };
+    class CPlainVariable : public CReport
+    {   CVariable*V;
+    public:
+        CPlainVariable(CVariable*v) : V(v) {}
+        int Size() const { return 1;}
+        std::string Name(int) const { return V->name;}
+        double Value(int) const { return V->value;}
+        bool Bad(int) const { return V->na;}
+    };
 
     CParser();
     ~CParser();
@@ -229,9 +244,7 @@ public:
     bool Ready();
     void Execute();
     int Size(){ return (int) var_list.size();}
-    std::string Name(int n){ return var_list[n]->name;}
-    double Value(int n){ return var_list[n]->value;}
-    double Bad(int n){ return var_list[n]->na;}
+    const CReport* Report(int n){ return var_list[n];}
     static std::string Clip(std::string);
 protected:
     void Throw(std::string s){ throw CError(current_file, formula_line, s);}
@@ -264,7 +277,7 @@ protected:
     std::map<std::string, CVariable*> all_vars;
     std::map<std::string, CRegEx*> regexes;
     std::vector<CVariable*> vars;     // evaluation order
-    std::vector<CVariable*> var_list; // output order
+    std::vector<CReport*> var_list;   // output order
     std::vector<CDiffNode*> diffs;
     std::vector<CToken> tokens;
     unsigned token_ptr;
