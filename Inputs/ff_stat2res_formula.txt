@@ -70,7 +70,7 @@
 	PS0_VFBE1_DOP	=	 .temp_3DPipeDisable	
 	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVsVtxPipes	
 	.temp_vertex_pipe_clocks	=	.temp_num_vertex_pipes * .GeoClk	
-	PS0_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	# "Not active" rollup of all structures.
+	PS0_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	# Not active rollup of all structures.
 	PS1_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_vertex_pipe_clocks	
 	PS2_VFBE1	=	1 - (PS0_VFBE1_DOP + PS0_VFBE1 + PS1_VFBE1)	
 #VFBE2				
