@@ -201,17 +201,17 @@
 	PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Else	=	D(SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_HIZ	=	0	#Not currently supported in GSIM
-	PS2_DM_Z	=	0	
-	PS2_DM_LOSSLESS	=	0	
+	PS2_DM_Else	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
+	PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_LOSSLESS	=	0	#Not currently in GSIM
 	PS2_DM_ASTC_LDR_2D	=	0	
 	PS2_DM_ASTC_LDR_3D	=	0	
 	PS2_DM_ASTC_HDR_2D	=	0	
 	PS2_DM_ASTC_HDR_3D	=	0	
 	PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_dm_bypass_expanded\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Compressed_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_dm_bypass_compressed\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_Compressed_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed\.CrClock')) / (numSamplers * .CrClk)	
 #FT				
 	PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk)	
 	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock'))) / (numSamplers * .CrClk)	
@@ -242,4 +242,4 @@
 #GLUE				
 	PS0_Sampler_GLUE	=	1	
 	PS1_Sampler_GLUE	=	0	
-	PS2_Sampler_GLUE	=	0	
+	PS2_Sampler_GLUE	=	0
