@@ -16,8 +16,12 @@ parser.add_option("-i","--input",dest="input_file",
                   help="Input file containing path to all input files")
 parser.add_option("-r","--residency",dest="residency_file",
                   help="Name of input Residency file")
+parser.add_option("-t","--timegraph",dest="timegraph_file",
+                  help="Name of input Timegraph file")
 parser.add_option("-o","--output",dest="output_file",
                   help="Name of output YAML file")
+parser.add_option("-z","--timegraph_output",dest="output_timegraph_file",
+                  help="Name of timegraph output file")
 parser.add_option("-a","--architecture",dest="dest_config",
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
 parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
@@ -135,7 +139,7 @@ def get_base_config(stat):
 
     print ("Not able to find matching cdyn weight for", stat, file=lf)
     return None,None
-    
+
 def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
     if(base_cfg == None or stepping == None):
@@ -181,7 +185,7 @@ def get_eff_cdyn(cluster,unit,stat):
             newproduct_gc = new_gc[cluster][unit][cfg]
     else:
         newproduct_gc = 1
-     
+
     gc_sf = newproduct_gc/ref_gc if ref_gc > 0 else 0
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     return eff_cdyn
@@ -233,12 +237,12 @@ def eval_linest(key_tuple,cluster,unit):
         return 0
     if(k_cdyn in linest_coeff):
         return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
-    
+
     cdyn_list = []
     data_points = []
     track_cfg = []
 
-    for cdyn in cdyn_hash:                             
+    for cdyn in cdyn_hash:
         if(re.search(k_cdyn+'_\d+%',cdyn) and cdyn not in cdyn_list):
             cdyn_list.append(cdyn)
             for config in cdyn_hash[cdyn]:
@@ -266,7 +270,7 @@ def eval_linest(key_tuple,cluster,unit):
         return 0
     if(len(data_points) == 1):
         return data_points[0][1]
-    
+
     linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
     linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
     return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
@@ -352,6 +356,7 @@ for line in resfile:
     else:
         R[data[0]] = float(data[1])
 resfile.close()
+
 
 ##############################
 # Parsing Cdyn File
@@ -523,8 +528,218 @@ yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(key_stats,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
+
+
+
+##########################################
+# Timegraph Code
+##########################################
+##################################################################
+# Utility functions for dumping output in the desired format
+##################################################################
+def getsortedkeys(in_dict):
+    #Takes a dictionary as input
+    #Return the sorted first levels keys of the dictionary as a list
+    outputlist = []
+    for key in in_dict:
+        outputlist.append(key)
+    return sorted(outputlist)
+
+
+
+def getallsortedkeyvals(in_dict, value_list):
+    #Beware : Recursive function
+    #Expects elements of the dictionaries to be either
+    #dictionaries themselves or singular elements
+    #no lists
+    if(isinstance(in_dict, dict) is False):
+        value_list.append(in_dict)
+    else:
+        for key in getsortedkeys(in_dict):
+            getallsortedkeyvals(in_dict[key], value_list)
+
+
+def getallsortedpaths(in_dict, path_lists, memory=[]):
+    #Beware : Recursive function
+    #Expects elements of the dictionaries to be either
+    #dictionaries themselves or singular elements
+    #no lists
+    if(isinstance(in_dict, dict) is False):
+        path_lists.append(deepcopy(memory))
+        memory.pop(-1)
+    else:
+        for key in getsortedkeys(in_dict):
+            memory.append(key)
+            getallsortedpaths(in_dict[key], path_lists, memory)
+        if memory:
+            memory.pop(-1)
+
+
+def combine_list(in_list, sep):
+    combine = ''
+    for ele in in_list:
+        combine = combine + ele + sep
+    return combine[:-1]
+
+def print_header(in_list_of_lists, file_handle):
+    for ele in in_list_of_lists:
+        print(combine_list(ele, '.') + '\t', end="", file=file_handle)
+
+def print_line(in_list, sep, file_handle):
+    for ele in in_list:
+        print(ele, sep,file=file_handle, end="")
+
+def print_head(in_dict, file_handle):
+    paths = []
+    getallsortedpaths(in_dict, paths)
+    print_header(paths, file_handle)
+
+def print_value(in_dict, file_handle):
+    keyvalues = []
+    getallsortedkeyvals(in_dict, keyvalues)
+    print_line(keyvalues, '\t', file_handle)
+
+#if num_string is present
+#strip num_ and return string
+#else return false
+def strip_num(in_string):
+    if(re.search(r'^num_.*',in_string)):
+        key = in_string.split("_")
+        del(key[0])
+        return "_".join(key)
+    else:
+        return False
+
+#######################################################
+# Alps for timegraph input
+########################################################
+#Info:
+#-------------------------------------------------------
+# A lot of code can be merged.
+# Unavoidable copy and paste of code for the time being
+#-------------------------------------------------------
+
+#Capturing the residency dependent part of the main build_alps.py script into a function
+#----------------------------------------------------------------------------------------
+def tiny_build_alps(with_header):
+    #Initialising erstwhile global variables
+    #----------------------------------------------------------
+    local_output_list = deepcopy(paths)
+    local_output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
+    local_output_cdyn_data = {'GT':{}}
+    local_gt_cdyn = {}
+    local_key_stats = {'key_stats':{}}
+    local_cluster_cdyn_numbers = {'cluster_cdyn_numbers(pF)':{}}
+    local_unit_cdyn_numbers = {'unit_cdyn_numbers(pF)':{}}
+    #----------------------------------------------------------
+    for path in local_output_list:
+        path[-1] = eval_formula(path)
+        d = local_output_yaml_data['ALPS Model(pF)']['GT']
+        cdyn_d = local_output_cdyn_data['GT']
+        if(len(path) == 2):
+            if(path[0] == 'FPS'):
+                local_gt_cdyn['FPS'] = float('%.3f'%float(path[-1]))
+            else:
+                local_key_stats['key_stats'][path[0]] = float('%.3f'%float(path[1]))
+            continue
+        i = 0
+        while(True):
+            if('cdyn' not in cdyn_d and i < 3):
+                cdyn_d['cdyn'] = 0
+            if(i < 3):
+                cdyn_d['cdyn'] += path[-1]
+            if('total' not in d and i >= 3):
+                d['total'] = 0
+            if(i >= 3):
+                d['total'] += path[-1]
+                d['total'] = float('%.3f'%float(d['total']))
+            if(i == len(path)-2):
+                d[path[i]] = float('%.3f'%float(path[i+1]))
+                break
+            if(path[i] not in d):
+                d[path[i]] = {}
+            if(path[i] not in cdyn_d and i < 2):
+                cdyn_d[path[i]] = {}
+            d = d[path[i]]
+            if(i < 2):
+                cdyn_d = cdyn_d[path[i]]
+            i = i+1
+    #######################################
+    # Creating(locally) Overview datastructures
+    #######################################
+    local_gt_cdyn['Total_GT_Cdyn(nF)'] = float('%.3f'%float(local_output_cdyn_data['GT']['cdyn']/1000))
+    for cluster in local_output_cdyn_data['GT']:
+        if(cluster == 'cdyn'):
+            continue
+        local_cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster] = float('%.3f'%float(local_output_cdyn_data['GT'][cluster]['cdyn']))
+        local_unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster] = {}
+        for unit in local_output_cdyn_data['GT'][cluster]:
+            if(unit == 'cdyn'):
+                continue
+            local_unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster][unit] = float('%.3f'%float(local_output_cdyn_data['GT'][cluster][unit]['cdyn']))
+    ###################################################
+    #New Code for printing timegraph output
+    ###################################################
+    if(with_header):
+        #Print the header line.
+        print_head(local_gt_cdyn, op_timegraph_file)
+        print_head(local_cluster_cdyn_numbers, op_timegraph_file)
+        print_head(local_unit_cdyn_numbers, op_timegraph_file)
+        print_head(local_key_stats, op_timegraph_file)
+        print_head(local_output_yaml_data, op_timegraph_file)
+        print(file=op_timegraph_file)
+
+    #Print the power number (values)
+    print_value(local_gt_cdyn, op_timegraph_file)
+    print_value(local_cluster_cdyn_numbers, op_timegraph_file)
+    print_value(local_unit_cdyn_numbers, op_timegraph_file)
+    print_value(local_key_stats, op_timegraph_file)
+    print_value(local_output_yaml_data, op_timegraph_file)
+    print(file=op_timegraph_file)
+
+
+if(options.timegraph_file and options.output_timegraph_file):
+    ####################################
+    # Parsing Timegraph input file
+    ####################################
+    #----------------------------------------------------
+    #Read the timegraph input file row by row
+    #And essentially run build_alps for each row
+    #And dump output values into a timegraph style file
+    timegraph_file = open(options.timegraph_file,'r')
+    #Creating timegraph output file
+    op_timegraph_file = open(options.output_timegraph_file, 'w')
+    tiny_build_alps(True)
+    with_header = True
+    header = timegraph_file.readline().strip().split('\t')
+    for line in timegraph_file:
+        R = {}
+        I = {}
+        row = line.split()
+        index = 0
+        for ele in header:
+            if(strip_num(ele) is False):
+                try:
+                    R[ele] = float(row[index])
+                except ValueError:
+                    print("Float conversion failed for", ele, file=lf)
+            else:
+                try:
+                    I[strip_num(ele)] = float(row[index])
+                except ValueError:
+                    print("Float converstion failed", ele, file=lf)
+            index = index + 1
+        tiny_build_alps(with_header)
+        with_header= False
+
+    timegraph_file.close()
+    op_timegraph_file.close()
+
+
+#Closing the log files at the complete end
 of.close()
 print("Exit",file=lf)
 lf.close()
 if(options.run_debug):
     df.close()
+
