@@ -24,6 +24,7 @@ void CParser::ReadLine(const char*str)
 {   int n;
     std::string s=str;
     current_line++;
+    current_var.erase();
     if(pending.empty()) formula_line=current_line;
     n=s.find('#'); if(n!=std::string::npos) s=s.substr(0, n);
     s=Clip(s);
@@ -66,6 +67,7 @@ void CParser::ReadLine(const char*str)
     V->file=current_file; V->line=formula_line;
     variables[var]=V; all_vars[var]=V;
     if(V!=dot){ vars.push_back(V); var_list.push_back(new CPlainVariable(V));}
+    current_var=V->name;
     ScanDependencies(V, right);
     SetFormula(V, right);
     V->bad=true; V->na=true;
@@ -103,10 +105,14 @@ void CParser::ScanDependencies(CVariable*V, std::string s)
     }
     for(int n=s.find_first_of(AlphaNumDot);n!=std::string::npos;n=s.find_first_of(AlphaNumDot))
     {   int k=s.find_first_not_of(AlphaNumDot, n+1);
-        std::string ddd=s.substr(n, k-n);
+        if(k!=std::string::npos)
+        {   int m=s.find_first_not_of(" \t", k);
+            if(s[m]=='['){ s=s.substr(m+1); continue;}
+        }
+        std::string ddd=s.substr(n, k==std::string::npos?k:k-n);
         if(!boost::regex_match(ddd, boost::regex("^[\\.\\d]+$"))) V->dep[ddd]=true;
-        if(k==std::string::npos) s=s.substr(0, n);
-        else s=s.substr(0, n)+s.substr(k+1);
+        if(k==std::string::npos) break;
+        s=s.substr(k+1);
     }
 }
 
@@ -127,7 +133,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
             CVariable*u=variables[J->first];
             if(u==v)
             {   v->bad=true; v->na=true;
-                Err.push_back(CError(v->file, v->line, std::string("circular dependency: ")+v->name+" <= "+v->name));
+                Err.push_back(CError(v->file, v->line, v->name, std::string("circular dependency: ")+v->name+" <= "+v->name));
                 break;
             }
             v->depends.push_back(u);
@@ -193,7 +199,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
                 cycle[j]->na=true;
             }
             v->bad=true; v->na=true;
-            Err.push_back(CError(v->file, v->line, std::string("circular dependency: ")+v->name+" <= "+msg+v->name));
+            Err.push_back(CError(v->file, v->line, v->name, std::string("circular dependency: ")+v->name+" <= "+msg+v->name));
         }
     }
     return Err;
@@ -211,6 +217,8 @@ void CParser::Tokenize(std::string s)
         if(c=='%'){ tokens.push_back(CToken(MOD, "%")); continue;}
         if(c=='('){ tokens.push_back(CToken(OPEN, "(")); continue;}
         if(c==')'){ tokens.push_back(CToken(CLOSE, ")")); continue;}
+        if(c=='['){ tokens.push_back(CToken(BRA, "(")); continue;}
+        if(c==']'){ tokens.push_back(CToken(KET, ")")); continue;}
         if(c==','){ tokens.push_back(CToken(COMMA, ",")); continue;}
         if(c=='?'){ tokens.push_back(CToken(QUEST, "?")); continue;}
         if(c==':'){ tokens.push_back(CToken(COLON, ":")); continue;}
@@ -295,14 +303,13 @@ CParser::CNode* CParser::Parse0()
         token_ptr++;
         if(token_ptr<tokens.size() && tokens[token_ptr].type==OPEN)
         {   token_ptr++;
-            if(name!="D" && name!="DIFF" && name!="SUM" && name!="MIN" && name!="MAX" && name!="AVG" && name!="COUNT") Throw(std::string("undefined function: ")+name+"()");
+            if(name!="D" && name!="DIFF" && name!="SUM" && name!="MIN" && name!="MAX" && name!="AVG" && name!="COUNT" && name!="BIN" && name!="CASE") Throw(std::string("undefined function: ")+name+"()");
             CNode* L=ParseList();
             if(!L) Throw(std::string("parameters list is empty: ")+name+"()");
             if(name=="D" || name=="DIFF")
-            {   if(L->IsList()) N=new CDiffList(this, L);
+            {   if(L->IsList()) N=new CDiffList(L);
                 else
                 {   CDiffNode* D=new CDiffNode(L);
-                    diffs.push_back(D);
                     N=D;
                 }
             }
@@ -329,8 +336,30 @@ CParser::CNode* CParser::Parse0()
                     delete L;
                 }
             }
+            else if(name=="BIN")
+            {   if(L->IsList()) N=new CBinNode(L);
+                else
+                {   N=new CConstNode(0);
+                    delete L;
+                }
+            }
+            else if(name=="CASE")
+            {   if(L->IsList()) N=new CCaseNode(L);
+                else Throw("too few parameters: CASE(...)");
+            }
             else Throw("???");
             if(token_ptr>=tokens.size() || tokens[token_ptr].type!=CLOSE)
+            {   delete N; throw 0;
+            }
+            token_ptr++; return N;
+        }
+        else if(token_ptr<tokens.size() && tokens[token_ptr].type==BRA)
+        {   token_ptr++;
+            CNode* L=ParseList();
+            if(!L) Throw(std::string("parameters list is empty: ")+name+"[]");
+            if(all_vars.find(name)==all_vars.end()) all_vars[name]=new CVariable(current_file, current_line, name);
+            N=new CMemList(all_vars[name], L);
+            if(token_ptr>=tokens.size() || tokens[token_ptr].type!=KET)
             {   delete N; throw 0;
             }
             token_ptr++; return N;
@@ -357,21 +386,13 @@ CParser::CNode* CParser::Parse1()
     if(tokens[token_ptr].type==MINUS)
     {   token_ptr++;
         CNode* N1=Parse0();
-        if(N1->IsConst())
-        {   N=new CConstNode(-(N1->Evaluate()));
-            delete N1;
-        }
-        else N=new CUnaryNode(CUnaryNode::MINUS, N1);
+        N=new CUnaryNode(CUnaryNode::MINUS, N1);
         return N;
     }
     if(tokens[token_ptr].type==NOT)
     {   token_ptr++;
         CNode* N1=Parse0();
-        if(N1->IsConst())
-        {   N=new CConstNode(!(N1->Evaluate()));
-            delete N1;
-        }
-        else N=new CUnaryNode(CUnaryNode::NOT, N1);
+        N=new CUnaryNode(CUnaryNode::NOT, N1);
         return N;
     }
     return Parse0();
@@ -386,14 +407,7 @@ CParser::CNode* CParser::Parse2()
     {   CBinaryNode::TYPE op = tokens[token_ptr].type==MUL ? CBinaryNode::MUL : tokens[token_ptr].type==DIV ? CBinaryNode::DIV : CBinaryNode::MOD;
         token_ptr++;
         N2=Parse1();
-        if(N1->IsConst() && N2->IsConst())
-        {   if(op==CBinaryNode::DIV && !N2->Evaluate()){ delete N1; delete N2; Throw("divide by 0");}
-            if(op==CBinaryNode::MOD && !(int64_t)N2->Evaluate()){ delete N1; delete N2; Throw("divide by 0");}
-            CNode* N = op==CBinaryNode::MUL ? new CConstNode(N1->Evaluate()*N2->Evaluate()) : op==CBinaryNode::DIV ? new CConstNode(N1->Evaluate()/N2->Evaluate()) : new CConstNode((double)((int64_t)N1->Evaluate()%(int64_t)N2->Evaluate()));
-            delete N1; delete N2;
-            N1=N;
-        }
-        else N1=new CBinaryNode(op, N1, N2);
+        N1=new CBinaryNode(op, N1, N2);
     }
     return N1;
 }
@@ -407,12 +421,7 @@ CParser::CNode* CParser::Parse3()
     {   CBinaryNode::TYPE op = tokens[token_ptr].type==PLUS ? CBinaryNode::PLUS : CBinaryNode::MINUS;
         token_ptr++;
         N2=Parse2();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N = op==CBinaryNode::PLUS ? new CConstNode(N1->Evaluate()+N2->Evaluate()) : new CConstNode(N1->Evaluate()-N2->Evaluate());
-            delete N1; delete N2;
-            N1=N;
-        }
-        else N1=new CBinaryNode(op, N1, N2);
+        N1=new CBinaryNode(op, N1, N2);
     }
     return N1;
 }
@@ -425,42 +434,22 @@ CParser::CNode* CParser::Parse4()
     if(token_ptr<tokens.size() && tokens[token_ptr].type==LT)
     {   token_ptr++;
         N2=Parse3();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()<N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::LT, N1, N2);
+        return new CBinaryNode(CBinaryNode::LT, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==GT)
     {   token_ptr++;
         N2=Parse3();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()>N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::GT, N1, N2);
+        return new CBinaryNode(CBinaryNode::GT, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==LTE)
     {   token_ptr++;
         N2=Parse3();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()<=N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::LTE, N1, N2);
+        return new CBinaryNode(CBinaryNode::LTE, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==GTE)
     {   token_ptr++;
         N2=Parse3();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()>=N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::GTE, N1, N2);
+        return new CBinaryNode(CBinaryNode::GTE, N1, N2);
     }
     return N1;
 }
@@ -473,22 +462,12 @@ CParser::CNode* CParser::Parse5()
     if(token_ptr<tokens.size() && tokens[token_ptr].type==EQ)
     {   token_ptr++;
         N2=Parse4();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()==N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::EQ, N1, N2);
+        return new CBinaryNode(CBinaryNode::EQ, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==NE)
     {   token_ptr++;
         N2=Parse4();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate()!=N2->Evaluate());
-            delete N1; delete N2;
-            return N;
-        }
-        else return new CBinaryNode(CBinaryNode::NE, N1, N2);
+        return new CBinaryNode(CBinaryNode::NE, N1, N2);
     }
     return N1;
 }
@@ -501,17 +480,7 @@ CParser::CNode* CParser::Parse6()
     while(token_ptr<tokens.size() && tokens[token_ptr].type==AND)
     {   token_ptr++;
         N2=Parse5();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate() && N2->Evaluate());
-            delete N1; delete N2;
-            N1=N;
-        }
-        else if((N1->IsConst() && !N1->Evaluate()) || (N2->IsConst() && !N2->Evaluate()))
-        {   CNode* N=new CConstNode(0);
-            delete N1; delete N2;
-            N1=N;
-        }
-        else N1=new CBinaryNode(CBinaryNode::AND, N1, N2);
+        N1=new CBinaryNode(CBinaryNode::AND, N1, N2);
     }
     return N1;
 }
@@ -524,17 +493,7 @@ CParser::CNode* CParser::Parse7()
     while(token_ptr<tokens.size() && tokens[token_ptr].type==OR)
     {   token_ptr++;
         N2=Parse6();
-        if(N1->IsConst() && N2->IsConst())
-        {   CNode* N=new CConstNode(N1->Evaluate() || N2->Evaluate());
-            delete N1; delete N2;
-            N1=N;
-        }
-        else if((N1->IsConst() && N1->Evaluate()) || (N2->IsConst() && N2->Evaluate()))
-        {   CNode* N=new CConstNode(1);
-            delete N1; delete N2;
-            N1=N;
-        }
-        else N1=new CBinaryNode(CBinaryNode::OR, N1, N2);
+        N1=new CBinaryNode(CBinaryNode::OR, N1, N2);
     }
     return N1;
 }
@@ -551,11 +510,7 @@ CParser::CNode* CParser::Parse8()
         if(token_ptr<tokens.size() && tokens[token_ptr].type==COLON)
         {   token_ptr++;
             N3=Parse8();
-            if(N1->IsConst())
-            {   if(N1->Evaluate()){ delete N1; delete N3; N1=N2;}
-                else { delete N1; delete N2; N1=N3;}
-            }
-            else N1=new CTernaryNode(N1, N2, N3);
+            N1=new CTernaryNode(N1, N2, N3);
         }
         else { delete N1; delete N2; throw 0;}
     }
@@ -575,9 +530,20 @@ CParser::CNode* CParser::Parse9()
         if(regexes.find(tokens[token_ptr].str)==regexes.end()) regexes[tokens[token_ptr].str]=new CRegEx(current_file, current_line, tokens[token_ptr].str);
         N=new CRegexNode(regexes[tokens[token_ptr].str]);
         token_ptr++;
-        N=new CDiffList(this, N);
+        N=new CDiffList(N);
     }
-    else N=Parse8();
+    else N=ParseRange();
+    return N;
+}
+
+CParser::CNode* CParser::ParseRange()
+{   if(token_ptr==tokens.size()) throw 0;
+    CNode* N=Parse8();
+    if(token_ptr<tokens.size() && tokens[token_ptr].type==COLON)
+    {   token_ptr++;
+        CNode*N1=Parse8();
+        return new CRangeNode(N, N1);
+    }
     return N;
 }
 
@@ -594,8 +560,22 @@ void CParser::ParseList(std::vector<CParser::CNode*>& V)
     while(token_ptr<tokens.size() && tokens[token_ptr].type==COMMA){ token_ptr++; V.push_back(Parse9());}
 }
 
+CParser::CNode* CParser::CNode::Scalar()
+{   CNode* N=Flatten();
+    if(N->IsList())
+    {   delete N;
+        throw std::string("vector in scalar context");
+    }
+    if(N->IsEmpty())
+    {   delete N;
+        throw std::string("empty list in scalar context");
+    }
+    return N;
+}
+
 CParser::CNode* CParser::CUnaryNode::Flatten()
-{   CNode* M=N->Flatten(); if(M!=N){ delete N; N=M;}
+{   CNode* M=N->Scalar();
+    if(M!=N){ delete N; N=M;}
     if(N->IsConst()) return new CConstNode(Evaluate());
     return this;
 }
@@ -609,8 +589,10 @@ double CParser::CUnaryNode::Evaluate()
 }
 
 CParser::CNode* CParser::CBinaryNode::Flatten()
-{   CNode* M=N1->Flatten(); if(M!=N1){ delete N1; N1=M;}
-    M=N2->Flatten(); if(M!=N2){ delete N2; N2=M;}
+{   CNode* M=N1->Scalar();
+    if(M!=N1){ delete N1; N1=M;}
+    M=N2->Scalar();
+    if(M!=N2){ delete N2; N2=M;}
     if(N1->IsConst() && N2->IsConst()) return new CConstNode(Evaluate());
     return this;
 }
@@ -622,7 +604,7 @@ double CParser::CBinaryNode::Evaluate()
     {   case CBinaryNode::PLUS:  return x1 + x2;
         case CBinaryNode::MINUS: return x1 - x2;
         case CBinaryNode::MUL:   return x1 * x2;
-        case CBinaryNode::DIV:   if(!x2) throw 0; return x1 / x2;
+        case CBinaryNode::DIV:   if(!x2) throw std::string("divide by zero"); return x1 / x2;
         case CBinaryNode::MOD:   return (double)((int64_t)x1 % (int64_t)x2);
         case CBinaryNode::LT:    return (double)(x1 < x2);
         case CBinaryNode::GT:    return (double)(x1 > x2);
@@ -637,17 +619,22 @@ double CParser::CBinaryNode::Evaluate()
 }
 
 CParser::CNode* CParser::CTernaryNode::Flatten()
-{   CNode* M=N1->Flatten(); if(M!=N1){ delete N1; N1=M;}
-    M=N2->Flatten(); if(M!=N2){ delete N2; N2=M;}
-    M=N3->Flatten(); if(M!=N3){ delete N3; N3=M;}
+{   CNode* M=N1->Scalar();
+    if(M!=N1){ delete N1; N1=M;}
     if(N1->IsConst())
     {   if(N1->Evaluate())
-        {   M=N2; N2=0; return M;
+        {   M=N2->Scalar();
+            if(M!=N2){ delete N2; N2=M;}
+            M=N2; N2=0; return M;
         }
         else
-        {   M=N3; N3=0; return M;
+        {   M=N3->Scalar();
+            if(M!=N3){ delete N3; N3=M;}
+            M=N3; N3=0; return M;
         }
     }
+    M=N2->Scalar(); if(M!=N2){ delete N2; N2=M;}
+    M=N3->Scalar(); if(M!=N3){ delete N3; N3=M;}
     return this;
 }
 
@@ -656,27 +643,76 @@ double CParser::CTernaryNode::Evaluate()
 }
 
 CParser::CNode* CParser::CVarNode::Flatten()
-{   if(V->reader && V->reader->IsConst()) return new CConstNode(V->reader->Value());
+{   if(V->bad) throw std::string("broken dependency: ")+V->name;
+    if(V->reader && V->reader->IsConst()) return new CConstNode(V->reader->Value());
     if(!V->expr.empty() && V->expr[0]->IsConst()) return new CConstNode(V->expr[0]->Evaluate());
     return this;
 }
 
 double CParser::CVarNode::Evaluate()
-{   if(V->na) throw 0;
+{   if(T)
+    {   if(V->history.size()<T) return 0;
+        if(V->nahistory[T-1]) throw 0;
+        return V->history[T-1];
+    }
+    if(V->na) throw 0;
     if(V->reader) return V->reader->Value();
     return V->value;
 }
 
+void CParser::CVariable::UpdateHistory()
+{   if(!history.size()) for(unsigned i=0;i<size;i++)
+    {   history.push_back(0.); nahistory.push_back(0);}
+    for(int i=size-1;i;i--)
+    {   history[i]=history[i-1];
+        nahistory[i]=nahistory[i-1];
+    }
+    if(na) nahistory[0]=true;
+    else
+    {   history[0]=reader?reader->Value():value;
+        nahistory[0]=false;
+    }
+}
+
 CParser::CNode* CParser::CWalker::Flatten()
-{   CNode* M=L->Flatten(); if(M!=L){ delete L; L=M;}
+{   CNode* M=L->Flatten();
+    if(M!=L){ delete L; L=M;}
     if(L->IsConst()) return new CConstNode(Evaluate());
     return this;
+}
+
+void CParser::CBinNode::Visit(CParser::CNode* n)
+{   double d=n->Evaluate();
+    if(first)
+    {   x=d; value=0;
+        empty=true;
+        first=false;
+    }
+    else
+    {   if(!empty && d<=last) throw 0;
+        if(x>d) value++;
+        empty=false;
+        last=d;
+    }
+}
+
+void CParser::CCaseNode::Visit(CParser::CNode* n)
+{   if(!first && !empty) return;
+    if(first)
+    {   count=(int)n->Evaluate();
+        if(count<0) throw 0;
+        first=false;
+    }
+    else
+    {   if(count){ count--; return;}
+        value=n->Evaluate();
+        empty=false;
+    }
 }
 
 CParser::CNode* CParser::CVector::Flatten()
 {   CNode* M;
     std::vector<CNode*> W;
-    bool is_const=true;
     for(unsigned i=0;i<V.size();i++)
     {   M=V[i]->Flatten();
         if(M!=V[i]) delete V[i];
@@ -688,15 +724,26 @@ CParser::CNode* CParser::CVector::Flatten()
         }
         else W.push_back(M);
     }
+    M=this;
+    if(W.size()==0) M=new CEmptyNode;
+    if(W.size()==1){ M=W[0]; W.clear();}
     V.swap(W);
-    return this;
+    return M;
 }
 
 CParser::CNode* CParser::CRegexNode::Flatten()
 {   std::vector<CNode*> W;
-    for(std::map<std::string, CReader*>::iterator J=R->map.begin();J!=R->map.end();J++)
-    {   if(J->second->IsConst()) W.push_back(new CConstNode(J->second->Value()));
-        else W.push_back(new CReaderNode(J->second));
+    if(R->is_map)
+    {   for(std::map<std::string, CReader*>::iterator J=R->map.begin();J!=R->map.end();J++)
+        {   if(J->second->IsConst()) W.push_back(new CConstNode(J->second->Value()));
+            else W.push_back(new CReaderNode(J->second));
+        }
+    }
+    else
+    {   for(unsigned i=0;i<R->vector.size();i++)
+        {   if(R->vector[i]->IsConst()) W.push_back(new CConstNode(R->vector[i]->Value()));
+            else W.push_back(new CReaderNode(R->vector[i]));
+        }
     }
     if(W.size()==0) return new CEmptyNode;
     if(W.size()==1) return W[0];
@@ -704,40 +751,79 @@ CParser::CNode* CParser::CRegexNode::Flatten()
 }
 
 CParser::CNode* CParser::CDiffNode::Flatten()
-{   CNode* M=N->Flatten(); if(M!=N){ delete N; N=M;}
+{   CNode* M=N->Scalar();
+    if(M!=N){ delete N; N=M;}
     return this;
 }
 
 CParser::CNode* CParser::CDiffList::Flatten()
-{   CNode* M=L->Flatten(); if(M!=L){ delete L; L=M;}
+{   CNode* M=L->Flatten();
+    if(M!=L){ delete L; L=M;}
     if(!L->IsList())
     {   if(L->IsEmpty()) M=L;
-        else
-        {   CDiffNode* D=new CDiffNode(L);
-            P->diffs.push_back(D);
-            M=D;
-        }
+        else M=new CDiffNode(L);
+        L=0; return M;
+    }
+    std::vector<CNode*> W;
+    CVector* X=dynamic_cast<CVector*>(M);
+    for(unsigned i=0;i<X->V.size();i++) W.push_back(new CDiffNode(X->V[i]));
+    X->V.clear();
+    if(W.size()==0) throw std::string("that cannot be 1");
+    if(W.size()==1) throw std::string("that cannot be 2");
+    return new CVector(W);
+}
+
+CParser::CNode* CParser::CMemList::Flatten()
+{   CNode* M=L->Flatten();
+    if(M!=L){ delete L; L=M;}
+    if(L->IsEmpty()){ M=L; L=0; return M;}
+    if(!L->IsList())
+    {   if(!L->IsConst()) throw std::string("index must be a constant expression");
+        int t=(int)L->Evaluate();
+        if(t<=0) throw std::string("index must be greater than zero");
+        M=new CVarNode(V, (unsigned)t);
         L=0; return M;
     }
     std::vector<CNode*> W;
     CVector* X=dynamic_cast<CVector*>(M);
     for(unsigned i=0;i<X->V.size();i++)
-    {   CDiffNode* D=new CDiffNode(X->V[i]);
-        P->diffs.push_back(D);
-        W.push_back(D);
+    {   if(!X->V[i]->IsConst()) throw std::string("index must be a constant expression");
+        int t=(int)X->V[i]->Evaluate();
+        if(t<=0) throw std::string("index must be greater than zero");
+        W.push_back(new CVarNode(V, (unsigned)t));
     }
     X->V.clear();
-    if(W.size()==0) return new CEmptyNode;
-    if(W.size()==1) return W[0];
+    if(W.size()==0) throw std::string("that cannot be 3");
+    if(W.size()==1) throw std::string("that cannot be 4");
+    return new CVector(W);
+}
+
+CParser::CNode* CParser::CRangeNode::Flatten()
+{   CNode* M=N1->Scalar();
+    if(M!=N1){ delete N1; N1=M;}
+    M=N2->Scalar();
+    if(M!=N2){ delete N2; N2=M;}
+    if(!N1->IsConst() || !N2->IsConst()) throw std::string("non-constant expression in the range");
+    int a=(int) N1->Evaluate();
+    int b=(int) N2->Evaluate();
+    if(a==b) return new CConstNode(a);
+    std::vector<CNode*> W;
+    if(a<b) for(int n=a;n<=b;n++) W.push_back(new CConstNode(n));
+    else for(int n=a;n>=b;n--) W.push_back(new CConstNode(n));
     return new CVector(W);
 }
 
 std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
 {   std::vector<CParser::CError> Err;
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++)
-    {   J->second->map=RM->FindRegEx(J->second->str);
-        if(J->second->map.empty())
-        Err.push_back(CError(J->second->file, J->second->line, std::string("no matches found: '")+J->second->str+"'"));
+    {   if(J->second->is_map)
+        {   J->second->map=RM->FindRegExAsMap(J->second->str);
+            if(J->second->map.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
+        }
+        else
+        {   J->second->vector=RM->FindRegExAsVector(J->second->str);
+            if(J->second->vector.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
+        }
     }
     for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++)
     {   CVariable* V=J->second;
@@ -745,14 +831,14 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
         if(R)
         {   if(!V->formula.empty())
             {   if(R->IsDynamic()) V->reader=R;
-                if(!R->IsDynamic() && !R->IsDefault()) Err.push_back(CError(V->file, V->line, std::string("variable name conflict: ")+V->name));
+            if(!R->IsDynamic() && !R->IsDefault()) Err.push_back(CError(V->file, V->line, V->name, std::string("variable name conflict: ")+V->name));
             }
             else
             {   V->reader=R;
             }
         }
         else if(V->formula.empty())
-        {   Err.push_back(CError(V->file, V->line, std::string("undefined variable: ")+V->name));
+        {   Err.push_back(CError(V->file, V->line, V->name, std::string("undefined variable: ")+V->name));
             V->bad=true; V->na=true;
         }
     }
@@ -760,13 +846,39 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
         for(unsigned j=0;j<V->expr.size();j++)
-        {   CNode* N=V->expr[j]->Flatten();
-            if(N!=V->expr[j])
+        {   bool err=false;
+            try
+            {   CNode* N=V->expr[j]->Scalar();
+                if(N!=V->expr[j])
+                {   delete V->expr[j];
+                    V->expr[j]=N;
+                }
+            }
+            catch(std::string s)
+            {   Err.push_back(CError(V->file, V->line, V->name, s));
+                err=true;
+            }
+            catch(...)
+            {   Err.push_back(CError(V->file, V->line, V->name, std::string("error")));
+                err=true;
+            }
+            if(err)
             {   delete V->expr[j];
-                V->expr[j]=N;
+                for(unsigned k=j+1;k<V->expr.size();k++) V->expr[k-1]=V->expr[k];
+                V->expr.pop_back();
+                j--; continue;
             }
         }
+        if(V->expr.empty() && !V->reader)
+        {   V->bad=true; V->na=true;
+        }
     }
+    for(unsigned i=0;i<vars.size();i++)
+    {   CVariable* V=vars[i];
+        if(V->bad) continue;
+        for(unsigned j=0;j<V->expr.size();j++) V->expr[j]->Recursion(CollectDiffs, this);
+    }
+    for(unsigned i=0;i<vars.size();i++) if(vars[i]->size) history.push_back(vars[i]);
     return Err;
 }
 
@@ -785,6 +897,7 @@ void CParser::Execute()
         }
     }
     for(unsigned i=0;i<diffs.size();i++) diffs[i]->Record();
+    for(unsigned i=0;i<history.size();i++) history[i]->UpdateHistory();
 }
 
 bool CParser::Ready()
@@ -803,4 +916,9 @@ bool CParser::Ready()
         if(V==dot) break;
     }
     return !dot->na && dot->value;
+}
+
+void CParser::CollectDiffs(CParser*P, CParser::CNode*N)
+{   CDiffNode* D=dynamic_cast<CDiffNode*>(N);
+    if(D) P->diffs.push_back(D);
 }

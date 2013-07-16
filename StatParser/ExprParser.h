@@ -15,11 +15,10 @@ public:
         virtual double Value()=0;
     };
     struct CReaderManager
-    {   virtual ~CReaderManager(){ for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;}
+    {   virtual ~CReaderManager(){}
         virtual CReader* FindReader(std::string)=0;
-        virtual std::map<std::string, CReader*> FindRegEx(std::string)=0;
-    protected:
-        std::map<std::string, CParser::CReader*> readers;
+        virtual std::vector<CReader*> FindRegExAsVector(std::string)=0;
+        virtual std::map<std::string, CReader*> FindRegExAsMap(std::string)=0;
     };
     struct CLocation
     {   std::string file;
@@ -28,8 +27,9 @@ public:
         CLocation(const CLocation& l) : file(l.file), line(l.line) {}
     };
     struct CError : CLocation
-    {   std::string message;
-        CError(std::string f, int n, std::string s) : CLocation(f, n), message(s) {}
+    {   std::string var;
+        std::string message;
+        CError(std::string f, int n, std::string v, std::string s) : CLocation(f, n), var(v), message(s) {}
         static bool Cmp(const CError& a, const CError& b){ return a.line<b.line;}
     };
     enum TOKEN
@@ -53,6 +53,8 @@ public:
         OR,     // ||
         OPEN,   // (
         CLOSE,  // )
+        BRA,    // [
+        KET,    // ]
         COMMA,  // ,
         QUEST,  // ?
         COLON   // :
@@ -73,6 +75,8 @@ public:
         virtual bool IsEmpty(){ return false;}
         virtual void Accept(CWalker* w){ w->Visit(this);}
         virtual CNode* Flatten(){ return this;}
+        CNode* Scalar();
+        virtual void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this);}
     };
     struct CEmptyNode : public CNode
     {   double Evaluate(){ throw 0;}
@@ -87,6 +91,7 @@ public:
         ~CUnaryNode(){ delete N;}
         double Evaluate();
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); N->Recursion(func, P);}
     };
     struct CBinaryNode : public CNode // + - * / % == != < > <= >= && ||
     {   enum TYPE { PLUS, MINUS, MUL, DIV, MOD, EQ, NE, LT, GT, LTE, GTE, AND, OR };
@@ -97,6 +102,7 @@ public:
         ~CBinaryNode(){ delete N1; delete N2;}
         double Evaluate();
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); N1->Recursion(func, P); N2->Recursion(func, P);}
     };
     struct CTernaryNode : public CNode // ?:
     {   CNode* N1;
@@ -106,6 +112,7 @@ public:
         ~CTernaryNode(){ delete N1; delete N2; delete N3;}
         double Evaluate();
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); N1->Recursion(func, P); N2->Recursion(func, P); N3->Recursion(func, P);}
     };
     struct CConstNode : public CNode // numbers
     {   double X;
@@ -119,17 +126,22 @@ public:
         std::vector<CVariable*> depends;
         std::vector<std::string> formula;
         std::vector<CNode*> expr;
+        std::vector<double> history;
+        std::vector<bool> nahistory;
+        unsigned size;
         CReader* reader;
         double value;
         bool bad;
         bool na;
         bool dfs_visited;
         int dfs_done;
-        CVariable(std::string f, int n, std::string s) : CLocation(f, n), name(s), bad(false), na(false), value(0), reader(0) {}
+        CVariable(std::string f, int n, std::string s) : CLocation(f, n), name(s), bad(false), na(false), value(0), reader(0), size(0) {}
+        void UpdateHistory();
     };
     struct CVarNode : public CNode // variables
     {   CVariable* V;
-        CVarNode(CVariable* v) : V(v) {}
+        unsigned T;
+        CVarNode(CVariable* v, unsigned t=0) : V(v), T(t) { if(V->size<t) V->size=T; }
         double Evaluate();
         CNode* Flatten();
     };
@@ -142,15 +154,17 @@ public:
     {   CNode* N;
         double current;
         double old;
-        CDiffNode(CNode* n) : N(n), current(0), old(0) {}
+        bool current_na;
+        bool old_na;
+        CDiffNode(CNode* n) : N(n), current(0), old(0), current_na(false), old_na(false) {}
         ~CDiffNode(){ delete N;}
-        double Evaluate(){ current=N->Evaluate(); return current-old;}
-        void Record(){ old=current;}
+        double Evaluate(){ current_na=true; current=N->Evaluate(); current_na=false; if(old_na) throw 0; return current-old;}
+        void Record(){ old=current; old_na=current_na;}
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); N->Recursion(func, P);}
     };
     struct CList : public CNode
     {   bool IsList(){ return true;}
-        CNode* SingleItem(){ return 0;}
         double Evaluate(){ throw 0;}
     };
     struct CVector : public CList
@@ -159,11 +173,14 @@ public:
         ~CVector(){ for(unsigned i=0;i<V.size();i++) delete V[i];}
         void Accept(CWalker* W){ for(unsigned i=0;i<V.size();i++) V[i]->Accept(W);}
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); for(unsigned i=0;i<V.size();i++) V[i]->Recursion(func, P);}
     };
     struct CRegEx : public CLocation
     {   std::string str;
         std::map<std::string, CReader*> map;
-        CRegEx(std::string f, int n, std::string s) : CLocation(f, n), str(s) {}
+        std::vector<CReader*> vector;
+        bool is_map;
+        CRegEx(std::string f, int n, std::string s) : CLocation(f, n), str(s), is_map(false) {}
     };
     struct CRegexNode : public CList // regex
     {   CRegEx* R;
@@ -171,11 +188,27 @@ public:
         CNode* Flatten();
     };
     struct CDiffList : public CList // D(...)
-    {   CParser* P;
-        CNode* L;
-        CDiffList(CParser* p, CNode* n) : P(p), L(n) {}
+    {   CNode* L;
+        CDiffList(CNode* n) : L(n) {}
         ~CDiffList(){ delete L;}
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); L->Recursion(func, P);}
+    };
+    struct CMemList : public CList // var[...]
+    {   CVariable* V;
+        CNode* L;
+        CMemList(CVariable* v, CNode* n) : V(v), L(n) {}
+        ~CMemList(){ delete L;}
+        CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); L->Recursion(func, P);}
+    };
+    struct CRangeNode : public CList // a : b
+    {   CNode* N1;
+        CNode* N2;
+        CRangeNode(CNode* n1, CNode* n2) : N1(n1), N2(n2) {}
+        ~CRangeNode(){ delete N1; delete N2;}
+        CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); N1->Recursion(func, P); N2->Recursion(func, P);}
     };
     struct CWalker : public CNode // function call
     {   CNode* L;
@@ -187,6 +220,7 @@ public:
         virtual double Evaluate(){ StartWalk(); L->Accept(this); return FinishWalk();}
         virtual void Visit(CNode*)=0;
         CNode* Flatten();
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); L->Recursion(func, P);}
     };
     struct CSumNode : public CWalker
     {   CSumNode(CNode* n) : CWalker(n) {}
@@ -216,6 +250,24 @@ public:
     struct CCountNode : public CWalker
     {   CCountNode(CNode* n) : CWalker(n) {}
         void Visit(CNode* n){ value++;}
+    };
+    struct CBinNode : public CWalker
+    {   bool first;
+        bool empty;
+        double x;
+        double last;
+        CBinNode(CNode* n) : CWalker(n) {}
+        void StartWalk(){ first=true; value=0;}
+        void Visit(CNode* n);
+    };
+    struct CCaseNode : public CWalker
+    {   bool first;
+        bool empty;
+        int count;
+        CCaseNode(CNode* n) : CWalker(n) {}
+        void StartWalk(){ first=true; empty=true;}
+        void Visit(CNode* n);
+        double FinishWalk(){ if(empty) throw 0; return value;}
     };
     struct CReport
     {   virtual int Size() const = 0;
@@ -247,7 +299,8 @@ public:
     const CReport* Report(int n){ return var_list[n];}
     static std::string Clip(std::string);
 protected:
-    void Throw(std::string s){ throw CError(current_file, formula_line, s);}
+    static void CollectDiffs(CParser*, CNode*);
+    void Throw(std::string s){ throw CError(current_file, formula_line, current_var, s);}
     std::string ExpandMacro(std::string);
     void SplitLeft(std::string, std::string&, std::string&);
     void ScanDependencies(CVariable*, std::string);
@@ -264,11 +317,13 @@ protected:
     CNode* Parse6();    // &&
     CNode* Parse7();    // ||
     CNode* Parse8();    // ?:
-    CNode* Parse9();    // expr or regex
+    CNode* Parse9();    // expr or regex or range
+    CNode* ParseRange();// a:b
     CNode* ParseList(); // ,
     void ParseList(std::vector<CNode*>&);
 
     std::string current_file;
+    std::string current_var;
     std::string pending;
     int current_line;
     int formula_line;
@@ -276,6 +331,7 @@ protected:
     std::map<std::string, CVariable*> variables; // definitions
     std::map<std::string, CVariable*> all_vars;
     std::map<std::string, CRegEx*> regexes;
+    std::vector<CVariable*> history;
     std::vector<CVariable*> vars;     // evaluation order
     std::vector<CReport*> var_list;   // output order
     std::vector<CDiffNode*> diffs;

@@ -25,12 +25,14 @@ class CTimegraphReaderManager : public CParser::CReaderManager
     std::vector<std::string> names;
     std::vector<double> values;
     std::map<std::string, int> by_name;
+    std::map<std::string, CParser::CReader*> readers;
     friend class CTimegraphReader;
 public:
     CTimegraphReaderManager(const char*);
     ~CTimegraphReaderManager();
     CParser::CReader* FindReader(std::string);
-    std::map<std::string, CParser::CReader*> FindRegEx(std::string);
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string);
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
     bool ReadLine();
 };
 
@@ -43,7 +45,8 @@ public:
 };
 
 CTimegraphReaderManager::~CTimegraphReaderManager()
-{   file.close();
+{   for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;
+    file.close();
 }
 
 CTimegraphReaderManager::CTimegraphReaderManager(const char*fname)
@@ -76,7 +79,7 @@ CParser::CReader* CTimegraphReaderManager::FindReader(std::string name)
     return readers[name];
 }
 
-std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegEx(std::string str)
+std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegExAsMap(std::string str)
 {   std::map<std::string, CParser::CReader*> M;
     boost::regex re(str);
     for(std::map<std::string, int>::iterator J=by_name.begin();J!=by_name.end();J++)
@@ -87,14 +90,24 @@ std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegEx(std:
     return M;
 }
 
+std::vector<CParser::CReader*> CTimegraphReaderManager::FindRegExAsVector(std::string str)
+{   std::map<std::string, CParser::CReader*> M=FindRegExAsMap(str);
+    std::vector<CParser::CReader*> V;
+    for(std::map<std::string, CParser::CReader*>::iterator J=M.begin();J!=M.end();J++) V.push_back(J->second);
+    return V;
+}
+
 /// Stat reader
 
 class CStatReaderManager : public CParser::CReaderManager
 {   std::map<std::string, double> values;
+    std::map<std::string, CParser::CReader*> readers;
 public:
     CStatReaderManager(const char*);
+    ~CStatReaderManager(){ for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;}
     CParser::CReader* FindReader(std::string);
-    std::map<std::string, CParser::CReader*> FindRegEx(std::string);
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string);
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
 };
 
 class CStatReader : public CParser::CReader
@@ -133,7 +146,7 @@ CParser::CReader* CStatReaderManager::FindReader(std::string str)
     return readers[str];
 }
 
-std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegEx(std::string str)
+std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegExAsMap(std::string str)
 {   std::map<std::string, CParser::CReader*> M;
     boost::regex re(str);
     for(std::map<std::string, double>::iterator J=values.begin();J!=values.end();J++)
@@ -142,6 +155,13 @@ std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegEx(std::stri
         M[J->first]=readers[J->first];
     }
     return M;
+}
+
+std::vector<CParser::CReader*> CStatReaderManager::FindRegExAsVector(std::string str)
+{   std::map<std::string, CParser::CReader*> M=FindRegExAsMap(str);
+    std::vector<CParser::CReader*> V;
+    for(std::map<std::string, CParser::CReader*>::iterator J=M.begin();J!=M.end();J++) V.push_back(J->second);
+    return V;
 }
 
 /// main
@@ -161,6 +181,12 @@ char* Usage=
 "if none specified, just checking the formula syntax\n"
 "multiple -o -e -s -t are not allowed\n"
 ;
+
+void print_error(CParser::CError& e)
+{   std::cerr<<"### "<<e.file<<" line "<<e.line;
+    if(!e.var.empty()) std::cerr<<" "<<e.var;
+    std::cerr<<" - "<<e.message<<std::endl;
+}
 
 int main(int argc, char** argv)
 {   bool csv=false;
@@ -279,7 +305,7 @@ int main(int argc, char** argv)
         for(unsigned i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) std::cerr<<"### "<<E[i].file<<" line "<<E[i].line<<" - "<<E[i].message<<std::endl;
+            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
         }
 
         P.Execute();
@@ -303,7 +329,7 @@ int main(int argc, char** argv)
         for(unsigned i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) std::cerr<<"### "<<E[i].file<<" line "<<E[i].line<<" - "<<E[i].message<<std::endl;
+            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
         }
         
         bool separate=false;
@@ -319,7 +345,7 @@ int main(int argc, char** argv)
 
         while(TGM.ReadLine())
         {   P.Execute();
-            separate=false;    
+            separate=false;
             for(int i=0;i<P.Size();i++)
             {   const CParser::CReport* R=P.Report(i);
                 for(int j=0;j<R->Size();j++)
@@ -337,8 +363,7 @@ int main(int argc, char** argv)
     {   for(unsigned i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) std::cerr<<"### "<<E[i].file<<" line "<<E[i].line<<" - "<<E[i].message<<std::endl;
+            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
         }
     }
 }
-
