@@ -33,6 +33,7 @@ GTI,Gen8,Gen8,1
 GTI,Gen8,Gen9LPClient,0.835
 GTI,Gen9LPClient,Gen8,NA
 GTI,Gen9LPClient,Gen10LP,0.95
+GTI,Gen8,Gen10LP,0.79325
 Sampler,Gen8,Gen8,1
 Sampler,Gen8,Gen8SoC,0.9
 Sampler,Gen8,Gen9LPClient,0.835
