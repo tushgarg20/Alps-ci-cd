@@ -45,27 +45,36 @@ void CParser::ReadLine(const char*str)
     {   macro[left]=right;
         return;
     }
-
-    std::string var;
-    if(boost::regex_match(left, boost::regex("^\\.?[a-zA-Z_][\\w\\.]*$")))
-    {   var=left;
-    }
-    else if(boost::regex_match(left, boost::regex("^\\.$")))
-    {   var=left;
-    }
-    else if(boost::regex_match(left, boost::regex("^\\.?[a-zA-Z_][\\w\\.]*\\s*\\(\\S*\\)$")))
+    if(boost::regex_match(left, boost::regex("^\\S*\\s*\\(\\S*\\)$")))
     {   n=left.find_first_of(" \t(");
-        var=left.substr(0, n);
+        left=left.substr(0, n);
     }
-    else
-    {   Throw(std::string("invalid name: ")+left);
+    if(boost::regex_match(left, boost::regex("^[^\']*\'[^\']+\'$")))
+    {   n=left.find_first_of('\'');
+        std::string pref=left.substr(0, n);
+        std::string rex=left.substr(n);
+        if(right!=rex && right !=std::string("D")+rex) Throw(std::string("invalid expression: ")+right);
+        if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
+        defined_names[left]=true;
+        bool diff=(right!=rex);
+        rex=rex.substr(1, rex.length()-2);
+        CPassThroughRegex* P=new CPassThroughRegex(pref, rex, diff, current_file, formula_line);
+        var_list.push_back(P); p_t_regs.push_back(P);
+        return;
     }
-    if(variables.find(var)!=variables.end())
-    {   Throw(std::string("variable redefinition: ")+var);
+
+    if(!boost::regex_match(left, boost::regex("^\\.?[a-zA-Z_][\\w\\.]*$|^\\.$"))) Throw(std::string("invalid name: ")+left);
+    if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
+    defined_names[left]=true;
+    if(left==right)
+    {   CPassThroughVariable* P=new CPassThroughVariable(left, current_file, formula_line);
+        var_list.push_back(P); p_t_vars.push_back(P);
+        return;
     }
-    CVariable* V = all_vars.find(var)==all_vars.end() ? new CVariable(current_file, formula_line, var) : all_vars[var];
+
+    CVariable* V = all_vars.find(left)==all_vars.end() ? new CVariable(current_file, formula_line, left) : all_vars[left];
     V->file=current_file; V->line=formula_line;
-    variables[var]=V; all_vars[var]=V;
+    variables[left]=V; all_vars[left]=V;
     if(V!=dot){ vars.push_back(V); var_list.push_back(new CPlainVariable(V));}
     current_var=V->name;
     ScanDependencies(V, right);
@@ -778,7 +787,7 @@ CParser::CNode* CParser::CMemList::Flatten()
     if(M!=L){ delete L; L=M;}
     if(L->IsEmpty()){ M=L; L=0; return M;}
     if(!L->IsList())
-    {   if(!L->IsConst()) throw std::string("index must be a constant expression");
+    {   if(!L->IsConst()) throw std::string("non-constant index");
         int t=(int)L->Evaluate();
         if(t<=0) throw std::string("index must be greater than zero");
         M=new CVarNode(V, (unsigned)t);
@@ -787,9 +796,9 @@ CParser::CNode* CParser::CMemList::Flatten()
     std::vector<CNode*> W;
     CVector* X=dynamic_cast<CVector*>(M);
     for(unsigned i=0;i<X->V.size();i++)
-    {   if(!X->V[i]->IsConst()) throw std::string("index must be a constant expression");
+    {   if(!X->V[i]->IsConst()) throw std::string("non-constant index");
         int t=(int)X->V[i]->Evaluate();
-        if(t<=0) throw std::string("index must be greater than zero");
+        if(t<=0) throw std::string("negative or zero index");
         W.push_back(new CVarNode(V, (unsigned)t));
     }
     X->V.clear();
@@ -803,7 +812,7 @@ CParser::CNode* CParser::CRangeNode::Flatten()
     if(M!=N1){ delete N1; N1=M;}
     M=N2->Scalar();
     if(M!=N2){ delete N2; N2=M;}
-    if(!N1->IsConst() || !N2->IsConst()) throw std::string("non-constant expression in the range");
+    if(!N1->IsConst() || !N2->IsConst()) throw std::string("non-constant range");
     int a=(int) N1->Evaluate();
     int b=(int) N2->Evaluate();
     if(a==b) return new CConstNode(a);
@@ -825,13 +834,29 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             if(J->second->vector.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
         }
     }
+    for(unsigned i=0;i<p_t_regs.size();i++)
+    {   std::map<std::string, CReader*> M=RM->FindRegExAsMap(p_t_regs[i]->rex);
+        if(M.empty()) Err.push_back(CError(p_t_regs[i]->file, p_t_regs[i]->line, "", std::string("no matches found: '")+p_t_regs[i]->rex+"'"));
+        for(std::map<std::string, CReader*>::iterator J=M.begin();J!=M.end();J++) p_t_regs[i]->names.push_back(J->first);
+        std::sort(p_t_regs[i]->names.begin(), p_t_regs[i]->names.end());
+        for(unsigned j=0;j<p_t_regs[i]->names.size();j++)
+        {   p_t_regs[i]->readers.push_back(M[p_t_regs[i]->names[j]]);
+            p_t_regs[i]->new_val.push_back(0);
+            p_t_regs[i]->old_val.push_back(0);
+            p_t_regs[i]->value.push_back(0);
+        }
+    }
+    for(unsigned i=0;i<p_t_vars.size();i++)
+    {   p_t_vars[i]->R=RM->FindReader(p_t_vars[i]->name);
+        if(!p_t_vars[i]->R) Err.push_back(CError(p_t_vars[i]->file, p_t_vars[i]->line, "", std::string("no matches found: '")+p_t_vars[i]->name+"'"));
+    }
     for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++)
     {   CVariable* V=J->second;
         CReader* R=RM->FindReader(V->name);
         if(R)
         {   if(!V->formula.empty())
-            {   if(R->IsDynamic()) V->reader=R;
-            if(!R->IsDynamic() && !R->IsDefault()) Err.push_back(CError(V->file, V->line, V->name, std::string("variable name conflict: ")+V->name));
+            {   if(R->IsDynamic()){ V->reader=R; dynamic.push_back(V);}
+                if(!R->IsDynamic() && !R->IsDefault()) Err.push_back(CError(V->file, V->line, V->name, std::string("variable name conflict: ")+V->name));
             }
             else
             {   V->reader=R;
@@ -896,8 +921,13 @@ void CParser::Execute()
             catch(...){}
         }
     }
+    for(unsigned i=0;i<p_t_regs.size();i++) p_t_regs[i]->Update();
     for(unsigned i=0;i<diffs.size();i++) diffs[i]->Record();
     for(unsigned i=0;i<history.size();i++) history[i]->UpdateHistory();
+    for(unsigned i=0;i<dynamic.size();i++)
+    {   CDynamicReader* Dr=dynamic_cast<CDynamicReader*>(dynamic[i]->reader);
+        Dr->Set(dynamic[i]->value);
+    }
 }
 
 bool CParser::Ready()

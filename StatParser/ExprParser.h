@@ -14,6 +14,11 @@ public:
         virtual bool IsDynamic(){ return false;}
         virtual double Value()=0;
     };
+    struct CDynamicReader : public CReader
+    {   virtual ~CDynamicReader(){}
+        bool IsDynamic(){ return true;}
+        virtual void Set(double)=0;
+    };
     struct CReaderManager
     {   virtual ~CReaderManager(){}
         virtual CReader* FindReader(std::string)=0;
@@ -269,8 +274,9 @@ public:
         void Visit(CNode* n);
         double FinishWalk(){ if(empty) throw 0; return value;}
     };
-    struct CReport
-    {   virtual int Size() const = 0;
+    struct CReport : public CLocation
+    {   CReport(std::string f, int n) : CLocation(f, n) {}
+        virtual int Size() const = 0;
         virtual std::string Name(int) const = 0;
         virtual double Value(int) const = 0;
         virtual bool Bad(int) const = 0;
@@ -278,11 +284,40 @@ public:
     class CPlainVariable : public CReport
     {   CVariable*V;
     public:
-        CPlainVariable(CVariable*v) : V(v) {}
+        CPlainVariable(CVariable*v) : CReport(v->file, v->line), V(v) {}
         int Size() const { return 1;}
         std::string Name(int) const { return V->name;}
         double Value(int) const { return V->value;}
         bool Bad(int) const { return V->na;}
+    };
+    class CPassThroughVariable : public CReport
+    {   std::string name;
+        CReader* R;
+    public:
+        CPassThroughVariable(std::string s, std::string f, int n) : CReport(f, n), name(s), R(0) {}
+        int Size() const { return 1;}
+        std::string Name(int) const { return name;}
+        double Value(int) const { return R->Value();}
+        bool Bad(int) const { return !R;}
+        friend class CParser;
+    };
+    class CPassThroughRegex : public CReport
+    {   std::string pref;
+        std::string rex;
+        std::vector<CReader*> readers;
+        std::vector<std::string> names;
+        std::vector<double> old_val;
+        std::vector<double> new_val;
+        std::vector<double> value;
+        bool diff;
+    public:
+        CPassThroughRegex(std::string p, std::string r, bool d, std::string f, int n) : CReport(f, n), pref(p), rex(r), diff(d) {}
+        int Size() const { return names.size();}
+        std::string Name(int n) const { return pref+names[n];}
+        double Value(int n) const { return value[n];}
+        bool Bad(int) const { return false;}
+        void Update(){ for(unsigned i=0;i<readers.size();i++){ if(diff) old_val[i]=new_val[i]; new_val[i]=readers[i]->Value(); value[i]=diff?new_val[i]-old_val[i]:new_val[i];}}
+        friend class CParser;
     };
 
     CParser();
@@ -330,10 +365,14 @@ protected:
     std::map<std::string, std::string> macro;
     std::map<std::string, CVariable*> variables; // definitions
     std::map<std::string, CVariable*> all_vars;
+    std::map<std::string, bool> defined_names;
     std::map<std::string, CRegEx*> regexes;
+    std::vector<CVariable*> dynamic;
     std::vector<CVariable*> history;
     std::vector<CVariable*> vars;     // evaluation order
     std::vector<CReport*> var_list;   // output order
+    std::vector<CPassThroughVariable*> p_t_vars;   // pass through variables
+    std::vector<CPassThroughRegex*> p_t_regs;   // pass through regexes
     std::vector<CDiffNode*> diffs;
     std::vector<CToken> tokens;
     unsigned token_ptr;
