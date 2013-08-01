@@ -354,7 +354,10 @@ for line in resfile:
         del(key_data[0])
         I["_".join(key_data)] = float(data[1])
     else:
-        R[data[0]] = float(data[1])
+        if(not data[1].isdigit() or float(data[1]) < 0):
+            R[data[0]] = 0
+        else:
+            R[data[0]] = float(data[1])
 resfile.close()
 
 
