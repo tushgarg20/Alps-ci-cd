@@ -163,7 +163,7 @@ foreach my $frame (keys %consolidatedAlpsData) {
 		}
 		foreach my $clus (keys %frameDataTemp) {
 			print "CLUS $clus\n";	
-			if ($clus =~ /FPS|GT|KEYSTATS|CDYN/i) {next;}
+			if ($clus =~ /FPS|^GT$|KEYSTATS|CDYN/i) {next;}
 			my %clusDataTemp = %{$frameDataTemp{$clus}};
 			push(@{$outputCsvFileHash{$clus}},$clusDataTemp{CDYN});
 			if ($count == 0) {push @orderArray, $clus;}
