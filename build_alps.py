@@ -712,7 +712,7 @@ if(options.timegraph_file and options.output_timegraph_file):
     timegraph_file = open(options.timegraph_file,'r')
     #Creating timegraph output file
     op_timegraph_file = open(options.output_timegraph_file, 'w')
-    tiny_build_alps(True)
+    #tiny_build_alps(True)
     with_header = True
     header = timegraph_file.readline().strip().split('\t')
     for line in timegraph_file:
@@ -724,8 +724,11 @@ if(options.timegraph_file and options.output_timegraph_file):
             if(strip_num(ele) is False):
                 try:
                     R[ele] = float(row[index])
+                    if(R[ele] < 0):
+                        R[ele] = 0
                 except ValueError:
                     print("Float conversion failed for", ele, file=lf)
+                    R[ele] = 0
             else:
                 try:
                     I[strip_num(ele)] = float(row[index])
