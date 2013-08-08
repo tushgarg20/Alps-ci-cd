@@ -46,6 +46,7 @@ paths = []
 linest_coeff = {}
 log_file = options.output_file + ".log"
 debug_file = options.output_file + ".cdyn.log"
+patriot_file = options.output_file + ".patriot"
 lf = open(log_file,'w')
 if (options.run_debug):
     df = open(debug_file,'w')
@@ -87,7 +88,7 @@ def get_data(line, separator):
         i = i + 1
     return res
 
-def dfs(adict, path=[]):
+def dfs(adict, paths, path=[]):
     if(type(adict) is not dict):
         path.append(adict)
         paths.append(path + [])
@@ -95,7 +96,7 @@ def dfs(adict, path=[]):
         return
     for key in adict:
         path.append(key)
-        dfs(adict[key],path)
+        dfs(adict[key],paths,path)
         if(path):
             path.pop()
     return
@@ -330,6 +331,39 @@ def eval_formula(alist):
     result = eval(formula)
     return result
 
+def dump_patriot_output():
+    pf = open(patriot_file,'w')
+    print('{0} {1}'.format('FPS',gt_cdyn['FPS']),file=pf)
+    for key in key_stats['key_stats']:
+        print('{0} {1}'.format(key,key_stats['key_stats'][key]),file=pf)
+    print('{0} {1}'.format('Cdyn',gt_cdyn['Total_GT_Cdyn(nF)']*1000),file=pf)
+    for cluster in output_cdyn_data['GT']:
+        if(cluster == 'cdyn'):
+            continue
+        stat_str = cluster
+        print('{0} {1}'.format(stat_str+'.Cdyn',float('%.3f'%output_cdyn_data['GT'][cluster]['cdyn'])),file=pf)
+        for unit in output_cdyn_data['GT'][cluster]:
+            if(unit == 'cdyn'):
+                continue
+            stat_str = cluster + '.' + unit
+            print('{0} {1}'.format(stat_str+'.Cdyn',float('%.3f'%output_cdyn_data['GT'][cluster][unit]['cdyn'])),file=pf)
+            power_list = []
+            dfs(output_yaml_data['ALPS Model(pF)']['GT'][cluster][unit],power_list)
+            #print(power_list)
+            for state in power_list:
+                stat_str = cluster + '.' + unit
+                length = len(state)
+                for i in range(0,length-1): 
+                    if(i == length-2):
+                        if(state[i] == 'total'):
+                            stat_str = stat_str + '.Cdyn'
+                        else:
+                            stat_str = stat_str + '.' + state[i] + '.Cdyn'
+                    else:
+                        stat_str = stat_str + '.' + state[i]
+                print('{0} {1}'.format(stat_str,state[-1]),file=pf)         
+    pf.close()
+
 
 ####################################
 # Parsing Build ALPS Config File
@@ -464,7 +498,7 @@ for ff in formula_files:
     f = open(ff,'r')
     yaml_data = yaml.load(f)
     f.close()
-    dfs(yaml_data)
+    dfs(yaml_data,paths)
 
 output_list = deepcopy(paths)
 output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
@@ -531,8 +565,9 @@ yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(key_stats,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
+of.close()
 
-
+dump_patriot_output()
 
 ##########################################
 # Timegraph Code
@@ -743,7 +778,6 @@ if(options.timegraph_file and options.output_timegraph_file):
 
 
 #Closing the log files at the complete end
-of.close()
 print("Exit",file=lf)
 lf.close()
 if(options.run_debug):
