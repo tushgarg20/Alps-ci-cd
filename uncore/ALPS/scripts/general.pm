@@ -17,7 +17,7 @@ sub evaluate_numerical_expression
 
 	my ($expression, $error_msg_header, $formula) = @_;
 
-	my	$evalErrMsg = "";
+	my $evalErrMsg = "";
 	my $expression_before_eval = $expression;
 
 	#(not ($expression =~ /STAT_ERROR/)) or ($err = 1); #could be error, but coho doesn't output 0-value stats :(
@@ -25,7 +25,7 @@ sub evaluate_numerical_expression
 
 	# Fix up exponentiation and equality operators
 	$expression =~ s/\s*\^\s*/ ** /g;
-	$expression =~ s/\s*=\s*/ == /g;
+	$expression =~ s/\s*=+\s*/ == /g;
 
 	if ($expression =~ /\(\s*\)/) ### empty clauses exist
 	{

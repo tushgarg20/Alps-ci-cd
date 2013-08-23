@@ -16,35 +16,24 @@ use calc_leakage;
 
 our $debug;
 our $calc_power_even_if_zero_ipc = 0;
+our $output_histograms_sizes_report_file = 1;
+our $calculate_groups = 1;
+our $output_counters_values = 1;
+our $output_power_output_files = 1;
+our $output_power_into_stats_files = 0;
+our $overwrite_stats_files = 0;
 our $power_too_big_threshold;
 
-################# calculate the power of a list of traces
-### usage: calc_power(<experiment name>, <log list>, <pointer to the formulasHash>, <pointer to functions activity hash>, <pointer to the blocks_defined hash>, <output dir>, <leakage data file path>, <number of TDP traces>, \%stats_used_in_formulas)
-sub calc_power
+################# calculate the ECs which can be dependant on knob values coming from a stat file
+### usage: calc_ECs(<experiment name>, <log list>, <pointer to the formulasHash>, <pointer to functions activity hash>, <pointer to the blocks_defined hash>, <output dir>, <leakage data file path>, <number of TDP traces>, \%stats_used_in_formulas)
+sub calc_ECs
 {
-	if (@_ != 17) {return 0;}
-	my (	$experiment, $logs, $extension_to_remove_from_log_name,
-			$formulasHash, $powerHash, $blocks_defined, $outputDir, $leakageDataFilePath, $GRPs, $traces_not_to_include,
-			$stats_used_in_formulas, $fullformulasHash, $cycles_counter_hash, $ecStats, $ecStatsFile, $aliasesHash, $num_of_traces_to_output_in_excel_in_fubs_level
-		) = @_;
-
-	my %testsbypower;
-	my @testsListSorted;
-	my %ipc_hash;
-	my %stats_hash;
-	my %stats_validity;
-	my %stats_GRP_hash;
-	my %GRPs_hash;
+	if (@_ != 5) {die "Error in function parameters";}
+	my ($logs, $powerHash, $fullformulasHash, $ecStatsFile, $aliasesHash) = @_;
 
 	my %ec_stats_hash;
 	my %ec_stats_validity;
 	my $ec_histos_to_exclude = ();
-
-	my %empty_hash = ();
-	my $histograms_to_exclude = general_config::getKnob("histograms_to_exclude");
-	($histograms_to_exclude ne "-1") or $histograms_to_exclude = \%empty_hash;
-
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
 
 	# If "designated stats file" for EC formulas is given, read it,
 	# taking care not to perturb any other state of the data model
@@ -53,16 +42,42 @@ sub calc_power
 	if ($ecStatsFile eq "") {
 		$ecStatsFile = $$logs[0];
 	}
-	my $ecStatsFile_trace_name = stats_handler::get_trace_name_from_stats_file_name($ecStatsFile, $extension_to_remove_from_log_name);
-	stats_handler::read_stats_from_file(	$ecStats, \%ec_stats_hash, \%ec_stats_validity, \$ecStatsFile,
+	chomp $ecStatsFile;
+	$ecStatsFile =~ s/\r$//;
+	my %ecStats;
+	my $ecStatsFile_trace_name = stats_handler::get_trace_name_from_stats_file_name($ecStatsFile);
+	stats_handler::read_stats_from_file(	\%ecStats, \%ec_stats_hash, \%ec_stats_validity, $ecStatsFile,
 														$ec_histos_to_exclude, 1, $ecStatsFile_trace_name);
 
-	# If this run is only to generate Coho input formula files, return here
-	if (general_config::getKnob ("cohoPrep")) {
-		return 1;
-	}
+	insertECs($powerHash, $fullformulasHash, \%ecStats, $aliasesHash);
 
-	insertECs($powerHash, $fullformulasHash, $ecStats, $aliasesHash);
+	return \%ecStats;
+}
+#################
+
+
+################# calculate the power of a list of traces
+### usage: calc_power(<experiment name>, <log list>, <pointer to the formulasHash>, <pointer to functions activity hash>, <pointer to the blocks_defined hash>, <output dir>, <leakage data file path>, <number of TDP traces>, \%stats_used_in_formulas)
+sub calc_power
+{
+	if (@_ != 14) {die "Error in function parameters";}
+	my (	$experiment, $logs,
+			$formulasHash, $powerHash, $blocks_defined, $outputDir, $leakageDataFilePath, $GRPs, $traces_not_to_include,
+			$fullformulasHash, $cycles_counter_hash, $ecStats, $aliasesHash, $num_of_traces_to_output_in_excel_in_fubs_level
+		) = @_;
+
+	my @testsListSorted;
+	my %ipc_hash;
+	my %stats_hash;
+	my %stats_validity;
+	my %stats_GRP_hash;
+	my %GRPs_hash;
+
+	my %empty_hash = ();
+	my $histograms_to_exclude = general_config::getKnob("histograms_to_exclude");
+	($histograms_to_exclude ne "-1") or $histograms_to_exclude = \%empty_hash;
+
+	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
 
 	#********************************
 	calc_leakage::createHash(1266,"$leakageDataFilePath/input_1266.txt");
@@ -72,130 +87,123 @@ sub calc_power
 	my $c = 0;
 	if (scalar(keys(%$formulasHash)) > 0)   ### There is a formula file. Calculate power according to it.
 	{
-		foreach my $File (@{$logs})
+		foreach my $File (@{$logs})	# Iterate over all stats files
 		{
 			$c++;
 			print STDOUT "t$c ";
 
-			if ($debug eq 1)
-			{
-				print STDOUT "$File\n";
-			}
+			chomp $File;
+			$File =~ s/\r$//;
+			if ($debug eq 1) {print STDOUT "$File\n";}
 
 			my %huge_histos;
 			my %stats;
-			my $trace_name = stats_handler::get_trace_name_from_stats_file_name($File, $extension_to_remove_from_log_name);
-			stats_handler::read_stats_from_file(\%stats, \%stats_hash, \%stats_validity, \$File, $histograms_to_exclude, 0, $trace_name);
+			my $trace_name = stats_handler::get_trace_name_from_stats_file_name($File);
+			stats_handler::read_stats_from_file(\%stats, \%stats_hash, \%stats_validity, $File, $histograms_to_exclude, 0, $trace_name);
+			#print Dumper(\%stats);
 
 			if (($c % 50) == 0)
 			{
 				stats_handler::check_for_huge_histograms_and_remove_them(\%stats_hash, \%huge_histos, $histograms_to_exclude, \%stats_validity);
 			}
 
-#print Dumper(\%stats);
-
 			stats_handler::calc_IPC(\%ipc_hash, $trace_name, \%stats);
 
 			# If running scenarios where core is off, just simulating uncore activity,
 			# or if IPC is nonzero, calc power
 			if ( $calc_power_even_if_zero_ipc ||
-			     ($ipc_hash{$trace_name}{"IPC"} > 0)) {
-			    calc_power_in_test_using_formulas($fullformulasHash, $cycles_counter_hash, "", \%stats, $trace_name, $powerHash, "Platform", $ecStats, $aliasesHash);
-			}
-
-#print Dumper($powerHash);
-
-			my $totalpower;
-			foreach my $location (keys %{$$powerHash{"SubBlocks"}})
+			     ($ipc_hash{$trace_name}{"IPC"} > 0) )
 			{
-				if ($location =~ /^core0?$/)
+			    calc_power_in_test_using_formulas($fullformulasHash, $cycles_counter_hash, "", \%stats, $trace_name, $powerHash, "Platform", $ecStats, $aliasesHash);
+			
+				### Generate power stats in the stats files format and insert it into the stats file
+				if ($output_power_into_stats_files)
 				{
-					if (defined($$powerHash{"SubBlocks"}{$location}{"Cdyn"}{$trace_name}) and defined($$powerHash{"SubBlocks"}{$location}{"Idle"}) and defined($$powerHash{"SubBlocks"}{$location}{"Leakage"}))
+					my $stats_file = $File;
+					my $stats_file_data = "";
+					stats_handler::read_stats_file_without_powerstats(\$stats_file_data, $stats_file);
+					$stats_file_data .= generate_powerstats_data($trace_name, $powerHash, "p0");
+					if (!$overwrite_stats_files)	# output modified stats files into a local output dir
 					{
-						$totalpower = $$powerHash{"SubBlocks"}{$location}{"Cdyn"}{$trace_name} + $$powerHash{"SubBlocks"}{$location}{"Idle"}; # + $$powerHash{"SubBlocks"}{$location}{"Leakage"};
+						my $stats_out_dir = $outputDir . "\/stats_files_with_power_stats\/";
+						(-d $stats_out_dir) or (system "mkdir -p $stats_out_dir");
+						$stats_file =~ s/^.*\///;
+						$stats_file = $stats_out_dir . "\/" . $stats_file;
 					}
+					stats_handler::save_stats_file(\$stats_file_data, $stats_file);
 				}
 			}
 
-			if (!defined $totalpower)
-			{
-				output_functions::print_to_log("Error finding total power for $trace_name. Using 0.\n");
-				$totalpower = 0;
-			}
-			push @{$testsbypower{$totalpower}}, $trace_name;
+			#print Dumper($powerHash);
 		}
 		print STDOUT "\n";
 	}
 	else   ### There is no formula file. Dump the power data that is already in the stats files.
 	{
-		foreach my $File (@{$logs})
-		{
-		#	my %testsbypower;
-		#	my @testsListSorted;
-		#	my $numTestsListSortedFiltered = 0;
-		#	my %fubsActive;
-		#	my %unitsActive;
-		#	my %clustersActive;
-		#	my %fubsStatic;
-		#	my %unitsStatic;
-		#	my %clustersStatic;
-		#	my %staticPower;
+#		foreach my $File (@{$logs})
+#		{
 #			calc_power_in_test_based_on_power_stats($File, \%stats_hash, \%ipc_hash, $blocks_defined, \%fubsActive, \%fubsStatic, \%unitsActive, \%unitsStatic, \%clustersActive, \%clustersStatic, \%testsbypower);
-		}
+#		}
 	}
 
-	foreach my $totalpower (sort { $a <=> $b } keys(%testsbypower)) ### sort the tests according to core power
-	{
-		foreach my $trace_name (@{$testsbypower{$totalpower}})
-		{
-			unshift @testsListSorted, $trace_name;
-		}
-	}
-
+	generate_tests_list_sorted_by_power($powerHash, \@testsListSorted);	### sort the tests according to core power
+	
 	output_functions::print_to_log_the_repeated_messages_summary();
 
 	### Create a file summarizing the histograms' sizes
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
-	print STDOUT "creating a histograms count summary file\n";
-	stats_handler::huge_histo_dump($outputDir, $experiment, \%stats_hash);
+	if ($output_histograms_sizes_report_file)
+	{
+		print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+		print STDOUT "creating a histograms count summary file\n";
+		stats_handler::huge_histo_dump($outputDir, $experiment, \%stats_hash);
+	}
 	###
 
 	### Find which traces to put in each group and calculate the groups' values
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
-	print STDOUT "calculating groups\n";
 	my @GRP_list = ();
-    if($GRPs ne "-1") {
-
-        foreach my $grpType ("independent", "dependant")
-        {
-            if (! defined ($$GRPs{$grpType})) {
-# Not an error for LRB3
-                next;
-            }
-            my $GRPs_pointer = $$GRPs{$grpType};
-            foreach my $nameOfGRP (sort keys %$GRPs_pointer)
-            {
-                push @GRP_list, $nameOfGRP;
-                calc_GRP($GRPs_pointer, \@testsListSorted, $traces_not_to_include, $powerHash, $nameOfGRP, \%GRPs_hash);
-#		print Dumper(\%GRPs_hash);
-                calc_GRP_for_block($GRPs_hash{$nameOfGRP}, "all_blocks", $powerHash, 0, $nameOfGRP);
-                calc_GRP_for_stats($GRPs_hash{$nameOfGRP}, "all_blocks", \%stats_hash, \%stats_GRP_hash, \%ipc_hash, $nameOfGRP);
-            }
-        }
-    }
+	if (($calculate_groups) and ($GRPs ne "-1"))
+	{
+		print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+		print STDOUT "calculating groups\n";
+		foreach my $grpType ("independent", "dependant")
+		{
+			if (! defined ($$GRPs{$grpType})) {
+				# Not an error for LRB3
+				next;
+			}
+			my $GRPs_pointer = $$GRPs{$grpType};
+			foreach my $nameOfGRP (sort keys %$GRPs_pointer)
+			{
+				push @GRP_list, $nameOfGRP;
+				calc_GRP($GRPs_pointer, \@testsListSorted, $traces_not_to_include, $powerHash, $nameOfGRP, \%GRPs_hash);
+		#		print Dumper(\%GRPs_hash);
+				calc_GRP_for_block($GRPs_hash{$nameOfGRP}, "all_blocks", $powerHash, 0, $nameOfGRP, "power hash root");
+				calc_GRP_for_stats($GRPs_hash{$nameOfGRP}, "all_blocks", \%stats_hash, \%stats_GRP_hash, \%ipc_hash, $nameOfGRP);
+			}
+		}
+	}
 	###
+
+	if (!$stats_handler::consider_counter_as_exists_even_if_zero_value)
+	{
+		stats_handler::find_stats_used_in_formulas_and_signify_they_were_found(\%stats_hash);
+	}
 
 #print Dumper($powerHash);
 
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
-	print STDOUT "creating power output\n";
-	output_functions::output_power($experiment, \@testsListSorted, \%ipc_hash, $outputDir, $powerHash, \@GRP_list, $fullformulasHash, $num_of_traces_to_output_in_excel_in_fubs_level);
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
-	print STDOUT "creating stats output\n";
-	output_functions::output_stats($experiment, \@testsListSorted, \%stats_hash, \%stats_GRP_hash, \@GRP_list, \%ipc_hash, $outputDir);
-	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
-	print STDOUT "creating not used stats output\n";
-	output_functions::output_not_used_stats($experiment, \%stats_hash, $outputDir, $stats_used_in_formulas);
+	if ($output_power_output_files)
+	{
+		print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+		print STDOUT "creating power output\n";
+		output_functions::output_power($experiment, \@testsListSorted, \%ipc_hash, $outputDir, $powerHash, \@GRP_list, $fullformulasHash, $num_of_traces_to_output_in_excel_in_fubs_level);
+	}
+	if ($output_counters_values)
+	{
+		print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+		print STDOUT "creating stats output\n";
+		output_functions::output_stats($experiment, \@testsListSorted, \%stats_hash, \%stats_GRP_hash, \@GRP_list, \%ipc_hash, $outputDir);
+	}
+
 	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
 	print STDOUT "finished dumping output\n";
 
@@ -228,20 +236,9 @@ sub insertECs
 
 					foreach my $function (keys %{$$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}})   ### find EC for each formula
 					{
-						my $EC = $$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Power"};
-
-#						if ($EC eq "") {	# EC has no value. Fix the formulas hash by setting it to 0, and output a warning.
-#							output_functions::print_to_log("Error: EC has no value at fub $fub at function $function. Setting it to 0.\n");
-#							$$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Power"} = 0;
-#							$EC = 0;
-#						}
-
-						my $EC_orig = $EC;
 						# Evaluate EC separately using %ecStats, the designated stats for EC formulas
-						$EC =~ s/([\w\.\[\d\]:]+)/{stats_handler::eval_stat($1, $ecStats, $aliasesHash);}/eg;
-						if ($EC =~ /STAT_ERROR/) {
-							output_functions::print_to_log("Error: EC \"$EC_orig\" fails knob substitution => \"$EC\" at fub $fub at function $function; undefined knobs set to 0\n");
-						}
+						my $EC_orig = $$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Power"};
+						my $EC = stats_handler::evalulate_stats_in_expression($EC_orig, $ecStats, $aliasesHash);
 						$EC = general::evaluate_numerical_expression($EC, "Error calculating EC with expression: \"$EC_orig\" at $location.$cluster.$unit.$fub.$function", $EC_orig);
 
 						$$powerHash{"SubBlocks"}{$location}{"SubBlocks"}{$cluster}{"SubBlocks"}{$unit}{"SubBlocks"}{$fub}{"Functions"}{$function}{"EC"} = $EC;
@@ -266,16 +263,27 @@ sub insertECs
 ### usage: calc_power_in_test_using_formulas($formulasHash, $cycles_counter, \$stats, \$fubsActive, \$fubsStatic, $functionsActivity, \$unitsActive, \$unitsStatic, \$clustersActive, \$clustersStatic, \$total_dynamic, $File, $ecStats, $aliasesHash)
 sub calc_power_in_test_using_formulas
 {
-	if (@_ != 9) {return 0;}
+	if (@_ != 9) {die "Error in function parameters";}
 	my ($fullformulasHash, $cycles_counter_hash, $cycles_counter, $stats, $File, $powerHash, $blockName, $ecStats, $aliasesHash) = @_;
 
-#print $blockName . "\n";
+	#print "Block name : $blockName . \n";
 
 	my $dynamic = 0;
 	my $idle = 0;
 	my $idle_formula = "";
 	my $idle_comment = "";
 	my $leakage = 0;
+	my $processScalingFactor = general_config::getKnob("process_scaling_factor");
+
+	if(!defined($processScalingFactor) or ($processScalingFactor eq "-1")) {
+	    output_functions::print_to_log("process scaling factor not specified. Assuming to be 1.\n");
+	    $processScalingFactor = 1.0;
+	}
+
+	my @ddr_block_names = ("ddr", "ddrio", "vccsa", "vccio", "vccio", "vccddq");
+	if(grep(($_ eq $blockName), @ddr_block_names)) {
+	    $processScalingFactor = 1.0;
+	}
 
 	if (defined $$fullformulasHash{"Functions"})	# got to fubs' level
 	{
@@ -297,21 +305,20 @@ sub calc_power_in_test_using_formulas
 		{
 			my $formula = $$fullformulasHash{"Functions"}{$function}{"Formula"};
 			my $EC = $$fullformulasHash{"Functions"}{$function}{"Power"};
-			my $activityFactor = "( $formula ) / ( $cycles_counter )";
+			my $activityFactor_orig = "( $formula ) / ( $cycles_counter )";
 			if ($cycles_counter eq "")
 			{
 				output_functions::print_to_log_only_once("Error! No total cycles counter available for the formula: \"$formula\" with event cost \"$EC\" at $blockName.$function\nActivity factor is set to 0!\n");
-				$activityFactor = 0;
+				$activityFactor_orig = 0;
 			}
 
-			my $activityFactor_orig = $activityFactor;
-			$activityFactor =~ s/([\w\.\[\d\]:]+)/{stats_handler::eval_stat($1, $stats, $aliasesHash);}/eg;
+			my $activityFactor = stats_handler::evalulate_stats_in_expression($activityFactor_orig, $stats, $aliasesHash);
 
 			# Evaluate EC separately using %ecStats, the designated stats for EC formulas
-			$EC =~ s/([\w\.\[\d\]:]+)/{stats_handler::eval_stat($1, $ecStats, $aliasesHash);}/eg;
+			$EC = stats_handler::evalulate_stats_in_expression($EC, $ecStats, $aliasesHash);
 
 			$activityFactor = general::evaluate_numerical_expression($activityFactor, "Error calculating the activity factor for the formula: \"$activityFactor_orig\" at $blockName.$function", $formula);
-			my $cdyn = "( $activityFactor ) * ( $EC )";
+			my $cdyn = "( $activityFactor ) * ( $EC ) * ($processScalingFactor)";
 			$cdyn = general::evaluate_numerical_expression($cdyn, "Error calculating the Cdyn using this formula: \"$formula\" with event cost \"$EC\" at $blockName.$function", $formula);
 
 			if (($power_too_big_threshold > 0) && ($cdyn >= $power_too_big_threshold))
@@ -331,9 +338,7 @@ sub calc_power_in_test_using_formulas
 		}
 
 		$idle_formula = $idle;
-
-		$idle =~ s/([\w\.]+)/{stats_handler::eval_stat($1, $ecStats, $aliasesHash);}/eg;
-
+		$idle = stats_handler::evalulate_stats_in_expression($idle, $ecStats, $aliasesHash);
 		$idle = general::evaluate_numerical_expression($idle, "Error calculating the idle at $blockName\nThe Idle formula is: $idle_formula", $idle_formula);
 
 		if (($power_too_big_threshold > 0) && ($idle >= $power_too_big_threshold))
@@ -341,6 +346,8 @@ sub calc_power_in_test_using_formulas
 			output_functions::print_to_log_only_once("Error! Idle Cdyn is huge at $blockName\nThe Idle formula is: $idle_formula\nIdle for this fub is set to 0!\n");
 			$idle = 0;
 		}
+
+		$idle *= $processScalingFactor;
 
 		#**********************************************
 		calculate_leakage($fullformulasHash, $blockName, \$leakage);
@@ -377,7 +384,7 @@ sub calc_power_in_test_using_formulas
 	$$powerHash{"Idle"} = $idle;
 	$$powerHash{"Idle_formula"} = $idle_formula;
 	$$powerHash{"Idle_comment"} = $idle_comment;
-	$$powerHash{"Leakage"} = $leakage;
+	$$powerHash{"Leakage"} = $leakage * $processScalingFactor;
 	if ((!defined($$powerHash{"Max Cdyn"})) or ($$powerHash{"Max Cdyn"} < $dynamic))
 	{$$powerHash{"Max Cdyn"} = $dynamic;}
 
@@ -637,6 +644,110 @@ sub calc_power_in_test_based_on_power_stats
 #################
 
 
+################# generate the power stats data for dumping into a stats file
+### usage: generate_powerstats_data()
+sub generate_powerstats_data
+{
+	if (@_ != 3) {die "Error in function parameters";}
+	my ($trace_name, $powerHash, $blockName) = @_;
+
+	my $stats_file_data = "";
+
+	if (defined $$powerHash{"Functions"})	# got to fubs' level
+	{
+		foreach my $function (sort keys %{$$powerHash{"Functions"}})	 ### calculate values for each formula
+		{
+			my $cdyn = $$powerHash{"Functions"}{$function}{"Cdyn"}{$trace_name};
+			defined($cdyn) or ($cdyn = 0);
+			#my $activityFactor = $$powerHash{"Functions"}{$function}{"AF"}{$trace_name};
+			
+			$stats_file_data .= $blockName . "." . $function . ".power " . $cdyn . "\n";
+		}
+	}
+	else
+	{
+		foreach my $block (sort keys %{$$powerHash{"SubBlocks"}})
+		{
+			if ($block ne "Functions")
+			{
+				my $next_block_name = $block;
+				if ($next_block_name =~ /^core(\d*)$/)	# traslate ALPS core name syntax to Keiko's syntax (core0, core1 => c0, c1, etc.)
+				{
+					my $core_num = $1;
+					defined($core_num) or ($core_num = 0);
+					$next_block_name = "c" . $core_num;
+				}
+				
+				$stats_file_data .= generate_powerstats_data($trace_name, \%{$$powerHash{"SubBlocks"}{$block}}, $blockName . "." . $next_block_name);
+			}
+			else
+			{
+				output_functions::die_cmd("Error in function generate_powerstats_data. Unexpected Functions entry in hash.\n");
+			}
+		}
+	}
+
+	my $cdyn = $$powerHash{"Cdyn"}{$trace_name};
+	defined($cdyn) or ($cdyn = 0);
+	my $idle = $$powerHash{"Idle"};
+	defined($idle) or ($idle = 0);
+
+	$stats_file_data .= $blockName . ".Active.power " . ($cdyn - $idle) . "\n";
+	$stats_file_data .= $blockName . ".Idle.power " . $idle . "\n";
+	$stats_file_data .= $blockName . ".Total.power " . $cdyn . "\n";
+
+	return $stats_file_data;
+}
+#################
+
+
+################# generate a list of the tests sorted by power
+### usage: generate_tests_list_sorted_by_power()
+sub generate_tests_list_sorted_by_power
+{
+	output_functions::print_to_log("\n*** Generating sorted tests list ***\n");
+
+	if (@_ != 2) {die("Error in parameters to function");}
+	my ($powerHash, $testsListSorted) = @_;
+
+	my %testsbypower;
+
+	foreach my $location (keys %{$$powerHash{"SubBlocks"}})
+	{
+		if ($location =~ /^core0?$/)
+		{
+			foreach my $trace_name (keys %{$$powerHash{"SubBlocks"}{$location}{"Cdyn"}})
+			{
+				my $totalpower = 0;
+				if (defined($$powerHash{"SubBlocks"}{$location}{"Cdyn"}{$trace_name}) and defined($$powerHash{"SubBlocks"}{$location}{"Idle"}) and defined($$powerHash{"SubBlocks"}{$location}{"Leakage"}))
+				{
+					$totalpower = $$powerHash{"SubBlocks"}{$location}{"Cdyn"}{$trace_name} + $$powerHash{"SubBlocks"}{$location}{"Idle"}; # + $$powerHash{"SubBlocks"}{$location}{"Leakage"};
+				}
+
+				if (!defined $totalpower)
+				{
+					output_functions::print_to_log("Error finding total power for $trace_name. Using 0.\n");
+					$totalpower = 0;
+				}
+				push @{$testsbypower{$totalpower}}, $trace_name;
+			}
+		}
+	}
+
+
+	foreach my $totalpower (sort { $a <=> $b } keys(%testsbypower)) ### sort the tests according to core power
+	{
+		foreach my $trace_name (@{$testsbypower{$totalpower}})
+		{
+			unshift @$testsListSorted, $trace_name;
+		}
+	}
+
+	return 1;
+}
+#################
+
+
 ################# calculate a group power
 ### usage: calc_GRP()
 sub calc_GRP
@@ -817,9 +928,9 @@ sub calc_GRP
 ### usage: calc_GRP_for_block()
 sub calc_GRP_for_block
 {
-	if (@_ != 5) {return 0;}
+	if (@_ != 6) {return 0;}
 
-	my ($GRP_traces, $default_traces, $powerHash, $isFunction, $nameOfGRP) = @_;
+	my ($GRP_traces, $default_traces, $powerHash, $isFunction, $nameOfGRP, $block_name) = @_;
 
 
 	if ($isFunction)	# This is a function
@@ -858,10 +969,18 @@ sub calc_GRP_for_block
 		{
 			foreach my $function (keys %{$$powerHash{"Functions"}})
 			{
-				calc_GRP_for_block($GRP_traces, $default_traces, \%{$$powerHash{"Functions"}{$function}}, 1, $nameOfGRP);
+				calc_GRP_for_block($GRP_traces, $default_traces, \%{$$powerHash{"Functions"}{$function}}, 1, $nameOfGRP, "$block_name" . "__" . "$function");
 				$blockSum += $$powerHash{"Functions"}{$function}{"Cdyn $nameOfGRP"};
 			}
-			$blockSum += $$powerHash{"Idle"};
+
+			if (not defined($$powerHash{"Idle"}))
+			{
+				die "Error: no idle value found for block \"$block_name\" in Groups calculation.\n";
+			}
+			else
+			{
+				$blockSum += $$powerHash{"Idle"};
+			}
 		}
 		else	# This is a higher heirarchy block
 		{
@@ -872,7 +991,7 @@ sub calc_GRP_for_block
 				{
 					$default_traces_local = $block;
 				}
-				calc_GRP_for_block($GRP_traces, $default_traces_local, \%{$$powerHash{"SubBlocks"}{$block}}, 0, $nameOfGRP);
+				calc_GRP_for_block($GRP_traces, $default_traces_local, \%{$$powerHash{"SubBlocks"}{$block}}, 0, $nameOfGRP, $block);
 				$blockSum += $$powerHash{"SubBlocks"}{$block}{"Cdyn $nameOfGRP"};
 			}
 		}

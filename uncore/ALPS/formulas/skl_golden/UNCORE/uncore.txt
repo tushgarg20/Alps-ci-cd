@@ -1,0 +1,86 @@
+Fub	Location	Cluster	Unit	Function	Formula1	EC1	Idle	Leakage	Source1	Comment
+mpbgfcmdd	Uncore	NTR	bgf_command	mpbgfcmdd	un_imph_alloc_cbotrk	19.82	3.5223	0		
+mpbgfdatad	Uncore	NTR	bgf_data	mpbgfdatad	un_imph_alloc_cbotrk	43.6	0.59235	0		
+cbc7rom0	Uncore	CBO	cbo_misc	cbc7rom0	p0.rstop0.ring_stop_cycles	0.0	0.07035* p0.num_cbox	0		
+cbcltstd0	Uncore	CBO	cbo_misc	cbcltstd0	p0.rstop0.ring_stop_cycles	0.1	0.63705* p0.num_cbox	0		
+cbcoreifcd00	Uncore	CBO	cbo_misc	cbcoreifcd00	p0.rstop0.ring_stop_cycles	10.1	3.06498* p0.num_cbox	0		
+cbdfxs0	Uncore	CBO	cbo_misc	cbdfxs0	p0.rstop0.ring_stop_cycles	0.1	0.5341* p0.num_cbox	0		
+cbpmas0	Uncore	CBO	cbo_misc	cbpmas0	p0.rstop0.ring_stop_cycles	0.1	2.25591* p0.num_cbox	0		
+cbringturnd	Uncore	CBO	cbo_misc	cbringturnd	p0.rstop0.ring_stop_cycles	0.8	0.53145* p0.num_cbox	0		
+cbsbfm0	Uncore	CBO	cbo_misc	cbsbfm0	p0.rstop0.ring_stop_cycles	2.8	0.67681* p0.num_cbox	0		
+gbph2latchd	Uncore	CBO	cbo_misc	gbph2latchd	p0.rstop0.ring_stop_cycles	21.3	1.3* p0.num_cbox	0		
+mpcbotrks	Uncore	NTR	cbo_tracker	mpcbotrks	un_imph_alloc_cbotrk	428.89	8.58647	0		
+mpcbodbslice0	Uncore	NTR	cbo_tracker_data	mpcbodbslice0	un_imc_entering_chnl	23.94	0.27346	0		
+mpcbodbslice1	Uncore	NTR	cbo_tracker_data	mpcbodbslice1	un_imc_entering_chnl	22.6	0.27346	0		
+mpcbodbslice2	Uncore	NTR	cbo_tracker_data	mpcbodbslice2	un_imc_entering_chnl	21.39	0.27344	0		
+mpcbodbslice3	Uncore	NTR	cbo_tracker_data	mpcbodbslice3	un_imc_entering_chnl	20.36	0.27355	0		
+mpcbocohtrkd	Uncore	NTR	cbocoh_tracker	mpcbocohtrkd	un_imc_entering_chnl	9.15	1.14925	0		
+mpcohtrks	Uncore	NTR	coh_tracker	mpcohtrks	un_imph_cbotrk_cam_cohtrk	-4.77	3.53088	0	
+cbeccd00	Uncore	CBO	ecc	cbeccd00	un_llc_data_lookup + un_llc_data_update	47.13687822	.77 * p0.num_cbox	1.98622		
+cbeccd10	Uncore	CBO	ecc	cbeccd10	un_llc_data_lookup + un_llc_data_update	44.86672384	.77 * p0.num_cbox	1.98514		
+cbegrctls0	Uncore	CBO	egress	cbegrctls0	un_cbo_pipe_acquire_ak_egr_credit + un_cbo_pipe_acquire_ad_egr_credit + un_cbo_pipe_acquire_sn_egr_credit + un_cbo_pipe_acquire_bk_egr_credit	25.7715796	8.58 * p0.num_cbox	3.92753		
+gbadm	Uncore	GBO	gbo	gbadm	p0.gti0.gt_reqs	-0.02691058	0.88042	0.82136		
+gbakm	Uncore	GBO	gbo	gbakm	p0.gti0.gt_reqs	45.76700285	0.96735	0.34745		
+gbbenm	Uncore	GBO	gbo	gbbenm	p0.gti0.gt_reqs	47.86913776	0.2091	0.33392		
+gbbldm0	Uncore	GBO	gbo	gbbldm0	p0.gti0.gt_reqs	0	1.13335	1.85766		
+gbbldm1	Uncore	GBO	gbo	gbbldm1	p0.gti0.gt_reqs	95.4453688	1.13335	1.85757		
+gbbldm2	Uncore	GBO	gbo	gbbldm2	p0.gti0.gt_reqs	94.09206563	1.13335	1.85755		
+gbbldm3	Uncore	GBO	gbo	gbbldm3	p0.gti0.gt_reqs	30.4633746	1.13335	1.85732		
+gbbvm	Uncore	GBO	gbo	gbbvm	p0.gti0.gt_reqs	30.4772485	3.89259	1.04452		
+gbdfxs	Uncore	GBO	gbo	gbdfxs	p0.gti0.gt_reqs	0.317413356	0.5341	2.50565		
+gbegrctls	Uncore	GBO	gbo	gbegrctls	p0.gti0.gt_reqs	24.1487743	4.28369	3.91884		
+gbpmas	Uncore	GBO	gbo	gbpmas	p0.gti0.gt_reqs	2.530431107	2.46555	0		
+gbregs	Uncore	GBO	gbo	gbregs	p0.gti0.gt_reqs	0.038461538	3.1798	2.86526		
+cbingrs0	Uncore	CBO	ingress	cbingrs0	un_cbo_irq_won_cpipe + un_cbo_ismq_won_cpipe + un_cbo_irq_bypass	77.15786194	4.3 * p0.num_cbox	3.59323		
+mpiorddbd	Uncore	XTM	io_rd_ret_tracker	mpiorddbd	un_xtm_io_rd_ret_trk_alloc	67.58670062	0.57575	0		
+mpiodnd	Uncore	XTM	io_tracker	mpiodnd	un_xtm_io_trk_alloc	-0.039866049	0.06273	0		
+mpiowrdbd	Uncore	XTM	io_write_buffer	mpiowrdbd	un_xtm_io_trk_alloc	-0.017870988	0.28108	0		
+databnk	Uncore	LLC	llc_data	databnk	un_llc_data_lookup + un_llc_data_update	351.9272469	0 * p0.num_cbox	0		
+cvbnk	Uncore	LLC	llc_lru_cv	cvbnk	un_llc_cv_lookup + un_llc_cv_update	50.51077395	4.250727619 * p0.num_cbox	0		
+tagbnk	Uncore	LLC	llc_tag	tagbnk	un_llc_tag_lookup + un_llc_tag_update	143.7614336	12.09822476 * p0.num_cbox	0		
+llctop	Uncore	LLC	llc_top	llctop	un_llc_tag_lookup + un_llc_tag_update	54.38205985	5.6 * p0.num_cbox	0		
+dfdddrpls	Uncore	MC	mc	dfdddrpls	un_imc_entering_chnl	47.31382299	1.16503	0		
+mcdfxs	Uncore	MC	mc	mcdfxs	un_imc_entering_chnl	-0.02691058	0.10975	0		
+mcmains	Uncore	MC	mc	mcmains	un_imc_entering_chnl	45.76700285	1.2372	0		
+mcmnt0s	Uncore	MC	mc	mcmnt0s	un_imc_entering_chnl	47.86913776	1.48204	0		
+mcmnt1s	Uncore	MC	mc	mcmnt1s	un_imc_entering_chnl	0	0	0		
+mcsched0s	Uncore	MC	mc	mcsched0s	un_imc_entering_chnl	95.4453688	1.71614	0		
+mcsched1s	Uncore	MC	mc	mcsched1s	un_imc_entering_chnl	94.09206563	1.71964	0		
+mcwdb0d	Uncore	MC	mc	mcwdb0d	un_imc_entering_chnl	30.4633746	0.40444	0		
+mcwdb1d	Uncore	MC	mc	mcwdb1d	un_imc_entering_chnl	30.4772485	0.40429	0		
+mpcbodbbed	Uncore	NTR	ntr_misc	mpcbodbbed	un_imph_alloc_cbotrk	1.77	0.98328	0		
+mpgdxcd	Uncore	NTR	ntr_misc	mpgdxcd	un_imph_alloc_cbotrk	0	0	0		
+mpgfxtrkds	Uncore	NTR	ntr_misc	mpgfxtrkds	un_imph_alloc_cbotrk	59.28	8.25735	0		
+mpgodgdxcs	Uncore	NTR	ntr_misc	mpgodgdxcs	un_imph_alloc_cbotrk	30.4	0	0		
+ncsteerd	Uncore	NTR	ntr_misc	ncsteerd	un_imph_alloc_cbotrk	3.38	0.59383	0		
+ncus	Uncore	NTR	ntr_misc	ncus	un_imph_alloc_cbotrk	0.87	16.75504	0		
+mpringifcd	Uncore	NTR	ntr_ring_stop	mpringifcd	un_imph_alloc_cbotrk	0	0	0		
+mpxtrks	Uncore	XTM	park_ctrs	mpxtrks	un_xtm_io_trk_alloc	331.04355	4	0		
+cbaddrm0	Uncore	CBO	pipeline	cbaddrm0	un_cbo_irq_won_cpipe + un_cbo_ismq_won_cpipe+ un_cbo_irq_bypass	19.70958538	1.36 * p0.num_cbox	1.22332		
+cbpipes0	Uncore	CBO	pipeline	cbpipes0	un_cbo_irq_won_cpipe + un_cbo_ismq_won_cpipe+ un_cbo_irq_bypass	88.47975925	3.63 * p0.num_cbox	6.07494		
+cbregs0	Uncore	CBO	pipeline	cbregs0	un_cbo_irq_won_cpipe + un_cbo_ismq_won_cpipe+ un_cbo_irq_bypass	11.2925992	5.32 * p0.num_cbox	3.55712		
+mprcarbd	Uncore	XTM	rch_arb	mprcarbd	un_xtm_io_trk_alloc	1139.137994	2.42222	0		
+mprcarbs	Uncore	XTM	rch_arb	mprcarbs	un_xtm_io_trk_alloc	327.1504241	11.99337	0		
+cbadm0	Uncore	CBO	ring_ad	cbadm0	un_cbo_inject_AD + un_cbo_bounce_msg_ad	15.62536484	2.37 * p0.num_cbox	0.82896		
+cbakm0	Uncore	CBO	ring_ak_ar	cbakm0	un_cbo_recv_dash_t_accept + un_cbo_recv_dash_t_reject + un_cbo_recv_dash_t_retry +  un_cbo_inject_AK + un_imph_send_gntcmp_2ring  + un_imph_sending_wrcmp_on_ring + un_cbo_bounce_msg_ak	21.79935065	1.55 * p0.num_cbox	0.34214		
+cbbvm0	Uncore	CBO	ring_bl_iv	cbbvm0	un_cbo_inject_BL + un_cbo_inject_SN + un_imc_alloc_chunk0_rd_ret_buf + un_imph_send_data_2ring_2cbo + un_imph_send_data_2ring_2core + un_cbo_bounce_msg_bl + un_cbo_bounce_msg_sn	19.77066752	3.66 * p0.num_cbox	1.06047		
+cblsph2latchd0	Uncore	CBO	ring_bl_iv	cblsph2latchd0	un_cbo_inject_BL + un_cbo_inject_SN + un_imc_alloc_chunk0_rd_ret_buf + un_imph_send_data_2ring_2cbo + un_imph_send_data_2ring_2core + un_cbo_bounce_msg_bl + un_cbo_bounce_msg_sn	34.51720154	1.42 * p0.num_cbox	1.28179		
+cbph1latchd1	Uncore	CBO	ring_bl_iv	cbph1latchd1	un_cbo_inject_BL + un_cbo_inject_SN + un_imc_alloc_chunk0_rd_ret_buf + un_imph_send_data_2ring_2cbo + un_imph_send_data_2ring_2core + un_cbo_bounce_msg_bl + un_cbo_bounce_msg_sn	15.79955071	.8 * p0.num_cbox	0		
+cbph2latchd00	Uncore	CBO	ring_bl_iv	cbph2latchd00	un_cbo_inject_BL + un_cbo_inject_SN + un_imc_alloc_chunk0_rd_ret_buf + un_imph_send_data_2ring_2cbo + un_imph_send_data_2ring_2core + un_cbo_bounce_msg_bl + un_cbo_bounce_msg_sn	13.79486521	1.44 * p0.num_cbox	1.28346		
+cbph2latchd10	Uncore	CBO	ring_bl_iv	cbph2latchd10	un_cbo_inject_BL + un_cbo_inject_SN + un_imc_alloc_chunk0_rd_ret_buf + un_imph_send_data_2ring_2cbo + un_imph_send_data_2ring_2core + un_cbo_bounce_msg_bl + un_cbo_bounce_msg_sn	23.16181001	1.55 * p0.num_cbox	1.28148		
+spine	Spine	Spine	Spine	Spine	78 * p0.num_cbox	1	137			
+cbbldm10	Uncore	CBO	tdf	cbbldm10	(un_cbo_inject_BL + un_imph_send_data_2ring_2core - un_cbo_uc_read - un_cbo_uc_write)	11.57281059	1.6 * p0.num_cbox	1.83687		
+cbbldm20	Uncore	CBO	tdf	cbbldm20	(un_cbo_inject_BL + un_imph_send_data_2ring_2core - un_cbo_uc_read - un_cbo_uc_write)	11.9842668	1.6 * p0.num_cbox	1.83681		
+cbbldm30	Uncore	CBO	tdf	cbbldm30	(un_cbo_inject_BL + un_imph_send_data_2ring_2core - un_cbo_uc_read - un_cbo_uc_write)	12.48100815	1.6 * p0.num_cbox	1.83689		
+mpvtddatd	Uncore	XTM	vtd_data	mpvtddatd	un_xtm_io_trk_alloc	0	0.02009	0		
+mpvtgd	Uncore	XTM	vtd_misc	mpvtgd	un_xtm_io_trk_alloc	-0.001374691	0.14088	0		
+mpvtmiscs	Uncore	XTM	vtd_misc	mpvtmiscs	un_xtm_io_trk_alloc	259.948637	0	0		
+mpvtddeftlbs	Uncore	XTM	vtd_table	mpvtddeftlbs	un_xtm_io_trk_alloc	-0.004124074	0.03608	0		
+mpvtdtrkd	Uncore	XTM	vtd_trackers	mpvtdtrkd	un_xtm_io_trk_alloc	-0.079732099	0.24785	0		
+mpvttrks	Uncore	XTM	vtd_trackers	mpvttrks	un_xtm_io_trk_alloc	-0.061861111	0.1403	0		
+mpbgfqfs	Uncore	XTM	xtm_misc	mpbgfqfs	un_xtm_io_trk_alloc	30.63362222	0.47538	0		
+mpgdxcfinalqd	Uncore	XTM	xtm_misc	mpgdxcfinalqd	un_xtm_io_trk_alloc	0	0.00687	0		
+msgutils	Uncore	XTM	xtm_misc	msgutils	un_xtm_io_trk_alloc	-21.86171667	0.59153	0		
+saedfxs	Uncore	XTM	xtm_misc	saedfxs	un_xtm_io_trk_alloc	-0.032992593	0.99268	0		
+sanoad	Uncore	XTM	xtm_misc	sanoad	un_xtm_io_trk_alloc	0.156714815	0.00889	0		
+sanoas	Uncore	XTM	xtm_misc	sanoas	un_xtm_io_trk_alloc	27.16665062	0	0		

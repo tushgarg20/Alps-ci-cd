@@ -1,0 +1,26 @@
+Fub	Location	Cluster	Unit	Function	Formula1	EC1	Leakage	Source1	Comment
+ddr	DDR	DDR	DDR	read_cas	un_imc_sent_rd_cas_to_dram	4294.36			
+ddr	DDR	DDR	DDR	act	un_imc_sent_activate_to_dram	4689.92			
+ddr	DDR	DDR	DDR	write_cas	un_imc_sent_wr_cas_to_dram	1684.36			
+ddr	DDR	DDR	DDR	Idle		0			
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	read_dyn	un_imc_sent_rd_cas_to_dram	324.8259559	16.4349333		
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	read_static	un_imc_sent_rd_cas_to_dram	0	0		
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	write_dyn	un_imc_sent_wr_cas_to_dram	297.4407672	16.4349333		
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	write_static	un_imc_sent_wr_cas_to_dram	0	0		
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	Idle	(p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel + p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel)/2.0	100	0.1613184		
+ddrio_vccio	ddrio_vccio	ddrio_vccio	DDRIO	read_dyn	un_imc_sent_rd_cas_to_dram	117.0433056	63.8662386		
+ddrio_vccio	ddrio_vccio	ddrio_vccio	DDRIO	read_static	un_imc_sent_rd_cas_to_dram	165.9384729	0		
+ddrio_vccio	ddrio_vccio	ddrio_vccio	DDRIO	write_dyn	un_imc_sent_wr_cas_to_dram	819.965881	63.8662386		
+ddrio_vccio	ddrio_vccio	ddrio_vccio	DDRIO	write_static	un_imc_sent_wr_cas_to_dram	343.4136048	0		
+ddrio_vccio	ddrio_vccio	ddrio_vccio	DDRIO	Idle	(p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel + p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel)/2.0	40.65	0		
+ddrio_vccioa	ddrio_vccioa	ddrio_vccioa	DDRIO	read_dyn	un_imc_sent_rd_cas_to_dram	14.65610814	18.2232644		
+ddrio_vccioa	ddrio_vccioa	ddrio_vccioa	DDRIO	read_static	un_imc_sent_rd_cas_to_dram	413.2865063	0		
+ddrio_vccioa	ddrio_vccioa	ddrio_vccioa	DDRIO	write_dyn	un_imc_sent_wr_cas_to_dram	74.4390141	18.2232644		
+ddrio_vccioa	ddrio_vccioa	ddrio_vccioa	DDRIO	write_static	un_imc_sent_wr_cas_to_dram	23.78361356	0		
+ddrio_vccioa	ddrio_vccioa	ddrio_vccioa	DDRIO	Idle	(p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel + p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel)/2.0	58.65			
+ddrio_vccddq	ddrio_vccddq	ddrio_vccddq	DDRIO	read_dyn	un_imc_sent_rd_cas_to_dram	27.9469	18.7732649		
+ddrio_vccddq	ddrio_vccddq	ddrio_vccddq	DDRIO	read_static	un_imc_sent_rd_cas_to_dram	401.1491335	0		
+ddrio_vccddq	ddrio_vccddq	ddrio_vccddq	DDRIO	write_dyn	un_imc_sent_wr_cas_to_dram	573.8357082	18.7732649		
+ddrio_vccddq	ddrio_vccddq	ddrio_vccddq	DDRIO	write_static	un_imc_sent_wr_cas_to_dram	557.1363254	0		
+ddrio_vccddq	ddrio_vccddq	ddrio_vccddq	DDRIO	Idle	(p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel + p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel)/2.0	60.05	0		
+ddrio_vccsa	ddrio_vccsa	ddrio_vccsa	DDRIO	ddrio_cke	p0.hom0.rch.imc_top.mc_channel_0.total_dclk_cycles - (p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel + p0.hom0.rch.imc_top.mc_channel_0.m_page_table.cke_on_cycles_channel)/2.0	43.046875	0		

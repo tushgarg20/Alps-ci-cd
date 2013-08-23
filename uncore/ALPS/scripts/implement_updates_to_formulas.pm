@@ -39,6 +39,11 @@ sub implement_updates_to_formulas_from_update_files
 		output_functions::die_cmd("Error in update file type! Type not recognized.\n");
 	}
 
+	if (not (scalar(@formulaUpdatesFiles) > 0))
+	{
+		output_functions::die_cmd("Error: No formula files were found.\n");
+	}
+
 	foreach my $updatesFile (@aliasesUpdatesFiles)
 	{
 		output_functions::print_to_log("Implementing updates from: $updatesFile\n");
@@ -48,6 +53,11 @@ sub implement_updates_to_formulas_from_update_files
 	{
 		output_functions::print_to_log("Implementing updates from: $updatesFile\n");
 		implement_updates_to_formulas($updatesFile, $final_hash, $aliases_hash, $baseline_hash);
+	}
+
+	if (not (scalar(keys(%$final_hash)) > 0))
+	{
+		output_functions::die_cmd("Error: Final formulas hash is empty. Were there any valid formulas in the formulas files?.\n");
 	}
 
 	return 1;

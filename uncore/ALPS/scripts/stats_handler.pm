@@ -9,6 +9,14 @@ use general;
 use output_functions;
 use general_config;
 
+our $consider_counter_as_exists_even_if_zero_value = 1;
+our $consider_histogram_as_exists_even_if_empty = 1;
+
+our $logs_extension_to_remove_from_file_name = "\\.\\w+";
+
+our %stats_used_in_formulas;
+our %stats_used_in_formulas_and_missing_from_stats_files;
+
 
 ################# input the stats files list
 sub input_stats_files_list {
@@ -21,6 +29,10 @@ sub input_stats_files_list {
 	{
 		output_functions::print_to_log("Adding to the trace list: $logs.\n");
 		$logs =~ s/\"//g;
+		if ($logs =~ /\/$/)
+		{
+			die "Error: dir name was given for logs location without any logs files names specification.\n";
+		}
 		push @{$final_logslist}, glob($logs);
 	}
 	if ($loglist ne "")
@@ -53,29 +65,75 @@ sub input_stats_files_list {
 ################# get the trace name from a stats file name
 sub get_trace_name_from_stats_file_name
 {
-	if (@_ == 2)
+	if (@_ != 1) {die "Error in num of parameters of get_trace_name_from_stats_file_name function!";}
+	my ($stats_file_name) = @_;
+
+	my $trace_name = $stats_file_name;
+	chomp $trace_name;
+	$trace_name =~ s/\r$//;
+	$trace_name =~ s/\.gz$//;
+	$trace_name =~ s/\.stat[s]?$//;
+
+	if ($logs_extension_to_remove_from_file_name ne "")
 	{
-		my ($stats_file_name, $extension_to_remove) = @_;
-		my $trace_name = $stats_file_name;
-
-		chomp $trace_name;
-		$trace_name =~ s/\r$//;
-		$trace_name =~ s/\.gz$//;
-		$trace_name =~ s/\.stat[s]?$//;
-
-		if ($extension_to_remove ne "")
-		{
-			$trace_name =~ s/${extension_to_remove}$//;
-		}
-
-		$trace_name =~ s/.*\///g;
-
-		return $trace_name;
+		$trace_name =~ s/${logs_extension_to_remove_from_file_name}$//;
 	}
-	else
+
+	$trace_name =~ s/.*\///g;
+
+	return $trace_name;
+}
+#################
+
+
+################# read a stats file without the power stats
+### usage: read_stats_file_without_powerstats()
+sub read_stats_file_without_powerstats
+{
+	if (@_ != 2) {die "Error in parameters to function";}
+	my ($stats_file_data, $File) = @_;
+
+	# Read the stats file
+	if ($File =~ /\.gz$/)
 	{
-		die "Error in num of parameters of get_trace_name_from_stats_file_name function!";
+		open(INFILE, "gzcat $File |") or output_functions::die_cmd("Can't open $File.\n");
+	} else {
+		open(INFILE, "<$File") or output_functions::die_cmd("Can't open $File.\n");
 	}
+	#open(INFILE, "zgrep -v \.power $File |") or output_functions::die_cmd("Can't open $File.\n");
+	$$stats_file_data = do { local $/; <INFILE> };
+	close(INFILE);
+
+	# remove old power stats
+	$$stats_file_data =~ s/\S+\.power\s+\S+\s*\n//g;
+
+	if ((!defined($$stats_file_data)) or ($$stats_file_data eq ""))
+	{
+		output_functions::die_cmd("Error reading file: \"$File\".\n");
+	}
+
+	return 1;
+}
+#################
+
+
+################# save the stats file
+### usage: save_stats_file()
+sub save_stats_file
+{
+	if (@_ != 2) {die "Error in parameters to function";}
+	my ($stats_file_data, $File) = @_;
+
+	if ($File =~ /\.gz$/)
+	{
+		open (OUTFILE, "| gzip -9 -f >$File") or output_functions::die_cmd("Can't open output file: \"$File\".\n");
+	} else {
+		open (OUTFILE, ">$File") or output_functions::die_cmd("Can't open output file: \"$File\".\n");
+	}
+	print OUTFILE $$stats_file_data;
+	close (OUTFILE);
+
+	return 1;
 }
 #################
 
@@ -84,34 +142,31 @@ sub get_trace_name_from_stats_file_name
 ### usage: read_stats_from_file(<pointer to the local stats hash>, <pointer to the global stats hash>, <pointer to the name of the trace>, <whether_designated_for_EC_stats>)
 sub read_stats_from_file
 {
-	if (@_ != 7) {return 0;}
+	if (@_ != 7) {die "Error in parameters to function";}
 	my ($stats, $stats_hash, $stats_validity, $File, $histograms_to_exclude, $designated_for_ecstats, $trace_name) = @_;
-
-	chomp $$File;
-	$$File =~ s/\r$//;
 
 	# Handle stats files differently for LRB3:
 	# stat names are allowed to begin with "start"
 	if (general_config::getKnob ("lrb3Mode")) {
 		# Get only lines that are not comments and not histogram
-		open(INFILE, "zgrep -v ^# $$File | zgrep -v ^StartHistogram | zgrep -v ^EndHistogram |") or output_functions::die_cmd("Can't open $$File.\n");
+		open(INFILE, "zgrep -v ^# $File | zgrep -v ^EndHistogram |") or output_functions::die_cmd("Can't open $File.\n");
 	} else {
 		# Get only lines that are not comments, not histogram and not "start/end"
-		open(INFILE, "zgrep -v ^# $$File | zgrep -v ^start | zgrep -v ^end | zgrep -v ^StartHistogram | zgrep -v ^EndHistogram |") or output_functions::die_cmd("Can't open $$File.\n");
+		open(INFILE, "zgrep -v ^# $File | zgrep -v ^start | zgrep -v ^end | zgrep -v ^EndHistogram |") or output_functions::die_cmd("Can't open $File.\n");
 	}
 	my @lines = <INFILE>;
 	close(INFILE);
-	$$File =~ s/\.gz$//;
-	$$File =~ s/\.stat[s]?$//;
+	$File =~ s/\.gz$//;
+	$File =~ s/\.stat[s]?$//;
 
 	my $indigoFile = "";
-	if (-e "$$File.indigo.txt.gz")
+	if (-e "$File.indigo.txt.gz")
 	{
-		$indigoFile = "$$File.indigo.txt.gz";
+		$indigoFile = "$File.indigo.txt.gz";
 	}
-	elsif (-e "$$File.indigo.txt")
+	elsif (-e "$File.indigo.txt")
 	{
-		$indigoFile = "$$File.indigo.txt";
+		$indigoFile = "$File.indigo.txt";
 	}
 	if ($indigoFile ne "")
 	{
@@ -120,9 +175,6 @@ sub read_stats_from_file
 		close(INFILE);
 		push @lines, @indigo_lines;
 	}
-
-	$$File =~ s/\.\w+$//;
-	$$File =~ s/.*\///g;
 
 	foreach my $line (@lines)
 	{
@@ -201,10 +253,16 @@ sub read_stats_from_file
 						}
 					}
 				}
+
+				# Check the formulas counters. If this counter is used, signify that it was found. (This is the first time it was encountered)
+				if ( ($consider_counter_as_exists_even_if_zero_value) and ($$stats_validity{$s} > 0) )
+				{
+					signify_stat_was_found($s);
+				}
 			}
 
 			my $validity = $$stats_validity{$s};
-			if ($validity > 0) {	# Counter is at least valid locally.
+			if (($validity > 0) and ($v != 0)) {	# Counter is at least valid locally.
 				if (defined $$stats{$s})
 				{
 					if ($$stats{$s} !~ /^p0\.uncore\./)
@@ -216,10 +274,25 @@ sub read_stats_from_file
 				{
 					$$stats{$s} = $v;	# Insert the counter into the local hash
 
-					if (($validity == 2) and ($v != 0)) {	# Counter is valid for global hash.
+					if ($validity == 2) {	# Counter is valid for global hash.
 						$$stats_hash{$s}{$trace_name} = $v;	# Insert the counter into the global hash
 					}
 				}
+			}
+		}
+		elsif ( ($consider_histogram_as_exists_even_if_empty) and ($line =~ /^StartHistogram\s+:\s+([\w\._\[\]:]+)\s+/) )	#If this is a histogram start, note to self it exists
+		{
+			my $s = $1;
+
+			if (	($s !~ /^end\d\./) and
+					($s !~ /^start\d\./) and
+#					($s !~ /^p\d\.c[1-9]\./) and
+#					($s !~ /^knob\./) and
+					($s !~ /^\./) and
+					($s !~ /^final\./) )
+					# exclude redundant counters.
+			{
+				signify_stat_was_found("<HISTOGRAM_NAME>" . $s);
 			}
 		}
 	}
@@ -337,7 +410,7 @@ sub calc_IPC
 	}
 	else
 	{
-		output_functions::print_to_log("Error calculating IPC for $File. Using 0.\n");
+		output_functions::print_to_log("Error calculating IPC for: \"$File\". Using 0.\n");
 		output_functions::print_to_log("The IPC hash values are:\n" . Dumper(\%{$$ipc_hash{$File}}));
 	}
 
@@ -438,6 +511,19 @@ sub calc_IPC
 #################
 
 
+################# evaluate an expression using the stats hash and return the value
+### usage: evalulate_stats_in_expression(<the expression>, <pointer to the stats hash>, <optional pointer to the aliases hash>)
+sub evalulate_stats_in_expression
+{
+	if ( (@_ != 2) and (@_ != 3) ) {die "Error in function parameters";}
+	my ($formula, $stats, $aliases) = @_;
+	$formula =~ s/([\w\.\[\d\]:]+)/{eval_stat($1, $stats, $aliases);}/eg;
+
+	return $formula;
+}
+#################
+
+
 ################# evaluate a formula using the stats hash and return the value
 ### usage: eval_stat(<the formula>, <pointer to the stats hash>, <optional pointer to the aliases hash>)
 sub eval_stat
@@ -452,6 +538,10 @@ sub eval_stat
 		{
 			return $formula;
 		}
+		elsif (defined($aliases) && defined($$aliases{$formula}))
+		{
+			return evalulate_stats_in_expression("( $$aliases{$formula} )", $stats, $aliases);
+		}
 		elsif (defined($$stats{$formula}))
 		{
 			return "( $$stats{$formula} )";
@@ -463,12 +553,6 @@ sub eval_stat
 		elsif (defined($$stats{$formula_1}))
 		{
 			return "( $$stats{$formula_1} )";
-		}
-		elsif (defined($aliases) && defined($$aliases{$formula}))
-		{
-			my $aliased_formula = "( $$aliases{$formula} )";
-			$aliased_formula =~ s/([\w\.\[\d\]:]+)/{eval_stat($1, $stats, $aliases);}/eg;
-			return $aliased_formula;
 		}
 		elsif ($formula =~ /^\d+\.\d+e/)   ### is a begining of a scientific number
 		{
@@ -539,8 +623,8 @@ sub huge_histo_warn
 
 ################# get the stats that are used in the formulas files
 sub get_used_stats_in_formulas {
-	if (@_ != 2) {return 0;}
-	my ($fullformulasHash, $stats) = @_;
+	if (@_ != 3) {die "Error in function parameters";}
+	my ($fullformulasHash, $aliasesHash, $ecStats) = @_;
 
 	foreach my $location (keys %$fullformulasHash)
 	{
@@ -553,9 +637,11 @@ sub get_used_stats_in_formulas {
 					foreach my $function (keys %{$$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}})
 					{
 						my $formula = $$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Formula"};
-						my $EC = $$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Power"};
-
-                        $formula =~ s/([\w\.\[\d\]:]+)/{insert_stat($1, $EC, "$location, $cluster, $unit, $fub, $function.", $stats);}/eg;
+						my $EC_orig = $$fullformulasHash{$location}{$cluster}{$unit}{$fub}{"Functions"}{$function}{"Power"};
+						# Evaluate EC separately using %ecStats, the designated stats for EC formulas
+						my $EC = evalulate_stats_in_expression($EC_orig, $ecStats, $aliasesHash);
+						$formula =~ s/([\w\.\[\d\]:]+)/{insert_stat($1, $EC, "$location, $cluster, $unit, $fub, $function.", \%stats_used_in_formulas, $aliasesHash);}/eg;
+						$EC_orig =~ s/([\w\.\[\d\]:]+)/{insert_stat($1, $EC, "$location, $cluster, $unit, $fub, $function, EC.", \%stats_used_in_formulas, $aliasesHash);}/eg;
 					}
 				}
 			}
@@ -569,31 +655,82 @@ sub get_used_stats_in_formulas {
 
 ################# insert the stat into the used stats hash
 sub insert_stat {
-	if (@_ == 4)
+	if (@_ != 5) {die "Error in function parameters";}
+	my ($stat, $EC, $info, $stats, $aliasesHash) = @_;
+
+	if ($stat =~ /^\d+(\.\d+)?$/)	# Check if this is just a number
 	{
-		my ($stat, $EC, $info, $stats) = @_;
+		return 1;
+	}
 
-		($EC ne "") or ($EC = 0);
-		$EC = general::evaluate_numerical_expression($EC, "Error in the flow of finding the used stats in formulas and total EC per stat. Can't evaluate the EC of $info. Using 0!\nThis affects the stat: $stat", $EC);
+	if (defined($$aliasesHash{$stat}))	# Recursively expand aliases to the actual stats needed from the stats file.
+	{
+		my $formula = $$aliasesHash{$stat};
+		$formula =~ s/([\w\.\[\d\]:]+)/{insert_stat($1, $EC, $info, $stats, $aliasesHash);}/eg;
+		return 1;
+	}
 
-		if (defined $$stats{$stat})
+	if ($stat =~ /^([\d\w\_:\.]+)\_(\[.+\]|BUCKETS|COUNT|MAX|MEAN|MEDIAN|MIN)$/)	# this is a histogram
+	{
+		my $histo_name = $1;
+
+		if ($consider_histogram_as_exists_even_if_empty)	# Treat all instances of this histogram as one stat
 		{
-			$$stats{$stat}{"EC"} += $EC;
-			$$stats{$stat}{"Info"} .= "\t$info";
-			return 1;
+			$stat = "<HISTOGRAM_NAME>" . $histo_name;
 		}
-		else
-		{
-			$$stats{$stat}{"EC"} = $EC;
-			$$stats{$stat}{"Info"} = "$info";
-			return 1;
-		}
+	}
+
+	($EC ne "") or ($EC = 0);
+	$EC = general::evaluate_numerical_expression($EC, "Error in the flow of finding the used stats in formulas and total EC per stat. Can't evaluate the EC of $info. Using 0!\nThis affects the stat: $stat", $EC);
+
+	if (defined $$stats{$stat})	# Counter already defined - Just add the EC and info
+	{
+		$$stats{$stat}{"EC"} += $EC;
+		$$stats{$stat}{"Info"} .= "\t$info";
+		return 1;
+	}
+	else	# New counter - initialize its data
+	{
+		$$stats{$stat}{"EC"} = $EC;
+		$$stats{$stat}{"Info"} = "$info";
+		$stats_used_in_formulas_and_missing_from_stats_files{$stat} = 1;
+		return 1;
 	}
 
 	return "(STAT_ERROR)";
 }
 #################
 
+################# find in the stats files the stats that were used in the formulas files and signify they were found
+sub find_stats_used_in_formulas_and_signify_they_were_found {
+	if (@_ != 1) {die "Error in function parameters";}
+	my ($stats_hash) = @_;
 
+	foreach my $counter (keys(%stats_used_in_formulas_and_missing_from_stats_files))
+	{
+		if (exists $$stats_hash{$counter})
+		{
+			signify_stat_was_found($counter);
+		}
+	}
+
+	return 1;
+}
+#################
+
+
+################# find in the stats files the stats that were used in the formulas files and signify they were found
+sub signify_stat_was_found {
+	if (@_ != 1) {die "Error in function parameters";}
+	my ($counter) = @_;
+
+	if (exists $stats_used_in_formulas_and_missing_from_stats_files{$counter})
+	{
+		delete($stats_used_in_formulas_and_missing_from_stats_files{$counter});
+	}
+
+	return 1;
+}
+#################
 
 1;

@@ -62,11 +62,11 @@ my $logs = "";
 my $loglist = "";
 my $logsdir = "";
 my $logsgrep = "";
-my $logs_extension_to_remove_from_file_name = "\\.\\w+";
 my @final_logslist = ();
 my $numOfTDP = "";
 my $num_of_traces_to_output_in_excel_in_fubs_level = 250;	# Set it to "0" or "" to disable this limit.
 my $report_missing_counters = 1;
+my $output_formula_files = 1;
 my $debug = '';
 my $ecStatsFile = "";
 my $regPowerFile = "";
@@ -101,16 +101,26 @@ GetOptions(
 			"-loglist=s" => \$loglist,
 			"-logsdir=s" => \$logsdir,
 			"-logsgrep=s" => \$logsgrep,
-			"-logs_extension_to_remove_from_file_name=s" => \$logs_extension_to_remove_from_file_name,
+			"-logs_extension_to_remove_from_file_name=s" => \$stats_handler::logs_extension_to_remove_from_file_name,
 
 			"-TDP=s" => \$numOfTDP,
 
 			"-num_of_traces_to_output_in_excel_in_fubs_level=i" => \$num_of_traces_to_output_in_excel_in_fubs_level,
 
-			"-report_missing_counters=s" => \$report_missing_counters,
+			"-report_missing_counters!" => \$report_missing_counters,
+			"-output_histograms_sizes_report_file!" => \$calc_power::output_histograms_sizes_report_file,
+			"-calculate_groups!" => \$calc_power::calculate_groups,
+			"-output_counters_values!" => \$calc_power::output_counters_values,
+			"-output_power_output_files!" => \$calc_power::output_power_output_files,
+			"-output_formula_files!" => \$output_formula_files,
 			"-debug" => \$debug,
 			"-coho_prep" => \$cohoPrep,
+			"-output_power_into_stats_files!" => \$calc_power::output_power_into_stats_files,
+			"-overwrite_stats_files!" => \$calc_power::overwrite_stats_files,
+
 			"-calc_power_even_if_zero_ipc!" => \$calc_power::calc_power_even_if_zero_ipc,
+			"-consider_counter_as_exists_even_if_zero_value!" => \$stats_handler::consider_counter_as_exists_even_if_zero_value,
+			"-consider_histogram_as_exists_even_if_empty!" => \$stats_handler::consider_histogram_as_exists_even_if_empty,
 
 			"-ecs|ecstatsfile=s" => \$ecStatsFile,
 
@@ -119,6 +129,7 @@ GetOptions(
 
 			"-output_ecformula=s" => \$genECFormulaCol,
 
+			"-no_log!" => \$output_functions::no_log,
 			"-send_email" => \$sendEmail,
 			"-v|version" => \$printVersion
 		  ) || &usage_and_bye();
@@ -147,6 +158,7 @@ if ($sendEmail) {
 $output_functions::outputDir = $outputDir;
 ($experiment eq "") and ($experiment = "exp");
 $output_functions::experiment = $experiment;
+$output_functions::enable_GT = $enable_GT;
 $calc_power::debug = $debug;
 
 output_functions::open_log($outputDir . "ALPS_log_$experiment.txt") or output_functions::die_cmd("Can't open log file $outputDir" . "ALPS_log_$experiment.txt\n");
@@ -195,8 +207,6 @@ my %fullformulasHash;
 my %aliasesHash;
 my %powerHash;
 my $retVal = 1;
-my %stats_used_in_formulas;
-my %ecStats;
 
 ### Get the stats files list
 if($enable_GT)
@@ -253,17 +263,19 @@ if (
 output_functions::print_to_log("Reading hierarchy file: $hierarchyFile\n");
 hierarchy::read_hierarchy($hierarchyFile, \%blocks_defined) or output_functions::die_cmd("Can't find hierarchy file: \"$hierarchyFile\".\n");
 
-output_functions::print_to_log("Reading power formulas.\n");
+output_functions::print_to_log("**********************\nReading power formulas\n**********************\n");
 input_power_formulas($formulaFile, $aliasesFile, $xlformulaFile, $baselineUpdatesFile, $baselineUpdatesFileList, $procUpdatesFile, $procUpdatesFileList, \%formulasHash, \%aliasesHash, \%blocks_defined, \%fullformulasHash);
 
-
-if ($report_missing_counters)
+if ((scalar(@final_logslist) > 0) && (! $cohoPrep))
 {
-	stats_handler::get_used_stats_in_formulas(\%fullformulasHash, \%stats_used_in_formulas);
-}
+	output_functions::print_to_log("**********************\nCalculating ECs\n**********************\n");
+	my $ecStats = calc_power::calc_ECs(\@final_logslist, \%powerHash, \%fullformulasHash, $ecStatsFile, \%aliasesHash);
 
-if (scalar(@final_logslist) > 0 && (! $cohoPrep))
-{
+	if ($report_missing_counters)
+	{
+		stats_handler::get_used_stats_in_formulas(\%fullformulasHash, \%aliasesHash, $ecStats);
+	}
+
 	output_functions::print_to_log("**********************\nCalculating power\n**********************\n");
 	my $GRPs = general_config::getKnob("GRPs");
 	#($GRPs ne "-1") or output_functions::die_cmd("Can't find \"GRPs\" hash in the config files.\n");
@@ -272,15 +284,25 @@ if (scalar(@final_logslist) > 0 && (! $cohoPrep))
 	my $traces_not_to_include = general_config::getKnob("traces_not_to_include");
 	#($traces_not_to_include ne "-1") or output_functions::die_cmd("Can't find \"traces_not_to_include\" hash in the config files.\n");
 
-	calc_power::calc_power(	$experiment, \@final_logslist, $logs_extension_to_remove_from_file_name, \%formulasHash, \%powerHash, \%blocks_defined,
-									$outputDir, $mypath, $GRPs, $traces_not_to_include, \%stats_used_in_formulas, \%fullformulasHash, $cycles_counter_hash,
-									\%ecStats, $ecStatsFile, \%aliasesHash, $num_of_traces_to_output_in_excel_in_fubs_level); # calculate the power of the traces
+	calc_power::calc_power(	$experiment, \@final_logslist, \%formulasHash, \%powerHash, \%blocks_defined,
+									$outputDir, $mypath, $GRPs, $traces_not_to_include, \%fullformulasHash, $cycles_counter_hash,
+									$ecStats, \%aliasesHash, $num_of_traces_to_output_in_excel_in_fubs_level); # calculate the power of the traces
+}
+
+if ($report_missing_counters)
+{
+	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+	print STDOUT "creating not used stats output\n";
+	output_functions::output_not_used_stats($experiment, $outputDir, \%stats_handler::stats_used_in_formulas, \%stats_handler::stats_used_in_formulas_and_missing_from_stats_files);
 }
 
 # mkm: moving output_formula_files down past calc_power::calc_power,
 # so that it will benefit from read_stats_from_file
 # which is called inside calc_power::calc_power
-output_formula_files(\%formulasHash, \%aliasesHash, \%fullformulasHash, \%powerHash);
+if ($output_formula_files)
+{
+	output_formula_files(\%formulasHash, \%aliasesHash, \%fullformulasHash, \%powerHash);
+}
 
 ### run regression (this feature is under construction and can't be used yet)
 if (($regPowerFile ne "") and (0))
@@ -314,6 +336,10 @@ if($enable_GT)
     }
 }
 
+
+print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+print STDOUT "ALPS finished running!\n";
+
 exit(0);
 #################
 
@@ -326,6 +352,9 @@ exit(0);
 sub output_formula_files {
 	if (@_ != 4) {return "";}
 	my ($formulasHash, $aliasesHash, $fullformulasHash, $powerHash) = @_;
+
+	print STDOUT "The current time is: " . output_functions::time_stamp() . "\n";
+	print STDOUT "printing formula files\n";
 
 	output_functions::print_to_log("*****************************\nPrinting formula files\n*****************************\n");
 

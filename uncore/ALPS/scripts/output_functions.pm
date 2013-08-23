@@ -10,10 +10,12 @@ use general;
 use hierarchy;
 use general_config;
 
+our $no_log = 0;
 my $logFileHandler;
 my %printed_to_log;
 our $outputDir;
 our $experiment;
+our $enable_GT;
 
 
 ################# output the ALPS-format formulas file
@@ -79,10 +81,39 @@ sub output_formulas_in_ALPS_xls_style
 
 							my $EC_val = $EC;
 							my $ph_loc = $location;
-							$ph_loc =~ s/^(core|llcbo)$/${1}0/;
-							$ph_loc =~ s/^uncore$/llcbo0/;
-							$EC_val =~ s/\s*\^\s*/ ** /g;
-							$EC_val =~ s/\s*=\s*/ == /g;
+							if (!exists($$powerHash{'SubBlocks'}{$ph_loc}))	# The location is not used by this name under the power hash. Need to look for possible alternative names.
+							{
+								my $start_num = general_config::getKnob("${location}_multi_inst_start_num");
+								if ($start_num == -1) {
+									$start_num = 0;
+								}
+
+								if (exists($$powerHash{'SubBlocks'}{$ph_loc . $start_num}))
+								{
+									$ph_loc .= $start_num;
+								}
+								else
+								{
+									my $loc = general_config::getKnob("${location}_multi_inst_loc");
+									if ($loc ne -1)
+									{
+										if (exists($$powerHash{'SubBlocks'}{$loc}))
+										{
+											$ph_loc = $loc;
+										}
+										elsif (exists($$powerHash{'SubBlocks'}{$loc . $start_num}))
+										{
+											$ph_loc = $loc . $start_num;
+										}
+									}
+								}
+								
+								if ($ph_loc eq $location)	# Couldn't find a replacement to the location name to be used in power hash
+								{
+									die_cmd("Can't find location \"${ph_loc}\" in the power hash while looking for it to get the ECs for printing the formulas used.\n");
+								}
+							}
+
 							if ($EC_val eq $$powerHash{'SubBlocks'}{$ph_loc}{'SubBlocks'}{$cluster}{'SubBlocks'}{$unit}{'SubBlocks'}{$fub}{'Functions'}{$function}{'EC_formula'}) {
 								$EC_val = $$powerHash{'SubBlocks'}{$ph_loc}{'SubBlocks'}{$cluster}{'SubBlocks'}{$unit}{'SubBlocks'}{$fub}{'Functions'}{$function}{'EC'};
 							} else {
@@ -119,25 +150,23 @@ sub output_formulas_in_ALPS_xls_style
 								defined($eventsWeights{$counter}{$location}) or $eventsWeights{$counter}{$location}=0;
 
 								my $counter_coefficient = $functionForm;
-                                #HACK due to bad GT stats having a " " in the
-                                # middle of the stat
-                                if(!($counter_coefficient =~ / / && $counter_coefficient =~ /PS/) )
-                                { 
-
-								$counter_coefficient =~ s/([\w\.\[\d\]:]+)/{replace_counter_with_value($1, $counter);}/eg; # replace our counter with 1 and the other counters with 0
-								$counter_coefficient = general::evaluate_numerical_expression($counter_coefficient, "Warning: in the formula of $location.$cluster.$unit.$fub.$function. Can't isolate the counter $counter out of the formula! The formula is \"$functionForm\"", $functionForm);
-
-								if ($counter_coefficient == 0)
+								#HACK due to bad GT stats having a " " in the middle of the stat
+								if (	(! $enable_GT) or
+										!(($counter_coefficient =~ / /) && ($counter_coefficient =~ /PS/)) )
 								{
-									$zero_in_isolating = 1;
-#									output_functions::print_to_log("Error in the formula of $location.$cluster.$unit.$fub.$function. Can't isolate the counter $counter out of the formula! (Is it multiplied by 0? Is it multiplied by another counter? Or is this a real error?). The formula is \"$functionForm\"\n");
-								}
+									$counter_coefficient =~ s/([\w\.\[\d\]:]+)/{replace_counter_with_value($1, $counter);}/eg; # replace our counter with 1 and the other counters with 0
+									$counter_coefficient = general::evaluate_numerical_expression($counter_coefficient, "Warning: in the formula of $location.$cluster.$unit.$fub.$function. Can't isolate the counter $counter out of the formula! The formula is \"$functionForm\"", $functionForm);
 
-								$counter_coefficient *= $EC_val;
-								$eventsWeights{$counter}{$unit} += $counter_coefficient;
-								if ($unit ne $cluster) {$eventsWeights{$counter}{$cluster} += $counter_coefficient;} # if it equals then we add twice to the same instance
-								$eventsWeights{$counter}{$location} += $counter_coefficient;
-                                }
+									if ($counter_coefficient == 0)
+									{
+										$zero_in_isolating = 1;
+									}
+
+									$counter_coefficient *= $EC_val;
+									$eventsWeights{$counter}{$unit} += $counter_coefficient;
+									if ($unit ne $cluster) {$eventsWeights{$counter}{$cluster} += $counter_coefficient;} # if it equals then we add twice to the same instance
+									$eventsWeights{$counter}{$location} += $counter_coefficient;
+								}
 							}
 							if ($zero_in_isolating == 1)
 							{
@@ -958,8 +987,8 @@ sub output_stats
 ### usage: output_not_used_stats(<experiment name>, <%stats_hash>, <output dir>, \%stats_used_in_formulas)
 sub output_not_used_stats
 {
-	if (@_ != 4) {return 0;}
-	my ($experiment, $stats_hash, $outputDir, $stats_used_in_formulas) = @_;
+	if (@_ != 4) {die "Error in function parameters";}
+	my ($experiment, $outputDir, $stats_used_in_formulas, $stats_used_in_formulas_and_missing_from_stats_files) = @_;
 	($experiment eq "") or ($experiment = "_" . $experiment);
 
 	my $needed_stats_outputFile = "${outputDir}stats_needed_output${experiment}.xls";
@@ -972,20 +1001,18 @@ sub output_not_used_stats
 
 	foreach my $counter (sort keys(%$stats_used_in_formulas))
 	{
-		if (($counter !~ /^\d+(\.\d+)?$/) and ($counter !~ /^p0\.c[1-9]\./))	# check if this is a valid counter name
-		{
-			my $EC = $$stats_used_in_formulas{$counter}{"EC"};
-			my $info = $$stats_used_in_formulas{$counter}{"Info"};
+		my $EC = $$stats_used_in_formulas{$counter}{"EC"};
+		my $info = $$stats_used_in_formulas{$counter}{"Info"};
+		my $counter_found = !defined($$stats_used_in_formulas_and_missing_from_stats_files{$counter});
 
-			if (!defined $$stats_hash{$counter})
-			{
-				print NEEDEDSTATSOUTFILE "\n$counter\tmissing\t$EC\t$info";
-				print NOTUSEDSTATSOUTFILE "\n$counter\t$EC\t$info";
-			}
-			else
-			{
-				print NEEDEDSTATSOUTFILE "\n$counter\t\t$EC\t$info";
-			}
+		if (!$counter_found)
+		{
+			print NEEDEDSTATSOUTFILE "\n$counter\tmissing\t$EC\t$info";
+			print NOTUSEDSTATSOUTFILE "\n$counter\t$EC\t$info";
+		}
+		else
+		{
+			print NEEDEDSTATSOUTFILE "\n$counter\t\t$EC\t$info";
 		}
 	}
 
@@ -1643,6 +1670,7 @@ sub open_log
 {
 	if (@_ != 1) {return 0;}
 	my $logFile = $_[0];
+	if ($no_log) {return 1;}
 	open ($logFileHandler, "| gzip >$logFile.gz") or return 0;
 #print $logFileHandler "Using $logFile as log file\n";
 	return 1;
@@ -1657,6 +1685,7 @@ sub print_to_log
 	my $message = "";
 	if (@_ != 1) {$message = "Error in message given to print to log file!\n";}
 	else {$message = $_[0];}
+	if ($no_log) {return 1;}
 
 	if (not defined $logFileHandler)
 	{
@@ -1720,6 +1749,7 @@ sub print_to_log_the_repeated_messages_summary
 ### usage: close_log()
 sub close_log
 {
+	if ($no_log) {return 1;}
 	close($logFileHandler);
 
 	return 1;
