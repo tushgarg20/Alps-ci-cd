@@ -418,6 +418,9 @@ Sampler:
     PS0_Sampler_GlUE: R * C
     PS1_Sampler_GLUE: R * C
     PS2_Sampler_GLUE: R * C
+FL_Toggle_Rate : R
+PL_Toggle_Rate : R
+
 ROSS:
    BC:
     PS0_BC: R * C
