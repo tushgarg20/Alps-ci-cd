@@ -55,6 +55,12 @@ void CParser::ReadLine(const char*str)
         std::string rex=left.substr(n);
         if(right!=rex && right !=std::string("D")+rex) Throw(std::string("invalid expression: ")+right);
         if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
+        try
+        {   boost::regex test(rex.substr(1, rex.length()-2));
+        }
+        catch(boost::regex_error e)
+        {   Throw(std::string("invalid regular expression: ")+rex);
+        }
         defined_names[left]=true;
         bool diff=(right!=rex);
         rex=rex.substr(1, rex.length()-2);
@@ -265,6 +271,12 @@ void CParser::Tokenize(std::string s)
         {   unsigned j;
             for(j=i+1;j<s.length();j++) if(s[j]=='\'') break;
             if(j==s.length()) Throw("syntax error: unmatched  quote");
+            try
+            {   boost::regex test(s.substr(i+1, j-i-1));
+            }
+            catch(boost::regex_error e)
+            {   Throw(std::string("invalid regular expression: ")+s.substr(i, j-i));
+            }
             tokens.push_back(CToken(REGEX, s.substr(i+1, j-i-1)));
             i=j; continue;
         }
@@ -820,6 +832,13 @@ CParser::CNode* CParser::CRangeNode::Flatten()
     if(a<b) for(int n=a;n<=b;n++) W.push_back(new CConstNode(n));
     else for(int n=a;n>=b;n--) W.push_back(new CConstNode(n));
     return new CVector(W);
+}
+
+void CParser::ExportGlobals(CReaderManager* RM)
+{   for(std::map<std::string, CVariable*>::iterator J=variables.begin();J!=variables.end();J++)
+    {   if(!boost::regex_match(J->first, boost::regex("^_\\..*$|^.*\\._\\..*$"))) continue;
+        RM->ExportGlobal(J->first);
+    }
 }
 
 std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)

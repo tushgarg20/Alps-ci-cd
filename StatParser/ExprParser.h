@@ -24,6 +24,7 @@ public:
         virtual CReader* FindReader(std::string)=0;
         virtual std::vector<CReader*> FindRegExAsVector(std::string)=0;
         virtual std::map<std::string, CReader*> FindRegExAsMap(std::string)=0;
+        virtual void ExportGlobal(std::string){}
     };
     struct CLocation
     {   std::string file;
@@ -326,6 +327,7 @@ public:
     void Finish();
     void ReadLine(const char*);
     std::vector<CError> CheckDependencies();
+    void ExportGlobals(CReaderManager*);
     std::vector<CError> BindReader(CReaderManager*);
     bool Defined(const char*s){ return variables.find(s)!=variables.end() && variables[s]->expr.size();}
     bool Ready();
