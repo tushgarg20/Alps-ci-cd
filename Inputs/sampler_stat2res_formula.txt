@@ -20,12 +20,12 @@
 	 @ANY_SAMPLER@	=	S\d+\.SS\d+\.uSampler\.	
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
-	FL_Toggle_Rate	=	D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count')) / (numSamplers * .CrClk * 512)	#FL bus width 512 (32 * UL, UR, LL, LR)
-	PL_Toggle_Rate	=	D(SUM('@ANY_SAMPLER@pwr_pl_toggle_count')) / (numSamplers * .CrClk * 512)	#PL bus width 512 (32*U,V,Q,AI)
-     
+	FL_Toggle_Rate	=	D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count')) / (512 * .temp_PS2_FL * numSamplers * .CrClk)	#FL bus width 512 (32 * UL, UR, LL, LR)
+	PL_Toggle_Rate	=	D(SUM('@ANY_SAMPLER@pwr_pl_toggle_count')) / (512 * .temp_PS2_FL * numSamplers * .CrClk)	#PL bus width 512 (32*U,V,Q,AI)
 #FL				
 	PS0_FL	=	D(SUM('@ANY_SAMPLER@pwr_fl_idle\.CrClock')) / (numSamplers * .CrClk)	
 	PS1_FL	=	1 - (PS0_FL + PS2_FL_SampleC_Gather4C + PS2_FL_SampleC_Gather4C_Bypass + PS2_FL_Gather4_Bypass + PS2_FL_Data_Dep_Bypass_Nearest + PS2_FL_Data_Dep_Bypass_Bilinear + PS2_FL_Data_Dep_Bypass_Trilinear + PS2_FL_Data_Dep_Bypass_LinearAniso + PS2_FL_Data_Dep_Bypass_NonLinearAniso + PS2_FL_Data_Dep_Bypass_LinearFastAniso + PS2_FL_Data_Dep_Bypass_NonLinearFastAniso + PS2_FL_Data_Dep_Bypass_FastLinear + PS2_FL_Data_Dep_Bypass_Else + PS2_FL_Nearest_Float16 + PS2_FL_Nearest_Float32 + PS2_FL_Nearest_Else + PS2_FL_Bilinear_Float16 + PS2_FL_Bilinear_Float32 + PS2_FL_Bilinear_Else + PS2_FL_Trilinear_Float16 + PS2_FL_Trilinear_Float32 + PS2_FL_Trilinear_Else + PS2_FL_LinearAniso_Float16 + PS2_FL_LinearAniso_Float32 + PS2_FL_LinearAniso_Else + PS2_FL_NonLinearAniso_Float16 + PS2_FL_NonLinearAniso_Float32 + PS2_FL_NonLinearAniso_Else + PS2_FL_LinearFastAniso_Float16 + PS2_FL_LinearFastAniso_Float32 + PS2_FL_LinearFastAniso_Else + PS2_FL_NonLinearFastAniso_Float16 + PS2_FL_NonLinearFastAniso_Float32 + PS2_FL_NonLinearFastAniso_Else + PS2_FL_FastLinear_Float16 + PS2_FL_FastLinear_Float32 + PS2_FL_FastLinear_Else + PS2_FL_Else)	
+	.temp_PS2_FL	=	1 - (PS0_FL + PS1_FL)	# temporary PS2 for sampler toggle calculations
 	PS2_FL_SampleC_Gather4C	=	D(SUM('@ANY_SAMPLER@pwr_fl_sample_c_gather4_c\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_FL_SampleC_Gather4C_Bypass	=	0	#Next phase implementation
 	PS2_FL_Gather4_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_fl_gather4\.CrClock')) / (numSamplers * .CrClk)	
