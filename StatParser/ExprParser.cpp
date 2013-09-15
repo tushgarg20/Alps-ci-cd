@@ -39,10 +39,14 @@ void CParser::ReadLine(const char*str)
     if(n==std::string::npos)
     {   Throw(std::string("syntax error: ")+s);
     }
-    std::string left=Clip(s.substr(0, n));
+    bool plus_eq=false;
     std::string right=ExpandMacro(Clip(s.substr(n+1)));
+    if(n>0 && s[n-1]=='+'){ plus_eq=true; n--;}
+    std::string left=Clip(s.substr(0, n));
+
     if(boost::regex_match(left, boost::regex("^@[\\w]+@$")))
-    {   macro[left]=right;
+    {   if(plus_eq) Throw("+= is only legal for regular variables");
+        macro[left]=right;
         return;
     }
     if(boost::regex_match(left, boost::regex("^\\S*\\s*\\(\\S*\\)$")))
@@ -50,7 +54,8 @@ void CParser::ReadLine(const char*str)
         left=left.substr(0, n);
     }
     if(boost::regex_match(left, boost::regex("^[^\']*\'[^\']+\'$")))
-    {   n=left.find_first_of('\'');
+    {   if(plus_eq) Throw("+= is only legal for regular variables");
+        n=left.find_first_of('\'');
         std::string pref=left.substr(0, n);
         std::string rex=left.substr(n);
         if(right!=rex && right !=std::string("D")+rex) Throw(std::string("invalid expression: ")+right);
@@ -72,6 +77,7 @@ void CParser::ReadLine(const char*str)
     if(!boost::regex_match(left, boost::regex("^\\.?[a-zA-Z_][\\w\\.]*$|^\\.$"))) Throw(std::string("invalid name: ")+left);
     if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
     defined_names[left]=true;
+    if(plus_eq) right=left+"[1]+("+right+")";
     if(left==right)
     {   CPassThroughVariable* P=new CPassThroughVariable(left, current_file, formula_line);
         var_list.push_back(P); p_t_vars.push_back(P);
@@ -275,7 +281,7 @@ void CParser::Tokenize(std::string s)
             {   boost::regex test(s.substr(i+1, j-i-1));
             }
             catch(boost::regex_error e)
-            {   Throw(std::string("invalid regular expression: ")+s.substr(i, j-i));
+            {   Throw(std::string("invalid regular expression: ")+s.substr(i, j-i+1));
             }
             tokens.push_back(CToken(REGEX, s.substr(i+1, j-i-1)));
             i=j; continue;
