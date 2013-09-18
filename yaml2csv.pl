@@ -94,7 +94,13 @@ foreach my $alps (@alpsModelFile) {
 			foreach my $cluster (keys %unitCdynHash) {
 				my %unitCdynData = %{$unitCdynHash{$cluster}};
 				foreach my $unit (keys %unitCdynData) {
-					$consolidatedAlpsData{$frameName}{$cluster}{$unit}{CDYN} = $unitCdynData{$unit};
+					my $tUnit;
+					if ($unit =~ /^gti$/i) {
+						$tUnit = "uGTI";
+					} else {
+						$tUnit = $unit;
+					}
+					$consolidatedAlpsData{$frameName}{$cluster}{$tUnit}{CDYN} = $unitCdynData{$unit};
 				} 
 			}
 		}
@@ -116,14 +122,32 @@ foreach my $alps (@alpsModelFile) {
 						my $testVal = $unitCdynData{$pState};
 						#print "TEST ".ref($testVal)."\n";
 						if (defined ref($testVal) && ref($testVal) eq '') {
-							$consolidatedAlpsData{$frameName}{$clusters}{$units}{$pState}{CDYN} = $unitCdynData{$pState};
+							my $tUnit;
+							if ($units =~ /^gti$/i) {
+								$tUnit = "uGTI";
+							} else {
+								$tUnit = $units;
+							}
+							$consolidatedAlpsData{$frameName}{$clusters}{$tUnit}{$pState}{CDYN} = $unitCdynData{$pState};
 						} else {
 							my %ps2CdynData = %{$testVal};
 							foreach my $subPs2 (keys %ps2CdynData) {
 								if ($subPs2 =~ /total/i) {
-									$consolidatedAlpsData{$frameName}{$clusters}{$units}{$pState}{CDYN} = $ps2CdynData{$subPs2};
+									my $tUnit;
+									if ($units =~ /^gti$/i) {
+										$tUnit = "uGTI";
+									} else {
+										$tUnit = $units;
+									}
+									$consolidatedAlpsData{$frameName}{$clusters}{$tUnit}{$pState}{CDYN} = $ps2CdynData{$subPs2};
 								} else {
-								$consolidatedAlpsData{$frameName}{$clusters}{$units}{$pState}{$subPs2}{CDYN} = $ps2CdynData{$subPs2};
+									my $tUnit;
+									if ($units =~ /^gti$/i) {
+										$tUnit = "uGTI";
+									} else {
+										$tUnit = $units;
+									}
+									$consolidatedAlpsData{$frameName}{$clusters}{$tUnit}{$pState}{$subPs2}{CDYN} = $ps2CdynData{$subPs2};
 								}
 							}
 						}
