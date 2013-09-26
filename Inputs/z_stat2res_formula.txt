@@ -22,8 +22,9 @@
 	 @IZIPTYPE@	=	(4x4|4x2)	
 	 @IZTEST@	=	(Accept|Fail|Deferred)	
 	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
-	.DOP	=	D(uCS.pwr_3DPipeDisabled.CrClock)/.Clk	
+	.DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
 	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
 	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
 	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
@@ -123,4 +124,4 @@
 				
 #STC - Cache				
 	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
-	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC	
+	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC

@@ -35,13 +35,14 @@
 	num_FF_DOP	=	numFF	
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	 .GeoClk	=	D(GeoClock.Clocks)	
 	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
-	 .temp_3DPipeDisable	=	D(uCS.pwr_3DPipeDisabled.CrClock)/.CrClk	
+	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 #CS				
-	PS0_CS	=	D(uCS.pwr_cs_idle.CrClock)/.CrClk	 # GSim really only has a stub for CS.
-	PS1_CS	=	D(uCS.pwr_cs_stall.CrClock)/.CrClk	
+	PS0_CS	=	D(uCS0.pwr_cs_idle.UnSliceClock)/.UnsliceClk	 # GSim really only has a stub for CS.
+	PS1_CS	=	D(uCS0.pwr_cs_stall.UnSliceClock)/.UnsliceClk	
 	PS2_CS	=	1 - PS0_CS - PS1_CS	
 #RS				
 	PS0_RS	=	0	 # No GSIM model

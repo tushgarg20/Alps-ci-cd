@@ -31,8 +31,9 @@
 	 @ANYNONMSAA@	=	nonMSAA	
 	 @ANYIDLE@	=	(UnitIdle|pwr_Idle)	
 	 @ANYIDLEORSTALL@	=	(UnitIdleOrStall|pwr_IdleOrStalled)	
-	.DOP	=	D(uCS.pwr_3DPipeDisabled.CrClock)/.Clk	
+	.DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
 	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
 	.Clk.num_COLOR_DAPRSC	=	.Clk * num_COLOR_DAPRSC	
 	.Clk.num_COLOR_RCPFE	=	.Clk * num_COLOR_RCPFE	
@@ -44,9 +45,9 @@
 	.Clk.num_COLOR_DAPB	=	.Clk * num_COLOR_DAPB	
 				
 #DARSC				
-	PS0_DAPRSC	=	D(SUM('@ANY_DAPRSC@@ANYIDLE@.CrClock')) / .Clk.num_COLOR_DAPRSC	
+	PS0_DAPRSC	=	D(SUM('@ANY_DAPRSC@pwr_DAPRB_Idle.CrClock')) / .Clk.num_COLOR_DAPRSC	
 	PS0_DAPRSC_DOP	=	.DOP	
-	PS1_DAPRSC	=	D(SUM('@ANY_DAPRSC@@ANYIDLEORSTALL@.CrClock')) / .Clk.num_COLOR_DAPRSC - PS0_DAPRSC	
+	PS1_DAPRSC	=	D(SUM('@ANY_DAPRSC@pwr_DAPRB_Stalled_or_Idle.CrClock')) / .Clk.num_COLOR_DAPRSC - PS0_DAPRSC	
 	PS2_DAPRSC	=	1 - PS0_DAPRSC - PS0_DAPRSC_DOP - PS1_DAPRSC	
 				
 #RCPFE				

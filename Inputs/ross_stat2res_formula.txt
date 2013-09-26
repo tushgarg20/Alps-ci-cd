@@ -20,7 +20,8 @@
 	num_ROSS_DOP	=	numROSS	
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
-	.temp_3DPipeDisable	=	D(uCS.pwr_3DPipeDisabled.CrClock)/.CrClk	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
+	.temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	 @ANY_BC@	=	S\d+\.SS\d+\.uBC\.	
 	 @ANY_PSD@	=	S\d+\.SS\d+\.uPSD\.	
 	 @ANY_MA_IN@	=	S\d+\.SS\d+\.R\d+\.uMAI\.	
@@ -81,7 +82,7 @@
 	PS1_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Stalled_or_Idle\.CrClock')) - D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock'))) / (numROSS * .CrClk)	
 	PS2_DAPRSS_WRITEFLUSH	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_FlushMsgsFromPSD\.CrClock')) / (numROSS * .CrClk)	
 	PS2_DAPRSS_RENDERTARGETWRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_CLEARRESOLVE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_ClearResolve\.CrClock')) / (numROSS * .CrClk)	
+	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (numROSS * .CrClk)	
 	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (numROSS * .CrClk)	
 	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (numROSS * .CrClk)	
 #DAPRSS BYPASS RAM				
@@ -110,4 +111,4 @@
 	PS2_ROSS_DFX	=	PS2_ROSS_SMALL	
 #DOP				
 	PS0_ROSS_DOP	=	1 - PS2_ROSS_DOP	
-	PS2_ROSS_DOP	=	.temp_3DPipeDisable	
+	PS2_ROSS_DOP	=	.temp_3DPipeDisable
