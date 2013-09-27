@@ -19,7 +19,7 @@ parser.add_option("-p","--prefix",dest="prefix", default='psim',
                   help="OutFilePrefix used to run gsim [default: %default]")
 parser.add_option("-o","--output-dir",dest="output_dir",default=None,
                   help="Path to the output directory where stat exists [default: %default]")
-parser.add_option("-c","--cfg",dest="alps_config", default='/p/gat/tools/gsim_alps/alps_cfg.yaml',
+parser.add_option("-c","--cfg",dest="alps_config", default=None,
                   help="Path to ALPS Config File (alps_cfg.yaml) [default: %default]")
 # parser.add_option("-i","--input",dest="input", default='/p/gat/tools/gsim_alps/inputs.txt',
 #                   help="Path to inputs.txt [default: %default]")
@@ -40,10 +40,24 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 
 (options,args) = parser.parse_args()
 
+wd = ''
+filename = ''
+if not options.run_local:
+    wd = '/p/gat/tools/gsim_alps'
+else:
+    wd = options.user_dir
 #######################################
 # Parsing ALPS CFG File
 #######################################
-f = open(options.alps_config,'r')
+if options.alps_config is not None:
+    filename = options.alps_config
+else:
+    if options.dest_config.find('bdw') > -1 or  options.dest_config.find('chv') > -1:
+        filename = '%s/alps_cfg_annealing.yaml' % wd
+    else:	
+        filename = '%s/alps_cfg.yaml' % wd
+
+f = open(os.path.abspath(filename),'r')
 cfg_data = yaml.load(f)
 f.close()
 
@@ -60,10 +74,6 @@ yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
 alps_log = open(runalps_log,'w')
-if not options.run_local:
-    wd = '/p/gat/tools/gsim_alps'
-else:
-    wd = options.user_dir
 
 try:
     process = subprocess.Popen(['git','describe','--tags'], cwd='%s/' % (wd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
