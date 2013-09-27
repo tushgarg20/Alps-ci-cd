@@ -1,0 +1,32 @@
+#Unit	GSIM residency			Comments
+#Generic				
+	 @ANY_GTI@	=	p0.gti0.	
+	.Clk	=	D(@ANY_GTI@gclk_cycles)	
+	 @RD_BW_PCLK@	=	1	
+	 @WR_BW_PCLK@	=	1	
+	 @BW_PCLK@	=	 @RD_BW_PCLK@ + @WR_BW_PCLK@	
+				
+#Instance Counts				
+	num_GTI_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
+	num_GTI_GLUE	=	num_GTI_GTI	
+	num_GTI_DOP	=	num_GTI_GTI	
+				
+				
+#GTI				
+	.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@gti_superq_empty_cycles'))	
+	.temp_PS0_GTI	=	(.temp_gti_superq_empty)?(.temp_gti_superq_empty/(.Clk * num_GTI_GTI)):0
+	.temp_gti_superq_full	=	D(SUM('@ANY_GTI@gti_superq_full_cycles'))	
+	.temp_PS1_GTI	=	(.temp_gti_superq_full)?(.temp_gti_superq_full/(.Clk * num_GTI_GTI)):0
+	.temp_gti_bw_clks	=	 .Clk - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
+	PS0_GTI	=	.temp_PS0_GTI	
+	PS1_GTI	=	.temp_PS1_GTI	
+	PS2_GTI	=	1 - (.temp_PS0_GTI + .temp_PS1_GTI)	
+	.temp_gti_rd_reqs	=	D(SUM('@ANY_GTI@gt_rd_reqs'))	
+	.temp_gti_wr_reqs	=	D(SUM('@ANY_GTI@gt_wr_reqs'))	
+	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)?((.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@BW_PCLK@ * .temp_gti_bw_clks)):0	
+				
+	PS0_GTI_GLUE	=	.temp_PS0_GTI	
+	PS2_GTI_GLUE	=	1-.temp_PS0_GTI	
+				
+	PS2_GTI_DOP_1X	=	1	
+	PS2_GTI_DOP_2X	=	1	
