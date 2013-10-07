@@ -69,7 +69,7 @@
 	PS2_VF_Dropped	=	D(Geo.uVF.pwr_vf_active_dropped.2xGeoClock) / .GeoClk2x	# Added to catch verts dropped because of cut, dangling, or auto-strip.
 #VFBE1				
 	PS0_VFBE1_DOP	=	 .temp_3DPipeDisable	
-	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVsVtxPipes	
+	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVtxPipes	
 	.temp_vertex_pipe_clocks	=	.temp_num_vertex_pipes * .GeoClk	
 	PS0_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	# Not active rollup of all structures.
 	PS1_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_vertex_pipe_clocks	
@@ -121,7 +121,7 @@
 #TDS				
 	PS0_TDS_DOP	=	 .temp_3DPipeDisable	
 	PS0_TDS	=	(D(Geo.uDS.pwr_ds_idle.2xGeoClock) / .GeoClk2x) - PS0_TDS_DOP	
-	PS1_TDS	=	(D(Geo.uDS.pwr_ds_stalled_or_idle_ungated_count.2xGeoClock) - D(Geo.uDS.pwr_ds_idle.2xGeoClock)) / .GeoClk2x	
+	PS1_TDS	=	(D(Geo.uDS.pwr_ds_stalled_or_idle.2xGeoClock) - D(Geo.uDS.pwr_ds_idle.2xGeoClock)) / .GeoClk2x	
 	PS2_TDS_Enabled	=	1 - (PS0_TDS_DOP + PS0_TDS + PS1_TDS + PS2_TDS_Disabled)	
 	PS2_TDS_Disabled	=	D(Geo.uDS.pwr_ds_active_disabled.2xGeoClock) / .GeoClk2x	
 #TDS Cache				

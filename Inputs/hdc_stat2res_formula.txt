@@ -76,8 +76,8 @@
 	PSO_HDC_DOP	=	D(SUM('@ANY_HDC@pwr_hdc_idle\.CrClock')) / (numHDCs * .CrClk)	
 	PS2_HDC_DOP	=	1 - PS0_HDC_DOP	
 #HDCGlue				
-	PS0_HDC_GLUE_DOP	=	D(SUM('@ANY_HDC@pwr_hdc_idle\.CrClock')) / (numHDCs * .CrClk)	
-	PS0_HDC_GLUE	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_unfiltered_count\.CrClock')) / (numHDCs * .CrClk)) - PS0_HDC_GLUE_DOP	#Approximating Glue with HDC Data
+	PS0_HDC_GLUE_DOP	=	D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)	
+	PS0_HDC_GLUE	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle_unfiltered_count\.CrClock')) - D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock'))) / (numHDCs * .CrClk)	#Approximating Glue with HDC Data
 	PS1_HDC_GLUE	=	1 - PS0_HDC_GLUE - PS0_HDC_GLUE_DOP - PS2_HDC_GLUE	
 	PS2_HDC_GLUE	=	(PS2_HDC_ReqData_Sequenced_Typed_Write + PS2_HDC_ReqData_Sequenced_Else_Data_Write + PS2_HDC_ReqData_Sequenced_Else_SLM_Write + PS2_HDC_ReqData_NonSequenced_Write)	
 #HDCSmall				
