@@ -131,6 +131,9 @@ EU:
     PS2_EU_DFX: R * C
 EU_Utilization: R
 EU_IPC: R
+GA_toggle_rate: R
+EM_toggle_rate: R
+FPU_toggle_rate: R
 
 L3_Bank:
    LTCD_EBB:
