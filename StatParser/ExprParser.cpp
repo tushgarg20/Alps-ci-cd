@@ -14,6 +14,7 @@ CParser::CParser()
 CParser::~CParser()
 {   for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++) delete J->second;
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++) delete J->second;
+    for(unsigned i=0;i<lines.size();i++) delete lines[i];
     for(unsigned i=0;i<var_list.size();i++) delete var_list[i];
 }
 
@@ -35,37 +36,45 @@ void CParser::ReadLine(const char*str)
         return;
     }
     pending.clear();
-    n=s.find('=');
-    if(n==std::string::npos)
+
+    bool plus_eq=false;
+    std::string pattern, left, right;
+    boost::smatch match;
+    static boost::regex definition_pattern("(?:('[^']*')\\s*:\\s*)?((?:[\\w\\.]|\\{\\$\\d+\\})+|@\\w+@|[\\w\\.]*'[^']*')\\s*(\\+?=)\\s*(.*)");
+    if(boost::regex_match(s, match, definition_pattern))
+    {   for(unsigned i=0;i<match.size();i++)
+        pattern=match[1];
+        left=match[2];
+        if(match[3]=="+=") plus_eq=true;
+        right=match[4];
+    }
+    else
     {   Throw(std::string("syntax error: ")+s);
     }
-    bool plus_eq=false;
-    std::string right=ExpandMacro(Clip(s.substr(n+1)));
-    if(n>0 && s[n-1]=='+'){ plus_eq=true; n--;}
-    std::string left=Clip(s.substr(0, n));
 
-    if(boost::regex_match(left, boost::regex("^@[\\w]+@$")))
-    {   if(plus_eq) Throw("+= is only legal for regular variables");
+    right=ExpandMacro(right);
+    pattern=ExpandMacro(pattern);
+
+    if(left[0]=='@')    // macro
+    {   if(pattern.length()) Throw("subpatterns are not allowed in macro definitions");
+        if(plus_eq) Throw("+= is only legal for regular variables");
         macro[left]=right;
         return;
     }
-    if(boost::regex_match(left, boost::regex("^\\S*\\s*\\(\\S*\\)$")))
-    {   n=left.find_first_of(" \t(");
-        left=left.substr(0, n);
-    }
-    if(boost::regex_match(left, boost::regex("^[^\']*\'[^\']+\'$")))
-    {   if(plus_eq) Throw("+= is only legal for regular variables");
-        n=left.find_first_of('\'');
-        std::string pref=left.substr(0, n);
-        std::string rex=left.substr(n);
-        if(right!=rex && right !=std::string("D")+rex) Throw(std::string("invalid expression: ")+right);
-        if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
-        try
-        {   boost::regex test(rex.substr(1, rex.length()-2));
-        }
-        catch(boost::regex_error e)
-        {   Throw(std::string("invalid regular expression: ")+rex);
-        }
+    if(pattern.length()) pattern=pattern.substr(1, pattern.length()-2);
+    lines.push_back(new CLine(current_file, formula_line, s, pattern, right, left, plus_eq));
+}
+
+void CParser::DefineVariable(std::string left, std::string right, bool plus_eq, std::string file, int line)
+{   boost::smatch match;
+    static boost::regex passthrough_pattern("([\\w\\.]*)('[^']*')");
+    if(boost::regex_match(left, match, passthrough_pattern))
+    {   if(plus_eq) throw std::string("+= is not legal here");
+        std::string pref=match[1];
+        std::string rex=match[2];
+        if(right!=rex && right !=std::string("D")+rex) throw std::string("invalid expression: ")+right;
+        if(defined_names.find(left)!=defined_names.end()) throw std::string("name redefinition: ")+left;
+        if(InvalidRegex(rex)) throw std::string("invalid regular expression: ")+rex;
         defined_names[left]=true;
         bool diff=(right!=rex);
         rex=rex.substr(1, rex.length()-2);
@@ -73,27 +82,103 @@ void CParser::ReadLine(const char*str)
         var_list.push_back(P); p_t_regs.push_back(P);
         return;
     }
-
-    if(!boost::regex_match(left, boost::regex("^\\.?[a-zA-Z_][\\w\\.]*$|^\\.$"))) Throw(std::string("invalid name: ")+left);
-    if(defined_names.find(left)!=defined_names.end()) Throw(std::string("name redefinition: ")+left);
+    static boost::regex name_pattern("\\.?[a-zA-Z_][\\w\\.]*|\\.");
+    if(!boost::regex_match(left, name_pattern)) throw std::string("invalid name: ")+left;
+    if(defined_names.find(left)!=defined_names.end()) throw std::string("name redefinition: ")+left;
     defined_names[left]=true;
-    if(plus_eq) right=left+"[1]+("+right+")";
     if(left==right)
-    {   CPassThroughVariable* P=new CPassThroughVariable(left, current_file, formula_line);
+    {   if(plus_eq) throw std::string("+= is not legal here");
+        CPassThroughVariable* P=new CPassThroughVariable(left, current_file, formula_line);
         var_list.push_back(P); p_t_vars.push_back(P);
         return;
     }
-
     CVariable* V = all_vars.find(left)==all_vars.end() ? new CVariable(current_file, formula_line, left) : all_vars[left];
-    V->file=current_file; V->line=formula_line;
+    V->file=file; V->line=line;
     variables[left]=V; all_vars[left]=V;
     if(V!=dot){ vars.push_back(V); var_list.push_back(new CPlainVariable(V));}
     current_var=V->name;
-    ScanDependencies(V, right);
-    SetFormula(V, right);
+    //ScanDependencies(V, right);
+    for(int n=right.find("?=");n!=std::string::npos;n=right.find("?="))
+    {   V->formula.push_back(Clip(right.substr(0, n)));
+        right=right.substr(n+2);
+    }
+    V->formula.push_back(Clip(right));
     V->bad=true; V->na=true;
-    for(unsigned i=0;i<V->formula.size();i++) V->expr.push_back(Parse(V->formula[i]));
+    for(unsigned i=0;i<V->formula.size();i++) V->expr.push_back(Parse(plus_eq?left+"[1]+("+V->formula[i]+")":V->formula[i]));
     V->bad=false; V->na=false;
+}
+
+std::string CParser::SubstituteSubpatterns(std::string s, const std::vector<std::string>&V)
+{   boost::smatch match;
+    static boost::regex substitute_pattern("(.*)(\\{\\$(\\d+)\\})(.*)");
+    while(boost::regex_match(s, match, substitute_pattern))
+    {   std::string sub;
+        unsigned n=boost::lexical_cast<unsigned>(match[3]);
+        if(n>0 && n<=V.size()) sub=V[n-1];
+        s=match[1]+sub+match[4];
+    }
+    return s;
+}
+
+std::vector<CParser::CError> CParser::Initialize(CReaderManager* RM)
+{   std::vector<CParser::CError> Err;
+
+    std::map<std::string, std::vector<std::vector<std::string> > > M;
+    for(unsigned i=0;i<lines.size();i++)
+    {   CLine* L=lines[i];
+        if(L->pattern.size())
+        {   if(InvalidRegex(L->pattern))
+            {   Err.push_back(CError(L->file, L->line, "", std::string("invalid regular expression: '")+L->pattern+"'"));
+                continue;
+            }
+            if(M.find(L->pattern)==M.end()) M[L->pattern]=RM->MatchPattern(L->pattern);
+            std::vector<std::vector<std::string> >& V=M[L->pattern];
+            if(!V.size())
+            {   Err.push_back(CError(L->file, L->line, "", std::string("no matches found: '")+L->pattern+"'"));
+                continue;
+            }
+            for(unsigned j=0;j<V.size();j++)
+            {   std::string left=SubstituteSubpatterns(L->left, V[j]);
+                std::string right=SubstituteSubpatterns(L->right, V[j]);
+                try
+                {   DefineVariable(left, right, L->plus_eq, L->file, L->line);
+                }
+                catch(std::string s)
+                {   Err.push_back(CError(L->file, L->line, left, s));
+                }
+                catch(...)
+                {   Err.push_back(CError(L->file, L->line, left, std::string("error")));
+                }
+            }
+        }
+        else
+        {   try
+            {   DefineVariable(L->left, L->right, L->plus_eq, L->file, L->line);
+            }
+            catch(std::string s)
+            {   Err.push_back(CError(L->file, L->line, L->left, s));
+            }
+            catch(...)
+            {   Err.push_back(CError(L->file, L->line, L->left, std::string("error")));
+            }
+        }
+    }
+    static boost::regex global_pattern("^_\\..*$|^.*\\._\\..*$");
+    for(std::map<std::string, CVariable*>::iterator J=variables.begin();J!=variables.end();J++)
+    {   if(!boost::regex_match(J->first, global_pattern)) continue;
+        RM->ExportGlobal(J->first);
+    }
+    return Err;
+}
+
+bool CParser::InvalidRegex(std::string s)
+{   try
+    {   boost::regex test(s);
+    }
+    catch(boost::regex_error e)
+    {   return true;
+    }
+    return false;
 }
 
 std::string CParser::Clip(std::string s)
@@ -118,48 +203,25 @@ std::string CParser::ExpandMacro(std::string s)
     return s;
 }
 
-void CParser::ScanDependencies(CVariable*V, std::string s)
-{   for(int n=s.find('\'');n!=std::string::npos;n=s.find('\''))
-    {   int k=s.find('\'', n+1);
-        if(k==std::string::npos) Throw("unmatched quote");
-        s=s.substr(0, n)+s.substr(k+1);
-    }
-    for(int n=s.find_first_of(AlphaNumDot);n!=std::string::npos;n=s.find_first_of(AlphaNumDot))
-    {   int k=s.find_first_not_of(AlphaNumDot, n+1);
-        if(k!=std::string::npos)
-        {   int m=s.find_first_not_of(" \t", k);
-            if(s[m]=='['){ s=s.substr(m+1); continue;}
-        }
-        std::string ddd=s.substr(n, k==std::string::npos?k:k-n);
-        if(!boost::regex_match(ddd, boost::regex("^[\\.\\d]+$"))) V->dep[ddd]=true;
-        if(k==std::string::npos) break;
-        s=s.substr(k+1);
-    }
-}
-
-void CParser::SetFormula(CVariable*V, std::string s)
-{   for(int n=s.find("?=");n!=std::string::npos;n=s.find("?="))
-    {   V->formula.push_back(Clip(s.substr(0, n)));
-        s=s.substr(n+2);
-    }
-    V->formula.push_back(Clip(s));
+void CParser::ScanDependencies(CParser*P, CParser::CNode*N)
+{   CVarNode* V=dynamic_cast<CVarNode*>(N);
+    if(V) P->dep.insert(V->V);
 }
 
 std::vector<CParser::CError> CParser::CheckDependencies()
 {   std::vector<CParser::CError> Err;
     for(unsigned i=0;i<vars.size();i++)
     {   CVariable* v=vars[i];
-        for(std::map<std::string, bool>::iterator J=v->dep.begin();J!=v->dep.end();J++)
-        {   if(variables.find(J->first)==variables.end()) continue;
-            CVariable*u=variables[J->first];
-            if(u==v)
+        for(unsigned j=0;j<v->expr.size();j++) v->expr[j]->Recursion(ScanDependencies, this);
+        for(std::set<CVariable*>::iterator J=dep.begin();J!=dep.end();J++)
+        {   if(*J==v)
             {   v->bad=true; v->na=true;
                 Err.push_back(CError(v->file, v->line, v->name, std::string("circular dependency: ")+v->name+" <= "+v->name));
                 break;
             }
-            v->depends.push_back(u);
+            v->depends.push_back(*J);
         }
-        v->dep.clear(); // don't need it any longer
+        dep.clear();
         v->dfs_visited=false;
     }
     int count=0;
@@ -840,13 +902,6 @@ CParser::CNode* CParser::CRangeNode::Flatten()
     return new CVector(W);
 }
 
-void CParser::ExportGlobals(CReaderManager* RM)
-{   for(std::map<std::string, CVariable*>::iterator J=variables.begin();J!=variables.end();J++)
-    {   if(!boost::regex_match(J->first, boost::regex("^_\\..*$|^.*\\._\\..*$"))) continue;
-        RM->ExportGlobal(J->first);
-    }
-}
-
 std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
 {   std::vector<CParser::CError> Err;
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++)
@@ -948,11 +1003,11 @@ void CParser::Execute()
     }
     for(unsigned i=0;i<p_t_regs.size();i++) p_t_regs[i]->Update();
     for(unsigned i=0;i<diffs.size();i++) diffs[i]->Record();
-    for(unsigned i=0;i<history.size();i++) history[i]->UpdateHistory();
     for(unsigned i=0;i<dynamic.size();i++)
     {   CDynamicReader* Dr=dynamic_cast<CDynamicReader*>(dynamic[i]->reader);
         Dr->Set(dynamic[i]->value);
     }
+    for(unsigned i=0;i<history.size();i++) history[i]->UpdateHistory();
 }
 
 bool CParser::Ready()

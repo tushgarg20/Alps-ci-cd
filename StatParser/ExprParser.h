@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 #include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -22,6 +23,7 @@ public:
     struct CReaderManager
     {   virtual ~CReaderManager(){}
         virtual CReader* FindReader(std::string)=0;
+        virtual std::vector<std::vector<std::string> > MatchPattern(std::string)=0;
         virtual std::vector<CReader*> FindRegExAsVector(std::string)=0;
         virtual std::map<std::string, CReader*> FindRegExAsMap(std::string)=0;
         virtual void ExportGlobal(std::string){}
@@ -37,6 +39,14 @@ public:
         std::string message;
         CError(std::string f, int n, std::string v, std::string s) : CLocation(f, n), var(v), message(s) {}
         static bool Cmp(const CError& a, const CError& b){ return a.line<b.line;}
+    };
+    struct CLine : CLocation
+    {   std::string str;
+        std::string pattern;
+        std::string right;
+        std::string left;
+        bool plus_eq;
+        CLine(std::string f, int n, std::string s, std::string p, std::string r, std::string l, bool q) : CLocation(f, n), str(s), pattern(p), right(r), left(l), plus_eq(q) {}
     };
     enum TOKEN
     {   ERR,
@@ -128,7 +138,6 @@ public:
     };
     struct CVariable : CLocation
     {   std::string name;
-        std::map<std::string, bool> dep;
         std::vector<CVariable*> depends;
         std::vector<std::string> formula;
         std::vector<CNode*> expr;
@@ -327,7 +336,7 @@ public:
     void Finish();
     void ReadLine(const char*);
     std::vector<CError> CheckDependencies();
-    void ExportGlobals(CReaderManager*);
+    std::vector<CError> Initialize(CReaderManager*);
     std::vector<CError> BindReader(CReaderManager*);
     bool Defined(const char*s){ return variables.find(s)!=variables.end() && variables[s]->expr.size();}
     bool Ready();
@@ -337,11 +346,13 @@ public:
     static std::string Clip(std::string);
 protected:
     static void CollectDiffs(CParser*, CNode*);
+    static bool InvalidRegex(std::string);
+    static void ScanDependencies(CParser*, CNode*);
     void Throw(std::string s){ throw CError(current_file, formula_line, current_var, s);}
+    void DefineVariable(std::string name, std::string expr, bool plus_eq, std::string file, int line);
+    static std::string SubstituteSubpatterns(std::string, const std::vector<std::string>&);
     std::string ExpandMacro(std::string);
     void SplitLeft(std::string, std::string&, std::string&);
-    void ScanDependencies(CVariable*, std::string);
-    void SetFormula(CVariable*, std::string);
     static bool dfs_sort(CVariable*a, CVariable*b){ return a->dfs_done<b->dfs_done;}
     CNode* Parse(std::string);
     void Tokenize(std::string);
@@ -364,6 +375,7 @@ protected:
     std::string pending;
     int current_line;
     int formula_line;
+    std::vector<CLine*> lines;
     std::map<std::string, std::string> macro;
     std::map<std::string, CVariable*> variables; // definitions
     std::map<std::string, CVariable*> all_vars;
@@ -377,6 +389,7 @@ protected:
     std::vector<CPassThroughRegex*> p_t_regs;   // pass through regexes
     std::vector<CDiffNode*> diffs;
     std::vector<CToken> tokens;
+    std::set<CVariable*> dep;
     unsigned token_ptr;
     CVariable* dot;
 };

@@ -17,6 +17,17 @@ public:
     double Value(){ return value;}
 };
 
+/// Dummy reader
+
+class CDummyReaderManager : public CParser::CReaderManager
+{
+public:
+    CParser::CReader* FindReader(std::string){ return 0;}
+    std::vector<std::vector<std::string> > MatchPattern(std::string){ std::vector<std::vector<std::string> > V; return V;}
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string){ std::vector<CParser::CReader*> V; return V;}
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string){ std::map<std::string, CParser::CReader*> M; return M;}
+};
+
 /// Timegraph reader
 
 class CTimegraphReaderManager : public CParser::CReaderManager
@@ -26,11 +37,13 @@ class CTimegraphReaderManager : public CParser::CReaderManager
     std::vector<double> values;
     std::map<std::string, int> by_name;
     std::map<std::string, CParser::CReader*> readers;
+    std::set<std::string> nnn;
     friend class CTimegraphReader;
 public:
     CTimegraphReaderManager(const char*);
     ~CTimegraphReaderManager();
     CParser::CReader* FindReader(std::string);
+    std::vector<std::vector<std::string> > MatchPattern(std::string);
     std::vector<CParser::CReader*> FindRegExAsVector(std::string);
     std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
     bool ReadLine();
@@ -59,7 +72,11 @@ CTimegraphReaderManager::CTimegraphReaderManager(const char*fname)
     int i, n;
     for(n=0;(i=S.find("\t", n))!=-1;n=i+1) names.push_back(S.substr(n, i-n));
     names.push_back(S.substr(n));
-    for(unsigned i=0;i<names.size();i++) if(names[i]!="") by_name[names[i]]=i;
+    for(unsigned i=0;i<names.size();i++)
+    {   if(names[i]!="") by_name[names[i]]=i;
+        nnn.insert(names[i]);
+        for(unsigned i=1;i<names[i].length();i++) if(names[i][i]=='.') nnn.insert(names[i].substr(0, i));
+    }
 }
 
 bool CTimegraphReaderManager::ReadLine()
@@ -70,6 +87,27 @@ bool CTimegraphReaderManager::ReadLine()
     for(n=0;(i=S.find("\t", n))!=-1;n=i+1) values.push_back(atof(S.substr(n, i-n).c_str()));
     values.push_back(atof(S.substr(n).c_str()));
     return true;
+}
+
+std::vector<std::vector<std::string> > CTimegraphReaderManager::MatchPattern(std::string s)
+{   boost::regex rx(s);
+    boost::smatch match;
+    std::vector<std::vector<std::string> > V;
+    for(std::set<std::string>::iterator J=nnn.begin();J!=nnn.end();J++)
+    {   if(!boost::regex_match(*J, match, rx)) continue;
+        std::vector<std::string> W;
+        for(unsigned k=1;k<match.size();k++) W.push_back(match[k]);
+        bool found=false;
+        for(unsigned j=0;j<V.size();j++)
+        {   if(V[j].size()!=W.size()) continue;
+            unsigned k;
+            for(k=0;k<W.size();k++) if(W[k]!=V[j][k]) break;
+            if(k<W.size()) continue;
+            found=true; break;
+        }
+        if(!found) V.push_back(W);
+    }
+    return V;
 }
 
 CParser::CReader* CTimegraphReaderManager::FindReader(std::string name)
@@ -102,10 +140,12 @@ std::vector<CParser::CReader*> CTimegraphReaderManager::FindRegExAsVector(std::s
 class CStatReaderManager : public CParser::CReaderManager
 {   std::map<std::string, double> values;
     std::map<std::string, CParser::CReader*> readers;
+    std::set<std::string> nnn;
 public:
     CStatReaderManager(const char*);
     ~CStatReaderManager(){ for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;}
     CParser::CReader* FindReader(std::string);
+    std::vector<std::vector<std::string> > MatchPattern(std::string);
     std::vector<CParser::CReader*> FindRegExAsVector(std::string);
     std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
 };
@@ -136,7 +176,30 @@ CStatReaderManager::CStatReaderManager(const char*fname)
         std::string left=CParser::Clip(S.substr(0, n));
         std::string right=CParser::Clip(S.substr(n));
         values[left]=atof(right.c_str());
+        nnn.insert(left);
+        for(unsigned i=1;i<left.length();i++) if(left[i]=='.') nnn.insert(left.substr(0, i));
     }
+}
+
+std::vector<std::vector<std::string> > CStatReaderManager::MatchPattern(std::string s)
+{   boost::regex rx(s);
+    boost::smatch match;
+    std::vector<std::vector<std::string> > V;
+    for(std::set<std::string>::iterator J=nnn.begin();J!=nnn.end();J++)
+    {   if(!boost::regex_match(*J, match, rx)) continue;
+        std::vector<std::string> W;
+        for(unsigned k=1;k<match.size();k++) W.push_back(match[k]);
+        bool found=false;
+        for(unsigned j=0;j<V.size();j++)
+        {   if(V[j].size()!=W.size()) continue;
+            unsigned k;
+            for(k=0;k<W.size();k++) if(W[k]!=V[j][k]) break;
+            if(k<W.size()) continue;
+            found=true; break;
+        }
+        if(!found) V.push_back(W);
+    }
+    return V;
 }
 
 CParser::CReader* CStatReaderManager::FindReader(std::string str)
@@ -293,13 +356,14 @@ int main(int argc, char** argv)
         EEE[input[i]]=E;
     }
 
-    std::vector<CParser::CError> Err=P.CheckDependencies();
-    for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
-
     std::cout.precision(20);
     
     if(!statfile.empty())
     {   CStatReaderManager STM(statfile.c_str());
+        std::vector<CParser::CError> Err=P.Initialize(&STM);
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        Err=P.CheckDependencies();
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.BindReader(&STM);
         for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         for(unsigned i=0;i<input.size();i++)
@@ -324,6 +388,10 @@ int main(int argc, char** argv)
     }
     else if(!timegraph.empty())
     {   CTimegraphReaderManager TGM(timegraph.c_str());
+        std::vector<CParser::CError> Err=P.Initialize(&TGM);
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        Err=P.CheckDependencies();
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.BindReader(&TGM);
         for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         for(unsigned i=0;i<input.size();i++)
@@ -360,7 +428,13 @@ int main(int argc, char** argv)
         }
     }
     else
-    {   for(unsigned i=0;i<input.size();i++)
+    {   CDummyReaderManager DMM;
+        std::vector<CParser::CError> Err=P.Initialize(&DMM);
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        Err=P.CheckDependencies();
+        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+
+        for(unsigned i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
             for(unsigned i=0;i<E.size();i++) print_error(E[i]);

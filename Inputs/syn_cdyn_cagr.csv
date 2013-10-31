@@ -1,6 +1,6 @@
 Cluster,Source,Destination,Cdyn Reduction
 EU,Gen8,Gen8,1
-EU,Gen8,Gen8SoC,1
+EU,Gen8,Gen8SoC,0.9
 EU,Gen8,Gen9LPClient,0.835
 EU,Gen8,Gen9LPSoC,0.835
 EU,Gen8,Gen10LP,0.79325
@@ -29,11 +29,13 @@ L3_Bank,Gen8, Gen9LPClient,0.835
 L3_Bank,Gen8,Gen10LP,0.79325
 L3_Bank,Gen9LPClient,Gen8,NA
 L3_Bank,Gen9LPClient,Gen10LP,0.95
+L3_Bank,Gen8,Gen8SoC,0.9
 GTI,Gen8,Gen8,1
 GTI,Gen8,Gen9LPClient,0.835
 GTI,Gen9LPClient,Gen8,NA
 GTI,Gen9LPClient,Gen10LP,0.95
 GTI,Gen8,Gen10LP,0.79325
+GTI,Gen8,Gen8SoC,0.9
 Sampler,Gen8,Gen8,1
 Sampler,Gen8,Gen8SoC,0.9
 Sampler,Gen8,Gen9LPClient,0.835
