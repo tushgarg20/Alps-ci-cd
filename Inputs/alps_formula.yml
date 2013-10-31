@@ -3,6 +3,7 @@
  # R == Residency
  # C == Cdyn weight
 
+CrClocks: R
 FPS: R
 
 EU:

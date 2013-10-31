@@ -41,9 +41,11 @@
 	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
 	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 #CS				
-	PS0_CS	=	D(uCS0.pwr_cs_idle.UnSliceClock)/.UnsliceClk	 # GSim really only has a stub for CS.
-	PS1_CS	=	D(uCS0.pwr_cs_stall.UnSliceClock)/.UnsliceClk	
+	PS0_CS	=	D(uCS0.pwr_cs_idle.UnsliceClock)/.UnsliceClk	 # GSim really only has a stub for CS.
+	PS1_CS	=	D(uCS0.pwr_cs_stall.UnsliceClock)/.UnsliceClk	
 	PS2_CS	=	1 - PS0_CS - PS1_CS	
+	PS2_CS_Media	=	0	#Breaking out media/GPGPU
+				
 #RS				
 	PS0_RS	=	0	 # No GSIM model
 	PS1_RS	=	0	
@@ -104,8 +106,8 @@
 #HS				
 	PS0_HS_DOP	=	 .temp_3DPipeDisable	
 	PS0_HS	=	(D(Geo.uHS.pwr_hs_idle.2xGeoClock) / .GeoClk2x) - PS0_HS_DOP	
-	PS1_HS	=	D(Geo.uHS.pwr_hs_stalled_or_idle_ungated_count.2xGeoClock) / .GeoClk2x	
-	PS2_HS_Enabled	=	D(Geo.uHS.pwr_hs_active_enabled.2xGeoClock) / .GeoClk2x	
+	PS1_HS	=	(D(Geo.uHS.pwr_hs_stalled_or_idle.2xGeoClock) - D(Geo.uHS.pwr_hs_idle.2xGeoClock)) / .GeoClk2x	
+	PS2_HS_Enabled	=	1 - (PS0_HS_DOP + PS0_HS + PS1_HS + PS2_HS_Disabled)	
 	PS2_HS_Disabled	=	D(Geo.uHS.pwr_hs_active_disabled.2xGeoClock) / .GeoClk2x	
 #HS Cache				
 	PS0_HS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
@@ -115,8 +117,8 @@
 #TE				
 	PS0_TE_DOP	=	 .temp_3DPipeDisable	
 	PS0_TE	=	(D(Geo.uTE.pwr_te_idle.2xGeoClock) / .GeoClk2x) - PS0_TE_DOP	
-	PS1_TE	=	1 - (PS0_TE_DOP + PS0_TE + PS2_TE_Enabled + PS2_TE_Disabled)	
-	PS2_TE_Enabled	=	D(Geo.uTE.pwr_te_active_enabled.2xGeoClock) / .GeoClk2x	
+	PS1_TE	=	(D(Geo.uTE.pwr_te_stalled_or_idle.2xGeoClock) - D(Geo.uTE.pwr_te_idle.2xGeoClock)) / .GeoClk2x	
+	PS2_TE_Enabled	=	1 - (PS0_TE_DOP + PS0_TE + PS1_TE + PS2_TE_Disabled)	
 	PS2_TE_Disabled	=	D(Geo.uTE.pwr_te_active_disabled.2xGeoClock) / .GeoClk2x	
 #TDS				
 	PS0_TDS_DOP	=	 .temp_3DPipeDisable	
@@ -134,7 +136,7 @@
 	PS0_GS	=	(D(Geo.uGS.pwr_gs_idle.2xGeoClock) / .GeoClk2x) - PS0_GS_DOP	
 	PS1_GS	=	(D(Geo.uGS.pwr_gs_stalled_or_idle.2xGeoClock)  - D(Geo.uGS.pwr_gs_idle.2xGeoClock))/ .GeoClk2x	
 	PS2_GS_Enabled	=	1 - (PS0_GS_DOP + PS0_GS + PS1_GS + PS2_GS_Disabled)	
-	PS2_GS_Disabled	=	D(Geo.uGS.pwr_gs_active_disabled.2xGeoClock) / .GeoClk2x	
+	PS2_GS_Disabled	=	D(Geo.uGS.pwr_gs_active_disabled.) / .GeoClk2x	
 #GS Cache				
 	PS0_GS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
 	PS2_GS_Cache_Read	=	D(Geo.uGS.pwr_gs_deref_ram_reads.2xGeoClock) / .GeoClk2x	
@@ -171,8 +173,8 @@
 	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.CrClock) / .CrClk	
 	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.CrClock) / .CrClk	
 #TDG				
-	PS0_TDG	=	D(uTDG.Idle.CrClock) / .CrClk	
-	PS1_TDG	=	(D(uTDG.IdleOrStalled.CrClock) - D(uTDG.Idle.CrClock)) / .CrClk	
+ 'uTDG\.Idle\.\(w*Clock)' : 	PS0_TDG	=	D(uTDG\.Idle\.{$1}) / D({$1}\.Clocks)	
+ 'uTDG\.Idle\.\(w*Clock)' : 	PS1_TDG	=	(D(uTDG\.IdleOrStalled\.{$1}) - D(uTDG\.Idle\.{$1})) / D({$1}\.Clocks)	
 	PS2_TDG	=	1 - PS0_TDG - PS1_TDG	
 #URBM				
 	PS0_URBM_DOP	=	0	#No GSIM model
@@ -184,13 +186,18 @@
 	PS1_SVG	=	0	
 	PS2_SVG	=	0	
 #VFE				
-	PS0_VFE	=	D(Med.uVFE.pwr_Idle.CrClock) / .CrClk	#Media GPGPU
-	PS1_VFE	=	(D(Med.uVFE.pwr_IdleOrStalled.CrClock) - D(Med.uVFE.pwr_Idle.CrClock)) / .CrClk	
+Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med\.uVFE\d+\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
+Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med\.uVFE\d+\.pwr_IdleOrStalled\.{$1}) - D(Med\.uVFE\d+\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
 	PS2_VFE	=	1 - PS0_VFE - PS1_VFE	
+	PS2_VFE_GPGPU	=	0	#Breaking out media/GPGPU
+	PS2_VFE_MEDIA	=	0	
+				
 #TSG				
-	PS0_TSG	=	D(Med.uTSG.pwr_Idle.CrClock) / .CrClk	#Media GPGPU
-	PS1_TSG	=	(D(Med.uTSG.pwr_IdleOrStalled.CrClock) - D(Med.uTSG.pwr_Idle.CrClock)) / .CrClk	
+ 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS0_TSG	=	D(Med\.uTSG\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
+ 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS1_TSG	=	(D(Med\.uTSG\.pwr_IdleOrStalled\.{$1}) - D(Med\.uTSG\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
 	PS2_TSG	=	1 - PS0_TSG - PS1_TSG	
+	PS2_TSG_Media_Scoreboard	=	0	#Breaking out media/GPGPU
+	PS2_TSG_Media_NoScoreboard	=	0	
 #OACS				
 	PS0_OACS	=	0	#No GSIM model
 	PS1_OACS	=	0	
@@ -211,4 +218,4 @@
 #DOP				
 	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
 	PS1_FF_DOP	=	0	
-	PS2_FF_DOP	=	 .temp_3DPipeDisable
+	PS2_FF_DOP	=	 .temp_3DPipeDisable	
