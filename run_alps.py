@@ -35,6 +35,8 @@ parser.add_option("-a","--architecture",action="store", dest="dest_config", defa
                   help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg or just specify the three letter acronym For E.g. BDW, SKL, CNL, BXT [default: %default]")
 parser.add_option("-d","--dir",action="store", dest="user_dir", default='.',
                   help=" user_dir where stat2res and build_alps scripts exist ( only used when --local is enabled) [default: %default]")
+parser.add_option("-t","--tg_file",action="store", dest="tg_file", default='',
+                  help=" Input Timegraph File. Please make sure the TG file has ALPS residencies as well. [default: %default]")
 parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
 
@@ -105,6 +107,8 @@ if not options.run_local:
    
     input_file = '/p/gat/tools/gsim_alps/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.tg_file):
+        build_alps_cmd += ['-t',options.tg_file,'-z','alps_Timegraph.txt']
     if(options.run_debug):
         build_alps_cmd += ['--debug']
 
@@ -129,6 +133,8 @@ else:
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.tg_file):
+        build_alps_cmd += ['-t',options.tg_file,'-z','alps_Timegraph.txt']
     if(options.run_debug):
         build_alps_cmd += ['--debug']
 
