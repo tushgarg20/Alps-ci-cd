@@ -152,7 +152,7 @@
 	PS2_SC_Media_Sample8x8	=	0	#first rev media states
 				
 #SC Cache				
-	PS0_SC_DataRam_IDLE	=	1 - (PS2_SC_DataRam_READ + PS2_SC_DataRam_WRITE)	#No stall in SC
+	PS0_SC_DataRam_IDLE	=	0	# 0 Cdyn for idle
 	PS2_SC_DataRam_READ	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bank0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank4\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank5\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank6\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank7\.CrClock'))) / (8 * numSamplers * .CrClk)	# 8 banks in SC
 	PS2_SC_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@pwr_sc_data_ram_write\.CrClock')) / (numSamplers * .CrClk)	
 	PS0_SC_LatFifo_IDLE	=	D(SUM('@ANY_SAMPLER@pwr_sc_latfifo_idle\.CrClock')) / (numSamplers * .CrClk)	
@@ -226,6 +226,10 @@
 	PS2_DM_Media_BYPASS	=	0	#first rev media states
 	PS2_DM_Media_SRGB	=	0	
 	PS2_DM_Media_Planar	=	0	
+				
+#DM_PALRAM				
+	PS2_DM_PALRAM_READ	=	0	#first rev media states
+	PS2_DM_PALRAM_WRITE	=	0	
 				
 #FT				
 	PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk)	
