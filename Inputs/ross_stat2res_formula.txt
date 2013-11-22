@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numROSS	=	knob.global.NumSlices * knob.S0.NumSubSlices	
+	numROSS	=	D(SUM('knob.S\d+.NumSubSlices'))	#Change to handle assymetric configs
 	numEURows	=	knob.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 	num_ROSS_BC	=	numROSS	
 	num_ROSS_PSD	=	numROSS	

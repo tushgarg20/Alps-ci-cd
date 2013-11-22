@@ -1,6 +1,6 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	numSamplers	=	knob.global.NumSlices * knob.S0.NumSubSlices	
+	numSamplers	=	D(SUM('knob.S\d+.NumSubSlices'))	#Change to handle assymetric configs
 	num_Sampler_FL	=	numSamplers	
 	num_Sampler_PL	=	numSamplers	
 	num_Sampler_SC	=	numSamplers	
