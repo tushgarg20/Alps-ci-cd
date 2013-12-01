@@ -545,15 +545,33 @@ for path in output_list:
 cluster_cdyn_numbers = {'cluster_cdyn_numbers(pF)':{}}
 unit_cdyn_numbers = {'unit_cdyn_numbers(pF)':{}}
 gt_cdyn['Total_GT_Cdyn(nF)'] = float('%.3f'%float(output_cdyn_data['GT']['cdyn']/1000))
+gt_cdyn['Total_GT_Cdyn_syn(nF)'] = 0
+gt_cdyn['Total_GT_Cdyn_ebb(nF)'] = 0
 for cluster in output_cdyn_data['GT']:
     if(cluster == 'cdyn'):
         continue
-    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster] = float('%.3f'%float(output_cdyn_data['GT'][cluster]['cdyn']))
+
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster] = {}
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['total'] = float('%.3f'%float(output_cdyn_data['GT'][cluster]['cdyn']))
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] = 0
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] = 0
     unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster] = {}
     for unit in output_cdyn_data['GT'][cluster]:
         if(unit == 'cdyn'):
             continue
         unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster][unit] = float('%.3f'%float(output_cdyn_data['GT'][cluster][unit]['cdyn']))
+        unit_lc = unit.lower()
+        if(unit_lc.find("grf") != -1 or unit_lc.find("ram") != -1 or unit_lc.find("cache") != -1 or unit_lc.find("ebb") != -1):
+            cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+            gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+        else:
+            cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+            gt_cdyn['Total_GT_Cdyn_syn(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+        cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'])
+        cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'])
+
+gt_cdyn['Total_GT_Cdyn_syn(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_syn(nF)']/1000))
+gt_cdyn['Total_GT_Cdyn_ebb(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_ebb(nF)']/1000))
 
 
 ####################################
