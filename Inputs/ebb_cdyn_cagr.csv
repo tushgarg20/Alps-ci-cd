@@ -25,6 +25,8 @@ EU,Gen10LP,Gen9LPClient,NA
 EU,Gen10LP,Gen9LPSoC,NA
 EU,Gen10LP,Gen10LP,1
 L3_Bank,Gen8,Gen8,1
+L3_Bank,Gen8,Gen8SoC,1
+L3_Bank,Gen8,Gen9LPClient,0.8
 L3_Bank,Gen8,Gen9LPSoC,0.8
 L3_Bank,Gen8,Gen10LP,0.72
 L3_Bank,Gen8SoC,Gen8,NA
@@ -32,6 +34,8 @@ L3_Bank,Gen8SoC,Gen8SoC,1
 L3_Bank,Gen8SoC,Gen9LPClient,0.8
 L3_Bank,Gen8SoC,Gen9LPSoC,0.8
 L3_Bank,Gen8SoC,Gen10LP,0.72
+L3_Bank,Gen9LPClient,Gen8,NA
+L3_Bank,Gen9LPClient,Gen8SoC,NA
 L3_Bank,Gen9LPClient,Gen9LPClient,1
 L3_Bank,Gen9LPClient,Gen9LPSoC,1
 L3_Bank,Gen9LPClient,Gen10LP,0.9
