@@ -6,3 +6,4 @@ Voltage_Scaling_Factors = Inputs/voltage.csv
 syn_cdyn_cagr = Inputs/syn_cdyn_cagr.csv
 ebb_cdyn_cagr = Inputs/ebb_cdyn_cagr.csv
 cdyn_stepping = Inputs/stepping.csv
+Cdynmax=Cdynmax.csv
