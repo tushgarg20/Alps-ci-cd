@@ -299,6 +299,7 @@
 	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	=	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	
 	PS2_FL_Data_Dep_Bypass_FastLinear	=	PS2_FL_Data_Dep_Bypass_FastLinear	
 	PS2_FL_Data_Dep_Bypass_Else	=	PS2_FL_Data_Dep_Bypass_Else	
+	PS2_FL_Data_Dep_Bypas	=	PS2_FL_Data_Dep_Bypass_NearestPS2_FL_Data_Dep_Bypass_BilinearPS2_FL_Data_Dep_Bypass_TrilinearPS2_FL_Data_Dep_Bypass_LinearAnisoPS2_FL_Data_Dep_Bypass_NonLinearAnisoPS2_FL_Data_Dep_Bypass_LinearFastAnisoPS2_FL_Data_Dep_Bypass_NonLinearFastAnisoPS2_FL_Data_Dep_Bypass_FastLinearPS2_FL_Data_Dep_Bypass_Else	
 	PS2_FL_Nearest	=	PS2_FL_Nearest_Float16+PS2_FL_Nearest_Float32+PS2_FL_Nearest_Else	
 	PS2_FL_Bilinear	=	PS2_FL_Bilinear_Float16+PS2_FL_Bilinear_Float32+PS2_FL_Bilinear_Else	
 	PS2_FL_Trilinear	=	PS2_FL_Trilinear_Float16+PS2_FL_Trilinear_Float32+PS2_FL_Trilinear_Else	
@@ -311,36 +312,32 @@
 				
 				
 	PS2_PL_Sample_L	=	PS2_PL_Sample_L+PS2_PL_Sample_L_MipCount0	
-	PS2_PL_Gather4PO	=	PS2_PL_Gather4PO	
-	PS2_PL_LD	=	PS2_PL_LD	
-	PS2_PL_Bilinear_Trilinear	=	PS2_PL_Bilinear+PS2_PL_Bilinear_EWA+PS2_PL_Trilinear+PS2_PL_Trilinear_EWA	
-	PS2_PL_Aniso	=	PS2_PL_LinearAniso+PS2_PL_LinearAniso_EWA+PS2_PL_NonLinearAniso+PS2_PL_NonLinearAniso_EWA	
-	PS2_PL_Else	=	PS2_PL_Else	
 				
 				
-	PS2_SC_NearestMode	=	PS2_SC_NearestMode_32BPT+PS2_SC_NearestMode_64BPT+PS2_SC_NearestMode_128BPT	
+				
+				
+				
+				
+				
+				
 	PS2_SC_FastLinear	=	PS2_SC_FastLinear_32BPT+PS2_SC_FastLinear_64BPT+PS2_SC_FastLinear_128BPT	
-	PS2_SC_FastAniso	=	PS2_SC_LinearFastAniso_32BPT+PS2_SC_LinearFastAniso_64BPT+PS2_SC_LinearFastAniso_128BPT+PS2_SC_NonLinearFastAniso_32BPT+PS2_SC_NonLinearFastAniso_64BPT+PS2_SC_NonLinearFastAniso_128BPT	
+	PS2_SC_LineaFastAniso	=	PS2_SC_LinearFastAniso_32BPT+PS2_SC_LinearFastAniso_64BPT+PS2_SC_LinearFastAniso_128BPT	
+	PS2_SC_NonLineaFastAniso	=	PS2_SC_NonLinearFastAniso_32BPT+PS2_SC_NonLinearFastAniso_64BPT+PS2_SC_NonLinearFastAniso_128BPT	
 	PS2_SC_Bilinear_Trilinear_Aniso	=	PS2_SC_Bilinear_Trilinear_Aniso_32BPT+PS2_SC_Bilinear_Trilinear_Aniso_64BPT+PS2_SC_Bilinear_Trilinear_Aniso_128BPT	
 	PS2_SC_Else	=	PS2_SC_Else	
 				
 				
-	PS2_ST	=	1-P0_ST-PS1_ST	
+				
+	PS2_ST_Any_Bank_Enable 	=	1-PS0_ST-PS1_ST-PS2_1Bank_Enable	
 				
 				
-	PS2_DG_Volumetric	=	PS2_DG_Volumetric_32BPT+PS2_DG_Volumetric_64BPT+PS2_DG_Volumetric_128BPT	
-	PS2_DG_Gather4	=	PS2_DG_Gather4_32BPT+PS2_DG_Gather4_64BPT+PS2_DG_Gather4_128BPT	
-	PS2_DG_Aniso	=	PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT+PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT+PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT+PS2_DG_AnisoGreaterThan_8way_32BPT+PS2_DG_AnisoGreaterThan_8way_64BPT+PS2_DG_AnisoGreaterThan_8way_128BPT	
-	PS2_DG_Bilinear_Trilinear	=	PS2_DG_Trilinear_32BPT+PS2_DG_Trilinear_64BPT+PS2_DG_Trilinear_128BPT+PS2_DG_Bilinear_32BPT+PS2_DG_Bilinear_64BPT+PS2_DG_Bilinear_128BPT	
-	PS2_DG_FastLinear	=	PS2_DG_FastLinear_32BPT+PS2_DG_FastLinear_64BPT+PS2_DG_FastLinear_128BPT	
-	PS2_DG_BabyDG_Enable	=	PS2_DG_BabyDG_Enable	
-	PS2_DG_Else	=	PS2_DG_Else	
 				
 				
-	PS2_DM	=	1-PS0_DM-PS1_DM-PS2_DM_Bypass	
-	PS2_DM_Bypass	=	PS2_DM_Expanded_BYPASS+PS2_DM_Compressed_BYPASS	
-
-	#Media				
-	PS0_Media	=	1	#Next phase implementation
-	PS1_Media	=	0	
-	PS2_Media	=	0	
+				
+				
+				
+				
+				
+				
+				
+				
