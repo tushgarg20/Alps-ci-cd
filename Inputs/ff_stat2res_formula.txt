@@ -173,8 +173,8 @@
 	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.CrClock) / .CrClk	
 	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.CrClock) / .CrClk	
 #TDG				
- 'uTDG\.Idle\.\(w*Clock)' : 	PS0_TDG	=	D(uTDG\.Idle\.{$1}) / D({$1}\.Clocks)	
- 'uTDG\.Idle\.\(w*Clock)' : 	PS1_TDG	=	(D(uTDG\.IdleOrStalled\.{$1}) - D(uTDG\.Idle\.{$1})) / D({$1}\.Clocks)	
+ 'uTDG\.Idle\.(\w*Clock)' : 	PS0_TDG	=	D(uTDG\.Idle\.{$1}) / D({$1}\.Clocks)	
+ 'uTDG\.Idle\.(\w*Clock)' : 	PS1_TDG	=	(D(uTDG\.IdleOrStalled\.{$1}) - D(uTDG\.Idle\.{$1})) / D({$1}\.Clocks)	
 	PS2_TDG	=	1 - PS0_TDG - PS1_TDG	
 #URBM				
 	PS0_URBM_DOP	=	0	#No GSIM model
@@ -186,8 +186,8 @@
 	PS1_SVG	=	0	
 	PS2_SVG	=	0	
 #VFE				
-Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med\.uVFE\d+\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
-Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med\.uVFE\d+\.pwr_IdleOrStalled\.{$1}) - D(Med\.uVFE\d+\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
+'Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med\.uVFE\d+\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
+'Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med\.uVFE\d+\.pwr_IdleOrStalled\.{$1}) - D(Med\.uVFE\d+\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
 	PS2_VFE	=	1 - PS0_VFE - PS1_VFE	
 	PS2_VFE_GPGPU	=	0	#Breaking out media/GPGPU
 	PS2_VFE_MEDIA	=	0	
