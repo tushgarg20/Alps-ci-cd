@@ -42,7 +42,7 @@
 	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 #CS				
 	PS0_CS	=	D(uCS0.pwr_cs_idle.UnsliceClock)/.UnsliceClk	 # GSim really only has a stub for CS.
-	PS1_CS	=	D(uCS0.pwr_cs_stall.UnsliceClock)/.UnsliceClk	
+	PS1_CS	=	(D(uCS0.pwr_cs_stalled_or_idle.UnsliceClock) - D(uCS0.pwr_cs_idle.UnsliceClock))/.UnsliceClk	
 	PS2_CS	=	1 - PS0_CS - PS1_CS	
 	PS2_CS_Media	=	0	#Breaking out media/GPGPU
 				
