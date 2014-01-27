@@ -13,7 +13,8 @@
 	num_GAM_GAPZ	=	numSlices
 	num_GAM_GAPC	=	numSlices
 	num_GAM_DOP	=	numGAM
-	num_GAM_GLUE	=	numGAM
+	num_GAM_CLKGLUE	=	numGAM
+	num_GAM_NONCLKGLUE	=	numGAM
 	num_GAM_SMALL	=	numGAM
 	num_GAM_DFX	=	numGAM
 	num_GAM_GAPS	=	numSlices
@@ -103,9 +104,13 @@
 @GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_SMALL	=	PS0_GAMTLB
 @GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_SMALL	=	1-PS0_GAMTLB
 			
-#GAM_GLUE			
-@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_GLUE	=	PS0_GAMTLB
-@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_GLUE	=	1-PS0_GAMTLB
+#GAM_CLKGLUE			
+@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_CLKGLUE	=	PS0_GAMTLB
+@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_CLKGLUE	=	1-PS0_GAMTLB
+			
+#GAM_NONCLKGLUE			
+@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_NONCLKGLUE	=	PS0_GAMTLB
+@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_NONCLKGLUE	=	1-PS0_GAMTLB
 			
 #GAM_DFX			
 @GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_DFX	=	PS0_GAMTLB

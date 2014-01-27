@@ -16,6 +16,12 @@
 	num_Sampler_SVSM	=	numSamplers	
 	num_Sampler_Media	=	numSamplers	
 	num_Sampler_GLUE	=	numSamplers	
+	num_Sampler_MEDIASMP_SMALL	=	numSamplers	
+	num_Sampler_MEDIASMP_CLKGLUE	=	numSamplers	
+	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers	
+	num_Sampler_MEDIASMP_DFX	=	numSamplers	
+	num_Sampler_MEDIASMP_DOP	=	numSamplers	
+				
 #Generic				
 	 @ANY_SAMPLER@	=	S\d+\.SS\d+\.uSampler\.	
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -282,4 +288,29 @@
 	PS0_IEF	=	0	#first rev media states
 	PS1_IEF	=	0	
 	PS2_IEF_NoBypass	=	0	
-	PS2_IEF_Bypass	=	0
+	PS2_IEF_Bypass	=	0	
+				
+				
+#Small				
+	PS0_MEDIASMP_SMALL_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_SMALL	=	0	#first rev media states
+	PS2_MEDIASMP_SMALL	=	0	
+				
+#GLUE				
+	PS0_MEDIASMP_CLKGLUE_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_CLKGLUE	=	0	#first rev media states
+	PS2_MEDIASMP_CLKGLUE	=	0	
+				
+#GLUE				
+	PS0_MEDIASMP_NONCLKGLUE_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_NONCLKGLUE	=	0	#first rev media states
+	PS2_MEDIASMP_NONCLKGLUE	=	0	
+				
+#Dfx				
+	PS0_MEDIASMP_DFX_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_DFX	=	0	#first rev media states
+	PS2_MEDIASMP_DFX	=	0	
+				
+#DOP				
+	PS0_MEDIASMP_DOP	=	1	#3d context media state
+	PS2_MEDIASMP_DOP	=	0	#first rev media states
