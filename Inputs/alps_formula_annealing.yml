@@ -636,11 +636,31 @@ COLOR:
      PS2_DAPB_MSAA_RTR: R * C
      PS2_DAPB_DIS: R * C
 HDC:
-   HDC:
-    PS0_HDC_DOP: R * C
-    PS0_HDC: R * C
-    PS1_HDC: R * C
-    PS2_HDC: R * C  
+   HDCREQCMD1:
+    PS0_HDC_ReqCmd1_DOP: R * C
+    PS0_HDC_ReqCmd1: R * C
+    PS1_HDC_ReqCmd1: R * C
+    PS2_HDC_ReqCmd1: R * C
+   HDCREQCMD2:
+    PS0_HDC_ReqCmd2_DOP: R * C
+    PS0_HDC_ReqCmd2: R * C
+    PS1_HDC_ReqCmd2: R * C
+    PS2_HDC_ReqCmd2: R * C
+   HDCREQDATA:
+    PS0_HDC_ReqData_DOP: R * C
+    PS0_HDC_ReqData: R * C
+    PS1_HDC_ReqData: R * C
+    PS2_HDC_ReqData: R * C
+   HDCRET:
+    PS0_HDC_Ret_DOP: R * C
+    PS0_HDC_Ret: R * C
+    PS1_HDC_Ret: R * C
+    PS2_HDC_Ret: R * C
+   HDCTLB:
+    PS0_HDCTLB_DOP: R * C
+    PS0_HDCTLB: R * C
+    PS1_HDCTLB: R * C
+    PS2_HDCTLB: R * C
    SMALL:
     PS0_HDC_SMALL: R * C
     PS1_HDC_SMALL: R * C
