@@ -1,396 +1,8 @@
 State,Source,Stepping,Weight,Type,RefGC,Comments
-EM_add_floatbypass_10%,Gen9LPClient,A0,16.3223,syn,416823,
-EM_add_floatbypass_20%,Gen9LPClient,A0,16.3223,syn,416823,
-EM_add_floatbypass_30%,Gen9LPClient,A0,16.3223,syn,416823,
-EM_add_fp16_10%,Gen9LPClient,A0,36.109,syn,416823,
-EM_add_fp16_20%,Gen9LPClient,A0,38.9505,syn,416823,
-EM_add_fp16_30%,Gen9LPClient,A0,45.7291,syn,416823,
-EM_add_fp32_10%,Gen9LPClient,A0,24.4046,syn,416823,
-EM_add_fp32_20%,Gen9LPClient,A0,31.0606,syn,416823,
-EM_add_fp32_30%,Gen9LPClient,A0,37.0123,syn,416823,
-EM_add_fp64_10%,Gen9LPClient,A0,29.8592,syn,416823,
-EM_add_fp64_20%,Gen9LPClient,A0,30.2404,syn,416823,
-EM_add_fp64_30%,Gen9LPClient,A0,30.8263,syn,416823,
-EM_add_int16_10%,Gen9LPClient,A0,15.5749,syn,416823,
-EM_add_int16_20%,Gen9LPClient,A0,20.1284,syn,416823,
-EM_add_int16_30%,Gen9LPClient,A0,21.9842,syn,416823,
-EM_add_int32_10%,Gen9LPClient,A0,15.7246,syn,416823,
-EM_add_int32_20%,Gen9LPClient,A0,19.8035,syn,416823,
-EM_add_int32_30%,Gen9LPClient,A0,23.0187,syn,416823,
-EM_add_intbypass_10%,Gen9LPClient,A0,7.86,syn,416823,approx 50 percent int32
-EM_add_intbypass_20%,Gen9LPClient,A0,9.90,syn,416823,
-EM_add_intbypass_30%,Gen9LPClient,A0,11.51,syn,416823,
-EM_add_int64_10%,Gen9LPClient,A0,26.7844,syn,416823,
-EM_add_int64_20%,Gen9LPClient,A0,26.8822,syn,416823,
-EM_add_int64_30%,Gen9LPClient,A0,27.2494,syn,416823,
-EM_mad_floatbypass_10%,Gen9LPClient,A0,24.3423,syn,416823,
-EM_mad_floatbypass_20%,Gen9LPClient,A0,24.3423,syn,416823,
-EM_mad_floatbypass_30%,Gen9LPClient,A0,24.3423,syn,416823,
-EM_mad_fp16_10%,Gen9LPClient,A0,46.3124,syn,416823,
-EM_mad_fp16_20%,Gen9LPClient,A0,50.3799,syn,416823,
-EM_mad_fp16_30%,Gen9LPClient,A0,57.1371,syn,416823,
-EM_mad_fp32_10%,Gen9LPClient,A0,49.491,syn,416823,
-EM_mad_fp32_20%,Gen9LPClient,A0,61.7538,syn,416823,
-EM_mad_fp32_30%,Gen9LPClient,A0,68.0876,syn,416823,
-EM_mad_fp64_10%,Gen9LPClient,A0,79.164,syn,416823,
-EM_mad_fp64_20%,Gen9LPClient,A0,79.6693,syn,416823,
-EM_mad_fp64_30%,Gen9LPClient,A0,80.7074,syn,416823,
-EM_mad_int16_10%,Gen9LPClient,A0,45.1812,syn,416823,
-EM_mad_int16_20%,Gen9LPClient,A0,59.6147,syn,416823,
-EM_mad_int16_30%,Gen9LPClient,A0,65.8421,syn,416823,
-EM_mad_int32_10%,Gen9LPClient,A0,85.2192,syn,416823,
-EM_mad_int32_20%,Gen9LPClient,A0,91.7888,syn,416823,
-EM_mad_int32_30%,Gen9LPClient,A0,95.8297,syn,416823,
-EM_mad_intbypass_10%,Gen9LPClient,A0,42.61,syn,416823,
-EM_mad_intbypass_20%,Gen9LPClient,A0,45.89,syn,416823,
-EM_mad_intbypass_30%,Gen9LPClient,A0,47.91,syn,416823,
-EM_mad_int64_10%,Gen9LPClient,A0,85.2192,syn,416823,
-EM_mad_int64_20%,Gen9LPClient,A0,91.7888,syn,416823,
-EM_mad_int64_30%,Gen9LPClient,A0,95.8297,syn,416823,
-EM_mov_bypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_mov_bypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_mov_bypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_mov_fp16_10%,Gen9LPClient,A0,9.6935,syn,416823,
-EM_mov_fp16_20%,Gen9LPClient,A0,10.4635,syn,416823,
-EM_mov_fp16_30%,Gen9LPClient,A0,12.0425,syn,416823,
-EM_mov_fp32_10%,Gen9LPClient,A0,8.853,syn,416823,
-EM_mov_fp32_20%,Gen9LPClient,A0,10.0009,syn,416823,
-EM_mov_fp32_30%,Gen9LPClient,A0,11.0764,syn,416823,
-EM_mov_fp64_10%,Gen9LPClient,A0,19.9838,syn,416823,
-EM_mov_fp64_20%,Gen9LPClient,A0,20.3571,syn,416823,
-EM_mov_fp64_30%,Gen9LPClient,A0,20.4442,syn,416823,
-EM_mov_int16_10%,Gen9LPClient,A0,8.8555,syn,416823,
-EM_mov_int16_20%,Gen9LPClient,A0,10.3391,syn,416823,
-EM_mov_int16_30%,Gen9LPClient,A0,11.1233,syn,416823,
-EM_mov_int32_10%,Gen9LPClient,A0,8.8617,syn,416823,
-EM_mov_int32_20%,Gen9LPClient,A0,9.9968,syn,416823,
-EM_mov_int32_30%,Gen9LPClient,A0,11.2396,syn,416823,
-EM_mov_intbypass_10%,Gen9LPClient,A0,4.43,syn,416823,
-EM_mov_intbypass_20%,Gen9LPClient,A0,4.99,syn,416823,
-EM_mov_intbypass_30%,Gen9LPClient,A0,5.61,syn,416823,
-EM_mov_int64_10%,Gen9LPClient,A0,19.6614,syn,416823,
-EM_mov_int64_20%,Gen9LPClient,A0,19.669,syn,416823,
-EM_mov_int64_30%,Gen9LPClient,A0,19.7893,syn,416823,
-EM_mul_floatbypass_10%,Gen9LPClient,A0,16.318,syn,416823,
-EM_mul_floatbypass_20%,Gen9LPClient,A0,16.318,syn,416823,
-EM_mul_floatbypass_30%,Gen9LPClient,A0,16.318,syn,416823,
-EM_mul_fp16_10%,Gen9LPClient,A0,38.9442,syn,416823,
-EM_mul_fp16_20%,Gen9LPClient,A0,43.8337,syn,416823,
-EM_mul_fp16_30%,Gen9LPClient,A0,47.8475,syn,416823,
-EM_mul_fp32_10%,Gen9LPClient,A0,49.8804,syn,416823,
-EM_mul_fp32_20%,Gen9LPClient,A0,61.8178,syn,416823,
-EM_mul_fp32_30%,Gen9LPClient,A0,66.9406,syn,416823,
-EM_mul_fp64_10%,Gen9LPClient,A0,73.3439,syn,416823,
-EM_mul_fp64_20%,Gen9LPClient,A0,74.6698,syn,416823,
-EM_mul_fp64_30%,Gen9LPClient,A0,75.3119,syn,416823,
-EM_mul_int16_10%,Gen9LPClient,A0,34.3652,syn,416823,
-EM_mul_int16_20%,Gen9LPClient,A0,42.6949,syn,416823,
-EM_mul_int16_30%,Gen9LPClient,A0,45.8332,syn,416823,
-EM_mul_int32_10%,Gen9LPClient,A0,74.4032,syn,416823,
-EM_mul_int32_20%,Gen9LPClient,A0,74.869,syn,416823,
-EM_mul_int32_30%,Gen9LPClient,A0,75.8208,syn,416823,
-EM_mul_intbypass_10%,Gen9LPClient,A0,37.20,syn,416823,
-EM_mul_intbypass_20%,Gen9LPClient,A0,37.43,syn,416823,
-EM_mul_intbypass_30%,Gen9LPClient,A0,37.91,syn,416823,
-EM_mul_int64_10%,Gen9LPClient,A0,74.4032,syn,416823,
-EM_mul_int64_20%,Gen9LPClient,A0,74.869,syn,416823,
-EM_mul_int64_30%,Gen9LPClient,A0,75.8208,syn,416823,
-EM_pln_floatbypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_floatbypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_floatbypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp16_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp16_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp16_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp32_10%,Gen9LPClient,A0,71.0797,syn,416823,
-EM_pln_fp32_20%,Gen9LPClient,A0,74.1357,syn,416823,
-EM_pln_fp32_30%,Gen9LPClient,A0,75.3355,syn,416823,
-EM_pln_fp64_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp64_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_fp64_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int16_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int16_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int16_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int32_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int32_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int32_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_intbypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_intbypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_intbypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int64_10%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int64_20%,Gen9LPClient,A0,0,syn,416823,
-EM_pln_int64_30%,Gen9LPClient,A0,0,syn,416823,
-EM_sel_bypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_sel_bypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_sel_bypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_sel_fp16_10%,Gen9LPClient,A0,26.5718,syn,416823,
-EM_sel_fp16_20%,Gen9LPClient,A0,28.2496,syn,416823,
-EM_sel_fp16_30%,Gen9LPClient,A0,37.578,syn,416823,
-EM_sel_fp32_10%,Gen9LPClient,A0,18.3151,syn,416823,
-EM_sel_fp32_20%,Gen9LPClient,A0,25.6234,syn,416823,
-EM_sel_fp32_30%,Gen9LPClient,A0,31.6345,syn,416823,
-EM_sel_fp64_10%,Gen9LPClient,A0,29.2088,syn,416823,
-EM_sel_fp64_20%,Gen9LPClient,A0,29.5676,syn,416823,
-EM_sel_fp64_30%,Gen9LPClient,A0,30.0387,syn,416823,
-EM_sel_int16_10%,Gen9LPClient,A0,12.9745,syn,416823,
-EM_sel_int16_20%,Gen9LPClient,A0,17.4174,syn,416823,
-EM_sel_int16_30%,Gen9LPClient,A0,19.6444,syn,416823,
-EM_sel_int32_10%,Gen9LPClient,A0,13.7318,syn,416823,
-EM_sel_int32_20%,Gen9LPClient,A0,17.4905,syn,416823,
-EM_sel_int32_30%,Gen9LPClient,A0,21.127,syn,416823,
-EM_sel_intbypass_10%,Gen9LPClient,A0,6.86,syn,416823,
-EM_sel_intbypass_20%,Gen9LPClient,A0,8.74,syn,416823,
-EM_sel_intbypass_30%,Gen9LPClient,A0,10.51,syn,416823,
-EM_sel_int64_10%,Gen9LPClient,A0,27.4187,syn,416823,
-EM_sel_int64_20%,Gen9LPClient,A0,27.4247,syn,416823,
-EM_sel_int64_30%,Gen9LPClient,A0,27.8288,syn,416823,
-EM_transc_bypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_bypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_bypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp16_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp16_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp16_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp32_10%,Gen9LPClient,A0,71.0797,syn,416823,
-EM_transc_fp32_20%,Gen9LPClient,A0,74.1357,syn,416823,
-EM_transc_fp32_30%,Gen9LPClient,A0,75.3355,syn,416823,
-EM_transc_fp64_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp64_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_fp64_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int16_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int16_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int16_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int32_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int32_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int32_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_intbypass_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_intbypass_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_intbypass_30%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int64_10%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int64_20%,Gen9LPClient,A0,0,syn,416823,
-EM_transc_int64_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_add_floatbypass_10%,Gen9LPClient,A0,17.8596,syn,416823,
-FPU_add_floatbypass_20%,Gen9LPClient,A0,17.8596,syn,416823,
-FPU_add_floatbypass_30%,Gen9LPClient,A0,17.8596,syn,416823,
-FPU_add_fp16_10%,Gen9LPClient,A0,39.4048,syn,416823,
-FPU_add_fp16_20%,Gen9LPClient,A0,43.0566,syn,416823,
-FPU_add_fp16_30%,Gen9LPClient,A0,49.9548,syn,416823,
-FPU_add_fp32_10%,Gen9LPClient,A0,25.9258,syn,416823,
-FPU_add_fp32_20%,Gen9LPClient,A0,32.7057,syn,416823,
-FPU_add_fp32_30%,Gen9LPClient,A0,38.3948,syn,416823,
-FPU_add_fp64_10%,Gen9LPClient,A0,32.9767,syn,416823,
-FPU_add_fp64_20%,Gen9LPClient,A0,33.3145,syn,416823,
-FPU_add_fp64_30%,Gen9LPClient,A0,33.6289,syn,416823,
-FPU_add_int16_10%,Gen9LPClient,A0,18.8723,syn,416823,
-FPU_add_int16_20%,Gen9LPClient,A0,24.1498,syn,416823,
-FPU_add_int16_30%,Gen9LPClient,A0,26.385,syn,416823,
-FPU_add_int32_10%,Gen9LPClient,A0,18.8848,syn,416823,
-FPU_add_int32_20%,Gen9LPClient,A0,23.6157,syn,416823,
-FPU_add_int32_30%,Gen9LPClient,A0,27.53,syn,416823,
-FPU_add_intbypass_10%,Gen9LPClient,A0,9.44,syn,416823,
-FPU_add_intbypass_20%,Gen9LPClient,A0,11.81,syn,416823,
-FPU_add_intbypass_30%,Gen9LPClient,A0,13.76,syn,416823,
-FPU_add_int64_10%,Gen9LPClient,A0,28.8549,syn,416823,
-FPU_add_int64_20%,Gen9LPClient,A0,28.7346,syn,416823,
-FPU_add_int64_30%,Gen9LPClient,A0,29.0692,syn,416823,
-FPU_mad_floatbypass_10%,Gen9LPClient,A0,28.4811,syn,416823,
-FPU_mad_floatbypass_20%,Gen9LPClient,A0,28.4811,syn,416823,
-FPU_mad_floatbypass_30%,Gen9LPClient,A0,28.4811,syn,416823,
-FPU_mad_fp16_10%,Gen9LPClient,A0,50.1842,syn,416823,
-FPU_mad_fp16_20%,Gen9LPClient,A0,55.2856,syn,416823,
-FPU_mad_fp16_30%,Gen9LPClient,A0,62.5282,syn,416823,
-FPU_mad_fp32_10%,Gen9LPClient,A0,50.3432,syn,416823,
-FPU_mad_fp32_20%,Gen9LPClient,A0,64.0435,syn,416823,
-FPU_mad_fp32_30%,Gen9LPClient,A0,70.0819,syn,416823,
-FPU_mad_fp64_10%,Gen9LPClient,A0,82.2084,syn,416823,
-FPU_mad_fp64_20%,Gen9LPClient,A0,82.2769,syn,416823,
-FPU_mad_fp64_30%,Gen9LPClient,A0,83.3812,syn,416823,
-FPU_mad_int16_10%,Gen9LPClient,A0,47.276,syn,416823,
-FPU_mad_int16_20%,Gen9LPClient,A0,62.7369,syn,416823,
-FPU_mad_int16_30%,Gen9LPClient,A0,68.635,syn,416823,
-FPU_mad_int32_10%,Gen9LPClient,A0,91.7165,syn,416823,
-FPU_mad_int32_20%,Gen9LPClient,A0,99.2137,syn,416823,
-FPU_mad_int32_30%,Gen9LPClient,A0,102.5039,syn,416823,
-FPU_mad_intbypass_10%,Gen9LPClient,A0,45.85,syn,416823,
-FPU_mad_intbypass_20%,Gen9LPClient,A0,49.61,syn,416823,
-FPU_mad_intbypass_30%,Gen9LPClient,A0,51.25,syn,416823,
-FPU_mad_int64_10%,Gen9LPClient,A0,91.7165,syn,416823,
-FPU_mad_int64_20%,Gen9LPClient,A0,99.2137,syn,416823,
-FPU_mad_int64_30%,Gen9LPClient,A0,102.5039,syn,416823,
-FPU_mov_bypass_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_mov_bypass_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_mov_bypass_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_mov_fp16_10%,Gen9LPClient,A0,10.5638,syn,416823,
-FPU_mov_fp16_20%,Gen9LPClient,A0,11.3679,syn,416823,
-FPU_mov_fp16_30%,Gen9LPClient,A0,13.0319,syn,416823,
-FPU_mov_fp32_10%,Gen9LPClient,A0,9.5103,syn,416823,
-FPU_mov_fp32_20%,Gen9LPClient,A0,10.5895,syn,416823,
-FPU_mov_fp32_30%,Gen9LPClient,A0,11.6705,syn,416823,
-FPU_mov_fp64_10%,Gen9LPClient,A0,21.8239,syn,416823,
-FPU_mov_fp64_20%,Gen9LPClient,A0,21.705,syn,416823,
-FPU_mov_fp64_30%,Gen9LPClient,A0,22.2069,syn,416823,
-FPU_mov_int16_10%,Gen9LPClient,A0,9.6289,syn,416823,
-FPU_mov_int16_20%,Gen9LPClient,A0,11.2719,syn,416823,
-FPU_mov_int16_30%,Gen9LPClient,A0,12.0801,syn,416823,
-FPU_mov_int32_10%,Gen9LPClient,A0,9.5282,syn,416823,
-FPU_mov_int32_20%,Gen9LPClient,A0,10.5912,syn,416823,
-FPU_mov_int32_30%,Gen9LPClient,A0,11.5459,syn,416823,
-FPU_mov_intbypass_10%,Gen9LPClient,A0,4.76,syn,416823,
-FPU_mov_intbypass_20%,Gen9LPClient,A0,5.29,syn,416823,
-FPU_mov_intbypass_30%,Gen9LPClient,A0,5.77,syn,416823,
-FPU_mov_int64_10%,Gen9LPClient,A0,21.2306,syn,416823,
-FPU_mov_int64_20%,Gen9LPClient,A0,21.1901,syn,416823,
-FPU_mov_int64_30%,Gen9LPClient,A0,21.3298,syn,416823,
-FPU_mul_floatbypass_10%,Gen9LPClient,A0,19.3912,syn,416823,
-FPU_mul_floatbypass_20%,Gen9LPClient,A0,19.3912,syn,416823,
-FPU_mul_floatbypass_30%,Gen9LPClient,A0,19.3912,syn,416823,
-FPU_mul_fp16_10%,Gen9LPClient,A0,42.6933,syn,416823,
-FPU_mul_fp16_20%,Gen9LPClient,A0,47.8143,syn,416823,
-FPU_mul_fp16_30%,Gen9LPClient,A0,52.7627,syn,416823,
-FPU_mul_fp32_10%,Gen9LPClient,A0,51.3768,syn,416823,
-FPU_mul_fp32_20%,Gen9LPClient,A0,63.0182,syn,416823,
-FPU_mul_fp32_30%,Gen9LPClient,A0,67.8957,syn,416823,
-FPU_mul_fp64_10%,Gen9LPClient,A0,78.5388,syn,416823,
-FPU_mul_fp64_20%,Gen9LPClient,A0,79.4021,syn,416823,
-FPU_mul_fp64_30%,Gen9LPClient,A0,79.1005,syn,416823,
-FPU_mul_int16_10%,Gen9LPClient,A0,38.9459,syn,416823,
-FPU_mul_int16_20%,Gen9LPClient,A0,47.6417,syn,416823,
-FPU_mul_int16_30%,Gen9LPClient,A0,51.1738,syn,416823,
-FPU_mul_int32_10%,Gen9LPClient,A0,83.3864,syn,416823,
-FPU_mul_int32_20%,Gen9LPClient,A0,84.1185,syn,416823,
-FPU_mul_int32_30%,Gen9LPClient,A0,85.0427,syn,416823,
-FPU_mul_intbypass_10%,Gen9LPClient,A0,41.38,syn,416823,
-FPU_mul_intbypass_20%,Gen9LPClient,A0,42.11,syn,416823,
-FPU_mul_intbypass_30%,Gen9LPClient,A0,42.54,syn,416823,
-FPU_mul_int64_10%,Gen9LPClient,A0,83.3864,syn,416823,
-FPU_mul_int64_20%,Gen9LPClient,A0,84.1185,syn,416823,
-FPU_mul_int64_30%,Gen9LPClient,A0,85.0427,syn,416823,
-FPU_pln_floatbypass_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_floatbypass_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_floatbypass_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp16_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp16_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp16_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp32_10%,Gen9LPClient,A0,72.8497,syn,416823,
-FPU_pln_fp32_20%,Gen9LPClient,A0,76.2688,syn,416823,
-FPU_pln_fp32_30%,Gen9LPClient,A0,76.218,syn,416823,
-FPU_pln_fp64_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp64_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_fp64_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int16_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int16_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int16_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int32_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int32_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int32_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_intbypass_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_intbypass_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_intbypass_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int64_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int64_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_pln_int64_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_sel_bypass_10%,Gen9LPClient,A0,0,syn,416823,
-FPU_sel_bypass_20%,Gen9LPClient,A0,0,syn,416823,
-FPU_sel_bypass_30%,Gen9LPClient,A0,0,syn,416823,
-FPU_sel_fp16_10%,Gen9LPClient,A0,28.8803,syn,416823,
-FPU_sel_fp16_20%,Gen9LPClient,A0,30.8075,syn,416823,
-FPU_sel_fp16_30%,Gen9LPClient,A0,40.3612,syn,416823,
-FPU_sel_fp32_10%,Gen9LPClient,A0,19.8723,syn,416823,
-FPU_sel_fp32_20%,Gen9LPClient,A0,27.6272,syn,416823,
-FPU_sel_fp32_30%,Gen9LPClient,A0,33.5568,syn,416823,
-FPU_sel_fp64_10%,Gen9LPClient,A0,32.7088,syn,416823,
-FPU_sel_fp64_20%,Gen9LPClient,A0,32.895,syn,416823,
-FPU_sel_fp64_30%,Gen9LPClient,A0,33.2233,syn,416823,
-FPU_sel_int16_10%,Gen9LPClient,A0,15.9875,syn,416823,
-FPU_sel_int16_20%,Gen9LPClient,A0,21.0177,syn,416823,
-FPU_sel_int16_30%,Gen9LPClient,A0,23.4647,syn,416823,
-FPU_sel_int32_10%,Gen9LPClient,A0,17.2527,syn,416823,
-FPU_sel_int32_20%,Gen9LPClient,A0,21.739,syn,416823,
-FPU_sel_int32_30%,Gen9LPClient,A0,26.088,syn,416823,
-FPU_sel_int64_10%,Gen9LPClient,A0,29.9712,syn,416823,
-FPU_sel_int64_20%,Gen9LPClient,A0,29.6993,syn,416823,
-FPU_sel_int64_30%,Gen9LPClient,A0,30.0209,syn,416823,
-PS0_BC,Gen9LPClient,A0,3.358006,syn,702770,
-PS0_BC_DOP,Gen9LPClient,A0,0,syn,702770,
-PS0_Blitter,Gen9LPClient,A0,35.90244,syn,1575768,
-PS0_BTGEN_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_BTGEN_Cache_Read,Gen9LPClient,A0,6.592838,ebb,1,
-PS0_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.51493,ebb,1,
-PS0_BTGEN_Cache_Write,Gen9LPClient,A0,10.92209,ebb,1,
-PS0_CC,Gen9LPClient,A0,15.546721,syn,655900,
-PS0_CC_DOP,Gen9LPClient,A0,0,syn,655900,
-PS0_CL,Gen9LPClient,A0,14.8896,syn,1153722.56,
-PS0_CL_DOP,Gen9LPClient,A0,0,syn,1153722.56,
 EM_add_floatbypass_0%,Gen8,A0,13.113,syn,397435,
-PS0_DAPB,Gen9LPClient,A0,2.865178,syn,200430,
-PS0_DAPB_DOP,Gen9LPClient,A0,0,syn,200430,
-PS0_DAPRSC,Gen9LPClient,A0,9.573327,syn,483110,
-PS0_DAPRSC_DOP,Gen9LPClient,A0,0,syn,483110,
-PS0_DAPRSS,Gen9LPClient,A0,3.480114,syn,598370,
-PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0,ebb,1,
-PS0_DAPRSS_DOP,Gen9LPClient,A0,0,syn,598370,
-PS0_DG,Gen9LPClient,A0,0.125454637,syn,267430,
-PS0_DM,Gen9LPClient,A0,0.377238,syn,1179710,
-PS0_DX9_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_DX9_Cache_Read,Gen9LPClient,A0,26.37135,ebb,1,
-PS0_DX9_Cache_ReadWrite,Gen9LPClient,A0,70.05972,ebb,1,
-PS0_DX9_Cache_Write,Gen9LPClient,A0,43.68837,ebb,1,
-PS0_EU_DFX,Gen9LPClient,A0,0.887896,syn,31658,
-PS0_EU_DOP,Gen9LPClient,A0,0,syn,1,
 EM_add_floatbypass_05%,Gen8,A0,14.311,syn,397435,
-PS0_EU_EM,Gen9LPClient,A0,0.140764,syn,416823,
-PS0_EU_FPU,Gen9LPClient,A0,0.140764,syn,416823,
-PS0_EU_GLUE,Gen9LPClient,A0,3.404323,syn,1,
-PS0_EU_SMALL,Gen9LPClient,A0,1.429296,syn,13500,
-PS0_FF_DFX,Gen9LPClient,A0,14.34,syn,495590,
-PS0_FF_DOP,Gen9LPClient,A0,6.316,syn,1,
-PS0_FF_GLUE,Gen9LPClient,A0,62.25,syn,1,
-PS0_FF_SMALL,Gen9LPClient,A0,47.86258,syn,2040580,
-PS0_FL,Gen9LPClient,A0,0.157759339,syn,1134520,
-PS0_FT,Gen9LPClient,A0,0.157456485,syn,190540,
-PS0_GA,Gen9LPClient,A0,1.126112,syn,235163,
-PS0_GACB,Gen9LPClient,A0,3.105671,syn,188457,
-PS0_GAFM,Gen9LPClient,A0,0.594703,syn,56810,
-PS0_GAFS,Gen9LPClient,A0,3.590244,syn,673427,
-PS0_GAM_DFX,Gen9LPClient,A0,9.45,syn,299462,
-PS0_GAM_DOP,Gen9LPClient,A0,0,syn,1,
-PS0_GAM_GLUE,Gen9LPClient,A0,24.26,syn,1,
-PS0_GAM_SMALL,Gen9LPClient,A0,13.17157,syn,212678,
-PS0_GAMD,Gen9LPClient,A0,14.20679,syn,1349688,
-PS0_GAMTLB,Gen9LPClient,A0,25.82,syn,1564626.13,
-PS0_GAMW,Gen9LPClient,A0,14.27287,syn,1680794,
-PS0_GAPC,Gen9LPClient,A0,0.814963,syn,41236,
-PS0_GAPL3,Gen9LPClient,A0,1.475744,syn,100095,
-PS0_GAPS,Gen9LPClient,A0,1.233458,syn,95422,
-PS0_GAPZ,Gen9LPClient,A0,1.519796,syn,67710,
-PS0_GS,Gen9LPClient,A0,6.211342012,syn,673665.93,
-PS0_GS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_GS_DOP,Gen9LPClient,A0,0,syn,673665.93,
 EM_add_floatbypass_15%,Gen8,A0,16.539,syn,397435,
 EM_add_floatbypass_25%,Gen8,A0,18.546,syn,397435,
-PS0_GTP24C,Gen9LPClient,A0,55.04306,ebb,1,
-PS0_GWL,Gen9LPClient,A0,1.035224,syn,92500,
-PS0_HDC_DFX,Gen9LPClient,A0,3.63,syn,67964,
-PS0_HDC_DOP,Gen9LPClient,A0,1.526,syn,1,
-PS0_HDC_GLUE,Gen9LPClient,A0,16.78,syn,1,
-PS0_HDC_ReqCmd1,Gen9LPClient,A0,4.60970529,syn,539230,
-PS0_HDC_ReqCmd1_DOP,Gen9LPClient,A0,0,syn,539230,
-PS0_HDC_ReqCmd2,Gen9LPClient,A0,0.1441,syn,813070,
-PS0_HDC_ReqCmd2_DOP,Gen9LPClient,A0,0,syn,813070,
-PS0_HDC_ReqData,Gen9LPClient,A0,2.76915791,syn,329600,
-PS0_HDC_ReqData_DOP,Gen9LPClient,A0,0,syn,329600,
-PS0_HDC_Ret,Gen9LPClient,A0,4.49249566,syn,704150,
-PS0_HDC_Ret_DOP,Gen9LPClient,A0,0,syn,704150,
-PS0_HDC_SMALL,Gen9LPClient,A0,15.7,syn,109850,
-PS0_HDCTLB,Gen9LPClient,A0,9.99291187,syn,474580,
-PS0_HDCTLB_DOP,Gen9LPClient,A0,0,syn,474580,
-PS0_HIZ,Gen9LPClient,A0,14.20436,syn,1990900,
-PS0_HIZ_DOP,Gen9LPClient,A0,0,syn,1990900,
-PS0_HS,Gen9LPClient,A0,1.299536095,syn,375844,
-PS0_HS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_HS_DOP,Gen9LPClient,A0,0,syn,375844,
-PS0_IC,Gen9LPClient,A0,0.660781,syn,321410,
-PS0_IC_DATARAM,Gen9LPClient,A0,0,ebb,1,
-PS0_IZ,Gen9LPClient,A0,15.59248,syn,1258070,
-PS0_IZ_DOP,Gen9LPClient,A0,0,syn,1258070,
 EM_add_floatbypass_35%,Gen8,A0,20.333,syn,397435,
 EM_add_floatbypass_45%,Gen8,A0,21.899,syn,397435,
 EM_add_floatbypass_55%,Gen8,A0,23.243,syn,397435,
@@ -405,133 +17,9 @@ EM_add_fp16_25%,Gen8,A0,22.423,syn,397435,
 EM_add_fp16_35%,Gen8,A0,27.996,syn,397435,
 EM_add_fp16_45%,Gen8,A0,31.469,syn,397435,
 EM_add_fp16_55%,Gen8,A0,33.502,syn,397435,
-PS0_MA_IN,Gen9LPClient,A0,0.502194,syn,84235,
-PS0_MA_OUT,Gen9LPClient,A0,0.026431,syn,84235,
-PS0_MSC,Gen9LPClient,A0,16.691304,syn,1062560,
-PS0_MSC_DOP,Gen9LPClient,A0,0,syn,1062560,
-PS0_MT,Gen9LPClient,A0,0.315754739,syn,392470,
-PS0_MT_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
-PS0_MT_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
-PS0_OACS,Gen9LPClient,A0,0,syn,178031.08,
-PS0_PL,Gen9LPClient,A0,0.23235285,syn,555410,
-PS0_PSD,Gen9LPClient,A0,2.602742,syn,673360,
-PS0_PSD_BARYPAYLDASMRAM,Gen9LPClient,A0,0,ebb,1,
-PS0_PSD_DOP,Gen9LPClient,A0,0,syn,673360,
-PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0,ebb,1,
-PS0_RCC,Gen9LPClient,A0,1.3,syn,804960,
-PS0_RCC_DOP,Gen9LPClient,A0,0,syn,804960,
-PS0_RCPBCOM,Gen9LPClient,A0,8.691551,syn,588850,
-PS0_RCPBCOM_DOP,Gen9LPClient,A0,0,syn,588850,
-PS0_RCPBPIX,Gen9LPClient,A0,19.143996,syn,983280,
-PS0_RCPBPIX_DOP,Gen9LPClient,A0,0,syn,983280,
-PS0_RCPFE,Gen9LPClient,A0,3.61,syn,749670,
-PS0_RCPFE_DOP,Gen9LPClient,A0,0,syn,749670,
-PS0_RCZ,Gen9LPClient,A0,14.0169,syn,1191080,
-PS0_RCZ_DOP,Gen9LPClient,A0,0,syn,1191080,
-PS0_ROSC_DFX,Gen9LPClient,A0,21.14,syn,549710,
-PS0_ROSC_DOP,Gen9LPClient,A0,0,syn,1,
-PS0_ROSC_GLUE,Gen9LPClient,A0,91.49,syn,1,
-PS0_ROSC_SMALL,Gen9LPClient,A0,91.52,syn,735220,
-PS0_ROSS_DFX,Gen9LPClient,A0,0,syn,422190,
-PS0_ROSS_DOP,Gen9LPClient,A0,0,syn,1,
-PS0_ROSS_GLUE,Gen9LPClient,A0,0,syn,1,
-PS0_ROSS_SMALL,Gen9LPClient,A0,0,syn,239860,
-PS0_RoutingChannel,Gen9LPClient,A0,25.70438,ebb,1,
-PS0_RS,Gen9LPClient,A0,0.264312,syn,305547,
-PS0_SARB,Gen9LPClient,A0,1.806135,syn,216780,
-PS0_SBE_CALC,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_CALC_DOP,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_FETCH,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_FETCH_DOP,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_OTHER,Gen9LPClient,A0,3.788478,syn,1362960,
-PS0_SBE_OTHER_DOP,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_REPLAY,Gen9LPClient,A0,0,syn,1362960,
-PS0_SBE_REPLAY_DOP,Gen9LPClient,A0,0,syn,1362960,
-PS0_SC,Gen9LPClient,A0,1.364202292,syn,434760,
-PS0_SC_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
-PS0_SC_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
-PS0_SDE,Gen9LPClient,A0,0.859015,syn,57185.77,
-PS0_SDE_DOP,Gen9LPClient,A0,0,syn,57185.77,
-PS0_SF,Gen9LPClient,A0,5.330300592,syn,1206473.53,
-PS0_SF_DOP,Gen9LPClient,A0,0,syn,1206473.53,
-PS0_SI,Gen9LPClient,A0,0.509517987,syn,401520,
-PS0_SO,Gen9LPClient,A0,0.170277903,syn,125560,
-PS0_SOL,Gen9LPClient,A0,4.383181065,syn,270622.2,
-PS0_SOL_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_SOL_DOP,Gen9LPClient,A0,0,syn,270622.2,
-PS0_ST,Gen9LPClient,A0,0.137829551,syn,188670,
-PS0_STC,Gen9LPClient,A0,3.473911,syn,783820,
-PS0_STC_DOP,Gen9LPClient,A0,0,syn,783820,
-PS0_SVG,Gen9LPClient,A0,0.198234,syn,95301.2,
-PS0_SVL,Gen9LPClient,A0,0.264312,syn,114900,
-PS0_TC,Gen9LPClient,A0,0.714648,syn,534680,
-PS0_TDC,Gen9LPClient,A0,0.506599,syn,209310,
-PS0_TDG,Gen9LPClient,A0,0.550651,syn,138319.24,
-PS0_TDL,Gen9LPClient,A0,5.440431,syn,474080,
-PS0_TDS,Gen9LPClient,A0,1.673978698,syn,698153,
-PS0_TDS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_TDS_DOP,Gen9LPClient,A0,0,syn,698153,
-PS0_TE,Gen9LPClient,A0,1.211431953,syn,108846,
-PS0_TE_DOP,Gen9LPClient,A0,0,syn,108846,
-PS0_TSG,Gen9LPClient,A0,1.079276,syn,465436.9,
-PS0_URBM,Gen9LPClient,A0,0.044052,syn,188324,
-PS0_URBM_DOP,Gen9LPClient,A0,0,syn,188324,
-PS0_VF,Gen9LPClient,A0,4.691546,syn,669980,
-PS0_VF_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_VF_DOP,Gen9LPClient,A0,0,syn,669980,
-PS0_VF_URBFifo_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_VFBE1,Gen9LPClient,A0,0.792937,syn,494743,
-PS0_VFBE1_DOP,Gen9LPClient,A0,0,syn,494743,
-PS0_VFBE2,Gen9LPClient,A0,0.836989,syn,499676,
-PS0_VFBE2_DOP,Gen9LPClient,A0,0,syn,499676,
-PS0_VFE,Gen9LPClient,A0,0.154182,syn,98762.02,
-PS0_VS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_VSBE,Gen9LPClient,A0,2.048421,syn,605841,
-PS0_VSBE_DOP,Gen9LPClient,A0,0,syn,605841,
-PS0_VSFE,Gen9LPClient,A0,0.396469,syn,381580,
-PS0_VSFE_DOP,Gen9LPClient,A0,0,syn,381580,
-PS0_WIDI,Gen9LPClient,A0,11.14517,ebb,1,
-PS0_WMBE,Gen9LPClient,A0,1.403066,syn,1000070,
-PS0_WMBE_DOP,Gen9LPClient,A0,0,syn,1000070,
-PS0_WMFE,Gen9LPClient,A0,1.74,syn,208800,
-PS0_WMFE_DOP,Gen9LPClient,A0,0,syn,208800,
-PS1_BC,Gen9LPClient,A0,10.79137,syn,702770,
-PS1_CC,Gen9LPClient,A0,15.546721,syn,655900,
-PS1_CL,Gen9LPClient,A0,42.40011834,syn,1153722.56,
-PS1_CS,Gen9LPClient,A0,14.99973,syn,458980,
-PS1_DAPB,Gen9LPClient,A0,5.107949,syn,200430,
-PS1_DAPRSC,Gen9LPClient,A0,13.08588,syn,483110,
-PS1_DAPRSS,Gen9LPClient,A0,12.35661,syn,598370,
-PS1_DG,Gen9LPClient,A0,0.775971617,syn,267430,
-PS1_DM,Gen9LPClient,A0,0.377238,syn,1179710,
 EM_add_fp16_65%,Gen8,A0,36.732,syn,397435,
-PS1_EU_EM,Gen9LPClient,A0,2.793624,syn,416823,
-PS1_EU_FPU,Gen9LPClient,A0,2.793624,syn,416823,
-PS1_FL,Gen9LPClient,A0,4.802477696,syn,1134520,
-PS1_FT,Gen9LPClient,A0,1.387575097,syn,190540,
 PS1_GA,Gen9,A1,1.295,syn,228117,
-PS1_GACB,Gen9LPClient,A0,6.05716,syn,188457,
-PS1_GAFM,Gen9LPClient,A0,0.969146,syn,56810,
-PS1_GAFS,Gen9LPClient,A0,29.64704,syn,673428,
-PS1_GAMD,Gen9LPClient,A0,16.62966,syn,1349688,
-PS1_GAMTLB,Gen9LPClient,A0,37.3,syn,1564626.13,
-PS1_GAMW,Gen9LPClient,A0,43.96397,syn,1680795,
-PS1_GAPC,Gen9LPClient,A0,0.814963,syn,41236,
-PS1_GAPL3,Gen9LPClient,A0,3.281879,syn,100095,
-PS1_GAPS,Gen9LPClient,A0,3.215801,syn,95422,
-PS1_GAPZ,Gen9LPClient,A0,1.519796,syn,67710,
-PS1_GS,Gen9LPClient,A0,7.312643787,syn,673665.93,
 EM_add_fp16_75%,Gen8,A0,38.483,syn,397435,
-PS1_GWL,Gen9LPClient,A0,1.938291,syn,92500,
-PS1_HDC_ReqCmd1,Gen9LPClient,A0,4.60970529,syn,539230,
-PS1_HDC_ReqCmd2,Gen9LPClient,A0,28.3234183,syn,813070,
-PS1_HDC_ReqData,Gen9LPClient,A0,2.76915791,syn,329600,
-PS1_HDC_Ret,Gen9LPClient,A0,4.49249566,syn,704150,
-PS1_HDCTLB,Gen9LPClient,A0,9.99291187,syn,474580,
-PS1_HIZ,Gen9LPClient,A0,54.38436,syn,1990900,
-PS1_HS,Gen9LPClient,A0,3.546191716,syn,375844,
-PS1_IC,Gen9LPClient,A0,6.784019,syn,321410,
-PS1_IZ,Gen9LPClient,A0,15.59248,syn,1258070,
 EM_add_fp16_85%,Gen8,A0,39.9,syn,397435,
 EM_add_fp16_95%,Gen8,A0,40.281,syn,397435,
 EM_add_fp32_0%,Gen8,A0,10.862,syn,397435,
@@ -546,240 +34,8 @@ EM_add_fp32_75%,Gen8,A0,49.215,syn,397435,
 EM_add_fp32_85%,Gen8,A0,52.511,syn,397435,
 EM_add_fp32_95%,Gen8,A0,62.206,syn,397435,
 EM_add_int16_0%,Gen8,A0,10.862,syn,397435,
-PS1_MA_IN,Gen9LPClient,A0,1.799527,syn,84235,
-PS1_MA_OUT,Gen9LPClient,A0,0.094712,syn,84235,
-PS1_MSC,Gen9LPClient,A0,22.406165,syn,1062560,
-PS1_MT,Gen9LPClient,A0,0.315754739,syn,392470,
-PS1_OACS,Gen9LPClient,A0,0,syn,178031.08,
-PS1_PL,Gen9LPClient,A0,5.816218762,syn,555410,
-PS1_PSD,Gen9LPClient,A0,38.331503,syn,673360,
-PS1_RCC,Gen9LPClient,A0,14.73284,syn,804960,
-PS1_RCPBCOM,Gen9LPClient,A0,8.691551,syn,588850,
-PS1_RCPBPIX,Gen9LPClient,A0,19.143996,syn,983280,
-PS1_RCPFE,Gen9LPClient,A0,20.366757,syn,749670,
-PS1_RCZ,Gen9LPClient,A0,47.30154215,syn,1191080,
-PS1_RS,Gen9LPClient,A0,7.66506,syn,305547,
-PS1_SARB,Gen9LPClient,A0,5.638665,syn,216780,
-PS1_SBE_CALC,Gen9LPClient,A0,0,syn,1362960,
-PS1_SBE_FETCH,Gen9LPClient,A0,0,syn,1362960,
-PS1_SBE_OTHER,Gen9LPClient,A0,21.29918,syn,1362960,
-PS1_SBE_REPLAY,Gen9LPClient,A0,0,syn,1362960,
-PS1_SC,Gen9LPClient,A0,1.364202292,syn,434760,
-PS1_SDE,Gen9LPClient,A0,2.048421,syn,57185.77,
-PS1_SF,Gen9LPClient,A0,15.10986036,syn,1206473.53,
-PS1_SI,Gen9LPClient,A0,4.863287246,syn,401520,
-PS1_SO,Gen9LPClient,A0,0.170277903,syn,125560,
-PS1_SOL,Gen9LPClient,A0,4.779649704,syn,270622.2,
-PS1_ST,Gen9LPClient,A0,0.137829551,syn,188670,
-PS1_STC,Gen9LPClient,A0,11.35788,syn,783820,
-PS1_SVG,Gen9LPClient,A0,4.118869,syn,95301.2,
-PS1_SVL,Gen9LPClient,A0,4.735598,syn,114900,
-PS1_TC,Gen9LPClient,A0,9.550295,syn,534680,
-PS1_TDC,Gen9LPClient,A0,2.819333,syn,209310,
-PS1_TDG,Gen9LPClient,A0,4.933832,syn,138319.24,
-PS1_TDL,Gen9LPClient,A0,7.004279,syn,474080,
-PS1_TDS,Gen9LPClient,A0,8.105581065,syn,698153,
-PS1_TE,Gen9LPClient,A0,7.202513609,syn,108846,
-PS1_TSG,Gen9LPClient,A0,25.9687,syn,465436.9,
-PS1_URBM,Gen9LPClient,A0,6.409576,syn,188324,
-PS1_VF,Gen9LPClient,A0,17.86311,syn,669980,
-PS1_VFBE1,Gen9LPClient,A0,4.757624,syn,494743,
-PS1_VFBE2,Gen9LPClient,A0,5.132066,syn,499676,
-PS1_VFE,Gen9LPClient,A0,3.281879,syn,98762.02,
-PS1_VSBE,Gen9LPClient,A0,9.933742,syn,605841,
-PS1_VSFE,Gen9LPClient,A0,5.396379,syn,381580,
-PS1_WMBE,Gen9LPClient,A0,31.48423,syn,1000070,
-PS1_WMFE,Gen9LPClient,A0,32.633014,syn,208800,
-PS2_BC_BARYRAM_READ,Gen9LPClient,A0,33.041,ebb,1,
-PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,32.943,ebb,1,
-PS2_BC_COMPUTE,Gen9LPClient,A0,0,syn,702770,
-PS2_BC_FLOWTHROUGH,Gen9LPClient,A0,0,syn,702770,
-PS2_CC_DIS,Gen9LPClient,A0,20.35093093,syn,655900,
-PS2_CC_EN_PARTIALS,Gen9LPClient,A0,19.271398,syn,655900,
-PS2_CC_EN_WRITES,Gen9LPClient,A0,19.001093,syn,655900,
-PS2_CL,Gen9LPClient,A0,86.7263,syn,1153722.56,
-PS2_ClockSpine,Gen9LPClient,A0,350,ebb,1,
 EM_add_int16_05%,Gen8,A0,14.768,syn,397435,
-PS2_DAPB_DIS,Gen9LPClient,A0,5.107949,syn,200430,
-PS2_DAPB_MSAA_RTR,Gen9LPClient,A0,1.3,syn,200430,
-PS2_DAPB_NOMSAA_RTR,Gen9LPClient,A0,1.3,syn,200430,
-PS2_DAPRSC,Gen9LPClient,A0,28.24287,syn,483110,
-PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.139,ebb,1,
-PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.214,ebb,1,
-PS2_DAPRSS_CLEARRESOLVE,Gen9LPClient,A0,0,syn,598370,
-PS2_DAPRSS_ELSE,Gen9LPClient,A0,0,syn,598370,
-PS2_DAPRSS_RENDERTARGETREAD,Gen9LPClient,A0,0,syn,598370,
-PS2_DAPRSS_RENDERTARGETWRITE,Gen9LPClient,A0,0,syn,598370,
-PS2_DAPRSS_WRITEFLUSH,Gen9LPClient,A0,0,syn,598370,
-PS2_DG_AnisoGreaterThan_8way_128BPT,Gen9LPClient,A0,33.52673022,syn,267430,
-PS2_DG_AnisoGreaterThan_8way_32BPT,Gen9LPClient,A0,47.27304096,syn,267430,
-PS2_DG_AnisoGreaterThan_8way_64BPT,Gen9LPClient,A0,42.69093738,syn,267430,
-PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT,Gen9LPClient,A0,30.82520184,syn,267430,
-PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT,Gen9LPClient,A0,74.17732105,syn,267430,
-PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT,Gen9LPClient,A0,51.97621283,syn,267430,
-PS2_DG_BabyDG_Enable,Gen9LPClient,A0,36.73542421,syn,267430,
-PS2_DG_Bilinear_128BPT,Gen9LPClient,A0,31.17609128,syn,267430,
-PS2_DG_Bilinear_32BPT,Gen9LPClient,A0,94.1518231,syn,267430,
-PS2_DG_Bilinear_64BPT,Gen9LPClient,A0,58.70425003,syn,267430,
-PS2_DG_Else,Gen9LPClient,A0,26.38148686,syn,267430,
-PS2_DG_FastLinear_128BPT,Gen9LPClient,A0,31.17609128,syn,267430,
-PS2_DG_FastLinear_32BPT,Gen9LPClient,A0,94.1518231,syn,267430,
-PS2_DG_FastLinear_64BPT,Gen9LPClient,A0,58.70425003,syn,267430,
-PS2_DG_Gather4_128BPT,Gen9LPClient,A0,16.14841652,syn,267430,
-PS2_DG_Gather4_32BPT,Gen9LPClient,A0,48.76823252,syn,267430,
-PS2_DG_Gather4_64BPT,Gen9LPClient,A0,30.70537791,syn,267430,
-PS2_DG_Trilinear_128BPT,Gen9LPClient,A0,31.17609128,syn,267430,
-PS2_DG_Trilinear_32BPT,Gen9LPClient,A0,94.1518231,syn,267430,
-PS2_DG_Trilinear_64BPT,Gen9LPClient,A0,59.27972699,syn,267430,
-PS2_DG_Volumetric_128BPT,Gen9LPClient,A0,20.21946588,syn,267430,
-PS2_DG_Volumetric_32BPT,Gen9LPClient,A0,56.11129151,syn,267430,
-PS2_DG_Volumetric_64BPT,Gen9LPClient,A0,42.4944027,syn,267430,
-PS2_DM_ASTC_HDR_2D,Gen9LPClient,A0,99.87959,syn,1179710,
-PS2_DM_ASTC_HDR_3D,Gen9LPClient,A0,99.87959,syn,1179710,
-PS2_DM_ASTC_LDR_2D,Gen9LPClient,A0,99.87959,syn,1179710,
-PS2_DM_ASTC_LDR_3D,Gen9LPClient,A0,99.87959,syn,1179710,
-PS2_DM_BC1_3_SRGB,Gen9LPClient,A0,105.961972,syn,1179710,
-PS2_DM_BC1_5,Gen9LPClient,A0,95.33027,syn,1179710,
-PS2_DM_BC6_7,Gen9LPClient,A0,182.3148,syn,1179710,
-PS2_DM_BC7-SRGB,Gen9LPClient,A0,145.527,syn,1179710,
-PS2_DM_Bypass,Gen9LPClient,A0,2.015458,syn,1179710,
-PS2_DM_Compressed_BYPASS,Gen9LPClient,A0,2.015458,syn,1179710,
-PS2_DM_Else,Gen9LPClient,A0,76.74565,syn,1179710,
-PS2_DM_ETC,Gen9LPClient,A0,92.4756,syn,1179710,
-PS2_DM_Expanded,Gen9LPClient,A0,103.5458,syn,1179710,
-PS2_DM_Expanded_BYPASS,Gen9LPClient,A0,2.015458,syn,1179710,
-PS2_DM_HIZ,Gen9LPClient,A0,103.5458,syn,1179710,
-PS2_DM_LOSSLESS,Gen9LPClient,A0,103.5458,syn,1179710,
-PS2_DM_Z,Gen9LPClient,A0,103.5458,syn,1179710,
-PS2_EU_DFX,Gen9LPClient,A0,1.556745,syn,31658,
-PS2_EU_DOP,Gen9LPClient,A0,3.39,syn,1,
 EM_add_int16_15%,Gen8,A0,21.959,syn,397435,
-PS2_EU_GLUE,Gen9LPClient,A0,5.1547825,syn,1,
-PS2_EU_SMALL,Gen9LPClient,A0,2.5121225,syn,13500,
-PS2_FF_DFX,Gen9LPClient,A0,26.67,syn,495590,
-PS2_FF_DOP,Gen9LPClient,A0,31.58,syn,1,
-PS2_FF_GLUE,Gen9LPClient,A0,62.61,syn,1,
-PS2_FF_SMALL,Gen9LPClient,A0,86.47422,syn,2040580,
-PS2_FL_Bilinear_Else,Gen9LPClient,A0,236.8232825,syn,1134520,
-PS2_FL_Bilinear_Float16,Gen9LPClient,A0,191.4406984,syn,1134520,
-PS2_FL_Bilinear_Float32,Gen9LPClient,A0,191.4406984,syn,1134520,
-PS2_FL_Data_Dep_Bypass_Bilinear,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Data_Dep_Bypass_Else,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Data_Dep_Bypass_FastLinear,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Data_Dep_Bypass_LinearAniso,Gen9LPClient,A0,76.92735176,syn,1134520,
-PS2_FL_Data_Dep_Bypass_LinearFastAniso,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_Data_Dep_Bypass_NonLinearAniso,Gen9LPClient,A0,76.92735176,syn,1134520,
-PS2_FL_Data_Dep_Bypass_NonLinearFastAniso,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_Data_Dep_Bypass_Trilinear,Gen9LPClient,A0,45.08300598,syn,1134520,
-PS2_FL_Else,Gen9LPClient,A0,54.86344269,syn,1134520,
-PS2_FL_FastLinear_Else,Gen9LPClient,A0,152.1922288,syn,1134520,
-PS2_FL_FastLinear_Float16,Gen9LPClient,A0,152.1922288,syn,1134520,
-PS2_FL_FastLinear_Float32,Gen9LPClient,A0,152.1922288,syn,1134520,
-PS2_FL_Gather4_Bypass,Gen9LPClient,A0,107.7796915,syn,1134520,
-PS2_FL_LinearAniso_Else,Gen9LPClient,A0,230.7630972,syn,1134520,
-PS2_FL_LinearAniso_Float16,Gen9LPClient,A0,185.3805131,syn,1134520,
-PS2_FL_LinearAniso_Float32,Gen9LPClient,A0,185.3805131,syn,1134520,
-PS2_FL_LinearFastAniso_Else,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_LinearFastAniso_Float16,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_LinearFastAniso_Float32,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_Nearest_Float16,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Nearest_Float32,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Nearest_Else,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_NonLinearAniso_Else,Gen9LPClient,A0,230.7630972,syn,1134520,
-PS2_FL_NonLinearAniso_Float16,Gen9LPClient,A0,185.3805131,syn,1134520,
-PS2_FL_NonLinearAniso_Float32,Gen9LPClient,A0,185.3805131,syn,1134520,
-PS2_FL_NonLinearFastAniso_Else,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_NonLinearFastAniso_Float16,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_NonLinearFastAniso_Float32,Gen9LPClient,A0,0,syn,1134520,
-PS2_FL_SampleC_Gather4C,Gen9LPClient,A0,107.7796915,syn,1134520,
-PS2_FL_SampleC_Gather4C_Bypass,Gen9LPClient,A0,40.78912582,syn,1134520,
-PS2_FL_Trilinear_Else,Gen9LPClient,A0,231.4079652,syn,1134520,
-PS2_FL_Trilinear_Float16,Gen9LPClient,A0,186.0253811,syn,1134520,
-PS2_FL_Trilinear_Float32,Gen9LPClient,A0,186.0253811,syn,1134520,
-PS2_FT,Gen9LPClient,A0,20.28750275,syn,190540,
-PS2_GA_EM1Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,48.9685,syn,235163,
-PS2_GA_EM1Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,55.8846,syn,235163,
-PS2_GA_EM1Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,60.8534,syn,235163,
-PS2_GA_EM1Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,57.88787,syn,235163,
-PS2_GA_EM1Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,66.76361,syn,235163,
-PS2_GA_EM1Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,72.41835,syn,235163,
-PS2_GA_EM1Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,63.71187,syn,235163,
-PS2_GA_EM1Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,75.68403,syn,235163,
-PS2_GA_EM1Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,82.4027,syn,235163,
-PS2_GA_EM1Src_SinglePipe_10%,Gen9LPClient,A0,46.23987,syn,235163,
-PS2_GA_EM1Src_SinglePipe_20%,Gen9LPClient,A0,48.92276,syn,235163,
-PS2_GA_EM1Src_SinglePipe_30%,Gen9LPClient,A0,52.44966,syn,235163,
-PS2_GA_EM2Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,60.32233,syn,235163,
-PS2_GA_EM2Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,65.52361,syn,235163,
-PS2_GA_EM2Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,68.84584,syn,235163,
-PS2_GA_EM2Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,69.893,syn,235163,
-PS2_GA_EM2Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,76.9827,syn,235163,
-PS2_GA_EM2Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,80.6961,syn,235163,
-PS2_GA_EM2Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,71.97033,syn,235163,
-PS2_GA_EM2Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,83.36446,syn,235163,
-PS2_GA_EM2Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,88.81453,syn,235163,
-PS2_GA_EM2Src_SinglePipe_10%,Gen9LPClient,A0,56.9424,syn,235163,
-PS2_GA_EM2Src_SinglePipe_20%,Gen9LPClient,A0,57.9817,syn,235163,
-PS2_GA_EM2Src_SinglePipe_30%,Gen9LPClient,A0,60.1568,syn,235163,
-PS2_GA_EM3Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,68.58078,syn,235163,
-PS2_GA_EM3Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,73.20403,syn,235163,
-PS2_GA_EM3Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,75.25768,syn,235163,
-PS2_GA_EM3Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,74.40479,syn,235163,
-PS2_GA_EM3Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,82.12445,syn,235163,
-PS2_GA_EM3Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,85.24202,syn,235163,
-PS2_GA_EM3Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,78.7628,syn,235163,
-PS2_GA_EM3Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,90.0053,syn,235163,
-PS2_GA_EM3Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,94.5093,syn,235163,
-PS2_GA_EM3Src_SinglePipe_10%,Gen9LPClient,A0,61.1274,syn,235163,
-PS2_GA_EM3Src_SinglePipe_20%,Gen9LPClient,A0,63.3646,syn,235163,
-PS2_GA_EM3Src_SinglePipe_30%,Gen9LPClient,A0,64.4098,syn,235163,
-PS2_GA_FPU1Src_SinglePipe_10%,Gen9LPClient,A0,43.80541,syn,235163,
-PS2_GA_FPU1Src_SinglePipe_20%,Gen9LPClient,A0,50.16276,syn,235163,
-PS2_GA_FPU1Src_SinglePipe_30%,Gen9LPClient,A0,56.02217,syn,235163,
-PS2_GA_FPU2Src_SinglePipe_10%,Gen9LPClient,A0,49.62941,syn,235163,
-PS2_GA_FPU2Src_SinglePipe_20%,Gen9LPClient,A0,59.08319,syn,235163,
-PS2_GA_FPU2Src_SinglePipe_30%,Gen9LPClient,A0,66.00651,syn,235163,
-PS2_GA_FPU3Src_SinglePipe_10%,Gen9LPClient,A0,55.45342,syn,235163,
-PS2_GA_FPU3Src_SinglePipe_20%,Gen9LPClient,A0,68.00361,syn,235163,
-PS2_GA_FPU3Src_SinglePipe_30%,Gen9LPClient,A0,75.99086,syn,235163,
-PS2_GACB,Gen9LPClient,A0,5.594613,syn,188457,
-PS2_GAFM,Gen9LPClient,A0,0.94712,syn,56810,
-PS2_GAFS,Gen9LPClient,A0,31.40913,syn,673429,
-PS2_GAM_DFX,Gen9LPClient,A0,26.101,syn,299462,
-PS2_GAM_DOP,Gen9LPClient,A0,15.89619,syn,1,
-PS2_GAM_GLUE,Gen9LPClient,A0,24.08,syn,1,
-PS2_GAM_SMALL,Gen9LPClient,A0,15.41822,syn,212678,
-PS2_GAMD_Cache_READ,Gen9LPClient,A0,3.547,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen9LPClient,A0,4.562,ebb,1,
-PS2_GAMD_READ,Gen9LPClient,A0,44.1,syn,1349688,
-PS2_GAMD_WRITE,Gen9LPClient,A0,44.1,syn,1349688,
-PS2_GAMD_WRITE_Media,Gen9LPClient,A0,44.1,syn,1349688,
-PS2_GAMTLB_Bypass,Gen9LPClient,A0,45.306,syn,1564626.13,
-PS2_GAMTLB_EBB_READ,Gen9LPClient,A0,2.767,ebb,1,
-PS2_GAMTLB_EBB_WRITE,Gen9LPClient,A0,4.28,ebb,1,
-PS2_GAMTLB_Hit,Gen9LPClient,A0,59.05,syn,1564626.13,
-PS2_GAMTLB_HitNotPresent,Gen9LPClient,A0,59.05,syn,1564626.13,
-PS2_GAMTLB_Miss,Gen9LPClient,A0,60.48,syn,1564626.13,
-PS2_GAMW_Hit,Gen9LPClient,A0,87.99,syn,1680796,
-PS2_GAMW_Hit_on_Miss,Gen9LPClient,A0,87.99,syn,1680797,
-PS2_GAMW_One_Walk,Gen9LPClient,A0,87.99,syn,1680798,
-PS2_GAMW_READ,Gen9LPClient,A0,7.42,ebb,1,
-PS2_GAMW_Three_Walk,Gen9LPClient,A0,87.99,syn,1680800,
-PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.918,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.614,ebb,1,
-PS2_GAMW_Two_Walk,Gen9LPClient,A0,87.99,syn,1680799,
-PS2_GAMW_WRITE,Gen9LPClient,A0,11.323,ebb,1,
-PS2_GAPC,Gen9LPClient,A0,0.814963,syn,41236,
-PS2_GAPL3,Gen9LPClient,A0,3.303905,syn,100095,
-PS2_GAPS,Gen9LPClient,A0,2.687176,syn,95422,
-PS2_GAPZ,Gen9LPClient,A0,1.519796,syn,67710,
-PS2_GRF_READ,Gen9LPClient,A0,11.237,ebb,1,
-PS2_GRF_WRITE,Gen9LPClient,A0,13.734,ebb,1,
-PS2_GS_Cache_Read,Gen9LPClient,A0,4.893,ebb,1,
-PS2_GS_Cache_ReadWrite,Gen9LPClient,A0,15.6,ebb,1,
-PS2_GS_Cache_Write,Gen9LPClient,A0,10.707,ebb,1,
-PS2_GS_Disabled,Gen9LPClient,A0,7.33467,syn,673665.93,
-PS2_GS_Enabled,Gen9LPClient,A0,7.33467,syn,673665.93,
 EM_add_int16_25%,Gen8,A0,23.832,syn,397435,
 EM_add_int16_35%,Gen8,A0,28.947,syn,397435,
 EM_add_int16_45%,Gen8,A0,32.542,syn,397435,
@@ -787,98 +43,6 @@ EM_add_int16_55%,Gen8,A0,35.41,syn,397435,
 EM_add_int16_65%,Gen8,A0,40.023,syn,397435,
 EM_add_int16_75%,Gen8,A0,49.215,syn,397435,
 EM_add_int16_85%,Gen8,A0,52.511,syn,397435,
-PS2_GWL,Gen9LPClient,A0,1.938291,syn,92500,
-PS2_HDC_DFX,Gen9LPClient,A0,5,syn,1,
-PS2_HDC_DOP,Gen9LPClient,A0,7.63,syn,1,
-PS2_HDC_GLUE,Gen9LPClient,A0,24.05,syn,1,
-PS2_HDC_ReqCmd1_NonSequenced_Read,Gen9LPClient,A0,59.4635855,syn,539230,
-PS2_HDC_ReqCmd1_NonSequenced_Write,Gen9LPClient,A0,124.1654942,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read,Gen9LPClient,A0,55.7396485,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write,Gen9LPClient,A0,79.2713619,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read,Gen9LPClient,A0,76.35221768,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write,Gen9LPClient,A0,108.5859786,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Typed_Read,Gen9LPClient,A0,103.0799045,syn,539230,
-PS2_HDC_ReqCmd1_Sequenced_Typed_Write,Gen9LPClient,A0,123.4719409,syn,539230,
-PS2_HDC_ReqCmd2_NonSequenced_Read,Gen9LPClient,A0,126.6402283,syn,813070,
-PS2_HDC_ReqCmd2_NonSequenced_Write,Gen9LPClient,A0,54.3492538,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read,Gen9LPClient,A0,98.85998316,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write,Gen9LPClient,A0,64.9200761,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Read,Gen9LPClient,A0,57.8627,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Write,Gen9LPClient,A0,107.5047832,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Typed_Read,Gen9LPClient,A0,126.5322974,syn,813070,
-PS2_HDC_ReqCmd2_Sequenced_Typed_Write,Gen9LPClient,A0,77.0433401,syn,813070,
-PS2_HDC_ReqData_NonSequenced_Write,Gen9LPClient,A0,28.2818913,syn,329600,
-PS2_HDC_ReqData_Sequenced_Else_Data_Write,Gen9LPClient,A0,53.1327223,syn,329600,
-PS2_HDC_ReqData_Sequenced_Else_SLM_Write,Gen9LPClient,A0,51.1872806,syn,329600,
-PS2_HDC_ReqData_Sequenced_Typed_Write,Gen9LPClient,A0,35.4465695,syn,329600,
-PS2_HDC_Ret_NonSequenced_Read,Gen9LPClient,A0,120.52,syn,704150,
-PS2_HDC_Ret_Sequenced_Else_Data_Read,Gen9LPClient,A0,98.5402698,syn,704150,
-PS2_HDC_Ret_Sequenced_Else_SLM_Read,Gen9LPClient,A0,72.0947889,syn,704150,
-PS2_HDC_Ret_Sequenced_Typed_Read,Gen9LPClient,A0,92.6113932,syn,704150,
-PS2_HDC_SMALL,Gen9LPClient,A0,24.34,syn,109850,
-PS2_HDCTLB_Read_Hit,Gen9LPClient,A0,69.7952411,syn,474580,
-PS2_HDCTLB_Read_Miss,Gen9LPClient,A0,69.7952411,syn,474580,
-PS2_HDCTLB_Write_Hit,Gen9LPClient,A0,68.4344,syn,474580,
-PS2_HDCTLB_Write_Miss,Gen9LPClient,A0,68.4344,syn,474580,
-PS2_HIZ_8x4_DIS_STCONLY,Gen9LPClient,A0,177.9222,syn,1990900,
-PS2_HIZ_8x4_DIS_ZONLY,Gen9LPClient,A0,177.9222,syn,1990900,
-PS2_HIZ_8x4_DIS_ZSTC,Gen9LPClient,A0,178.4668,syn,1990900,
-PS2_HIZ_8x4_EN_STCONLY_AMBIG,Gen9LPClient,A0,190.499,syn,1990900,
-PS2_HIZ_8x4_EN_STCONLY_FAIL,Gen9LPClient,A0,186.9592,syn,1990900,
-PS2_HIZ_8x4_EN_ZONLY_Accept,Gen9LPClient,A0,184.8501,syn,1990900,
-PS2_HIZ_8x4_EN_ZONLY_AMBIG,Gen9LPClient,A0,187.2127,syn,1990900,
-PS2_HIZ_8x4_EN_ZONLY_FAIL,Gen9LPClient,A0,174,syn,1990900,
-PS2_HIZ_8x4_EN_ZSTC_Accept,Gen9LPClient,A0,234.7603,syn,1990900,
-PS2_HIZ_8x4_EN_ZSTC_AMBIG,Gen9LPClient,A0,238.2001,syn,1990900,
-PS2_HIZ_8x4_EN_ZSTC_FAIL,Gen9LPClient,A0,80.8488,syn,1990900,
-PS2_HIZ_8x4_FULLYLIT,Gen9LPClient,A0,186.844,syn,1990900,
-PS2_HIZ_8x4_PARTIALLYLIT,Gen9LPClient,A0,175.765,syn,1990900,
-PS2_HIZ_8x4_RESOLVE,Gen9LPClient,A0,195.3971,syn,1990900,
-PS2_HIZ_8x8_DIS_STCONLY,Gen9LPClient,A0,177.9222,syn,1990900,
-PS2_HIZ_8x8_DIS_ZONLY,Gen9LPClient,A0,177.9222,syn,1990900,
-PS2_HIZ_8x8_DIS_ZSTC,Gen9LPClient,A0,178.4668,syn,1990900,
-PS2_HIZ_8x8_EN_STCONLY_AMBIG,Gen9LPClient,A0,190.499,syn,1990900,
-PS2_HIZ_8x8_EN_STCONLY_FAIL,Gen9LPClient,A0,171.0612964,syn,1990900,
-PS2_HIZ_8x8_EN_ZONLY_Accept,Gen9LPClient,A0,184.8501,syn,1990900,
-PS2_HIZ_8x8_EN_ZONLY_AMBIG,Gen9LPClient,A0,187.2127,syn,1990900,
-PS2_HIZ_8x8_EN_ZONLY_FAIL,Gen9LPClient,A0,174,syn,1990900,
-PS2_HIZ_8x8_EN_ZSTC_Accept,Gen9LPClient,A0,234.7603,syn,1990900,
-PS2_HIZ_8x8_EN_ZSTC_AMBIG,Gen9LPClient,A0,238.2001,syn,1990900,
-PS2_HIZ_8x8_EN_ZSTC_FAIL,Gen9LPClient,A0,80.8488,syn,1990900,
-PS2_HIZ_8x8_FULLYLIT,Gen9LPClient,A0,186.844,syn,1990900,
-PS2_HIZ_8x8_PARTIALLYLIT,Gen9LPClient,A0,175.765,syn,1990900,
-PS2_HIZ_8x8_RESOLVE,Gen9LPClient,A0,195.3971,syn,1990900,
-PS2_HIZ_CACHE_READ,Gen9LPClient,A0,6.593,ebb,1990900,
-PS2_HIZ_CACHE_WRITE,Gen9LPClient,A0,10.922,ebb,1990900,
-PS2_HIZ_LATFIFO_READ,Gen9LPClient,A0,28.278,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen9LPClient,A0,62.429,ebb,1,
-PS2_HIZ_RAWSTALLEN,Gen9LPClient,A0,134.4629,syn,1990900,
-PS2_HIZ_ZMARKERS,Gen9LPClient,A0,23,syn,1990900,
-PS2_HS_Cache_Read,Gen9LPClient,A0,4.893,ebb,1,
-PS2_HS_Cache_ReadWrite,Gen9LPClient,A0,15.6,ebb,1,
-PS2_HS_Cache_Write,Gen9LPClient,A0,10.707,ebb,1,
-PS2_HS_Disabled,Gen9LPClient,A0,3.524166,syn,375844,
-PS2_HS_Enabled,Gen9LPClient,A0,58.31,syn,375844,
-PS2_IC,Gen9LPClient,A0,32.09193,syn,321410,
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,0,ebb,1,
-PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.278,ebb,1,
-PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,62.429,ebb,1,
-PS2_IZ_BARYCOEFFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
-PS2_IZ_EN_CMP,Gen9LPClient,A0,72.2638,syn,1258070,
-PS2_IZ_EN_EXP,Gen9LPClient,A0,72.2638,syn,1258070,
-PS2_IZ_EN_UNCMP_DEPTHPRESENT,Gen9LPClient,A0,90.8565,syn,1258070,
-PS2_IZ_EN_UNCMP_NODEPTHPRESENT,Gen9LPClient,A0,90.8565,syn,1258070,
-PS2_IZ_LATFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
-PS2_IZ_PARTIALLYLIT,Gen9LPClient,A0,90.1093,syn,1258070,
-PS2_IZ_POLYFIFO_READ,Gen9LPClient,A0,21.209,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen9LPClient,A0,46.822,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen9LPClient,A0,7.07,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen9LPClient,A0,15.607,ebb,1,
-PS2_IZ_ZCOEFFFIFO_READ,Gen9LPClient,A0,0,ebb,1,
-PS2_IZ_ZCOEFFFIFO_WRITE,Gen9LPClient,A0,0,ebb,1,
-PS2_IZ_ZMARKERS,Gen9LPClient,A0,16.198,syn,1258070,
 EM_add_int16_95%,Gen8,A0,62.206,syn,397435,
 EM_add_int32_0%,Gen8,A0,9.689,syn,397435,
 EM_add_int32_05%,Gen8,A0,15.622,syn,397435,
@@ -904,233 +68,10 @@ EM_mad_floatbypass_85%,Gen8,A0,78.812,syn,397435,
 EM_mad_floatbypass_95%,Gen8,A0,83.192,syn,397435,
 EM_mad_fp16_0%,Gen8,A0,3.064,syn,397435,
 EM_mad_fp16_05%,Gen8,A0,9.929,syn,397435,
-PS2_MA_IN,Gen9LPClient,A0,11.78063,syn,84235,
-PS2_MA_OUT,Gen9LPClient,A0,0.620033,syn,84235,
-PS2_MSC_CACHE_READ,Gen9LPClient,A0,13.253,ebb,1,
-PS2_MSC_CACHE_WRITE,Gen9LPClient,A0,22.162,ebb,1,
-PS2_MSC_MSAA_4PPC_DATA,Gen9LPClient,A0,59.889285,syn,1062560,
-PS2_MSC_MSAA_8PPC_DATA,Gen9LPClient,A0,59.889285,syn,1062560,
-PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE,Gen9LPClient,A0,0,syn,1062560,
-PS2_MSC_NOMSAA_4PPC_DATA,Gen9LPClient,A0,0,syn,1062560,
-PS2_MSC_NOMSAA_8PPC_CLEARRESOLVE,Gen9LPClient,A0,0,syn,1062560,
-PS2_MSC_NOMSAA_8PPC_DATA,Gen9LPClient,A0,0,syn,1062560,
-PS2_MT_BYPASS,Gen9LPClient,A0,41.75791918,syn,392470,
-PS2_MT_DataRam_READ,Gen9LPClient,A0,13.186,ebb,1,
-PS2_MT_DataRam_READWRITE,Gen9LPClient,A0,0,ebb,1,
-PS2_MT_DataRam_WRITE,Gen9LPClient,A0,21.844,ebb,1,
-PS2_MT_LatFifo_READ,Gen9LPClient,A0,5.825,ebb,1,
-PS2_MT_LatFifo_READWRITE,Gen9LPClient,A0,0,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen9LPClient,A0,12.821,ebb,1,
-PS2_MT_Tile_else,Gen9LPClient,A0,98.35682347,syn,392470,
-PS2_MT_Tile_X,Gen9LPClient,A0,72.27594867,syn,392470,
-PS2_MT_Tile_Y,Gen9LPClient,A0,64.60083939,syn,392470,
-PS2_OACS,Gen9LPClient,A0,0,syn,178031.08,
-PS2_PL_Bilinear,Gen9LPClient,A0,188.9764206,syn,555410,
-PS2_PL_Bilinear_EWA,Gen9LPClient,A0,336.7632715,syn,555410,
-PS2_PL_Else,Gen9LPClient,A0,136.9961088,syn,555410,
-PS2_PL_Else_EWA,Gen9LPClient,A0,273.992126,syn,555410,
-PS2_PL_Gather4PO,Gen9LPClient,A0,318.7496054,syn,555410,
-PS2_PL_LD,Gen9LPClient,A0,63.25373507,syn,555410,
-PS2_PL_LinearAniso,Gen9LPClient,A0,97.1808178,syn,555410,
-PS2_PL_LinearAniso_EWA,Gen9LPClient,A0,158.9579442,syn,555410,
-PS2_PL_NonLinearAniso,Gen9LPClient,A0,194.3616356,syn,555410,
-PS2_PL_NonLinearAniso_EWA,Gen9LPClient,A0,317.9158885,syn,555410,
-PS2_PL_Sample_L,Gen9LPClient,A0,90.40329922,syn,555410,
-PS2_PL_Sample_L_MipCount0,Gen9LPClient,A0,90.40329922,syn,555410,
-PS2_PL_Trilinear,Gen9LPClient,A0,194.3616356,syn,555410,
-PS2_PL_Trilinear_EWA,Gen9LPClient,A0,317.9158885,syn,555410,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,9.327,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,11.299,ebb,1,
-PS2_PSD_NOTHREADDISPATCH,Gen9LPClient,A0,42.61176232,syn,673360,
-PS2_PSD_SCOREBOARD_READ,Gen9LPClient,A0,3.272,ebb,1,
-PS2_PSD_SCOREBOARD_WRITE,Gen9LPClient,A0,6.219,ebb,1,
-PS2_PSD_THREADDISPATCH,Gen9LPClient,A0,54.83946124,syn,673360,
-PS2_PSD_WAITINGONFLUSH,Gen9LPClient,A0,38.331503,syn,673360,
-PS2_RCC_ALLOC_HITS,Gen9LPClient,A0,125.2698,syn,804960,
-PS2_RCC_ALLOC_MISSES,Gen9LPClient,A0,125.2698,syn,804960,
-PS2_RCC_CACHE_READ,Gen9LPClient,A0,9.227,ebb,1,
-PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,19.949,ebb,1,
-PS2_RCPBCOM_MSAA_2PPC_BLD,Gen9LPClient,A0,50.445639,syn,588850,
-PS2_RCPBCOM_MSAA_2PPC_WRT,Gen9LPClient,A0,40.082963,syn,588850,
-PS2_RCPBCOM_MSAA_4PPC_BLD,Gen9LPClient,A0,42.452807,syn,588850,
-PS2_RCPBCOM_MSAA_4PPC_WRT,Gen9LPClient,A0,37.554205,syn,588850,
-PS2_RCPBCOM_MSAA_8PPC_BLD,Gen9LPClient,A0,62.11599,syn,588850,
-PS2_RCPBCOM_MSAA_8PPC_WRT,Gen9LPClient,A0,53.8722,syn,588850,
-PS2_RCPBCOM_MSAA_RTR,Gen9LPClient,A0,0,syn,588850,
-PS2_RCPBCOM_NOMSAA_2PPC_BLD,Gen9LPClient,A0,50.445639,syn,588850,
-PS2_RCPBCOM_NOMSAA_2PPC_WRT,Gen9LPClient,A0,40.082963,syn,588850,
-PS2_RCPBCOM_NOMSAA_4PPC_BLD,Gen9LPClient,A0,42.452807,syn,588850,
-PS2_RCPBCOM_NOMSAA_4PPC_WRT,Gen9LPClient,A0,37.554205,syn,588850,
-PS2_RCPBCOM_NOMSAA_8PPC_BLD,Gen9LPClient,A0,62.11599,syn,588850,
-PS2_RCPBCOM_NOMSAA_8PPC_WRT,Gen9LPClient,A0,53.8722,syn,588850,
-PS2_RCPBCOM_NOMSAA_RTR,Gen9LPClient,A0,0,syn,588850,
-PS2_RCPBPIX_MSAA_2PPC_BLD,Gen9LPClient,A0,71.16881,syn,983280,
-PS2_RCPBPIX_MSAA_2PPC_WRT,Gen9LPClient,A0,33.55103,syn,983280,
-PS2_RCPBPIX_MSAA_4PPC_BLD,Gen9LPClient,A0,81.75857,syn,983280,
-PS2_RCPBPIX_MSAA_4PPC_WRT,Gen9LPClient,A0,47.9374,syn,983280,
-PS2_RCPBPIX_MSAA_8PPC_BLD,Gen9LPClient,A0,165.09328,syn,983280,
-PS2_RCPBPIX_MSAA_8PPC_WRT,Gen9LPClient,A0,76.26422,syn,983280,
-PS2_RCPBPIX_NOMSAA_2PPC_BLD,Gen9LPClient,A0,71.16881,syn,983280,
-PS2_RCPBPIX_NOMSAA_2PPC_WRT,Gen9LPClient,A0,33.55103,syn,983280,
-PS2_RCPBPIX_NOMSAA_4PPC_BLD,Gen9LPClient,A0,81.75857,syn,983280,
-PS2_RCPBPIX_NOMSAA_4PPC_WRT,Gen9LPClient,A0,47.9374,syn,983280,
-PS2_RCPBPIX_NOMSAA_8PPC_BLD,Gen9LPClient,A0,165.09328,syn,983280,
-PS2_RCPBPIX_NOMSAA_8PPC_WRT,Gen9LPClient,A0,76.26422,syn,983280,
-PS2_RCPFE_COLORLATFIFO_READ,Gen9LPClient,A0,42.417,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPClient,A0,93.643,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
-PS2_RCPFE_MSAA_2PPC_BLD_NOZFAIL,Gen9LPClient,A0,352.709,syn,749670,
-PS2_RCPFE_MSAA_2PPC_BLD_NOZPASS,Gen9LPClient,A0,352.709,syn,749670,
-PS2_RCPFE_MSAA_2PPC_BLD_ZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_2PPC_BLD_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_2PPC_WRT_NOZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_2PPC_WRT_NOZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_2PPC_WRT_ZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_2PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_4PPC_BLD_NOZFAIL,Gen9LPClient,A0,317.05,syn,749670,
-PS2_RCPFE_MSAA_4PPC_BLD_NOZPASS,Gen9LPClient,A0,317.05,syn,749670,
-PS2_RCPFE_MSAA_4PPC_BLD_ZFAIL,Gen9LPClient,A0,22.089591,syn,749670,
-PS2_RCPFE_MSAA_4PPC_BLD_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_4PPC_WRT_NOZFAIL,Gen9LPClient,A0,389.62,syn,749670,
-PS2_RCPFE_MSAA_4PPC_WRT_NOZPASS,Gen9LPClient,A0,389.62,syn,749670,
-PS2_RCPFE_MSAA_4PPC_WRT_ZFAIL,Gen9LPClient,A0,22.089591,syn,749670,
-PS2_RCPFE_MSAA_4PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_8PPC_BLD_NOZFAIL,Gen9LPClient,A0,353.295,syn,749670,
-PS2_RCPFE_MSAA_8PPC_BLD_NOZPASS,Gen9LPClient,A0,353.295,syn,749670,
-PS2_RCPFE_MSAA_8PPC_BLD_ZFAIL,Gen9LPClient,A0,87.0591,syn,749670,
-PS2_RCPFE_MSAA_8PPC_BLD_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_8PPC_WRT_NOZFAIL,Gen9LPClient,A0,419.2,syn,749670,
-PS2_RCPFE_MSAA_8PPC_WRT_NOZPASS,Gen9LPClient,A0,419.2,syn,749670,
-PS2_RCPFE_MSAA_8PPC_WRT_ZFAIL,Gen9LPClient,A0,87.0591,syn,749670,
-PS2_RCPFE_MSAA_8PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_MSAA_RTR,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_BLD_NOZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_BLD_NOZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_BLD_ZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_BLD_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_WRT_NOZFAIL,Gen9LPClient,A0,353.565,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_WRT_NOZPASS,Gen9LPClient,A0,353.565,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_WRT_ZFAIL,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_2PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_BLD_NOZFAIL,Gen9LPClient,A0,334.575,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_BLD_NOZPASS,Gen9LPClient,A0,334.575,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_BLD_ZFAIL,Gen9LPClient,A0,22.089591,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_BLD_ZPASS,Gen9LPClient,A0,331.735,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_WRT_NOZFAIL,Gen9LPClient,A0,291.81246,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_WRT_NOZPASS,Gen9LPClient,A0,291.81246,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_WRT_ZFAIL,Gen9LPClient,A0,22.089591,syn,749670,
-PS2_RCPFE_NOMSAA_4PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_BLD_NOZFAIL,Gen9LPClient,A0,370.508,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_BLD_NOZPASS,Gen9LPClient,A0,370.508,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_BLD_ZFAIL,Gen9LPClient,A0,87.0591,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_BLD_ZPASS,Gen9LPClient,A0,378.369,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_WRT_NOZFAIL,Gen9LPClient,A0,370.508,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_WRT_NOZPASS,Gen9LPClient,A0,370.508,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_WRT_ZFAIL,Gen9LPClient,A0,87.0591,syn,749670,
-PS2_RCPFE_NOMSAA_8PPC_WRT_ZPASS,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_NOMSAA_RTR,Gen9LPClient,A0,0,syn,749670,
-PS2_RCPFE_RCCLATFIFO_READ,Gen9LPClient,A0,3.629,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPClient,A0,5.67,ebb,1,
-PS2_RCZ_ALLOC_HITS,Gen9LPClient,A0,179.5813,syn,1191080,
-PS2_RCZ_ALLOC_MISSES,Gen9LPClient,A0,145.4748,syn,1191080,
-PS2_RCZ_CACHE_READ,Gen9LPClient,A0,7.258,ebb,1,
-PS2_RCZ_CACHE_WRITE,Gen9LPClient,A0,11.34,ebb,1,
-PS2_ROSC_DFX,Gen9LPClient,A0,50.86,syn,549710,
-PS2_ROSC_DOP,Gen9LPClient,A0,72.91,syn,1,
-PS2_ROSC_GLUE,Gen9LPClient,A0,103.24,syn,1,
-PS2_ROSC_SMALL,Gen9LPClient,A0,135.81,syn,735220,
-PS2_ROSS_DFX,Gen9LPClient,A0,21.67,syn,422190,
-PS2_ROSS_DOP,Gen9LPClient,A0,25.88,syn,1,
-PS2_ROSS_GLUE,Gen9LPClient,A0,104.89,syn,1,
-PS2_ROSS_SMALL,Gen9LPClient,A0,86.19,syn,239860,
-PS2_RS,Gen9LPClient,A0,7.66506,syn,305547,
-PS2_SARB,Gen9LPClient,A0,5.616639,syn,216780,
-PS2_SBE_CALC,Gen9LPClient,A0,0,syn,1362960,
-PS2_SBE_FETCH,Gen9LPClient,A0,0,syn,1362960,
-PS2_SBE_OTHER,Gen9LPClient,A0,21.29918,syn,1362960,
-PS2_SBE_REPLAY,Gen9LPClient,A0,0,syn,1362960,
-PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen9LPClient,A0,132.4843203,syn,434760,
-PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen9LPClient,A0,137.821042,syn,434760,
-PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen9LPClient,A0,154.6438799,syn,434760,
-PS2_SC_DataRam_READ,Gen9LPClient,A0,7.189,ebb,1,
-PS2_SC_DataRam_WRITE,Gen9LPClient,A0,11.198,ebb,1,
-PS2_SC_Else,Gen9LPClient,A0,105.7843949,syn,434760,
-PS2_SC_FastLinear_128BPT,Gen9LPClient,A0,111.2604049,syn,434760,
-PS2_SC_FastLinear_32BPT,Gen9LPClient,A0,128.6917866,syn,434760,
-PS2_SC_FastLinear_64BPT,Gen9LPClient,A0,135.929167,syn,434760,
-PS2_SC_LatFifo_READ,Gen9LPClient,A0,11.8761,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen9LPClient,A0,29.4594,ebb,1,
-PS2_SC_LinearFastAniso_128BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SC_LinearFastAniso_32BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SC_LinearFastAniso_64BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SC_NearestMode_128BPT,Gen9LPClient,A0,75.62450434,syn,434760,
-PS2_SC_NearestMode_32BPT,Gen9LPClient,A0,80.19066007,syn,434760,
-PS2_SC_NearestMode_64BPT,Gen9LPClient,A0,105.699059,syn,434760,
-PS2_SC_NonLinearFastAniso_128BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SC_NonLinearFastAniso_32BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SC_NonLinearFastAniso_64BPT,Gen9LPClient,A0,0,syn,434760,
-PS2_SDE_Culled,Gen9LPClient,A0,2.114499,syn,57185.77,
-PS2_SDE_NotCulled,Gen9LPClient,A0,2.114499,syn,57185.77,
-PS2_SF_Culled,Gen9LPClient,A0,63.66925,syn,1206473.53,
-PS2_SF_NotCulled_FastClip,Gen9LPClient,A0,75.9233,syn,1206473.53,
-PS2_SF_NotCulled_NotFastClip,Gen9LPClient,A0,75.9233,syn,1206473.53,
-PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,52.71446223,syn,401520,
-PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,28.93910025,syn,125560,
-PS2_SOL_Cache_Read,Gen9LPClient,A0,2.06088,ebb,1,
-PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.218459,ebb,1,
-PS2_SOL_Cache_Write,Gen9LPClient,A0,3.157579,ebb,1,
-PS2_SOL_Disabled,Gen9LPClient,A0,4.801676,syn,270622.2,
-PS2_SOL_Enabled,Gen9LPClient,A0,4.801676,syn,270622.2,
-PS2_ST_1Bank_Enable ,Gen9LPClient,A0,29.29623889,syn,188670,
-PS2_ST_2Bank_Enable ,Gen9LPClient,A0,32.38472466,syn,188670,
-PS2_ST_3Bank_Enable ,Gen9LPClient,A0,36.11707194,syn,188670,
-PS2_ST_4Bank_Enable ,Gen9LPClient,A0,42.8756873,syn,188670,
-PS2_STC_ALLOC_HITS,Gen9LPClient,A0,97.3983,syn,783820,
-PS2_STC_ALLOC_MISSES,Gen9LPClient,A0,97.3983,syn,783820,
-PS2_STC_CACHE_READ,Gen9LPClient,A0,9.843,ebb,1,
-PS2_STC_CACHE_WRITE,Gen9LPClient,A0,15.213,ebb,1,
-PS2_SVG,Gen9LPClient,A0,4.118869,syn,95301.2,
-PS2_SVL,Gen9LPClient,A0,4.735598,syn,114900,
-PS2_TC,Gen9LPClient,A0,32.7305875,syn,534680,
-PS2_TDC,Gen9LPClient,A0,2.819333,syn,209310,
-PS2_TDG,Gen9LPClient,A0,4.88978,syn,138319.24,
-PS2_TDL_NONPSDDISPATCH,Gen9LPClient,A0,0,syn,474080,
-PS2_TDL_PSDDISPATCH,Gen9LPClient,A0,0,syn,474080,
-PS2_TDS_Cache_Read,Gen9LPClient,A0,3.629,ebb,1,
-PS2_TDS_Cache_ReadWrite,Gen9LPClient,A0,9.299,ebb,1,
-PS2_TDS_Cache_Write,Gen9LPClient,A0,5.67,ebb,1,
-PS2_TDS_Disabled,Gen9LPClient,A0,8.215711,syn,698153,
-PS2_TDS_Enabled,Gen9LPClient,A0,83.1519,syn,698153,
-PS2_TE_Disabled,Gen9LPClient,A0,7.224539645,syn,108846,
-PS2_TE_Enabled,Gen9LPClient,A0,14.87069,syn,108846,
-PS2_TSG,Gen9LPClient,A0,25.99072,syn,465436.9,
-PS2_URBM,Gen9LPClient,A0,6.38755,syn,188324,
-PS2_VF_Cache_Read,Gen9LPClient,A0,6.333716,ebb,1,
-PS2_VF_Cache_Write,Gen9LPClient,A0,7.403188,ebb,1,
 EM_mad_fp16_15%,Gen8,A0,19.404,syn,397435,
 EM_mad_fp16_25%,Gen8,A0,27.967,syn,397435,
 EM_mad_fp16_35%,Gen8,A0,37.864,syn,397435,
 EM_mad_fp16_45%,Gen8,A0,44.123,syn,397435,
-PS2_VF_URBFifo_Read,Gen9LPClient,A0,6.626534,ebb,1,
-PS2_VF_URBFifo_Write,Gen9LPClient,A0,11.08108,ebb,1,
-PS2_VFBE1,Gen9LPClient,A0,25.70005945,syn,494743,
-PS2_VFBE2,Gen9LPClient,A0,31.75386445,syn,499676,
-PS2_VFE,Gen9LPClient,A0,3.281879,syn,98762.02,
-PS2_VS_Cache_Read,Gen9LPClient,A0,4.869207,ebb,1,
-PS2_VS_Cache_Write,Gen9LPClient,A0,8.86775,ebb,1,
-PS2_VSBE,Gen9LPClient,A0,42.208,syn,605841,
-PS2_VSFE,Gen9LPClient,A0,42.208,syn,381580,
-PS2_WMBE_ANTIALIASING,Gen9LPClient,A0,0,syn,1000070,
-PS2_WMBE_MSAA_FULLYLIT,Gen9LPClient,A0,22.61895,syn,1000070,
-PS2_WMBE_MSAA_PARTIALLYLIT,Gen9LPClient,A0,72.93027,syn,1000070,
-PS2_WMBE_NOMSAA_FULLYLIT,Gen9LPClient,A0,19.48439,syn,1000070,
-PS2_WMBE_NOMSAA_PARTIALLYLIT,Gen9LPClient,A0,72.93027,syn,1000070,
-PS2_WMBE_NULLTOPSC,Gen9LPClient,A0,11.84364,syn,1000070,
-PS2_WMFE_NOTNULLTOPSC,Gen9LPClient,A0,90.2138,syn,208800,
-PS2_WMFE_NULLTOPSC,Gen9LPClient,A0,8.330724,syn,208800,
-PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,6.593,ebb,1,
-PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,10.922,ebb,1,
 EM_mad_fp16_55%,Gen8,A0,47.839,syn,397435,
 EM_mad_fp16_65%,Gen8,A0,53.893,syn,397435,
 EM_mad_fp16_75%,Gen8,A0,57.333,syn,397435,
@@ -1983,3 +924,1900 @@ PS1_L3_Bank_GLUE,Gen8,A0,4.366,syn,149246.2,
 PS2_L3_Bank_GLUE,Gen8,A0,15.72,syn,149246.2,
 PS0_EU_EM,Gen8,A0,0.075,syn,397435,
 PS1_EU_EM,Gen8,A0,0.075,syn,397435,
+PS0_EM,Gen9LPClient,A0,0.075796,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_EM,Gen9LPClient,A0,9.701887,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGDIS data
+EM_add_floatbypass_10%,Gen9LPClient,A0,17.28418,syn,331124.9,Approximated with sim data
+EM_add_floatbypass_20%,Gen9LPClient,A0,19.7426,syn,331124.9,Approximated with sim data
+EM_add_floatbypass_30%,Gen9LPClient,A0,20.713,syn,331124.9,Simulated
+EM_add_floatbypass_40%,Gen9LPClient,A0,21.66965,syn,331124.9,Approximated with sim data
+EM_add_floatbypass_55%,Gen9LPClient,A0,23.05006,syn,331124.9,Approximated with sim data
+EM_add_fp16_10%,Gen9LPClient,A0,32.4719,syn,331124.9,
+EM_add_fp16_20%,Gen9LPClient,A0,32.7213,syn,331124.9,
+EM_add_fp16_30%,Gen9LPClient,A0,35.6926,syn,331124.9,
+EM_add_fp16_40%,Gen9LPClient,A0,38.7688,syn,331124.9,
+EM_add_fp16_55%,Gen9LPClient,A0,39.5662,syn,331124.9,
+EM_add_fp32_10%,Gen9LPClient,A0,31.6883,syn,331124.9,
+EM_add_fp32_20%,Gen9LPClient,A0,36.1955,syn,331124.9,
+EM_add_fp32_30%,Gen9LPClient,A0,37.9746,syn,331124.9,
+EM_add_fp32_40%,Gen9LPClient,A0,39.7285,syn,331124.9,
+EM_add_fp32_55%,Gen9LPClient,A0,42.2593,syn,331124.9,
+EM_add_fp64_10%,Gen9LPClient,A0,25.5124,syn,331124.9,
+EM_add_fp64_20%,Gen9LPClient,A0,27.1379,syn,331124.9,
+EM_add_fp64_30%,Gen9LPClient,A0,30.2468,syn,331124.9,
+EM_add_fp64_40%,Gen9LPClient,A0,32.2477,syn,331124.9,
+EM_add_fp64_55%,Gen9LPClient,A0,35.064,syn,331124.9,
+EM_add_int16_10%,Gen9LPClient,A0,18.6218,syn,331124.9,
+EM_add_int16_20%,Gen9LPClient,A0,23.8007,syn,331124.9,
+EM_add_int16_30%,Gen9LPClient,A0,25.4337,syn,331124.9,
+EM_add_int16_40%,Gen9LPClient,A0,29.3146,syn,331124.9,
+EM_add_int16_55%,Gen9LPClient,A0,36.158,syn,331124.9,
+EM_add_int32_10%,Gen9LPClient,A0,18.8912,syn,331124.9,
+EM_add_int32_20%,Gen9LPClient,A0,23.3731,syn,331124.9,
+EM_add_int32_30%,Gen9LPClient,A0,26.7017,syn,331124.9,
+EM_add_int32_40%,Gen9LPClient,A0,31.3937,syn,331124.9,
+EM_add_int32_55%,Gen9LPClient,A0,39.5841,syn,331124.9,
+EM_add_intbypass_10%,Gen9LPClient,A0,10.30408,syn,331124.9,Approximated with sim data
+EM_add_intbypass_20%,Gen9LPClient,A0,12.74871,syn,331124.9,Approximated with sim data
+EM_add_intbypass_30%,Gen9LPClient,A0,14.56427,syn,331124.9,Approximated with sim data
+EM_add_intbypass_40%,Gen9LPClient,A0,17.12349,syn,331124.9,Approximated with sim data
+EM_add_intbypass_55%,Gen9LPClient,A0,21.59089,syn,331124.9,Approximated with sim data
+EM_add_int64_10%,Gen9LPClient,A0,19.7202,syn,331124.9,
+EM_add_int64_20%,Gen9LPClient,A0,23.1002,syn,331124.9,
+EM_add_int64_30%,Gen9LPClient,A0,26.3227,syn,331124.9,
+EM_add_int64_40%,Gen9LPClient,A0,29.7121,syn,331124.9,
+EM_add_int64_55%,Gen9LPClient,A0,34.8017,syn,331124.9,
+EM_cmp_floatbypass_10%,Gen9LPClient,A0,2.578464,syn,331124.9,Approximated with sim data
+EM_cmp_floatbypass_20%,Gen9LPClient,A0,3.297987,syn,331124.9,Approximated with sim data
+EM_cmp_floatbypass_30%,Gen9LPClient,A0,5.4272,syn,331124.9,Simulated
+EM_cmp_floatbypass_40%,Gen9LPClient,A0,4.385261,syn,331124.9,Approximated with sim data
+EM_cmp_floatbypass_55%,Gen9LPClient,A0,5.162776,syn,331124.9,Approximated with sim data
+EM_cmp_fp16_10%,Gen9LPClient,A0,20.7197,syn,331124.9,
+EM_cmp_fp16_20%,Gen9LPClient,A0,26.6455,syn,331124.9,
+EM_cmp_fp16_30%,Gen9LPClient,A0,21.5404,syn,331124.9,
+EM_cmp_fp16_40%,Gen9LPClient,A0,26.9293,syn,331124.9,
+EM_cmp_fp16_55%,Gen9LPClient,A0,27.0836,syn,331124.9,
+EM_cmp_fp32_10%,Gen9LPClient,A0,12.8765,syn,331124.9,
+EM_cmp_fp32_20%,Gen9LPClient,A0,16.4697,syn,331124.9,
+EM_cmp_fp32_30%,Gen9LPClient,A0,27.1027,syn,331124.9,
+EM_cmp_fp32_40%,Gen9LPClient,A0,21.8994,syn,331124.9,
+EM_cmp_fp32_55%,Gen9LPClient,A0,25.7822,syn,331124.9,
+EM_cmp_fp64_10%,Gen9LPClient,A0,23.6008,syn,331124.9,
+EM_cmp_fp64_20%,Gen9LPClient,A0,27.214,syn,331124.9,
+EM_cmp_fp64_30%,Gen9LPClient,A0,28.7359,syn,331124.9,
+EM_cmp_fp64_40%,Gen9LPClient,A0,34.803,syn,331124.9,
+EM_cmp_fp64_55%,Gen9LPClient,A0,36.173,syn,331124.9,
+EM_cmp_int16_10%,Gen9LPClient,A0,16.5069,syn,331124.9,
+EM_cmp_int16_20%,Gen9LPClient,A0,22.7296,syn,331124.9,
+EM_cmp_int16_30%,Gen9LPClient,A0,25.6108,syn,331124.9,
+EM_cmp_int16_40%,Gen9LPClient,A0,19.451,syn,331124.9,
+EM_cmp_int16_55%,Gen9LPClient,A0,38.674,syn,331124.9,
+EM_cmp_int32_10%,Gen9LPClient,A0,12.9912,syn,331124.9,
+EM_cmp_int32_20%,Gen9LPClient,A0,19.7665,syn,331124.9,
+EM_cmp_int32_30%,Gen9LPClient,A0,23.6428,syn,331124.9,
+EM_cmp_int32_40%,Gen9LPClient,A0,23.527,syn,331124.9,
+EM_cmp_int32_55%,Gen9LPClient,A0,22.1663,syn,331124.9,
+EM_cmp_intbypass_10%,Gen9LPClient,A0,2.601432,syn,331124.9,Approximated with sim data
+EM_cmp_intbypass_20%,Gen9LPClient,A0,3.958157,syn,331124.9,Approximated with sim data
+EM_cmp_intbypass_30%,Gen9LPClient,A0,4.73437,syn,331124.9,Approximated with sim data
+EM_cmp_intbypass_40%,Gen9LPClient,A0,4.711181,syn,331124.9,Approximated with sim data
+EM_cmp_intbypass_55%,Gen9LPClient,A0,4.438707,syn,331124.9,Approximated with sim data
+EM_cmp_int64_10%,Gen9LPClient,A0,17.9446,syn,331124.9,
+EM_cmp_int64_20%,Gen9LPClient,A0,20.7779,syn,331124.9,
+EM_cmp_int64_30%,Gen9LPClient,A0,23.0509,syn,331124.9,
+EM_cmp_int64_40%,Gen9LPClient,A0,25.8939,syn,331124.9,
+EM_cmp_int64_55%,Gen9LPClient,A0,30.8405,syn,331124.9,
+EM_mad_floatbypass_10%,Gen9LPClient,A0,19.4417,syn,331124.9,Approximated with sim data
+EM_mad_floatbypass_20%,Gen9LPClient,A0,22.13454,syn,331124.9,Approximated with sim data
+EM_mad_floatbypass_30%,Gen9LPClient,A0,24.3153,syn,331124.9,Simulated
+EM_mad_floatbypass_40%,Gen9LPClient,A0,27.16881,syn,331124.9,Approximated with sim data
+EM_mad_floatbypass_55%,Gen9LPClient,A0,29.24996,syn,331124.9,Approximated with sim data
+EM_mad_fp16_10%,Gen9LPClient,A0,38.2202,syn,331124.9,
+EM_mad_fp16_20%,Gen9LPClient,A0,43.5967,syn,331124.9,
+EM_mad_fp16_30%,Gen9LPClient,A0,44.878,syn,331124.9,
+EM_mad_fp16_40%,Gen9LPClient,A0,50.2631,syn,331124.9,
+EM_mad_fp16_55%,Gen9LPClient,A0,54.5227,syn,331124.9,
+EM_mad_fp32_10%,Gen9LPClient,A0,49.6367,syn,331124.9,
+EM_mad_fp32_20%,Gen9LPClient,A0,56.5118,syn,331124.9,
+EM_mad_fp32_30%,Gen9LPClient,A0,62.0795,syn,331124.9,
+EM_mad_fp32_40%,Gen9LPClient,A0,72.2184,syn,331124.9,
+EM_mad_fp32_55%,Gen9LPClient,A0,74.6782,syn,331124.9,
+EM_mad_fp64_10%,Gen9LPClient,A0,50.6215,syn,331124.9,
+EM_mad_fp64_20%,Gen9LPClient,A0,58.1463,syn,331124.9,
+EM_mad_fp64_30%,Gen9LPClient,A0,63.1025,syn,331124.9,
+EM_mad_fp64_40%,Gen9LPClient,A0,66.7807,syn,331124.9,
+EM_mad_fp64_55%,Gen9LPClient,A0,72.4181,syn,331124.9,
+EM_mad_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mad_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sad_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_floatbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_floatbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_floatbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_floatbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_floatbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mac_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mov_bypass_10%,Gen9LPClient,A0,10.5624,syn,331124.9,
+EM_mov_bypass_20%,Gen9LPClient,A0,12.8131,syn,331124.9,
+EM_mov_bypass_30%,Gen9LPClient,A0,13.9013,syn,331124.9,
+EM_mov_bypass_40%,Gen9LPClient,A0,15.6013,syn,331124.9,
+EM_mov_bypass_55%,Gen9LPClient,A0,17.8927,syn,331124.9,
+EM_mov_fp16_10%,Gen9LPClient,A0,10.5624,syn,331124.9,
+EM_mov_fp16_20%,Gen9LPClient,A0,12.8131,syn,331124.9,
+EM_mov_fp16_30%,Gen9LPClient,A0,13.9013,syn,331124.9,
+EM_mov_fp16_40%,Gen9LPClient,A0,15.6013,syn,331124.9,
+EM_mov_fp16_55%,Gen9LPClient,A0,17.8927,syn,331124.9,
+EM_mov_fp32_10%,Gen9LPClient,A0,9.8221,syn,331124.9,
+EM_mov_fp32_20%,Gen9LPClient,A0,11.4048,syn,331124.9,
+EM_mov_fp32_30%,Gen9LPClient,A0,12.9147,syn,331124.9,
+EM_mov_fp32_40%,Gen9LPClient,A0,15.1687,syn,331124.9,
+EM_mov_fp32_55%,Gen9LPClient,A0,18.5486,syn,331124.9,
+EM_mov_fp64_10%,Gen9LPClient,A0,15.1937,syn,331124.9,
+EM_mov_fp64_20%,Gen9LPClient,A0,17.0252,syn,331124.9,
+EM_mov_fp64_30%,Gen9LPClient,A0,19.0283,syn,331124.9,
+EM_mov_fp64_40%,Gen9LPClient,A0,21.5364,syn,331124.9,
+EM_mov_fp64_55%,Gen9LPClient,A0,25.41,syn,331124.9,
+EM_mov_int16_10%,Gen9LPClient,A0,9.9244,syn,331124.9,
+EM_mov_int16_20%,Gen9LPClient,A0,12.217,syn,331124.9,
+EM_mov_int16_30%,Gen9LPClient,A0,13.2377,syn,331124.9,
+EM_mov_int16_40%,Gen9LPClient,A0,15.7679,syn,331124.9,
+EM_mov_int16_55%,Gen9LPClient,A0,20.3868,syn,331124.9,
+EM_mov_int32_10%,Gen9LPClient,A0,9.9152,syn,331124.9,
+EM_mov_int32_20%,Gen9LPClient,A0,11.7623,syn,331124.9,
+EM_mov_int32_30%,Gen9LPClient,A0,13.1803,syn,331124.9,
+EM_mov_int32_40%,Gen9LPClient,A0,15.7585,syn,331124.9,
+EM_mov_int32_55%,Gen9LPClient,A0,20.425,syn,331124.9,
+EM_mov_intbypass_10%,Gen9LPClient,A0,9.9152,syn,331124.9,
+EM_mov_intbypass_20%,Gen9LPClient,A0,11.7623,syn,331124.9,
+EM_mov_intbypass_30%,Gen9LPClient,A0,13.1803,syn,331124.9,
+EM_mov_intbypass_40%,Gen9LPClient,A0,15.7585,syn,331124.9,
+EM_mov_intbypass_55%,Gen9LPClient,A0,20.425,syn,331124.9,
+EM_mov_int64_10%,Gen9LPClient,A0,15.3473,syn,331124.9,
+EM_mov_int64_20%,Gen9LPClient,A0,17.1838,syn,331124.9,
+EM_mov_int64_30%,Gen9LPClient,A0,19.042,syn,331124.9,
+EM_mov_int64_40%,Gen9LPClient,A0,22.3262,syn,331124.9,
+EM_mov_int64_55%,Gen9LPClient,A0,26.8483,syn,331124.9,
+EM_mul_floatbypass_10%,Gen9LPClient,A0,7.826421,syn,331124.9,Approximated with sim data
+EM_mul_floatbypass_20%,Gen9LPClient,A0,8.741982,syn,331124.9,Approximated with sim data
+EM_mul_floatbypass_30%,Gen9LPClient,A0,9.7163,syn,331124.9,Simulated
+EM_mul_floatbypass_40%,Gen9LPClient,A0,10.7757,syn,331124.9,Approximated with sim data
+EM_mul_floatbypass_55%,Gen9LPClient,A0,11.62793,syn,331124.9,Approximated with sim data
+EM_mul_fp16_10%,Gen9LPClient,A0,27.6438,syn,331124.9,
+EM_mul_fp16_20%,Gen9LPClient,A0,34.0153,syn,331124.9,
+EM_mul_fp16_30%,Gen9LPClient,A0,35.3096,syn,331124.9,
+EM_mul_fp16_40%,Gen9LPClient,A0,39.007,syn,331124.9,
+EM_mul_fp16_55%,Gen9LPClient,A0,41.2731,syn,331124.9,
+EM_mul_fp32_10%,Gen9LPClient,A0,38.6414,syn,331124.9,
+EM_mul_fp32_20%,Gen9LPClient,A0,43.1618,syn,331124.9,
+EM_mul_fp32_30%,Gen9LPClient,A0,47.9723,syn,331124.9,
+EM_mul_fp32_40%,Gen9LPClient,A0,53.2029,syn,331124.9,
+EM_mul_fp32_55%,Gen9LPClient,A0,57.4106,syn,331124.9,
+EM_mul_fp64_10%,Gen9LPClient,A0,45.6214,syn,331124.9,
+EM_mul_fp64_20%,Gen9LPClient,A0,51.8727,syn,331124.9,
+EM_mul_fp64_30%,Gen9LPClient,A0,56.6364,syn,331124.9,
+EM_mul_fp64_40%,Gen9LPClient,A0,60.89,syn,331124.9,
+EM_mul_fp64_55%,Gen9LPClient,A0,65.4792,syn,331124.9,
+EM_mul_int16_10%,Gen9LPClient,A0,32.0966,syn,331124.9,
+EM_mul_int16_20%,Gen9LPClient,A0,38.0666,syn,331124.9,
+EM_mul_int16_30%,Gen9LPClient,A0,40.3543,syn,331124.9,
+EM_mul_int16_40%,Gen9LPClient,A0,44.949,syn,331124.9,
+EM_mul_int16_55%,Gen9LPClient,A0,51.5793,syn,331124.9,
+EM_mul_int32_10%,Gen9LPClient,A0,51.0721,syn,331124.9,
+EM_mul_int32_20%,Gen9LPClient,A0,56.9449,syn,331124.9,
+EM_mul_int32_30%,Gen9LPClient,A0,60.6665,syn,331124.9,
+EM_mul_int32_40%,Gen9LPClient,A0,65.961,syn,331124.9,
+EM_mul_int32_55%,Gen9LPClient,A0,70.7422,syn,331124.9,
+EM_mul_intbypass_10%,Gen9LPClient,A0,10.34413,syn,331124.9,Approximated with sim data
+EM_mul_intbypass_20%,Gen9LPClient,A0,11.53361,syn,331124.9,Approximated with sim data
+EM_mul_intbypass_30%,Gen9LPClient,A0,12.28738,syn,331124.9,Approximated with sim data
+EM_mul_intbypass_40%,Gen9LPClient,A0,13.35973,syn,331124.9,Approximated with sim data
+EM_mul_intbypass_55%,Gen9LPClient,A0,14.32811,syn,331124.9,Approximated with sim data
+EM_mul_int64_10%,Gen9LPClient,A0,51.0721,syn,331124.9,Approximated with int32
+EM_mul_int64_20%,Gen9LPClient,A0,56.9449,syn,331124.9,Approximated with int32
+EM_mul_int64_30%,Gen9LPClient,A0,60.6665,syn,331124.9,Approximated with int32
+EM_mul_int64_40%,Gen9LPClient,A0,65.961,syn,331124.9,Approximated with int32
+EM_mul_int64_55%,Gen9LPClient,A0,70.7422,syn,331124.9,Approximated with int32
+EM_pln_floatbypass_10%,Gen9LPClient,A0,44.5672,syn,331124.9,No bypass in PLN
+EM_pln_floatbypass_20%,Gen9LPClient,A0,50.7333,syn,331124.9,No bypass in PLN
+EM_pln_floatbypass_30%,Gen9LPClient,A0,51.8573,syn,331124.9,No bypass in PLN
+EM_pln_floatbypass_40%,Gen9LPClient,A0,57.0935,syn,331124.9,No bypass in PLN
+EM_pln_floatbypass_55%,Gen9LPClient,A0,61.7507,syn,331124.9,No bypass in PLN
+EM_pln_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp32_10%,Gen9LPClient,A0,44.5672,syn,331124.9,
+EM_pln_fp32_20%,Gen9LPClient,A0,50.7333,syn,331124.9,
+EM_pln_fp32_30%,Gen9LPClient,A0,51.8573,syn,331124.9,
+EM_pln_fp32_40%,Gen9LPClient,A0,57.0935,syn,331124.9,
+EM_pln_fp32_55%,Gen9LPClient,A0,61.7507,syn,331124.9,
+EM_pln_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_pln_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_sel_bypass_10%,Gen9LPClient,A0,16.8199,syn,331124.9,No bypass in SEL
+EM_sel_bypass_20%,Gen9LPClient,A0,21.1641,syn,331124.9,No bypass in SEL
+EM_sel_bypass_30%,Gen9LPClient,A0,26.1983,syn,331124.9,No bypass in SEL
+EM_sel_bypass_40%,Gen9LPClient,A0,30.8389,syn,331124.9,No bypass in SEL
+EM_sel_bypass_55%,Gen9LPClient,A0,38.324,syn,331124.9,No bypass in SEL
+EM_sel_fp16_10%,Gen9LPClient,A0,19.139,syn,331124.9,
+EM_sel_fp16_20%,Gen9LPClient,A0,26.3778,syn,331124.9,
+EM_sel_fp16_30%,Gen9LPClient,A0,28.1176,syn,331124.9,
+EM_sel_fp16_40%,Gen9LPClient,A0,31.5603,syn,331124.9,
+EM_sel_fp16_55%,Gen9LPClient,A0,35.6587,syn,331124.9,
+EM_sel_fp32_10%,Gen9LPClient,A0,16.8199,syn,331124.9,
+EM_sel_fp32_20%,Gen9LPClient,A0,21.1641,syn,331124.9,
+EM_sel_fp32_30%,Gen9LPClient,A0,26.1983,syn,331124.9,
+EM_sel_fp32_40%,Gen9LPClient,A0,30.8389,syn,331124.9,
+EM_sel_fp32_55%,Gen9LPClient,A0,38.324,syn,331124.9,
+EM_sel_fp64_10%,Gen9LPClient,A0,21.4962,syn,331124.9,
+EM_sel_fp64_20%,Gen9LPClient,A0,24.4416,syn,331124.9,
+EM_sel_fp64_30%,Gen9LPClient,A0,28.4212,syn,331124.9,
+EM_sel_fp64_40%,Gen9LPClient,A0,32.8482,syn,331124.9,
+EM_sel_fp64_55%,Gen9LPClient,A0,37.985,syn,331124.9,
+EM_sel_int16_10%,Gen9LPClient,A0,15.1331,syn,331124.9,
+EM_sel_int16_20%,Gen9LPClient,A0,20.6273,syn,331124.9,
+EM_sel_int16_30%,Gen9LPClient,A0,23.1027,syn,331124.9,
+EM_sel_int16_40%,Gen9LPClient,A0,28.7185,syn,331124.9,
+EM_sel_int16_55%,Gen9LPClient,A0,39.191,syn,331124.9,
+EM_sel_int32_10%,Gen9LPClient,A0,16.146,syn,331124.9,
+EM_sel_int32_20%,Gen9LPClient,A0,20.6086,syn,331124.9,
+EM_sel_int32_30%,Gen9LPClient,A0,24.3887,syn,331124.9,
+EM_sel_int32_40%,Gen9LPClient,A0,31.009,syn,331124.9,
+EM_sel_int32_55%,Gen9LPClient,A0,42.063,syn,331124.9,
+EM_sel_intbypass_10%,Gen9LPClient,A0,16.146,syn,331124.9,No bypass in SEL
+EM_sel_intbypass_20%,Gen9LPClient,A0,20.6086,syn,331124.9,No bypass in SEL
+EM_sel_intbypass_30%,Gen9LPClient,A0,24.3887,syn,331124.9,No bypass in SEL
+EM_sel_intbypass_40%,Gen9LPClient,A0,31.009,syn,331124.9,No bypass in SEL
+EM_sel_intbypass_55%,Gen9LPClient,A0,42.063,syn,331124.9,No bypass in SEL
+EM_sel_int64_10%,Gen9LPClient,A0,18.5044,syn,331124.9,
+EM_sel_int64_20%,Gen9LPClient,A0,21.7385,syn,331124.9,
+EM_sel_int64_30%,Gen9LPClient,A0,25.119,syn,331124.9,
+EM_sel_int64_40%,Gen9LPClient,A0,30.4361,syn,331124.9,
+EM_sel_int64_55%,Gen9LPClient,A0,37.4863,syn,331124.9,
+EM_transc_bypass_10%,Gen9LPClient,A0,24.59941111,syn,331124.9,No bypass in TRANSC
+EM_transc_bypass_20%,Gen9LPClient,A0,27.01823,syn,331124.9,No bypass in TRANSC
+EM_transc_bypass_30%,Gen9LPClient,A0,28.84044,syn,331124.9,No bypass in TRANSC
+EM_transc_bypass_40%,Gen9LPClient,A0,30.36434,syn,331124.9,No bypass in TRANSC
+EM_transc_bypass_55%,Gen9LPClient,A0,31.92482,syn,331124.9,No bypass in TRANSC
+EM_transc_fp16_10%,Gen9LPClient,A0,21.40433,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_20%,Gen9LPClient,A0,22.0714,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_30%,Gen9LPClient,A0,22.59333,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_40%,Gen9LPClient,A0,22.747,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_55%,Gen9LPClient,A0,22.15749,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_10%,Gen9LPClient,A0,24.59941111,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_20%,Gen9LPClient,A0,27.01823,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_30%,Gen9LPClient,A0,28.84044,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_40%,Gen9LPClient,A0,30.36434,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_55%,Gen9LPClient,A0,31.92482,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp64_10%,Gen9LPClient,A0,24.59941111,syn,331124.9,Approximated with fp32 data
+EM_transc_fp64_20%,Gen9LPClient,A0,27.01823,syn,331124.9,Approximated with fp32 data
+EM_transc_fp64_30%,Gen9LPClient,A0,28.84044,syn,331124.9,Approximated with fp32 data
+EM_transc_fp64_40%,Gen9LPClient,A0,30.36434,syn,331124.9,Approximated with fp32 data
+EM_transc_fp64_55%,Gen9LPClient,A0,31.92482,syn,331124.9,Approximated with fp32 data
+EM_transc_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_transc_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+PS0_FPU,Gen9LPClient,A0,0.075796,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_FPU,Gen9LPClient,A0,9.701887,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGDIS data
+FPU_add_floatbypass_10%,Gen9LPClient,A0,15.60033,syn,369589.7,Approximated with sim data
+FPU_add_floatbypass_20%,Gen9LPClient,A0,18.08734,syn,369589.7,Approximated with sim data
+FPU_add_floatbypass_30%,Gen9LPClient,A0,18.6679,syn,369589.7,Simulated
+FPU_add_floatbypass_40%,Gen9LPClient,A0,19.77373,syn,369589.7,Approximated with sim data
+FPU_add_floatbypass_55%,Gen9LPClient,A0,20.41866,syn,369589.7,Approximated with sim data
+FPU_add_fp16_10%,Gen9LPClient,A0,31.9512,syn,369589.7,
+FPU_add_fp16_20%,Gen9LPClient,A0,31.2141,syn,369589.7,
+FPU_add_fp16_30%,Gen9LPClient,A0,34.3982,syn,369589.7,
+FPU_add_fp16_40%,Gen9LPClient,A0,38.4535,syn,369589.7,
+FPU_add_fp16_55%,Gen9LPClient,A0,37.4583,syn,369589.7,
+FPU_add_fp32_10%,Gen9LPClient,A0,29.421,syn,369589.7,
+FPU_add_fp32_20%,Gen9LPClient,A0,34.1113,syn,369589.7,
+FPU_add_fp32_30%,Gen9LPClient,A0,35.2062,syn,369589.7,
+FPU_add_fp32_40%,Gen9LPClient,A0,37.2917,syn,369589.7,
+FPU_add_fp32_55%,Gen9LPClient,A0,38.508,syn,369589.7,
+FPU_add_fp64_10%,Gen9LPClient,A0,25.3182,syn,369589.7,
+FPU_add_fp64_20%,Gen9LPClient,A0,27.2788,syn,369589.7,
+FPU_add_fp64_30%,Gen9LPClient,A0,31.0636,syn,369589.7,
+FPU_add_fp64_40%,Gen9LPClient,A0,32.6196,syn,369589.7,
+FPU_add_fp64_55%,Gen9LPClient,A0,35.1266,syn,369589.7,
+FPU_add_int16_10%,Gen9LPClient,A0,19.7572,syn,369589.7,
+FPU_add_int16_20%,Gen9LPClient,A0,24.8673,syn,369589.7,
+FPU_add_int16_30%,Gen9LPClient,A0,26.787,syn,369589.7,
+FPU_add_int16_40%,Gen9LPClient,A0,30.9126,syn,369589.7,
+FPU_add_int16_55%,Gen9LPClient,A0,37.9361,syn,369589.7,
+FPU_add_int32_10%,Gen9LPClient,A0,19.8283,syn,369589.7,
+FPU_add_int32_20%,Gen9LPClient,A0,24.2184,syn,369589.7,
+FPU_add_int32_30%,Gen9LPClient,A0,27.8507,syn,369589.7,
+FPU_add_int32_40%,Gen9LPClient,A0,32.9517,syn,369589.7,
+FPU_add_int32_55%,Gen9LPClient,A0,41.5806,syn,369589.7,
+FPU_add_intbypass_10%,Gen9LPClient,A0,10.51385,syn,369589.7,Approximated with sim data
+FPU_add_intbypass_20%,Gen9LPClient,A0,12.84168,syn,369589.7,Approximated with sim data
+FPU_add_intbypass_30%,Gen9LPClient,A0,14.76769,syn,369589.7,Approximated with sim data
+FPU_add_intbypass_40%,Gen9LPClient,A0,17.47246,syn,369589.7,Approximated with sim data
+FPU_add_intbypass_55%,Gen9LPClient,A0,22.04789,syn,369589.7,Approximated with sim data
+FPU_add_int64_10%,Gen9LPClient,A0,19.6526,syn,369589.7,
+FPU_add_int64_20%,Gen9LPClient,A0,22.6113,syn,369589.7,
+FPU_add_int64_30%,Gen9LPClient,A0,25.582,syn,369589.7,
+FPU_add_int64_40%,Gen9LPClient,A0,28.8555,syn,369589.7,
+FPU_add_int64_55%,Gen9LPClient,A0,34.0778,syn,369589.7,
+FPU_cmp_floatbypass_10%,Gen9LPClient,A0,8.834513,syn,369589.7,Approximated with sim data
+FPU_cmp_floatbypass_20%,Gen9LPClient,A0,11.72169,syn,369589.7,Approximated with sim data
+FPU_cmp_floatbypass_30%,Gen9LPClient,A0,16.3306,syn,369589.7,Simulated
+FPU_cmp_floatbypass_40%,Gen9LPClient,A0,14.37106,syn,369589.7,Approximated with sim data
+FPU_cmp_floatbypass_55%,Gen9LPClient,A0,13.67087,syn,369589.7,Approximated with sim data
+FPU_cmp_fp16_10%,Gen9LPClient,A0,20.6616,syn,369589.7,
+FPU_cmp_fp16_20%,Gen9LPClient,A0,12.9964,syn,369589.7,
+FPU_cmp_fp16_30%,Gen9LPClient,A0,21.5404,syn,369589.7,
+FPU_cmp_fp16_40%,Gen9LPClient,A0,26.021,syn,369589.7,
+FPU_cmp_fp16_55%,Gen9LPClient,A0,27.0836,syn,369589.7,
+FPU_cmp_fp32_10%,Gen9LPClient,A0,16.6612,syn,369589.7,
+FPU_cmp_fp32_20%,Gen9LPClient,A0,22.1062,syn,369589.7,
+FPU_cmp_fp32_30%,Gen9LPClient,A0,27.1027,syn,369589.7,
+FPU_cmp_fp32_40%,Gen9LPClient,A0,27.762,syn,369589.7,
+FPU_cmp_fp32_55%,Gen9LPClient,A0,25.7822,syn,369589.7,
+FPU_cmp_fp64_10%,Gen9LPClient,A0,23.1983,syn,369589.7,
+FPU_cmp_fp64_20%,Gen9LPClient,A0,22.8868,syn,369589.7,
+FPU_cmp_fp64_30%,Gen9LPClient,A0,28.7359,syn,369589.7,
+FPU_cmp_fp64_40%,Gen9LPClient,A0,28.9627,syn,369589.7,
+FPU_cmp_fp64_55%,Gen9LPClient,A0,36.173,syn,369589.7,
+FPU_cmp_int16_10%,Gen9LPClient,A0,16.7518,syn,369589.7,
+FPU_cmp_int16_20%,Gen9LPClient,A0,17.6112,syn,369589.7,
+FPU_cmp_int16_30%,Gen9LPClient,A0,25.6108,syn,369589.7,
+FPU_cmp_int16_40%,Gen9LPClient,A0,33.4623,syn,369589.7,
+FPU_cmp_int16_55%,Gen9LPClient,A0,38.674,syn,369589.7,
+FPU_cmp_int32_10%,Gen9LPClient,A0,18.0543,syn,369589.7,
+FPU_cmp_int32_20%,Gen9LPClient,A0,19.9137,syn,369589.7,
+FPU_cmp_int32_30%,Gen9LPClient,A0,23.6428,syn,369589.7,
+FPU_cmp_int32_40%,Gen9LPClient,A0,32.1641,syn,369589.7,
+FPU_cmp_int32_55%,Gen9LPClient,A0,22.1663,syn,369589.7,
+FPU_cmp_intbypass_10%,Gen9LPClient,A0,9.573196,syn,369589.7,Approximated with sim data
+FPU_cmp_intbypass_20%,Gen9LPClient,A0,10.55913,syn,369589.7,Approximated with sim data
+FPU_cmp_intbypass_30%,Gen9LPClient,A0,12.53647,syn,369589.7,Approximated with sim data
+FPU_cmp_intbypass_40%,Gen9LPClient,A0,17.05484,syn,369589.7,Approximated with sim data
+FPU_cmp_intbypass_55%,Gen9LPClient,A0,11.75356,syn,369589.7,Approximated with sim data
+FPU_cmp_int64_10%,Gen9LPClient,A0,17.9221,syn,369589.7,
+FPU_cmp_int64_20%,Gen9LPClient,A0,20.6612,syn,369589.7,
+FPU_cmp_int64_30%,Gen9LPClient,A0,23.0509,syn,369589.7,
+FPU_cmp_int64_40%,Gen9LPClient,A0,26.1837,syn,369589.7,
+FPU_cmp_int64_55%,Gen9LPClient,A0,30.8405,syn,369589.7,
+FPU_mad_floatbypass_10%,Gen9LPClient,A0,18.07574,syn,369589.7,Approximated with sim data
+FPU_mad_floatbypass_20%,Gen9LPClient,A0,20.77949,syn,369589.7,Approximated with sim data
+FPU_mad_floatbypass_30%,Gen9LPClient,A0,22.5728,syn,369589.7,Simulated
+FPU_mad_floatbypass_40%,Gen9LPClient,A0,26.53256,syn,369589.7,Approximated with sim data
+FPU_mad_floatbypass_55%,Gen9LPClient,A0,27.32809,syn,369589.7,Approximated with sim data
+FPU_mad_fp16_10%,Gen9LPClient,A0,36.9442,syn,369589.7,
+FPU_mad_fp16_20%,Gen9LPClient,A0,42.6527,syn,369589.7,
+FPU_mad_fp16_30%,Gen9LPClient,A0,44.4882,syn,369589.7,
+FPU_mad_fp16_40%,Gen9LPClient,A0,47.8348,syn,369589.7,
+FPU_mad_fp16_55%,Gen9LPClient,A0,52.8196,syn,369589.7,
+FPU_mad_fp32_10%,Gen9LPClient,A0,47.2559,syn,369589.7,
+FPU_mad_fp32_20%,Gen9LPClient,A0,54.3244,syn,369589.7,
+FPU_mad_fp32_30%,Gen9LPClient,A0,59.0127,syn,369589.7,
+FPU_mad_fp32_40%,Gen9LPClient,A0,69.3648,syn,369589.7,
+FPU_mad_fp32_55%,Gen9LPClient,A0,71.4446,syn,369589.7,
+FPU_mad_fp64_10%,Gen9LPClient,A0,50.2315,syn,369589.7,
+FPU_mad_fp64_20%,Gen9LPClient,A0,57.9059,syn,369589.7,
+FPU_mad_fp64_30%,Gen9LPClient,A0,61.3954,syn,369589.7,
+FPU_mad_fp64_40%,Gen9LPClient,A0,66.3317,syn,369589.7,
+FPU_mad_fp64_55%,Gen9LPClient,A0,73.4614,syn,369589.7,
+FPU_mad_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_mad_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_int16_10%,Gen9LPClient,A0,24.6575,syn,369589.7,
+FPU_sad_int16_20%,Gen9LPClient,A0,25.4917,syn,369589.7,
+FPU_sad_int16_30%,Gen9LPClient,A0,25.81335,syn,369589.7,
+FPU_sad_int16_40%,Gen9LPClient,A0,25.59895,syn,369589.7,
+FPU_sad_int16_55%,Gen9LPClient,A0,25.80175,syn,369589.7,
+FPU_sad_int32_10%,Gen9LPClient,A0,24.6575,syn,369589.7,Approximated with int16 data
+FPU_sad_int32_20%,Gen9LPClient,A0,25.4917,syn,369589.7,Approximated with int16 data
+FPU_sad_int32_30%,Gen9LPClient,A0,25.81335,syn,369589.7,Approximated with int16 data
+FPU_sad_int32_40%,Gen9LPClient,A0,25.59895,syn,369589.7,Approximated with int16 data
+FPU_sad_int32_55%,Gen9LPClient,A0,25.80175,syn,369589.7,Approximated with int16 data
+FPU_sad_intbypass_10%,Gen9LPClient,A0,24.6575,syn,369589.7,No bypass in SAD
+FPU_sad_intbypass_20%,Gen9LPClient,A0,25.4917,syn,369589.7,No bypass in SAD
+FPU_sad_intbypass_30%,Gen9LPClient,A0,25.81335,syn,369589.7,No bypass in SAD
+FPU_sad_intbypass_40%,Gen9LPClient,A0,25.59895,syn,369589.7,No bypass in SAD
+FPU_sad_intbypass_55%,Gen9LPClient,A0,25.80175,syn,369589.7,No bypass in SAD
+FPU_sad_int64_10%,Gen9LPClient,A0,24.6575,syn,369589.7,Approximated with int16 data
+FPU_sad_int64_20%,Gen9LPClient,A0,25.4917,syn,369589.7,Approximated with int16 data
+FPU_sad_int64_30%,Gen9LPClient,A0,25.81335,syn,369589.7,Approximated with int16 data
+FPU_sad_int64_40%,Gen9LPClient,A0,25.59895,syn,369589.7,Approximated with int16 data
+FPU_sad_int64_55%,Gen9LPClient,A0,25.80175,syn,369589.7,Approximated with int16 data
+FPU_mac_floatbypass_10%,Gen9LPClient,A0,36.2545,syn,369589.7,No bypass in MAC
+FPU_mac_floatbypass_20%,Gen9LPClient,A0,38.5294,syn,369589.7,No bypass in MAC
+FPU_mac_floatbypass_30%,Gen9LPClient,A0,34.1296,syn,369589.7,No bypass in MAC
+FPU_mac_floatbypass_40%,Gen9LPClient,A0,36.6205,syn,369589.7,No bypass in MAC
+FPU_mac_floatbypass_55%,Gen9LPClient,A0,37.6804,syn,369589.7,No bypass in MAC
+FPU_mac_fp16_10%,Gen9LPClient,A0,27.2015,syn,369589.7,
+FPU_mac_fp16_20%,Gen9LPClient,A0,26.8427,syn,369589.7,
+FPU_mac_fp16_30%,Gen9LPClient,A0,29.5239,syn,369589.7,
+FPU_mac_fp16_40%,Gen9LPClient,A0,29.6265,syn,369589.7,
+FPU_mac_fp16_55%,Gen9LPClient,A0,29.8897,syn,369589.7,
+FPU_mac_fp32_10%,Gen9LPClient,A0,36.2545,syn,369589.7,
+FPU_mac_fp32_20%,Gen9LPClient,A0,38.5294,syn,369589.7,
+FPU_mac_fp32_30%,Gen9LPClient,A0,34.1296,syn,369589.7,
+FPU_mac_fp32_40%,Gen9LPClient,A0,36.6205,syn,369589.7,
+FPU_mac_fp32_55%,Gen9LPClient,A0,37.6804,syn,369589.7,
+FPU_mac_fp64_10%,Gen9LPClient,A0,28.9388,syn,369589.7,
+FPU_mac_fp64_20%,Gen9LPClient,A0,30.4937,syn,369589.7,
+FPU_mac_fp64_30%,Gen9LPClient,A0,30.0268,syn,369589.7,
+FPU_mac_fp64_40%,Gen9LPClient,A0,30.9117,syn,369589.7,
+FPU_mac_fp64_55%,Gen9LPClient,A0,31.8769,syn,369589.7,
+FPU_mac_int16_10%,Gen9LPClient,A0,46.704,syn,369589.7,
+FPU_mac_int16_20%,Gen9LPClient,A0,49.8357,syn,369589.7,
+FPU_mac_int16_30%,Gen9LPClient,A0,50.6089,syn,369589.7,
+FPU_mac_int16_40%,Gen9LPClient,A0,53.3058,syn,369589.7,
+FPU_mac_int16_55%,Gen9LPClient,A0,57.1844,syn,369589.7,
+FPU_mac_int32_10%,Gen9LPClient,A0,46.704,syn,369589.7,
+FPU_mac_int32_20%,Gen9LPClient,A0,49.8357,syn,369589.7,
+FPU_mac_int32_30%,Gen9LPClient,A0,50.6089,syn,369589.7,
+FPU_mac_int32_40%,Gen9LPClient,A0,53.3058,syn,369589.7,
+FPU_mac_int32_55%,Gen9LPClient,A0,57.1844,syn,369589.7,
+FPU_mac_intbypass_10%,Gen9LPClient,A0,46.704,syn,369589.7,No bypass in MAC
+FPU_mac_intbypass_20%,Gen9LPClient,A0,49.8357,syn,369589.7,No bypass in MAC
+FPU_mac_intbypass_30%,Gen9LPClient,A0,50.6089,syn,369589.7,No bypass in MAC
+FPU_mac_intbypass_40%,Gen9LPClient,A0,53.3058,syn,369589.7,No bypass in MAC
+FPU_mac_intbypass_55%,Gen9LPClient,A0,57.1844,syn,369589.7,No bypass in MAC
+FPU_mac_int64_10%,Gen9LPClient,A0,46.704,syn,369589.7,Approximated with int32 data
+FPU_mac_int64_20%,Gen9LPClient,A0,49.8357,syn,369589.7,Approximated with int32 data
+FPU_mac_int64_30%,Gen9LPClient,A0,50.6089,syn,369589.7,Approximated with int32 data
+FPU_mac_int64_40%,Gen9LPClient,A0,53.3058,syn,369589.7,Approximated with int32 data
+FPU_mac_int64_55%,Gen9LPClient,A0,57.1844,syn,369589.7,Approximated with int32 data
+FPU_mov_bypass_10%,Gen9LPClient,A0,9.5352,syn,369589.7,
+FPU_mov_bypass_20%,Gen9LPClient,A0,10.6759,syn,369589.7,
+FPU_mov_bypass_30%,Gen9LPClient,A0,11.8336,syn,369589.7,
+FPU_mov_bypass_40%,Gen9LPClient,A0,13.4182,syn,369589.7,
+FPU_mov_bypass_55%,Gen9LPClient,A0,15.8958,syn,369589.7,
+FPU_mov_fp16_10%,Gen9LPClient,A0,10.545,syn,369589.7,
+FPU_mov_fp16_20%,Gen9LPClient,A0,12.4015,syn,369589.7,
+FPU_mov_fp16_30%,Gen9LPClient,A0,13.107,syn,369589.7,
+FPU_mov_fp16_40%,Gen9LPClient,A0,14.5738,syn,369589.7,
+FPU_mov_fp16_55%,Gen9LPClient,A0,16.3593,syn,369589.7,
+FPU_mov_fp32_10%,Gen9LPClient,A0,9.5352,syn,369589.7,
+FPU_mov_fp32_20%,Gen9LPClient,A0,10.6759,syn,369589.7,
+FPU_mov_fp32_30%,Gen9LPClient,A0,11.8336,syn,369589.7,
+FPU_mov_fp32_40%,Gen9LPClient,A0,13.4182,syn,369589.7,
+FPU_mov_fp32_55%,Gen9LPClient,A0,15.8958,syn,369589.7,
+FPU_mov_fp64_10%,Gen9LPClient,A0,15.4914,syn,369589.7,
+FPU_mov_fp64_20%,Gen9LPClient,A0,17.1445,syn,369589.7,
+FPU_mov_fp64_30%,Gen9LPClient,A0,18.7712,syn,369589.7,
+FPU_mov_fp64_40%,Gen9LPClient,A0,21.2271,syn,369589.7,
+FPU_mov_fp64_55%,Gen9LPClient,A0,24.7092,syn,369589.7,
+FPU_mov_int16_10%,Gen9LPClient,A0,9.8911,syn,369589.7,
+FPU_mov_int16_20%,Gen9LPClient,A0,11.6309,syn,369589.7,
+FPU_mov_int16_30%,Gen9LPClient,A0,12.4504,syn,369589.7,
+FPU_mov_int16_40%,Gen9LPClient,A0,14.4106,syn,369589.7,
+FPU_mov_int16_55%,Gen9LPClient,A0,18.154,syn,369589.7,
+FPU_mov_int32_10%,Gen9LPClient,A0,9.69,syn,369589.7,
+FPU_mov_int32_20%,Gen9LPClient,A0,10.8082,syn,369589.7,
+FPU_mov_int32_30%,Gen9LPClient,A0,11.9962,syn,369589.7,
+FPU_mov_int32_40%,Gen9LPClient,A0,13.9054,syn,369589.7,
+FPU_mov_int32_55%,Gen9LPClient,A0,17.3416,syn,369589.7,
+FPU_mov_intbypass_10%,Gen9LPClient,A0,15.5025,syn,369589.7,
+FPU_mov_intbypass_20%,Gen9LPClient,A0,17.0216,syn,369589.7,
+FPU_mov_intbypass_30%,Gen9LPClient,A0,18.8618,syn,369589.7,
+FPU_mov_intbypass_40%,Gen9LPClient,A0,21.4917,syn,369589.7,
+FPU_mov_intbypass_55%,Gen9LPClient,A0,25.6245,syn,369589.7,
+FPU_mov_int64_10%,Gen9LPClient,A0,15.5025,syn,369589.7,
+FPU_mov_int64_20%,Gen9LPClient,A0,17.0216,syn,369589.7,
+FPU_mov_int64_30%,Gen9LPClient,A0,18.8618,syn,369589.7,
+FPU_mov_int64_40%,Gen9LPClient,A0,21.4917,syn,369589.7,
+FPU_mov_int64_55%,Gen9LPClient,A0,25.6245,syn,369589.7,
+FPU_mul_floatbypass_10%,Gen9LPClient,A0,8.059333,syn,369589.7,Approximated with sim data
+FPU_mul_floatbypass_20%,Gen9LPClient,A0,9.087842,syn,369589.7,Approximated with sim data
+FPU_mul_floatbypass_30%,Gen9LPClient,A0,9.8175,syn,369589.7,Simulated
+FPU_mul_floatbypass_40%,Gen9LPClient,A0,10.95295,syn,369589.7,Approximated with sim data
+FPU_mul_floatbypass_55%,Gen9LPClient,A0,11.89817,syn,369589.7,Approximated with sim data
+FPU_mul_fp16_10%,Gen9LPClient,A0,26.7565,syn,369589.7,
+FPU_mul_fp16_20%,Gen9LPClient,A0,33.2181,syn,369589.7,
+FPU_mul_fp16_30%,Gen9LPClient,A0,34.4641,syn,369589.7,
+FPU_mul_fp16_40%,Gen9LPClient,A0,37.2641,syn,369589.7,
+FPU_mul_fp16_55%,Gen9LPClient,A0,39.8297,syn,369589.7,
+FPU_mul_fp32_10%,Gen9LPClient,A0,37.1102,syn,369589.7,
+FPU_mul_fp32_20%,Gen9LPClient,A0,41.8461,syn,369589.7,
+FPU_mul_fp32_30%,Gen9LPClient,A0,45.2059,syn,369589.7,
+FPU_mul_fp32_40%,Gen9LPClient,A0,50.4342,syn,369589.7,
+FPU_mul_fp32_55%,Gen9LPClient,A0,54.7866,syn,369589.7,
+FPU_mul_fp64_10%,Gen9LPClient,A0,48.9049,syn,369589.7,
+FPU_mul_fp64_20%,Gen9LPClient,A0,54.9647,syn,369589.7,
+FPU_mul_fp64_30%,Gen9LPClient,A0,63.859,syn,369589.7,
+FPU_mul_fp64_40%,Gen9LPClient,A0,62.6913,syn,369589.7,
+FPU_mul_fp64_55%,Gen9LPClient,A0,68.0366,syn,369589.7,
+FPU_mul_int16_10%,Gen9LPClient,A0,35.9114,syn,369589.7,
+FPU_mul_int16_20%,Gen9LPClient,A0,41.9848,syn,369589.7,
+FPU_mul_int16_30%,Gen9LPClient,A0,44.0853,syn,369589.7,
+FPU_mul_int16_40%,Gen9LPClient,A0,49.5699,syn,369589.7,
+FPU_mul_int16_55%,Gen9LPClient,A0,56.9103,syn,369589.7,
+FPU_mul_int32_10%,Gen9LPClient,A0,55.9617,syn,369589.7,
+FPU_mul_int32_20%,Gen9LPClient,A0,62.2649,syn,369589.7,
+FPU_mul_int32_30%,Gen9LPClient,A0,66.2495,syn,369589.7,
+FPU_mul_int32_40%,Gen9LPClient,A0,71.664,syn,369589.7,
+FPU_mul_int32_55%,Gen9LPClient,A0,77.3302,syn,369589.7,
+FPU_mul_intbypass_10%,Gen9LPClient,A0,12.15337,syn,369589.7,Approximated with sim data
+FPU_mul_intbypass_20%,Gen9LPClient,A0,13.52225,syn,369589.7,Approximated with sim data
+FPU_mul_intbypass_30%,Gen9LPClient,A0,14.3876,syn,369589.7,Approximated with sim data
+FPU_mul_intbypass_40%,Gen9LPClient,A0,15.56348,syn,369589.7,Approximated with sim data
+FPU_mul_intbypass_55%,Gen9LPClient,A0,16.69403,syn,369589.7,Approximated with sim data
+FPU_mul_int64_10%,Gen9LPClient,A0,55.9617,syn,369589.7,Approximated with int32
+FPU_mul_int64_20%,Gen9LPClient,A0,62.2649,syn,369589.7,Approximated with int32
+FPU_mul_int64_30%,Gen9LPClient,A0,66.2495,syn,369589.7,Approximated with int32
+FPU_mul_int64_40%,Gen9LPClient,A0,71.664,syn,369589.7,Approximated with int32
+FPU_mul_int64_55%,Gen9LPClient,A0,77.3302,syn,369589.7,Approximated with int32
+FPU_pln_floatbypass_10%,Gen9LPClient,A0,44.9036,syn,369589.7,No bypass in PLN
+FPU_pln_floatbypass_20%,Gen9LPClient,A0,50.521,syn,369589.7,No bypass in PLN
+FPU_pln_floatbypass_30%,Gen9LPClient,A0,52.6734,syn,369589.7,No bypass in PLN
+FPU_pln_floatbypass_40%,Gen9LPClient,A0,56.8604,syn,369589.7,No bypass in PLN
+FPU_pln_floatbypass_55%,Gen9LPClient,A0,61.5501,syn,369589.7,No bypass in PLN
+FPU_pln_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp32_10%,Gen9LPClient,A0,44.9036,syn,369589.7,
+FPU_pln_fp32_20%,Gen9LPClient,A0,50.521,syn,369589.7,
+FPU_pln_fp32_30%,Gen9LPClient,A0,52.6734,syn,369589.7,
+FPU_pln_fp32_40%,Gen9LPClient,A0,56.8604,syn,369589.7,
+FPU_pln_fp32_55%,Gen9LPClient,A0,61.5501,syn,369589.7,
+FPU_pln_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_pln_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sel_bypass_10%,Gen9LPClient,A0,16.4583,syn,369589.7,No bypass in SEL
+FPU_sel_bypass_20%,Gen9LPClient,A0,20.2533,syn,369589.7,No bypass in SEL
+FPU_sel_bypass_30%,Gen9LPClient,A0,24.298,syn,369589.7,No bypass in SEL
+FPU_sel_bypass_40%,Gen9LPClient,A0,28.1907,syn,369589.7,No bypass in SEL
+FPU_sel_bypass_55%,Gen9LPClient,A0,34.1365,syn,369589.7,No bypass in SEL
+FPU_sel_fp16_10%,Gen9LPClient,A0,19.7323,syn,369589.7,
+FPU_sel_fp16_20%,Gen9LPClient,A0,25.9166,syn,369589.7,
+FPU_sel_fp16_30%,Gen9LPClient,A0,27.7107,syn,369589.7,
+FPU_sel_fp16_40%,Gen9LPClient,A0,30.801,syn,369589.7,
+FPU_sel_fp16_55%,Gen9LPClient,A0,34.4203,syn,369589.7,
+FPU_sel_fp32_10%,Gen9LPClient,A0,16.4583,syn,369589.7,
+FPU_sel_fp32_20%,Gen9LPClient,A0,20.2533,syn,369589.7,
+FPU_sel_fp32_30%,Gen9LPClient,A0,24.298,syn,369589.7,
+FPU_sel_fp32_40%,Gen9LPClient,A0,28.1907,syn,369589.7,
+FPU_sel_fp32_55%,Gen9LPClient,A0,34.1365,syn,369589.7,
+FPU_sel_fp64_10%,Gen9LPClient,A0,22.032,syn,369589.7,
+FPU_sel_fp64_20%,Gen9LPClient,A0,24.4416,syn,369589.7,
+FPU_sel_fp64_30%,Gen9LPClient,A0,24.7107,syn,369589.7,
+FPU_sel_fp64_40%,Gen9LPClient,A0,32.8793,syn,369589.7,
+FPU_sel_fp64_55%,Gen9LPClient,A0,37.9744,syn,369589.7,
+FPU_sel_int16_10%,Gen9LPClient,A0,16.8478,syn,369589.7,
+FPU_sel_int16_20%,Gen9LPClient,A0,20.6273,syn,369589.7,
+FPU_sel_int16_30%,Gen9LPClient,A0,22.2036,syn,369589.7,
+FPU_sel_int16_40%,Gen9LPClient,A0,29.8413,syn,369589.7,
+FPU_sel_int16_55%,Gen9LPClient,A0,39.5699,syn,369589.7,
+FPU_sel_int32_10%,Gen9LPClient,A0,18.2793,syn,369589.7,
+FPU_sel_int32_20%,Gen9LPClient,A0,20.6086,syn,369589.7,
+FPU_sel_int32_30%,Gen9LPClient,A0,22.8156,syn,369589.7,
+FPU_sel_int32_40%,Gen9LPClient,A0,33.7622,syn,369589.7,
+FPU_sel_int32_55%,Gen9LPClient,A0,45.4084,syn,369589.7,
+FPU_sel_intbypass_10%,Gen9LPClient,A0,18.2793,syn,369589.7,No bypass in SEL
+FPU_sel_intbypass_20%,Gen9LPClient,A0,20.6086,syn,369589.7,No bypass in SEL
+FPU_sel_intbypass_30%,Gen9LPClient,A0,22.8156,syn,369589.7,No bypass in SEL
+FPU_sel_intbypass_40%,Gen9LPClient,A0,33.7622,syn,369589.7,No bypass in SEL
+FPU_sel_intbypass_55%,Gen9LPClient,A0,45.4084,syn,369589.7,No bypass in SEL
+FPU_sel_int64_10%,Gen9LPClient,A0,19.1958,syn,369589.7,
+FPU_sel_int64_20%,Gen9LPClient,A0,21.7385,syn,369589.7,
+FPU_sel_int64_30%,Gen9LPClient,A0,22.2353,syn,369589.7,
+FPU_sel_int64_40%,Gen9LPClient,A0,29.9656,syn,369589.7,
+FPU_sel_int64_55%,Gen9LPClient,A0,36.7721,syn,369589.7,
+FPU_transc_bypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_bypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_bypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_bypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_bypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_transc_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+PS0_GA,Gen9LPClient,A0,1.039488,syn,236302.7,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GA,Gen9LPClient,A0,5.154128,syn,236302.7,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GA_EM1Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,48.44997,syn,236302.7,
+PS2_GA_EM1Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,49.64403,syn,236302.7,
+PS2_GA_EM1Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,53.6451,syn,236302.7,
+PS2_GA_EM1Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,54.5476,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,58.33702,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,55.69703,syn,236302.7,
+PS2_GA_EM1Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,58.06042,syn,236302.7,
+PS2_GA_EM1Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,59.4245,syn,236302.7,
+PS2_GA_EM1Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,63.01813,syn,236302.7,
+PS2_GA_EM1Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,63.7053,syn,236302.7,
+PS2_GA_EM1Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,62.9441,syn,236302.7,
+PS2_GA_EM1Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,65.2039,syn,236302.7,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,66.4768,syn,236302.7,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,67.69925,syn,236302.7,
+PS2_GA_EM1Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,72.863,syn,236302.7,
+PS2_GA_EM1Src_SinglePipe_10%,Gen9LPClient,A0,41.2029,syn,236302.7,
+PS2_GA_EM1Src_SinglePipe_20%,Gen9LPClient,A0,41.22765,syn,236302.7,
+PS2_GA_EM1Src_SinglePipe_30%,Gen9LPClient,A0,45.3899,syn,236302.7,Swapped 30% with 80% for linearity
+PS2_GA_EM1Src_SinglePipe_40%,Gen9LPClient,A0,47.8657,syn,236302.7,Swapped 50% with 30% for linearity
+PS2_GA_EM1Src_SinglePipe_55%,Gen9LPClient,A0,53.6559,syn,236302.7,Swapped 80% with 50% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,55.3544,syn,236302.7,
+PS2_GA_EM2Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,58.13785,syn,236302.7,
+PS2_GA_EM2Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,64.6552,syn,236302.7,
+PS2_GA_EM2Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,69.0069,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,72.30695,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,62.60147,syn,236302.7,
+PS2_GA_EM2Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,66.55423,syn,236302.7,
+PS2_GA_EM2Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,70.4346,syn,236302.7,
+PS2_GA_EM2Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,76.98807,syn,236302.7,
+PS2_GA_EM2Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,78.1646,syn,236302.7,
+PS2_GA_EM2Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,69.84853,syn,236302.7,
+PS2_GA_EM2Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,74.97062,syn,236302.7,
+PS2_GA_EM2Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,76.214,syn,236302.7,
+PS2_GA_EM2Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,81.66918,syn,236302.7,
+PS2_GA_EM2Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,87.3223,syn,236302.7,
+PS2_GA_EM2Src_SinglePipe_10%,Gen9LPClient,A0,48.10733,syn,236302.7,
+PS2_GA_EM2Src_SinglePipe_20%,Gen9LPClient,A0,49.72147,syn,236302.7,
+PS2_GA_EM2Src_SinglePipe_30%,Gen9LPClient,A0,58.8758,syn,236302.7,
+PS2_GA_EM2Src_SinglePipe_40%,Gen9LPClient,A0,59.8492,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_SinglePipe_55%,Gen9LPClient,A0,67.62583,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,62.25883,syn,236302.7,
+PS2_GA_EM3Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,66.63167,syn,236302.7,
+PS2_GA_EM3Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,75.6653,syn,236302.7,
+PS2_GA_EM3Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,83.4662,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,86.27688,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,69.5059,syn,236302.7,
+PS2_GA_EM3Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,75.04805,syn,236302.7,
+PS2_GA_EM3Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,81.4447,syn,236302.7,
+PS2_GA_EM3Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,90.958,syn,236302.7,
+PS2_GA_EM3Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,92.6239,syn,236302.7,
+PS2_GA_EM3Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,76.75297,syn,236302.7,
+PS2_GA_EM3Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,83.46443,syn,236302.7,
+PS2_GA_EM3Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,87.2241,syn,236302.7,
+PS2_GA_EM3Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,95.63912,syn,236302.7,
+PS2_GA_EM3Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,101.7816,syn,236302.7,
+PS2_GA_EM3Src_SinglePipe_10%,Gen9LPClient,A0,55.01177,syn,236302.7,
+PS2_GA_EM3Src_SinglePipe_20%,Gen9LPClient,A0,58.21528,syn,236302.7,
+PS2_GA_EM3Src_SinglePipe_30%,Gen9LPClient,A0,69.8859,syn,236302.7,
+PS2_GA_EM3Src_SinglePipe_40%,Gen9LPClient,A0,74.3085,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_SinglePipe_55%,Gen9LPClient,A0,81.59577,syn,236302.7,Swapped 50% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_10%,Gen9LPClient,A0,40.0883,syn,236302.7,Swapped 10% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_20%,Gen9LPClient,A0,41.15022,syn,236302.7,Swapped 20% with 10% for linearity
+PS2_GA_FPU1Src_SinglePipe_30%,Gen9LPClient,A0,41.54553,syn,236302.7,Swapped 30% with 20% for linearity
+PS2_GA_FPU1Src_SinglePipe_40%,Gen9LPClient,A0,42.635,syn,236302.7,Swapped 50% with 30% for linearity
+PS2_GA_FPU1Src_SinglePipe_55%,Gen9LPClient,A0,44.36708,syn,236302.7,Swapped 80% with 50% for linearity
+PS2_GA_FPU2Src_SinglePipe_10%,Gen9LPClient,A0,48.4144,syn,236302.7,Swapped 10% with 30% for linearity
+PS2_GA_FPU2Src_SinglePipe_20%,Gen9LPClient,A0,49.0482,syn,236302.7,Swapped 20% with 50% for linearity
+PS2_GA_FPU2Src_SinglePipe_30%,Gen9LPClient,A0,49.246,syn,236302.7,Swapped 30% with 80% for linearity
+PS2_GA_FPU2Src_SinglePipe_40%,Gen9LPClient,A0,49.5666,syn,236302.7,Swapped 50% with 20% for linearity
+PS2_GA_FPU2Src_SinglePipe_55%,Gen9LPClient,A0,48.7926,syn,236302.7,Swapped 80% with 10% for linearity
+PS2_GA_FPU3Src_SinglePipe_10%,Gen9LPClient,A0,53.72932,syn,236302.7,Swapped 10% with 50% for linearity
+PS2_GA_FPU3Src_SinglePipe_20%,Gen9LPClient,A0,54.1938,syn,236302.7,Swapped 20% with 30% for linearity
+PS2_GA_FPU3Src_SinglePipe_30%,Gen9LPClient,A0,56.03967,syn,236302.7,Swapped 30% with 10% for linearity
+PS2_GA_FPU3Src_SinglePipe_40%,Gen9LPClient,A0,57.98298,syn,236302.7,Swapped 50% with 20% for linearity
+PS2_GA_FPU3Src_SinglePipe_55%,Gen9LPClient,A0,58.4037,syn,236302.7,
+PS0_TC,Gen9LPClient,A0,0.64968,syn,486035.6,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_TC,Gen9LPClient,A0,17.93117,syn,486035.6,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TC,Gen9LPClient,A0,22.03116,syn,486035.6,Average of all opcodes - no variation with TR
+PS2_GRF_READ,Gen9LPClient,A0,6.867,ebb,1,
+PS2_GRF_WRITE,Gen9LPClient,A0,11.237,ebb,1,
+PS0_EU_DFX,Gen9LPClient,A0,0.217,syn,32140.14,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_DFX,Gen9LPClient,A0,0.90287,syn,32140.14,Average of all opcodes at 30%
+PS0_EU_SMALL,Gen9LPClient,A0,1.841,syn,37139.7,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_SMALL,Gen9LPClient,A0,2.137435,syn,37139.7,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
+PS0_EU_CLKGLUE,Gen9LPClient,A0,3.45,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_CLKGLUE,Gen9LPClient,A0,3.45,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_EU_NONCLKGLUE,Gen9LPClient,A0,0.654,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_NONCLKGLUE,Gen9LPClient,A0,4.6984,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data and scaled by 80%
+PS0_EU_DOP,Gen9LPClient,A0,0,syn,1,DOP gated
+PS1_EU_DOP,Gen9LPClient,A0,0,syn,1,No stall DOP gating in SKL
+PS2_EU_DOP,Gen9LPClient,A0,3.183,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_FT,Gen9LPClient,A0,0.128853,syn,134954.95,
+PS1_FT,Gen9LPClient,A0,0.851211,syn,134954.95,
+PS2_FT,Gen9LPClient,A0,18.91674,syn,134954.95,10% TR
+PS0_SO,Gen9LPClient,A0,0.191022,syn,129023.68,
+PS1_SO,Gen9LPClient,A0,0.931208,syn,129023.68,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,43.57446,syn,129023.68,16% TR
+PS0_ST,Gen9LPClient,A0,0.173049,syn,178517.13,
+PS1_ST,Gen9LPClient,A0,3.85501,syn,178517.13,
+PS2_ST_1Bank_Enable,Gen9LPClient,A0,26.05076,syn,178517.13,11% TR
+PS2_ST_2Bank_Enable,Gen9LPClient,A0,32.03537,syn,178517.13,13% TR
+PS2_ST_3Bank_Enable,Gen9LPClient,A0,46.47623,syn,178517.13,Approximated using 16% validity/8% TR - revisit this
+PS2_ST_4Bank_Enable,Gen9LPClient,A0,46.47623,syn,178517.13,Approximated using 3 bank enable
+PS2_ST_1Bank_Enable_SameADD,Gen9LPClient,A0,0,syn,178517.13,No model for this one
+PS0_MT,Gen9LPClient,A0,0.297385,syn,359666.99,
+PS1_MT,Gen9LPClient,A0,6.496799,syn,359666.99,Approximated as PS0 - need to change
+PS2_MT_BYPASS,Gen9LPClient,A0,21.93057,syn,359666.99,1% TR
+PS2_MT_Tile_X,Gen9LPClient,A0,70.068067,syn,359666.99,1% TR
+PS2_MT_Tile_Y,Gen9LPClient,A0,36.04221,syn,359666.99,1% TR
+PS2_MT_Tile_else,Gen9LPClient,A0,36.04221,syn,359666.99,Approximated using Tile_Y
+PS0_MT_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS2_MT_LatFifo_READ,Gen9LPClient,A0,5.825,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen9LPClient,A0,12.821,ebb,1,
+PS2_MT_LatFifo_READ&WRITE,Gen9LPClient,A0,18.646,ebb,1,
+PS0_MT_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS2_MT_DataRam_READ,Gen9LPClient,A0,13.186,ebb,1,
+PS2_MT_DataRam_WRITE,Gen9LPClient,A0,21.844,ebb,1,
+PS2_MT_DataRam_READ&WRITE,Gen9LPClient,A0,35.03,ebb,1,
+PS0_MT_TagRam_IDLE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
+PS2_MT_TagRam _READ,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
+PS2_MT_TagRam_WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
+PS2_MT_TagRam_READ&WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
+PS0_DG,Gen9LPClient,A0,0.151914,syn,223798.87,
+PS1_DG,Gen9LPClient,A0,0.640509,syn,223798.87,
+PS2_DG_Volumetric_32BPT,Gen9LPClient,A0,31.89873,syn,223798.87,2% TR
+PS2_DG_Volumetric_64BPT,Gen9LPClient,A0,28.28186,syn,223798.87,5% TR
+PS2_DG_Volumetric_128BPT,Gen9LPClient,A0,17.50662,syn,223798.87,3% TR
+PS2_DG_Gather4_32BPT,Gen9LPClient,A0,58.29109,syn,223798.87,17% TR
+PS2_DG_Gather4_64BPT,Gen9LPClient,A0,85,syn,223798.87,16% TR 22% validity
+PS2_DG_Gather4_128BPT,Gen9LPClient,A0,57,syn,223798.87,Approximated from the bubble data
+PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT,Gen9LPClient,A0,58.96287,syn,223798.87,22% TR
+PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT,Gen9LPClient,A0,41.6898,syn,223798.87,6% TR
+PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT,Gen9LPClient,A0,23.51698,syn,223798.87,2% TR
+PS2_DG_AnisoGreaterThan_8way_32BPT,Gen9LPClient,A0,66.60635,syn,223798.87,22% TR
+PS2_DG_AnisoGreaterThan_8way_64BPT,Gen9LPClient,A0,35.75,syn,223798.87,Approximated from the bubble data
+PS2_DG_AnisoGreaterThan_8way_128BPT,Gen9LPClient,A0,25.56993,syn,223798.87,24% TR
+PS2_DG_Bilinear_32BPT,Gen9LPClient,A0,59.48533,syn,223798.87,13% TR
+PS2_DG_Bilinear_64BPT,Gen9LPClient,A0,60.10574,syn,223798.87,19% TR
+PS2_DG_Bilinear_128BPT,Gen9LPClient,A0,27.31281,syn,223798.87,4% TR
+PS2_DG_Trilinear_32BPT,Gen9LPClient,A0,59.48533,syn,223798.87,Approximated with PS2_DG_Bilinear_32BPT
+PS2_DG_Trilinear_64BPT,Gen9LPClient,A0,54.3124,syn,223798.87,13% TR
+PS2_DG_Trilinear_128BPT,Gen9LPClient,A0,27.31281,syn,223798.87,Approximated with PS2_DG_Bilinear_128BPT
+PS2_DG_FastLinear_32BPT,Gen9LPClient,A0,59.48533,syn,223798.87,Approximated with PS2_DG_Bilinear_32BPT
+PS2_DG_FastLinear_64BPT,Gen9LPClient,A0,60.10574,syn,223798.87,Approximated with PS2_DG_Bilinear_64BPT
+PS2_DG_FastLinear_128BPT,Gen9LPClient,A0,27.31281,syn,223798.87,Approximated with PS2_DG_Bilinear_128BPT
+PS2_DG_Nearest_32BPT,Gen9LPClient,A0,0,syn,223798.87,Needs to be added
+PS2_DG_Nearest_64BPT,Gen9LPClient,A0,0,syn,223798.87,Needs to be added
+PS2_DG_Nearest_128BPT,Gen9LPClient,A0,0,syn,223798.87,Needs to be added
+PS2_DG_BabyDG_Enable,Gen9LPClient,A0,37.27926,syn,223798.87,11% TR
+PS2_DG_Else,Gen9LPClient,A0,39.24097,syn,223798.87,13% TR
+PS2_DG_Media_Sample8x8,Gen9LPClient,A0,40.2114,syn,223798.87,1% TR
+PS0_SI,Gen9LPClient,A0,0.260348,syn,362879.16,
+PS1_SI,Gen9LPClient,A0,5.28498,syn,362879.16,
+PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,48.4985,syn,362879.16,13% TR
+PS2_SI_Media_Sample8x8,Gen9LPClient,A0,19.9914,syn,362879.16,0% TR - Need to take 100% validity
+PS0_PL,Gen9LPClient,A0,0.134802,syn,509268.41,
+PS1_PL,Gen9LPClient,A0,4.73339,syn,509268.41,
+PS2_PL_Sample_L_2%,Gen9LPClient,A0,45.0332,syn,509268.41,
+PS2_PL_Sample_L_8%,Gen9LPClient,A0,55.6907,syn,509268.41,
+PS2_PL_Sample_L_10%,Gen9LPClient,A0,58.6854,syn,509268.41,
+PS2_PL_Sample_L_13%,Gen9LPClient,A0,63.3068,syn,509268.41,
+PS2_PL_Sample_L_18%,Gen9LPClient,A0,72.2914,syn,509268.41,
+PS2_PL_Sample_L_MipCount0_2%,Gen9LPClient,A0,45.0332,syn,509268.41,
+PS2_PL_Sample_L_MipCount0_8%,Gen9LPClient,A0,55.6907,syn,509268.41,
+PS2_PL_Sample_L_MipCount0_10%,Gen9LPClient,A0,58.6854,syn,509268.41,
+PS2_PL_Sample_L_MipCount0_13%,Gen9LPClient,A0,63.3068,syn,509268.41,
+PS2_PL_Sample_L_MipCount0_18%,Gen9LPClient,A0,72.2914,syn,509268.41,
+PS2_PL_Gather4PO_7%,Gen9LPClient,A0,71.5967,syn,509268.41,
+PS2_PL_Gather4PO_10%,Gen9LPClient,A0,74.7243,syn,509268.41,
+PS2_PL_Gather4PO_12%,Gen9LPClient,A0,80.6686,syn,509268.41,
+PS2_PL_LD_1%,Gen9LPClient,A0,35.8894,syn,509268.41,
+PS2_PL_LD_3%,Gen9LPClient,A0,43.8046,syn,509268.41,
+PS2_PL_Bilinear_1%,Gen9LPClient,A0,67.1485,syn,509268.41,
+PS2_PL_Bilinear_5%,Gen9LPClient,A0,67.1489,syn,509268.41,
+PS2_PL_Bilinear_7%,Gen9LPClient,A0,72.5548,syn,509268.41,
+PS2_PL_Bilinear_10%,Gen9LPClient,A0,74.7354,syn,509268.41,
+PS2_PL_Bilinear_EWA_15%,Gen9LPClient,A0,144.766,syn,509268.41,
+PS2_PL_Bilinear_EWA_17%,Gen9LPClient,A0,151.034,syn,509268.41,
+PS2_PL_Trilinear_7%,Gen9LPClient,A0,64.7241,syn,509268.41,
+PS2_PL_Trilinear_8%,Gen9LPClient,A0,66.748,syn,509268.41,
+PS2_PL_Trilinear_EWA_10%,Gen9LPClient,A0,107.128,syn,509268.41,
+PS2_PL_Trilinear_EWA_12%,Gen9LPClient,A0,114.94,syn,509268.41,
+PS2_PL_LinearAniso_2%,Gen9LPClient,A0,62.921,syn,509268.41,
+PS2_PL_LinearAniso_9%,Gen9LPClient,A0,76.0818,syn,509268.41,
+PS2_PL_LinearAniso_12%,Gen9LPClient,A0,115,syn,509268.41,
+PS2_PL_LinearAniso_19%,Gen9LPClient,A0,159.9,syn,509268.41,
+PS2_PL_LinearAniso_EWA_19%,Gen9LPClient,A0,189.721,syn,509268.41,
+PS2_PL_LinearAniso_EWA_20%,Gen9LPClient,A0,194.798,syn,509268.41,
+PS2_PL_NonLinearAniso_2%,Gen9LPClient,A0,62.921,syn,509268.41,
+PS2_PL_NonLinearAniso_9%,Gen9LPClient,A0,76.0818,syn,509268.41,
+PS2_PL_NonLinearAniso_12%,Gen9LPClient,A0,115,syn,509268.41,
+PS2_PL_NonLinearAniso_19%,Gen9LPClient,A0,159.9,syn,509268.41,
+PS2_PL_NonLinearAniso_EWA_19%,Gen9LPClient,A0,189.721,syn,509268.41,
+PS2_PL_NonLinearAniso_EWA_20%,Gen9LPClient,A0,194.798,syn,509268.41,
+PS2_PL_Else_2%,Gen9LPClient,A0,65.6368,syn,509268.41,
+PS2_PL_Else_10%,Gen9LPClient,A0,105.041,syn,509268.41,
+PS2_PL_Else_11%,Gen9LPClient,A0,108.849,syn,509268.41,
+PS2_PL_Else_16%,Gen9LPClient,A0,139.781,syn,509268.41,
+PS2_PL_Else_19%,Gen9LPClient,A0,154.08,syn,509268.41,
+PS2_PL_Point_2%,Gen9LPClient,A0,45.0332,syn,509268.41,
+PS2_PL_Point_8%,Gen9LPClient,A0,57.987,syn,509268.41,
+PS2_PL_Point_12%,Gen9LPClient,A0,85.6871,syn,509268.41,
+PS2_PL_Point_19%,Gen9LPClient,A0,153.786,syn,509268.41,
+PS2_PL_Media_Sample8x8,Gen9LPClient,A0,26.8657,syn,509268.41,0% TR
+PS0_DM,Gen9LPClient,A0,0.235268,syn,947908.83,
+PS1_DM,Gen9LPClient,A0,4.699352,syn,947908.83,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_DM_BC1_5,Gen9LPClient,A0,106.439,syn,947908.83,25% TR
+PS2_DM_BC6_7,Gen9LPClient,A0,106.439,syn,947908.83,Approximated with BC1_5
+PS2_DM_BC1_3_SRGB,Gen9LPClient,A0,136.966,syn,947908.83,Approximated with BC7_SRGB
+PS2_DM_BC7_SRGB,Gen9LPClient,A0,136.966,syn,947908.83,25% TR
+PS2_DM_ETC,Gen9LPClient,A0,96.0245,syn,947908.83,25% TR
+PS2_DM_Else,Gen9LPClient,A0,111.427,syn,947908.83,25% TR
+PS2_DM_HIZ,Gen9LPClient,A0,185.032,syn,947908.83,Approximated with Z
+PS2_DM_Z,Gen9LPClient,A0,185.032,syn,947908.83,47% TR
+PS2_DM_LOSSLESS,Gen9LPClient,A0,185.032,syn,947908.83,Approximated with Z
+PS2_DM_ASTC_LDR_2D,Gen9LPClient,A0,187.221,syn,947908.83,25% TR
+PS2_DM_ASTC_LDR_3D,Gen9LPClient,A0,0,syn,947908.83,No support in SKL
+PS2_DM_ASTC_HDR_2D,Gen9LPClient,A0,158.602,syn,947908.83,11% TR
+PS2_DM_ASTC_HDR_3D,Gen9LPClient,A0,0,syn,947908.83,No support in SKL
+PS2_DM_Expanded,Gen9LPClient,A0,88.8197,syn,947908.83,30% TR
+PS2_DM_Expanded_BYPASS,Gen9LPClient,A0,13.275,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Compressed_BYPASS,Gen9LPClient,A0,13.275,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Media_BYPASS,Gen9LPClient,A0,13.275,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Media_SRGB,Gen9LPClient,A0,0,syn,947908.83,No test available
+PS2_DM_Media_Planar,Gen9LPClient,A0,0,syn,947908.83,No test available
+PS2_DM_PALRAM_READ,Gen9LPClient,A0,14.377,ebb,1,Need to confirm with Niraj
+PS2_DM_PALRAM_WRITE,Gen9LPClient,A0,22.395,ebb,1,Need to confirm with Niraj
+PS0_FL,Gen9LPClient,A0,0.215663,syn,956643.76,
+PS1_FL,Gen9LPClient,A0,12.97194,syn,956643.76,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_FL_SampleC_Gather4C_23%,Gen9LPClient,A0,162.7809,syn,956643.76,
+PS2_FL_SampleC_Gather4C_28%,Gen9LPClient,A0,164.3943,syn,956643.76,
+PS2_FL_SampleC_Gather4C_34%,Gen9LPClient,A0,172.7765,syn,956643.76,
+PS2_FL_SampleC_Gather4C_40%,Gen9LPClient,A0,234.6306,syn,956643.76,
+PS2_FL_SampleC_Gather4C_Bypass_49%,Gen9LPClient,A0,140.93,syn,956643.76,
+PS2_FL_SampleC_Gather4C_Bypass_50%,Gen9LPClient,A0,141.501,syn,956643.76,
+PS2_FL_SampleC_Gather4C_Bypass_51%,Gen9LPClient,A0,142.497,syn,956643.76,
+PS2_FL_Gather4_Bypass_2%,Gen9LPClient,A0,119.5559,syn,956643.76,
+PS2_FL_Gather4_Bypass_9%,Gen9LPClient,A0,138,syn,956643.76,
+PS2_FL_Gather4_Bypass_13%,Gen9LPClient,A0,167.7641,syn,956643.76,
+PS2_FL_Gather4_Bypass_16%,Gen9LPClient,A0,187.667,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Nearest_3%,Gen9LPClient,A0,119.0666,syn,956643.76,Need to debug
+PS2_FL_Data_Dep_Bypass_Nearest_7%,Gen9LPClient,A0,137.4616,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Nearest_14%,Gen9LPClient,A0,168.8618,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Nearest_16%,Gen9LPClient,A0,187.8029,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Bilinear_1%,Gen9LPClient,A0,80.77515,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Bilinear_2%,Gen9LPClient,A0,81.5167,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Bilinear_12%,Gen9LPClient,A0,192.3518,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Trilinear_3%,Gen9LPClient,A0,31.82409,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Trilinear_5%,Gen9LPClient,A0,37.37357,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Trilinear_8%,Gen9LPClient,A0,42.49166,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Trilinear_12%,Gen9LPClient,A0,62.59821,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_LinearAniso_8%,Gen9LPClient,A0,67.8818,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_LinearAniso_21%,Gen9LPClient,A0,148.116,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_NonLinearAniso_8%,Gen9LPClient,A0,67.8818,syn,956643.76,Approximated using LinearAniso
+PS2_FL_Data_Dep_Bypass_NonLinearAniso_21%,Gen9LPClient,A0,148.116,syn,956643.76,Approximated using LinearAniso
+PS2_FL_Data_Dep_Bypass_LinearFastAniso,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_Data_Dep_Bypass_NonLinearFastAniso,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_Data_Dep_Bypass_FastLinear_14%,Gen9LPClient,A0,65.70393,syn,956643.76,Bubble windows taken
+PS2_FL_Data_Dep_Bypass_FastLinear_17%,Gen9LPClient,A0,76.0931,syn,956643.76,
+PS2_FL_Data_Dep_Bypass_Else_3%,Gen9LPClient,A0,119.0666,syn,956643.76,Approximated with Nearest
+PS2_FL_Data_Dep_Bypass_Else_7%,Gen9LPClient,A0,137.4616,syn,956643.76,Approximated with Nearest
+PS2_FL_Data_Dep_Bypass_Else_14%,Gen9LPClient,A0,168.8618,syn,956643.76,Approximated with Nearest
+PS2_FL_Data_Dep_Bypass_Else_16%,Gen9LPClient,A0,187.8029,syn,956643.76,Approximated with Nearest
+PS2_FL_Nearest_Float16_3%,Gen9LPClient,A0,119.0666,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float16_5%,Gen9LPClient,A0,131.3897,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float16_7%,Gen9LPClient,A0,137.4616,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float16_14%,Gen9LPClient,A0,168.8618,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float16_16%,Gen9LPClient,A0,187.87029,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float32_3%,Gen9LPClient,A0,119.0666,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float32_5%,Gen9LPClient,A0,131.3897,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float32_7%,Gen9LPClient,A0,137.4616,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float32_14%,Gen9LPClient,A0,168.8618,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Float32_16%,Gen9LPClient,A0,187.87029,syn,956643.76,Approximated with Nearest_Else
+PS2_FL_Nearest_Else_3%,Gen9LPClient,A0,119.0666,syn,956643.76,
+PS2_FL_Nearest_Else_5%,Gen9LPClient,A0,131.3897,syn,956643.76,
+PS2_FL_Nearest_Else_7%,Gen9LPClient,A0,137.4616,syn,956643.76,
+PS2_FL_Nearest_Else_14%,Gen9LPClient,A0,168.8618,syn,956643.76,
+PS2_FL_Nearest_Else_16%,Gen9LPClient,A0,187.87029,syn,956643.76,
+PS2_FL_Bilinear_Float16_17%,Gen9LPClient,A0,149.5548,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float16_25%,Gen9LPClient,A0,158.7284,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float16_31%,Gen9LPClient,A0,195.0089,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float16_50%,Gen9LPClient,A0,218.3004,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float32_17%,Gen9LPClient,A0,149.5548,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float32_25%,Gen9LPClient,A0,158.7284,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float32_31%,Gen9LPClient,A0,195.0089,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Float32_50%,Gen9LPClient,A0,218.3004,syn,956643.76,Approximated with Bilinear_Else
+PS2_FL_Bilinear_Else_17%,Gen9LPClient,A0,149.5548,syn,956643.76,
+PS2_FL_Bilinear_Else_25%,Gen9LPClient,A0,158.7284,syn,956643.76,
+PS2_FL_Bilinear_Else_31%,Gen9LPClient,A0,195.0089,syn,956643.76,
+PS2_FL_Bilinear_Else_50%,Gen9LPClient,A0,218.3004,syn,956643.76,
+PS2_FL_Trilinear_Float16_27%,Gen9LPClient,A0,234.1638,syn,956643.76,
+PS2_FL_Trilinear_Float16_44%,Gen9LPClient,A0,277.0615,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_Trilinear_Float16_49%,Gen9LPClient,A0,318.4358,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_Trilinear_Float16_51%,Gen9LPClient,A0,320.0473,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_Trilinear_Float32_27%,Gen9LPClient,A0,234.1638,syn,956643.76,Approximated with Trilinear_Float16
+PS2_FL_Trilinear_Float32_44%,Gen9LPClient,A0,277.0615,syn,956643.76,
+PS2_FL_Trilinear_Float32_49%,Gen9LPClient,A0,318.4358,syn,956643.76,
+PS2_FL_Trilinear_Float32_51%,Gen9LPClient,A0,320.0473,syn,956643.76,
+PS2_FL_Trilinear_Else_27%,Gen9LPClient,A0,234.1638,syn,956643.76,Approximated with Trilinear_Float16
+PS2_FL_Trilinear_Else_44%,Gen9LPClient,A0,277.0615,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_Trilinear_Else_49%,Gen9LPClient,A0,318.4358,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_Trilinear_Else_51%,Gen9LPClient,A0,320.0473,syn,956643.76,Approximated with Trilinear_Float32
+PS2_FL_LinearAniso_Float16_19%,Gen9LPClient,A0,222.21,syn,956643.76,
+PS2_FL_LinearAniso_Float16_21%,Gen9LPClient,A0,234.15,syn,956643.76,
+PS2_FL_LinearAniso_Float16_25%,Gen9LPClient,A0,236.3563,syn,956643.76,
+PS2_FL_LinearAniso_Float16_27%,Gen9LPClient,A0,239.0152,syn,956643.76,
+PS2_FL_LinearAniso_Float32_9%,Gen9LPClient,A0,144.76,syn,956643.76,
+PS2_FL_LinearAniso_Float32_10%,Gen9LPClient,A0,144.8,syn,956643.76,
+PS2_FL_LinearAniso_Float32_49%,Gen9LPClient,A0,282.856,syn,956643.76,
+PS2_FL_LinearAniso_Float32_51%,Gen9LPClient,A0,286.411,syn,956643.76,
+PS2_FL_LinearAniso_Else_24%,Gen9LPClient,A0,229.55,syn,956643.76,
+PS2_FL_LinearAniso_Else_28%,Gen9LPClient,A0,232.6732,syn,956643.76,
+PS2_FL_LinearAniso_Else_31%,Gen9LPClient,A0,262.7181,syn,956643.76,
+PS2_FL_NonLinearAniso_Float16_19%,Gen9LPClient,A0,222.21,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float16_21%,Gen9LPClient,A0,234.15,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float16_25%,Gen9LPClient,A0,236.3563,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float16_27%,Gen9LPClient,A0,239.0152,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float32_9%,Gen9LPClient,A0,144.76,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float32_10%,Gen9LPClient,A0,144.8,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float32_49%,Gen9LPClient,A0,282.856,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Float32_51%,Gen9LPClient,A0,286.411,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Else_24%,Gen9LPClient,A0,229.55,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Else_28%,Gen9LPClient,A0,232.6732,syn,956643.76,Approximated using LinearAniso
+PS2_FL_NonLinearAniso_Else_31%,Gen9LPClient,A0,262.7181,syn,956643.76,Approximated using LinearAniso
+PS2_FL_LinearFastAniso_Float16,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_LinearFastAniso_Float32,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_LinearFastAniso_Else,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_NonLinearFastAniso_Float16,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_NonLinearFastAniso_Float32,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_NonLinearFastAniso_Else,Gen9LPClient,A0,0,syn,956643.76,SKL doesnot support
+PS2_FL_FastLinear_Float16_33%,Gen9LPClient,A0,261.0399,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float16_37%,Gen9LPClient,A0,283.3877,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float16_38%,Gen9LPClient,A0,298.8886,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float16_43%,Gen9LPClient,A0,312.5825,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float32_33%,Gen9LPClient,A0,261.0399,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float32_37%,Gen9LPClient,A0,283.3877,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float32_38%,Gen9LPClient,A0,298.8886,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Float32_43%,Gen9LPClient,A0,312.5825,syn,956643.76,Approximated using FastLinear_Else
+PS2_FL_FastLinear_Else_33%,Gen9LPClient,A0,261.0399,syn,956643.76,
+PS2_FL_FastLinear_Else_37%,Gen9LPClient,A0,283.3877,syn,956643.76,
+PS2_FL_FastLinear_Else_38%,Gen9LPClient,A0,298.8886,syn,956643.76,
+PS2_FL_FastLinear_Else_43%,Gen9LPClient,A0,312.5825,syn,956643.76,
+PS2_FL_Else_3%,Gen9LPClient,A0,119.0666,syn,956643.76,
+PS2_FL_Else_5%,Gen9LPClient,A0,131.3897,syn,956643.76,
+PS2_FL_Else_7%,Gen9LPClient,A0,137.4616,syn,956643.76,
+PS2_FL_Else_14%,Gen9LPClient,A0,168.8618,syn,956643.76,
+PS2_FL_Else_16%,Gen9LPClient,A0,187.87029,syn,956643.76,
+PS2_FL_Volumetric_Float16_0%,Gen9LPClient,A0,68.5052,syn,956643.76,Approximated using Volumetric_Float32
+PS2_FL_Volumetric_Float16_1%,Gen9LPClient,A0,90.07134,syn,956643.76,
+PS2_FL_Volumetric_Float16_13%,Gen9LPClient,A0,192.5052,syn,956643.76,Approximated using Volumetric_Else
+PS2_FL_Volumetric_Float32_0%,Gen9LPClient,A0,68.5052,syn,956643.76,
+PS2_FL_Volumetric_Float32_1%,Gen9LPClient,A0,90.07134,syn,956643.76,Approximated using Volumetric_Float16
+PS2_FL_Volumetric_Float32_13%,Gen9LPClient,A0,192.5052,syn,956643.76,Approximated using Volumetric_Else
+PS2_FL_Volumetric_Else_0%,Gen9LPClient,A0,68.5052,syn,956643.76,Approximated using Volumetric_Float32
+PS2_FL_Volumetric_Else_1%,Gen9LPClient,A0,90.07134,syn,956643.76,Approximated using Volumetric_Float16
+PS2_FL_Volumetric_Else_13%,Gen9LPClient,A0,192.5052,syn,956643.76,
+PS0_SC,Gen9LPClient,A0,0.996176,syn,367689.38,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_SC,Gen9LPClient,A0,7.471319,syn,367689.38,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SC_NearestMode_32BPT,Gen9LPClient,A0,72.54002,syn,367689.38,2% TR
+PS2_SC_NearestMode_64BPT,Gen9LPClient,A0,79.30292,syn,367689.38,2% TR
+PS2_SC_NearestMode_128BPT,Gen9LPClient,A0,63.28194,syn,367689.38,2% TR
+PS2_SC_FastLinear_32BPT,Gen9LPClient,A0,143.4347,syn,367689.38,10% TR
+PS2_SC_FastLinear_64BPT,Gen9LPClient,A0,170.424,syn,367689.38,10% TR
+PS2_SC_FastLinear_128BPT,Gen9LPClient,A0,126.7529,syn,367689.38,10% TR
+PS2_SC_LinearFastAniso_32BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_LinearFastAniso_64BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_LinearFastAniso_128BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_NonLinearFastAniso_32BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_NonLinearFastAniso_64BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_NonLinearFastAniso_128BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
+PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen9LPClient,A0,143.4347,syn,367689.38,10% TR
+PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen9LPClient,A0,135.091,syn,367689.38,15% TR
+PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen9LPClient,A0,127.1728,syn,367689.38,18% TR
+PS2_SC_Else,Gen9LPClient,A0,61.65906,syn,367689.38,Approximated with Volumetric 32BPT
+PS2_SC_Media_Sample8x8,Gen9LPClient,A0,137.064,syn,367689.38,1% TR
+PS2_SC_Volumetric_32BPT,Gen9LPClient,A0,61.65906,syn,367689.38,2% TR
+PS2_SC_Volumetric_64BPT,Gen9LPClient,A0,70.20632,syn,367689.38,2% TR
+PS2_SC_Volumetric_128BPT,Gen9LPClient,A0,75.35362,syn,367689.38,2% TR
+PS0_SC_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS2_SC_DataRam_READ,Gen9LPClient,A0,57.508,ebb,1,
+PS2_SC_DataRam_WRITE,Gen9LPClient,A0,89.58,ebb,1,
+PS0_SC_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS2_SC_LatFifo_READ,Gen9LPClient,A0,11.876,ebb,1,
+PS2_SC_LatFifo_WRITE,Gen9LPClient,A0,29.459,ebb,1,
+PS0_AVS_DOP,Gen9LPClient,A0,0,syn,828722.77,
+PS0_AVS,Gen9LPClient,A0,0.6939,syn,828722.77,
+PS1_AVS,Gen9LPClient,A0,17.15155,syn,828722.77,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_AVS_Scalar,Gen9LPClient,A0,0,syn,828722.77,Need to confirm with Niraj
+PS2_AVS_Convolution,Gen9LPClient,A0,286,syn,828722.77,10% TR 62pF EBB
+PS2_AVS_CorrelationSearch,Gen9LPClient,A0,206,syn,828722.77,7% TR 4% VLD 46pF EBB
+PS2_AVS_Centroid,Gen9LPClient,A0,136,syn,828722.77,2% TR 24% VLD 18pF EBB
+PS2_AVS_MinMax,Gen9LPClient,A0,65,syn,828722.77,0% TR 16% VLD 10pF EBB
+PS2_AVS_MinMaxFilter,Gen9LPClient,A0,80,syn,828722.77,6% TR 57% VLD 16pF EBB
+PS2_AVS_Erode,Gen9LPClient,A0,163,syn,828722.77,18% TR 25% VLD 56pF EBB
+PS2_AVS_Dilate,Gen9LPClient,A0,126,syn,828722.77,10% TR 25% VLD 46pF EBB
+PS2_AVS_BoolCentroid,Gen9LPClient,A0,126,syn,828722.77,Approximated using dilate
+PS2_AVS_DataStorageRAM_READ,Gen9LPClient,A0,2.351,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_WRITE,Gen9LPClient,A0,2.358,ebb,1,Need to confirm with Niraj
+PS2_AVS_CoeffStorageRAM_READ,Gen9LPClient,A0,2.493,ebb,1,Need to confirm with Niraj
+PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPClient,A0,3.879,ebb,1,Need to confirm with Niraj
+PS0_IEF_DOP,Gen9LPClient,A0,0,syn,216441.4,
+PS0_IEF,Gen9LPClient,A0,0.07855,syn,216441.4,
+PS1_IEF,Gen9LPClient,A0,2.60997,syn,216441.4,
+PS2_IEF_NoBypass,Gen9LPClient,A0,36.8392,syn,216441.4,7% TR - looks suspicious
+PS2_IEF_Bypass,Gen9LPClient,A0,32.6405,syn,216441.4,7% TR
+PS0_CRE_DOP,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS0_CRE,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS1_CRE,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS2_CRE_FRONT_ACTIVE,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS2_CRE_INTRA,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS2_CRE_INTRA_SKIP,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS2_CRE_FBR,Gen9LPClient,A0,0,syn,556318.9,Data WIP
+PS0_IME_DOP,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS0_IME,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS1_IME,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS2_IME_BACK_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS2_IME_FRONT_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS0_MEDIASMP_SMALL_DOP,Gen9LPClient,A0,0.378,syn,44707,Need to enhance the GC
+PS0_MEDIASMP_SMALL,Gen9LPClient,A0,6.475,syn,44707,Need to enhance the GC
+PS2_MEDIASMP_SMALL,Gen9LPClient,A0,49.614,syn,44707,Need to enhance the GC
+PS0_MEDIASMP_CLKGLUE_DOP,Gen9LPClient,A0,0.32,syn,1,
+PS0_MEDIASMP_CLKGLUE,Gen9LPClient,A0,5.47,syn,1,
+PS2_MEDIASMP_CLKGLUE,Gen9LPClient,A0,5.47,syn,1,
+PS0_MEDIASMP_NONCLKGLUE_DOP,Gen9LPClient,A0,0.054,syn,1,
+PS0_MEDIASMP_NONCLKGLUE,Gen9LPClient,A0,0.964,syn,1,
+PS2_MEDIASMP_NONCLKGLUE,Gen9LPClient,A0,0.964,syn,1,
+PS0_MEDIASMP_DFX_DOP,Gen9LPClient,A0,0.051,syn,64168,Need to enhance the GC
+PS0_MEDIASMP_DFX,Gen9LPClient,A0,0.888,syn,64168,Need to enhance the GC
+PS2_MEDIASMP_DFX,Gen9LPClient,A0,5.436,syn,64168,Need to enhance the GC
+PS0_MEDIASMP_DOP,Gen9LPClient,A0,0.486,syn,1,
+PS2_MEDIASMP_DOP,Gen9LPClient,A0,8.76,syn,1,
+PS0_SVSM,Gen9LPClient,A0,0.281528,syn,136512.86,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_SVSM,Gen9LPClient,A0,1.494264,syn,136512.86,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SVSM,Gen9LPClient,A0,1.494264,syn,136512.86,Approximated with PS1_SVSM
+PS0_HDC_ReqCmd1_DOP,Gen9LPClient,A0,0,syn,462536.67,
+PS0_HDC_ReqCmd1,Gen9LPClient,A0,0.498088,syn,462536.67,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_HDC_ReqCmd1,Gen9LPClient,A0,3.053496,syn,462536.67,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_HDC_ReqCmd1_Sequenced_Typed_Read,Gen9LPClient,A0,83.79553,syn,462536.67,13% TR
+PS2_HDC_ReqCmd1_Sequenced_Typed_Write,Gen9LPClient,A0,98.01018,syn,462536.67,27% TR
+PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read,Gen9LPClient,A0,40.07552,syn,462536.67,21% TR
+PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write,Gen9LPClient,A0,47.99252,syn,462536.67,15% TR
+PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read,Gen9LPClient,A0,41.19352,syn,462536.67,21% TR
+PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write,Gen9LPClient,A0,51.15871,syn,462536.67,23% TR
+PS2_HDC_ReqCmd1_NonSequenced_Read,Gen9LPClient,A0,30.46926,syn,462536.67,9% TR
+PS2_HDC_ReqCmd1_NonSequenced_Write,Gen9LPClient,A0,48.28546,syn,462536.67,25% TR
+PS0_HDC_ReqCmd2_DOP,Gen9LPClient,A0,0,syn,945700.51,
+PS0_HDC_ReqCmd2,Gen9LPClient,A0,0.071071,syn,945700.51,
+PS1_HDC_ReqCmd2,Gen9LPClient,A0,3.061623,syn,945700.51,
+PS2_HDC_ReqCmd2_Sequenced_Typed_Read,Gen9LPClient,A0,126.385,syn,945700.51,27% TR
+PS2_HDC_ReqCmd2_Sequenced_Typed_Write,Gen9LPClient,A0,126.385,syn,945700.51,Approximated with Sequenced Typed Read
+PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read,Gen9LPClient,A0,151.7266,syn,945700.51,3% TR
+PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write,Gen9LPClient,A0,151.8278,syn,945700.51,4% TR
+PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Read,Gen9LPClient,A0,114.9622,syn,945700.51,26% TR
+PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Write,Gen9LPClient,A0,114.6741,syn,945700.51,27% TR
+PS2_HDC_ReqCmd2_NonSequenced_Read,Gen9LPClient,A0,73.84691,syn,945700.51,3% TR
+PS2_HDC_ReqCmd2_NonSequenced_Write,Gen9LPClient,A0,70.93609,syn,945700.51,2% TR
+PS0_HDC_ReqData_DOP,Gen9LPClient,A0,0,syn,293495.56,
+PS0_HDC_ReqData,Gen9LPClient,A0,0.042575,syn,293495.56,
+PS1_HDC_ReqData,Gen9LPClient,A0,3.053496,syn,293495.56,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_HDC_ReqData_Sequenced_Typed_Write,Gen9LPClient,A0,44.26005,syn,293495.56,22% TR
+PS2_HDC_ReqData_Sequenced_Else_Data_Write,Gen9LPClient,A0,46.34697,syn,293495.56,30% TR
+PS2_HDC_ReqData_Sequenced_Else_SLM_Write,Gen9LPClient,A0,86.12651,syn,293495.56,25% TR
+PS2_HDC_ReqData_NonSequenced_Write,Gen9LPClient,A0,51.44249,syn,293495.56,40% TR
+PS0_HDC_Ret_DOP,Gen9LPClient,A0,0,syn,557517.49,
+PS0_HDC_Ret,Gen9LPClient,A0,2.009684,syn,557517.49,
+PS1_HDC_Ret,Gen9LPClient,A0,8.250935,syn,557517.49,Need to add from FSO idle
+PS2_HDC_Ret_Sequenced_Typed_Read,Gen9LPClient,A0,80.67872,syn,557517.49,Approximated with Data Read
+PS2_HDC_Ret_Sequenced_Else_Data_Read,Gen9LPClient,A0,80.67872,syn,557517.49,37% TR
+PS2_HDC_Ret_Sequenced_Else_SLM_Read,Gen9LPClient,A0,108.0074,syn,557517.49,Unknown
+PS2_HDC_Ret_NonSequenced_Read,Gen9LPClient,A0,79.77477,syn,557517.49,5% TR
+PS0_HDCTLB_DOP,Gen9LPClient,A0,0,syn,404200.38,
+PS0_HDCTLB,Gen9LPClient,A0,6.13834,syn,404200.38,
+PS1_HDCTLB,Gen9LPClient,A0,14.55744,syn,404200.38,
+PS2_HDCTLB_Read_Hit,Gen9LPClient,A0,43.0759,syn,404200.38,22% TR
+PS2_HDCTLB_Read_Miss,Gen9LPClient,A0,35.8604,syn,404200.38,2% TR
+PS2_HDCTLB_Write_Hit,Gen9LPClient,A0,63.341,syn,404200.38,14% TR
+PS2_HDCTLB_Write_Miss,Gen9LPClient,A0,42.3967,syn,404200.38,5% TR
+PS0_HDC_DOP,Gen9LPClient,A0,0,syn,1,
+PS2_HDC_DOP,Gen9LPClient,A0,11.265,syn,1,
+PS0_HDC_CLKGLUE_DOP,Gen9LPClient,A0,0,syn,1,
+PS0_HDC_CLKGLUE,Gen9LPClient,A0,13.169,syn,1,
+PS1_HDC_CLKGLUE,Gen9LPClient,A0,13.169,syn,1,
+PS2_HDC_CLKGLUE,Gen9LPClient,A0,13.169,syn,1,
+PS0_HDC_NONCLKGLUE_DOP,Gen9LPClient,A0,0,syn,1,
+PS0_HDC_NONCLKGLUE,Gen9LPClient,A0,0.879,syn,1,
+PS1_HDC_NONCLKGLUE,Gen9LPClient,A0,0.879,syn,1,
+PS2_HDC_NONCLKGLUE,Gen9LPClient,A0,0.879,syn,1,
+PS0_HDC_SMALL_DOP,Gen9LPClient,A0,0,syn,75814,Need to enhance the GC
+PS0_HDC_SMALL,Gen9LPClient,A0,15.96,syn,75814,Need to enhance the GC
+PS1_HDC_SMALL,Gen9LPClient,A0,25.857,syn,75814,Need to enhance the GC
+PS2_HDC_SMALL,Gen9LPClient,A0,25.857,syn,75814,Need to enhance the GC
+PS0_HDC_DFX_DOP,Gen9LPClient,A0,0,syn,67964,Need to enhance the GC
+PS0_HDC_DFX,Gen9LPClient,A0,1.148,syn,67964,Need to enhance the GC
+PS1_HDC_DFX,Gen9LPClient,A0,2.62,syn,67964,Need to enhance the GC
+PS2_HDC_DFX,Gen9LPClient,A0,2.62,syn,67964,Need to enhance the GC
+PS0_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
+PS1_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
+PS2_LTCD_EBB_Read,Gen9LPClient,A0,120.8878,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,231.8668,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,168.8466,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,324.2172,ebb,1,Normalized to 0.6GHz
+PS0_LTCD_Data,Gen9LPClient,A0,3.528074,syn,720863.55,
+PS1_LTCD_Data,Gen9LPClient,A0,16.83287,syn,720863.55,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,94.86064,syn,720863.55,25% TR
+PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,97.87146,syn,720863.55,
+PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,78.59668,syn,720863.55,
+PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen9LPClient,A0,113.1113,syn,720863.55,
+PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,25.94876,syn,720863.55,
+PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,43.24066,syn,720863.55,
+PS0_LTCD_Tag,Gen9LPClient,A0,1.496456,syn,720863.55,
+PS1_LTCD_Tag,Gen9LPClient,A0,47.46379,syn,720863.55,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,122.9346,syn,720863.55,25% TR
+PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,126.8371,syn,720863.55,
+PS0_LSQD,Gen9LPClient,A0,0.801272,syn,317471.15,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_LSQD,Gen9LPClient,A0,41.77442,syn,317471.15,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LSQD_nonatomics,Gen9LPClient,A0,122.5172,syn,317471.15,26% TR
+PS2_LSQD_atomics,Gen9LPClient,A0,167.6578,syn,317471.15,Approximated using nonatomics and LSLM atomics to nonatomics ratio
+PS0_LSQC,Gen9LPClient,A0,1.555,syn,376450.15,
+PS1_LSQC,Gen9LPClient,A0,22.24071,syn,376450.15,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LSQC,Gen9LPClient,A0,35.63853,syn,376450.15,5% TR
+PS0_LTCC,Gen9LPClient,A0,0.194945,syn,23507.9,
+PS1_LTCC,Gen9LPClient,A0,0.306982,syn,23507.9,
+PS2_LTCC,Gen9LPClient,A0,3.715593,syn,23507.9,7% TR
+PS0_LSLM,Gen9LPClient,A0,0.393227,syn,239136.8,
+PS1_LSLM,Gen9LPClient,A0,7.731191,syn,239136.8,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LSLM_Atomics,Gen9LPClient,A0,45.32253,syn,239136.8,
+PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.11979,syn,239136.8,
+PS0_LNI,Gen9LPClient,A0,6.250924,syn,889910.56,
+PS1_LNI,Gen9LPClient,A0,29.90693,syn,889910.56,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LNI,Gen9LPClient,A0,307.2794,syn,889910.56,
+PS2_LNI_1Bank,Gen9LPClient,A0,80.40939,syn,889910.56,
+PS2_LNI_2Bank,Gen9LPClient,A0,180.6052,syn,889910.56,
+PS2_LNI_4Bank,Gen9LPClient,A0,307.2794,syn,889910.56,
+PS0_LNE,Gen9LPClient,A0,5.430583,syn,449149.31,
+PS1_LNE,Gen9LPClient,A0,22.24071,syn,449149.31,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_LNE,Gen9LPClient,A0,202.635,syn,449149.31,
+PS0_LNICS,Gen9LPClient,A0,0,syn,1,
+PS1_LNICS,Gen9LPClient,A0,0,syn,1,
+PS2_LNICS,Gen9LPClient,A0,0,syn,1,
+PS2_LNICS_BW,Gen9LPClient,A0,0,syn,1,
+PS0_LNECS,Gen9LPClient,A0,0,syn,1,
+PS1_LNECS,Gen9LPClient,A0,0,syn,1,
+PS2_LNECS,Gen9LPClient,A0,0,syn,1,
+PS2_LNECS_BW,Gen9LPClient,A0,0,syn,1,
+PS0_L3BankOther,Gen9LPClient,A0,0,syn,1,
+PS1_L3BankOther,Gen9LPClient,A0,0,syn,1,
+PS2_L3BankOther,Gen9LPClient,A0,0,syn,1,
+PS0_L3_Bank_DOP,Gen9LPClient,A0,13.451,syn,1,
+PS1_L3_Bank_DOP,Gen9LPClient,A0,13.451,syn,1,
+PS2_L3_Bank_DOP,Gen9LPClient,A0,13.451,syn,1,
+PS0_L3_Bank_DFX,Gen9LPClient,A0,0.801,syn,98861,Need to enhance the GC
+PS1_L3_Bank_DFX,Gen9LPClient,A0,2.101,syn,98861,Need to enhance the GC
+PS2_L3_Bank_DFX,Gen9LPClient,A0,2.101,syn,98861,Need to enhance the GC
+PS0_L3_Bank_SMALL,Gen9LPClient,A0,3.14,syn,52872,Need to enhance the GC
+PS1_L3_Bank_SMALL,Gen9LPClient,A0,9.954,syn,52872,Need to enhance the GC
+PS2_L3_Bank_SMALL,Gen9LPClient,A0,9.594,syn,52872,Need to enhance the GC
+PS0_L3_Bank_CLKGLUE,Gen9LPClient,A0,10.735,syn,1,
+PS1_L3_Bank_CLKGLUE,Gen9LPClient,A0,10.735,syn,1,
+PS2_L3_Bank_CLKGLUE,Gen9LPClient,A0,10.735,syn,1,
+PS0_L3_Bank_NONCLKGLUE,Gen9LPClient,A0,1.074,syn,1,
+PS1_L3_Bank_NONCLKGLUE,Gen9LPClient,A0,1.074,syn,1,
+PS2_L3_Bank_NONCLKGLUE,Gen9LPClient,A0,1.074,syn,1,
+PS0_HIZ,Gen9LPClient,A0,4.294697,syn,1652079.45,
+PS0_HIZ_DOP,Gen9LPClient,A0,0,syn,1652079.45,
+PS1_HIZ,Gen9LPClient,A0,21.95918,syn,1652079.45,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_HIZ_8x8_EN_ZONLY_FAIL,Gen9LPClient,A0,207.7942,syn,1652079.45,No TR information
+PS2_HIZ_8x8_EN_ZONLY_Accept,Gen9LPClient,A0,360.7764,syn,1652079.45,No TR information
+PS2_HIZ_8x8_EN_ZONLY_AMBIG,Gen9LPClient,A0,360.7764,syn,1652079.45,Approximated with Accept - close from raw pt-px data
+PS2_HIZ_8x8_EN_ZSTC_FAIL,Gen9LPClient,A0,235.0183,syn,1652079.45,2% TR
+PS2_HIZ_8x8_EN_ZSTC_Accept,Gen9LPClient,A0,292.0552,syn,1652079.45,No TR information
+PS2_HIZ_8x8_EN_ZSTC_AMBIG,Gen9LPClient,A0,292.0552,syn,1652079.45,Approximated with Accept - close from raw pt-px data
+PS2_HIZ_8x8_EN_STCONLY_FAIL,Gen9LPClient,A0,325.8065,syn,1652079.45,Approximated with bubble data 
+PS2_HIZ_8x8_EN_STCONLY_AMBIG,Gen9LPClient,A0,325.8065,syn,1652079.45,Approximated with bubble data 
+PS2_HIZ_8x8_DIS_ZSTC,Gen9LPClient,A0,237.5068,syn,1652079.45,2% TR
+PS2_HIZ_8x8_DIS_ZONLY,Gen9LPClient,A0,237.5068,syn,1652079.45,Approximated with DIS ZSTC - no difference in ACCESS data
+PS2_HIZ_8x8_DIS_STCONLY,Gen9LPClient,A0,237.5068,syn,1652079.45,Approximated with DIS ZSTC - no difference in ACCESS data
+PS2_HIZ_8x8_RESOLVE,Gen9LPClient,A0,251.278749,syn,1652079.45,No TR information
+PS2_HIZ_8x4_EN_ZONLY_FAIL,Gen9LPClient,A0,207.7942,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_ZONLY_Accept,Gen9LPClient,A0,360.7764,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_ZONLY_AMBIG,Gen9LPClient,A0,360.7764,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_ZSTC_FAIL,Gen9LPClient,A0,235.0183,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_ZSTC_Accept,Gen9LPClient,A0,292.0552,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_ZSTC_AMBIG,Gen9LPClient,A0,292.0552,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_STCONLY_FAIL,Gen9LPClient,A0,325.8065,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_EN_STCONLY_AMBIG,Gen9LPClient,A0,325.8065,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_DIS_ZSTC,Gen9LPClient,A0,237.5068,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_DIS_ZONLY,Gen9LPClient,A0,237.5068,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_DIS_STCONLY,Gen9LPClient,A0,237.5068,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_8x4_RESOLVE,Gen9LPClient,A0,251.278749,syn,1652079.45,Approximated with 8x8
+PS2_HIZ_ZMARKERS,Gen9LPClient,A0,8.8817065,syn,1652079.45,
+PS2_HIZ_CACHE_READ,Gen9LPClient,A0,6.593,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_CACHE_WRITE,Gen9LPClient,A0,10.922,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_LATFIFO_READ,Gen9LPClient,A0,28.278,ebb,1,
+PS2_HIZ_LATFIFO_WRITE,Gen9LPClient,A0,62.429,ebb,1,
+PS0_IZ,Gen9LPClient,A0,2.766973,syn,963992.84,
+PS0_IZ_DOP,Gen9LPClient,A0,0,syn,963992.84,
+PS1_IZ,Gen9LPClient,A0,9.896791,syn,963992.84,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_IZ_CMP,Gen9LPClient,A0,45.96845,syn,963992.84,Approximated with default ps2
+PS2_IZ_NORMAL_DEPTHEN_PASS,Gen9LPClient,A0,121.0323,syn,963992.84,No TR information
+PS2_IZ_NORMAL_DEPTHEN_FAIL,Gen9LPClient,A0,121.0323,syn,963992.84,Approximated with depth pass
+PS2_IZ_NORMAL_DEPTHDIS,Gen9LPClient,A0,70.7871,syn,963992.84,No TR information
+PS2_IZ_ZMARKERS,Gen9LPClient,A0,5.666167,syn,963992.84,Has very low vaildity
+PS2_IZ_LATFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
+PS2_IZ_LATFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
+PS2_IZ_ZCOEFFFIFO_READ,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_IZ_ZCOEFFFIFO_WRITE,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_IZ_POLYFIFO_READ,Gen9LPClient,A0,21.209,ebb,1,
+PS2_IZ_POLYFIFO_WRITE,Gen9LPClient,A0,46.822,ebb,1,
+PS2_IZ_BARYCOEFFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
+PS2_IZ_WCOEFFIFO_READ,Gen9LPClient,A0,7.07,ebb,1,
+PS2_IZ_WCOEFFIFO_WRITE,Gen9LPClient,A0,15.607,ebb,1,
+PS0_RCZ,Gen9LPClient,A0,2.281349,syn,935345.55,
+PS0_RCZ_DOP,Gen9LPClient,A0,0,syn,935345.55,
+PS1_RCZ,Gen9LPClient,A0,44.37314,syn,935345.55,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_RCZ_ALLOC_HITS,Gen9LPClient,A0,155.0905,syn,935345.55,3% TR
+PS2_RCZ_ALLOC_MISSES,Gen9LPClient,A0,155.0905,syn,935345.55,Approximated with HITS because IZ power varies with reads/writes
+PS2_RCZ_CACHE_READ,Gen9LPClient,A0,7.258,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_RCZ_CACHE_WRITE,Gen9LPClient,A0,11.34,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS0_STC,Gen9LPClient,A0,4.297611,syn,602797.41,
+PS0_STC_DOP,Gen9LPClient,A0,0,syn,602797.41,
+PS1_STC,Gen9LPClient,A0,11.8298,syn,602797.41,
+PS2_STC_ALLOC_HITS,Gen9LPClient,A0,62.64566,syn,602797.41,5% TR
+PS2_STC_ALLOC_MISSES,Gen9LPClient,A0,62.64566,syn,602797.41,Approximated with HITS because STC power does not vary
+PS2_STC_CACHE_READ,Gen9LPClient,A0,9.843,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_STC_CACHE_WRITE,Gen9LPClient,A0,15.213,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS0_DAPRSC,Gen9LPClient,A0,0.097195,syn,389314.05,
+PS0_DAPRSC_DOP,Gen9LPClient,A0,0,syn,389314.05,
+PS1_DAPRSC,Gen9LPClient,A0,3.226744,syn,389314.05,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_DAPRSC,Gen9LPClient,A0,19.73687,syn,389314.05,8% TR
+PS0_RCPFE,Gen9LPClient,A0,2.486908,syn,690904.77,
+PS0_RCPFE_DOP,Gen9LPClient,A0,0,syn,690904.77,
+PS1_RCPFE,Gen9LPClient,A0,13.49169,syn,690904.77,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_RCPFE_NOMSAA_2PPC_WRT_ZPASS,Gen9LPClient,A0,153.3196,syn,690904.77,7% TR
+PS2_RCPFE_NOMSAA_2PPC_WRT_ZFAIL,Gen9LPClient,A0,90.10354,syn,690904.77,9% TR
+PS2_RCPFE_NOMSAA_2PPC_WRT_NOZPASS,Gen9LPClient,A0,205.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS and NOMSAA_8PPC_NOZPASS
+PS2_RCPFE_NOMSAA_2PPC_WRT_NOZFAIL,Gen9LPClient,A0,205.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS and NOMSAA_8PPC_NOZPASS
+PS2_RCPFE_NOMSAA_2PPC_BLD_ZPASS,Gen9LPClient,A0,193.9294,syn,690904.77,10% TR
+PS2_RCPFE_NOMSAA_2PPC_BLD_ZFAIL,Gen9LPClient,A0,90.10354,syn,690904.77,Approximated with NOMSAA_2PPC_WRT_ZFAIL
+PS2_RCPFE_NOMSAA_2PPC_BLD_NOZPASS,Gen9LPClient,A0,228.7178,syn,690904.77,10% TR
+PS2_RCPFE_NOMSAA_2PPC_BLD_NOZFAIL,Gen9LPClient,A0,228.7178,syn,690904.77,Approximated with NOMSAA_2PPC_WRT_NOZPASS
+PS2_RCPFE_NOMSAA_4PPC_WRT_ZPASS,Gen9LPClient,A0,170.0847,syn,690904.77,10% TR
+PS2_RCPFE_NOMSAA_4PPC_WRT_ZFAIL,Gen9LPClient,A0,90.47369,syn,690904.77,9% TR
+PS2_RCPFE_NOMSAA_4PPC_WRT_NOZPASS,Gen9LPClient,A0,245.4365,syn,690904.77,7% TR
+PS2_RCPFE_NOMSAA_4PPC_WRT_NOZFAIL,Gen9LPClient,A0,245.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS
+PS2_RCPFE_NOMSAA_4PPC_BLD_ZPASS,Gen9LPClient,A0,193.9294,syn,690904.77,Approximated with NOMSAA_2PPC_BLD_ZPASS
+PS2_RCPFE_NOMSAA_4PPC_BLD_ZFAIL,Gen9LPClient,A0,90.47369,syn,690904.77,9% TR
+PS2_RCPFE_NOMSAA_4PPC_BLD_NOZPASS,Gen9LPClient,A0,289.0183,syn,690904.77,3% TR
+PS2_RCPFE_NOMSAA_4PPC_BLD_NOZFAIL,Gen9LPClient,A0,289.0183,syn,690904.77,Approximated with NOMSAA_4PPC_BLD_NOZPASS
+PS2_RCPFE_NOMSAA_8PPC_WRT_ZPASS,Gen9LPClient,A0,217.3001,syn,690904.77,15% TR
+PS2_RCPFE_NOMSAA_8PPC_WRT_ZFAIL,Gen9LPClient,A0,93.66438,syn,690904.77,18% TR
+PS2_RCPFE_NOMSAA_8PPC_WRT_NOZPASS,Gen9LPClient,A0,286.171,syn,690904.77,1% TR
+PS2_RCPFE_NOMSAA_8PPC_WRT_NOZFAIL,Gen9LPClient,A0,286.171,syn,690904.77,Approximated with NOMSAA_8PPC_WRT_NOZPASS
+PS2_RCPFE_NOMSAA_8PPC_BLD_ZPASS,Gen9LPClient,A0,259.6581,syn,690904.77,15% TR
+PS2_RCPFE_NOMSAA_8PPC_BLD_ZFAIL,Gen9LPClient,A0,93.66438,syn,690904.77,Approximated with NOMSAA_8PPC_WRT_ZFAIL
+PS2_RCPFE_NOMSAA_8PPC_BLD_NOZPASS,Gen9LPClient,A0,289.0183,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_NOZPASS
+PS2_RCPFE_NOMSAA_8PPC_BLD_NOZFAIL,Gen9LPClient,A0,289.0183,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_NOZPASS
+PS2_RCPFE_NOMSAA_RTR,Gen9LPClient,A0,289.5906,syn,690904.77,1% TR
+PS2_RCPFE_MSAA_2PPC_WRT_ZPASS,Gen9LPClient,A0,153.3196,syn,690904.77,Approximated with NOMSAA_2PPC_WRT_ZPASS
+PS2_RCPFE_MSAA_2PPC_WRT_ZFAIL,Gen9LPClient,A0,90.10354,syn,690904.77,Approximated with NOMSAA_2PPC_WRT_ZFAIL
+PS2_RCPFE_MSAA_2PPC_WRT_NOZPASS,Gen9LPClient,A0,205.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS and NOMSAA_8PPC_NOZPASS
+PS2_RCPFE_MSAA_2PPC_WRT_NOZFAIL,Gen9LPClient,A0,205.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS and NOMSAA_8PPC_NOZPASS
+PS2_RCPFE_MSAA_2PPC_BLD_ZPASS,Gen9LPClient,A0,193.9294,syn,690904.77,Approximated with NOMSAA_2PPC_BLD_ZPASS
+PS2_RCPFE_MSAA_2PPC_BLD_ZFAIL,Gen9LPClient,A0,90.10354,syn,690904.77,Approximated with NOMSAA_2PPC_WRT_ZFAIL
+PS2_RCPFE_MSAA_2PPC_BLD_NOZPASS,Gen9LPClient,A0,236.9818,syn,690904.77,No TR information
+PS2_RCPFE_MSAA_2PPC_BLD_NOZFAIL,Gen9LPClient,A0,236.9818,syn,690904.77,Approximated with MSAA_2PPC_BLD_NOZFAIL
+PS2_RCPFE_MSAA_4PPC_WRT_ZPASS,Gen9LPClient,A0,170.0847,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_ZPASS
+PS2_RCPFE_MSAA_4PPC_WRT_ZFAIL,Gen9LPClient,A0,77.67311,syn,690904.77,1% TR
+PS2_RCPFE_MSAA_4PPC_WRT_NOZPASS,Gen9LPClient,A0,245.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS
+PS2_RCPFE_MSAA_4PPC_WRT_NOZFAIL,Gen9LPClient,A0,245.4365,syn,690904.77,Approximated with NOMSAA_4PPC_WRT_NOZPASS
+PS2_RCPFE_MSAA_4PPC_BLD_ZPASS,Gen9LPClient,A0,193.9294,syn,690904.77,Approximated with NOMSAA_2PPC_BLD_ZPASS
+PS2_RCPFE_MSAA_4PPC_BLD_ZFAIL,Gen9LPClient,A0,77.67311,syn,690904.77,Approximated with MSAA_4PPC_WRT_ZFAIL
+PS2_RCPFE_MSAA_4PPC_BLD_NOZPASS,Gen9LPClient,A0,252.2185,syn,690904.77,16% TR
+PS2_RCPFE_MSAA_4PPC_BLD_NOZFAIL,Gen9LPClient,A0,252.2185,syn,690904.77,Approximated with MSAA_4PPC_BLD_NOZPASS
+PS2_RCPFE_MSAA_8PPC_WRT_ZPASS,Gen9LPClient,A0,217.3001,syn,690904.77,Approximated with NOMSAA_8PPC_WRT_ZPASS
+PS2_RCPFE_MSAA_8PPC_WRT_ZFAIL,Gen9LPClient,A0,80.31876,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_ZFAIL
+PS2_RCPFE_MSAA_8PPC_WRT_NOZPASS,Gen9LPClient,A0,286.171,syn,690904.77,Approximated with NOMSAA_8PPC_WRT_NOZPASS
+PS2_RCPFE_MSAA_8PPC_WRT_NOZFAIL,Gen9LPClient,A0,286.171,syn,690904.77,Approximated with NOMSAA_8PPC_WRT_NOZPASS
+PS2_RCPFE_MSAA_8PPC_BLD_ZPASS,Gen9LPClient,A0,259.6581,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_ZPASS
+PS2_RCPFE_MSAA_8PPC_BLD_ZFAIL,Gen9LPClient,A0,80.31876,syn,690904.77,3% TR
+PS2_RCPFE_MSAA_8PPC_BLD_NOZPASS,Gen9LPClient,A0,289.0183,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_NOZPASS
+PS2_RCPFE_MSAA_8PPC_BLD_NOZFAIL,Gen9LPClient,A0,289.0183,syn,690904.77,Approximated with NOMSAA_8PPC_BLD_NOZPASS
+PS2_RCPFE_MSAA_RTR,Gen9LPClient,A0,289.5906,syn,690904.77,Approximated with NOMSAA_RTR
+PS2_RCPFE_COLORLATFIFO_READ,Gen9LPClient,A0,42.417,ebb,1,
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPClient,A0,93.643,ebb,1,
+PS2_RCPFE_MCSLATFIFO_READ,Gen9LPClient,A0,14.139,ebb,1,
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPClient,A0,31.214,ebb,1,
+PS2_RCPFE_RCCLATFIFO_READ,Gen9LPClient,A0,3.629,ebb,1,
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPClient,A0,5.67,ebb,1,
+PS0_RCPBCOM,Gen9LPClient,A0,2.02805,syn,487371.93,
+PS0_RCPBCOM_DOP,Gen9LPClient,A0,0,syn,487371.93,
+PS1_RCPBCOM,Gen9LPClient,A0,6.253026,syn,487371.93,
+PS2_RCPBCOM_NOMSAA_2PPC_WRT,Gen9LPClient,A0,63.26754,syn,487371.93,5% TR
+PS2_RCPBCOM_NOMSAA_2PPC_BLD,Gen9LPClient,A0,81.10702,syn,487371.93,12% TR
+PS2_RCPBCOM_NOMSAA_4PPC_WRT,Gen9LPClient,A0,56.74258,syn,487371.93,4% TR
+PS2_RCPBCOM_NOMSAA_4PPC_BLD,Gen9LPClient,A0,79.25103,syn,487371.93,13% TR
+PS2_RCPBCOM_NOMSAA_8PPC_WRT,Gen9LPClient,A0,98.97359,syn,487371.93,8% TR
+PS2_RCPBCOM_NOMSAA_8PPC_BLD,Gen9LPClient,A0,118.97539,syn,487371.93,Approximating with 8PPC WRT value
+PS2_RCPBCOM_NOMSAA_RTR,Gen9LPClient,A0,0,syn,487371.93,Not hit
+PS2_RCPBCOM_MSAA_2PPC_WRT,Gen9LPClient,A0,63.26754,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_2PPC_BLD,Gen9LPClient,A0,81.10702,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_4PPC_WRT,Gen9LPClient,A0,56.74258,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_4PPC_BLD,Gen9LPClient,A0,79.25103,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_8PPC_WRT,Gen9LPClient,A0,98.97359,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_8PPC_BLD,Gen9LPClient,A0,118.97539,syn,487371.93,Approximating with non-MSAA value
+PS2_RCPBCOM_MSAA_RTR,Gen9LPClient,A0,0,syn,487371.93,Not hit
+PS0_RCPBPIX,Gen9LPClient,A0,0.592139,syn,1574177,
+PS0_RCPBPIX_DOP,Gen9LPClient,A0,0,syn,1574177,
+PS1_RCPBPIX,Gen9LPClient,A0,3.434108,syn,1574177,
+PS2_RCPBPIX_NOMSAA_2PPC_WRT,Gen9LPClient,A0,72.47643,syn,1574177,8% TR
+PS2_RCPBPIX_NOMSAA_2PPC_BLD,Gen9LPClient,A0,142.2401,syn,1574177,Approximating with 4PPC BLD
+PS2_RCPBPIX_NOMSAA_4PPC_WRT,Gen9LPClient,A0,83.89131,syn,1574177,2% TR
+PS2_RCPBPIX_NOMSAA_4PPC_BLD,Gen9LPClient,A0,142.6401,syn,1574177,No TR information
+PS2_RCPBPIX_NOMSAA_8PPC_WRT,Gen9LPClient,A0,167.7826,syn,1574177,Doubling 4PPC values
+PS2_RCPBPIX_NOMSAA_8PPC_BLD,Gen9LPClient,A0,285.2802,syn,1574177,Doubling 4PPC values
+PS2_RCPBPIX_MSAA_2PPC_WRT,Gen9LPClient,A0,72.47643,syn,1574177,Approximating with non-MSAA value
+PS2_RCPBPIX_MSAA_2PPC_BLD,Gen9LPClient,A0,142.2401,syn,1574177,Approximating with non-MSAA value
+PS2_RCPBPIX_MSAA_4PPC_WRT,Gen9LPClient,A0,83.89131,syn,1574177,Approximating with non-MSAA value
+PS2_RCPBPIX_MSAA_4PPC_BLD,Gen9LPClient,A0,142.6401,syn,1574177,Approximating with non-MSAA value
+PS2_RCPBPIX_MSAA_8PPC_WRT,Gen9LPClient,A0,167.7826,syn,1574177,Approximating with non-MSAA value
+PS2_RCPBPIX_MSAA_8PPC_BLD,Gen9LPClient,A0,285.2802,syn,1574177,Approximating with non-MSAA value
+PS0_RCC,Gen9LPClient,A0,0.43312,syn,692394.9,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS0_RCC_DOP,Gen9LPClient,A0,0,syn,692394.9,
+PS1_RCC,Gen9LPClient,A0,14.31461,syn,692394.9,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_RCC_ALLOC_HITS,Gen9LPClient,A0,106.2759,syn,692394.9,No TR information
+PS2_RCC_ALLOC_MISSES,Gen9LPClient,A0,106.2759,syn,692394.9,Approximating with ALLOC HITS
+PS2_RCC_CACHE_READ,Gen9LPClient,A0,36.908,ebb,1,Assuming 512 bits. No banking in gSim for RCC.
+PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,79.794,ebb,1,Assuming 512 bits. No banking in gSim for RCC.
+PS0_MSC,Gen9LPClient,A0,2.178183,syn,834094.99,
+PS0_MSC_DOP,Gen9LPClient,A0,0,syn,834094.99,
+PS1_MSC,Gen9LPClient,A0,12.24381,syn,834094.99,
+PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE,Gen9LPClient,A0,60.55308,syn,834094.99,No TR information
+PS2_MSC_NOMSAA_4PPC_DATA,Gen9LPClient,A0,94.23922,syn,834094.99,
+PS2_MSC_NOMSAA_8PPC_CLEARRESOLVE,Gen9LPClient,A0,60.83823,syn,834094.99,No TR information
+PS2_MSC_NOMSAA_8PPC_DATA,Gen9LPClient,A0,101.0011,syn,834094.99,
+PS2_MSC_MSAA_4PPC_DATA,Gen9LPClient,A0,25.49513,syn,834094.99,
+PS2_MSC_MSAA_8PPC_DATA,Gen9LPClient,A0,26.33258,syn,834094.99,
+PS2_MSC_CACHE_READ,Gen9LPClient,A0,53.012,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MSC_CACHE_WRITE,Gen9LPClient,A0,88.649,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS0_CC,Gen9LPClient,A0,0.081511,syn,587436.82,
+PS0_CC_DOP,Gen9LPClient,A0,0,syn,587436.82,
+PS1_CC,Gen9LPClient,A0,12.56048,syn,587436.82,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_CC_EN_WRITES,Gen9LPClient,A0,63.73899,syn,587436.82,8% TR 
+PS2_CC_EN_PARTIALS,Gen9LPClient,A0,39.72095,syn,587436.82,3% TR
+PS2_CC_DIS,Gen9LPClient,A0,48.90534,syn,587436.82,8% TR
+PS0_DAPB,Gen9LPClient,A0,0.366187,syn,138408.57,
+PS0_DAPB_DOP,Gen9LPClient,A0,0,syn,138408.57,
+PS1_DAPB,Gen9LPClient,A0,1.017832,syn,138408.57,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_DAPB_NOMSAA_RTR,Gen9LPClient,A0,28.8673,syn,138408.57,
+PS2_DAPB_MSAA_RTR,Gen9LPClient,A0,21.5337,syn,138408.57,
+PS2_DAPB_DIS,Gen9LPClient,A0,1.017832,syn,138408.57,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS0_GAMTLB,Gen9LPClient,A0,40.268728,syn,1685534,
+PS1_GAMTLB,Gen9LPClient,A0,46.66,syn,1685534,
+PS2_GAMTLB_Hit,Gen9LPClient,A0,80,syn,1685534,
+PS2_GAMTLB_Miss,Gen9LPClient,A0,80,syn,1685534,
+PS2_GAMTLB_HitNotPresent,Gen9LPClient,A0,80,syn,1685534,
+PS2_GAMTLB_Bypass,Gen9LPClient,A0,49,syn,1685534,
+PS2_GAMTLB_EBB_WRITE,Gen9LPClient,A0,2.767,ebb,1,
+PS2_GAMTLB_EBB_READ,Gen9LPClient,A0,4.28,ebb,1,
+PS0_GAMD,Gen9LPClient,A0,20.426992,syn,1351647,
+PS1_GAMD,Gen9LPClient,A0,31.37954,syn,1351647,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAMD_READ,Gen9LPClient,A0,68.68,syn,1351647,
+PS2_GAMD_READ_Media,Gen9LPClient,A0,68.68,syn,1351647,
+PS2_GAMD_WRITE_Media,Gen9LPClient,A0,82.25,syn,1351647,
+PS2_GAMD_WRITE,Gen9LPClient,A0,82.25,syn,1351647,
+PS2_GAMD_Cache_READ,Gen9LPClient,A0,3.547,ebb,1,
+PS2_GAMD_Cache_WRITE,Gen9LPClient,A0,4.562,ebb,1,
+PS0_GAMW,Gen9LPClient,A0,22.680024,syn,1748882,
+PS1_GAMW,Gen9LPClient,A0,40.21519,syn,1748882,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAMW_Hit,Gen9LPClient,A0,63.5,syn,1748882,
+PS2_GAMW_Hit_on_Miss,Gen9LPClient,A0,63.5,syn,1748882,
+PS2_GAMW_One_Walk,Gen9LPClient,A0,57.152556,syn,1748882,
+PS2_GAMW_Two_Walk,Gen9LPClient,A0,57.152556,syn,1748882,
+PS2_GAMW_Three_Walk,Gen9LPClient,A0,57.152556,syn,1748882,
+PS2_GAMW_READ,Gen9LPClient,A0,7.42,ebb,1,
+PS2_GAMW_WRITE,Gen9LPClient,A0,11.323,ebb,1,
+PS2_TLB_Pend_Request,Gen9LPClient,A0,65.87,syn,1748882,
+PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.918,ebb,1,
+PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.614,ebb,1,
+PS0_GAFM,Gen9LPClient,A0,0.563056,syn,60818.94,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAFM,Gen9LPClient,A0,0.931208,syn,60818.94,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAFM,Gen9LPClient,A0,0.931208,syn,60818.94,Approximated with PS1 data
+PS0_GAFS,Gen9LPClient,A0,4.482792,syn,720989.15,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAFS,Gen9LPClient,A0,30.98973,syn,720989.15,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAFS,Gen9LPClient,A0,30.98973,syn,720989.15,Approximated with PS1 data
+PS0_GAPL3,Gen9LPClient,A0,1.277704,syn,103292.49,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAPL3,Gen9LPClient,A0,2.663688,syn,103292.49,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAPL3,Gen9LPClient,A0,2.663688,syn,103292.49,Approximated with PS1 data
+PS0_GAPZ,Gen9LPClient,A0,0.887896,syn,72074.59,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAPZ,Gen9LPClient,A0,1.905728,syn,72074.59,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAPZ,Gen9LPClient,A0,1.905728,syn,72074.59,Approximated with PS1 data
+PS0_GAPS,Gen9LPClient,A0,1.321016,syn,90242.01,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAPS,Gen9LPClient,A0,2.750312,syn,90242.01,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAPS,Gen9LPClient,A0,2.750312,syn,90242.01,Approximated with PS1 data
+PS0_GAPC,Gen9LPClient,A0,0.10828,syn,39741.31,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GAPC,Gen9LPClient,A0,0.584712,syn,39741.31,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GAPC,Gen9LPClient,A0,0.584712,syn,39741.31,Approximated with PS1 data
+PS0_GACB,Gen9LPClient,A0,2.663688,syn,197505.91,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GACB,Gen9LPClient,A0,4.244576,syn,197505.91,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GACB,Gen9LPClient,A0,4.244576,syn,197505.91,Approximated with PS1 data
+PS0_GAM_DOP,Gen9LPClient,A0,13.397,syn,1,
+PS2_GAM_DOP,Gen9LPClient,A0,13.397,syn,1,
+PS0_GAM_SMALL,Gen9LPClient,A0,38.721,syn,205102,Need to enhance the GC
+PS2_GAM_SMALL,Gen9LPClient,A0,71.443,syn,205102,Need to enhance the GC
+PS0_GAM_CLKGLUE,Gen9LPClient,A0,37.313,syn,1,
+PS2_GAM_CLKGLUE,Gen9LPClient,A0,37.313,syn,1,
+PS0_GAM_NONCLKGLUE,Gen9LPClient,A0,3.545,syn,1,
+PS2_GAM_NONCLKGLUE,Gen9LPClient,A0,3.556,syn,1,
+PS0_GAM_DFX,Gen9LPClient,A0,3.746,syn,424732,Need to enhance the GC
+PS2_GAM_DFX,Gen9LPClient,A0,23.367,syn,424732,Need to enhance the GC
+PS0_WMFE,Gen9LPClient,A0,2.992482,syn,197451.95,
+PS0_WMFE_DOP,Gen9LPClient,A0,0,syn,197451.95,
+PS1_WMFE,Gen9LPClient,A0,6.85049325,syn,197451.95,
+PS2_WMFE_NULLTOPSC,Gen9LPClient,A0,4.93255431,syn,197451.95,No TR information
+PS2_WMFE_NOTNULLTOPSC,Gen9LPClient,A0,37.574465,syn,197451.95,No TR information
+PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,39.557,ebb,1,
+PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,65.533,ebb,1,
+PS0_WMBE,Gen9LPClient,A0,0.757,syn,777190.79,
+PS0_WMBE_DOP,Gen9LPClient,A0,0,syn,777190.79,
+PS1_WMBE,Gen9LPClient,A0,7.052967,syn,777190.79,
+PS2_WMBE_MSAA_FULLYLIT,Gen9LPClient,A0,31.697873,syn,777190.79,No TR information
+PS2_WMBE_MSAA_PARTIALLYLIT,Gen9LPClient,A0,91.97206,syn,777190.79,13% Valid. No TR information
+PS2_WMBE_NOMSAA_FULLYLIT,Gen9LPClient,A0,49.08859,syn,777190.79,No TR information
+PS2_WMBE_NOMSAA_PARTIALLYLIT,Gen9LPClient,A0,91.97206,syn,777190.79,13% Valid. No TR information
+PS2_WMBE_NULLTOPSC,Gen9LPClient,A0,3.271944,syn,777190.79,1% Valid. No TR information
+PS2_WMBE_ANTIALIASING,Gen9LPClient,A0,213.3799,syn,777190.79,No TR information
+PS0_SBE_FETCH,Gen9LPClient,A0,0.6404,syn,1127692.57,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_FETCH_DOP,Gen9LPClient,A0,0,syn,1127692.57,
+PS1_SBE_FETCH,Gen9LPClient,A0,1.627807,syn,1127692.57,Taken from SKL FSO ECO3 rev1 CGDIS data scaled using PS0 ratio
+PS2_SBE_FETCH,Gen9LPClient,A0,14.3892,syn,1127692.57,1x_zstc_passonly_86 69 to 69.064 us
+PS0_SBE_REPLAY,Gen9LPClient,A0,1.4133,syn,1127692.57,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_REPLAY_DOP,Gen9LPClient,A0,0,syn,1127692.57,
+PS1_SBE_REPLAY,Gen9LPClient,A0,3.592411,syn,1127692.57,Taken from SKL FSO ECO3 rev1 CGDIS data scaled using PS0 ratio
+PS2_SBE_REPLAY,Gen9LPClient,A0,12.7919,syn,1127692.57,iz_disp001 81.808 to 81.872 us
+PS0_SBE_CALC,Gen9LPClient,A0,3.952,syn,1127692.57,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_CALC_DOP,Gen9LPClient,A0,0,syn,1127692.57,
+PS1_SBE_CALC,Gen9LPClient,A0,10.04543,syn,1127692.57,Taken from SKL FSO ECO3 rev1 CGDIS data scaled using PS0 ratio
+PS2_SBE_CALC,Gen9LPClient,A0,31.6392,syn,1127692.57,1x_zstc_passonly_86 69 to 69.064 us
+PS0_SBE_OTHER,Gen9LPClient,A0,0.6823,syn,1127692.57,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_OTHER_DOP,Gen9LPClient,A0,0,syn,1127692.57,
+PS1_SBE_OTHER,Gen9LPClient,A0,1.734311,syn,1127692.57,Taken from SKL FSO ECO3 rev1 CGDIS data scaled using PS0 ratio
+PS2_SBE_OTHER,Gen9LPClient,A0,11.6748,syn,1127692.57,1x_zstc_passonly_86 69 to 69.064 us
+PS0_TDC,Gen9LPClient,A0,0.389808,syn,175055.81,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_TDC,Gen9LPClient,A0,5.240752,syn,175055.81,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TDC,Gen9LPClient,A0,5.240752,syn,175055.81,Approximated with PS1 data
+PS0_SVL,Gen9LPClient,A0,0.21656,syn,96333.79,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_SVL,Gen9LPClient,A0,4.352856,syn,96333.79,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SVL,Gen9LPClient,A0,4.352856,syn,96333.79,Approximated with PS1 data
+PS0_SARB,Gen9LPClient,A0,0.909552,syn,163693.6,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_SARB,Gen9LPClient,A0,8.575775,syn,163693.6,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SARB,Gen9LPClient,A0,8.575775,syn,163693.6,Approximated with PS1 data
+PS0_ROSC_DOP,Gen9LPClient,A0,32.535,syn,1,
+PS2_ROSC_DOP,Gen9LPClient,A0,89.264,syn,1,
+PS0_ROSC_CLKGLUE_DOP,Gen9LPClient,A0,30.004,syn,1,
+PS0_ROSC_CLKGLUE,Gen9LPClient,A0,91.048,syn,1,
+PS2_ROSC_CLKGLUE,Gen9LPClient,A0,91.048,syn,1,
+PS0_ROSC_NONCLKGLUE_DOP,Gen9LPClient,A0,5.989,syn,1,
+PS0_ROSC_NONCLKGLUE,Gen9LPClient,A0,17.92,syn,1,
+PS2_ROSC_NONCLKGLUE,Gen9LPClient,A0,19.588,syn,1,
+PS0_ROSC_SMALL_DOP,Gen9LPClient,A0,48.57,syn,1053605,Need to enhance the GC
+PS0_ROSC_SMALL,Gen9LPClient,A0,131.322,syn,1053605,Need to enhance the GC
+PS2_ROSC_SMALL,Gen9LPClient,A0,179.68,syn,1053605,Need to enhance the GC
+PS0_ROSC_DFX_DOP,Gen9LPClient,A0,4.122,syn,708553,Need to enhance the GC
+PS0_ROSC_DFX,Gen9LPClient,A0,12.625,syn,708553,Need to enhance the GC
+PS2_ROSC_DFX,Gen9LPClient,A0,37.248,syn,708553,Need to enhance the GC
+PS0_CS,Gen9LPClient,A0,16.97788,syn,446632.21,
+PS1_CS,Gen9LPClient,A0,17.93781,syn,446632.21,
+PS2_CS,Gen9LPClient,A0,21.968966,syn,446632.21,
+PS2_CS_Media,Gen9LPClient,A0,21.968966,syn,446632.21,
+PS0_RS,Gen9LPClient,A0,0.257005,syn,331196.07,
+PS1_RS,Gen9LPClient,A0,6.431831,syn,331196.07,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_RS,Gen9LPClient,A0,6.431831,syn,331196.07,Approximate with stall
+PS0_DX9_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS0_DX9_Cache_Read,Gen9LPClient,A0,26.371,ebb,1,512 bits assumed. Need to check with gSim.
+PS0_DX9_Cache_Write,Gen9LPClient,A0,43.688,ebb,1,512 bits assumed. Need to check with gSim.
+PS0_DX9_Cache_ReadWrite,Gen9LPClient,A0,70.059,ebb,1,512 bits assumed. Need to check with gSim.
+PS0_BTGEN_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS0_BTGEN_Cache_Read,Gen9LPClient,A0,6.593,ebb,1,
+PS0_BTGEN_Cache_Write,Gen9LPClient,A0,10.922,ebb,1,
+PS0_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.515,ebb,1,
+PS0_VF_DOP,Gen9LPClient,A0,0,syn,708559.16,
+PS0_VF,Gen9LPClient,A0,3.649501,syn,708559.16,
+PS1_VF,Gen9LPClient,A0,13.38341,syn,708559.16,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_VF_Indexed,Gen9LPClient,A0,63.352,syn,708559.16,1.3% TR 66% hit perf test
+PS2_VF_Sequential,Gen9LPClient,A0,52.31379,syn,708559.16,1.3% TR 0% hit perf test
+PS2_VF_Control,Gen9LPClient,A0,13.38341,syn,708559.16,Approximate with stall
+PS2_VF_Dropped,Gen9LPClient,A0,13.38341,syn,708559.16,Approximate with stall
+PS0_VFBE1_DOP,Gen9LPClient,A0,0,syn,527906.24,
+PS0_VFBE1,Gen9LPClient,A0,0.628024,syn,527906.24,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_VFBE1,Gen9LPClient,A0,4.959224,syn,527906.24,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_VFBE1,Gen9LPClient,A0,41.67658,syn,527906.24,Using 66hit test 29.5 to 29.9ns
+PS0_VFBE2_DOP,Gen9LPClient,A0,0,syn,524341.77,
+PS0_VFBE2,Gen9LPClient,A0,0.454776,syn,524341.77,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_VFBE2,Gen9LPClient,A0,4.742664,syn,524341.77,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_VFBE2,Gen9LPClient,A0,40.19025,syn,524341.77,Using 66hit test 29.5 to 29.9ns
+PS0_VF_Cache_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_Cache_Read,Gen9LPClient,A0,3.708,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_Cache_Write,Gen9LPClient,A0,3.69,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VF_URBFifo_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Read,Gen9LPClient,A0,2.978,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Write,Gen9LPClient,A0,3.15,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VSFE_DOP,Gen9LPClient,A0,0,syn,394384.07,
+PS0_VSFE,Gen9LPClient,A0,0.519774,syn,394384.07,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_VSFE,Gen9LPClient,A0,5.933743,syn,394384.07,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_VSFE,Gen9LPClient,A0,57.55054,syn,394384.07,Using 66hit test 29.5 to 29.9ns
+PS0_VSBE_DOP,Gen9LPClient,A0,0,syn,628935.09,
+PS0_VSBE,Gen9LPClient,A0,1.23155,syn,628935.09,
+PS1_VSBE,Gen9LPClient,A0,30.87158,syn,628935.09,
+PS2_VSBE,Gen9LPClient,A0,96.97688,syn,628935.09,
+PS0_VS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_VS_Cache_Read,Gen9LPClient,A0,2.435,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_VS_Cache_Write,Gen9LPClient,A0,4.434,ebb,1,32 bits assumed. Need to check with gSim.
+PS0_HS_DOP,Gen9LPClient,A0,0,syn,387550.06,
+PS0_HS,Gen9LPClient,A0,1.637527,syn,387550.06,
+PS1_HS,Gen9LPClient,A0,7.253995,syn,387550.06,
+PS2_HS_Enabled,Gen9LPClient,A0,32.28216,syn,387550.06,No TR information
+PS2_HS_Disabled,Gen9LPClient,A0,8.020904,syn,387550.06,No TR information
+PS0_HS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS2_HS_Cache_Read,Gen9LPClient,A0,4.893,ebb,1,
+PS2_HS_Cache_Write,Gen9LPClient,A0,10.707,ebb,1,
+PS2_HS_Cache_ReadWrite,Gen9LPClient,A0,15.6,ebb,1,
+PS0_TE_DOP,Gen9LPClient,A0,0,syn,166337.7,
+PS0_TE,Gen9LPClient,A0,1.488074,syn,166337.7,
+PS1_TE,Gen9LPClient,A0,5.008668,syn,166337.7,
+PS2_TE_Enabled,Gen9LPClient,A0,26.0553,syn,166337.7,tds_tri_trilist_short
+PS2_TE_Disabled,Gen9LPClient,A0,5.008668,syn,166337.7,Approximate with stall
+PS0_TDS_DOP,Gen9LPClient,A0,0,syn,759356.4,
+PS0_TDS,Gen9LPClient,A0,4.162354,syn,759356.4,
+PS1_TDS,Gen9LPClient,A0,7.483008,syn,759356.4,
+PS2_TDS_Enabled,Gen9LPClient,A0,79.61344,syn,759356.4,No TR information
+PS2_TDS_Disabled,Gen9LPClient,A0,35.29275,syn,759356.4,No TR information
+PS0_TDS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Read,Gen9LPClient,A0,7.358,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Write,Gen9LPClient,A0,11.34,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_ReadWrite,Gen9LPClient,A0,18.698,ebb,1,96 bits assumed. Need to check with gSim.
+PS0_GS_DOP,Gen9LPClient,A0,0,syn,652799.14,
+PS0_GS,Gen9LPClient,A0,10.28716,syn,652799.14,Looks suspicious
+PS1_GS,Gen9LPClient,A0,36.02507,syn,652799.14,Looks suspicious
+PS2_GS_Enabled,Gen9LPClient,A0,62.545,syn,652799.14,GSPerf test 3pF EBB
+PS2_GS_Disabled,Gen9LPClient,A0,17.92557,syn,652799.14,No TR information
+PS0_GS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS2_GS_Cache_Read,Gen9LPClient,A0,4.893,ebb,1,
+PS2_GS_Cache_Write,Gen9LPClient,A0,10.707,ebb,1,
+PS2_GS_Cache_ReadWrite,Gen9LPClient,A0,15.6,ebb,1,
+PS0_SOL_DOP,Gen9LPClient,A0,0,syn,270005.11,
+PS0_SOL,Gen9LPClient,A0,4.724625,syn,270005.11,
+PS1_SOL,Gen9LPClient,A0,5.955399,syn,270005.11,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SOL_Enabled,Gen9LPClient,A0,17.2973,syn,270005.11,Using sol009_c2 test 29.5 to 29.9ns
+PS2_SOL_Disabled,Gen9LPClient,A0,5.955399,syn,270005.11,Approximate with stall
+PS0_SOL_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS2_SOL_Cache_Read,Gen9LPClient,A0,2.061,ebb,1,
+PS2_SOL_Cache_Write,Gen9LPClient,A0,3.158,ebb,1,
+PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.219,ebb,1,
+PS0_CL_DOP,Gen9LPClient,A0,0,syn,1148212.05,
+PS0_CL,Gen9LPClient,A0,4.9036,syn,1148212.05,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_CL,Gen9LPClient,A0,24.67956,syn,1148212.05,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_CL,Gen9LPClient,A0,0,syn,1148212.05,State needs to be changed
+PS2_CL_NoMustClip,Gen9LPClient,A0,184.13,syn,1148212.05,No TR information
+PS2_CL_MustClip,Gen9LPClient,A0,62.1515,syn,1148212.05,No TR information
+PS0_SF_DOP,Gen9LPClient,A0,0,syn,1188962.87,
+PS0_SF,Gen9LPClient,A0,2.90105,syn,1188962.87,
+PS1_SF,Gen9LPClient,A0,10.58978,syn,1188962.87,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SF_Culled,Gen9LPClient,A0,89.5868,syn,1188962.87,No TR information
+PS2_SF_NotCulled_FastClip,Gen9LPClient,A0,178.4311,syn,1188962.87,No TR information
+PS2_SF_NotCulled_NotFastClip,Gen9LPClient,A0,237.996,syn,1188962.87,No TR information
+PS0_SDE_DOP,Gen9LPClient,A0,0,syn,65940.64,
+PS0_SDE,Gen9LPClient,A0,0.952864,syn,65940.64,
+PS1_SDE,Gen9LPClient,A0,2.122288,syn,65940.64,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SDE_Culled,Gen9LPClient,A0,10.9475,syn,65940.64,1x_depth_stencil_ambig_bid_2048_40 12.032 us to 12.056 us
+PS2_SDE_NotCulled,Gen9LPClient,A0,10.9475,syn,65940.64,1x_depth_stencil_ambig_bid_2048_40 12.032 us to 12.056 us
+PS0_TDG,Gen9LPClient,A0,0.49686,syn,148289.48,
+PS1_TDG,Gen9LPClient,A0,4.461136,syn,148289.48,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TDG,Gen9LPClient,A0,8.4387,syn,148289.48,66hit test 30.038us to 30.05 us
+PS0_URBM_DOP,Gen9LPClient,A0,0,syn,174565.22,
+PS0_URBM,Gen9LPClient,A0,0.43312,syn,174565.22,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_URBM,Gen9LPClient,A0,6.648391,syn,174565.22,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_URBM,Gen9LPClient,A0,6.648391,syn,174565.22,Approximated with PS1 data
+PS0_SVG_DOP,Gen9LPClient,A0,0,syn,118422.07,
+PS0_SVG,Gen9LPClient,A0,0.389808,syn,118422.07,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_SVG,Gen9LPClient,A0,4.721008,syn,118422.07,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_SVG,Gen9LPClient,A0,4.721008,syn,118422.07,Approximated with PS1 data
+PS0_VFE,Gen9LPClient,A0,0.10828,syn,106790.31,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_VFE,Gen9LPClient,A0,3.421648,syn,106790.31,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_VFE,Gen9LPClient,A0,0,syn,106790.31,Data WIP
+PS2_VFE_GPGPU,Gen9LPClient,A0,0,syn,106790.31,Data WIP
+PS2_VFE_MEDIA,Gen9LPClient,A0,0,syn,106790.31,Data WIP
+PS0_TSG,Gen9LPClient,A0,0.996176,syn,458895.34,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_TSG,Gen9LPClient,A0,25.38083,syn,458895.34,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TSG,Gen9LPClient,A0,0,syn,458895.34,Data WIP
+PS2_TSG_Media_Scoreboard,Gen9LPClient,A0,0,syn,458895.34,Data WIP
+PS2_TSG_Media_NoScoreboard,Gen9LPClient,A0,0,syn,458895.34,Data WIP
+PS0_OACS,Gen9LPClient,A0,0.692992,syn,175496.98,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_OACS,Gen9LPClient,A0,7.644567,syn,175496.98,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_OACS,Gen9LPClient,A0,7.644567,syn,175496.98,Approximated with PS1 data
+PS0_FF_TEGSSOL_SMALL_DOP,Gen9LPClient,A0,7.037,syn,15865,Need to enhance the GC
+PS0_FF_OTHER_SMALL_DOP,Gen9LPClient,A0,8.804,syn,126713,Need to enhance the GC
+PS0_FF_TEGSSOL_SMALL,Gen9LPClient,A0,15.441,syn,15865,Need to enhance the GC
+PS0_FF_OTHER_SMALL,Gen9LPClient,A0,20.725,syn,126713,Need to enhance the GC
+PS2_FF_TEGSSOL_SMALL,Gen9LPClient,A0,50.718,syn,15865,Need to enhance the GC
+PS2_FF_OTHER_SMALL,Gen9LPClient,A0,54.811,syn,126713,Need to enhance the GC
+PS0_FF_TEGSSOL_CLKGLUE_DOP,Gen9LPClient,A0,7.714,syn,1,
+PS0_FF_OTHER_CLKGLUE_DOP,Gen9LPClient,A0,13.226,syn,1,
+PS0_FF_TEGSSOL_CLKGLUE,Gen9LPClient,A0,15.852,syn,1,
+PS0_FF_OTHER_CLKGLUE,Gen9LPClient,A0,32.332,syn,1,
+PS2_FF_TEGSSOL_CLKGLUE,Gen9LPClient,A0,15.852,syn,1,
+PS2_FF_OTHER_CLKGLUE,Gen9LPClient,A0,32.332,syn,1,
+PS0_FF_TEGSSOL_NONCLKGLUE_DOP,Gen9LPClient,A0,1.054,syn,1,
+PS0_FF_OTHER_NONCLKGLUE_DOP,Gen9LPClient,A0,1.094,syn,1,
+PS0_FF_TEGSSOL_NONCLKGLUE,Gen9LPClient,A0,2.477,syn,1,
+PS0_FF_OTHER_NONCLKGLUE,Gen9LPClient,A0,2.989,syn,1,
+PS2_FF_TEGSSOL_NONCLKGLUE,Gen9LPClient,A0,2.646,syn,1,
+PS2_FF_OTHER_NONCLKGLUE,Gen9LPClient,A0,5.202,syn,1,
+PS0_FF_TEGSSOL_DFX_DOP,Gen9LPClient,A0,0.909,syn,170070,Need to enhance the GC
+PS0_FF_OTHER_DFX_DOP,Gen9LPClient,A0,1.848,syn,296818,Need to enhance the GC
+PS0_FF_TEGSSOL_DFX,Gen9LPClient,A0,2.815,syn,170070,Need to enhance the GC
+PS0_FF_OTHER_DFX,Gen9LPClient,A0,3.595,syn,296818,Need to enhance the GC
+PS2_FF_TEGSSOL_DFX,Gen9LPClient,A0,9.312,syn,170070,Need to enhance the GC
+PS2_FF_OTHER_DFX,Gen9LPClient,A0,14.271,syn,296818,Need to enhance the GC
+PS0_FF_TEGSSOL_DOP,Gen9LPClient,A0,7.04,syn,1,
+PS0_FF_OTHER_DOP,Gen9LPClient,A0,8.815,syn,1,
+PS2_FF_TEGSSOL_DOP,Gen9LPClient,A0,15.863,syn,1,
+PS2_FF_OTHER_DOP,Gen9LPClient,A0,24.848,syn,1,
+PS0_BC,Gen9LPClient,A0,0.7329,syn,625183.58,
+PS0_BC_DOP,Gen9LPClient,A0,0,syn,625183.58,No 3D DOP in ROSS
+PS1_BC,Gen9LPClient,A0,2.9793,syn,625183.58,
+PS2_BC_COMPUTE,Gen9LPClient,A0,80.73207,syn,625183.58,1% TR
+PS2_BC_FLOWTHROUGH,Gen9LPClient,A0,11.41,syn,625183.58,1% TR
+PS2_BC_BARYRAM_READ,Gen9LPClient,A0,33.041,ebb,1,Need to check with gSim - 8x116 io assumed
+PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,32.943,ebb,1,Need to check with gSim - 8x116 io assumed
+PS0_PSD,Gen9LPClient,A0,4.45185,syn,681617.59,
+PS0_PSD_DOP,Gen9LPClient,A0,0,syn,681617.59,No 3D DOP in ROSS
+PS1_PSD,Gen9LPClient,A0,16.40921,syn,681617.59,
+PS2_PSD_THREADDISPATCH,Gen9LPClient,A0,102,syn,681617.59,2% TR 4pF EBB
+PS2_PSD_NOTHREADDISPATCH,Gen9LPClient,A0,44,syn,681617.59,1% TR 4pF EBB
+PS2_PSD_WAITINGONFLUSH,Gen9LPClient,A0,16.40921,syn,681617.59,Approximate with stall
+PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0,ebb,1,
+PS2_PSD_SCOREBOARD_READ,Gen9LPClient,A0,3.272,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_PSD_SCOREBOARD_WRITE,Gen9LPClient,A0,6.219,ebb,1,Need to check with gSim - 4x8 io assumed
+PS0_PSD_BARYPAYLDASMRAM,Gen9LPClient,A0,0,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,9.327,ebb,1,Need to check with gSim - 2x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,11.299,ebb,1,Need to check with gSim - 2x128 io assumed
+PS0_MA_IN,Gen9LPClient,A0,0.405577,syn,79400.21,Taken from SKL FSO ECO3 rev1 CGEN data and scale with PS2 ratio
+PS1_MA_IN,Gen9LPClient,A0,1.165401,syn,79400.21,Taken from SKL FSO ECO3 rev1 CGDIS data and scale with PS2 ratio
+PS2_MA_IN,Gen9LPClient,A0,9.636512,syn,79400.21,Taken from SKL FSO ECO3 rev1 Virus data and scale with PS2 ratio
+PS0_MA_OUT,Gen9LPClient,A0,0.135823,syn,79400.21,Taken from SKL FSO ECO3 rev1 CGEN data and scale with PS2 ratio
+PS1_MA_OUT,Gen9LPClient,A0,0.423767,syn,79400.21,Taken from SKL FSO ECO3 rev1 CGDIS data and scale with PS2 ratio
+PS2_MA_OUT,Gen9LPClient,A0,3.227148,syn,79400.21,Taken from SKL FSO ECO3 rev1 Virus data and scale with PS2 ratio
+PS0_TDL,Gen9LPClient,A0,3.036939,syn,460616.71,
+PS1_TDL,Gen9LPClient,A0,10.93628,syn,460616.71,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TDL_PSDDISPATCH,Gen9LPClient,A0,26.8455,syn,460616.71,No TR information
+PS2_TDL_NONPSDDISPATCH,Gen9LPClient,A0,56,syn,460616.71,0% TR 20% VLD
+PS0_IC,Gen9LPClient,A0,0.73794,syn,285768.33,
+PS1_IC,Gen9LPClient,A0,4.612728,syn,285768.33,
+PS2_IC,Gen9LPClient,A0,29,syn,285768.33,
+PS0_IC_DATARAM,Gen9LPClient,A0,0,ebb,1,
+PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.278,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,62.429,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,90.707,ebb,1,Need to check with gSim - 512 io assumed
+PS0_DAPRSS,Gen9LPClient,A0,1.342672,syn,711266.24,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_DAPRSS_DOP,Gen9LPClient,A0,0,syn,711266.24,No 3D DOP in ROSS
+PS1_DAPRSS,Gen9LPClient,A0,14.11971,syn,711266.24,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_DAPRSS_WRITEFLUSH,Gen9LPClient,A0,48.36188,syn,711266.24,Approximated using average of RTR and PS1
+PS2_DAPRSS_RENDERTARGETWRITE,Gen9LPClient,A0,110.9325,syn,711266.24,1x_depth_ambig_big_1024_50 58.472 to 58.52 us 4pF EBB
+PS2_DAPRSS_CLEARRESOLVE,Gen9LPClient,A0,48.36188,syn,711266.24,Approximated using average of RTR and PS1
+PS2_DAPRSS_RENDERTARGETREAD,Gen9LPClient,A0,82.60404,syn,711266.24,PBE_rtr_float32bpc 190.0 to 190.1 us
+PS2_DAPRSS_ELSE,Gen9LPClient,A0,48.36188,syn,711266.24,Approximated using average of RTR and PS1
+PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0,ebb,1,
+PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.139,ebb,1,Need to check with gSim - 2x128 bit io assumed
+PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.214,ebb,1,Need to check with gSim - 2x128 bit io assumed
+PS0_GWL,Gen9LPClient,A0,0.563056,syn,82581.66,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GWL,Gen9LPClient,A0,1.039488,syn,82581.66,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GWL,Gen9LPClient,A0,8.59538,syn,82581.66,Approximated using ratio of MA_IN PS2 and PS1
+PS0_ROSS_SMALL_DOP,Gen9LPClient,A0,0,syn,592665,Need to enhance the GC
+PS0_ROSS_SMALL,Gen9LPClient,A0,32.809,syn,592665,Need to enhance the GC
+PS2_ROSS_SMALL,Gen9LPClient,A0,50.134,syn,592665,Need to enhance the GC
+PS0_ROSS_CLKGLUE_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
+PS0_ROSS_CLKGLUE,Gen9LPClient,A0,30.99,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_ROSS_CLKGLUE,Gen9LPClient,A0,30.99,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_ROSS_NONCLKGLUE_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
+PS0_ROSS_NONCLKGLUE,Gen9LPClient,A0,5.598,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_ROSS_NONCLKGLUE,Gen9LPClient,A0,50.034,syn,1,Taken from SKL FSO ECO3 rev1 Virus data
+PS0_ROSS_DFX_DOP,Gen9LPClient,A0,0,syn,454586,Need to enhance the GC
+PS0_ROSS_DFX,Gen9LPClient,A0,3.248,syn,454586,Need to enhance the GC
+PS2_ROSS_DFX,Gen9LPClient,A0,16.372,syn,454586,Need to enhance the GC
+PS0_ROSS_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
+PS2_ROSS_DOP,Gen9LPClient,A0,23.293,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_GTP24C,Gen9LPClient,A0,54.17,syn,1018976.63,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_RoutingChannel,Gen9LPClient,A0,27.074,syn,313747.08,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_ClockSpine,Gen9LPClient,A0,352.818679,ebb,1,Taken from SKL EOQ1 Cdyn-max data
+PS0_WIDI,Gen9LPClient,A0,13.873,syn,1246529.96,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_Blitter,Gen9LPClient,A0,37.684,syn,1605050.5,Taken from SKL FSO ECO3 rev1 CGEN data
