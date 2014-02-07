@@ -43,15 +43,15 @@
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
-	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
+	 .CrClk2x	=	D(2xCrClock.Clocks)	
 	 .GeoClk	=	D(GeoClock.Clocks)	
-	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
+	 .GeoClk2x	=	D(2xGeoClock.Clocks)	
 	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	 .temp_TeGsSolDOP	=	D(Geo.pwr_ModelTeGsSol_idle_dop_gated.2xGeoClock)/.GeoClk2x	#Models SKL+ TE, GS, SOL DOP Gating
 				
 #CS				
 	PS0_CS	=	D(uCS0.pwr_cs_idle.UnsliceClock)/.UnsliceClk	 # GSim really only has a stub for CS.
-	PS1_CS	=	(D(uCS0.pwr_cs_stalled_or_idle.UnsliceClock) - D(uCS0.pwr_cs_idle.UnsliceClock))/.UnsliceClk	
+	PS1_CS	=	(D(uCS0.pwr_cs_stalled_or_idle.UnsliceClock) - D(uCS0.pwr_cs_idle.UnsliceClock))/.UnsliceClk 	
 	PS2_CS	=	1 - PS0_CS - PS1_CS	
 	PS2_CS_Media	=	0	#Breaking out media/GPGPU
 				
@@ -249,4 +249,4 @@
 	PS0_FF_TEGSSOL_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_DOP	=	 .temp_3DPipeDisable	
 	PS2_FF_TEGSSOL_DOP	=	1 - .temp_TeGsSolDOP	
-	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable	
+	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable

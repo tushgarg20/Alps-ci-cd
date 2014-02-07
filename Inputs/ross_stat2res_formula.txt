@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numROSS	=	D(SUM('knob.S\d+.NumSubSlices'))	#Change to handle assymetric configs
+	numROSS	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
 	numEURows	=	knob.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 	num_ROSS_BC	=	numROSS	
 	num_ROSS_PSD	=	numROSS	
@@ -121,4 +121,4 @@
 				
 #DOP				
 	PS0_ROSS_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP	
+	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP

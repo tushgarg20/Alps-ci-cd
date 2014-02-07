@@ -27,7 +27,7 @@
 	.DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
-	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
+	.Clk.x2	=	D(2xCrClock.Clocks)	
 	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
 	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
 	.Clk.num_Z_RCZ	=	.Clk * num_Z_RCZ	
@@ -121,4 +121,4 @@
 				
 #STC - Cache				
 	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
-	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC	
+	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC

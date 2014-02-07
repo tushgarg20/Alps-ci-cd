@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numHDCs	=	D(SUM('knob\.S\d+\.NumHdcs'))	
+	numHDCs	=	SUM('knob\.S\d+\.NumHdcs')	
 	num_HDC_HDCREQCMD1	=	numHDCs	
 	num_HDC_HDCREQCMD2	=	numHDCs	
 	num_HDC_HDCREQDATA	=	numHDCs	
@@ -99,4 +99,4 @@
 #HDCDfx				
 	PS0_HDC_DFX_DOP	=	.DOP	
 	PS0_HDC_DFX	=	PS0_HDC_GLUE	
-	PS2_HDC_DFX	=	PS2_HDC_GLUE	
+	PS2_HDC_DFX	=	PS2_HDC_GLUE

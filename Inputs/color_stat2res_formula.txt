@@ -34,7 +34,7 @@
 	.DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
-	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
+	.Clk.x2	=	D(2xCrClock.Clocks)	
 	.Clk.num_COLOR_DAPRSC	=	.Clk * num_COLOR_DAPRSC	
 	.Clk.num_COLOR_RCPFE	=	.Clk * num_COLOR_RCPFE	
 	.Clk.num_COLOR_RCPBCOM	=	.Clk * num_COLOR_RCPBCOM	
