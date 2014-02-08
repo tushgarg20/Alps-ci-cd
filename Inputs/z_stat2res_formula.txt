@@ -24,7 +24,7 @@
 	 @HIZFAILTEST@	=	(Fail|NA)	
 	 @IZTEST@	=	(Accept|Fail|Deferred)	
 	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
-	.DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
+	.Z_DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
 	.Clk.x2	=	D(2xCrClock.Clocks)	
@@ -34,8 +34,8 @@
 	.Clk.num_Z_STC	=	.Clk * num_Z_STC	
 				
 #HIZ				
-	PS0_HIZ	=	(D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .DOP	
-	PS0_HIZ_DOP	=	.DOP	
+	PS0_HIZ	=	(D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .Z_DOP	
+	PS0_HIZ_DOP	=	.Z_DOP	
 	PS1_HIZ	=	1 - (PS0_HIZ + PS0_HIZ_DOP + PS2_HIZ_8x8_EN_ZONLY_FAIL + PS2_HIZ_8x8_EN_ZONLY_Accept + PS2_HIZ_8x8_EN_ZONLY_AMBIG + PS2_HIZ_8x8_EN_ZSTC_FAIL + PS2_HIZ_8x8_EN_ZSTC_Accept + PS2_HIZ_8x8_EN_ZSTC_AMBIG + PS2_HIZ_8x8_EN_STCONLY_FAIL + PS2_HIZ_8x8_EN_STCONLY_AMBIG + PS2_HIZ_8x8_DIS_ZSTC + PS2_HIZ_8x8_DIS_ZONLY + PS2_HIZ_8x8_DIS_STCONLY + PS2_HIZ_8x8_FULLYLIT + PS2_HIZ_8x8_PARTIALLYLIT + PS2_HIZ_8x8_RESOLVE + PS2_HIZ_8x4_EN_ZONLY_FAIL + PS2_HIZ_8x4_EN_ZONLY_Accept + PS2_HIZ_8x4_EN_ZONLY_AMBIG + PS2_HIZ_8x4_EN_ZSTC_FAIL + PS2_HIZ_8x4_EN_ZSTC_Accept + PS2_HIZ_8x4_EN_ZSTC_AMBIG + PS2_HIZ_8x4_EN_STCONLY_FAIL + PS2_HIZ_8x4_EN_STCONLY_AMBIG + PS2_HIZ_8x4_DIS_ZSTC + PS2_HIZ_8x4_DIS_ZONLY + PS2_HIZ_8x4_DIS_STCONLY + PS2_HIZ_8x4_FULLYLIT + PS2_HIZ_8x4_PARTIALLYLIT + PS2_HIZ_8x4_RESOLVE + PS2_HIZ_RAWSTALLEN + PS2_HIZ_ZMARKERS)	
 	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth.@HIZFAILTEST@'))/.Clk.num_Z_HIZ	
 	PS2_HIZ_8x8_EN_ZONLY_Accept	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth.Pass'))/.Clk.num_Z_HIZ	
@@ -72,8 +72,8 @@
 	PS2_HIZ_LATFIFO_WRITE	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed'))/.Clk.num_Z_HIZ	
 				
 #IZ				
-	PS0_IZ	=	(D(SUM('@ANY_IZ@pwr_Idle.CrClock'))/.Clk.num_Z_IZ) - .DOP	
-	PS0_IZ_DOP	=	.DOP	
+	PS0_IZ	=	(D(SUM('@ANY_IZ@pwr_Idle.CrClock'))/.Clk.num_Z_IZ) - .Z_DOP	
+	PS0_IZ_DOP	=	.Z_DOP	
 	PS1_IZ	=	1 - (PS0_IZ + PS0_IZ_DOP + PS2_IZ_EN_CMP + PS2_IZ_EN_EXP + PS2_IZ_EN_UNCMP_DEPTHPRESENT + PS2_IZ_EN_UNCMP_NODEPTHPRESENT + PS2_IZ_ZMARKERS)	
 	PS2_IZ_CMP	=	0	#Placeholders for new gSim stats
 	PS2_IZ_NORMAL_DEPTHEN_PASS	=	0	#Placeholders for new gSim stats
@@ -102,8 +102,8 @@
 	PS2_IZ_WCOEFFIFO_WRITE	=	PS2_IZ_WCOEFFIFO_READ	
 				
 #RCZ				
-	PS0_RCZ	=	(D(SUM('@ANY_RCZ@pwr_Idle.CrClock'))/.Clk.num_Z_RCZ) - .DOP	
-	PS0_RCZ_DOP	=	.DOP	
+	PS0_RCZ	=	(D(SUM('@ANY_RCZ@pwr_Idle.CrClock'))/.Clk.num_Z_RCZ) - .Z_DOP	
+	PS0_RCZ_DOP	=	.Z_DOP	
 	PS1_RCZ	=	1 - (PS0_RCZ + PS0_RCZ_DOP + PS2_RCZ_ALLOC_HITS + PS2_RCZ_ALLOC_MISSES)	
 	PS2_RCZ_ALLOC_HITS	=	D(SUM('@ANY_RCZ@AllocHits'))/.Clk.num_Z_RCZ	
 	PS2_RCZ_ALLOC_MISSES	=	D(SUM('@ANY_RCZ@AllocMisses'))/.Clk.num_Z_RCZ	
@@ -113,8 +113,8 @@
 	PS2_RCZ_CACHE_WRITE	=	D(SUM('@ANY_RCZ@WriteRequests'))/.Clk.num_Z_RCZ	
 				
 #STC				
-	PS0_STC	=	(D(SUM('@ANY_STC@pwr_Idle.CrClock'))/.Clk.num_Z_STC) - .DOP	
-	PS0_STC_DOP	=	.DOP	
+	PS0_STC	=	(D(SUM('@ANY_STC@pwr_Idle.CrClock'))/.Clk.num_Z_STC) - .Z_DOP	
+	PS0_STC_DOP	=	.Z_DOP	
 	PS1_STC	=	1 - (PS0_STC + PS0_STC_DOP + PS2_STC_ALLOC_HITS + PS2_STC_ALLOC_MISSES)	
 	PS2_STC_ALLOC_HITS	=	D(SUM('@ANY_STC@AllocHits'))/.Clk.num_Z_STC	
 	PS2_STC_ALLOC_MISSES	=	D(SUM('@ANY_STC@AllocMisses'))/.Clk.num_Z_STC	
