@@ -67,7 +67,8 @@ if ($outputCsvFile =~ /\//) {die "Please only provided file name...don't give pa
 if (-f $outputCsvFile) {warn "Output file $outputCsvFile already exists...will be overwritten...\n"}
 
 my @alpsModelFile;
-@alpsModelFile = <$alpsModelDir/*.yaml>;
+#@alpsModelFile = <$alpsModelDir/*.yaml>;
+@alpsModelFile = <$alpsModelDir/*.yml>;
 if (scalar(@alpsModelFile) == 0) {die "Couldn't find any ALPS models in the directory provided: $alpsModelDir\n";}
 
 my %consolidatedAlpsData;
