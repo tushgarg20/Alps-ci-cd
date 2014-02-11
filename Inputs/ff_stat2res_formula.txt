@@ -43,9 +43,9 @@
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
-	 .CrClk2x	=	D(2xCrClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	 .GeoClk	=	D(GeoClock.Clocks)	
-	 .GeoClk2x	=	D(2xGeoClock.Clocks)	
+	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
 	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	 .temp_TeGsSolDOP	=	D(Geo.pwr_ModelTeGsSol_idle_dop_gated.2xGeoClock)/.GeoClk2x	#Models SKL+ TE, GS, SOL DOP Gating
 				
