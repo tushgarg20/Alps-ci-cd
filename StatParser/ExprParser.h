@@ -339,6 +339,7 @@ public:
     std::vector<CError> Initialize(CReaderManager*);
     std::vector<CError> BindReader(CReaderManager*);
     bool Defined(const char*s){ return variables.find(s)!=variables.end() && variables[s]->expr.size();}
+    void Define(std::string name, std::string expr){ DefineVariable(name, expr, false, "", 0);}    // may throw exception
     bool Ready();
     void Execute();
     int Size(){ return (int) var_list.size();}

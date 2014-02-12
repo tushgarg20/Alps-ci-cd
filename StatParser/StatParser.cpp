@@ -312,7 +312,7 @@ int main(int argc, char** argv)
     }
     if(!outfile.empty())
     {   out.open(outfile.c_str());
-        if(out.is_open()) std::cout.rdbuf(out.rdbuf());
+        if(out.is_open()) std::cout.rdbuf(out.rdbuf()); // STYLE_IGNORE_COUT
         else std::cerr<<"Cannot open "<<outfile<<"\n";
     }
     for(unsigned i=0;i<iii.size();i++)
@@ -356,7 +356,7 @@ int main(int argc, char** argv)
         EEE[input[i]]=E;
     }
 
-    std::cout.precision(20);
+    std::cout.precision(20); // STYLE_IGNORE_COUT
     
     if(!statfile.empty())
     {   CStatReaderManager STM(statfile.c_str());
@@ -377,12 +377,12 @@ int main(int argc, char** argv)
         {   const CParser::CReport* R=P.Report(i);
             for(int j=0;j<R->Size();j++)
             {   if(!dbg && R->Name(j)[0]=='.') continue;
-                std::cout<<R->Name(j)<<(csv?",":"\t");
-                if(R->Bad(j)) std::cout<<"n/a";
-                else std::cout<<R->Value(j);
-                std::cout<<(csv?",":"\t");
-                if(comm.find(R->Name(j))!=comm.end()) std::cout<<comm[R->Name(j)];
-                std::cout<<"\n";
+                std::cout<<R->Name(j)<<(csv?",":"\t");                              // STYLE_IGNORE_COUT
+                if(R->Bad(j)) std::cout<<"n/a";                                     // STYLE_IGNORE_COUT
+                else std::cout<<R->Value(j);                                        // STYLE_IGNORE_COUT
+                std::cout<<(csv?",":"\t");                                          // STYLE_IGNORE_COUT
+                if(comm.find(R->Name(j))!=comm.end()) std::cout<<comm[R->Name(j)];  // STYLE_IGNORE_COUT
+                std::cout<<"\n";                                                    // STYLE_IGNORE_COUT
             }
         }
     }
@@ -405,11 +405,11 @@ int main(int argc, char** argv)
         {   const CParser::CReport* R=P.Report(i);
             for(int j=0;j<R->Size();j++)
             {   if(dbg && R->Name(j)[0]=='.') continue;
-                std::cout<<(separate?(csv?",":"\t"):"")<<R->Name(j);
+                std::cout<<(separate?(csv?",":"\t"):"")<<R->Name(j); // STYLE_IGNORE_COUT
                 separate=true;
             }
         }
-        std::cout<<"\n";
+        std::cout<<"\n"; // STYLE_IGNORE_COUT
 
         while(TGM.ReadLine())
         {   P.Execute();
@@ -418,13 +418,13 @@ int main(int argc, char** argv)
             {   const CParser::CReport* R=P.Report(i);
                 for(int j=0;j<R->Size();j++)
                 {   if(dbg && R->Name(j)[0]=='.') continue;
-                    std::cout<<(separate?(csv?",":"\t"):"");
-                    if(R->Bad(j)) std::cout<<"n/a";
-                    else std::cout<<R->Value(j);
+                    std::cout<<(separate?(csv?",":"\t"):"");    // STYLE_IGNORE_COUT
+                    if(R->Bad(j)) std::cout<<"n/a";             // STYLE_IGNORE_COUT
+                    else std::cout<<R->Value(j);                // STYLE_IGNORE_COUT
                     separate=true;
                 }
             }
-            std::cout<<"\n";
+            std::cout<<"\n";                                    // STYLE_IGNORE_COUT
         }
     }
     else

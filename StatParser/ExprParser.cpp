@@ -68,6 +68,8 @@ void CParser::ReadLine(const char*str)
 void CParser::DefineVariable(std::string left, std::string right, bool plus_eq, std::string file, int line)
 {   boost::smatch match;
     static boost::regex passthrough_pattern("([\\w\\.]*)('[^']*')");
+    current_file=file;
+    current_line=line;
     if(boost::regex_match(left, match, passthrough_pattern))
     {   if(plus_eq) throw std::string("+= is not legal here");
         std::string pref=match[1];
@@ -143,6 +145,9 @@ std::vector<CParser::CError> CParser::Initialize(CReaderManager* RM)
                 try
                 {   DefineVariable(left, right, L->plus_eq, L->file, L->line);
                 }
+                catch(CError e)
+                {   Err.push_back(e);
+                }
                 catch(std::string s)
                 {   Err.push_back(CError(L->file, L->line, left, s));
                 }
@@ -154,6 +159,9 @@ std::vector<CParser::CError> CParser::Initialize(CReaderManager* RM)
         else
         {   try
             {   DefineVariable(L->left, L->right, L->plus_eq, L->file, L->line);
+            }
+            catch(CError e)
+            {   Err.push_back(e);
             }
             catch(std::string s)
             {   Err.push_back(CError(L->file, L->line, L->left, s));
