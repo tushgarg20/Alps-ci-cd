@@ -29,10 +29,17 @@
 	num_FF_VFE	=	numFF	
 	num_FF_TSG	=	numFF	
 	num_FF_OACS	=	numFF	
-	num_FF_SMALL	=	numFF	
-	num_FF_GLUE	=	numFF	
-	num_FF_DFX	=	numFF	
-	num_FF_DOP	=	numFF	
+	num_FF_TEGSSOL_SMALL	=	numFF	
+	num_FF_TEGSSOL_CLKGLUE	=	numFF	
+	num_FF_TEGSSOL_NONCLKGLUE	=	numFF	
+	num_FF_TEGSSOL_DFX	=	numFF	
+	num_FF_TEGSSOL_DOP	=	numFF	
+	num_FF_OTHER_SMALL	=	numFF	
+	num_FF_OTHER_CLKGLUE	=	numFF	
+	num_FF_OTHER_NONCLKGLUE	=	numFF	
+	num_FF_OTHER_DFX	=	numFF	
+	num_FF_OTHER_DOP	=	numFF	
+				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
@@ -175,8 +182,8 @@
 	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.CrClock) / .CrClk	
 	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.CrClock) / .CrClk	
 #TDG				
- 'uTDG\.Idle\.(\w*Clock)' : 	PS0_TDG	=	D(uTDG\.Idle\.{$1}) / D({$1}\.Clocks)	
- 'uTDG\.Idle\.(\w*Clock)' : 	PS1_TDG	=	(D(uTDG\.IdleOrStalled\.{$1}) - D(uTDG\.Idle\.{$1})) / D({$1}\.Clocks)	
+ 'uTDG\.Idle\.(\w*Clock)' : 	PS0_TDG	=	D(uTDG.Idle.{$1}) / D({$1}.Clocks)	
+ 'uTDG\.Idle\.(\w*Clock)' : 	PS1_TDG	=	(D(uTDG.IdleOrStalled.{$1}) - D(uTDG.Idle.{$1})) / D({$1}.Clocks)	
 	PS2_TDG	=	1 - PS0_TDG - PS1_TDG	
 #URBM				
 	PS0_URBM_DOP	=	 .temp_3DPipeDisable	#No GSIM model
@@ -189,15 +196,15 @@
 	PS1_SVG	=	0	
 	PS2_SVG	=	0	
 #VFE				
-'Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med\.uVFE\d+\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
-'Med\.uVFE\d+\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med\.uVFE\d+\.pwr_IdleOrStalled\.{$1}) - D(Med\.uVFE\d+\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
+ 'Med\.uVFE(\d+)\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med.uVFE{$1}.pwr_Idle.{$2}) / D({$2}.Clocks)	#Media GPGPU
+ 'Med\.uVFE(\d+)\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med.uVFE{$1}.pwr_IdleOrStalled.{$2}) - D(Med.uVFE{$1}.pwr_Idle.{$2})) / D({$2}.Clocks)	
 	PS2_VFE	=	1 - PS0_VFE - PS1_VFE	
 	PS2_VFE_GPGPU	=	0	#Breaking out media/GPGPU
 	PS2_VFE_MEDIA	=	0	
 				
 #TSG				
- 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS0_TSG	=	D(Med\.uTSG\.pwr_Idle\.{$1}) / D({$1}\.Clocks)	#Media GPGPU
- 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS1_TSG	=	(D(Med\.uTSG\.pwr_IdleOrStalled\.{$1}) - D(Med\.uTSG\.pwr_Idle\.{$1})) / D({$1}\.Clocks)	
+ 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS0_TSG	=	D(Med.uTSG.pwr_Idle.{$1}) / D({$1}.Clocks)	#Media GPGPU
+ 'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS1_TSG	=	(D(Med.uTSG.pwr_IdleOrStalled.{$1}) - D(Med.uTSG.pwr_Idle.{$1})) / D({$1}.Clocks)	
 	PS2_TSG	=	1 - PS0_TSG - PS1_TSG	
 	PS2_TSG_Media_Scoreboard	=	0	#Breaking out media/GPGPU
 	PS2_TSG_Media_NoScoreboard	=	0	
@@ -205,23 +212,39 @@
 	PS0_OACS	=	0	#No GSIM model
 	PS1_OACS	=	0	
 	PS2_OACS	=	0	
+				
 #SMALL				
+	PS0_FF_TEGSSOL_SMALL_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_SMALL_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_SMALL	=	PS0_TE	
 	PS0_FF_OTHER_SMALL	=	PS0_VF	#Approximating Small units with VF residencies
 	PS2_FF_TEGSSOL_SMALL	=	PS1_TE + PS2_TE	
 	PS2_FF_OTHER_SMALL	=	PS1_VF + PS2_VF	
-#GLUE				
-	PS0_FF_TEGSSOL_GLUE_DOP	=	 .temp_TeGsSolDOP	
-	PS0_FF_OTHER_GLUE_DOP	=	 .temp_3DPipeDisable	
-	PS0_FF_TEGSSOL_GLUE	=	PS0_TE	
-	PS0_FF_OTHER_GLUE	=	PS0_VF	#Approximating GLUE units with VF residencies
-	PS2_FF_TEGSSOL_GLUE	=	PS1_TE + PS2_TE	
-	PS2_FF_OTHER_GLUE	=	PS1_VF + PS2_VF	
+				
+#CLKGLUE				
+	PS0_FF_TEGSSOL_CLKGLUE_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
+	PS0_FF_TEGSSOL_CLKGLUE	=	PS0_TE	
+	PS0_FF_OTHER_CLKGLUE	=	PS0_VF	#Approximating GLUE units with VF residencies
+	PS2_FF_TEGSSOL_CLKGLUE	=	PS1_TE + PS2_TE	
+	PS2_FF_OTHER_CLKGLUE	=	PS1_VF + PS2_VF	
+				
+#NONCLKGLUE				
+	PS0_FF_TEGSSOL_NONCLKGLUE_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_NONCLKGLUE_DOP	=	 .temp_3DPipeDisable	
+	PS0_FF_TEGSSOL_NONCLKGLUE	=	PS0_TE	
+	PS0_FF_OTHER_NONCLKGLUE	=	PS0_VF	#Approximating GLUE units with VF residencies
+	PS2_FF_TEGSSOL_NONCLKGLUE	=	PS1_TE + PS2_TE	
+	PS2_FF_OTHER_NONCLKGLUE	=	PS1_VF + PS2_VF	
+				
 #DFX				
+	PS0_FF_TEGSSOL_DFX_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_DFX_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_DFX	=	PS0_TE	#Approximating GLUE units with VF residencies
 	PS0_FF_OTHER_DFX	=	PS0_VF	
 	PS2_FF_TEGSSOL_DFX	=	PS1_TE + PS2_TE	
 	PS2_FF_OTHER_DFX	=	PS1_VF + PS2_VF	
+				
 #DOP				
 	PS0_FF_TEGSSOL_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_DOP	=	 .temp_3DPipeDisable	
@@ -229,22 +252,26 @@
 	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable	
 				
 				
-				
 #ANNEALING				
 	PS2_VF	=	PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
+				
 #SMALL				
+	num_FF_SMALL	=	numFF	
 	PS0_FF_SMALL	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
 	PS1_FF_SMALL	=	PS1_VF	
 	PS2_FF_SMALL	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #GLUE				
+	num_FF_GLUE	=	numFF	
 	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
 	PS1_FF_GLUE	=	PS1_VF	
 	PS2_FF_GLUE	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DFX				
+	num_FF_DFX	=	numFF	
 	PS0_FF_DFX	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
 	PS1_FF_DFX	=	PS1_VF	
 	PS2_FF_DFX	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DOP				
+	num_FF_DOP	=	numFF	
 	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
 	PS1_FF_DOP	=	0	
 	PS2_FF_DOP	=	 .temp_3DPipeDisable	
