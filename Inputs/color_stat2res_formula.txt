@@ -17,10 +17,10 @@
 				
 				
 #Generic				
-	 @ANY_DAPRSC@	=	S\d+\.uDAPRB\.	
-	 @ANY_PB@	=	S\d+\.uPB\.	
-	 @ANY_RCC@	=	S\d+\.uColorCache\.	
-	 @ANY_MSC@	=	S\d+\.uMSC\.	
+	 @ANY_DAPRSC@	=	S\d+\.uDAPRB_\d+\.	
+	 @ANY_PB@	=	S\d+\.uPB_\d+\.	
+	 @ANY_RCC@	=	S\d+\.uColorCache_\d+\.	
+	 @ANY_MSC@	=	S\d+\.uMSC_\d+\.	
 	 @ANY2PPC@	=	1SS.gte128bpp	
 	 @ANY4PPC@	=	(1SS.lt128bpp|2SS.gte128bpp)	
 	 @ANY8PPC@	=	2SS.lt128bpp	
