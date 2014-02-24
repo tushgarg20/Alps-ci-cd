@@ -2818,6 +2818,7 @@ PS0_ROSS_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
 PS2_ROSS_DOP,Gen9LPClient,A0,23.293,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_GTP24C,Gen9LPClient,A0,54.17,syn,1018976.63,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_RoutingChannel,Gen9LPClient,A0,27.074,syn,313747.08,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_RoutingChannel,Gen9LPClient,A0,2525.49,syn,313747.08,Taken from BDW GT3 routing channel data
 PS2_ClockSpine,Gen9LPClient,A0,352.818679,ebb,1,Taken from SKL EOQ1 Cdyn-max data
 PS0_WIDI,Gen9LPClient,A0,13.873,syn,1246529.96,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_Blitter,Gen9LPClient,A0,37.684,syn,1605050.5,Taken from SKL FSO ECO3 rev1 CGEN data
