@@ -2,7 +2,7 @@
 
  # R == Residency
  # C == Cdyn weight
-
+CrClocks: R
 FPS: R
 
 EU:
@@ -79,7 +79,7 @@ EU:
 
   
   EM:
-    PS0_EU_EM: R *C
+    PS0_EU_EM: R * C
     PS1_EU_EM: R * C
     PS2_EU_EM:
       EM_mad_fp16: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
@@ -781,6 +781,7 @@ GAM:
     PS2_GAM_SMALL: R * C
    GLUE:
     PS0_GAM_GLUE: R * C
+    PS2_GAM_GLUE: R * C
     PS2_GAM_GLUE: R * C
    DFX:
     PS0_GAM_DFX: R * C
