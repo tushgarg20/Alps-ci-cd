@@ -27,7 +27,7 @@
 	.Z_DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	.Clk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
-	.Clk.x2	=	D(2xCrClock.Clocks)	
+	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
 	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
 	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
 	.Clk.num_Z_RCZ	=	.Clk * num_Z_RCZ	

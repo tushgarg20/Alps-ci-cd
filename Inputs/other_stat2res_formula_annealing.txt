@@ -3,12 +3,32 @@
 	num_Other_RoutingChannel	=	1
 	num_Other_GTP24C			=	1
 	num_Other_ClockSpine		=	1
-	num_Other_WIDI				=	1
-	num_Other_Blitter		=         1
+	num_Other_WIDI			=	1
+	num_Other_Blitter	=	1
+	
+	PS0_GTP24C 	=	1
+			
+	PS2_ClockSpine 	=	1
+	PS0_WIDI 	=	1
+	PS0_Blitter	=	1
+			
 	num_Other_Media_Idle	=	1
-
-PS0_RoutingChannel 	=	1
-PS1_RoutingChannel 	=	0
-PS2_RoutingChannel 	=	0
-PS2_ClockSpine 	=	1
-PS0_Media_Idle	=	1
+	PS0_Media_Idle	=	1
+			
+	.Clk	=	D(CrClock.Clocks)
+	numSlices	=	knob.global.NumSlices
+	.isGT3	=	(D(SUM('S\d+.uL3\.LneXSWinners\.\d+')) > 0) ? 1 : 0
+			
+	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.AllocMisses')) / .Clk * numSlices
+	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.WriteReq')) / .Clk * numSlices
+	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.AllocMisses')) / .Clk * numSlices
+	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.WriteRequests')) / .Clk * numSlices
+	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.AllocMisses')) / .Clk * numSlices
+	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.WriteRequests')) / .Clk * numSlices
+	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.AllocMisses')) / .Clk * numSlices
+	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.WriteRequests')) / .Clk * numSlices
+	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0
+			
+	PS0_RoutingChannel 	=	1 - PS2_RoutingChannel
+	PS0_RoutingChannel 	= 0
+	PS2_RoutingChannel 	= 0
