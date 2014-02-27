@@ -1,28 +1,26 @@
-#Unit	GSIM residency		
-#Instance Counts			
-	        num_Other_RoutingChannel	=		1
-		num_Other_GTP24C			=	1
-		num_Other_ClockSpine			=	1
-		num_Other_WIDI				=	1
-	num_Other_Blitter	=	1
-#Generic			
-	.Clk	=	D(CrClock.Clocks)
-	numSlices	=	knob.global.NumSlices
-	.isGT3	=	(D(SUM('S\d+.uL3\.LneXSWinners\.\d+')) > 0) ? 1 : 0
-			
-	PS0_GTP24C 	=	1
-	PS0_RoutingChannel 	=	(.isGT3 > 0) ? (1 - PS2_RoutingChannel) : 0
-	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .Clk * numSlices
-	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .Clk * numSlices
-	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .Clk * numSlices
-	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / .Clk * numSlices
-	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) / .Clk * numSlices
-	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / .Clk * numSlices
-	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .Clk * numSlices
-	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .Clk * numSlices
-	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0
-	PS2_ClockSpine 	=	1
-	PS0_WIDI 	=	1
+#Unit	GSIM residency			
+#Instance Counts				
+		num_Other_RoutingChannel		=		1	
+		num_Other_GTP24C				=		1	
+		num_Other_ClockSpine			=		1	
+		num_Other_WIDI					=		1	
+	num_Other_Blitter	=	1	
+#Generic				
+	.Clk	=	D(CrClock.Clocks)	
+	numSlices	=	knob.global.NumSlices	
+	.isGT3	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) > 0) ? 1 : 0	#Fixed this to use LneXSWinners.1 - atleast 1 Xslice port activity to determine GT3
+				
+	PS0_GTP24C 	=	1	
+	PS0_RoutingChannel 	=	(.isGT3 > 0) ? (1 - PS2_RoutingChannel) : 0	
+	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .Clk * numSlices	
+	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .Clk * numSlices	
+	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .Clk * numSlices	
+	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / .Clk * numSlices	
+	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) / .Clk * numSlices	
+	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / .Clk * numSlices	
+	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .Clk * numSlices	
+	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .Clk * numSlices	
+	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
+	PS2_ClockSpine 	=	1	
+	PS0_WIDI 	=	1	
 	PS0_Blitter	=	1
-	PS2_RoutingChannel	=	0
-	PS0_RoutingChannel      = 0

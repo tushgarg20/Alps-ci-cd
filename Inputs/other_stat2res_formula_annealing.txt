@@ -17,7 +17,7 @@
 			
 	.Clk	=	D(CrClock.Clocks)
 	numSlices	=	knob.global.NumSlices
-	.isGT3	=	(D(SUM('S\d+.uL3\.LneXSWinners\.\d+')) > 0) ? 1 : 0
+	.isGT3	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) > 0) ? 1 : 0 #Fixed this to use LneXSWinners.1 - atleast 1 Xslice port activity to determine GT3
 	PS0_RoutingChannel 	=	(.isGT3 > 0) ? (1 - PS2_RoutingChannel) : 0
 
 	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .Clk * numSlices
@@ -29,6 +29,3 @@
 	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .Clk * numSlices
 	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .Clk * numSlices
 	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0
-			
-	PS0_RoutingChannel 	= 0
-	PS2_RoutingChannel 	= 0

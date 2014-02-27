@@ -87,7 +87,7 @@
 	PS2_LNE_BW	=	(.temp_LNE_sum > 0) ? (.temp_LNE_weighted_sum / (LNE_max_ports * .temp_LNE_sum)) : 0	
 #LNIXS				
 	.temp_PS0_LNIXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
-	PS0_LNIXS	=	(D(SUM('S\d+.uL3\.LniXSWinners\.\d+')) > 0 ) ? .temp_PS0_LNIXS : 1	#Force PS0 to be 1 for GT2
+	PS0_LNIXS	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) > 0 ) ? .temp_PS0_LNIXS : 1	#Force PS0 to be 1 for GT2
 	.temp_LNIXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LniXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LniXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LniXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LniXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LniXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LniXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
 	.temp_LNIXS_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')))	
 	PS1_LNIXS	=	1 - PS0_LNIXS - PS2_LNIXS	
@@ -95,7 +95,7 @@
 	PS2_LNIXS_BW	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_weighted_sum / (LNIXS_max_ports * .temp_LNIXS_sum)) : 0	#fixed the divide by 0 issue
 #LNEXS				
 	.temp_PS0_LNEXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
-	PS0_LNEXS	=	(D(SUM('S\d+.uL3\.LneXSWinners\.\d+')) > 0 ) ? .temp_PS0_LNEXS : 1	#Force PS0 to be 1 for GT2
+	PS0_LNEXS	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) > 0 ) ? .temp_PS0_LNEXS : 1	#Force PS0 to be 1 for GT2
 	.temp_LNEXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LneXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LneXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LneXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LneXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LneXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LneXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
 	.temp_LNEXS_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))	
 	PS1_LNEXS	=	1 - PS0_LNEXS - PS2_LNEXS	
