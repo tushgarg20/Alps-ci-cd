@@ -434,12 +434,10 @@ PL_Toggle_Rate : R
 ROSS:
    BC:
     PS0_BC: R * C
-    PS0_BC_DOP: R * C
     PS1_BC: R * C
     PS2_BC: R * C
    PSD:
     PS0_PSD: R * C
-    PS0_PSD_DOP: R * C
     PS1_PSD: R * C
     PS2_PSD: R * C
    PSD_Scoreboard:
@@ -476,7 +474,6 @@ ROSS:
      PS2_IC_DATARAM_WRITE: R * C
    DAPRSS:
     PS0_DAPRSS: R * C
-    PS0_DAPRSS_DOP: R * C
     PS1_DAPRSS: R * C
     PS2_DAPRSS: R * C
    DAPRSS_BypassRAM:
@@ -489,15 +486,12 @@ ROSS:
     PS1_GWL: R * C
     PS2_GWL: R * C
    SMALL:
-    PS0_ROSS_SMALL_DOP: R * C
     PS0_ROSS_SMALL: R * C
     PS2_ROSS_SMALL: R * C
    GLUE: 
-    PS0_ROSS_GLUE_DOP: R * C
     PS0_ROSS_GLUE: R * C
     PS2_ROSS_GLUE: R * C
    DFX:
-    PS0_ROSS_DFX_DOP: R * C
     PS0_ROSS_DFX: R * C
     PS2_ROSS_DFX: R * C
    DOP:
@@ -506,7 +500,6 @@ ROSS:
 Z:
    HIZ:
     PS0_HIZ: R * C
-    PS0_HIZ_DOP: R * C
     PS1_HIZ: R * C
     PS2_HIZ:
      PS2_HIZ_ZMARKERS: R * C
@@ -525,7 +518,6 @@ Z:
     PS2_HIZ_LATFIFO_WRITE: R * C
    IZ:
     PS0_IZ: R * C
-    PS0_IZ_DOP: R * C
     PS1_IZ: R * C
     PS2_IZ: R * C 
    IZ_Cache:
@@ -542,7 +534,6 @@ Z:
      PS2_IZ_WCOEFFIFO_WRITE: R * C
    RCZ:
     PS0_RCZ: R * C
-    PS0_RCZ_DOP: R * C
     PS1_RCZ: R * C
     PS2_RCZ:
      PS2_RCZ_ALLOC_HITS: R * C
@@ -553,7 +544,6 @@ Z:
      PS2_RCZ_CACHE_WRITE: R * C
    STC:
     PS0_STC: R * C
-    PS0_STC_DOP: R * C
     PS1_STC: R * C
     PS2_STC:
      PS2_STC_ALLOC_HITS: R * C
@@ -565,12 +555,10 @@ Z:
 COLOR:
    DAPRSC:
     PS0_DAPRSC: R * C
-    PS0_DAPRSC_DOP: R * C
     PS1_DAPRSC: R * C
     PS2_DAPRSC: R * C
    RCPFE:
     PS0_RCPFE: R * C
-    PS0_RCPFE_DOP: R * C
     PS1_RCPFE: R * C
     PS2_RCPFE: 
      PS2_RCPFE_2PPC_WRT_ZPASS: R * C
@@ -602,7 +590,6 @@ COLOR:
      PS2_RCPFE_RCCLATFIFO_WRITE: R * C
    RCPBCOM:
     PS0_RCPBCOM: R * C
-    PS0_RCPBCOM_DOP: R * C
     PS1_RCPBCOM: R * C
     PS2_RCPBCOM:
      PS2_RCPBCOM_2PPC_WRT: R * C
@@ -614,7 +601,6 @@ COLOR:
      PS2_RCPBCOM_RTR: R * C
    RCPBPIX:
     PS0_RCPBPIX: R * C
-    PS0_RCPBPIX_DOP: R * C
     PS1_RCPBPIX: R * C
     PS2_RCPBPIX:
      PS2_RCPBPIX_2PPC_WRT: R * C
@@ -625,7 +611,6 @@ COLOR:
      PS2_RCPBPIX_8PPC_BLD: R * C
    RCC:
     PS0_RCC: R * C
-    PS0_RCC_DOP: R * C
     PS1_RCC: R * C
     PS2_RCC:
      PS2_RCC_ALLOC_HITS: R * C
@@ -636,7 +621,6 @@ COLOR:
      PS2_RCC_CACHE_WRITE: R * C
    MSC:
     PS0_MSC: R * C
-    PS0_MSC_DOP: R * C
     PS1_MSC: R * C
     PS2_MSC:
      PS2_MSC_CLEARRESOLVE: R * C
@@ -647,7 +631,6 @@ COLOR:
      PS2_MSC_CACHE_WRITE: R * C
    CC:
     PS0_CC: R * C
-    PS0_CC_DOP: R * C
     PS1_CC: R * C
     PS2_CC:
      PS2_CC_EN_WRITES: R * C
@@ -655,7 +638,6 @@ COLOR:
      PS2_CC_DIS: R * C
    DAPB:
     PS0_DAPB: R * C
-    PS0_DAPB_DOP: R * C
     PS1_DAPB: R * C
     PS2_DAPB:
      PS2_DAPB_NOMSAA_RTR: R * C
@@ -663,49 +645,40 @@ COLOR:
      PS2_DAPB_DIS: R * C
 HDC:
    HDCREQCMD1:
-    PS0_HDC_ReqCmd1_DOP: R * C
     PS0_HDC_ReqCmd1: R * C
     PS1_HDC_ReqCmd1: R * C
     PS2_HDC_ReqCmd1: R * C
    HDCREQCMD2:
-    PS0_HDC_ReqCmd2_DOP: R * C
     PS0_HDC_ReqCmd2: R * C
     PS1_HDC_ReqCmd2: R * C
     PS2_HDC_ReqCmd2: R * C
    HDCREQDATA:
-    PS0_HDC_ReqData_DOP: R * C
     PS0_HDC_ReqData: R * C
     PS1_HDC_ReqData: R * C
     PS2_HDC_ReqData: R * C
    HDCRET:
-    PS0_HDC_Ret_DOP: R * C
     PS0_HDC_Ret: R * C
     PS1_HDC_Ret: R * C
     PS2_HDC_Ret: R * C
    HDCTLB:
-    PS0_HDCTLB_DOP: R * C
     PS0_HDCTLB: R * C
     PS1_HDCTLB: R * C
     PS2_HDCTLB: R * C
    SMALL:
-    PS0_HDC_SMALL_DOP: R * C
     PS0_HDC_SMALL: R * C
     PS2_HDC_SMALL: R * C
    GLUE:
-    PS0_HDC_GLUE_DOP: R * C
     PS0_HDC_GLUE: R * C
     PS2_HDC_GLUE: R * C
    DOP:
     PS0_HDC_DOP: R * C
     PS2_HDC_DOP: R * C
    DFX:
-    PS0_HDC_DFX_DOP: R * C
     PS0_HDC_DFX: R * C
     PS2_HDC_DFX: R * C 
 ROSC:
    WMFE:
     PS0_WMFE: R * C 
-    PS0_WMFE_DOP: R * C 
     PS1_WMFE: R * C
     PS2_WMFE:
      PS2_WMFE_NULLTOPSC: R * C 
@@ -714,7 +687,6 @@ ROSC:
      PS2_WMFE_POLYFIFO_WRITE: R * C 
    WMBE:
     PS0_WMBE: R * C 
-    PS0_WMBE_DOP: R * C 
     PS1_WMBE: R * C
     PS2_WMBE:
      PS2_WMBE_FULLYLIT: R * C
@@ -723,7 +695,6 @@ ROSC:
      PS2_WMBE_ANTIALIASING: R * C 
    SBE:
     PS0_SBE: R * C
-    PS0_SBE_DOP: R * C
     PS1_SBE: R * C
     PS2_SBE: R * C
    TDC:
@@ -742,15 +713,12 @@ ROSC:
     PS0_ROSC_DOP: R * C 
     PS2_ROSC_DOP: R * C 
    GLUE:
-    PS0_ROSC_GLUE_DOP: R * C 
     PS0_ROSC_GLUE: R * C 
     PS2_ROSC_GLUE: R * C 
    SMALL:
-    PS0_ROSC_SMALL_DOP: R * C 
     PS0_ROSC_SMALL: R * C 
     PS2_ROSC_SMALL: R * C 
    DFX:
-    PS0_ROSC_DFX_DOP: R * C 
     PS0_ROSC_DFX: R * C 
     PS2_ROSC_DFX: R * C 
 GAM:
@@ -790,17 +758,14 @@ FF:
     PS0_BTGEN_Cache_Write: R * C
     PS0_BTGEN_Cache_ReadWrite: R * C
    VF:
-    PS0_VF_DOP: R * C
     PS0_VF: R * C
     PS1_VF: R * C
     PS2_VF: R * C
    VFBE1:
-    PS0_VFBE1_DOP: R * C
     PS0_VFBE1: R * C
     PS1_VFBE1: R * C
     PS2_VFBE1: R * C
    VFBE2:
-    PS0_VFBE2_DOP: R * C
     PS0_VFBE2: R * C
     PS1_VFBE2: R * C
     PS2_VFBE2: R * C
@@ -812,12 +777,10 @@ FF:
     PS2_VF_URBFifo_Read: R * C
     PS2_VF_URBFifo_Write: R * C
    VSFE:
-    PS0_VSFE_DOP: R * C
     PS0_VSFE: R * C
     PS1_VSFE: R * C
     PS2_VSFE: R * C
    VSBE:
-    PS0_VSBE_DOP: R * C
     PS0_VSBE: R * C
     PS1_VSBE: R * C
     PS2_VSBE: R * C
@@ -827,7 +790,6 @@ FF:
      PS2_VS_Cache_Read: R * C
      PS2_VS_Cache_Write: R * C
    HS:
-    PS0_HS_DOP: R * C
     PS0_HS: R * C
     PS1_HS: R * C
     PS2_HS:
@@ -840,14 +802,12 @@ FF:
      PS2_HS_Cache_Write: R * C
      PS2_HS_Cache_ReadWrite: R * C
    TE:
-    PS0_TE_DOP: R * C
     PS0_TE: R * C
     PS1_TE: R * C
     PS2_TE:
      PS2_TE_Enabled: R * C
      PS2_TE_Disabled: R * C
    TDS:
-    PS0_TDS_DOP: R * C
     PS0_TDS: R * C
     PS1_TDS: R * C
     PS2_TDDS:
@@ -860,7 +820,6 @@ FF:
      PS2_TDS_Cache_Write: R * C
      PS2_TDS_Cache_ReadWrite: R * C
    GS:
-    PS0_GS_DOP: R * C
     PS0_GS: R * C
     PS1_GS: R * C
     PS2_GS:
@@ -873,7 +832,6 @@ FF:
      PS2_GS_Cache_Write: R * C
      PS2_GS_Cache_ReadWrite: R * C
    SOL:
-    PS0_SOL_DOP: R * C
     PS0_SOL: R * C
     PS1_SOL: R * C
     PS2_SOL:
@@ -886,12 +844,10 @@ FF:
      PS2_SOL_Cache_Write: R * C
      PS2_SOL_Cache_ReadWrite: R * C
    CL:
-    PS0_CL_DOP: R * C
     PS0_CL: R * C
     PS1_CL: R * C
     PS2_CL: R * C
    SF:
-    PS0_SF_DOP: R * C
     PS0_SF: R * C
     PS1_SF: R * C
     PS2_SF:
@@ -899,7 +855,6 @@ FF:
      PS2_SF_NotCulled_FastClip: R * C
      PS2_SF_NotCulled_NotFastClip: R * C
    SDE:
-    PS0_SDE_DOP: R * C
     PS0_SDE: R * C
     PS1_SDE: R * C
     PS2_SDE:
@@ -910,7 +865,6 @@ FF:
     PS1_TDG: R * C
     PS2_TDG: R * C
    URBM:
-    PS0_URBM_DOP: R * C
     PS0_URBM: R * C
     PS1_URBM: R * C
     PS2_URBM: R * C
