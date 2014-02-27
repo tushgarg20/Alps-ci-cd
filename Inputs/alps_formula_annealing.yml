@@ -32,7 +32,6 @@ EU:
       FPU_add_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mov_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sel_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_transc_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mac_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sad_fp32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mad_fp64: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
@@ -54,7 +53,6 @@ EU:
       FPU_add_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mov_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sel_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_transc_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mac_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sad_int32: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mad_int64: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
@@ -70,12 +68,7 @@ EU:
       FPU_pln_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mac_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sad_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_mad_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_mul_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_add_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_pln_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_mac_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-      FPU_sad_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+     
 
   
   EM:
@@ -133,12 +126,7 @@ EU:
       EM_pln_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
       EM_mac_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
       EM_sad_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_mad_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_mul_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_add_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_pln_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_mac_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      EM_sad_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      
 
 
   GA:
@@ -529,9 +517,6 @@ Z:
      PS2_HIZ_EN_STCONLY_FAIL: R * C
      PS2_HIZ_EN_STCONLY_AMBIG: R * C
      PS2_HIZ_DIS: R * C
-     PS2_HIZ_FULLYLIT: R * C
-     PS2_HIZ_PARTIALLYLIT: R * C
-     PS2_HIZ_RESOLVE: R * C
      PS2_HIZ_RAWSTALLEN: R * C
    HIZ_Cache:
     PS2_HIZ_CACHE_READ: R * C
