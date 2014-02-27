@@ -30,5 +30,5 @@
 	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .Clk * numSlices
 	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0
 			
-	#PS0_RoutingChannel 	= 0
-	#PS2_RoutingChannel 	= 0
+	PS0_RoutingChannel 	= 0
+	PS2_RoutingChannel 	= 0
