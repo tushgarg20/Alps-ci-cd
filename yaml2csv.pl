@@ -84,9 +84,12 @@ foreach my $alps (@alpsModelFile) {
 		if ($key =~ /total_gt_cdyn/i) {$consolidatedAlpsData{$frameName}{CDYN} = $alpsData->{$key};}
 		if ($key =~ /cluster_cdyn/i) {
 			#my %clusterCdynData = %{$alpsData{$key}};
-			my %clusterCdynData = %{$alpsData->{$key}};
-			foreach my $cluster (keys %clusterCdynData) {
-				$consolidatedAlpsData{$frameName}{$cluster}{CDYN} = $clusterCdynData{$cluster};
+			my $clusterCdynData = $alpsData->{$key};
+			foreach my $cluster (keys %{$clusterCdynData}) {
+				my %clusterCdynBkUp = %{$clusterCdynData->{$cluster}};
+				foreach my $category (keys %clusterCdynBkUp) {
+					if ($category =~ /total/i) {$consolidatedAlpsData{$frameName}{$cluster}{CDYN} = $clusterCdynBkUp{$category};}
+				}
 			}
 		}
 		if ($key =~ /unit_cdyn/i) {
