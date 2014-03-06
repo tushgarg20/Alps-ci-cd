@@ -11,6 +11,7 @@ Stat2Res Formula Files:
   - Inputs/sampler_stat2res_formula.txt
   - Inputs/hdc_stat2res_formula.txt
   - Inputs/z_stat2res_formula.txt
+  - Inputs/bw_stat2res_formula.txt
 
 ALPS Input File:
   - inputs.txt
