@@ -350,6 +350,9 @@ Sampler:
     PS0_DG: R * C
     PS1_DG: R * C
     PS2_DG:
+     PS2_DG_Nearest_32BPT: R * C
+     PS2_DG_Nearest_64BPT: R * C
+     PS2_DG_Nearest_128BPT: R * C
      PS2_DG_Volumetric_32BPT: R * C
      PS2_DG_Volumetric_64BPT: R * C
      PS2_DG_Volumetric_128BPT: R * C
