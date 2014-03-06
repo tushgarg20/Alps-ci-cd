@@ -34,7 +34,7 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 #################################
 I = {}
 C = {}
-cdyn_precedence = ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP']
+cdyn_precedence = ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC']
 new_gc = {}
 process_hash = {}
 voltage_hash = {}
@@ -62,6 +62,8 @@ elif cfg.find('bxt') > -1 :
     cfg ='Gen9LPSoC'
 elif cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
+elif cfg.find('owf') > -1 :
+    cfg ='Gen10LPSoC'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -162,7 +164,10 @@ def get_eff_cdyn(cluster,unit,stat):
         else:
             ref_gc = 1
 
-    process_sf = process_hash[base_cfg][cfg]
+    if(cdyn_type == 'syn'):
+        process_sf = process_hash[base_cfg][cfg]['syn']
+    else:
+        process_sf = process_hash[base_cfg][cfg]['ebb']
     if(process_sf == 'NA'):
         process_sf = 0
     voltage_sf = voltage_hash[base_cfg][cfg]
@@ -442,8 +447,9 @@ for line in process_file:
     if(data[0] not in process_hash):
         process_hash[data[0]] = {}
     if(data[1] not in process_hash[data[0]]):
-        process_hash[data[0]][data[1]] = {}
-    process_hash[data[0]][data[1]] = float(data[2]) if data[2] != 'NA' else data[2]
+        process_hash[data[0]][data[1]] = {'syn':{},'ebb':{}}
+    process_hash[data[0]][data[1]]['syn'] = float(data[2]) if data[2] != 'NA' else data[2]
+    process_hash[data[0]][data[1]]['ebb'] = float(data[3]) if data[3] != 'NA' else data[3]
 process_file.close()
 
 voltage_file = open(input_hash['Voltage_Scaling_Factors'],'r')
