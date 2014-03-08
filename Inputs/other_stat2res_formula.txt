@@ -1,28 +1,11 @@
-#Unit	GSIM residency			
-#Instance Counts				
-		num_Other_RoutingChannel		=		1	
-		num_Other_GTP24C				=		1	
-		num_Other_ClockSpine			=		1	
-		num_Other_WIDI					=		1	
-	num_Other_Blitter	=	1	
-#Generic				
-	.CrClk	=	D(CrClock.Clocks)	
-	numSlices	=	knob.global.NumSlices	
-	.LneXSWinners.0	=	D(SUM('S\d+.uL3\.LneXSWinners\.0'))	
-	.LneXSWinners.Total	=	D(SUM('S\d+.uL3\.LneXSWinners\.total_count'))	
-	.isGT3	=	( .LneXSWinners.0 == .LneXSWinners.Total) ? 0 : 1	#Fixed to work for GT2 and workaround NA issues
-				
-	PS0_GTP24C 	=	1	
-	PS0_RoutingChannel 	=	(.isGT3 > 0) ? (1 - .PS2_RoutingChannel) : 0	
-	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
-	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .CrClk * numSlices	
-	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
-	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / .CrClk * numSlices	
-	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) / .CrClk * numSlices	
-	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
-	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .CrClk * numSlices	
-	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
-	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
-	PS2_ClockSpine 	=	1	
-	PS0_WIDI 	=	1	
+#Unit	GSIM residency		
+#Instance Counts			
+		num_Other_GTP24C				=		1
+		num_Other_ClockSpine			=		1
+		num_Other_WIDI					=		1
+	num_Other_Blitter	=	1
+#Other			
+	PS0_GTP24C 	=	1
+	PS2_ClockSpine 	=	1
+	PS0_WIDI 	=	1
 	PS0_Blitter	=	1

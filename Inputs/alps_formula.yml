@@ -1321,11 +1321,25 @@ FF:
 Other:
    GTP24C:
     PS0_GTP24C: R * C
-   RoutingChannel:
-    PS0_RoutingChannel: R * C
    ClockSpine:
     PS2_ClockSpine: R * C
    WIDI:
     PS0_WIDI: R * C
    Blitter:
     PS0_Blitter: R * C
+RC:
+   SliceRC:
+    PS0_SliceRC: R * C
+    PS2_SliceRC: R * C
+   L3XSRC:
+    PS0_L3XSRC: R * C
+    PS2_L3XSRC: R * C
+   GT3BFRC:
+    PS0_GT3BFRC: R * C
+    PS2_GT3BFRC: R * C
+   Fabric:
+    PS0_Fabric: R * C
+    PS2_Fabric_GT2: R * C
+    PS2_Fabric_GT2P5: R * C
+    PS2_Fabric_GT3: R * C
+    PS2_Fabric_GT4: R * C

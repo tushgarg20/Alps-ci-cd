@@ -1,0 +1,49 @@
+#Unit	GSIM residency			
+#Instance Counts				
+	num_RC_SliceRC	=		1	
+	num_RC_L3XSRC	=	1	
+	num_RC_GT3BFRC	=	1	
+	num_RC_Fabric	=	1	
+				
+#Generic				
+	.CrClk	=	D(CrClock.Clocks)	
+	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
+	numSlices	=	knob.global.NumSlices	
+	.LneXSWinners.0	=	D(SUM('S\d+.uL3\.LneXSWinners\.0'))	
+	.LneXSWinners.Total	=	D(SUM('S\d+.uL3\.LneXSWinners\.total_count'))	
+	.isGT3	=	( .LneXSWinners.0 == .LneXSWinners.Total) ? 0 : 1	#Fixed to work for GT2 and workaround NA issues
+	.isGT2P5	=	.isGT3	#Same logic applies to find out if there is a X-Bar
+	.isGT4	=	.isGT3	#Same logic applies to find out if there is a X-Bar
+	num_vtxpipes	=	1	#Possible future change
+#Routing Channel				
+#SliceRC				
+	PS0_SliceRC	=	(.isGT3 > 0) ? (1 - PS2_SliceRC) : 0	
+	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
+	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .CrClk * numSlices	
+	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
+	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / .CrClk * numSlices	
+	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) / .CrClk * numSlices	
+	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
+	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .CrClk * numSlices	
+	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
+	PS2_SliceRC	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
+#L3XS				
+	PS0_L3XSRC	=	(.isGT3 > 0) ? (1 - PS2_L3XSRC) : 0	
+	.LNIXS_Read_Writes	=	((D(SUM('S\d+.uL3\.LniXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')))) / (.CrClk * numSlices)	
+	.LNEXS_Read_Writes	=	((D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))) / (.CrClk * numSlices)	
+	PS2_L3XSRC	=	(.isGT3 > 0) ? (.LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
+#GT3BF				
+	PS0_GT3BFRC	=	(.isGT3 > 0) ? (1 - PS2_GT3BFRC) : 0	
+	.CL_L3_Reads	=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	
+	.TE_L3_Reads	=	D(Geo.uTE.TE_URBReadRequestFifo.pushed) / .GeoClk2x	
+	.GS_L3_Reads	=	D(Geo.uGS.UrbInBuffer.pushed) / .GeoClk2x	
+	.SOL_L3_Reads	=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	#No GSIM model - approx with Clipper
+	.VF_L3_Writes	=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.UrbWrites')) / (num_vtxpipes * .GeoClk2x)	
+	PS2_GT3BFRC	=	(.isGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes) : 0	
+				
+#Fabric	
+	PS0_Fabric	=	1 - (PS2_Fabric_GT2 + PS2_Fabric_GT2P5)	#GT2P5 is 0 for non GT2 configs
+	PS2_Fabric_GT2	=	(.isGT3 > 0) ? 0 : (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes)	
+	PS2_Fabric_GT2P5	=	(.isGT2P5 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
+	PS2_Fabric_GT3	=	(.isGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
+	PS2_Fabric_GT4	=	(.isGT4 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0
