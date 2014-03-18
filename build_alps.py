@@ -34,7 +34,9 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 #################################
 I = {}
 C = {}
-cdyn_precedence = ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen10LP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC']
+                       };
 new_gc = {}
 process_hash = {}
 voltage_hash = {}
@@ -77,6 +79,11 @@ else:
 print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
+
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen10LP'):
+    cdyn_precedence = cdyn_precedence_hash['client']
+else:
+    cdyn_precedence = cdyn_precedence_hash['lp']
 
 scripts_dir = os.path.abspath(os.path.dirname(__file__))
 #################################
