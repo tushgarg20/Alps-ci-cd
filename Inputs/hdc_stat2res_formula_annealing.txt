@@ -102,6 +102,7 @@
 	PS2_HDC_DFX	=	PS2_HDC_NONCLKGLUE	
 				
 				
+				
 #ANNEALING				
 	PS2_HDC_ReqCmd1	=	1-PS0_HDC_ReqCmd1-PS1_HDC_ReqCmd1-PS0_HDC_ReqCmd1_DOP	
 				

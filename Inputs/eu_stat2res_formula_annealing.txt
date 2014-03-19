@@ -307,16 +307,13 @@
 	PS2_EU_NONCLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 #DOP				
 	PS0_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes
-	PS1_EU_DOP	=	0	#No PS1_EU_DOP in SKL
-        PS2_EU_DOP      =       1 - PS0_EU_DOP - PS1_EU_DOP				
-				
-				
-				
+	PS1_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')) - D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#No PS1_EU_DOP in SKL
+	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP	
 				
 				
 #Annealing				
 				
 #GLUE				
-	num_EU_CLKGLUE	=	numEUs	
+	num_EU_GLUE	=	numEUs	
 	PS0_EU_GLUE	=	PS0_TC + PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 	PS2_EU_GLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	

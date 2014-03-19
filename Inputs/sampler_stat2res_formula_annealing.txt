@@ -274,18 +274,19 @@
 	PS2_SVSM	=	0	
 				
 #AVS				
-	PS0_AVS_DOP	=	1	#not implemented - hardcoded to 3D value
-	PS0_AVS	=	(PS0_AVS_DOP > 0) ? 0 : (D(SUM('@ANY_SAMPLER@pwr_avs_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_AVS_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_AVS	=	(PS0_AVS_DOP > 0) ? 0 : (1 - (PS0_AVS_DOP + PS0_AVS + PS2_AVS_Scalar + PS2_AVS_Convolution + PS2_AVS_CorrelationSearch + PS2_AVS_Centroid + PS2_AVS_MinMax + PS2_AVS_MinMaxFilter + PS2_AVS_Erode + PS2_AVS_Dilate + PS2_AVS_BoolCentroid))	
-	PS2_AVS_Scalar	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_scalar\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Convolution	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_convolve\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_CorrelationSearch	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_corrsearch\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Centroid	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_centroid\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_MinMax	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_minmax\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_MinMaxFilter	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_minmaxfilter\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Erode	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_erode\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Dilate	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_dilate\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_BoolCentroid	=	(PS0_AVS_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_avs_boolcentroid\.CrClock')) / (numSamplers * .CrClk)	
+	PS0_AVS_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
+	PS0_AVS	=	(D(SUM('@ANY_SAMPLER@pwr_avs_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_AVS_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS1_AVS	=	1 - (PS0_AVS_DOP + PS0_AVS + .temp_PS2_AVS)	
+	PS2_AVS_Scalar	=	D(SUM('@ANY_SAMPLER@pwr_avs_scalar\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_Convolution	=	D(SUM('@ANY_SAMPLER@pwr_avs_convolve\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_CorrelationSearch	=	D(SUM('@ANY_SAMPLER@pwr_avs_corrsearch\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_Centroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_centroid\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_MinMax	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmax\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_MinMaxFilter	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmaxfilter\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_Erode	=	D(SUM('@ANY_SAMPLER@pwr_avs_erode\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_Dilate	=	D(SUM('@ANY_SAMPLER@pwr_avs_dilate\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_AVS_BoolCentroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_boolcentroid\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_AVS	=	PS2_AVS_Scalar + PS2_AVS_Convolution + PS2_AVS_CorrelationSearch + PS2_AVS_Centroid + PS2_AVS_MinMax + PS2_AVS_MinMaxFilter + PS2_AVS_Erode + PS2_AVS_Dilate + PS2_AVS_BoolCentroid	
 				
 #AVS - Data Storage				
 	PS2_AVS_DataStorageRAM_READ	=	0	#first rev media states
@@ -296,69 +297,70 @@
 	PS2_AVS_CoeffStorageRAM_WRITE	=	0	
 				
 #IEF				
-	PS0_IEF_DOP	=	1	#not implemented - hardcoded to 3D value
-	PS0_IEF	=	(PS0_IEF_DOP > 0) ? 0 : (D(SUM('@ANY_SAMPLER@pwr_ief_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IEF_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_IEF	=	(PS0_IEF_DOP > 0) ? 0 : (1 - (PS0_IEF_DOP + PS0_IEF + PS2_IEF_NoBypass + PS2_IEF_Bypass))	
-	PS2_IEF_NoBypass	=	(PS0_IEF_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_ief_NoBypass\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_IEF_Bypass	=	(PS0_IEF_DOP > 0) ? 0 : D(SUM('@ANY_SAMPLER@pwr_ief_Bypass\.CrClock')) / (numSamplers * .CrClk)	
+	PS0_IEF_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
+	PS0_IEF	=	(D(SUM('@ANY_SAMPLER@pwr_ief_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IEF_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS1_IEF	=	(1 - (PS0_IEF_DOP + PS0_IEF + .temp_PS2_IEF))	
+	PS2_IEF_NoBypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_NoBypass\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_IEF_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_Bypass\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_IEF	=	PS2_IEF_NoBypass + PS2_IEF_Bypass	
 				
 #CRE				
-	PS0_CRE_DOP	=	1	#not implemented - hardcoded to 3D value
-	PS0_CRE	=	0	#would evaluate to 0 till 3D DOP is implemented
-	PS1_CRE	=	0	
-	PS2_CRE_FRONT_ACTIVE	=	(PS0_CRE_DOP > 0) ? 0 : D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA	=	(PS0_CRE_DOP > 0) ? 0 : D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA_SKIP	=	(PS0_CRE_DOP > 0) ? 0 : D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_FBR	=	(PS0_CRE_DOP > 0) ? 0 : D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)	
+	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
+	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))	
+	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR	
 				
 #IME				
-	PS0_IME_DOP	=	1	#not implemented - hardcoded to 3D value
-	PS0_IME	=	0	#would evaluate to 0 till 3D DOP is implemented
-	PS1_IME	=	0	
-	PS2_IME_BACK_ACTIVE	=	(PS0_IME_DOP > 0) ? 0 : D(SUM('@ANY_IME@pwr_be_active\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_IME_FRONT_ACTIVE	=	(PS0_IME_DOP > 0) ? 0 : D(SUM('@ANY_IME@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)	
+	PS0_IME_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
+	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))	
+	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
+	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
+	.temp_PS2_CRE	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
 				
 #Small				
-	PS0_MEDIASMP_SMALL_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_SMALL	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	#first rev media states
 	PS2_MEDIASMP_SMALL	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
 				
 #GLUE				
-	PS0_MEDIASMP_CLKGLUE_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_CLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_CLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
 	PS2_MEDIASMP_CLKGLUE	=	PS2_MEDIASMP_SMALL	
 				
 #GLUE				
-	PS0_MEDIASMP_NONCLKGLUE_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_NONCLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_NONCLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
 	PS2_MEDIASMP_NONCLKGLUE	=	PS2_MEDIASMP_SMALL	
 				
 #Dfx				
-	PS0_MEDIASMP_DFX_DOP	=	1	#3d context media state
+	PS0_MEDIASMP_DFX_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_DFX	=	PS0_MEDIASMP_SMALL	#first rev media states
 	PS2_MEDIASMP_DFX	=	PS2_MEDIASMP_SMALL	
 				
 #DOP				
-	PS0_MEDIASMP_DOP	=	1	#3d context media state
+	.test_PS2_MEDIASMP	=	.temp_PS2_AVS + .temp_PS2_IEF + .temp_PS2_CRE + .temp_PS2_IME	
+	PS0_MEDIASMP_DOP	=	(.test_PS2_MEDIASMP > 0) ? 0 : 1	#3d context media state
 	PS2_MEDIASMP_DOP	=	1 - PS0_MEDIASMP_DOP	#first rev media states
-				
-				
-				
 				
 				
 				
 #ANNEALING				
 	PS2_FL_SampleC	=	PS2_FL_SampleC_Gather4C+PS2_FL_SampleC_Gather4C_Bypass	
-	PS2_FL_Gather4_Bypass	=	PS2_FL_Gather4_Bypass	
-	PS2_FL_Data_Dep_Bypass_Nearest	=	PS2_FL_Data_Dep_Bypass_Nearest	
-	PS2_FL_Data_Dep_Bypass_Bilinear	=	PS2_FL_Data_Dep_Bypass_Bilinear	
-	PS2_FL_Data_Dep_Bypass_Trilinear	=	PS2_FL_Data_Dep_Bypass_Trilinear	
-	PS2_FL_Data_Dep_Bypass_LinearAniso	=	PS2_FL_Data_Dep_Bypass_LinearAniso	
-	PS2_FL_Data_Dep_Bypass_NonLinearAniso	=	PS2_FL_Data_Dep_Bypass_NonLinearAniso	
-	PS2_FL_Data_Dep_Bypass_LinearFastAniso	=	PS2_FL_Data_Dep_Bypass_LinearFastAniso	
-	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	=	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	
-	PS2_FL_Data_Dep_Bypass_FastLinear	=	PS2_FL_Data_Dep_Bypass_FastLinear	
-	PS2_FL_Data_Dep_Bypass_Else	=	PS2_FL_Data_Dep_Bypass_Else	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 	PS2_FL_Data_Dep_Bypass	=	PS2_FL_Data_Dep_Bypass_NearestPS2_FL_Data_Dep_Bypass_BilinearPS2_FL_Data_Dep_Bypass_TrilinearPS2_FL_Data_Dep_Bypass_LinearAnisoPS2_FL_Data_Dep_Bypass_NonLinearAnisoPS2_FL_Data_Dep_Bypass_LinearFastAnisoPS2_FL_Data_Dep_Bypass_NonLinearFastAnisoPS2_FL_Data_Dep_Bypass_FastLinearPS2_FL_Data_Dep_Bypass_Else	
 	PS2_FL_Nearest	=	PS2_FL_Nearest_Float16+PS2_FL_Nearest_Float32+PS2_FL_Nearest_Else	
 	PS2_FL_Bilinear	=	PS2_FL_Bilinear_Float16+PS2_FL_Bilinear_Float32+PS2_FL_Bilinear_Else	
@@ -368,7 +370,7 @@
 	PS2_FL_LinearFastAniso	=	PS2_FL_LinearFastAniso_Float16+PS2_FL_LinearFastAniso_Float32+PS2_FL_LinearFastAniso_Else	
 	PS2_FL_NonLinearFastAniso	=	PS2_FL_NonLinearFastAniso_Float16+PS2_FL_NonLinearFastAniso_Float32+PS2_FL_NonLinearFastAniso_Else	
 	PS2_FL_FastLinear	=	PS2_FL_FastLinear_Float16+PS2_FL_FastLinear_Float32+PS2_FL_FastLinear_Else	
-	PS2_FL_Else	=	PS2_FL_Else	
+				
 				
 				
 	PS2_PL_Sample_L	=	PS2_PL_Sample_L+PS2_PL_Sample_L_MipCount0	
@@ -391,7 +393,103 @@
 	PS2_ST_Any_Bank_Enable 	=	1-PS0_ST-PS1_ST-PS2_1Bank_Enable	
 				
 				
-	num_Sampler_Media	=	numSamplers	
+				
 	PS0_Media	=	1	
 	PS1_Media	=	0	
 	PS2_Media	=	0	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

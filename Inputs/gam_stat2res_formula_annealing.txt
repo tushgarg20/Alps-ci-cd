@@ -116,7 +116,6 @@
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_DFX	=	PS0_GAMTLB
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_DFX	=	1-PS0_GAMTLB
 			
-			
 #ANNEALING			
 	num_GAM_GAM	=	numGAM
 	PS0_GAM	=	PS0_GAMTLB
@@ -128,7 +127,5 @@
 	num_GAM_GLUE	=	numGAM
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_GLUE	=	PS0_GAMTLB
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_GLUE	=	1-PS0_GAMTLB
-			
-			
 			
 			

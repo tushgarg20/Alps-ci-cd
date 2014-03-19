@@ -201,9 +201,6 @@
 	PS2_DAPB_MSAA_RTR	=	D(SUM('@ANY_PB@pwr_MsaaSurfaceRead.CrClock')) / .Clk.num_COLOR_DAPB	
 	PS2_DAPB_DIS	=	1 - PS0_DAPB - PS0_DAPB_DOP - PS1_DAPB - PS2_DAPB_NOMSAA_RTR - PS2_DAPB_MSAA_RTR	#GSIM does not model this as yet
 				
-				
-				
-				
 #ANNEALING				
 	PS2_RCPFE_2PPC_WRT_ZPASS	=	PS2_RCPFE_NOMSAA_2PPC_WRT_ZPASS+PS2_RCPFE_MSAA_2PPC_WRT_ZPASS	
 	PS2_RCPFE_2PPC_WRT_ZFAIL	=	PS2_RCPFE_NOMSAA_2PPC_WRT_ZFAIL+PS2_RCPFE_MSAA_2PPC_WRT_ZFAIL	
@@ -242,4 +239,41 @@
 				
 	PS2_MSC_CLEARRESOLVE	=	PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE+PS2_MSC_NOMSAA_8PPC_CLEARRESOLVE	
 	PS2_MSC_DATA	=	PS2_MSC_NOMSAA_4PPC_DATA+PS2_MSC_NOMSAA_8PPC_DATA+PS2_MSC_MSAA_4PPC_DATA+PS2_MSC_MSAA_8PPC_DATA	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
