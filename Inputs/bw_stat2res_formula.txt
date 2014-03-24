@@ -1,78 +1,80 @@
-#Unit	GSIM residency			Comments
-#Generic				
-	#.bw_CrClocks        =       D(CrClock.Clocks)
-	.bw_FPS     =       (knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)
-	 @ANY_GTI@	=	(p0.gti0.|soc_uncore.gtcore0.)	
+#Unit	GSIM residency		
+#Generic			
+#	.bw_CrClocks	=	D(CrClock.Clocks)
+	.bw_FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)
+	 @ANY_GTI@	=	(p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)
 	 @ANY_LLC@	=	(p0.cbo\d+.cpipe.)
-	 @ANY_DRAM@	=	(p0.c0.t0.|soc_uncore.dunit_0.dunit_channel_\d+.)	
+	 @ANY_DRAM@	=	(p0.c0.t0.|soc_uncore.dunit_\d+.dunit_channel_\d+.)
 	 @ANY_GTI_RD_REQ@	=	(gt_read_req_)     
 	 @ANY_GTI_WR_REQ@	=	(gt_write_req_)     
-	 @ANY_LLC_RD_HIT@	=	(gfx_read_llc_hit_unq_)	
-	 @ANY_LLC_RD_MISS@	=	(gfx_read_llc_miss_unq_)	
-	 @ANY_LLC_WR_HIT@	=	(gfx_write_llc_hit_unq_)	
-	 @ANY_LLC_WR_MISS@	=	(gfx_write_llc_miss_unq_)	
+	 @ANY_LLC_RD_HIT@	=	(gfx_read_llc_hit_unq_)
+	 @ANY_LLC_RD_MISS@	=	(gfx_read_llc_miss_unq_)
+	 @ANY_LLC_WR_HIT@	=	(gfx_write_llc_hit_unq_)
+	 @ANY_LLC_WR_MISS@	=	(gfx_write_llc_miss_unq_)
 	 @ANY_DRAM_RD_REQ@	=	(un_imc_sent_rd_cas_to_dram|num_rd_cas_commands_sent_to_dram)
 	 @ANY_DRAM_WR_REQ@	=	(un_imc_sent_wr_cas_to_dram|num_wr_cas_commands_sent_to_dram)
-	#.Clk	=	D('@ANY_GTI@gclk_cycles')	
-	 #@GTI_EMPTY@	=	(gti_superq_empty_cycles|gti_fifo_empty_cycles)	
-	 #@GTI_FULL@	=	(gti_superq_full_cycles|gti_fifo_full_cycles)	
-	 @RD_BW_PCLK@	=	64	
-	 @WR_BW_PCLK@	=	64	
-	 @BW_PCLK@	=	 (@RD_BW_PCLK@ + @WR_BW_PCLK@)/2	
-				
-#Instance Counts				
-	.bw_num_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
-	#num_GTI_GLUE	=	num_GTI_GTI	
-	#num_GTI_DOP	=	num_GTI_GTI	
-				
-				
-#GTI	
-	GT_BW_GBPS		=	D(SUM('@ANY_GTI@gt_reqs')) * ((.bw_num_GTI * @BW_PCLK@ * .bw_FPS)/1000000000) 			
-	GT_RD_BW_GBPS	=	D(SUM('@ANY_GTI@gt_rd_reqs')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_WR_BW_GBPS	=	D(SUM('@ANY_GTI@gt_wr_reqs')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_RCZ_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@rcz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_RCZ_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@rcz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_HIZ_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@hiz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_HIZ_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@hiz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_STC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@stc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_STC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@stc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_RCC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@rcc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_RCC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@rcc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_MT_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@mt')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_VERTEX_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@vertex')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_DC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@dc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_DC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@dc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_OTHER_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@other')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	GT_OTHER_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@other')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	LLC_RCZ_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@rcz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCZ_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@rcz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCZ_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@rcz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCZ_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@rcz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_HIZ_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@hiz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_HIZ_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@hiz')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_HIZ_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@hiz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_HIZ_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@hiz')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_STC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@stc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_STC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@stc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_STC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@stc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_STC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@stc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@rcc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@rcc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@rcc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_RCC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@rcc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_MT_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@mt')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_MT_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@mt')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_VERTEX_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@vertex')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_VERTEX_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@vertex')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_DC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@dc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_DC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@dc')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_DC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@dc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_DC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@dc')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_OTHER_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@other')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_OTHER_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@other')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_OTHER_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@other')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	LLC_OTHER_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@other')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)		
-	DRAM_RD_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_RD_REQ@')) * ((.bw_num_GTI * @RD_BW_PCLK@ * .bw_FPS)/1000000000)				
-	DRAM_WR_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_WR_REQ@')) * ((.bw_num_GTI * @WR_BW_PCLK@ * .bw_FPS)/1000000000)				
-	#.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@@GTI_EMPTY@'))	
-	#.temp_PS0_GTI	=	(.temp_gti_superq_empty)?(.temp_gti_superq_empty/(.Clk * num_GTI_GTI)):0	
+#	.Clk	=	D('@ANY_GTI@gclk_cycles')
+#	 @GTI_EMPTY@	=	(gti_superq_empty_cycles|gti_fifo_empty_cycles)
+#	 @GTI_FULL@	=	(gti_superq_full_cycles|gti_fifo_full_cycles)
+	 @RD_BW_PCLK@	=	64
+	 @WR_BW_PCLK@	=	64
+	 @BW_PCLK@	=	 (@RD_BW_PCLK@ + @WR_BW_PCLK@)/2
+			
+#Instance Counts			
+#	.bw_num_GTI	=	COUNT('@ANY_GTI@gclk_cycles')
+#	num_GTI_GLUE	=	num_GTI_GTI
+#	num_GTI_DOP	=	num_GTI_GTI
+			
+			
+#GTI			
+	GT_BW_GBPS	=	D(SUM('@ANY_GTI@gt_reqs')) * ((@BW_PCLK@ * .bw_FPS)/1000000000) 
+	GT_RD_BW_GBPS	=	D(SUM('@ANY_GTI@gt_rd_reqs')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_WR_BW_GBPS	=	D(SUM('@ANY_GTI@gt_wr_reqs')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_RCZ_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@rcz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_RCZ_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@rcz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_HIZ_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@hiz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_HIZ_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@hiz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_STC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@stc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_STC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@stc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_RCC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@rcc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_RCC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@rcc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_MT_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@mt')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_VERTEX_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@vertex')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_DC_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@dc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_DC_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@dc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_OTHER_RD_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_RD_REQ@other')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	GT_OTHER_WR_BW_GBPS	=	D(SUM('@ANY_GTI@@ANY_GTI_WR_REQ@other')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCZ_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@rcz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCZ_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@rcz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCZ_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@rcz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCZ_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@rcz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_HIZ_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@hiz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_HIZ_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@hiz')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_HIZ_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@hiz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_HIZ_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@hiz')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_STC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@stc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_STC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@stc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_STC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@stc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_STC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@stc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@rcc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@rcc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@rcc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RCC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@rcc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_MT_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@mt')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_MT_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@mt')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_VERTEX_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@vertex')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_VERTEX_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@vertex')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_DC_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@dc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_DC_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@dc')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_DC_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@dc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_DC_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@dc')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_OTHER_RD_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_HIT@other')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_OTHER_RD_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_RD_MISS@other')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_OTHER_WR_HIT_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_HIT@other')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_OTHER_WR_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_WR_MISS@other')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
+	LLC_RD_HIT_BW_GBPS	=	LLC_RCZ_RD_HIT_BW_GBPS + LLC_HIZ_RD_HIT_BW_GBPS + LLC_STC_RD_HIT_BW_GBPS + LLC_RCC_RD_HIT_BW_GBPS + LLC_MT_RD_HIT_BW_GBPS + LLC_VERTEX_RD_HIT_BW_GBPS + LLC_DC_RD_HIT_BW_GBPS + LLC_OTHER_RD_HIT_BW_GBPS
+	LLC_RD_MISS_BW_GBPS	=	LLC_RCZ_RD_MISS_BW_GBPS + LLC_HIZ_RD_MISS_BW_GBPS + LLC_STC_RD_MISS_BW_GBPS + LLC_RCC_RD_MISS_BW_GBPS + LLC_MT_RD_MISS_BW_GBPS + LLC_VERTEX_RD_MISS_BW_GBPS + LLC_DC_RD_MISS_BW_GBPS + LLC_OTHER_RD_MISS_BW_GBPS
+	LLC_WR_HIT_BW_GBPS	=	LLC_RCZ_WR_HIT_BW_GBPS + LLC_HIZ_WR_HIT_BW_GBPS + LLC_STC_WR_HIT_BW_GBPS + LLC_RCC_WR_HIT_BW_GBPS + LLC_DC_WR_HIT_BW_GBPS + LLC_OTHER_WR_HIT_BW_GBPS
+	LLC_WR_MISS_BW_GBPS	=	LLC_RCZ_WR_MISS_BW_GBPS + LLC_HIZ_WR_MISS_BW_GBPS + LLC_STC_WR_MISS_BW_GBPS + LLC_RCC_WR_MISS_BW_GBPS + LLC_DC_WR_MISS_BW_GBPS + LLC_OTHER_WR_MISS_BW_GBPS
+	DRAM_RD_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_RD_REQ@')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+	DRAM_WR_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_WR_REQ@')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
