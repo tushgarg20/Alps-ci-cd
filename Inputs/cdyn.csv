@@ -1201,11 +1201,11 @@ EM_mul_intbypass_20%,Gen9LPClient,A0,11.53361,syn,331124.9,Approximated with sim
 EM_mul_intbypass_30%,Gen9LPClient,A0,12.28738,syn,331124.9,Approximated with sim data
 EM_mul_intbypass_40%,Gen9LPClient,A0,13.35973,syn,331124.9,Approximated with sim data
 EM_mul_intbypass_55%,Gen9LPClient,A0,14.32811,syn,331124.9,Approximated with sim data
-EM_mul_int64_10%,Gen9LPClient,A0,51.0721,syn,331124.9,Approximated with int32
-EM_mul_int64_20%,Gen9LPClient,A0,56.9449,syn,331124.9,Approximated with int32
-EM_mul_int64_30%,Gen9LPClient,A0,60.6665,syn,331124.9,Approximated with int32
-EM_mul_int64_40%,Gen9LPClient,A0,65.961,syn,331124.9,Approximated with int32
-EM_mul_int64_55%,Gen9LPClient,A0,70.7422,syn,331124.9,Approximated with int32
+EM_mul_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mul_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mul_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mul_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
+EM_mul_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
 EM_pln_floatbypass_10%,Gen9LPClient,A0,44.5672,syn,331124.9,No bypass in PLN
 EM_pln_floatbypass_20%,Gen9LPClient,A0,50.7333,syn,331124.9,No bypass in PLN
 EM_pln_floatbypass_30%,Gen9LPClient,A0,51.8573,syn,331124.9,No bypass in PLN
@@ -1473,11 +1473,11 @@ FPU_sad_int16_20%,Gen9LPClient,A0,25.4917,syn,369589.7,
 FPU_sad_int16_30%,Gen9LPClient,A0,25.81335,syn,369589.7,
 FPU_sad_int16_40%,Gen9LPClient,A0,25.59895,syn,369589.7,
 FPU_sad_int16_55%,Gen9LPClient,A0,25.80175,syn,369589.7,
-FPU_sad_int32_10%,Gen9LPClient,A0,24.6575,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_20%,Gen9LPClient,A0,25.4917,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_30%,Gen9LPClient,A0,25.81335,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_40%,Gen9LPClient,A0,25.59895,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_55%,Gen9LPClient,A0,25.80175,syn,369589.7,Approximated with int16 data
+FPU_sad_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
+FPU_sad_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
 FPU_sad_intbypass_10%,Gen9LPClient,A0,24.6575,syn,369589.7,No bypass in SAD
 FPU_sad_intbypass_20%,Gen9LPClient,A0,25.4917,syn,369589.7,No bypass in SAD
 FPU_sad_intbypass_30%,Gen9LPClient,A0,25.81335,syn,369589.7,No bypass in SAD
@@ -1523,11 +1523,11 @@ FPU_mac_intbypass_20%,Gen9LPClient,A0,49.8357,syn,369589.7,No bypass in MAC
 FPU_mac_intbypass_30%,Gen9LPClient,A0,50.6089,syn,369589.7,No bypass in MAC
 FPU_mac_intbypass_40%,Gen9LPClient,A0,53.3058,syn,369589.7,No bypass in MAC
 FPU_mac_intbypass_55%,Gen9LPClient,A0,57.1844,syn,369589.7,No bypass in MAC
-FPU_mac_int64_10%,Gen9LPClient,A0,46.704,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_20%,Gen9LPClient,A0,49.8357,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_30%,Gen9LPClient,A0,50.6089,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_40%,Gen9LPClient,A0,53.3058,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_55%,Gen9LPClient,A0,57.1844,syn,369589.7,Approximated with int32 data
+FPU_mac_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combintation
+FPU_mac_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combintation
+FPU_mac_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combintation
+FPU_mac_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combintation
+FPU_mac_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combintation
 FPU_mov_bypass_10%,Gen9LPClient,A0,9.5352,syn,369589.7,
 FPU_mov_bypass_20%,Gen9LPClient,A0,10.6759,syn,369589.7,
 FPU_mov_bypass_30%,Gen9LPClient,A0,11.8336,syn,369589.7,
@@ -2232,13 +2232,14 @@ PS2_LTCD_EBB_Write,Gen9LPClient,A0,231.8668,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,168.8466,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,324.2172,ebb,1,Normalized to 0.6GHz
 PS0_LTCD_Data,Gen9LPClient,A0,3.528074,syn,720863.55,
-PS1_LTCD_Data,Gen9LPClient,A0,16.83287,syn,720863.55,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS1_LTCD_Data,Gen9LPClient,A0,0,syn,720863.55,
 PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,94.86064,syn,720863.55,25% TR
 PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,97.87146,syn,720863.55,
 PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,78.59668,syn,720863.55,
 PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen9LPClient,A0,113.1113,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,25.94876,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,43.24066,syn,720863.55,
+PS2_LTCD_Data_Else,Gen9LPClient,A0,16.83287,syn,720863.55,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS0_LTCD_Tag,Gen9LPClient,A0,1.496456,syn,720863.55,
 PS1_LTCD_Tag,Gen9LPClient,A0,47.46379,syn,720863.55,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,122.9346,syn,720863.55,25% TR

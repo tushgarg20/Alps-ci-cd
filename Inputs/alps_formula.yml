@@ -234,6 +234,7 @@ L3_Bank:
      PS2_LTCD_Data_NonSLM_ECC_NoTagWrite: R * C
      PS2_LTCD_Data_SLM_ECC_NoTagRead: R * C
      PS2_LTCD_Data_SLM_ECC_NoTagWrite: R * C
+     PS2_LTCD_Data_Else: R * C
    LTCD_Tag:
     PS0_LTCD_Tag: R * C
     PS1_LTCD_Tag: R * C
