@@ -681,20 +681,6 @@ COLOR:
     PS2_MSC_Cache:
      PS2_MSC_CACHE_READ: R * C
      PS2_MSC_CACHE_WRITE: R * C
-   CC:
-    PS0_CC: R * C
-    PS1_CC: R * C
-    PS2_CC:
-     PS2_CC_EN_WRITES: R * C
-     PS2_CC_EN_PARTIALS: R * C
-     PS2_CC_DIS: R * C
-   DAPB:
-    PS0_DAPB: R * C
-    PS1_DAPB: R * C
-    PS2_DAPB:
-     PS2_DAPB_NOMSAA_RTR: R * C
-     PS2_DAPB_MSAA_RTR: R * C
-     PS2_DAPB_DIS: R * C
 HDC:
    HDCREQCMD1:
     PS0_HDC_ReqCmd1: R * C

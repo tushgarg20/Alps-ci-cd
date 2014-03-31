@@ -259,41 +259,17 @@
 				
 #SMALL				
 	num_FF_SMALL	=	numFF	
-	PS0_FF_SMALL	=	PS0_VF_DOP + PS0_VF	
+	PS0_FF_SMALL	=	PS0_VF_DOP + PS0_VF	#Approximating Small units with VF residencies
 	PS1_FF_SMALL	=	PS1_VF	
 	PS2_FF_SMALL	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #GLUE				
 	num_FF_GLUE	=	numFF	
-	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	
+	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
 	PS1_FF_GLUE	=	PS1_VF	
 	PS2_FF_GLUE	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DFX				
 	num_FF_DFX	=	numFF	
-	PS0_FF_DFX	=	PS0_VF_DOP + PS0_VF	
-	PS1_FF_DFX	=	PS1_VF	
-	PS2_FF_DFX	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
-#DOP				
-	num_FF_DOP	=	numFF	
-	PS0_FF_DOP	=	1 - PS1_FF_DOP - PS2_FF_DOP	
-	PS1_FF_DOP	=	0	
-	PS2_FF_DOP	=	 .temp_3DPipeDisable	
-				
-#ANNEALING				
-	PS2_VF	=	PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
-				
-#SMALL				
-	num_FF_SMALL	=	numFF	
-	PS0_FF_SMALL	=	PS0_VF_DOP + PS0_VF	
-	PS1_FF_SMALL	=	PS1_VF	
-	PS2_FF_SMALL	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
-#GLUE				
-	num_FF_GLUE	=	numFF	
-	PS0_FF_GLUE	=	PS0_VF_DOP + PS0_VF	
-	PS1_FF_GLUE	=	PS1_VF	
-	PS2_FF_GLUE	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
-#DFX				
-	num_FF_DFX	=	numFF	
-	PS0_FF_DFX	=	PS0_VF_DOP + PS0_VF	
+	PS0_FF_DFX	=	PS0_VF_DOP + PS0_VF	#Approximating GLUE units with VF residencies
 	PS1_FF_DFX	=	PS1_VF	
 	PS2_FF_DFX	=	PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped	
 #DOP				

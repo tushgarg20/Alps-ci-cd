@@ -1531,7 +1531,7 @@ PS1_GTI,Gen8,A0,230.86,syn ,3053187,,GTI,GTI,
 PS2_GTI_0%,Gen8,A0,230.86,syn ,3053187,,GTI,GTI,
 PS0_GTI,Gen8,A0,135.62,syn ,3053187,,DOP,GTI,
 PS2_GTI_DOP_1X,Gen8,B0,28.7,syn ,1,,DOP1X,GTI,
-PS2_GTI_DOP_2X,Gen8,B0,13.41,syn ,1,,DOP2X,GTI,
+PS2_GTI_DOP_2X,Gen8,B0,233.41,syn ,1,,DOP2X,GTI,Added 220pf to match clks from power virus and idle spreadsheet-original number 13
 PS2_GTI_GLUE,Gen8,A0,6.86,syn ,1,,GLUE,GTI,
 PS0_GTI_GLUE,Gen8,A0,3.07,syn ,1,,GLUE,GTI,
 PS0_BTGEN_Cache_Idle,Gen8LPSoC,B0,0,ebb,1,,BTGEN,FF,

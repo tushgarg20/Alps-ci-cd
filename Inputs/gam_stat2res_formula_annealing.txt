@@ -1,7 +1,8 @@
 #Unit	GSIM residency		
 #Instance Counts			
 	numSlices	=	knob.global.NumSlices
-	numGAM	=	COUNT('knob.uGAM.NumSlices')
+	#numGAM	=	COUNT('knob.uGAM.NumSlices')
+	numGAM	=	1
 	num_GAM_GAMTLB	=	numGAM
 	num_GAM_GAMW	=	numGAM
 	num_GAM_GACB	=	numGAM
@@ -115,6 +116,7 @@
 #GAM_DFX			
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_DFX	=	PS0_GAMTLB
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_DFX	=	1-PS0_GAMTLB
+			
 			
 #ANNEALING			
 	num_GAM_GAM	=	numGAM

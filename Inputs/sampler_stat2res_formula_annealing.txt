@@ -390,7 +390,7 @@
 				
 				
 				
-	PS2_ST_Any_Bank_Enable 	=	1-PS0_ST-PS1_ST-PS2_1Bank_Enable	
+	PS2_ST_Any_Bank_Enable 	=	1-PS0_ST-PS1_ST-PS2_ST_1Bank_Enable	
 				
 				
 				
