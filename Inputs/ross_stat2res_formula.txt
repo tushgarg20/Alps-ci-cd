@@ -73,8 +73,9 @@
 	PS2_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Active\.CrClock')) / (numROSS * .CrClk)	
 #IC DATARAM				
 	PS0_IC_DATARAM	=	0	
-	PS2_IC_DATARAM_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Reads\.CrClock')) / (numROSS * .CrClk)	
+	.temp_PS2_IC_DATARAM_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Reads\.CrClock')) / (numROSS * .CrClk)	
 	PS2_IC_DATARAM_FRONTBUFFER_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Front_Buffer_Hits\.CrClock')) / (numROSS * .CrClk)	
+	PS2_IC_DATARAM_READ	=	.temp_PS2_IC_DATARAM_READ - PS2_IC_DATARAM_FRONTBUFFER_READ	
 	PS2_IC_DATARAM_WRITE	=	D(SUM('@ANY_ICACHE@pwr_IC_Writes\.CrClock')) / (numROSS * .CrClk)	
 				
 #DAPRSS				
@@ -121,4 +122,4 @@
 				
 #DOP				
 	PS0_ROSS_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP
+	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP	

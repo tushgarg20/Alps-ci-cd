@@ -2,18 +2,20 @@
 				
 #Instance Counts				
 	numSlices	=	knob.global.NumSlices	
-	num_COLOR_DAPRSC	=	numSlices	
-	num_COLOR_RCPFE	=	numSlices	
-	num_COLOR_RCPBE	=	numSlices	
-	num_COLOR_RCPBCOM	=	numSlices	
-	num_COLOR_RCPBPIX	=	numSlices	
-	num_COLOR_RCC	=	numSlices	
-	num_COLOR_MSC	=	numSlices	
-	num_COLOR_CC	=	numSlices	
-	num_COLOR_DAPB	=	numSlices	
-	num_COLOR_RCPFE_Cache	=	numSlices	
-	num_COLOR_RCC_Cache	=	numSlices	
-	num_COLOR_MSC_Cache	=	numSlices	
+	numPbsPerSlice	=	knob.NumPbs.NumPbs	
+	numPbs	=	numSlices * numPbsPerSlice	
+	num_COLOR_DAPRSC	=	numPbs	
+	num_COLOR_RCPFE	=	numPbs	
+	num_COLOR_RCPBE	=	numPbs	
+	num_COLOR_RCPBCOM	=	numPbs	
+	num_COLOR_RCPBPIX	=	numPbs	
+	num_COLOR_RCC	=	numPbs	
+	num_COLOR_MSC	=	numPbs	
+	num_COLOR_CC	=	numPbs	
+	num_COLOR_DAPB	=	numPbs	
+	num_COLOR_RCPFE_Cache	=	numPbs	
+	num_COLOR_RCC_Cache	=	numPbs	
+	num_COLOR_MSC_Cache	=	numPbs	
 				
 				
 #Generic				

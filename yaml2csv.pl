@@ -9,7 +9,7 @@ gen_alps_data.pl - Creates a consolidated ALPS model in a CSV file from multiple
 	"help"			For printing help message 
 	"man" 			For printing detailed information
 	"debug"			For printing the sequence of commands
-	"alps_model_dir"	Path to directory containing *.yml files
+	"alps_model_dir"	Path to directory or multiple directories containing *.yml|*.yaml files
 	"work_area"		Path to print output ALPS *.csv file
 	"output_csv_file"	Name of output CSV file
 
@@ -38,7 +38,7 @@ my $optHelp;
 my $optMan;
 my $debugMode;
 
-my $alpsModelDir;
+my @alpsModelDir;
 my $workArea;
 my $outputCsvFile;
 
@@ -46,7 +46,7 @@ Getopt::Long::GetOptions(
 	"help" => \$optHelp,
 	"man"  => \$optMan,   	
 	"debug" => \$debugMode,
-	"alps_model_dir=s" => \$alpsModelDir,
+	"alps_model_dir=s" => \@alpsModelDir,
 	"work_area=s" => \$workArea,
 	"output_csv_file=s" => \$outputCsvFile
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -54,9 +54,11 @@ Getopt::Long::GetOptions(
 pod2usage( -verbose => 1 ) if $optHelp;
 pod2usage( -verbose => 2 ) if $optMan;
 
-if ($alpsModelDir =~ /^$/) {die "Path to ALPS model directory not provided\n";}
-if (! -d $alpsModelDir) {die "Path to ALPS model directory $alpsModelDir not a directory\n";}
-if (! -r $alpsModelDir) {die "Path to ALPS model directory $alpsModelDir not readable\n";}
+if (scalar(@alpsModelDir) == 0) {die "Path to ALPS model directory not provided\n";}
+foreach my $mDir (@alpsModelDir) {
+	if (! -d $mDir) {die "Path to ALPS model directory $mDir not a directory\n";}
+	if (! -r $mDir) {die "Path to ALPS model directory $mDir not readable\n";}
+}
 
 if ($workArea =~ /^$/) {die "Path to output directory not provided\n";}
 if (! -d $workArea) {die "Path to output directory $workArea not a directory\n";}
@@ -66,10 +68,13 @@ if ($outputCsvFile =~ /^$/) {die "Output file name not provided\n";}
 if ($outputCsvFile =~ /\//) {die "Please only provided file name...don't give path\n";}
 if (-f $outputCsvFile) {warn "Output file $outputCsvFile already exists...will be overwritten...\n"}
 
-my @alpsModelFile;
-#@alpsModelFile = <$alpsModelDir/*.yaml>;
-@alpsModelFile = <$alpsModelDir/*.yml>;
-if (scalar(@alpsModelFile) == 0) {die "Couldn't find any ALPS models in the directory provided: $alpsModelDir\n";}
+my @alpsModelFile = ();
+foreach my $mDir (@alpsModelDir) {
+	my @tempFileList = <$mDir/*.yaml>;
+	if (scalar(@tempFileList) == 0) {@tempFileList = <$mDir/*.yml>;}
+	if (scalar(@tempFileList) == 0) {die "Couldn't find any ALPS models in the directory provided: $mDir\n";}
+	push(@alpsModelFile, @tempFileList);
+}
 
 my %consolidatedAlpsData;
 
@@ -77,6 +82,7 @@ foreach my $alps (@alpsModelFile) {
 	my $frameName = $alps;
 	$frameName =~ s/.*\/([a-zA-Z0-9_\-\.]+)$/$1/;
 	$frameName =~ s/.yml$//;
+	$frameName =~ s/.yaml$//;
 	print "Processing frame $frameName...\n";
 	my $alpsData = LoadFile("$alps");
 	foreach my $key (keys %{$alpsData}) {
