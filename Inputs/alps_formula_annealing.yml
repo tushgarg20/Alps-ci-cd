@@ -675,8 +675,10 @@ COLOR:
     PS0_MSC: R * C
     PS1_MSC: R * C
     PS2_MSC:
-     PS2_MSC_CLEARRESOLVE: R * C
-     PS2_MSC_DATA: R * C
+     PS2_MSC_NOMSAA_CLEARRESOLVE: R * C
+     PS2_MSC_NOMSAA_DATA: R * C
+     PS2_MSC_MSAA_DATA: R * C
+     PS2_MSC_MSAA_DATA: R * C
    MSC_Cache:
     PS2_MSC_Cache:
      PS2_MSC_CACHE_READ: R * C

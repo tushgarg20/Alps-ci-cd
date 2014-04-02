@@ -133,7 +133,7 @@
 	PS2_L3_Bank_NONCLKGLUE	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
 				
 				
-Annealing				
+#Annealing				
 				
 #L3GLUE				
 	num_L3_Bank_GLUE	=	num_L3_Slices * numL3Banks	

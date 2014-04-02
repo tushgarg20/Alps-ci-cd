@@ -25,10 +25,10 @@
 	PS2_GTI	=	1 - (.temp_PS0_GTI + .temp_PS1_GTI)	
 	.temp_gti_rd_reqs	=	D(SUM('@ANY_GTI@gt_rd_reqs'))	
 	.temp_gti_wr_reqs	=	D(SUM('@ANY_GTI@gt_wr_reqs'))	
-	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)?((.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@BW_PCLK@ * .temp_gti_bw_clks)):0	
+	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)?((.temp_gti_rd_reqs + .temp_gti_wr_reqs)/((@BW_PCLK@) * .temp_gti_bw_clks)):0	
 				
 	PS0_GTI_GLUE	=	.temp_PS0_GTI	
 	PS2_GTI_GLUE	=	1-.temp_PS0_GTI	
 				
 	PS2_GTI_DOP_1X	=	1	
-	PS2_GTI_DOP_2X	=	1	
+	PS2_GTI_DOP_2X	=	1

@@ -27,7 +27,7 @@
 	 @GAM@	=	uGAM
 			
 #GAMTLB			
-	.temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))
+ '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' :       .temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTLB	=	D(SUM(@GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTLB	=	D(SUM((@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))/D({$1}.Clocks)
