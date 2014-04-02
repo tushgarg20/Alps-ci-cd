@@ -31,10 +31,10 @@ PS2_AVS_CoeffStorageRAM_READ,Gen9LPClient,A0,2.49,ebb,1.00,Need to confirm with 
 PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPClient,A0,3.88,ebb,1.00,Need to confirm with Niraj
 PS0_LTCD_EBB,Gen9LPClient,A0,0.00,ebb,1.00,
 PS1_LTCD_EBB,Gen9LPClient,A0,0.00,ebb,1.00,
-PS2_LTCD_EBB_Read,Gen9LPClient,A0,120.89,ebb,1.00,Normalized to 0.6GHz
-PS2_LTCD_EBB_Write,Gen9LPClient,A0,231.87,ebb,1.00,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,168.85,ebb,1.00,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,324.22,ebb,1.00,Normalized to 0.6GHz
+PS2_LTCD_EBB_Read,Gen9LPClient,A0,60.444,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,115.933,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,84.423,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,162.109,ebb,1,Normalized to 1.2GHz
 PS2_HIZ_CACHE_READ,Gen9LPClient,A0,6.59,ebb,1.00,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_CACHE_WRITE,Gen9LPClient,A0,10.92,ebb,1.00,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_LATFIFO_READ,Gen9LPClient,A0,28.28,ebb,1.00,
@@ -59,8 +59,8 @@ PS2_RCPFE_MCSLATFIFO_READ,Gen9LPClient,A0,14.14,ebb,1.00,
 PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPClient,A0,31.21,ebb,1.00,
 PS2_RCPFE_RCCLATFIFO_READ,Gen9LPClient,A0,3.63,ebb,1.00,
 PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPClient,A0,5.67,ebb,1.00,
-PS2_RCC_CACHE_READ,Gen9LPClient,A0,36.91,ebb,1.00,Assuming 512 bits. No banking in gSim for RCC.
-PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,79.79,ebb,1.00,Assuming 512 bits. No banking in gSim for RCC.
+PS2_RCC_CACHE_READ,Gen9LPClient,A0,9.227,ebb,1,Assuming 160 bits even though no banking in gSim for RCC.
+PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,19.9485,ebb,1,Assuming 160 bits even though no banking in gSim for RCC.
 PS2_MSC_CACHE_READ,Gen9LPClient,A0,53.01,ebb,1.00,Assuming 512 bits. No banking in gSim for MSC
 PS2_MSC_CACHE_WRITE,Gen9LPClient,A0,88.65,ebb,1.00,Assuming 512 bits. No banking in gSim for MSC
 PS2_GAMTLB_EBB_WRITE,Gen9LPClient,A0,2.77,ebb,1.00,
@@ -71,8 +71,8 @@ PS2_GAMW_READ,Gen9LPClient,A0,7.42,ebb,1.00,
 PS2_GAMW_WRITE,Gen9LPClient,A0,11.32,ebb,1.00,
 PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.92,ebb,1.00,
 PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.61,ebb,1.00,
-PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,39.56,ebb,1.00,
-PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,65.53,ebb,1.00,
+PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,6.592833,ebb,1,Current gSim sizes assumed as 1x100
+PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,10.92217,ebb,1,Current gSim sizes assumed as 1x100
 PS0_DX9_Cache_Idle,Gen9LPClient,A0,0.00,ebb,1.00,
 PS0_DX9_Cache_Read,Gen9LPClient,A0,26.37,ebb,1.00,512 bits assumed. Need to check with gSim.
 PS0_DX9_Cache_Write,Gen9LPClient,A0,43.69,ebb,1.00,512 bits assumed. Need to check with gSim.
@@ -106,18 +106,18 @@ PS0_SOL_Cache_Idle,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_SOL_Cache_Read,Gen9LPClient,A0,2.06,ebb,1.00,
 PS2_SOL_Cache_Write,Gen9LPClient,A0,3.16,ebb,1.00,
 PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.22,ebb,1.00,
-PS2_BC_BARYRAM_READ,Gen9LPClient,A0,33.04,ebb,1.00,Need to check with gSim - 8x116 io assumed
-PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,32.94,ebb,1.00,Need to check with gSim - 8x116 io assumed
+PS2_BC_BARYRAM_READ,Gen9LPClient,A0,4.130125,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,4.130125,ebb,1,Need to check with gSim - 1x116 io assumed
 PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_PSD_SCOREBOARD_READ,Gen9LPClient,A0,3.27,ebb,1.00,Need to check with gSim - 4x8 io assumed
 PS2_PSD_SCOREBOARD_WRITE,Gen9LPClient,A0,6.22,ebb,1.00,Need to check with gSim - 4x8 io assumed
 PS0_PSD_BARYPAYLDASMRAM,Gen9LPClient,A0,0.00,ebb,1.00,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,9.33,ebb,1.00,Need to check with gSim - 2x128 io assumed
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,11.30,ebb,1.00,Need to check with gSim - 2x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,4.6635,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,5.6495,ebb,1,Need to check with gSim - 1x128 io assumed
 PS0_IC_DATARAM,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.28,ebb,1.00,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,62.43,ebb,1.00,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,90.71,ebb,1.00,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,0,ebb,1,Front Buffer hit does not require a cache read
+PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,62.429,ebb,1,Need to check with gSim - 512 io assumed
 PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.14,ebb,1.00,Need to check with gSim - 2x128 bit io assumed
 PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.21,ebb,1.00,Need to check with gSim - 2x128 bit io assumed
@@ -2810,6 +2810,8 @@ PS2_ROSS_DFX,Gen9LPClient,A0,16.37,syn,454586.00,Need to enhance the GC
 PS0_ROSS_DOP,Gen9LPClient,A0,0.00,syn,1.00,No 3D DOP in ROSS
 PS2_ROSS_DOP,Gen9LPClient,A0,23.29,syn,1.00,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_GTP24C,Gen9LPClient,A0,54.17,syn,1018976.63,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_RoutingChannel,Gen9LPClient,A0,1050.21,syn,313747.08,Taken from BDW GT3. SKL FSO ECO3 rev1 CGEN data for GT2 is 27.074.
+PS2_RoutingChannel,Gen9LPClient,A0,2525.49,syn,313747.08,Taken from BDW GT3 routing channel data
 PS0_WIDI,Gen9LPClient,A0,13.87,syn,1246529.96,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_Blitter,Gen9LPClient,A0,37.68,syn,1605050.50,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_SliceRC,Gen8,A0,350.07,syn,1700000.00,Swag details - BDW GT3 cdyn/3 RefGC scaling - HIZ
