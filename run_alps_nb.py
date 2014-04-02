@@ -69,9 +69,14 @@ if not options.quiet:
     print (options.output_dir)
     print (options.dest_config)
 
+
+stat = options.output_dir + '/' + options.prefix + '.stat.gz'
+flag = os.path.isfile(stat)
+if(not flag):
+    stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '.res.csv'
 log = options.output_dir + '/' + options.wl_name + '.res.log.txt'
-stat = options.output_dir + '/' + options.prefix + '.stat'
+#stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
