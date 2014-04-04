@@ -1,4 +1,4 @@
---- # ALPS Formula File version WW07.1 2013
+﻿--- # ALPS Formula File version WW07.1 2013
 
  # R == Residency
  # C == Cdyn weight
@@ -554,15 +554,27 @@ Z:
     PS0_HIZ: R * C
     PS1_HIZ: R * C
     PS2_HIZ:
-     PS2_HIZ_ZMARKERS: R * C
-     PS2_HIZ_EN_ZONLY_FAIL: R * C
-     PS2_HIZ_EN_ZONLY_Accept_AMBIG: R * C
-     PS2_HIZ_EN_ZSTC_FAIL: R * C
-     PS2_HIZ_EN_ZSTC_Accept_AMBIG: R * C
-     PS2_HIZ_EN_STCONLY_FAIL: R * C
-     PS2_HIZ_EN_STCONLY_AMBIG: R * C
-     PS2_HIZ_DIS: R * C
-     PS2_HIZ_RAWSTALLEN: R * C
+     PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_3lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_4lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Stencil_Only: R * C
+     PS2_HIZ_Bypass: R * C
+     PS2_HIZ_Clear_Ambiguate: R * C
+     PS2_HIZ_Depth-Resolve: R * C
+     PS2_HIZ_Zmarkers: R * C
    HIZ_Cache:
     PS2_HIZ_CACHE_READ: R * C
     PS2_HIZ_CACHE_WRITE: R * C

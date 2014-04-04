@@ -36,32 +36,28 @@
 #HIZ				
 	PS0_HIZ	=	(D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .Z_DOP	
 	PS0_HIZ_DOP	=	.Z_DOP	
-	PS1_HIZ	=	1 - (PS0_HIZ + PS0_HIZ_DOP + PS2_HIZ_8x8_EN_ZONLY_FAIL + PS2_HIZ_8x8_EN_ZONLY_Accept + PS2_HIZ_8x8_EN_ZONLY_AMBIG + PS2_HIZ_8x8_EN_ZSTC_FAIL + PS2_HIZ_8x8_EN_ZSTC_Accept + PS2_HIZ_8x8_EN_ZSTC_AMBIG + PS2_HIZ_8x8_EN_STCONLY_FAIL + PS2_HIZ_8x8_EN_STCONLY_AMBIG + PS2_HIZ_8x8_DIS_ZSTC + PS2_HIZ_8x8_DIS_ZONLY + PS2_HIZ_8x8_DIS_STCONLY + PS2_HIZ_8x8_RESOLVE + PS2_HIZ_8x4_EN_ZONLY_FAIL + PS2_HIZ_8x4_EN_ZONLY_Accept + PS2_HIZ_8x4_EN_ZONLY_AMBIG + PS2_HIZ_8x4_EN_ZSTC_FAIL + PS2_HIZ_8x4_EN_ZSTC_Accept + PS2_HIZ_8x4_EN_ZSTC_AMBIG + PS2_HIZ_8x4_EN_STCONLY_FAIL + PS2_HIZ_8x4_EN_STCONLY_AMBIG + PS2_HIZ_8x4_DIS_ZSTC + PS2_HIZ_8x4_DIS_ZONLY + PS2_HIZ_8x4_DIS_STCONLY + PS2_HIZ_8x4_RESOLVE + PS2_HIZ_ZMARKERS)	
-	PS2_HIZ_8x8_EN_ZONLY_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth.@HIZFAILTEST@'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_ZONLY_Accept	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth.Pass'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_ZONLY_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_ZSTC_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth_Stencil.@HIZFAILTEST@'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_ZSTC_Accept	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth_Stencil.Pass'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_ZSTC_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Depth_Stencil.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_STCONLY_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Stencil.@HIZFAILTEST@'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_EN_STCONLY_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.enabled.Stencil.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_DIS_ZSTC	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.disabled.Depth_Stencil.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_DIS_ZONLY	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.disabled.Depth.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_DIS_STCONLY	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZDEFIPTYPE@.disabled.Stencil.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x8_RESOLVE	=	D(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.@HIZDEFIPTYPE@.clear_resolve'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZONLY_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth.Fail'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZONLY_Accept	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth.Pass'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZONLY_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZSTC_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth_Stencil.Fail'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZSTC_Accept	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth_Stencil.Pass'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_ZSTC_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Depth_Stencil.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_STCONLY_FAIL	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Stencil.Fail'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_EN_STCONLY_AMBIG	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.enabled.Stencil.Ambiguous'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_DIS_ZSTC	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.disabled.Depth_Stencil.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_DIS_ZONLY	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.disabled.Depth.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_DIS_STCONLY	=	D(SUM('@ANY_HIZ@pwr_HzInputResults.CrClock.@HIZOTHIPTYPE@.disabled.Stencil.NA'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_8x4_RESOLVE	=	D(SUM('@ANY_HIZ@pwr_HzInputCharacteristics.CrClock.@HIZOTHIPTYPE@.clear_resolve'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_ZMARKERS	=	D(SUM('@ANY_HIZ@pwr_Markers'))/.Clk.num_Z_HIZ	
+	PS1_HIZ	=	1 - (PS0_HIZ + PS0_HIZ_DOP + PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig + PS2_HIZ_Zonly_1lit_4x4_all-lit-Fail + PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig + PS2_HIZ_Zonly_2lit_4x4_all-lit-Fail + PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig + PS2_HIZ_Zonly_3lit_4x4_all-lit-Fail + PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig + PS2_HIZ_Zonly_4lit_4x4_all-lit-Fail + PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig + PS2_HIZ_ZSTC_1lit_4x4_all-lit-Fail + PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig + PS2_HIZ_ZSTC_2lit_4x4_all-lit-Fail + PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig + PS2_HIZ_ZSTC_3lit_4x4_all-lit-Fail + PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig + PS2_HIZ_ZSTC_4lit_4x4_all-lit-Fail + PS2_HIZ_Stencil_Only + PS2_HIZ_Bypass + PS2_HIZ_Clear_Ambiguate + PS2_HIZ_Depth-Resolve + PS2_HIZ_Zmarkers)	
+	PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_1lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_2lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_3lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zonly_4lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_1lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_2lit_4x4_all_lit_Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail   	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail    	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Stencil_Only	=	D(SUM('@ANY_HIZ@pwr_HizStOnlyCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Bypass	=	D(SUM('@ANY_HIZ@pwr_HizBypassCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Clear_Ambiguate	=	(D(SUM('@ANY_HIZ@ClearCount'))/.Clk.num_Z_HIZ) + (D(SUM('@ANY_HIZ@HzResolveCount'))/.Clk.num_Z_HIZ)	
+	PS2_HIZ_Depth-Resolve	=	D(SUM('@ANY_HIZ@DepthResolveCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_Zmarkers	=	D(SUM('@ANY_HIZ@pwr_Markers.CrClock'))/.Clk.num_Z_HIZ	
 				
 #HIZ - Cache				
 	PS2_HIZ_CACHE_READ	=	D(SUM('@ANY_HIZCACHE@ReadRequests'))/.Clk.num_Z_HIZ	
@@ -123,19 +119,10 @@
 	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
 	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC	
 				
+				
 #ANNEALING				
 				
-	PS2_HIZ_EN_ZONLY_FAIL	=	PS2_HIZ_8x8_EN_ZONLY_FAIL+PS2_HIZ_8x4_EN_ZONLY_FAIL	
-	PS2_HIZ_EN_ZONLY_Accept_AMBIG	=	PS2_HIZ_8x8_EN_ZONLY_Accept+PS2_HIZ_8x4_EN_ZONLY_Accept+PS2_HIZ_8x8_EN_ZONLY_AMBIG+PS2_HIZ_8x4_EN_ZONLY_AMBIG	
-	PS2_HIZ_EN_ZSTC_FAIL	=	PS2_HIZ_8x8_EN_ZSTC_FAIL+PS2_HIZ_8x4_EN_ZSTC_FAIL	
-	PS2_HIZ_EN_ZSTC_Accept_AMBIG	=	PS2_HIZ_8x8_EN_ZSTC_AMBIG+PS2_HIZ_8x4_EN_ZSTC_AMBIG+PS2_HIZ_8x8_EN_ZSTC_Accept+PS2_HIZ_8x4_EN_ZSTC_Accept	
-	PS2_HIZ_EN_STCONLY_FAIL	=	PS2_HIZ_8x8_EN_STCONLY_FAIL+PS2_HIZ_8x4_EN_STCONLY_FAIL	
-	PS2_HIZ_EN_STCONLY_AMBIG	=	PS2_HIZ_8x8_EN_STCONLY_AMBIG+PS2_HIZ_8x4_EN_STCONLY_AMBIG	
-	PS2_HIZ_DIS	=	PS2_HIZ_8x8_DIS_ZSTC+PS2_HIZ_8x8_DIS_ZONLY+PS2_HIZ_8x8_DIS_STCONLY+PS2_HIZ_8x4_DIS_ZSTC+PS2_HIZ_8x4_DIS_ZONLY+PS2_HIZ_8x4_DIS_STCONLY	
-	PS2_HIZ_FULLYLIT	=	PS2_HIZ_8x8_FULLYLIT+PS2_HIZ_8x4_FULLYLIT	
-	PS2_HIZ_PARTIALLYLIT	=	PS2_HIZ_8x8_PARTIALLYLIT+PS2_HIZ_8x4_PARTIALLYLIT	
-	PS2_HIZ_RESOLVE	=	PS2_HIZ_8x8_RESOLVE+PS2_HIZ_8x4_RESOLVE	
-	PS2_HIZ_RAWSTALLEN	=	PS2_HIZ_RAWSTALLEN	
+
 				
 				
 	PS2_IZ	=	1-PS0_IZ-PS0_IZ_DOP-PS1_IZ	

@@ -1,8 +1,7 @@
 #Unit	GSIM residency		
 #Instance Counts			
 	numSlices	=	knob.global.NumSlices
-	#numGAM	=	COUNT('knob.uGAM.NumSlices')
-	numGAM	=	1
+	numGAM	=	COUNT('knob.uGAM.NumSlices')
 	num_GAM_GAMTLB	=	numGAM
 	num_GAM_GAMW	=	numGAM
 	num_GAM_GACB	=	numGAM
@@ -27,7 +26,7 @@
 	 @GAM@	=	uGAM
 			
 #GAMTLB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' :       .temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))
+ '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	.temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTLB	=	D(SUM(@GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTLB	=	D(SUM((@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))/D({$1}.Clocks)
@@ -129,5 +128,6 @@
 	num_GAM_GLUE	=	numGAM
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_GLUE	=	PS0_GAMTLB
  '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_GLUE	=	1-PS0_GAMTLB
+			
 			
 			
