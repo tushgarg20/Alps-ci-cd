@@ -1,0 +1,145 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+				
+	numSlices	=	knob.global.NumSlices	
+	num_Z_HIZ	=	numSlices	
+	num_Z_IZ	=	numSlices	
+	num_Z_RCZ	=	numSlices	
+	num_Z_STC	=	numSlices	
+	num_Z_HIZ_Cache	=	numSlices	
+	num_Z_IZ_Cache	=	numSlices	
+	num_Z_RCZ_Cache	=	numSlices	
+	num_Z_STC_Cache	=	numSlices	
+				
+#Generic				
+	 @ANY_HIZ@	=	S\d+\.uHZ\.	
+	 @ANY_HIZCACHE@	=	S\d+\.uHzCache\.	
+	 @ANY_IZ@	=	S\d+\.uIZ\.	
+	 @ANY_WM@	=	S\d+\.uWM\.	
+	 @ANY_RCZ@	=	S\d+\.uZCache\.	
+	 @ANY_STC@	=	S\d+\.uStcCache\.	
+	 @HIZDEFIPTYPE@	=	(8x8)	
+	 @HIZOTHIPTYPE@	=	(8x4|4x4)	
+	 @IZIPTYPE@	=	(4x4|4x2)	
+	 @HIZFAILTEST@	=	(Fail|NA)	
+	 @IZTEST@	=	(Accept|Fail|Deferred)	
+	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
+	.Z_DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
+	.Clk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
+	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
+	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
+	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
+	.Clk.num_Z_RCZ	=	.Clk * num_Z_RCZ	
+	.Clk.num_Z_STC	=	.Clk * num_Z_STC	
+				
+#HIZFE				
+	PS0_HIZFE	=	(D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .Z_DOP	
+	PS0_HIZFE_DOP	=	.Z_DOP	
+	PS1_HIZFE	=	1 - (PS0_HIZFE + PS0_HIZFE_DOP + PS2_HIZFE_Zonly_1lit_4x4_Pass_Ambig + PS2_HIZFE_Zonly_1lit_4x4_all-lit-Fail + PS2_HIZFE_Zonly_2lit_4x4_Pass_Ambig + PS2_HIZFE_Zonly_2lit_4x4_all-lit-Fail + PS2_HIZFE_Zonly_3lit_4x4_Pass_Ambig + PS2_HIZFE_Zonly_3lit_4x4_all-lit-Fail + PS2_HIZFE_Zonly_4lit_4x4_Pass_Ambig + PS2_HIZFE_Zonly_4lit_4x4_all-lit-Fail + PS2_HIZFE_ZSTC_1lit_4x4_Pass_Ambig + PS2_HIZFE_ZSTC_1lit_4x4_all-lit-Fail + PS2_HIZFE_ZSTC_2lit_4x4_Pass_Ambig + PS2_HIZFE_ZSTC_2lit_4x4_all-lit-Fail + PS2_HIZFE_ZSTC_3lit_4x4_Pass_Ambig + PS2_HIZFE_ZSTC_3lit_4x4_all-lit-Fail + PS2_HIZFE_ZSTC_4lit_4x4_Pass_Ambig + PS2_HIZFE_ZSTC_4lit_4x4_all-lit-Fail + PS2_HIZFE_Stencil_Only + PS2_HIZFE_Bypass + PS2_HIZFE_Clear_Ambiguate + PS2_HIZFE_Depth-Resolve + PS2_HIZFE_Zmarkers)	
+	PS2_HIZFE_Zonly_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_1lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_2lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_3lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zonly_4lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_1lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_2lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_3lit_4x4_all-lit-Fail   	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_ZSTC_4lit_4x4_all-lit-Fail    	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Stencil_Only	=	D(SUM('@ANY_HIZ@pwr_HizStOnlyCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Bypass	=	D(SUM('@ANY_HIZ@pwr_HizBypassCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Clear_Ambiguate	=	(D(SUM('@ANY_HIZ@ClearCount'))/.Clk.num_Z_HIZ) + (D(SUM('@ANY_HIZ@HzResolveCount'))/.Clk.num_Z_HIZ)	
+	PS2_HIZFE_Depth-Resolve	=	D(SUM('@ANY_HIZ@DepthResolveCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_Zmarkers	=	D(SUM('@ANY_HIZ@pwr_Markers.CrClock'))/.Clk.num_Z_HIZ	
+#HIZBE				
+	PS0_HIZBE	=	(D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .Z_DOP	
+	PS0_HIZBE_DOP	=	.Z_DOP	
+	PS1_HIZBE	=	1 - (PS0_HIZBE + PS0_HIZBE_DOP + PS2_HIZBE_Zonly_1lit_4x4_Pass_Ambig + PS2_HIZBE_Zonly_1lit_4x4_all-lit-Fail + PS2_HIZBE_Zonly_2lit_4x4_Pass_Ambig + PS2_HIZBE_Zonly_2lit_4x4_all-lit-Fail + PS2_HIZBE_Zonly_3lit_4x4_Pass_Ambig + PS2_HIZBE_Zonly_3lit_4x4_all-lit-Fail + PS2_HIZBE_Zonly_4lit_4x4_Pass_Ambig + PS2_HIZBE_Zonly_4lit_4x4_all-lit-Fail + PS2_HIZBE_ZSTC_1lit_4x4_Pass_Ambig + PS2_HIZBE_ZSTC_1lit_4x4_all-lit-Fail + PS2_HIZBE_ZSTC_2lit_4x4_Pass_Ambig + PS2_HIZBE_ZSTC_2lit_4x4_all-lit-Fail + PS2_HIZBE_ZSTC_3lit_4x4_Pass_Ambig + PS2_HIZBE_ZSTC_3lit_4x4_all-lit-Fail + PS2_HIZBE_ZSTC_4lit_4x4_Pass_Ambig + PS2_HIZBE_ZSTC_4lit_4x4_all-lit-Fail + PS2_HIZBE_Stencil_Only + PS2_HIZBE_Bypass + PS2_HIZBE_Clear_Ambiguate + PS2_HIZBE_Depth-Resolve + PS2_HIZBE_Zmarkers)	
+	PS2_HIZBE_Zonly_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_1lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_2lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_3lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zonly_4lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZONLY.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_1lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_1lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.1Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_2lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_2lit_4x4_all-lit-Fail	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.2Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_3lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_3lit_4x4_all-lit-Fail   	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.3Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_4lit_4x4_Pass_Ambig	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.PassOrAmbig'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_ZSTC_4lit_4x4_all-lit-Fail    	=	D(SUM('@ANY_HIZ@pwr_HizActivity.CrClock.ZSTC.4Lit4x4.AllFail'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Stencil_Only	=	D(SUM('@ANY_HIZ@pwr_HizStOnlyCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Bypass	=	D(SUM('@ANY_HIZ@pwr_HizBypassCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Clear_Ambiguate	=	(D(SUM('@ANY_HIZ@ClearCount'))/.Clk.num_Z_HIZ) + (D(SUM('@ANY_HIZ@HzResolveCount'))/.Clk.num_Z_HIZ)	
+	PS2_HIZBE_Depth-Resolve	=	D(SUM('@ANY_HIZ@DepthResolveCount'))/.Clk.num_Z_HIZ	
+	PS2_HIZBE_Zmarkers	=	D(SUM('@ANY_HIZ@pwr_Markers.CrClock'))/.Clk.num_Z_HIZ	
+				
+#HIZ - Cache				
+	PS2_HIZ_CACHE_READ	=	D(SUM('@ANY_HIZCACHE@ReadRequests'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_CACHE_WRITE	=	D(SUM('@ANY_HIZCACHE@WriteRequests'))/.Clk.num_Z_HIZ	
+				#Not implemented in GSIM yet
+#HIZ - Latency FIFO				#Not implemented in GSIM yet
+	PS2_HIZ_LATFIFO_READ	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.popped'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_LATFIFO_WRITE	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed'))/.Clk.num_Z_HIZ	
+				
+#IZ				
+	PS0_IZ	=	(D(SUM('@ANY_IZ@pwr_Idle.CrClock'))/.Clk.num_Z_IZ) - .Z_DOP	
+	PS0_IZ_DOP	=	.Z_DOP	
+	PS1_IZ	=	1 - (PS0_IZ + PS0_IZ_DOP + PS2_IZ_CMP + PS2_IZ_NORMAL_DEPTHEN_PASS + PS2_IZ_NORMAL_DEPTHEN_FAIL + PS2_IZ_NORMAL_DEPTHDIS + PS2_IZ_ZMARKERS)	
+	PS2_IZ_CMP	=	0	#Placeholders for new gSim stats
+	PS2_IZ_NORMAL_DEPTHEN_PASS	=	0	#Placeholders for new gSim stats
+	PS2_IZ_NORMAL_DEPTHEN_FAIL	=	0	#Placeholders for new gSim stats
+	PS2_IZ_NORMAL_DEPTHDIS	=	0	#Placeholders for new gSim stats
+	PS2_IZ_ZMARKERS	=	D(SUM('@ANY_IZ@pwr_IzMarkers.CrClock'))/.Clk.num_Z_IZ	
+				
+#IZ - Latency FIFO				
+	PS2_IZ_LATFIFO_READ	=	D(SUM('@ANY_IZ@ZAllocWaitBuffer.popped'))/.Clk.num_Z_IZ	
+	PS2_IZ_LATFIFO_WRITE	=	D(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed'))/.Clk.num_Z_IZ	
+				
+#IZ - Z Coefficiency FIFO				
+	PS2_IZ_ZCOEFFFIFO_READ	=	D(SUM('@ANY_WM@WmInputObjectCount'))/.Clk.num_Z_IZ	
+	PS2_IZ_ZCOEFFFIFO_WRITE	=	PS2_IZ_ZCOEFFFIFO_READ	
+				
+#IZ - Poly FIFO 				
+	PS2_IZ_POLYFIFO_READ	=	D(SUM('@ANY_WM@WmInputObjectCount'))/.Clk.num_Z_IZ	
+	PS2_IZ_POLYFIFO_WRITE	=	PS2_IZ_POLYFIFO_READ	
+				
+#IZ - Bary Coefficiency FIFO				
+	PS2_IZ_BARYCOEFFIFO_READ	=	D(SUM('@ANY_WM@RasterSpanOutBuffer.pushed'))/.Clk.num_Z_IZ	
+	PS2_IZ_BARYCOEFFIFO_WRITE	=	PS2_IZ_BARYCOEFFIFO_READ	
+				
+#IZ - W Coefficiency FIFO				
+	PS2_IZ_WCOEFFIFO_READ	=	D(SUM('@ANY_WM@RasterSpanOutBuffer.pushed'))/.Clk.num_Z_IZ	
+	PS2_IZ_WCOEFFIFO_WRITE	=	PS2_IZ_WCOEFFIFO_READ	
+				
+#RCZ				
+	PS0_RCZ	=	(D(SUM('@ANY_RCZ@pwr_Idle.CrClock'))/.Clk.num_Z_RCZ) - .Z_DOP	
+	PS0_RCZ_DOP	=	.Z_DOP	
+	PS1_RCZ	=	1 - (PS0_RCZ + PS0_RCZ_DOP + PS2_RCZ_ALLOC_HITS + PS2_RCZ_ALLOC_MISSES)	
+	PS2_RCZ_ALLOC_HITS	=	D(SUM('@ANY_RCZ@AllocHits'))/.Clk.num_Z_RCZ	
+	PS2_RCZ_ALLOC_MISSES	=	D(SUM('@ANY_RCZ@AllocMisses'))/.Clk.num_Z_RCZ	
+				
+#RCZ - Cache				
+	PS2_RCZ_CACHE_READ	=	D(SUM('@ANY_RCZ@ReadRequests'))/.Clk.num_Z_RCZ	
+	PS2_RCZ_CACHE_WRITE	=	D(SUM('@ANY_RCZ@WriteRequests'))/.Clk.num_Z_RCZ	
+				
+#STC				
+	PS0_STC	=	(D(SUM('@ANY_STC@pwr_Idle.CrClock'))/.Clk.num_Z_STC) - .Z_DOP	
+	PS0_STC_DOP	=	.Z_DOP	
+	PS1_STC	=	1 - (PS0_STC + PS0_STC_DOP + PS2_STC_ALLOC_HITS + PS2_STC_ALLOC_MISSES)	
+	PS2_STC_ALLOC_HITS	=	D(SUM('@ANY_STC@AllocHits'))/.Clk.num_Z_STC	
+	PS2_STC_ALLOC_MISSES	=	D(SUM('@ANY_STC@AllocMisses'))/.Clk.num_Z_STC	
+				
+#STC - Cache				
+	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
+	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC
