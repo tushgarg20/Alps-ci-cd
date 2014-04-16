@@ -118,6 +118,7 @@ PS0_IC_DATARAM,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.28,ebb,1.00,Need to check with gSim - 512 io assumed
 PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,0,ebb,1,Front Buffer hit does not require a cache read
 PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,62.429,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPSoC,A0,0,ebb,1.00,Need to check with gSim - 512 io assumed
 PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0.00,ebb,1.00,
 PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.14,ebb,1.00,Need to check with gSim - 2x128 bit io assumed
 PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.21,ebb,1.00,Need to check with gSim - 2x128 bit io assumed
