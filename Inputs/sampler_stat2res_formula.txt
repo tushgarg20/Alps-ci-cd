@@ -320,7 +320,7 @@
 	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))	
 	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
 	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
-	.temp_PS2_CRE	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
+	.temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
 				
 #Small				
 	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
