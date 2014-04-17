@@ -306,17 +306,52 @@ PS2_LNE_BW: R
 PS2_LNIXS_BW: R
 PS2_LNEXS_BW: R
 GTI:
-   GTI:
-    PS0_GTI: R * C
-    PS1_GTI: R * C
-    PS2_GTI: R * LINEST[C,R[PS2_GTI_BW]]
+   MBGF:
+    PS0_MBGF: R * C
+    PS1_MBGF: R * C
+    PS2_MBGF:
+     PS2_MBGF_READ: R * C
+     PS2_MBGF_WRITE: R * C
+   MSQC:
+    PS0_MSQC: R * C
+    PS1_MSQC: R * C
+    PS2_MSQC: R * C
+   MSQD:
+    PS0_MSQD: R * C
+    PS1_MSQD: R * C
+    PS2_MSQD:
+     PS2_MSQD_READ: R * C
+     PS2_MSQD_WRITE: R * C
+   MIDI:
+    PS0_MIDI: R * C
+    PS1_MIDI: R * C
+    PS2_MIDI:
+     PS2_MIDI_REQUEST: R * C
+     PS2_MIDI_RESPONSE: R * C
+   MISD:
+    PS0_MISD: R * C
+    PS1_MISD: R * C
+    PS2_MISD:
+     PS2_MISD_READ_AES_ON: R * C
+     PS2_MISD_READ_AES_OFF: R * C
+     PS2_MISD_WRITE_AES_ON: R * C
+     PS2_MISD_WRITE_AES_OFF: R * C
+   SMALL:
+    PS0_GTI_SMALL: R * C
+    PS2_GTI_SMALL: R * C
+   CLKGLUE:
+    PS0_GTI_CLKGLUE: R * C
+    PS2_GTI_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_GTI_NONCLKGLUE: R * C
+    PS2_GTI_NONCLKGLUE: R * C
+   DFX:
+    PS0_GTI_DFX: R * C
+    PS2_GTI_DFX: R * C
    DOP:
-    PS2_GTI_DOP_1X: R * C
-    PS2_GTI_DOP_2X: R * C
-   GLUE:
-    PS0_GTI_GLUE: R * C
-    PS2_GTI_GLUE: R * C
-PS2_GTI_BW : R
+    PS0_GTI_DOP: R * C
+    PS2_GTI_DOP: R * C
+PS2_GTI_BW: R
 Sampler:
    FL:
     PS0_FL: R * C
@@ -678,31 +713,27 @@ Z:
     PS0_HIZ_DOP: R * C
     PS1_HIZ: R * C
     PS2_HIZ:
-     PS2_HIZ_8x8_EN_ZONLY_FAIL: R * C
-     PS2_HIZ_8x8_EN_ZONLY_Accept: R * C
-     PS2_HIZ_8x8_EN_ZONLY_AMBIG: R * C
-     PS2_HIZ_8x8_EN_ZSTC_FAIL: R * C
-     PS2_HIZ_8x8_EN_ZSTC_Accept: R * C
-     PS2_HIZ_8x8_EN_ZSTC_AMBIG: R * C
-     PS2_HIZ_8x8_EN_STCONLY_FAIL: R * C
-     PS2_HIZ_8x8_EN_STCONLY_AMBIG: R * C
-     PS2_HIZ_8x8_DIS_ZSTC: R * C
-     PS2_HIZ_8x8_DIS_ZONLY: R * C
-     PS2_HIZ_8x8_DIS_STCONLY: R * C
-     PS2_HIZ_8x8_RESOLVE: R * C
-     PS2_HIZ_8x4_EN_ZONLY_FAIL: R * C
-     PS2_HIZ_8x4_EN_ZONLY_Accept: R * C
-     PS2_HIZ_8x4_EN_ZONLY_AMBIG: R * C
-     PS2_HIZ_8x4_EN_ZSTC_FAIL: R * C
-     PS2_HIZ_8x4_EN_ZSTC_Accept: R * C
-     PS2_HIZ_8x4_EN_ZSTC_AMBIG: R * C
-     PS2_HIZ_8x4_EN_STCONLY_FAIL: R * C
-     PS2_HIZ_8x4_EN_STCONLY_AMBIG: R * C
-     PS2_HIZ_8x4_DIS_ZSTC: R * C
-     PS2_HIZ_8x4_DIS_ZONLY: R * C
-     PS2_HIZ_8x4_DIS_STCONLY: R * C
-     PS2_HIZ_8x4_RESOLVE: R * C
-     PS2_HIZ_ZMARKERS: R * C
+     PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_3lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_4lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail : R * C
+     PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail : R * C
+     PS2_HIZ_Stencil_Only: R * C
+     PS2_HIZ_Bypass: R * C
+     PS2_HIZ_Clear_Ambiguate: R * C
+     PS2_HIZ_Depth-Resolve: R * C
+     PS2_HIZ_Zmarkers: R * C
    HIZ_Cache:
     PS2_HIZ_CACHE_READ: R * C
     PS2_HIZ_CACHE_WRITE: R * C
