@@ -1,9 +1,9 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	num_RC_SliceRC	=		1	
-	num_RC_L3XSRC	=	1	
-	num_RC_GT3BFRC	=	1	
-	num_RC_Fabric	=	1	
+	num_RC_SliceRC	=	(numSlices - 1)	#Fabric instances  approx with Num Slices - 1
+	num_RC_L3XSRC	=	(numSlices - 1)	
+	num_RC_GT3BFRC	=	(numSlices - 1)	
+	num_RC_Fabric	=	(numSlices - 1)	
 				
 #Generic				
 	.CrClk	=	D(CrClock.Clocks)	
@@ -41,7 +41,7 @@
 	.VF_L3_Writes	=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.UrbWrites')) / (num_vtxpipes * .GeoClk2x)	
 	PS2_GT3BFRC	=	(.isGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes) : 0	
 				
-#Fabric	
+#Fabric				
 	PS0_Fabric	=	1 - (PS2_Fabric_GT2 + PS2_Fabric_GT2P5)	#GT2P5 is 0 for non GT2 configs
 	PS2_Fabric_GT2	=	(.isGT3 > 0) ? 0 : (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes)	
 	PS2_Fabric_GT2P5	=	(.isGT2P5 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
