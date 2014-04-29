@@ -4,8 +4,27 @@
 		num_Other_ClockSpine			=		1
 		num_Other_WIDI					=		1
 	num_Other_Blitter	=	1
+	num_Other_Slice	=	knob.global.NumSlices
+	num_Other_Unslice	=	1
+	num_Other_RC	=	num_Other_Slices - 1
+			
 #Other			
 	PS0_GTP24C 	=	1
 	PS2_ClockSpine 	=	1
 	PS0_WIDI 	=	1
 	PS0_Blitter	=	1
+	PS2_ClockSpine_Slice 	=	num_Other_Slice
+	PS2_ClockSpine_UnSlice 	=	num_Other_UnSlice
+	PS2_ClockSpine_RC 	=	num_Other_RC
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

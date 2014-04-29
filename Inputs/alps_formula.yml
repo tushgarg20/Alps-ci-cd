@@ -1354,7 +1354,10 @@ Other:
    GTP24C:
     PS0_GTP24C: R * C
    ClockSpine:
-    PS2_ClockSpine: R * C
+    PS2_ClockSpine:
+     PS2_ClockSpine_Slice: R * C
+     PS2_ClockSpine_UnSlice: R * C
+     PS2_ClockSpine_RC: R * C
    WIDI:
     PS0_WIDI: R * C
    Blitter:
