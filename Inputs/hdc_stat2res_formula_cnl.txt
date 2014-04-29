@@ -38,6 +38,7 @@
 	PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_WRITE@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
+	PS2_HDCREQCMD1_Other_GW_CPSS	=	0	
 #HDCREQCMD2				
 	PS0_HDC_ReqCmd2_DOP	=	.HDC_DOP	
 	PS0_HDC_ReqCmd2	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
@@ -82,8 +83,7 @@
 	PS2_HDCL1_Write_Invalidate	=	0	
 	PS2_HDCL1_Bypass	=	0	
 #HDCL1EBB				
-	PS0_HDCL1EBB_DOP	=	0	#No Gsim model yet
-	PS0_HDCL1EBB	=	0	
+	PS0_HDCL1EBB	=	0	#No Gsim model yet
 	PS2_HDCL1EBB_Read	=	0	
 	PS2_HDCL1EBB_Write	=	0	
 #HDCTLB				

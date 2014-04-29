@@ -85,8 +85,8 @@
 	PS2_HIZBE_Zmarkers	=	D(SUM('@ANY_HIZ@pwr_Markers.CrClock'))/.Clk.num_Z_HIZ	
 				
 #HIZ - Cache				
-	PS2_HIZ_CACHE_READ	=	D(SUM('@ANY_HIZCACHE@ReadRequests'))/.Clk.num_Z_HIZ	
-	PS2_HIZ_CACHE_WRITE	=	D(SUM('@ANY_HIZCACHE@WriteRequests'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_CACHE_READ	=	D(SUM('@ANY_HIZCACHE@ReadRequests'))/.Clk.num_Z_HIZ	
+	PS2_HIZFE_CACHE_WRITE	=	D(SUM('@ANY_HIZCACHE@WriteRequests'))/.Clk.num_Z_HIZ	
 				#Not implemented in GSIM yet
 #HIZ - Latency FIFO				#Not implemented in GSIM yet
 	PS2_HIZ_LATFIFO_READ	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.popped'))/.Clk.num_Z_HIZ	

@@ -117,9 +117,9 @@
 	PS1_VSBE	=	(D(Geo.uVS.pwr_vsbe_stalled_or_idle.2xGeoClock) - D(Geo.uVS.pwr_vsbe_idle.2xGeoClock)) / .GeoClk2x	
 	PS2_VSBE	=	1 - PS0_VSBE_DOP - PS0_VSBE - PS1_VSBE	
 #VS Cache				
-	PS0_VS_Cache_Idle	=	1 - (D(Geo.uVS.pwr_vscache_active.2xGeoClock) / .GeoClk2x )	
-	PS2_VS_Cache_Read	=	D(Geo.uVS.pwr_vscache_read.2xGeoClock) / .GeoClk2x	
-	PS2_VS_Cache_Write	=	D(Geo.uVS.pwr_vscache_write.2xGeoClock) / .GeoClk2x	
+	PS0_VSBE_Cache_Idle	=	1 - (D(Geo.uVS.pwr_vscache_active.2xGeoClock) / .GeoClk2x )	
+	PS2_VSBE_Cache_Read	=	D(Geo.uVS.pwr_vscache_read.2xGeoClock) / .GeoClk2x	
+	PS2_VSBE_Cache_Write	=	D(Geo.uVS.pwr_vscache_write.2xGeoClock) / .GeoClk2x	
 #HS				
 	PS0_HS_DOP	=	( .temp_3DPipeDisable > 0 )? .temp_3DPipeDisable : .temp_TeGsSolDOP	
 	PS0_HS	=	(D(Geo.uHS.pwr_hs_idle.2xGeoClock) / .GeoClk2x) - PS0_HS_DOP	
@@ -174,8 +174,8 @@
 	PS0_CL_DOP	=	 .temp_3DPipeDisable	#No GSIM model - approximating with SOL
 	PS0_CL	=	(D(Geo.uCL.pwr_CL_Idle.2xGeoClock) / .GeoClk2x) - PS0_CL_DOP	#updated with CL stats
 	PS1_CL	=	(D(Geo.uCL.pwr_CL_Stalled_or_Idle.2xGeoClock) - D(Geo.uCL.pwr_CL_Idle.2xGeoClock)) / .GeoClk2x	
-	PS2_CL	=	1 - (PS0_CL_DOP + PS0_CL + PS1_CL)	
-				
+	PS2_CL_3D	=	1 - (PS0_CL_DOP + PS0_CL + PS1_CL)	
+	PS2_CL_Media	=	0	
 #SFFE				
 	PS0_SFFE_DOP	=	 .temp_3DPipeDisable	
 	PS0_SFFE	=	(D(Geo.uSF.pwr_SF_Idle.2xGeoClock) / .GeoClk2x) - PS0_SFFE_DOP	
@@ -196,6 +196,12 @@
 	PS1_SDE	=	(D(Geo.uSDE.pwr_SDE_Idle.CrClock) - D(Geo.uSDE.pwr_SDE_Idle.CrClock)) / .CrClk	
 	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.CrClock) / .CrClk	
 	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.CrClock) / .CrClk	
+#HPSDE				
+	PS0_HPSDE_DOP	=	0	
+	PS0_HPSDE	=	0	
+	PS1_HPSDE	=	0	
+	PS2_HPSDE_Culled	=	0	
+	PS2_HPSDE_NotCulled	=	0	
 #TDG				
  'uTDG\.Idle\.(\w*Clock)' : 	PS0_TDG	=	D(uTDG.Idle.{$1}) / D({$1}.Clocks)	
  'uTDG\.Idle\.(\w*Clock)' : 	PS1_TDG	=	(D(uTDG.IdleOrStalled.{$1}) - D(uTDG.Idle.{$1})) / D({$1}.Clocks)	
@@ -213,15 +219,13 @@
 #VFE				
  'Med\.uVFE(\d+)\.pwr_Idle\.(\w*Clock)' : 	PS0_VFE	=	D(Med.uVFE{$1}.pwr_Idle.{$2}) / D({$2}.Clocks)	#Media GPGPU
  'Med\.uVFE(\d+)\.pwr_Idle\.(\w*Clock)' : 	PS1_VFE	=	(D(Med.uVFE{$1}.pwr_IdleOrStalled.{$2}) - D(Med.uVFE{$1}.pwr_Idle.{$2})) / D({$2}.Clocks)	
-	PS2_VFE	=	1 - PS0_VFE - PS1_VFE	
 	PS2_VFE_GPGPU	=	0	#Breaking out media/GPGPU
-	PS2_VFE_MEDIA	=	0	
+	PS2_VFE_MEDIA	=	1 - PS0_VFE - PS1_VFE	
 				
 #TSG				
  'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS0_TSG	=	D(Med.uTSG.pwr_Idle.{$1}) / D({$1}.Clocks)	#Media GPGPU
  'Med\.uTSG\.pwr_Idle\.(\w*Clock)' : 	PS1_TSG	=	(D(Med.uTSG.pwr_IdleOrStalled.{$1}) - D(Med.uTSG.pwr_Idle.{$1})) / D({$1}.Clocks)	
-	PS2_TSG	=	1 - PS0_TSG - PS1_TSG	
-	PS2_TSG_Media_Scoreboard	=	0	#Breaking out media/GPGPU
+	PS2_TSG_Media_Scoreboard	=	1 - PS0_TSG - PS1_TSG	#Breaking out media/GPGPU
 	PS2_TSG_Media_NoScoreboard	=	0	
 #OACS				
 	PS0_OACS	=	0	#No GSIM model
