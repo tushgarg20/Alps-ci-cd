@@ -5,8 +5,8 @@
 		num_Other_WIDI					=		1
 	num_Other_Blitter	=	1
 	num_Other_Slice	=	knob.global.NumSlices
-	num_Other_Unslice	=	1
-	num_Other_RC	=	num_Other_Slices - 1
+	num_Other_UnSlice	=	1
+	num_Other_RC	=	num_Other_Slice - 1
 			
 #Other			
 	PS0_GTP24C 	=	1
