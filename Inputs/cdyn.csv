@@ -2967,6 +2967,12 @@ PS0_Blitter,Gen9LPClient,A0,38.68623404,syn,1605050.5,Taken from SKL FSO ECO3 re
 PS2_ClockSpine_Slice,Gen9LPClient,A0,233.7466117,ebb,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_ClockSpine_UnSlice,Gen9LPClient,A0,97.65604947,ebb,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_ClockSpine_RC,Gen9LPClient,A0,0,ebb,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_ClockSpine_Slice,Gen10LP,A0,190,ebb,1,total spine 290nf
+PS2_ClockSpine_UnSlice,Gen10LP,A0,100,ebb,1,
+PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
+PS2_ClockSpine_Slice,Gen10LPSoC,A0,150,ebb,1,total spine 350nf
+PS2_ClockSpine_UnSlice,Gen10LPSoC,A0,200,ebb,1,
+PS2_ClockSpine_RC,Gen10LPSoC,A0,0,ebb,1,
 PS0_MBGF,Gen9LPClient,A0,60.31529234,syn,442577.37,Taken from SKL FSO ECO3 rev1 CGEN data
 PS1_MBGF,Gen9LPClient,A0,60.31529234,syn,442577.37,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_MBGF_READ,Gen9LPClient,A0,156.021816,syn,442577.37,Taken from SKL FSO ECO3 rev1 CGDIS data
