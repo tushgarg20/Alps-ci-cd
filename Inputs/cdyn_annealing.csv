@@ -1173,12 +1173,12 @@ PS2_DM_ETC,Gen8,B0,125.09,syn,613000.00,"yacoub, averaged the cdynwt of the 6 su
 PS2_DM_Expanded,Gen8,B0,0.00,syn,613000.00,NIB,DM,Sampler,Annealing
 PS2_DM_Expanded_BYPASS,Gen8,B0,0.00,syn,613000.00,NIB,DM,Sampler,Annealing
 PS2_EU_DFX,Gen8,B0,0.720818333,syn,33151.00,,DFX,EU,Average of all opcodes at 30%
-PS2_EU_DOP,Gen8,A0,4.497041,syn,1.00,,DOP,EU,from nevins IDLE_CGDIS_eco1 ss
-PS2_EU_GLUE,Gen8,B0,6.057339,syn,10146.50,,GLUE,EU,Average of all opcodes at 30%
+PS2_EU_DOP,Gen8,A0,3.65,syn,1.00,,DOP,EU,from nevins IDLE_CGDIS_eco1 ss
+PS2_EU_GLUE,Gen8,B0,6.9,syn,10146.50,,GLUE,EU,Average of all opcodes at 30%
 PS2_EU_SMALL,Gen8,B0,1.544101667,syn,41011.00,,SMALL,EU,Average of all opcodes at 30%
 PS2_FF_DFX,Gen8,A0,0.00,syn,1.00,,DFX,FF,
-PS2_FF_DOP,Gen8,B0,318.00,syn,1.00,,DOP,FF,from nevins idle ss
-PS2_FF_DOP,Gen8SoC,B0,111.30,syn,1.00,,DOP,FF,from nevins idle ss
+PS2_FF_DOP,Gen8,B0,341.10,syn,1.00,,DOP,FF,from nevins idle ss
+PS2_FF_DOP,Gen8SoC,B0,128.95,syn,1.00,,DOP,FF,from nevins idle ss
 PS2_FF_GLUE,Gen8,A0,36.86,syn,404856.00,,GLUE,FF,
 PS2_FF_SMALL,Gen8,A0,163.72,syn,1836522.00,,SMALL,FF,
 PS2_FL_Bilinear_Else,Gen8,B0,162.75,syn,903000.00,yacoub,FL,Sampler,Annealing
@@ -1310,7 +1310,7 @@ PS2_GTI_20%,Gen8,A0,505.33,syn ,3053187.00,,GTI,GTI,
 PS2_GTI_40%,Gen8,A0,670.71,syn ,3053187.00,,GTI,GTI,
 PS2_GTI_60%,Gen8,A0,852.78,syn ,3053187.00,,GTI,GTI,
 PS2_GTI_DOP_1X,Gen8,B0,0.00,syn ,1.00,,DOP1X,GTI,from nevins idle ss
-PS2_GTI_DOP_2X,Gen8,B0,265.10,syn ,1.00,,DOP2X,GTI,from nevins idle ss
+PS2_GTI_DOP_2X,Gen8,B0,283.60,syn ,1.00,,DOP2X,GTI,from nevins idle ss
 PS2_GTI_GLUE,Gen8,A0,6.86,syn ,1.00,,GLUE,GTI,
 PS2_GWL,Gen8,A0,3.76,syn,167673.00,,GWL,ROSS,
 PS2_HDC,Gen8,A0,485.00,syn,2673432.00,from kamal,HDC,HDC,
@@ -1389,7 +1389,7 @@ PS2_IZ_ZCOEFFFIFO_WRITE,Gen8,B0,0.00,ebb,1132263.00,,IZ,Z,
 PS2_IZ_ZCOEFFFIFO_WRITE,Gen8LPSoC,B0,0.00,ebb,1132263.00,,IZ,Z,
 PS2_IZ_ZMARKERS,Gen8,A0,70.43,syn,1132263.00,,IZ,Z,
 PS2_L3_Bank_DFX,Gen8,A0,0.00,syn,1.00,SAME AS glue cdynwt,DFX,L3_Bank,
-PS2_L3_Bank_DOP,Gen8,B0,32.66,syn,1.00,,DOP,L3_Bank,from nevins idle ss
+PS2_L3_Bank_DOP,Gen8,B0,34.96,syn,1.00,,DOP,L3_Bank,from nevins idle ss
 PS2_L3_Bank_GLUE,Gen8,A0,15.72,syn,26663.00,,GLUE,L3_Bank,
 PS2_L3_Bank_SMALL,Gen8,A0,39.49,syn,169468.00,,SMALL,L3_Bank,
 PS2_L3BankOther,Gen8,A0,36.90,syn,186760.00,,L3BankOther,L3_Bank,
@@ -1533,11 +1533,11 @@ PS2_RCZ_CACHE_READ,Gen8LPSoC,B0,24.24,ebb,1.00,,RCZ,Z,
 PS2_RCZ_CACHE_WRITE,Gen8,B0,30.05,ebb,1.00,,RCZ,Z,
 PS2_RCZ_CACHE_WRITE,Gen8LPSoC,B0,35.06,ebb,1.00,,RCZ,Z,
 PS2_ROSC_DFX,Gen8,A0,0.00,syn,1.00,,DFX,ROSC,
-PS2_ROSC_DOP,Gen8,B0,334.46,syn,1.00,,DOP,ROSC,from nevins idle ss
+PS2_ROSC_DOP,Gen8,B0,357.9.46,syn,1.00,,DOP,ROSC,from nevins idle ss
 PS2_ROSC_GLUE,Gen8,A0,77.72,syn,1.00,,GLUE,ROSC,
 PS2_ROSC_SMALL,Gen8,A0,198.42,syn,661698.00,,SMALL,ROSC,
 PS2_ROSS_DFX,Gen8,A0,0.00,syn,1.00,,DFX,ROSS,
-PS2_ROSS_DOP,Gen8,B0,69.59,syn,1.00,,DOP,ROSS,from nevins idle ss
+PS2_ROSS_DOP,Gen8,B0,74.5,syn,1.00,,DOP,ROSS,from nevins idle ss
 PS2_ROSS_GLUE,Gen8,A0,54.59,syn,1.00,,GLUE,ROSS,
 PS2_ROSS_SMALL,Gen8,A0,21.53,syn,215874.00,,SMALL,ROSS,
 PS2_RoutingChannel ,Gen8,A0,2525.49,syn,1.00,,RoutingChannel ,Other,
