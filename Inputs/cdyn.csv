@@ -925,11 +925,18 @@ PS0_L3XSRC,Gen8,A0,350.07,syn,772000.00,Swag details - BDW GT3 cdyn/3 RefGC scal
 PS2_L3XSRC,Gen8,A0,841.83,syn,772000.00,Swag details - BDW GT3 cdyn/3 RefGC scaling - LNI
 PS0_GT3BFRC,Gen8,A0,350.07,syn,1010000.00,Swag details - BDW GT3 cdyn/3 RefGC scaling - CL
 PS2_GT3BFRC,Gen8,A0,841.83,syn,1010000.00,Swag details - BDW GT3 cdyn/3 RefGC scaling - CL
+PS0_SliceRC,Gen10LP,A0,0,syn,1700000.00,RC is replaced with fabric for CNL
+PS2_SliceRC,Gen10LP,A0,0,syn,1700000.00,RC is replaced with fabric for CNL
+PS0_L3XSRC,Gen10LP,A0,0,syn,772000.00,RC is replaced with fabric for CNL
+PS2_L3XSRC,Gen10LP,A0,0,syn,772000.00,Swag details - BDW GT3 cdyn/3 RefGC scaling - LNI
+PS0_GT3BFRC,Gen10LP,A0,0,syn,1010000.00,RC is replaced with fabric for CNL
+PS2_GT3BFRC,Gen10LP,A0,0,syn,1010000.00,RC is replaced with fabric for CNL
 PS0_Fabric,Gen10LP,A0,1050.21,syn,1.00,Swag details - BDW GT3 cdyn
 PS2_Fabric_GT2,Gen10LP,A0,2525.49,syn,1.00,Swag details - BDW GT3 cdyn
 PS2_Fabric_GT2P5,Gen10LP,A0,2525.49,syn,1.00,Swag details - BDW GT3 cdyn
 PS2_Fabric_GT3,Gen10LP,A0,2525.49,syn,1.00,Swag details - BDW GT3 cdyn
 PS2_Fabric_GT4,Gen10LP,A0,2525.49,syn,1.00,Swag details - BDW GT3 cdyn
+PS2_Fabric_Halo,Gen10LP,A0,2525.49,syn,1.00,Swag details - BDW GT3 cdyn
 PS0_GTI,Gen8,A0,135.62,syn ,3053187.00,Using BDW*1.07
 PS0_GTI_GLUE,Gen8,A0,3.07,syn ,1.00,Using BDW*1.07
 PS1_GTI,Gen8,A0,230.86,syn ,3053187.00,Using BDW*1.07
