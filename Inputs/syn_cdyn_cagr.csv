@@ -49,6 +49,7 @@ Other,Gen8SoC,Gen10LP,0.72
 Other,Gen9LPClient,Gen10LP,0.9
 Other,Gen9LPSoC,Gen10LP,0.9
 Other,Gen10LP,Gen10LP,1
+Other,Gen10LPSoC,Gen10LPSoC,1
 RC,Gen8,Gen10LP,0.72
 RC,Gen8SoC,Gen10LP,0.72
 RC,Gen9LPClient,Gen10LP,0.9
