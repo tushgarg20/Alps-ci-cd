@@ -40,6 +40,8 @@ for line in tracefile:
 	if(count == 0):
 		print("Frame",end=',',file=output_file)
 		track = 1
+		print("FPS",end=',',file=output_file)
+		print("GT Cdyn",end=',',file=output_file)
 		for cluster in clusters:
 			if(track == num_clusters):
 				print(cluster,file=output_file)
@@ -49,6 +51,8 @@ for line in tracefile:
 		
 	frame = line.split(".yaml")
 	print(frame[0],end=',',file=output_file)
+	print(alps_data['FPS'],end=',',file=output_file)
+	print(alps_data['Total_GT_Cdyn(nF)'],end=',',file=output_file)
 	track = 1
 	for cluster in clusters:
 		if(track == num_clusters):
