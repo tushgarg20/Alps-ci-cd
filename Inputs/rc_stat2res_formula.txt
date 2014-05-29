@@ -11,8 +11,8 @@
 	numSlices	=	knob.global.NumSlices	
 	.isSKLGT3	=	(numSlices > 1) ? 1 : 0	
 	.isCNLGT2	=	(numSlices == 1) ? 1 : 0	
-	.isCNLGT3	=	(numSlices == 2) ? 1 : 0	
-	.isCNLGT2P5	=	(numSlices == 3) ? 1 : 0	
+	.isCNLGT2P5	=	(numSlices == 2) ? 1 : 0	
+	.isCNLGT3	=	(numSlices == 3) ? 1 : 0	
 	.isCNLGT4	=	(numSlices == 4) ? 1 : 0	
 	.isCNLHalo	=	(numSlices == 6) ? 1 : 0	
 	num_vtxpipes	=	1	#Possible future change
@@ -43,9 +43,12 @@
 	PS2_GT3BFRC	=	(.isSKLGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes) : 0	
 				
 #Fabric				
-	PS0_Fabric	=	1 - (PS2_Fabric_GT2 + PS2_Fabric_GT2P5)	#GT2P5 is 0 for non GT2 configs
-	PS2_Fabric_GT2	=	(.isCNLGT2 > 0) ? 0 : (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes)	
-	PS2_Fabric_GT2P5	=	(.isCNLGT2P5 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
-	PS2_Fabric_GT3	=	(.isCNLGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
-	PS2_Fabric_GT4	=	(.isCNLGT4 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
-	PS2_Fabric_Halo	=	(.isCNLHalo > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes + .MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes + .LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0
+	PS0_Fabric	=	1 - (PS2_Fabric_GT2 + PS2_Fabric_GT2P5 + PS2_Fabric_GT3 + PS2_Fabric_GT4 + PS2_Fabric_Halo)	#Use all PS2_*. Only the corresponding GT* will be ON at any given point
+	.temp_gt3bf_fabric	=	.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes	#Geoclk2x residency
+	.temp_slice_fabric	=	(.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes)/2	#Crclk residency - baselined to Geoclk2x
+	.temp_l3xs_fabric	=	(.LNIXS_Read_Writes + .LNEXS_Read_Writes)/2	#Crclk residency - baselined to Geoclk2x
+	PS2_Fabric_GT2	=	(.isCNLGT2 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric) : 0	#No l3xs in GT2
+	PS2_Fabric_GT2P5	=	(.isCNLGT2P5 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
+	PS2_Fabric_GT3	=	(.isCNLGT3 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
+	PS2_Fabric_GT4	=	(.isCNLGT4 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
+	PS2_Fabric_Halo	=	(.isCNLHalo > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0
