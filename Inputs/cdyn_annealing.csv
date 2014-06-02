@@ -54,9 +54,9 @@ PS2_DAPRSS_ELSE,Gen8,A0,126.1,syn,538533,,DAPRSS,ROSS,
 PS2_DAPRSS_RENDERTARGETREAD,Gen8,A0,126.1,syn,538533,,DAPRSS,ROSS,
 PS2_DAPRSS_RENDERTARGETWRITE,Gen8,A0,126.1,syn,538533,,DAPRSS,ROSS,
 PS2_DAPRSS_WRITEFLUSH,Gen8,A0,126.1,syn,538533,,DAPRSS,ROSS,
-PS0_EU_DFX,Gen8,A0,0.49,syn,33151,,DFX,EU,
-PS1_EU_DFX,Gen8,A0,2.02,syn,33151,,DFX,EU,from nevins IDLE_CGDIS_eco1 ss
-PS2_EU_DFX,Gen8,B0,1.21,syn,33151,,DFX,EU,Average of all opcodes at 30%
+PS0_EU_DFX,Gen8,A0,0.72,syn,33151,,DFX,EU,
+PS1_EU_DFX,Gen8,A0,0.72,syn,33151,,DFX,EU,from nevins IDLE_CGDIS_eco1 ss
+PS2_EU_DFX,Gen8,B0,0.72,syn,33151,,DFX,EU,Average of all opcodes at 30%
 PS0_FF_DFX,Gen8,A0,0,syn,0,,DFX,FF,
 PS1_FF_DFX,Gen8,A0,0,syn,0,,DFX,FF,
 PS2_FF_DFX,Gen8,A0,0,syn,0,,DFX,FF,
@@ -1451,9 +1451,9 @@ PS1_HDC_ReqCmd1,Gen8SoC,A0,78.192,syn,1352354,"made equal to hdcreqdata, need cd
 PS2_HDC_ReqCmd1,Gen8SoC,A0,59.4,syn,1352354,,ReqCmd1,HDC,
 PS1_HDC_ReqCmd2,Gen8SoC,A0,78.192,syn,1352354,"made equal to hdcreqdata, need cdynwt",ReqCmd2,HDC,
 PS2_HDC_ReqCmd2,Gen8SoC,A0,126.162,syn,1352354,,ReqCmd2,HDC,
-PS0_RoutingChannel,Gen8,A0,1050.21,syn,1,,RoutingChannel,Other,
-PS1_RoutingChannel ,Gen8,A0,1500.29,syn,1,,RoutingChannel ,Other,
-PS2_RoutingChannel ,Gen8,A0,2525.49,syn,1,,RoutingChannel ,Other,
+PS0_RoutingChannel,Gen8,A0,750,syn,1,,RoutingChannel,Other,
+PS1_RoutingChannel ,Gen8,A0,1200,syn,1,,RoutingChannel ,Other,
+PS2_RoutingChannel ,Gen8,A0,2099,syn,1,,RoutingChannel ,Other,
 PS0_RS,Gen8,A0,0,syn,0,,RS,FF,
 PS1_RS,Gen8,A0,0,syn,0,,RS,FF,
 PS2_RS,Gen8,A0,0,syn,0,,RS,FF,
