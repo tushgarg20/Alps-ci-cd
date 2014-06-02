@@ -21,7 +21,7 @@
 	.LneXSWinners.Total	=	D(SUM('S0.uL3.LneXSWinners.total_count'))	
 	.isGT3	=	( .LneXSWinners.0 == .LneXSWinners.Total) ? 0 : 1	#Fixed to work for GT2 and workaround NA issues
 
-   	PS0_RoutingChannel 	=	(.isGT3 > 0) ? (1 - .PS2_RoutingChannel) : 0	
+   	PS0_RoutingChannel 	=(.isGT3 > 0) ? (1 - PS2_RoutingChannel) : 0
 	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
 	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .CrClk * numSlices	
 	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
@@ -31,4 +31,4 @@
 	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .CrClk * numSlices	
 	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
 	PS2_RoutingChannel	=	(.isGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0
-PS0_RoutingChannel 	=	1 - PS2_RoutingChannel
+        PS0_RoutingChannel 	=1 - PS2_RoutingChannel
