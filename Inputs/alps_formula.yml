@@ -294,9 +294,9 @@ L3_Bank:
     PS1_L3_Bank_SMALL: R * C
     PS2_L3_Bank_SMALL: R * C
    CLKGLUE:
-    PS0_L3_Bank_NONCLKGLUE: R * C
-    PS1_L3_Bank_NONCLKGLUE: R * C
-    PS2_L3_Bank_NONCLKGLUE: R * C
+    PS0_L3_Bank_CLKGLUE: R * C
+    PS1_L3_Bank_CLKGLUE: R * C
+    PS2_L3_Bank_CLKGLUE: R * C
    NONCLKGLUE:
     PS0_L3_Bank_NONCLKGLUE: R * C
     PS1_L3_Bank_NONCLKGLUE: R * C
