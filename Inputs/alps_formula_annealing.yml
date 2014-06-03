@@ -475,11 +475,13 @@ Sampler:
     PS0_SVSM: R * C
     PS1_SVSM: R * C
     PS2_SVSM: R * C
-   Media:
-    PS0_Media: R * C
-    PS1_Media: R * C
-    PS2_Media: R * C
-
+   MEDIASMP:
+    PS0_MEDIASMP: R * C
+    PS1_MEDIASMP: R * C
+    PS2_MEDIASMP: R * C
+   DOP:
+    PS0_MEDIASMP_DOP: R * C
+    PS2_MEDIASMP_DOP: R * C
 FL_Toggle_Rate : R
 PL_Toggle_Rate : R
 
@@ -763,7 +765,7 @@ ROSC:
     PS2_SARB: R * C 
    DOP:
     PS0_ROSC_DOP: R * C 
-    PS2_ROSC_DOP: R * C 
+    PS2_ROSC_DOP: R * C
    GLUE:
     PS0_ROSC_GLUE: R * C 
     PS2_ROSC_GLUE: R * C 
@@ -941,8 +943,8 @@ FF:
     PS1_FF_GLUE: R * C
     PS2_FF_GLUE: R * C
    DOP:
-    PS0_FF_DOP: R * C
-    PS2_FF_DOP: R * C
+    PS2_FF_3D_DOP: R * C
+    PS2_FF_OTHER_DOP: R * C
    DFX:
     PS0_FF_DFX: R * C
     PS0_FF_DFX: R * C
