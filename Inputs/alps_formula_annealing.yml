@@ -949,7 +949,10 @@ FF:
 Other:
    RoutingChannel:
     PS0_RoutingChannel: R * C
+    PS2_RoutingChannel: R * C
    ClockSpine:
-    PS2_ClockSpine: R * C
+    PS2_ClockSpine:
+     PS2_ClockSpine_Slice: R * C
+     PS2_ClockSpine_UnSlice: R * C
    Media_Idle:
     PS0_Media_Idle: R * C
