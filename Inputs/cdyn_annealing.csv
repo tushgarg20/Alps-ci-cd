@@ -1309,7 +1309,7 @@ PS2_MA_OUT,Gen8,A0,0.9,syn,75812,,MA_OUT,ROSS,
 PS0_Media,Gen8,B0,8.03,syn,3343545,,Media,Sampler,
 PS1_Media,Gen8,B0,0,syn,3343545,,Media,Sampler,
 PS2_Media,Gen8,B0,0,syn,3343545,,Media,Sampler,
-PS0_Media_Idle,Gen8,A0,82.95,syn,9317224,,Media_Idle,Other,added 26nf for the clks from nevins idle ss
+PS0_Media_Idle,Gen8,A0,82.95,syn,5370000,,Media_Idle,Other,added 26nf for the clks from nevins idle ss
 PS0_MSC,Gen8,A0,0.41,syn,375000,,MSC,COLOR,
 PS1_MSC,Gen8,A0,9.42,syn,375000,,MSC,COLOR,
 PS2_MSC,Gen8,A0,22.41,syn,375000,,MSC,COLOR,

@@ -71,10 +71,10 @@
 	PS0_IZ	=	(D(SUM('@ANY_IZ@pwr_Idle.CrClock'))/.Clk.num_Z_IZ) - .Z_DOP	
 	PS0_IZ_DOP	=	.Z_DOP	
 	PS1_IZ	=	1 - (PS0_IZ + PS0_IZ_DOP + PS2_IZ_CMP + PS2_IZ_NORMAL_DEPTHEN_PASS + PS2_IZ_NORMAL_DEPTHEN_FAIL + PS2_IZ_NORMAL_DEPTHDIS + PS2_IZ_ZMARKERS)	
-	PS2_IZ_CMP	=	0	#Placeholders for new gSim stats
-	PS2_IZ_NORMAL_DEPTHEN_PASS	=	0	#Placeholders for new gSim stats
-	PS2_IZ_NORMAL_DEPTHEN_FAIL	=	0	#Placeholders for new gSim stats
-	PS2_IZ_NORMAL_DEPTHDIS	=	0	#Placeholders for new gSim stats
+	PS2_IZ_CMP	=	D(SUM('@ANY_IZ@pwr_IzSpans\.CrClock.*Compressed.*'))/.Clk.num_Z_IZ
+	PS2_IZ_NORMAL_DEPTHEN_PASS	=	D(SUM('@ANY_IZ@pwr_IzSpans\.CrClock.*Uncompressed\.Accept\.DepthPresent'))/.Clk.num_Z_IZ
+	PS2_IZ_NORMAL_DEPTHEN_FAIL	=	D(SUM('@ANY_IZ@pwr_IzSpans\.CrClock.*Uncompressed\.(Fail|Deferred)\.DepthPresent'))/.Clk.num_Z_IZ
+	PS2_IZ_NORMAL_DEPTHDIS	=	D(SUM('@ANY_IZ@pwr_IzSpans\.CrClock.*Uncompressed.*DepthNotPresent'))/.Clk.num_Z_IZ
 	PS2_IZ_ZMARKERS	=	D(SUM('@ANY_IZ@pwr_IzMarkers.CrClock'))/.Clk.num_Z_IZ	
 				
 #IZ - Latency FIFO				
