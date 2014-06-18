@@ -1064,896 +1064,896 @@ PS0_FF_TEGSSOL_DOP,Gen9LPSoC,A0,3.035438298,syn,1,Taken from SKL FSO ECO3 rev1 C
 PS0_FF_OTHER_DOP,Gen9LPSoC,A0,3.800765425,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data 42% is 1x clk
 PS2_FF_TEGSSOL_DOP,Gen9LPSoC,A0,6.839653086,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data 42% is 1x clk
 PS2_FF_OTHER_DOP,Gen9LPSoC,A0,10.71371745,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data 42% is 1x clk
-PS0_EM,Gen9LPClient,A0,0.083258681,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGEN data
-PS1_EM,Gen9LPClient,A0,10.65711002,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGDIS data
-EM_add_floatbypass_10%,Gen9LPClient,A0,17.53862639,syn,331124.9,Approximated with sim data
-EM_add_floatbypass_20%,Gen9LPClient,A0,20.03323764,syn,331124.9,Approximated with sim data
-EM_add_floatbypass_30%,Gen9LPClient,A0,21.01792324,syn,331124.9,Simulated
-EM_add_floatbypass_40%,Gen9LPClient,A0,21.98865641,syn,331124.9,Approximated with sim data
-EM_add_floatbypass_55%,Gen9LPClient,A0,23.38938791,syn,331124.9,Approximated with sim data
-EM_add_fp16_10%,Gen9LPClient,A0,32.94993007,syn,331124.9,
-EM_add_fp16_20%,Gen9LPClient,A0,33.20300158,syn,331124.9,
-EM_add_fp16_30%,Gen9LPClient,A0,36.21804311,syn,331124.9,
-EM_add_fp16_40%,Gen9LPClient,A0,39.33952892,syn,331124.9,
-EM_add_fp16_55%,Gen9LPClient,A0,40.14866772,syn,331124.9,
-EM_add_fp32_10%,Gen9LPClient,A0,32.15479443,syn,331124.9,
-EM_add_fp32_20%,Gen9LPClient,A0,36.72834648,syn,331124.9,
-EM_add_fp32_30%,Gen9LPClient,A0,38.53363722,syn,331124.9,
-EM_add_fp32_40%,Gen9LPClient,A0,40.31335699,syn,331124.9,
-EM_add_fp32_55%,Gen9LPClient,A0,42.88141377,syn,331124.9,
-EM_add_fp64_10%,Gen9LPClient,A0,25.88797687,syn,331124.9,
-EM_add_fp64_20%,Gen9LPClient,A0,27.53740641,syn,331124.9,
-EM_add_fp64_30%,Gen9LPClient,A0,30.69207361,syn,331124.9,
-EM_add_fp64_40%,Gen9LPClient,A0,32.72242955,syn,331124.9,
-EM_add_fp64_55%,Gen9LPClient,A0,35.58018927,syn,331124.9,
-EM_add_int16_10%,Gen9LPClient,A0,18.89593796,syn,331124.9,
-EM_add_int16_20%,Gen9LPClient,A0,24.15107834,syn,331124.9,
-EM_add_int16_30%,Gen9LPClient,A0,25.8081183,syn,331124.9,
-EM_add_int16_40%,Gen9LPClient,A0,29.74615037,syn,331124.9,
-EM_add_int16_55%,Gen9LPClient,A0,36.69029443,syn,331124.9,
-EM_add_int32_10%,Gen9LPClient,A0,19.16930389,syn,331124.9,
-EM_add_int32_20%,Gen9LPClient,A0,23.71718349,syn,331124.9,
-EM_add_int32_30%,Gen9LPClient,A0,27.09478496,syn,331124.9,
-EM_add_int32_40%,Gen9LPClient,A0,31.85585752,syn,331124.9,
-EM_add_int32_55%,Gen9LPClient,A0,40.16683123,syn,331124.9,
-EM_add_intbypass_10%,Gen9LPClient,A0,10.45576993,syn,331124.9,Approximated with sim data
-EM_add_intbypass_20%,Gen9LPClient,A0,12.93638817,syn,331124.9,Approximated with sim data
-EM_add_intbypass_30%,Gen9LPClient,A0,14.77867566,syn,331124.9,Approximated with sim data
-EM_add_intbypass_40%,Gen9LPClient,A0,17.37557082,syn,331124.9,Approximated with sim data
-EM_add_intbypass_55%,Gen9LPClient,A0,21.90873696,syn,331124.9,Approximated with sim data
-EM_add_int64_10%,Gen9LPClient,A0,20.01050789,syn,331124.9,
-EM_add_int64_20%,Gen9LPClient,A0,23.44026604,syn,331124.9,
-EM_add_int64_30%,Gen9LPClient,A0,26.71020557,syn,331124.9,
-EM_add_int64_40%,Gen9LPClient,A0,30.1495021,syn,331124.9,
-EM_add_int64_55%,Gen9LPClient,A0,35.31402787,syn,331124.9,
-EM_cmp_floatbypass_10%,Gen9LPClient,A0,2.616422461,syn,331124.9,Approximated with sim data
-EM_cmp_floatbypass_20%,Gen9LPClient,A0,3.346537808,syn,331124.9,Approximated with sim data
-EM_cmp_floatbypass_30%,Gen9LPClient,A0,5.507095689,syn,331124.9,Simulated
-EM_cmp_floatbypass_40%,Gen9LPClient,A0,4.449817944,syn,331124.9,Approximated with sim data
-EM_cmp_floatbypass_55%,Gen9LPClient,A0,5.238779012,syn,331124.9,Approximated with sim data
-EM_cmp_fp16_10%,Gen9LPClient,A0,21.02472187,syn,331124.9,
-EM_cmp_fp16_20%,Gen9LPClient,A0,27.03775762,syn,331124.9,
-EM_cmp_fp16_30%,Gen9LPClient,A0,21.85750368,syn,331124.9,
-EM_cmp_fp16_40%,Gen9LPClient,A0,27.32573554,syn,331124.9,
-EM_cmp_fp16_55%,Gen9LPClient,A0,27.48230705,syn,331124.9,
-EM_cmp_fp32_10%,Gen9LPClient,A0,13.06605941,syn,331124.9,
-EM_cmp_fp32_20%,Gen9LPClient,A0,16.71215615,syn,331124.9,
-EM_cmp_fp32_30%,Gen9LPClient,A0,27.50168822,syn,331124.9,
-EM_cmp_fp32_40%,Gen9LPClient,A0,22.22178864,syn,331124.9,
-EM_cmp_fp32_55%,Gen9LPClient,A0,26.16174869,syn,331124.9,
-EM_cmp_fp64_10%,Gen9LPClient,A0,23.94823554,syn,331124.9,
-EM_cmp_fp64_20%,Gen9LPClient,A0,27.61462671,syn,331124.9,
-EM_cmp_fp64_30%,Gen9LPClient,A0,29.15893113,syn,331124.9,
-EM_cmp_fp64_40%,Gen9LPClient,A0,35.315347,syn,331124.9,
-EM_cmp_fp64_55%,Gen9LPClient,A0,36.70551525,syn,331124.9,
-EM_cmp_int16_10%,Gen9LPClient,A0,16.74990379,syn,331124.9,
-EM_cmp_int16_20%,Gen9LPClient,A0,23.0642103,syn,331124.9,
-EM_cmp_int16_30%,Gen9LPClient,A0,25.98782545,syn,331124.9,
-EM_cmp_int16_40%,Gen9LPClient,A0,19.7373449,syn,331124.9,
-EM_cmp_int16_55%,Gen9LPClient,A0,39.24333333,syn,331124.9,
-EM_cmp_int32_10%,Gen9LPClient,A0,13.18244795,syn,331124.9,
-EM_cmp_int32_20%,Gen9LPClient,A0,20.05748948,syn,331124.9,
-EM_cmp_int32_30%,Gen9LPClient,A0,23.99085384,syn,331124.9,
-EM_cmp_int32_40%,Gen9LPClient,A0,23.87334911,syn,331124.9,
-EM_cmp_int32_55%,Gen9LPClient,A0,22.49261777,syn,331124.9,
-EM_cmp_intbypass_10%,Gen9LPClient,A0,2.63972858,syn,331124.9,Approximated with sim data
-EM_cmp_intbypass_20%,Gen9LPClient,A0,4.016426399,syn,331124.9,Approximated with sim data
-EM_cmp_intbypass_30%,Gen9LPClient,A0,4.804066299,syn,331124.9,Approximated with sim data
-EM_cmp_intbypass_40%,Gen9LPClient,A0,4.780535925,syn,331124.9,Approximated with sim data
-EM_cmp_intbypass_55%,Gen9LPClient,A0,4.504050741,syn,331124.9,Approximated with sim data
-EM_cmp_int64_10%,Gen9LPClient,A0,18.20876866,syn,331124.9,
-EM_cmp_int64_20%,Gen9LPClient,A0,21.08377865,syn,331124.9,
-EM_cmp_int64_30%,Gen9LPClient,A0,23.39024027,syn,331124.9,
-EM_cmp_int64_40%,Gen9LPClient,A0,26.27509306,syn,331124.9,
-EM_cmp_int64_55%,Gen9LPClient,A0,31.29451367,syn,331124.9,
-EM_mad_floatbypass_10%,Gen9LPClient,A0,19.72790799,syn,331124.9,Approximated with sim data
-EM_mad_floatbypass_20%,Gen9LPClient,A0,22.46039022,syn,331124.9,Approximated with sim data
-EM_mad_floatbypass_30%,Gen9LPClient,A0,24.67325394,syn,331124.9,Simulated
-EM_mad_floatbypass_40%,Gen9LPClient,A0,27.56877145,syn,331124.9,Approximated with sim data
-EM_mad_floatbypass_55%,Gen9LPClient,A0,29.68055878,syn,331124.9,Approximated with sim data
-EM_mad_fp16_10%,Gen9LPClient,A0,38.78285279,syn,331124.9,
-EM_mad_fp16_20%,Gen9LPClient,A0,44.2385021,syn,331124.9,
-EM_mad_fp16_30%,Gen9LPClient,A0,45.53866456,syn,331124.9,
-EM_mad_fp16_40%,Gen9LPClient,A0,51.00304048,syn,331124.9,
-EM_mad_fp16_55%,Gen9LPClient,A0,55.32534753,syn,331124.9,
-EM_mad_fp32_10%,Gen9LPClient,A0,36.00185274,syn,331124.9,
-EM_mad_fp32_20%,Gen9LPClient,A0,43.7751613,syn,331124.9,
-EM_mad_fp32_30%,Gen9LPClient,A0,51.54846987,syn,331124.9,
-EM_mad_fp32_40%,Gen9LPClient,A0,59.32177844,syn,331124.9,
-EM_mad_fp32_55%,Gen9LPClient,A0,70.98174129,syn,331124.9,
-EM_mad_fp64_10%,Gen9LPClient,A0,51.36671661,syn,331124.9,
-EM_mad_fp64_20%,Gen9LPClient,A0,59.0022918,syn,331124.9,
-EM_mad_fp64_30%,Gen9LPClient,A0,64.03145373,syn,331124.9,
-EM_mad_fp64_40%,Gen9LPClient,A0,67.76380179,syn,331124.9,
-EM_mad_fp64_55%,Gen9LPClient,A0,73.4841919,syn,331124.9,
-EM_mad_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mad_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sad_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_floatbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_floatbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_floatbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_floatbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_floatbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mac_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_mov_bypass_10%,Gen9LPClient,A0,10.71789274,syn,331124.9,
-EM_mov_bypass_20%,Gen9LPClient,A0,13.00172608,syn,331124.9,
-EM_mov_bypass_30%,Gen9LPClient,A0,14.10594585,syn,331124.9,
-EM_mov_bypass_40%,Gen9LPClient,A0,15.83097213,syn,331124.9,
-EM_mov_bypass_55%,Gen9LPClient,A0,18.15610463,syn,331124.9,
-EM_mov_fp16_10%,Gen9LPClient,A0,10.71789274,syn,331124.9,
-EM_mov_fp16_20%,Gen9LPClient,A0,13.00172608,syn,331124.9,
-EM_mov_fp16_30%,Gen9LPClient,A0,14.10594585,syn,331124.9,
-EM_mov_fp16_40%,Gen9LPClient,A0,15.83097213,syn,331124.9,
-EM_mov_fp16_55%,Gen9LPClient,A0,18.15610463,syn,331124.9,
-EM_mov_fp32_10%,Gen9LPClient,A0,9.966694532,syn,331124.9,
-EM_mov_fp32_20%,Gen9LPClient,A0,11.57269401,syn,331124.9,
-EM_mov_fp32_30%,Gen9LPClient,A0,13.10482177,syn,331124.9,
-EM_mov_fp32_40%,Gen9LPClient,A0,15.39200368,syn,331124.9,
-EM_mov_fp32_55%,Gen9LPClient,A0,18.82166036,syn,331124.9,
-EM_mov_fp64_10%,Gen9LPClient,A0,15.41737171,syn,331124.9,
-EM_mov_fp64_20%,Gen9LPClient,A0,17.27583386,syn,331124.9,
-EM_mov_fp64_30%,Gen9LPClient,A0,19.30842219,syn,331124.9,
-EM_mov_fp64_40%,Gen9LPClient,A0,21.85344479,syn,331124.9,
-EM_mov_fp64_55%,Gen9LPClient,A0,25.7840694,syn,331124.9,
-EM_mov_int16_10%,Gen9LPClient,A0,10.07050053,syn,331124.9,
-EM_mov_int16_20%,Gen9LPClient,A0,12.39685068,syn,331124.9,
-EM_mov_int16_30%,Gen9LPClient,A0,13.43257676,syn,331124.9,
-EM_mov_int16_40%,Gen9LPClient,A0,16.00002471,syn,331124.9,
-EM_mov_int16_55%,Gen9LPClient,A0,20.68692114,syn,331124.9,
-EM_mov_int32_10%,Gen9LPClient,A0,10.06116509,syn,331124.9,
-EM_mov_int32_20%,Gen9LPClient,A0,11.93545689,syn,331124.9,
-EM_mov_int32_30%,Gen9LPClient,A0,13.37433176,syn,331124.9,
-EM_mov_int32_40%,Gen9LPClient,A0,15.99048633,syn,331124.9,
-EM_mov_int32_55%,Gen9LPClient,A0,20.72568349,syn,331124.9,
-EM_mov_intbypass_10%,Gen9LPClient,A0,10.06116509,syn,331124.9,
-EM_mov_intbypass_20%,Gen9LPClient,A0,11.93545689,syn,331124.9,
-EM_mov_intbypass_30%,Gen9LPClient,A0,13.37433176,syn,331124.9,
-EM_mov_intbypass_40%,Gen9LPClient,A0,15.99048633,syn,331124.9,
-EM_mov_intbypass_55%,Gen9LPClient,A0,20.72568349,syn,331124.9,
-EM_mov_int64_10%,Gen9LPClient,A0,15.57323291,syn,331124.9,
-EM_mov_int64_20%,Gen9LPClient,A0,17.43676866,syn,331124.9,
-EM_mov_int64_30%,Gen9LPClient,A0,19.32232387,syn,331124.9,
-EM_mov_int64_40%,Gen9LPClient,A0,22.65487171,syn,331124.9,
-EM_mov_int64_55%,Gen9LPClient,A0,27.24354311,syn,331124.9,
-EM_mul_floatbypass_10%,Gen9LPClient,A0,7.941636451,syn,331124.9,Approximated with sim data
-EM_mul_floatbypass_20%,Gen9LPClient,A0,8.870675741,syn,331124.9,Approximated with sim data
-EM_mul_floatbypass_30%,Gen9LPClient,A0,9.859337014,syn,331124.9,Simulated
-EM_mul_floatbypass_40%,Gen9LPClient,A0,10.93433281,syn,331124.9,Approximated with sim data
-EM_mul_floatbypass_55%,Gen9LPClient,A0,11.79910878,syn,331124.9,Approximated with sim data
-EM_mul_fp16_10%,Gen9LPClient,A0,28.05075394,syn,331124.9,
-EM_mul_fp16_20%,Gen9LPClient,A0,34.516051,syn,331124.9,
-EM_mul_fp16_30%,Gen9LPClient,A0,35.82940484,syn,331124.9,
-EM_mul_fp16_40%,Gen9LPClient,A0,39.58123554,syn,331124.9,
-EM_mul_fp16_55%,Gen9LPClient,A0,41.88069558,syn,331124.9,
-EM_mul_fp32_10%,Gen9LPClient,A0,39.21025342,syn,331124.9,
-EM_mul_fp32_20%,Gen9LPClient,A0,43.79719979,syn,331124.9,
-EM_mul_fp32_30%,Gen9LPClient,A0,48.67851682,syn,331124.9,
-EM_mul_fp32_40%,Gen9LPClient,A0,53.9861183,syn,331124.9,
-EM_mul_fp32_55%,Gen9LPClient,A0,58.2557613,syn,331124.9,
-EM_mul_fp64_10%,Gen9LPClient,A0,46.29300841,syn,331124.9,
-EM_mul_fp64_20%,Gen9LPClient,A0,52.63633596,syn,331124.9,
-EM_mul_fp64_30%,Gen9LPClient,A0,57.47016404,syn,331124.9,
-EM_mul_fp64_40%,Gen9LPClient,A0,61.78638275,syn,331124.9,
-EM_mul_fp64_55%,Gen9LPClient,A0,66.44314196,syn,331124.9,
-EM_mul_int16_10%,Gen9LPClient,A0,32.56910515,syn,331124.9,
-EM_mul_int16_20%,Gen9LPClient,A0,38.62699159,syn,331124.9,
-EM_mul_int16_30%,Gen9LPClient,A0,40.94836961,syn,331124.9,
-EM_mul_int16_40%,Gen9LPClient,A0,45.61070978,syn,331124.9,
-EM_mul_int16_55%,Gen9LPClient,A0,52.33861672,syn,331124.9,
-EM_mul_int32_10%,Gen9LPClient,A0,51.82395005,syn,331124.9,
-EM_mul_int32_20%,Gen9LPClient,A0,57.78320557,syn,331124.9,
-EM_mul_int32_30%,Gen9LPClient,A0,61.55959253,syn,331124.9,
-EM_mul_int32_40%,Gen9LPClient,A0,66.9320347,syn,331124.9,
-EM_mul_int32_55%,Gen9LPClient,A0,71.7836204,syn,331124.9,
-EM_mul_intbypass_10%,Gen9LPClient,A0,10.49640952,syn,331124.9,Approximated with sim data
-EM_mul_intbypass_20%,Gen9LPClient,A0,11.70340026,syn,331124.9,Approximated with sim data
-EM_mul_intbypass_30%,Gen9LPClient,A0,12.46826677,syn,331124.9,Approximated with sim data
-EM_mul_intbypass_40%,Gen9LPClient,A0,13.55640321,syn,331124.9,Approximated with sim data
-EM_mul_intbypass_55%,Gen9LPClient,A0,14.53903906,syn,331124.9,Approximated with sim data
-EM_mul_int64_10%,Gen9LPClient,A0,51.82395005,syn,331124.9,Approximated with int32
-EM_mul_int64_20%,Gen9LPClient,A0,57.78320557,syn,331124.9,Approximated with int32
-EM_mul_int64_30%,Gen9LPClient,A0,61.55959253,syn,331124.9,Approximated with int32
-EM_mul_int64_40%,Gen9LPClient,A0,66.9320347,syn,331124.9,Approximated with int32
-EM_mul_int64_55%,Gen9LPClient,A0,71.7836204,syn,331124.9,Approximated with int32
-EM_pln_floatbypass_10%,Gen9LPClient,A0,45.22328917,syn,331124.9,No bypass in PLN
-EM_pln_floatbypass_20%,Gen9LPClient,A0,51.48016246,syn,331124.9,No bypass in PLN
-EM_pln_floatbypass_30%,Gen9LPClient,A0,52.62070925,syn,331124.9,No bypass in PLN
-EM_pln_floatbypass_40%,Gen9LPClient,A0,57.93399317,syn,331124.9,No bypass in PLN
-EM_pln_floatbypass_55%,Gen9LPClient,A0,62.65975342,syn,331124.9,No bypass in PLN
-EM_pln_fp16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp32_10%,Gen9LPClient,A0,45.22328917,syn,331124.9,
-EM_pln_fp32_20%,Gen9LPClient,A0,51.48016246,syn,331124.9,
-EM_pln_fp32_30%,Gen9LPClient,A0,52.62070925,syn,331124.9,
-EM_pln_fp32_40%,Gen9LPClient,A0,57.93399317,syn,331124.9,
-EM_pln_fp32_55%,Gen9LPClient,A0,62.65975342,syn,331124.9,
-EM_pln_fp64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_fp64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_pln_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_sel_bypass_10%,Gen9LPClient,A0,17.06751157,syn,331124.9,No bypass in SEL
-EM_sel_bypass_20%,Gen9LPClient,A0,21.47566404,syn,331124.9,No bypass in SEL
-EM_sel_bypass_30%,Gen9LPClient,A0,26.58397424,syn,331124.9,No bypass in SEL
-EM_sel_bypass_40%,Gen9LPClient,A0,31.29289012,syn,331124.9,No bypass in SEL
-EM_sel_bypass_55%,Gen9LPClient,A0,38.88818086,syn,331124.9,No bypass in SEL
-EM_sel_fp16_10%,Gen9LPClient,A0,19.42075184,syn,331124.9,
-EM_sel_fp16_20%,Gen9LPClient,A0,26.76611672,syn,331124.9,
-EM_sel_fp16_30%,Gen9LPClient,A0,28.53152892,syn,331124.9,
-EM_sel_fp16_40%,Gen9LPClient,A0,32.02491009,syn,331124.9,
-EM_sel_fp16_55%,Gen9LPClient,A0,36.18364406,syn,331124.9,
-EM_sel_fp32_10%,Gen9LPClient,A0,17.06751157,syn,331124.9,
-EM_sel_fp32_20%,Gen9LPClient,A0,21.47566404,syn,331124.9,
-EM_sel_fp32_30%,Gen9LPClient,A0,26.58397424,syn,331124.9,
-EM_sel_fp32_40%,Gen9LPClient,A0,31.29289012,syn,331124.9,
-EM_sel_fp32_55%,Gen9LPClient,A0,38.88818086,syn,331124.9,
-EM_sel_fp64_10%,Gen9LPClient,A0,21.812653,syn,331124.9,
-EM_sel_fp64_20%,Gen9LPClient,A0,24.80141325,syn,331124.9,
-EM_sel_fp64_30%,Gen9LPClient,A0,28.83959832,syn,331124.9,
-EM_sel_fp64_40%,Gen9LPClient,A0,33.33176972,syn,331124.9,
-EM_sel_fp64_55%,Gen9LPClient,A0,38.54419033,syn,331124.9,
-EM_sel_int16_10%,Gen9LPClient,A0,15.3558796,syn,331124.9,
-EM_sel_int16_20%,Gen9LPClient,A0,20.93096162,syn,331124.9,
-EM_sel_int16_30%,Gen9LPClient,A0,23.44280284,syn,331124.9,
-EM_sel_int16_40%,Gen9LPClient,A0,29.14127497,syn,331124.9,
-EM_sel_int16_55%,Gen9LPClient,A0,39.76794427,syn,331124.9,
-EM_sel_int32_10%,Gen9LPClient,A0,16.38369085,syn,331124.9,
-EM_sel_int32_20%,Gen9LPClient,A0,20.91198633,syn,331124.9,
-EM_sel_int32_30%,Gen9LPClient,A0,24.74773449,syn,331124.9,
-EM_sel_int32_40%,Gen9LPClient,A0,31.46549422,syn,331124.9,
-EM_sel_int32_55%,Gen9LPClient,A0,42.68222397,syn,331124.9,
-EM_sel_intbypass_10%,Gen9LPClient,A0,16.38369085,syn,331124.9,No bypass in SEL
-EM_sel_intbypass_20%,Gen9LPClient,A0,20.91198633,syn,331124.9,No bypass in SEL
-EM_sel_intbypass_30%,Gen9LPClient,A0,24.74773449,syn,331124.9,No bypass in SEL
-EM_sel_intbypass_40%,Gen9LPClient,A0,31.46549422,syn,331124.9,No bypass in SEL
-EM_sel_intbypass_55%,Gen9LPClient,A0,42.68222397,syn,331124.9,No bypass in SEL
-EM_sel_int64_10%,Gen9LPClient,A0,18.77680967,syn,331124.9,
-EM_sel_int64_20%,Gen9LPClient,A0,22.05851998,syn,331124.9,
-EM_sel_int64_30%,Gen9LPClient,A0,25.48878549,syn,331124.9,
-EM_sel_int64_40%,Gen9LPClient,A0,30.88416036,syn,331124.9,
-EM_sel_int64_55%,Gen9LPClient,A0,38.03814879,syn,331124.9,
-EM_transc_bypass_10%,Gen9LPClient,A0,24.96154755,syn,331124.9,No bypass in TRANSC
-EM_transc_bypass_20%,Gen9LPClient,A0,27.41597471,syn,331124.9,No bypass in TRANSC
-EM_transc_bypass_30%,Gen9LPClient,A0,29.26501009,syn,331124.9,No bypass in TRANSC
-EM_transc_bypass_40%,Gen9LPClient,A0,30.81134395,syn,331124.9,No bypass in TRANSC
-EM_transc_bypass_55%,Gen9LPClient,A0,32.39479632,syn,331124.9,No bypass in TRANSC
-EM_transc_fp16_10%,Gen9LPClient,A0,21.71943055,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_20%,Gen9LPClient,A0,22.39632072,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_30%,Gen9LPClient,A0,22.92593423,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_40%,Gen9LPClient,A0,23.08186646,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_55%,Gen9LPClient,A0,22.48367808,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_10%,Gen9LPClient,A0,24.96154755,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_20%,Gen9LPClient,A0,27.41597471,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_30%,Gen9LPClient,A0,29.26501009,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_40%,Gen9LPClient,A0,30.81134395,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_55%,Gen9LPClient,A0,32.39479632,syn,331124.9,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp64_10%,Gen9LPClient,A0,24.96154755,syn,331124.9,Approximated with fp32 data
-EM_transc_fp64_20%,Gen9LPClient,A0,27.41597471,syn,331124.9,Approximated with fp32 data
-EM_transc_fp64_30%,Gen9LPClient,A0,29.26501009,syn,331124.9,Approximated with fp32 data
-EM_transc_fp64_40%,Gen9LPClient,A0,30.81134395,syn,331124.9,Approximated with fp32 data
-EM_transc_fp64_55%,Gen9LPClient,A0,32.39479632,syn,331124.9,Approximated with fp32 data
-EM_transc_int16_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int16_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int16_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int16_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int16_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int32_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int32_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int32_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int32_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int32_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_intbypass_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_intbypass_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_intbypass_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_intbypass_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_intbypass_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int64_10%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int64_20%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int64_30%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int64_40%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-EM_transc_int64_55%,Gen9LPClient,A0,0,syn,331124.9,Unsupported combination
-PS0_FPU,Gen9LPClient,A0,0.083258681,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGEN data
-PS1_FPU,Gen9LPClient,A0,10.65711002,syn,331124.9,Taken from SKL FSO ECO3 rev1 CGDIS data
-FPU_add_floatbypass_10%,Gen9LPClient,A0,15.82998785,syn,369589.7,Approximated with sim data
-FPU_add_floatbypass_20%,Gen9LPClient,A0,18.35360999,syn,369589.7,Approximated with sim data
-FPU_add_floatbypass_30%,Gen9LPClient,A0,18.94271661,syn,369589.7,Simulated
-FPU_add_floatbypass_40%,Gen9LPClient,A0,20.06482592,syn,369589.7,Approximated with sim data
-FPU_add_floatbypass_55%,Gen9LPClient,A0,20.71925016,syn,369589.7,Approximated with sim data
-FPU_add_fp16_10%,Gen9LPClient,A0,32.42156467,syn,369589.7,
-FPU_add_fp16_20%,Gen9LPClient,A0,31.67361356,syn,369589.7,
-FPU_add_fp16_30%,Gen9LPClient,A0,34.9045878,syn,369589.7,
-FPU_add_fp16_40%,Gen9LPClient,A0,39.01958728,syn,369589.7,
-FPU_add_fp16_55%,Gen9LPClient,A0,38.00973659,syn,369589.7,
-FPU_add_fp32_10%,Gen9LPClient,A0,29.85411672,syn,369589.7,
-FPU_add_fp32_20%,Gen9LPClient,A0,34.61346425,syn,369589.7,
-FPU_add_fp32_30%,Gen9LPClient,A0,35.72448265,syn,369589.7,
-FPU_add_fp32_40%,Gen9LPClient,A0,37.84068402,syn,369589.7,
-FPU_add_fp32_55%,Gen9LPClient,A0,39.07488959,syn,369589.7,
-FPU_add_fp64_10%,Gen9LPClient,A0,25.69091798,syn,369589.7,
-FPU_add_fp64_20%,Gen9LPClient,A0,27.68038065,syn,369589.7,
-FPU_add_fp64_30%,Gen9LPClient,A0,31.520898,syn,369589.7,
-FPU_add_fp64_40%,Gen9LPClient,A0,33.09980442,syn,369589.7,
-FPU_add_fp64_55%,Gen9LPClient,A0,35.64371083,syn,369589.7,
-FPU_add_int16_10%,Gen9LPClient,A0,20.04805258,syn,369589.7,
-FPU_add_int16_20%,Gen9LPClient,A0,25.23338013,syn,369589.7,
-FPU_add_int16_30%,Gen9LPClient,A0,27.18134069,syn,369589.7,
-FPU_add_int16_40%,Gen9LPClient,A0,31.36767508,syn,369589.7,
-FPU_add_int16_55%,Gen9LPClient,A0,38.49457045,syn,369589.7,
-FPU_add_int32_10%,Gen9LPClient,A0,20.12019926,syn,369589.7,
-FPU_add_int32_20%,Gen9LPClient,A0,24.57492744,syn,369589.7,
-FPU_add_int32_30%,Gen9LPClient,A0,28.26069979,syn,369589.7,
-FPU_add_int32_40%,Gen9LPClient,A0,33.43679338,syn,369589.7,
-FPU_add_int32_55%,Gen9LPClient,A0,42.1927224,syn,369589.7,
-FPU_add_intbypass_10%,Gen9LPClient,A0,10.66862802,syn,369589.7,Approximated with sim data
-FPU_add_intbypass_20%,Gen9LPClient,A0,13.03072681,syn,369589.7,Approximated with sim data
-FPU_add_intbypass_30%,Gen9LPClient,A0,14.98509027,syn,369589.7,Approximated with sim data
-FPU_add_intbypass_40%,Gen9LPClient,A0,17.72967813,syn,369589.7,Approximated with sim data
-FPU_add_intbypass_55%,Gen9LPClient,A0,22.37246462,syn,369589.7,Approximated with sim data
-FPU_add_int64_10%,Gen9LPClient,A0,19.94191272,syn,369589.7,
-FPU_add_int64_20%,Gen9LPClient,A0,22.94416877,syn,369589.7,
-FPU_add_int64_30%,Gen9LPClient,A0,25.95860147,syn,369589.7,
-FPU_add_int64_40%,Gen9LPClient,A0,29.2802918,syn,369589.7,
-FPU_add_int64_55%,Gen9LPClient,A0,34.57947108,syn,369589.7,
-FPU_cmp_floatbypass_10%,Gen9LPClient,A0,8.964568922,syn,369589.7,Approximated with sim data
-FPU_cmp_floatbypass_20%,Gen9LPClient,A0,11.89424905,syn,369589.7,Approximated with sim data
-FPU_cmp_floatbypass_30%,Gen9LPClient,A0,16.57100841,syn,369589.7,Simulated
-FPU_cmp_floatbypass_40%,Gen9LPClient,A0,14.58262135,syn,369589.7,Approximated with sim data
-FPU_cmp_floatbypass_55%,Gen9LPClient,A0,13.87212361,syn,369589.7,Approximated with sim data
-FPU_cmp_fp16_10%,Gen9LPClient,A0,20.96576656,syn,369589.7,
-FPU_cmp_fp16_20%,Gen9LPClient,A0,13.1877245,syn,369589.7,
-FPU_cmp_fp16_30%,Gen9LPClient,A0,21.85750368,syn,369589.7,
-FPU_cmp_fp16_40%,Gen9LPClient,A0,26.40406414,syn,369589.7,
-FPU_cmp_fp16_55%,Gen9LPClient,A0,27.48230705,syn,369589.7,
-FPU_cmp_fp32_10%,Gen9LPClient,A0,16.90647529,syn,369589.7,
-FPU_cmp_fp32_20%,Gen9LPClient,A0,22.43163302,syn,369589.7,
-FPU_cmp_fp32_30%,Gen9LPClient,A0,27.50168822,syn,369589.7,
-FPU_cmp_fp32_40%,Gen9LPClient,A0,28.17069401,syn,369589.7,
-FPU_cmp_fp32_55%,Gen9LPClient,A0,26.16174869,syn,369589.7,
-FPU_cmp_fp64_10%,Gen9LPClient,A0,23.5398102,syn,369589.7,
-FPU_cmp_fp64_20%,Gen9LPClient,A0,23.2237245,syn,369589.7,
-FPU_cmp_fp64_30%,Gen9LPClient,A0,29.15893113,syn,369589.7,
-FPU_cmp_fp64_40%,Gen9LPClient,A0,29.38906993,syn,369589.7,
-FPU_cmp_fp64_55%,Gen9LPClient,A0,36.70551525,syn,369589.7,
-FPU_cmp_int16_10%,Gen9LPClient,A0,16.99840904,syn,369589.7,
-FPU_cmp_int16_20%,Gen9LPClient,A0,17.87046057,syn,369589.7,
-FPU_cmp_int16_30%,Gen9LPClient,A0,25.98782545,syn,369589.7,
-FPU_cmp_int16_40%,Gen9LPClient,A0,33.95491009,syn,369589.7,
-FPU_cmp_int16_55%,Gen9LPClient,A0,39.24333333,syn,369589.7,
-FPU_cmp_int32_10%,Gen9LPClient,A0,18.3200836,syn,369589.7,
-FPU_cmp_int32_20%,Gen9LPClient,A0,20.20685647,syn,369589.7,
-FPU_cmp_int32_30%,Gen9LPClient,A0,23.99085384,syn,369589.7,
-FPU_cmp_int32_40%,Gen9LPClient,A0,32.63759884,syn,369589.7,
-FPU_cmp_int32_55%,Gen9LPClient,A0,22.49261777,syn,369589.7,
-FPU_cmp_intbypass_10%,Gen9LPClient,A0,9.71412633,syn,369589.7,Approximated with sim data
-FPU_cmp_intbypass_20%,Gen9LPClient,A0,10.71457461,syn,369589.7,Approximated with sim data
-FPU_cmp_intbypass_30%,Gen9LPClient,A0,12.72102371,syn,369589.7,Approximated with sim data
-FPU_cmp_intbypass_40%,Gen9LPClient,A0,17.3059102,syn,369589.7,Approximated with sim data
-FPU_cmp_intbypass_55%,Gen9LPClient,A0,11.92658822,syn,369589.7,Approximated with sim data
-FPU_cmp_int64_10%,Gen9LPClient,A0,18.18593743,syn,369589.7,
-FPU_cmp_int64_20%,Gen9LPClient,A0,20.96536067,syn,369589.7,
-FPU_cmp_int64_30%,Gen9LPClient,A0,23.39024027,syn,369589.7,
-FPU_cmp_int64_40%,Gen9LPClient,A0,26.56915931,syn,369589.7,
-FPU_cmp_int64_55%,Gen9LPClient,A0,31.29451367,syn,369589.7,
-FPU_mad_floatbypass_10%,Gen9LPClient,A0,18.34183922,syn,369589.7,Approximated with sim data
-FPU_mad_floatbypass_20%,Gen9LPClient,A0,21.08539206,syn,369589.7,Approximated with sim data
-FPU_mad_floatbypass_30%,Gen9LPClient,A0,22.905102,syn,369589.7,Simulated
-FPU_mad_floatbypass_40%,Gen9LPClient,A0,26.92315499,syn,369589.7,Approximated with sim data
-FPU_mad_floatbypass_55%,Gen9LPClient,A0,27.73039627,syn,369589.7,Approximated with sim data
-FPU_mad_fp16_10%,Gen9LPClient,A0,37.48806835,syn,369589.7,
-FPU_mad_fp16_20%,Gen9LPClient,A0,43.28060515,syn,369589.7,
-FPU_mad_fp16_30%,Gen9LPClient,A0,45.14312618,syn,369589.7,
-FPU_mad_fp16_40%,Gen9LPClient,A0,48.53899264,syn,369589.7,
-FPU_mad_fp16_55%,Gen9LPClient,A0,53.5971756,syn,369589.7,
-FPU_mad_fp32_10%,Gen9LPClient,A0,43.83481754,syn,369589.7,
-FPU_mad_fp32_20%,Gen9LPClient,A0,50.19512148,syn,369589.7,
-FPU_mad_fp32_30%,Gen9LPClient,A0,56.55542542,syn,369589.7,
-FPU_mad_fp32_40%,Gen9LPClient,A0,62.91572936,syn,369589.7,
-FPU_mad_fp32_55%,Gen9LPClient,A0,72.45618528,syn,369589.7,
-FPU_mad_fp64_10%,Gen9LPClient,A0,50.97097529,syn,369589.7,
-FPU_mad_fp64_20%,Gen9LPClient,A0,58.75835279,syn,369589.7,
-FPU_mad_fp64_30%,Gen9LPClient,A0,62.29922292,syn,369589.7,
-FPU_mad_fp64_40%,Gen9LPClient,A0,67.3081919,syn,369589.7,
-FPU_mad_fp64_55%,Gen9LPClient,A0,74.54285068,syn,369589.7,
-FPU_mad_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_mad_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sad_int16_10%,Gen9LPClient,A0,25.02049159,syn,369589.7,
-FPU_sad_int16_20%,Gen9LPClient,A0,25.86697213,syn,369589.7,
-FPU_sad_int16_30%,Gen9LPClient,A0,26.19335726,syn,369589.7,
-FPU_sad_int16_40%,Gen9LPClient,A0,25.975801,syn,369589.7,
-FPU_sad_int16_55%,Gen9LPClient,A0,26.18158649,syn,369589.7,
-FPU_sad_int32_10%,Gen9LPClient,A0,25.02049159,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_20%,Gen9LPClient,A0,25.86697213,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_30%,Gen9LPClient,A0,26.19335726,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_40%,Gen9LPClient,A0,25.975801,syn,369589.7,Approximated with int16 data
-FPU_sad_int32_55%,Gen9LPClient,A0,26.18158649,syn,369589.7,Approximated with int16 data
-FPU_sad_intbypass_10%,Gen9LPClient,A0,25.02049159,syn,369589.7,No bypass in SAD
-FPU_sad_intbypass_20%,Gen9LPClient,A0,25.86697213,syn,369589.7,No bypass in SAD
-FPU_sad_intbypass_30%,Gen9LPClient,A0,26.19335726,syn,369589.7,No bypass in SAD
-FPU_sad_intbypass_40%,Gen9LPClient,A0,25.975801,syn,369589.7,No bypass in SAD
-FPU_sad_intbypass_55%,Gen9LPClient,A0,26.18158649,syn,369589.7,No bypass in SAD
-FPU_sad_int64_10%,Gen9LPClient,A0,25.02049159,syn,369589.7,Approximated with int16 data
-FPU_sad_int64_20%,Gen9LPClient,A0,25.86697213,syn,369589.7,Approximated with int16 data
-FPU_sad_int64_30%,Gen9LPClient,A0,26.19335726,syn,369589.7,Approximated with int16 data
-FPU_sad_int64_40%,Gen9LPClient,A0,25.975801,syn,369589.7,Approximated with int16 data
-FPU_sad_int64_55%,Gen9LPClient,A0,26.18158649,syn,369589.7,Approximated with int16 data
-FPU_mac_floatbypass_10%,Gen9LPClient,A0,36.78821504,syn,369589.7,No bypass in MAC
-FPU_mac_floatbypass_20%,Gen9LPClient,A0,39.09660463,syn,369589.7,No bypass in MAC
-FPU_mac_floatbypass_30%,Gen9LPClient,A0,34.63203365,syn,369589.7,No bypass in MAC
-FPU_mac_floatbypass_40%,Gen9LPClient,A0,37.15960305,syn,369589.7,No bypass in MAC
-FPU_mac_floatbypass_55%,Gen9LPClient,A0,38.2351062,syn,369589.7,No bypass in MAC
-FPU_mac_fp16_10%,Gen9LPClient,A0,27.60194269,syn,369589.7,
-FPU_mac_fp16_20%,Gen9LPClient,A0,27.23786067,syn,369589.7,
-FPU_mac_fp16_30%,Gen9LPClient,A0,29.95853155,syn,369589.7,
-FPU_mac_fp16_40%,Gen9LPClient,A0,30.06264196,syn,369589.7,
-FPU_mac_fp16_55%,Gen9LPClient,A0,30.32971661,syn,369589.7,
-FPU_mac_fp32_10%,Gen9LPClient,A0,36.78821504,syn,369589.7,
-FPU_mac_fp32_20%,Gen9LPClient,A0,39.09660463,syn,369589.7,
-FPU_mac_fp32_30%,Gen9LPClient,A0,34.63203365,syn,369589.7,
-FPU_mac_fp32_40%,Gen9LPClient,A0,37.15960305,syn,369589.7,
-FPU_mac_fp32_55%,Gen9LPClient,A0,38.2351062,syn,369589.7,
-FPU_mac_fp64_10%,Gen9LPClient,A0,29.36481809,syn,369589.7,
-FPU_mac_fp64_20%,Gen9LPClient,A0,30.94260831,syn,369589.7,
-FPU_mac_fp64_30%,Gen9LPClient,A0,30.46883491,syn,369589.7,
-FPU_mac_fp64_40%,Gen9LPClient,A0,31.36676183,syn,369589.7,
-FPU_mac_fp64_55%,Gen9LPClient,A0,32.34617087,syn,369589.7,
-FPU_mac_int16_10%,Gen9LPClient,A0,47.39154574,syn,369589.7,
-FPU_mac_int16_20%,Gen9LPClient,A0,50.56934858,syn,369589.7,
-FPU_mac_int16_30%,Gen9LPClient,A0,51.35393113,syn,369589.7,
-FPU_mac_int16_40%,Gen9LPClient,A0,54.09053312,syn,369589.7,
-FPU_mac_int16_55%,Gen9LPClient,A0,58.02623134,syn,369589.7,
-FPU_mac_int32_10%,Gen9LPClient,A0,47.39154574,syn,369589.7,
-FPU_mac_int32_20%,Gen9LPClient,A0,50.56934858,syn,369589.7,
-FPU_mac_int32_30%,Gen9LPClient,A0,51.35393113,syn,369589.7,
-FPU_mac_int32_40%,Gen9LPClient,A0,54.09053312,syn,369589.7,
-FPU_mac_int32_55%,Gen9LPClient,A0,58.02623134,syn,369589.7,
-FPU_mac_intbypass_10%,Gen9LPClient,A0,47.39154574,syn,369589.7,No bypass in MAC
-FPU_mac_intbypass_20%,Gen9LPClient,A0,50.56934858,syn,369589.7,No bypass in MAC
-FPU_mac_intbypass_30%,Gen9LPClient,A0,51.35393113,syn,369589.7,No bypass in MAC
-FPU_mac_intbypass_40%,Gen9LPClient,A0,54.09053312,syn,369589.7,No bypass in MAC
-FPU_mac_intbypass_55%,Gen9LPClient,A0,58.02623134,syn,369589.7,No bypass in MAC
-FPU_mac_int64_10%,Gen9LPClient,A0,47.39154574,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_20%,Gen9LPClient,A0,50.56934858,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_30%,Gen9LPClient,A0,51.35393113,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_40%,Gen9LPClient,A0,54.09053312,syn,369589.7,Approximated with int32 data
-FPU_mac_int64_55%,Gen9LPClient,A0,58.02623134,syn,369589.7,Approximated with int32 data
-FPU_mov_bypass_10%,Gen9LPClient,A0,9.675570978,syn,369589.7,
-FPU_mov_bypass_20%,Gen9LPClient,A0,10.83306362,syn,369589.7,
-FPU_mov_bypass_30%,Gen9LPClient,A0,12.00780652,syn,369589.7,
-FPU_mov_bypass_40%,Gen9LPClient,A0,13.61573396,syn,369589.7,
-FPU_mov_bypass_55%,Gen9LPClient,A0,16.12980757,syn,369589.7,
-FPU_mov_fp16_10%,Gen9LPClient,A0,10.70023659,syn,369589.7,
-FPU_mov_fp16_20%,Gen9LPClient,A0,12.58406677,syn,369589.7,
-FPU_mov_fp16_30%,Gen9LPClient,A0,13.29995268,syn,369589.7,
-FPU_mov_fp16_40%,Gen9LPClient,A0,14.78834595,syn,369589.7,
-FPU_mov_fp16_55%,Gen9LPClient,A0,16.60013091,syn,369589.7,
-FPU_mov_fp32_10%,Gen9LPClient,A0,9.675570978,syn,369589.7,
-FPU_mov_fp32_20%,Gen9LPClient,A0,10.83306362,syn,369589.7,
-FPU_mov_fp32_30%,Gen9LPClient,A0,12.00780652,syn,369589.7,
-FPU_mov_fp32_40%,Gen9LPClient,A0,13.61573396,syn,369589.7,
-FPU_mov_fp32_55%,Gen9LPClient,A0,16.12980757,syn,369589.7,
-FPU_mov_fp64_10%,Gen9LPClient,A0,15.71945426,syn,369589.7,
-FPU_mov_fp64_20%,Gen9LPClient,A0,17.39689012,syn,369589.7,
-FPU_mov_fp64_30%,Gen9LPClient,A0,19.04753733,syn,369589.7,
-FPU_mov_fp64_40%,Gen9LPClient,A0,21.53959148,syn,369589.7,
-FPU_mov_fp64_55%,Gen9LPClient,A0,25.07295268,syn,369589.7,
-FPU_mov_int16_10%,Gen9LPClient,A0,10.0367103,syn,369589.7,
-FPU_mov_int16_20%,Gen9LPClient,A0,11.8021225,syn,369589.7,
-FPU_mov_int16_30%,Gen9LPClient,A0,12.63368665,syn,369589.7,
-FPU_mov_int16_40%,Gen9LPClient,A0,14.62274343,syn,369589.7,
-FPU_mov_int16_55%,Gen9LPClient,A0,18.42125131,syn,369589.7,
-FPU_mov_int32_10%,Gen9LPClient,A0,9.832649842,syn,369589.7,
-FPU_mov_int32_20%,Gen9LPClient,A0,10.96731125,syn,369589.7,
-FPU_mov_int32_30%,Gen9LPClient,A0,12.17280021,syn,369589.7,
-FPU_mov_int32_40%,Gen9LPClient,A0,14.1101062,syn,369589.7,
-FPU_mov_int32_55%,Gen9LPClient,A0,17.59689169,syn,369589.7,
-FPU_mov_intbypass_10%,Gen9LPClient,A0,15.73071767,syn,369589.7,
-FPU_mov_intbypass_20%,Gen9LPClient,A0,17.27218086,syn,369589.7,
-FPU_mov_intbypass_30%,Gen9LPClient,A0,19.13947108,syn,369589.7,
-FPU_mov_intbypass_40%,Gen9LPClient,A0,21.80808675,syn,369589.7,
-FPU_mov_intbypass_55%,Gen9LPClient,A0,26.00172713,syn,369589.7,
-FPU_mov_int64_10%,Gen9LPClient,A0,15.73071767,syn,369589.7,
-FPU_mov_int64_20%,Gen9LPClient,A0,17.27218086,syn,369589.7,
-FPU_mov_int64_30%,Gen9LPClient,A0,19.13947108,syn,369589.7,
-FPU_mov_int64_40%,Gen9LPClient,A0,21.80808675,syn,369589.7,
-FPU_mov_int64_55%,Gen9LPClient,A0,26.00172713,syn,369589.7,
-FPU_mul_floatbypass_10%,Gen9LPClient,A0,8.177977229,syn,369589.7,Approximated with sim data
-FPU_mul_floatbypass_20%,Gen9LPClient,A0,9.221627266,syn,369589.7,Approximated with sim data
-FPU_mul_floatbypass_30%,Gen9LPClient,A0,9.962026814,syn,369589.7,Simulated
-FPU_mul_floatbypass_40%,Gen9LPClient,A0,11.11419217,syn,369589.7,Approximated with sim data
-FPU_mul_floatbypass_55%,Gen9LPClient,A0,12.07332708,syn,369589.7,Approximated with sim data
-FPU_mul_fp16_10%,Gen9LPClient,A0,27.15039169,syn,369589.7,
-FPU_mul_fp16_20%,Gen9LPClient,A0,33.70711514,syn,369589.7,
-FPU_mul_fp16_30%,Gen9LPClient,A0,34.97145794,syn,369589.7,
-FPU_mul_fp16_40%,Gen9LPClient,A0,37.81267771,syn,369589.7,
-FPU_mul_fp16_55%,Gen9LPClient,A0,40.41604679,syn,369589.7,
-FPU_mul_fp32_10%,Gen9LPClient,A0,37.65651209,syn,369589.7,
-FPU_mul_fp32_20%,Gen9LPClient,A0,42.46213091,syn,369589.7,
-FPU_mul_fp32_30%,Gen9LPClient,A0,45.87139169,syn,369589.7,
-FPU_mul_fp32_40%,Gen9LPClient,A0,51.17665931,syn,369589.7,
-FPU_mul_fp32_55%,Gen9LPClient,A0,55.59313249,syn,369589.7,
-FPU_mul_fp64_10%,Gen9LPClient,A0,49.62484595,syn,369589.7,
-FPU_mul_fp64_20%,Gen9LPClient,A0,55.77385436,syn,369589.7,
-FPU_mul_fp64_30%,Gen9LPClient,A0,64.79909043,syn,369589.7,
-FPU_mul_fp64_40%,Gen9LPClient,A0,63.61420032,syn,369589.7,
-FPU_mul_fp64_55%,Gen9LPClient,A0,69.03819033,syn,369589.7,
-FPU_mul_int16_10%,Gen9LPClient,A0,36.44006414,syn,369589.7,
-FPU_mul_int16_20%,Gen9LPClient,A0,42.60287277,syn,369589.7,
-FPU_mul_int16_30%,Gen9LPClient,A0,44.73429495,syn,369589.7,
-FPU_mul_int16_40%,Gen9LPClient,A0,50.29963565,syn,369589.7,
-FPU_mul_int16_55%,Gen9LPClient,A0,57.74809621,syn,369589.7,
-FPU_mul_int32_10%,Gen9LPClient,A0,56.78553155,syn,369589.7,
-FPU_mul_int32_20%,Gen9LPClient,A0,63.18152313,syn,369589.7,
-FPU_mul_int32_30%,Gen9LPClient,A0,67.22478181,syn,369589.7,
-FPU_mul_int32_40%,Gen9LPClient,A0,72.71899054,syn,369589.7,
-FPU_mul_int32_55%,Gen9LPClient,A0,78.46860463,syn,369589.7,
-FPU_mul_intbypass_10%,Gen9LPClient,A0,12.33228396,syn,369589.7,Approximated with sim data
-FPU_mul_intbypass_20%,Gen9LPClient,A0,13.72131572,syn,369589.7,Approximated with sim data
-FPU_mul_intbypass_30%,Gen9LPClient,A0,14.59940484,syn,369589.7,Approximated with sim data
-FPU_mul_intbypass_40%,Gen9LPClient,A0,15.79259537,syn,369589.7,Approximated with sim data
-FPU_mul_intbypass_55%,Gen9LPClient,A0,16.93978859,syn,369589.7,Approximated with sim data
-FPU_mul_int64_10%,Gen9LPClient,A0,56.78553155,syn,369589.7,Approximated with int32
-FPU_mul_int64_20%,Gen9LPClient,A0,63.18152313,syn,369589.7,Approximated with int32
-FPU_mul_int64_30%,Gen9LPClient,A0,67.22478181,syn,369589.7,Approximated with int32
-FPU_mul_int64_40%,Gen9LPClient,A0,72.71899054,syn,369589.7,Approximated with int32
-FPU_mul_int64_55%,Gen9LPClient,A0,78.46860463,syn,369589.7,Approximated with int32
-FPU_pln_floatbypass_10%,Gen9LPClient,A0,45.56464143,syn,369589.7,No bypass in PLN
-FPU_pln_floatbypass_20%,Gen9LPClient,A0,51.26473712,syn,369589.7,No bypass in PLN
-FPU_pln_floatbypass_30%,Gen9LPClient,A0,53.44882334,syn,369589.7,No bypass in PLN
-FPU_pln_floatbypass_40%,Gen9LPClient,A0,57.69746162,syn,369589.7,No bypass in PLN
-FPU_pln_floatbypass_55%,Gen9LPClient,A0,62.45620032,syn,369589.7,No bypass in PLN
-FPU_pln_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp32_10%,Gen9LPClient,A0,45.56464143,syn,369589.7,
-FPU_pln_fp32_20%,Gen9LPClient,A0,51.26473712,syn,369589.7,
-FPU_pln_fp32_30%,Gen9LPClient,A0,53.44882334,syn,369589.7,
-FPU_pln_fp32_40%,Gen9LPClient,A0,57.69746162,syn,369589.7,
-FPU_pln_fp32_55%,Gen9LPClient,A0,62.45620032,syn,369589.7,
-FPU_pln_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_pln_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_sel_bypass_10%,Gen9LPClient,A0,16.70058833,syn,369589.7,No bypass in SEL
-FPU_sel_bypass_20%,Gen9LPClient,A0,20.55145584,syn,369589.7,No bypass in SEL
-FPU_sel_bypass_30%,Gen9LPClient,A0,24.65569926,syn,369589.7,No bypass in SEL
-FPU_sel_bypass_40%,Gen9LPClient,A0,28.60570505,syn,369589.7,No bypass in SEL
-FPU_sel_bypass_55%,Gen9LPClient,A0,34.63903523,syn,369589.7,No bypass in SEL
-FPU_sel_fp16_10%,Gen9LPClient,A0,20.02278601,syn,369589.7,
-FPU_sel_fp16_20%,Gen9LPClient,A0,26.29812723,syn,369589.7,
-FPU_sel_fp16_30%,Gen9LPClient,A0,28.1186388,syn,369589.7,
-FPU_sel_fp16_40%,Gen9LPClient,A0,31.25443218,syn,369589.7,
-FPU_sel_fp16_55%,Gen9LPClient,A0,34.92701314,syn,369589.7,
-FPU_sel_fp32_10%,Gen9LPClient,A0,16.70058833,syn,369589.7,
-FPU_sel_fp32_20%,Gen9LPClient,A0,20.55145584,syn,369589.7,
-FPU_sel_fp32_30%,Gen9LPClient,A0,24.65569926,syn,369589.7,
-FPU_sel_fp32_40%,Gen9LPClient,A0,28.60570505,syn,369589.7,
-FPU_sel_fp32_55%,Gen9LPClient,A0,34.63903523,syn,369589.7,
-FPU_sel_fp64_10%,Gen9LPClient,A0,22.35634069,syn,369589.7,
-FPU_sel_fp64_20%,Gen9LPClient,A0,24.80141325,syn,369589.7,
-FPU_sel_fp64_30%,Gen9LPClient,A0,25.07447476,syn,369589.7,
-FPU_sel_fp64_40%,Gen9LPClient,A0,33.36332755,syn,369589.7,
-FPU_sel_fp64_55%,Gen9LPClient,A0,38.53343428,syn,369589.7,
-FPU_sel_int16_10%,Gen9LPClient,A0,17.09582229,syn,369589.7,
-FPU_sel_int16_20%,Gen9LPClient,A0,20.93096162,syn,369589.7,
-FPU_sel_int16_30%,Gen9LPClient,A0,22.53046688,syn,369589.7,
-FPU_sel_int16_40%,Gen9LPClient,A0,30.2806041,syn,369589.7,
-FPU_sel_int16_55%,Gen9LPClient,A0,40.15242219,syn,369589.7,
-FPU_sel_int32_10%,Gen9LPClient,A0,18.5483959,syn,369589.7,
-FPU_sel_int32_20%,Gen9LPClient,A0,20.91198633,syn,369589.7,
-FPU_sel_int32_30%,Gen9LPClient,A0,23.15147634,syn,369589.7,
-FPU_sel_int32_40%,Gen9LPClient,A0,34.25922503,syn,369589.7,
-FPU_sel_int32_55%,Gen9LPClient,A0,46.07687277,syn,369589.7,
-FPU_sel_intbypass_10%,Gen9LPClient,A0,18.5483959,syn,369589.7,No bypass in SEL
-FPU_sel_intbypass_20%,Gen9LPClient,A0,20.91198633,syn,369589.7,No bypass in SEL
-FPU_sel_intbypass_30%,Gen9LPClient,A0,23.15147634,syn,369589.7,No bypass in SEL
-FPU_sel_intbypass_40%,Gen9LPClient,A0,34.25922503,syn,369589.7,No bypass in SEL
-FPU_sel_intbypass_55%,Gen9LPClient,A0,46.07687277,syn,369589.7,No bypass in SEL
-FPU_sel_int64_10%,Gen9LPClient,A0,19.47838801,syn,369589.7,
-FPU_sel_int64_20%,Gen9LPClient,A0,22.05851998,syn,369589.7,
-FPU_sel_int64_30%,Gen9LPClient,A0,22.56263354,syn,369589.7,
-FPU_sel_int64_40%,Gen9LPClient,A0,30.40673396,syn,369589.7,
-FPU_sel_int64_55%,Gen9LPClient,A0,37.31343481,syn,369589.7,
-FPU_transc_bypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_bypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_bypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_bypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_bypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_fp64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int16_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int16_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int16_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int16_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int16_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int32_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int32_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int32_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int32_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int32_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_intbypass_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_intbypass_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_intbypass_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_intbypass_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_intbypass_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int64_10%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int64_20%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int64_30%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int64_40%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-FPU_transc_int64_55%,Gen9LPClient,A0,0,syn,369589.7,Unsupported combination
-PS0_GA,Gen9LPClient,A0,1.141833334,syn,236302.7,Taken from SKL FSO ECO3 rev1 CGEN data
-PS1_GA,Gen9LPClient,A0,5.661590283,syn,236302.7,Taken from SKL FSO ECO3 rev1 CGDIS data
-PS2_GA_EM1Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,49.16321877,syn,236302.7,
-PS2_GA_EM1Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,50.37485694,syn,236302.7,
-PS2_GA_EM1Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,54.43482808,syn,236302.7,
-PS2_GA_EM1Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,55.35061409,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM1Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,59.19581945,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM1Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,56.51696525,syn,236302.7,
-PS2_GA_EM1Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,58.91514753,syn,236302.7,
-PS2_GA_EM1Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,60.29930862,syn,236302.7,
-PS2_GA_EM1Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,63.94584169,syn,236302.7,
-PS2_GA_EM1Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,64.64312776,syn,236302.7,
-PS2_GA_EM1Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,63.87072187,syn,236302.7,
-PS2_GA_EM1Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,66.16378917,syn,236302.7,Swapped 20% with 30% for linearity
-PS2_GA_EM1Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,67.45542797,syn,236302.7,Swapped 20% with 30% for linearity
-PS2_GA_EM1Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,68.69587408,syn,236302.7,
-PS2_GA_EM1Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,73.93564143,syn,236302.7,
-PS2_GA_EM1Src_SinglePipe_10%,Gen9LPClient,A0,41.80946215,syn,236302.7,
-PS2_GA_EM1Src_SinglePipe_20%,Gen9LPClient,A0,41.8345765,syn,236302.7,
-PS2_GA_EM1Src_SinglePipe_30%,Gen9LPClient,A0,46.05810042,syn,236302.7,Swapped 30% with 80% for linearity
-PS2_GA_EM1Src_SinglePipe_40%,Gen9LPClient,A0,48.57034753,syn,236302.7,Swapped 50% with 30% for linearity
-PS2_GA_EM1Src_SinglePipe_55%,Gen9LPClient,A0,54.44578707,syn,236302.7,Swapped 80% with 50% for linearity
-PS2_GA_EM2Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,56.16929127,syn,236302.7,
-PS2_GA_EM2Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,58.9937174,syn,236302.7,
-PS2_GA_EM2Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,65.60701157,syn,236302.7,
-PS2_GA_EM2Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,70.02277445,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,73.37140563,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,63.5230479,syn,236302.7,
-PS2_GA_EM2Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,67.53399784,syn,236302.7,
-PS2_GA_EM2Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,71.47149211,syn,236302.7,
-PS2_GA_EM2Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,78.12143801,syn,236302.7,
-PS2_GA_EM2Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,79.31528812,syn,236302.7,
-PS2_GA_EM2Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,70.87679437,syn,236302.7,
-PS2_GA_EM2Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,76.07428843,syn,236302.7,
-PS2_GA_EM2Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,77.33597266,syn,236302.7,
-PS2_GA_EM2Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,82.87146025,syn,236302.7,
-PS2_GA_EM2Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,88.60780179,syn,236302.7,
-PS2_GA_EM2Src_SinglePipe_10%,Gen9LPClient,A0,48.81553465,syn,236302.7,
-PS2_GA_EM2Src_SinglePipe_20%,Gen9LPClient,A0,50.45343696,syn,236302.7,
-PS2_GA_EM2Src_SinglePipe_30%,Gen9LPClient,A0,59.74253102,syn,236302.7,
-PS2_GA_EM2Src_SinglePipe_40%,Gen9LPClient,A0,60.73026078,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_SinglePipe_55%,Gen9LPClient,A0,68.62137324,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,63.17536377,syn,236302.7,
-PS2_GA_EM3Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,67.61257787,syn,236302.7,
-PS2_GA_EM3Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,76.77919506,syn,236302.7,
-PS2_GA_EM3Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,84.69493481,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,87.5469918,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,70.5291204,syn,236302.7,
-PS2_GA_EM3Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,76.15285831,syn,236302.7,
-PS2_GA_EM3Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,82.6436756,syn,236302.7,
-PS2_GA_EM3Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,92.29702419,syn,236302.7,
-PS2_GA_EM3Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,93.98744848,syn,236302.7,
-PS2_GA_EM3Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,62.71607277,syn,236302.7,
-PS2_GA_EM3Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,71.94338361,syn,236302.7,
-PS2_GA_EM3Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,81.17069445,syn,236302.7,
-PS2_GA_EM3Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,90.39800529,syn,236302.7,
-PS2_GA_EM3Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,104.2389715,syn,236302.7,
-PS2_GA_EM3Src_SinglePipe_10%,Gen9LPClient,A0,55.8216173,syn,236302.7,
-PS2_GA_EM3Src_SinglePipe_20%,Gen9LPClient,A0,59.07228728,syn,236302.7,
-PS2_GA_EM3Src_SinglePipe_30%,Gen9LPClient,A0,70.91471451,syn,236302.7,
-PS2_GA_EM3Src_SinglePipe_40%,Gen9LPClient,A0,75.40242114,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_SinglePipe_55%,Gen9LPClient,A0,82.79696956,syn,236302.7,Swapped 50% with 80% for linearity
-PS2_GA_FPU1Src_SinglePipe_10%,Gen9LPClient,A0,40.67845373,syn,236302.7,Swapped 10% with 80% for linearity
-PS2_GA_FPU1Src_SinglePipe_20%,Gen9LPClient,A0,41.75600662,syn,236302.7,Swapped 20% with 10% for linearity
-PS2_GA_FPU1Src_SinglePipe_30%,Gen9LPClient,A0,42.15713612,syn,236302.7,Swapped 30% with 20% for linearity
-PS2_GA_FPU1Src_SinglePipe_40%,Gen9LPClient,A0,43.26264458,syn,236302.7,Swapped 50% with 30% for linearity
-PS2_GA_FPU1Src_SinglePipe_55%,Gen9LPClient,A0,45.02022313,syn,236302.7,Swapped 80% with 50% for linearity
-PS2_GA_FPU2Src_SinglePipe_10%,Gen9LPClient,A0,49.12712513,syn,236302.7,Swapped 10% with 30% for linearity
-PS2_GA_FPU2Src_SinglePipe_20%,Gen9LPClient,A0,49.77025552,syn,236302.7,Swapped 20% with 50% for linearity
-PS2_GA_FPU2Src_SinglePipe_30%,Gen9LPClient,A0,49.9709674,syn,236302.7,Swapped 30% with 80% for linearity
-PS2_GA_FPU2Src_SinglePipe_40%,Gen9LPClient,A0,50.29628707,syn,236302.7,Swapped 50% with 20% for linearity
-PS2_GA_FPU2Src_SinglePipe_55%,Gen9LPClient,A0,49.51089274,syn,236302.7,Swapped 80% with 10% for linearity
-PS2_GA_FPU3Src_SinglePipe_10%,Gen9LPClient,A0,54.52028791,syn,236302.7,Swapped 10% with 50% for linearity
-PS2_GA_FPU3Src_SinglePipe_20%,Gen9LPClient,A0,54.99160568,syn,236302.7,Swapped 20% with 30% for linearity
-PS2_GA_FPU3Src_SinglePipe_30%,Gen9LPClient,A0,56.86464937,syn,236302.7,Swapped 30% with 10% for linearity
-PS2_GA_FPU3Src_SinglePipe_40%,Gen9LPClient,A0,58.83656751,syn,236302.7,Swapped 50% with 20% for linearity
-PS2_GA_FPU3Src_SinglePipe_55%,Gen9LPClient,A0,59.26348107,syn,236302.7,
-PS0_TC,Gen9LPClient,A0,0.713645834,syn,486035.6,Taken from SKL FSO ECO3 rev1 CGEN data
-PS1_TC,Gen9LPClient,A0,19.69662722,syn,486035.6,Taken from SKL FSO ECO3 rev1 CGDIS data
-PS2_TC,Gen9LPClient,A0,22.35548833,syn,486035.6,Average of all opcodes - no variation with TR
+PS0_EM,Gen9LPClient,A0,0.083258681,syn,434506,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_EM,Gen9LPClient,A0,10.65711002,syn,434506,Taken from SKL FSO ECO3 rev1 CGDIS data
+EM_add_floatbypass_10%,Gen9LPClient,A0,17.53862639,syn,434506,Approximated with sim data
+EM_add_floatbypass_20%,Gen9LPClient,A0,20.03323764,syn,434506,Approximated with sim data
+EM_add_floatbypass_30%,Gen9LPClient,A0,21.01792324,syn,434506,Simulated
+EM_add_floatbypass_40%,Gen9LPClient,A0,21.98865641,syn,434506,Approximated with sim data
+EM_add_floatbypass_55%,Gen9LPClient,A0,23.38938791,syn,434506,Approximated with sim data
+EM_add_fp16_10%,Gen9LPClient,A0,32.94993007,syn,434506,
+EM_add_fp16_20%,Gen9LPClient,A0,33.20300158,syn,434506,
+EM_add_fp16_30%,Gen9LPClient,A0,36.21804311,syn,434506,
+EM_add_fp16_40%,Gen9LPClient,A0,39.33952892,syn,434506,
+EM_add_fp16_55%,Gen9LPClient,A0,40.14866772,syn,434506,
+EM_add_fp32_10%,Gen9LPClient,A0,32.15479443,syn,434506,
+EM_add_fp32_20%,Gen9LPClient,A0,36.72834648,syn,434506,
+EM_add_fp32_30%,Gen9LPClient,A0,38.53363722,syn,434506,
+EM_add_fp32_40%,Gen9LPClient,A0,40.31335699,syn,434506,
+EM_add_fp32_55%,Gen9LPClient,A0,42.88141377,syn,434506,
+EM_add_fp64_10%,Gen9LPClient,A0,25.88797687,syn,434506,
+EM_add_fp64_20%,Gen9LPClient,A0,27.53740641,syn,434506,
+EM_add_fp64_30%,Gen9LPClient,A0,30.69207361,syn,434506,
+EM_add_fp64_40%,Gen9LPClient,A0,32.72242955,syn,434506,
+EM_add_fp64_55%,Gen9LPClient,A0,35.58018927,syn,434506,
+EM_add_int16_10%,Gen9LPClient,A0,18.89593796,syn,434506,
+EM_add_int16_20%,Gen9LPClient,A0,24.15107834,syn,434506,
+EM_add_int16_30%,Gen9LPClient,A0,25.8081183,syn,434506,
+EM_add_int16_40%,Gen9LPClient,A0,29.74615037,syn,434506,
+EM_add_int16_55%,Gen9LPClient,A0,36.69029443,syn,434506,
+EM_add_int32_10%,Gen9LPClient,A0,19.16930389,syn,434506,
+EM_add_int32_20%,Gen9LPClient,A0,23.71718349,syn,434506,
+EM_add_int32_30%,Gen9LPClient,A0,27.09478496,syn,434506,
+EM_add_int32_40%,Gen9LPClient,A0,31.85585752,syn,434506,
+EM_add_int32_55%,Gen9LPClient,A0,40.16683123,syn,434506,
+EM_add_intbypass_10%,Gen9LPClient,A0,10.45576993,syn,434506,Approximated with sim data
+EM_add_intbypass_20%,Gen9LPClient,A0,12.93638817,syn,434506,Approximated with sim data
+EM_add_intbypass_30%,Gen9LPClient,A0,14.77867566,syn,434506,Approximated with sim data
+EM_add_intbypass_40%,Gen9LPClient,A0,17.37557082,syn,434506,Approximated with sim data
+EM_add_intbypass_55%,Gen9LPClient,A0,21.90873696,syn,434506,Approximated with sim data
+EM_add_int64_10%,Gen9LPClient,A0,20.01050789,syn,434506,
+EM_add_int64_20%,Gen9LPClient,A0,23.44026604,syn,434506,
+EM_add_int64_30%,Gen9LPClient,A0,26.71020557,syn,434506,
+EM_add_int64_40%,Gen9LPClient,A0,30.1495021,syn,434506,
+EM_add_int64_55%,Gen9LPClient,A0,35.31402787,syn,434506,
+EM_cmp_floatbypass_10%,Gen9LPClient,A0,2.616422461,syn,434506,Approximated with sim data
+EM_cmp_floatbypass_20%,Gen9LPClient,A0,3.346537808,syn,434506,Approximated with sim data
+EM_cmp_floatbypass_30%,Gen9LPClient,A0,5.507095689,syn,434506,Simulated
+EM_cmp_floatbypass_40%,Gen9LPClient,A0,4.449817944,syn,434506,Approximated with sim data
+EM_cmp_floatbypass_55%,Gen9LPClient,A0,5.238779012,syn,434506,Approximated with sim data
+EM_cmp_fp16_10%,Gen9LPClient,A0,21.02472187,syn,434506,
+EM_cmp_fp16_20%,Gen9LPClient,A0,27.03775762,syn,434506,
+EM_cmp_fp16_30%,Gen9LPClient,A0,21.85750368,syn,434506,
+EM_cmp_fp16_40%,Gen9LPClient,A0,27.32573554,syn,434506,
+EM_cmp_fp16_55%,Gen9LPClient,A0,27.48230705,syn,434506,
+EM_cmp_fp32_10%,Gen9LPClient,A0,13.06605941,syn,434506,
+EM_cmp_fp32_20%,Gen9LPClient,A0,16.71215615,syn,434506,
+EM_cmp_fp32_30%,Gen9LPClient,A0,27.50168822,syn,434506,
+EM_cmp_fp32_40%,Gen9LPClient,A0,22.22178864,syn,434506,
+EM_cmp_fp32_55%,Gen9LPClient,A0,26.16174869,syn,434506,
+EM_cmp_fp64_10%,Gen9LPClient,A0,23.94823554,syn,434506,
+EM_cmp_fp64_20%,Gen9LPClient,A0,27.61462671,syn,434506,
+EM_cmp_fp64_30%,Gen9LPClient,A0,29.15893113,syn,434506,
+EM_cmp_fp64_40%,Gen9LPClient,A0,35.315347,syn,434506,
+EM_cmp_fp64_55%,Gen9LPClient,A0,36.70551525,syn,434506,
+EM_cmp_int16_10%,Gen9LPClient,A0,16.74990379,syn,434506,
+EM_cmp_int16_20%,Gen9LPClient,A0,23.0642103,syn,434506,
+EM_cmp_int16_30%,Gen9LPClient,A0,25.98782545,syn,434506,
+EM_cmp_int16_40%,Gen9LPClient,A0,19.7373449,syn,434506,
+EM_cmp_int16_55%,Gen9LPClient,A0,39.24333333,syn,434506,
+EM_cmp_int32_10%,Gen9LPClient,A0,13.18244795,syn,434506,
+EM_cmp_int32_20%,Gen9LPClient,A0,20.05748948,syn,434506,
+EM_cmp_int32_30%,Gen9LPClient,A0,23.99085384,syn,434506,
+EM_cmp_int32_40%,Gen9LPClient,A0,23.87334911,syn,434506,
+EM_cmp_int32_55%,Gen9LPClient,A0,22.49261777,syn,434506,
+EM_cmp_intbypass_10%,Gen9LPClient,A0,2.63972858,syn,434506,Approximated with sim data
+EM_cmp_intbypass_20%,Gen9LPClient,A0,4.016426399,syn,434506,Approximated with sim data
+EM_cmp_intbypass_30%,Gen9LPClient,A0,4.804066299,syn,434506,Approximated with sim data
+EM_cmp_intbypass_40%,Gen9LPClient,A0,4.780535925,syn,434506,Approximated with sim data
+EM_cmp_intbypass_55%,Gen9LPClient,A0,4.504050741,syn,434506,Approximated with sim data
+EM_cmp_int64_10%,Gen9LPClient,A0,18.20876866,syn,434506,
+EM_cmp_int64_20%,Gen9LPClient,A0,21.08377865,syn,434506,
+EM_cmp_int64_30%,Gen9LPClient,A0,23.39024027,syn,434506,
+EM_cmp_int64_40%,Gen9LPClient,A0,26.27509306,syn,434506,
+EM_cmp_int64_55%,Gen9LPClient,A0,31.29451367,syn,434506,
+EM_mad_floatbypass_10%,Gen9LPClient,A0,19.72790799,syn,434506,Approximated with sim data
+EM_mad_floatbypass_20%,Gen9LPClient,A0,22.46039022,syn,434506,Approximated with sim data
+EM_mad_floatbypass_30%,Gen9LPClient,A0,24.67325394,syn,434506,Simulated
+EM_mad_floatbypass_40%,Gen9LPClient,A0,27.56877145,syn,434506,Approximated with sim data
+EM_mad_floatbypass_55%,Gen9LPClient,A0,29.68055878,syn,434506,Approximated with sim data
+EM_mad_fp16_10%,Gen9LPClient,A0,38.78285279,syn,434506,
+EM_mad_fp16_20%,Gen9LPClient,A0,44.2385021,syn,434506,
+EM_mad_fp16_30%,Gen9LPClient,A0,45.53866456,syn,434506,
+EM_mad_fp16_40%,Gen9LPClient,A0,51.00304048,syn,434506,
+EM_mad_fp16_55%,Gen9LPClient,A0,55.32534753,syn,434506,
+EM_mad_fp32_10%,Gen9LPClient,A0,36.00185274,syn,434506,
+EM_mad_fp32_20%,Gen9LPClient,A0,43.7751613,syn,434506,
+EM_mad_fp32_30%,Gen9LPClient,A0,51.54846987,syn,434506,
+EM_mad_fp32_40%,Gen9LPClient,A0,59.32177844,syn,434506,
+EM_mad_fp32_55%,Gen9LPClient,A0,70.98174129,syn,434506,
+EM_mad_fp64_10%,Gen9LPClient,A0,51.36671661,syn,434506,
+EM_mad_fp64_20%,Gen9LPClient,A0,59.0022918,syn,434506,
+EM_mad_fp64_30%,Gen9LPClient,A0,64.03145373,syn,434506,
+EM_mad_fp64_40%,Gen9LPClient,A0,67.76380179,syn,434506,
+EM_mad_fp64_55%,Gen9LPClient,A0,73.4841919,syn,434506,
+EM_mad_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mad_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sad_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_floatbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_floatbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_floatbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_floatbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_floatbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mac_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_mov_bypass_10%,Gen9LPClient,A0,10.71789274,syn,434506,
+EM_mov_bypass_20%,Gen9LPClient,A0,13.00172608,syn,434506,
+EM_mov_bypass_30%,Gen9LPClient,A0,14.10594585,syn,434506,
+EM_mov_bypass_40%,Gen9LPClient,A0,15.83097213,syn,434506,
+EM_mov_bypass_55%,Gen9LPClient,A0,18.15610463,syn,434506,
+EM_mov_fp16_10%,Gen9LPClient,A0,10.71789274,syn,434506,
+EM_mov_fp16_20%,Gen9LPClient,A0,13.00172608,syn,434506,
+EM_mov_fp16_30%,Gen9LPClient,A0,14.10594585,syn,434506,
+EM_mov_fp16_40%,Gen9LPClient,A0,15.83097213,syn,434506,
+EM_mov_fp16_55%,Gen9LPClient,A0,18.15610463,syn,434506,
+EM_mov_fp32_10%,Gen9LPClient,A0,9.966694532,syn,434506,
+EM_mov_fp32_20%,Gen9LPClient,A0,11.57269401,syn,434506,
+EM_mov_fp32_30%,Gen9LPClient,A0,13.10482177,syn,434506,
+EM_mov_fp32_40%,Gen9LPClient,A0,15.39200368,syn,434506,
+EM_mov_fp32_55%,Gen9LPClient,A0,18.82166036,syn,434506,
+EM_mov_fp64_10%,Gen9LPClient,A0,15.41737171,syn,434506,
+EM_mov_fp64_20%,Gen9LPClient,A0,17.27583386,syn,434506,
+EM_mov_fp64_30%,Gen9LPClient,A0,19.30842219,syn,434506,
+EM_mov_fp64_40%,Gen9LPClient,A0,21.85344479,syn,434506,
+EM_mov_fp64_55%,Gen9LPClient,A0,25.7840694,syn,434506,
+EM_mov_int16_10%,Gen9LPClient,A0,10.07050053,syn,434506,
+EM_mov_int16_20%,Gen9LPClient,A0,12.39685068,syn,434506,
+EM_mov_int16_30%,Gen9LPClient,A0,13.43257676,syn,434506,
+EM_mov_int16_40%,Gen9LPClient,A0,16.00002471,syn,434506,
+EM_mov_int16_55%,Gen9LPClient,A0,20.68692114,syn,434506,
+EM_mov_int32_10%,Gen9LPClient,A0,10.06116509,syn,434506,
+EM_mov_int32_20%,Gen9LPClient,A0,11.93545689,syn,434506,
+EM_mov_int32_30%,Gen9LPClient,A0,13.37433176,syn,434506,
+EM_mov_int32_40%,Gen9LPClient,A0,15.99048633,syn,434506,
+EM_mov_int32_55%,Gen9LPClient,A0,20.72568349,syn,434506,
+EM_mov_intbypass_10%,Gen9LPClient,A0,10.06116509,syn,434506,
+EM_mov_intbypass_20%,Gen9LPClient,A0,11.93545689,syn,434506,
+EM_mov_intbypass_30%,Gen9LPClient,A0,13.37433176,syn,434506,
+EM_mov_intbypass_40%,Gen9LPClient,A0,15.99048633,syn,434506,
+EM_mov_intbypass_55%,Gen9LPClient,A0,20.72568349,syn,434506,
+EM_mov_int64_10%,Gen9LPClient,A0,15.57323291,syn,434506,
+EM_mov_int64_20%,Gen9LPClient,A0,17.43676866,syn,434506,
+EM_mov_int64_30%,Gen9LPClient,A0,19.32232387,syn,434506,
+EM_mov_int64_40%,Gen9LPClient,A0,22.65487171,syn,434506,
+EM_mov_int64_55%,Gen9LPClient,A0,27.24354311,syn,434506,
+EM_mul_floatbypass_10%,Gen9LPClient,A0,7.941636451,syn,434506,Approximated with sim data
+EM_mul_floatbypass_20%,Gen9LPClient,A0,8.870675741,syn,434506,Approximated with sim data
+EM_mul_floatbypass_30%,Gen9LPClient,A0,9.859337014,syn,434506,Simulated
+EM_mul_floatbypass_40%,Gen9LPClient,A0,10.93433281,syn,434506,Approximated with sim data
+EM_mul_floatbypass_55%,Gen9LPClient,A0,11.79910878,syn,434506,Approximated with sim data
+EM_mul_fp16_10%,Gen9LPClient,A0,28.05075394,syn,434506,
+EM_mul_fp16_20%,Gen9LPClient,A0,34.516051,syn,434506,
+EM_mul_fp16_30%,Gen9LPClient,A0,35.82940484,syn,434506,
+EM_mul_fp16_40%,Gen9LPClient,A0,39.58123554,syn,434506,
+EM_mul_fp16_55%,Gen9LPClient,A0,41.88069558,syn,434506,
+EM_mul_fp32_10%,Gen9LPClient,A0,39.21025342,syn,434506,
+EM_mul_fp32_20%,Gen9LPClient,A0,43.79719979,syn,434506,
+EM_mul_fp32_30%,Gen9LPClient,A0,48.67851682,syn,434506,
+EM_mul_fp32_40%,Gen9LPClient,A0,53.9861183,syn,434506,
+EM_mul_fp32_55%,Gen9LPClient,A0,58.2557613,syn,434506,
+EM_mul_fp64_10%,Gen9LPClient,A0,46.29300841,syn,434506,
+EM_mul_fp64_20%,Gen9LPClient,A0,52.63633596,syn,434506,
+EM_mul_fp64_30%,Gen9LPClient,A0,57.47016404,syn,434506,
+EM_mul_fp64_40%,Gen9LPClient,A0,61.78638275,syn,434506,
+EM_mul_fp64_55%,Gen9LPClient,A0,66.44314196,syn,434506,
+EM_mul_int16_10%,Gen9LPClient,A0,32.56910515,syn,434506,
+EM_mul_int16_20%,Gen9LPClient,A0,38.62699159,syn,434506,
+EM_mul_int16_30%,Gen9LPClient,A0,40.94836961,syn,434506,
+EM_mul_int16_40%,Gen9LPClient,A0,45.61070978,syn,434506,
+EM_mul_int16_55%,Gen9LPClient,A0,52.33861672,syn,434506,
+EM_mul_int32_10%,Gen9LPClient,A0,51.82395005,syn,434506,
+EM_mul_int32_20%,Gen9LPClient,A0,57.78320557,syn,434506,
+EM_mul_int32_30%,Gen9LPClient,A0,61.55959253,syn,434506,
+EM_mul_int32_40%,Gen9LPClient,A0,66.9320347,syn,434506,
+EM_mul_int32_55%,Gen9LPClient,A0,71.7836204,syn,434506,
+EM_mul_intbypass_10%,Gen9LPClient,A0,10.49640952,syn,434506,Approximated with sim data
+EM_mul_intbypass_20%,Gen9LPClient,A0,11.70340026,syn,434506,Approximated with sim data
+EM_mul_intbypass_30%,Gen9LPClient,A0,12.46826677,syn,434506,Approximated with sim data
+EM_mul_intbypass_40%,Gen9LPClient,A0,13.55640321,syn,434506,Approximated with sim data
+EM_mul_intbypass_55%,Gen9LPClient,A0,14.53903906,syn,434506,Approximated with sim data
+EM_mul_int64_10%,Gen9LPClient,A0,51.82395005,syn,434506,Approximated with int32
+EM_mul_int64_20%,Gen9LPClient,A0,57.78320557,syn,434506,Approximated with int32
+EM_mul_int64_30%,Gen9LPClient,A0,61.55959253,syn,434506,Approximated with int32
+EM_mul_int64_40%,Gen9LPClient,A0,66.9320347,syn,434506,Approximated with int32
+EM_mul_int64_55%,Gen9LPClient,A0,71.7836204,syn,434506,Approximated with int32
+EM_pln_floatbypass_10%,Gen9LPClient,A0,45.22328917,syn,434506,No bypass in PLN
+EM_pln_floatbypass_20%,Gen9LPClient,A0,51.48016246,syn,434506,No bypass in PLN
+EM_pln_floatbypass_30%,Gen9LPClient,A0,52.62070925,syn,434506,No bypass in PLN
+EM_pln_floatbypass_40%,Gen9LPClient,A0,57.93399317,syn,434506,No bypass in PLN
+EM_pln_floatbypass_55%,Gen9LPClient,A0,62.65975342,syn,434506,No bypass in PLN
+EM_pln_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp32_10%,Gen9LPClient,A0,45.22328917,syn,434506,
+EM_pln_fp32_20%,Gen9LPClient,A0,51.48016246,syn,434506,
+EM_pln_fp32_30%,Gen9LPClient,A0,52.62070925,syn,434506,
+EM_pln_fp32_40%,Gen9LPClient,A0,57.93399317,syn,434506,
+EM_pln_fp32_55%,Gen9LPClient,A0,62.65975342,syn,434506,
+EM_pln_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_pln_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_sel_bypass_10%,Gen9LPClient,A0,17.06751157,syn,434506,No bypass in SEL
+EM_sel_bypass_20%,Gen9LPClient,A0,21.47566404,syn,434506,No bypass in SEL
+EM_sel_bypass_30%,Gen9LPClient,A0,26.58397424,syn,434506,No bypass in SEL
+EM_sel_bypass_40%,Gen9LPClient,A0,31.29289012,syn,434506,No bypass in SEL
+EM_sel_bypass_55%,Gen9LPClient,A0,38.88818086,syn,434506,No bypass in SEL
+EM_sel_fp16_10%,Gen9LPClient,A0,19.42075184,syn,434506,
+EM_sel_fp16_20%,Gen9LPClient,A0,26.76611672,syn,434506,
+EM_sel_fp16_30%,Gen9LPClient,A0,28.53152892,syn,434506,
+EM_sel_fp16_40%,Gen9LPClient,A0,32.02491009,syn,434506,
+EM_sel_fp16_55%,Gen9LPClient,A0,36.18364406,syn,434506,
+EM_sel_fp32_10%,Gen9LPClient,A0,17.06751157,syn,434506,
+EM_sel_fp32_20%,Gen9LPClient,A0,21.47566404,syn,434506,
+EM_sel_fp32_30%,Gen9LPClient,A0,26.58397424,syn,434506,
+EM_sel_fp32_40%,Gen9LPClient,A0,31.29289012,syn,434506,
+EM_sel_fp32_55%,Gen9LPClient,A0,38.88818086,syn,434506,
+EM_sel_fp64_10%,Gen9LPClient,A0,21.812653,syn,434506,
+EM_sel_fp64_20%,Gen9LPClient,A0,24.80141325,syn,434506,
+EM_sel_fp64_30%,Gen9LPClient,A0,28.83959832,syn,434506,
+EM_sel_fp64_40%,Gen9LPClient,A0,33.33176972,syn,434506,
+EM_sel_fp64_55%,Gen9LPClient,A0,38.54419033,syn,434506,
+EM_sel_int16_10%,Gen9LPClient,A0,15.3558796,syn,434506,
+EM_sel_int16_20%,Gen9LPClient,A0,20.93096162,syn,434506,
+EM_sel_int16_30%,Gen9LPClient,A0,23.44280284,syn,434506,
+EM_sel_int16_40%,Gen9LPClient,A0,29.14127497,syn,434506,
+EM_sel_int16_55%,Gen9LPClient,A0,39.76794427,syn,434506,
+EM_sel_int32_10%,Gen9LPClient,A0,16.38369085,syn,434506,
+EM_sel_int32_20%,Gen9LPClient,A0,20.91198633,syn,434506,
+EM_sel_int32_30%,Gen9LPClient,A0,24.74773449,syn,434506,
+EM_sel_int32_40%,Gen9LPClient,A0,31.46549422,syn,434506,
+EM_sel_int32_55%,Gen9LPClient,A0,42.68222397,syn,434506,
+EM_sel_intbypass_10%,Gen9LPClient,A0,16.38369085,syn,434506,No bypass in SEL
+EM_sel_intbypass_20%,Gen9LPClient,A0,20.91198633,syn,434506,No bypass in SEL
+EM_sel_intbypass_30%,Gen9LPClient,A0,24.74773449,syn,434506,No bypass in SEL
+EM_sel_intbypass_40%,Gen9LPClient,A0,31.46549422,syn,434506,No bypass in SEL
+EM_sel_intbypass_55%,Gen9LPClient,A0,42.68222397,syn,434506,No bypass in SEL
+EM_sel_int64_10%,Gen9LPClient,A0,18.77680967,syn,434506,
+EM_sel_int64_20%,Gen9LPClient,A0,22.05851998,syn,434506,
+EM_sel_int64_30%,Gen9LPClient,A0,25.48878549,syn,434506,
+EM_sel_int64_40%,Gen9LPClient,A0,30.88416036,syn,434506,
+EM_sel_int64_55%,Gen9LPClient,A0,38.03814879,syn,434506,
+EM_transc_bypass_10%,Gen9LPClient,A0,24.96154755,syn,434506,No bypass in TRANSC
+EM_transc_bypass_20%,Gen9LPClient,A0,27.41597471,syn,434506,No bypass in TRANSC
+EM_transc_bypass_30%,Gen9LPClient,A0,29.26501009,syn,434506,No bypass in TRANSC
+EM_transc_bypass_40%,Gen9LPClient,A0,30.81134395,syn,434506,No bypass in TRANSC
+EM_transc_bypass_55%,Gen9LPClient,A0,32.39479632,syn,434506,No bypass in TRANSC
+EM_transc_fp16_10%,Gen9LPClient,A0,21.71943055,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_20%,Gen9LPClient,A0,22.39632072,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_30%,Gen9LPClient,A0,22.92593423,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_40%,Gen9LPClient,A0,23.08186646,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp16_55%,Gen9LPClient,A0,22.48367808,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_10%,Gen9LPClient,A0,24.96154755,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_20%,Gen9LPClient,A0,27.41597471,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_30%,Gen9LPClient,A0,29.26501009,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_40%,Gen9LPClient,A0,30.81134395,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp32_55%,Gen9LPClient,A0,32.39479632,syn,434506,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
+EM_transc_fp64_10%,Gen9LPClient,A0,24.96154755,syn,434506,Approximated with fp32 data
+EM_transc_fp64_20%,Gen9LPClient,A0,27.41597471,syn,434506,Approximated with fp32 data
+EM_transc_fp64_30%,Gen9LPClient,A0,29.26501009,syn,434506,Approximated with fp32 data
+EM_transc_fp64_40%,Gen9LPClient,A0,30.81134395,syn,434506,Approximated with fp32 data
+EM_transc_fp64_55%,Gen9LPClient,A0,32.39479632,syn,434506,Approximated with fp32 data
+EM_transc_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+EM_transc_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+PS0_FPU,Gen9LPClient,A0,0.083258681,syn,434506,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_FPU,Gen9LPClient,A0,10.65711002,syn,434506,Taken from SKL FSO ECO3 rev1 CGDIS data
+FPU_add_floatbypass_10%,Gen9LPClient,A0,15.82998785,syn,434506,Approximated with sim data
+FPU_add_floatbypass_20%,Gen9LPClient,A0,18.35360999,syn,434506,Approximated with sim data
+FPU_add_floatbypass_30%,Gen9LPClient,A0,18.94271661,syn,434506,Simulated
+FPU_add_floatbypass_40%,Gen9LPClient,A0,20.06482592,syn,434506,Approximated with sim data
+FPU_add_floatbypass_55%,Gen9LPClient,A0,20.71925016,syn,434506,Approximated with sim data
+FPU_add_fp16_10%,Gen9LPClient,A0,32.42156467,syn,434506,
+FPU_add_fp16_20%,Gen9LPClient,A0,31.67361356,syn,434506,
+FPU_add_fp16_30%,Gen9LPClient,A0,34.9045878,syn,434506,
+FPU_add_fp16_40%,Gen9LPClient,A0,39.01958728,syn,434506,
+FPU_add_fp16_55%,Gen9LPClient,A0,38.00973659,syn,434506,
+FPU_add_fp32_10%,Gen9LPClient,A0,29.85411672,syn,434506,
+FPU_add_fp32_20%,Gen9LPClient,A0,34.61346425,syn,434506,
+FPU_add_fp32_30%,Gen9LPClient,A0,35.72448265,syn,434506,
+FPU_add_fp32_40%,Gen9LPClient,A0,37.84068402,syn,434506,
+FPU_add_fp32_55%,Gen9LPClient,A0,39.07488959,syn,434506,
+FPU_add_fp64_10%,Gen9LPClient,A0,25.69091798,syn,434506,
+FPU_add_fp64_20%,Gen9LPClient,A0,27.68038065,syn,434506,
+FPU_add_fp64_30%,Gen9LPClient,A0,31.520898,syn,434506,
+FPU_add_fp64_40%,Gen9LPClient,A0,33.09980442,syn,434506,
+FPU_add_fp64_55%,Gen9LPClient,A0,35.64371083,syn,434506,
+FPU_add_int16_10%,Gen9LPClient,A0,20.04805258,syn,434506,
+FPU_add_int16_20%,Gen9LPClient,A0,25.23338013,syn,434506,
+FPU_add_int16_30%,Gen9LPClient,A0,27.18134069,syn,434506,
+FPU_add_int16_40%,Gen9LPClient,A0,31.36767508,syn,434506,
+FPU_add_int16_55%,Gen9LPClient,A0,38.49457045,syn,434506,
+FPU_add_int32_10%,Gen9LPClient,A0,20.12019926,syn,434506,
+FPU_add_int32_20%,Gen9LPClient,A0,24.57492744,syn,434506,
+FPU_add_int32_30%,Gen9LPClient,A0,28.26069979,syn,434506,
+FPU_add_int32_40%,Gen9LPClient,A0,33.43679338,syn,434506,
+FPU_add_int32_55%,Gen9LPClient,A0,42.1927224,syn,434506,
+FPU_add_intbypass_10%,Gen9LPClient,A0,10.66862802,syn,434506,Approximated with sim data
+FPU_add_intbypass_20%,Gen9LPClient,A0,13.03072681,syn,434506,Approximated with sim data
+FPU_add_intbypass_30%,Gen9LPClient,A0,14.98509027,syn,434506,Approximated with sim data
+FPU_add_intbypass_40%,Gen9LPClient,A0,17.72967813,syn,434506,Approximated with sim data
+FPU_add_intbypass_55%,Gen9LPClient,A0,22.37246462,syn,434506,Approximated with sim data
+FPU_add_int64_10%,Gen9LPClient,A0,19.94191272,syn,434506,
+FPU_add_int64_20%,Gen9LPClient,A0,22.94416877,syn,434506,
+FPU_add_int64_30%,Gen9LPClient,A0,25.95860147,syn,434506,
+FPU_add_int64_40%,Gen9LPClient,A0,29.2802918,syn,434506,
+FPU_add_int64_55%,Gen9LPClient,A0,34.57947108,syn,434506,
+FPU_cmp_floatbypass_10%,Gen9LPClient,A0,8.964568922,syn,434506,Approximated with sim data
+FPU_cmp_floatbypass_20%,Gen9LPClient,A0,11.89424905,syn,434506,Approximated with sim data
+FPU_cmp_floatbypass_30%,Gen9LPClient,A0,16.57100841,syn,434506,Simulated
+FPU_cmp_floatbypass_40%,Gen9LPClient,A0,14.58262135,syn,434506,Approximated with sim data
+FPU_cmp_floatbypass_55%,Gen9LPClient,A0,13.87212361,syn,434506,Approximated with sim data
+FPU_cmp_fp16_10%,Gen9LPClient,A0,20.96576656,syn,434506,
+FPU_cmp_fp16_20%,Gen9LPClient,A0,13.1877245,syn,434506,
+FPU_cmp_fp16_30%,Gen9LPClient,A0,21.85750368,syn,434506,
+FPU_cmp_fp16_40%,Gen9LPClient,A0,26.40406414,syn,434506,
+FPU_cmp_fp16_55%,Gen9LPClient,A0,27.48230705,syn,434506,
+FPU_cmp_fp32_10%,Gen9LPClient,A0,16.90647529,syn,434506,
+FPU_cmp_fp32_20%,Gen9LPClient,A0,22.43163302,syn,434506,
+FPU_cmp_fp32_30%,Gen9LPClient,A0,27.50168822,syn,434506,
+FPU_cmp_fp32_40%,Gen9LPClient,A0,28.17069401,syn,434506,
+FPU_cmp_fp32_55%,Gen9LPClient,A0,26.16174869,syn,434506,
+FPU_cmp_fp64_10%,Gen9LPClient,A0,23.5398102,syn,434506,
+FPU_cmp_fp64_20%,Gen9LPClient,A0,23.2237245,syn,434506,
+FPU_cmp_fp64_30%,Gen9LPClient,A0,29.15893113,syn,434506,
+FPU_cmp_fp64_40%,Gen9LPClient,A0,29.38906993,syn,434506,
+FPU_cmp_fp64_55%,Gen9LPClient,A0,36.70551525,syn,434506,
+FPU_cmp_int16_10%,Gen9LPClient,A0,16.99840904,syn,434506,
+FPU_cmp_int16_20%,Gen9LPClient,A0,17.87046057,syn,434506,
+FPU_cmp_int16_30%,Gen9LPClient,A0,25.98782545,syn,434506,
+FPU_cmp_int16_40%,Gen9LPClient,A0,33.95491009,syn,434506,
+FPU_cmp_int16_55%,Gen9LPClient,A0,39.24333333,syn,434506,
+FPU_cmp_int32_10%,Gen9LPClient,A0,18.3200836,syn,434506,
+FPU_cmp_int32_20%,Gen9LPClient,A0,20.20685647,syn,434506,
+FPU_cmp_int32_30%,Gen9LPClient,A0,23.99085384,syn,434506,
+FPU_cmp_int32_40%,Gen9LPClient,A0,32.63759884,syn,434506,
+FPU_cmp_int32_55%,Gen9LPClient,A0,22.49261777,syn,434506,
+FPU_cmp_intbypass_10%,Gen9LPClient,A0,9.71412633,syn,434506,Approximated with sim data
+FPU_cmp_intbypass_20%,Gen9LPClient,A0,10.71457461,syn,434506,Approximated with sim data
+FPU_cmp_intbypass_30%,Gen9LPClient,A0,12.72102371,syn,434506,Approximated with sim data
+FPU_cmp_intbypass_40%,Gen9LPClient,A0,17.3059102,syn,434506,Approximated with sim data
+FPU_cmp_intbypass_55%,Gen9LPClient,A0,11.92658822,syn,434506,Approximated with sim data
+FPU_cmp_int64_10%,Gen9LPClient,A0,18.18593743,syn,434506,
+FPU_cmp_int64_20%,Gen9LPClient,A0,20.96536067,syn,434506,
+FPU_cmp_int64_30%,Gen9LPClient,A0,23.39024027,syn,434506,
+FPU_cmp_int64_40%,Gen9LPClient,A0,26.56915931,syn,434506,
+FPU_cmp_int64_55%,Gen9LPClient,A0,31.29451367,syn,434506,
+FPU_mad_floatbypass_10%,Gen9LPClient,A0,18.34183922,syn,434506,Approximated with sim data
+FPU_mad_floatbypass_20%,Gen9LPClient,A0,21.08539206,syn,434506,Approximated with sim data
+FPU_mad_floatbypass_30%,Gen9LPClient,A0,22.905102,syn,434506,Simulated
+FPU_mad_floatbypass_40%,Gen9LPClient,A0,26.92315499,syn,434506,Approximated with sim data
+FPU_mad_floatbypass_55%,Gen9LPClient,A0,27.73039627,syn,434506,Approximated with sim data
+FPU_mad_fp16_10%,Gen9LPClient,A0,37.48806835,syn,434506,
+FPU_mad_fp16_20%,Gen9LPClient,A0,43.28060515,syn,434506,
+FPU_mad_fp16_30%,Gen9LPClient,A0,45.14312618,syn,434506,
+FPU_mad_fp16_40%,Gen9LPClient,A0,48.53899264,syn,434506,
+FPU_mad_fp16_55%,Gen9LPClient,A0,53.5971756,syn,434506,
+FPU_mad_fp32_10%,Gen9LPClient,A0,43.83481754,syn,434506,
+FPU_mad_fp32_20%,Gen9LPClient,A0,50.19512148,syn,434506,
+FPU_mad_fp32_30%,Gen9LPClient,A0,56.55542542,syn,434506,
+FPU_mad_fp32_40%,Gen9LPClient,A0,62.91572936,syn,434506,
+FPU_mad_fp32_55%,Gen9LPClient,A0,72.45618528,syn,434506,
+FPU_mad_fp64_10%,Gen9LPClient,A0,50.97097529,syn,434506,
+FPU_mad_fp64_20%,Gen9LPClient,A0,58.75835279,syn,434506,
+FPU_mad_fp64_30%,Gen9LPClient,A0,62.29922292,syn,434506,
+FPU_mad_fp64_40%,Gen9LPClient,A0,67.3081919,syn,434506,
+FPU_mad_fp64_55%,Gen9LPClient,A0,74.54285068,syn,434506,
+FPU_mad_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_mad_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_floatbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_floatbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_floatbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_floatbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_floatbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sad_int16_10%,Gen9LPClient,A0,25.02049159,syn,434506,
+FPU_sad_int16_20%,Gen9LPClient,A0,25.86697213,syn,434506,
+FPU_sad_int16_30%,Gen9LPClient,A0,26.19335726,syn,434506,
+FPU_sad_int16_40%,Gen9LPClient,A0,25.975801,syn,434506,
+FPU_sad_int16_55%,Gen9LPClient,A0,26.18158649,syn,434506,
+FPU_sad_int32_10%,Gen9LPClient,A0,25.02049159,syn,434506,Approximated with int16 data
+FPU_sad_int32_20%,Gen9LPClient,A0,25.86697213,syn,434506,Approximated with int16 data
+FPU_sad_int32_30%,Gen9LPClient,A0,26.19335726,syn,434506,Approximated with int16 data
+FPU_sad_int32_40%,Gen9LPClient,A0,25.975801,syn,434506,Approximated with int16 data
+FPU_sad_int32_55%,Gen9LPClient,A0,26.18158649,syn,434506,Approximated with int16 data
+FPU_sad_intbypass_10%,Gen9LPClient,A0,25.02049159,syn,434506,No bypass in SAD
+FPU_sad_intbypass_20%,Gen9LPClient,A0,25.86697213,syn,434506,No bypass in SAD
+FPU_sad_intbypass_30%,Gen9LPClient,A0,26.19335726,syn,434506,No bypass in SAD
+FPU_sad_intbypass_40%,Gen9LPClient,A0,25.975801,syn,434506,No bypass in SAD
+FPU_sad_intbypass_55%,Gen9LPClient,A0,26.18158649,syn,434506,No bypass in SAD
+FPU_sad_int64_10%,Gen9LPClient,A0,25.02049159,syn,434506,Approximated with int16 data
+FPU_sad_int64_20%,Gen9LPClient,A0,25.86697213,syn,434506,Approximated with int16 data
+FPU_sad_int64_30%,Gen9LPClient,A0,26.19335726,syn,434506,Approximated with int16 data
+FPU_sad_int64_40%,Gen9LPClient,A0,25.975801,syn,434506,Approximated with int16 data
+FPU_sad_int64_55%,Gen9LPClient,A0,26.18158649,syn,434506,Approximated with int16 data
+FPU_mac_floatbypass_10%,Gen9LPClient,A0,36.78821504,syn,434506,No bypass in MAC
+FPU_mac_floatbypass_20%,Gen9LPClient,A0,39.09660463,syn,434506,No bypass in MAC
+FPU_mac_floatbypass_30%,Gen9LPClient,A0,34.63203365,syn,434506,No bypass in MAC
+FPU_mac_floatbypass_40%,Gen9LPClient,A0,37.15960305,syn,434506,No bypass in MAC
+FPU_mac_floatbypass_55%,Gen9LPClient,A0,38.2351062,syn,434506,No bypass in MAC
+FPU_mac_fp16_10%,Gen9LPClient,A0,27.60194269,syn,434506,
+FPU_mac_fp16_20%,Gen9LPClient,A0,27.23786067,syn,434506,
+FPU_mac_fp16_30%,Gen9LPClient,A0,29.95853155,syn,434506,
+FPU_mac_fp16_40%,Gen9LPClient,A0,30.06264196,syn,434506,
+FPU_mac_fp16_55%,Gen9LPClient,A0,30.32971661,syn,434506,
+FPU_mac_fp32_10%,Gen9LPClient,A0,36.78821504,syn,434506,
+FPU_mac_fp32_20%,Gen9LPClient,A0,39.09660463,syn,434506,
+FPU_mac_fp32_30%,Gen9LPClient,A0,34.63203365,syn,434506,
+FPU_mac_fp32_40%,Gen9LPClient,A0,37.15960305,syn,434506,
+FPU_mac_fp32_55%,Gen9LPClient,A0,38.2351062,syn,434506,
+FPU_mac_fp64_10%,Gen9LPClient,A0,29.36481809,syn,434506,
+FPU_mac_fp64_20%,Gen9LPClient,A0,30.94260831,syn,434506,
+FPU_mac_fp64_30%,Gen9LPClient,A0,30.46883491,syn,434506,
+FPU_mac_fp64_40%,Gen9LPClient,A0,31.36676183,syn,434506,
+FPU_mac_fp64_55%,Gen9LPClient,A0,32.34617087,syn,434506,
+FPU_mac_int16_10%,Gen9LPClient,A0,47.39154574,syn,434506,
+FPU_mac_int16_20%,Gen9LPClient,A0,50.56934858,syn,434506,
+FPU_mac_int16_30%,Gen9LPClient,A0,51.35393113,syn,434506,
+FPU_mac_int16_40%,Gen9LPClient,A0,54.09053312,syn,434506,
+FPU_mac_int16_55%,Gen9LPClient,A0,58.02623134,syn,434506,
+FPU_mac_int32_10%,Gen9LPClient,A0,47.39154574,syn,434506,
+FPU_mac_int32_20%,Gen9LPClient,A0,50.56934858,syn,434506,
+FPU_mac_int32_30%,Gen9LPClient,A0,51.35393113,syn,434506,
+FPU_mac_int32_40%,Gen9LPClient,A0,54.09053312,syn,434506,
+FPU_mac_int32_55%,Gen9LPClient,A0,58.02623134,syn,434506,
+FPU_mac_intbypass_10%,Gen9LPClient,A0,47.39154574,syn,434506,No bypass in MAC
+FPU_mac_intbypass_20%,Gen9LPClient,A0,50.56934858,syn,434506,No bypass in MAC
+FPU_mac_intbypass_30%,Gen9LPClient,A0,51.35393113,syn,434506,No bypass in MAC
+FPU_mac_intbypass_40%,Gen9LPClient,A0,54.09053312,syn,434506,No bypass in MAC
+FPU_mac_intbypass_55%,Gen9LPClient,A0,58.02623134,syn,434506,No bypass in MAC
+FPU_mac_int64_10%,Gen9LPClient,A0,47.39154574,syn,434506,Approximated with int32 data
+FPU_mac_int64_20%,Gen9LPClient,A0,50.56934858,syn,434506,Approximated with int32 data
+FPU_mac_int64_30%,Gen9LPClient,A0,51.35393113,syn,434506,Approximated with int32 data
+FPU_mac_int64_40%,Gen9LPClient,A0,54.09053312,syn,434506,Approximated with int32 data
+FPU_mac_int64_55%,Gen9LPClient,A0,58.02623134,syn,434506,Approximated with int32 data
+FPU_mov_bypass_10%,Gen9LPClient,A0,9.675570978,syn,434506,
+FPU_mov_bypass_20%,Gen9LPClient,A0,10.83306362,syn,434506,
+FPU_mov_bypass_30%,Gen9LPClient,A0,12.00780652,syn,434506,
+FPU_mov_bypass_40%,Gen9LPClient,A0,13.61573396,syn,434506,
+FPU_mov_bypass_55%,Gen9LPClient,A0,16.12980757,syn,434506,
+FPU_mov_fp16_10%,Gen9LPClient,A0,10.70023659,syn,434506,
+FPU_mov_fp16_20%,Gen9LPClient,A0,12.58406677,syn,434506,
+FPU_mov_fp16_30%,Gen9LPClient,A0,13.29995268,syn,434506,
+FPU_mov_fp16_40%,Gen9LPClient,A0,14.78834595,syn,434506,
+FPU_mov_fp16_55%,Gen9LPClient,A0,16.60013091,syn,434506,
+FPU_mov_fp32_10%,Gen9LPClient,A0,9.675570978,syn,434506,
+FPU_mov_fp32_20%,Gen9LPClient,A0,10.83306362,syn,434506,
+FPU_mov_fp32_30%,Gen9LPClient,A0,12.00780652,syn,434506,
+FPU_mov_fp32_40%,Gen9LPClient,A0,13.61573396,syn,434506,
+FPU_mov_fp32_55%,Gen9LPClient,A0,16.12980757,syn,434506,
+FPU_mov_fp64_10%,Gen9LPClient,A0,15.71945426,syn,434506,
+FPU_mov_fp64_20%,Gen9LPClient,A0,17.39689012,syn,434506,
+FPU_mov_fp64_30%,Gen9LPClient,A0,19.04753733,syn,434506,
+FPU_mov_fp64_40%,Gen9LPClient,A0,21.53959148,syn,434506,
+FPU_mov_fp64_55%,Gen9LPClient,A0,25.07295268,syn,434506,
+FPU_mov_int16_10%,Gen9LPClient,A0,10.0367103,syn,434506,
+FPU_mov_int16_20%,Gen9LPClient,A0,11.8021225,syn,434506,
+FPU_mov_int16_30%,Gen9LPClient,A0,12.63368665,syn,434506,
+FPU_mov_int16_40%,Gen9LPClient,A0,14.62274343,syn,434506,
+FPU_mov_int16_55%,Gen9LPClient,A0,18.42125131,syn,434506,
+FPU_mov_int32_10%,Gen9LPClient,A0,9.832649842,syn,434506,
+FPU_mov_int32_20%,Gen9LPClient,A0,10.96731125,syn,434506,
+FPU_mov_int32_30%,Gen9LPClient,A0,12.17280021,syn,434506,
+FPU_mov_int32_40%,Gen9LPClient,A0,14.1101062,syn,434506,
+FPU_mov_int32_55%,Gen9LPClient,A0,17.59689169,syn,434506,
+FPU_mov_intbypass_10%,Gen9LPClient,A0,15.73071767,syn,434506,
+FPU_mov_intbypass_20%,Gen9LPClient,A0,17.27218086,syn,434506,
+FPU_mov_intbypass_30%,Gen9LPClient,A0,19.13947108,syn,434506,
+FPU_mov_intbypass_40%,Gen9LPClient,A0,21.80808675,syn,434506,
+FPU_mov_intbypass_55%,Gen9LPClient,A0,26.00172713,syn,434506,
+FPU_mov_int64_10%,Gen9LPClient,A0,15.73071767,syn,434506,
+FPU_mov_int64_20%,Gen9LPClient,A0,17.27218086,syn,434506,
+FPU_mov_int64_30%,Gen9LPClient,A0,19.13947108,syn,434506,
+FPU_mov_int64_40%,Gen9LPClient,A0,21.80808675,syn,434506,
+FPU_mov_int64_55%,Gen9LPClient,A0,26.00172713,syn,434506,
+FPU_mul_floatbypass_10%,Gen9LPClient,A0,8.177977229,syn,434506,Approximated with sim data
+FPU_mul_floatbypass_20%,Gen9LPClient,A0,9.221627266,syn,434506,Approximated with sim data
+FPU_mul_floatbypass_30%,Gen9LPClient,A0,9.962026814,syn,434506,Simulated
+FPU_mul_floatbypass_40%,Gen9LPClient,A0,11.11419217,syn,434506,Approximated with sim data
+FPU_mul_floatbypass_55%,Gen9LPClient,A0,12.07332708,syn,434506,Approximated with sim data
+FPU_mul_fp16_10%,Gen9LPClient,A0,27.15039169,syn,434506,
+FPU_mul_fp16_20%,Gen9LPClient,A0,33.70711514,syn,434506,
+FPU_mul_fp16_30%,Gen9LPClient,A0,34.97145794,syn,434506,
+FPU_mul_fp16_40%,Gen9LPClient,A0,37.81267771,syn,434506,
+FPU_mul_fp16_55%,Gen9LPClient,A0,40.41604679,syn,434506,
+FPU_mul_fp32_10%,Gen9LPClient,A0,37.65651209,syn,434506,
+FPU_mul_fp32_20%,Gen9LPClient,A0,42.46213091,syn,434506,
+FPU_mul_fp32_30%,Gen9LPClient,A0,45.87139169,syn,434506,
+FPU_mul_fp32_40%,Gen9LPClient,A0,51.17665931,syn,434506,
+FPU_mul_fp32_55%,Gen9LPClient,A0,55.59313249,syn,434506,
+FPU_mul_fp64_10%,Gen9LPClient,A0,49.62484595,syn,434506,
+FPU_mul_fp64_20%,Gen9LPClient,A0,55.77385436,syn,434506,
+FPU_mul_fp64_30%,Gen9LPClient,A0,64.79909043,syn,434506,
+FPU_mul_fp64_40%,Gen9LPClient,A0,63.61420032,syn,434506,
+FPU_mul_fp64_55%,Gen9LPClient,A0,69.03819033,syn,434506,
+FPU_mul_int16_10%,Gen9LPClient,A0,36.44006414,syn,434506,
+FPU_mul_int16_20%,Gen9LPClient,A0,42.60287277,syn,434506,
+FPU_mul_int16_30%,Gen9LPClient,A0,44.73429495,syn,434506,
+FPU_mul_int16_40%,Gen9LPClient,A0,50.29963565,syn,434506,
+FPU_mul_int16_55%,Gen9LPClient,A0,57.74809621,syn,434506,
+FPU_mul_int32_10%,Gen9LPClient,A0,56.78553155,syn,434506,
+FPU_mul_int32_20%,Gen9LPClient,A0,63.18152313,syn,434506,
+FPU_mul_int32_30%,Gen9LPClient,A0,67.22478181,syn,434506,
+FPU_mul_int32_40%,Gen9LPClient,A0,72.71899054,syn,434506,
+FPU_mul_int32_55%,Gen9LPClient,A0,78.46860463,syn,434506,
+FPU_mul_intbypass_10%,Gen9LPClient,A0,12.33228396,syn,434506,Approximated with sim data
+FPU_mul_intbypass_20%,Gen9LPClient,A0,13.72131572,syn,434506,Approximated with sim data
+FPU_mul_intbypass_30%,Gen9LPClient,A0,14.59940484,syn,434506,Approximated with sim data
+FPU_mul_intbypass_40%,Gen9LPClient,A0,15.79259537,syn,434506,Approximated with sim data
+FPU_mul_intbypass_55%,Gen9LPClient,A0,16.93978859,syn,434506,Approximated with sim data
+FPU_mul_int64_10%,Gen9LPClient,A0,56.78553155,syn,434506,Approximated with int32
+FPU_mul_int64_20%,Gen9LPClient,A0,63.18152313,syn,434506,Approximated with int32
+FPU_mul_int64_30%,Gen9LPClient,A0,67.22478181,syn,434506,Approximated with int32
+FPU_mul_int64_40%,Gen9LPClient,A0,72.71899054,syn,434506,Approximated with int32
+FPU_mul_int64_55%,Gen9LPClient,A0,78.46860463,syn,434506,Approximated with int32
+FPU_pln_floatbypass_10%,Gen9LPClient,A0,45.56464143,syn,434506,No bypass in PLN
+FPU_pln_floatbypass_20%,Gen9LPClient,A0,51.26473712,syn,434506,No bypass in PLN
+FPU_pln_floatbypass_30%,Gen9LPClient,A0,53.44882334,syn,434506,No bypass in PLN
+FPU_pln_floatbypass_40%,Gen9LPClient,A0,57.69746162,syn,434506,No bypass in PLN
+FPU_pln_floatbypass_55%,Gen9LPClient,A0,62.45620032,syn,434506,No bypass in PLN
+FPU_pln_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp32_10%,Gen9LPClient,A0,45.56464143,syn,434506,
+FPU_pln_fp32_20%,Gen9LPClient,A0,51.26473712,syn,434506,
+FPU_pln_fp32_30%,Gen9LPClient,A0,53.44882334,syn,434506,
+FPU_pln_fp32_40%,Gen9LPClient,A0,57.69746162,syn,434506,
+FPU_pln_fp32_55%,Gen9LPClient,A0,62.45620032,syn,434506,
+FPU_pln_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_pln_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_sel_bypass_10%,Gen9LPClient,A0,16.70058833,syn,434506,No bypass in SEL
+FPU_sel_bypass_20%,Gen9LPClient,A0,20.55145584,syn,434506,No bypass in SEL
+FPU_sel_bypass_30%,Gen9LPClient,A0,24.65569926,syn,434506,No bypass in SEL
+FPU_sel_bypass_40%,Gen9LPClient,A0,28.60570505,syn,434506,No bypass in SEL
+FPU_sel_bypass_55%,Gen9LPClient,A0,34.63903523,syn,434506,No bypass in SEL
+FPU_sel_fp16_10%,Gen9LPClient,A0,20.02278601,syn,434506,
+FPU_sel_fp16_20%,Gen9LPClient,A0,26.29812723,syn,434506,
+FPU_sel_fp16_30%,Gen9LPClient,A0,28.1186388,syn,434506,
+FPU_sel_fp16_40%,Gen9LPClient,A0,31.25443218,syn,434506,
+FPU_sel_fp16_55%,Gen9LPClient,A0,34.92701314,syn,434506,
+FPU_sel_fp32_10%,Gen9LPClient,A0,16.70058833,syn,434506,
+FPU_sel_fp32_20%,Gen9LPClient,A0,20.55145584,syn,434506,
+FPU_sel_fp32_30%,Gen9LPClient,A0,24.65569926,syn,434506,
+FPU_sel_fp32_40%,Gen9LPClient,A0,28.60570505,syn,434506,
+FPU_sel_fp32_55%,Gen9LPClient,A0,34.63903523,syn,434506,
+FPU_sel_fp64_10%,Gen9LPClient,A0,22.35634069,syn,434506,
+FPU_sel_fp64_20%,Gen9LPClient,A0,24.80141325,syn,434506,
+FPU_sel_fp64_30%,Gen9LPClient,A0,25.07447476,syn,434506,
+FPU_sel_fp64_40%,Gen9LPClient,A0,33.36332755,syn,434506,
+FPU_sel_fp64_55%,Gen9LPClient,A0,38.53343428,syn,434506,
+FPU_sel_int16_10%,Gen9LPClient,A0,17.09582229,syn,434506,
+FPU_sel_int16_20%,Gen9LPClient,A0,20.93096162,syn,434506,
+FPU_sel_int16_30%,Gen9LPClient,A0,22.53046688,syn,434506,
+FPU_sel_int16_40%,Gen9LPClient,A0,30.2806041,syn,434506,
+FPU_sel_int16_55%,Gen9LPClient,A0,40.15242219,syn,434506,
+FPU_sel_int32_10%,Gen9LPClient,A0,18.5483959,syn,434506,
+FPU_sel_int32_20%,Gen9LPClient,A0,20.91198633,syn,434506,
+FPU_sel_int32_30%,Gen9LPClient,A0,23.15147634,syn,434506,
+FPU_sel_int32_40%,Gen9LPClient,A0,34.25922503,syn,434506,
+FPU_sel_int32_55%,Gen9LPClient,A0,46.07687277,syn,434506,
+FPU_sel_intbypass_10%,Gen9LPClient,A0,18.5483959,syn,434506,No bypass in SEL
+FPU_sel_intbypass_20%,Gen9LPClient,A0,20.91198633,syn,434506,No bypass in SEL
+FPU_sel_intbypass_30%,Gen9LPClient,A0,23.15147634,syn,434506,No bypass in SEL
+FPU_sel_intbypass_40%,Gen9LPClient,A0,34.25922503,syn,434506,No bypass in SEL
+FPU_sel_intbypass_55%,Gen9LPClient,A0,46.07687277,syn,434506,No bypass in SEL
+FPU_sel_int64_10%,Gen9LPClient,A0,19.47838801,syn,434506,
+FPU_sel_int64_20%,Gen9LPClient,A0,22.05851998,syn,434506,
+FPU_sel_int64_30%,Gen9LPClient,A0,22.56263354,syn,434506,
+FPU_sel_int64_40%,Gen9LPClient,A0,30.40673396,syn,434506,
+FPU_sel_int64_55%,Gen9LPClient,A0,37.31343481,syn,434506,
+FPU_transc_bypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_bypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_bypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_bypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_bypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_fp64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int16_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int16_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int16_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int16_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int16_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int32_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int32_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int32_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int32_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int32_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_intbypass_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_intbypass_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_intbypass_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_intbypass_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_intbypass_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int64_10%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int64_20%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int64_30%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int64_40%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+FPU_transc_int64_55%,Gen9LPClient,A0,0,syn,434506,Unsupported combination
+PS0_GA,Gen9LPClient,A0,1.141833334,syn,244769,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_GA,Gen9LPClient,A0,5.661590283,syn,244769,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_GA_EM1Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,49.16321877,syn,244769,
+PS2_GA_EM1Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,50.37485694,syn,244769,
+PS2_GA_EM1Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,54.43482808,syn,244769,
+PS2_GA_EM1Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,55.35061409,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,59.19581945,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,56.51696525,syn,244769,
+PS2_GA_EM1Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,58.91514753,syn,244769,
+PS2_GA_EM1Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,60.29930862,syn,244769,
+PS2_GA_EM1Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,63.94584169,syn,244769,
+PS2_GA_EM1Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,64.64312776,syn,244769,
+PS2_GA_EM1Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,63.87072187,syn,244769,
+PS2_GA_EM1Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,66.16378917,syn,244769,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,67.45542797,syn,244769,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,68.69587408,syn,244769,
+PS2_GA_EM1Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,73.93564143,syn,244769,
+PS2_GA_EM1Src_SinglePipe_10%,Gen9LPClient,A0,41.80946215,syn,244769,
+PS2_GA_EM1Src_SinglePipe_20%,Gen9LPClient,A0,41.8345765,syn,244769,
+PS2_GA_EM1Src_SinglePipe_30%,Gen9LPClient,A0,46.05810042,syn,244769,Swapped 30% with 80% for linearity
+PS2_GA_EM1Src_SinglePipe_40%,Gen9LPClient,A0,48.57034753,syn,244769,Swapped 50% with 30% for linearity
+PS2_GA_EM1Src_SinglePipe_55%,Gen9LPClient,A0,54.44578707,syn,244769,Swapped 80% with 50% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,56.16929127,syn,244769,
+PS2_GA_EM2Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,58.9937174,syn,244769,
+PS2_GA_EM2Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,65.60701157,syn,244769,
+PS2_GA_EM2Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,70.02277445,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,73.37140563,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,63.5230479,syn,244769,
+PS2_GA_EM2Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,67.53399784,syn,244769,
+PS2_GA_EM2Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,71.47149211,syn,244769,
+PS2_GA_EM2Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,78.12143801,syn,244769,
+PS2_GA_EM2Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,79.31528812,syn,244769,
+PS2_GA_EM2Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,70.87679437,syn,244769,
+PS2_GA_EM2Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,76.07428843,syn,244769,
+PS2_GA_EM2Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,77.33597266,syn,244769,
+PS2_GA_EM2Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,82.87146025,syn,244769,
+PS2_GA_EM2Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,88.60780179,syn,244769,
+PS2_GA_EM2Src_SinglePipe_10%,Gen9LPClient,A0,48.81553465,syn,244769,
+PS2_GA_EM2Src_SinglePipe_20%,Gen9LPClient,A0,50.45343696,syn,244769,
+PS2_GA_EM2Src_SinglePipe_30%,Gen9LPClient,A0,59.74253102,syn,244769,
+PS2_GA_EM2Src_SinglePipe_40%,Gen9LPClient,A0,60.73026078,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_SinglePipe_55%,Gen9LPClient,A0,68.62137324,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_10%,Gen9LPClient,A0,63.17536377,syn,244769,
+PS2_GA_EM3Src_FPU1Src_DualPipe_20%,Gen9LPClient,A0,67.61257787,syn,244769,
+PS2_GA_EM3Src_FPU1Src_DualPipe_30%,Gen9LPClient,A0,76.77919506,syn,244769,
+PS2_GA_EM3Src_FPU1Src_DualPipe_40%,Gen9LPClient,A0,84.69493481,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_55%,Gen9LPClient,A0,87.5469918,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU2Src_DualPipe_10%,Gen9LPClient,A0,70.5291204,syn,244769,
+PS2_GA_EM3Src_FPU2Src_DualPipe_20%,Gen9LPClient,A0,76.15285831,syn,244769,
+PS2_GA_EM3Src_FPU2Src_DualPipe_30%,Gen9LPClient,A0,82.6436756,syn,244769,
+PS2_GA_EM3Src_FPU2Src_DualPipe_40%,Gen9LPClient,A0,92.29702419,syn,244769,
+PS2_GA_EM3Src_FPU2Src_DualPipe_55%,Gen9LPClient,A0,93.98744848,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_10%,Gen9LPClient,A0,62.71607277,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_20%,Gen9LPClient,A0,71.94338361,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_30%,Gen9LPClient,A0,81.17069445,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_40%,Gen9LPClient,A0,90.39800529,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_55%,Gen9LPClient,A0,104.2389715,syn,244769,
+PS2_GA_EM3Src_SinglePipe_10%,Gen9LPClient,A0,55.8216173,syn,244769,
+PS2_GA_EM3Src_SinglePipe_20%,Gen9LPClient,A0,59.07228728,syn,244769,
+PS2_GA_EM3Src_SinglePipe_30%,Gen9LPClient,A0,70.91471451,syn,244769,
+PS2_GA_EM3Src_SinglePipe_40%,Gen9LPClient,A0,75.40242114,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_SinglePipe_55%,Gen9LPClient,A0,82.79696956,syn,244769,Swapped 50% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_10%,Gen9LPClient,A0,40.67845373,syn,244769,Swapped 10% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_20%,Gen9LPClient,A0,41.75600662,syn,244769,Swapped 20% with 10% for linearity
+PS2_GA_FPU1Src_SinglePipe_30%,Gen9LPClient,A0,42.15713612,syn,244769,Swapped 30% with 20% for linearity
+PS2_GA_FPU1Src_SinglePipe_40%,Gen9LPClient,A0,43.26264458,syn,244769,Swapped 50% with 30% for linearity
+PS2_GA_FPU1Src_SinglePipe_55%,Gen9LPClient,A0,45.02022313,syn,244769,Swapped 80% with 50% for linearity
+PS2_GA_FPU2Src_SinglePipe_10%,Gen9LPClient,A0,49.12712513,syn,244769,Swapped 10% with 30% for linearity
+PS2_GA_FPU2Src_SinglePipe_20%,Gen9LPClient,A0,49.77025552,syn,244769,Swapped 20% with 50% for linearity
+PS2_GA_FPU2Src_SinglePipe_30%,Gen9LPClient,A0,49.9709674,syn,244769,Swapped 30% with 80% for linearity
+PS2_GA_FPU2Src_SinglePipe_40%,Gen9LPClient,A0,50.29628707,syn,244769,Swapped 50% with 20% for linearity
+PS2_GA_FPU2Src_SinglePipe_55%,Gen9LPClient,A0,49.51089274,syn,244769,Swapped 80% with 10% for linearity
+PS2_GA_FPU3Src_SinglePipe_10%,Gen9LPClient,A0,54.52028791,syn,244769,Swapped 10% with 50% for linearity
+PS2_GA_FPU3Src_SinglePipe_20%,Gen9LPClient,A0,54.99160568,syn,244769,Swapped 20% with 30% for linearity
+PS2_GA_FPU3Src_SinglePipe_30%,Gen9LPClient,A0,56.86464937,syn,244769,Swapped 30% with 10% for linearity
+PS2_GA_FPU3Src_SinglePipe_40%,Gen9LPClient,A0,58.83656751,syn,244769,Swapped 50% with 20% for linearity
+PS2_GA_FPU3Src_SinglePipe_55%,Gen9LPClient,A0,59.26348107,syn,244769,
+PS0_TC,Gen9LPClient,A0,0.713645834,syn,523738,Taken from SKL FSO ECO3 rev1 CGEN data
+PS1_TC,Gen9LPClient,A0,19.69662722,syn,523738,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS2_TC,Gen9LPClient,A0,22.35548833,syn,523738,Average of all opcodes - no variation with TR
 PS2_GRF_READ,Gen9LPClient,A0,6.968091483,ebb,1,
 PS2_GRF_WRITE,Gen9LPClient,A0,11.40242376,ebb,1,
-PS0_EU_DFX,Gen9LPClient,A0,0.238365266,syn,32140.14,Taken from SKL FSO ECO3 rev1 CGEN data
-PS2_EU_DFX,Gen9LPClient,A0,0.916161462,syn,32140.14,Average of all opcodes at 30%
-PS0_EU_SMALL,Gen9LPClient,A0,2.02226016,syn,37139.7,Taken from SKL FSO ECO3 rev1 CGEN data
-PS2_EU_SMALL,Gen9LPClient,A0,2.16890092,syn,37139.7,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
+PS0_EU_DFX,Gen9LPClient,A0,0.238365266,syn,48246,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_DFX,Gen9LPClient,A0,0.916161462,syn,48246,Average of all opcodes at 30%
+PS0_EU_SMALL,Gen9LPClient,A0,2.02226016,syn,20371,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_EU_SMALL,Gen9LPClient,A0,2.16890092,syn,20371,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
 PS0_EU_CLKGLUE,Gen9LPClient,A0,3.789678191,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_EU_CLKGLUE,Gen9LPClient,A0,3.789678191,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_EU_NONCLKGLUE,Gen9LPClient,A0,0.71839117,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
@@ -2697,8 +2697,8 @@ PS1_GACB,Gen9LPClient,A0,4.662486116,syn,197505.91,Taken from SKL FSO ECO3 rev1 
 PS2_GACB,Gen9LPClient,A0,4.662486116,syn,197505.91,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS0_GAM_DOP,Gen9LPClient,A0,14.71603441,syn,1,
 PS2_GAM_DOP,Gen9LPClient,A0,14.71603441,syn,1,
-PS0_GAM_SMALL,Gen9LPClient,A0,42.5333708,syn,205102,Taken from SKL FSO ECO3 rev1 CGEN data
-PS2_GAM_SMALL,Gen9LPClient,A0,78.47709537,syn,205102,Taken from SKL FSO ECO3 rev1 CGDIS data
+PS0_GAM_SMALL,Gen9LPClient,A0,42.5333708,syn,1910768,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_GAM_SMALL,Gen9LPClient,A0,78.47709537,syn,1910768,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS0_GAM_CLKGLUE,Gen9LPClient,A0,40.98674271,syn,1,
 PS2_GAM_CLKGLUE,Gen9LPClient,A0,40.98674271,syn,1,
 PS0_GAM_NONCLKGLUE,Gen9LPClient,A0,3.894031649,syn,1,
