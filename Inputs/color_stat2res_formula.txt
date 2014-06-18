@@ -3,7 +3,7 @@
 #Instance Counts				
 	numSlices	=	knob.global.NumSlices	
 	numPbsPerSlice	=	knob.NumPbs.NumPbs	
-	numPbs	=	numSlices * numPbsPerSlice	
+	numPbs	=	D(SUM('knob.S\d+.NumColorPipes'))	
 	num_COLOR_DAPRSC	=	numPbs	
 	num_COLOR_RCPFE	=	numPbs	
 	num_COLOR_RCPBE	=	numPbs	
@@ -202,3 +202,4 @@
 	PS2_DAPB_NOMSAA_RTR	=	D(SUM('@ANY_PB@pwr_nonMsaaSurfaceRead.CrClock')) / .Clk.num_COLOR_DAPB	
 	PS2_DAPB_MSAA_RTR	=	D(SUM('@ANY_PB@pwr_MsaaSurfaceRead.CrClock')) / .Clk.num_COLOR_DAPB	
 	PS2_DAPB_DIS	=	1 - PS0_DAPB - PS0_DAPB_DOP - PS1_DAPB - PS2_DAPB_NOMSAA_RTR - PS2_DAPB_MSAA_RTR	#GSIM does not model this as yet
+
