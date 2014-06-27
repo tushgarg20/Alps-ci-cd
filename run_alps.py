@@ -100,7 +100,12 @@ print("",file=alps_log)
 alps_log.close()
 
 if not options.run_local:
-    stat_parser_cmd = ['/p/gat/tools/gsim_alps/StatParser/StatParser','-csv','-o', res, '-e', log, '-s', stat]
+    if not sys.platform == 'win32':
+        stat_parser_cmd = ['/p/gat/tools/gsim_alps/StatParser/StatParser','-csv','-o', res, '-e', log, '-s', stat]
+    else:
+        print("run_local not supported in windows")
+        exit(10000)
+
     for formula in cfg_data['Stat2Res Formula Files']:
         formula_file = '/p/gat/tools/gsim_alps/' + formula
         stat_parser_cmd += ['-i', formula_file]
@@ -113,26 +118,32 @@ if not options.run_local:
         build_alps_cmd += ['--debug']
 
 else:
-    try:
-        process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
-        output = process.communicate()[0]
-        ExitCode = process.wait()
-    except Exception:
-        print ('Error: StatParser compile failed to open subprocess')
+    if not sys.platform == 'win32':
+        try:
+            process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+            output = process.communicate()[0]
+            ExitCode = process.wait()
+        except Exception:
+            ExitCode = 10000
+            print ('Error: StatParser compile failed to open subprocess')
 
-    if ExitCode > 1:
-        print ("StatParser compile failed with exitcode : ", ExitCode)
-        exit(ExitCode) 
+        if ExitCode > 1:
+            print ("StatParser compile failed with exitcode : ", ExitCode)
+            exit(ExitCode) 
 
-    stat_parser_script = options.user_dir + '/StatParser/StatParser'
-    build_alps_script = options.user_dir + '/build_alps.py'
+        stat_parser_script = options.user_dir + '/StatParser/StatParser'
+        build_alps_script = '/usr/intel/pkgs/python/3.1.2/bin/python ', options.user_dir + '/build_alps.py'
+    else:
+        stat_parser_script = options.user_dir + '/StatParser/StatParser.exe'
+        build_alps_script = '%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py'
+
     stat_parser_cmd = [stat_parser_script,'-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
         formula_file = options.user_dir + '/' + formula
         stat_parser_cmd += ['-i', formula_file]
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
-    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd = [build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
     if(options.tg_file):
         build_alps_cmd += ['-t', '%s/%s' % (options.output_dir, options.tg_file), '-z', '%s/alps_Timegraph.txt' % options.output_dir]
     if(options.run_debug):
@@ -146,6 +157,7 @@ if not options.build_alps_only:
         output = process.communicate()[0]
         ExitCode = process.wait()
     except Exception:
+        ExitCode = 10000
         print ('Error: StatParser failed to open subprocess')
 
     if ExitCode > 1:
@@ -157,6 +169,7 @@ try:
     output = process.communicate()[0]
     ExitCode = process.wait()
 except Exception:
+    ExitCode = 10000
     print ('Error: build_alps failed to open subprocess')
 
 if ExitCode > 1:
