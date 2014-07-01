@@ -132,10 +132,12 @@ else:
             exit(ExitCode) 
 
         stat_parser_script = options.user_dir + '/StatParser/StatParser'
-        build_alps_script = '/usr/intel/pkgs/python/3.1.2/bin/python ', options.user_dir + '/build_alps.py'
+        build_alps_script = options.user_dir + '/build_alps.py'
+        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script]
     else:
         stat_parser_script = options.user_dir + '/StatParser/StatParser.exe'
         build_alps_script = '%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py'
+        build_alps_cmd = [build_alps_script]
 
     stat_parser_cmd = [stat_parser_script,'-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
@@ -143,7 +145,7 @@ else:
         stat_parser_cmd += ['-i', formula_file]
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
-    build_alps_cmd = [build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd += ['-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
     if(options.tg_file):
         build_alps_cmd += ['-t', '%s/%s' % (options.output_dir, options.tg_file), '-z', '%s/alps_Timegraph.txt' % options.output_dir]
     if(options.run_debug):
