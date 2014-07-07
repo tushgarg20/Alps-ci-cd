@@ -143,7 +143,7 @@ public:
         std::vector<CNode*> expr;
         std::vector<double> history;
         std::vector<bool> nahistory;
-        unsigned size;
+        uint32_t size;
         CReader* reader;
         double value;
         bool bad;
@@ -151,12 +151,13 @@ public:
         bool dfs_visited;
         int dfs_done;
         CVariable(std::string f, int n, std::string s) : CLocation(f, n), name(s), bad(false), na(false), value(0), reader(0), size(0) {}
+        ~CVariable(){ for(size_t i=0;i<expr.size();i++) delete expr[i];}
         void UpdateHistory();
     };
     struct CVarNode : public CNode // variables
     {   CVariable* V;
-        unsigned T;
-        CVarNode(CVariable* v, unsigned t=0) : V(v), T(t) { if(V->size<t) V->size=T; }
+        uint32_t T;
+        CVarNode(CVariable* v, uint32_t t=0) : V(v), T(t) { if(V->size<t) V->size=T; }
         double Evaluate();
         CNode* Flatten();
     };
@@ -185,10 +186,10 @@ public:
     struct CVector : public CList
     {   std::vector<CNode*> V;
         CVector(std::vector<CNode*>&v ){ V.swap(v);}
-        ~CVector(){ for(unsigned i=0;i<V.size();i++) delete V[i];}
-        void Accept(CWalker* W){ for(unsigned i=0;i<V.size();i++) V[i]->Accept(W);}
+        ~CVector(){ for(uint32_t i=0;i<V.size();i++) delete V[i];}
+        void Accept(CWalker* W){ for(uint32_t i=0;i<V.size();i++) V[i]->Accept(W);}
         CNode* Flatten();
-        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); for(unsigned i=0;i<V.size();i++) V[i]->Recursion(func, P);}
+        void Recursion(void (*func)(CParser*, CNode*), CParser*P){ func(P, this); for(uint32_t i=0;i<V.size();i++) V[i]->Recursion(func, P);}
     };
     struct CRegEx : public CLocation
     {   std::string str;
@@ -286,29 +287,29 @@ public:
     };
     struct CReport : public CLocation
     {   CReport(std::string f, int n) : CLocation(f, n) {}
-        virtual int Size() const = 0;
-        virtual std::string Name(int) const = 0;
-        virtual double Value(int) const = 0;
-        virtual bool Bad(int) const = 0;
+        virtual size_t Size() const = 0;
+        virtual std::string Name(size_t) const = 0;
+        virtual double Value(size_t) const = 0;
+        virtual bool Bad(size_t) const = 0;
     };
     class CPlainVariable : public CReport
     {   CVariable*V;
     public:
         CPlainVariable(CVariable*v) : CReport(v->file, v->line), V(v) {}
-        int Size() const { return 1;}
-        std::string Name(int) const { return V->name;}
-        double Value(int) const { return V->value;}
-        bool Bad(int) const { return V->na;}
+        size_t Size() const { return 1;}
+        std::string Name(size_t) const { return V->name;}
+        double Value(size_t) const { return V->value;}
+        bool Bad(size_t) const { return V->na;}
     };
     class CPassThroughVariable : public CReport
     {   std::string name;
         CReader* R;
     public:
         CPassThroughVariable(std::string s, std::string f, int n) : CReport(f, n), name(s), R(0) {}
-        int Size() const { return 1;}
-        std::string Name(int) const { return name;}
-        double Value(int) const { return R->Value();}
-        bool Bad(int) const { return !R;}
+        size_t Size() const { return 1;}
+        std::string Name(size_t) const { return name;}
+        double Value(size_t) const { return R->Value();}
+        bool Bad(size_t) const { return !R;}
         friend class CParser;
     };
     class CPassThroughRegex : public CReport
@@ -322,11 +323,11 @@ public:
         bool diff;
     public:
         CPassThroughRegex(std::string p, std::string r, bool d, std::string f, int n) : CReport(f, n), pref(p), rex(r), diff(d) {}
-        int Size() const { return names.size();}
-        std::string Name(int n) const { return pref+names[n];}
-        double Value(int n) const { return value[n];}
-        bool Bad(int) const { return false;}
-        void Update(){ for(unsigned i=0;i<readers.size();i++){ if(diff) old_val[i]=new_val[i]; new_val[i]=readers[i]->Value(); value[i]=diff?new_val[i]-old_val[i]:new_val[i];}}
+        size_t Size() const { return names.size();}
+        std::string Name(size_t n) const { return pref+names[n];}
+        double Value(size_t n) const { return value[n];}
+        bool Bad(size_t) const { return false;}
+        void Update(){ for(uint32_t i=0;i<readers.size();i++){ if(diff) old_val[i]=new_val[i]; new_val[i]=readers[i]->Value(); value[i]=diff?new_val[i]-old_val[i]:new_val[i];}}
         friend class CParser;
     };
 
@@ -342,8 +343,8 @@ public:
     void Define(std::string name, std::string expr){ DefineVariable(name, expr, false, "", 0);}    // may throw exception
     bool Ready();
     void Execute();
-    int Size(){ return (int) var_list.size();}
-    const CReport* Report(int n){ return var_list[n];}
+    size_t Size(){ return var_list.size();}
+    const CReport* Report(size_t n){ return var_list[n];}
     static std::string Clip(std::string);
 protected:
     static void CollectDiffs(CParser*, CNode*);
@@ -391,6 +392,6 @@ protected:
     std::vector<CDiffNode*> diffs;
     std::vector<CToken> tokens;
     std::set<CVariable*> dep;
-    unsigned token_ptr;
+    uint32_t token_ptr;
     CVariable* dot;
 };

@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "ExprParser.h"
 
-static char* AlphaNumDot="._0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const char* AlphaNumDot="._0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 CParser::CParser()
 {
@@ -14,8 +14,8 @@ CParser::CParser()
 CParser::~CParser()
 {   for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++) delete J->second;
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++) delete J->second;
-    for(unsigned i=0;i<lines.size();i++) delete lines[i];
-    for(unsigned i=0;i<var_list.size();i++) delete var_list[i];
+    for(size_t i=0;i<lines.size();i++) delete lines[i];
+    for(size_t i=0;i<var_list.size();i++) delete var_list[i];
 }
 
 void CParser::Start(const char*f){ Finish(); current_file=f; current_line=0; formula_line=0; pending.erase();}
@@ -42,7 +42,7 @@ void CParser::ReadLine(const char*str)
     boost::smatch match;
     static boost::regex definition_pattern("(?:('[^']*')\\s*:\\s*)?((?:[\\w\\.]|\\{\\$\\d+\\})+|@\\w+@|[\\w\\.]*'[^']*')\\s*(\\+?=)\\s*(.*)");
     if(boost::regex_match(s, match, definition_pattern))
-    {   for(unsigned i=0;i<match.size();i++)
+    {   for(size_t i=0;i<match.size();i++)
         pattern=match[1];
         left=match[2];
         if(match[3]=="+=") plus_eq=true;
@@ -70,6 +70,7 @@ void CParser::DefineVariable(std::string left, std::string right, bool plus_eq, 
     static boost::regex passthrough_pattern("([\\w\\.]*)('[^']*')");
     current_file=file;
     current_line=line;
+    formula_line=line;
     if(boost::regex_match(left, match, passthrough_pattern))
     {   if(plus_eq) throw std::string("+= is not legal here");
         std::string pref=match[1];
@@ -106,7 +107,7 @@ void CParser::DefineVariable(std::string left, std::string right, bool plus_eq, 
     }
     V->formula.push_back(Clip(right));
     V->bad=true; V->na=true;
-    for(unsigned i=0;i<V->formula.size();i++) V->expr.push_back(Parse(plus_eq?left+"[1]+("+V->formula[i]+")":V->formula[i]));
+    for(size_t i=0;i<V->formula.size();i++) V->expr.push_back(Parse(plus_eq?left+"[1]+("+V->formula[i]+")":V->formula[i]));
     V->bad=false; V->na=false;
 }
 
@@ -115,7 +116,7 @@ std::string CParser::SubstituteSubpatterns(std::string s, const std::vector<std:
     static boost::regex substitute_pattern("(.*)(\\{\\$(\\d+)\\})(.*)");
     while(boost::regex_match(s, match, substitute_pattern))
     {   std::string sub;
-        unsigned n=boost::lexical_cast<unsigned>(match[3]);
+        uint32_t n=boost::lexical_cast<uint32_t>(match[3]);
         if(n>0 && n<=V.size()) sub=V[n-1];
         s=match[1]+sub+match[4];
     }
@@ -126,7 +127,7 @@ std::vector<CParser::CError> CParser::Initialize(CReaderManager* RM)
 {   std::vector<CParser::CError> Err;
 
     std::map<std::string, std::vector<std::vector<std::string> > > M;
-    for(unsigned i=0;i<lines.size();i++)
+    for(size_t i=0;i<lines.size();i++)
     {   CLine* L=lines[i];
         if(L->pattern.size())
         {   if(InvalidRegex(L->pattern))
@@ -139,7 +140,7 @@ std::vector<CParser::CError> CParser::Initialize(CReaderManager* RM)
             {   Err.push_back(CError(L->file, L->line, "", std::string("no matches found: '")+L->pattern+"'"));
                 continue;
             }
-            for(unsigned j=0;j<V.size();j++)
+            for(size_t j=0;j<V.size();j++)
             {   std::string left=SubstituteSubpatterns(L->left, V[j]);
                 std::string right=SubstituteSubpatterns(L->right, V[j]);
                 try
@@ -218,9 +219,9 @@ void CParser::ScanDependencies(CParser*P, CParser::CNode*N)
 
 std::vector<CParser::CError> CParser::CheckDependencies()
 {   std::vector<CParser::CError> Err;
-    for(unsigned i=0;i<vars.size();i++)
+    for(size_t i=0;i<vars.size();i++)
     {   CVariable* v=vars[i];
-        for(unsigned j=0;j<v->expr.size();j++) v->expr[j]->Recursion(ScanDependencies, this);
+        for(size_t j=0;j<v->expr.size();j++) v->expr[j]->Recursion(ScanDependencies, this);
         for(std::set<CVariable*>::iterator J=dep.begin();J!=dep.end();J++)
         {   if(*J==v)
             {   v->bad=true; v->na=true;
@@ -234,7 +235,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
     }
     int count=0;
     std::vector<CVariable*> stack;
-    for(unsigned i=0;i<vars.size();i++)
+    for(size_t i=0;i<vars.size();i++)
     {   CVariable*v=vars[i];
         if(v->dfs_visited) continue;
         v->dfs_visited=true;
@@ -242,7 +243,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
         while(stack.size())
         {   CVariable* x=stack.back();
             CVariable* z=0;
-            for(unsigned i=0;i<x->depends.size();i++)
+            for(size_t i=0;i<x->depends.size();i++)
             {   if(x->depends[i]->dfs_visited) continue;
                 z=x->depends[i];
                 break;
@@ -258,8 +259,8 @@ std::vector<CParser::CError> CParser::CheckDependencies()
         }
     }
     std::sort(vars.begin(), vars.end(), dfs_sort);
-    for(unsigned i=0;i<vars.size();i++) vars[i]->dfs_visited=false;
-    for(unsigned i=0;i<vars.size();i++)
+    for(size_t i=0;i<vars.size();i++) vars[i]->dfs_visited=false;
+    for(size_t i=0;i<vars.size();i++)
     {   CVariable*v=vars[i];
         if(v->dfs_visited) continue;
         v->dfs_visited=true;
@@ -268,7 +269,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
         while(stack.size())
         {   CVariable* x=stack.back();
             CVariable* z=0;
-            for(unsigned i=0;i<x->depends.size();i++)
+            for(size_t i=0;i<x->depends.size();i++)
             {   if(x->depends[i]->dfs_visited) continue;
                 z=x->depends[i];
                 break;
@@ -284,7 +285,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
         }
         if(cycle.size())
         {   std::string msg;
-            for(unsigned j=0;j<cycle.size();j++)
+            for(size_t j=0;j<cycle.size();j++)
             {   msg+=cycle[j]->name+" <= ";
                 cycle[j]->bad=true;
                 cycle[j]->na=true;
@@ -298,7 +299,7 @@ std::vector<CParser::CError> CParser::CheckDependencies()
 
 void CParser::Tokenize(std::string s)
 {   tokens.clear();
-    for(unsigned i=0;i<s.length();i++)
+    for(size_t i=0;i<s.length();i++)
     {   char c=s[i];
         if(c==' '||c=='\t') continue;
         if(c=='+'){ tokens.push_back(CToken(PLUS, "+")); continue;}
@@ -344,7 +345,7 @@ void CParser::Tokenize(std::string s)
             tokens.push_back(CToken(OR, "||")); continue;
         }
         if(c=='\'')
-        {   unsigned j;
+        {   size_t j;
             for(j=i+1;j<s.length();j++) if(s[j]=='\'') break;
             if(j==s.length()) Throw("syntax error: unmatched  quote");
             try
@@ -357,7 +358,7 @@ void CParser::Tokenize(std::string s)
             i=j; continue;
         }
         if(c=='_' || c=='.' || (c>='a' && c<='z') || (c>='A' && c<='Z') || (c>='0' && c<='9'))
-        {   unsigned j;
+        {   size_t j;
             for(j=i+1;j<s.length();j++) if(s[j]!='_' && s[j]!='.' && !(s[j]>='a' && s[j]<='z') && !(s[j]>='A' && s[j]<='Z') && !(s[j]>='0' && s[j]<='9')) break;
             std::string t=s.substr(i, j-i);
             if(boost::regex_match(t, boost::regex("^\\.?[a-zA-Z_].*$"))) tokens.push_back(CToken(NAME, t));
@@ -503,7 +504,8 @@ CParser::CNode* CParser::Parse2()
     while(token_ptr<tokens.size() && (tokens[token_ptr].type==MUL || tokens[token_ptr].type==DIV || tokens[token_ptr].type==MOD))
     {   CBinaryNode::TYPE op = tokens[token_ptr].type==MUL ? CBinaryNode::MUL : tokens[token_ptr].type==DIV ? CBinaryNode::DIV : CBinaryNode::MOD;
         token_ptr++;
-        N2=Parse1();
+        try { N2=Parse1();}
+        catch(...){ delete N1; throw;}
         N1=new CBinaryNode(op, N1, N2);
     }
     return N1;
@@ -517,7 +519,8 @@ CParser::CNode* CParser::Parse3()
     while(token_ptr<tokens.size() && (tokens[token_ptr].type==PLUS || tokens[token_ptr].type==MINUS))
     {   CBinaryNode::TYPE op = tokens[token_ptr].type==PLUS ? CBinaryNode::PLUS : CBinaryNode::MINUS;
         token_ptr++;
-        N2=Parse2();
+        try { N2=Parse2();}
+        catch(...){ delete N1; throw;}
         N1=new CBinaryNode(op, N1, N2);
     }
     return N1;
@@ -530,22 +533,26 @@ CParser::CNode* CParser::Parse4()
     N1=Parse3();
     if(token_ptr<tokens.size() && tokens[token_ptr].type==LT)
     {   token_ptr++;
-        N2=Parse3();
+        try { N2=Parse3();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::LT, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==GT)
     {   token_ptr++;
-        N2=Parse3();
+        try { N2=Parse3();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::GT, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==LTE)
     {   token_ptr++;
-        N2=Parse3();
+        try { N2=Parse3();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::LTE, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==GTE)
     {   token_ptr++;
-        N2=Parse3();
+        try { N2=Parse3();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::GTE, N1, N2);
     }
     return N1;
@@ -558,12 +565,14 @@ CParser::CNode* CParser::Parse5()
     N1=Parse4();
     if(token_ptr<tokens.size() && tokens[token_ptr].type==EQ)
     {   token_ptr++;
-        N2=Parse4();
+        try { N2=Parse4();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::EQ, N1, N2);
     }
     if(token_ptr<tokens.size() && tokens[token_ptr].type==NE)
     {   token_ptr++;
-        N2=Parse4();
+        try { N2=Parse4();}
+        catch(...){ delete N1; throw;}
         return new CBinaryNode(CBinaryNode::NE, N1, N2);
     }
     return N1;
@@ -576,7 +585,8 @@ CParser::CNode* CParser::Parse6()
     N1=Parse5();
     while(token_ptr<tokens.size() && tokens[token_ptr].type==AND)
     {   token_ptr++;
-        N2=Parse5();
+        try { N2=Parse5();}
+        catch(...){ delete N1; throw;}
         N1=new CBinaryNode(CBinaryNode::AND, N1, N2);
     }
     return N1;
@@ -589,7 +599,8 @@ CParser::CNode* CParser::Parse7()
     N1=Parse6();
     while(token_ptr<tokens.size() && tokens[token_ptr].type==OR)
     {   token_ptr++;
-        N2=Parse6();
+        try { N2=Parse6();}
+        catch(...){ delete N1; throw;}
         N1=new CBinaryNode(CBinaryNode::OR, N1, N2);
     }
     return N1;
@@ -603,10 +614,12 @@ CParser::CNode* CParser::Parse8()
     N1=Parse7();
     if(token_ptr<tokens.size() && tokens[token_ptr].type==QUEST)
     {   token_ptr++;
-        N2=Parse8();
+        try { N2=Parse8();}
+        catch(...){ delete N1; throw;}
         if(token_ptr<tokens.size() && tokens[token_ptr].type==COLON)
         {   token_ptr++;
-            N3=Parse8();
+            try { N3=Parse8();}
+            catch(...){ delete N1; delete N2; throw;}
             N1=new CTernaryNode(N1, N2, N3);
         }
         else { delete N1; delete N2; throw 0;}
@@ -638,7 +651,9 @@ CParser::CNode* CParser::ParseRange()
     CNode* N=Parse8();
     if(token_ptr<tokens.size() && tokens[token_ptr].type==COLON)
     {   token_ptr++;
-        CNode*N1=Parse8();
+        CNode*N1;
+        try { N1=Parse8();}
+        catch(...){ delete N; throw;}
         return new CRangeNode(N, N1);
     }
     return N;
@@ -646,7 +661,8 @@ CParser::CNode* CParser::ParseRange()
 
 CParser::CNode* CParser::ParseList()
 {   std::vector<CParser::CNode*> V;
-    ParseList(V);
+    try { ParseList(V);}
+    catch(...){ for(size_t i=0;i<V.size();i++) delete V[i]; throw;}
     if(V.size()==0) return 0;
     if(V.size()==1) return V[0];
     return new CVector(V);
@@ -758,7 +774,7 @@ double CParser::CVarNode::Evaluate()
 }
 
 void CParser::CVariable::UpdateHistory()
-{   if(!history.size()) for(unsigned i=0;i<size;i++)
+{   if(!history.size()) for(size_t i=0;i<size;i++)
     {   history.push_back(0.); nahistory.push_back(0);}
     for(int i=size-1;i;i--)
     {   history[i]=history[i-1];
@@ -810,12 +826,12 @@ void CParser::CCaseNode::Visit(CParser::CNode* n)
 CParser::CNode* CParser::CVector::Flatten()
 {   CNode* M;
     std::vector<CNode*> W;
-    for(unsigned i=0;i<V.size();i++)
+    for(size_t i=0;i<V.size();i++)
     {   M=V[i]->Flatten();
         if(M!=V[i]) delete V[i];
         if(M->IsList())
         {   CVector* X=dynamic_cast<CVector*>(M);
-            for(unsigned k=0;k<X->V.size();k++) W.push_back(X->V[k]);
+            for(size_t k=0;k<X->V.size();k++) W.push_back(X->V[k]);
             X->V.clear();
             delete X;
         }
@@ -837,7 +853,7 @@ CParser::CNode* CParser::CRegexNode::Flatten()
         }
     }
     else
-    {   for(unsigned i=0;i<R->vector.size();i++)
+    {   for(size_t i=0;i<R->vector.size();i++)
         {   if(R->vector[i]->IsConst()) W.push_back(new CConstNode(R->vector[i]->Value()));
             else W.push_back(new CReaderNode(R->vector[i]));
         }
@@ -863,7 +879,7 @@ CParser::CNode* CParser::CDiffList::Flatten()
     }
     std::vector<CNode*> W;
     CVector* X=dynamic_cast<CVector*>(M);
-    for(unsigned i=0;i<X->V.size();i++) W.push_back(new CDiffNode(X->V[i]));
+    for(size_t i=0;i<X->V.size();i++) W.push_back(new CDiffNode(X->V[i]));
     X->V.clear();
     if(W.size()==0) throw std::string("that cannot be 1");
     if(W.size()==1) throw std::string("that cannot be 2");
@@ -878,16 +894,16 @@ CParser::CNode* CParser::CMemList::Flatten()
     {   if(!L->IsConst()) throw std::string("non-constant index");
         int t=(int)L->Evaluate();
         if(t<=0) throw std::string("index must be greater than zero");
-        M=new CVarNode(V, (unsigned)t);
+        M=new CVarNode(V, (uint32_t)t);
         L=0; return M;
     }
     std::vector<CNode*> W;
     CVector* X=dynamic_cast<CVector*>(M);
-    for(unsigned i=0;i<X->V.size();i++)
+    for(size_t i=0;i<X->V.size();i++)
     {   if(!X->V[i]->IsConst()) throw std::string("non-constant index");
         int t=(int)X->V[i]->Evaluate();
         if(t<=0) throw std::string("negative or zero index");
-        W.push_back(new CVarNode(V, (unsigned)t));
+        W.push_back(new CVarNode(V, (uint32_t)t));
     }
     X->V.clear();
     if(W.size()==0) throw std::string("that cannot be 3");
@@ -922,19 +938,19 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             if(J->second->vector.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
         }
     }
-    for(unsigned i=0;i<p_t_regs.size();i++)
+    for(size_t i=0;i<p_t_regs.size();i++)
     {   std::map<std::string, CReader*> M=RM->FindRegExAsMap(p_t_regs[i]->rex);
         if(M.empty()) Err.push_back(CError(p_t_regs[i]->file, p_t_regs[i]->line, "", std::string("no matches found: '")+p_t_regs[i]->rex+"'"));
         for(std::map<std::string, CReader*>::iterator J=M.begin();J!=M.end();J++) p_t_regs[i]->names.push_back(J->first);
         std::sort(p_t_regs[i]->names.begin(), p_t_regs[i]->names.end());
-        for(unsigned j=0;j<p_t_regs[i]->names.size();j++)
+        for(size_t j=0;j<p_t_regs[i]->names.size();j++)
         {   p_t_regs[i]->readers.push_back(M[p_t_regs[i]->names[j]]);
             p_t_regs[i]->new_val.push_back(0);
             p_t_regs[i]->old_val.push_back(0);
             p_t_regs[i]->value.push_back(0);
         }
     }
-    for(unsigned i=0;i<p_t_vars.size();i++)
+    for(size_t i=0;i<p_t_vars.size();i++)
     {   p_t_vars[i]->R=RM->FindReader(p_t_vars[i]->name);
         if(!p_t_vars[i]->R) Err.push_back(CError(p_t_vars[i]->file, p_t_vars[i]->line, "", std::string("no matches found: '")+p_t_vars[i]->name+"'"));
     }
@@ -955,10 +971,10 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             V->bad=true; V->na=true;
         }
     }
-    for(unsigned i=0;i<vars.size();i++)
+    for(size_t i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
-        for(unsigned j=0;j<V->expr.size();j++)
+        for(size_t j=0;j<V->expr.size();j++)
         {   bool err=false;
             try
             {   CNode* N=V->expr[j]->Scalar();
@@ -977,7 +993,7 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             }
             if(err)
             {   delete V->expr[j];
-                for(unsigned k=j+1;k<V->expr.size();k++) V->expr[k-1]=V->expr[k];
+                for(size_t k=j+1;k<V->expr.size();k++) V->expr[k-1]=V->expr[k];
                 V->expr.pop_back();
                 j--; continue;
             }
@@ -986,21 +1002,21 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
         {   V->bad=true; V->na=true;
         }
     }
-    for(unsigned i=0;i<vars.size();i++)
+    for(size_t i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
-        for(unsigned j=0;j<V->expr.size();j++) V->expr[j]->Recursion(CollectDiffs, this);
+        for(size_t j=0;j<V->expr.size();j++) V->expr[j]->Recursion(CollectDiffs, this);
     }
-    for(unsigned i=0;i<vars.size();i++) if(vars[i]->size) history.push_back(vars[i]);
+    for(size_t i=0;i<vars.size();i++) if(vars[i]->size) history.push_back(vars[i]);
     return Err;
 }
 
 void CParser::Execute()
-{   for(unsigned i=0;i<vars.size();i++)
+{   for(size_t i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
         V->na=true;
-        for(unsigned j=0;j<V->expr.size();j++)
+        for(size_t j=0;j<V->expr.size();j++)
         {   try
             {   V->value=V->expr[j]->Evaluate();
                 V->na=false;
@@ -1009,21 +1025,21 @@ void CParser::Execute()
             catch(...){}
         }
     }
-    for(unsigned i=0;i<p_t_regs.size();i++) p_t_regs[i]->Update();
-    for(unsigned i=0;i<diffs.size();i++) diffs[i]->Record();
-    for(unsigned i=0;i<dynamic.size();i++)
+    for(size_t i=0;i<p_t_regs.size();i++) p_t_regs[i]->Update();
+    for(size_t i=0;i<diffs.size();i++) diffs[i]->Record();
+    for(size_t i=0;i<dynamic.size();i++)
     {   CDynamicReader* Dr=dynamic_cast<CDynamicReader*>(dynamic[i]->reader);
         Dr->Set(dynamic[i]->value);
     }
-    for(unsigned i=0;i<history.size();i++) history[i]->UpdateHistory();
+    for(size_t i=0;i<history.size();i++) history[i]->UpdateHistory();
 }
 
 bool CParser::Ready()
-{   for(unsigned i=0;i<vars.size();i++)
+{   for(size_t i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad && V!=dot) continue;
         V->na=true;
-        for(unsigned j=0;j<V->expr.size();j++)
+        for(size_t j=0;j<V->expr.size();j++)
         {   try
             {   V->value=V->expr[j]->Evaluate();
                 V->na=false;
