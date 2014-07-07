@@ -183,10 +183,10 @@
 	PS2_SF_NotCulled_NotFastClip	=	D(Geo.uSF.pwr_SF_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
 #SDE				
 	PS0_SDE_DOP	=	 .temp_3DPipeDisable	
-	PS0_SDE	=	(D(Geo.uSDE.pwr_SDE_Idle.CrClock) / .CrClk) - PS0_SDE_DOP	
-	PS1_SDE	=	(D(Geo.uSDE.pwr_SDE_Idle.CrClock) - D(Geo.uSDE.pwr_SDE_Idle.CrClock)) / .CrClk	
-	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.CrClock) / .CrClk	
-	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.CrClock) / .CrClk	
+	PS0_SDE	=	(D(Geo.uSDE.pwr_SDE_Idle.GeoClock) / .GeoClk) - PS0_SDE_DOP	
+	PS1_SDE	=	(D(Geo.uSDE.pwr_SDE_Stalled_or_Idle.GeoClock) - D(Geo.uSDE.pwr_SDE_Idle.GeoClock)) /  .GeoClk	
+	PS2_SDE_Culled	=	D(Geo.uSDE.pwr_SDE_Culled.GeoClock) /  .GeoClk	
+	PS2_SDE_NotCulled	=	D(Geo.uSDE.pwr_SDE_NotCulled.GeoClock) /  .GeoClk	
 #TDG				
  'uTDG\.Idle\.(\w*Clock)' : 	PS0_TDG	=	D(uTDG.Idle.{$1}) / D({$1}.Clocks)	
  'uTDG\.Idle\.(\w*Clock)' : 	PS1_TDG	=	(D(uTDG.IdleOrStalled.{$1}) - D(uTDG.Idle.{$1})) / D({$1}.Clocks)	
