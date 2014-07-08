@@ -78,7 +78,11 @@ runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 alps_log = open(runalps_log,'w')
 
 try:
-    process = subprocess.Popen(['git','describe','--tags'], cwd='%s/' % (wd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+    if sys.platform == 'win32':
+        git_exe = 'C:/Program Files (x86)/Git/bin/git'
+    else:
+        git_exe = 'git'
+    process = subprocess.Popen([git_exe,'describe','--tags'], cwd='%s/' % (wd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
     tag = process.communicate()[0]
     tag = (tag.rstrip()).decode("utf-8")
     ExitCode = process.wait()
