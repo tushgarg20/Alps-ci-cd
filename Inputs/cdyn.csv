@@ -1961,29 +1961,35 @@ PS2_EU_NONCLKGLUE,Gen9LPClient,A0,3.058879527,syn,1,Average of all opcodes at 30
 PS0_EU_DOP,Gen9LPClient,A0,0,syn,1,DOP gated
 PS1_EU_DOP,Gen9LPClient,A0,0,syn,1,No stall DOP gating in SKL
 PS2_EU_DOP,Gen9LPClient,A0,3.496390053,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_FT_DOP,Gen9LPClient,A0,0,syn,134954.95,
 PS0_FT,Gen9LPClient,A0,0.13074989,syn,134954.95,
 PS1_FT,Gen9LPClient,A0,0.863741972,syn,134954.95,
 PS2_FT,Gen9LPClient,A0,19.19521987,syn,134954.95,10% TR
+PS0_SO_DOP,Gen9LPClient,A0,0,syn,129023.68,
 PS0_SO,Gen9LPClient,A0,0.193834101,syn,129023.68,
 PS1_SO,Gen9LPClient,A0,1.022892362,syn,129023.68,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,44.2159347,syn,129023.68,16% TR
 PS0_ST,Gen9LPClient,A0,0.175596514,syn,178517.13,
+PS0_ST_DOP,Gen9LPClient,A0,0,syn,178517.13,
 PS1_ST,Gen9LPClient,A0,3.911760936,syn,178517.13,
 PS2_ST_1Bank_Enable,Gen9LPClient,A0,26.43426225,syn,178517.13,11% TR
 PS2_ST_2Bank_Enable,Gen9LPClient,A0,32.50697376,syn,178517.13,13% TR
 PS2_ST_3Bank_Enable,Gen9LPClient,A0,47.16042266,syn,178517.13,Approximated using 16% validity/8% TR - revisit this
 PS2_ST_4Bank_Enable,Gen9LPClient,A0,47.16042266,syn,178517.13,Approximated using 3 bank enable
 PS2_ST_1Bank_Enable_SameADD,Gen9LPClient,A0,0,syn,178517.13,No model for this one
+PS0_MT_DOP,Gen9LPClient,A0,0,syn,359666.99,
 PS0_MT,Gen9LPClient,A0,0.301762907,syn,359666.99,
 PS1_MT,Gen9LPClient,A0,6.592440626,syn,359666.99,Approximated as PS0 - need to change
 PS2_MT_BYPASS,Gen9LPClient,A0,22.25341751,syn,359666.99,1% TR
 PS2_MT_Tile_X,Gen9LPClient,A0,71.09956325,syn,359666.99,1% TR
 PS2_MT_Tile_Y,Gen9LPClient,A0,36.57279984,syn,359666.99,1% TR
 PS2_MT_Tile_else,Gen9LPClient,A0,36.57279984,syn,359666.99,Approximated using Tile_Y
+PS0_MT_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
 PS0_MT_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS2_MT_LatFifo_READ,Gen9LPClient,A0,5.91075184,ebb,1,
 PS2_MT_LatFifo_WRITE,Gen9LPClient,A0,13.00974238,ebb,1,
 PS2_MT_LatFifo_READ&WRITE,Gen9LPClient,A0,18.92049422,ebb,1,
+PS0_MT_DataRam_DOP,Gen9LPClient,A0,0,ebb,1,
 PS0_MT_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS2_MT_DataRam_READ,Gen9LPClient,A0,13.38011567,ebb,1,
 PS2_MT_DataRam_WRITE,Gen9LPClient,A0,22.16557308,ebb,1,
@@ -1992,6 +1998,7 @@ PS0_MT_TagRam_IDLE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS2_MT_TagRam _READ,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS2_MT_TagRam_WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS2_MT_TagRam_READ&WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
+PS0_DG_DOP,Gen9LPClient,A0,0,syn,223798.87,
 PS0_DG,Gen9LPClient,A0,0.154150379,syn,223798.87,
 PS1_DG,Gen9LPClient,A0,0.649938155,syn,223798.87,
 PS2_DG_Volumetric_32BPT,Gen9LPClient,A0,32.36832224,syn,223798.87,2% TR
@@ -2025,6 +2032,7 @@ PS0_SI,Gen9LPClient,A0,0.264180673,syn,362879.16,
 PS1_SI,Gen9LPClient,A0,5.362782019,syn,362879.16,
 PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,49.2124632,syn,362879.16,13% TR
 PS2_SI_Media_Sample8x8,Gen9LPClient,A0,20.28570032,syn,362879.16,0% TR - Need to take 100% validity
+PS0_PL_DOP,Gen9LPClient,A0,0,syn,509268.41,
 PS0_PL,Gen9LPClient,A0,0.136786467,syn,509268.41,
 PS1_PL,Gen9LPClient,A0,4.803071872,syn,509268.41,
 PS2_PL_Sample_L_2%,Gen9LPClient,A0,45.69614932,syn,509268.41,
@@ -2074,6 +2082,7 @@ PS2_PL_Point_8%,Gen9LPClient,A0,58.84064669,syn,509268.41,
 PS2_PL_Point_12%,Gen9LPClient,A0,86.94852944,syn,509268.41,
 PS2_PL_Point_19%,Gen9LPClient,A0,156.0499369,syn,509268.41,
 PS2_PL_Media_Sample8x8,Gen9LPClient,A0,27.26119926,syn,509268.41,0% TR
+PS0_DM_DOP,Gen9LPClient,A0,0,syn,947908.83,
 PS0_DM,Gen9LPClient,A0,0.238731462,syn,947908.83,
 PS1_DM,Gen9LPClient,A0,5.1620382,syn,947908.83,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS2_DM_BC1_5,Gen9LPClient,A0,108.0059253,syn,947908.83,25% TR
@@ -2097,6 +2106,7 @@ PS2_DM_Media_SRGB,Gen9LPClient,A0,0,syn,947908.83,No test available
 PS2_DM_Media_Planar,Gen9LPClient,A0,0,syn,947908.83,No test available
 PS2_DM_PALRAM_READ,Gen9LPClient,A0,14.58864879,ebb,1,Need to confirm with Niraj
 PS2_DM_PALRAM_WRITE,Gen9LPClient,A0,22.72468454,ebb,1,Need to confirm with Niraj
+PS0_FL_DOP,Gen9LPClient,A0,0,syn,956643.76,
 PS0_FL,Gen9LPClient,A0,0.21883785,syn,956643.76,
 PS1_FL,Gen9LPClient,A0,14.24912409,syn,956643.76,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS2_FL_SampleC_Gather4C_23%,Gen9LPClient,A0,165.1772539,syn,956643.76,
@@ -2226,6 +2236,7 @@ PS2_FL_Volumetric_Float32_13%,Gen9LPClient,A0,195.3391356,syn,956643.76,Approxim
 PS2_FL_Volumetric_Else_0%,Gen9LPClient,A0,69.51368875,syn,956643.76,Approximated using Volumetric_Float32
 PS2_FL_Volumetric_Else_1%,Gen9LPClient,A0,91.39731136,syn,956643.76,Approximated using Volumetric_Float16
 PS2_FL_Volumetric_Else_13%,Gen9LPClient,A0,195.3391356,syn,956643.76,
+PS0_SC_DOP,Gen9LPClient,A0,0,syn,367689.38,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_SC,Gen9LPClient,A0,1.094256946,syn,367689.38,Taken from SKL FSO ECO3 rev1 CGEN data
 PS1_SC,Gen9LPClient,A0,8.206925993,syn,367689.38,Taken from SKL FSO ECO3 rev1 CGDIS data
 PS2_SC_NearestMode_32BPT,Gen9LPClient,A0,63.92744479,syn,367689.38,2% TR - sa_etc1_rgb8_2d_nonewa
@@ -2251,6 +2262,7 @@ PS2_SC_Volumetric_128BPT,Gen9LPClient,A0,76.46292671,syn,367689.38,2% TR
 PS0_SC_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS2_SC_DataRam_READ,Gen9LPClient,A0,58.35459516,ebb,1,
 PS2_SC_DataRam_WRITE,Gen9LPClient,A0,90.89873817,ebb,1,
+PS0_SC_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
 PS0_SC_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS2_SC_LatFifo_READ,Gen9LPClient,A0,12.0508307,ebb,1,
 PS2_SC_LatFifo_WRITE,Gen9LPClient,A0,29.89267613,ebb,1,
@@ -2980,7 +2992,9 @@ PS0_ROSS_DFX_DOP,Gen9LPClient,A0,0,syn,454586,No 3D DOP in ROSS
 PS0_ROSS_DFX,Gen9LPClient,A0,3.567789787,syn,454586,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_ROSS_DFX,Gen9LPClient,A0,3.567789787,syn,454586,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_ROSS_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
-PS2_ROSS_DOP,Gen9LPClient,A0,25.58636931,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS2_ROSS_DOP,Gen9LPClient,A0,11.2765,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data and subtracted Sampler DFR DOP
+PS0_DFRSMP_DOP,Gen9LPClient,A0,0,syn,1,No 3D DOP in ROSS
+PS2_DFRSMP_DOP,Gen9LPClient,A0,14.3098388,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_GTP24C,Gen9LPClient,A0,59.50343989,syn,1018976.63,Taken from SKL FSO ECO3 rev1 CGEN data
 PS0_RoutingChannel,Gen9LPClient,A0,29.73963691,syn,313747.08,Taken from SKL FSO ECO3 rev1 CGEN data
 PS2_ClockSpine,Gen9LPClient,A0,354.6008114,ebb,1,Taken from SKL FSO ECO3 rev1 CGEN data
