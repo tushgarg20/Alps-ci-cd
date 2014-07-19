@@ -28,6 +28,10 @@
 	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers	
 	num_Sampler_MEDIASMP_DFX	=	numSamplers	
 	num_Sampler_MEDIASMP_DOP	=	numSamplers	
+	num_Sampler_DFRSMP_SMALL	=	numSamplers	
+	num_Sampler_DFRSMP_CLKGLUE	=	numSamplers	
+	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplers	
+	num_Sampler_DFRSMP_DFX	=	numSamplers	
 	num_Sampler_DFRSMP_DOP	=	numSamplers	
 				
 #Generic				
@@ -361,6 +365,25 @@
 	PS0_MEDIASMP_DOP	=	(.test_PS2_MEDIASMP > 0) ? 0 : 1	#3d context media state
 	PS2_MEDIASMP_DOP	=	1 - PS0_MEDIASMP_DOP	#first rev media states
 				
+#DFR Small				
+	PS0_DFRSMP_SMALL_DOP	=	PS0_DFRSMP_DOP	#3d context media state
+	PS0_DFRSMP_SMALL	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	#first rev media states
+	PS2_DFRSMP_SMALL	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+				
+#DFR ClkGlue				
+	PS0_DFRSMP_CLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
+	PS0_DFRSMP_CLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
+	PS2_DFRSMP_CLKGLUE	=	PS2_DFRSMP_SMALL	
+				
+#DFR NonClkGlue				
+	PS0_DFRSMP_NONCLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
+	PS0_DFRSMP_NONCLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
+	PS2_DFRSMP_NONCLKGLUE	=	PS2_DFRSMP_SMALL	
+				
+#DFR DFX				
+	PS0_DFRSMP_DFX_DOP	=	PS0_DFRSMP_DOP	#3d context media state
+	PS0_DFRSMP_DFX	=	PS0_DFRSMP_SMALL	#first rev media states
+	PS2_DFRSMP_DFX	=	PS2_DFRSMP_SMALL	
 #DFR DOP				
 	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception. DFRClockHisto.total_count = crclock
 	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP
