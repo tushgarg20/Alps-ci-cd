@@ -314,5 +314,5 @@
 				
 #GLUE				
 	num_EU_GLUE	=	numEUs	
-	PS0_EU_GLUE	=	PS0_TC + PS1_TC 	
+	PS0_EU_GLUE	=	PS0_TC + PS1_TC	
 	PS2_EU_GLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	

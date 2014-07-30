@@ -28,12 +28,12 @@
 #GAMTLB			
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	.temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(uGAM.pwr_GAMTLB_Stalled_or_Idle.{$1}))
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTLB	=	D(SUM(uGAM.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTLB	=	D(SUM((uGAM.pwr_GAMTLB_Stalled_or_Idle.{$1} -  uGAM.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
+ 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTLB	=	D(((uGAM.pwr_GAMTLB_Stalled_or_Idle.{$1} -  uGAM.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB	=	(D({$1}.Clocks) -  D(uGAM.pwr_GAMTLB_Stalled_or_Idle.{$1}))/D({$1}.Clocks)
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_Hit	=	D(SUM(uGAM.GamL3TLB_L3.tlb_hits_GamL3TLB_L3 +  uGAM.GamZTLB_Z.tlb_hits_GamZTLB_Z +  uGAM.GamFFTLB_FF.tlb_hits_GamFFTLB_FF +  uGAM.GamCTLB_C.tlb_hits_GamCTLB_C +  uGAM.GamGacTLB_GAC.tlb_hits_GamGacTLB_GAC +  uGAM.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_Miss	=	D(SUM(uGAM.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3 +  uGAM.GamZTLB_Z.tlb_MissTrue_GamZTLB_Z +  uGAM.GamFFTLB_FF.tlb_MissTrue_GamFFTLB_FF +  uGAM.GamCTLB_C.tlb_MissTrue_GamCTLB_C +  uGAM.GamGacTLB_GAC.tlb_MissTrue_GamGacTLB_GAC +  uGAM.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
+ 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_Miss	=	D(SUM(uGAM.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3 + uGAM.GamZTLB_Z.tlb_MissTrue_GamZTLB_Z +  uGAM.GamFFTLB_FF.tlb_MissTrue_GamFFTLB_FF +  uGAM.GamCTLB_C.tlb_MissTrue_GamCTLB_C +  uGAM.GamGacTLB_GAC.tlb_MissTrue_GamGacTLB_GAC +  uGAM.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_HitNotPresent	=	D(SUM(uGAM.GamL3TLB_L3.tlb_MissNotPresent_GamL3TLB_L3 +  uGAM.GamZTLB_Z.tlb_MissNotPresent_GamZTLB_Z +  uGAM.GamFFTLB_FF.tlb_MissNotPresent_GamFFTLB_FF +  uGAM.GamCTLB_C.tlb_MissNotPresent_GamCTLB_C +  uGAM.GamGacTLB_GAC.tlb_MissNotPresent_GamGacTLB_GAC +  uGAM.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/ (D({$1}.Clocks)*numGAM)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_Bypass	=	D(SUM(uGAM.GamL3TLB.pwr_GAMTLB_Bypass +  uGAM.GamZTLB.pwr_GAMTLB_Bypass +  uGAM.GamFFTLB.pwr_GAMTLB_Bypass +  uGAM.GamCTLB.pwr_GAMTLB_Bypass +  uGAM.GamGacTLB.pwr_GAMTLB_Bypass +  uGAM.GamGavTLB.pwr_GAMTLB_Bypass))/(D({$1}.Clocks)*numGAM)
+ 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_Bypass	=	D(SUM(uGAM.GamL3TLB.pwr_GAMTLB_Bypass +  uGAM.GamZTLB.pwr_GAMTLB_Bypass +  uGAM.GamFFTLB.pwr_GAMTLB_Bypass + uGAM.GamCTLB.pwr_GAMTLB_Bypass +  uGAM.GamGacTLB.pwr_GAMTLB_Bypass +  uGAM.GamGavTLB.pwr_GAMTLB_Bypass))/(D({$1}.Clocks)*numGAM)
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_EBB_WRITE	=	PS2_GAMTLB_Miss
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTLB_EBB_READ	=	PS2_GAMTLB_Hit + PS2_GAMTLB_Miss + PS2_GAMTLB_HitNotPresent
 			
@@ -57,8 +57,8 @@
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_Three_Walk	=	0
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_READ	=	D(uGAM.GTTCacheReqStagingQ.pushed)/(D({$1}.Clocks)*numGAM)
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_WRITE	=	D(uGAM.GTTCacheReqStagingQ.pushed)/(D({$1}.Clocks)*numGAM)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_TLB_PEND_READ	=	D(uGAM.TLBPendDoneQ)/(D({$1}.Clocks)*numGAM)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_TLB_PEND_WRITE	=	D(uGAM.TLBPendDoneQ)/(D({$1}.Clocks)*numGAM)
+ 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_TLB_PEND_READ	=	D(uGAM.TLBPendDoneQ.popped)/(D({$1}.Clocks)*numGAM)
+ 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMW_TLB_PEND_WRITE	=	D(uGAM.TLBPendDoneQ.popped)/(D({$1}.Clocks)*numGAM)
 			
 #GAFM			
 	PS0_GAFM	=	1
