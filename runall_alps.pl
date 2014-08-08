@@ -39,7 +39,7 @@ while(my $line = <FILE>){
 	$line =~ s/\r//g; chomp($line);
 	my $wl = (split/\.stat/,$line)[0];
 	my $prefix = $wl;
-	#system("nbjob run --target $pool --qslot $qslot  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-	print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
+	system("nbjob run --target $pool --qslot $qslot  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+	#print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
 }
 close(FILE);
