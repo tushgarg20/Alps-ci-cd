@@ -385,5 +385,5 @@
 	PS0_DFRSMP_DFX	=	PS0_DFRSMP_SMALL	#first rev media states
 	PS2_DFRSMP_DFX	=	PS2_DFRSMP_SMALL	
 #DFR DOP				
-	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception. DFRClockHisto.total_count = crclock
+	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception
 	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP
