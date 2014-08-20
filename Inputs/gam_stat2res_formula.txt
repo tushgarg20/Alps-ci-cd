@@ -8,10 +8,10 @@
 	num_GAM_GAMD	=	numGAM
 	num_GAM_GAFM	=	numGAM
 	num_GAM_GAFS	=	numGAM
-	num_GAM_GAP	=	numSlices
-	num_GAM_GAPL3	=	numSlices
-	num_GAM_GAPZ	=	numSlices
-	num_GAM_GAPC	=	numSlices
+	num_GAM_GAP	=	numGAM
+	num_GAM_GAPL3	=	numGAM
+	num_GAM_GAPZ	=	numGAM
+	num_GAM_GAPC	=	numGAM
 	num_GAM_DOP	=	numGAM
 	num_GAM_CLKGLUE	=	numGAM
 	num_GAM_NONCLKGLUE	=	numGAM
