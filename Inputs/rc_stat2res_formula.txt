@@ -19,14 +19,14 @@
 #Routing Channel				
 #SliceRC				
 	PS0_SliceRC	=	(.isSKLGT3 > 0) ? (1 - PS2_SliceRC) : 0	
-	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
-	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / .CrClk * numSlices	
-	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / .CrClk * numSlices	
-	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / .CrClk * numSlices	
-	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) / .CrClk * numSlices	
-	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
-	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) / .CrClk * numSlices	
-	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / .CrClk * numSlices	
+	.MSC_misses	=	D(SUM('S\d+\.uMSC_\d+\.NumReadsFromMem')) /( .CrClk * numSlices	)
+	.MSC_writes	=	D(SUM('S\d+\.uMSC_\d+\.NumWritetoMem')) / (.CrClk * numSlices)	
+	.RCC_misses	=	D(SUM('S\d+\.uColorCache_\d+\.NumReadsFromMem')) / (.CrClk * numSlices)	
+	.RCC_writes	=	D(SUM('S\d+\.uColorCache_\d+\.NumWriteBacksToMem')) / (.CrClk * numSlices)	
+	.RCZ_misses	=	D(SUM('S\d+\.uZCache\.NumReadsFromMem')) /( .CrClk * numSlices)	
+	.RCZ_writes	=	D(SUM('S\d+\.uZCache\.NumWriteBacksToMem')) / (.CrClk * numSlices)	
+	.HiZ_misses	=	D(SUM('S\d+\.uHzCache\.NumReadsFromMem')) /( .CrClk * numSlices)	
+	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / (.CrClk * numSlices)	
 	PS2_SliceRC	=	(.isSKLGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
 #L3XS				
 	PS0_L3XSRC	=	(.isSKLGT3 > 0) ? (1 - PS2_L3XSRC) : 0	
