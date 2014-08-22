@@ -10,6 +10,7 @@ gen_top_power.pl - Creates a partition DOP and top level glue/BUF power model mo
 	"man" 			For printing detailed information
 	"debug"			For printing the sequence of commands
 	"gt_power_data"		Path to file containing idle/power virus data
+	"alps_unit_map"		Path to file unit to cluster ALPS-G mapping
 	"work_area"		Path to print output power data in a *.csv file
 	"output_csv_file"	Name of output CSV file
 
