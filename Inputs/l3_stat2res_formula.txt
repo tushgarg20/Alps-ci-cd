@@ -28,6 +28,8 @@
 	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
 	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
 	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
+	L3SuperQSize	=	knob.S0.uL3.SuperQSize	
+
 #LTCD_EBB				
 	PS0_LTCD_EBB	=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
 	PS1_LTCD_EBB	=	0	#No stall by design
@@ -63,6 +65,13 @@
 	PS0_LSQC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS1_LSQC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS2_LSQC	=	1 - PS0_LSQC - PS1_LSQC	
+	.temp_LSQCNotEmptyNotFullCount	=	(1 - (PS0_LSQC + PS1_LSQC)) * (.CrClk2x/2) 
+	.temp_LSQCEmptySlotCount	=	D(SUM('@ANY_L3BANK@SuperQEntries_Empty')) / (num_L3_Slices * numL3Banks)
+        .temp_LSQCAllEmptySlotCount	=	PS0_LSQC * L3SuperQSize * (.CrClk2x/2)
+	.temp_LSQCAllNotEmptySlotCount	=	.temp_LSQCEmptySlotCount - .temp_LSQCAllEmptySlotCount
+	.temp_LSQCPerClkEmptySlotCount	=	(.temp_LSQCNotEmptyNotFullCount > 0) ? (.temp_LSQCAllNotEmptySlotCount / .temp_LSQCNotEmptyNotFullCount) : 0
+	PS2_LSQC_SlotFull	=	1 - (.temp_LSQCPerClkEmptySlotCount / L3SuperQSize)
+        	        
 #LTCC				
 	PS0_LTCC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS1_LTCC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	

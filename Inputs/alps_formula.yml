@@ -250,7 +250,7 @@ L3_Bank:
    LSQC:
     PS0_LSQC: R * C
     PS1_LSQC: R * C
-    PS2_LSQC: R * C
+    PS2_LSQC: R[PS2_LSQC_SlotFull] * R * C
    LTCC:
     PS0_LTCC: R * C
     PS1_LTCC: R * C
@@ -301,6 +301,7 @@ L3_Bank:
     PS0_L3_Bank_NONCLKGLUE: R * C
     PS1_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
+PS2_LSQC_SlotFull: R
 PS2_LNI_BW: R
 PS2_LNE_BW: R
 PS2_LNIXS_BW: R
@@ -315,7 +316,7 @@ GTI:
    MSQC:
     PS0_MSQC: R * C
     PS1_MSQC: R * C
-    PS2_MSQC: R * C
+    PS2_MSQC: R[PS2_MSQC_SlotFull] * R * C
    MSQD:
     PS0_MSQD: R * C
     PS1_MSQD: R * C
@@ -352,6 +353,7 @@ GTI:
     PS0_GTI_DOP: R * C
     PS2_GTI_DOP: R * C
 PS2_GTI_BW: R
+PS2_MSQC_SlotFull: R
 Sampler:
    FL:
     PS0_FL_DOP: R * C

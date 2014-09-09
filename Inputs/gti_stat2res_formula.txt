@@ -7,6 +7,9 @@
 	 @GTI_RDBW_PCLK@	=	1	
 	 @GTI_WRBW_PCLK@	=	1	
 	 @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
+         @GTI_MSQC_SLOT_MEAN@	=	(gti_superq_occupancy_histo|gti_fifo_read_occupancy_histo|gti_fifo_write_occupancy_histo).Mean
+	GTISuperQSize	=	knob.indigo.gti_superq_size
+	@GTI_ZERO_BW@	=	(gti_superq_not_empty_0_bw_cycles|gti_superq_not_empty_0_rw_0_bw_cycles)
 				
 #Instance Counts				
 	num_GTI_GTI	=	COUNT('@ANY_GTI@gclk_cycles')	
@@ -27,15 +30,18 @@
 	.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@@GTI_EMPTY@'))	
 	.temp_PS0_GTI	=	(.temp_gti_superq_empty)?(.temp_gti_superq_empty/(.Clk.GTI * num_GTI_GTI)):0	
 	.temp_gti_superq_full	=	D(SUM('@ANY_GTI@@GTI_FULL@'))	
-	.temp_PS1_GTI	=	(.temp_gti_superq_full)?(.temp_gti_superq_full/(.Clk.GTI * num_GTI_GTI)):0	
+	.temp_gti_zero_bw	=	D(SUM('@ANY_GTI@@GTI_ZERO_BW@'))
+	.temp_PS1_GTI	=	(.temp_gti_zero_bw)?(.temp_gti_zero_bw/(.Clk.GTI * num_GTI_GTI)):0
+#	.temp_PS1_GTI	=	(.temp_gti_superq_full)?(.temp_gti_superq_full/(.Clk.GTI * num_GTI_GTI)):0	
 	.temp_PS2_GTI	=	1 - (.temp_PS0_GTI + .temp_PS1_GTI)	
-	.temp_gti_bw_clks	=	 .Clk.GTI - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
+#	.temp_gti_bw_clks	=	 .Clk.GTI - ((.temp_gti_superq_empty + .temp_gti_superq_full)/num_GTI_GTI) 	
+	.temp_gti_bw_clks	=	 .Clk.GTI - ((.temp_gti_superq_empty + .temp_gti_zero_bw)/num_GTI_GTI) 	
 	.temp_gti_rd_reqs	=	D(SUM('@ANY_GTI@gt_rd_reqs'))	
 	.temp_gti_wr_reqs	=	D(SUM('@ANY_GTI@gt_wr_reqs'))	
 	.temp_gti_reqs	=	.temp_gti_rd_reqs + .temp_gti_wr_reqs	
 	.temp_gti_rd_per	=	.temp_gti_reqs?(.temp_gti_rd_reqs/.temp_gti_reqs):0	
 	.temp_gti_wr_per	=	.temp_gti_reqs?(.temp_gti_wr_reqs/.temp_gti_reqs):0	
-	PS2_GTI_BW	=	(.temp_gti_rd_reqs + .temp_gti_wr_reqs)?((.temp_gti_rd_reqs + .temp_gti_wr_reqs)/(@GTI_BW_PCLK@ * .temp_gti_bw_clks)):0	
+	PS2_GTI_BW	=	(.temp_gti_reqs)?(.temp_gti_reqs/(@GTI_BW_PCLK@ * .temp_gti_bw_clks)):0	
 				
 #MBGF				
 				
@@ -47,8 +53,15 @@
 #MSQC				
 				
 	PS0_MSQC	=	.temp_PS0_GTI	
-	PS1_MSQC	=	.temp_PS1_GTI	
-	PS2_MSQC	=	.temp_PS2_GTI	
+#	PS1_MSQC	=	.temp_PS1_GTI	
+	PS1_MSQC	=	(.temp_gti_superq_full)?(.temp_gti_superq_full/(.Clk.GTI * num_GTI_GTI)):0
+	PS2_MSQC	=	1 - PS0_MSQC - PS1_MSQC
+	.temp_MSQCNotEmptyNotFullCount	=	PS2_MSQC * .Clk.GTI 
+	.temp_MSQCSlotCount	=	(D(SUM('@ANY_GTI@@GTI_MSQC_SLOT_MEAN@')) * .Clk.GTI) / (num_GTI_GTI)
+        .temp_MSQCAllFullSlotCount	=	PS1_MSQC * GTISuperQSize * .Clk.GTI
+	.temp_MSQCAllNotFullSlotCount	=	.temp_MSQCSlotCount - .temp_MSQCAllFullSlotCount
+	.temp_MSQCPerClkFullSlotCount	=	(.temp_MSQCNotEmptyNotFullCount > 0) ? (.temp_MSQCAllNotFullSlotCount / .temp_MSQCNotEmptyNotFullCount) : 0
+	PS2_MSQC_SlotFull	=	.temp_MSQCPerClkFullSlotCount / GTISuperQSize
 				
 #MSQD				
 				
