@@ -3,7 +3,7 @@
 #Instance Counts				
 	numSlices	=	knob.global.NumSlices	
 	numPbsPerSlice	=	knob.NumPbs.NumPbs	
-	numPbs	=	D(SUM('knob.S\d+.NumColorPipes'))	
+	numPbs	=	SUM('knob.S\d+.NumColorPipes')	
 	num_COLOR_DAPRSC	=	numPbs	
 	num_COLOR_RCPFE	=	numPbs	
 	num_COLOR_RCPBE	=	numPbs	

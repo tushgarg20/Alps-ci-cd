@@ -400,3 +400,5 @@
 	PS0_Media	=	1	
 	PS1_Media	=		0
 	PS2_Media	=		0
+				
+	PS0_DFRSMP_DOP	=	0	
