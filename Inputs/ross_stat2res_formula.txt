@@ -19,6 +19,7 @@
 	num_ROSS_NONCLKGLUE	=	numROSS	
 	num_ROSS_DFX	=	numROSS	
 	num_ROSS_DOP	=	numROSS	
+	num_ROSS_CPSS	=	numROSS	
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
@@ -123,3 +124,6 @@
 #DOP				
 	PS0_ROSS_DOP	=	0	#ROSS units are not covered by 3D DOP
 	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP	
+				
+#CPSS				
+	PS0_CPSS	=	1	

@@ -17,10 +17,12 @@
 	num_GAM_NONCLKGLUE	=	numGAM
 	num_GAM_SMALL	=	numGAM
 	num_GAM_DFX	=	numGAM
-	num_GAM_GAPS	=	numSlices
+	num_GAM_GAPS	=	numGAM
 	num_GAM_GAMD_Cache  	=	numGAM
 	num_GAM_GAMTLB_EBB  	=	numGAM
 	num_GAM_GAMW_EBB    	=	numGAM
+	num_GAM_GATR	=	numGAM
+	num_GAM_GATRW	=	numGAM
 	 @CLOCKS@	=	D(CrClock.Clocks)
 	 @2XCLOCKS@	=	D(SUM('2xCrClock\.Clocks'))
 			
@@ -115,3 +117,8 @@
 #GAM_DFX			
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_DFX	=	PS0_GAMTLB
  'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_DFX	=	1-PS0_GAMTLB
+			
+#GATR			
+	PS0_GATR	=	1
+#GATRW			
+	PS0_GATRW	=	1

@@ -13,6 +13,7 @@
 	num_ROSC_NONCLKGLUE	=	numSlices	
 	num_ROSC_SMALL	=	numSlices	
 	num_ROSC_DFX	=	numSlices	
+	num_ROSC_HPSBE	=	numSlices	
 				
 #Generic				
 	 @ANY_WM@	=	S\d+\.uWM\.	
@@ -105,3 +106,6 @@
 	PS0_ROSC_DFX_DOP	=	.ROSC_DOP	
 	PS0_ROSC_DFX	=	PS0_WMBE	
 	PS2_ROSC_DFX	=	1 - (PS0_ROSC_DFX_DOP + PS0_ROSC_DFX)	
+				
+#HPSBE				
+	PS0_HPSBE	=	1	

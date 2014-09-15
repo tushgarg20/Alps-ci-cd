@@ -47,8 +47,16 @@
 	.temp_gt3bf_fabric	=	.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes	#Geoclk2x residency
 	.temp_slice_fabric	=	(.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes)/2	#Crclk residency - baselined to Geoclk2x
 	.temp_l3xs_fabric	=	(.LNIXS_Read_Writes + .LNEXS_Read_Writes)/2	#Crclk residency - baselined to Geoclk2x
-	PS2_Fabric_GT2	=	(.isCNLGT2 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric) : 0	#No l3xs in GT2
-	PS2_Fabric_GT2P5	=	(.isCNLGT2P5 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
-	PS2_Fabric_GT3	=	(.isCNLGT3 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
-	PS2_Fabric_GT4	=	(.isCNLGT4 > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0	
-	PS2_Fabric_Halo	=	(.isCNLHalo > 0) ? (.temp_gt3bf_fabric + .temp_slice_fabric + .temp_l3xs_fabric) : 0
+	PS2_Fabric_GT2	=	(.isCNLGT2 > 0) ?(.temp_fabric_Active/.CrClk):0
+	PS2_Fabric_GT2P5	=	(.isCNLGT2P5 > 0) ?(.temp_fabric_Active/.CrClk):0
+	PS2_Fabric_GT3	=	(.isCNLGT3 > 0) ?(.temp_fabric_Active/.CrClk):0
+	PS2_Fabric_GT4	=	(.isCNLGT4 > 0) ?(.temp_fabric_Active/.CrClk):0
+	PS2_Fabric_Halo	=	(.isCNLHalo > 0) ?(.temp_fabric_Active/.CrClk):0
+	.temp_fabric_READ	=	SUM('S\d+.uL3.LSN.UpBus_\d+_read')+SUM('S\d+.uL3.LSN.DownBus_\d+_read')
+	.temp_fabric_WRITE	=	SUM('S\d+.uL3.LSN.UpBus_\d+_write')+SUM('S\d+.uL3.LSN.DownBus_\d+_write')
+	.temp_fabric_RETURN	=	SUM('S\d+.uL3.LSN.UpBus_\d+_return')+SUM('S\d+.uL3.LSN.DownBus_\d+_return')
+	.temp_fabric_CMD	=	(.temp_fabric_READ+.temp_fabric_WRITE)/10
+	.temp_fabric_DATA	=	(.temp_fabric_READ+.temp_fabric_RETURN)/10
+	.temp_fabric_Active	=	(.temp_fabric_CMD+.temp_fabric_DATA*5)/(numSlices*6)
+
+	

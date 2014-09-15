@@ -39,6 +39,8 @@
 	num_FF_OTHER_NONCLKGLUE	=	numFF	
 	num_FF_OTHER_DFX	=	numFF	
 	num_FF_OTHER_DOP	=	numFF	
+	num_FF_HPVS	=	numFF	
+	num_FF_HPSDE	=	numFF	
 				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -252,4 +254,9 @@
 	PS0_FF_OTHER_DOP	=	 .temp_3DPipeDisable	
 	PS2_FF_TEGSSOL_DOP	=	1 - .temp_TeGsSolDOP	
 	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable	
-
+				
+#HPVS			
+				
+	PS0_HPVS	=	1	
+#HPSDE				
+	PS0_HPSDE	=	1	
