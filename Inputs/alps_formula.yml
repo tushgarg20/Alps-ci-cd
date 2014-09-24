@@ -1023,6 +1023,13 @@ HDC:
      PS2_HDCTLB_Read_Miss: R * C
      PS2_HDCTLB_Write_Hit: R * C
      PS2_HDCTLB_Write_Miss: R * C
+   HDCL1:
+     PS0_HDCL1_DOP: R * C
+     PS0_HDCL1: R * C
+     PS2_HDCL1: R * C
+   HDCL1_CACHE:
+     PS2_HDCL1_CACHE_READS: R * C
+     PS2_HDCL1_CACHE_WRITES: R * C
    SMALL:
     PS0_HDC_SMALL_DOP: R * C
     PS0_HDC_SMALL: R * C
