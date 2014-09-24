@@ -12,6 +12,7 @@ gen_map_file.pl - Creates the first cut new map file from old map file for gener
 	"gc_csv_file"		GC CSV file from design team
 	"unit_alps_map_file"	Old mapping file from design unit/cluster to ALPS unit/cluster
 	"new_alps_map_file"	Output GC file to be used as ALPS input (YAML/CSV)
+	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -47,6 +48,8 @@ my $optCsv;
 our $opYaml;
 our $opCsv;
 
+our $newSklFmt;
+
 our $gcCsvFile;
 our $unitAlpsMapFileDefault = "$Bin/unitAlpsMap.csv";
 our $unitAlpsMapFile;
@@ -59,6 +62,7 @@ Getopt::Long::GetOptions(
 	"gc_csv_file=s" => \$gcCsvFile,
 	"unit_alps_map_file=s" => \$unitAlpsMapFile,
 	"new_alps_map_file=s" => \$newAlpsMapFile,
+	"new_skl_format" => \$newSklFmt,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -76,6 +80,8 @@ if ($unitAlpsMapFile =~ /^\s*$/)
 } else {
 	print "Using user provided ALPS mapping file $unitAlpsMapFile...\n";
 }
+
+if ($newSklFmt) {print "Input GC file in new SKL format\n";}
 
 if ($optYaml && !$optCsv) {print "Output file will be dumped in YAML format\n"; $opYaml = 1; $opCsv = 0;} 
 if (!$optYaml && $optCsv) {print "Output file will be dumped in CSV format\n"; $opCsv = 1; $opYaml = 0;} 
@@ -138,17 +144,33 @@ sub read_gc_csv_file {
 		my $unitName = $parts[0];
 		$unitName =~ s/^\s*//;
 		$unitName =~ s/\s*$//;
-		my $cluster = $parts[2];
+		my $cluster;
+		if ($newSklFmt) {
+			$cluster = $parts[1];
+		} else {
+			$cluster = $parts[2];
+		}
 		$cluster =~ s/^\s*//;
 		$cluster =~ s/\s*$//;
 		if ($cluster eq "NOT USED") {$count++; next;}
-		my $partition = $parts[3];
+		my $partition;
+		if ($newSklFmt) {
+			$partition = $parts[2];
+		} else {
+			$partition = $parts[3];
+		}
 		$partition =~ s/^\s*//;
 		$partition =~ s/\s*$//;
-		my $gc = $parts[10];
+		my $gc;
+		if ($newSklFmt) {
+			$gc = $parts[4];
+		} else {
+			$gc = $parts[10];
+		}
 		$gc =~ s/^\s*//;
 		$gc =~ s/\s*$//;
-		$gc = $gc*1000;
+		#$gc = $gc*1000;
+		if ($gc ne "#N/A") {$gc = $gc*1000;}
 		#$gcHash{"$unitName"}{"GC"} = $gc;	
 		#$gcHash{"$unitName"}{"CLUSTER"} = $cluster;	
 		#$gcHash{"$unitName"}{"PARTITION"} = $partition;
