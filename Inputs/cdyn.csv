@@ -144,11 +144,11 @@ PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen10LP,A0,36.17125,syn,244769,scaled SKL wei
 PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen10LP,A0,39.254,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen10LP,A0,43.8425,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen10LP,A0,44.64525,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,29.792,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,34.1715,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,38.55575,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,42.94,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,49.514,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,36.99436658,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,40.22924091,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,42.04137417,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,46.09735187,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,49.057982,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_16%,Gen10LP,A0,26.5145,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_25%,Gen10LP,A0,28.05825,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_35%,Gen10LP,A0,33.68225,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
@@ -479,11 +479,11 @@ FPU0_mad_fp16_28%,Gen9LPClient,A0,43.28,syn,383376,
 FPU0_mad_fp16_35%,Gen9LPClient,A0,45.14,syn,383376,
 FPU0_mad_fp16_44%,Gen9LPClient,A0,48.54,syn,383376,
 FPU0_mad_fp16_57%,Gen9LPClient,A0,53.6,syn,383376,
-FPU0_mad_fp32_16%,Gen9LPClient,A0,43.83,syn,383376,modified by vasudha
-FPU0_mad_fp32_25%,Gen9LPClient,A0,50.2,syn,383376,modified by vasudha
-FPU0_mad_fp32_35%,Gen9LPClient,A0,56.56,syn,383376,modified by vasudha
-FPU0_mad_fp32_46%,Gen9LPClient,A0,62.92,syn,383376,modified by vasudha
-FPU0_mad_fp32_65%,Gen9LPClient,A0,72.46,syn,383376,modified by vasudha
+FPU0_mad_fp32_16%,Gen9LPClient,A0,47.95157045,syn,383376,
+FPU0_mad_fp32_25%,Gen9LPClient,A0,55.12412829,syn,383376,
+FPU0_mad_fp32_35%,Gen9LPClient,A0,59.88144637,syn,383376,
+FPU0_mad_fp32_46%,Gen9LPClient,A0,70.38594322,syn,383376,
+FPU0_mad_fp32_65%,Gen9LPClient,A0,72.49636067,syn,383376,
 FPU0_mad_fp64_11%,Gen9LPClient,A0,50.97,syn,383376,
 FPU0_mad_fp64_16%,Gen9LPClient,A0,58.76,syn,383376,
 FPU0_mad_fp64_18%,Gen9LPClient,A0,62.3,syn,383376,
@@ -839,11 +839,11 @@ FPU1_mad_fp16_28%,Gen9LPClient,A0,44.24,syn,346094,
 FPU1_mad_fp16_35%,Gen9LPClient,A0,45.54,syn,346094,
 FPU1_mad_fp16_44%,Gen9LPClient,A0,51,syn,346094,
 FPU1_mad_fp16_57%,Gen9LPClient,A0,55.33,syn,346094,
-FPU1_mad_fp32_16%,Gen9LPClient,A0,36,syn,346094,modified by vasudha
-FPU1_mad_fp32_25%,Gen9LPClient,A0,43.78,syn,346094,modified by vasudha
-FPU1_mad_fp32_35%,Gen9LPClient,A0,51.55,syn,346094,modified by vasudha
-FPU1_mad_fp32_46%,Gen9LPClient,A0,59.32,syn,346094,modified by vasudha
-FPU1_mad_fp32_65%,Gen9LPClient,A0,70.98,syn,346094,modified by vasudha
+FPU1_mad_fp32_16%,Gen9LPClient,A0,50.36741903,syn,346094,
+FPU1_mad_fp32_25%,Gen9LPClient,A0,57.34372976,syn,346094,
+FPU1_mad_fp32_35%,Gen9LPClient,A0,62.9933938,syn,346094,
+FPU1_mad_fp32_46%,Gen9LPClient,A0,73.28155205,syn,346094,
+FPU1_mad_fp32_65%,Gen9LPClient,A0,75.77756362,syn,346094,
 FPU1_mad_fp64_11%,Gen9LPClient,A0,51.37,syn,346094,
 FPU1_mad_fp64_16%,Gen9LPClient,A0,59,syn,346094,
 FPU1_mad_fp64_18%,Gen9LPClient,A0,64.03,syn,346094,
@@ -1742,11 +1742,11 @@ PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen9LPClient,A0,76.15,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen9LPClient,A0,82.64,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen9LPClient,A0,92.3,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen9LPClient,A0,93.99,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPClient,A0,62.72,syn,244769,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPClient,A0,71.94,syn,244769,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPClient,A0,81.17,syn,244769,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPClient,A0,90.4,syn,244769,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPClient,A0,104.24,syn,244769,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPClient,A0,77.88287702,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPClient,A0,84.69313875,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPClient,A0,88.50815615,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPClient,A0,97.04705657,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPClient,A0,103.2799621,syn,244769,
 PS2_GA_EM3Src_SinglePipe_16%,Gen9LPClient,A0,55.82,syn,244769,
 PS2_GA_EM3Src_SinglePipe_25%,Gen9LPClient,A0,59.07,syn,244769,
 PS2_GA_EM3Src_SinglePipe_35%,Gen9LPClient,A0,70.91,syn,244769,
@@ -2469,11 +2469,11 @@ FPU0_mad_fp16_28%,Gen9LPSoC,A0,40.92,syn,363828,
 FPU0_mad_fp16_35%,Gen9LPSoC,A0,43.16,syn,363828,
 FPU0_mad_fp16_44%,Gen9LPSoC,A0,47.93,syn,363828,
 FPU0_mad_fp16_57%,Gen9LPSoC,A0,52.69,syn,363828,
-FPU0_mad_fp32_16%,Gen9LPSoC,A0,41.6385,syn,363828,modified by vasudha
-FPU0_mad_fp32_25%,Gen9LPSoC,A0,47.69,syn,363828,modified by vasudha
-FPU0_mad_fp32_35%,Gen9LPSoC,A0,53.732,syn,363828,modified by vasudha
-FPU0_mad_fp32_46%,Gen9LPSoC,A0,59.774,syn,363828,modified by vasudha
-FPU0_mad_fp32_65%,Gen9LPSoC,A0,68.837,syn,363828,modified by vasudha
+FPU0_mad_fp32_16%,Gen9LPSoC,A0,47.93,syn,363828,
+FPU0_mad_fp32_25%,Gen9LPSoC,A0,54.83,syn,363828,
+FPU0_mad_fp32_35%,Gen9LPSoC,A0,59.24,syn,363828,
+FPU0_mad_fp32_46%,Gen9LPSoC,A0,70.26,syn,363828,
+FPU0_mad_fp32_65%,Gen9LPSoC,A0,70.97,syn,363828,
 FPU0_mad_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
 FPU0_mad_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
 FPU0_mad_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
@@ -2819,11 +2819,11 @@ FPU1_mad_fp16_28%,Gen9LPSoC,A0,39.72,syn,367842,
 FPU1_mad_fp16_35%,Gen9LPSoC,A0,42.31,syn,367842,
 FPU1_mad_fp16_44%,Gen9LPSoC,A0,46.51,syn,367842,
 FPU1_mad_fp16_57%,Gen9LPSoC,A0,51.73,syn,367842,
-FPU1_mad_fp32_16%,Gen9LPSoC,A0,36,syn,367842,modified by vasudha
-FPU1_mad_fp32_25%,Gen9LPSoC,A0,43.78,syn,367842,modified by vasudha
-FPU1_mad_fp32_35%,Gen9LPSoC,A0,51.55,syn,367842,modified by vasudha
-FPU1_mad_fp32_46%,Gen9LPSoC,A0,59.32,syn,367842,modified by vasudha
-FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.98,syn,367842,modified by vasudha
+FPU1_mad_fp32_16%,Gen9LPSoC,A0,47.08,syn,367842,
+FPU1_mad_fp32_25%,Gen9LPSoC,A0,54.01,syn,367842,
+FPU1_mad_fp32_35%,Gen9LPSoC,A0,59.06,syn,367842,
+FPU1_mad_fp32_46%,Gen9LPSoC,A0,70.29,syn,367842,
+FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.47,syn,367842,
 FPU1_mad_fp64_11%,Gen9LPSoC,A0,43.84,syn,367842,
 FPU1_mad_fp64_16%,Gen9LPSoC,A0,51.09,syn,367842,
 FPU1_mad_fp64_18%,Gen9LPSoC,A0,55.86,syn,367842,
@@ -3516,11 +3516,11 @@ PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,68.57,syn,248782.85,
 PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,71.06,syn,248782.85,
 PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,76.6,syn,248782.85,
 PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,77.92,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,62.72,syn,248782.85,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,71.94,syn,248782.85,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,81.17,syn,248782.85,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,90.4,syn,248782.85,modified by vasudha
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,104.24,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,71.53,syn,248782.85,
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,75.73,syn,248782.85,
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,77.67,syn,248782.85,
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,82.31,syn,248782.85,
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,85.4,syn,248782.85,
 PS2_GA_EM3Src_SinglePipe_16%,Gen9LPSoC,A0,46.44,syn,248782.85,
 PS2_GA_EM3Src_SinglePipe_25%,Gen9LPSoC,A0,54.24,syn,248782.85,
 PS2_GA_EM3Src_SinglePipe_35%,Gen9LPSoC,A0,57.83,syn,248782.85,
