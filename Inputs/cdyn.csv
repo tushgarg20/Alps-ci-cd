@@ -86,10 +86,10 @@ PS2_DM_PALRAM_WRITE,Gen10LP,A0,11.18,ebb,1,Need to confirm with Niraj
 PS2_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_EU_DOP,Gen10LP,A0,2.385656805,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_Fabric_GT2,Gen10LP,A0,0,syn,1,
-PS2_Fabric_GT2P5,Gen10LP,A0,500,syn,1,
-PS2_Fabric_GT3,Gen10LP,A0,1520,syn,1,
-PS2_Fabric_GT4,Gen10LP,A0,2020,syn,1,
-PS2_Fabric_Halo,Gen10LP,A0,3020,syn,1,
+PS2_Fabric_GT2P5,Gen10LP,A0,4500,syn,1,
+PS2_Fabric_GT3,Gen10LP,A0,6270,syn,1,
+PS2_Fabric_GT4,Gen10LP,A0,8020,syn,1,
+PS2_Fabric_Halo,Gen10LP,A0,11200,syn,1,
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,48.57546746,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_OTHER_DOP,Gen10LP,A0,24.51566272,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_CLKGLUE,Gen10LP,A0,5.356331361,syn,1,Taken fromCNL TNET3 CGEN data
@@ -144,11 +144,11 @@ PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen10LP,A0,36.17125,syn,244769,scaled SKL wei
 PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen10LP,A0,39.254,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen10LP,A0,43.8425,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen10LP,A0,44.64525,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,36.99436658,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,40.22924091,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,42.04137417,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,46.09735187,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,49.057982,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,66.58985985,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,72.41263363,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,75.67447351,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,82.97523337,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,88.3043676,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_16%,Gen10LP,A0,26.5145,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_25%,Gen10LP,A0,28.05825,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GA_EM3Src_SinglePipe_35%,Gen10LP,A0,33.68225,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
