@@ -32,9 +32,6 @@ PS0_HDC_CLKGLUE,Gen10LP,A0,2.146331361,syn,1,
 PS0_HDC_CLKGLUE_DOP,Gen10LP,A0,0,syn,1,
 PS0_HDC_DOP,Gen10LP,A0,0,syn,1,
 PS0_HDCL1,Gen10LP,A0,0.39,syn,329404.47,
-PS2_HDCL1,Gen10LP,A0,17.64,syn,329404.47,Estimated using IC Cdyn Weights
-PS2_HDCL1_CACHE_READS,Gen10LP,A0,13.06,ebb,1,CNL EBB Spreadsheet
-PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,21.48,ebb,1,CNL EBB Spreadsheet
 PS0_HPSBE,Gen10LP,A0,9.97,syn,648482.31,
 PS0_HPSDE,Gen10LP,A0,0.55,syn,104430.66,
 PS0_HPVS,Gen10LP,A0,2.46,syn,471324.65,
@@ -80,8 +77,8 @@ PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.19,ebb,1,Need to confirm with Niraj
 PS2_BC_BARYRAM_READ,Gen10LP,A0,2.13,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.07,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
-PS2_ClockSpine_Slice,Gen10LP,A0,150,ebb,1,total spine 330nf
-PS2_ClockSpine_UnSlice,Gen10LP,A0,180,ebb,1,
+PS2_ClockSpine_Slice,Gen10LP,A0,80,ebb,1,"total spine 330nf,reduced to 230 on Nevin's suggestion"
+PS2_ClockSpine_UnSlice,Gen10LP,A0,150,ebb,1,
 PS2_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DFRSMP_DOP,Gen10LP,A0,10.95768639,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DM_PALRAM_READ,Gen10LP,A0,6.85,ebb,1,Need to confirm with Niraj
@@ -97,6 +94,81 @@ PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,48.57546746,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_OTHER_DOP,Gen10LP,A0,24.51566272,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_CLKGLUE,Gen10LP,A0,5.356331361,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_DOP,Gen10LP,A0,7.835059172,syn,1,Taken fromCNL TNET3 CGEN data
+PS2_GA_EM1Src_FPU1Src_DualPipe_16%,Gen10LP,A0,23.351,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_25%,Gen10LP,A0,23.92575,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_35%,Gen10LP,A0,25.85425,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_46%,Gen10LP,A0,26.29125,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_65%,Gen10LP,A0,28.12,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_16%,Gen10LP,A0,26.847,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_25%,Gen10LP,A0,27.987,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_35%,Gen10LP,A0,28.6425,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_46%,Gen10LP,A0,30.37625,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_65%,Gen10LP,A0,30.704,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_16%,Gen10LP,A0,30.33825,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_25%,Gen10LP,A0,31.426,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_35%,Gen10LP,A0,32.0435,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_46%,Gen10LP,A0,32.6325,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_65%,Gen10LP,A0,35.1215,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_16%,Gen10LP,A0,19.85975,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_25%,Gen10LP,A0,19.86925,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_35%,Gen10LP,A0,21.8785,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_46%,Gen10LP,A0,23.07075,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_65%,Gen10LP,A0,25.86375,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_16%,Gen10LP,A0,26.68075,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_25%,Gen10LP,A0,28.02025,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_35%,Gen10LP,A0,31.16475,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_46%,Gen10LP,A0,33.2595,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_65%,Gen10LP,A0,34.85075,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_16%,Gen10LP,A0,30.172,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_25%,Gen10LP,A0,32.07675,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_35%,Gen10LP,A0,33.94825,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_46%,Gen10LP,A0,37.107,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_65%,Gen10LP,A0,37.677,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_16%,Gen10LP,A0,33.668,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_25%,Gen10LP,A0,36.13325,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_35%,Gen10LP,A0,36.7365,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_46%,Gen10LP,A0,39.36325,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_65%,Gen10LP,A0,42.08975,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_16%,Gen10LP,A0,23.1895,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_25%,Gen10LP,A0,23.96375,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_35%,Gen10LP,A0,28.3765,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_46%,Gen10LP,A0,28.84675,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_65%,Gen10LP,A0,32.5945,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_16%,Gen10LP,A0,30.0105,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_25%,Gen10LP,A0,32.11475,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_35%,Gen10LP,A0,36.4705,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_46%,Gen10LP,A0,40.22775,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_65%,Gen10LP,A0,41.58625,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_16%,Gen10LP,A0,33.50175,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen10LP,A0,36.17125,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen10LP,A0,39.254,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen10LP,A0,43.8425,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen10LP,A0,44.64525,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,29.792,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,34.1715,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,38.55575,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,42.94,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,49.514,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_16%,Gen10LP,A0,26.5145,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_25%,Gen10LP,A0,28.05825,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_35%,Gen10LP,A0,33.68225,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_46%,Gen10LP,A0,35.815,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_65%,Gen10LP,A0,39.33,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_16%,Gen10LP,A0,19.323,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_25%,Gen10LP,A0,19.836,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_35%,Gen10LP,A0,20.026,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_46%,Gen10LP,A0,20.5485,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_65%,Gen10LP,A0,21.3845,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_16%,Gen10LP,A0,23.33675,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_25%,Gen10LP,A0,23.64075,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_35%,Gen10LP,A0,23.73575,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_46%,Gen10LP,A0,23.8925,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_65%,Gen10LP,A0,23.51725,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_16%,Gen10LP,A0,25.897,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_25%,Gen10LP,A0,26.12025,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_35%,Gen10LP,A0,27.0085,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_46%,Gen10LP,A0,27.949,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_65%,Gen10LP,A0,28.1485,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GAM_CLKGLUE,Gen10LP,A0,8.756272189,syn,1,
 PS2_GAM_DOP,Gen10LP,A0,17.21243787,syn,1,
 PS2_GAMD_Cache_READ,Gen10LP,A0,1.89,ebb,1,
@@ -115,6 +187,9 @@ PS2_GTI_CLKGLUE,Gen10LP,A0,45.09195266,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_GTI_DOP,Gen10LP,A0,12.73173373,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_HDC_CLKGLUE,Gen10LP,A0,2.146331361,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_HDC_DOP,Gen10LP,A0,4.514893491,syn,1,Taken fromCNL TNET3 CGEN data
+PS2_HDCL1,Gen10LP,A0,17.64,syn,329404.47,Estimated using IC Cdyn Weights
+PS2_HDCL1_CACHE_READS,Gen10LP,A0,13.06,ebb,1,CNL EBB Spreadsheet
+PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,21.48,ebb,1,CNL EBB Spreadsheet
 PS2_HIZ_CACHE_READ,Gen10LP,A0,3.02,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_CACHE_WRITE,Gen10LP,A0,4.21,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_LATFIFO_READ,Gen10LP,A0,14.43,ebb,1,
@@ -404,11 +479,11 @@ FPU0_mad_fp16_28%,Gen9LPClient,A0,43.28,syn,383376,
 FPU0_mad_fp16_35%,Gen9LPClient,A0,45.14,syn,383376,
 FPU0_mad_fp16_44%,Gen9LPClient,A0,48.54,syn,383376,
 FPU0_mad_fp16_57%,Gen9LPClient,A0,53.6,syn,383376,
-FPU0_mad_fp32_16%,Gen9LPClient,A0,43.83,syn,383376,
-FPU0_mad_fp32_25%,Gen9LPClient,A0,50.2,syn,383376,
-FPU0_mad_fp32_35%,Gen9LPClient,A0,56.56,syn,383376,
-FPU0_mad_fp32_46%,Gen9LPClient,A0,62.92,syn,383376,
-FPU0_mad_fp32_65%,Gen9LPClient,A0,72.46,syn,383376,
+FPU0_mad_fp32_16%,Gen9LPClient,A0,43.83,syn,383376,modified by vasudha
+FPU0_mad_fp32_25%,Gen9LPClient,A0,50.2,syn,383376,modified by vasudha
+FPU0_mad_fp32_35%,Gen9LPClient,A0,56.56,syn,383376,modified by vasudha
+FPU0_mad_fp32_46%,Gen9LPClient,A0,62.92,syn,383376,modified by vasudha
+FPU0_mad_fp32_65%,Gen9LPClient,A0,72.46,syn,383376,modified by vasudha
 FPU0_mad_fp64_11%,Gen9LPClient,A0,50.97,syn,383376,
 FPU0_mad_fp64_16%,Gen9LPClient,A0,58.76,syn,383376,
 FPU0_mad_fp64_18%,Gen9LPClient,A0,62.3,syn,383376,
@@ -764,11 +839,11 @@ FPU1_mad_fp16_28%,Gen9LPClient,A0,44.24,syn,346094,
 FPU1_mad_fp16_35%,Gen9LPClient,A0,45.54,syn,346094,
 FPU1_mad_fp16_44%,Gen9LPClient,A0,51,syn,346094,
 FPU1_mad_fp16_57%,Gen9LPClient,A0,55.33,syn,346094,
-FPU1_mad_fp32_16%,Gen9LPClient,A0,36,syn,346094,
-FPU1_mad_fp32_25%,Gen9LPClient,A0,43.78,syn,346094,
-FPU1_mad_fp32_35%,Gen9LPClient,A0,51.55,syn,346094,
-FPU1_mad_fp32_46%,Gen9LPClient,A0,59.32,syn,346094,
-FPU1_mad_fp32_65%,Gen9LPClient,A0,70.98,syn,346094,
+FPU1_mad_fp32_16%,Gen9LPClient,A0,36,syn,346094,modified by vasudha
+FPU1_mad_fp32_25%,Gen9LPClient,A0,43.78,syn,346094,modified by vasudha
+FPU1_mad_fp32_35%,Gen9LPClient,A0,51.55,syn,346094,modified by vasudha
+FPU1_mad_fp32_46%,Gen9LPClient,A0,59.32,syn,346094,modified by vasudha
+FPU1_mad_fp32_65%,Gen9LPClient,A0,70.98,syn,346094,modified by vasudha
 FPU1_mad_fp64_11%,Gen9LPClient,A0,51.37,syn,346094,
 FPU1_mad_fp64_16%,Gen9LPClient,A0,59,syn,346094,
 FPU1_mad_fp64_18%,Gen9LPClient,A0,64.03,syn,346094,
@@ -1667,11 +1742,11 @@ PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen9LPClient,A0,76.15,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen9LPClient,A0,82.64,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen9LPClient,A0,92.3,syn,244769,
 PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen9LPClient,A0,93.99,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPClient,A0,62.72,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPClient,A0,71.94,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPClient,A0,81.17,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPClient,A0,90.4,syn,244769,
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPClient,A0,104.24,syn,244769,
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPClient,A0,62.72,syn,244769,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPClient,A0,71.94,syn,244769,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPClient,A0,81.17,syn,244769,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPClient,A0,90.4,syn,244769,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPClient,A0,104.24,syn,244769,modified by vasudha
 PS2_GA_EM3Src_SinglePipe_16%,Gen9LPClient,A0,55.82,syn,244769,
 PS2_GA_EM3Src_SinglePipe_25%,Gen9LPClient,A0,59.07,syn,244769,
 PS2_GA_EM3Src_SinglePipe_35%,Gen9LPClient,A0,70.91,syn,244769,
@@ -2176,333 +2251,6 @@ PS2_WMFE_NOTNULLTOPSC,Gen9LPClient,A0,38.13,syn,197451.95,No TR information
 PS2_WMFE_NULLTOPSC,Gen9LPClient,A0,5.01,syn,197451.95,No TR information
 PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,6.69,ebb,1,Current gSim sizes assumed as 1x100
 PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,11.08,ebb,1,Current gSim sizes assumed as 1x100
-PS0_BTGEN_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
-PS0_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
-PS0_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
-PS0_DAPRSS_BYPASSRAM,Gen9LPSoC,A0,0,ebb,1,
-PS0_DX9_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
-PS0_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
-PS0_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
-PS0_GS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_HS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_IC_DATARAM,Gen9LPSoC,A0,0,ebb,1,
-PS0_MT_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
-PS0_MT_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
-PS0_PSD_BARYPAYLDASMRAM,Gen9LPSoC,A0,0,ebb,1,
-PS0_PSD_SCOREBOARD,Gen9LPSoC,A0,0,ebb,1,
-PS0_SC_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
-PS0_SC_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
-PS0_SOL_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_TDS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_VF_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_VF_URBFifo_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_VS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS2_AVS_CoeffStorageRAM_READ,Gen9LPSoC,A0,1.818115942,ebb,1,
-PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPSoC,A0,2.100724638,ebb,1,
-PS2_AVS_DataStorageRAM_READ,Gen9LPSoC,A0,1.771014493,ebb,1,
-PS2_AVS_DataStorageRAM_WRITE,Gen9LPSoC,A0,1.742753623,ebb,1,
-PS2_BC_BARYRAM_READ,Gen9LPSoC,A0,3.118115942,ebb,1,
-PS2_BC_BARYRAM_WRITE,Gen9LPSoC,A0,3.071014493,ebb,1,
-PS2_ClockSpine,Gen9LPSoC,A0,190,ebb,1,From Rob's team
-PS2_ClockSpine_RC,Gen9LPSoC,A0,0,ebb,1,From Rob's team
-PS2_ClockSpine_Slice,Gen9LPSoC,A0,130,ebb,1,From Rob's team
-PS2_ClockSpine_UnSlice,Gen9LPSoC,A0,60,ebb,1,From Rob's team
-PS2_DAPRSS_BYPASSRAM_READ,Gen9LPSoC,A0,8.035507246,ebb,1,
-PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPSoC,A0,8.864492754,ebb,1,
-PS2_DM_PALRAM_READ,Gen9LPSoC,A0,7.639855072,ebb,1,
-PS2_DM_PALRAM_WRITE,Gen9LPSoC,A0,8.167391304,ebb,1,
-PS2_GAMD_Cache_READ,Gen9LPSoC,A0,2.647101449,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen9LPSoC,A0,3.061594203,ebb,1,
-PS2_GAMTLB_EBB_READ,Gen9LPSoC,A0,1.478985507,ebb,1,
-PS2_GAMTLB_EBB_WRITE,Gen9LPSoC,A0,1.582608696,ebb,1,
-PS2_GAMW_READ,Gen9LPSoC,A0,5.2,ebb,1,
-PS2_GAMW_TLB_PEND_READ,Gen9LPSoC,A0,2.081884058,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen9LPSoC,A0,2.166666667,ebb,1,
-PS2_GAMW_WRITE,Gen9LPSoC,A0,5.247101449,ebb,1,
-PS2_GRF_READ,Gen9LPSoC,A0,4.135507246,ebb,1,
-PS2_GRF_WRITE,Gen9LPSoC,A0,9.457971014,ebb,1,
-PS2_GS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
-PS2_GS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
-PS2_GS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
-PS2_HIZ_CACHE_READ,Gen9LPSoC,A0,14.02681159,ebb,1,
-PS2_HIZ_CACHE_WRITE,Gen9LPSoC,A0,17.09782609,ebb,1,
-PS2_HIZ_LATFIFO_READ,Gen9LPSoC,A0,13.44275362,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen9LPSoC,A0,14.02681159,ebb,1,
-PS2_HS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
-PS2_HS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
-PS2_HS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPSoC,A0,0,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_READ,Gen9LPSoC,A0,32.1326087,ebb,1,
-PS2_IC_DATARAM_WRITE,Gen9LPSoC,A0,35.44855072,ebb,1,
-PS2_IZ_BARYCOEFFIFO_READ,Gen9LPSoC,A0,6.377536232,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPSoC,A0,7.027536232,ebb,1,
-PS2_IZ_LATFIFO_READ,Gen9LPSoC,A0,7.15942029,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen9LPSoC,A0,7.460869565,ebb,1,
-PS2_IZ_POLYFIFO_READ,Gen9LPSoC,A0,9.11884058,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen9LPSoC,A0,9.505072464,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen9LPSoC,A0,3.071014493,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen9LPSoC,A0,3.381884058,ebb,1,
-PS2_MSC_CACHE_READ,Gen9LPSoC,A0,18.73695652,ebb,1,
-PS2_MSC_CACHE_WRITE,Gen9LPSoC,A0,20.84710145,ebb,1,
-PS2_MT_DataRam_READ,Gen9LPSoC,A0,7.291304348,ebb,1,
-PS2_MT_DataRam_READ&WRITE,Gen9LPSoC,A0,15.11014493,ebb,1,
-PS2_MT_DataRam_WRITE,Gen9LPSoC,A0,7.81884058,ebb,1,
-PS2_MT_LatFifo_READ,Gen9LPSoC,A0,3.23115942,ebb,1,
-PS2_MT_LatFifo_READ&WRITE,Gen9LPSoC,A0,6.867391304,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen9LPSoC,A0,3.636231884,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPSoC,A0,3.485507246,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPSoC,A0,4.050724638,ebb,1,
-PS2_PSD_SCOREBOARD_READ,Gen9LPSoC,A0,0.810144928,ebb,1,
-PS2_PSD_SCOREBOARD_WRITE,Gen9LPSoC,A0,0.857246377,ebb,1,
-PS2_RCC_CACHE_READ,Gen9LPSoC,A0,20.78115942,ebb,1,
-PS2_RCC_CACHE_WRITE,Gen9LPSoC,A0,23.6826087,ebb,1,
-PS2_RCPFE_COLORLATFIFO_READ,Gen9LPSoC,A0,23.59782609,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPSoC,A0,26.02826087,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen9LPSoC,A0,4.681884058,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPSoC,A0,5.011594203,ebb,1,
-PS2_RCPFE_RCCLATFIFO_READ,Gen9LPSoC,A0,1.554347826,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPSoC,A0,1.610869565,ebb,1,
-PS2_RCZ_CACHE_READ,Gen9LPSoC,A0,19.51884058,ebb,1,
-PS2_RCZ_CACHE_WRITE,Gen9LPSoC,A0,23.07971014,ebb,1,
-PS2_SC_DataRam_READ,Gen9LPSoC,A0,30.56884058,ebb,1,
-PS2_SC_DataRam_WRITE,Gen9LPSoC,A0,32.67898551,ebb,1,
-PS2_SC_LatFifo_READ,Gen9LPSoC,A0,3.88115942,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen9LPSoC,A0,4.484057971,ebb,1,
-PS2_SOL_Cache_Read,Gen9LPSoC,A0,1.507246377,ebb,1,
-PS2_SOL_Cache_ReadWrite,Gen9LPSoC,A0,3.25,ebb,1,
-PS2_SOL_Cache_Write,Gen9LPSoC,A0,1.742753623,ebb,1,
-PS2_STC_CACHE_READ,Gen9LPSoC,A0,17.9173913,ebb,1,
-PS2_STC_CACHE_WRITE,Gen9LPSoC,A0,23.60724638,ebb,1,
-PS2_TDS_Cache_Read,Gen9LPSoC,A0,6.782608696,ebb,1,
-PS2_TDS_Cache_ReadWrite,Gen9LPSoC,A0,14.35652174,ebb,1,
-PS2_TDS_Cache_Write,Gen9LPSoC,A0,7.573913043,ebb,1,
-PS2_VF_Cache_Read,Gen9LPSoC,A0,1.007971014,ebb,1,
-PS2_VF_Cache_Write,Gen9LPSoC,A0,1.045652174,ebb,1,
-PS2_VF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
-PS2_VF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
-PS2_VS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
-PS2_VS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,
-PS0_RoutingChannel,Gen9LPSoC,B0,0,syn,0,Taken from BXT B0 CGEN data
-PS0_AVS_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_BC_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
-PS0_CC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_CL_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_CRE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_DAPB_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_DAPRSC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_DAPRSS_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
-PS0_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
-PS0_DFRSMP_CLKGLUE_DOP,Gen9LPSoC,B0,4.635742216,syn,1,No 3D DOP in ROSS
-PS0_DFRSMP_DOP,Gen9LPSoC,B0,1.657589734,syn,1,No 3D DOP in ROSS
-PS0_DFRSMP_NONCLKGLUE,Gen9LPSoC,B0,3.458477778,syn,1,Taken from BXT BSTEP CGEN data
-PS0_DFRSMP_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.589116917,syn,1,No 3D DOP in ROSS
-PS0_DG_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_DM_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
-PS0_EU_DOP,Gen9LPSoC,B0,0,syn,1,DOP gated
-PS0_EU_NONCLKGLUE,Gen9LPSoC,B0,0.110566667,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_CLKGLUE_DOP,Gen9LPSoC,B0,16.97738006,syn,1,Taken from BXT BSTEP CGEN data
-PS0_L3BankOther,Gen9LPSoC,B0,0,syn,1,
-PS0_LNECS,Gen9LPSoC,B0,0,syn,1,
-PS0_LNICS,Gen9LPSoC,B0,0,syn,1,
-PS0_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
-PS0_FF_OTHER_DOP,Gen9LPSoC,B0,9.864520131,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_NONCLKGLUE,Gen9LPSoC,B0,5.288177778,syn,1,Taken from BXT BSTEP CGEN data
-PS0_EU_DOP,Gen9LPSoC,A0,0,syn,1,DOP gated
-PS0_MT_TagRam_IDLE,Gen9LPSoC,B0,0,syn,1,Not modeled in gSim
-PS0_FF_OTHER_NONCLKGLUE_DOP,Gen9LPSoC,B0,1.159087675,syn,1,Taken from BXT BSTEP CGEN data
-PS0_EU_NONCLKGLUE,Gen9LPSoC,A0,0.02,syn,1,Taken from BXT A0_postroute CGEN data
-PS0_FF_TEGSSOL_CLKGLUE,Gen9LPSoC,B0,21.4963,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_TEGSSOL_CLKGLUE_DOP,Gen9LPSoC,B0,9.721010104,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_CLKGLUE_DOP,Gen9LPSoC,A0,5.7,syn,1,
-PS0_FF_TEGSSOL_DOP,Gen9LPSoC,B0,3.829051827,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_DOP,Gen9LPSoC,A0,3.8,syn,1,
-PS0_FF_TEGSSOL_NONCLKGLUE,Gen9LPSoC,B0,1.512266667,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_NONCLKGLUE_DOP,Gen9LPSoC,A0,0.47,syn,1,
-PS0_FF_TEGSSOL_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.683392112,syn,1,Taken from BXT BSTEP CGEN data
-PS0_FL_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_FF_TEGSSOL_CLKGLUE_DOP,Gen9LPSoC,A0,3.33,syn,1,
-PS0_FT_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_GAM_CLKGLUE,Gen9LPSoC,B0,60.21722222,syn,1,
-PS0_FF_TEGSSOL_DOP,Gen9LPSoC,A0,3.04,syn,1,
-PS0_GAM_DOP,Gen9LPSoC,B0,17.64311111,syn,1,
-PS0_GAM_NONCLKGLUE,Gen9LPSoC,B0,2.495477778,syn,1,
-PS0_FF_TEGSSOL_NONCLKGLUE_DOP,Gen9LPSoC,A0,0.45,syn,1,
-PS0_GS_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
-PS0_GTI_DOP,Gen9LPSoC,B0,15.35687778,syn,1,Taken from BXT BSTEP CGEN data
-PS0_GTI_NONCLKGLUE,Gen9LPSoC,B0,2.548977778,syn,1,Taken from BXT BSTEP CGEN data
-PS0_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,
-PS0_HDC_CLKGLUE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,
-PS1_L3BankOther,Gen9LPSoC,B0,0,syn,1,
-PS1_LNECS,Gen9LPSoC,B0,0,syn,1,
-PS1_LNICS,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_NONCLKGLUE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_ReqCmd1_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_ReqCmd2_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_ReqData_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDC_Ret_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HDCTLB_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_HS_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_IEF_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_IME_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_IZ_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,
-PS0_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,
-PS0_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,
-PS0_MEDIASMP_CLKGLUE,Gen9LPSoC,B0,12.59152222,syn,1,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_CLKGLUE_DOP,Gen9LPSoC,B0,0.918161182,syn,1,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_DOP,Gen9LPSoC,B0,0.388212993,syn,1,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_NONCLKGLUE,Gen9LPSoC,B0,2.255322222,syn,1,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.152420614,syn,1,Taken from BXT BSTEP CGEN data
-PS0_MSC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_MT_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_PL_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_PSD_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
-PS0_RCC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_RCPBCOM_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_RCPBPIX_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_RCPFE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_RCZ_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_ROSC_CLKGLUE,Gen9LPSoC,B0,141.1139778,syn,1,
-PS0_ROSC_CLKGLUE_DOP,Gen9LPSoC,B0,20.70365887,syn,1,
-PS0_ROSC_DOP,Gen9LPSoC,B0,8.418622074,syn,1,
-PS0_ROSC_NONCLKGLUE,Gen9LPSoC,B0,10.36116667,syn,1,
-PS0_ROSC_NONCLKGLUE_DOP,Gen9LPSoC,B0,1.367538232,syn,1,
-PS0_ROSS_CLKGLUE,Gen9LPSoC,B0,26.54194444,syn,1,Taken from BXT BSTEP CGEN data
-PS0_ROSS_CLKGLUE_DOP,Gen9LPSoC,B0,26.54194444,syn,1,No 3D DOP in ROSS
-PS0_ROSS_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
-PS0_ROSS_NONCLKGLUE,Gen9LPSoC,B0,2.724933333,syn,1,Taken from BXT BSTEP CGEN data
-PS0_ROSS_NONCLKGLUE_DOP,Gen9LPSoC,B0,2.724933333,syn,1,No 3D DOP in ROSS
-PS0_SBE_CALC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SBE_FETCH_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SBE_OTHER_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SBE_REPLAY_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SC_DOP,Gen9LPSoC,B0,0,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
-PS0_SDE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SF_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SO_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SOL_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_ST_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_STC_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_SVG_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_TDS_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_TE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_URBM_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_VF_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_VFBE1_DOP,Gen9LPSoC,B0,0,syn,1,
-PS1_EU_DOP,Gen9LPSoC,A0,0,syn,1,No stall DOP gating in SKL
-PS0_VFBE2_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_VSBE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_VSFE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_WMBE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_WMFE_DOP,Gen9LPSoC,B0,0,syn,1,
-PS1_EU_DOP,Gen9LPSoC,B0,0,syn,1,No stall DOP gating in SKL
-PS1_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,Taken from BXT BSTEP CGDIS data
-PS1_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,Taken from BXT BSTEP CGDIS data
-PS1_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,Taken from BXT BSTEP CGDIS data
-PS1_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,Taken from BXT BSTEP CGDIS data
-PS1_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
-PS2_DFRSMP_DOP,Gen9LPSoC,B0,10.19234444,syn,1,Taken from BXT BSTEP CGEN data
-PS2_DFRSMP_NONCLKGLUE,Gen9LPSoC,B0,3.458477778,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
-PS2_EU_DOP,Gen9LPSoC,B0,2.187745778,syn,1,Taken from BXT BSTEP CGEN data
-PS2_EU_NONCLKGLUE,Gen9LPSoC,B0,0.110566667,syn,1,Average of all opcodes at 30%
-PS2_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data
-PS2_FF_OTHER_DOP,Gen9LPSoC,B0,31.91215556,syn,1,Taken from BXT BSTEP CGEN data
-PS2_FF_OTHER_NONCLKGLUE,Gen9LPSoC,B0,5.227544444,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_FF_TEGSSOL_CLKGLUE,Gen9LPSoC,B0,21.4963,syn,1,Taken from BXT BSTEP CGEN data
-PS2_FF_TEGSSOL_DOP,Gen9LPSoC,B0,8.507688889,syn,1,Taken from BXT BSTEP CGEN data
-PS2_FF_TEGSSOL_NONCLKGLUE,Gen9LPSoC,B0,1.506322222,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_GAM_CLKGLUE,Gen9LPSoC,B0,60.21722222,syn,1,
-PS2_GAM_DOP,Gen9LPSoC,B0,17.64311111,syn,1,
-PS2_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
-PS2_GAM_NONCLKGLUE,Gen9LPSoC,B0,2.457433333,syn,1,
-PS2_EU_DOP,Gen9LPSoC,A0,2,syn,1,Taken from BXT A0_postroute CGEN data
-PS2_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
-PS2_EU_NONCLKGLUE,Gen9LPSoC,A0,1.99,syn,1,Average of all opcodes at 30%
-PS2_FF_OTHER_DOP,Gen9LPSoC,A0,10.71,syn,1,
-PS2_GTI_DOP,Gen9LPSoC,B0,15.35687778,syn,1,Taken from BXT BSTEP CGEN data
-PS2_GTI_NONCLKGLUE,Gen9LPSoC,B0,2.547788889,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,Taken from BXT BSTEP CGEN data
-PS2_FF_TEGSSOL_DOP,Gen9LPSoC,A0,6.84,syn,1,
-PS2_HDC_DOP,Gen9LPSoC,B0,10.94372222,syn,1,Taken from BXT BSTEP CGEN data
-PS2_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,Taken from BXT BSTEP CGEN data
-PS2_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,Taken from BXT BSTEP CGEN data
-PS2_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,Taken from BXT BSTEP CGDIS data
-PS2_MEDIASMP_CLKGLUE,Gen9LPSoC,B0,12.59152222,syn,1,Taken from BXT BSTEP CGEN data
-PS2_MEDIASMP_DOP,Gen9LPSoC,B0,5.309577778,syn,1,Taken from BXT BSTEP CGEN data
-PS2_MEDIASMP_NONCLKGLUE,Gen9LPSoC,B0,2.255322222,syn,1,Taken from BXT BSTEP CGEN data
-PS2_ROSC_CLKGLUE,Gen9LPSoC,B0,141.1139778,syn,1,
-PS2_ROSC_DOP,Gen9LPSoC,B0,58.43032222,syn,1,
-PS2_ROSC_NONCLKGLUE,Gen9LPSoC,B0,10.03897778,syn,1,
-PS2_ROSS_CLKGLUE,Gen9LPSoC,B0,26.54194444,syn,1,Taken from BXT BSTEP CGEN data
-PS2_ROSS_DOP,Gen9LPSoC,B0,8.493422222,syn,1,Taken from BXT BSTEP CGEN data and subtracted Sampler DFR DOP
-PS2_ROSS_NONCLKGLUE,Gen9LPSoC,B0,2.677377778,syn,1,Taken from BXT BSTEP CGDIS data
-PS0_MIDI,Gen9LPSoC,B0,0.297222222,syn,18183.06,number of cycles MIDI was empty
-PS1_MIDI,Gen9LPSoC,B0,0.974888889,syn,18183.06,cdyn should be same as idle
-PS0_EU_SMALL,Gen9LPSoC,A0,1.12,syn,26698.75,Taken from BXT A0_postroute CGEN data
-PS0_LTCC,Gen9LPSoC,B0,0.321,syn,34369.77,
-PS1_LTCC,Gen9LPSoC,B0,1.652555556,syn,34369.77,
-PS0_EU_DFX,Gen9LPSoC,A0,0.14,syn,36830.2,Taken from BXT A0_postroute CGEN data
-PS2_EU_DFX,Gen9LPSoC,A0,0.82,syn,36830.2,Average of all opcodes at 30%
-PS0_GAPC,Gen9LPSoC,B0,0.130777778,syn,41616.15,Taken from BXT B0 CGEN data
-PS1_GAPC,Gen9LPSoC,B0,0.665777778,syn,41616.15,Taken from BXT B0 CGDIS data
-PS0_SDE,Gen9LPSoC,B0,0.820333333,syn,45991.1,
-PS1_SDE,Gen9LPSoC,B0,1.616888889,syn,45991.1,Taken from BXT B0 CGDIS data
-PS0_EU_SMALL,Gen9LPSoC,B0,0.321,syn,57046.8,Taken from BXT BSTEP CGEN data
-PS2_EU_SMALL,Gen9LPSoC,B0,1.343444444,syn,57046.8,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
-PS0_GAPL3,Gen9LPSoC,B0,1.188888889,syn,61360.08,Taken from BXT B0 CGEN data
-PS1_GAPL3,Gen9LPSoC,B0,2.128111111,syn,61360.08,Taken from BXT B0 CGDIS data
-PS0_GAFM,Gen9LPSoC,B0,0.725222222,syn,63066.94,Taken from BXT B0 CGEN data
-PS1_GAFM,Gen9LPSoC,B0,1.105666667,syn,63066.94,Taken from BXT B0 CGDIS data
-PS0_FF_TEGSSOL_SMALL,Gen9LPSoC,B0,1.783333333,syn,67626.5865,Taken from BXT BSTEP CGEN data
-PS0_FF_TEGSSOL_SMALL_DOP,Gen9LPSoC,B0,0.756342405,syn,67626.5865,Taken from BXT BSTEP CGEN data
-PS2_FF_TEGSSOL_SMALL,Gen9LPSoC,B0,1.807111111,syn,67626.5865,Taken from BXT BSTEP power virus data
-PS0_GAPZ,Gen9LPSoC,B0,2.116222222,syn,68676.51,Taken from BXT B0 CGEN data
-PS1_GAPZ,Gen9LPSoC,B0,2.924666667,syn,68676.51,Taken from BXT B0 CGDIS data
-PS0_MEDIASMP_SMALL,Gen9LPSoC,B0,0.321,syn,75648.1206,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_SMALL_DOP,Gen9LPSoC,B0,0.031411534,syn,75648.1206,Taken from BXT BSTEP CGEN data
-PS2_MEDIASMP_SMALL,Gen9LPSoC,B0,0.808444444,syn,75648.1206,Taken from BXT BSTEP CGDIS data
-PS0_EU_DFX,Gen9LPSoC,B0,0.178333333,syn,82826.5,Taken from BXT BSTEP CGEN data
-PS2_EU_DFX,Gen9LPSoC,B0,0.178333333,syn,82826.5,Average of all opcodes at 30%
-PS0_GACB,Gen9LPSoC,B0,1.284,syn,86347,Taken from BXT B0 CGEN data
-PS1_GACB,Gen9LPSoC,B0,2.187555556,syn,86347,Taken from BXT B0 CGDIS data
-PS0_GWL,Gen9LPSoC,B0,0.927333333,syn,92412.48,Taken from BXT B0 CGEN data
-PS1_GWL,Gen9LPSoC,B0,1.640666667,syn,92412.48,Taken from BXT B0 CGDIS data
-PS0_MEDIASMP_DFX,Gen9LPSoC,B0,0.677666667,syn,98887.3284,Taken from BXT BSTEP CGEN data
-PS0_MEDIASMP_DFX_DOP,Gen9LPSoC,B0,0.050863441,syn,98887.3284,Taken from BXT BSTEP CGEN data
-PS2_MEDIASMP_DFX,Gen9LPSoC,B0,0.677666667,syn,98887.3284,Taken from BXT BSTEP CGEN data
-PS0_L3_Bank_SMALL,Gen9LPSoC,B0,32.635,syn,99194.81,Taken from BXT BSTEP CGEN data
-PS1_L3_Bank_SMALL,Gen9LPSoC,B0,36.02333333,syn,99194.81,Taken from BXT BSTEP CGDIS data
-PS2_L3_Bank_SMALL,Gen9LPSoC,B0,55.14066667,syn,99194.81,Taken from BXT BSTEP power virus data
-PS0_GAPS,Gen9LPSoC,B0,1.509888889,syn,99631.89,Taken from BXT B0 CGEN data
-PS1_GAPS,Gen9LPSoC,B0,2.924666667,syn,99631.89,Taken from BXT B0 CGDIS data
-PS0_TE,Gen9LPSoC,B0,0.963,syn,106337.58,
-PS1_TE,Gen9LPSoC,B0,4.517777778,syn,106337.58,
-PS0_VFE,Gen9LPSoC,B0,0.118888889,syn,108329.63,Taken from BXT B0 CGEN data
-PS1_VFE,Gen9LPSoC,B0,3.959,syn,108329.63,Taken from BXT B0 CGDIS data
-PS0_DAPB,Gen9LPSoC,B0,0.344777778,syn,114829.25,
-PS1_DAPB,Gen9LPSoC,B0,0.915444444,syn,114829.25,Taken from BXT B0 CGDIS data
-PS0_SVG,Gen9LPSoC,B0,1.010555556,syn,114957.11,Taken from BXT B0 CGEN data
-PS1_SVG,Gen9LPSoC,B0,5.801777778,syn,114957.11,Taken from BXT B0 CGDIS data
-PS0_SVL,Gen9LPSoC,B0,0.570666667,syn,116623.62,Taken from BXT B0 CGEN data
-PS1_SVL,Gen9LPSoC,B0,5.409444444,syn,116623.62,Taken from BXT B0 CGDIS data
-PS0_MA_IN,Gen9LPSoC,B0,0.856,syn,119357.22,Taken from BXT B0 CGEN data
-PS0_MA_OUT,Gen9LPSoC,B0,0.856,syn,119357.22,Taken from BXT B0 CGEN data
-PS1_MA_IN,Gen9LPSoC,B0,2.354,syn,119357.22,Taken from BXT B0 CGDIS data
-PS1_MA_OUT,Gen9LPSoC,B0,2.354,syn,119357.22,Taken from BXT B0 CGDIS data
-PS0_SO,Gen9LPSoC,B0,0.237777778,syn,127269.21,
-PS1_SO,Gen9LPSoC,B0,0.974888889,syn,127269.21,Taken from BXT B0 CGDIS data
 EM_transc_bypass_16%,Gen9LPSoC,A0,25.44,syn,133671,
 EM_transc_bypass_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_bypass_25%,Gen9LPSoC,A0,27.55,syn,133671,
@@ -2583,147 +2331,6 @@ EM_transc_intbypass_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_intbypass_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_intbypass_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_intbypass_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-PS0_SVSM,Gen9LPSoC,B0,0.321,syn,143805.72,Taken from BXT B0 CGEN data
-PS1_SVSM,Gen9LPSoC,B0,2.258888889,syn,143805.72,Taken from BXT B0 CGDIS data
-PS0_FT,Gen9LPSoC,B0,0.166444444,syn,145074.81,
-PS1_FT,Gen9LPSoC,B0,1.117555556,syn,145074.81,
-PS0_TDG,Gen9LPSoC,B0,0.772777778,syn,148155.5,
-PS1_TDG,Gen9LPSoC,B0,5.920666667,syn,148155.5,Taken from BXT B0 CGDIS data
-PS0_URBM,Gen9LPSoC,B0,0.071333333,syn,160461.25,Taken from BXT B0 CGEN data
-PS1_URBM,Gen9LPSoC,B0,6.978777778,syn,160461.25,Taken from BXT B0 CGDIS data
-PS0_HS,Gen9LPSoC,B0,1.07,syn,170061.05,
-PS1_HS,Gen9LPSoC,B0,4.601,syn,170061.05,
-PS0_OACS,Gen9LPSoC,B0,3.721222222,syn,170381.16,Taken from BXT B0 CGEN data
-PS1_OACS,Gen9LPSoC,B0,10.75944444,syn,170381.16,Taken from BXT B0 CGDIS data
-PS0_SARB,Gen9LPSoC,B0,1.177,syn,170546.2,Taken from BXT B0 CGEN data
-PS1_SARB,Gen9LPSoC,B0,7.466222222,syn,170546.2,Taken from BXT B0 CGDIS data
-PS0_TDC,Gen9LPSoC,B0,0.392333333,syn,175173.92,Taken from BXT B0 CGEN data
-PS1_TDC,Gen9LPSoC,B0,5.647222222,syn,175173.92,Taken from BXT B0 CGDIS data
-PS0_VSFE,Gen9LPSoC,B0,0.737111111,syn,201312.73,Taken from BXT B0 CGEN data
-PS1_VSFE,Gen9LPSoC,B0,13.17288889,syn,201312.73,Taken from BXT B0 CGDIS data
-PS0_WMFE,Gen9LPSoC,B0,4.030333333,syn,205606.06,
-PS1_WMFE,Gen9LPSoC,B0,8.714555556,syn,205606.06,
-PS0_LTCD_Data,Gen9LPSoC,B0,5.587777778,syn,231086.97,
-PS1_LTCD_Data,Gen9LPSoC,B0,66.64483111,syn,231086.97,Taken from BXT B0 CGDIS data
-PS0_IEF,Gen9LPSoC,B0,0.118888889,syn,239266.7,
-PS1_IEF,Gen9LPSoC,B0,4.541555556,syn,239266.7,
-PS0_L3_Bank_DFX,Gen9LPSoC,B0,2.104333333,syn,240671.36,Taken from BXT BSTEP CGEN data
-PS1_L3_Bank_DFX,Gen9LPSoC,B0,5.243,syn,240671.36,Taken from BXT BSTEP CGDIS data
-PS2_L3_Bank_DFX,Gen9LPSoC,B0,2.104333333,syn,240671.36,Taken from BXT BSTEP CGEN data
-PS0_TSG,Gen9LPSoC,B0,0.451777778,syn,243041.33,Taken from BXT B0 CGEN data
-PS1_TSG,Gen9LPSoC,B0,13.24422222,syn,243041.33,Taken from BXT B0 CGDIS data
-PS2_GA_EM1Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,44.65,syn,248782.85,
-PS2_GA_EM1Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,48.36,syn,248782.85,
-PS2_GA_EM1Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,49.4,syn,248782.85,
-PS2_GA_EM1Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,52.3,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM1Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,52.83,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM1Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,53.01,syn,248782.85,
-PS2_GA_EM1Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,55.52,syn,248782.85,
-PS2_GA_EM1Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,56.02,syn,248782.85,
-PS2_GA_EM1Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,58.53,syn,248782.85,
-PS2_GA_EM1Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,59.77,syn,248782.85,
-PS2_GA_EM1Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,61.37,syn,248782.85,
-PS2_GA_EM1Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,62.63,syn,248782.85,Swapped 20% with 30% for linearity
-PS2_GA_EM1Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,62.68,syn,248782.85,Swapped 20% with 30% for linearity
-PS2_GA_EM1Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,64.23,syn,248782.85,
-PS2_GA_EM1Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,67.25,syn,248782.85,
-PS2_GA_EM1Src_SinglePipe_16%,Gen9LPSoC,A0,36.28,syn,248782.85,
-PS2_GA_EM1Src_SinglePipe_25%,Gen9LPSoC,A0,41.19,syn,248782.85,
-PS2_GA_EM1Src_SinglePipe_35%,Gen9LPSoC,A0,42.79,syn,248782.85,
-PS2_GA_EM1Src_SinglePipe_46%,Gen9LPSoC,A0,44.82,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM1Src_SinglePipe_65%,Gen9LPSoC,A0,47.13,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,49.72,syn,248782.85,
-PS2_GA_EM2Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,54.88,syn,248782.85,
-PS2_GA_EM2Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,56.92,syn,248782.85,
-PS2_GA_EM2Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,61.37,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,61.87,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,58.09,syn,248782.85,
-PS2_GA_EM2Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,62.04,syn,248782.85,
-PS2_GA_EM2Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,63.54,syn,248782.85,
-PS2_GA_EM2Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,67.57,syn,248782.85,
-PS2_GA_EM2Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,68.85,syn,248782.85,
-PS2_GA_EM2Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,66.45,syn,248782.85,
-PS2_GA_EM2Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,69.21,syn,248782.85,
-PS2_GA_EM2Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,70.15,syn,248782.85,
-PS2_GA_EM2Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,73.27,syn,248782.85,
-PS2_GA_EM2Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,76.33,syn,248782.85,
-PS2_GA_EM2Src_SinglePipe_16%,Gen9LPSoC,A0,41.36,syn,248782.85,
-PS2_GA_EM2Src_SinglePipe_25%,Gen9LPSoC,A0,47.72,syn,248782.85,
-PS2_GA_EM2Src_SinglePipe_35%,Gen9LPSoC,A0,50.31,syn,248782.85,
-PS2_GA_EM2Src_SinglePipe_46%,Gen9LPSoC,A0,53.89,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM2Src_SinglePipe_65%,Gen9LPSoC,A0,56.17,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,54.8,syn,248782.85,
-PS2_GA_EM3Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,61.4,syn,248782.85,
-PS2_GA_EM3Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,64.44,syn,248782.85,
-PS2_GA_EM3Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,70.44,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,70.9,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,63.16,syn,248782.85,
-PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,68.57,syn,248782.85,
-PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,71.06,syn,248782.85,
-PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,76.6,syn,248782.85,
-PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,77.92,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,71.53,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,75.73,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,77.67,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,82.31,syn,248782.85,
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,85.4,syn,248782.85,
-PS2_GA_EM3Src_SinglePipe_16%,Gen9LPSoC,A0,46.44,syn,248782.85,
-PS2_GA_EM3Src_SinglePipe_25%,Gen9LPSoC,A0,54.24,syn,248782.85,
-PS2_GA_EM3Src_SinglePipe_35%,Gen9LPSoC,A0,57.83,syn,248782.85,
-PS2_GA_EM3Src_SinglePipe_46%,Gen9LPSoC,A0,62.96,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_EM3Src_SinglePipe_65%,Gen9LPSoC,A0,65.2,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_FPU1Src_SinglePipe_16%,Gen9LPSoC,A0,39.57,syn,248782.85,
-PS2_GA_FPU1Src_SinglePipe_25%,Gen9LPSoC,A0,41.83,syn,248782.85,
-PS2_GA_FPU1Src_SinglePipe_35%,Gen9LPSoC,A0,41.88,syn,248782.85,
-PS2_GA_FPU1Src_SinglePipe_46%,Gen9LPSoC,A0,43.22,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_FPU1Src_SinglePipe_65%,Gen9LPSoC,A0,43.79,syn,248782.85,Swapped 50% with 80% for linearity
-PS2_GA_FPU2Src_SinglePipe_16%,Gen9LPSoC,A0,47.93,syn,248782.85,
-PS2_GA_FPU2Src_SinglePipe_25%,Gen9LPSoC,A0,48.5,syn,248782.85,Swapped 20% with 30% for linearity
-PS2_GA_FPU2Src_SinglePipe_35%,Gen9LPSoC,A0,49,syn,248782.85,Swapped 20% with 30% for linearity
-PS2_GA_FPU2Src_SinglePipe_46%,Gen9LPSoC,A0,49.49,syn,248782.85,
-PS2_GA_FPU2Src_SinglePipe_65%,Gen9LPSoC,A0,50.7,syn,248782.85,
-PS2_GA_FPU3Src_SinglePipe_16%,Gen9LPSoC,A0,55.11,syn,248782.85,Swapped 10% with 30% for linearity
-PS2_GA_FPU3Src_SinglePipe_25%,Gen9LPSoC,A0,55.19,syn,248782.85,Swapped 20% with 50% for linearity
-PS2_GA_FPU3Src_SinglePipe_35%,Gen9LPSoC,A0,56.16,syn,248782.85,Swapped 30% with 20% for linearity
-PS2_GA_FPU3Src_SinglePipe_46%,Gen9LPSoC,A0,56.29,syn,248782.85,Swapped 50% with 10% for linearity
-PS2_GA_FPU3Src_SinglePipe_65%,Gen9LPSoC,A0,58.18,syn,248782.85,
-PS0_DG,Gen9LPSoC,B0,0.190222222,syn,249976.67,
-PS1_DG,Gen9LPSoC,B0,5.266777778,syn,249976.67,
-PS0_GA,Gen9LPSoC,B0,1.236444444,syn,262641.75,Taken from BXT B0 CGEN data
-PS1_GA,Gen9LPSoC,B0,1.236444444,syn,262641.75,Taken from BXT B0 CGDIS data
-PS0_FF_TEGSSOL_DFX,Gen9LPSoC,B0,1.367222222,syn,263186.9644,Taken from BXT BSTEP CGEN data
-PS0_FF_TEGSSOL_DFX_DOP,Gen9LPSoC,B0,0.610960303,syn,263186.9644,Taken from BXT BSTEP CGEN data
-PS2_FF_TEGSSOL_DFX,Gen9LPSoC,B0,1.367222222,syn,263186.9644,Taken from BXT BSTEP CGEN data
-PS0_ROSS_DFX,Gen9LPSoC,B0,1.343444444,syn,271940.1531,Taken from BXT BSTEP CGEN data
-PS0_ROSS_DFX_DOP,Gen9LPSoC,B0,1.343444444,syn,271940.1531,No 3D DOP in ROSS
-PS2_ROSS_DFX,Gen9LPSoC,B0,1.343444444,syn,271940.1531,Taken from BXT BSTEP CGEN data
-PS0_ST,Gen9LPSoC,B0,0.202111111,syn,274582.73,
-PS1_ST,Gen9LPSoC,B0,4.957666667,syn,274582.73,
-PS0_SOL,Gen9LPSoC,B0,4.565333333,syn,275562.78,
-PS1_SOL,Gen9LPSoC,B0,6.396222222,syn,275562.78,Taken from BXT B0 CGDIS data
-PS0_IC,Gen9LPSoC,B0,0.570666667,syn,293362.03,
-PS1_IC,Gen9LPSoC,B0,4.981444444,syn,293362.03,
-PS0_HDC_ReqData,Gen9LPSoC,B0,0.071333333,syn,296616.83,
-PS1_HDC_ReqData,Gen9LPSoC,B0,3.293222222,syn,296616.83,Taken from BXT B0 CGDIS data
-PS0_TDS,Gen9LPSoC,B0,1.997333333,syn,305135.7,
-PS1_TDS,Gen9LPSoC,B0,12.75677778,syn,305135.7,
-PS0_VSBE,Gen9LPSoC,B0,1.058111111,syn,307533.56,
-PS1_VSBE,Gen9LPSoC,B0,8.56,syn,307533.56,
-PS0_HDC_DFX,Gen9LPSoC,B0,1.462333333,syn,315219.3,Taken from BXT BSTEP CGEN data
-PS0_HDC_DFX_DOP,Gen9LPSoC,B0,1.462333333,syn,315219.3,
-PS1_HDC_DFX,Gen9LPSoC,B0,5.088444444,syn,315219.3,Taken from BXT BSTEP CGDIS data
-PS2_HDC_DFX,Gen9LPSoC,B0,1.462333333,syn,315219.3,Taken from BXT BSTEP CGEN data
-PS0_RS,Gen9LPSoC,B0,0.309111111,syn,326483.79,
-PS1_RS,Gen9LPSoC,B0,8.108222222,syn,326483.79,Taken from BXT B0 CGDIS data
-PS0_LNE,Gen9LPSoC,B0,8.369777778,syn,328975.5,
-PS1_LNE,Gen9LPSoC,B0,23.08822222,syn,328975.5,Taken from BXT B0 CGDIS data
-PS0_FF_OTHER_SMALL,Gen9LPSoC,B0,25.66811111,syn,330176.8635,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_SMALL_DOP,Gen9LPSoC,B0,2.551240842,syn,330176.8635,Taken from BXT BSTEP CGEN data
-PS2_FF_OTHER_SMALL,Gen9LPSoC,B0,30.99433333,syn,330176.8635,Taken from BXT BSTEP power virus data
-PS0_HDC_SMALL,Gen9LPSoC,B0,16.57311111,syn,333936.69,Taken from BXT BSTEP CGEN data
-PS0_HDC_SMALL_DOP,Gen9LPSoC,B0,16.57311111,syn,333936.69,
-PS1_HDC_SMALL,Gen9LPSoC,B0,18.62988889,syn,333936.69,Taken from BXT BSTEP CGDIS data
-PS2_HDC_SMALL,Gen9LPSoC,B0,20.91255556,syn,333936.69,Taken from BXT BSTEP VIRUSdata
 FPU0_add_floatbypass_16%,Gen9LPSoC,A0,16.14,syn,363828,Approximated with sim data
 FPU0_add_floatbypass_25%,Gen9LPSoC,A0,18.91,syn,363828,Approximated with sim data
 FPU0_add_floatbypass_34%,Gen9LPSoC,A0,19.59,syn,363828,simulated
@@ -2854,11 +2461,11 @@ FPU0_mad_fp16_28%,Gen9LPSoC,A0,40.92,syn,363828,
 FPU0_mad_fp16_35%,Gen9LPSoC,A0,43.16,syn,363828,
 FPU0_mad_fp16_44%,Gen9LPSoC,A0,47.93,syn,363828,
 FPU0_mad_fp16_57%,Gen9LPSoC,A0,52.69,syn,363828,
-FPU0_mad_fp32_16%,Gen9LPSoC,A0,47.93,syn,363828,
-FPU0_mad_fp32_25%,Gen9LPSoC,A0,54.83,syn,363828,
-FPU0_mad_fp32_35%,Gen9LPSoC,A0,59.24,syn,363828,
-FPU0_mad_fp32_46%,Gen9LPSoC,A0,70.26,syn,363828,
-FPU0_mad_fp32_65%,Gen9LPSoC,A0,70.97,syn,363828,
+FPU0_mad_fp32_16%,Gen9LPSoC,A0,41.6385,syn,363828,modified by vasudha
+FPU0_mad_fp32_25%,Gen9LPSoC,A0,47.69,syn,363828,modified by vasudha
+FPU0_mad_fp32_35%,Gen9LPSoC,A0,53.732,syn,363828,modified by vasudha
+FPU0_mad_fp32_46%,Gen9LPSoC,A0,59.774,syn,363828,modified by vasudha
+FPU0_mad_fp32_65%,Gen9LPSoC,A0,68.837,syn,363828,modified by vasudha
 FPU0_mad_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
 FPU0_mad_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
 FPU0_mad_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
@@ -3204,11 +2811,11 @@ FPU1_mad_fp16_28%,Gen9LPSoC,A0,39.72,syn,367842,
 FPU1_mad_fp16_35%,Gen9LPSoC,A0,42.31,syn,367842,
 FPU1_mad_fp16_44%,Gen9LPSoC,A0,46.51,syn,367842,
 FPU1_mad_fp16_57%,Gen9LPSoC,A0,51.73,syn,367842,
-FPU1_mad_fp32_16%,Gen9LPSoC,A0,47.08,syn,367842,
-FPU1_mad_fp32_25%,Gen9LPSoC,A0,54.01,syn,367842,
-FPU1_mad_fp32_35%,Gen9LPSoC,A0,59.06,syn,367842,
-FPU1_mad_fp32_46%,Gen9LPSoC,A0,70.29,syn,367842,
-FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.47,syn,367842,
+FPU1_mad_fp32_16%,Gen9LPSoC,A0,36,syn,367842,modified by vasudha
+FPU1_mad_fp32_25%,Gen9LPSoC,A0,43.78,syn,367842,modified by vasudha
+FPU1_mad_fp32_35%,Gen9LPSoC,A0,51.55,syn,367842,modified by vasudha
+FPU1_mad_fp32_46%,Gen9LPSoC,A0,59.32,syn,367842,modified by vasudha
+FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.98,syn,367842,modified by vasudha
 FPU1_mad_fp64_11%,Gen9LPSoC,A0,43.84,syn,367842,
 FPU1_mad_fp64_16%,Gen9LPSoC,A0,51.09,syn,367842,
 FPU1_mad_fp64_18%,Gen9LPSoC,A0,55.86,syn,367842,
@@ -3419,149 +3026,617 @@ FPU1_sel_intbypass_25%,Gen9LPSoC,A0,17.21,syn,367842,No bypass in SEL
 FPU1_sel_intbypass_35%,Gen9LPSoC,A0,19.98,syn,367842,No bypass in SEL
 FPU1_sel_intbypass_46%,Gen9LPSoC,A0,24.85,syn,367842,No bypass in SEL
 FPU1_sel_intbypass_65%,Gen9LPSoC,A0,33,syn,367842,No bypass in SEL
-PS0_GS,Gen9LPSoC,B0,5.742333333,syn,375771.17,Looks suspicious
-PS1_GS,Gen9LPSoC,B0,12.48333333,syn,375771.17,Looks suspicious
-PS0_SC,Gen9LPSoC,B0,1.509888889,syn,397757.66,Taken from BXT B0 CGEN data
-PS1_SC,Gen9LPSoC,B0,7.478111111,syn,397757.66,Taken from BXT B0 CGDIS data
-PS0_MT,Gen9LPSoC,B0,0.416111111,syn,401461.33,
-PS1_MT,Gen9LPSoC,B0,7.751555556,syn,401461.33,Approximated as PS0 - need to change
-PS0_SI,Gen9LPSoC,B0,0.558777778,syn,401868.49,
-PS1_SI,Gen9LPSoC,B0,8.500555556,syn,401868.49,
-PS0_LSLM,Gen9LPSoC,B0,15.81222222,syn,418792.89,
-PS1_LSLM,Gen9LPSoC,B0,43.63222222,syn,418792.89,Taken from BXT B0 CGDIS data
-PS0_DAPRSC,Gen9LPSoC,B0,0.142666667,syn,421030.01,
-PS1_DAPRSC,Gen9LPSoC,B0,4.470222222,syn,421030.01,Taken from BXT B0 CGDIS data
+PS0_AVS,Gen9LPSoC,B0,0.986777778,syn,853458.73,
+PS0_AVS_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_BC,Gen9LPSoC,B0,1.093777778,syn,643832.52,
+PS0_BC_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
+PS0_Blitter,Gen9LPSoC,B0,14.32,syn,1694430.78,Taken from BXT B0 CGEN data
+PS0_BTGEN_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
+PS0_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
+PS0_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
+PS0_CC,Gen9LPSoC,B0,0.225888889,syn,615704.38,
+PS0_CC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_CL,Gen9LPSoC,B0,3.638,syn,1046316.97,Taken from BXT B0 CGEN data
+PS0_CL_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_CRE,Gen9LPSoC,B0,0.392333333,syn,616411.47,
+PS0_CRE_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_CS,Gen9LPSoC,B0,14.08833333,syn,423157.86,
-PS1_CS,Gen9LPSoC,B0,15.57444444,syn,423157.86,
-PS0_EU_FPU0,Gen9LPSoC,B0,0.089166667,syn,428651.71,Taken from BXT B0 CGEN data
-PS0_EU_FPU1,Gen9LPSoC,B0,0.089166667,syn,428651.71,Taken from BXT B0 CGEN data
-PS1_EU_FPU0,Gen9LPSoC,B0,10.40277778,syn,428651.71,Taken from BXT B0 CGDIS data
-PS1_EU_FPU1,Gen9LPSoC,B0,10.40277778,syn,428651.71,Taken from BXT B0 CGDIS data
-PS0_TC,Gen9LPSoC,A0,0.64,syn,432192.72,use from SKL
-PS1_TC,Gen9LPSoC,A0,13.67,syn,432192.72,use from SKL
-PS2_TC,Gen9LPSoC,A0,19.29,syn,432192.72,use from SKL
-PS0_MBGF,Gen9LPSoC,B0,47.294,syn,438917.46,Taken from BXT B0 CGEN data
-PS1_MBGF,Gen9LPSoC,B0,47.30588889,syn,438917.46,Taken from BXT B0 CGEN data
-PS0_HDCTLB,Gen9LPSoC,B0,0.784666667,syn,440342.97,
-PS1_HDCTLB,Gen9LPSoC,B0,16.76333333,syn,440342.97,
-PS0_FF_OTHER_DFX,Gen9LPSoC,B0,3.376444444,syn,448129.1556,Taken from BXT BSTEP CGEN data
-PS0_FF_OTHER_DFX_DOP,Gen9LPSoC,B0,1.243377358,syn,448129.1556,Taken from BXT BSTEP CGEN data
-PS2_FF_OTHER_DFX,Gen9LPSoC,B0,3.376444444,syn,448129.1556,Taken from BXT BSTEP CGEN data
-PS0_GAM_DFX,Gen9LPSoC,B0,3.447777778,syn,450812.17,Taken from BXT BSTEP CGEN data
-PS2_GAM_DFX,Gen9LPSoC,B0,3.447777778,syn,450812.17,Taken from BXT BSTEP CGEN data
+PS0_DAPB,Gen9LPSoC,B0,0.344777778,syn,114829.25,
+PS0_DAPB_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_DAPRSC,Gen9LPSoC,B0,0.142666667,syn,421030.01,
+PS0_DAPRSC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_DAPRSS,Gen9LPSoC,B0,1.664444444,syn,795350.28,Taken from BXT B0 CGEN data
+PS0_DAPRSS_BYPASSRAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_DAPRSS_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
+PS0_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
+PS0_DFRSMP_CLKGLUE_DOP,Gen9LPSoC,B0,4.635742216,syn,1,No 3D DOP in ROSS
 PS0_DFRSMP_DFX,Gen9LPSoC,B0,2.282666667,syn,453233.5885,Taken from BXT BSTEP CGEN data
 PS0_DFRSMP_DFX_DOP,Gen9LPSoC,B0,0.375786276,syn,453233.5885,No 3D DOP in ROSS
-PS2_DFRSMP_DFX,Gen9LPSoC,B0,2.282666667,syn,453233.5885,Taken from BXT BSTEP CGEN data
-PS0_LSQD,Gen9LPSoC,B0,13.70788889,syn,468107.93,Taken from BXT B0 CGEN data
-PS1_LSQD,Gen9LPSoC,B0,73.37822222,syn,468107.93,Taken from BXT B0 CGDIS data
-PS0_TC,Gen9LPSoC,B0,0.713333333,syn,472869.86,Taken from BXT B0 CGEN data
-PS1_TC,Gen9LPSoC,B0,0.713333333,syn,472869.86,Taken from BXT B0 CGDIS data
-PS0_GAFS,Gen9LPSoC,B0,4.874444444,syn,489383.02,Taken from BXT B0 CGEN data
-PS1_GAFS,Gen9LPSoC,B0,22.90988889,syn,489383.02,Taken from BXT B0 CGDIS data
-PS0_TDL,Gen9LPSoC,B0,2.758222222,syn,494121.37,
-PS1_TDL,Gen9LPSoC,B0,12.34066667,syn,494121.37,Taken from BXT B0 CGDIS data
-PS0_ROSS_SMALL,Gen9LPSoC,B0,10.81888889,syn,494622.327,Taken from BXT BSTEP CGEN data
-PS0_ROSS_SMALL_DOP,Gen9LPSoC,B0,10.81888889,syn,494622.327,No 3D DOP in ROSS
-PS2_ROSS_SMALL,Gen9LPSoC,B0,39.19766667,syn,494622.327,Taken from BXT BSTEP CGDIS data
-PS0_PL,Gen9LPSoC,B0,0.404222222,syn,524115.29,
-PS1_PL,Gen9LPSoC,B0,6.146555556,syn,524115.29,
-PS0_MSQD,Gen9LPSoC,B0,24.51488889,syn,527006.68,number of cycles MSQD was empty
-PS1_MSQD,Gen9LPSoC,B0,44.02455556,syn,527006.68,cdyn should be same as idle
-PS0_VFBE1,Gen9LPSoC,B0,0.796555556,syn,532922.76,Taken from BXT B0 CGEN data
-PS1_VFBE1,Gen9LPSoC,B0,5.433222222,syn,532922.76,Taken from BXT B0 CGDIS data
-PS0_VFBE2,Gen9LPSoC,B0,0.760888889,syn,533426.05,Taken from BXT B0 CGEN data
-PS1_VFBE2,Gen9LPSoC,B0,5.147888889,syn,533426.05,Taken from BXT B0 CGDIS data
-PS0_RCPBCOM,Gen9LPSoC,B0,9.796444444,syn,554375.13,
-PS1_RCPBCOM,Gen9LPSoC,B0,14.29044444,syn,554375.13,
-PS0_LTCD_Tag,Gen9LPSoC,B0,10.85455556,syn,562517.91,
-PS1_LTCD_Tag,Gen9LPSoC,B0,56.50788889,syn,562517.91,Taken from BXT B0 CGDIS data
+PS0_DFRSMP_DOP,Gen9LPSoC,B0,1.657589734,syn,1,No 3D DOP in ROSS
+PS0_DFRSMP_NONCLKGLUE,Gen9LPSoC,B0,3.458477778,syn,1,Taken from BXT BSTEP CGEN data
+PS0_DFRSMP_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.589116917,syn,1,No 3D DOP in ROSS
 PS0_DFRSMP_SMALL,Gen9LPSoC,B0,3.566666667,syn,593546.7924,Taken from BXT BSTEP CGEN data
 PS0_DFRSMP_SMALL_DOP,Gen9LPSoC,B0,0.723762853,syn,593546.7924,No 3D DOP in ROSS
-PS2_DFRSMP_SMALL,Gen9LPSoC,B0,68.91988889,syn,593546.7924,Taken from BXT BSTEP CGDIS data
+PS0_DG,Gen9LPSoC,B0,0.190222222,syn,249976.67,
+PS0_DG_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_DM,Gen9LPSoC,B0,0.642,syn,1102648.74,
+PS0_DM_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_DX9_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
+PS0_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
+PS0_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
+PS0_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
+PS0_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
+PS0_EU_DFX,Gen9LPSoC,A0,0.14,syn,36830.2,Taken from BXT A0_postroute CGEN data
+PS0_EU_DFX,Gen9LPSoC,B0,0.178333333,syn,82826.5,Taken from BXT BSTEP CGEN data
+PS0_EU_DOP,Gen9LPSoC,B0,0,syn,1,DOP gated
+PS0_EU_DOP,Gen9LPSoC,A0,0,syn,1,DOP gated
+PS0_EU_FPU0,Gen9LPSoC,B0,0.089166667,syn,428651.71,Taken from BXT B0 CGEN data
+PS0_EU_FPU1,Gen9LPSoC,B0,0.089166667,syn,428651.71,Taken from BXT B0 CGEN data
+PS0_EU_NONCLKGLUE,Gen9LPSoC,B0,0.110566667,syn,1,Taken from BXT BSTEP CGEN data
+PS0_EU_NONCLKGLUE,Gen9LPSoC,A0,0.02,syn,1,Taken from BXT A0_postroute CGEN data
+PS0_EU_SMALL,Gen9LPSoC,A0,1.12,syn,26698.75,Taken from BXT A0_postroute CGEN data
+PS0_EU_SMALL,Gen9LPSoC,B0,0.321,syn,57046.8,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_CLKGLUE_DOP,Gen9LPSoC,B0,16.97738006,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_CLKGLUE_DOP,Gen9LPSoC,A0,5.7,syn,1,
+PS0_FF_OTHER_DFX,Gen9LPSoC,B0,3.376444444,syn,448129.1556,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_DFX_DOP,Gen9LPSoC,B0,1.243377358,syn,448129.1556,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_DOP,Gen9LPSoC,B0,9.864520131,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_DOP,Gen9LPSoC,A0,3.8,syn,1,
+PS0_FF_OTHER_NONCLKGLUE,Gen9LPSoC,B0,5.288177778,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_NONCLKGLUE_DOP,Gen9LPSoC,B0,1.159087675,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_NONCLKGLUE_DOP,Gen9LPSoC,A0,0.47,syn,1,
+PS0_FF_OTHER_SMALL,Gen9LPSoC,B0,25.66811111,syn,330176.8635,Taken from BXT BSTEP CGEN data
+PS0_FF_OTHER_SMALL_DOP,Gen9LPSoC,B0,2.551240842,syn,330176.8635,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_CLKGLUE,Gen9LPSoC,B0,21.4963,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_CLKGLUE_DOP,Gen9LPSoC,B0,9.721010104,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_CLKGLUE_DOP,Gen9LPSoC,A0,3.33,syn,1,
+PS0_FF_TEGSSOL_DFX,Gen9LPSoC,B0,1.367222222,syn,263186.9644,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_DFX_DOP,Gen9LPSoC,B0,0.610960303,syn,263186.9644,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_DOP,Gen9LPSoC,B0,3.829051827,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_DOP,Gen9LPSoC,A0,3.04,syn,1,
+PS0_FF_TEGSSOL_NONCLKGLUE,Gen9LPSoC,B0,1.512266667,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.683392112,syn,1,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_NONCLKGLUE_DOP,Gen9LPSoC,A0,0.45,syn,1,
+PS0_FF_TEGSSOL_SMALL,Gen9LPSoC,B0,1.783333333,syn,67626.5865,Taken from BXT BSTEP CGEN data
+PS0_FF_TEGSSOL_SMALL_DOP,Gen9LPSoC,B0,0.756342405,syn,67626.5865,Taken from BXT BSTEP CGEN data
+PS0_FL,Gen9LPSoC,B0,0.618222222,syn,1022681.66,
+PS0_FL_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_FT,Gen9LPSoC,B0,0.166444444,syn,145074.81,
+PS0_FT_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_GA,Gen9LPSoC,B0,1.236444444,syn,262641.75,Taken from BXT B0 CGEN data
+PS0_GACB,Gen9LPSoC,B0,1.284,syn,86347,Taken from BXT B0 CGEN data
+PS0_GAFM,Gen9LPSoC,B0,0.725222222,syn,63066.94,Taken from BXT B0 CGEN data
+PS0_GAFS,Gen9LPSoC,B0,4.874444444,syn,489383.02,Taken from BXT B0 CGEN data
+PS0_GAM_CLKGLUE,Gen9LPSoC,B0,60.21722222,syn,1,
+PS0_GAM_DFX,Gen9LPSoC,B0,3.447777778,syn,450812.17,Taken from BXT BSTEP CGEN data
+PS0_GAM_DOP,Gen9LPSoC,B0,17.64311111,syn,1,
+PS0_GAM_NONCLKGLUE,Gen9LPSoC,B0,2.495477778,syn,1,
+PS0_GAM_SMALL,Gen9LPSoC,B0,37.96122222,syn,1584229.06,Taken from BXT BSTEP CGEN data
+PS0_GAMD,Gen9LPSoC,B0,11.00911111,syn,1264483.82,
+PS0_GAMTLB,Gen9LPSoC,B0,37.79477778,syn,1278007.66,
+PS0_GAMW,Gen9LPSoC,B0,7.573222222,syn,1212646.47,
+PS0_GAPC,Gen9LPSoC,B0,0.130777778,syn,41616.15,Taken from BXT B0 CGEN data
+PS0_GAPL3,Gen9LPSoC,B0,1.188888889,syn,61360.08,Taken from BXT B0 CGEN data
+PS0_GAPS,Gen9LPSoC,B0,1.509888889,syn,99631.89,Taken from BXT B0 CGEN data
+PS0_GAPZ,Gen9LPSoC,B0,2.116222222,syn,68676.51,Taken from BXT B0 CGEN data
+PS0_GS,Gen9LPSoC,B0,5.742333333,syn,375771.17,Looks suspicious
+PS0_GS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_GS_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
 PS0_GTI_DFX,Gen9LPSoC,B0,6.966888889,syn,600521.09,Taken from BXT BSTEP CGEN data
-PS2_GTI_DFX,Gen9LPSoC,B0,6.966888889,syn,600521.09,Taken from BXT BSTEP CGEN data
+PS0_GTI_DOP,Gen9LPSoC,B0,15.35687778,syn,1,Taken from BXT BSTEP CGEN data
+PS0_GTI_NONCLKGLUE,Gen9LPSoC,B0,2.548977778,syn,1,Taken from BXT BSTEP CGEN data
+PS0_GTI_SMALL,Gen9LPSoC,B0,23.36166667,syn,994327.26,Taken from BXT BSTEP CGEN data
+PS0_GTP24C,Gen9LPSoC,B0,10.12,syn,1058016.5,Taken from BXT B0 CGEN data
+PS0_GWL,Gen9LPSoC,B0,0.927333333,syn,92412.48,Taken from BXT B0 CGEN data
+PS0_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,
+PS0_HDC_CLKGLUE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HDC_DFX,Gen9LPSoC,B0,1.462333333,syn,315219.3,Taken from BXT BSTEP CGEN data
+PS0_HDC_DFX_DOP,Gen9LPSoC,B0,1.462333333,syn,315219.3,
+PS0_HDC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,
+PS0_HDC_NONCLKGLUE_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_HDC_ReqCmd1,Gen9LPSoC,B0,0.523111111,syn,613388.59,Taken from BXT B0 CGEN data
-PS1_HDC_ReqCmd1,Gen9LPSoC,B0,5.195444444,syn,613388.59,Taken from BXT B0 CGDIS data
-PS0_CC,Gen9LPSoC,B0,0.225888889,syn,615704.38,
-PS1_CC,Gen9LPSoC,B0,14.05266667,syn,615704.38,Taken from BXT B0 CGDIS data
-PS0_CRE,Gen9LPSoC,B0,0.392333333,syn,616411.47,
-PS1_CRE,Gen9LPSoC,B0,8.405444444,syn,616411.47,Taken from BXT B0 CGDIS data
-PS0_BC,Gen9LPSoC,B0,1.093777778,syn,643832.52,
-PS1_BC,Gen9LPSoC,B0,7.038222222,syn,643832.52,
-PS0_STC,Gen9LPSoC,B0,4.434555556,syn,648266.18,
-PS1_STC,Gen9LPSoC,B0,62.74955556,syn,648266.18,
-PS0_VF,Gen9LPSoC,B0,4.838777778,syn,663892.47,
-PS1_VF,Gen9LPSoC,B0,14.124,syn,663892.47,Taken from BXT B0 CGDIS data
-PS0_LNI,Gen9LPSoC,B0,2.425333333,syn,690006.34,
-PS1_LNI,Gen9LPSoC,B0,16.45422222,syn,690006.34,Taken from BXT B0 CGDIS data
-PS0_MISD,Gen9LPSoC,B0,5.088444444,syn,699081.1,number of cycles MISD was empty
-PS1_MISD,Gen9LPSoC,B0,52.751,syn,699081.1,cdyn should be same as idle
-PS0_PSD,Gen9LPSoC,B0,5.552111111,syn,701040.96,
-PS1_PSD,Gen9LPSoC,B0,14.17155556,syn,701040.96,
+PS0_HDC_ReqCmd1_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HDC_ReqCmd2,Gen9LPSoC,B0,0.249666667,syn,1064863.67,
+PS0_HDC_ReqCmd2_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HDC_ReqData,Gen9LPSoC,B0,0.071333333,syn,296616.83,
+PS0_HDC_ReqData_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_HDC_Ret,Gen9LPSoC,B0,2.556111111,syn,718996.64,
-PS1_HDC_Ret,Gen9LPSoC,B0,20.41322222,syn,718996.64,Taken from BXT B0 CGDIS data
+PS0_HDC_Ret_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HDC_SMALL,Gen9LPSoC,B0,16.57311111,syn,333936.69,Taken from BXT BSTEP CGEN data
+PS0_HDC_SMALL_DOP,Gen9LPSoC,B0,16.57311111,syn,333936.69,
+PS0_HDCTLB,Gen9LPSoC,B0,0.784666667,syn,440342.97,
+PS0_HDCTLB_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HIZ,Gen9LPSoC,B0,3.162444444,syn,1173835.78,
+PS0_HIZ,Gen9LPSoC,B0,3.162444444,syn,1173835.78,
+PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_HS,Gen9LPSoC,B0,1.07,syn,170061.05,
+PS0_HS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_HS_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_IC,Gen9LPSoC,B0,0.570666667,syn,293362.03,
+PS0_IC_DATARAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_IEF,Gen9LPSoC,B0,0.118888889,syn,239266.7,
+PS0_IEF_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_IME,Gen9LPSoC,B0,0.416111111,syn,1165437.29,
+PS0_IME_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_IZ,Gen9LPSoC,B0,2.413444444,syn,1033090.12,
+PS0_IZ_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,
+PS0_L3_Bank_DFX,Gen9LPSoC,B0,2.104333333,syn,240671.36,Taken from BXT BSTEP CGEN data
+PS0_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,
+PS0_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,
+PS0_L3_Bank_SMALL,Gen9LPSoC,B0,32.635,syn,99194.81,Taken from BXT BSTEP CGEN data
+PS0_L3BankOther,Gen9LPSoC,B0,0,syn,1,
+PS0_LNE,Gen9LPSoC,B0,8.369777778,syn,328975.5,
+PS0_LNECS,Gen9LPSoC,B0,0,syn,1,
+PS0_LNI,Gen9LPSoC,B0,2.425333333,syn,690006.34,
+PS0_LNICS,Gen9LPSoC,B0,0,syn,1,
+PS0_LSLM,Gen9LPSoC,B0,15.81222222,syn,418792.89,
 PS0_LSQC,Gen9LPSoC,B0,3.471555556,syn,752877.86,
-PS1_LSQC,Gen9LPSoC,B0,41.33766667,syn,752877.86,Taken from BXT B0 CGDIS data
-PS0_RCPFE,Gen9LPSoC,B0,2.591777778,syn,767856,
-PS1_RCPFE,Gen9LPSoC,B0,17.72633333,syn,767856,Taken from BXT B0 CGDIS data
+PS0_LSQD,Gen9LPSoC,B0,13.70788889,syn,468107.93,Taken from BXT B0 CGEN data
+PS0_LTCC,Gen9LPSoC,B0,0.321,syn,34369.77,
+PS0_LTCD_Data,Gen9LPSoC,B0,5.587777778,syn,231086.97,
+PS0_LTCD_Tag,Gen9LPSoC,B0,10.85455556,syn,562517.91,
+PS0_MA_IN,Gen9LPSoC,B0,0.856,syn,119357.22,Taken from BXT B0 CGEN data
+PS0_MA_OUT,Gen9LPSoC,B0,0.856,syn,119357.22,Taken from BXT B0 CGEN data
+PS0_MBGF,Gen9LPSoC,B0,47.294,syn,438917.46,Taken from BXT B0 CGEN data
+PS0_MEDIASMP_CLKGLUE,Gen9LPSoC,B0,12.59152222,syn,1,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_CLKGLUE_DOP,Gen9LPSoC,B0,0.918161182,syn,1,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_DFX,Gen9LPSoC,B0,0.677666667,syn,98887.3284,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_DFX_DOP,Gen9LPSoC,B0,0.050863441,syn,98887.3284,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_DOP,Gen9LPSoC,B0,0.388212993,syn,1,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_NONCLKGLUE,Gen9LPSoC,B0,2.255322222,syn,1,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_NONCLKGLUE_DOP,Gen9LPSoC,B0,0.152420614,syn,1,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_SMALL,Gen9LPSoC,B0,0.321,syn,75648.1206,Taken from BXT BSTEP CGEN data
+PS0_MEDIASMP_SMALL_DOP,Gen9LPSoC,B0,0.031411534,syn,75648.1206,Taken from BXT BSTEP CGEN data
+PS0_MIDI,Gen9LPSoC,B0,0.297222222,syn,18183.06,number of cycles MIDI was empty
+PS0_MISD,Gen9LPSoC,B0,5.088444444,syn,699081.1,number of cycles MISD was empty
+PS0_MSC,Gen9LPSoC,B0,0.879777778,syn,1184764.08,
+PS0_MSC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_MSQC,Gen9LPSoC,B0,4.327555556,syn,897016.61,number of cycles SQ was empty
+PS0_MSQD,Gen9LPSoC,B0,24.51488889,syn,527006.68,number of cycles MSQD was empty
+PS0_MT,Gen9LPSoC,B0,0.416111111,syn,401461.33,
+PS0_MT_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_MT_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_MT_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_MT_TagRam_IDLE,Gen9LPSoC,B0,0,syn,1,Not modeled in gSim
+PS0_OACS,Gen9LPSoC,B0,3.721222222,syn,170381.16,Taken from BXT B0 CGEN data
+PS0_PL,Gen9LPSoC,B0,0.404222222,syn,524115.29,
+PS0_PL_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_PSD,Gen9LPSoC,B0,5.552111111,syn,701040.96,
+PS0_PSD_BARYPAYLDASMRAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_PSD_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
+PS0_PSD_SCOREBOARD,Gen9LPSoC,A0,0,ebb,1,
 PS0_RCC,Gen9LPSoC,B0,0.535,syn,789136.31,
-PS1_RCC,Gen9LPSoC,B0,12.98266667,syn,789136.31,Taken from BXT B0 CGDIS data
-PS0_DAPRSS,Gen9LPSoC,B0,1.664444444,syn,795350.28,Taken from BXT B0 CGEN data
-PS1_DAPRSS,Gen9LPSoC,B0,16.57311111,syn,795350.28,Taken from BXT B0 CGDIS data
+PS0_RCC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_RCPBCOM,Gen9LPSoC,B0,9.796444444,syn,554375.13,
+PS0_RCPBCOM_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_RCPBPIX,Gen9LPSoC,B0,0.725222222,syn,883872.73,
+PS0_RCPBPIX_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_RCPFE,Gen9LPSoC,B0,2.591777778,syn,767856,
+PS0_RCPFE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_RCZ,Gen9LPSoC,B0,4.089777778,syn,916033.49,
+PS0_RCZ_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_ROSC_CLKGLUE,Gen9LPSoC,B0,141.1139778,syn,1,
+PS0_ROSC_CLKGLUE_DOP,Gen9LPSoC,B0,20.70365887,syn,1,
+PS0_ROSC_DFX,Gen9LPSoC,B0,6.372444444,syn,1134914.94,Taken from BXT BSTEP CGEN data
+PS0_ROSC_DFX_DOP,Gen9LPSoC,B0,0.965952981,syn,1134914.94,Taken from BXT BSTEP CGEN data
+PS0_ROSC_DOP,Gen9LPSoC,B0,8.418622074,syn,1,
+PS0_ROSC_NONCLKGLUE,Gen9LPSoC,B0,10.36116667,syn,1,
+PS0_ROSC_NONCLKGLUE_DOP,Gen9LPSoC,B0,1.367538232,syn,1,
+PS0_ROSC_SMALL,Gen9LPSoC,B0,59.86055556,syn,1589277.51,Taken from BXT BSTEP CGEN data
+PS0_ROSC_SMALL_DOP,Gen9LPSoC,B0,8.292528859,syn,1589277.51,Taken from BXT BSTEP CGEN data
+PS0_ROSS_CLKGLUE,Gen9LPSoC,B0,26.54194444,syn,1,Taken from BXT BSTEP CGEN data
+PS0_ROSS_CLKGLUE_DOP,Gen9LPSoC,B0,26.54194444,syn,1,No 3D DOP in ROSS
+PS0_ROSS_DFX,Gen9LPSoC,B0,1.343444444,syn,271940.1531,Taken from BXT BSTEP CGEN data
+PS0_ROSS_DFX_DOP,Gen9LPSoC,B0,1.343444444,syn,271940.1531,No 3D DOP in ROSS
+PS0_ROSS_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
+PS0_ROSS_NONCLKGLUE,Gen9LPSoC,B0,2.724933333,syn,1,Taken from BXT BSTEP CGEN data
+PS0_ROSS_NONCLKGLUE_DOP,Gen9LPSoC,B0,2.724933333,syn,1,No 3D DOP in ROSS
+PS0_ROSS_SMALL,Gen9LPSoC,B0,10.81888889,syn,494622.327,Taken from BXT BSTEP CGEN data
+PS0_ROSS_SMALL_DOP,Gen9LPSoC,B0,10.81888889,syn,494622.327,No 3D DOP in ROSS
+PS0_RoutingChannel,Gen9LPSoC,B0,0,syn,0,Taken from BXT B0 CGEN data
+PS0_RS,Gen9LPSoC,B0,0.309111111,syn,326483.79,
+PS0_SARB,Gen9LPSoC,B0,1.177,syn,170546.2,Taken from BXT B0 CGEN data
 PS0_SBE_CALC,Gen9LPSoC,B0,4.184888889,syn,801444.78,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_CALC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SBE_FETCH,Gen9LPSoC,B0,4.184888889,syn,801444.78,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_FETCH_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SBE_OTHER,Gen9LPSoC,B0,4.184888889,syn,801444.78,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_OTHER_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SBE_REPLAY,Gen9LPSoC,B0,4.184888889,syn,801444.78,1x_zstc_passonly_86 71.2 to 77.6 us
+PS0_SBE_REPLAY_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SC,Gen9LPSoC,B0,1.509888889,syn,397757.66,Taken from BXT B0 CGEN data
+PS0_SC_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_SC_DOP,Gen9LPSoC,B0,0,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
+PS0_SC_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_SDE,Gen9LPSoC,B0,0.820333333,syn,45991.1,
+PS0_SDE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SF,Gen9LPSoC,B0,2.770111111,syn,1024442.02,
+PS0_SF_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SI,Gen9LPSoC,B0,0.558777778,syn,401868.49,
+PS0_SO,Gen9LPSoC,B0,0.237777778,syn,127269.21,
+PS0_SO_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SOL,Gen9LPSoC,B0,4.565333333,syn,275562.78,
+PS0_SOL_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_SOL_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_ST,Gen9LPSoC,B0,0.202111111,syn,274582.73,
+PS0_ST_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_STC,Gen9LPSoC,B0,4.434555556,syn,648266.18,
+PS0_STC_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SVG,Gen9LPSoC,B0,1.010555556,syn,114957.11,Taken from BXT B0 CGEN data
+PS0_SVG_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_SVL,Gen9LPSoC,B0,0.570666667,syn,116623.62,Taken from BXT B0 CGEN data
+PS0_SVSM,Gen9LPSoC,B0,0.321,syn,143805.72,Taken from BXT B0 CGEN data
+PS0_TC,Gen9LPSoC,A0,0.64,syn,432192.72,use from SKL
+PS0_TC,Gen9LPSoC,B0,0.713333333,syn,472869.86,Taken from BXT B0 CGEN data
+PS0_TDC,Gen9LPSoC,B0,0.392333333,syn,175173.92,Taken from BXT B0 CGEN data
+PS0_TDG,Gen9LPSoC,B0,0.772777778,syn,148155.5,
+PS0_TDL,Gen9LPSoC,B0,2.758222222,syn,494121.37,
+PS0_TDS,Gen9LPSoC,B0,1.997333333,syn,305135.7,
+PS0_TDS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_TDS_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_TE,Gen9LPSoC,B0,0.963,syn,106337.58,
+PS0_TE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_TSG,Gen9LPSoC,B0,0.451777778,syn,243041.33,Taken from BXT B0 CGEN data
+PS0_URBM,Gen9LPSoC,B0,0.071333333,syn,160461.25,Taken from BXT B0 CGEN data
+PS0_URBM_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_VF,Gen9LPSoC,B0,4.838777778,syn,663892.47,
+PS0_VF_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VF_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_VF_URBFifo_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VFBE1,Gen9LPSoC,B0,0.796555556,syn,532922.76,Taken from BXT B0 CGEN data
+PS0_VFBE1_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_VFBE2,Gen9LPSoC,B0,0.760888889,syn,533426.05,Taken from BXT B0 CGEN data
+PS0_VFBE2_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_VFE,Gen9LPSoC,B0,0.118888889,syn,108329.63,Taken from BXT B0 CGEN data
+PS0_VS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VSBE,Gen9LPSoC,B0,1.058111111,syn,307533.56,
+PS0_VSBE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_VSFE,Gen9LPSoC,B0,0.737111111,syn,201312.73,Taken from BXT B0 CGEN data
+PS0_VSFE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_WIDI,Gen9LPSoC,B0,9.55,syn,1303867.36,Taken from BXT B0 CGEN data
+PS0_WMBE,Gen9LPSoC,B0,0.523111111,syn,820314.3,
+PS0_WMBE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS0_WMFE,Gen9LPSoC,B0,4.030333333,syn,205606.06,
+PS0_WMFE_DOP,Gen9LPSoC,B0,0,syn,1,
+PS1_AVS,Gen9LPSoC,B0,19.046,syn,853458.73,Taken from BXT B0 CGDIS data
+PS1_BC,Gen9LPSoC,B0,7.038222222,syn,643832.52,
+PS1_CC,Gen9LPSoC,B0,14.05266667,syn,615704.38,Taken from BXT B0 CGDIS data
+PS1_CL,Gen9LPSoC,B0,19.39077778,syn,1046316.97,Taken from BXT B0 CGDIS data
+PS1_CRE,Gen9LPSoC,B0,8.405444444,syn,616411.47,Taken from BXT B0 CGDIS data
+PS1_CS,Gen9LPSoC,B0,15.57444444,syn,423157.86,
+PS1_DAPB,Gen9LPSoC,B0,0.915444444,syn,114829.25,Taken from BXT B0 CGDIS data
+PS1_DAPRSC,Gen9LPSoC,B0,4.470222222,syn,421030.01,Taken from BXT B0 CGDIS data
+PS1_DAPRSS,Gen9LPSoC,B0,16.57311111,syn,795350.28,Taken from BXT B0 CGDIS data
+PS1_DG,Gen9LPSoC,B0,5.266777778,syn,249976.67,
+PS1_DM,Gen9LPSoC,B0,8.155777778,syn,1102648.74,Taken from BXT B0 CGDIS data
+PS1_EU_DOP,Gen9LPSoC,A0,0,syn,1,No stall DOP gating in SKL
+PS1_EU_DOP,Gen9LPSoC,B0,0,syn,1,No stall DOP gating in SKL
+PS1_EU_FPU0,Gen9LPSoC,B0,10.40277778,syn,428651.71,Taken from BXT B0 CGDIS data
+PS1_EU_FPU1,Gen9LPSoC,B0,10.40277778,syn,428651.71,Taken from BXT B0 CGDIS data
+PS1_FL,Gen9LPSoC,B0,14.17155556,syn,1022681.66,Taken from BXT B0 CGDIS data
+PS1_FT,Gen9LPSoC,B0,1.117555556,syn,145074.81,
+PS1_GA,Gen9LPSoC,B0,1.236444444,syn,262641.75,Taken from BXT B0 CGDIS data
+PS1_GACB,Gen9LPSoC,B0,2.187555556,syn,86347,Taken from BXT B0 CGDIS data
+PS1_GAFM,Gen9LPSoC,B0,1.105666667,syn,63066.94,Taken from BXT B0 CGDIS data
+PS1_GAFS,Gen9LPSoC,B0,22.90988889,syn,489383.02,Taken from BXT B0 CGDIS data
+PS1_GAMD,Gen9LPSoC,B0,15.91922222,syn,1264483.82,Taken from BXT B0 CGDIS data
+PS1_GAMTLB,Gen9LPSoC,B0,72.74811111,syn,1278007.66,
+PS1_GAMW,Gen9LPSoC,B0,38.40111111,syn,1212646.47,Taken from BXT B0 CGDIS data
+PS1_GAPC,Gen9LPSoC,B0,0.665777778,syn,41616.15,Taken from BXT B0 CGDIS data
+PS1_GAPL3,Gen9LPSoC,B0,2.128111111,syn,61360.08,Taken from BXT B0 CGDIS data
+PS1_GAPS,Gen9LPSoC,B0,2.924666667,syn,99631.89,Taken from BXT B0 CGDIS data
+PS1_GAPZ,Gen9LPSoC,B0,2.924666667,syn,68676.51,Taken from BXT B0 CGDIS data
+PS1_GS,Gen9LPSoC,B0,12.48333333,syn,375771.17,Looks suspicious
+PS1_GWL,Gen9LPSoC,B0,1.640666667,syn,92412.48,Taken from BXT B0 CGDIS data
+PS1_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,Taken from BXT BSTEP CGDIS data
+PS1_HDC_DFX,Gen9LPSoC,B0,5.088444444,syn,315219.3,Taken from BXT BSTEP CGDIS data
+PS1_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,Taken from BXT BSTEP CGDIS data
+PS1_HDC_ReqCmd1,Gen9LPSoC,B0,5.195444444,syn,613388.59,Taken from BXT B0 CGDIS data
+PS1_HDC_ReqCmd2,Gen9LPSoC,B0,8.048777778,syn,1064863.67,
+PS1_HDC_ReqData,Gen9LPSoC,B0,3.293222222,syn,296616.83,Taken from BXT B0 CGDIS data
+PS1_HDC_Ret,Gen9LPSoC,B0,20.41322222,syn,718996.64,Taken from BXT B0 CGDIS data
+PS1_HDC_SMALL,Gen9LPSoC,B0,18.62988889,syn,333936.69,Taken from BXT BSTEP CGDIS data
+PS1_HDCTLB,Gen9LPSoC,B0,16.76333333,syn,440342.97,
+PS1_HIZ,Gen9LPSoC,B0,19.22433333,syn,1173835.78,Taken from BXT B0 CGDIS data
+PS1_HIZ,Gen9LPSoC,B0,19.22433333,syn,1173835.78,
+PS1_HS,Gen9LPSoC,B0,4.601,syn,170061.05,
+PS1_IC,Gen9LPSoC,B0,4.981444444,syn,293362.03,
+PS1_IEF,Gen9LPSoC,B0,4.541555556,syn,239266.7,
+PS1_IME,Gen9LPSoC,B0,14.445,syn,1165437.29,Taken from BXT B0 CGDIS data
+PS1_IZ,Gen9LPSoC,B0,12.18611111,syn,1033090.12,Taken from BXT B0 CGDIS data
+PS1_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,Taken from BXT BSTEP CGDIS data
+PS1_L3_Bank_DFX,Gen9LPSoC,B0,5.243,syn,240671.36,Taken from BXT BSTEP CGDIS data
+PS1_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,Taken from BXT BSTEP CGDIS data
+PS1_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,Taken from BXT BSTEP CGDIS data
+PS1_L3_Bank_SMALL,Gen9LPSoC,B0,36.02333333,syn,99194.81,Taken from BXT BSTEP CGDIS data
+PS1_L3BankOther,Gen9LPSoC,B0,0,syn,1,
+PS1_LNE,Gen9LPSoC,B0,23.08822222,syn,328975.5,Taken from BXT B0 CGDIS data
+PS1_LNECS,Gen9LPSoC,B0,0,syn,1,
+PS1_LNI,Gen9LPSoC,B0,16.45422222,syn,690006.34,Taken from BXT B0 CGDIS data
+PS1_LNICS,Gen9LPSoC,B0,0,syn,1,
+PS1_LSLM,Gen9LPSoC,B0,43.63222222,syn,418792.89,Taken from BXT B0 CGDIS data
+PS1_LSQC,Gen9LPSoC,B0,41.33766667,syn,752877.86,Taken from BXT B0 CGDIS data
+PS1_LSQD,Gen9LPSoC,B0,73.37822222,syn,468107.93,Taken from BXT B0 CGDIS data
+PS1_LTCC,Gen9LPSoC,B0,1.652555556,syn,34369.77,
+PS1_LTCD_Data,Gen9LPSoC,B0,66.64483111,syn,231086.97,Taken from BXT B0 CGDIS data
+PS1_LTCD_Tag,Gen9LPSoC,B0,56.50788889,syn,562517.91,Taken from BXT B0 CGDIS data
+PS1_MA_IN,Gen9LPSoC,B0,2.354,syn,119357.22,Taken from BXT B0 CGDIS data
+PS1_MA_OUT,Gen9LPSoC,B0,2.354,syn,119357.22,Taken from BXT B0 CGDIS data
+PS1_MBGF,Gen9LPSoC,B0,47.30588889,syn,438917.46,Taken from BXT B0 CGEN data
+PS1_MIDI,Gen9LPSoC,B0,0.974888889,syn,18183.06,cdyn should be same as idle
+PS1_MISD,Gen9LPSoC,B0,52.751,syn,699081.1,cdyn should be same as idle
+PS1_MSC,Gen9LPSoC,B0,18.02355556,syn,1184764.08,
+PS1_MSQC,Gen9LPSoC,B0,74.70977778,syn,897016.61,number of cycles SQ was full
+PS1_MSQD,Gen9LPSoC,B0,44.02455556,syn,527006.68,cdyn should be same as idle
+PS1_MT,Gen9LPSoC,B0,7.751555556,syn,401461.33,Approximated as PS0 - need to change
+PS1_OACS,Gen9LPSoC,B0,10.75944444,syn,170381.16,Taken from BXT B0 CGDIS data
+PS1_PL,Gen9LPSoC,B0,6.146555556,syn,524115.29,
+PS1_PSD,Gen9LPSoC,B0,14.17155556,syn,701040.96,
+PS1_RCC,Gen9LPSoC,B0,12.98266667,syn,789136.31,Taken from BXT B0 CGDIS data
+PS1_RCPBCOM,Gen9LPSoC,B0,14.29044444,syn,554375.13,
+PS1_RCPBPIX,Gen9LPSoC,B0,8.524333333,syn,883872.73,
+PS1_RCPFE,Gen9LPSoC,B0,17.72633333,syn,767856,Taken from BXT B0 CGDIS data
+PS1_RCZ,Gen9LPSoC,B0,67.196,syn,916033.49,Taken from BXT B0 CGDIS data
+PS1_RS,Gen9LPSoC,B0,8.108222222,syn,326483.79,Taken from BXT B0 CGDIS data
+PS1_SARB,Gen9LPSoC,B0,7.466222222,syn,170546.2,Taken from BXT B0 CGDIS data
 PS1_SBE_CALC,Gen9LPSoC,B0,14.88488889,syn,801444.78,Taken from BXT B0 CGDIS data
 PS1_SBE_FETCH,Gen9LPSoC,B0,14.88488889,syn,801444.78,Taken from BXT B0 CGDIS data
 PS1_SBE_OTHER,Gen9LPSoC,B0,14.88488889,syn,801444.78,Taken from BXT B0 CGDIS data
 PS1_SBE_REPLAY,Gen9LPSoC,B0,14.88488889,syn,801444.78,Taken from BXT B0 CGDIS data
-PS0_WMBE,Gen9LPSoC,B0,0.523111111,syn,820314.3,
-PS1_WMBE,Gen9LPSoC,B0,5.040888889,syn,820314.3,
-PS0_AVS,Gen9LPSoC,B0,0.986777778,syn,853458.73,
-PS1_AVS,Gen9LPSoC,B0,19.046,syn,853458.73,Taken from BXT B0 CGDIS data
-PS0_RCPBPIX,Gen9LPSoC,B0,0.725222222,syn,883872.73,
-PS1_RCPBPIX,Gen9LPSoC,B0,8.524333333,syn,883872.73,
-PS0_MSQC,Gen9LPSoC,B0,4.327555556,syn,897016.61,number of cycles SQ was empty
-PS1_MSQC,Gen9LPSoC,B0,74.70977778,syn,897016.61,number of cycles SQ was full
-PS0_RCZ,Gen9LPSoC,B0,4.089777778,syn,916033.49,
-PS1_RCZ,Gen9LPSoC,B0,67.196,syn,916033.49,Taken from BXT B0 CGDIS data
-PS0_GTI_SMALL,Gen9LPSoC,B0,23.36166667,syn,994327.26,Taken from BXT BSTEP CGEN data
-PS2_GTI_SMALL,Gen9LPSoC,B0,65.47211111,syn,994327.26,Taken from BXT BSTEP cgdis data
-PS0_FL,Gen9LPSoC,B0,0.618222222,syn,1022681.66,
-PS1_FL,Gen9LPSoC,B0,14.17155556,syn,1022681.66,Taken from BXT B0 CGDIS data
-PS0_SF,Gen9LPSoC,B0,2.770111111,syn,1024442.02,
+PS1_SC,Gen9LPSoC,B0,7.478111111,syn,397757.66,Taken from BXT B0 CGDIS data
+PS1_SDE,Gen9LPSoC,B0,1.616888889,syn,45991.1,Taken from BXT B0 CGDIS data
 PS1_SF,Gen9LPSoC,B0,11.62733333,syn,1024442.02,Taken from BXT B0 CGDIS data
-PS0_IZ,Gen9LPSoC,B0,2.413444444,syn,1033090.12,
-PS1_IZ,Gen9LPSoC,B0,12.18611111,syn,1033090.12,Taken from BXT B0 CGDIS data
-PS0_CL,Gen9LPSoC,B0,3.638,syn,1046316.97,Taken from BXT B0 CGEN data
-PS1_CL,Gen9LPSoC,B0,19.39077778,syn,1046316.97,Taken from BXT B0 CGDIS data
-PS0_GTP24C,Gen9LPSoC,B0,10.12,syn,1058016.5,Taken from BXT B0 CGEN data
-PS0_HDC_ReqCmd2,Gen9LPSoC,B0,0.249666667,syn,1064863.67,
-PS1_HDC_ReqCmd2,Gen9LPSoC,B0,8.048777778,syn,1064863.67,
-PS0_DM,Gen9LPSoC,B0,0.642,syn,1102648.74,
-PS1_DM,Gen9LPSoC,B0,8.155777778,syn,1102648.74,Taken from BXT B0 CGDIS data
-PS0_ROSC_DFX,Gen9LPSoC,B0,6.372444444,syn,1134914.94,Taken from BXT BSTEP CGEN data
-PS0_ROSC_DFX_DOP,Gen9LPSoC,B0,0.965952981,syn,1134914.94,Taken from BXT BSTEP CGEN data
-PS2_ROSC_DFX,Gen9LPSoC,B0,6.372444444,syn,1134914.94,Taken from BXT BSTEP CGEN data
-PS0_IME,Gen9LPSoC,B0,0.416111111,syn,1165437.29,
-PS1_IME,Gen9LPSoC,B0,14.445,syn,1165437.29,Taken from BXT B0 CGDIS data
-PS0_HIZ,Gen9LPSoC,B0,3.162444444,syn,1173835.78,
-PS0_HIZ,Gen9LPSoC,B0,3.162444444,syn,1173835.78,
-PS1_HIZ,Gen9LPSoC,B0,19.22433333,syn,1173835.78,Taken from BXT B0 CGDIS data
-PS1_HIZ,Gen9LPSoC,B0,19.22433333,syn,1173835.78,
-PS0_MSC,Gen9LPSoC,B0,0.879777778,syn,1184764.08,
-PS1_MSC,Gen9LPSoC,B0,18.02355556,syn,1184764.08,
-PS0_GAMW,Gen9LPSoC,B0,7.573222222,syn,1212646.47,
-PS1_GAMW,Gen9LPSoC,B0,38.40111111,syn,1212646.47,Taken from BXT B0 CGDIS data
-PS0_GAMD,Gen9LPSoC,B0,11.00911111,syn,1264483.82,
-PS1_GAMD,Gen9LPSoC,B0,15.91922222,syn,1264483.82,Taken from BXT B0 CGDIS data
-PS0_GAMTLB,Gen9LPSoC,B0,37.79477778,syn,1278007.66,
-PS1_GAMTLB,Gen9LPSoC,B0,72.74811111,syn,1278007.66,
-PS0_WIDI,Gen9LPSoC,B0,9.55,syn,1303867.36,Taken from BXT B0 CGEN data
-PS0_GAM_SMALL,Gen9LPSoC,B0,37.96122222,syn,1584229.06,Taken from BXT BSTEP CGEN data
+PS1_SI,Gen9LPSoC,B0,8.500555556,syn,401868.49,
+PS1_SO,Gen9LPSoC,B0,0.974888889,syn,127269.21,Taken from BXT B0 CGDIS data
+PS1_SOL,Gen9LPSoC,B0,6.396222222,syn,275562.78,Taken from BXT B0 CGDIS data
+PS1_ST,Gen9LPSoC,B0,4.957666667,syn,274582.73,
+PS1_STC,Gen9LPSoC,B0,62.74955556,syn,648266.18,
+PS1_SVG,Gen9LPSoC,B0,5.801777778,syn,114957.11,Taken from BXT B0 CGDIS data
+PS1_SVL,Gen9LPSoC,B0,5.409444444,syn,116623.62,Taken from BXT B0 CGDIS data
+PS1_SVSM,Gen9LPSoC,B0,2.258888889,syn,143805.72,Taken from BXT B0 CGDIS data
+PS1_TC,Gen9LPSoC,A0,13.67,syn,432192.72,use from SKL
+PS1_TC,Gen9LPSoC,B0,0.713333333,syn,472869.86,Taken from BXT B0 CGDIS data
+PS1_TDC,Gen9LPSoC,B0,5.647222222,syn,175173.92,Taken from BXT B0 CGDIS data
+PS1_TDG,Gen9LPSoC,B0,5.920666667,syn,148155.5,Taken from BXT B0 CGDIS data
+PS1_TDL,Gen9LPSoC,B0,12.34066667,syn,494121.37,Taken from BXT B0 CGDIS data
+PS1_TDS,Gen9LPSoC,B0,12.75677778,syn,305135.7,
+PS1_TE,Gen9LPSoC,B0,4.517777778,syn,106337.58,
+PS1_TSG,Gen9LPSoC,B0,13.24422222,syn,243041.33,Taken from BXT B0 CGDIS data
+PS1_URBM,Gen9LPSoC,B0,6.978777778,syn,160461.25,Taken from BXT B0 CGDIS data
+PS1_VF,Gen9LPSoC,B0,14.124,syn,663892.47,Taken from BXT B0 CGDIS data
+PS1_VFBE1,Gen9LPSoC,B0,5.433222222,syn,532922.76,Taken from BXT B0 CGDIS data
+PS1_VFBE2,Gen9LPSoC,B0,5.147888889,syn,533426.05,Taken from BXT B0 CGDIS data
+PS1_VFE,Gen9LPSoC,B0,3.959,syn,108329.63,Taken from BXT B0 CGDIS data
+PS1_VSBE,Gen9LPSoC,B0,8.56,syn,307533.56,
+PS1_VSFE,Gen9LPSoC,B0,13.17288889,syn,201312.73,Taken from BXT B0 CGDIS data
+PS1_WMBE,Gen9LPSoC,B0,5.040888889,syn,820314.3,
+PS1_WMFE,Gen9LPSoC,B0,8.714555556,syn,205606.06,
+PS2_AVS_CoeffStorageRAM_READ,Gen9LPSoC,A0,1.818115942,ebb,1,
+PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPSoC,A0,2.100724638,ebb,1,
+PS2_AVS_DataStorageRAM_READ,Gen9LPSoC,A0,1.771014493,ebb,1,
+PS2_AVS_DataStorageRAM_WRITE,Gen9LPSoC,A0,1.742753623,ebb,1,
+PS2_BC_BARYRAM_READ,Gen9LPSoC,A0,3.118115942,ebb,1,
+PS2_BC_BARYRAM_WRITE,Gen9LPSoC,A0,3.071014493,ebb,1,
+PS2_ClockSpine,Gen9LPSoC,A0,190,ebb,1,From Rob's team
+PS2_ClockSpine_RC,Gen9LPSoC,A0,0,ebb,1,From Rob's team
+PS2_ClockSpine_Slice,Gen9LPSoC,A0,130,ebb,1,From Rob's team
+PS2_ClockSpine_UnSlice,Gen9LPSoC,A0,60,ebb,1,From Rob's team
+PS2_DAPRSS_BYPASSRAM_READ,Gen9LPSoC,A0,8.035507246,ebb,1,
+PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPSoC,A0,8.864492754,ebb,1,
+PS2_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
+PS2_DFRSMP_DFX,Gen9LPSoC,B0,2.282666667,syn,453233.5885,Taken from BXT BSTEP CGEN data
+PS2_DFRSMP_DOP,Gen9LPSoC,B0,10.19234444,syn,1,Taken from BXT BSTEP CGEN data
+PS2_DFRSMP_NONCLKGLUE,Gen9LPSoC,B0,3.458477778,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_DFRSMP_SMALL,Gen9LPSoC,B0,68.91988889,syn,593546.7924,Taken from BXT BSTEP CGDIS data
+PS2_DM_PALRAM_READ,Gen9LPSoC,A0,7.639855072,ebb,1,
+PS2_DM_PALRAM_WRITE,Gen9LPSoC,A0,8.167391304,ebb,1,
+PS2_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
+PS2_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
+PS2_EU_DFX,Gen9LPSoC,A0,0.82,syn,36830.2,Average of all opcodes at 30%
+PS2_EU_DFX,Gen9LPSoC,B0,0.178333333,syn,82826.5,Average of all opcodes at 30%
+PS2_EU_DOP,Gen9LPSoC,B0,2.187745778,syn,1,Taken from BXT BSTEP CGEN data
+PS2_EU_DOP,Gen9LPSoC,A0,2,syn,1,Taken from BXT A0_postroute CGEN data
+PS2_EU_NONCLKGLUE,Gen9LPSoC,B0,0.110566667,syn,1,Average of all opcodes at 30%
+PS2_EU_NONCLKGLUE,Gen9LPSoC,A0,1.99,syn,1,Average of all opcodes at 30%
+PS2_EU_SMALL,Gen9LPSoC,B0,1.343444444,syn,57046.8,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
+PS2_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data
+PS2_FF_OTHER_DFX,Gen9LPSoC,B0,3.376444444,syn,448129.1556,Taken from BXT BSTEP CGEN data
+PS2_FF_OTHER_DOP,Gen9LPSoC,B0,31.91215556,syn,1,Taken from BXT BSTEP CGEN data
+PS2_FF_OTHER_DOP,Gen9LPSoC,A0,10.71,syn,1,
+PS2_FF_OTHER_NONCLKGLUE,Gen9LPSoC,B0,5.227544444,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_FF_OTHER_SMALL,Gen9LPSoC,B0,30.99433333,syn,330176.8635,Taken from BXT BSTEP power virus data
+PS2_FF_TEGSSOL_CLKGLUE,Gen9LPSoC,B0,21.4963,syn,1,Taken from BXT BSTEP CGEN data
+PS2_FF_TEGSSOL_DFX,Gen9LPSoC,B0,1.367222222,syn,263186.9644,Taken from BXT BSTEP CGEN data
+PS2_FF_TEGSSOL_DOP,Gen9LPSoC,B0,8.507688889,syn,1,Taken from BXT BSTEP CGEN data
+PS2_FF_TEGSSOL_DOP,Gen9LPSoC,A0,6.84,syn,1,
+PS2_FF_TEGSSOL_NONCLKGLUE,Gen9LPSoC,B0,1.506322222,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_FF_TEGSSOL_SMALL,Gen9LPSoC,B0,1.807111111,syn,67626.5865,Taken from BXT BSTEP power virus data
+PS2_GA_EM1Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,44.65,syn,248782.85,
+PS2_GA_EM1Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,48.36,syn,248782.85,
+PS2_GA_EM1Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,49.4,syn,248782.85,
+PS2_GA_EM1Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,52.3,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,52.83,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,53.01,syn,248782.85,
+PS2_GA_EM1Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,55.52,syn,248782.85,
+PS2_GA_EM1Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,56.02,syn,248782.85,
+PS2_GA_EM1Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,58.53,syn,248782.85,
+PS2_GA_EM1Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,59.77,syn,248782.85,
+PS2_GA_EM1Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,61.37,syn,248782.85,
+PS2_GA_EM1Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,62.63,syn,248782.85,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,62.68,syn,248782.85,Swapped 20% with 30% for linearity
+PS2_GA_EM1Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,64.23,syn,248782.85,
+PS2_GA_EM1Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,67.25,syn,248782.85,
+PS2_GA_EM1Src_SinglePipe_16%,Gen9LPSoC,A0,36.28,syn,248782.85,
+PS2_GA_EM1Src_SinglePipe_25%,Gen9LPSoC,A0,41.19,syn,248782.85,
+PS2_GA_EM1Src_SinglePipe_35%,Gen9LPSoC,A0,42.79,syn,248782.85,
+PS2_GA_EM1Src_SinglePipe_46%,Gen9LPSoC,A0,44.82,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM1Src_SinglePipe_65%,Gen9LPSoC,A0,47.13,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,49.72,syn,248782.85,
+PS2_GA_EM2Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,54.88,syn,248782.85,
+PS2_GA_EM2Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,56.92,syn,248782.85,
+PS2_GA_EM2Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,61.37,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,61.87,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,58.09,syn,248782.85,
+PS2_GA_EM2Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,62.04,syn,248782.85,
+PS2_GA_EM2Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,63.54,syn,248782.85,
+PS2_GA_EM2Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,67.57,syn,248782.85,
+PS2_GA_EM2Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,68.85,syn,248782.85,
+PS2_GA_EM2Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,66.45,syn,248782.85,
+PS2_GA_EM2Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,69.21,syn,248782.85,
+PS2_GA_EM2Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,70.15,syn,248782.85,
+PS2_GA_EM2Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,73.27,syn,248782.85,
+PS2_GA_EM2Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,76.33,syn,248782.85,
+PS2_GA_EM2Src_SinglePipe_16%,Gen9LPSoC,A0,41.36,syn,248782.85,
+PS2_GA_EM2Src_SinglePipe_25%,Gen9LPSoC,A0,47.72,syn,248782.85,
+PS2_GA_EM2Src_SinglePipe_35%,Gen9LPSoC,A0,50.31,syn,248782.85,
+PS2_GA_EM2Src_SinglePipe_46%,Gen9LPSoC,A0,53.89,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM2Src_SinglePipe_65%,Gen9LPSoC,A0,56.17,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_16%,Gen9LPSoC,A0,54.8,syn,248782.85,
+PS2_GA_EM3Src_FPU1Src_DualPipe_25%,Gen9LPSoC,A0,61.4,syn,248782.85,
+PS2_GA_EM3Src_FPU1Src_DualPipe_35%,Gen9LPSoC,A0,64.44,syn,248782.85,
+PS2_GA_EM3Src_FPU1Src_DualPipe_46%,Gen9LPSoC,A0,70.44,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU1Src_DualPipe_65%,Gen9LPSoC,A0,70.9,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_FPU2Src_DualPipe_16%,Gen9LPSoC,A0,63.16,syn,248782.85,
+PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen9LPSoC,A0,68.57,syn,248782.85,
+PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen9LPSoC,A0,71.06,syn,248782.85,
+PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen9LPSoC,A0,76.6,syn,248782.85,
+PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen9LPSoC,A0,77.92,syn,248782.85,
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen9LPSoC,A0,62.72,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen9LPSoC,A0,71.94,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen9LPSoC,A0,81.17,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen9LPSoC,A0,90.4,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen9LPSoC,A0,104.24,syn,248782.85,modified by vasudha
+PS2_GA_EM3Src_SinglePipe_16%,Gen9LPSoC,A0,46.44,syn,248782.85,
+PS2_GA_EM3Src_SinglePipe_25%,Gen9LPSoC,A0,54.24,syn,248782.85,
+PS2_GA_EM3Src_SinglePipe_35%,Gen9LPSoC,A0,57.83,syn,248782.85,
+PS2_GA_EM3Src_SinglePipe_46%,Gen9LPSoC,A0,62.96,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_EM3Src_SinglePipe_65%,Gen9LPSoC,A0,65.2,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_16%,Gen9LPSoC,A0,39.57,syn,248782.85,
+PS2_GA_FPU1Src_SinglePipe_25%,Gen9LPSoC,A0,41.83,syn,248782.85,
+PS2_GA_FPU1Src_SinglePipe_35%,Gen9LPSoC,A0,41.88,syn,248782.85,
+PS2_GA_FPU1Src_SinglePipe_46%,Gen9LPSoC,A0,43.22,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_FPU1Src_SinglePipe_65%,Gen9LPSoC,A0,43.79,syn,248782.85,Swapped 50% with 80% for linearity
+PS2_GA_FPU2Src_SinglePipe_16%,Gen9LPSoC,A0,47.93,syn,248782.85,
+PS2_GA_FPU2Src_SinglePipe_25%,Gen9LPSoC,A0,48.5,syn,248782.85,Swapped 20% with 30% for linearity
+PS2_GA_FPU2Src_SinglePipe_35%,Gen9LPSoC,A0,49,syn,248782.85,Swapped 20% with 30% for linearity
+PS2_GA_FPU2Src_SinglePipe_46%,Gen9LPSoC,A0,49.49,syn,248782.85,
+PS2_GA_FPU2Src_SinglePipe_65%,Gen9LPSoC,A0,50.7,syn,248782.85,
+PS2_GA_FPU3Src_SinglePipe_16%,Gen9LPSoC,A0,55.11,syn,248782.85,Swapped 10% with 30% for linearity
+PS2_GA_FPU3Src_SinglePipe_25%,Gen9LPSoC,A0,55.19,syn,248782.85,Swapped 20% with 50% for linearity
+PS2_GA_FPU3Src_SinglePipe_35%,Gen9LPSoC,A0,56.16,syn,248782.85,Swapped 30% with 20% for linearity
+PS2_GA_FPU3Src_SinglePipe_46%,Gen9LPSoC,A0,56.29,syn,248782.85,Swapped 50% with 10% for linearity
+PS2_GA_FPU3Src_SinglePipe_65%,Gen9LPSoC,A0,58.18,syn,248782.85,
+PS2_GAM_CLKGLUE,Gen9LPSoC,B0,60.21722222,syn,1,
+PS2_GAM_DFX,Gen9LPSoC,B0,3.447777778,syn,450812.17,Taken from BXT BSTEP CGEN data
+PS2_GAM_DOP,Gen9LPSoC,B0,17.64311111,syn,1,
+PS2_GAM_NONCLKGLUE,Gen9LPSoC,B0,2.457433333,syn,1,
 PS2_GAM_SMALL,Gen9LPSoC,B0,66.18544444,syn,1584229.06,Taken from BXT BSTEP cgdis data
-PS0_ROSC_SMALL,Gen9LPSoC,B0,59.86055556,syn,1589277.51,Taken from BXT BSTEP CGEN data
-PS0_ROSC_SMALL_DOP,Gen9LPSoC,B0,8.292528859,syn,1589277.51,Taken from BXT BSTEP CGEN data
+PS2_GAMD_Cache_READ,Gen9LPSoC,A0,2.647101449,ebb,1,
+PS2_GAMD_Cache_WRITE,Gen9LPSoC,A0,3.061594203,ebb,1,
+PS2_GAMTLB_EBB_READ,Gen9LPSoC,A0,1.478985507,ebb,1,
+PS2_GAMTLB_EBB_WRITE,Gen9LPSoC,A0,1.582608696,ebb,1,
+PS2_GAMW_READ,Gen9LPSoC,A0,5.2,ebb,1,
+PS2_GAMW_TLB_PEND_READ,Gen9LPSoC,A0,2.081884058,ebb,1,
+PS2_GAMW_TLB_PEND_WRITE,Gen9LPSoC,A0,2.166666667,ebb,1,
+PS2_GAMW_WRITE,Gen9LPSoC,A0,5.247101449,ebb,1,
+PS2_GRF_READ,Gen9LPSoC,A0,4.135507246,ebb,1,
+PS2_GRF_WRITE,Gen9LPSoC,A0,9.457971014,ebb,1,
+PS2_GS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
+PS2_GS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
+PS2_GS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
+PS2_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
+PS2_GTI_DFX,Gen9LPSoC,B0,6.966888889,syn,600521.09,Taken from BXT BSTEP CGEN data
+PS2_GTI_DOP,Gen9LPSoC,B0,15.35687778,syn,1,Taken from BXT BSTEP CGEN data
+PS2_GTI_NONCLKGLUE,Gen9LPSoC,B0,2.547788889,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_GTI_SMALL,Gen9LPSoC,B0,65.47211111,syn,994327.26,Taken from BXT BSTEP cgdis data
+PS2_HDC_CLKGLUE,Gen9LPSoC,B0,34.53365556,syn,1,Taken from BXT BSTEP CGEN data
+PS2_HDC_DFX,Gen9LPSoC,B0,1.462333333,syn,315219.3,Taken from BXT BSTEP CGEN data
+PS2_HDC_DOP,Gen9LPSoC,B0,10.94372222,syn,1,Taken from BXT BSTEP CGEN data
+PS2_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_HDC_SMALL,Gen9LPSoC,B0,20.91255556,syn,333936.69,Taken from BXT BSTEP VIRUSdata
+PS2_HIZ_CACHE_READ,Gen9LPSoC,A0,14.02681159,ebb,1,
+PS2_HIZ_CACHE_WRITE,Gen9LPSoC,A0,17.09782609,ebb,1,
+PS2_HIZ_LATFIFO_READ,Gen9LPSoC,A0,13.44275362,ebb,1,
+PS2_HIZ_LATFIFO_WRITE,Gen9LPSoC,A0,14.02681159,ebb,1,
+PS2_HS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
+PS2_HS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
+PS2_HS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPSoC,A0,0,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_READ,Gen9LPSoC,A0,32.1326087,ebb,1,
+PS2_IC_DATARAM_WRITE,Gen9LPSoC,A0,35.44855072,ebb,1,
+PS2_IZ_BARYCOEFFIFO_READ,Gen9LPSoC,A0,6.377536232,ebb,1,
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPSoC,A0,7.027536232,ebb,1,
+PS2_IZ_LATFIFO_READ,Gen9LPSoC,A0,7.15942029,ebb,1,
+PS2_IZ_LATFIFO_WRITE,Gen9LPSoC,A0,7.460869565,ebb,1,
+PS2_IZ_POLYFIFO_READ,Gen9LPSoC,A0,9.11884058,ebb,1,
+PS2_IZ_POLYFIFO_WRITE,Gen9LPSoC,A0,9.505072464,ebb,1,
+PS2_IZ_WCOEFFIFO_READ,Gen9LPSoC,A0,3.071014493,ebb,1,
+PS2_IZ_WCOEFFIFO_WRITE,Gen9LPSoC,A0,3.381884058,ebb,1,
+PS2_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,Taken from BXT BSTEP CGEN data
+PS2_L3_Bank_DFX,Gen9LPSoC,B0,2.104333333,syn,240671.36,Taken from BXT BSTEP CGEN data
+PS2_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,Taken from BXT BSTEP CGEN data
+PS2_L3_Bank_NONCLKGLUE,Gen9LPSoC,B0,4.3228,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_L3_Bank_SMALL,Gen9LPSoC,B0,55.14066667,syn,99194.81,Taken from BXT BSTEP power virus data
+PS2_MEDIASMP_CLKGLUE,Gen9LPSoC,B0,12.59152222,syn,1,Taken from BXT BSTEP CGEN data
+PS2_MEDIASMP_DFX,Gen9LPSoC,B0,0.677666667,syn,98887.3284,Taken from BXT BSTEP CGEN data
+PS2_MEDIASMP_DOP,Gen9LPSoC,B0,5.309577778,syn,1,Taken from BXT BSTEP CGEN data
+PS2_MEDIASMP_NONCLKGLUE,Gen9LPSoC,B0,2.255322222,syn,1,Taken from BXT BSTEP CGEN data
+PS2_MEDIASMP_SMALL,Gen9LPSoC,B0,0.808444444,syn,75648.1206,Taken from BXT BSTEP CGDIS data
+PS2_MSC_CACHE_READ,Gen9LPSoC,A0,18.73695652,ebb,1,
+PS2_MSC_CACHE_WRITE,Gen9LPSoC,A0,20.84710145,ebb,1,
+PS2_MT_DataRam_READ,Gen9LPSoC,A0,7.291304348,ebb,1,
+PS2_MT_DataRam_READ&WRITE,Gen9LPSoC,A0,15.11014493,ebb,1,
+PS2_MT_DataRam_WRITE,Gen9LPSoC,A0,7.81884058,ebb,1,
+PS2_MT_LatFifo_READ,Gen9LPSoC,A0,3.23115942,ebb,1,
+PS2_MT_LatFifo_READ&WRITE,Gen9LPSoC,A0,6.867391304,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen9LPSoC,A0,3.636231884,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPSoC,A0,3.485507246,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPSoC,A0,4.050724638,ebb,1,
+PS2_PSD_SCOREBOARD_READ,Gen9LPSoC,A0,0.810144928,ebb,1,
+PS2_PSD_SCOREBOARD_WRITE,Gen9LPSoC,A0,0.857246377,ebb,1,
+PS2_RCC_CACHE_READ,Gen9LPSoC,A0,20.78115942,ebb,1,
+PS2_RCC_CACHE_WRITE,Gen9LPSoC,A0,23.6826087,ebb,1,
+PS2_RCPFE_COLORLATFIFO_READ,Gen9LPSoC,A0,23.59782609,ebb,1,
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPSoC,A0,26.02826087,ebb,1,
+PS2_RCPFE_MCSLATFIFO_READ,Gen9LPSoC,A0,4.681884058,ebb,1,
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPSoC,A0,5.011594203,ebb,1,
+PS2_RCPFE_RCCLATFIFO_READ,Gen9LPSoC,A0,1.554347826,ebb,1,
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPSoC,A0,1.610869565,ebb,1,
+PS2_RCZ_CACHE_READ,Gen9LPSoC,A0,19.51884058,ebb,1,
+PS2_RCZ_CACHE_WRITE,Gen9LPSoC,A0,23.07971014,ebb,1,
+PS2_ROSC_CLKGLUE,Gen9LPSoC,B0,141.1139778,syn,1,
+PS2_ROSC_DFX,Gen9LPSoC,B0,6.372444444,syn,1134914.94,Taken from BXT BSTEP CGEN data
+PS2_ROSC_DOP,Gen9LPSoC,B0,58.43032222,syn,1,
+PS2_ROSC_NONCLKGLUE,Gen9LPSoC,B0,10.03897778,syn,1,
 PS2_ROSC_SMALL,Gen9LPSoC,B0,97.80988889,syn,1589277.51,Taken from BXT BSTEP CGDIS data
-PS0_Blitter,Gen9LPSoC,B0,14.32,syn,1694430.78,Taken from BXT B0 CGEN data
+PS2_ROSS_CLKGLUE,Gen9LPSoC,B0,26.54194444,syn,1,Taken from BXT BSTEP CGEN data
+PS2_ROSS_DFX,Gen9LPSoC,B0,1.343444444,syn,271940.1531,Taken from BXT BSTEP CGEN data
+PS2_ROSS_DOP,Gen9LPSoC,B0,8.493422222,syn,1,Taken from BXT BSTEP CGEN data and subtracted Sampler DFR DOP
+PS2_ROSS_NONCLKGLUE,Gen9LPSoC,B0,2.677377778,syn,1,Taken from BXT BSTEP CGDIS data
+PS2_ROSS_SMALL,Gen9LPSoC,B0,39.19766667,syn,494622.327,Taken from BXT BSTEP CGDIS data
+PS2_SC_DataRam_READ,Gen9LPSoC,A0,30.56884058,ebb,1,
+PS2_SC_DataRam_WRITE,Gen9LPSoC,A0,32.67898551,ebb,1,
+PS2_SC_LatFifo_READ,Gen9LPSoC,A0,3.88115942,ebb,1,
+PS2_SC_LatFifo_WRITE,Gen9LPSoC,A0,4.484057971,ebb,1,
+PS2_SOL_Cache_Read,Gen9LPSoC,A0,1.507246377,ebb,1,
+PS2_SOL_Cache_ReadWrite,Gen9LPSoC,A0,3.25,ebb,1,
+PS2_SOL_Cache_Write,Gen9LPSoC,A0,1.742753623,ebb,1,
+PS2_STC_CACHE_READ,Gen9LPSoC,A0,17.9173913,ebb,1,
+PS2_STC_CACHE_WRITE,Gen9LPSoC,A0,23.60724638,ebb,1,
+PS2_TC,Gen9LPSoC,A0,19.29,syn,432192.72,use from SKL
+PS2_TDS_Cache_Read,Gen9LPSoC,A0,6.782608696,ebb,1,
+PS2_TDS_Cache_ReadWrite,Gen9LPSoC,A0,14.35652174,ebb,1,
+PS2_TDS_Cache_Write,Gen9LPSoC,A0,7.573913043,ebb,1,
+PS2_VF_Cache_Read,Gen9LPSoC,A0,1.007971014,ebb,1,
+PS2_VF_Cache_Write,Gen9LPSoC,A0,1.045652174,ebb,1,
+PS2_VF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
+PS2_VF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
+PS2_VS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
+PS2_VS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,

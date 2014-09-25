@@ -332,7 +332,7 @@
 	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPE@pwr_GrfWriteAccesses\.CrClock')) / (numEUs * .CrClk)	#GRF writes should be at 256 bit granularity(0,2)
 				
 #IPC				
-	EU_Utilization	=	(PS2_EU_EM + PS2_EU_FPU) / 2	# Changed from SUM to AVG of EM/FPU active residencies
+	EU_Utilization	=	(PS2_EU_FPU0 + PS2_EU_FPU1) / 2	# Changed from SUM to AVG of EM/FPU active residencies
 	EU_IPC	=	numEUs * EU_Utilization	
 				
 #DFX				
