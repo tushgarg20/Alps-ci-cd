@@ -163,7 +163,7 @@ sub read_gc_csv_file {
 		$partition =~ s/\s*$//;
 		my $gc;
 		if ($newSklFmt) {
-			$gc = $parts[4];
+			$gc = $parts[6];
 		} else {
 			$gc = $parts[10];
 		}

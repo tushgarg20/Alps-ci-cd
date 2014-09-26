@@ -154,7 +154,7 @@ sub read_gc_csv_file {
 		if ($cluster eq "NOT USED") {$count++; next;}
 		my $gc;
                 if ($newSklFmt) {
-                        $gc = $parts[4];
+                        $gc = $parts[6];
                 } else {
                         $gc = $parts[10];
                 }
