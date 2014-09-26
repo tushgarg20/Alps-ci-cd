@@ -138,6 +138,8 @@ def get_base_config(stat):
     while(i >= 0):
         config = cdyn_precedence[i]
         if(config in cdyn_hash[stat]):
+            if('C0' in cdyn_hash[stat][config]):
+                return config,'C0'
             if('B0' in cdyn_hash[stat][config]):
                 return config,'B0'
             elif('A0' in cdyn_hash[stat][config]):
@@ -180,7 +182,7 @@ def get_eff_cdyn(cluster,unit,stat):
     voltage_sf = voltage_hash[base_cfg][cfg]
     if(voltage_sf == 'NA'):
         voltage_sf = 0
-    stepping_sf = stepping_hash[base_cfg]['A0']['B0'] if stepping =='A0' else 1
+    stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
     instances = 0
     newproduct_gc = 1
@@ -208,7 +210,7 @@ def which_cfg_to_use(track_cfg):
     cfg_list = []
     stepping_hash = {}
     for pair in track_cfg:
-        if ((pair[0] not in cdyn_precedence) or (pair[1] != 'A0' and pair[1] != 'B0')):
+        if ((pair[0] not in cdyn_precedence) or (pair[1] != 'A0' and pair[1] != 'B0' and pair[1] != 'C0')):
             continue
         i = cdyn_precedence.index(pair[0])
         if ((i <= base_i) and (i not in cfg_list)):
