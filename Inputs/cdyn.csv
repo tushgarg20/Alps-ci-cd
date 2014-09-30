@@ -1,16 +1,16 @@
 State,Source,Stepping,Weight,Type,RefGC,Comments
 PS0_BTGEN_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS0_BTGEN_Cache_Read,Gen10LP,A0,3.05,ebb,1,
-PS0_BTGEN_Cache_ReadWrite,Gen10LP,A0,6.69,ebb,1,
-PS0_BTGEN_Cache_Write,Gen10LP,A0,3.64,ebb,1,
+PS2_BTGEN_Cache_Read,Gen10LP,A0,3.05,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen10LP,A0,6.69,ebb,1,
+PS2_BTGEN_Cache_Write,Gen10LP,A0,3.64,ebb,1,
 PS0_CPSS,Gen10LP,A0,0.59,syn,495874.04,
 PS0_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_DFRSMP_CLKGLUE_DOP,Gen10LP,A0,0.418605222,syn,1,No 3D DOP in ROSS
 PS0_DFRSMP_DOP,Gen10LP,A0,0.768430551,syn,1,No 3D DOP in ROSS
 PS0_DX9_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS0_DX9_Cache_Read,Gen10LP,A0,14.17,ebb,1,512 bits assumed. Need to check with gSim.
-PS0_DX9_Cache_ReadWrite,Gen10LP,A0,40.11,ebb,1,512 bits assumed. Need to check with gSim.
-PS0_DX9_Cache_Write,Gen10LP,A0,25.93,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Read,Gen10LP,A0,14.17,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_ReadWrite,Gen10LP,A0,40.11,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Write,Gen10LP,A0,25.93,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_EU_DOP,Gen10LP,A0,0,syn,1,DOP gated
 PS0_Fabric,Gen10LP,A0,250,syn,1,
@@ -77,8 +77,8 @@ PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.19,ebb,1,Need to confirm with Niraj
 PS2_BC_BARYRAM_READ,Gen10LP,A0,2.13,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.07,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
-PS2_ClockSpine_Slice,Gen10LP,A0,80,ebb,1,"total spine 330nf,reduced to 230 on Nevin's suggestion"
-PS2_ClockSpine_UnSlice,Gen10LP,A0,150,ebb,1,
+PS2_ClockSpine_Slice,Gen10LP,A0,120,ebb,1,"total spine 330nf"
+PS2_ClockSpine_UnSlice,Gen10LP,A0,210,ebb,1,
 PS2_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DFRSMP_DOP,Gen10LP,A0,10.95768639,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DM_PALRAM_READ,Gen10LP,A0,6.85,ebb,1,Need to confirm with Niraj
@@ -94,81 +94,81 @@ PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,48.57546746,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_OTHER_DOP,Gen10LP,A0,24.51566272,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_CLKGLUE,Gen10LP,A0,5.356331361,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_DOP,Gen10LP,A0,7.835059172,syn,1,Taken fromCNL TNET3 CGEN data
-PS2_GA_EM1Src_FPU1Src_DualPipe_16%,Gen10LP,A0,38.87036509,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU1Src_DualPipe_25%,Gen10LP,A0,39.82710109,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU1Src_DualPipe_35%,Gen10LP,A0,43.03730618,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU1Src_DualPipe_46%,Gen10LP,A0,43.76474182,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU1Src_DualPipe_65%,Gen10LP,A0,46.80890182,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU2Src_DualPipe_16%,Gen10LP,A0,44.68985018,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU2Src_DualPipe_25%,Gen10LP,A0,46.58750836,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU2Src_DualPipe_35%,Gen10LP,A0,47.67866182,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU2Src_DualPipe_46%,Gen10LP,A0,50.56468364,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU2Src_DualPipe_65%,Gen10LP,A0,51.11026036,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU3Src_DualPipe_16%,Gen10LP,A0,50.50142836,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU3Src_DualPipe_25%,Gen10LP,A0,52.31211055,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU3Src_DualPipe_35%,Gen10LP,A0,53.34000873,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU3Src_DualPipe_46%,Gen10LP,A0,54.32046545,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_FPU3Src_DualPipe_65%,Gen10LP,A0,58.46368582,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_SinglePipe_16%,Gen10LP,A0,33.05878691,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_SinglePipe_25%,Gen10LP,A0,33.07460073,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_SinglePipe_35%,Gen10LP,A0,36.41922327,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_SinglePipe_46%,Gen10LP,A0,38.40385745,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM1Src_SinglePipe_65%,Gen10LP,A0,43.05312,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU1Src_DualPipe_16%,Gen10LP,A0,44.41310836,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU1Src_DualPipe_25%,Gen10LP,A0,46.64285673,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU1Src_DualPipe_35%,Gen10LP,A0,51.87723055,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU1Src_DualPipe_46%,Gen10LP,A0,55.36417745,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU1Src_DualPipe_65%,Gen10LP,A0,58.012992,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU2Src_DualPipe_16%,Gen10LP,A0,50.22468655,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU2Src_DualPipe_25%,Gen10LP,A0,53.39535709,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU2Src_DualPipe_35%,Gen10LP,A0,56.51067927,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU2Src_DualPipe_46%,Gen10LP,A0,61.76877382,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU2Src_DualPipe_65%,Gen10LP,A0,62.71760291,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU3Src_DualPipe_16%,Gen10LP,A0,56.04417164,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU3Src_DualPipe_25%,Gen10LP,A0,60.14785745,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU3Src_DualPipe_35%,Gen10LP,A0,61.15203491,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU3Src_DualPipe_46%,Gen10LP,A0,65.52455564,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_FPU3Src_DualPipe_65%,Gen10LP,A0,70.06312145,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_SinglePipe_16%,Gen10LP,A0,38.60153018,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_SinglePipe_25%,Gen10LP,A0,39.89035636,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_SinglePipe_35%,Gen10LP,A0,47.23587491,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_SinglePipe_46%,Gen10LP,A0,48.01865891,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM2Src_SinglePipe_65%,Gen10LP,A0,54.25721018,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU1Src_DualPipe_16%,Gen10LP,A0,49.95585164,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU1Src_DualPipe_25%,Gen10LP,A0,53.45861236,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU1Src_DualPipe_35%,Gen10LP,A0,60.709248,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU1Src_DualPipe_46%,Gen10LP,A0,66.96361309,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU1Src_DualPipe_65%,Gen10LP,A0,69.22498909,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU2Src_DualPipe_16%,Gen10LP,A0,55.76742982,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen10LP,A0,60.21111273,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen10LP,A0,65.34269673,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen10LP,A0,72.98077091,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen10LP,A0,74.31703855,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,61.58128283,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,66.96609487,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,69.98259445,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,76.73422538,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,81.66252712,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_SinglePipe_16%,Gen10LP,A0,44.13636655,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_SinglePipe_25%,Gen10LP,A0,46.706112,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_SinglePipe_35%,Gen10LP,A0,56.06789236,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_SinglePipe_46%,Gen10LP,A0,59.61809455,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_EM3Src_SinglePipe_65%,Gen10LP,A0,65.46920727,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU1Src_SinglePipe_16%,Gen10LP,A0,32.16530618,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU1Src_SinglePipe_25%,Gen10LP,A0,33.01925236,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU1Src_SinglePipe_35%,Gen10LP,A0,33.33552873,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU1Src_SinglePipe_46%,Gen10LP,A0,34.20528873,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU1Src_SinglePipe_65%,Gen10LP,A0,35.59690473,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU2Src_SinglePipe_16%,Gen10LP,A0,38.84664436,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU2Src_SinglePipe_25%,Gen10LP,A0,39.35268655,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU2Src_SinglePipe_35%,Gen10LP,A0,39.51082473,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU2Src_SinglePipe_46%,Gen10LP,A0,39.77175273,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU2Src_SinglePipe_65%,Gen10LP,A0,39.14710691,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU3Src_SinglePipe_16%,Gen10LP,A0,43.10846836,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU3Src_SinglePipe_25%,Gen10LP,A0,43.48009309,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU3Src_SinglePipe_35%,Gen10LP,A0,44.95868509,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU3Src_SinglePipe_46%,Gen10LP,A0,46.52425309,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
-PS2_GA_FPU3Src_SinglePipe_65%,Gen10LP,A0,46.85634327,syn,244769,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_16%,Gen10LP,A0,38.87036509,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_25%,Gen10LP,A0,39.82710109,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_35%,Gen10LP,A0,43.03730618,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_46%,Gen10LP,A0,43.76474182,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU1Src_DualPipe_65%,Gen10LP,A0,46.80890182,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_16%,Gen10LP,A0,44.68985018,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_25%,Gen10LP,A0,46.58750836,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_35%,Gen10LP,A0,47.67866182,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_46%,Gen10LP,A0,50.56468364,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU2Src_DualPipe_65%,Gen10LP,A0,51.11026036,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_16%,Gen10LP,A0,50.50142836,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_25%,Gen10LP,A0,52.31211055,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_35%,Gen10LP,A0,53.34000873,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_46%,Gen10LP,A0,54.32046545,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_FPU3Src_DualPipe_65%,Gen10LP,A0,58.46368582,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_16%,Gen10LP,A0,33.05878691,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_25%,Gen10LP,A0,33.07460073,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_35%,Gen10LP,A0,36.41922327,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_46%,Gen10LP,A0,38.40385745,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM1Src_SinglePipe_65%,Gen10LP,A0,43.05312,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_16%,Gen10LP,A0,44.41310836,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_25%,Gen10LP,A0,46.64285673,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_35%,Gen10LP,A0,51.87723055,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_46%,Gen10LP,A0,55.36417745,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU1Src_DualPipe_65%,Gen10LP,A0,58.012992,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_16%,Gen10LP,A0,50.22468655,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_25%,Gen10LP,A0,53.39535709,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_35%,Gen10LP,A0,56.51067927,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_46%,Gen10LP,A0,61.76877382,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU2Src_DualPipe_65%,Gen10LP,A0,62.71760291,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_16%,Gen10LP,A0,56.04417164,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_25%,Gen10LP,A0,60.14785745,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_35%,Gen10LP,A0,61.15203491,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_46%,Gen10LP,A0,65.52455564,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_FPU3Src_DualPipe_65%,Gen10LP,A0,70.06312145,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_16%,Gen10LP,A0,38.60153018,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_25%,Gen10LP,A0,39.89035636,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_35%,Gen10LP,A0,47.23587491,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_46%,Gen10LP,A0,48.01865891,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM2Src_SinglePipe_65%,Gen10LP,A0,54.25721018,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_16%,Gen10LP,A0,49.95585164,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_25%,Gen10LP,A0,53.45861236,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_35%,Gen10LP,A0,60.709248,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_46%,Gen10LP,A0,66.96361309,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU1Src_DualPipe_65%,Gen10LP,A0,69.22498909,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_16%,Gen10LP,A0,55.76742982,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_25%,Gen10LP,A0,60.21111273,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_35%,Gen10LP,A0,65.34269673,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_46%,Gen10LP,A0,72.98077091,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU2Src_DualPipe_65%,Gen10LP,A0,74.31703855,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_16%,Gen10LP,A0,61.58128283,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_25%,Gen10LP,A0,66.96609487,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_35%,Gen10LP,A0,69.98259445,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_46%,Gen10LP,A0,76.73422538,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_FPU3Src_DualPipe_65%,Gen10LP,A0,81.66252712,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_16%,Gen10LP,A0,44.13636655,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_25%,Gen10LP,A0,46.706112,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_35%,Gen10LP,A0,56.06789236,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_46%,Gen10LP,A0,59.61809455,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_EM3Src_SinglePipe_65%,Gen10LP,A0,65.46920727,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_16%,Gen10LP,A0,32.16530618,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_25%,Gen10LP,A0,33.01925236,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_35%,Gen10LP,A0,33.33552873,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_46%,Gen10LP,A0,34.20528873,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU1Src_SinglePipe_65%,Gen10LP,A0,35.59690473,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_16%,Gen10LP,A0,38.84664436,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_25%,Gen10LP,A0,39.35268655,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_35%,Gen10LP,A0,39.51082473,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_46%,Gen10LP,A0,39.77175273,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU2Src_SinglePipe_65%,Gen10LP,A0,39.14710691,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_16%,Gen10LP,A0,43.10846836,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_25%,Gen10LP,A0,43.48009309,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_35%,Gen10LP,A0,44.95868509,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_46%,Gen10LP,A0,46.52425309,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
+PS2_GA_FPU3Src_SinglePipe_65%,Gen10LP,A0,46.85634327,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GAM_CLKGLUE,Gen10LP,A0,8.756272189,syn,1,
 PS2_GAM_DOP,Gen10LP,A0,17.21243787,syn,1,
 PS2_GAMD_Cache_READ,Gen10LP,A0,1.89,ebb,1,
@@ -270,85 +270,25 @@ PS2_ClockSpine_RC,Gen10LPSoC,A0,0,ebb,1,
 PS2_ClockSpine_Slice,Gen10LPSoC,A0,150,ebb,1,total spine 350nf
 PS2_ClockSpine_UnSlice,Gen10LPSoC,A0,200,ebb,1,
 EM_transc_bypass_16%,Gen9LPClient,A0,24.96,syn,126137,No bypass in TRANSC
-EM_transc_bypass_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_bypass_25%,Gen9LPClient,A0,27.42,syn,126137,No bypass in TRANSC
-EM_transc_bypass_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_bypass_35%,Gen9LPClient,A0,29.27,syn,126137,No bypass in TRANSC
-EM_transc_bypass_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_bypass_46%,Gen9LPClient,A0,30.81,syn,126137,No bypass in TRANSC
-EM_transc_bypass_46%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_bypass_65%,Gen9LPClient,A0,32.39,syn,126137,No bypass in TRANSC
-EM_transc_bypass_65%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp16_16%,Gen9LPClient,A0,21.72,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp16_28%,Gen9LPClient,A0,22.4,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_28%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp16_35%,Gen9LPClient,A0,22.93,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp16_44%,Gen9LPClient,A0,23.08,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_44%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp16_57%,Gen9LPClient,A0,22.48,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp16_57%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp32_16%,Gen9LPClient,A0,24.96,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp32_25%,Gen9LPClient,A0,27.42,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp32_35%,Gen9LPClient,A0,29.27,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp32_46%,Gen9LPClient,A0,30.81,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_46%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp32_65%,Gen9LPClient,A0,32.39,syn,126137,Average of cos/exp/fdiv/inv/log/pow/rsq/sin/sqrt
-EM_transc_fp32_65%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp64_11%,Gen9LPClient,A0,24.96,syn,126137,Approximated with fp32 data
-EM_transc_fp64_11%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp64_16%,Gen9LPClient,A0,27.42,syn,126137,Approximated with fp32 data
-EM_transc_fp64_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp64_18%,Gen9LPClient,A0,29.27,syn,126137,Approximated with fp32 data
-EM_transc_fp64_18%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp64_20%,Gen9LPClient,A0,30.81,syn,126137,Approximated with fp32 data
-EM_transc_fp64_20%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 EM_transc_fp64_25%,Gen9LPClient,A0,32.39,syn,126137,Approximated with fp32 data
-EM_transc_fp64_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_29%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_29%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_50%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_50%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_77%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int16_77%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_27%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_27%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_50%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_50%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_77%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int32_77%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_12%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_12%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_18%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_18%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_22%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_22%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_30%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_int64_30%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_16%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_25%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_35%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_46%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_46%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_65%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
-EM_transc_intbypass_65%,Gen9LPClient,A0,0,syn,126137,Unsupported combination
 FPU0_add_floatbypass_16%,Gen9LPClient,A0,15.83,syn,383376,Approximated with sim data
 FPU0_add_floatbypass_25%,Gen9LPClient,A0,18.35,syn,383376,Approximated with sim data
 FPU0_add_floatbypass_34%,Gen9LPClient,A0,18.94,syn,383376,Simulated
@@ -1075,9 +1015,9 @@ PS0_BC,Gen9LPClient,A0,0.74,syn,625183.58,
 PS0_BC_DOP,Gen9LPClient,A0,0,syn,625183.58,No 3D DOP in ROSS
 PS0_Blitter,Gen9LPClient,C0,19.836,syn,1583302,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_BTGEN_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_BTGEN_Cache_Read,Gen9LPClient,A0,6.69,ebb,1,
-PS0_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.77,ebb,1,
-PS0_BTGEN_Cache_Write,Gen9LPClient,A0,11.08,ebb,1,
+PS2_BTGEN_Cache_Read,Gen9LPClient,A0,6.69,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.77,ebb,1,
+PS2_BTGEN_Cache_Write,Gen9LPClient,A0,11.08,ebb,1,
 PS0_CC,Gen9LPClient,A0,0.08,syn,587436.82,
 PS0_CC_DOP,Gen9LPClient,A0,0,syn,587436.82,
 PS0_CL,Gen9LPClient,C0,5.31,syn,1150675,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1106,9 +1046,9 @@ PS0_DG_DOP,Gen9LPClient,A0,0,syn,223798.87,
 PS0_DM,Gen9LPClient,A0,0.24,syn,947908.83,
 PS0_DM_DOP,Gen9LPClient,A0,0,syn,947908.83,
 PS0_DX9_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS0_DX9_Cache_Read,Gen9LPClient,A0,26.76,ebb,1,512 bits assumed. Need to check with gSim.
-PS0_DX9_Cache_ReadWrite,Gen9LPClient,A0,71.09,ebb,1,512 bits assumed. Need to check with gSim.
-PS0_DX9_Cache_Write,Gen9LPClient,A0,44.33,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Read,Gen9LPClient,A0,26.76,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_ReadWrite,Gen9LPClient,A0,71.09,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Write,Gen9LPClient,A0,44.33,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen9LPClient,C0,3.83,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_EU_DFX,Gen9LPClient,C0,0.24,syn,47677,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_EU_DOP,Gen9LPClient,A0,0,syn,1,DOP gated
@@ -2262,85 +2202,25 @@ PS2_GT3BFRC,Gen9LPClient,C0,591.026,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN 
 PS0_GATR,Gen9LPClient,C0,14.441,syn,1116638,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GATRW,Gen9LPClient,C0,6.319,syn,202394,Taken from SKL C0 ECO1 GT3 CGEN data
 EM_transc_bypass_16%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_bypass_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_bypass_25%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_bypass_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_bypass_35%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_bypass_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_bypass_46%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_bypass_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_bypass_65%,Gen9LPSoC,A0,32.66,syn,133671,
-EM_transc_bypass_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp16_16%,Gen9LPSoC,A0,22.82,syn,133671,
-EM_transc_fp16_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp16_28%,Gen9LPSoC,A0,23.66,syn,133671,
-EM_transc_fp16_28%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp16_35%,Gen9LPSoC,A0,24.21,syn,133671,
-EM_transc_fp16_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp16_44%,Gen9LPSoC,A0,24.38,syn,133671,
-EM_transc_fp16_44%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp16_57%,Gen9LPSoC,A0,23.72,syn,133671,
-EM_transc_fp16_57%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp32_16%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_fp32_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp32_25%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_fp32_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp32_35%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_fp32_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp32_46%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_fp32_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp32_65%,Gen9LPSoC,A0,32.66,syn,133671,
-EM_transc_fp32_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp64_11%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_fp64_11%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp64_16%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_fp64_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp64_18%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_fp64_18%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp64_20%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_fp64_20%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 EM_transc_fp64_25%,Gen9LPSoC,A0,32.66,syn,133671,
-EM_transc_fp64_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_29%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_29%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_50%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_50%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_77%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int16_77%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_27%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_27%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_50%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_50%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_77%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int32_77%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_12%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_12%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_18%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_18%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_22%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_22%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_30%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_int64_30%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_16%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_25%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_35%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_46%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
-EM_transc_intbypass_65%,Gen9LPSoC,A0,0,syn,133671,Unsupported combination
 FPU0_add_floatbypass_16%,Gen9LPSoC,A0,16.14,syn,363828,Approximated with sim data
 FPU0_add_floatbypass_25%,Gen9LPSoC,A0,18.91,syn,363828,Approximated with sim data
 FPU0_add_floatbypass_34%,Gen9LPSoC,A0,19.59,syn,363828,simulated
@@ -3042,9 +2922,9 @@ PS0_BC,Gen9LPSoC,B0,1.093777778,syn,643832.52,
 PS0_BC_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
 PS0_Blitter,Gen9LPSoC,B0,14.32,syn,1694430.78,Taken from BXT B0 CGEN data
 PS0_BTGEN_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
-PS0_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
-PS0_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
+PS2_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
+PS2_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
 PS0_CC,Gen9LPSoC,B0,0.225888889,syn,615704.38,
 PS0_CC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_CL,Gen9LPSoC,B0,3.638,syn,1046316.97,Taken from BXT B0 CGEN data
@@ -3073,9 +2953,9 @@ PS0_DG_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_DM,Gen9LPSoC,B0,0.642,syn,1102648.74,
 PS0_DM_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_DX9_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS0_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
-PS0_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
-PS0_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
+PS2_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
+PS2_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
+PS2_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
 PS0_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
 PS0_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
 PS0_EU_DFX,Gen9LPSoC,A0,0.14,syn,36830.2,Taken from BXT A0_postroute CGEN data

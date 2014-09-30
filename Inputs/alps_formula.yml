@@ -173,8 +173,8 @@ EU:
       FPU1_sad_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   
   EM:
-      EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
-      EM_transc_int32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   GA:
     PS0_GA: R * C
     PS1_GA: R * C
@@ -1216,13 +1216,13 @@ FF:
     PS2_RS: R * C
    RS_Cache:
     PS0_DX9_Cache_Idle: R * C
-    PS0_DX9_Cache_Read: R * C
-    PS0_DX9_Cache_Write: R * C
-    PS0_DX9_Cache_ReadWrite: R * C
+    PS2_DX9_Cache_Read: R * C
+    PS2_DX9_Cache_Write: R * C
+    PS2_DX9_Cache_ReadWrite: R * C
     PS0_BTGEN_Cache_Idle: R * C
-    PS0_BTGEN_Cache_Read: R * C
-    PS0_BTGEN_Cache_Write: R * C
-    PS0_BTGEN_Cache_ReadWrite: R * C
+    PS2_BTGEN_Cache_Read: R * C
+    PS2_BTGEN_Cache_Write: R * C
+    PS2_BTGEN_Cache_ReadWrite: R * C
    VF:
     PS0_VF_DOP: R * C
     PS0_VF: R * C
