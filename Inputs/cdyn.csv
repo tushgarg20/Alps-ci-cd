@@ -13,7 +13,7 @@ PS2_DX9_Cache_ReadWrite,Gen10LP,A0,40.11,ebb,1,512 bits assumed. Need to check w
 PS2_DX9_Cache_Write,Gen10LP,A0,25.93,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_EU_DOP,Gen10LP,A0,0,syn,1,DOP gated
-PS0_Fabric,Gen10LP,A0,250,syn,1,
+PS0_Fabric,Gen10LP,A0,180,syn,1,
 PS0_FF_OTHER_CLKGLUE,Gen10LP,A0,12.68804734,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_FF_OTHER_CLKGLUE_DOP,Gen10LP,A0,11.81664211,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_FF_OTHER_DOP,Gen10LP,A0,9.156567999,syn,1,Taken fromCNL TNET3 CGEN data
@@ -77,7 +77,7 @@ PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.19,ebb,1,Need to confirm with Niraj
 PS2_BC_BARYRAM_READ,Gen10LP,A0,2.13,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.07,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
-PS2_ClockSpine_Slice,Gen10LP,A0,120,ebb,1,"total spine 330nf"
+PS2_ClockSpine_Slice,Gen10LP,A0,120,ebb,1,total spine 330nf
 PS2_ClockSpine_UnSlice,Gen10LP,A0,210,ebb,1,
 PS2_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DFRSMP_DOP,Gen10LP,A0,10.95768639,syn,1,Taken fromCNL TNET3 CGEN data
@@ -86,10 +86,10 @@ PS2_DM_PALRAM_WRITE,Gen10LP,A0,11.18,ebb,1,Need to confirm with Niraj
 PS2_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_EU_DOP,Gen10LP,A0,2.385656805,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_Fabric_GT2,Gen10LP,A0,0,syn,1,
-PS2_Fabric_GT2P5,Gen10LP,A0,4500,syn,1,
-PS2_Fabric_GT3,Gen10LP,A0,3135,syn,1,
-PS2_Fabric_GT4,Gen10LP,A0,2673,syn,1,
-PS2_Fabric_Halo,Gen10LP,A0,2240,syn,1,
+PS2_Fabric_GT2P5,Gen10LP,A0,1333,syn,1,
+PS2_Fabric_GT3,Gen10LP,A0,1470,syn,1,
+PS2_Fabric_GT4,Gen10LP,A0,1507,syn,1,
+PS2_Fabric_Halo,Gen10LP,A0,1813,syn,1,
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,48.57546746,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_OTHER_DOP,Gen10LP,A0,24.51566272,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_FF_TEGSSOL_CLKGLUE,Gen10LP,A0,5.356331361,syn,1,Taken fromCNL TNET3 CGEN data
@@ -2201,721 +2201,721 @@ PS0_GT3BFRC,Gen9LPClient,C0,394.017,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN 
 PS2_GT3BFRC,Gen9LPClient,C0,591.026,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS0_GATR,Gen9LPClient,C0,14.441,syn,1116638,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GATRW,Gen9LPClient,C0,6.319,syn,202394,Taken from SKL C0 ECO1 GT3 CGEN data
-EM_transc_bypass_16%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_bypass_25%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_bypass_35%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_bypass_46%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_bypass_65%,Gen9LPSoC,A0,32.66,syn,133671,
-EM_transc_fp16_16%,Gen9LPSoC,A0,22.82,syn,133671,
-EM_transc_fp16_28%,Gen9LPSoC,A0,23.66,syn,133671,
-EM_transc_fp16_35%,Gen9LPSoC,A0,24.21,syn,133671,
-EM_transc_fp16_44%,Gen9LPSoC,A0,24.38,syn,133671,
-EM_transc_fp16_57%,Gen9LPSoC,A0,23.72,syn,133671,
-EM_transc_fp32_16%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_fp32_25%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_fp32_35%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_fp32_46%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_fp32_65%,Gen9LPSoC,A0,32.66,syn,133671,
-EM_transc_fp64_11%,Gen9LPSoC,A0,25.44,syn,133671,
-EM_transc_fp64_16%,Gen9LPSoC,A0,27.55,syn,133671,
-EM_transc_fp64_18%,Gen9LPSoC,A0,29.27,syn,133671,
-EM_transc_fp64_20%,Gen9LPSoC,A0,30.94,syn,133671,
-EM_transc_fp64_25%,Gen9LPSoC,A0,32.66,syn,133671,
-FPU0_add_floatbypass_16%,Gen9LPSoC,A0,16.14,syn,363828,Approximated with sim data
-FPU0_add_floatbypass_25%,Gen9LPSoC,A0,18.91,syn,363828,Approximated with sim data
-FPU0_add_floatbypass_34%,Gen9LPSoC,A0,19.59,syn,363828,simulated
-FPU0_add_floatbypass_46%,Gen9LPSoC,A0,20.98,syn,363828,Approximated with sim data
-FPU0_add_floatbypass_65%,Gen9LPSoC,A0,21.5,syn,363828,Approximated with sim data
-FPU0_add_fp16_16%,Gen9LPSoC,A0,32.39,syn,363828,
-FPU0_add_fp16_28%,Gen9LPSoC,A0,30.22,syn,363828,
-FPU0_add_fp16_35%,Gen9LPSoC,A0,33.99,syn,363828,
-FPU0_add_fp16_44%,Gen9LPSoC,A0,37.44,syn,363828,
-FPU0_add_fp16_57%,Gen9LPSoC,A0,37.08,syn,363828,
-FPU0_add_fp32_16%,Gen9LPSoC,A0,30.12,syn,363828,
-FPU0_add_fp32_25%,Gen9LPSoC,A0,35.27,syn,363828,
-FPU0_add_fp32_34%,Gen9LPSoC,A0,36.55,syn,363828,
-FPU0_add_fp32_46%,Gen9LPSoC,A0,39.15,syn,363828,
-FPU0_add_fp32_65%,Gen9LPSoC,A0,40.11,syn,363828,
-FPU0_add_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_int16_16%,Gen9LPSoC,A0,17.88,syn,363828,
-FPU0_add_int16_29%,Gen9LPSoC,A0,22.47,syn,363828,
-FPU0_add_int16_35%,Gen9LPSoC,A0,23.89,syn,363828,
-FPU0_add_int16_50%,Gen9LPSoC,A0,27.52,syn,363828,
-FPU0_add_int16_77%,Gen9LPSoC,A0,33.74,syn,363828,
-FPU0_add_int32_16%,Gen9LPSoC,A0,17.85,syn,363828,
-FPU0_add_int32_27%,Gen9LPSoC,A0,21.97,syn,363828,
-FPU0_add_int32_35%,Gen9LPSoC,A0,24.96,syn,363828,
-FPU0_add_int32_50%,Gen9LPSoC,A0,29.3,syn,363828,
-FPU0_add_int32_77%,Gen9LPSoC,A0,36.66,syn,363828,
-FPU0_add_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_add_intbypass_16%,Gen9LPSoC,A0,9.57,syn,363828,Approximated with sim data
-FPU0_add_intbypass_25%,Gen9LPSoC,A0,11.78,syn,363828,Approximated with sim data
-FPU0_add_intbypass_35%,Gen9LPSoC,A0,13.38,syn,363828,Approximated with sim data
-FPU0_add_intbypass_46%,Gen9LPSoC,A0,15.7,syn,363828,Approximated with sim data
-FPU0_add_intbypass_65%,Gen9LPSoC,A0,19.65,syn,363828,Approximated with sim data
-FPU0_cmp_floatbypass_16%,Gen9LPSoC,A0,8.43,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_floatbypass_25%,Gen9LPSoC,A0,11.18,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_floatbypass_35%,Gen9LPSoC,A0,15.58,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_floatbypass_46%,Gen9LPSoC,A0,13.71,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_floatbypass_65%,Gen9LPSoC,A0,13.04,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp16_16%,Gen9LPSoC,A0,19.71,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp16_28%,Gen9LPSoC,A0,12.4,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp16_35%,Gen9LPSoC,A0,20.55,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp16_44%,Gen9LPSoC,A0,24.82,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp16_57%,Gen9LPSoC,A0,25.83,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp32_16%,Gen9LPSoC,A0,15.89,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp32_25%,Gen9LPSoC,A0,21.09,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp32_35%,Gen9LPSoC,A0,25.85,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp32_46%,Gen9LPSoC,A0,26.48,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp32_65%,Gen9LPSoC,A0,24.59,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_int16_16%,Gen9LPSoC,A0,15.98,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int16_29%,Gen9LPSoC,A0,16.8,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int16_35%,Gen9LPSoC,A0,24.43,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int16_50%,Gen9LPSoC,A0,31.92,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int16_77%,Gen9LPSoC,A0,36.89,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int32_16%,Gen9LPSoC,A0,17.22,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int32_27%,Gen9LPSoC,A0,18.99,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int32_35%,Gen9LPSoC,A0,22.55,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int32_50%,Gen9LPSoC,A0,30.68,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int32_77%,Gen9LPSoC,A0,21.14,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_cmp_intbypass_16%,Gen9LPSoC,A0,9.13,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_intbypass_25%,Gen9LPSoC,A0,10.07,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_intbypass_35%,Gen9LPSoC,A0,11.96,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_intbypass_46%,Gen9LPSoC,A0,16.27,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_cmp_intbypass_65%,Gen9LPSoC,A0,11.21,syn,363828,skl Cdyn weight * 0.94 (includes process and GC SF)
-FPU0_mac_floatbypass_16%,Gen9LPSoC,A0,37.12,syn,363828,No bypass in MAC
-FPU0_mac_floatbypass_25%,Gen9LPSoC,A0,39.61,syn,363828,No bypass in MAC
-FPU0_mac_floatbypass_35%,Gen9LPSoC,A0,34.03,syn,363828,No bypass in MAC
-FPU0_mac_floatbypass_46%,Gen9LPSoC,A0,36.34,syn,363828,No bypass in MAC
-FPU0_mac_floatbypass_65%,Gen9LPSoC,A0,38.19,syn,363828,No bypass in MAC
-FPU0_mac_fp16_16%,Gen9LPSoC,A0,27.56,syn,363828,
-FPU0_mac_fp16_28%,Gen9LPSoC,A0,26.63,syn,363828,
-FPU0_mac_fp16_35%,Gen9LPSoC,A0,29.58,syn,363828,
-FPU0_mac_fp16_44%,Gen9LPSoC,A0,30.04,syn,363828,
-FPU0_mac_fp16_57%,Gen9LPSoC,A0,29.37,syn,363828,
-FPU0_mac_fp32_16%,Gen9LPSoC,A0,37.12,syn,363828,
-FPU0_mac_fp32_25%,Gen9LPSoC,A0,39.61,syn,363828,
-FPU0_mac_fp32_35%,Gen9LPSoC,A0,34.03,syn,363828,
-FPU0_mac_fp32_46%,Gen9LPSoC,A0,36.34,syn,363828,
-FPU0_mac_fp32_65%,Gen9LPSoC,A0,38.19,syn,363828,
-FPU0_mac_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int16_16%,Gen9LPSoC,A0,42.52,syn,363828,
-FPU0_mac_int16_29%,Gen9LPSoC,A0,45.51,syn,363828,
-FPU0_mac_int16_35%,Gen9LPSoC,A0,46.36,syn,363828,
-FPU0_mac_int16_50%,Gen9LPSoC,A0,48.78,syn,363828,
-FPU0_mac_int16_77%,Gen9LPSoC,A0,52.62,syn,363828,
-FPU0_mac_int32_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int32_27%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int32_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int32_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int32_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_intbypass_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_intbypass_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_intbypass_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_intbypass_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mac_intbypass_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_floatbypass_16%,Gen9LPSoC,A0,18.07,syn,363828,Approximated with sim data
-FPU0_mad_floatbypass_25%,Gen9LPSoC,A0,20.67,syn,363828,Approximated with sim data
-FPU0_mad_floatbypass_35%,Gen9LPSoC,A0,22.33,syn,363828,Simulated
-FPU0_mad_floatbypass_46%,Gen9LPSoC,A0,26.48,syn,363828,Approximated with sim data
-FPU0_mad_floatbypass_65%,Gen9LPSoC,A0,26.75,syn,363828,Approximated with sim data
-FPU0_mad_fp16_16%,Gen9LPSoC,A0,36.91,syn,363828,
-FPU0_mad_fp16_28%,Gen9LPSoC,A0,40.92,syn,363828,
-FPU0_mad_fp16_35%,Gen9LPSoC,A0,43.16,syn,363828,
-FPU0_mad_fp16_44%,Gen9LPSoC,A0,47.93,syn,363828,
-FPU0_mad_fp16_57%,Gen9LPSoC,A0,52.69,syn,363828,
-FPU0_mad_fp32_16%,Gen9LPSoC,A0,47.93,syn,363828,
-FPU0_mad_fp32_25%,Gen9LPSoC,A0,54.83,syn,363828,
-FPU0_mad_fp32_35%,Gen9LPSoC,A0,59.24,syn,363828,
-FPU0_mad_fp32_46%,Gen9LPSoC,A0,70.26,syn,363828,
-FPU0_mad_fp32_65%,Gen9LPSoC,A0,70.97,syn,363828,
-FPU0_mad_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int16_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int16_29%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int16_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int16_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int16_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int32_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int32_27%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int32_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int32_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int32_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_intbypass_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_intbypass_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_intbypass_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_intbypass_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mad_intbypass_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_bypass_16%,Gen9LPSoC,A0,8.46,syn,363828,No bypass in Mov
-FPU0_mov_bypass_25%,Gen9LPSoC,A0,9.46,syn,363828,No bypass in Mov
-FPU0_mov_bypass_35%,Gen9LPSoC,A0,10.45,syn,363828,No bypass in Mov
-FPU0_mov_bypass_46%,Gen9LPSoC,A0,11.8,syn,363828,No bypass in Mov
-FPU0_mov_bypass_65%,Gen9LPSoC,A0,13.87,syn,363828,No bypass in Mov
-FPU0_mov_fp16_16%,Gen9LPSoC,A0,9.49,syn,363828,
-FPU0_mov_fp16_28%,Gen9LPSoC,A0,11.06,syn,363828,
-FPU0_mov_fp16_35%,Gen9LPSoC,A0,11.7,syn,363828,
-FPU0_mov_fp16_44%,Gen9LPSoC,A0,12.87,syn,363828,
-FPU0_mov_fp16_57%,Gen9LPSoC,A0,14.36,syn,363828,
-FPU0_mov_fp32_16%,Gen9LPSoC,A0,8.46,syn,363828,
-FPU0_mov_fp32_25%,Gen9LPSoC,A0,9.46,syn,363828,
-FPU0_mov_fp32_35%,Gen9LPSoC,A0,10.45,syn,363828,
-FPU0_mov_fp32_46%,Gen9LPSoC,A0,11.8,syn,363828,
-FPU0_mov_fp32_65%,Gen9LPSoC,A0,13.87,syn,363828,
-FPU0_mov_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_int16_16%,Gen9LPSoC,A0,8.75,syn,363828,
-FPU0_mov_int16_29%,Gen9LPSoC,A0,10.24,syn,363828,
-FPU0_mov_int16_35%,Gen9LPSoC,A0,10.92,syn,363828,
-FPU0_mov_int16_50%,Gen9LPSoC,A0,12.55,syn,363828,
-FPU0_mov_int16_77%,Gen9LPSoC,A0,15.64,syn,363828,
-FPU0_mov_int32_16%,Gen9LPSoC,A0,8.57,syn,363828,
-FPU0_mov_int32_27%,Gen9LPSoC,A0,9.53,syn,363828,
-FPU0_mov_int32_35%,Gen9LPSoC,A0,10.52,syn,363828,
-FPU0_mov_int32_50%,Gen9LPSoC,A0,12.05,syn,363828,
-FPU0_mov_int32_77%,Gen9LPSoC,A0,14.86,syn,363828,
-FPU0_mov_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mov_intbypass_16%,Gen9LPSoC,A0,8.57,syn,363828,
-FPU0_mov_intbypass_25%,Gen9LPSoC,A0,9.53,syn,363828,
-FPU0_mov_intbypass_35%,Gen9LPSoC,A0,10.52,syn,363828,
-FPU0_mov_intbypass_46%,Gen9LPSoC,A0,12.05,syn,363828,
-FPU0_mov_intbypass_65%,Gen9LPSoC,A0,14.86,syn,363828,
-FPU0_mul_floatbypass_16%,Gen9LPSoC,A0,7.13,syn,363828,Approximated with sim data
-FPU0_mul_floatbypass_25%,Gen9LPSoC,A0,7.98,syn,363828,Approximated with sim data
-FPU0_mul_floatbypass_35%,Gen9LPSoC,A0,8.85,syn,363828,Simulated
-FPU0_mul_floatbypass_46%,Gen9LPSoC,A0,9.8,syn,363828,Approximated with sim data
-FPU0_mul_floatbypass_65%,Gen9LPSoC,A0,10.69,syn,363828,Approximated with sim data
-FPU0_mul_fp16_16%,Gen9LPSoC,A0,26.45,syn,363828,
-FPU0_mul_fp16_28%,Gen9LPSoC,A0,31.93,syn,363828,
-FPU0_mul_fp16_35%,Gen9LPSoC,A0,33.88,syn,363828,
-FPU0_mul_fp16_44%,Gen9LPSoC,A0,36.87,syn,363828,
-FPU0_mul_fp16_57%,Gen9LPSoC,A0,39.15,syn,363828,
-FPU0_mul_fp32_16%,Gen9LPSoC,A0,36.41,syn,363828,
-FPU0_mul_fp32_25%,Gen9LPSoC,A0,40.78,syn,363828,
-FPU0_mul_fp32_35%,Gen9LPSoC,A0,45.23,syn,363828,
-FPU0_mul_fp32_46%,Gen9LPSoC,A0,50.06,syn,363828,
-FPU0_mul_fp32_65%,Gen9LPSoC,A0,54.61,syn,363828,
-FPU0_mul_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_int16_16%,Gen9LPSoC,A0,32.53,syn,363828,
-FPU0_mul_int16_29%,Gen9LPSoC,A0,39.08,syn,363828,
-FPU0_mul_int16_35%,Gen9LPSoC,A0,40.96,syn,363828,
-FPU0_mul_int16_50%,Gen9LPSoC,A0,46.26,syn,363828,
-FPU0_mul_int16_77%,Gen9LPSoC,A0,53.33,syn,363828,
-FPU0_mul_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_mul_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_floatbypass_25%,Gen9LPSoC,A0,45.62,syn,363828,No bypass in PLN
-FPU0_pln_floatbypass_35%,Gen9LPSoC,A0,47.47,syn,363828,No bypass in PLN
-FPU0_pln_floatbypass_46%,Gen9LPSoC,A0,50.99,syn,363828,No bypass in PLN
-FPU0_pln_floatbypass_65%,Gen9LPSoC,A0,55.89,syn,363828,No bypass in PLN
-FPU0_pln_floatbypass_7%,Gen9LPSoC,A0,40.21,syn,363828,No bypass in PLN
-FPU0_pln_fp16_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp16_28%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp16_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp16_44%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp16_57%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp32_11%,Gen9LPSoC,A0,45.62,syn,363828,
-FPU0_pln_fp32_15%,Gen9LPSoC,A0,47.47,syn,363828,
-FPU0_pln_fp32_21%,Gen9LPSoC,A0,50.99,syn,363828,
-FPU0_pln_fp32_30%,Gen9LPSoC,A0,55.89,syn,363828,
-FPU0_pln_fp32_7%,Gen9LPSoC,A0,40.21,syn,363828,
-FPU0_pln_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int16_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int16_29%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int16_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int16_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int16_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int32_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int32_27%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int32_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int32_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int32_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_intbypass_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_intbypass_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_intbypass_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_intbypass_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_pln_intbypass_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_floatbypass_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_floatbypass_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_floatbypass_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_floatbypass_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_floatbypass_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp16_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp16_28%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp16_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp16_44%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp16_57%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp32_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp32_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp32_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp32_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp32_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int16_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int16_29%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int16_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int16_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int16_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int32_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int32_27%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int32_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int32_50%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int32_77%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_intbypass_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_intbypass_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_intbypass_35%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_intbypass_46%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sad_intbypass_65%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_bypass_16%,Gen9LPSoC,A0,16.07,syn,363828,No bypass in SEL
-FPU0_sel_bypass_25%,Gen9LPSoC,A0,20.3,syn,363828,No bypass in SEL
-FPU0_sel_bypass_35%,Gen9LPSoC,A0,24.39,syn,363828,No bypass in SEL
-FPU0_sel_bypass_46%,Gen9LPSoC,A0,28.23,syn,363828,No bypass in SEL
-FPU0_sel_bypass_65%,Gen9LPSoC,A0,33.85,syn,363828,No bypass in SEL
-FPU0_sel_fp16_16%,Gen9LPSoC,A0,20.66,syn,363828,
-FPU0_sel_fp16_28%,Gen9LPSoC,A0,28.27,syn,363828,
-FPU0_sel_fp16_35%,Gen9LPSoC,A0,29.62,syn,363828,
-FPU0_sel_fp16_44%,Gen9LPSoC,A0,32.43,syn,363828,
-FPU0_sel_fp16_57%,Gen9LPSoC,A0,35.91,syn,363828,
-FPU0_sel_fp32_16%,Gen9LPSoC,A0,16.07,syn,363828,
-FPU0_sel_fp32_25%,Gen9LPSoC,A0,20.3,syn,363828,
-FPU0_sel_fp32_35%,Gen9LPSoC,A0,24.39,syn,363828,
-FPU0_sel_fp32_46%,Gen9LPSoC,A0,28.23,syn,363828,
-FPU0_sel_fp32_65%,Gen9LPSoC,A0,33.85,syn,363828,
-FPU0_sel_fp64_11%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_fp64_16%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_fp64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_fp64_20%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_fp64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_int16_16%,Gen9LPSoC,A0,15.08,syn,363828,
-FPU0_sel_int16_29%,Gen9LPSoC,A0,20.09,syn,363828,
-FPU0_sel_int16_35%,Gen9LPSoC,A0,22.04,syn,363828,
-FPU0_sel_int16_50%,Gen9LPSoC,A0,26.7,syn,363828,
-FPU0_sel_int16_77%,Gen9LPSoC,A0,35.38,syn,363828,
-FPU0_sel_int32_16%,Gen9LPSoC,A0,16.75,syn,363828,
-FPU0_sel_int32_27%,Gen9LPSoC,A0,20.41,syn,363828,
-FPU0_sel_int32_35%,Gen9LPSoC,A0,24.43,syn,363828,
-FPU0_sel_int32_50%,Gen9LPSoC,A0,30.04,syn,363828,
-FPU0_sel_int32_77%,Gen9LPSoC,A0,39.96,syn,363828,
-FPU0_sel_int64_12%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_int64_18%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_int64_22%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_int64_25%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_int64_30%,Gen9LPSoC,A0,0,syn,363828,Unsupported combination
-FPU0_sel_intbypass_16%,Gen9LPSoC,A0,16.75,syn,363828,No bypass in SEL
-FPU0_sel_intbypass_25%,Gen9LPSoC,A0,20.41,syn,363828,No bypass in SEL
-FPU0_sel_intbypass_35%,Gen9LPSoC,A0,24.43,syn,363828,No bypass in SEL
-FPU0_sel_intbypass_46%,Gen9LPSoC,A0,30.04,syn,363828,No bypass in SEL
-FPU0_sel_intbypass_65%,Gen9LPSoC,A0,39.96,syn,363828,No bypass in SEL
-FPU1_add_floatbypass_16%,Gen9LPSoC,A0,14.69,syn,367842,Approximated with sim data
-FPU1_add_floatbypass_25%,Gen9LPSoC,A0,17.38,syn,367842,Approximated with sim data
-FPU1_add_floatbypass_35%,Gen9LPSoC,A0,17.96,syn,367842,Simulated
-FPU1_add_floatbypass_46%,Gen9LPSoC,A0,19.16,syn,367842,Approximated with sim data
-FPU1_add_floatbypass_65%,Gen9LPSoC,A0,19.44,syn,367842,Approximated with sim data
-FPU1_add_fp16_16%,Gen9LPSoC,A0,30.83,syn,367842,
-FPU1_add_fp16_28%,Gen9LPSoC,A0,29.87,syn,367842,
-FPU1_add_fp16_35%,Gen9LPSoC,A0,32.39,syn,367842,
-FPU1_add_fp16_44%,Gen9LPSoC,A0,35.52,syn,367842,
-FPU1_add_fp16_57%,Gen9LPSoC,A0,35.84,syn,367842,
-FPU1_add_fp32_16%,Gen9LPSoC,A0,28.94,syn,367842,
-FPU1_add_fp32_25%,Gen9LPSoC,A0,34.24,syn,367842,
-FPU1_add_fp32_35%,Gen9LPSoC,A0,35.38,syn,367842,
-FPU1_add_fp32_46%,Gen9LPSoC,A0,37.76,syn,367842,
-FPU1_add_fp32_65%,Gen9LPSoC,A0,38.29,syn,367842,
-FPU1_add_fp64_11%,Gen9LPSoC,A0,21.8,syn,367842,
-FPU1_add_fp64_16%,Gen9LPSoC,A0,23.43,syn,367842,
-FPU1_add_fp64_18%,Gen9LPSoC,A0,25.85,syn,367842,
-FPU1_add_fp64_20%,Gen9LPSoC,A0,28.2,syn,367842,
-FPU1_add_fp64_25%,Gen9LPSoC,A0,29.8,syn,367842,
-FPU1_add_int16_16%,Gen9LPSoC,A0,15,syn,367842,
-FPU1_add_int16_29%,Gen9LPSoC,A0,18.92,syn,367842,
-FPU1_add_int16_35%,Gen9LPSoC,A0,20.44,syn,367842,
-FPU1_add_int16_50%,Gen9LPSoC,A0,23.54,syn,367842,
-FPU1_add_int16_77%,Gen9LPSoC,A0,28.84,syn,367842,
-FPU1_add_int32_16%,Gen9LPSoC,A0,15.22,syn,367842,
-FPU1_add_int32_27%,Gen9LPSoC,A0,18.38,syn,367842,
-FPU1_add_int32_35%,Gen9LPSoC,A0,21.12,syn,367842,
-FPU1_add_int32_50%,Gen9LPSoC,A0,25,syn,367842,
-FPU1_add_int32_77%,Gen9LPSoC,A0,31.4,syn,367842,
-FPU1_add_int64_12%,Gen9LPSoC,A0,16.43,syn,367842,
-FPU1_add_int64_18%,Gen9LPSoC,A0,18.81,syn,367842,
-FPU1_add_int64_22%,Gen9LPSoC,A0,21.23,syn,367842,
-FPU1_add_int64_25%,Gen9LPSoC,A0,24,syn,367842,
-FPU1_add_int64_30%,Gen9LPSoC,A0,28.09,syn,367842,
-FPU1_add_intbypass_16%,Gen9LPSoC,A0,7.72,syn,367842,Approximated with sim data
-FPU1_add_intbypass_25%,Gen9LPSoC,A0,9.33,syn,367842,Approximated with sim data
-FPU1_add_intbypass_35%,Gen9LPSoC,A0,10.72,syn,367842,Approximated with sim data
-FPU1_add_intbypass_46%,Gen9LPSoC,A0,12.69,syn,367842,Approximated with sim data
-FPU1_add_intbypass_65%,Gen9LPSoC,A0,15.93,syn,367842,Approximated with sim data
-FPU1_cmp_floatbypass_16%,Gen9LPSoC,A0,2.2,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_floatbypass_25%,Gen9LPSoC,A0,2.81,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_floatbypass_35%,Gen9LPSoC,A0,4.63,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_floatbypass_46%,Gen9LPSoC,A0,3.74,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_floatbypass_65%,Gen9LPSoC,A0,4.4,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp16_16%,Gen9LPSoC,A0,17.66,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp16_28%,Gen9LPSoC,A0,22.71,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp16_35%,Gen9LPSoC,A0,18.36,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp16_44%,Gen9LPSoC,A0,22.95,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp16_57%,Gen9LPSoC,A0,23.09,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp32_16%,Gen9LPSoC,A0,10.98,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp32_25%,Gen9LPSoC,A0,14.04,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp32_35%,Gen9LPSoC,A0,23.1,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp32_46%,Gen9LPSoC,A0,18.67,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp32_65%,Gen9LPSoC,A0,21.98,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp64_11%,Gen9LPSoC,A0,20.12,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp64_16%,Gen9LPSoC,A0,23.2,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp64_18%,Gen9LPSoC,A0,24.49,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp64_20%,Gen9LPSoC,A0,29.66,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_fp64_25%,Gen9LPSoC,A0,30.83,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int16_16%,Gen9LPSoC,A0,14.07,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int16_29%,Gen9LPSoC,A0,19.37,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int16_35%,Gen9LPSoC,A0,21.83,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int16_50%,Gen9LPSoC,A0,16.58,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int16_77%,Gen9LPSoC,A0,32.96,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int32_16%,Gen9LPSoC,A0,11.07,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int32_27%,Gen9LPSoC,A0,16.85,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int32_35%,Gen9LPSoC,A0,20.15,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int32_50%,Gen9LPSoC,A0,20.05,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int32_77%,Gen9LPSoC,A0,18.89,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int64_12%,Gen9LPSoC,A0,15.3,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int64_18%,Gen9LPSoC,A0,17.71,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int64_22%,Gen9LPSoC,A0,19.65,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int64_25%,Gen9LPSoC,A0,22.07,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_int64_30%,Gen9LPSoC,A0,26.29,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_intbypass_16%,Gen9LPSoC,A0,2.22,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_intbypass_25%,Gen9LPSoC,A0,3.37,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_intbypass_35%,Gen9LPSoC,A0,4.04,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_intbypass_46%,Gen9LPSoC,A0,4.02,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_cmp_intbypass_65%,Gen9LPSoC,A0,3.78,syn,367842,skl Cdyn weight * 0.84 (includes process and GC SF)
-FPU1_mac_floatbypass_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_floatbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_floatbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_floatbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_floatbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp16_28%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp16_44%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp16_57%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp32_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp32_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp32_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp32_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp64_11%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp64_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp64_20%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_fp64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int16_29%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int16_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int16_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int32_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int32_27%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int32_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int32_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int64_12%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int64_22%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_int64_30%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_intbypass_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_intbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_intbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_intbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mac_intbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_floatbypass_16%,Gen9LPSoC,A0,16.92,syn,367842,Approximated with sim data
-FPU1_mad_floatbypass_25%,Gen9LPSoC,A0,19.41,syn,367842,Approximated with sim data
-FPU1_mad_floatbypass_35%,Gen9LPSoC,A0,21.23,syn,367842,Simulated
-FPU1_mad_floatbypass_46%,Gen9LPSoC,A0,25.26,syn,367842,Approximated with sim data
-FPU1_mad_floatbypass_65%,Gen9LPSoC,A0,25.33,syn,367842,Approximated with sim data
-FPU1_mad_fp16_16%,Gen9LPSoC,A0,35.73,syn,367842,
-FPU1_mad_fp16_28%,Gen9LPSoC,A0,39.72,syn,367842,
-FPU1_mad_fp16_35%,Gen9LPSoC,A0,42.31,syn,367842,
-FPU1_mad_fp16_44%,Gen9LPSoC,A0,46.51,syn,367842,
-FPU1_mad_fp16_57%,Gen9LPSoC,A0,51.73,syn,367842,
-FPU1_mad_fp32_16%,Gen9LPSoC,A0,47.08,syn,367842,
-FPU1_mad_fp32_25%,Gen9LPSoC,A0,54.01,syn,367842,
-FPU1_mad_fp32_35%,Gen9LPSoC,A0,59.06,syn,367842,
-FPU1_mad_fp32_46%,Gen9LPSoC,A0,70.29,syn,367842,
-FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.47,syn,367842,
-FPU1_mad_fp64_11%,Gen9LPSoC,A0,43.84,syn,367842,
-FPU1_mad_fp64_16%,Gen9LPSoC,A0,51.09,syn,367842,
-FPU1_mad_fp64_18%,Gen9LPSoC,A0,55.86,syn,367842,
-FPU1_mad_fp64_20%,Gen9LPSoC,A0,59.52,syn,367842,
-FPU1_mad_fp64_25%,Gen9LPSoC,A0,64.57,syn,367842,
-FPU1_mad_int16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int16_29%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int16_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int16_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int32_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int32_27%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int32_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int32_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int64_12%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int64_22%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_int64_30%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_intbypass_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_intbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_intbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_intbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mad_intbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_mov_bypass_16%,Gen9LPSoC,A0,8.36,syn,367842,
-FPU1_mov_bypass_25%,Gen9LPSoC,A0,9.24,syn,367842,
-FPU1_mov_bypass_35%,Gen9LPSoC,A0,10.13,syn,367842,
-FPU1_mov_bypass_46%,Gen9LPSoC,A0,11.45,syn,367842,
-FPU1_mov_bypass_65%,Gen9LPSoC,A0,13.51,syn,367842,
-FPU1_mov_fp16_16%,Gen9LPSoC,A0,9.03,syn,367842,
-FPU1_mov_fp16_28%,Gen9LPSoC,A0,10.35,syn,367842,
-FPU1_mov_fp16_35%,Gen9LPSoC,A0,10.95,syn,367842,
-FPU1_mov_fp16_44%,Gen9LPSoC,A0,12.05,syn,367842,
-FPU1_mov_fp16_57%,Gen9LPSoC,A0,13.4,syn,367842,
-FPU1_mov_fp32_16%,Gen9LPSoC,A0,8.36,syn,367842,
-FPU1_mov_fp32_25%,Gen9LPSoC,A0,9.24,syn,367842,
-FPU1_mov_fp32_35%,Gen9LPSoC,A0,10.13,syn,367842,
-FPU1_mov_fp32_46%,Gen9LPSoC,A0,11.45,syn,367842,
-FPU1_mov_fp32_65%,Gen9LPSoC,A0,13.51,syn,367842,
-FPU1_mov_fp64_11%,Gen9LPSoC,A0,13.3,syn,367842,
-FPU1_mov_fp64_16%,Gen9LPSoC,A0,14.58,syn,367842,
-FPU1_mov_fp64_18%,Gen9LPSoC,A0,15.93,syn,367842,
-FPU1_mov_fp64_20%,Gen9LPSoC,A0,17.78,syn,367842,
-FPU1_mov_fp64_25%,Gen9LPSoC,A0,20.41,syn,367842,
-FPU1_mov_int16_16%,Gen9LPSoC,A0,8.39,syn,367842,
-FPU1_mov_int16_29%,Gen9LPSoC,A0,9.71,syn,367842,
-FPU1_mov_int16_35%,Gen9LPSoC,A0,10.31,syn,367842,
-FPU1_mov_int16_50%,Gen9LPSoC,A0,11.8,syn,367842,
-FPU1_mov_int16_77%,Gen9LPSoC,A0,14.58,syn,367842,
-FPU1_mov_int32_16%,Gen9LPSoC,A0,8.36,syn,367842,
-FPU1_mov_int32_27%,Gen9LPSoC,A0,9.39,syn,367842,
-FPU1_mov_int32_35%,Gen9LPSoC,A0,10.28,syn,367842,
-FPU1_mov_int32_50%,Gen9LPSoC,A0,11.84,syn,367842,
-FPU1_mov_int32_77%,Gen9LPSoC,A0,14.58,syn,367842,
-FPU1_mov_int64_12%,Gen9LPSoC,A0,13.37,syn,367842,
-FPU1_mov_int64_18%,Gen9LPSoC,A0,14.68,syn,367842,
-FPU1_mov_int64_22%,Gen9LPSoC,A0,18.84,syn,367842,
-FPU1_mov_int64_25%,Gen9LPSoC,A0,18.84,syn,367842,
-FPU1_mov_int64_30%,Gen9LPSoC,A0,21.51,syn,367842,
-FPU1_mov_intbypass_16%,Gen9LPSoC,A0,8.36,syn,367842,
-FPU1_mov_intbypass_25%,Gen9LPSoC,A0,9.39,syn,367842,
-FPU1_mov_intbypass_35%,Gen9LPSoC,A0,10.28,syn,367842,
-FPU1_mov_intbypass_46%,Gen9LPSoC,A0,11.84,syn,367842,
-FPU1_mov_intbypass_65%,Gen9LPSoC,A0,14.58,syn,367842,
-FPU1_mul_floatbypass_16%,Gen9LPSoC,A0,6.99,syn,367842,Approximated with sim data
-FPU1_mul_floatbypass_25%,Gen9LPSoC,A0,7.86,syn,367842,Approximated with sim data
-FPU1_mul_floatbypass_35%,Gen9LPSoC,A0,8.71,syn,367842,Simulated
-FPU1_mul_floatbypass_46%,Gen9LPSoC,A0,9.8,syn,367842,Approximated with sim data
-FPU1_mul_floatbypass_65%,Gen9LPSoC,A0,10.63,syn,367842,Approximated with sim data
-FPU1_mul_fp16_16%,Gen9LPSoC,A0,25.03,syn,367842,
-FPU1_mul_fp16_28%,Gen9LPSoC,A0,30.22,syn,367842,
-FPU1_mul_fp16_35%,Gen9LPSoC,A0,32.39,syn,367842,
-FPU1_mul_fp16_44%,Gen9LPSoC,A0,35.84,syn,367842,
-FPU1_mul_fp16_57%,Gen9LPSoC,A0,37.9,syn,367842,
-FPU1_mul_fp32_16%,Gen9LPSoC,A0,36.02,syn,367842,
-FPU1_mul_fp32_25%,Gen9LPSoC,A0,40.5,syn,367842,
-FPU1_mul_fp32_35%,Gen9LPSoC,A0,44.91,syn,367842,
-FPU1_mul_fp32_46%,Gen9LPSoC,A0,50.52,syn,367842,
-FPU1_mul_fp32_65%,Gen9LPSoC,A0,54.79,syn,367842,
-FPU1_mul_fp64_11%,Gen9LPSoC,A0,39.5,syn,367842,
-FPU1_mul_fp64_16%,Gen9LPSoC,A0,45.72,syn,367842,
-FPU1_mul_fp64_18%,Gen9LPSoC,A0,50.2,syn,367842,
-FPU1_mul_fp64_20%,Gen9LPSoC,A0,54.15,syn,367842,
-FPU1_mul_fp64_25%,Gen9LPSoC,A0,58.24,syn,367842,
-FPU1_mul_int16_16%,Gen9LPSoC,A0,28.27,syn,367842,
-FPU1_mul_int16_29%,Gen9LPSoC,A0,33.28,syn,367842,
-FPU1_mul_int16_35%,Gen9LPSoC,A0,35.59,syn,367842,
-FPU1_mul_int16_50%,Gen9LPSoC,A0,39.54,syn,367842,
-FPU1_mul_int16_77%,Gen9LPSoC,A0,45.72,syn,367842,
-FPU1_pln_floatbypass_25%,Gen9LPSoC,A0,46.04,syn,367842,No bypass in PLN
-FPU1_pln_floatbypass_35%,Gen9LPSoC,A0,47.57,syn,367842,No bypass in PLN
-FPU1_pln_floatbypass_46%,Gen9LPSoC,A0,51.8,syn,367842,No bypass in PLN
-FPU1_pln_floatbypass_65%,Gen9LPSoC,A0,56.25,syn,367842,No bypass in PLN
-FPU1_pln_floatbypass_7%,Gen9LPSoC,A0,40.36,syn,367842,No bypass in PLN
-FPU1_pln_fp16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp16_28%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp16_44%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp16_57%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp32_11%,Gen9LPSoC,A0,46.04,syn,367842,
-FPU1_pln_fp32_15%,Gen9LPSoC,A0,47.57,syn,367842,
-FPU1_pln_fp32_21%,Gen9LPSoC,A0,51.8,syn,367842,
-FPU1_pln_fp32_30%,Gen9LPSoC,A0,56.25,syn,367842,
-FPU1_pln_fp32_7%,Gen9LPSoC,A0,40.36,syn,367842,
-FPU1_pln_fp64_10%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp64_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp64_20%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_fp64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int16_10%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int16_29%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int16_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int16_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int32_10%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int32_27%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int32_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int32_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int64_10%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int64_22%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_int64_30%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_intbypass_10%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_intbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_intbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_intbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_pln_intbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_floatbypass_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_floatbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_floatbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_floatbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_floatbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp16_28%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp16_44%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp16_57%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp32_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp32_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp32_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp32_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp64_11%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp64_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp64_20%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_fp64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int16_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int16_29%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int16_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int16_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int16_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int32_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int32_27%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int32_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int32_50%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int32_77%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int64_12%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int64_18%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int64_22%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int64_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_int64_30%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_intbypass_16%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_intbypass_25%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_intbypass_35%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_intbypass_46%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sad_intbypass_65%,Gen9LPSoC,A0,0,syn,367842,Unsupported combination
-FPU1_sel_bypass_16%,Gen9LPSoC,A0,15.22,syn,367842,No bypass in SEL
-FPU1_sel_bypass_25%,Gen9LPSoC,A0,18.81,syn,367842,No bypass in SEL
-FPU1_sel_bypass_35%,Gen9LPSoC,A0,23,syn,367842,No bypass in SEL
-FPU1_sel_bypass_46%,Gen9LPSoC,A0,26.52,syn,367842,No bypass in SEL
-FPU1_sel_bypass_65%,Gen9LPSoC,A0,32.18,syn,367842,No bypass in SEL
-FPU1_sel_fp16_16%,Gen9LPSoC,A0,19.41,syn,367842,
-FPU1_sel_fp16_28%,Gen9LPSoC,A0,26.38,syn,367842,
-FPU1_sel_fp16_35%,Gen9LPSoC,A0,27.77,syn,367842,
-FPU1_sel_fp16_44%,Gen9LPSoC,A0,30.26,syn,367842,
-FPU1_sel_fp16_57%,Gen9LPSoC,A0,33.56,syn,367842,
-FPU1_sel_fp32_16%,Gen9LPSoC,A0,15.22,syn,367842,
-FPU1_sel_fp32_25%,Gen9LPSoC,A0,18.81,syn,367842,
-FPU1_sel_fp32_35%,Gen9LPSoC,A0,23,syn,367842,
-FPU1_sel_fp32_46%,Gen9LPSoC,A0,26.52,syn,367842,
-FPU1_sel_fp32_65%,Gen9LPSoC,A0,32.18,syn,367842,
-FPU1_sel_fp64_11%,Gen9LPSoC,A0,19.34,syn,367842,
-FPU1_sel_fp64_16%,Gen9LPSoC,A0,21.8,syn,367842,
-FPU1_sel_fp64_18%,Gen9LPSoC,A0,24.85,syn,367842,
-FPU1_sel_fp64_20%,Gen9LPSoC,A0,28.62,syn,367842,
-FPU1_sel_fp64_25%,Gen9LPSoC,A0,31.93,syn,367842,
-FPU1_sel_int16_16%,Gen9LPSoC,A0,12.98,syn,367842,
-FPU1_sel_int16_29%,Gen9LPSoC,A0,16.92,syn,367842,
-FPU1_sel_int16_35%,Gen9LPSoC,A0,18.84,syn,367842,
-FPU1_sel_int16_50%,Gen9LPSoC,A0,23,syn,367842,
-FPU1_sel_int16_77%,Gen9LPSoC,A0,30.65,syn,367842,
-FPU1_sel_int32_16%,Gen9LPSoC,A0,13.58,syn,367842,
-FPU1_sel_int32_27%,Gen9LPSoC,A0,17.21,syn,367842,
-FPU1_sel_int32_35%,Gen9LPSoC,A0,19.98,syn,367842,
-FPU1_sel_int32_50%,Gen9LPSoC,A0,24.85,syn,367842,
-FPU1_sel_int32_77%,Gen9LPSoC,A0,33,syn,367842,
-FPU1_sel_int64_12%,Gen9LPSoC,A0,15.96,syn,367842,
-FPU1_sel_int64_18%,Gen9LPSoC,A0,18.42,syn,367842,
-FPU1_sel_int64_22%,Gen9LPSoC,A0,20.87,syn,367842,
-FPU1_sel_int64_25%,Gen9LPSoC,A0,24.53,syn,367842,
-FPU1_sel_int64_30%,Gen9LPSoC,A0,29.62,syn,367842,
-FPU1_sel_intbypass_16%,Gen9LPSoC,A0,13.58,syn,367842,No bypass in SEL
-FPU1_sel_intbypass_25%,Gen9LPSoC,A0,17.21,syn,367842,No bypass in SEL
-FPU1_sel_intbypass_35%,Gen9LPSoC,A0,19.98,syn,367842,No bypass in SEL
-FPU1_sel_intbypass_46%,Gen9LPSoC,A0,24.85,syn,367842,No bypass in SEL
-FPU1_sel_intbypass_65%,Gen9LPSoC,A0,33,syn,367842,No bypass in SEL
+EM_transc_bypass_16%,Gen9LPSoC,A0,25.44,syn,129025,
+EM_transc_bypass_25%,Gen9LPSoC,A0,27.55,syn,129025,
+EM_transc_bypass_35%,Gen9LPSoC,A0,29.27,syn,129025,
+EM_transc_bypass_46%,Gen9LPSoC,A0,30.94,syn,129025,
+EM_transc_bypass_65%,Gen9LPSoC,A0,32.66,syn,129025,
+EM_transc_fp16_16%,Gen9LPSoC,A0,22.82,syn,129025,
+EM_transc_fp16_28%,Gen9LPSoC,A0,23.66,syn,129025,
+EM_transc_fp16_35%,Gen9LPSoC,A0,24.21,syn,129025,
+EM_transc_fp16_44%,Gen9LPSoC,A0,24.38,syn,129025,
+EM_transc_fp16_57%,Gen9LPSoC,A0,23.72,syn,129025,
+EM_transc_fp32_16%,Gen9LPSoC,A0,25.44,syn,129025,
+EM_transc_fp32_25%,Gen9LPSoC,A0,27.55,syn,129025,
+EM_transc_fp32_35%,Gen9LPSoC,A0,29.27,syn,129025,
+EM_transc_fp32_46%,Gen9LPSoC,A0,30.94,syn,129025,
+EM_transc_fp32_65%,Gen9LPSoC,A0,32.66,syn,129025,
+EM_transc_fp64_11%,Gen9LPSoC,A0,25.44,syn,129025,
+EM_transc_fp64_16%,Gen9LPSoC,A0,27.55,syn,129025,
+EM_transc_fp64_18%,Gen9LPSoC,A0,29.27,syn,129025,
+EM_transc_fp64_20%,Gen9LPSoC,A0,30.94,syn,129025,
+EM_transc_fp64_25%,Gen9LPSoC,A0,32.66,syn,129025,
+FPU0_add_floatbypass_16%,Gen9LPSoC,A0,16.14,syn,325828,Approximated with sim data
+FPU0_add_floatbypass_25%,Gen9LPSoC,A0,18.91,syn,325828,Approximated with sim data
+FPU0_add_floatbypass_34%,Gen9LPSoC,A0,19.59,syn,325828,simulated
+FPU0_add_floatbypass_46%,Gen9LPSoC,A0,20.98,syn,325828,Approximated with sim data
+FPU0_add_floatbypass_65%,Gen9LPSoC,A0,21.5,syn,325828,Approximated with sim data
+FPU0_add_fp16_16%,Gen9LPSoC,A0,32.39,syn,325828,
+FPU0_add_fp16_28%,Gen9LPSoC,A0,30.22,syn,325828,
+FPU0_add_fp16_35%,Gen9LPSoC,A0,33.99,syn,325828,
+FPU0_add_fp16_44%,Gen9LPSoC,A0,37.44,syn,325828,
+FPU0_add_fp16_57%,Gen9LPSoC,A0,37.08,syn,325828,
+FPU0_add_fp32_16%,Gen9LPSoC,A0,30.12,syn,325828,
+FPU0_add_fp32_25%,Gen9LPSoC,A0,35.27,syn,325828,
+FPU0_add_fp32_34%,Gen9LPSoC,A0,36.55,syn,325828,
+FPU0_add_fp32_46%,Gen9LPSoC,A0,39.15,syn,325828,
+FPU0_add_fp32_65%,Gen9LPSoC,A0,40.11,syn,325828,
+FPU0_add_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_int16_16%,Gen9LPSoC,A0,17.88,syn,325828,
+FPU0_add_int16_29%,Gen9LPSoC,A0,22.47,syn,325828,
+FPU0_add_int16_35%,Gen9LPSoC,A0,23.89,syn,325828,
+FPU0_add_int16_50%,Gen9LPSoC,A0,27.52,syn,325828,
+FPU0_add_int16_77%,Gen9LPSoC,A0,33.74,syn,325828,
+FPU0_add_int32_16%,Gen9LPSoC,A0,17.85,syn,325828,
+FPU0_add_int32_27%,Gen9LPSoC,A0,21.97,syn,325828,
+FPU0_add_int32_35%,Gen9LPSoC,A0,24.96,syn,325828,
+FPU0_add_int32_50%,Gen9LPSoC,A0,29.3,syn,325828,
+FPU0_add_int32_77%,Gen9LPSoC,A0,36.66,syn,325828,
+FPU0_add_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_add_intbypass_16%,Gen9LPSoC,A0,9.57,syn,325828,Approximated with sim data
+FPU0_add_intbypass_25%,Gen9LPSoC,A0,11.78,syn,325828,Approximated with sim data
+FPU0_add_intbypass_35%,Gen9LPSoC,A0,13.38,syn,325828,Approximated with sim data
+FPU0_add_intbypass_46%,Gen9LPSoC,A0,15.7,syn,325828,Approximated with sim data
+FPU0_add_intbypass_65%,Gen9LPSoC,A0,19.65,syn,325828,Approximated with sim data
+FPU0_cmp_floatbypass_16%,Gen9LPSoC,A0,8.43,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_floatbypass_25%,Gen9LPSoC,A0,11.18,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_floatbypass_35%,Gen9LPSoC,A0,15.58,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_floatbypass_46%,Gen9LPSoC,A0,13.71,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_floatbypass_65%,Gen9LPSoC,A0,13.04,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp16_16%,Gen9LPSoC,A0,19.71,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp16_28%,Gen9LPSoC,A0,12.4,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp16_35%,Gen9LPSoC,A0,20.55,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp16_44%,Gen9LPSoC,A0,24.82,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp16_57%,Gen9LPSoC,A0,25.83,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp32_16%,Gen9LPSoC,A0,15.89,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp32_25%,Gen9LPSoC,A0,21.09,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp32_35%,Gen9LPSoC,A0,25.85,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp32_46%,Gen9LPSoC,A0,26.48,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp32_65%,Gen9LPSoC,A0,24.59,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_int16_16%,Gen9LPSoC,A0,15.98,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int16_29%,Gen9LPSoC,A0,16.8,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int16_35%,Gen9LPSoC,A0,24.43,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int16_50%,Gen9LPSoC,A0,31.92,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int16_77%,Gen9LPSoC,A0,36.89,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int32_16%,Gen9LPSoC,A0,17.22,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int32_27%,Gen9LPSoC,A0,18.99,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int32_35%,Gen9LPSoC,A0,22.55,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int32_50%,Gen9LPSoC,A0,30.68,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int32_77%,Gen9LPSoC,A0,21.14,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_cmp_intbypass_16%,Gen9LPSoC,A0,9.13,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_intbypass_25%,Gen9LPSoC,A0,10.07,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_intbypass_35%,Gen9LPSoC,A0,11.96,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_intbypass_46%,Gen9LPSoC,A0,16.27,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_cmp_intbypass_65%,Gen9LPSoC,A0,11.21,syn,325828,skl Cdyn weight * 0.94 (includes process and GC SF)
+FPU0_mac_floatbypass_16%,Gen9LPSoC,A0,37.12,syn,325828,No bypass in MAC
+FPU0_mac_floatbypass_25%,Gen9LPSoC,A0,39.61,syn,325828,No bypass in MAC
+FPU0_mac_floatbypass_35%,Gen9LPSoC,A0,34.03,syn,325828,No bypass in MAC
+FPU0_mac_floatbypass_46%,Gen9LPSoC,A0,36.34,syn,325828,No bypass in MAC
+FPU0_mac_floatbypass_65%,Gen9LPSoC,A0,38.19,syn,325828,No bypass in MAC
+FPU0_mac_fp16_16%,Gen9LPSoC,A0,27.56,syn,325828,
+FPU0_mac_fp16_28%,Gen9LPSoC,A0,26.63,syn,325828,
+FPU0_mac_fp16_35%,Gen9LPSoC,A0,29.58,syn,325828,
+FPU0_mac_fp16_44%,Gen9LPSoC,A0,30.04,syn,325828,
+FPU0_mac_fp16_57%,Gen9LPSoC,A0,29.37,syn,325828,
+FPU0_mac_fp32_16%,Gen9LPSoC,A0,37.12,syn,325828,
+FPU0_mac_fp32_25%,Gen9LPSoC,A0,39.61,syn,325828,
+FPU0_mac_fp32_35%,Gen9LPSoC,A0,34.03,syn,325828,
+FPU0_mac_fp32_46%,Gen9LPSoC,A0,36.34,syn,325828,
+FPU0_mac_fp32_65%,Gen9LPSoC,A0,38.19,syn,325828,
+FPU0_mac_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int16_16%,Gen9LPSoC,A0,42.52,syn,325828,
+FPU0_mac_int16_29%,Gen9LPSoC,A0,45.51,syn,325828,
+FPU0_mac_int16_35%,Gen9LPSoC,A0,46.36,syn,325828,
+FPU0_mac_int16_50%,Gen9LPSoC,A0,48.78,syn,325828,
+FPU0_mac_int16_77%,Gen9LPSoC,A0,52.62,syn,325828,
+FPU0_mac_int32_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int32_27%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int32_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int32_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int32_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_intbypass_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_intbypass_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_intbypass_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_intbypass_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mac_intbypass_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_floatbypass_16%,Gen9LPSoC,A0,18.07,syn,325828,Approximated with sim data
+FPU0_mad_floatbypass_25%,Gen9LPSoC,A0,20.67,syn,325828,Approximated with sim data
+FPU0_mad_floatbypass_35%,Gen9LPSoC,A0,22.33,syn,325828,Simulated
+FPU0_mad_floatbypass_46%,Gen9LPSoC,A0,26.48,syn,325828,Approximated with sim data
+FPU0_mad_floatbypass_65%,Gen9LPSoC,A0,26.75,syn,325828,Approximated with sim data
+FPU0_mad_fp16_16%,Gen9LPSoC,A0,36.91,syn,325828,
+FPU0_mad_fp16_28%,Gen9LPSoC,A0,40.92,syn,325828,
+FPU0_mad_fp16_35%,Gen9LPSoC,A0,43.16,syn,325828,
+FPU0_mad_fp16_44%,Gen9LPSoC,A0,47.93,syn,325828,
+FPU0_mad_fp16_57%,Gen9LPSoC,A0,52.69,syn,325828,
+FPU0_mad_fp32_16%,Gen9LPSoC,A0,47.93,syn,325828,
+FPU0_mad_fp32_25%,Gen9LPSoC,A0,54.83,syn,325828,
+FPU0_mad_fp32_35%,Gen9LPSoC,A0,59.24,syn,325828,
+FPU0_mad_fp32_46%,Gen9LPSoC,A0,70.26,syn,325828,
+FPU0_mad_fp32_65%,Gen9LPSoC,A0,70.97,syn,325828,
+FPU0_mad_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int16_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int16_29%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int16_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int16_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int16_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int32_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int32_27%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int32_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int32_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int32_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_intbypass_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_intbypass_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_intbypass_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_intbypass_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mad_intbypass_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_bypass_16%,Gen9LPSoC,A0,8.46,syn,325828,No bypass in Mov
+FPU0_mov_bypass_25%,Gen9LPSoC,A0,9.46,syn,325828,No bypass in Mov
+FPU0_mov_bypass_35%,Gen9LPSoC,A0,10.45,syn,325828,No bypass in Mov
+FPU0_mov_bypass_46%,Gen9LPSoC,A0,11.8,syn,325828,No bypass in Mov
+FPU0_mov_bypass_65%,Gen9LPSoC,A0,13.87,syn,325828,No bypass in Mov
+FPU0_mov_fp16_16%,Gen9LPSoC,A0,9.49,syn,325828,
+FPU0_mov_fp16_28%,Gen9LPSoC,A0,11.06,syn,325828,
+FPU0_mov_fp16_35%,Gen9LPSoC,A0,11.7,syn,325828,
+FPU0_mov_fp16_44%,Gen9LPSoC,A0,12.87,syn,325828,
+FPU0_mov_fp16_57%,Gen9LPSoC,A0,14.36,syn,325828,
+FPU0_mov_fp32_16%,Gen9LPSoC,A0,8.46,syn,325828,
+FPU0_mov_fp32_25%,Gen9LPSoC,A0,9.46,syn,325828,
+FPU0_mov_fp32_35%,Gen9LPSoC,A0,10.45,syn,325828,
+FPU0_mov_fp32_46%,Gen9LPSoC,A0,11.8,syn,325828,
+FPU0_mov_fp32_65%,Gen9LPSoC,A0,13.87,syn,325828,
+FPU0_mov_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_int16_16%,Gen9LPSoC,A0,8.75,syn,325828,
+FPU0_mov_int16_29%,Gen9LPSoC,A0,10.24,syn,325828,
+FPU0_mov_int16_35%,Gen9LPSoC,A0,10.92,syn,325828,
+FPU0_mov_int16_50%,Gen9LPSoC,A0,12.55,syn,325828,
+FPU0_mov_int16_77%,Gen9LPSoC,A0,15.64,syn,325828,
+FPU0_mov_int32_16%,Gen9LPSoC,A0,8.57,syn,325828,
+FPU0_mov_int32_27%,Gen9LPSoC,A0,9.53,syn,325828,
+FPU0_mov_int32_35%,Gen9LPSoC,A0,10.52,syn,325828,
+FPU0_mov_int32_50%,Gen9LPSoC,A0,12.05,syn,325828,
+FPU0_mov_int32_77%,Gen9LPSoC,A0,14.86,syn,325828,
+FPU0_mov_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mov_intbypass_16%,Gen9LPSoC,A0,8.57,syn,325828,
+FPU0_mov_intbypass_25%,Gen9LPSoC,A0,9.53,syn,325828,
+FPU0_mov_intbypass_35%,Gen9LPSoC,A0,10.52,syn,325828,
+FPU0_mov_intbypass_46%,Gen9LPSoC,A0,12.05,syn,325828,
+FPU0_mov_intbypass_65%,Gen9LPSoC,A0,14.86,syn,325828,
+FPU0_mul_floatbypass_16%,Gen9LPSoC,A0,7.13,syn,325828,Approximated with sim data
+FPU0_mul_floatbypass_25%,Gen9LPSoC,A0,7.98,syn,325828,Approximated with sim data
+FPU0_mul_floatbypass_35%,Gen9LPSoC,A0,8.85,syn,325828,Simulated
+FPU0_mul_floatbypass_46%,Gen9LPSoC,A0,9.8,syn,325828,Approximated with sim data
+FPU0_mul_floatbypass_65%,Gen9LPSoC,A0,10.69,syn,325828,Approximated with sim data
+FPU0_mul_fp16_16%,Gen9LPSoC,A0,26.45,syn,325828,
+FPU0_mul_fp16_28%,Gen9LPSoC,A0,31.93,syn,325828,
+FPU0_mul_fp16_35%,Gen9LPSoC,A0,33.88,syn,325828,
+FPU0_mul_fp16_44%,Gen9LPSoC,A0,36.87,syn,325828,
+FPU0_mul_fp16_57%,Gen9LPSoC,A0,39.15,syn,325828,
+FPU0_mul_fp32_16%,Gen9LPSoC,A0,36.41,syn,325828,
+FPU0_mul_fp32_25%,Gen9LPSoC,A0,40.78,syn,325828,
+FPU0_mul_fp32_35%,Gen9LPSoC,A0,45.23,syn,325828,
+FPU0_mul_fp32_46%,Gen9LPSoC,A0,50.06,syn,325828,
+FPU0_mul_fp32_65%,Gen9LPSoC,A0,54.61,syn,325828,
+FPU0_mul_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_int16_16%,Gen9LPSoC,A0,32.53,syn,325828,
+FPU0_mul_int16_29%,Gen9LPSoC,A0,39.08,syn,325828,
+FPU0_mul_int16_35%,Gen9LPSoC,A0,40.96,syn,325828,
+FPU0_mul_int16_50%,Gen9LPSoC,A0,46.26,syn,325828,
+FPU0_mul_int16_77%,Gen9LPSoC,A0,53.33,syn,325828,
+FPU0_mul_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_mul_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_floatbypass_25%,Gen9LPSoC,A0,45.62,syn,325828,No bypass in PLN
+FPU0_pln_floatbypass_35%,Gen9LPSoC,A0,47.47,syn,325828,No bypass in PLN
+FPU0_pln_floatbypass_46%,Gen9LPSoC,A0,50.99,syn,325828,No bypass in PLN
+FPU0_pln_floatbypass_65%,Gen9LPSoC,A0,55.89,syn,325828,No bypass in PLN
+FPU0_pln_floatbypass_7%,Gen9LPSoC,A0,40.21,syn,325828,No bypass in PLN
+FPU0_pln_fp16_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp16_28%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp16_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp16_44%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp16_57%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp32_11%,Gen9LPSoC,A0,45.62,syn,325828,
+FPU0_pln_fp32_15%,Gen9LPSoC,A0,47.47,syn,325828,
+FPU0_pln_fp32_21%,Gen9LPSoC,A0,50.99,syn,325828,
+FPU0_pln_fp32_30%,Gen9LPSoC,A0,55.89,syn,325828,
+FPU0_pln_fp32_7%,Gen9LPSoC,A0,40.21,syn,325828,
+FPU0_pln_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int16_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int16_29%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int16_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int16_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int16_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int32_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int32_27%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int32_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int32_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int32_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_intbypass_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_intbypass_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_intbypass_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_intbypass_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_pln_intbypass_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_floatbypass_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_floatbypass_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_floatbypass_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_floatbypass_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_floatbypass_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp16_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp16_28%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp16_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp16_44%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp16_57%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp32_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp32_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp32_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp32_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp32_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int16_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int16_29%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int16_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int16_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int16_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int32_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int32_27%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int32_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int32_50%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int32_77%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_intbypass_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_intbypass_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_intbypass_35%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_intbypass_46%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sad_intbypass_65%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_bypass_16%,Gen9LPSoC,A0,16.07,syn,325828,No bypass in SEL
+FPU0_sel_bypass_25%,Gen9LPSoC,A0,20.3,syn,325828,No bypass in SEL
+FPU0_sel_bypass_35%,Gen9LPSoC,A0,24.39,syn,325828,No bypass in SEL
+FPU0_sel_bypass_46%,Gen9LPSoC,A0,28.23,syn,325828,No bypass in SEL
+FPU0_sel_bypass_65%,Gen9LPSoC,A0,33.85,syn,325828,No bypass in SEL
+FPU0_sel_fp16_16%,Gen9LPSoC,A0,20.66,syn,325828,
+FPU0_sel_fp16_28%,Gen9LPSoC,A0,28.27,syn,325828,
+FPU0_sel_fp16_35%,Gen9LPSoC,A0,29.62,syn,325828,
+FPU0_sel_fp16_44%,Gen9LPSoC,A0,32.43,syn,325828,
+FPU0_sel_fp16_57%,Gen9LPSoC,A0,35.91,syn,325828,
+FPU0_sel_fp32_16%,Gen9LPSoC,A0,16.07,syn,325828,
+FPU0_sel_fp32_25%,Gen9LPSoC,A0,20.3,syn,325828,
+FPU0_sel_fp32_35%,Gen9LPSoC,A0,24.39,syn,325828,
+FPU0_sel_fp32_46%,Gen9LPSoC,A0,28.23,syn,325828,
+FPU0_sel_fp32_65%,Gen9LPSoC,A0,33.85,syn,325828,
+FPU0_sel_fp64_11%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_fp64_16%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_fp64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_fp64_20%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_fp64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_int16_16%,Gen9LPSoC,A0,15.08,syn,325828,
+FPU0_sel_int16_29%,Gen9LPSoC,A0,20.09,syn,325828,
+FPU0_sel_int16_35%,Gen9LPSoC,A0,22.04,syn,325828,
+FPU0_sel_int16_50%,Gen9LPSoC,A0,26.7,syn,325828,
+FPU0_sel_int16_77%,Gen9LPSoC,A0,35.38,syn,325828,
+FPU0_sel_int32_16%,Gen9LPSoC,A0,16.75,syn,325828,
+FPU0_sel_int32_27%,Gen9LPSoC,A0,20.41,syn,325828,
+FPU0_sel_int32_35%,Gen9LPSoC,A0,24.43,syn,325828,
+FPU0_sel_int32_50%,Gen9LPSoC,A0,30.04,syn,325828,
+FPU0_sel_int32_77%,Gen9LPSoC,A0,39.96,syn,325828,
+FPU0_sel_int64_12%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_int64_18%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_int64_22%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_int64_25%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_int64_30%,Gen9LPSoC,A0,0,syn,325828,Unsupported combination
+FPU0_sel_intbypass_16%,Gen9LPSoC,A0,16.75,syn,325828,No bypass in SEL
+FPU0_sel_intbypass_25%,Gen9LPSoC,A0,20.41,syn,325828,No bypass in SEL
+FPU0_sel_intbypass_35%,Gen9LPSoC,A0,24.43,syn,325828,No bypass in SEL
+FPU0_sel_intbypass_46%,Gen9LPSoC,A0,30.04,syn,325828,No bypass in SEL
+FPU0_sel_intbypass_65%,Gen9LPSoC,A0,39.96,syn,325828,No bypass in SEL
+FPU1_add_floatbypass_16%,Gen9LPSoC,A0,14.69,syn,333931,Approximated with sim data
+FPU1_add_floatbypass_25%,Gen9LPSoC,A0,17.38,syn,333931,Approximated with sim data
+FPU1_add_floatbypass_35%,Gen9LPSoC,A0,17.96,syn,333931,Simulated
+FPU1_add_floatbypass_46%,Gen9LPSoC,A0,19.16,syn,333931,Approximated with sim data
+FPU1_add_floatbypass_65%,Gen9LPSoC,A0,19.44,syn,333931,Approximated with sim data
+FPU1_add_fp16_16%,Gen9LPSoC,A0,30.83,syn,333931,
+FPU1_add_fp16_28%,Gen9LPSoC,A0,29.87,syn,333931,
+FPU1_add_fp16_35%,Gen9LPSoC,A0,32.39,syn,333931,
+FPU1_add_fp16_44%,Gen9LPSoC,A0,35.52,syn,333931,
+FPU1_add_fp16_57%,Gen9LPSoC,A0,35.84,syn,333931,
+FPU1_add_fp32_16%,Gen9LPSoC,A0,28.94,syn,333931,
+FPU1_add_fp32_25%,Gen9LPSoC,A0,34.24,syn,333931,
+FPU1_add_fp32_35%,Gen9LPSoC,A0,35.38,syn,333931,
+FPU1_add_fp32_46%,Gen9LPSoC,A0,37.76,syn,333931,
+FPU1_add_fp32_65%,Gen9LPSoC,A0,38.29,syn,333931,
+FPU1_add_fp64_11%,Gen9LPSoC,A0,21.8,syn,333931,
+FPU1_add_fp64_16%,Gen9LPSoC,A0,23.43,syn,333931,
+FPU1_add_fp64_18%,Gen9LPSoC,A0,25.85,syn,333931,
+FPU1_add_fp64_20%,Gen9LPSoC,A0,28.2,syn,333931,
+FPU1_add_fp64_25%,Gen9LPSoC,A0,29.8,syn,333931,
+FPU1_add_int16_16%,Gen9LPSoC,A0,15,syn,333931,
+FPU1_add_int16_29%,Gen9LPSoC,A0,18.92,syn,333931,
+FPU1_add_int16_35%,Gen9LPSoC,A0,20.44,syn,333931,
+FPU1_add_int16_50%,Gen9LPSoC,A0,23.54,syn,333931,
+FPU1_add_int16_77%,Gen9LPSoC,A0,28.84,syn,333931,
+FPU1_add_int32_16%,Gen9LPSoC,A0,15.22,syn,333931,
+FPU1_add_int32_27%,Gen9LPSoC,A0,18.38,syn,333931,
+FPU1_add_int32_35%,Gen9LPSoC,A0,21.12,syn,333931,
+FPU1_add_int32_50%,Gen9LPSoC,A0,25,syn,333931,
+FPU1_add_int32_77%,Gen9LPSoC,A0,31.4,syn,333931,
+FPU1_add_int64_12%,Gen9LPSoC,A0,16.43,syn,333931,
+FPU1_add_int64_18%,Gen9LPSoC,A0,18.81,syn,333931,
+FPU1_add_int64_22%,Gen9LPSoC,A0,21.23,syn,333931,
+FPU1_add_int64_25%,Gen9LPSoC,A0,24,syn,333931,
+FPU1_add_int64_30%,Gen9LPSoC,A0,28.09,syn,333931,
+FPU1_add_intbypass_16%,Gen9LPSoC,A0,7.72,syn,333931,Approximated with sim data
+FPU1_add_intbypass_25%,Gen9LPSoC,A0,9.33,syn,333931,Approximated with sim data
+FPU1_add_intbypass_35%,Gen9LPSoC,A0,10.72,syn,333931,Approximated with sim data
+FPU1_add_intbypass_46%,Gen9LPSoC,A0,12.69,syn,333931,Approximated with sim data
+FPU1_add_intbypass_65%,Gen9LPSoC,A0,15.93,syn,333931,Approximated with sim data
+FPU1_cmp_floatbypass_16%,Gen9LPSoC,A0,2.2,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_floatbypass_25%,Gen9LPSoC,A0,2.81,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_floatbypass_35%,Gen9LPSoC,A0,4.63,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_floatbypass_46%,Gen9LPSoC,A0,3.74,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_floatbypass_65%,Gen9LPSoC,A0,4.4,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp16_16%,Gen9LPSoC,A0,17.66,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp16_28%,Gen9LPSoC,A0,22.71,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp16_35%,Gen9LPSoC,A0,18.36,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp16_44%,Gen9LPSoC,A0,22.95,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp16_57%,Gen9LPSoC,A0,23.09,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp32_16%,Gen9LPSoC,A0,10.98,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp32_25%,Gen9LPSoC,A0,14.04,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp32_35%,Gen9LPSoC,A0,23.1,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp32_46%,Gen9LPSoC,A0,18.67,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp32_65%,Gen9LPSoC,A0,21.98,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp64_11%,Gen9LPSoC,A0,20.12,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp64_16%,Gen9LPSoC,A0,23.2,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp64_18%,Gen9LPSoC,A0,24.49,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp64_20%,Gen9LPSoC,A0,29.66,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_fp64_25%,Gen9LPSoC,A0,30.83,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int16_16%,Gen9LPSoC,A0,14.07,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int16_29%,Gen9LPSoC,A0,19.37,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int16_35%,Gen9LPSoC,A0,21.83,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int16_50%,Gen9LPSoC,A0,16.58,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int16_77%,Gen9LPSoC,A0,32.96,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int32_16%,Gen9LPSoC,A0,11.07,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int32_27%,Gen9LPSoC,A0,16.85,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int32_35%,Gen9LPSoC,A0,20.15,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int32_50%,Gen9LPSoC,A0,20.05,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int32_77%,Gen9LPSoC,A0,18.89,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int64_12%,Gen9LPSoC,A0,15.3,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int64_18%,Gen9LPSoC,A0,17.71,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int64_22%,Gen9LPSoC,A0,19.65,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int64_25%,Gen9LPSoC,A0,22.07,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_int64_30%,Gen9LPSoC,A0,26.29,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_intbypass_16%,Gen9LPSoC,A0,2.22,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_intbypass_25%,Gen9LPSoC,A0,3.37,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_intbypass_35%,Gen9LPSoC,A0,4.04,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_intbypass_46%,Gen9LPSoC,A0,4.02,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_cmp_intbypass_65%,Gen9LPSoC,A0,3.78,syn,333931,skl Cdyn weight * 0.84 (includes process and GC SF)
+FPU1_mac_floatbypass_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_floatbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_floatbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_floatbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_floatbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp16_28%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp16_44%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp16_57%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp32_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp32_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp32_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp32_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp64_11%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp64_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp64_20%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_fp64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int16_29%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int16_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int16_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int32_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int32_27%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int32_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int32_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int64_12%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int64_22%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_int64_30%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_intbypass_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_intbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_intbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_intbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mac_intbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_floatbypass_16%,Gen9LPSoC,A0,16.92,syn,333931,Approximated with sim data
+FPU1_mad_floatbypass_25%,Gen9LPSoC,A0,19.41,syn,333931,Approximated with sim data
+FPU1_mad_floatbypass_35%,Gen9LPSoC,A0,21.23,syn,333931,Simulated
+FPU1_mad_floatbypass_46%,Gen9LPSoC,A0,25.26,syn,333931,Approximated with sim data
+FPU1_mad_floatbypass_65%,Gen9LPSoC,A0,25.33,syn,333931,Approximated with sim data
+FPU1_mad_fp16_16%,Gen9LPSoC,A0,35.73,syn,333931,
+FPU1_mad_fp16_28%,Gen9LPSoC,A0,39.72,syn,333931,
+FPU1_mad_fp16_35%,Gen9LPSoC,A0,42.31,syn,333931,
+FPU1_mad_fp16_44%,Gen9LPSoC,A0,46.51,syn,333931,
+FPU1_mad_fp16_57%,Gen9LPSoC,A0,51.73,syn,333931,
+FPU1_mad_fp32_16%,Gen9LPSoC,A0,47.08,syn,333931,
+FPU1_mad_fp32_25%,Gen9LPSoC,A0,54.01,syn,333931,
+FPU1_mad_fp32_35%,Gen9LPSoC,A0,59.06,syn,333931,
+FPU1_mad_fp32_46%,Gen9LPSoC,A0,70.29,syn,333931,
+FPU1_mad_fp32_65%,Gen9LPSoC,A0,70.47,syn,333931,
+FPU1_mad_fp64_11%,Gen9LPSoC,A0,43.84,syn,333931,
+FPU1_mad_fp64_16%,Gen9LPSoC,A0,51.09,syn,333931,
+FPU1_mad_fp64_18%,Gen9LPSoC,A0,55.86,syn,333931,
+FPU1_mad_fp64_20%,Gen9LPSoC,A0,59.52,syn,333931,
+FPU1_mad_fp64_25%,Gen9LPSoC,A0,64.57,syn,333931,
+FPU1_mad_int16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int16_29%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int16_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int16_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int32_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int32_27%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int32_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int32_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int64_12%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int64_22%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_int64_30%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_intbypass_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_intbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_intbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_intbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mad_intbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_mov_bypass_16%,Gen9LPSoC,A0,8.36,syn,333931,
+FPU1_mov_bypass_25%,Gen9LPSoC,A0,9.24,syn,333931,
+FPU1_mov_bypass_35%,Gen9LPSoC,A0,10.13,syn,333931,
+FPU1_mov_bypass_46%,Gen9LPSoC,A0,11.45,syn,333931,
+FPU1_mov_bypass_65%,Gen9LPSoC,A0,13.51,syn,333931,
+FPU1_mov_fp16_16%,Gen9LPSoC,A0,9.03,syn,333931,
+FPU1_mov_fp16_28%,Gen9LPSoC,A0,10.35,syn,333931,
+FPU1_mov_fp16_35%,Gen9LPSoC,A0,10.95,syn,333931,
+FPU1_mov_fp16_44%,Gen9LPSoC,A0,12.05,syn,333931,
+FPU1_mov_fp16_57%,Gen9LPSoC,A0,13.4,syn,333931,
+FPU1_mov_fp32_16%,Gen9LPSoC,A0,8.36,syn,333931,
+FPU1_mov_fp32_25%,Gen9LPSoC,A0,9.24,syn,333931,
+FPU1_mov_fp32_35%,Gen9LPSoC,A0,10.13,syn,333931,
+FPU1_mov_fp32_46%,Gen9LPSoC,A0,11.45,syn,333931,
+FPU1_mov_fp32_65%,Gen9LPSoC,A0,13.51,syn,333931,
+FPU1_mov_fp64_11%,Gen9LPSoC,A0,13.3,syn,333931,
+FPU1_mov_fp64_16%,Gen9LPSoC,A0,14.58,syn,333931,
+FPU1_mov_fp64_18%,Gen9LPSoC,A0,15.93,syn,333931,
+FPU1_mov_fp64_20%,Gen9LPSoC,A0,17.78,syn,333931,
+FPU1_mov_fp64_25%,Gen9LPSoC,A0,20.41,syn,333931,
+FPU1_mov_int16_16%,Gen9LPSoC,A0,8.39,syn,333931,
+FPU1_mov_int16_29%,Gen9LPSoC,A0,9.71,syn,333931,
+FPU1_mov_int16_35%,Gen9LPSoC,A0,10.31,syn,333931,
+FPU1_mov_int16_50%,Gen9LPSoC,A0,11.8,syn,333931,
+FPU1_mov_int16_77%,Gen9LPSoC,A0,14.58,syn,333931,
+FPU1_mov_int32_16%,Gen9LPSoC,A0,8.36,syn,333931,
+FPU1_mov_int32_27%,Gen9LPSoC,A0,9.39,syn,333931,
+FPU1_mov_int32_35%,Gen9LPSoC,A0,10.28,syn,333931,
+FPU1_mov_int32_50%,Gen9LPSoC,A0,11.84,syn,333931,
+FPU1_mov_int32_77%,Gen9LPSoC,A0,14.58,syn,333931,
+FPU1_mov_int64_12%,Gen9LPSoC,A0,13.37,syn,333931,
+FPU1_mov_int64_18%,Gen9LPSoC,A0,14.68,syn,333931,
+FPU1_mov_int64_22%,Gen9LPSoC,A0,18.84,syn,333931,
+FPU1_mov_int64_25%,Gen9LPSoC,A0,18.84,syn,333931,
+FPU1_mov_int64_30%,Gen9LPSoC,A0,21.51,syn,333931,
+FPU1_mov_intbypass_16%,Gen9LPSoC,A0,8.36,syn,333931,
+FPU1_mov_intbypass_25%,Gen9LPSoC,A0,9.39,syn,333931,
+FPU1_mov_intbypass_35%,Gen9LPSoC,A0,10.28,syn,333931,
+FPU1_mov_intbypass_46%,Gen9LPSoC,A0,11.84,syn,333931,
+FPU1_mov_intbypass_65%,Gen9LPSoC,A0,14.58,syn,333931,
+FPU1_mul_floatbypass_16%,Gen9LPSoC,A0,6.99,syn,333931,Approximated with sim data
+FPU1_mul_floatbypass_25%,Gen9LPSoC,A0,7.86,syn,333931,Approximated with sim data
+FPU1_mul_floatbypass_35%,Gen9LPSoC,A0,8.71,syn,333931,Simulated
+FPU1_mul_floatbypass_46%,Gen9LPSoC,A0,9.8,syn,333931,Approximated with sim data
+FPU1_mul_floatbypass_65%,Gen9LPSoC,A0,10.63,syn,333931,Approximated with sim data
+FPU1_mul_fp16_16%,Gen9LPSoC,A0,25.03,syn,333931,
+FPU1_mul_fp16_28%,Gen9LPSoC,A0,30.22,syn,333931,
+FPU1_mul_fp16_35%,Gen9LPSoC,A0,32.39,syn,333931,
+FPU1_mul_fp16_44%,Gen9LPSoC,A0,35.84,syn,333931,
+FPU1_mul_fp16_57%,Gen9LPSoC,A0,37.9,syn,333931,
+FPU1_mul_fp32_16%,Gen9LPSoC,A0,36.02,syn,333931,
+FPU1_mul_fp32_25%,Gen9LPSoC,A0,40.5,syn,333931,
+FPU1_mul_fp32_35%,Gen9LPSoC,A0,44.91,syn,333931,
+FPU1_mul_fp32_46%,Gen9LPSoC,A0,50.52,syn,333931,
+FPU1_mul_fp32_65%,Gen9LPSoC,A0,54.79,syn,333931,
+FPU1_mul_fp64_11%,Gen9LPSoC,A0,39.5,syn,333931,
+FPU1_mul_fp64_16%,Gen9LPSoC,A0,45.72,syn,333931,
+FPU1_mul_fp64_18%,Gen9LPSoC,A0,50.2,syn,333931,
+FPU1_mul_fp64_20%,Gen9LPSoC,A0,54.15,syn,333931,
+FPU1_mul_fp64_25%,Gen9LPSoC,A0,58.24,syn,333931,
+FPU1_mul_int16_16%,Gen9LPSoC,A0,28.27,syn,333931,
+FPU1_mul_int16_29%,Gen9LPSoC,A0,33.28,syn,333931,
+FPU1_mul_int16_35%,Gen9LPSoC,A0,35.59,syn,333931,
+FPU1_mul_int16_50%,Gen9LPSoC,A0,39.54,syn,333931,
+FPU1_mul_int16_77%,Gen9LPSoC,A0,45.72,syn,333931,
+FPU1_pln_floatbypass_25%,Gen9LPSoC,A0,46.04,syn,333931,No bypass in PLN
+FPU1_pln_floatbypass_35%,Gen9LPSoC,A0,47.57,syn,333931,No bypass in PLN
+FPU1_pln_floatbypass_46%,Gen9LPSoC,A0,51.8,syn,333931,No bypass in PLN
+FPU1_pln_floatbypass_65%,Gen9LPSoC,A0,56.25,syn,333931,No bypass in PLN
+FPU1_pln_floatbypass_7%,Gen9LPSoC,A0,40.36,syn,333931,No bypass in PLN
+FPU1_pln_fp16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp16_28%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp16_44%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp16_57%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp32_11%,Gen9LPSoC,A0,46.04,syn,333931,
+FPU1_pln_fp32_15%,Gen9LPSoC,A0,47.57,syn,333931,
+FPU1_pln_fp32_21%,Gen9LPSoC,A0,51.8,syn,333931,
+FPU1_pln_fp32_30%,Gen9LPSoC,A0,56.25,syn,333931,
+FPU1_pln_fp32_7%,Gen9LPSoC,A0,40.36,syn,333931,
+FPU1_pln_fp64_10%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp64_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp64_20%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_fp64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int16_10%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int16_29%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int16_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int16_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int32_10%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int32_27%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int32_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int32_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int64_10%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int64_22%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_int64_30%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_intbypass_10%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_intbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_intbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_intbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_pln_intbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_floatbypass_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_floatbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_floatbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_floatbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_floatbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp16_28%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp16_44%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp16_57%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp32_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp32_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp32_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp32_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp64_11%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp64_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp64_20%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_fp64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int16_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int16_29%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int16_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int16_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int16_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int32_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int32_27%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int32_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int32_50%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int32_77%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int64_12%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int64_18%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int64_22%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int64_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_int64_30%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_intbypass_16%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_intbypass_25%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_intbypass_35%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_intbypass_46%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sad_intbypass_65%,Gen9LPSoC,A0,0,syn,333931,Unsupported combination
+FPU1_sel_bypass_16%,Gen9LPSoC,A0,15.22,syn,333931,No bypass in SEL
+FPU1_sel_bypass_25%,Gen9LPSoC,A0,18.81,syn,333931,No bypass in SEL
+FPU1_sel_bypass_35%,Gen9LPSoC,A0,23,syn,333931,No bypass in SEL
+FPU1_sel_bypass_46%,Gen9LPSoC,A0,26.52,syn,333931,No bypass in SEL
+FPU1_sel_bypass_65%,Gen9LPSoC,A0,32.18,syn,333931,No bypass in SEL
+FPU1_sel_fp16_16%,Gen9LPSoC,A0,19.41,syn,333931,
+FPU1_sel_fp16_28%,Gen9LPSoC,A0,26.38,syn,333931,
+FPU1_sel_fp16_35%,Gen9LPSoC,A0,27.77,syn,333931,
+FPU1_sel_fp16_44%,Gen9LPSoC,A0,30.26,syn,333931,
+FPU1_sel_fp16_57%,Gen9LPSoC,A0,33.56,syn,333931,
+FPU1_sel_fp32_16%,Gen9LPSoC,A0,15.22,syn,333931,
+FPU1_sel_fp32_25%,Gen9LPSoC,A0,18.81,syn,333931,
+FPU1_sel_fp32_35%,Gen9LPSoC,A0,23,syn,333931,
+FPU1_sel_fp32_46%,Gen9LPSoC,A0,26.52,syn,333931,
+FPU1_sel_fp32_65%,Gen9LPSoC,A0,32.18,syn,333931,
+FPU1_sel_fp64_11%,Gen9LPSoC,A0,19.34,syn,333931,
+FPU1_sel_fp64_16%,Gen9LPSoC,A0,21.8,syn,333931,
+FPU1_sel_fp64_18%,Gen9LPSoC,A0,24.85,syn,333931,
+FPU1_sel_fp64_20%,Gen9LPSoC,A0,28.62,syn,333931,
+FPU1_sel_fp64_25%,Gen9LPSoC,A0,31.93,syn,333931,
+FPU1_sel_int16_16%,Gen9LPSoC,A0,12.98,syn,333931,
+FPU1_sel_int16_29%,Gen9LPSoC,A0,16.92,syn,333931,
+FPU1_sel_int16_35%,Gen9LPSoC,A0,18.84,syn,333931,
+FPU1_sel_int16_50%,Gen9LPSoC,A0,23,syn,333931,
+FPU1_sel_int16_77%,Gen9LPSoC,A0,30.65,syn,333931,
+FPU1_sel_int32_16%,Gen9LPSoC,A0,13.58,syn,333931,
+FPU1_sel_int32_27%,Gen9LPSoC,A0,17.21,syn,333931,
+FPU1_sel_int32_35%,Gen9LPSoC,A0,19.98,syn,333931,
+FPU1_sel_int32_50%,Gen9LPSoC,A0,24.85,syn,333931,
+FPU1_sel_int32_77%,Gen9LPSoC,A0,33,syn,333931,
+FPU1_sel_int64_12%,Gen9LPSoC,A0,15.96,syn,333931,
+FPU1_sel_int64_18%,Gen9LPSoC,A0,18.42,syn,333931,
+FPU1_sel_int64_22%,Gen9LPSoC,A0,20.87,syn,333931,
+FPU1_sel_int64_25%,Gen9LPSoC,A0,24.53,syn,333931,
+FPU1_sel_int64_30%,Gen9LPSoC,A0,29.62,syn,333931,
+FPU1_sel_intbypass_16%,Gen9LPSoC,A0,13.58,syn,333931,No bypass in SEL
+FPU1_sel_intbypass_25%,Gen9LPSoC,A0,17.21,syn,333931,No bypass in SEL
+FPU1_sel_intbypass_35%,Gen9LPSoC,A0,19.98,syn,333931,No bypass in SEL
+FPU1_sel_intbypass_46%,Gen9LPSoC,A0,24.85,syn,333931,No bypass in SEL
+FPU1_sel_intbypass_65%,Gen9LPSoC,A0,33,syn,333931,No bypass in SEL
 PS0_AVS,Gen9LPSoC,B0,0.986777778,syn,853458.73,
 PS0_AVS_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_BC,Gen9LPSoC,B0,1.093777778,syn,643832.52,
