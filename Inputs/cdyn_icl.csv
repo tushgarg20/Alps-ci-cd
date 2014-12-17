@@ -1412,7 +1412,7 @@ PS2_BC_FLOWTHROUGH,Gen9LPClient,A0,11.58,syn,625183.58,1% TR
 PS2_CC_DIS,Gen9LPClient,A0,49.63,syn,587436.82,8% TR
 PS2_CC_EN_PARTIALS,Gen9LPClient,A0,40.31,syn,587436.82,3% TR
 PS2_CC_EN_WRITES,Gen9LPClient,A0,64.68,syn,587436.82,8% TR 
-PS2_CL,Gen9LPClient,A0,0,syn,1148212.05,State needs to be changed
+PS2_CL,Gen9LPClient,A0,75.44,syn,1148212.05,State needs to be changed
 PS2_CL_MustClip,Gen9LPClient,A0,63.07,syn,1148212.05,No TR information
 PS2_CL_NoMustClip,Gen9LPClient,A0,186.84,syn,1148212.05,No TR information
 PS2_ClockSpine,Gen9LPClient,A0,337,ebb,1,Taken from tttt 0.58 x1r2
@@ -3530,3 +3530,78 @@ PS2_VF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
 PS2_VF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
 PS2_VS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
 PS2_VS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,
+PS2_rVF_Cache_Read,Gen9LPSoC,A0,1.007971014,ebb,1,
+PS2_rVF_Cache_Write,Gen9LPSoC,A0,1.045652174,ebb,1,
+PS2_rVF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
+PS2_rVF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
+PS2_rVS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
+PS2_rVS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,
+PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,12.68804734,syn,1,Taken fromCNL TNET3 CGEN data
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,11.81664211,syn,1,Taken fromCNL TNET3 CGEN data
+PS0_rFF_rOTHER_DOP,Gen10LP,A0,9.156567999,syn,1,Taken fromCNL TNET3 CGEN data
+PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,48.57546746,syn,1,Taken fromCNL TNET3 CGEN data
+PS2_rFF_rOTHER_DOP,Gen10LP,A0,24.51566272,syn,1,Taken fromCNL TNET3 CGEN data
+PS2_rVF_Cache_Read,Gen10LP,A0,2.61,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen10LP,A0,3.16,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Read,Gen10LP,A0,2.03,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen10LP,A0,2.48,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVS_Cache_Read,Gen10LP,A0,1.28,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen10LP,A0,2.44,ebb,1,32 bits assumed. Need to check with gSim.
+PS0_rVF,Gen9LPClient,A0,3.7,syn,708559.16,
+PS0_rVF_Cache_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_rVF_DOP,Gen9LPClient,A0,0,syn,708559.16,
+PS0_rVF_URBFifo_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_rVFBE1,Gen9LPClient,C0,0.721,syn,527927,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rVFBE1_DOP,Gen9LPClient,A0,0,syn,527906.24,
+PS0_rVFBE2,Gen9LPClient,C0,0.505,syn,524391,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rVFBE2_DOP,Gen9LPClient,A0,0,syn,524341.77,
+PS0_rVS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS0_rVSBE,Gen9LPClient,A0,1.25,syn,628935.09,
+PS0_rVSBE_DOP,Gen9LPClient,A0,0,syn,628935.09,
+PS0_rVSFE,Gen9LPClient,C0,0.577,syn,394370,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rVSFE_DOP,Gen9LPClient,A0,0,syn,394384.07,
+PS1_rVF,Gen9LPClient,C0,15.402,syn,711804,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_rVFBE1,Gen9LPClient,C0,5.43,syn,527927,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_rVFBE2,Gen9LPClient,C0,5.19,syn,524391,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_rVSBE,Gen9LPClient,A0,31.33,syn,628935.09,
+PS1_rVSFE,Gen9LPClient,C0,6.56,syn,394370,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_rVF_Cache_Read,Gen9LPClient,A0,3.76,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen9LPClient,A0,3.74,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Control,Gen9LPClient,C0,15.402,syn,711804,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_rVF_Dropped,Gen9LPClient,C0,15.402,syn,711804,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_rVF_Indexed,Gen9LPClient,A0,64.28,syn,708559.16,1.3% TR 66% hit perf test
+PS2_rVF_Sequential,Gen9LPClient,A0,53.08,syn,708559.16,1.3% TR 0% hit perf test
+PS2_rVF_URBFifo_Read,Gen9LPClient,A0,3.02,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen9LPClient,A0,3.2,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVFBE1,Gen9LPClient,A0,42.29,syn,527906.24,Using 66hit test 29.5 to 29.9ns
+PS2_rVFBE2,Gen9LPClient,A0,40.78,syn,524341.77,Using 66hit test 29.5 to 29.9ns
+PS2_rVS_Cache_Read,Gen9LPClient,A0,2.47,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen9LPClient,A0,4.5,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVSBE,Gen9LPClient,A0,98.4,syn,628935.09,
+PS2_rVSFE,Gen9LPClient,A0,58.4,syn,394384.07,Using 66hit test 29.5 to 29.9ns
+PS0_rCL,Gen9LPClient,C0,5.31,syn,1150675,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rCL_DOP,Gen9LPClient,A0,0,syn,1148212.05,
+PS1_rCL,Gen9LPClient,C0,27.585,syn,1150675,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_rCL,Gen9LPClient,A0,75.44,syn,1148212.05,State needs to be changed
+PS2_rCL_MustClip,Gen9LPClient,A0,63.07,syn,1148212.05,No TR information
+PS2_rCL_NoMustClip,Gen9LPClient,A0,186.84,syn,1148212.05,No TR information
+PS0_rSF,Gen9LPClient,A0,2.94,syn,1188962.87,
+PS0_rSF_DOP,Gen9LPClient,A0,0,syn,1188962.87,
+PS1_rSF,Gen9LPClient,C0,11.678,syn,1189150,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_rSF_Culled,Gen9LPClient,A0,90.91,syn,1188962.87,No TR information
+PS2_rSF_NotCulled_FastClip,Gen9LPClient,A0,181.06,syn,1188962.87,No TR information
+PS2_rSF_NotCulled_NotFastClip,Gen9LPClient,A0,241.5,syn,1188962.87,No TR information
+PS0_rFF_rOTHER_CLKGLUE,Gen9LPClient,C0,35.925,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen9LPClient,C0,14.792,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_DFX,Gen9LPClient,C0,3.965,syn,269084,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_DFX_DOP,Gen9LPClient,C0,1.967,syn,269084,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_DOP,Gen9LPClient,C0,8.96,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_NONCLKGLUE,Gen9LPClient,C0,3.801,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen9LPClient,C0,1.391,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS2_rFF_rOTHER_CLKGLUE,Gen9LPClient,C0,35.925,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS2_rFF_rOTHER_DFX,Gen9LPClient,C0,3.965,syn,269084,Taken from SKL C0 ECO1 GT3 CGEN data
+PS2_rFF_rOTHER_DOP,Gen9LPClient,C0,26.093,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
+PS2_rFF_rOTHER_NONCLKGLUE,Gen9LPClient,C0,3.763,syn,1,Taken from SKL C0 ECO1 GT3 CGDIS data

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-gen_gc_distribution.pl - Creates the GC distribution for use with ALPS 
+gen_map_file.pl - Creates the first cut new map file from old map file for generation of ALPS GC data 
 
 =head1 SYNOPSIS
 
@@ -10,8 +10,8 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"man" 			For printing detailed information
 	"debug"			For printing the sequence of commands
 	"gc_csv_file"		GC CSV file from design team
-	"unit_alps_map_file"	Mapping file from design unit/cluster to ALPS unit/cluster
-	"gc_alps_inp_file"	Output GC file to be used as ALPS input (YAML/CSV)
+	"unit_alps_map_file"	Old mapping file from design unit/cluster to ALPS unit/cluster
+	"new_alps_map_file"	Output GC file to be used as ALPS input (YAML/CSV)
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
@@ -33,11 +33,10 @@ use File::Copy;
 
 use YAML::XS qw(Dump);
 
-#use Math::Round;
-
 #use lib "$Bin/lib/site_perl/5.8.5";
 
 #use Text::CSV::Slurp;
+
 
 my $optHelp;
 my $optMan;
@@ -54,7 +53,7 @@ our $newSklFmt;
 our $gcCsvFile;
 our $unitAlpsMapFileDefault = "$Bin/unitAlpsMap.csv";
 our $unitAlpsMapFile;
-our $gcAlpsIpFile;
+our $newAlpsMapFile;
 
 Getopt::Long::GetOptions(
 	"help" => \$optHelp,
@@ -62,7 +61,7 @@ Getopt::Long::GetOptions(
 	"debug" => \$debugMode,
 	"gc_csv_file=s" => \$gcCsvFile,
 	"unit_alps_map_file=s" => \$unitAlpsMapFile,
-	"gc_alps_inp_file=s" => \$gcAlpsIpFile,
+	"new_alps_map_file=s" => \$newAlpsMapFile,
 	"new_skl_format" => \$newSklFmt,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
@@ -72,7 +71,7 @@ pod2usage( -verbose => 1 ) if $optHelp;
 pod2usage( -verbose => 2 ) if $optMan;
 
 if ($gcCsvFile =~ /^\s*$/) {die "Input GC file from design not specified\n";}
-if ($gcAlpsIpFile =~ /^\s*$/) {die "O/P GC file for ALPS I/P not specified\n";}
+if ($newAlpsMapFile =~ /^\s*$/) {die "O/P GC file for ALPS I/P not specified\n";}
 if ($unitAlpsMapFile =~ /^\s*$/) 
 {
 	$unitAlpsMapFile = $unitAlpsMapFileDefault;
@@ -89,6 +88,7 @@ if (!$optYaml && $optCsv) {print "Output file will be dumped in CSV format\n"; $
 if ($optYaml && $optCsv) {die "Only one format YAML/CSV is supported at a time\n"} 
 if (!$optYaml && !$optCsv) {print "No output format selected. Default output format is CSV\n"; $opCsv = 1; $opYaml = 0;} 
 
+
 our %alpsMapHash;
 our %gcHash;
 our %alpsIpTempHash;
@@ -96,7 +96,7 @@ our %alpsIpHash;
 
 read_unit_alps_map_file();
 read_gc_csv_file();
-create_gc_alps_inp_file();
+create_new_alps_map_file();
 
 sub read_unit_alps_map_file {
 	my $fileR = $unitAlpsMapFile;
@@ -123,7 +123,8 @@ sub read_unit_alps_map_file {
 		$function =~ s/\s*$//;
 		$alpsMapHash{"$unitName"}{"ALPS"} = $alpsUnitName;
 		$alpsMapHash{"$unitName"}{"ALPSCLUSTER"} = $alpsCluster;
-		$alpsMapHash{"$unitName"}{"FUNC"} = $function;		 
+		$alpsMapHash{"$unitName"}{"FUNC"} = $function;	
+		$alpsMapHash{"$unitName"}{"LINE"} = $line;
 		$count++;
 	}	
 	close $fileRH;
@@ -152,87 +153,52 @@ sub read_gc_csv_file {
 		$cluster =~ s/^\s*//;
 		$cluster =~ s/\s*$//;
 		if ($cluster eq "NOT USED") {$count++; next;}
+		my $partition;
+		if ($newSklFmt) {
+			$partition = $parts[2];
+		} else {
+			$partition = $parts[3];
+		}
+		$partition =~ s/^\s*//;
+		$partition =~ s/\s*$//;
 		my $gc;
-                if ($newSklFmt) {
-                        $gc = $parts[6];
-                } else {
-                        $gc = $parts[10];
-                }
+		if ($newSklFmt) {
+			$gc = $parts[6];
+		} else {
+			$gc = $parts[10];
+		}
 		$gc =~ s/^\s*//;
 		$gc =~ s/\s*$//;
 		#$gc = $gc*1000;
-		if ($gc ne "#N/A") {
-			$gc = $gc*1000;
-		} else {
-			$gc = 0;
-		}
-		my $roundGc = sprintf("%.0f", $gc);
-		$gcHash{"$unitName"} = $roundGc;
+		if ($gc ne "#N/A") {$gc = $gc*1000;}
+		#$gcHash{"$unitName"}{"GC"} = $gc;	
+		#$gcHash{"$unitName"}{"CLUSTER"} = $cluster;	
+		#$gcHash{"$unitName"}{"PARTITION"} = $partition;
+		$gcHash{"$cluster"}{"$partition"}{"$unitName"} = $gc;
 		$count++;
 	}
 	close $fileRH;
 	return 1;
 }
 
-sub create_gc_alps_inp_file {
-	my $fileW = $gcAlpsIpFile;
+sub create_new_alps_map_file {
+	my $fileW = $newAlpsMapFile;
 	my $fileWH;
 	open $fileWH, ">$fileW" or die "Can't open file $fileW:$!";
-	print $fileWH "Unit,Cluster,GC\n";
-	foreach my $unit (keys %gcHash) {
-		my $gc = $gcHash{"$unit"};	
-		if (exists $alpsMapHash{"$unit"}) {
-			my $cluster = $alpsMapHash{"$unit"}{"ALPSCLUSTER"};
-			my $alpsUnit = $alpsMapHash{"$unit"}{"ALPS"};
-			my $func = $alpsMapHash{"$unit"}{"FUNC"};
-			if ($alpsUnit =~ /FPUWRAP/) {
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"TOTAL"} += $gc/2;	
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"FUNC"} = $func;
-				$alpsIpTempHash{"$cluster"}{"EM"}{"TOTAL"} += $gc/2;	
-				$alpsIpTempHash{"$cluster"}{"EM"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"EM"}{"FUNC"} = $func;
-			} elsif ($alpsUnit =~ /DFX|SmallUnits/) {
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
-			} else {
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
-			} 
-		} else {
-			#die "Unit $unit doesn't exist in the map file\n";
-			warn "Unit $unit doesn't exist in the map file\n";
-		}
-	}	
-	foreach my $cluster (keys %alpsIpTempHash) {
-		my %unitHash = %{$alpsIpTempHash{"$cluster"}};
-		foreach my $unit (keys %unitHash) {
-			my $func = $unitHash{"$unit"}{"FUNC"};
-			if ($func eq "SUM") {
-				$alpsIpHash{"$cluster"}{"$unit"} = $unitHash{"$unit"}{"TOTAL"};
-			} elsif ($func eq "AVG") {
-				$alpsIpHash{"$cluster"}{"$unit"} = $unitHash{"$unit"}{"TOTAL"}/$unitHash{"$unit"}{"COUNT"};
-			} else {
-				die "Function $func is not yet supported\n";
+	print $fileWH "Unit,Cluster,Partition,ALPS Map,ALPS Unit Name,ALPS Cluster, Functions\n";
+	foreach my $cluster (keys %gcHash) {
+		my %partHash = %{$gcHash{"$cluster"}};
+		foreach my $partition (keys %partHash) {
+			my %unitHash = %{$partHash{"$partition"}};
+			foreach my $unit (keys %unitHash) {
+				if (exists $alpsMapHash{"$unit"}) {
+					my $line = $alpsMapHash{"$unit"}{"LINE"};
+					print $fileWH "$line\n";
+				} else {
+					print $fileWH "$unit,$cluster,$partition\n";
+				}
 			}
 		}
-	}
-	if ($opYaml == 1) { 
-		print $fileWH Dump \%alpsIpHash;	
-	}
-	if ($opCsv == 1) {
-		#my @alpsIpArray;
-		#push(@alpsIpArray, \%alpsIpHash);	 
-		foreach my $cluster (keys %alpsIpHash) {
-			foreach my $unit (keys %{$alpsIpHash{"$cluster"}}) {
-					my $gc = $alpsIpHash{"$cluster"}{"$unit"};
-				print $fileWH "$unit,$cluster,$gc\n";
-			}  
-		}
-		#my $csv = Text::CSV::Slurp->create( input => \@alpsIpArray);
-		#print $fileWH $csv;
 	}
 	close $fileWH;
 	return 1;

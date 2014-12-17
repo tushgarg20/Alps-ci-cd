@@ -39,6 +39,8 @@
 	num_FF_OTHER_NONCLKGLUE	=	numFF	
 	num_FF_OTHER_DFX	=	numFF	
 	num_FF_OTHER_DOP	=	numFF	
+	num_FF_HPVS	=	numFF	
+	num_FF_HPSDE	=	numFF	
 				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -220,36 +222,41 @@
 	PS0_FF_OTHER_SMALL_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_SMALL	=	PS0_TE	
 	PS0_FF_OTHER_SMALL	=	PS0_VF	#Approximating Small units with VF residencies
-	PS2_FF_TEGSSOL_SMALL	=	PS1_TE + PS2_TE	
-	PS2_FF_OTHER_SMALL	=	PS1_VF + PS2_VF	
+	PS2_FF_TEGSSOL_SMALL	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_SMALL	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
 				
 #CLKGLUE				
 	PS0_FF_TEGSSOL_CLKGLUE_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_CLKGLUE	=	PS0_TE	
 	PS0_FF_OTHER_CLKGLUE	=	PS0_VF	#Approximating GLUE units with VF residencies
-	PS2_FF_TEGSSOL_CLKGLUE	=	PS1_TE + PS2_TE	
-	PS2_FF_OTHER_CLKGLUE	=	PS1_VF + PS2_VF	
+	PS2_FF_TEGSSOL_CLKGLUE	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_CLKGLUE	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
 				
 #NONCLKGLUE				
 	PS0_FF_TEGSSOL_NONCLKGLUE_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_NONCLKGLUE_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_NONCLKGLUE	=	PS0_TE	
 	PS0_FF_OTHER_NONCLKGLUE	=	PS0_VF	#Approximating GLUE units with VF residencies
-	PS2_FF_TEGSSOL_NONCLKGLUE	=	PS1_TE + PS2_TE	
-	PS2_FF_OTHER_NONCLKGLUE	=	PS1_VF + PS2_VF	
+	PS2_FF_TEGSSOL_NONCLKGLUE	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_NONCLKGLUE	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
 				
 #DFX				
 	PS0_FF_TEGSSOL_DFX_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_DFX_DOP	=	 .temp_3DPipeDisable	
 	PS0_FF_TEGSSOL_DFX	=	PS0_TE	#Approximating GLUE units with VF residencies
 	PS0_FF_OTHER_DFX	=	PS0_VF	
-	PS2_FF_TEGSSOL_DFX	=	PS1_TE + PS2_TE	
-	PS2_FF_OTHER_DFX	=	PS1_VF + PS2_VF	
+	PS2_FF_TEGSSOL_DFX	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_DFX	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
 				
 #DOP				
 	PS0_FF_TEGSSOL_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_DOP	=	 .temp_3DPipeDisable	
 	PS2_FF_TEGSSOL_DOP	=	1 - .temp_TeGsSolDOP	
 	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable	
-
+				
+#HPVS			
+				
+	PS0_HPVS	=	1	
+#HPSDE				
+	PS0_HPSDE	=	1	

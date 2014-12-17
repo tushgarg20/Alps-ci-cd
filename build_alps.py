@@ -34,8 +34,8 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 #################################
 I = {}
 C = {}
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen10LP'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen10LP','Gen11LP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP']
                        };
 new_gc = {}
 process_hash = {}
@@ -66,6 +66,8 @@ elif cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
+elif cfg.find('icl') > -1 :
+    cfg ='Gen11LP'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -80,7 +82,7 @@ print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen10LP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen10LP' or cfg == 'Gen11LP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -138,6 +140,8 @@ def get_base_config(stat):
     while(i >= 0):
         config = cdyn_precedence[i]
         if(config in cdyn_hash[stat]):
+            if('C0' in cdyn_hash[stat][config]):
+                return config,'C0'
             if('B0' in cdyn_hash[stat][config]):
                 return config,'B0'
             elif('A0' in cdyn_hash[stat][config]):
@@ -180,7 +184,7 @@ def get_eff_cdyn(cluster,unit,stat):
     voltage_sf = voltage_hash[base_cfg][cfg]
     if(voltage_sf == 'NA'):
         voltage_sf = 0
-    stepping_sf = stepping_hash[base_cfg]['A0']['B0'] if stepping =='A0' else 1
+    stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
     instances = 0
     newproduct_gc = 1
@@ -208,7 +212,7 @@ def which_cfg_to_use(track_cfg):
     cfg_list = []
     stepping_hash = {}
     for pair in track_cfg:
-        if ((pair[0] not in cdyn_precedence) or (pair[1] != 'A0' and pair[1] != 'B0')):
+        if ((pair[0] not in cdyn_precedence) or (pair[1] != 'A0' and pair[1] != 'B0' and pair[1] != 'C0')):
             continue
         i = cdyn_precedence.index(pair[0])
         if ((i <= base_i) and (i not in cfg_list)):

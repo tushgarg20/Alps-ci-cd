@@ -89,8 +89,8 @@
 	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (numROSS * .CrClk)	
 #DAPRSS BYPASS RAM				
 	PS0_DAPRSS_BYPASSRAM	=	0	#ROSS units are not covered by 3D DOP
-	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassRamRead\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassRamWrite\.CrClock')) / (numROSS * .CrClk)	
+	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamRd\.CrClock')) / (numROSS * .CrClk)	
+	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamWr\.CrClock')) / (numROSS * .CrClk)	
 #GWL				
 	PS0_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Idle\.CrClock')) / (.CrClk)	#GWC is 1 in count
 	PS1_GWL	=	1 - PS0_GWL - PS2_GWL	

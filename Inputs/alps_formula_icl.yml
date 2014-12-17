@@ -1437,3 +1437,74 @@ RC:
     PS2_Fabric_GT3: R * C
     PS2_Fabric_GT4: R * C
     PS2_Fabric_Halo: R * C
+
+rFF:
+   rVF:
+    PS0_rVF_DOP: R * C
+    PS0_rVF: R * C
+    PS1_rVF: R * C
+    PS2_rVF:
+     PS2_rVF_Indexed: R * C
+     PS2_rVF_Sequential: R * C
+     PS2_rVF_Control: R * C
+     PS2_rVF_Dropped: R * C
+   rVFBE1:
+    PS0_rVFBE1_DOP: R * C
+    PS0_rVFBE1: R * C
+    PS1_rVFBE1: R * C
+    PS2_rVFBE1: R * C
+   rVFBE2:
+    PS0_rVFBE2_DOP: R * C
+    PS0_rVFBE2: R * C
+    PS1_rVFBE2: R * C
+    PS2_rVFBE2: R * C
+   rVF_Cache:
+    PS0_rVF_Cache_Idle: R * C
+    PS2_rVF_Cache_Read: R * C
+    PS2_rVF_Cache_Write: R * C
+    PS0_rVF_URBFifo_Idle: R * C
+    PS2_rVF_URBFifo_Read: R * C
+    PS2_rVF_URBFifo_Write: R * C
+   rVSFE:
+    PS0_rVSFE_DOP: R * C
+    PS0_rVSFE: R * C
+    PS1_rVSFE: R * C
+    PS2_rVSFE: R * C
+   rVSBE:
+    PS0_rVSBE_DOP: R * C
+    PS0_rVSBE: R * C
+    PS1_rVSBE: R * C
+    PS2_rVSBE: R * C
+   rVS_Cache:
+    PS0_rVS_Cache_Idle: R * C
+    PS2_rVS_Cache:
+     PS2_rVS_Cache_Read: R * C
+     PS2_rVS_Cache_Write: R * C
+   rCL:
+    PS0_rCL_DOP: R * C
+    PS0_rCL: R * C
+    PS1_rCL: R * C
+    PS2_rCL: R * C
+   rSF:
+    PS0_rSF_DOP: R * C
+    PS0_rSF: R * C
+    PS1_rSF: R * C
+    PS2_rSF:
+     PS2_rSF_Culled: R * C
+     PS2_rSF_NotCulled_FastClip: R * C
+     PS2_rSF_NotCulled_NotFastClip: R * C
+   rOTHER_CLKGLUE:
+    PS0_rFF_rOTHER_CLKGLUE_DOP: R * C
+    PS0_rFF_rOTHER_CLKGLUE: R * C
+    PS2_rFF_rOTHER_CLKGLUE: R * C
+   rOTHER_NONCLKGLUE:
+    PS0_rFF_rOTHER_NONCLKGLUE_DOP: R * C
+    PS0_rFF_rOTHER_NONCLKGLUE: R * C
+    PS2_rFF_rOTHER_NONCLKGLUE: R * C
+   rOTHER_DOP:
+    PS0_rFF_rOTHER_DOP: R * C
+    PS2_rFF_rOTHER_DOP: R * C
+   rOTHER_DFX:
+    PS0_rFF_rOTHER_DFX_DOP: R * C
+    PS0_rFF_rOTHER_DFX: R * C
+    PS2_rFF_rOTHER_DFX: R * C

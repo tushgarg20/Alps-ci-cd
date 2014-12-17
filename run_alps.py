@@ -58,6 +58,8 @@ if options.alps_config is not None:
 else:
     if options.dest_config.find('bdw') > -1 or  options.dest_config.find('chv') > -1:
         filename = '%s/alps_cfg_annealing.yaml' % wd
+    elif options.dest_config.find('icl') > -1:
+        filename = '%s/alps_cfg_icl.yaml' % wd
     else:	
         filename = '%s/alps_cfg.yaml' % wd
 
@@ -71,9 +73,12 @@ if not options.quiet:
     print (options.output_dir)
     print (options.dest_config)
 
+stat = options.output_dir + '/' + options.prefix + '.stat.gz'
+flag = os.path.isfile(stat)
+if(not flag):
+    stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
-stat = options.output_dir + '/' + options.prefix + '.stat'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 

@@ -9,9 +9,11 @@
 	num_Other_RC	=	num_Other_Slice - 1
 			
 #Other			
-	PS0_GTP24C 	=	1
+	PS0_GTP24C_DOP 	=	1
+	PS0_GTP24C 	=	0
 	PS2_ClockSpine 	=	1
-	PS0_WIDI 	=	1
+	PS0_WIDI_DOP 	=	1
+	PS0_WIDI 	=	0
 	PS0_Blitter	=	1
 	PS2_ClockSpine_Slice 	=	num_Other_Slice
 	PS2_ClockSpine_UnSlice 	=	num_Other_UnSlice
