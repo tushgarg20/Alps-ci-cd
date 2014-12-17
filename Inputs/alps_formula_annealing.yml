@@ -1,7 +1,7 @@
-﻿--- # ALPS Formula File version WW07.1 2013
+--- # ALPS Formula File version WW07.1 2013
 
  # R == Residency
- # C == Cdyn weight
+ # C == Cdyn weight 
 CrClocks: R
 FPS: R
 GT_BW_GBPS : R

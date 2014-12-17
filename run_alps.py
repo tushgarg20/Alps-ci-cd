@@ -39,6 +39,8 @@ parser.add_option("-t","--tg_file",action="store", dest="tg_file", default='',
                   help=" Input Timegraph File. Please make sure the TG file has ALPS residencies as well. [default: %default]")
 parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
+parser.add_option("--disable_stdout",action="store_true",dest="disable_stdout",default=False,
+                  help="disable connecting stdout and stderr pipes [default: %default]")
 
 (options,args) = parser.parse_args()
 
@@ -141,8 +143,7 @@ else:
         build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script]
     else:
         stat_parser_script = options.user_dir + '/StatParser/StatParser.exe'
-        build_alps_script = '%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py'
-        build_alps_cmd = [build_alps_script]
+        build_alps_cmd = ['%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py']
 
     stat_parser_cmd = [stat_parser_script,'-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
@@ -160,7 +161,10 @@ if not options.build_alps_only:
     try:
         env_vars = os.environ
         env_vars['LD_LIBRARY_PATH'] = '/p/gat/tools/boost/1.43.0/gcc4.3/lib64/'
-        process = subprocess.Popen(stat_parser_cmd, env=env_vars, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+        if options.disable_stdout:
+            process = subprocess.Popen(stat_parser_cmd, env=env_vars, shell=False)
+        else:
+            process = subprocess.Popen(stat_parser_cmd, env=env_vars, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
         output = process.communicate()[0]
         ExitCode = process.wait()
     except Exception:
@@ -172,7 +176,10 @@ if not options.build_alps_only:
         exit(ExitCode) 
 
 try:
-    process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+    if options.disable_stdout:
+        process = subprocess.Popen(build_alps_cmd, shell=False)
+    else:
+        process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
     output = process.communicate()[0]
     ExitCode = process.wait()
 except Exception:
