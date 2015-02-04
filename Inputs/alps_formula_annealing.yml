@@ -117,8 +117,16 @@ EU:
       FPU_pln_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_mac_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
       FPU_sad_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
-     
-
+      FPU_mov_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_sel_floatbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_mad_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_mul_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_add_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_pln_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_mac_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_sad_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_mov_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
+      FPU_sel_intbypass: R[PS2_EU_FPU] * R * LINEST[C,R[FPU_toggle_rate]]
   
   EM:
     PS0_EU_EM: R * C
@@ -175,9 +183,17 @@ EU:
       EM_pln_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
       EM_mac_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
       EM_sad_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
-      
-
-
+      EM_mov_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_sel_floatbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_mad_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_mul_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_add_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_pln_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_mac_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_sad_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_mov_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+      EM_sel_intbypass: R[PS2_EU_EM] * R * LINEST[C,R[EM_toggle_rate]]
+  
   GA:
     PS0_GA: R *C
     PS1_GA: R * C
