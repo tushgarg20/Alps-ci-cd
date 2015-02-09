@@ -1,6 +1,10 @@
 Unit,Cluster,Gen9LPClient,Gen10LP,Gen9LPSoC,Gen11LP
 CLKGLUE,FF,0,0,0,0
 Fabric,RC,0,1,0,1
+LSN,Fabric,0,1,0,0
+Repeaters,Fabric,0,1,0,0
+Unslice,Fabric,0,1,0,0
+TopLevel,Fabric,0,1,0,0
 GLUE,GTI,0,0,0,0
 L3BankOther,L3_Bank,0,0,0,0
 Media,Sampler,0,0,0,0

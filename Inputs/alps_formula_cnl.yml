@@ -1443,20 +1443,19 @@ Other:
     PS0_WIDI: R * C
    Blitter:
     PS0_Blitter: R * C
-RC:
-   SliceRC:
-    PS0_SliceRC: R * C
-    PS2_SliceRC: R * C
-   L3XSRC:
-    PS0_L3XSRC: R * C
-    PS2_L3XSRC: R * C
-   GT3BFRC:
-    PS0_GT3BFRC: R * C
-    PS2_GT3BFRC: R * C
-   Fabric:
+
+Fabric:
+   LSN:
+    PS2_Fabric_LSN_CMD: R * C
+    PS2_Fabric_LSN_DATA: R * C
+   Repeaters:
+    PS2_Fabric_Repeaters_CMD: R * C
+    PS2_Fabric_Repeaters_DATA: R * C
+   Unslice:
+    PS2_Fabric_Unslice_CMD: R * C
+    PS2_Fabric_Unslice_DATA: R * C
+   TopLevel:
     PS0_Fabric: R * C
-    PS2_Fabric_GT2: R * C
-    PS2_Fabric_GT2P5: R * C
-    PS2_Fabric_GT3: R * C
-    PS2_Fabric_GT4: R * C
-    PS2_Fabric_Halo: R * C
+    PS2_Fabric_Top_Level: R * C
+
+

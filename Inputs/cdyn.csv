@@ -13,7 +13,14 @@ PS2_DX9_Cache_ReadWrite,Gen10LP,A0,40.11,ebb,1,512 bits assumed. Need to check w
 PS2_DX9_Cache_Write,Gen10LP,A0,25.93,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_EU_DOP,Gen10LP,A0,0,syn,1,DOP gated
-PS0_Fabric,Gen10LP,A0,180,syn,1,
+PS0_Fabric,Gen10LP,A0,218.7,syn,1,
+PS2_Fabric_LSN_CMD,Gen10LP,A0,10.77,syn,1,per bus From Kamal Sinha 
+PS2_Fabric_LSN_DATA,Gen10LP,A0,49.12,syn,1,per bus From Kamal Sinha
+PS2_Fabric_Repeaters_CMD,Gen10LP,A0,10.84,syn,1, per busFrom Kamal Sinha
+PS2_Fabric_Repeaters_DATA,Gen10LP,A0,49.48,syn,1,per bus From Kamal Sinha
+PS2_Fabric_Unslice_CMD,Gen10LP,A0,9,syn,1,per bus From Kamal Sinha
+PS2_Fabric_Unslice_DATA,Gen10LP,A0,45,syn,1,per bus From Kamal Sinha
+PS2_Fabric_Top_Level,Gen10LP,A0,36.02,syn,1, From Kamal Sinha
 PS0_FF_OTHER_CLKGLUE,Gen10LP,A0,12.68804734,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_FF_OTHER_CLKGLUE_DOP,Gen10LP,A0,11.81664211,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_FF_OTHER_DOP,Gen10LP,A0,9.156567999,syn,1,Taken fromCNL TNET3 CGEN data

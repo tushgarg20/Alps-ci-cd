@@ -1,4 +1,5 @@
 Cluster,Source,Destination,Cdyn Reduction
+Fabric,Gen10LP,Gen10LP,1
 EU,Gen10LP,Gen11LP,1
 L3_Bank,Gen10LP,Gen11LP,1
 Sampler,Gen10LP,Gen11LP,1
