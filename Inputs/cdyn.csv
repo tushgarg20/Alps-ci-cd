@@ -1,16 +1,355 @@
 State,Source,Stepping,Weight,Type,RefGC,Comments
 PS0_BTGEN_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS2_BTGEN_Cache_Read,Gen10LP,A0,3.05,ebb,1,
-PS2_BTGEN_Cache_ReadWrite,Gen10LP,A0,6.69,ebb,1,
-PS2_BTGEN_Cache_Write,Gen10LP,A0,3.64,ebb,1,
+PS2_BTGEN_Cache_Read,Gen10LP,A0,4.284092467,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen10LP,A0,7.589676059,ebb,1,
+PS2_BTGEN_Cache_Write,Gen10LP,A0,3.305583591,ebb,1,
+PS0_DX9_Cache_Idle,Gen10LP,A0,0,ebb,1,
+PS2_DX9_Cache_Read,Gen10LP,A0,18.11455108,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_ReadWrite,Gen10LP,A0,34.96146666,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Write,Gen10LP,A0,16.84691558,ebb,1,512 bits assumed. Need to check with gSim.
+PS0_GS_Cache_Idle,Gen10LP,A0,0,ebb,1,
+PS0_HS_Cache_Idle,Gen10LP,A0,0,ebb,1,
+PS0_IC_DATARAM,Gen10LP,A0,0,ebb,1,
+PS0_LTCD_EBB,Gen10LP,A0,0,ebb,1,
+PS0_MT_DataRam_DOP,Gen10LP,A0,0,ebb,1,
+PS0_MT_DataRam_IDLE,Gen10LP,A0,0,ebb,1,
+PS0_MT_LatFifo_DOP,Gen10LP,A0,0,ebb,1,
+PS0_MT_LatFifo_IDLE,Gen10LP,A0,0,ebb,1,
+PS0_PSD_BARYPAYLDASMRAM,Gen10LP,A0,0,ebb,1,
+PS0_PSD_SCOREBOARD,Gen10LP,A0,0,ebb,1,
+PS0_SC_DataRam_IDLE,Gen10LP,A0,0,ebb,1,
+PS0_SC_LatFifo_DOP,Gen10LP,A0,0,ebb,1,
+PS0_SC_LatFifo_IDLE,Gen10LP,A0,0,ebb,1,
+PS0_SOL_Cache_Idle,Gen10LP,A0,0,ebb,1,
+PS0_TDS_Cache_Idle,Gen10LP,A0,0,ebb,1,96 bits assumed. Need to check with gSim.
+PS0_VF_Cache_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VS_Cache_Idle,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS1_LTCD_EBB,Gen10LP,A0,0,ebb,1,
+PS2_AVS_CoeffStorageRAM_READ,Gen10LP,A0,1.800545767,ebb,1,Need to confirm with Niraj
+PS2_AVS_CoeffStorageRAM_WRITE,Gen10LP,A0,1.650391921,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_READ,Gen10LP,A0,1.672730973,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.392877718,ebb,1,Need to confirm with Niraj
+PS2_BC_BARYRAM_READ,Gen10LP,A0,2.944936878,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.411175931,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
+PS2_ClockSpine_Slice,Gen10LP,A0,120,ebb,1,total spine 330nf
+PS2_ClockSpine_UnSlice,Gen10LP,A0,210,ebb,1,
+PS2_DM_PALRAM_READ,Gen10LP,A0,9.43663835,ebb,1,Need to confirm with Niraj
+PS2_DM_PALRAM_WRITE,Gen10LP,A0,8.722943675,ebb,1,Need to confirm with Niraj
+PS2_GAMD_Cache_READ,Gen10LP,A0,18.24275456,ebb,1,
+PS2_GAMD_Cache_WRITE,Gen10LP,A0,16.94616758,ebb,1,
+PS2_GAMW_READ,Gen10LP,A0,5.088990076,ebb,1,
+PS2_GAMW_TLB_PEND_READ,Gen10LP,A0,1.977066879,ebb,1,
+PS2_GAMW_TLB_PEND_WRITE,Gen10LP,A0,1.814250311,ebb,1,
+PS2_GAMW_WRITE,Gen10LP,A0,5.349051614,ebb,1,
+PS2_GRF_READ,Gen10LP,A0,10.88740953,ebb,1,
+PS2_GRF_WRITE,Gen10LP,A0,10.20143556,ebb,1,
+PS2_GS_Cache_Read,Gen10LP,A0,4.718319175,ebb,1,
+PS2_GS_Cache_ReadWrite,Gen10LP,A0,9.079791012,ebb,1,
+PS2_GS_Cache_Write,Gen10LP,A0,4.361471838,ebb,1,
+PS2_HDCL1_CACHE_READS,Gen10LP,A0,18.11455108,ebb,1,CNL EBB Spreadsheet
+PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,16.84691558,ebb,1,CNL EBB Spreadsheet
+PS2_HIZ_CACHE_READ,Gen10LP,A0,4.353908031,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_CACHE_WRITE,Gen10LP,A0,3.90784886,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_LATFIFO_READ,Gen10LP,A0,18.82156377,ebb,1,
+PS2_HIZ_LATFIFO_WRITE,Gen10LP,A0,19.62226436,ebb,1,
+PS2_HS_Cache_Read,Gen10LP,A0,4.718319175,ebb,1,
+PS2_HS_Cache_ReadWrite,Gen10LP,A0,9.079791012,ebb,1,
+PS2_HS_Cache_Write,Gen10LP,A0,4.361471838,ebb,1,
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen10LP,A0,0,ebb,1,Already accounted in logic
+PS2_IC_DATARAM_READ,Gen10LP,A0,19.97494501,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_WRITE,Gen10LP,A0,20.85553199,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IZ_BARYCOEFFIFO_READ,Gen10LP,A0,7.874175989,ebb,1,
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen10LP,A0,8.200912084,ebb,1,
+PS2_IZ_LATFIFO_READ,Gen10LP,A0,9.761503032,ebb,1,
+PS2_IZ_LATFIFO_WRITE,Gen10LP,A0,10.0815164,ebb,1,
+PS2_IZ_POLYFIFO_READ,Gen10LP,A0,12.82948812,ebb,1,
+PS2_IZ_POLYFIFO_WRITE,Gen10LP,A0,13.33008694,ebb,1,
+PS2_IZ_WCOEFFIFO_READ,Gen10LP,A0,3.793720399,ebb,1,
+PS2_IZ_WCOEFFIFO_WRITE,Gen10LP,A0,3.946297914,ebb,1,
+PS2_IZ_ZCOEFFFIFO_READ,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_IZ_ZCOEFFFIFO_WRITE,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_LTCD_EBB_HB_Read,Gen10LP,A0,43.48798062,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Write,Gen10LP,A0,81.11732973,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Read,Gen10LP,A0,74.26752505,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Write,Gen10LP,A0,138.3243298,ebb,1,Normalized to 1.2GHz
+PS2_MSC_CACHE_READ,Gen10LP,A0,23.86258839,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MSC_CACHE_WRITE,Gen10LP,A0,21.8334097,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MT_DataRam_READ,Gen10LP,A0,3.959718557,ebb,1,
+PS2_MT_DataRam_READ&WRITE,Gen10LP,A0,8.073942922,ebb,1,
+PS2_MT_DataRam_WRITE,Gen10LP,A0,4.114224365,ebb,1,
+PS2_MT_LatFifo_READ,Gen10LP,A0,2.5214766,ebb,1,
+PS2_MT_LatFifo_READ&WRITE,Gen10LP,A0,4.835303084,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen10LP,A0,2.313826484,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen10LP,A0,6.667561358,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen10LP,A0,6.678628813,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_SCOREBOARD_READ,Gen10LP,A0,2.036722069,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_PSD_SCOREBOARD_WRITE,Gen10LP,A0,1.834852247,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_RCC_CACHE_READ,Gen10LP,A0,6.43969443,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCC_CACHE_WRITE,Gen10LP,A0,5.447590288,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCPFE_COLORLATFIFO_READ,Gen10LP,A0,29.96241751,ebb,1,
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen10LP,A0,31.28329798,ebb,1,
+PS2_RCPFE_MCSLATFIFO_READ,Gen10LP,A0,6.43969443,ebb,1,
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen10LP,A0,6.658790288,ebb,1,
+PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,2.163195786,ebb,1,
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,2.214480993,ebb,1,
+PS2_RCZ_CACHE_READ,Gen10LP,A0,6.387665659,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_RCZ_CACHE_WRITE,Gen10LP,A0,6.424503528,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_SC_DataRam_READ,Gen10LP,A0,41.48638789,ebb,1,
+PS2_SC_DataRam_WRITE,Gen10LP,A0,42.84644469,ebb,1,
+PS2_SC_LatFifo_READ,Gen10LP,A0,4.970945482,ebb,1,
+PS2_SC_LatFifo_WRITE,Gen10LP,A0,6.105235771,ebb,1,
+PS2_SOL_Cache_Read,Gen10LP,A0,1.497719119,ebb,1,
+PS2_SOL_Cache_ReadWrite,Gen10LP,A0,2.862846522,ebb,1,
+PS2_SOL_Cache_Write,Gen10LP,A0,1.365127403,ebb,1,
+PS2_STC_CACHE_READ,Gen10LP,A0,4.593467654,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_STC_CACHE_WRITE,Gen10LP,A0,4.144378896,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_TDS_Cache_Read,Gen10LP,A0,8.652783144,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_ReadWrite,Gen10LP,A0,17.51070712,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Write,Gen10LP,A0,8.857923972,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_VF_Cache_Read,Gen10LP,A0,3.59,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_Cache_Write,Gen10LP,A0,2.59,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Read,Gen10LP,A0,2.86,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Write,Gen10LP,A0,3.59,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VS_Cache_Read,Gen10LP,A0,3.320154194,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_VS_Cache_Write,Gen10LP,A0,3.156556561,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_ClockSpine_RC,Gen10LPSoC,A0,0,ebb,1,
+PS2_ClockSpine_Slice,Gen10LPSoC,A0,150,ebb,1,total spine 350nf
+PS2_ClockSpine_UnSlice,Gen10LPSoC,A0,200,ebb,1,
+PS0_BTGEN_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS2_BTGEN_Cache_Read,Gen9LPClient,A0,6.69,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.77,ebb,1,
+PS2_BTGEN_Cache_Write,Gen9LPClient,A0,11.08,ebb,1,
+PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0,ebb,1,
+PS0_DX9_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS2_DX9_Cache_Read,Gen9LPClient,A0,26.76,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_ReadWrite,Gen9LPClient,A0,71.09,ebb,1,512 bits assumed. Need to check with gSim.
+PS2_DX9_Cache_Write,Gen9LPClient,A0,44.33,ebb,1,512 bits assumed. Need to check with gSim.
+PS0_GS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS0_HS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS0_IC_DATARAM,Gen9LPClient,A0,0,ebb,1,
+PS0_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
+PS0_MT_DataRam_DOP,Gen9LPClient,A0,0,ebb,1,
+PS0_MT_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS0_MT_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
+PS0_MT_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS0_PSD_BARYPAYLDASMRAM,Gen9LPClient,A0,0,ebb,1,
+PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0,ebb,1,
+PS0_SC_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS0_SC_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
+PS0_SC_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
+PS0_SOL_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
+PS0_TDS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,96 bits assumed. Need to check with gSim.
+PS0_VF_Cache_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VF_URBFifo_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS0_VS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS1_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
+PS2_AVS_CoeffStorageRAM_READ,Gen9LPClient,A0,2.53,ebb,1,Need to confirm with Niraj
+PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPClient,A0,3.94,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_READ,Gen9LPClient,A0,2.39,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_WRITE,Gen9LPClient,A0,2.39,ebb,1,Need to confirm with Niraj
+PS2_BC_BARYRAM_READ,Gen9LPClient,A0,4.19,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,4.19,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_ClockSpine,Gen9LPClient,A0,337,ebb,1,Taken from tttt 0.58 x1r2
+PS2_ClockSpine_RC,Gen9LPClient,A0,12,ebb,1,Taken from tttt 0.58 x1r2
+PS2_ClockSpine_Slice,Gen9LPClient,A0,221,ebb,1,Taken from tttt 0.58 x1r2
+PS2_ClockSpine_UnSlice,Gen9LPClient,A0,116,ebb,1,Taken from tttt 0.58 x1r2
+PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.35,ebb,1,Need to check with gSim - 2x128 bit io assumed
+PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.67,ebb,1,Need to check with gSim - 2x128 bit io assumed
+PS2_DM_PALRAM_READ,Gen9LPClient,A0,14.59,ebb,1,Need to confirm with Niraj
+PS2_DM_PALRAM_WRITE,Gen9LPClient,A0,22.72,ebb,1,Need to confirm with Niraj
+PS2_GAMD_Cache_READ,Gen9LPClient,A0,3.6,ebb,1,
+PS2_GAMD_Cache_WRITE,Gen9LPClient,A0,4.63,ebb,1,
+PS2_GAMTLB_EBB_READ,Gen9LPClient,A0,4.34,ebb,1,
+PS2_GAMTLB_EBB_WRITE,Gen9LPClient,A0,2.81,ebb,1,
+PS2_GAMW_READ,Gen9LPClient,A0,7.53,ebb,1,
+PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.99,ebb,1,
+PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.71,ebb,1,
+PS2_GAMW_WRITE,Gen9LPClient,A0,11.49,ebb,1,
+PS2_GRF_READ,Gen9LPClient,A0,6.97,ebb,1,
+PS2_GRF_WRITE,Gen9LPClient,A0,11.4,ebb,1,
+PS2_GS_Cache_Read,Gen9LPClient,A0,4.97,ebb,1,
+PS2_GS_Cache_ReadWrite,Gen9LPClient,A0,15.83,ebb,1,
+PS2_GS_Cache_Write,Gen9LPClient,A0,10.86,ebb,1,
+PS2_HIZ_CACHE_READ,Gen9LPClient,A0,6.69,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_CACHE_WRITE,Gen9LPClient,A0,11.08,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_LATFIFO_READ,Gen9LPClient,A0,28.69,ebb,1,
+PS2_HIZ_LATFIFO_WRITE,Gen9LPClient,A0,63.35,ebb,1,
+PS2_HS_Cache_Read,Gen9LPClient,A0,4.97,ebb,1,
+PS2_HS_Cache_ReadWrite,Gen9LPClient,A0,15.83,ebb,1,
+PS2_HS_Cache_Write,Gen9LPClient,A0,10.86,ebb,1,
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,0,ebb,1,Already accounted in logic
+PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.69,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,63.35,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IZ_BARYCOEFFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
+PS2_IZ_LATFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
+PS2_IZ_LATFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
+PS2_IZ_POLYFIFO_READ,Gen9LPClient,A0,21.52,ebb,1,
+PS2_IZ_POLYFIFO_WRITE,Gen9LPClient,A0,47.51,ebb,1,
+PS2_IZ_WCOEFFIFO_READ,Gen9LPClient,A0,7.17,ebb,1,
+PS2_IZ_WCOEFFIFO_WRITE,Gen9LPClient,A0,15.84,ebb,1,
+PS2_IZ_ZCOEFFFIFO_READ,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_IZ_ZCOEFFFIFO_WRITE,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
+PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,85.67,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,164.5,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Read,Gen9LPClient,A0,61.33,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,117.64,ebb,1,Normalized to 1.2GHz
+PS2_MSC_CACHE_READ,Gen9LPClient,A0,53.79,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MSC_CACHE_WRITE,Gen9LPClient,A0,89.95,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MT_DataRam_READ,Gen9LPClient,A0,13.38,ebb,1,
+PS2_MT_DataRam_READ&WRITE,Gen9LPClient,A0,35.55,ebb,1,
+PS2_MT_DataRam_WRITE,Gen9LPClient,A0,22.17,ebb,1,
+PS2_MT_LatFifo_READ,Gen9LPClient,A0,5.91,ebb,1,
+PS2_MT_LatFifo_READ&WRITE,Gen9LPClient,A0,18.92,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen9LPClient,A0,13.01,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,4.73,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,5.73,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_SCOREBOARD_READ,Gen9LPClient,A0,3.32,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_PSD_SCOREBOARD_WRITE,Gen9LPClient,A0,6.31,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_RCC_CACHE_READ,Gen9LPClient,A0,9.36,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,20.24,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCPFE_COLORLATFIFO_READ,Gen9LPClient,A0,43.04,ebb,1,
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPClient,A0,95.02,ebb,1,
+PS2_RCPFE_MCSLATFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
+PS2_RCPFE_RCCLATFIFO_READ,Gen9LPClient,A0,3.68,ebb,1,
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPClient,A0,5.75,ebb,1,
+PS2_RCZ_CACHE_READ,Gen9LPClient,A0,7.36,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_RCZ_CACHE_WRITE,Gen9LPClient,A0,11.51,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_SC_DataRam_READ,Gen9LPClient,A0,58.35,ebb,1,
+PS2_SC_DataRam_WRITE,Gen9LPClient,A0,90.9,ebb,1,
+PS2_SC_LatFifo_READ,Gen9LPClient,A0,12.05,ebb,1,
+PS2_SC_LatFifo_WRITE,Gen9LPClient,A0,29.89,ebb,1,
+PS2_SOL_Cache_Read,Gen9LPClient,A0,2.09,ebb,1,
+PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.3,ebb,1,
+PS2_SOL_Cache_Write,Gen9LPClient,A0,3.2,ebb,1,
+PS2_STC_CACHE_READ,Gen9LPClient,A0,9.99,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_STC_CACHE_WRITE,Gen9LPClient,A0,15.44,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_TDS_Cache_Read,Gen9LPClient,A0,7.47,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_ReadWrite,Gen9LPClient,A0,18.97,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Write,Gen9LPClient,A0,11.51,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_VF_Cache_Read,Gen9LPClient,A0,3.76,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_Cache_Write,Gen9LPClient,A0,3.74,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Read,Gen9LPClient,A0,3.02,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Write,Gen9LPClient,A0,3.2,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VS_Cache_Read,Gen9LPClient,A0,2.47,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_VS_Cache_Write,Gen9LPClient,A0,4.5,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,6.69,ebb,1,Current gSim sizes assumed as 1x100
+PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,11.08,ebb,1,Current gSim sizes assumed as 1x100
+PS0_BTGEN_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS2_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
+PS2_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
+PS2_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
+PS0_DAPRSS_BYPASSRAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_DX9_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS2_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
+PS2_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
+PS2_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
+PS0_GS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_HS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_IC_DATARAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_MT_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_MT_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_PSD_BARYPAYLDASMRAM,Gen9LPSoC,A0,0,ebb,1,
+PS0_PSD_SCOREBOARD,Gen9LPSoC,A0,0,ebb,1,
+PS0_SC_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_SC_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
+PS0_SOL_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_TDS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VF_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VF_URBFifo_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS0_VS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
+PS2_AVS_CoeffStorageRAM_READ,Gen9LPSoC,A0,1.818115942,ebb,1,
+PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPSoC,A0,2.100724638,ebb,1,
+PS2_AVS_DataStorageRAM_READ,Gen9LPSoC,A0,1.771014493,ebb,1,
+PS2_AVS_DataStorageRAM_WRITE,Gen9LPSoC,A0,1.742753623,ebb,1,
+PS2_BC_BARYRAM_READ,Gen9LPSoC,A0,3.118115942,ebb,1,
+PS2_BC_BARYRAM_WRITE,Gen9LPSoC,A0,3.071014493,ebb,1,
+PS2_ClockSpine,Gen9LPSoC,A0,190,ebb,1,From Rob's team
+PS2_ClockSpine_RC,Gen9LPSoC,A0,0,ebb,1,From Rob's team
+PS2_ClockSpine_Slice,Gen9LPSoC,A0,130,ebb,1,From Rob's team
+PS2_ClockSpine_UnSlice,Gen9LPSoC,A0,60,ebb,1,From Rob's team
+PS2_DAPRSS_BYPASSRAM_READ,Gen9LPSoC,A0,8.035507246,ebb,1,
+PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPSoC,A0,8.864492754,ebb,1,
+PS2_DM_PALRAM_READ,Gen9LPSoC,A0,7.639855072,ebb,1,
+PS2_DM_PALRAM_WRITE,Gen9LPSoC,A0,8.167391304,ebb,1,
+PS2_GAMD_Cache_READ,Gen9LPSoC,A0,2.647101449,ebb,1,
+PS2_GAMD_Cache_WRITE,Gen9LPSoC,A0,3.061594203,ebb,1,
+PS2_GAMTLB_EBB_READ,Gen9LPSoC,A0,1.478985507,ebb,1,
+PS2_GAMTLB_EBB_WRITE,Gen9LPSoC,A0,1.582608696,ebb,1,
+PS2_GAMW_READ,Gen9LPSoC,A0,5.2,ebb,1,
+PS2_GAMW_TLB_PEND_READ,Gen9LPSoC,A0,2.081884058,ebb,1,
+PS2_GAMW_TLB_PEND_WRITE,Gen9LPSoC,A0,2.166666667,ebb,1,
+PS2_GAMW_WRITE,Gen9LPSoC,A0,5.247101449,ebb,1,
+PS2_GRF_READ,Gen9LPSoC,A0,4.135507246,ebb,1,
+PS2_GRF_WRITE,Gen9LPSoC,A0,9.457971014,ebb,1,
+PS2_GS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
+PS2_GS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
+PS2_GS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
+PS2_HIZ_CACHE_READ,Gen9LPSoC,A0,14.02681159,ebb,1,
+PS2_HIZ_CACHE_WRITE,Gen9LPSoC,A0,17.09782609,ebb,1,
+PS2_HIZ_LATFIFO_READ,Gen9LPSoC,A0,13.44275362,ebb,1,
+PS2_HIZ_LATFIFO_WRITE,Gen9LPSoC,A0,14.02681159,ebb,1,
+PS2_HS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
+PS2_HS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
+PS2_HS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
+PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPSoC,A0,0,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_READ,Gen9LPSoC,A0,32.1326087,ebb,1,
+PS2_IC_DATARAM_WRITE,Gen9LPSoC,A0,35.44855072,ebb,1,
+PS2_IZ_BARYCOEFFIFO_READ,Gen9LPSoC,A0,6.377536232,ebb,1,
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPSoC,A0,7.027536232,ebb,1,
+PS2_IZ_LATFIFO_READ,Gen9LPSoC,A0,7.15942029,ebb,1,
+PS2_IZ_LATFIFO_WRITE,Gen9LPSoC,A0,7.460869565,ebb,1,
+PS2_IZ_POLYFIFO_READ,Gen9LPSoC,A0,9.11884058,ebb,1,
+PS2_IZ_POLYFIFO_WRITE,Gen9LPSoC,A0,9.505072464,ebb,1,
+PS2_IZ_WCOEFFIFO_READ,Gen9LPSoC,A0,3.071014493,ebb,1,
+PS2_IZ_WCOEFFIFO_WRITE,Gen9LPSoC,A0,3.381884058,ebb,1,
+PS2_MSC_CACHE_READ,Gen9LPSoC,A0,18.73695652,ebb,1,
+PS2_MSC_CACHE_WRITE,Gen9LPSoC,A0,20.84710145,ebb,1,
+PS2_MT_DataRam_READ,Gen9LPSoC,A0,7.291304348,ebb,1,
+PS2_MT_DataRam_READ&WRITE,Gen9LPSoC,A0,15.11014493,ebb,1,
+PS2_MT_DataRam_WRITE,Gen9LPSoC,A0,7.81884058,ebb,1,
+PS2_MT_LatFifo_READ,Gen9LPSoC,A0,3.23115942,ebb,1,
+PS2_MT_LatFifo_READ&WRITE,Gen9LPSoC,A0,6.867391304,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen9LPSoC,A0,3.636231884,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPSoC,A0,3.485507246,ebb,1,
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPSoC,A0,4.050724638,ebb,1,
+PS2_PSD_SCOREBOARD_READ,Gen9LPSoC,A0,0.810144928,ebb,1,
+PS2_PSD_SCOREBOARD_WRITE,Gen9LPSoC,A0,0.857246377,ebb,1,
+PS2_RCC_CACHE_READ,Gen9LPSoC,A0,20.78115942,ebb,1,
+PS2_RCC_CACHE_WRITE,Gen9LPSoC,A0,23.6826087,ebb,1,
+PS2_RCPFE_COLORLATFIFO_READ,Gen9LPSoC,A0,23.59782609,ebb,1,
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPSoC,A0,26.02826087,ebb,1,
+PS2_RCPFE_MCSLATFIFO_READ,Gen9LPSoC,A0,4.681884058,ebb,1,
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPSoC,A0,5.011594203,ebb,1,
+PS2_RCPFE_RCCLATFIFO_READ,Gen9LPSoC,A0,1.554347826,ebb,1,
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPSoC,A0,1.610869565,ebb,1,
+PS2_RCZ_CACHE_READ,Gen9LPSoC,A0,19.51884058,ebb,1,
+PS2_RCZ_CACHE_WRITE,Gen9LPSoC,A0,23.07971014,ebb,1,
+PS2_SC_DataRam_READ,Gen9LPSoC,A0,30.56884058,ebb,1,
+PS2_SC_DataRam_WRITE,Gen9LPSoC,A0,32.67898551,ebb,1,
+PS2_SC_LatFifo_READ,Gen9LPSoC,A0,3.88115942,ebb,1,
+PS2_SC_LatFifo_WRITE,Gen9LPSoC,A0,4.484057971,ebb,1,
+PS2_SOL_Cache_Read,Gen9LPSoC,A0,1.507246377,ebb,1,
+PS2_SOL_Cache_ReadWrite,Gen9LPSoC,A0,3.25,ebb,1,
+PS2_SOL_Cache_Write,Gen9LPSoC,A0,1.742753623,ebb,1,
+PS2_STC_CACHE_READ,Gen9LPSoC,A0,17.9173913,ebb,1,
+PS2_STC_CACHE_WRITE,Gen9LPSoC,A0,23.60724638,ebb,1,
+PS2_TDS_Cache_Read,Gen9LPSoC,A0,6.782608696,ebb,1,
+PS2_TDS_Cache_ReadWrite,Gen9LPSoC,A0,14.35652174,ebb,1,
+PS2_TDS_Cache_Write,Gen9LPSoC,A0,7.573913043,ebb,1,
+PS2_VF_Cache_Read,Gen9LPSoC,A0,1.007971014,ebb,1,
+PS2_VF_Cache_Write,Gen9LPSoC,A0,1.045652174,ebb,1,
+PS2_VF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
+PS2_VF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
+PS2_VS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
+PS2_VS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,
 PS0_CPSS,Gen10LP,A0,0.59,syn,495874.04,
 PS0_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_DFRSMP_CLKGLUE_DOP,Gen10LP,A0,0.418605222,syn,1,No 3D DOP in ROSS
 PS0_DFRSMP_DOP,Gen10LP,A0,0.768430551,syn,1,No 3D DOP in ROSS
-PS0_DX9_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS2_DX9_Cache_Read,Gen10LP,A0,14.17,ebb,1,512 bits assumed. Need to check with gSim.
-PS2_DX9_Cache_ReadWrite,Gen10LP,A0,40.11,ebb,1,512 bits assumed. Need to check with gSim.
-PS2_DX9_Cache_Write,Gen10LP,A0,25.93,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_EU_DOP,Gen10LP,A0,0,syn,1,DOP gated
 PS0_Fabric,Gen10LP,A0,218.7,syn,1,
@@ -31,7 +370,6 @@ PS0_GAM_CLKGLUE,Gen10LP,A0,8.756272189,syn,1,
 PS0_GAM_DOP,Gen10LP,A0,17.21243787,syn,1,
 PS0_GATR,Gen10LP,A0,28.78,syn,1187345.2,
 PS0_GATRW,Gen10LP,A0,4.76,syn,196370.72,
-PS0_GS_Cache_Idle,Gen10LP,A0,0,ebb,1,
 PS0_GT3BFRC,Gen10LP,A0,0,syn,1010000,RC is replaced with fabric for CNL
 PS0_GTI_CLKGLUE,Gen10LP,A0,45.09195266,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_GTI_DOP,Gen10LP,A0,12.73173373,syn,1,Taken fromCNL TNET3 CGEN data
@@ -42,54 +380,25 @@ PS0_HDCL1,Gen10LP,A0,0.39,syn,329404.47,
 PS0_HPSBE,Gen10LP,A0,9.97,syn,648482.31,
 PS0_HPSDE,Gen10LP,A0,0.55,syn,104430.66,
 PS0_HPVS,Gen10LP,A0,2.46,syn,471324.65,
-PS0_HS_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS0_IC_DATARAM,Gen10LP,A0,0,ebb,1,
 PS0_L3_Bank_CLKGLUE,Gen10LP,A0,15.21426036,syn,1,
 PS0_L3_Bank_DOP,Gen10LP,A0,38.86949112,syn,1,
 PS0_L3XSRC,Gen10LP,A0,0,syn,772000,RC is replaced with fabric for CNL
-PS0_LTCD_EBB,Gen10LP,A0,0,ebb,1,
 PS0_MEDIASMP_CLKGLUE,Gen10LP,A0,1.823431953,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_MEDIASMP_CLKGLUE_DOP,Gen10LP,A0,0.766279684,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_MEDIASMP_DOP,Gen10LP,A0,1.265122089,syn,1,Taken fromCNL TNET3 CGEN data
-PS0_MT_DataRam_DOP,Gen10LP,A0,0,ebb,1,
-PS0_MT_DataRam_IDLE,Gen10LP,A0,0,ebb,1,
-PS0_MT_LatFifo_DOP,Gen10LP,A0,0,ebb,1,
-PS0_MT_LatFifo_IDLE,Gen10LP,A0,0,ebb,1,
-PS0_PSD_BARYPAYLDASMRAM,Gen10LP,A0,0,ebb,1,
-PS0_PSD_SCOREBOARD,Gen10LP,A0,0,ebb,1,
 PS0_ROSC_CLKGLUE,Gen10LP,A0,75.21656805,syn,1,
 PS0_ROSC_CLKGLUE_DOP,Gen10LP,A0,17.87396218,syn,1,
 PS0_ROSC_DOP,Gen10LP,A0,14.77375897,syn,1,
 PS0_ROSS_CLKGLUE,Gen10LP,A0,12.57408284,syn,1,Taken fromCNL TNET3 CGEN data
 PS0_ROSS_CLKGLUE_DOP,Gen10LP,A0,13.56557396,syn,1,No 3D DOP in ROSS
 PS0_ROSS_DOP,Gen10LP,A0,10.54361538,syn,1,No 3D DOP in ROSS
-PS0_SC_DataRam_IDLE,Gen10LP,A0,0,ebb,1,
-PS0_SC_LatFifo_DOP,Gen10LP,A0,0,ebb,1,
-PS0_SC_LatFifo_IDLE,Gen10LP,A0,0,ebb,1,
 PS0_SliceRC,Gen10LP,A0,0,syn,1700000,RC is replaced with fabric for CNL
-PS0_SOL_Cache_Idle,Gen10LP,A0,0,ebb,1,
-PS0_TDS_Cache_Idle,Gen10LP,A0,0,ebb,1,96 bits assumed. Need to check with gSim.
-PS0_VF_Cache_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS0_VF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS0_VS_Cache_Idle,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
 PS1_EU_DOP,Gen10LP,A0,2.385656805,syn,1,No stall DOP gating in SKL
 PS1_HDC_CLKGLUE,Gen10LP,A0,2.146331361,syn,1,
 PS1_L3_Bank_CLKGLUE,Gen10LP,A0,15.21426036,syn,1,
 PS1_L3_Bank_DOP,Gen10LP,A0,38.86949112,syn,1,
-PS1_LTCD_EBB,Gen10LP,A0,0,ebb,1,
-PS2_AVS_CoeffStorageRAM_READ,Gen10LP,A0,1.37,ebb,1,Need to confirm with Niraj
-PS2_AVS_CoeffStorageRAM_WRITE,Gen10LP,A0,2,ebb,1,Need to confirm with Niraj
-PS2_AVS_DataStorageRAM_READ,Gen10LP,A0,1.21,ebb,1,Need to confirm with Niraj
-PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.19,ebb,1,Need to confirm with Niraj
-PS2_BC_BARYRAM_READ,Gen10LP,A0,2.13,ebb,1,Need to check with gSim - 1x116 io assumed
-PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.07,ebb,1,Need to check with gSim - 1x116 io assumed
-PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
-PS2_ClockSpine_Slice,Gen10LP,A0,120,ebb,1,total spine 330nf
-PS2_ClockSpine_UnSlice,Gen10LP,A0,210,ebb,1,
 PS2_DFRSMP_CLKGLUE,Gen10LP,A0,3.058047337,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_DFRSMP_DOP,Gen10LP,A0,10.95768639,syn,1,Taken fromCNL TNET3 CGEN data
-PS2_DM_PALRAM_READ,Gen10LP,A0,6.85,ebb,1,Need to confirm with Niraj
-PS2_DM_PALRAM_WRITE,Gen10LP,A0,11.18,ebb,1,Need to confirm with Niraj
 PS2_EU_CLKGLUE,Gen10LP,A0,0.455857988,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_EU_DOP,Gen10LP,A0,2.385656805,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_Fabric_GT2,Gen10LP,A0,0,syn,1,
@@ -178,104 +487,28 @@ PS2_GA_FPU3Src_SinglePipe_46%,Gen10LP,A0,46.52425309,syn,438713,scaled SKL weigh
 PS2_GA_FPU3Src_SinglePipe_65%,Gen10LP,A0,46.85634327,syn,438713,scaled SKL weight with process and cdyn/gate of 0.76  discount(Nevin)
 PS2_GAM_CLKGLUE,Gen10LP,A0,8.756272189,syn,1,
 PS2_GAM_DOP,Gen10LP,A0,17.21243787,syn,1,
-PS2_GAMD_Cache_READ,Gen10LP,A0,1.89,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen10LP,A0,2.33,ebb,1,
-PS2_GAMW_READ,Gen10LP,A0,3.98,ebb,1,
-PS2_GAMW_TLB_PEND_READ,Gen10LP,A0,1.62,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen10LP,A0,2.23,ebb,1,
-PS2_GAMW_WRITE,Gen10LP,A0,5.73,ebb,1,
-PS2_GRF_READ,Gen10LP,A0,4.41,ebb,1,
-PS2_GRF_WRITE,Gen10LP,A0,8.15,ebb,1,
-PS2_GS_Cache_Read,Gen10LP,A0,3.82,ebb,1,
-PS2_GS_Cache_ReadWrite,Gen10LP,A0,11.51,ebb,1,
-PS2_GS_Cache_Write,Gen10LP,A0,7.69,ebb,1,
 PS2_GT3BFRC,Gen10LP,A0,0,syn,1010000,RC is replaced with fabric for CNL
 PS2_GTI_CLKGLUE,Gen10LP,A0,45.09195266,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_GTI_DOP,Gen10LP,A0,12.73173373,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_HDC_CLKGLUE,Gen10LP,A0,2.146331361,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_HDC_DOP,Gen10LP,A0,4.514893491,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_HDCL1,Gen10LP,A0,17.64,syn,329404.47,Estimated using IC Cdyn Weights
-PS2_HDCL1_CACHE_READS,Gen10LP,A0,13.06,ebb,1,CNL EBB Spreadsheet
-PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,21.48,ebb,1,CNL EBB Spreadsheet
-PS2_HIZ_CACHE_READ,Gen10LP,A0,3.02,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_HIZ_CACHE_WRITE,Gen10LP,A0,4.21,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_HIZ_LATFIFO_READ,Gen10LP,A0,14.43,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen10LP,A0,29.28,ebb,1,
-PS2_HS_Cache_Read,Gen10LP,A0,3.82,ebb,1,
-PS2_HS_Cache_ReadWrite,Gen10LP,A0,11.51,ebb,1,
-PS2_HS_Cache_Write,Gen10LP,A0,7.69,ebb,1,
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen10LP,A0,0,ebb,1,Already accounted in logic
-PS2_IC_DATARAM_READ,Gen10LP,A0,15.31,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_WRITE,Gen10LP,A0,31.14,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IZ_BARYCOEFFIFO_READ,Gen10LP,A0,6.03,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen10LP,A0,12.26,ebb,1,
-PS2_IZ_LATFIFO_READ,Gen10LP,A0,10.93,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen10LP,A0,22.21,ebb,1,
-PS2_IZ_POLYFIFO_READ,Gen10LP,A0,9.84,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen10LP,A0,19.88,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen10LP,A0,2.9,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen10LP,A0,5.9,ebb,1,
-PS2_IZ_ZCOEFFFIFO_READ,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
-PS2_IZ_ZCOEFFFIFO_WRITE,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_L3_Bank_CLKGLUE,Gen10LP,A0,15.21426036,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_L3_Bank_DOP,Gen10LP,A0,38.86949112,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_L3XSRC,Gen10LP,A0,0,syn,772000,Swag details - BDW GT3 cdyn/3 RefGC scaling - LNI
-PS2_LTCD_EBB_HB_Read,Gen10LP,A0,41.09,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen10LP,A0,79.2,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen10LP,A0,70.12,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen10LP,A0,134.68,ebb,1,Normalized to 1.2GHz
 PS2_MEDIASMP_CLKGLUE,Gen10LP,A0,1.823431953,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_MEDIASMP_DOP,Gen10LP,A0,8.494153846,syn,1,Taken fromCNL TNET3 CGEN data
-PS2_MSC_CACHE_READ,Gen10LP,A0,17.33,ebb,1,Assuming 512 bits. No banking in gSim for MSC
-PS2_MSC_CACHE_WRITE,Gen10LP,A0,28.21,ebb,1,Assuming 512 bits. No banking in gSim for MSC
-PS2_MT_DataRam_READ,Gen10LP,A0,4.33,ebb,1,
-PS2_MT_DataRam_READ&WRITE,Gen10LP,A0,11.38,ebb,1,
-PS2_MT_DataRam_WRITE,Gen10LP,A0,7.05,ebb,1,
-PS2_MT_LatFifo_READ,Gen10LP,A0,3.21,ebb,1,
-PS2_MT_LatFifo_READ&WRITE,Gen10LP,A0,9.72,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen10LP,A0,6.51,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen10LP,A0,2.56,ebb,1,Need to check with gSim - 1x128 io assumed
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen10LP,A0,3.01,ebb,1,Need to check with gSim - 1x128 io assumed
-PS2_PSD_SCOREBOARD_READ,Gen10LP,A0,1.31,ebb,1,Need to check with gSim - 4x8 io assumed
-PS2_PSD_SCOREBOARD_WRITE,Gen10LP,A0,2.08,ebb,1,Need to check with gSim - 4x8 io assumed
-PS2_RCC_CACHE_READ,Gen10LP,A0,5.1,ebb,1,Assuming 160 bits even though no banking in gSim 
-PS2_RCC_CACHE_WRITE,Gen10LP,A0,10.25,ebb,1,Assuming 160 bits even though no banking in gSim 
-PS2_RCPFE_COLORLATFIFO_READ,Gen10LP,A0,22.96,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen10LP,A0,46.71,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen10LP,A0,5.02,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen10LP,A0,10.08,ebb,1,
-PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,1.65,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,3.31,ebb,1,
-PS2_RCZ_CACHE_READ,Gen10LP,A0,5.07,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_RCZ_CACHE_WRITE,Gen10LP,A0,11.93,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_ROSC_CLKGLUE,Gen10LP,A0,75.21656805,syn,1,
 PS2_ROSC_DOP,Gen10LP,A0,70.73776331,syn,1,
 PS2_ROSS_CLKGLUE,Gen10LP,A0,12.57408284,syn,1,Taken fromCNL TNET3 CGEN data
 PS2_ROSS_DOP,Gen10LP,A0,10.54361538,syn,1,Taken fromCNL TNET3 CGEN data and subtracted Sampler DFR DOP
-PS2_SC_DataRam_READ,Gen10LP,A0,28.16,ebb,1,
-PS2_SC_DataRam_WRITE,Gen10LP,A0,45.98,ebb,1,
-PS2_SC_LatFifo_READ,Gen10LP,A0,13.8,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen10LP,A0,30.8,ebb,1,
 PS2_SliceRC,Gen10LP,A0,0,syn,1700000,RC is replaced with fabric for CNL
-PS2_SOL_Cache_Read,Gen10LP,A0,1.14,ebb,1,
-PS2_SOL_Cache_ReadWrite,Gen10LP,A0,2.79,ebb,1,
-PS2_SOL_Cache_Write,Gen10LP,A0,1.65,ebb,1,
-PS2_STC_CACHE_READ,Gen10LP,A0,3.71,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_STC_CACHE_WRITE,Gen10LP,A0,5.4,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_TDS_Cache_Read,Gen10LP,A0,3.05,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_TDS_Cache_ReadWrite,Gen10LP,A0,8.57,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_TDS_Cache_Write,Gen10LP,A0,5.52,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_VF_Cache_Read,Gen10LP,A0,2.61,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_Cache_Write,Gen10LP,A0,3.16,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_URBFifo_Read,Gen10LP,A0,2.03,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_URBFifo_Write,Gen10LP,A0,2.48,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VS_Cache_Read,Gen10LP,A0,1.28,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_VS_Cache_Write,Gen10LP,A0,2.44,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_WMFE_POLYFIFO_READ,Gen10LP,A0,3.21,ebb,1,Current gSim sizes assumed as 1x100
-PS2_WMFE_POLYFIFO_WRITE,Gen10LP,A0,6.44,ebb,1,Current gSim sizes assumed as 1x100
-PS2_ClockSpine_RC,Gen10LPSoC,A0,0,ebb,1,
-PS2_ClockSpine_Slice,Gen10LPSoC,A0,150,ebb,1,total spine 350nf
-PS2_ClockSpine_UnSlice,Gen10LPSoC,A0,200,ebb,1,
+PS0_EU_TCGA_DOP,Gen10LP,B0,0.3,syn,1,PROXY
+PS1_EU_TCGA_DOP,Gen10LP,B0,0.7,syn,1,PROXY
+PS2_EU_TCGA_DOP,Gen10LP,B0,1.19,syn,1,PROXY
+PS0_EU_Pipelines_DOP,Gen10LP,B0,0.3,syn,1,PR0XY
+PS1_EU_Pipelines_DOP,Gen10LP,B0,0.7,syn,1,PROXY
+PS2_EU_Pipelines_DOP,Gen10LP,B0,1.19,syn,1,PROXY
 EM_transc_bypass_16%,Gen9LPClient,A0,24.96,syn,126137,No bypass in TRANSC
 EM_transc_bypass_25%,Gen9LPClient,A0,27.42,syn,126137,No bypass in TRANSC
 EM_transc_bypass_35%,Gen9LPClient,A0,29.27,syn,126137,No bypass in TRANSC
@@ -1021,10 +1254,6 @@ PS0_AVS_DOP,Gen9LPClient,A0,0,syn,828722.77,
 PS0_BC,Gen9LPClient,A0,0.74,syn,625183.58,
 PS0_BC_DOP,Gen9LPClient,A0,0,syn,625183.58,No 3D DOP in ROSS
 PS0_Blitter,Gen9LPClient,C0,19.836,syn,1583302,Taken from SKL C0 ECO1 GT3 CGEN data
-PS0_BTGEN_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS2_BTGEN_Cache_Read,Gen9LPClient,A0,6.69,ebb,1,
-PS2_BTGEN_Cache_ReadWrite,Gen9LPClient,A0,17.77,ebb,1,
-PS2_BTGEN_Cache_Write,Gen9LPClient,A0,11.08,ebb,1,
 PS0_CC,Gen9LPClient,A0,0.08,syn,587436.82,
 PS0_CC_DOP,Gen9LPClient,A0,0,syn,587436.82,
 PS0_CL,Gen9LPClient,C0,5.31,syn,1150675,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1037,7 +1266,6 @@ PS0_DAPB_DOP,Gen9LPClient,A0,0,syn,138408.57,
 PS0_DAPRSC,Gen9LPClient,A0,0.1,syn,389314.05,
 PS0_DAPRSC_DOP,Gen9LPClient,A0,0,syn,389314.05,
 PS0_DAPRSS,Gen9LPClient,C0,1.11,syn,715139,Taken from SKL C0 ECO1 GT3 CGEN data
-PS0_DAPRSS_BYPASSRAM,Gen9LPClient,A0,0,ebb,1,
 PS0_DAPRSS_DOP,Gen9LPClient,A0,0,syn,711266.24,No 3D DOP in ROSS
 PS0_DFRSMP_CLKGLUE,Gen9LPClient,C0,16.464,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_DFRSMP_CLKGLUE_DOP,Gen9LPClient,A0,3.27,syn,1,No 3D DOP in ROSS
@@ -1052,10 +1280,6 @@ PS0_DG,Gen9LPClient,A0,0.15,syn,223798.87,
 PS0_DG_DOP,Gen9LPClient,A0,0,syn,223798.87,
 PS0_DM,Gen9LPClient,A0,0.24,syn,947908.83,
 PS0_DM_DOP,Gen9LPClient,A0,0,syn,947908.83,
-PS0_DX9_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
-PS2_DX9_Cache_Read,Gen9LPClient,A0,26.76,ebb,1,512 bits assumed. Need to check with gSim.
-PS2_DX9_Cache_ReadWrite,Gen9LPClient,A0,71.09,ebb,1,512 bits assumed. Need to check with gSim.
-PS2_DX9_Cache_Write,Gen9LPClient,A0,44.33,ebb,1,512 bits assumed. Need to check with gSim.
 PS0_EU_CLKGLUE,Gen9LPClient,C0,3.83,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_EU_DFX,Gen9LPClient,C0,0.24,syn,47677,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_EU_DOP,Gen9LPClient,A0,0,syn,1,DOP gated
@@ -1102,7 +1326,6 @@ PS0_GAPL3,Gen9LPClient,C0,1.37,syn,103293,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GAPS,Gen9LPClient,C0,1.49,syn,96074,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GAPZ,Gen9LPClient,C0,0.985,syn,72068,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GS,Gen9LPClient,A0,10.44,syn,652799.14,Looks suspicious
-PS0_GS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
 PS0_GS_DOP,Gen9LPClient,A0,0,syn,652799.14,
 PS0_GTI_CLKGLUE,Gen9LPClient,C0,109.279,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GTI_DFX,Gen9LPClient,C0,20.088,syn,549319,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1135,10 +1358,8 @@ PS0_HIZ,Gen9LPClient,B0,4.36,syn,1652079.45,
 PS0_HIZ_DOP,Gen9LPClient,A0,0,syn,1652079.45,
 PS0_HIZ_DOP,Gen9LPClient,B0,0,syn,1652079.45,
 PS0_HS,Gen9LPClient,A0,1.66,syn,387550.06,
-PS0_HS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
 PS0_HS_DOP,Gen9LPClient,A0,0,syn,387550.06,
 PS0_IC,Gen9LPClient,A0,0.75,syn,285768.33,
-PS0_IC_DATARAM,Gen9LPClient,A0,0,ebb,1,
 PS0_IEF,Gen9LPClient,A0,0.08,syn,216441.4,
 PS0_IEF_DOP,Gen9LPClient,A0,0,syn,216441.4,
 PS0_IME,Gen9LPClient,A0,0.11,syn,1140916.92,
@@ -1160,7 +1381,6 @@ PS0_LSQC,Gen9LPClient,A0,1.58,syn,376450.15,
 PS0_LSQD,Gen9LPClient,C0,0.889,syn,317624,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LTCC,Gen9LPClient,A0,0.2,syn,23507.9,
 PS0_LTCD_Data,Gen9LPClient,A0,3.58,syn,720863.55,
-PS0_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
 PS0_LTCD_Tag,Gen9LPClient,A0,1.52,syn,720863.55,
 PS0_MA_IN,Gen9LPClient,C0,0.462,syn,76116,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_MA_OUT,Gen9LPClient,C0,0.162,syn,76116,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1181,19 +1401,13 @@ PS0_MSC_DOP,Gen9LPClient,A0,0,syn,834094.99,
 PS0_MSQC,Gen9LPClient,A0,20.42,syn,603372.79,number of cycles SQ was empty
 PS0_MSQD,Gen9LPClient,A0,10.22,syn,398244.17,number of cycles MSQD was empty
 PS0_MT,Gen9LPClient,A0,0.3,syn,359666.99,
-PS0_MT_DataRam_DOP,Gen9LPClient,A0,0,ebb,1,
-PS0_MT_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS0_MT_DOP,Gen9LPClient,A0,0,syn,359666.99,
-PS0_MT_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
-PS0_MT_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS0_MT_TagRam_IDLE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS0_OACS,Gen9LPClient,C0,3.676,syn,171780,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_PL,Gen9LPClient,A0,0.14,syn,509268.41,
 PS0_PL_DOP,Gen9LPClient,A0,0,syn,509268.41,
 PS0_PSD,Gen9LPClient,A0,4.52,syn,681617.59,
-PS0_PSD_BARYPAYLDASMRAM,Gen9LPClient,A0,0,ebb,1,
 PS0_PSD_DOP,Gen9LPClient,A0,0,syn,681617.59,No 3D DOP in ROSS
-PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0,ebb,1,
 PS0_RCC,Gen9LPClient,A0,1.68,syn,692394.9,
 PS0_RCC_DOP,Gen9LPClient,A0,0,syn,692394.9,
 PS0_RCPBCOM,Gen9LPClient,A0,2.06,syn,487371.93,
@@ -1234,10 +1448,7 @@ PS0_SBE_OTHER_DOP,Gen9LPClient,A0,0,syn,1127692.57,
 PS0_SBE_REPLAY,Gen9LPClient,A0,1.43,syn,1127692.57,1x_zstc_passonly_86 71.2 to 77.6 us
 PS0_SBE_REPLAY_DOP,Gen9LPClient,A0,0,syn,1127692.57,
 PS0_SC,Gen9LPClient,C0,1.033,syn,386528,Taken from SKL C0 ECO1 GT3 CGEN data
-PS0_SC_DataRam_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS0_SC_DOP,Gen9LPClient,C0,0,syn,386528,Taken from SKL C0 ECO1 GT3 CGEN data
-PS0_SC_LatFifo_DOP,Gen9LPClient,A0,0,ebb,1,
-PS0_SC_LatFifo_IDLE,Gen9LPClient,A0,0,ebb,1,
 PS0_SDE,Gen9LPClient,A0,0.97,syn,65940.64,
 PS0_SDE_DOP,Gen9LPClient,A0,0,syn,65940.64,
 PS0_SF,Gen9LPClient,A0,2.94,syn,1188962.87,
@@ -1246,7 +1457,6 @@ PS0_SI,Gen9LPClient,A0,0.26,syn,362879.16,
 PS0_SO,Gen9LPClient,A0,0.19,syn,129023.68,
 PS0_SO_DOP,Gen9LPClient,A0,0,syn,129023.68,
 PS0_SOL,Gen9LPClient,A0,4.79,syn,270005.11,
-PS0_SOL_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
 PS0_SOL_DOP,Gen9LPClient,A0,0,syn,270005.11,
 PS0_ST,Gen9LPClient,A0,0.18,syn,178517.13,
 PS0_ST_DOP,Gen9LPClient,A0,0,syn,178517.13,
@@ -1261,7 +1471,6 @@ PS0_TDC,Gen9LPClient,C0,0.36,syn,181516,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_TDG,Gen9LPClient,A0,0.5,syn,148289.48,
 PS0_TDL,Gen9LPClient,A0,3.08,syn,460616.71,
 PS0_TDS,Gen9LPClient,A0,4.22,syn,759356.4,
-PS0_TDS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,96 bits assumed. Need to check with gSim.
 PS0_TDS_DOP,Gen9LPClient,A0,0,syn,759356.4,
 PS0_TE,Gen9LPClient,A0,1.51,syn,166337.7,
 PS0_TE_DOP,Gen9LPClient,A0,0,syn,166337.7,
@@ -1269,15 +1478,12 @@ PS0_TSG,Gen9LPClient,C0,1.129,syn,487587,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_URBM,Gen9LPClient,C0,0.048,syn,174675,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_URBM_DOP,Gen9LPClient,A0,0,syn,174565.22,
 PS0_VF,Gen9LPClient,A0,3.7,syn,708559.16,
-PS0_VF_Cache_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS0_VF_DOP,Gen9LPClient,A0,0,syn,708559.16,
-PS0_VF_URBFifo_Idle,Gen9LPClient,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS0_VFBE1,Gen9LPClient,C0,0.721,syn,527927,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_VFBE1_DOP,Gen9LPClient,A0,0,syn,527906.24,
 PS0_VFBE2,Gen9LPClient,C0,0.505,syn,524391,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_VFBE2_DOP,Gen9LPClient,A0,0,syn,524341.77,
 PS0_VFE,Gen9LPClient,C0,0.12,syn,105476,Taken from SKL C0 ECO1 GT3 CGEN data
-PS0_VS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
 PS0_VSBE,Gen9LPClient,A0,1.25,syn,628935.09,
 PS0_VSBE_DOP,Gen9LPClient,A0,0,syn,628935.09,
 PS0_VSFE,Gen9LPClient,C0,0.577,syn,394370,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1347,7 +1553,6 @@ PS1_LSQC,Gen9LPClient,C0,24.725,syn,376464,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_LSQD,Gen9LPClient,C0,44.909,syn,317624,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_LTCC,Gen9LPClient,A0,0.31,syn,23507.9,
 PS1_LTCD_Data,Gen9LPClient,C0,18.08,syn,721606,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS1_LTCD_EBB,Gen9LPClient,A0,0,ebb,1,
 PS1_LTCD_Tag,Gen9LPClient,C0,51.72,syn,721606,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_MA_IN,Gen9LPClient,C0,1.4,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_MA_OUT,Gen9LPClient,C0,0.6,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
@@ -1401,19 +1606,13 @@ PS1_WMBE,Gen9LPClient,A0,7.16,syn,777190.79,
 PS1_WMFE,Gen9LPClient,A0,6.95,syn,197451.95,
 PS2_AVS_BoolCentroid,Gen9LPClient,A0,127.85,syn,828722.77,Approximated using dilate
 PS2_AVS_Centroid,Gen9LPClient,A0,138,syn,828722.77,2% TR 24% VLD 18pF EBB
-PS2_AVS_CoeffStorageRAM_READ,Gen9LPClient,A0,2.53,ebb,1,Need to confirm with Niraj
-PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPClient,A0,3.94,ebb,1,Need to confirm with Niraj
 PS2_AVS_Convolution,Gen9LPClient,A0,290.21,syn,828722.77,10% TR 62pF EBB
 PS2_AVS_CorrelationSearch,Gen9LPClient,A0,209.03,syn,828722.77,7% TR 4% VLD 46pF EBB
-PS2_AVS_DataStorageRAM_READ,Gen9LPClient,A0,2.39,ebb,1,Need to confirm with Niraj
-PS2_AVS_DataStorageRAM_WRITE,Gen9LPClient,A0,2.39,ebb,1,Need to confirm with Niraj
 PS2_AVS_Dilate,Gen9LPClient,A0,127.85,syn,828722.77,10% TR 25% VLD 46pF EBB
 PS2_AVS_Erode,Gen9LPClient,A0,165.4,syn,828722.77,18% TR 25% VLD 56pF EBB
 PS2_AVS_MinMax,Gen9LPClient,A0,65.96,syn,828722.77,0% TR 16% VLD 10pF EBB
 PS2_AVS_MinMaxFilter,Gen9LPClient,A0,81.18,syn,828722.77,6% TR 57% VLD 16pF EBB
 PS2_AVS_Scalar,Gen9LPClient,A0,0,syn,828722.77,Need to confirm with Niraj
-PS2_BC_BARYRAM_READ,Gen9LPClient,A0,4.19,ebb,1,Need to check with gSim - 1x116 io assumed
-PS2_BC_BARYRAM_WRITE,Gen9LPClient,A0,4.19,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BC_COMPUTE,Gen9LPClient,A0,81.92,syn,625183.58,1% TR
 PS2_BC_FLOWTHROUGH,Gen9LPClient,A0,11.58,syn,625183.58,1% TR
 PS2_CC_DIS,Gen9LPClient,A0,49.63,syn,587436.82,8% TR
@@ -1422,10 +1621,6 @@ PS2_CC_EN_WRITES,Gen9LPClient,A0,64.68,syn,587436.82,8% TR
 PS2_CL,Gen9LPClient,A0,0,syn,1148212.05,State needs to be changed
 PS2_CL_MustClip,Gen9LPClient,A0,63.07,syn,1148212.05,No TR information
 PS2_CL_NoMustClip,Gen9LPClient,A0,186.84,syn,1148212.05,No TR information
-PS2_ClockSpine,Gen9LPClient,A0,337,ebb,1,Taken from tttt 0.58 x1r2
-PS2_ClockSpine_RC,Gen9LPClient,A0,12,ebb,1,Taken from tttt 0.58 x1r2
-PS2_ClockSpine_Slice,Gen9LPClient,A0,221,ebb,1,Taken from tttt 0.58 x1r2
-PS2_ClockSpine_UnSlice,Gen9LPClient,A0,116,ebb,1,Taken from tttt 0.58 x1r2
 PS2_CRE_FBR,Gen9LPClient,A0,151.9,syn,556318.9,0% TR 20% VLD 
 PS2_CRE_FRONT_ACTIVE,Gen9LPClient,A0,83.56,syn,556318.9,No TR information
 PS2_CRE_INTRA,Gen9LPClient,A0,60.57,syn,556318.9,0% TR 90% VLD 
@@ -1436,8 +1631,6 @@ PS2_DAPB_DIS,Gen9LPClient,C0,1.153,syn,141697,Taken from SKL C0 ECO1 GT3 CGDIS d
 PS2_DAPB_MSAA_RTR,Gen9LPClient,A0,21.85,syn,138408.57,
 PS2_DAPB_NOMSAA_RTR,Gen9LPClient,A0,29.29,syn,138408.57,
 PS2_DAPRSC,Gen9LPClient,A0,20.03,syn,389314.05,8% TR
-PS2_DAPRSS_BYPASSRAM_READ,Gen9LPClient,A0,14.35,ebb,1,Need to check with gSim - 2x128 bit io assumed
-PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPClient,A0,31.67,ebb,1,Need to check with gSim - 2x128 bit io assumed
 PS2_DAPRSS_CLEARRESOLVE,Gen9LPClient,A0,49.07,syn,711266.24,Approximated using average of RTR and PS1
 PS2_DAPRSS_ELSE,Gen9LPClient,A0,49.07,syn,711266.24,Approximated using average of RTR and PS1
 PS2_DAPRSS_RENDERTARGETREAD,Gen9LPClient,A0,83.82,syn,711266.24,PBE_rtr_float32bpc 190.0 to 190.1 us
@@ -1493,8 +1686,6 @@ PS2_DM_LOSSLESS,Gen9LPClient,A0,187.76,syn,947908.83,Approximated with Z
 PS2_DM_Media_BYPASS,Gen9LPClient,A0,13.47,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
 PS2_DM_Media_Planar,Gen9LPClient,A0,0,syn,947908.83,No test available
 PS2_DM_Media_SRGB,Gen9LPClient,A0,0,syn,947908.83,No test available
-PS2_DM_PALRAM_READ,Gen9LPClient,A0,14.59,ebb,1,Need to confirm with Niraj
-PS2_DM_PALRAM_WRITE,Gen9LPClient,A0,22.72,ebb,1,Need to confirm with Niraj
 PS2_DM_Z,Gen9LPClient,A0,187.76,syn,947908.83,47% TR
 PS2_EU_CLKGLUE,Gen9LPClient,C0,3.83,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_EU_DFX,Gen9LPClient,A0,0.92,syn,47677,Average of all opcodes at 30%
@@ -1722,36 +1913,23 @@ PS2_GAM_DFX,Gen9LPClient,C0,3.724,syn,419640,Taken from SKL C0 ECO1 GT3 CGEN dat
 PS2_GAM_DOP,Gen9LPClient,C0,31.232,syn,544650,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_GAM_NONCLKGLUE,Gen9LPClient,C0,7.197,syn,1,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_GAM_SMALL,Gen9LPClient,C0,91.38,syn,570095,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAMD_Cache_READ,Gen9LPClient,A0,3.6,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen9LPClient,A0,4.63,ebb,1,
 PS2_GAMD_READ,Gen9LPClient,A0,69.69,syn,1351647,
 PS2_GAMD_READ_Media,Gen9LPClient,A0,69.69,syn,1351647,
 PS2_GAMD_WRITE,Gen9LPClient,A0,83.46,syn,1351647,
 PS2_GAMD_WRITE_Media,Gen9LPClient,A0,83.46,syn,1351647,
 PS2_GAMTLB_Bypass,Gen9LPClient,A0,49.72,syn,1685534,
-PS2_GAMTLB_EBB_READ,Gen9LPClient,A0,4.34,ebb,1,
-PS2_GAMTLB_EBB_WRITE,Gen9LPClient,A0,2.81,ebb,1,
 PS2_GAMTLB_Hit,Gen9LPClient,A0,81.18,syn,1685534,
 PS2_GAMTLB_HitNotPresent,Gen9LPClient,A0,81.18,syn,1685534,
 PS2_GAMTLB_Miss,Gen9LPClient,A0,81.18,syn,1685534,
 PS2_GAMW_Hit,Gen9LPClient,A0,64.43,syn,1748882,
 PS2_GAMW_Hit_on_Miss,Gen9LPClient,A0,64.43,syn,1748882,
 PS2_GAMW_One_Walk,Gen9LPClient,A0,57.99,syn,1748882,
-PS2_GAMW_READ,Gen9LPClient,A0,7.53,ebb,1,
 PS2_GAMW_Three_Walk,Gen9LPClient,A0,57.99,syn,1748882,
-PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.99,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.71,ebb,1,
 PS2_GAMW_Two_Walk,Gen9LPClient,A0,57.99,syn,1748882,
-PS2_GAMW_WRITE,Gen9LPClient,A0,11.49,ebb,1,
 PS2_GAPC,Gen9LPClient,C0,0.649,syn,39372,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_GAPL3,Gen9LPClient,C0,2.931,syn,103293,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_GAPS,Gen9LPClient,C0,3.1,syn,96074,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_GAPZ,Gen9LPClient,C0,2.139,syn,72068,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GRF_READ,Gen9LPClient,A0,6.97,ebb,1,
-PS2_GRF_WRITE,Gen9LPClient,A0,11.4,ebb,1,
-PS2_GS_Cache_Read,Gen9LPClient,A0,4.97,ebb,1,
-PS2_GS_Cache_ReadWrite,Gen9LPClient,A0,15.83,ebb,1,
-PS2_GS_Cache_Write,Gen9LPClient,A0,10.86,ebb,1,
 PS2_GS_Disabled,Gen9LPClient,A0,18.19,syn,652799.14,No TR information
 PS2_GS_Enabled,Gen9LPClient,A0,63.47,syn,652799.14,GSPerf test 3pF EBB
 PS2_GTI_CLKGLUE,Gen9LPClient,C0,109.279,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1818,12 +1996,8 @@ PS2_HIZ_8x8_EN_ZSTC_AMBIG,Gen9LPClient,A0,296.35,syn,1652079.45,Approximated wit
 PS2_HIZ_8x8_EN_ZSTC_FAIL,Gen9LPClient,A0,238.48,syn,1652079.45,2% TR
 PS2_HIZ_8x8_RESOLVE,Gen9LPClient,A0,254.98,syn,1652079.45,No TR information
 PS2_HIZ_Bypass,Gen9LPClient,B0,156.27,syn,1652079.45,Approximating with Stencil Only as fastz FUB is less
-PS2_HIZ_CACHE_READ,Gen9LPClient,A0,6.69,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_HIZ_CACHE_WRITE,Gen9LPClient,A0,11.08,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_Clear_Ambiguate,Gen9LPClient,B0,156.27,syn,1652079.45,Approximating with Stencil Only as fastz FUB is less
 PS2_HIZ_Depth-Resolve,Gen9LPClient,B0,225.27,syn,1652079.45,Approximating with 4x4_Pass to add interpolator
-PS2_HIZ_LATFIFO_READ,Gen9LPClient,A0,28.69,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen9LPClient,A0,63.35,ebb,1,
 PS2_HIZ_Stencil_Only,Gen9LPClient,B0,156.27,syn,1652079.45,Using iz_disp001 test
 PS2_HIZ_ZMARKERS,Gen9LPClient,A0,9.01,syn,1652079.45,
 PS2_HIZ_Zmarkers,Gen9LPClient,B0,9.01,syn,1652079.45,
@@ -1843,33 +2017,17 @@ PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail ,Gen9LPClient,B0,180.19,syn,1652079.45,Each s
 PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig,Gen9LPClient,B0,214.11,syn,1652079.45,Each source and dest acc equal 11 pF
 PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail ,Gen9LPClient,B0,191.52,syn,1652079.45,Using all fail zstc function equal test at 50% validity
 PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig,Gen9LPClient,B0,225.27,syn,1652079.45,Using all pass z function equal test
-PS2_HS_Cache_Read,Gen9LPClient,A0,4.97,ebb,1,
-PS2_HS_Cache_ReadWrite,Gen9LPClient,A0,15.83,ebb,1,
-PS2_HS_Cache_Write,Gen9LPClient,A0,10.86,ebb,1,
 PS2_HS_Disabled,Gen9LPClient,A0,8.14,syn,387550.06,No TR information
 PS2_HS_Enabled,Gen9LPClient,A0,32.76,syn,387550.06,No TR information
 PS2_IC,Gen9LPClient,A0,29.43,syn,285768.33,
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPClient,A0,0,ebb,1,Already accounted in logic
-PS2_IC_DATARAM_READ,Gen9LPClient,A0,28.69,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,63.35,ebb,1,Need to check with gSim - 512 io assumed
 PS2_IEF_Bypass,Gen9LPClient,A0,33.12,syn,216441.4,7% TR
 PS2_IEF_NoBypass,Gen9LPClient,A0,37.38,syn,216441.4,7% TR - looks suspicious
 PS2_IME_BACK_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
 PS2_IME_FRONT_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
-PS2_IZ_BARYCOEFFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
 PS2_IZ_CMP,Gen9LPClient,A0,54.79,syn,963992.84,Using 1x depth ambig big new test
-PS2_IZ_LATFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
 PS2_IZ_NORMAL_DEPTHDIS,Gen9LPClient,A0,54.79,syn,963992.84,Approximated with cmp
 PS2_IZ_NORMAL_DEPTHEN_FAIL,Gen9LPClient,A0,230.34,syn,963992.84,Approximated with depth pass
 PS2_IZ_NORMAL_DEPTHEN_PASS,Gen9LPClient,A0,230.34,syn,963992.84,Using 1x depth ambig big 1024 50 test
-PS2_IZ_POLYFIFO_READ,Gen9LPClient,A0,21.52,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen9LPClient,A0,47.51,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen9LPClient,A0,7.17,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen9LPClient,A0,15.84,ebb,1,
-PS2_IZ_ZCOEFFFIFO_READ,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
-PS2_IZ_ZCOEFFFIFO_WRITE,Gen9LPClient,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_IZ_ZMARKERS,Gen9LPClient,A0,5.75,syn,963992.84,Has very low vaildity
 PS2_L3_Bank_CLKGLUE,Gen9LPClient,C0,11.933,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_L3_Bank_DFX,Gen9LPClient,C0,0.985,syn,95261,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -1899,10 +2057,6 @@ PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,96.26,syn,720863.55,25% TR
 PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,99.31,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,26.33,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,43.88,syn,720863.55,
-PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,85.67,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,164.5,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen9LPClient,A0,61.33,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen9LPClient,A0,117.64,ebb,1,Normalized to 1.2GHz
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,124.74,syn,720863.55,25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,128.7,syn,720863.55,
 PS2_MA_IN,Gen9LPClient,C0,9.004,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
@@ -1920,8 +2074,6 @@ PS2_MISD_READ_AES_OFF,Gen9LPClient,A0,156.11,syn,665532.23,Approximating with AE
 PS2_MISD_READ_AES_ON,Gen9LPClient,A0,156.11,syn,665532.23,9% SAIF TR
 PS2_MISD_WRITE_AES_OFF,Gen9LPClient,A0,158,syn,665532.23,Approximating with AES_ON because of equation issues
 PS2_MISD_WRITE_AES_ON,Gen9LPClient,A0,158,syn,665532.23,8% SAIF TR
-PS2_MSC_CACHE_READ,Gen9LPClient,A0,53.79,ebb,1,Assuming 512 bits. No banking in gSim for MSC
-PS2_MSC_CACHE_WRITE,Gen9LPClient,A0,89.95,ebb,1,Assuming 512 bits. No banking in gSim for MSC
 PS2_MSC_MSAA_4PPC_DATA,Gen9LPClient,A0,48.5,syn,834094.99,blend_tiley_simd16_8xMSAA_128bpp
 PS2_MSC_MSAA_8PPC_DATA,Gen9LPClient,A0,87.37,syn,834094.99,blend_tiley_simd16_8xMSAA_32bpp
 PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE,Gen9LPClient,A0,53.18,syn,834094.99,Approximating with 4PPC data
@@ -1932,12 +2084,6 @@ PS2_MSQC,Gen9LPClient,A0,59.94,syn,603372.79,active cycles
 PS2_MSQD_READ,Gen9LPClient,A0,75.52,syn,398244.17,read transactions at 4% SAIF TR
 PS2_MSQD_WRITE,Gen9LPClient,A0,75.52,syn,398244.17,approximating with read transactions
 PS2_MT_BYPASS,Gen9LPClient,A0,22.25,syn,359666.99,1% TR
-PS2_MT_DataRam_READ,Gen9LPClient,A0,13.38,ebb,1,
-PS2_MT_DataRam_READ&WRITE,Gen9LPClient,A0,35.55,ebb,1,
-PS2_MT_DataRam_WRITE,Gen9LPClient,A0,22.17,ebb,1,
-PS2_MT_LatFifo_READ,Gen9LPClient,A0,5.91,ebb,1,
-PS2_MT_LatFifo_READ&WRITE,Gen9LPClient,A0,18.92,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen9LPClient,A0,13.01,ebb,1,
 PS2_MT_TagRam _READ,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS2_MT_TagRam_READ&WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
 PS2_MT_TagRam_WRITE,Gen9LPClient,A0,0,syn,1,Not modeled in gSim
@@ -1992,17 +2138,11 @@ PS2_PL_Trilinear_7%,Gen9LPClient,A0,65.68,syn,509268.41,
 PS2_PL_Trilinear_8%,Gen9LPClient,A0,67.73,syn,509268.41,
 PS2_PL_Trilinear_EWA_10%,Gen9LPClient,A0,108.71,syn,509268.41,
 PS2_PL_Trilinear_EWA_12%,Gen9LPClient,A0,116.63,syn,509268.41,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPClient,A0,4.73,ebb,1,Need to check with gSim - 1x128 io assumed
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPClient,A0,5.73,ebb,1,Need to check with gSim - 1x128 io assumed
 PS2_PSD_NOTHREADDISPATCH,Gen9LPClient,A0,44.65,syn,681617.59,1% TR 4pF EBB
-PS2_PSD_SCOREBOARD_READ,Gen9LPClient,A0,3.32,ebb,1,Need to check with gSim - 4x8 io assumed
-PS2_PSD_SCOREBOARD_WRITE,Gen9LPClient,A0,6.31,ebb,1,Need to check with gSim - 4x8 io assumed
 PS2_PSD_THREADDISPATCH,Gen9LPClient,A0,103.5,syn,681617.59,2% TR 4pF EBB
 PS2_PSD_WAITINGONFLUSH,Gen9LPClient,C0,11.654,syn,681738,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_RCC_ALLOC_HITS,Gen9LPClient,A0,91.32,syn,692394.9,NONMSAA_classic_clear_blend_random
 PS2_RCC_ALLOC_MISSES,Gen9LPClient,A0,91.32,syn,692394.9,NONMSAA_classic_clear_blend_random
-PS2_RCC_CACHE_READ,Gen9LPClient,A0,9.36,ebb,1,Assuming 160 bits even though no banking in gSim 
-PS2_RCC_CACHE_WRITE,Gen9LPClient,A0,20.24,ebb,1,Assuming 160 bits even though no banking in gSim 
 PS2_RCPBCOM_MSAA_2PPC_BLD,Gen9LPClient,A0,82.3,syn,487371.93,Approximating with non-MSAA value
 PS2_RCPBCOM_MSAA_2PPC_WRT,Gen9LPClient,A0,64.2,syn,487371.93,Approximating with non-MSAA value
 PS2_RCPBCOM_MSAA_4PPC_BLD,Gen9LPClient,A0,80.42,syn,487371.93,Approximating with non-MSAA value
@@ -2029,10 +2169,6 @@ PS2_RCPBPIX_NOMSAA_4PPC_BLD,Gen9LPClient,A0,144.74,syn,1574177,No TR information
 PS2_RCPBPIX_NOMSAA_4PPC_WRT,Gen9LPClient,A0,85.13,syn,1574177,2% TR
 PS2_RCPBPIX_NOMSAA_8PPC_BLD,Gen9LPClient,A0,289.48,syn,1574177,Doubling 4PPC values
 PS2_RCPBPIX_NOMSAA_8PPC_WRT,Gen9LPClient,A0,170.25,syn,1574177,Doubling 4PPC values
-PS2_RCPFE_COLORLATFIFO_READ,Gen9LPClient,A0,43.04,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPClient,A0,95.02,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen9LPClient,A0,14.35,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPClient,A0,31.67,ebb,1,
 PS2_RCPFE_MSAA_2PPC_BLD_NOZFAIL,Gen9LPClient,A0,130.9,syn,690904.77,approximate with 2PPC_BLD_ZPASS
 PS2_RCPFE_MSAA_2PPC_BLD_NOZPASS,Gen9LPClient,A0,130.9,syn,690904.77,approximate with 2PPC_BLD_ZPASS
 PS2_RCPFE_MSAA_2PPC_BLD_ZFAIL,Gen9LPClient,A0,78.13,syn,690904.77,Approximated with MSAA_2PPC_BLD_NOZPASS
@@ -2083,12 +2219,8 @@ PS2_RCPFE_NOMSAA_8PPC_WRT_NOZPASS,Gen9LPClient,A0,157.28,syn,690904.77,Approxima
 PS2_RCPFE_NOMSAA_8PPC_WRT_ZFAIL,Gen9LPClient,A0,81.18,syn,690904.77,26% TR - pbe_iz024
 PS2_RCPFE_NOMSAA_8PPC_WRT_ZPASS,Gen9LPClient,A0,157.28,syn,690904.77,18% TR - pbe_iz024
 PS2_RCPFE_NOMSAA_RTR,Gen9LPClient,A0,21.31,syn,690904.77,3% TR - nonMSRT_rtrpbe_rtrnorm3
-PS2_RCPFE_RCCLATFIFO_READ,Gen9LPClient,A0,3.68,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPClient,A0,5.75,ebb,1,
 PS2_RCZ_ALLOC_HITS,Gen9LPClient,A0,136.99,syn,935345.55,Using 1x depth ambig big 1024 50 test
 PS2_RCZ_ALLOC_MISSES,Gen9LPClient,A0,81.18,syn,935345.55,Using clear resolve test because that gives true misses
-PS2_RCZ_CACHE_READ,Gen9LPClient,A0,7.36,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_RCZ_CACHE_WRITE,Gen9LPClient,A0,11.51,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_ROSC_CLKGLUE,Gen9LPClient,C0,101.549,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_ROSC_DFX,Gen9LPClient,C0,15.981,syn,664630,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_ROSC_DOP,Gen9LPClient,C0,91.625,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -2108,14 +2240,10 @@ PS2_SBE_REPLAY,Gen9LPClient,A0,12.98,syn,1127692.57,iz_disp001 81.808 to 81.872 
 PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen9LPClient,A0,105.53,syn,367689.38,18% TR
 PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen9LPClient,A0,95.38,syn,367689.38,10% TR
 PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen9LPClient,A0,100.46,syn,367689.38,15% TR
-PS2_SC_DataRam_READ,Gen9LPClient,A0,58.35,ebb,1,
-PS2_SC_DataRam_WRITE,Gen9LPClient,A0,90.9,ebb,1,
 PS2_SC_Else,Gen9LPClient,A0,62.57,syn,367689.38,Approximated with Volumetric 32BPT
 PS2_SC_FastLinear_128BPT,Gen9LPClient,A0,105.53,syn,367689.38,10% TR
 PS2_SC_FastLinear_32BPT,Gen9LPClient,A0,95.38,syn,367689.38,10% TR
 PS2_SC_FastLinear_64BPT,Gen9LPClient,A0,100.46,syn,367689.38,10% TR
-PS2_SC_LatFifo_READ,Gen9LPClient,A0,12.05,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen9LPClient,A0,29.89,ebb,1,
 PS2_SC_LinearFastAniso_128BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
 PS2_SC_LinearFastAniso_32BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
 PS2_SC_LinearFastAniso_64BPT,Gen9LPClient,A0,0,syn,367689.38,SKL doesnot support
@@ -2137,9 +2265,6 @@ PS2_SF_NotCulled_NotFastClip,Gen9LPClient,A0,241.5,syn,1188962.87,No TR informat
 PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,49.21,syn,362879.16,13% TR
 PS2_SI_Media_Sample8x8,Gen9LPClient,A0,20.29,syn,362879.16,0% TR - Need to take 100% validity
 PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,44.22,syn,129023.68,16% TR
-PS2_SOL_Cache_Read,Gen9LPClient,A0,2.09,ebb,1,
-PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.3,ebb,1,
-PS2_SOL_Cache_Write,Gen9LPClient,A0,3.2,ebb,1,
 PS2_SOL_Disabled,Gen9LPClient,C0,6.608,syn,270015,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SOL_Enabled,Gen9LPClient,A0,17.55,syn,270005.11,Using sol009_c2 test 29.5 to 29.9ns
 PS2_ST_1Bank_Enable,Gen9LPClient,A0,26.43,syn,178517.13,11% TR
@@ -2149,8 +2274,6 @@ PS2_ST_3Bank_Enable,Gen9LPClient,A0,47.16,syn,178517.13,Approximated using 16% v
 PS2_ST_4Bank_Enable,Gen9LPClient,A0,47.16,syn,178517.13,Approximated using 3 bank enable
 PS2_STC_ALLOC_HITS,Gen9LPClient,A0,63.57,syn,602797.41,5% TR
 PS2_STC_ALLOC_MISSES,Gen9LPClient,A0,63.57,syn,602797.41,Approximated with HITS because STC power does not vary
-PS2_STC_CACHE_READ,Gen9LPClient,A0,9.99,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_STC_CACHE_WRITE,Gen9LPClient,A0,15.44,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_SVG,Gen9LPClient,C0,5.238,syn,119350,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVL,Gen9LPClient,C0,4.421,syn,94058,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVSM,Gen9LPClient,C0,2.307,syn,139630,Taken from SKL C0 ECO1 GT3 CGDIS data
@@ -2159,9 +2282,6 @@ PS2_TDC,Gen9LPClient,C0,5.719,syn,181516,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_TDG,Gen9LPClient,A0,8.56,syn,148289.48,66hit test 30.038us to 30.05 us
 PS2_TDL_NONPSDDISPATCH,Gen9LPClient,A0,56.82,syn,460616.71,0% TR 20% VLD
 PS2_TDL_PSDDISPATCH,Gen9LPClient,A0,27.24,syn,460616.71,No TR information
-PS2_TDS_Cache_Read,Gen9LPClient,A0,7.47,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_TDS_Cache_ReadWrite,Gen9LPClient,A0,18.97,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_TDS_Cache_Write,Gen9LPClient,A0,11.51,ebb,1,96 bits assumed. Need to check with gSim.
 PS2_TDS_Disabled,Gen9LPClient,A0,35.81,syn,759356.4,No TR information
 PS2_TDS_Enabled,Gen9LPClient,A0,80.79,syn,759356.4,No TR information
 PS2_TE_Disabled,Gen9LPClient,C0,18.55,syn,167722,Taken from SKL C0 ECO1 GT3 CGDIS data
@@ -2171,21 +2291,15 @@ PS2_TSG,Gen9LPClient,A0,0,syn,458895.34,Data WIP
 PS2_TSG_Media_NoScoreboard,Gen9LPClient,A0,0,syn,458895.34,Data WIP
 PS2_TSG_Media_Scoreboard,Gen9LPClient,A0,0,syn,458895.34,Data WIP
 PS2_URBM,Gen9LPClient,C0,7.353,syn,174675,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_VF_Cache_Read,Gen9LPClient,A0,3.76,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_Cache_Write,Gen9LPClient,A0,3.74,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS2_VF_Control,Gen9LPClient,C0,15.402,syn,711804,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_VF_Dropped,Gen9LPClient,C0,15.402,syn,711804,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_VF_Indexed,Gen9LPClient,A0,64.28,syn,708559.16,1.3% TR 66% hit perf test
 PS2_VF_Sequential,Gen9LPClient,A0,53.08,syn,708559.16,1.3% TR 0% hit perf test
-PS2_VF_URBFifo_Read,Gen9LPClient,A0,3.02,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_URBFifo_Write,Gen9LPClient,A0,3.2,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS2_VFBE1,Gen9LPClient,A0,42.29,syn,527906.24,Using 66hit test 29.5 to 29.9ns
 PS2_VFBE2,Gen9LPClient,A0,40.78,syn,524341.77,Using 66hit test 29.5 to 29.9ns
 PS2_VFE,Gen9LPClient,A0,0,syn,106790.31,Data WIP
 PS2_VFE_GPGPU,Gen9LPClient,A0,0,syn,106790.31,Data WIP
 PS2_VFE_MEDIA,Gen9LPClient,A0,0,syn,106790.31,Data WIP
-PS2_VS_Cache_Read,Gen9LPClient,A0,2.47,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_VS_Cache_Write,Gen9LPClient,A0,4.5,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_VSBE,Gen9LPClient,A0,98.4,syn,628935.09,
 PS2_VSFE,Gen9LPClient,A0,58.4,syn,394384.07,Using 66hit test 29.5 to 29.9ns
 PS2_WMBE_ANTIALIASING,Gen9LPClient,A0,216.52,syn,777190.79,No TR information
@@ -2196,8 +2310,6 @@ PS2_WMBE_NOMSAA_PARTIALLYLIT,Gen9LPClient,A0,93.33,syn,777190.79,13% Valid. No T
 PS2_WMBE_NULLTOPSC,Gen9LPClient,A0,3.32,syn,777190.79,1% Valid. No TR information
 PS2_WMFE_NOTNULLTOPSC,Gen9LPClient,A0,38.13,syn,197451.95,No TR information
 PS2_WMFE_NULLTOPSC,Gen9LPClient,A0,5.01,syn,197451.95,No TR information
-PS2_WMFE_POLYFIFO_READ,Gen9LPClient,A0,6.69,ebb,1,Current gSim sizes assumed as 1x100
-PS2_WMFE_POLYFIFO_WRITE,Gen9LPClient,A0,11.08,ebb,1,Current gSim sizes assumed as 1x100
 PS0_WIDI_DOP,Gen9LPClient,C0,0,syn,1269568,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GTP24C_DOP,Gen9LPClient,C0,0,syn,968132,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_SliceRC,Gen9LPClient,C0,287.691,syn,942768,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -2933,10 +3045,6 @@ PS0_AVS_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_BC,Gen9LPSoC,B0,1.093777778,syn,643832.52,
 PS0_BC_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
 PS0_Blitter,Gen9LPSoC,B0,14.32,syn,1694430.78,Taken from BXT B0 CGEN data
-PS0_BTGEN_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS2_BTGEN_Cache_Read,Gen9LPSoC,A0,3.560869565,ebb,1,
-PS2_BTGEN_Cache_ReadWrite,Gen9LPSoC,A0,7.394927536,ebb,1,
-PS2_BTGEN_Cache_Write,Gen9LPSoC,A0,3.834057971,ebb,1,
 PS0_CC,Gen9LPSoC,B0,0.225888889,syn,615704.38,
 PS0_CC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_CL,Gen9LPSoC,B0,3.638,syn,1046316.97,Taken from BXT B0 CGEN data
@@ -2949,7 +3057,6 @@ PS0_DAPB_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_DAPRSC,Gen9LPSoC,B0,0.142666667,syn,421030.01,
 PS0_DAPRSC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_DAPRSS,Gen9LPSoC,B0,1.664444444,syn,795350.28,Taken from BXT B0 CGEN data
-PS0_DAPRSS_BYPASSRAM,Gen9LPSoC,A0,0,ebb,1,
 PS0_DAPRSS_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
 PS0_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
 PS0_DFRSMP_CLKGLUE_DOP,Gen9LPSoC,B0,4.635742216,syn,1,No 3D DOP in ROSS
@@ -2964,10 +3071,6 @@ PS0_DG,Gen9LPSoC,B0,0.190222222,syn,249976.67,
 PS0_DG_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_DM,Gen9LPSoC,B0,0.642,syn,1102648.74,
 PS0_DM_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_DX9_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
-PS2_DX9_Cache_Read,Gen9LPSoC,A0,14.5826087,ebb,1,
-PS2_DX9_Cache_ReadWrite,Gen9LPSoC,A0,30.22028986,ebb,1,
-PS2_DX9_Cache_Write,Gen9LPSoC,A0,15.62826087,ebb,1,
 PS0_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
 PS0_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
 PS0_EU_DFX,Gen9LPSoC,A0,0.14,syn,36830.2,Taken from BXT A0_postroute CGEN data
@@ -3025,7 +3128,6 @@ PS0_GAPL3,Gen9LPSoC,B0,1.188888889,syn,61360.08,Taken from BXT B0 CGEN data
 PS0_GAPS,Gen9LPSoC,B0,1.509888889,syn,99631.89,Taken from BXT B0 CGEN data
 PS0_GAPZ,Gen9LPSoC,B0,2.116222222,syn,68676.51,Taken from BXT B0 CGEN data
 PS0_GS,Gen9LPSoC,B0,5.742333333,syn,375771.17,Looks suspicious
-PS0_GS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_GS_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
 PS0_GTI_DFX,Gen9LPSoC,B0,6.966888889,syn,600521.09,Taken from BXT BSTEP CGEN data
@@ -3058,10 +3160,8 @@ PS0_HIZ,Gen9LPSoC,B0,3.162444444,syn,1173835.78,
 PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_HIZ_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_HS,Gen9LPSoC,B0,1.07,syn,170061.05,
-PS0_HS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_HS_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_IC,Gen9LPSoC,B0,0.570666667,syn,293362.03,
-PS0_IC_DATARAM,Gen9LPSoC,A0,0,ebb,1,
 PS0_IEF,Gen9LPSoC,B0,0.118888889,syn,239266.7,
 PS0_IEF_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_IME,Gen9LPSoC,B0,0.416111111,syn,1165437.29,
@@ -3103,17 +3203,13 @@ PS0_MSC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_MSQC,Gen9LPSoC,B0,4.327555556,syn,897016.61,number of cycles SQ was empty
 PS0_MSQD,Gen9LPSoC,B0,24.51488889,syn,527006.68,number of cycles MSQD was empty
 PS0_MT,Gen9LPSoC,B0,0.416111111,syn,401461.33,
-PS0_MT_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
 PS0_MT_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_MT_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
 PS0_MT_TagRam_IDLE,Gen9LPSoC,B0,0,syn,1,Not modeled in gSim
 PS0_OACS,Gen9LPSoC,B0,3.721222222,syn,170381.16,Taken from BXT B0 CGEN data
 PS0_PL,Gen9LPSoC,B0,0.404222222,syn,524115.29,
 PS0_PL_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_PSD,Gen9LPSoC,B0,5.552111111,syn,701040.96,
-PS0_PSD_BARYPAYLDASMRAM,Gen9LPSoC,A0,0,ebb,1,
 PS0_PSD_DOP,Gen9LPSoC,B0,0,syn,1,No 3D DOP in ROSS
-PS0_PSD_SCOREBOARD,Gen9LPSoC,A0,0,ebb,1,
 PS0_RCC,Gen9LPSoC,B0,0.535,syn,789136.31,
 PS0_RCC_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_RCPBCOM,Gen9LPSoC,B0,9.796444444,syn,554375.13,
@@ -3154,9 +3250,7 @@ PS0_SBE_OTHER_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SBE_REPLAY,Gen9LPSoC,B0,4.184888889,syn,801444.78,1x_zstc_passonly_86 71.2 to 77.6 us
 PS0_SBE_REPLAY_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SC,Gen9LPSoC,B0,1.509888889,syn,397757.66,Taken from BXT B0 CGEN data
-PS0_SC_DataRam_IDLE,Gen9LPSoC,A0,0,ebb,1,
 PS0_SC_DOP,Gen9LPSoC,B0,0,syn,1,Taken from SKL FSO ECO3 rev1 CGEN data
-PS0_SC_LatFifo_IDLE,Gen9LPSoC,A0,0,ebb,1,
 PS0_SDE,Gen9LPSoC,B0,0.820333333,syn,45991.1,
 PS0_SDE_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SF,Gen9LPSoC,B0,2.770111111,syn,1024442.02,
@@ -3165,7 +3259,6 @@ PS0_SI,Gen9LPSoC,B0,0.558777778,syn,401868.49,
 PS0_SO,Gen9LPSoC,B0,0.237777778,syn,127269.21,
 PS0_SO_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_SOL,Gen9LPSoC,B0,4.565333333,syn,275562.78,
-PS0_SOL_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_SOL_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_ST,Gen9LPSoC,B0,0.202111111,syn,274582.73,
 PS0_ST_DOP,Gen9LPSoC,B0,0,syn,1,
@@ -3181,7 +3274,6 @@ PS0_TDC,Gen9LPSoC,B0,0.392333333,syn,175173.92,Taken from BXT B0 CGEN data
 PS0_TDG,Gen9LPSoC,B0,0.772777778,syn,148155.5,
 PS0_TDL,Gen9LPSoC,B0,2.758222222,syn,494121.37,
 PS0_TDS,Gen9LPSoC,B0,1.997333333,syn,305135.7,
-PS0_TDS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_TDS_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_TE,Gen9LPSoC,B0,0.963,syn,106337.58,
 PS0_TE_DOP,Gen9LPSoC,B0,0,syn,1,
@@ -3189,15 +3281,12 @@ PS0_TSG,Gen9LPSoC,B0,0.451777778,syn,243041.33,Taken from BXT B0 CGEN data
 PS0_URBM,Gen9LPSoC,B0,0.071333333,syn,160461.25,Taken from BXT B0 CGEN data
 PS0_URBM_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_VF,Gen9LPSoC,B0,4.838777778,syn,663892.47,
-PS0_VF_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_VF_DOP,Gen9LPSoC,B0,0,syn,1,
-PS0_VF_URBFifo_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_VFBE1,Gen9LPSoC,B0,0.796555556,syn,532922.76,Taken from BXT B0 CGEN data
 PS0_VFBE1_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_VFBE2,Gen9LPSoC,B0,0.760888889,syn,533426.05,Taken from BXT B0 CGEN data
 PS0_VFBE2_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_VFE,Gen9LPSoC,B0,0.118888889,syn,108329.63,Taken from BXT B0 CGEN data
-PS0_VS_Cache_Idle,Gen9LPSoC,A0,0,ebb,1,
 PS0_VSBE,Gen9LPSoC,B0,1.058111111,syn,307533.56,
 PS0_VSBE_DOP,Gen9LPSoC,B0,0,syn,1,
 PS0_VSFE,Gen9LPSoC,B0,0.737111111,syn,201312.73,Taken from BXT B0 CGEN data
@@ -3320,25 +3409,11 @@ PS1_VSBE,Gen9LPSoC,B0,8.56,syn,307533.56,
 PS1_VSFE,Gen9LPSoC,B0,13.17288889,syn,201312.73,Taken from BXT B0 CGDIS data
 PS1_WMBE,Gen9LPSoC,B0,5.040888889,syn,820314.3,
 PS1_WMFE,Gen9LPSoC,B0,8.714555556,syn,205606.06,
-PS2_AVS_CoeffStorageRAM_READ,Gen9LPSoC,A0,1.818115942,ebb,1,
-PS2_AVS_CoeffStorageRAM_WRITE,Gen9LPSoC,A0,2.100724638,ebb,1,
-PS2_AVS_DataStorageRAM_READ,Gen9LPSoC,A0,1.771014493,ebb,1,
-PS2_AVS_DataStorageRAM_WRITE,Gen9LPSoC,A0,1.742753623,ebb,1,
-PS2_BC_BARYRAM_READ,Gen9LPSoC,A0,3.118115942,ebb,1,
-PS2_BC_BARYRAM_WRITE,Gen9LPSoC,A0,3.071014493,ebb,1,
-PS2_ClockSpine,Gen9LPSoC,A0,190,ebb,1,From Rob's team
-PS2_ClockSpine_RC,Gen9LPSoC,A0,0,ebb,1,From Rob's team
-PS2_ClockSpine_Slice,Gen9LPSoC,A0,130,ebb,1,From Rob's team
-PS2_ClockSpine_UnSlice,Gen9LPSoC,A0,60,ebb,1,From Rob's team
-PS2_DAPRSS_BYPASSRAM_READ,Gen9LPSoC,A0,8.035507246,ebb,1,
-PS2_DAPRSS_BYPASSRAM_WRITE,Gen9LPSoC,A0,8.864492754,ebb,1,
 PS2_DFRSMP_CLKGLUE,Gen9LPSoC,B0,27.31828889,syn,1,Taken from BXT BSTEP CGEN data
 PS2_DFRSMP_DFX,Gen9LPSoC,B0,2.282666667,syn,453233.5885,Taken from BXT BSTEP CGEN data
 PS2_DFRSMP_DOP,Gen9LPSoC,B0,10.19234444,syn,1,Taken from BXT BSTEP CGEN data
 PS2_DFRSMP_NONCLKGLUE,Gen9LPSoC,B0,3.458477778,syn,1,Taken from BXT BSTEP CGDIS data
 PS2_DFRSMP_SMALL,Gen9LPSoC,B0,68.91988889,syn,593546.7924,Taken from BXT BSTEP CGDIS data
-PS2_DM_PALRAM_READ,Gen9LPSoC,A0,7.639855072,ebb,1,
-PS2_DM_PALRAM_WRITE,Gen9LPSoC,A0,8.167391304,ebb,1,
 PS2_EU_CLKGLUE,Gen9LPSoC,B0,6.534133333,syn,1,Taken from BXT BSTEP CGEN data
 PS2_EU_CLKGLUE,Gen9LPSoC,A0,5.51,syn,1,Taken from BXT A0_postroute CGEN data
 PS2_EU_DFX,Gen9LPSoC,A0,0.82,syn,36830.2,Average of all opcodes at 30%
@@ -3440,19 +3515,6 @@ PS2_GAM_DFX,Gen9LPSoC,B0,3.447777778,syn,450812.17,Taken from BXT BSTEP CGEN dat
 PS2_GAM_DOP,Gen9LPSoC,B0,17.64311111,syn,1,
 PS2_GAM_NONCLKGLUE,Gen9LPSoC,B0,2.457433333,syn,1,
 PS2_GAM_SMALL,Gen9LPSoC,B0,66.18544444,syn,1584229.06,Taken from BXT BSTEP cgdis data
-PS2_GAMD_Cache_READ,Gen9LPSoC,A0,2.647101449,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen9LPSoC,A0,3.061594203,ebb,1,
-PS2_GAMTLB_EBB_READ,Gen9LPSoC,A0,1.478985507,ebb,1,
-PS2_GAMTLB_EBB_WRITE,Gen9LPSoC,A0,1.582608696,ebb,1,
-PS2_GAMW_READ,Gen9LPSoC,A0,5.2,ebb,1,
-PS2_GAMW_TLB_PEND_READ,Gen9LPSoC,A0,2.081884058,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen9LPSoC,A0,2.166666667,ebb,1,
-PS2_GAMW_WRITE,Gen9LPSoC,A0,5.247101449,ebb,1,
-PS2_GRF_READ,Gen9LPSoC,A0,4.135507246,ebb,1,
-PS2_GRF_WRITE,Gen9LPSoC,A0,9.457971014,ebb,1,
-PS2_GS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
-PS2_GS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
-PS2_GS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
 PS2_GTI_CLKGLUE,Gen9LPSoC,B0,98.99758889,syn,1,Taken from BXT BSTEP CGEN data
 PS2_GTI_DFX,Gen9LPSoC,B0,6.966888889,syn,600521.09,Taken from BXT BSTEP CGEN data
 PS2_GTI_DOP,Gen9LPSoC,B0,15.35687778,syn,1,Taken from BXT BSTEP CGEN data
@@ -3463,24 +3525,6 @@ PS2_HDC_DFX,Gen9LPSoC,B0,1.462333333,syn,315219.3,Taken from BXT BSTEP CGEN data
 PS2_HDC_DOP,Gen9LPSoC,B0,10.94372222,syn,1,Taken from BXT BSTEP CGEN data
 PS2_HDC_NONCLKGLUE,Gen9LPSoC,B0,0.940411111,syn,1,Taken from BXT BSTEP CGDIS data
 PS2_HDC_SMALL,Gen9LPSoC,B0,20.91255556,syn,333936.69,Taken from BXT BSTEP VIRUSdata
-PS2_HIZ_CACHE_READ,Gen9LPSoC,A0,14.02681159,ebb,1,
-PS2_HIZ_CACHE_WRITE,Gen9LPSoC,A0,17.09782609,ebb,1,
-PS2_HIZ_LATFIFO_READ,Gen9LPSoC,A0,13.44275362,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen9LPSoC,A0,14.02681159,ebb,1,
-PS2_HS_Cache_Read,Gen9LPSoC,A0,3.711594203,ebb,1,
-PS2_HS_Cache_ReadWrite,Gen9LPSoC,A0,7.658695652,ebb,1,
-PS2_HS_Cache_Write,Gen9LPSoC,A0,3.956521739,ebb,1,
-PS2_IC_DATARAM_FRONTBUFFER_READ,Gen9LPSoC,A0,0,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_READ,Gen9LPSoC,A0,32.1326087,ebb,1,
-PS2_IC_DATARAM_WRITE,Gen9LPSoC,A0,35.44855072,ebb,1,
-PS2_IZ_BARYCOEFFIFO_READ,Gen9LPSoC,A0,6.377536232,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPSoC,A0,7.027536232,ebb,1,
-PS2_IZ_LATFIFO_READ,Gen9LPSoC,A0,7.15942029,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen9LPSoC,A0,7.460869565,ebb,1,
-PS2_IZ_POLYFIFO_READ,Gen9LPSoC,A0,9.11884058,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen9LPSoC,A0,9.505072464,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen9LPSoC,A0,3.071014493,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen9LPSoC,A0,3.381884058,ebb,1,
 PS2_L3_Bank_CLKGLUE,Gen9LPSoC,B0,45.49283333,syn,1,Taken from BXT BSTEP CGEN data
 PS2_L3_Bank_DFX,Gen9LPSoC,B0,2.104333333,syn,240671.36,Taken from BXT BSTEP CGEN data
 PS2_L3_Bank_DOP,Gen9LPSoC,B0,15.43772222,syn,1,Taken from BXT BSTEP CGEN data
@@ -3491,28 +3535,6 @@ PS2_MEDIASMP_DFX,Gen9LPSoC,B0,0.677666667,syn,98887.3284,Taken from BXT BSTEP CG
 PS2_MEDIASMP_DOP,Gen9LPSoC,B0,5.309577778,syn,1,Taken from BXT BSTEP CGEN data
 PS2_MEDIASMP_NONCLKGLUE,Gen9LPSoC,B0,2.255322222,syn,1,Taken from BXT BSTEP CGEN data
 PS2_MEDIASMP_SMALL,Gen9LPSoC,B0,0.808444444,syn,75648.1206,Taken from BXT BSTEP CGDIS data
-PS2_MSC_CACHE_READ,Gen9LPSoC,A0,18.73695652,ebb,1,
-PS2_MSC_CACHE_WRITE,Gen9LPSoC,A0,20.84710145,ebb,1,
-PS2_MT_DataRam_READ,Gen9LPSoC,A0,7.291304348,ebb,1,
-PS2_MT_DataRam_READ&WRITE,Gen9LPSoC,A0,15.11014493,ebb,1,
-PS2_MT_DataRam_WRITE,Gen9LPSoC,A0,7.81884058,ebb,1,
-PS2_MT_LatFifo_READ,Gen9LPSoC,A0,3.23115942,ebb,1,
-PS2_MT_LatFifo_READ&WRITE,Gen9LPSoC,A0,6.867391304,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen9LPSoC,A0,3.636231884,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen9LPSoC,A0,3.485507246,ebb,1,
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen9LPSoC,A0,4.050724638,ebb,1,
-PS2_PSD_SCOREBOARD_READ,Gen9LPSoC,A0,0.810144928,ebb,1,
-PS2_PSD_SCOREBOARD_WRITE,Gen9LPSoC,A0,0.857246377,ebb,1,
-PS2_RCC_CACHE_READ,Gen9LPSoC,A0,20.78115942,ebb,1,
-PS2_RCC_CACHE_WRITE,Gen9LPSoC,A0,23.6826087,ebb,1,
-PS2_RCPFE_COLORLATFIFO_READ,Gen9LPSoC,A0,23.59782609,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen9LPSoC,A0,26.02826087,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen9LPSoC,A0,4.681884058,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen9LPSoC,A0,5.011594203,ebb,1,
-PS2_RCPFE_RCCLATFIFO_READ,Gen9LPSoC,A0,1.554347826,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen9LPSoC,A0,1.610869565,ebb,1,
-PS2_RCZ_CACHE_READ,Gen9LPSoC,A0,19.51884058,ebb,1,
-PS2_RCZ_CACHE_WRITE,Gen9LPSoC,A0,23.07971014,ebb,1,
 PS2_ROSC_CLKGLUE,Gen9LPSoC,B0,141.1139778,syn,1,
 PS2_ROSC_DFX,Gen9LPSoC,B0,6.372444444,syn,1134914.94,Taken from BXT BSTEP CGEN data
 PS2_ROSC_DOP,Gen9LPSoC,B0,58.43032222,syn,1,
@@ -3523,28 +3545,4 @@ PS2_ROSS_DFX,Gen9LPSoC,B0,1.343444444,syn,271940.1531,Taken from BXT BSTEP CGEN 
 PS2_ROSS_DOP,Gen9LPSoC,B0,8.493422222,syn,1,Taken from BXT BSTEP CGEN data and subtracted Sampler DFR DOP
 PS2_ROSS_NONCLKGLUE,Gen9LPSoC,B0,2.677377778,syn,1,Taken from BXT BSTEP CGDIS data
 PS2_ROSS_SMALL,Gen9LPSoC,B0,39.19766667,syn,494622.327,Taken from BXT BSTEP CGDIS data
-PS2_SC_DataRam_READ,Gen9LPSoC,A0,30.56884058,ebb,1,
-PS2_SC_DataRam_WRITE,Gen9LPSoC,A0,32.67898551,ebb,1,
-PS2_SC_LatFifo_READ,Gen9LPSoC,A0,3.88115942,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen9LPSoC,A0,4.484057971,ebb,1,
-PS2_SOL_Cache_Read,Gen9LPSoC,A0,1.507246377,ebb,1,
-PS2_SOL_Cache_ReadWrite,Gen9LPSoC,A0,3.25,ebb,1,
-PS2_SOL_Cache_Write,Gen9LPSoC,A0,1.742753623,ebb,1,
-PS2_STC_CACHE_READ,Gen9LPSoC,A0,17.9173913,ebb,1,
-PS2_STC_CACHE_WRITE,Gen9LPSoC,A0,23.60724638,ebb,1,
 PS2_TC,Gen9LPSoC,A0,19.29,syn,432192.72,use from SKL
-PS2_TDS_Cache_Read,Gen9LPSoC,A0,6.782608696,ebb,1,
-PS2_TDS_Cache_ReadWrite,Gen9LPSoC,A0,14.35652174,ebb,1,
-PS2_TDS_Cache_Write,Gen9LPSoC,A0,7.573913043,ebb,1,
-PS2_VF_Cache_Read,Gen9LPSoC,A0,1.007971014,ebb,1,
-PS2_VF_Cache_Write,Gen9LPSoC,A0,1.045652174,ebb,1,
-PS2_VF_URBFifo_Read,Gen9LPSoC,A0,0.800724638,ebb,1,
-PS2_VF_URBFifo_Write,Gen9LPSoC,A0,0.828985507,ebb,1,
-PS2_VS_Cache_Read,Gen9LPSoC,A0,2.788405797,ebb,1,
-PS2_VS_Cache_Write,Gen9LPSoC,A0,2.957971014,ebb,1,
-PS0_EU_TCGA_DOP,Gen10LP,B0,0.3,syn,1,PROXY
-PS1_EU_TCGA_DOP,Gen10LP,B0,0.7,syn,1,PROXY
-PS2_EU_TCGA_DOP,Gen10LP,B0,1.19,syn,1,PROXY
-PS0_EU_Pipelines_DOP,Gen10LP,B0,0.3,syn,1,PR0XY
-PS1_EU_Pipelines_DOP,Gen10LP,B0,0.7,syn,1,PROXY
-PS2_EU_Pipelines_DOP,Gen10LP,B0,1.19,syn,1,PROXY
