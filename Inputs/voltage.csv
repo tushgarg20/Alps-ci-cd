@@ -31,7 +31,7 @@ Gen8,Gen10LP,1,
 Gen8,Gen7,1,
 Gen8,Gen7.5,1,
 Gen8,Gen8,1,
-Gen8,Gen8SoC,1.013,0.65 TO 0.75 : 1+(.1*.13)
+Gen8,Gen8SoC,1.024,0.65 TO 0.75 : 1+(.1*.24)
 Gen8,Gen9LPClient,0.9832,0.65 to 0.58 : 1-(.07*.24)
 Gen8,Gen9LPSoC,1,
 Gen8,Gen10LPSoC,1,
@@ -51,7 +51,7 @@ Gen9LPClient,Gen7.5,NA,
 Gen9LPClient,Gen8,NA,
 Gen9LPClient,Gen8SoC,NA,
 Gen9LPClient,Gen9LPClient,1,
-Gen9LPClient,Gen9LPSoC,1.022,0.58 to 0.75 : 1+(.13*.17)
+Gen9LPClient,Gen9LPSoC,1.0408,0.58 to 0.75 : 1+(.24*.17)
 Gen9LPClient,Gen10LPSoC,1,
 Gen11LPSoC,Gen11LP,1,
 Gen11LPSoC,Gen10LP,1,
