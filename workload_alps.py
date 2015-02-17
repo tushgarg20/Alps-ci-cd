@@ -95,6 +95,12 @@ for line in tf:
 
 tf.close()
 
+try:
+  sum_file = open(os.path.abspath(od + '/sum_of_weights.csv'),'w')
+except IOError:
+  print("Can't open file for dumping sum_of_weights")
+  exit(10000)
+
 #########################################
 # Reading Ref Frames Weights
 #########################################
@@ -184,6 +190,7 @@ for i in range(len(keys)):
     else:
       wl_value = wl_value/sum_of_weights
     print('{0},{1}'.format(stat,wl_value), file=out_file)
+  print('{0},{1}'.format(wl,sum_of_weights), file=sum_file)
   out_file.close()
 
   build_alps_script = sd + '/' + 'build_alps.py'
@@ -204,6 +211,7 @@ for i in range(len(keys)):
   if(ExitCode>1):
     exit(ExitCode)
 
+sum_file.close()
 ####################################
 # End of Script
 ####################################
