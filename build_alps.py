@@ -34,7 +34,7 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
 #################################
 I = {}
 C = {}
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen10LP','Gen11LP'],
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP'],
                         'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP']
                        };
 new_gc = {}
@@ -58,6 +58,8 @@ if cfg.find('bdw') > -1 :
     cfg ='Gen8'
 elif cfg.find('skl') > -1 :
     cfg ='Gen9LPClient'
+elif cfg.find('kbl') > -1 :
+    cfg ='Gen9.5LP'
 elif cfg.find('chv') > -1 :
     cfg ='Gen8SoC'
 elif cfg.find('bxt') > -1 :
@@ -82,7 +84,7 @@ print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen10LP' or cfg == 'Gen11LP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11LP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
