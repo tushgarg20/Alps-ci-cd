@@ -41,8 +41,8 @@
 	PS2_Fabric_Repeaters_DATA	=	(.temp_LSN_DATA_between_slices + .temp_LSN_DATA_between_unslice)/(numSlices*.CrClk)	
 				
 #Unslice				
-	PS2_Fabric_Unslice_CMD	=	.temp_LSN_CMD_between_unslice/.CrClk	
-	PS2_Fabric_Unslice_DATA	=	.temp_LSN_DATA_between_unslice/.CrClk	
+	PS2_Fabric_Unslice_CMD	=	(numSlices == 2) ? .temp_LSN_CMD_between_unslice/.CrClk	: .temp_LSN_CMD_between_unslice*2/.CrClk
+	PS2_Fabric_Unslice_DATA	=	(numSlices == 2) ? .temp_LSN_DATA_between_unslice/.CrClk : .temp_LSN_DATA_between_unslice*2/.CrClk	
 				
 #TopLevel				
 	PS2_Fabric_Top_Level	=	1	
