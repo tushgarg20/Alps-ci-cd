@@ -1401,7 +1401,8 @@ Fabric:
     PS2_Fabric_Unslice_CMD: R * C
     PS2_Fabric_Unslice_DATA: R * C
    TopLevel:
-    PS0_Fabric: R * C
+    PS0_Fabric_CMD: R * C
+    PS0_Fabric_DATA: R * C
     PS2_Fabric_Top_Level: R * C
 
 

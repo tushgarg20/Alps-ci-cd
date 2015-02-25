@@ -1,9 +1,9 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	num_Fabric_LSN	=	numSlices	
-	num_Fabric_Repeaters	=	numSlices	
-	num_Fabric_TopLevel	=	(numSlices-1)	
-	num_Fabric_Unslice	=	1	
+	num_Fabric_LSN	=		(numSlices == 1) ? 0 : numSlices	
+	num_Fabric_Repeaters	=(numSlices == 1) ? 0 : numSlices	
+	num_Fabric_TopLevel	=(numSlices == 1) ? 0 : numSlices	
+	num_Fabric_Unslice	=(numSlices == 1) ? 0 : 1	
 				
 #Generic				
 	.CrClk	=	D(CrClock.Clocks)	
@@ -14,9 +14,8 @@
 				
 #Fabric				
 				
-	PS0_Fabric	=	1-PS2_Fabric	
-	PS2_Fabric	=	(PS2_Fabric_Repeaters_CMD+PS2_Fabric_Repeaters_DATA)/(numBuses)	
-				
+	PS0_Fabric_CMD	=	1-(PS2_Fabric_Repeaters_CMD/numBuses)	
+	PS0_Fabric_DATA	=	1-(PS2_Fabric_Repeaters_DATA/numBuses)				
 #LSN				
 	.temp_CMD_traffic_from_unslice	=	D(SUM('S0.uL3.LSN.CmdDownInVCBuf\d+_@anytraffic@.pushed'))	
 	.temp_DATA_traffic_from_unslice	=	D(SUM('S0.uL3.LSN.DataDownInVCBuf\d+_@anytraffic@.pushed'))	
