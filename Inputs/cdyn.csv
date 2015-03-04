@@ -2027,14 +2027,14 @@ PS2_DM_BC1_3_SRGB,Gen9LPClient,A0,138.98,syn,947908.83,Approximated with BC7_SRG
 PS2_DM_BC1_5,Gen9LPClient,A0,108.01,syn,947908.83,25% TR
 PS2_DM_BC6_7,Gen9LPClient,A0,108.01,syn,947908.83,Approximated with BC1_5
 PS2_DM_BC7_SRGB,Gen9LPClient,A0,138.98,syn,947908.83,25% TR
-PS2_DM_Compressed_BYPASS,Gen9LPClient,A0,13.47,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Compressed_BYPASS,Gen9LPClient,A0,13.47,syn,947908.83,BDM - approximated with DG bilinear Cdyn/gate 
 PS2_DM_Else,Gen9LPClient,A0,113.07,syn,947908.83,25% TR
 PS2_DM_ETC,Gen9LPClient,A0,97.44,syn,947908.83,25% TR
 PS2_DM_Expanded,Gen9LPClient,A0,90.13,syn,947908.83,30% TR
-PS2_DM_Expanded_BYPASS,Gen9LPClient,A0,13.47,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Expanded_BYPASS,Gen9LPClient,A0,13.47,syn,947908.83,BDM - approximated with DG bilinear Cdyn/gate 
 PS2_DM_HIZ,Gen9LPClient,A0,187.76,syn,947908.83,Approximated with Z
 PS2_DM_LOSSLESS,Gen9LPClient,A0,187.76,syn,947908.83,Approximated with Z
-PS2_DM_Media_BYPASS,Gen9LPClient,A0,13.47,syn,49428.39,BDM - approximated with DG bilinear Cdyn/gate 
+PS2_DM_Media_BYPASS,Gen9LPClient,A0,13.47,syn,947908.83,BDM - approximated with DG bilinear Cdyn/gate 
 PS2_DM_Media_Planar,Gen9LPClient,A0,0,syn,947908.83,No test available
 PS2_DM_Media_SRGB,Gen9LPClient,A0,0,syn,947908.83,No test available
 PS2_DM_Z,Gen9LPClient,A0,187.76,syn,947908.83,47% TR
