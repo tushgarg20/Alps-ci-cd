@@ -3,6 +3,7 @@ import lib.yaml as yaml
 import re
 import os
 import sys
+import subprocess
 from copy import deepcopy
 
 #############################
@@ -457,8 +458,8 @@ resfile.close()
 # Parsing Cdyn File
 ##############################
 cdyn_hash = {}
-cdyn_file = open(input_hash['Cdyn'],'r')
-first_line = cdyn_file.readline()
+cdyn_file = open(input_hash['Cdyn'],'r') ##Getting Cdyn file path from hash
+first_line = cdyn_file.readline()  ##never used again - used to only move down a line
 for line in cdyn_file:
     data = get_data(line,",")
     if(data[0] not in cdyn_hash):
@@ -844,7 +845,16 @@ if(options.timegraph_file and options.output_timegraph_file):
     #Read the timegraph input file row by row
     #And essentially run build_alps for each row
     #And dump output values into a timegraph style file
-    timegraph_file = open(options.timegraph_file,'r')
+
+    ##HSD requires the capability to handle compressed files
+    if options.timegraph_file.lower().endswith('.gz'):
+        subprocess.call("tar -xzf", options.timegraph_file.lower()) 
+    elif options.timegraph_file.lower().endswith('.zip'):
+        subprocess.call("unzip", options.timegraph_file.lower()) 
+    else
+        break
+
+    timegraph_file = open(options.timegraph_file.partition('.')[0],'r')
     #Creating timegraph output file
     op_timegraph_file = open(options.output_timegraph_file, 'w')
     #tiny_build_alps(True)
@@ -882,4 +892,3 @@ print("Exit",file=lf)
 lf.close()
 if(options.run_debug):
     df.close()
-
