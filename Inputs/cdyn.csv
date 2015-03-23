@@ -1044,7 +1044,7 @@ FPU0_mov_floatbypass_16%,Gen9LPClient,A0,9.68,syn,383376,
 FPU0_mov_floatbypass_25%,Gen9LPClient,A0,10.83,syn,383376,
 FPU0_mov_floatbypass_35%,Gen9LPClient,A0,12.01,syn,383376,
 FPU0_mov_floatbypass_46%,Gen9LPClient,A0,13.62,syn,383376,
-FPU0_mov_bypass_65%,Gen9LPClient,A0,16.13,syn,383376,
+FPU0_mov_floatbypass_65%,Gen9LPClient,A0,16.13,syn,383376,
 FPU0_mov_fp16_16%,Gen9LPClient,A0,10.7,syn,383376,
 FPU0_mov_fp16_28%,Gen9LPClient,A0,12.58,syn,383376,
 FPU0_mov_fp16_35%,Gen9LPClient,A0,13.3,syn,383376,
@@ -1069,17 +1069,17 @@ FPU0_mov_int32_16%,Gen9LPClient,A0,9.83,syn,383376,
 FPU0_mov_int32_27%,Gen9LPClient,A0,10.97,syn,383376,
 FPU0_mov_int32_35%,Gen9LPClient,A0,12.17,syn,383376,
 FPU0_mov_int32_50%,Gen9LPClient,A0,14.11,syn,383376,
-FPU0_mov_int32_77%,Gen9LPClient,A0,17.6,syn,383376,
+FPU0_mov_int32_77%,Gen9LPClient,A0,17.60,syn,383376,
 FPU0_mov_int64_12%,Gen9LPClient,A0,15.73,syn,383376,
 FPU0_mov_int64_18%,Gen9LPClient,A0,17.27,syn,383376,
 FPU0_mov_int64_22%,Gen9LPClient,A0,19.14,syn,383376,
 FPU0_mov_int64_25%,Gen9LPClient,A0,21.81,syn,383376,
 FPU0_mov_int64_30%,Gen9LPClient,A0,26,syn,383376,
-FPU0_mov_intbypass_16%,Gen9LPClient,A0,15.73,syn,383376,
-FPU0_mov_intbypass_25%,Gen9LPClient,A0,17.27,syn,383376,
-FPU0_mov_intbypass_35%,Gen9LPClient,A0,19.14,syn,383376,
-FPU0_mov_intbypass_46%,Gen9LPClient,A0,21.81,syn,383376,
-FPU0_mov_intbypass_65%,Gen9LPClient,A0,26,syn,383376,
+FPU0_mov_intbypass_16%,Gen9LPClient,A0,9.83,syn,383376,
+FPU0_mov_intbypass_25%,Gen9LPClient,A0,10.97,syn,383376,
+FPU0_mov_intbypass_35%,Gen9LPClient,A0,12.17,syn,383376,
+FPU0_mov_intbypass_46%,Gen9LPClient,A0,14.11,syn,383376,
+FPU0_mov_intbypass_65%,Gen9LPClient,A0,17.60,syn,383376,
 FPU0_mul_floatbypass_16%,Gen9LPClient,A0,8.18,syn,383376,Approximated with sim data
 FPU0_mul_floatbypass_25%,Gen9LPClient,A0,9.22,syn,383376,Approximated with sim data
 FPU0_mul_floatbypass_35%,Gen9LPClient,A0,9.96,syn,383376,Simulated
@@ -2964,11 +2964,6 @@ FPU0_mov_floatbypass_25%,Gen9LPSoC,A0,9.46,syn,325828,No bypass in Mov
 FPU0_mov_floatbypass_35%,Gen9LPSoC,A0,10.45,syn,325828,No bypass in Mov
 FPU0_mov_floatbypass_46%,Gen9LPSoC,A0,11.8,syn,325828,No bypass in Mov
 FPU0_mov_floatbypass_65%,Gen9LPSoC,A0,13.87,syn,325828,No bypass in Mov
-FPU0_mov_intbypass_16%,Gen9LPSoC,A0,8.46,syn,325828,No bypass in Mov
-FPU0_mov_intbypass_25%,Gen9LPSoC,A0,9.46,syn,325828,No bypass in Mov
-FPU0_mov_intbypass_35%,Gen9LPSoC,A0,10.45,syn,325828,No bypass in Mov
-FPU0_mov_intbypass_46%,Gen9LPSoC,A0,11.8,syn,325828,No bypass in Mov
-FPU0_mov_intbypass_65%,Gen9LPSoC,A0,13.87,syn,325828,No bypass in Mov
 FPU0_mov_fp16_16%,Gen9LPSoC,A0,9.49,syn,325828,
 FPU0_mov_fp16_28%,Gen9LPSoC,A0,11.06,syn,325828,
 FPU0_mov_fp16_35%,Gen9LPSoC,A0,11.7,syn,325828,

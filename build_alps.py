@@ -1,4 +1,4 @@
-from lib.optparse_ext import OptionParser
+import argparse
 import lib.yaml as yaml
 import re
 import os
@@ -11,64 +11,83 @@ from copy import deepcopy
 ##def files_callback(option,opt,value,parser):
 ##    setattr(parser.values,option.dest,value.split(" "))
 
-parser = OptionParser()
-parser.add_option("-i","--input",dest="input_file",
-                  help="Input file containing path to all input files")
-parser.add_option("-r","--residency",dest="residency_file",
-                  help="Name of input Residency file")
-parser.add_option("-t","--timegraph",dest="timegraph_file",
-                  help="Name of input Timegraph file")
-parser.add_option("-o","--output",dest="output_file",
-                  help="Name of output YAML file")
-parser.add_option("-z","--timegraph_output",dest="output_timegraph_file",
-                  help="Name of timegraph output file")
-parser.add_option("-a","--architecture",dest="dest_config",
-                  help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
-parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
-                  help="Run build_alps in debug mode [default: %default]")
+#### Gets options from command line
+parser = argparse.ArgumentParser(description='This tool builds ALPS-G (Architecture Level Power Simultor - Graphics) Models')
+parser.add_argument('-v','--voltage',dest="operating_voltage",
+           help="Operating Voltage of the architecture")
+parser.add_argument('-s','--voltage_cdyn_sf',dest="voltage_cdyn_scaling_factor",
+           help="Voltage dependant Cdyn scaling factor (0-1)")
+parser.add_argument('-i','--input',dest="input_file",
+           help="Input file containing path to all input files")
+parser.add_argument('-r','--residency',dest="residency_file",
+           help="Name of input Residency file")
+parser.add_argument('-t','--timegraph',dest="timegraph_file",
+           help="Name of input Timegraph file")
+parser.add_argument('-o','--output',dest="output_file",
+           help="Name of output YAML file")
+parser.add_argument('-z','--timegraph_output',dest="output_timegraph_file",
+           help="Name of timegraph output file")
+parser.add_argument('-a','--architecture',dest="dest_config",
+           help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
+parser.add_argument('--debug',action="store_true",dest="run_debug",default=False,
+           help="Run build_alps in debug mode [default: %sdefault]" % "%%")
 
-(options,args) = parser.parse_args()
+options = parser.parse_args()
+
+print ("**********************************")
+print ("****** Trekking the ALPS!!! ******")
+print ("**********************************")
 
 #################################
 # Global Variables
 #################################
-I = {}
-C = {}
+
+I = {} ### Instance Hash 
+C = {} ### Effective Cdyn
+
 cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP'],
                         'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP']
                        };
-new_gc = {}
-process_hash = {}
-voltage_hash = {}
+
+new_gc = {}         ##Gate Count
+process_hash = {}   ##Process
+voltage_hash = {}   ##Voltage scaling factor
+
+##Used for parsing scaling factor files
 cdyn_cagr_hash = {'syn':{},'ebb':{}}
 stepping_hash = {}
-cfg = options.dest_config.lower()
+
+common_cfg = options.dest_config.lower() ##Config chosen
+
 #path = []
 paths = []
 linest_coeff = {}
+
 log_file = options.output_file + ".log"
 debug_file = options.output_file + ".cdyn.log"
 patriot_file = options.output_file + ".patriot"
+
+###Print basic details in log file
 lf = open(log_file,'w')
 if (options.run_debug):
     df = open(debug_file,'w')
     print("Weight,Config,Stepping",file=df)
 
-if cfg.find('bdw') > -1 :
+if common_cfg.find('bdw') > -1 :
     cfg ='Gen8'
-elif cfg.find('skl') > -1 :
+elif common_cfg.find('skl') > -1 :
     cfg ='Gen9LPClient'
-elif cfg.find('kbl') > -1 :
+elif common_cfg.find('kbl') > -1 :
     cfg ='Gen9.5LP'
-elif cfg.find('chv') > -1 :
+elif common_cfg.find('chv') > -1 :
     cfg ='Gen8SoC'
-elif cfg.find('bxt') > -1 :
+elif common_cfg.find('bxt') > -1 :
     cfg ='Gen9LPSoC'
-elif cfg.find('cnl') > -1 :
+elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
-elif cfg.find('owf') > -1 :
+elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
-elif cfg.find('icl') > -1 :
+elif common_cfg.find('icl') > -1 :
     cfg ='Gen11LP'
 else:
     print (cfg, "--> Config not supported\n");
@@ -80,6 +99,9 @@ else:
     lf.close()
     exit(2);
 
+print("Generating results for " + cfg.upper() + " aka " + common_cfg)
+print(" ")
+
 print("Command Line -->",file=lf)
 print (" ".join(sys.argv),file=lf)
 print("",file=lf)
@@ -90,13 +112,16 @@ else:
     cdyn_precedence = cdyn_precedence_hash['lp']
 
 scripts_dir = os.path.abspath(os.path.dirname(__file__))
+
+print("Running scripts from: " + scripts_dir)
+
 #################################
 # Subroutines
 #################################
 def get_data(line, separator):
     res = line.split(separator)
     i = 0
-    while(i < len(res)):
+    while(i < len(res)):##looping to get rid of the "\n"
         res[i] = res[i].strip()
         i = i + 1
     return res
@@ -156,6 +181,14 @@ def get_base_config(stat):
     print ("Not able to find matching cdyn weight for", stat, file=lf)
     return None,None
 
+def Cdyn_VSF(current_operating_voltage, prev_gen_operating_voltage,cdyn_reduction_factor_per_volt):
+    #cdyn_reduction_factor_per_volt = 0.24 ##24% reduction per volt
+    if (current_operating_voltage < prev_gen_operating_voltage):
+        scaling_factor = 1 - cdyn_reduction_factor_per_volt * (prev_gen_operating_voltage - current_operating_voltage)
+    else:
+        scaling_factor = 1/(1 - cdyn_reduction_factor_per_volt * abs(prev_gen_operating_voltage - current_operating_voltage))
+    return scaling_factor
+
 def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
     if(base_cfg == None or stepping == None):
@@ -183,9 +216,14 @@ def get_eff_cdyn(cluster,unit,stat):
         process_sf = process_hash[base_cfg][cfg]['ebb']
     if(process_sf == 'NA'):
         process_sf = 0
-    voltage_sf = voltage_hash[base_cfg][cfg]
-    if(voltage_sf == 'NA'):
-        voltage_sf = 0
+    
+    ##voltage scaling information
+    voltage_sf = Cdyn_VSF(new_voltage_hash[cfg],new_voltage_hash[base_cfg],voltage_cdyn_scaling_factor_hash[cfg])
+    ##print (cfg, base_cfg)
+    ##voltage_sf = voltage_hash[base_cfg][cfg]
+    ##if(voltage_sf == 'NA'):
+    ##    voltage_sf = 0
+    
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
     instances = 0
@@ -384,7 +422,9 @@ def dump_patriot_output():
 
 
 ####################################
-# Parsing Build ALPS Config File
+## Parsing Build ALPS Config File
+
+## --Config file lists paths to various input files
 ####################################
 
 input_hash = {}
@@ -394,7 +434,7 @@ for line in infile:
     input_hash[data[0]] = scripts_dir + "/" + data[1]
 
 ##############################
-# Parsing Residency File
+# Parsing Residency File and storing data in a hash 
 ##############################
 R = {}
 resfile = open(options.residency_file,'r')
@@ -465,16 +505,39 @@ for line in process_file:
     process_hash[data[0]][data[1]]['ebb'] = float(data[3]) if data[3] != 'NA' else data[3]
 process_file.close()
 
+##the voltage.csv file has only the configs and their default operating voltages
+new_voltage_hash = {}
+voltage_cdyn_scaling_factor_hash = {}
 voltage_file = open(input_hash['Voltage_Scaling_Factors'],'r')
 first_line = voltage_file.readline()
 for line in voltage_file:
     data = get_data(line,",")
-    if(data[0] not in voltage_hash):
-        voltage_hash[data[0]] = {}
-    if(data[1] not in voltage_hash[data[0]]):
-        voltage_hash[data[0]][data[1]] = {}
-    voltage_hash[data[0]][data[1]] = float(data[2]) if data[2] != 'NA' else data[2]
+    new_voltage_hash[data[0]] = float(data[1])
+    voltage_cdyn_scaling_factor_hash[data[0]] = float(data[2])
 voltage_file.close()
+
+if (options.operating_voltage):
+    print ("Config: ",cfg)
+    print ("Voltage: ", options.operating_voltage)
+    new_voltage_hash[cfg] = float(options.operating_voltage)
+
+if (options.voltage_cdyn_scaling_factor):
+    print ("Config: ",cfg)
+    print ("Voltage Cdyn Sclaing Factor: ", options.voltage_cdyn_scaling_factor)
+    new_voltage_hash[cfg] = float(options.voltage_cdyn_scaling_factor)
+#print (new_voltage_hash)
+
+##Old way of doing things - read in a voltage scaling factor
+##voltage_file = open(input_hash['Voltage_Scaling_Factors'],'r')
+##first_line = voltage_file.readline()
+##for line in voltage_file:
+##    data = get_data(line,",")
+##    if(data[0] not in voltage_hash):
+##        voltage_hash[data[0]] = {}
+##    if(data[1] not in voltage_hash[data[0]]):
+##        voltage_hash[data[0]][data[1]] = {}
+##    voltage_hash[data[0]][data[1]] = float(data[2]) if data[2] != 'NA' else data[2]
+##voltage_file.close()
 
 syn_cdyn_cagr_file = open(input_hash['syn_cdyn_cagr'],'r')
 first_line = syn_cdyn_cagr_file.readline()
