@@ -1,4 +1,4 @@
-import argparse
+import lib.argparse
 import lib.yaml as yaml
 import re
 import os
@@ -12,7 +12,7 @@ from copy import deepcopy
 ##    setattr(parser.values,option.dest,value.split(" "))
 
 #### Gets options from command line
-parser = argparse.ArgumentParser(description='This tool builds ALPS-G (Architecture Level Power Simultor - Graphics) Models')
+parser = lib.argparse.ArgumentParser(description='This tool builds ALPS-G (Architecture Level Power Simultor - Graphics) Models')
 parser.add_argument('-v','--voltage',dest="operating_voltage",
            help="Operating Voltage of the architecture")
 parser.add_argument('-s','--voltage_cdyn_sf',dest="voltage_cdyn_scaling_factor",
