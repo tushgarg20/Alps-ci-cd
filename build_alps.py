@@ -4,6 +4,7 @@ import re
 import os
 import sys
 import subprocess
+import string
 from copy import deepcopy
 
 #############################
@@ -656,7 +657,6 @@ for cluster in output_cdyn_data['GT']:
 gt_cdyn['Total_GT_Cdyn_syn(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_syn(nF)']/1000))
 gt_cdyn['Total_GT_Cdyn_ebb(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_ebb(nF)']/1000))
 
-
 ####################################
 # Generating output YAML file
 ####################################
@@ -846,15 +846,20 @@ if(options.timegraph_file and options.output_timegraph_file):
     #And essentially run build_alps for each row
     #And dump output values into a timegraph style file
 
-    ##HSD requires the capability to handle compressed files
+    ##Adding the capability to handle compressed files
     if options.timegraph_file.lower().endswith('.gz'):
-        subprocess.call("tar -xzf", options.timegraph_file.lower()) 
+        subprocess.call(["tar", "-xvzf", options.timegraph_file, "-C", scripts_dir])
+        new_file_name = options.timegraph_file.replace('.tar.gz','')
+        uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
     elif options.timegraph_file.lower().endswith('.zip'):
-        subprocess.call("unzip", options.timegraph_file.lower()) 
-    else
-        break
+        subprocess.call(["unzip", options.timegraph_file, "-d", scripts_dir]) 
+        new_file_name = options.timegraph_file.replace('.zip','')
+        uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
+    else:
+        subprocess.call(["cp", options.timegraph_file, scripts_dir])
+        uncompressed_file = scripts_dir + "/" + options.timegraph_file.split("/")[len(options.timegraph_file.split("/"))-1]
 
-    timegraph_file = open(options.timegraph_file.partition('.')[0],'r')
+    timegraph_file = open(uncompressed_file,'r')
     #Creating timegraph output file
     op_timegraph_file = open(options.output_timegraph_file, 'w')
     #tiny_build_alps(True)
@@ -884,6 +889,7 @@ if(options.timegraph_file and options.output_timegraph_file):
         with_header= False
 
     timegraph_file.close()
+    subprocess.call(["rm", uncompressed_file]) 
     op_timegraph_file.close()
 
 
