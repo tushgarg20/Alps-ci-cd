@@ -13,6 +13,7 @@ gen_map_file.pl - Creates the first cut new map file from old map file for gener
 	"unit_alps_map_file"	Old mapping file from design unit/cluster to ALPS unit/cluster
 	"new_alps_map_file"	Output GC file to be used as ALPS input (YAML/CSV)
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
+	"new_kbl_format"	GC CSV file in new KBL format (post ww14 2015)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -49,6 +50,7 @@ our $opYaml;
 our $opCsv;
 
 our $newSklFmt;
+our $newKblFmt;
 
 our $gcCsvFile;
 our $unitAlpsMapFileDefault = "$Bin/unitAlpsMap.csv";
@@ -63,6 +65,7 @@ Getopt::Long::GetOptions(
 	"unit_alps_map_file=s" => \$unitAlpsMapFile,
 	"new_alps_map_file=s" => \$newAlpsMapFile,
 	"new_skl_format" => \$newSklFmt,
+	"new_kbl_format" => \$newKblFmt,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -82,6 +85,9 @@ if ($unitAlpsMapFile =~ /^\s*$/)
 }
 
 if ($newSklFmt) {print "Input GC file in new SKL format\n";}
+if ($newKblFmt) {print "Input GC file in new KBL format\n";}
+
+if ($newSklFmt && $newKblFmt) {die "Cannot specify both SKL and KBL formats at the same time:$!";}
 
 if ($optYaml && !$optCsv) {print "Output file will be dumped in YAML format\n"; $opYaml = 1; $opCsv = 0;} 
 if (!$optYaml && $optCsv) {print "Output file will be dumped in CSV format\n"; $opCsv = 1; $opYaml = 0;} 
@@ -111,6 +117,9 @@ sub read_unit_alps_map_file {
 		my $unitName = $parts[0];
 		$unitName =~ s/^\s*//;
 		$unitName =~ s/\s*$//;
+                my $partName = $parts[2];
+                $partName =~ s/^\s*//;
+                $partName =~ s/\s*$//;
 		my $alpsUnitName = $parts[4];
 		$alpsUnitName =~ s/^\s*//;
 		$alpsUnitName =~ s/\s*$//;
@@ -122,6 +131,7 @@ sub read_unit_alps_map_file {
 		$function =~ s/^\s*//;
 		$function =~ s/\s*$//;
 		$alpsMapHash{"$unitName"}{"ALPS"} = $alpsUnitName;
+		$alpsMapHash{"$unitName"}{"PART"} = $partName;
 		$alpsMapHash{"$unitName"}{"ALPSCLUSTER"} = $alpsCluster;
 		$alpsMapHash{"$unitName"}{"FUNC"} = $function;	
 		$alpsMapHash{"$unitName"}{"LINE"} = $line;
@@ -147,7 +157,9 @@ sub read_gc_csv_file {
 		my $cluster;
 		if ($newSklFmt) {
 			$cluster = $parts[1];
-		} else {
+                } elsif ($newKblFmt) {
+                	$cluster = $parts[11];
+                } else {
 			$cluster = $parts[2];
 		}
 		$cluster =~ s/^\s*//;
@@ -156,6 +168,8 @@ sub read_gc_csv_file {
 		my $partition;
 		if ($newSklFmt) {
 			$partition = $parts[2];
+                } elsif ($newKblFmt) {
+                	$partition = $parts[10];
 		} else {
 			$partition = $parts[3];
 		}
@@ -164,6 +178,8 @@ sub read_gc_csv_file {
 		my $gc;
 		if ($newSklFmt) {
 			$gc = $parts[6];
+                } elsif ($newKblFmt) {
+                	$gc = $parts[1];
 		} else {
 			$gc = $parts[10];
 		}
@@ -192,8 +208,16 @@ sub create_new_alps_map_file {
 			my %unitHash = %{$partHash{"$partition"}};
 			foreach my $unit (keys %unitHash) {
 				if (exists $alpsMapHash{"$unit"}) {
-					my $line = $alpsMapHash{"$unit"}{"LINE"};
-					print $fileWH "$line\n";
+                                        my $part = $alpsMapHash{"$unit"}{"PART"};
+                                        if ($partition eq $part)
+                                        {
+						my $line = $alpsMapHash{"$unit"}{"LINE"};
+						print $fileWH "$line\n";
+                                        }
+                                        else
+                                        {
+						print $fileWH "$unit,$cluster,$partition\n";
+                                        }
 				} else {
 					print $fileWH "$unit,$cluster,$partition\n";
 				}
