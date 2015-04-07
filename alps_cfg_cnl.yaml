@@ -1,16 +1,17 @@
 Stat2Res Formula Files:
-  - Inputs/color_stat2res_formula_cnl.txt
-  - Inputs/l3_stat2res_formula_cnl.txt
+  - Inputs/color_stat2res_formula.txt
+  - Inputs/l3_stat2res_formula.txt
   - Inputs/eu_stat2res_formula_cnl.txt
-  - Inputs/other_stat2res_formula_cnl.txt
-  - Inputs/ff_stat2res_formula_cnl.txt
-  - Inputs/rosc_stat2res_formula_cnl.txt
-  - Inputs/gam_stat2res_formula_cnl.txt
-  - Inputs/ross_stat2res_formula_cnl.txt
-  - Inputs/gti_stat2res_formula_cnl.txt
+  - Inputs/other_stat2res_formula.txt
+  - Inputs/ff_stat2res_formula.txt
+  - Inputs/rosc_stat2res_formula.txt
+  - Inputs/gam_stat2res_formula.txt
+  - Inputs/ross_stat2res_formula.txt
+  - Inputs/gti_stat2res_formula.txt
   - Inputs/sampler_stat2res_formula_cnl.txt
-  - Inputs/hdc_stat2res_formula_cnl.txt
-  - Inputs/z_stat2res_formula_cnl.txt
-
+  - Inputs/hdc_stat2res_formula.txt
+  - Inputs/z_stat2res_formula.txt
+  - Inputs/rc_stat2res_formula_cnl.txt
+  - Inputs/bw_stat2res_formula.txt
 ALPS Input File:
   - inputs_cnl.txt
