@@ -1392,17 +1392,19 @@ Other:
 
 Fabric:
    LSN:
-    PS2_Fabric_LSN_CMD: R * C
-    PS2_Fabric_LSN_DATA: R * C
+    PS2_Fabric_LSN_CMD_S2S: R * C * R[numBuses]
+    PS2_Fabric_LSN_DATA_S2S: R * C * R[numBuses]
+    PS2_Fabric_LSN_CMD_U2S: R * C * R[numBuses]
+    PS2_Fabric_LSN_DATA_U2S: R * C * R[numBuses]
    Repeaters:
-    PS2_Fabric_Repeaters_CMD: R * C
-    PS2_Fabric_Repeaters_DATA: R * C
-   Unslice:
-    PS2_Fabric_Unslice_CMD: R * C
-    PS2_Fabric_Unslice_DATA: R * C
+    PS2_Fabric_Repeaters_CMD_S2S: R * C * R[numBuses]
+    PS2_Fabric_Repeaters_DATA_S2S: R * C * R[numBuses]
+    PS2_Fabric_Repeaters_CMD_U2S: R * C * R[numBuses]
+    PS2_Fabric_Repeaters_DATA_U2S: R * C * R[numBuses]
+   BGF:
+    PS2_Fabric_BGF_CMD: R * C * R[numBuses]
+    PS2_Fabric_BGF_DATA: R * C * R[numBuses]
    TopLevel:
-    PS0_Fabric_CMD: R * C
-    PS0_Fabric_DATA: R * C
+    PS0_Fabric_CMD: R * C * R[numBuses]
+    PS0_Fabric_DATA: R * C * R[numBuses]
     PS2_Fabric_Top_Level: R * C
-
-
