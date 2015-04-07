@@ -1574,8 +1574,8 @@ PS0_EU_SMALL,Gen9LPClient,C0,2.139,syn,20413,Taken from SKL C0 ECO1 GT3 CGEN dat
 PS0_EU_SMALL,Gen9LPSoC,A0,1.12,syn,26698.75,Taken from BXT A0_postroute CGEN data
 PS0_EU_SMALL,Gen9LPSoC,B0,0.321,syn,57046.8,Taken from BXT BSTEP CGEN data
 PS0_EU_TCGA_DOP,Gen10LP,A0,0,syn,1,Taken from CNL  CGEN data
-PS0_Fabric_CMD,Gen10LP,A0,1.71,syn,1,From Kamal per bus
-PS0_Fabric_DATA,Gen10LP,A0,7.83,syn,1,From Kamal per bus
+PS0_Fabric_CMD,Gen10LP,A0,1.129,syn,1,From Kamal per bus
+PS0_Fabric_DATA,Gen10LP,A0,4.925,syn,1,From Kamal per bus
 PS0_FF_OTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,Taken from CNL  CGEN data
 PS0_FF_OTHER_CLKGLUE,Gen9LPClient,C0,35.925,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data
