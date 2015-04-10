@@ -13,6 +13,7 @@ my $arch			= '';
 my $pool			= '';
 my $qslot			= '';
 my $annealing			= '';
+my $cnl				= '';
 
 Getopt::Long::GetOptions(
         "input|i=s"		=> \$tracelist,
@@ -21,7 +22,8 @@ Getopt::Long::GetOptions(
 	"arch|a=s"		=> \$arch,
 	"pool|p=s"		=> \$pool,
 	"qslot|q=s"		=> \$qslot,
-	"annealing"		=> \$annealing
+	"annealing"		=> \$annealing,
+	"cnl"			=> \$cnl
         
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -32,7 +34,8 @@ $odir .= "/" if $odir !~ /\/$/;
 die "Illegal output directory specification: $odir!!" unless -e $odir and -d $odir;
 
 my $script = $sdir . "run_alps_nb.py";
-my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml"  ;
+my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml";
+$cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
 
 open(FILE,"<$tracelist") or die "Can't open $tracelist\n";
 while(my $line = <FILE>){
