@@ -1,11 +1,11 @@
 Gen8_GT2,19.92,
 CHV,11.48,1273x1r3 0.75V
-Gen9_GT2,17.567,
+Gen9_GT2,17.562,
 BXT,14.945,
 Gen8_GT3,38.68,
-Gen9_GT3,35.63,
-Gen9_GT4,51.99, From Srinivas
-KBL_Halo,85.83, From Srinivas
+Gen9_GT3,35.636,
+Gen9_GT4,49.327, From Srinivas (clamped)
+KBL_Halo,81.994, From Srinivas (clamped)
 Gen10_GT2,12.078,
 Gen10_GT2p5,20.107,
 Gen10_GT3,28.473,
