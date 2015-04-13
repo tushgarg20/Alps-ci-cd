@@ -3,7 +3,7 @@
 	num_Fabric_LSN	=		 numSlices	
 	num_Fabric_Repeaters	= numSlices	
 	num_Fabric_TopLevel	= numSlices	
-	num_Fabric_BGF	= (numSlices>2)? 2:1	
+	num_Fabric_BGF	= (numSlices>2)? 2:((numSlices<2)? 0:1)
 				
 #Generic				
 	.CrClk	=	D(CrClock.Clocks)	
@@ -50,8 +50,10 @@
 
 				
 #Unslice BGF				
-	PS2_Fabric_BGF_CMD	=	 (.temp_LSN_CMD_between_unslice)/(numSlices*.CrClk*numBuses)
-	PS2_Fabric_BGF_DATA	=        (.temp_LSN_DATA_between_unslice)/(numSlices*.CrClk*numBuses)
+	PS0_Fabric_BGF_CMD	=       1-PS2_Fabric_BGF_CMD
+	PS0_Fabric_BGF_DATA	=	1-PS2_Fabric_BGF_DATA
+	PS2_Fabric_BGF_CMD	=	 (.temp_LSN_CMD_between_unslice)/(.CrClk*numBuses)
+	PS2_Fabric_BGF_DATA	=        (.temp_LSN_DATA_between_unslice)/(.CrClk*numBuses)
 				
 #TopLevel				
 	PS2_Fabric_Top_Level	=	1	

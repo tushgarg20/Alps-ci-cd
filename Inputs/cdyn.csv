@@ -2671,6 +2671,8 @@ PS2_Fabric_Repeaters_DATA_U2S,Gen10LP,A0,53.92,syn,1,per bus From Kamal Sinha
 PS2_Fabric_Top_Level,Gen10LP,A0,34.86,syn,1, From Kamal Sinha
 PS2_Fabric_BGF_CMD,Gen10LP,A0,2.42484,syn,1,per bus From mehul (150pf)
 PS2_Fabric_BGF_DATA,Gen10LP,A0,12.1242,syn,1,per bus From mehul (150pf)
+PS0_Fabric_BGF_CMD,Gen10LP,A0,1.7,syn,1,per bus aprrox (107pf)
+PS0_Fabric_BGF_DATA,Gen10LP,A0,9,syn,1,per bus approx (107pf)
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,Taken from CNL  CGEN data
 PS2_FF_OTHER_CLKGLUE,Gen9LPClient,C0,35.925,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_FF_OTHER_CLKGLUE,Gen9LPSoC,B0,65.26881111,syn,1,Taken from BXT BSTEP CGEN data

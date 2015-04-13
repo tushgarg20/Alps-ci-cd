@@ -1402,6 +1402,8 @@ Fabric:
     PS2_Fabric_Repeaters_CMD_U2S: R * C * R[numBuses]
     PS2_Fabric_Repeaters_DATA_U2S: R * C * R[numBuses]
    BGF:
+    PS0_Fabric_BGF_CMD: R * C * R[numBuses]
+    PS0_Fabric_BGF_DATA: R * C * R[numBuses]
     PS2_Fabric_BGF_CMD: R * C * R[numBuses]
     PS2_Fabric_BGF_DATA: R * C * R[numBuses]
    TopLevel:
