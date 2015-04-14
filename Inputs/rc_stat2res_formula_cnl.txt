@@ -8,8 +8,8 @@
 #Generic				
 	.CrClk	=	D(CrClock.Clocks)	
 	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
-	numSlices	=	knob.global.NumSlices	
-	numBuses	=	knob.BroadSky.NumUpFabricBus+knob.BroadSky.NumDownFabricBus	
+	 numSlices	=	knob.global.NumSlices	
+	 numBuses        =       D(SUM('knob.S0.uL3.NumUpFabricBus'))+D(SUM('knob.S0.uL3.NumDownFabricBus'))
 	 @anytraffic@	=	(VC0_TCC0|VC1_TCC1|VC1_TCC0|VC1_TCC1|VCC2)	
 				
 #Fabric				
