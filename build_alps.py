@@ -520,9 +520,12 @@ for line in voltage_file:
     voltage_cdyn_scaling_factor_hash[data[0]] = float(data[2])
 voltage_file.close()
 
+operating_voltage = new_voltage_hash[cfg]
+
 if (options.operating_voltage):
     print ("Config: ",cfg)
     print ("Voltage: ", options.operating_voltage)
+    operating_voltage = float(options.operating_voltage)
     #new_voltage_hash[cfg] = float(options.operating_voltage)
 
 if (options.voltage_cdyn_scaling_factor):
@@ -591,6 +594,7 @@ output_yaml_data = {'ALPS Model(pF)':{'GT':{}}}
 output_cdyn_data = {'GT':{}}
 gt_cdyn = {}
 key_stats = {'key_stats':{}}
+key_stats['key_stats']['Operating Voltage'] = operating_voltage
 
 for path in output_list:
     path[-1] = eval_formula(path)
