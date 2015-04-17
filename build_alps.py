@@ -220,7 +220,10 @@ def get_eff_cdyn(cluster,unit,stat):
         process_sf = 0
     
     ##voltage scaling information
-    voltage_sf = Cdyn_VSF(new_voltage_hash[cfg],new_voltage_hash[base_cfg],voltage_cdyn_scaling_factor_hash[cfg])
+    if(options.operating_voltage):
+        voltage_sf = Cdyn_VSF(float(options.operating_voltage),new_voltage_hash[base_cfg],voltage_cdyn_scaling_factor_hash[cfg])
+    else:
+        voltage_sf = Cdyn_VSF(new_voltage_hash[cfg],new_voltage_hash[base_cfg],voltage_cdyn_scaling_factor_hash[cfg])
     ##print (cfg, base_cfg)
     ##voltage_sf = voltage_hash[base_cfg][cfg]
     ##if(voltage_sf == 'NA'):
@@ -526,7 +529,7 @@ if (options.operating_voltage):
 if (options.voltage_cdyn_scaling_factor):
     print ("Config: ",cfg)
     print ("Voltage Cdyn Sclaing Factor: ", options.voltage_cdyn_scaling_factor)
-    new_voltage_hash[cfg] = float(options.voltage_cdyn_scaling_factor)
+    voltage_cdyn_scaling_factor_hash[cfg] = float(options.voltage_cdyn_scaling_factor)
 #print (new_voltage_hash)
 
 ##Old way of doing things - read in a voltage scaling factor
