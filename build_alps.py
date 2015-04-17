@@ -524,7 +524,7 @@ voltage_file.close()
 if (options.operating_voltage):
     print ("Config: ",cfg)
     print ("Voltage: ", options.operating_voltage)
-    new_voltage_hash[cfg] = float(options.operating_voltage)
+    #new_voltage_hash[cfg] = float(options.operating_voltage)
 
 if (options.voltage_cdyn_scaling_factor):
     print ("Config: ",cfg)
