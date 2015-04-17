@@ -184,7 +184,6 @@ def get_base_config(stat):
     return None,None
 
 def Cdyn_VSF(current_operating_voltage, prev_gen_operating_voltage,cdyn_reduction_factor_per_volt):
-    #cdyn_reduction_factor_per_volt = 0.24 ##24% reduction per volt
     if (current_operating_voltage < prev_gen_operating_voltage):
         scaling_factor = 1 - cdyn_reduction_factor_per_volt * (prev_gen_operating_voltage - current_operating_voltage)
     else:
