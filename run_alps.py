@@ -41,6 +41,10 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
 parser.add_option("--disable_stdout",action="store_true",dest="disable_stdout",default=False,
                   help="disable connecting stdout and stderr pipes [default: %default]")
+parser.add_option("-v","--voltage",type="float",action="store",dest="voltage", default=None,
+                  help="voltage at which config is running [default: %default] ")
+parser.add_option("-s","--scalingfactor_voltage",type="float",action="store",dest="sf_voltage", default=None,
+                  help="cdyn scaling factor per volt [default: %default] ")
 
 (options,args) = parser.parse_args()
 
@@ -126,6 +130,10 @@ if not options.run_local:
    
     input_file = '/p/gat/tools/gsim_alps/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.voltage):
+        build_alps_cmd += ['-v', '%f' % (options.voltage)]
+    if(options.sf_voltage):
+        build_alps_cmd += ['-s', '%f' % (options.sf_voltage)]	
     if(options.tg_file):
         build_alps_cmd += ['-t', '%s/%s' % (options.output_dir, options.tg_file), '-z', '%s/alps_Timegraph.txt' % options.output_dir]
     if(options.run_debug):
@@ -159,6 +167,10 @@ else:
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
     build_alps_cmd += ['-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    if(options.voltage):
+        build_alps_cmd += ['-v', '%f' % (options.voltage)]
+    if(options.sf_voltage):
+        build_alps_cmd += ['-s', '%f' % (options.sf_voltage)]
     if(options.tg_file):
         build_alps_cmd += ['-t', '%s/%s' % (options.output_dir, options.tg_file), '-z', '%s/alps_Timegraph.txt' % options.output_dir]
     if(options.run_debug):
