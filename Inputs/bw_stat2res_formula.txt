@@ -2,7 +2,7 @@
 #Generic			
 #	.bw_CrClocks	=	D(CrClock.Clocks)
 	.bw_FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)
-	 @ANY_GTI@	=	(p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)
+	 @ANY_GTI@	=	(p0.gti0.|SBR.p0.gti1.|SBR.p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)
 	 @ANY_LLC@	=	(p0.cbo\d+.cpipe.)
 	 @ANY_DRAM@	=	(p0.c0.t0.|soc_uncore.dunit_\d+.dunit_channel_\d+.)
 	 @ANY_GTI_RD_REQ@	=	(gt_read_req_)     
