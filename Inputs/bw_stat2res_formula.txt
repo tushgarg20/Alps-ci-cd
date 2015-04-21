@@ -3,7 +3,7 @@
 #	.bw_CrClocks	=	D(CrClock.Clocks)
 	.bw_FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)
 	 @ANY_GTI@	=	(p0.gti0.|SBR.p0.gti1.|SBR.p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)
-	 @ANY_LLC@	=	(p0.cbo\d+.cpipe.)
+	 @ANY_LLC@	=	((p0|SBR.p0).cbo\d+.(cpipe|cbo_pipeline_\d+).)
 	 @ANY_DRAM@	=	(p0.c0.t0.|soc_uncore.dunit_\d+.dunit_channel_\d+.)
 	 @ANY_GTI_RD_REQ@	=	(gt_read_req_)     
 	 @ANY_GTI_WR_REQ@	=	(gt_write_req_)     
@@ -11,6 +11,8 @@
 	 @ANY_LLC_RD_MISS@	=	(gfx_read_llc_miss_unq_)
 	 @ANY_LLC_WR_HIT@	=	(gfx_write_llc_hit_unq_)
 	 @ANY_LLC_WR_MISS@	=	(gfx_write_llc_miss_unq_)
+	 @ANY_LLC_HIT@		=	(llc_hit)
+	 @ANY_LLC_MISS@		=	(llc_miss)
 	 @ANY_DRAM_RD_REQ@	=	(un_imc_sent_rd_cas_to_dram|num_rd_cas_commands_sent_to_dram)
 	 @ANY_DRAM_WR_REQ@	=	(un_imc_sent_wr_cas_to_dram|num_wr_cas_commands_sent_to_dram)
 #	.Clk	=	D('@ANY_GTI@gclk_cycles')
@@ -76,5 +78,7 @@
 	LLC_RD_MISS_BW_GBPS	=	LLC_RCZ_RD_MISS_BW_GBPS + LLC_HIZ_RD_MISS_BW_GBPS + LLC_STC_RD_MISS_BW_GBPS + LLC_RCC_RD_MISS_BW_GBPS + LLC_MT_RD_MISS_BW_GBPS + LLC_VERTEX_RD_MISS_BW_GBPS + LLC_DC_RD_MISS_BW_GBPS + LLC_OTHER_RD_MISS_BW_GBPS
 	LLC_WR_HIT_BW_GBPS	=	LLC_RCZ_WR_HIT_BW_GBPS + LLC_HIZ_WR_HIT_BW_GBPS + LLC_STC_WR_HIT_BW_GBPS + LLC_RCC_WR_HIT_BW_GBPS + LLC_DC_WR_HIT_BW_GBPS + LLC_OTHER_WR_HIT_BW_GBPS
 	LLC_WR_MISS_BW_GBPS	=	LLC_RCZ_WR_MISS_BW_GBPS + LLC_HIZ_WR_MISS_BW_GBPS + LLC_STC_WR_MISS_BW_GBPS + LLC_RCC_WR_MISS_BW_GBPS + LLC_DC_WR_MISS_BW_GBPS + LLC_OTHER_WR_MISS_BW_GBPS
+	LLC_HIT_BW_GBPS		=	D(SUM('@ANY_LLC@@ANY_LLC_HIT@')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)	#added as stream specifc stats are missing for CNL+ configs	
+	LLC_MISS_BW_GBPS	=	D(SUM('@ANY_LLC@@ANY_LLC_MISS@')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)	#only as stream specific stats are missing for CNL+ configs	
 	DRAM_RD_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_RD_REQ@')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
 	DRAM_WR_BW_GBPS	=	D(SUM('@ANY_DRAM@@ANY_DRAM_WR_REQ@')) * ((@WR_BW_PCLK@ * .bw_FPS)/1000000000)
