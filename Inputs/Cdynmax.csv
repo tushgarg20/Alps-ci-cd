@@ -6,10 +6,10 @@ Gen8_GT3,38.68,
 Gen9_GT3,35.636,
 Gen9_GT4,49.327, From Srinivas (clamped)
 KBL_Halo,81.994, From Srinivas (clamped)
-Gen10_GT2,12.078,
-Gen10_GT2p5,20.107,
-Gen10_GT3,28.473,
-Gen10_GT4,36.494,
-Gen10_Halo,52.536,
-Gen11_GT2,29.6, From Mehul icl_adder_gc2_ww12_4.csv
+Gen10_GT2,13.29,
+Gen10_GT2p5,21.96,
+Gen10_GT3,30.97,
+Gen10_GT4,39.64,
+Gen10_Halo,56.98,
+Gen11_GT2,32.72, From Mehul icl_adder_gc2_ww12_4.csv
 BXT_X,17.372,
