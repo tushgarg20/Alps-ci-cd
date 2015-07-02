@@ -1,16 +1,16 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numROSS	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
-	numEURows	=	knob.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
+	numROSS	=	SUM('knob.*\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
+	numEURows	=	knob.S0.SS0.NumRows + knob.STK0.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 
-	num_DSSC_BC             	=	numROSS	/ 2
-	num_DSSC_PSD            	=	numROSS / 2	
-	num_DSSC_PSD_Scoreboard 	=	numROSS	/ 2
-	num_DSSC_PSD_BaryPayloadRAM	=	numROSS	/ 2
-	num_DSSC_DAPRSS            	=	numROSS	/ 2
-	num_DSSC_DAPRSS_BypassRAM	=	numROSS	/ 2
-	num_DSSC_GWL            	=	numROSS	/ 2
-	num_DSSC_CPSS           	=	numROSS	/ 2
+	num_DSSC_BC             	=	COUNT('knob.*\.S\d+.*\.uBC.*\.ClockName')
+	num_DSSC_PSD            	=	COUNT('knob.*\.S\d+.*\.uPSD.*\.ClockName')	
+	num_DSSC_PSD_Scoreboard 	=	num_DSSC_PSD
+	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSD
+	num_DSSC_DAPRSS            	=	COUNT('knob.*\.S\d+.*\.uDAPRSS.*\.ClockName')
+	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS
+	num_DSSC_GWL            	=	COUNT('knob.*\.S\d+.*\.uGWL.*\.ClockName')
+	num_DSSC_CPSS           	=	COUNT('knob.*\.S\d+.*\.uCPSS.*\.ClockName')
 
 	num_ROSS_MA_IN	    =	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_OUT 	=	numEURows * numROSS	#MA is per row

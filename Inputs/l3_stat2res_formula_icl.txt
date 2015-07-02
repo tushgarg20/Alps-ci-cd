@@ -1,1 +1,143 @@
-l3_stat2res_formula.txt
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numL3Banks	=	knob.global.NumL3Banks	
+	num_L3_Slices	=	knob.global.NumSlices	
+	num_L3_SubSlices	=	knob.S0.NumSubSlices + knob.STK0.S0.NumSubSlices
+	num_L3_Bank_LTCD_EBB	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Data	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Tag	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQD	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQC	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCC	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSLM	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LNI	=	num_L3_Slices	
+	num_L3_Bank_LNE	=	num_L3_Slices	
+	num_L3_Bank_LNIXS	=	num_L3_Slices	
+	num_L3_Bank_LNEXS	=	num_L3_Slices	
+	num_L3_Bank_L3BankOther	=	num_L3_Slices * numL3Banks	#GLUE/Small
+	num_L3_Bank_DOP	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_DFX	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_SMALL	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_CLKGLUE	=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_NONCLKGLUE	=	num_L3_Slices * numL3Banks	
+#Generic				
+	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
+	 .CrClk	=	D(CrClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
+	LNI_max_ports	=	numL3Banks * 2	#Max ports availabe for LNI
+	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
+	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
+	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
+	L3SuperQSize	=	knob.S0.NumSubSlices + knob.STK0.S0.NumSubSlices
+
+#LTCD_EBB				
+	PS0_LTCD_EBB	=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
+	PS1_LTCD_EBB	=	0	#No stall by design
+	PS2_LTCD_EBB_Read	=	(D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_EBB_Write	=	(D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_EBB_HB_Read	=	(D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	
+	PS2_LTCD_EBB_HB_Write	=	(D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	
+#LTCD_Data_Syn				
+	PS0_LTCD_Data	=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	.URB_HB_bank_reads	=	(D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	#Using HB data read/write stats to be consistent
+	.URB_HB_bank_writes	=	(D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	#Using HB data read/write stats to be consistent
+	.URB_bank_reads	=	((D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) - .URB_HB_bank_reads	#Normal Bank reads = Total URB reads - HB reads
+	.URB_bank_writes	=	((D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) - .URB_HB_bank_writes	#Normal Bank writes = Total URB writes - HB writes
+	PS1_LTCD_Data	=	0	#No stall by design
+	PS2_LTCD_Data_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	
+	PS2_LTCD_Data_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	
+	PS2_LTCD_Data_NonSLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
+	PS2_LTCD_Data_SLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	# Total URB (Non SLM - No Tag) Writes
+	PS2_LTCD_Data_SLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	# Total SLM Reads
+	PS2_LTCD_Data_Else	=	1 - (PS0_LTCD_Data + PS2_LTCD_Data_NonSLM_ECC_TagRead + PS2_LTCD_Data_NonSLM_ECC_TagWrite + PS2_LTCD_Data_NonSLM_ECC_NoTagRead + PS2_LTCD_Data_NonSLM_ECC_NoTagWrite + PS2_LTCD_Data_SLM_ECC_NoTagRead + PS2_LTCD_Data_SLM_ECC_NoTagWrite)	# Assign bubbles to PS2_ELSE
+#LTCD_Tag_Syn				# Total SLM Writes
+	PS0_LTCD_Tag	=	1 - (PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite)	#Changed to use residual residency
+	PS1_LTCD_Tag	=	0	#No stall by design
+	PS2_LTCD_Tag_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	#Tag Reads = Total Normal Bank reads - URB Normal bank reads
+	PS2_LTCD_Tag_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	#Tag Writes = Total Normal Bank writes - URB Normal bank writes
+#LSQD				
+	PS0_LSQD	=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS1_LSQD	=	1 - (PS0_LSQD + PS2_LSQD_nonatomics + PS2_LSQD_atomics)	
+	PS2_LSQD_nonatomics	=	(D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + (D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW'))/16) + (D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW'))/16) + (D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW'))/16) + (D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW'))/16)) / (.CrClk * num_L3_Slices * numL3Banks)	#Data RAM reads + writes
+	PS2_LSQD_atomics	=	(D(SUM('@ANY_L3BANK@DataRamAtomic')) + (D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')))/16) / (.CrClk * num_L3_Slices * numL3Banks)	#URB atomics  + Data RAM atomics
+#LSQC				
+	PS0_LSQC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS1_LSQC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS2_LSQC	=	1 - PS0_LSQC - PS1_LSQC	
+	.temp_LSQCNotEmptyNotFullCount	=	(1 - (PS0_LSQC + PS1_LSQC)) * (.CrClk2x/2) 
+	.temp_LSQCEmptySlotCount	=	D(SUM('@ANY_L3BANK@SuperQEntries_Empty')) / (num_L3_Slices * numL3Banks)
+        .temp_LSQCAllEmptySlotCount	=	PS0_LSQC * L3SuperQSize * (.CrClk2x/2)
+	.temp_LSQCAllNotEmptySlotCount	=	.temp_LSQCEmptySlotCount - .temp_LSQCAllEmptySlotCount
+	.temp_LSQCPerClkEmptySlotCount	=	(.temp_LSQCNotEmptyNotFullCount > 0) ? (.temp_LSQCAllNotEmptySlotCount / .temp_LSQCNotEmptyNotFullCount) : 0
+	PS2_LSQC_SlotFull	=	1 - (.temp_LSQCPerClkEmptySlotCount / L3SuperQSize)
+        	        
+#LTCC				
+	PS0_LTCC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS1_LTCC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS2_LTCC	=	1 - PS0_LTCC - PS1_LTCC	
+#LSLM				
+	PS0_LSLM	=	D(SUM('@ANY_L3BANK@SLMIdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	#Place holder
+	PS1_LSLM	=	1 - PS0_LSLM - PS2_LSLM_Atomics - PS2_LSLM_NonAtomics	
+	PS2_LSLM_Atomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * .CrClk)	
+	PS2_LSLM_NonAtomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW'))) / (16 * .CrClk)	
+#LNI				
+	PS0_LNI	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	.temp_LNI_weighted_sum	=	(D(SUM('S\d+.uL3\.LniWinners.1')) * 1) + (D(SUM('S\d+.uL3\.LniWinners.2')) * 2) + (D(SUM('S\d+.uL3\.LniWinners.3')) * 3) + (D(SUM('S\d+.uL3\.LniWinners.4')) * 4) + (D(SUM('S\d+.uL3\.LniWinners.5')) * 5) + (D(SUM('S\d+.uL3\.LniWinners.6')) * 6) + (D(SUM('S\d+.uL3\.LniWinners.7')) * 7) + (D(SUM('S\d+.uL3\.LniWinners.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNI_sum	=	(D(SUM('S\d+.uL3\.LniWinners.1'))) + (D(SUM('S\d+.uL3\.LniWinners.2'))) + (D(SUM('S\d+.uL3\.LniWinners.3'))) + (D(SUM('S\d+.uL3\.LniWinners.4'))) + (D(SUM('S\d+.uL3\.LniWinners.5'))) + (D(SUM('S\d+.uL3\.LniWinners.6'))) + (D(SUM('S\d+.uL3\.LniWinners.7'))) + (D(SUM('S\d+.uL3\.LniWinners.8')))	
+	PS1_LNI	=	1 - PS0_LNI - PS2_LNI	
+	PS2_LNI	=	.temp_LNI_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNI_BW	=	(.temp_LNI_sum > 0) ? (.temp_LNI_weighted_sum / (LNI_max_ports * .temp_LNI_sum)) : 0	
+#LNE				
+	PS0_LNE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	.temp_LNE_weighted_sum	=	(D(SUM('S\d+.uL3\.LneWinners.1')) * 1) + (D(SUM('S\d+.uL3\.LneWinners.2')) * 2) + (D(SUM('S\d+.uL3\.LneWinners.3')) * 3) + (D(SUM('S\d+.uL3\.LneWinners.4')) * 4) + (D(SUM('S\d+.uL3\.LneWinners.5')) * 5) + (D(SUM('S\d+.uL3\.LneWinners.6')) * 6) + (D(SUM('S\d+.uL3\.LneWinners.7')) * 7) + (D(SUM('S\d+.uL3\.LneWinners.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNE_sum	=	(D(SUM('S\d+.uL3\.LneWinners.1'))) + (D(SUM('S\d+.uL3\.LneWinners.2'))) + (D(SUM('S\d+.uL3\.LneWinners.3'))) + (D(SUM('S\d+.uL3\.LneWinners.4'))) + (D(SUM('S\d+.uL3\.LneWinners.5'))) + (D(SUM('S\d+.uL3\.LneWinners.6'))) + (D(SUM('S\d+.uL3\.LneWinners.7'))) + (D(SUM('S\d+.uL3\.LneWinners.8')))	
+	PS1_LNE	=	1 - PS0_LNE - PS2_LNE	
+	PS2_LNE	=	.temp_LNE_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNE_BW	=	(.temp_LNE_sum > 0) ? (.temp_LNE_weighted_sum / (LNE_max_ports * .temp_LNE_sum)) : 0	
+#LNIXS				
+	.temp_PS0_LNIXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_LNIXS	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) > 0 ) ? .temp_PS0_LNIXS : 1	#Force PS0 to be 1 for GT2
+	.temp_LNIXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LniXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LniXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LniXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LniXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LniXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LniXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNIXS_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')))	
+	PS1_LNIXS	=	1 - PS0_LNIXS - PS2_LNIXS	
+	PS2_LNIXS	=	.temp_LNIXS_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNIXS_BW	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_weighted_sum / (LNI_max_ports * .temp_LNIXS_sum)) : 0	#fixed the divide by 0 issue
+#LNEXS				
+	.temp_PS0_LNEXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_LNEXS	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) > 0 ) ? .temp_PS0_LNEXS : 1	#Force PS0 to be 1 for GT2
+	.temp_LNEXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LneXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LneXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LneXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LneXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LneXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LneXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNEXS_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))	
+	PS1_LNEXS	=	1 - PS0_LNEXS - PS2_LNEXS	
+	PS2_LNEXS	=	.temp_LNEXS_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNEXS_BW	=	(.temp_LNEXS_sum > 0) ? (.temp_LNEXS_weighted_sum / (LNE_max_ports * .temp_LNEXS_sum)) : 0	#fixed the divide by 0 issue
+				
+#L3Other				
+	PS0_L3BankOther	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
+	PS2_L3BankOther	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
+				
+#L3DOP				
+	PS0_L3_Bank_DOP	=	0	
+	PS1_L3_Bank_DOP	=	0	
+	PS2_L3_Bank_DOP	=	1	#No DOP gating in L3
+				
+#L3DFX				
+	PS0_L3_Bank_DFX	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS1_L3_Bank_DFX	=	1 - PS0_L3_Bank_DFX - PS2_L3_Bank_DFX	
+	PS2_L3_Bank_DFX	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
+				
+#L3SMALL				
+	PS0_L3_Bank_SMALL	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS1_L3_Bank_SMALL	=	1 - PS0_L3_Bank_SMALL - PS2_L3_Bank_SMALL	
+	PS2_L3_Bank_SMALL	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
+				
+#L3CLKGLUE				
+	PS0_L3_Bank_CLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS1_L3_Bank_CLKGLUE	=	1 - PS0_L3_Bank_CLKGLUE - PS2_L3_Bank_CLKGLUE	
+	PS2_L3_Bank_CLKGLUE	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
+				
+#L3NONCLKGLUE				
+	PS0_L3_Bank_NONCLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS1_L3_Bank_NONCLKGLUE	=	1 - PS0_L3_Bank_NONCLKGLUE - PS2_L3_Bank_NONCLKGLUE	
+	PS2_L3_Bank_NONCLKGLUE	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))
