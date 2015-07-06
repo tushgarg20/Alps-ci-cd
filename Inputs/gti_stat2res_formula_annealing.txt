@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Generic				
-	 @ANY_GTI@	=	(SBR.p0.gti0.|p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)	
+	 @ANY_GTI@	=	(SBR.soc_uncore.gtcore0.|SBR.p0.gti0.|p0.gti0.|soc_uncore.gtcore0.|soc_uncore.core0.)	
 	.Clk.GTI	=	D('@ANY_GTI@gclk_cycles')	
 	 @GTI_EMPTY@	=	(gti_superq_empty_cycles|gti_fifo_empty_cycles)	
 	 @GTI_FULL@	=	(gti_superq_full_cycles|gti_fifo_full_cycles)	
