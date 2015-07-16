@@ -192,7 +192,7 @@ sub create_gc_alps_inp_file {
 				$alpsIpTempHash{"$cluster"}{"EM"}{"TOTAL"} += $gc/2;	
 				$alpsIpTempHash{"$cluster"}{"EM"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"EM"}{"FUNC"} = $func;
-			} elsif ($alpsUnit =~ /DFX|SmallUnits/) {
+			} elsif ($alpsUnit =~ /DFX|SmallUnits|CP|ASSIGN|RPT/) {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
