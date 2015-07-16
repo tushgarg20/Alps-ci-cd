@@ -12,6 +12,9 @@
 	num_HDC_CLKGLUE	=	numHDCs	
 	num_HDC_NONCLKGLUE	=	numHDCs	
 	num_HDC_SMALL	=	numHDCs	
+	num_HDC_CPunit	=	numHDCs	
+	num_HDC_Assign	=	numHDCs	
+	num_HDC_Repeater	=	numHDCs	
 	num_HDC_DFX	=	numHDCs	
 #Generic				
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
@@ -96,21 +99,33 @@
 	PS0_HDC_SMALL	=	PS0_HDC_NONCLKGLUE	
 	PS2_HDC_SMALL	=	PS2_HDC_NONCLKGLUE	
 				
+#HDCCPunit				
+	PS0_HDC_CPunit_DOP	=	.HDC_DOP	
+	PS0_HDC_CPunit	=	PS0_HDC_NONCLKGLUE	
+	PS2_HDC_CPunit	=	PS2_HDC_NONCLKGLUE	
+				
+#HDCAssign				
+	PS0_HDC_Assign_DOP	=	.HDC_DOP	
+	PS0_HDC_Assign	=	PS0_HDC_NONCLKGLUE	
+	PS2_HDC_Assign	=	PS2_HDC_NONCLKGLUE	
+				
+#HDCRepeater				
+	PS0_HDC_Repeater_DOP	=	.HDC_DOP	
+	PS0_HDC_Repeater	=	PS0_HDC_NONCLKGLUE	
+	PS2_HDC_Repeater	=	PS2_HDC_NONCLKGLUE	
+				
 #HDCDfx				
 	PS0_HDC_DFX_DOP	=	.HDC_DOP	
 	PS0_HDC_DFX	=	PS0_HDC_NONCLKGLUE	
-	PS2_HDC_DFX	=	PS2_HDC_NONCLKGLUE
-
-#HDCL1
-	PS0_HDCL1_DOP	=	.HDC_DOP
-	PS0_HDCL1	=	1 - PS0_HDCL1_DOP - PS2_HDCL1
-	PS2_HDCL1	=	D(SUM('@ANY_HDC@HDCL1(Hits|Misses|PartialHits)'))/(numHDCs * .CrClk)
-
-
-#HDCL1_CACHE
-	PS2_HDCL1_CACHE_READS	=	D(SUM('@ANY_HDC@HDCL1Hits'))/(numHDCs * .CrClk)
-	PS2_HDCL1_CACHE_WRITES	=	D(SUM('@ANY_HDC@HDCL1Misses'))/(numHDCs * .CrClk)
-
-
-
+	PS2_HDC_DFX	=	PS2_HDC_NONCLKGLUE	
+				
+#HDCL1				
+	PS0_HDCL1_DOP	=	.HDC_DOP	
+	PS0_HDCL1	=	1 - PS0_HDCL1_DOP - PS2_HDCL1	
+	PS2_HDCL1	=	D(SUM('@ANY_HDC@HDCL1(Hits|Misses|PartialHits)'))/(numHDCs * .CrClk)	
+				
+				
+#HDCL1_CACHE				
+	PS2_HDCL1_CACHE_READS	=	D(SUM('@ANY_HDC@HDCL1Hits'))/(numHDCs * .CrClk)	
+	PS2_HDCL1_CACHE_WRITES	=	D(SUM('@ANY_HDC@HDCL1Misses'))/(numHDCs * .CrClk)	
 

@@ -30,11 +30,17 @@
 	num_FF_TSG	=	numFF	
 	num_FF_OACS	=	numFF	
 	num_FF_TEGSSOL_SMALL	=	numFF	
+	num_FF_TEGSSOL_CPunit	=	numFF	
+	num_FF_TEGSSOL_Assign	=	numFF	
+	num_FF_TEGSSOL_Repeater	=	numFF	
 	num_FF_TEGSSOL_CLKGLUE	=	numFF	
 	num_FF_TEGSSOL_NONCLKGLUE	=	numFF	
 	num_FF_TEGSSOL_DFX	=	numFF	
 	num_FF_TEGSSOL_DOP	=	numFF	
 	num_FF_OTHER_SMALL	=	numFF	
+	num_FF_OTHER_CPunit	=	numFF	
+	num_FF_OTHER_Assign	=	numFF	
+	num_FF_OTHER_Repeater	=	numFF	
 	num_FF_OTHER_CLKGLUE	=	numFF	
 	num_FF_OTHER_NONCLKGLUE	=	numFF	
 	num_FF_OTHER_DFX	=	numFF	
@@ -225,6 +231,32 @@
 	PS2_FF_TEGSSOL_SMALL	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
 	PS2_FF_OTHER_SMALL	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
 				
+				
+#CPunit				
+	PS0_FF_TEGSSOL_CPunit_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_CPunit_DOP	=	 .temp_3DPipeDisable	
+	PS0_FF_TEGSSOL_CPunit	=	PS0_TE	
+	PS0_FF_OTHER_CPunit	=	PS0_VF	
+	PS2_FF_TEGSSOL_CPunit	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_CPunit	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
+				
+				
+#Assign				
+	PS0_FF_TEGSSOL_Assign_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_Assign_DOP	=	 .temp_3DPipeDisable	
+	PS0_FF_TEGSSOL_Assign	=	PS0_TE	
+	PS0_FF_OTHER_Assign	=	PS0_VF	
+	PS2_FF_TEGSSOL_Assign	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_Assign	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
+				
+#Repeater				
+	PS0_FF_TEGSSOL_Repeater_DOP	=	 .temp_TeGsSolDOP	
+	PS0_FF_OTHER_Repeater_DOP	=	 .temp_3DPipeDisable	
+	PS0_FF_TEGSSOL_Repeater	=	PS0_TE	
+	PS0_FF_OTHER_Repeater	=	PS0_VF	
+	PS2_FF_TEGSSOL_Repeater	=	PS1_TE + PS2_TE_Enabled + PS2_TE_Disabled	
+	PS2_FF_OTHER_Repeater	=	PS1_VF + PS2_VF_Indexed+PS2_VF_Sequential+PS2_VF_Control+PS2_VF_Dropped	
+				
 #CLKGLUE				
 	PS0_FF_TEGSSOL_CLKGLUE_DOP	=	 .temp_TeGsSolDOP	
 	PS0_FF_OTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
@@ -255,8 +287,11 @@
 	PS2_FF_TEGSSOL_DOP	=	1 - .temp_TeGsSolDOP	
 	PS2_FF_OTHER_DOP	=	1 - .temp_3DPipeDisable	
 				
-#HPVS			
+#HPVS				
 				
 	PS0_HPVS	=	1	
 #HPSDE				
 	PS0_HPSDE	=	1	
+				
+				
+

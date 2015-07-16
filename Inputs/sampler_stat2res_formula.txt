@@ -1,389 +1,426 @@
-#Unit	GSIM residency			
-#Instance Counts				
-	numSamplers	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
-	num_Sampler_FL	=	numSamplers	
-	num_Sampler_PL	=	numSamplers	
-	num_Sampler_SC	=	numSamplers	
-	num_Sampler_SC_Cache	=	numSamplers	
-	num_Sampler_ST	=	numSamplers	
-	num_Sampler_DG	=	numSamplers	
-	num_Sampler_SI	=	numSamplers	
-	num_Sampler_SO	=	numSamplers	
-	num_Sampler_DM	=	numSamplers	
-	num_Sampler_FT	=	numSamplers	
-	num_Sampler_MT	=	numSamplers	
-	num_Sampler_MT_Cache	=	numSamplers	
-	num_Sampler_SVSM	=	numSamplers	
-	num_Sampler_Media	=	numSamplers	
-	num_Sampler_GLUE	=	numSamplers	
-	num_Sampler_AVS	=	numSamplers	
-	num_Sampler_AVS_DataRAM	=	numSamplers	
-	num_Sampler_AVS_CoeffRAM	=	numSamplers	
-	num_Sampler_IEF	=	numSamplers	
-	num_Sampler_CRE	=	numSamplers	
-	num_Sampler_IME	=	numSamplers	
-	num_Sampler_DM_PALRAM	=	numSamplers	
-	num_Sampler_MEDIASMP_SMALL	=	numSamplers	
-	num_Sampler_MEDIASMP_CLKGLUE	=	numSamplers	
-	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers	
-	num_Sampler_MEDIASMP_DFX	=	numSamplers	
-	num_Sampler_MEDIASMP_DOP	=	numSamplers	
-	num_Sampler_DFRSMP_SMALL	=	numSamplers	
-	num_Sampler_DFRSMP_CLKGLUE	=	numSamplers	
-	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplers	
-	num_Sampler_DFRSMP_DFX	=	numSamplers	
-	num_Sampler_DFRSMP_DOP	=	numSamplers	
-				
-#Generic				
-	 @ANY_SAMPLER@	=	S\d+\.SS\d+\.uSampler\.	
-	 @ANY_CRE@	=	S\d+\.SS\d+\.uCRE\.	
-	 @ANY_IME@	=	S\d+\.SS\d+\.uIME\.	
-	 .CrClk	=	D(CrClock.Clocks)	
-	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
-	FL_Toggle_Rate	=	(.temp_PS2_FL > 0) ? D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count')) / (512 * .temp_PS2_FL * numSamplers * .CrClk) : 0	#FL bus width 512 (32 * UL, UR, LL, LR)
-	PL_Toggle_Rate	=	(.temp_PS2_PL > 0) ? D(SUM('@ANY_SAMPLER@pwr_pl_toggle_count')) / (512 * .temp_PS2_PL * numSamplers * .CrClk) : 0	#PL bus width 512 (32*U,V,Q,AI)
-#FL				
-	PS0_FL_DOP	=	PS0_DFRSMP_DOP	
-	PS0_FL	=	(D(SUM('@ANY_SAMPLER@pwr_fl_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_FL_DOP	
-	PS1_FL	=	1 - (PS0_FL_DOP + PS0_FL + PS2_FL_SampleC_Gather4C + PS2_FL_SampleC_Gather4C_Bypass + PS2_FL_Gather4_Bypass + PS2_FL_Data_Dep_Bypass_Nearest + PS2_FL_Data_Dep_Bypass_Bilinear + PS2_FL_Data_Dep_Bypass_Trilinear + PS2_FL_Data_Dep_Bypass_LinearAniso + PS2_FL_Data_Dep_Bypass_NonLinearAniso + PS2_FL_Data_Dep_Bypass_LinearFastAniso + PS2_FL_Data_Dep_Bypass_NonLinearFastAniso + PS2_FL_Data_Dep_Bypass_FastLinear + PS2_FL_Data_Dep_Bypass_Else + PS2_FL_Nearest_Float16 + PS2_FL_Nearest_Float32 + PS2_FL_Nearest_Else + PS2_FL_Bilinear_Float16 + PS2_FL_Bilinear_Float32 + PS2_FL_Bilinear_Else + PS2_FL_Trilinear_Float16 + PS2_FL_Trilinear_Float32 + PS2_FL_Trilinear_Else + PS2_FL_LinearAniso_Float16 + PS2_FL_LinearAniso_Float32 + PS2_FL_LinearAniso_Else + PS2_FL_NonLinearAniso_Float16 + PS2_FL_NonLinearAniso_Float32 + PS2_FL_NonLinearAniso_Else + PS2_FL_LinearFastAniso_Float16 + PS2_FL_LinearFastAniso_Float32 + PS2_FL_LinearFastAniso_Else + PS2_FL_NonLinearFastAniso_Float16 + PS2_FL_NonLinearFastAniso_Float32 + PS2_FL_NonLinearFastAniso_Else + PS2_FL_FastLinear_Float16 + PS2_FL_FastLinear_Float32 + PS2_FL_FastLinear_Else + PS2_FL_Else)	
-	.temp_PS2_FL	=	1 - (PS0_FL + PS1_FL)	# temporary PS2 for sampler toggle calculations
-	PS2_FL_SampleC_Gather4C	=	D(SUM('@ANY_SAMPLER@pwr_fl_sample_c_gather4_c\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_FL_SampleC_Gather4C_Bypass	=	0	#Next phase implementation
-	PS2_FL_Gather4_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_fl_gather4\.CrClock')) / (numSamplers * .CrClk)	
-	.bypass_Nearest_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Nearest_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Nearest_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Bilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Bilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Bilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Trilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Trilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_Trilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_LinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_NonLinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_FastLinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_FastLinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.bypass_FastLinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-	PS2_FL_Data_Dep_Bypass_Nearest	=	.bypass_Nearest_Float16 + .bypass_Nearest_Float32 + .bypass_Nearest_Else	
-	PS2_FL_Data_Dep_Bypass_Bilinear	=	.bypass_Bilinear_Float16 + .bypass_Bilinear_Float32 + .bypass_Bilinear_Else	
-	PS2_FL_Data_Dep_Bypass_Trilinear	=	.bypass_Trilinear_Float16 + .bypass_Trilinear_Float32 + .bypass_Trilinear_Else	
-	PS2_FL_Data_Dep_Bypass_LinearAniso	=	.bypass_LinearAniso_Float16 + .bypass_LinearAniso_Float32 + .bypass_LinearAniso_Else	
-	PS2_FL_Data_Dep_Bypass_NonLinearAniso	=	.bypass_NonLinearAniso_Float16 + .bypass_NonLinearAniso_Float32 + .bypass_NonLinearAniso_Else	
-	PS2_FL_Data_Dep_Bypass_LinearFastAniso	=	.bypass_LinearFastAniso_Float16 + .bypass_LinearFastAniso_Float32 + .bypass_LinearFastAniso_Else	
-	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	=	.bypass_NonLinearFastAniso_Float16 + .bypass_NonLinearFastAniso_Float32 + .bypass_NonLinearFastAniso_Else	
-	PS2_FL_Data_Dep_Bypass_FastLinear	=	.bypass_FastLinear_Float16 + .bypass_FastLinear_Float32 + .bypass_FastLinear_Else	
-	PS2_FL_Data_Dep_Bypass_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Else\.CrClock')) / (16 * numSamplers * .CrClk)	
-	.total_Nearest_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Nearest_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Nearest_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Bilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Bilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Bilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Trilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Trilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Trilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_LinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_NonLinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_FastLinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Float16\.CrClock')) / (numSamplers * .CrClk)	
-	.total_FastLinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Float32\.CrClock')) / (numSamplers * .CrClk)	
-	.total_FastLinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)	
-	.total_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_else\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_FL_Nearest_Float16	=	.total_Nearest_Float16 - .bypass_Nearest_Float16	
-	PS2_FL_Nearest_Float32	=	.total_Nearest_Float32 - .bypass_Nearest_Float32	
-	PS2_FL_Nearest_Else	=	.total_Nearest_Else - .bypass_Nearest_Else	
-	PS2_FL_Bilinear_Float16	=	.total_Bilinear_Float16 - .bypass_Bilinear_Float16	
-	PS2_FL_Bilinear_Float32	=	.total_Bilinear_Float32 - .bypass_Bilinear_Float32	
-	PS2_FL_Bilinear_Else	=	.total_Bilinear_Else - .bypass_Bilinear_Else	
-	PS2_FL_Trilinear_Float16	=	.total_Trilinear_Float16 - .bypass_Trilinear_Float16	
-	PS2_FL_Trilinear_Float32	=	.total_Trilinear_Float32 - .bypass_Trilinear_Float32	
-	PS2_FL_Trilinear_Else	=	.total_Trilinear_Else - .bypass_Trilinear_Else	
-	PS2_FL_LinearAniso_Float16	=	.total_LinearAniso_Float16 - .bypass_LinearAniso_Float16	
-	PS2_FL_LinearAniso_Float32	=	.total_LinearAniso_Float32 - .bypass_LinearAniso_Float32	
-	PS2_FL_LinearAniso_Else	=	.total_LinearAniso_Else - .bypass_LinearAniso_Else	
-	PS2_FL_NonLinearAniso_Float16	=	.total_NonLinearAniso_Float16 - .bypass_NonLinearAniso_Float16	
-	PS2_FL_NonLinearAniso_Float32	=	.total_NonLinearAniso_Float32 - .bypass_NonLinearAniso_Float32	
-	PS2_FL_NonLinearAniso_Else	=	.total_NonLinearAniso_Else - .bypass_NonLinearAniso_Else	
-	PS2_FL_LinearFastAniso_Float16	=	.total_LinearFastAniso_Float16 - .bypass_LinearFastAniso_Float16	
-	PS2_FL_LinearFastAniso_Float32	=	.total_LinearFastAniso_Float32 - .bypass_LinearFastAniso_Float32	
-	PS2_FL_LinearFastAniso_Else	=	.total_LinearFastAniso_Else - .bypass_LinearFastAniso_Else	
-	PS2_FL_NonLinearFastAniso_Float16	=	.total_NonLinearFastAniso_Float16 - .bypass_NonLinearFastAniso_Float16	
-	PS2_FL_NonLinearFastAniso_Float32	=	.total_NonLinearFastAniso_Float32 - .bypass_NonLinearFastAniso_Float32	
-	PS2_FL_NonLinearFastAniso_Else	=	.total_NonLinearFastAniso_Else - .bypass_NonLinearFastAniso_Else	
-	PS2_FL_FastLinear_Float16	=	.total_FastLinear_Float16 - .bypass_FastLinear_Float16	
-	PS2_FL_FastLinear_Float32	=	.total_FastLinear_Float32 - .bypass_FastLinear_Float32	
-	PS2_FL_FastLinear_Else	=	.total_FastLinear_Else - .bypass_FastLinear_Else	
-	PS2_FL_Else	=	.total_Else - PS2_FL_Data_Dep_Bypass_Else	
-#PL				
-	PS0_PL_DOP	=	PS0_DFRSMP_DOP	
-	PS0_PL	=	(D(SUM('@ANY_SAMPLER@pwr_pl_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_PL_DOP	
-	PS1_PL	=	1 - (PS0_PL_DOP + PS0_PL + PS2_PL_Sample_L + PS2_PL_Sample_L_MipCount0 + PS2_PL_Gather4PO + PS2_PL_LD + PS2_PL_Bilinear + PS2_PL_Bilinear_EWA + PS2_PL_Trilinear + PS2_PL_Trilinear_EWA + PS2_PL_LinearAniso + PS2_PL_LinearAniso_EWA + PS2_PL_NonLinearAniso + PS2_PL_NonLinearAniso_EWA + PS2_PL_Else)	
-	.temp_PS2_PL	=	1 - (PS0_PL + PS1_PL)	
-	PS2_PL_Sample_L	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_l\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Sample_L_MipCount0	=	D(SUM('@ANY_SAMPLER@pwr_pl_mipcount0\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Gather4PO	=	D(SUM('@ANY_SAMPLER@pwr_pl_gather4po\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_LD	=	D(SUM('@ANY_SAMPLER@pwr_pl_ld\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Bilinear	=	D(SUM('@ANY_SAMPLER@pwr_pl_Bilinear_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Bilinear_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_Bilinear_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Trilinear	=	D(SUM('@ANY_SAMPLER@pwr_pl_Trilinear_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Trilinear_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_Trilinear_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_LinearAniso	=	D(SUM('@ANY_SAMPLER@pwr_pl_LinearAniso_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_LinearAniso_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_LinearAniso_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_NonLinearAniso	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_NonLinearAniso_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Else	=	D(SUM('@ANY_SAMPLER@pwr_pl_else\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_PL_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
-				
-#SC				
-	PS0_SC_DOP	=	PS0_DFRSMP_DOP	
-	PS0_SC	=	(D(SUM('@ANY_SAMPLER@pwr_sc_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_SC_DOP	
-	PS1_SC	=	1 - (PS0_SC + PS0_SC_DOP + PS2_SC_NearestMode_32BPT + PS2_SC_NearestMode_64BPT + PS2_SC_NearestMode_128BPT + PS2_SC_FastLinear_32BPT + PS2_SC_FastLinear_64BPT + PS2_SC_FastLinear_128BPT + PS2_SC_LinearFastAniso_32BPT + PS2_SC_LinearFastAniso_64BPT + PS2_SC_LinearFastAniso_128BPT + PS2_SC_NonLinearFastAniso_32BPT + PS2_SC_NonLinearFastAniso_64BPT + PS2_SC_NonLinearFastAniso_128BPT + PS2_SC_Bilinear_Trilinear_Aniso_32BPT + PS2_SC_Bilinear_Trilinear_Aniso_64BPT + PS2_SC_Bilinear_Trilinear_Aniso_128BPT + PS2_SC_Else)	
-	PS2_SC_NearestMode_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_32BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_NearestMode_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_64BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_NearestMode_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_128BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_FastLinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_32BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_FastLinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_64BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_FastLinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_128BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_LinearFastAniso_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_32BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_LinearFastAniso_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_64BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_LinearFastAniso_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_128BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_NonLinearFastAniso_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_32BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_NonLinearFastAniso_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_64BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_NonLinearFastAniso_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_128BPT\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_Bilinear_Trilinear_Aniso_32BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_32BPT\.CrClock'))) / (numSamplers * .CrClk)	
-	PS2_SC_Bilinear_Trilinear_Aniso_64BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_64BPT\.CrClock'))) / (numSamplers * .CrClk)	
-	PS2_SC_Bilinear_Trilinear_Aniso_128BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_128BPT\.CrClock'))) / (numSamplers * .CrClk)	
-	PS2_SC_Else	=	D(SUM('@ANY_SAMPLER@pwr_sc_Else\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_SC_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_sc_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
-				
-#SC Cache				
-	PS0_SC_DataRam_IDLE	=	0	# 0 Cdyn for idle
-	PS2_SC_DataRam_READ	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bank0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank4\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank5\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank6\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank7\.CrClock'))) / (8 * numSamplers * .CrClk)	# 8 banks in SC
-	PS2_SC_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@pwr_sc_data_ram_write\.CrClock')) / (numSamplers * .CrClk)	
-	PS0_SC_LatFifo_DOP	=	PS0_DFRSMP_DOP	
-	PS0_SC_LatFifo_IDLE	=	1 - (PS0_SC_LatFifo_DOP + PS2_SC_LatFifo_READ + PS2_SC_LatFifo_WRITE)	
-	PS2_SC_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.pushed')) / (numSamplers * .CrClk)	
-	PS2_SC_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.popped')) / (numSamplers * .CrClk)	
-#ST				
-	PS0_ST_DOP	=	PS0_DFRSMP_DOP	
-	PS0_ST	=	(D(SUM('@ANY_SAMPLER@pwr_st_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_ST_DOP	
-	PS1_ST	=	1- (PS0_ST_DOP + PS0_ST + PS2_ST_1Bank_Enable + PS2_ST_2Bank_Enable + PS2_ST_3Bank_Enable + PS2_ST_4Bank_Enable)	
-	PS2_ST_1Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit1Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit0Miss1\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_2Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit2Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit1Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit0Miss2\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_3Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit3Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit2Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit1Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit0Miss3\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_4Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit4Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit3Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit2Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit1Miss3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit0Miss4\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_1Bank_Enable_SameADD	=	0	#Next phase implementation
-#DG				
-	PS0_DG_DOP	=	PS0_DFRSMP_DOP	
-	PS0_DG	=	(D(SUM('@ANY_SAMPLER@pwr_dg_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_DG_DOP	
-	PS1_DG	=	1 - (PS0_DG_DOP + PS0_DG + PS2_DG_Volumetric_32BPT + PS2_DG_Volumetric_64BPT + PS2_DG_Volumetric_128BPT + PS2_DG_Gather4_32BPT + PS2_DG_Gather4_64BPT + PS2_DG_Gather4_128BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT + PS2_DG_AnisoGreaterThan_8way_32BPT + PS2_DG_AnisoGreaterThan_8way_64BPT + PS2_DG_AnisoGreaterThan_8way_128BPT + PS2_DG_Trilinear_32BPT + PS2_DG_Trilinear_64BPT + PS2_DG_Trilinear_128BPT + PS2_DG_Bilinear_32BPT + PS2_DG_Bilinear_64BPT + PS2_DG_Bilinear_128BPT + PS2_DG_FastLinear_32BPT + PS2_DG_FastLinear_64BPT + PS2_DG_FastLinear_128BPT + PS2_DG_BabyDG_Enable + PS2_DG_Else)	
-	PS2_DG_Nearest_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Nearest_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Nearest_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Volumetric_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	#32 components per message
-	PS2_DG_Volumetric_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Volumetric_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Gather4_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Gather4_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Gather4_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoGreaterThan_8way_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoGreaterThan_8way_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_AnisoGreaterThan_8way_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Trilinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Trilinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Trilinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Bilinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Bilinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Bilinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_FastLinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_FastLinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_FastLinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_BabyDG_Enable	=	D(SUM('@ANY_SAMPLER@pwr_dg_babydg\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Else	=	D(SUM('@ANY_SAMPLER@pwr_dg_else\.CrClock')) / (32 * numSamplers * .CrClk)	
-	PS2_DG_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_dg_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
-				
-#SI				
-	PS0_SI	=	D(SUM('@ANY_SAMPLER@pwr_si_idle\.CrClock')) / (numSamplers * .CrClk)	
-	PS1_SI	=	1 - (PS0_SI + PS2_SI_ANYPIXELMODE)	
-	PS2_SI_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@pwr_si_ldmode\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_sampleg\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_media\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_else\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_SI_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_si_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
-				
-#SO				
-	PS0_SO_DOP	=	PS0_DFRSMP_DOP	
-	PS0_SO	=	(D(SUM('@ANY_SAMPLER@pwr_so_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_SO_DOP	
-	PS1_SO	=	1 - (PS0_SO_DOP + PS0_SO + PS2_SO_ANYPIXELMODE)	
-	PS2_SO_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@SOInBuffer\.popped')))/ (numSamplers * .CrClk)	
-#DM_BDM				
-	PS0_DM_DOP	=	PS0_DFRSMP_DOP	
-	PS0_DM	=	(D(SUM('@ANY_SAMPLER@pwr_dm_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_DM_DOP	
-	PS1_DM	=	1- (PS0_DM_DOP + PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7_SRGB + PS2_DM_ETC + PS2_DM_Else + PS2_DM_HIZ + PS2_DM_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Compressed_BYPASS)	
-	PS2_DM_BC1_5	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-5\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC6_7	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC6-7\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Else	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
-	PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_LOSSLESS	=	D(SUM('@ANY_SAMPLER@L2CCSRequests')) / (numSamplers * .CrClk)	#Using MT stat
-	PS2_DM_ASTC_LDR_2D	=	0	
-	PS2_DM_ASTC_LDR_3D	=	0	
-	PS2_DM_ASTC_HDR_2D	=	0	
-	PS2_DM_ASTC_HDR_3D	=	0	
-	PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Compressed_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Media_BYPASS	=	0	#first rev media states
-	PS2_DM_Media_SRGB	=	0	
-	PS2_DM_Media_Planar	=	0	
-				
-#DM_PALRAM				
-	PS2_DM_PALRAM_READ	=	0	#first rev media states
-	PS2_DM_PALRAM_WRITE	=	0	
-				
-#FT				
-	PS0_FT_DOP	=	PS0_DFRSMP_DOP	
-	PS0_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_FT_DOP	
-	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock'))) / (numSamplers * .CrClk)	
-	PS2_FT	=	1 - PS0_FT - PS1_FT - PS0_FT_DOP	
-#MT				
-	PS0_MT_DOP	=	PS0_DFRSMP_DOP	
-	PS0_MT	=	(D(SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_MT_DOP	
-	PS1_MT	=	1- (PS0_MT_DOP + PS0_MT + PS2_MT_BYPASS + PS2_MT_Tile_X + PS2_MT_Tile_Y + PS2_MT_Tile_else)	
-	PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_MT_Tile_Y	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_y\.CrClock')) / (numSamplers * .CrClk)) - PS2_MT_BYPASS	#bypass is a subset of tileY
-	PS2_MT_Tile_else	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_w\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_mt_tile_else\.CrClock'))) / (numSamplers * .CrClk)	
-#MT_Cache				
-	PS0_MT_LatFifo_DOP	=	PS0_DFRSMP_DOP	
-	PS0_MT_LatFifo_IDLE	=	1 - (PS0_MT_LatFifo_DOP + PS2_MT_LatFifo_READ + PS2_MT_LatFifo_WRITE + PS2_MT_LatFifo_READWRITE)	
-	PS2_MT_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@MT-LatencyFifo\.pushed')) / (numSamplers * .CrClk)	
-	PS2_MT_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@MT-LatencyFifo\.popped')) / (numSamplers * .CrClk)	
-	PS2_MT_LatFifo_READWRITE	=	D(SUM('@ANY_SAMPLER@pwr_mt_latfifo_rw\.CrClock')) / (numSamplers * .CrClk)	
-	PS0_MT_DataRam_DOP	=	PS0_DFRSMP_DOP	
-	PS0_MT_DataRam_IDLE	=	1 - (PS0_MT_DataRam_DOP + PS2_MT_DataRam_READ + PS2_MT_DataRam_WRITE)	#1 - (read + write - read_write)
-	PS2_MT_DataRam_READ	=	D(SUM('@ANY_SAMPLER@MT-ReadDataFifo\.popped')) / (numSamplers * .CrClk)	
-	PS2_MT_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@L3ToMTDataBuffer\.pushed')) / (numSamplers * .CrClk)	
-#SVSM				
-	PS0_SVSM	=	1	#Next phase implementation
-	PS1_SVSM	=	0	
-	PS2_SVSM	=	0	
-				
-#AVS				
-	PS0_AVS_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_AVS	=	(D(SUM('@ANY_SAMPLER@pwr_avs_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_AVS_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_AVS	=	1 - (PS0_AVS_DOP + PS0_AVS + .temp_PS2_AVS)	
-	PS2_AVS_Scalar	=	D(SUM('@ANY_SAMPLER@pwr_avs_scalar\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Convolution	=	D(SUM('@ANY_SAMPLER@pwr_avs_convolve\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_CorrelationSearch	=	D(SUM('@ANY_SAMPLER@pwr_avs_corrsearch\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Centroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_centroid\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_MinMax	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmax\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_MinMaxFilter	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmaxfilter\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Erode	=	D(SUM('@ANY_SAMPLER@pwr_avs_erode\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_Dilate	=	D(SUM('@ANY_SAMPLER@pwr_avs_dilate\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_AVS_BoolCentroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_boolcentroid\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_AVS	=	PS2_AVS_Scalar + PS2_AVS_Convolution + PS2_AVS_CorrelationSearch + PS2_AVS_Centroid + PS2_AVS_MinMax + PS2_AVS_MinMaxFilter + PS2_AVS_Erode + PS2_AVS_Dilate + PS2_AVS_BoolCentroid	
-				
-#AVS - Data Storage				
-	PS2_AVS_DataStorageRAM_READ	=	0	#first rev media states
-	PS2_AVS_DataStorageRAM_WRITE	=	0	
-				
-#AVS - Coeff Storage				
-	PS2_AVS_CoeffStorageRAM_READ	=	0	#first rev media states
-	PS2_AVS_CoeffStorageRAM_WRITE	=	0	
-				
-#IEF				
-	PS0_IEF_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_IEF	=	(D(SUM('@ANY_SAMPLER@pwr_ief_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IEF_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_IEF	=	(1 - (PS0_IEF_DOP + PS0_IEF + .temp_PS2_IEF))	
-	PS2_IEF_NoBypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_NoBypass\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_IEF_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_Bypass\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_IEF	=	PS2_IEF_NoBypass + PS2_IEF_Bypass	
-				
-#CRE				
-	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))	
-	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR	
-				
-#IME				
-	PS0_IME_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))	
-	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
-	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
-	.temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
-				
-#Small				
-	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
-	PS0_MEDIASMP_SMALL	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	#first rev media states
-	PS2_MEDIASMP_SMALL	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
-				
-#GLUE				
-	PS0_MEDIASMP_CLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
-	PS0_MEDIASMP_CLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
-	PS2_MEDIASMP_CLKGLUE	=	PS2_MEDIASMP_SMALL	
-				
-#GLUE				
-	PS0_MEDIASMP_NONCLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
-	PS0_MEDIASMP_NONCLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
-	PS2_MEDIASMP_NONCLKGLUE	=	PS2_MEDIASMP_SMALL	
-				
-#Dfx				
-	PS0_MEDIASMP_DFX_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
-	PS0_MEDIASMP_DFX	=	PS0_MEDIASMP_SMALL	#first rev media states
-	PS2_MEDIASMP_DFX	=	PS2_MEDIASMP_SMALL	
-				
-#DOP				
-	.test_PS2_MEDIASMP	=	.temp_PS2_AVS + .temp_PS2_IEF + .temp_PS2_CRE + .temp_PS2_IME	
-	PS0_MEDIASMP_DOP	=	(.test_PS2_MEDIASMP > 0) ? 0 : 1	#3d context media state
-	PS2_MEDIASMP_DOP	=	1 - PS0_MEDIASMP_DOP	#first rev media states
-				
-#DFR Small				
-	PS0_DFRSMP_SMALL_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_SMALL	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	#first rev media states
-	PS2_DFRSMP_SMALL	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
-				
-#DFR ClkGlue				
-	PS0_DFRSMP_CLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_CLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
-	PS2_DFRSMP_CLKGLUE	=	PS2_DFRSMP_SMALL	
-				
-#DFR NonClkGlue				
-	PS0_DFRSMP_NONCLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_NONCLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
-	PS2_DFRSMP_NONCLKGLUE	=	PS2_DFRSMP_SMALL	
-				
-#DFR DFX				
-	PS0_DFRSMP_DFX_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_DFX	=	PS0_DFRSMP_SMALL	#first rev media states
-	PS2_DFRSMP_DFX	=	PS2_DFRSMP_SMALL	
-#DFR DOP				
-	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception
-	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP
+#Unit	GSIM residency				
+#Instance Counts					
+	numSamplers	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs	
+	num_Sampler_FL	=	numSamplers		
+	num_Sampler_PL	=	numSamplers		
+	num_Sampler_SC	=	numSamplers		
+	num_Sampler_SC_Cache	=	numSamplers		
+	num_Sampler_ST	=	numSamplers		
+	num_Sampler_DG	=	numSamplers		
+	num_Sampler_SI	=	numSamplers		
+	num_Sampler_SO	=	numSamplers		
+	num_Sampler_DM	=	numSamplers		
+	num_Sampler_FT	=	numSamplers		
+	num_Sampler_MT	=	numSamplers		
+	num_Sampler_MT_Cache	=	numSamplers		
+	num_Sampler_SVSM	=	numSamplers		
+	num_Sampler_Media	=	numSamplers		
+	num_Sampler_GLUE	=	numSamplers		
+	num_Sampler_AVS	=	numSamplers		
+	num_Sampler_AVS_DataRAM	=	numSamplers		
+	num_Sampler_AVS_CoeffRAM	=	numSamplers		
+	num_Sampler_IEF	=	numSamplers		
+	num_Sampler_CRE	=	numSamplers		
+	num_Sampler_IME	=	numSamplers		
+	num_Sampler_DM_PALRAM	=	numSamplers		
+	num_Sampler_MEDIASMP_SMALL	=	numSamplers		
+	num_Sampler_MEDIASMP_CPunit	=	numSamplers		
+	num_Sampler_MEDIASMP_Assign	=	numSamplers		
+	num_Sampler_MEDIASMP_Repeater	=	numSamplers		
+	num_Sampler_MEDIASMP_CLKGLUE	=	numSamplers		
+	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers		
+	num_Sampler_MEDIASMP_DFX	=	numSamplers		
+	num_Sampler_MEDIASMP_DOP	=	numSamplers		
+	num_Sampler_DFRSMP_SMALL	=	numSamplers		
+	num_Sampler_DFRSMP_CPunit	=	numSamplers		
+	num_Sampler_DFRSMP_Assign	=	numSamplers		
+	num_Sampler_DFRSMP_Repeater	=	numSamplers		
+	num_Sampler_DFRSMP_CLKGLUE	=	numSamplers		
+	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplers		
+	num_Sampler_DFRSMP_DFX	=	numSamplers		
+	num_Sampler_DFRSMP_DOP	=	numSamplers		
+					
+#Generic					
+	 @ANY_SAMPLER@	=	S\d+\.SS\d+\.uSampler\.		
+	 @ANY_CRE@	=	S\d+\.SS\d+\.uCRE\.		
+	 @ANY_IME@	=	S\d+\.SS\d+\.uIME\.		
+	 .CrClk	=	D(CrClock.Clocks)		
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))		
+	FL_Toggle_Rate	=	(.temp_PS2_FL > 0) ? D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count')) / (512 * .temp_PS2_FL * numSamplers * .CrClk):0	#FL bus width 512 (32 * UL, UR, LL, LR)
+	PL_Toggle_Rate	=	(.temp_PS2_PL > 0) ? D(SUM('@ANY_SAMPLER@pwr_pl_toggle_count')) / (512 * .temp_PS2_PL * numSamplers * .CrClk):0	#PL bus width 512 (32*U,V,Q,AI)
+#FL					
+	PS0_FL_DOP	=	PS0_DFRSMP_DOP		
+	PS0_FL	=	(D(SUM('@ANY_SAMPLER@pwr_fl_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_FL_DOP		
+	PS1_FL	=	1 - (PS0_FL_DOP + PS0_FL + PS2_FL_SampleC_Gather4C + PS2_FL_SampleC_Gather4C_Bypass + PS2_FL_Gather4_Bypass + PS2_FL_Data_Dep_Bypass_Nearest + PS2_FL_Data_Dep_Bypass_Bilinear + PS2_FL_Data_Dep_Bypass_Trilinear + PS2_FL_Data_Dep_Bypass_LinearAniso + PS2_FL_Data_Dep_Bypass_NonLinearAniso + PS2_FL_Data_Dep_Bypass_LinearFastAniso + PS2_FL_Data_Dep_Bypass_NonLinearFastAniso + PS2_FL_Data_Dep_Bypass_FastLinear + PS2_FL_Data_Dep_Bypass_Else + PS2_FL_Nearest_Float16 + PS2_FL_Nearest_Float32 + PS2_FL_Nearest_Else + PS2_FL_Bilinear_Float16 + PS2_FL_Bilinear_Float32 + PS2_FL_Bilinear_Else + PS2_FL_Trilinear_Float16 + PS2_FL_Trilinear_Float32 + PS2_FL_Trilinear_Else + PS2_FL_LinearAniso_Float16 + PS2_FL_LinearAniso_Float32 + PS2_FL_LinearAniso_Else + PS2_FL_NonLinearAniso_Float16 + PS2_FL_NonLinearAniso_Float32 + PS2_FL_NonLinearAniso_Else + PS2_FL_LinearFastAniso_Float16 + PS2_FL_LinearFastAniso_Float32 + PS2_FL_LinearFastAniso_Else + PS2_FL_NonLinearFastAniso_Float16 + PS2_FL_NonLinearFastAniso_Float32 + PS2_FL_NonLinearFastAniso_Else + PS2_FL_FastLinear_Float16 + PS2_FL_FastLinear_Float32 + PS2_FL_FastLinear_Else + PS2_FL_Else)		
+	.temp_PS2_FL	=	1 - (PS0_FL + PS1_FL)	# temporary PS2 for sampler toggle calculations	
+	PS2_FL_SampleC_Gather4C	=	D(SUM('@ANY_SAMPLER@pwr_fl_sample_c_gather4_c\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_FL_SampleC_Gather4C_Bypass	=	0	#Next phase implementation	
+	PS2_FL_Gather4_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_fl_gather4\.CrClock')) / (numSamplers * .CrClk)		
+	.bypass_Nearest_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Nearest_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Nearest_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Nearest_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Bilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Bilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Bilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Bilinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Trilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Trilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_Trilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Trilinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearAnisotropic_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearAnisotropic_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_LinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_LinearFastAniso_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_NonLinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_NonLinearFastAniso_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_FastLinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_FastLinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.bypass_FastLinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)		
+	PS2_FL_Data_Dep_Bypass_Nearest	=	.bypass_Nearest_Float16 + .bypass_Nearest_Float32 + .bypass_Nearest_Else		
+	PS2_FL_Data_Dep_Bypass_Bilinear	=	.bypass_Bilinear_Float16 + .bypass_Bilinear_Float32 + .bypass_Bilinear_Else		
+	PS2_FL_Data_Dep_Bypass_Trilinear	=	.bypass_Trilinear_Float16 + .bypass_Trilinear_Float32 + .bypass_Trilinear_Else		
+	PS2_FL_Data_Dep_Bypass_LinearAniso	=	.bypass_LinearAniso_Float16 + .bypass_LinearAniso_Float32 + .bypass_LinearAniso_Else		
+	PS2_FL_Data_Dep_Bypass_NonLinearAniso	=	.bypass_NonLinearAniso_Float16 + .bypass_NonLinearAniso_Float32 + .bypass_NonLinearAniso_Else		
+	PS2_FL_Data_Dep_Bypass_LinearFastAniso	=	.bypass_LinearFastAniso_Float16 + .bypass_LinearFastAniso_Float32 + .bypass_LinearFastAniso_Else		
+	PS2_FL_Data_Dep_Bypass_NonLinearFastAniso	=	.bypass_NonLinearFastAniso_Float16 + .bypass_NonLinearFastAniso_Float32 + .bypass_NonLinearFastAniso_Else		
+	PS2_FL_Data_Dep_Bypass_FastLinear	=	.bypass_FastLinear_Float16 + .bypass_FastLinear_Float32 + .bypass_FastLinear_Else		
+	PS2_FL_Data_Dep_Bypass_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Else\.CrClock')) / (16 * numSamplers * .CrClk)		
+	.total_Nearest_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Nearest_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Nearest_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Nearest_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Bilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Bilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Bilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Bilinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Trilinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Trilinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Trilinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_Trilinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearAnisotropic_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearAnisotropic_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_LinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_LinearFastAniso_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearFastAniso_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearFastAniso_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_NonLinearFastAniso_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_NonLinearFastAniso_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_FastLinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Float16\.CrClock')) / (numSamplers * .CrClk)		
+	.total_FastLinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Float32\.CrClock')) / (numSamplers * .CrClk)		
+	.total_FastLinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_FastLinear_Else-Formatsize\.CrClock')) / (numSamplers * .CrClk)		
+	.total_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_else\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_FL_Nearest_Float16	=	.total_Nearest_Float16 - .bypass_Nearest_Float16		
+	PS2_FL_Nearest_Float32	=	.total_Nearest_Float32 - .bypass_Nearest_Float32		
+	PS2_FL_Nearest_Else	=	.total_Nearest_Else - .bypass_Nearest_Else		
+	PS2_FL_Bilinear_Float16	=	.total_Bilinear_Float16 - .bypass_Bilinear_Float16		
+	PS2_FL_Bilinear_Float32	=	.total_Bilinear_Float32 - .bypass_Bilinear_Float32		
+	PS2_FL_Bilinear_Else	=	.total_Bilinear_Else - .bypass_Bilinear_Else		
+	PS2_FL_Trilinear_Float16	=	.total_Trilinear_Float16 - .bypass_Trilinear_Float16		
+	PS2_FL_Trilinear_Float32	=	.total_Trilinear_Float32 - .bypass_Trilinear_Float32		
+	PS2_FL_Trilinear_Else	=	.total_Trilinear_Else - .bypass_Trilinear_Else		
+	PS2_FL_LinearAniso_Float16	=	.total_LinearAniso_Float16 - .bypass_LinearAniso_Float16		
+	PS2_FL_LinearAniso_Float32	=	.total_LinearAniso_Float32 - .bypass_LinearAniso_Float32		
+	PS2_FL_LinearAniso_Else	=	.total_LinearAniso_Else - .bypass_LinearAniso_Else		
+	PS2_FL_NonLinearAniso_Float16	=	.total_NonLinearAniso_Float16 - .bypass_NonLinearAniso_Float16		
+	PS2_FL_NonLinearAniso_Float32	=	.total_NonLinearAniso_Float32 - .bypass_NonLinearAniso_Float32		
+	PS2_FL_NonLinearAniso_Else	=	.total_NonLinearAniso_Else - .bypass_NonLinearAniso_Else		
+	PS2_FL_LinearFastAniso_Float16	=	.total_LinearFastAniso_Float16 - .bypass_LinearFastAniso_Float16		
+	PS2_FL_LinearFastAniso_Float32	=	.total_LinearFastAniso_Float32 - .bypass_LinearFastAniso_Float32		
+	PS2_FL_LinearFastAniso_Else	=	.total_LinearFastAniso_Else - .bypass_LinearFastAniso_Else		
+	PS2_FL_NonLinearFastAniso_Float16	=	.total_NonLinearFastAniso_Float16 - .bypass_NonLinearFastAniso_Float16		
+	PS2_FL_NonLinearFastAniso_Float32	=	.total_NonLinearFastAniso_Float32 - .bypass_NonLinearFastAniso_Float32		
+	PS2_FL_NonLinearFastAniso_Else	=	.total_NonLinearFastAniso_Else - .bypass_NonLinearFastAniso_Else		
+	PS2_FL_FastLinear_Float16	=	.total_FastLinear_Float16 - .bypass_FastLinear_Float16		
+	PS2_FL_FastLinear_Float32	=	.total_FastLinear_Float32 - .bypass_FastLinear_Float32		
+	PS2_FL_FastLinear_Else	=	.total_FastLinear_Else - .bypass_FastLinear_Else		
+	PS2_FL_Else	=	.total_Else - PS2_FL_Data_Dep_Bypass_Else		
+#PL					
+	PS0_PL_DOP	=	PS0_DFRSMP_DOP		
+	PS0_PL	=	(D(SUM('@ANY_SAMPLER@pwr_pl_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_PL_DOP		
+	PS1_PL	=	1 - (PS0_PL_DOP + PS0_PL + PS2_PL_Sample_L + PS2_PL_Sample_L_MipCount0 + PS2_PL_Gather4PO + PS2_PL_LD + PS2_PL_Bilinear + PS2_PL_Bilinear_EWA + PS2_PL_Trilinear + PS2_PL_Trilinear_EWA + PS2_PL_LinearAniso + PS2_PL_LinearAniso_EWA + PS2_PL_NonLinearAniso + PS2_PL_NonLinearAniso_EWA + PS2_PL_Else)		
+	.temp_PS2_PL	=	1 - (PS0_PL + PS1_PL)		
+	PS2_PL_Sample_L	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_l\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Sample_L_MipCount0	=	D(SUM('@ANY_SAMPLER@pwr_pl_mipcount0\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Gather4PO	=	D(SUM('@ANY_SAMPLER@pwr_pl_gather4po\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_LD	=	D(SUM('@ANY_SAMPLER@pwr_pl_ld\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Bilinear	=	D(SUM('@ANY_SAMPLER@pwr_pl_Bilinear_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Bilinear_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_Bilinear_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Trilinear	=	D(SUM('@ANY_SAMPLER@pwr_pl_Trilinear_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Trilinear_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_Trilinear_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_LinearAniso	=	D(SUM('@ANY_SAMPLER@pwr_pl_LinearAniso_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_LinearAniso_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_LinearAniso_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_NonLinearAniso	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_Legacy-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_NonLinearAniso_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Else	=	D(SUM('@ANY_SAMPLER@pwr_pl_else\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_PL_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states	
+					
+#SC					
+	PS0_SC_DOP	=	PS0_DFRSMP_DOP		
+	PS0_SC	=	(D(SUM('@ANY_SAMPLER@pwr_sc_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_SC_DOP		
+	PS1_SC	=	1 - (PS0_SC + PS0_SC_DOP + PS2_SC_NearestMode_32BPT + PS2_SC_NearestMode_64BPT + PS2_SC_NearestMode_128BPT + PS2_SC_FastLinear_32BPT + PS2_SC_FastLinear_64BPT + PS2_SC_FastLinear_128BPT + PS2_SC_LinearFastAniso_32BPT + PS2_SC_LinearFastAniso_64BPT + PS2_SC_LinearFastAniso_128BPT + PS2_SC_NonLinearFastAniso_32BPT + PS2_SC_NonLinearFastAniso_64BPT + PS2_SC_NonLinearFastAniso_128BPT + PS2_SC_Bilinear_Trilinear_Aniso_32BPT + PS2_SC_Bilinear_Trilinear_Aniso_64BPT + PS2_SC_Bilinear_Trilinear_Aniso_128BPT + PS2_SC_Else)		
+	PS2_SC_NearestMode_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_32BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_NearestMode_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_64BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_NearestMode_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_Nearest_128BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_FastLinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_32BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_FastLinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_64BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_FastLinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_FastLinear_128BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_LinearFastAniso_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_32BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_LinearFastAniso_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_64BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_LinearFastAniso_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_LinearFastAniso_128BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_NonLinearFastAniso_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_32BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_NonLinearFastAniso_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_64BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_NonLinearFastAniso_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearFastAniso_128BPT\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_Bilinear_Trilinear_Aniso_32BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_32BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_32BPT\.CrClock'))) / (numSamplers * .CrClk)		
+	PS2_SC_Bilinear_Trilinear_Aniso_64BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_64BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_64BPT\.CrClock'))) / (numSamplers * .CrClk)		
+	PS2_SC_Bilinear_Trilinear_Aniso_128BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_128BPT\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_128BPT\.CrClock'))) / (numSamplers * .CrClk)		
+	PS2_SC_Else	=	D(SUM('@ANY_SAMPLER@pwr_sc_Else\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_SC_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_sc_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states	
+					
+#SC Cache					
+	PS0_SC_DataRam_IDLE	=	0	# 0 Cdyn for idle	
+	PS2_SC_DataRam_READ	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bank0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank4\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank5\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank6\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank7\.CrClock'))) / (8 * numSamplers * .CrClk)	# 8 banks in SC	
+	PS2_SC_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@pwr_sc_data_ram_write\.CrClock')) / (numSamplers * .CrClk)		
+	PS0_SC_LatFifo_DOP	=	PS0_DFRSMP_DOP		
+	PS0_SC_LatFifo_IDLE	=	1 - (PS0_SC_LatFifo_DOP + PS2_SC_LatFifo_READ + PS2_SC_LatFifo_WRITE)		
+	PS2_SC_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.pushed')) / (numSamplers * .CrClk)		
+	PS2_SC_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.popped')) / (numSamplers * .CrClk)		
+#ST					
+	PS0_ST_DOP	=	PS0_DFRSMP_DOP		
+	PS0_ST	=	(D(SUM('@ANY_SAMPLER@pwr_st_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_ST_DOP		
+	PS1_ST	=	1- (PS0_ST_DOP + PS0_ST + PS2_ST_1Bank_Enable + PS2_ST_2Bank_Enable + PS2_ST_3Bank_Enable + PS2_ST_4Bank_Enable)		
+	PS2_ST_1Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit1Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit0Miss1\.CrClock')))/ (numSamplers * .CrClk)		
+	PS2_ST_2Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit2Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit1Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit0Miss2\.CrClock')))/ (numSamplers * .CrClk)		
+	PS2_ST_3Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit3Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit2Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit1Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit0Miss3\.CrClock')))/ (numSamplers * .CrClk)		
+	PS2_ST_4Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit4Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit3Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit2Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit1Miss3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit0Miss4\.CrClock')))/ (numSamplers * .CrClk)		
+	PS2_ST_1Bank_Enable_SameADD	=	0	#Next phase implementation	
+#DG					
+	PS0_DG_DOP	=	PS0_DFRSMP_DOP		
+	PS0_DG	=	(D(SUM('@ANY_SAMPLER@pwr_dg_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_DG_DOP		
+	PS1_DG	=	1 - (PS0_DG_DOP + PS0_DG + PS2_DG_Volumetric_32BPT + PS2_DG_Volumetric_64BPT + PS2_DG_Volumetric_128BPT + PS2_DG_Gather4_32BPT + PS2_DG_Gather4_64BPT + PS2_DG_Gather4_128BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT + PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT + PS2_DG_AnisoGreaterThan_8way_32BPT + PS2_DG_AnisoGreaterThan_8way_64BPT + PS2_DG_AnisoGreaterThan_8way_128BPT + PS2_DG_Trilinear_32BPT + PS2_DG_Trilinear_64BPT + PS2_DG_Trilinear_128BPT + PS2_DG_Bilinear_32BPT + PS2_DG_Bilinear_64BPT + PS2_DG_Bilinear_128BPT + PS2_DG_FastLinear_32BPT + PS2_DG_FastLinear_64BPT + PS2_DG_FastLinear_128BPT + PS2_DG_BabyDG_Enable + PS2_DG_Else)		
+	PS2_DG_Nearest_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Nearest_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Nearest_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Nearest_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Volumetric_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)	#32 components per message	
+	PS2_DG_Volumetric_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Volumetric_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Volumetric_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Gather4_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Gather4_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Gather4_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Gather4_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoLessThanOrEqualTo_8way_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoLessThanOrEqualTo_8way_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoLessThanOrEqualTo_8way_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_LessThanOrEqualTo_8Ways_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoGreaterThan_8way_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoGreaterThan_8way_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_AnisoGreaterThan_8way_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Anisotropic_Aniso_GreaterThan_8Ways_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Trilinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Trilinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Trilinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Trilinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Bilinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Bilinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Bilinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_Bilinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_FastLinear_32BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_32BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_FastLinear_64BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_64BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_FastLinear_128BPT	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_128BPT\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_BabyDG_Enable	=	D(SUM('@ANY_SAMPLER@pwr_dg_babydg\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Else	=	D(SUM('@ANY_SAMPLER@pwr_dg_else\.CrClock')) / (32 * numSamplers * .CrClk)		
+	PS2_DG_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_dg_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states	
+					
+#SI					
+	PS0_SI	=	D(SUM('@ANY_SAMPLER@pwr_si_idle\.CrClock')) / (numSamplers * .CrClk)		
+	PS1_SI	=	1 - (PS0_SI + PS2_SI_ANYPIXELMODE)		
+	PS2_SI_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@pwr_si_ldmode\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_sampleg\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_media\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_else\.CrClock')))/ (numSamplers * .CrClk)		
+	PS2_SI_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_si_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states	
+					
+#SO					
+	PS0_SO_DOP	=	PS0_DFRSMP_DOP		
+	PS0_SO	=	(D(SUM('@ANY_SAMPLER@pwr_so_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_SO_DOP		
+	PS1_SO	=	1 - (PS0_SO_DOP + PS0_SO + PS2_SO_ANYPIXELMODE)		
+	PS2_SO_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@SOInBuffer\.popped')))/ (numSamplers * .CrClk)		
+#DM_BDM					
+	PS0_DM_DOP	=	PS0_DFRSMP_DOP		
+	PS0_DM	=	(D(SUM('@ANY_SAMPLER@pwr_dm_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_DM_DOP		
+	PS1_DM	=	1- (PS0_DM_DOP + PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7_SRGB + PS2_DM_ETC + PS2_DM_Else + PS2_DM_HIZ + PS2_DM_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Compressed_BYPASS)		
+	PS2_DM_BC1_5	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-5\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_BC6_7	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC6-7\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_Else	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat	
+	PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_LOSSLESS	=	D(SUM('@ANY_SAMPLER@L2CCSRequests')) / (numSamplers * .CrClk)	#Using MT stat	
+	PS2_DM_ASTC_LDR_2D	=	0		
+	PS2_DM_ASTC_LDR_3D	=	0		
+	PS2_DM_ASTC_HDR_2D	=	0		
+	PS2_DM_ASTC_HDR_3D	=	0		
+	PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_Compressed_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_DM_Media_BYPASS	=	0	#first rev media states	
+	PS2_DM_Media_SRGB	=	0		
+	PS2_DM_Media_Planar	=	0		
+					
+#DM_PALRAM					
+	PS2_DM_PALRAM_READ	=	0	#first rev media states	
+	PS2_DM_PALRAM_WRITE	=	0		
+					
+#FT					
+	PS0_FT_DOP	=	PS0_DFRSMP_DOP		
+	PS0_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_FT_DOP		
+	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock'))) / (numSamplers * .CrClk)		
+	PS2_FT	=	1 - PS0_FT - PS1_FT - PS0_FT_DOP		
+#MT					
+	PS0_MT_DOP	=	PS0_DFRSMP_DOP		
+	PS0_MT	=	(D(SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_MT_DOP		
+	PS1_MT	=	1- (PS0_MT_DOP + PS0_MT + PS2_MT_BYPASS + PS2_MT_Tile_X + PS2_MT_Tile_Y + PS2_MT_Tile_else)		
+	PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_MT_Tile_Y	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_y\.CrClock')) / (numSamplers * .CrClk)) - PS2_MT_BYPASS	#bypass is a subset of tileY	
+	PS2_MT_Tile_else	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_w\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_mt_tile_else\.CrClock'))) / (numSamplers * .CrClk)		
+#MT_Cache					
+	PS0_MT_LatFifo_DOP	=	PS0_DFRSMP_DOP		
+	PS0_MT_LatFifo_IDLE	=	1 - (PS0_MT_LatFifo_DOP + PS2_MT_LatFifo_READ + PS2_MT_LatFifo_WRITE + PS2_MT_LatFifo_READWRITE)		
+	PS2_MT_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@MT-LatencyFifo\.pushed')) / (numSamplers * .CrClk)		
+	PS2_MT_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@MT-LatencyFifo\.popped')) / (numSamplers * .CrClk)		
+	PS2_MT_LatFifo_READWRITE	=	D(SUM('@ANY_SAMPLER@pwr_mt_latfifo_rw\.CrClock')) / (numSamplers * .CrClk)		
+	PS0_MT_DataRam_DOP	=	PS0_DFRSMP_DOP		
+	PS0_MT_DataRam_IDLE	=	1 - (PS0_MT_DataRam_DOP + PS2_MT_DataRam_READ + PS2_MT_DataRam_WRITE)	#1 - (read + write - read_write)	
+	PS2_MT_DataRam_READ	=	D(SUM('@ANY_SAMPLER@MT-ReadDataFifo\.popped')) / (numSamplers * .CrClk)		
+	PS2_MT_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@L3ToMTDataBuffer\.pushed')) / (numSamplers * .CrClk)		
+#SVSM					
+	PS0_SVSM	=	1	#Next phase implementation	
+	PS1_SVSM	=	0		
+	PS2_SVSM	=	0		
+					
+#AVS					
+	PS0_AVS_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value	
+	PS0_AVS	=	(D(SUM('@ANY_SAMPLER@pwr_avs_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_AVS_DOP	#would evaluate to 0 till 3D DOP is implemented	
+	PS1_AVS	=	1 - (PS0_AVS_DOP + PS0_AVS + .temp_PS2_AVS)		
+	PS2_AVS_Scalar	=	D(SUM('@ANY_SAMPLER@pwr_avs_scalar\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_Convolution	=	D(SUM('@ANY_SAMPLER@pwr_avs_convolve\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_CorrelationSearch	=	D(SUM('@ANY_SAMPLER@pwr_avs_corrsearch\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_Centroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_centroid\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_MinMax	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmax\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_MinMaxFilter	=	D(SUM('@ANY_SAMPLER@pwr_avs_minmaxfilter\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_Erode	=	D(SUM('@ANY_SAMPLER@pwr_avs_erode\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_Dilate	=	D(SUM('@ANY_SAMPLER@pwr_avs_dilate\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_AVS_BoolCentroid	=	D(SUM('@ANY_SAMPLER@pwr_avs_boolcentroid\.CrClock')) / (numSamplers * .CrClk)		
+	.temp_PS2_AVS	=	PS2_AVS_Scalar + PS2_AVS_Convolution + PS2_AVS_CorrelationSearch + PS2_AVS_Centroid + PS2_AVS_MinMax + PS2_AVS_MinMaxFilter + PS2_AVS_Erode + PS2_AVS_Dilate + PS2_AVS_BoolCentroid		
+					
+#AVS - Data Storage					
+	PS2_AVS_DataStorageRAM_READ	=	0	#first rev media states	
+	PS2_AVS_DataStorageRAM_WRITE	=	0		
+					
+#AVS - Coeff Storage					
+	PS2_AVS_CoeffStorageRAM_READ	=	0	#first rev media states	
+	PS2_AVS_CoeffStorageRAM_WRITE	=	0		
+					
+#IEF					
+	PS0_IEF_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value	
+	PS0_IEF	=	(D(SUM('@ANY_SAMPLER@pwr_ief_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IEF_DOP	#would evaluate to 0 till 3D DOP is implemented	
+	PS1_IEF	=	(1 - (PS0_IEF_DOP + PS0_IEF + .temp_PS2_IEF))		
+	PS2_IEF_NoBypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_NoBypass\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_IEF_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_Bypass\.CrClock')) / (numSamplers * .CrClk)		
+	.temp_PS2_IEF	=	PS2_IEF_NoBypass + PS2_IEF_Bypass		
+					
+#CRE					
+	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value	
+	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented	
+	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))		
+	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)		
+	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR		
+					
+#IME					
+	PS0_IME_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value	
+	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented	
+	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))		
+	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))		
+	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))		
+	.temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 		
+					
+#Small					
+	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state	
+	PS0_MEDIASMP_SMALL	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	#first rev media states	
+	PS2_MEDIASMP_SMALL	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)		
+					
+#CPunit					
+	PS0_MEDIASMP_CPunit_DOP	=	PS0_MEDIASMP_DOP		
+	PS0_MEDIASMP_CPunit	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)		
+	PS2_MEDIASMP_CPunit	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)		
+					
+#Assign					
+	PS0_MEDIASMP_Assign_DOP	=	PS0_MEDIASMP_DOP		
+	PS0_MEDIASMP_Assign	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)		
+	PS2_MEDIASMP_Assign	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)		
+					
+#Repeater					
+	PS0_MEDIASMP_Repeater_DOP	=	PS0_MEDIASMP_DOP		
+	PS0_MEDIASMP_Repeater	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)		
+	PS2_MEDIASMP_Repeater	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)		
+					
+#GLUE					
+	PS0_MEDIASMP_CLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state	
+	PS0_MEDIASMP_CLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states	
+	PS2_MEDIASMP_CLKGLUE	=	PS2_MEDIASMP_SMALL		
+					
+#GLUE					
+	PS0_MEDIASMP_NONCLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state	
+	PS0_MEDIASMP_NONCLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states	
+	PS2_MEDIASMP_NONCLKGLUE	=	PS2_MEDIASMP_SMALL		
+					
+#Dfx					
+	PS0_MEDIASMP_DFX_DOP	=	PS0_MEDIASMP_DOP	#3d context media state	
+	PS0_MEDIASMP_DFX	=	PS0_MEDIASMP_SMALL	#first rev media states	
+	PS2_MEDIASMP_DFX	=	PS2_MEDIASMP_SMALL		
+					
+#DOP					
+	.test_PS2_MEDIASMP	=	.temp_PS2_AVS + .temp_PS2_IEF + .temp_PS2_CRE + .temp_PS2_IME		
+	PS0_MEDIASMP_DOP	=	(.test_PS2_MEDIASMP > 0) ? 0:1	#3d context media state
+	PS2_MEDIASMP_DOP	=	1 - PS0_MEDIASMP_DOP	#first rev media states	
+					
+#DFR Small					
+	PS0_DFRSMP_SMALL_DOP	=	PS0_DFRSMP_DOP	#3d context media state	
+	PS0_DFRSMP_SMALL	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	#first rev media states	
+	PS2_DFRSMP_SMALL	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)		
+					
+#DFR CPunit					
+	PS0_DFRSMP_CPunit_DOP	=	PS0_DFRSMP_DOP		
+	PS0_DFRSMP_CPunit	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)		
+	PS2_DFRSMP_CPunit	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)		
+					
+#DFR Assign					
+	PS0_DFRSMP_Assign_DOP	=	PS0_DFRSMP_DOP		
+	PS0_DFRSMP_Assign	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)		
+	PS2_DFRSMP_Assign	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)		
+					
+#DFR Repeater					
+	PS0_DFRSMP_Repeater_DOP	=	PS0_DFRSMP_DOP		
+	PS0_DFRSMP_Repeater	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)		
+	PS2_DFRSMP_Repeater	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)		
+					
+#DFR ClkGlue					
+	PS0_DFRSMP_CLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state	
+	PS0_DFRSMP_CLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states	
+	PS2_DFRSMP_CLKGLUE	=	PS2_DFRSMP_SMALL		
+					
+#DFR NonClkGlue					
+	PS0_DFRSMP_NONCLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state	
+	PS0_DFRSMP_NONCLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states	
+	PS2_DFRSMP_NONCLKGLUE	=	PS2_DFRSMP_SMALL		
+					
+#DFR DFX					
+	PS0_DFRSMP_DFX_DOP	=	PS0_DFRSMP_DOP	#3d context media state	
+	PS0_DFRSMP_DFX	=	PS0_DFRSMP_SMALL	#first rev media states	
+	PS2_DFRSMP_DFX	=	PS2_DFRSMP_SMALL		
+#DFR DOP					
+	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception	
+	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP		
+

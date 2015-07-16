@@ -24,11 +24,17 @@
 	num_Sampler_IME	=	numSamplers	
 	num_Sampler_DM_PALRAM	=	numSamplers	
 	num_Sampler_MEDIASMP_SMALL	=	numSamplers	
+	num_Sampler_MEDIASMP_CPunit	=	numSamplers	
+	num_Sampler_MEDIASMP_Assign	=	numSamplers	
+	num_Sampler_MEDIASMP_Repeater	=	numSamplers	
 	num_Sampler_MEDIASMP_CLKGLUE	=	numSamplers	
 	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers	
 	num_Sampler_MEDIASMP_DFX	=	numSamplers	
 	num_Sampler_MEDIASMP_DOP	=	numSamplers	
 	num_Sampler_DFRSMP_SMALL	=	numSamplers	
+	num_Sampler_DFRSMP_CPunit	=	numSamplers	
+	num_Sampler_DFRSMP_Assign	=	numSamplers	
+	num_Sampler_DFRSMP_Repeater	=	numSamplers	
 	num_Sampler_DFRSMP_CLKGLUE	=	numSamplers	
 	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplers	
 	num_Sampler_DFRSMP_DFX	=	numSamplers	
@@ -73,7 +79,7 @@
 	.bypass_FastLinear_Float16	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float16\.CrClock')) / (16 * numSamplers * .CrClk)	
 	.bypass_FastLinear_Float32	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Float32\.CrClock')) / (16 * numSamplers * .CrClk)	
 	.bypass_FastLinear_Else	=	D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_FastLinear_Else-Formatsize\.CrClock')) / (16 * numSamplers * .CrClk)	
-        .temp_Data_Dep_Bypass_Else=D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Else\.CrClock')) / (16 * numSamplers * .CrClk)
+        .temp_Data_Dep_Bypass_Else=D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Else\.CrClock')) / (16 * numSamplers * .CrClk)				
 	PS2_FL_Data_Dep_Bypass_Bilinear	=	.bypass_Bilinear_Float16 + .bypass_Bilinear_Float32 + .bypass_Bilinear_Else+.bypass_Nearest_Float16 + .bypass_Nearest_Float32 + .bypass_Nearest_Else + D(SUM('@ANY_SAMPLER@pwr_fl_data_dep_bypass_Else\.CrClock')) / (16 * numSamplers * .CrClk)	
 	PS2_FL_Data_Dep_Bypass_Trilinear	=	.bypass_Trilinear_Float16 + .bypass_Trilinear_Float32 + .bypass_Trilinear_Else	
 	PS2_FL_Data_Dep_Bypass_LinearAniso	=	.bypass_LinearAniso_Float16 + .bypass_LinearAniso_Float32 + .bypass_LinearAniso_Else+ .bypass_NonLinearAniso_Float16 + .bypass_NonLinearAniso_Float32 + .bypass_NonLinearAniso_Else	
@@ -325,6 +331,22 @@
 	PS0_MEDIASMP_SMALL	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	#first rev media states
 	PS2_MEDIASMP_SMALL	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
 				
+#CPunit				
+	PS0_MEDIASMP_CPunit_DOP	=	PS0_MEDIASMP_DOP	
+	PS0_MEDIASMP_CPunit	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	
+	PS2_MEDIASMP_CPunit	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
+				
+#Assign				
+	PS0_MEDIASMP_Assign_DOP	=	PS0_MEDIASMP_DOP	
+	PS0_MEDIASMP_Assign	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	
+	PS2_MEDIASMP_Assign	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
+				
+#Repeater				
+	PS0_MEDIASMP_Repeater_DOP	=	PS0_MEDIASMP_DOP	
+	PS0_MEDIASMP_Repeater	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	
+	PS2_MEDIASMP_Repeater	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
+				
+				
 #GLUE				
 	PS0_MEDIASMP_CLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_CLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
@@ -350,6 +372,22 @@
 	PS0_DFRSMP_SMALL	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	#first rev media states
 	PS2_DFRSMP_SMALL	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
 				
+#DFR CPunit				
+	PS0_DFRSMP_CPunit_DOP	=	PS0_DFRSMP_DOP	
+	PS0_DFRSMP_CPunit	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	
+	PS2_DFRSMP_CPunit	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+				
+#DFR Assign				
+	PS0_DFRSMP_Assign_DOP	=	PS0_DFRSMP_DOP	
+	PS0_DFRSMP_Assign	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	
+	PS2_DFRSMP_Assign	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+				
+#DFR Repeater				
+	PS0_DFRSMP_Repeater_DOP	=	PS0_DFRSMP_DOP	
+	PS0_DFRSMP_Repeater	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	
+	PS2_DFRSMP_Repeater	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+				
+				
 #DFR ClkGlue				
 	PS0_DFRSMP_CLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
 	PS0_DFRSMP_CLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
@@ -367,3 +405,4 @@
 #DFR DOP				
 	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash\.CrClock')) / (numSamplers * .CrClk)	#Using a shortcut to avoid divide-by-zero exception. DFRClockHisto.total_count = crclock
 	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP	
+
