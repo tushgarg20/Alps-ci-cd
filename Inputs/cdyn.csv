@@ -352,12 +352,12 @@ PS1_L3_Bank_DOP,Gen10LP,A0,11.57433562,syn,1,from cnl fso cgdis ss
 PS1_L3_Bank_NONCLKGLUE,Gen10LP,A0,0.916464497,syn,1,from cnl fso cgdis ss
 PS1_L3_Bank_SMALL,Gen10LP,A0,3.861370414,syn,192467.64,from cnl fso cgdis ss
 PS1_LTCD_EBB,Gen10LP,A0,0,ebb,1,from cnl fso cgdis ss
-PS2_AVS_CoeffStorageRAM_READ,Gen10LP,A0,1.5673,ebb,1,Need to confirm with Niraj
-PS2_AVS_CoeffStorageRAM_WRITE,Gen10LP,A0,1.4219,ebb,1,Need to confirm with Niraj
-PS2_AVS_DataStorageRAM_READ,Gen10LP,A0,1.5241,ebb,1,Need to confirm with Niraj
-PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.2532,ebb,1,Need to confirm with Niraj
-PS2_BC_BARYRAM_READ,Gen10LP,A0,2.6778,ebb,1,Need to check with gSim - 1x116 io assumed
-PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.1611,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_AVS_CoeffStorageRAM_READ,Gen10LP,A0,1.6032,ebb,1,Need to confirm with Niraj
+PS2_AVS_CoeffStorageRAM_WRITE,Gen10LP,A0,1.2549,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_READ,Gen10LP,A0,1.5160,ebb,1,Need to confirm with Niraj
+PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.1945,ebb,1,Need to confirm with Niraj
+PS2_BC_BARYRAM_READ,Gen10LP,A0,2.6580,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_BC_BARYRAM_WRITE,Gen10LP,A0,2.0033,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BTGEN_Cache_Read,Gen10LP,A0,0,ebb,1,
 PS2_BTGEN_Cache_ReadWrite,Gen10LP,A0,7.346806426,ebb,1,
 PS2_BTGEN_Cache_Write,Gen10LP,A0,0,ebb,1,
@@ -414,8 +414,8 @@ PS2_DM_Expanded_BYPASS,Gen10LP,A0,11.96901024,syn,1289685.426,from Praneeth
 PS2_DM_HIZ_Z,Gen10LP,A0,41.01859344,syn,1289685.426,from Praneeth
 PS2_DM_LOSSLESS,Gen10LP,A0,70.86352416,syn,1289685.426,from Praneeth
 PS2_DM_Other,Gen10LP,A0,36.75354236,syn,1289685.426,from Praneeth
-PS2_DM_PALRAM_READ,Gen10LP,A0,7.7509,ebb,1,Need to confirm with Niraj
-PS2_DM_PALRAM_WRITE,Gen10LP,A0,7.0599,ebb,1,Need to confirm with Niraj
+PS2_DM_PALRAM_READ,Gen10LP,A0,7.0779,ebb,1,Need to confirm with Niraj
+PS2_DM_PALRAM_WRITE,Gen10LP,A0,5.4896,ebb,1,Need to confirm with Niraj
 PS2_DX9_Cache_Read,Gen10LP,A0,0,ebb,1,512 bits assumed. Need to check with gSim.
 PS2_DX9_Cache_ReadWrite,Gen10LP,A0,33.84269972,ebb,1,512 bits assumed. Need to check with gSim.
 PS2_DX9_Cache_Write,Gen10LP,A0,0,ebb,1,512 bits assumed. Need to check with gSim.
@@ -610,17 +610,17 @@ PS2_GAM_DOP,Gen10LP,A0,14.84672485,syn,1,cnl cgdis ss
 PS2_GAM_NONCLKGLUE,Gen10LP,A0,2.790939882,syn,1,cnl cgdis ss
 PS2_GAM_Repeater,Gen10LP,A0,2.419466272,syn,94600.26328,cnl cgdis ss
 PS2_GAM_SMALL,Gen10LP,A0,1.881807101,syn,50324.35695,cnl cgdis ss
-PS2_GAMD_Cache_READ,Gen10LP,A0,14.8458,ebb,1,
-PS2_GAMD_Cache_WRITE,Gen10LP,A0,13.5907,ebb,1,
-PS2_GAMW_READ,Gen10LP,A0,4.6559,ebb,1,
-PS2_GAMW_TLB_PEND_READ,Gen10LP,A0,1.7165,ebb,1,
-PS2_GAMW_TLB_PEND_WRITE,Gen10LP,A0,1.5589,ebb,1,
-PS2_GAMW_WRITE,Gen10LP,A0,4.1882,ebb,1,
-PS2_GRF_READ,Gen10LP,A0,8.0921,ebb,1,
-PS2_GRF_WRITE,Gen10LP,A0,7.428,ebb,1,
-PS2_GS_Cache_Read,Gen10LP,A0,3.8754,ebb,1,
+PS2_GAMD_Cache_READ,Gen10LP,A0,13.4187,ebb,1
+PS2_GAMD_Cache_WRITE,Gen10LP,A0,7.9516,ebb,1
+PS2_GAMW_READ,Gen10LP,A0,4.6563,ebb,1
+PS2_GAMW_TLB_PEND_READ,Gen10LP,A0,1.8340,ebb,1
+PS2_GAMW_TLB_PEND_WRITE,Gen10LP,A0,1.3812,ebb,1
+PS2_GAMW_WRITE,Gen10LP,A0,2.7872,ebb,1
+PS2_GRF_READ,Gen10LP,A0,8.0788,ebb,1
+PS2_GRF_WRITE,Gen10LP,A0,6.8804,ebb,1
+PS2_GS_Cache_Read,Gen10LP,A0,3.3845,ebb,1
 PS2_GS_Cache_ReadWrite,Gen10LP,A0,8.789237699,ebb,1,
-PS2_GS_Cache_Write,Gen10LP,A0,3.53,ebb,1,
+PS2_GS_Cache_Write,Gen10LP,A0,2.7117,ebb,1
 PS2_GTI_Assign,Gen10LP,A0,5.205518343,syn,73615.17791,cnl cgdis ss
 PS2_GTI_CLKGLUE,Gen10LP,A0,78.76218083,syn,1,cnl cgdis ss
 PS2_GTI_CPunit,Gen10LP,A0,9.751182249,syn,55649.40547,cnl cgdis ss
@@ -639,24 +639,24 @@ PS2_HDC_Repeater,Gen10LP,A0,0.171073373,syn,9035.933274,cnl cgdis ss
 PS2_HDC_SMALL,Gen10LP,A0,1.612977515,syn,99227.81426,cnl cgdis ss
 PS2_HDCL1_CACHE_READS,Gen10LP,A0,17.53488545,ebb,1,CNL EBB Spreadsheet
 PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,16.30781429,ebb,1,CNL EBB Spreadsheet
-PS2_HIZ_CACHE_READ,Gen10LP,A0,3.6791,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_HIZ_CACHE_WRITE,Gen10LP,A0,3.2474,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_HIZ_LATFIFO_READ,Gen10LP,A0,14.3644,ebb,1,
-PS2_HIZ_LATFIFO_WRITE,Gen10LP,A0,15.1395,ebb,1,
-PS2_HS_Cache_Read,Gen10LP,A0,3.8754,ebb,1,
+PS2_HIZ_CACHE_READ,Gen10LP,A0,3.4064,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_CACHE_WRITE,Gen10LP,A0,2.7019,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_HIZ_LATFIFO_READ,Gen10LP,A0,14.6917,ebb,1
+PS2_HIZ_LATFIFO_WRITE,Gen10LP,A0,11.6483,ebb,1
+PS2_HS_Cache_Read,Gen10LP,A0,3.3845,ebb,1
 PS2_HS_Cache_ReadWrite,Gen10LP,A0,8.789237699,ebb,1,
-PS2_HS_Cache_Write,Gen10LP,A0,3.53,ebb,1,
+PS2_HS_Cache_Write,Gen10LP,A0,2.7117,ebb,1
 PS2_IC_DATARAM_FRONTBUFFER_READ,Gen10LP,A0,0,ebb,1,Already accounted in logic
-PS2_IC_DATARAM_READ,Gen10LP,A0,15.2556,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IC_DATARAM_WRITE,Gen10LP,A0,16.108,ebb,1,Need to check with gSim - 512 io assumed
-PS2_IZ_BARYCOEFFIFO_READ,Gen10LP,A0,6.0355,ebb,1,
-PS2_IZ_BARYCOEFFIFO_WRITE,Gen10LP,A0,6.3518,ebb,1,
-PS2_IZ_LATFIFO_READ,Gen10LP,A0,7.5281,ebb,1,
-PS2_IZ_LATFIFO_WRITE,Gen10LP,A0,7.8379,ebb,1,
-PS2_IZ_POLYFIFO_READ,Gen10LP,A0,9.7813,ebb,1,
-PS2_IZ_POLYFIFO_WRITE,Gen10LP,A0,10.2659,ebb,1,
-PS2_IZ_WCOEFFIFO_READ,Gen10LP,A0,2.9072,ebb,1,
-PS2_IZ_WCOEFFIFO_WRITE,Gen10LP,A0,3.0549,ebb,1,
+PS2_IC_DATARAM_READ,Gen10LP,A0,15.5720,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IC_DATARAM_WRITE,Gen10LP,A0,12.4968,ebb,1,Need to check with gSim - 512 io assumed
+PS2_IZ_BARYCOEFFIFO_READ,Gen10LP,A0,5.9877,ebb,1
+PS2_IZ_BARYCOEFFIFO_WRITE,Gen10LP,A0,4.4134,ebb,1
+PS2_IZ_LATFIFO_READ,Gen10LP,A0,7.9124,ebb,1
+PS2_IZ_LATFIFO_WRITE,Gen10LP,A0,6.1056,ebb,1
+PS2_IZ_POLYFIFO_READ,Gen10LP,A0,9.6625,ebb,1
+PS2_IZ_POLYFIFO_WRITE,Gen10LP,A0,7.0638,ebb,1
+PS2_IZ_WCOEFFIFO_READ,Gen10LP,A0,2.8787,ebb,1
+PS2_IZ_WCOEFFIFO_WRITE,Gen10LP,A0,2.1348,ebb,1
 PS2_IZ_ZCOEFFFIFO_READ,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_IZ_ZCOEFFFIFO_WRITE,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_L3_Bank_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
@@ -675,10 +675,10 @@ PS2_L3Node_DOP,Gen10LP,A0,12.19019976,syn,1,cnl cgdis ss
 PS2_L3Node_NONCLKGLUE,Gen10LP,C0,1.366143077,syn,1,cnl cgdis ss
 PS2_L3Node_Repeater,Gen10LP,A0,14.71231006,syn,717462.47,cnl cgdis ss
 PS2_L3Node_SMALL,Gen10LP,A0,8.920254438,syn,275388.76,cnl cgdis ss
-PS2_LTCD_EBB_HB_Read,Gen10LP,A0,39.6346,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen10LP,A0,76.0598,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen10LP,A0,67.4324,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen10LP,A0,129.4394,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Read,Gen10LP,A0,59.9125,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Write,Gen10LP,A0,59.9495,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Read,Gen10LP,A0,88.1137,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Write,Gen10LP,A0,81.2840,ebb,1,Normalized to 1.2GHz
 PS2_MEDIASMP_Assign,Gen10LP,A0,0,syn,0,
 PS2_MEDIASMP_CLKGLUE,Gen10LP,A0,9.910036095,syn,1,
 PS2_MEDIASMP_CPunit,Gen10LP,A0,2.908247337,syn,9519.80107,
@@ -687,15 +687,15 @@ PS2_MEDIASMP_DOP,Gen10LP,A0,8.206634083,syn,1,
 PS2_MEDIASMP_NONCLKGLUE,Gen10LP,A0,0.894469349,syn,1,
 PS2_MEDIASMP_Repeater,Gen10LP,A0,0,syn,24717.001,
 PS2_MEDIASMP_SMALL,Gen10LP,A0,2.883808284,syn,183814.5037,
-PS2_MSC_CACHE_READ,Gen10LP,A0,19.5398,ebb,1,Assuming 512 bits. No banking in gSim for MSC
-PS2_MSC_CACHE_WRITE,Gen10LP,A0,17.5755,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MSC_CACHE_READ,Gen10LP,A0,17.2563,ebb,1,Assuming 512 bits. No banking in gSim for MSC
+PS2_MSC_CACHE_WRITE,Gen10LP,A0,12.5674,ebb,1,Assuming 512 bits. No banking in gSim for MSC
 PS2_MT_BYPASS,Gen10LP,A0,10.42503832,syn,388445.4835,from Praneeth
-PS2_MT_DataRam_READ,Gen10LP,A0,7.3886,ebb,1,
+PS2_MT_DataRam_READ,Gen10LP,A0,6.7351,ebb,1
 PS2_MT_DataRam_READ&WRITE,Gen10LP,A0,7.815576749,ebb,1,
-PS2_MT_DataRam_WRITE,Gen10LP,A0,6.7751,ebb,1,
-PS2_MT_LatFifo_READ,Gen10LP,A0,3.0189,ebb,1,
+PS2_MT_DataRam_WRITE,Gen10LP,A0,4.9126,ebb,1
+PS2_MT_LatFifo_READ,Gen10LP,A0,3.0189,ebb,1
 PS2_MT_LatFifo_READ&WRITE,Gen10LP,A0,4.680573385,ebb,1,
-PS2_MT_LatFifo_WRITE,Gen10LP,A0,3.1685,ebb,1,
+PS2_MT_LatFifo_WRITE,Gen10LP,A0,2.6634,ebb,1
 PS2_MT_Tile_Y,Gen10LP,A0,30.9593952,syn,388445.4835,from Praneeth
 PS2_PL_Else_1%,Gen10LP,A0,45.60959151,syn,528725.7618,from Praneeth
 PS2_PL_Else_11%,Gen10LP,A0,64.2643706,syn,528725.7618,from Praneeth
@@ -724,20 +724,20 @@ PS2_PL_Vol_Bilinear_EWA_2%,Gen10LP,A0,56.6442624,syn,528725.7618,from Praneeth
 PS2_PL_Vol_Trilinear_1%,Gen10LP,A0,64.35335253,syn,528725.7618,from Praneeth
 PS2_PL_Vol_Trilinear_7%,Gen10LP,A0,66.08875232,syn,528725.7618,from Praneeth
 PS2_PL_Vol_Trilinear_EWA_1%,Gen10LP,A0,44.2690061,syn,528725.7618,from Praneeth
-PS2_PSD_BARYPAYLDASMRAM_READ,Gen10LP,A0,5.9506,ebb,1,Need to check with gSim - 1x128 io assumed
-PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen10LP,A0,5.9613,ebb,1,Need to check with gSim - 1x128 io assumed
-PS2_PSD_SCOREBOARD_READ,Gen10LP,A0,1.7013,ebb,1,Need to check with gSim - 4x8 io assumed
-PS2_PSD_SCOREBOARD_WRITE,Gen10LP,A0,1.5059,ebb,1,Need to check with gSim - 4x8 io assumed
-PS2_RCC_CACHE_READ,Gen10LP,A0,4.9286,ebb,1,Assuming 160 bits even though no banking in gSim 
-PS2_RCC_CACHE_WRITE,Gen10LP,A0,3.9682,ebb,1,Assuming 160 bits even though no banking in gSim 
-PS2_RCPFE_COLORLATFIFO_READ,Gen10LP,A0,22.8834,ebb,1,
-PS2_RCPFE_COLORLATFIFO_WRITE,Gen10LP,A0,24.162,ebb,1,
-PS2_RCPFE_MCSLATFIFO_READ,Gen10LP,A0,4.9286,ebb,1,
-PS2_RCPFE_MCSLATFIFO_WRITE,Gen10LP,A0,5.1407,ebb,1,
-PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,1.6682,ebb,1,
-PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,1.7178,ebb,1,
-PS2_RCZ_CACHE_READ,Gen10LP,A0,4.6093,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_RCZ_CACHE_WRITE,Gen10LP,A0,4.6449,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_PSD_BARYPAYLDASMRAM_READ,Gen10LP,A0,6.0269,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen10LP,A0,4.6940,ebb,1,Need to check with gSim - 1x128 io assumed
+PS2_PSD_SCOREBOARD_READ,Gen10LP,A0,1.1741,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_PSD_SCOREBOARD_WRITE,Gen10LP,A0,1.1309,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_RCC_CACHE_READ,Gen10LP,A0,5.1765,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCC_CACHE_WRITE,Gen10LP,A0,4.1910,ebb,1,Assuming 160 bits even though no banking in gSim 
+PS2_RCPFE_COLORLATFIFO_READ,Gen10LP,A0,23.3580,ebb,1
+PS2_RCPFE_COLORLATFIFO_WRITE,Gen10LP,A0,18.7452,ebb,1
+PS2_RCPFE_MCSLATFIFO_READ,Gen10LP,A0,4.8699,ebb,1
+PS2_RCPFE_MCSLATFIFO_WRITE,Gen10LP,A0,3.6805,ebb,1
+PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,1.6642,ebb,1
+PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,1.3275,ebb,1
+PS2_RCZ_CACHE_READ,Gen10LP,A0,4.7059,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_RCZ_CACHE_WRITE,Gen10LP,A0,3.3939,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,Taken from CNL  CGEN data
 PS2_rFF_rOTHER_DFX,Gen10LP,A0,17.78271504,syn,338851.4526,Taken from CNL  CGEN data
 PS2_rFF_rOTHER_DOP,Gen10LP,A0,26.62536763,syn,1,
@@ -758,46 +758,46 @@ PS2_ROSS_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
 PS2_ROSS_NONCLKGLUE,Gen10LP,A0,1.923353491,syn,1,cnl cgdis ss
 PS2_ROSS_Repeater,Gen10LP,A0,2.150636686,syn,84985.97875,cnl cgdis ss
 PS2_ROSS_SMALL,Gen10LP,A0,10.5087929,syn,315478.8875,cnl cgdis ss
-PS2_rVF_Cache_Read,Gen10LP,A0,3.47512,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_Cache_Write,Gen10LP,A0,2.50712,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Read,Gen10LP,A0,2.76848,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Write,Gen10LP,A0,3.47512,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVS_Cache_Read,Gen10LP,A0,3.21390926,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_rVS_Cache_Write,Gen10LP,A0,3.055546751,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVF_Cache_Read,Gen10LP,A0,0.0000,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen10LP,A0,0.0000,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Read,Gen10LP,A0,0.0000,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen10LP,A0,0.0000,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVS_Cache_Read,Gen10LP,A0,0.0000,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen10LP,A0,0.0000,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen10LP,A0,53.23532533,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen10LP,A0,53.34783791,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen10LP,A0,38.76644763,syn,495353.1406,from Praneeth
-PS2_SC_DataRam_READ,Gen10LP,A0,31.9946,ebb,1,
-PS2_SC_DataRam_WRITE,Gen10LP,A0,33.3112,ebb,1,
+PS2_SC_DataRam_READ,Gen10LP,A0,31.8532,ebb,1
+PS2_SC_DataRam_WRITE,Gen10LP,A0,24.7703,ebb,1
 PS2_SC_FastLinear,Gen10LP,A0,87.28260077,syn,495353.1406,from Praneeth
-PS2_SC_LatFifo_READ,Gen10LP,A0,2.9009,ebb,1,
-PS2_SC_LatFifo_WRITE,Gen10LP,A0,3.6027,ebb,1,
+PS2_SC_LatFifo_READ,Gen10LP,A0,3.0257,ebb,1
+PS2_SC_LatFifo_WRITE,Gen10LP,A0,2.2175,ebb,1
 PS2_SC_NearestMode_128BPT,Gen10LP,A0,30.55414792,syn,495353.1406,from Praneeth
 PS2_SC_NearestMode_32BPT,Gen10LP,A0,30.73552596,syn,495353.1406,from Praneeth
 PS2_SC_NearestMode_64BPT,Gen10LP,A0,37.43386518,syn,495353.1406,from Praneeth
 PS2_SC_Other,Gen10LP,A0,56.75483511,syn,495353.1406,from Praneeth
 PS2_SI_ANYPIXELMODE,Gen10LP,A0,34.55775275,syn,514564.377,from Praneeth
 PS2_SO_ANYPIXELMODE,Gen10LP,A0,17.66528918,syn,130144.1276,from Praneeth
-PS2_SOL_Cache_Read,Gen10LP,A0,1.3032,ebb,1,
+PS2_SOL_Cache_Read,Gen10LP,A0,1.3326,ebb,1
 PS2_SOL_Cache_ReadWrite,Gen10LP,A0,2.771235434,ebb,1,
-PS2_SOL_Cache_Write,Gen10LP,A0,1.1749,ebb,1,
+PS2_SOL_Cache_Write,Gen10LP,A0,1.0644,ebb,1
 PS2_ST_1Bank_Enable,Gen10LP,A0,18.30375925,syn,371636.3755,Bubble with 25% Validity 12% TR (from Praneeth)
 PS2_ST_1Bank_Enable_SameADD,Gen10LP,A0,18.74498313,syn,371636.3755,from Praneeth
 PS2_ST_2Bank_Enable,Gen10LP,A0,23.38576802,syn,371636.3755,Bubble with 35% Validity 12% TR (from Praneeth)
 PS2_ST_3Bank_Enable,Gen10LP,A0,31.09714719,syn,371636.3755,Bubble with 20% Validity 7% TR (from Praneeth)
 PS2_ST_4Bank_Enable,Gen10LP,A0,35.69946441,syn,371636.3755,from Praneeth
-PS2_STC_CACHE_READ,Gen10LP,A0,3.9938,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_STC_CACHE_WRITE,Gen10LP,A0,3.5591,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_STC_CACHE_READ,Gen10LP,A0,3.9321,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_STC_CACHE_WRITE,Gen10LP,A0,2.6372,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_SVSM,Gen10LP,A0,1.868620369,syn,235610.2353,from Praneeth
-PS2_TDS_Cache_Read,Gen10LP,A0,6.6727,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Read,Gen10LP,A0,6.2532,ebb,1,96 bits assumed. Need to check with gSim.
 PS2_TDS_Cache_ReadWrite,Gen10LP,A0,16.9503645,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_TDS_Cache_Write,Gen10LP,A0,6.8713,ebb,1,96 bits assumed. Need to check with gSim.
-PS2_VF_Cache_Read,Gen10LP,A0,3.1561,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_Cache_Write,Gen10LP,A0,2.1891,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_URBFifo_Read,Gen10LP,A0,2.5064,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VF_URBFifo_Write,Gen10LP,A0,1.8795,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_VS_Cache_Read,Gen10LP,A0,2.6501,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_VS_Cache_Write,Gen10LP,A0,2.4918,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_TDS_Cache_Write,Gen10LP,A0,5.0673,ebb,1,96 bits assumed. Need to check with gSim.
+PS2_VF_Cache_Read,Gen10LP,A0,2.7453,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_Cache_Write,Gen10LP,A0,2.2827,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Read,Gen10LP,A0,2.2073,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VF_URBFifo_Write,Gen10LP,A0,1.9232,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_VS_Cache_Read,Gen10LP,A0,2.7723,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_VS_Cache_Write,Gen10LP,A0,2.6937,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_Z_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_Z_CLKGLUE,Gen10LP,C0,24.05291621,syn,1,cnl cgdis ss
 PS2_Z_CPunit,Gen10LP,A0,3.98356568,syn,14402.55,cnl cgdis ss
