@@ -3,36 +3,39 @@
 	numROSS	=	SUM('knob.*\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
 	numEURows	=	knob.S0.SS0.NumRows + knob.STK0.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 
-	num_DSSC_BC             	=	COUNT('knob.*\.S\d+.*\.uBC.*\.ClockName')
-	num_DSSC_PSD            	=	COUNT('knob.*\.S\d+.*\.uPSD.*\.ClockName')	
-	num_DSSC_PSD_Scoreboard 	=	num_DSSC_PSD
-	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSD
-	num_DSSC_DAPRSS            	=	COUNT('knob.*\.S\d+.*\.uDAPRSS.*\.ClockName')
-	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS
-	num_DSSC_GWL            	=	COUNT('knob.*\.S\d+.*\.uGWL.*\.ClockName')
-	num_DSSC_CPSS           	=	COUNT('knob.*\.S\d+.*\.uCPSS.*\.ClockName')
+	num_DSSC_BC	=	COUNT('knob.S\d+\.SS\d+\.uBC\.ClockName') + COUNT('knob.*\.S\d+.*\.uBC_\d\.ClockName')	
+	num_DSSC_PSD	=	COUNT('knob\.S\d+\.SS\d+\.uPSD\.ClockName') + COUNT('knob.*\.S\d+.*\.uPSD_\d\.ClockName')	
+	num_DSSC_PSD_Scoreboard	=	num_DSSC_PSD	
+	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSD	
+	num_DSSC_DAPRSS	=	num_DSSC_PSD	
+	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_PSD	
+	num_DSSC_GWL	=	num_DSSC_PSD	
+	num_DSSC_CPSS	=	num_DSSC_PSD	
 
-	num_ROSS_MA_IN	    =	numEURows * numROSS	#MA is per row
-	num_ROSS_MA_OUT 	=	numEURows * numROSS	#MA is per row
-	num_ROSS_TDL    	=	numROSS	
-	num_ROSS_IC         =	numROSS	
+	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
+	num_ROSS_TDL	=	numROSS	
+	num_ROSS_IC	=	numROSS	
 	num_ROSS_IC_DataRAM	=	numROSS	
-	num_ROSS_SMALL     	=	numROSS	
+	num_ROSS_SMALL	=	numROSS	
+	num_ROSS_CPunit	=	numROSS	
+	num_ROSS_Assign	=	numROSS	
+	num_ROSS_Repeater	=	numROSS	
 	num_ROSS_CLKGLUE	=	numROSS	
 	num_ROSS_NONCLKGLUE	=	numROSS	
-	num_ROSS_DFX       	=	numROSS	
-	num_ROSS_DOP       	=	numROSS	
+	num_ROSS_DFX	=	numROSS	
+	num_ROSS_DOP	=	numROSS	
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
 	.temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
-	 @ANY_BC@	=	S\d+\.uBC_\d+\.	
-	 @ANY_PSD@	=	S\d+\.uPSD_\d+\.	
+	 @ANY_BC@	=	(S\d+\.SS\d+\.uBC\.|S\d+\.uBC_\d\.|STK\d.S\d+\.uBC_\d\.)	
+	 @ANY_PSD@	=	(S\d+\.SS\d+\.uPSD\.|S\d+\.uPSD_\d\.|STK\d.S\d+\.uPSD_\d\.)	
+	 @ANY_DAPRF@	=	(S\d+\.SS\d+\.uDAPRF\.|S\d+\.uDAPRF_\d\.|STK\d\.S\d+\.SS\d+\.uDAPRF\.)		
 	 @ANY_MA_IN@	=	S\d+\.SS\d+\.R\d+\.uMAI\.	
 	 @ANY_MA_OUT@	=	S\d+\.SS\d+\.R\d+\.uMAO\.	
 	 @ANY_TDL@	=	S\d+\.SS\d+\.uTDL\.	
 	 @ANY_ICACHE@	=	S\d+\.SS\d+\.uICACHE\.	
-	 @ANY_DAPRF@   	=	S\d+\.uDAPRF_\d+\.	
 	 @ANY_GWC@	=	Med\.uGWC\.	
 #BC				
 	PS0_BC	=	(D(SUM('@ANY_BC@pwr_bc_idle\.CrClock')) / (numROSS * .CrClk)) - PS0_BC_DOP	
@@ -101,12 +104,23 @@
 				
 #Small				
 	PS0_ROSS_SMALL_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS0_ROSS_SMALL	=	1 - PS0_ROSS_SMALL_DOP - PS2_ROSS_SMALL	
-	.temp_PS2_BC	=	PS2_BC_COMPUTE + PS2_BC_FLOWTHROUGH + PS2_BC_BARYRAM_READ + PS2_BC_BARYRAM_WRITE	
-	.temp_PS2_PSD	=	PS2_PSD_THREADDISPATCH + PS2_PSD_NOTHREADDISPATCH + PS2_PSD_WAITINGONFLUSH	
-	.temp_PS2_TDL	=	PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH	
-	.temp_PS2_DAPRSS	=	PS2_DAPRSS_WRITEFLUSH + PS2_DAPRSS_RENDERTARGETWRITE + PS2_DAPRSS_CLEARRESOLVE + PS2_DAPRSS_RENDERTARGETREAD + PS2_DAPRSS_ELSE	
-	PS2_ROSS_SMALL	=	MAX(.temp_PS2_BC, .temp_PS2_PSD, PS2_MA_IN, PS2_MA_OUT, .temp_PS2_TDL, PS2_IC, .temp_PS2_DAPRSS, PS2_GWL)	
+	PS0_ROSS_SMALL	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
+	PS2_ROSS_SMALL	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+				
+#CPunit				
+	PS0_ROSS_CPunit_DOP	=	0	
+	PS0_ROSS_CPunit	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
+	PS2_ROSS_CPunit	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+				
+#Assign				
+	PS0_ROSS_Assign_DOP	=	0	
+	PS0_ROSS_Assign	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
+	PS2_ROSS_Assign	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+				
+#Repeater				
+	PS0_ROSS_Repeater_DOP	=	0	
+	PS0_ROSS_Repeater	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
+	PS2_ROSS_Repeater	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
 				
 #CLKGLUE				
 	PS0_ROSS_CLKGLUE_DOP	=	0	#ROSS units are not covered by 3D DOP
@@ -129,3 +143,4 @@
 				
 #CPSS				
 	PS0_CPSS	=	1	
+

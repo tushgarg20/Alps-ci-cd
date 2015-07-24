@@ -1,6 +1,6 @@
 ALPS_formula_file = Inputs/alps_formula_icl.yml
-Cdyn = Inputs/cdyn_icl.csv
-GateCount = Inputs/gc.csv
+Cdyn = Inputs/cdyn.csv
+GateCount = Inputs/gc_new.csv
 Process_Scaling_Factors = Inputs/process.csv
 Voltage_Scaling_Factors = Inputs/voltage.csv
 syn_cdyn_cagr = Inputs/syn_cdyn_cagr.csv

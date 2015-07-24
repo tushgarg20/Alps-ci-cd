@@ -2660,15 +2660,15 @@ PS2_EU_SMALL,Gen10LP,A0,1.558558104,syn,20905.87968,Taken from CNL  CGDIS data
 PS2_EU_SMALL,Gen9LPClient,A0,2.17,syn,20413,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
 PS2_EU_SMALL,Gen9LPSoC,B0,1.343444444,syn,57046.8,Average of all opcodes at 30% - huge mismatch between SKL FSO and hybrid GLS data
 PS2_EU_TCGA_DOP,Gen10LP,A0,1.633860779,syn,1,Taken from CNL  power virus data
-PS2_Fabric_LSN_CMD_S2S,Gen10LP,A0,20.85,syn,1,per bus From Kamal Sinha 
-PS2_Fabric_LSN_DATA_S2S,Gen10LP,A0,95.09,syn,1,per bus From Kamal Sinha
-PS2_Fabric_LSN_CMD_U2S,Gen10LP,A0,10.43,syn,1,per bus From Kamal Sinha 
-PS2_Fabric_LSN_DATA_U2S,Gen10LP,A0,47.54,syn,1,per bus From Kamal Sinha
-PS2_Fabric_Repeaters_CMD_S2S,Gen10LP,A0,21.0,syn,1, per busFrom Kamal Sinha
+PS2_Fabric_LSN_CMD_S2S,Gen10LP,A0,20.85,syn,1674695.99,per bus From Kamal Sinha 
+PS2_Fabric_LSN_DATA_S2S,Gen10LP,A0,95.09,syn,1674695.99,per bus From Kamal Sinha
+PS2_Fabric_LSN_CMD_U2S,Gen10LP,A0,10.43,syn,1674695.99,per bus From Kamal Sinha 
+PS2_Fabric_LSN_DATA_U2S,Gen10LP,A0,47.54,syn,1674695.99,per bus From Kamal Sinha
+PS2_Fabric_Repeaters_CMD_S2S,Gen10LP,A0,21.0,syn,1,per busFrom Kamal Sinha
 PS2_Fabric_Repeaters_DATA_S2S,Gen10LP,A0,95.78,syn,1,per bus From Kamal Sinha
-PS2_Fabric_Repeaters_CMD_U2S,Gen10LP,A0,11.825,syn,1, per busFrom Kamal Sinha
+PS2_Fabric_Repeaters_CMD_U2S,Gen10LP,A0,11.825,syn,1,per busFrom Kamal Sinha
 PS2_Fabric_Repeaters_DATA_U2S,Gen10LP,A0,53.92,syn,1,per bus From Kamal Sinha
-PS2_Fabric_Top_Level,Gen10LP,A0,34.86,syn,1, From Kamal Sinha
+PS2_Fabric_Top_Level,Gen10LP,A0,34.86,syn,1,From Kamal Sinha
 PS2_Fabric_BGF_CMD,Gen10LP,A0,2.42484,syn,1,per bus From mehul (150pf)
 PS2_Fabric_BGF_DATA,Gen10LP,A0,12.1242,syn,1,per bus From mehul (150pf)
 PS0_Fabric_BGF_CMD,Gen10LP,A0,1.7,syn,1,per bus aprrox (107pf)

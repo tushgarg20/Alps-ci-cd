@@ -2,7 +2,7 @@
 #Instance Counts				
 	CrClocks	=	D(CrClock.Clocks)	
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
-	numEUs	=	SUM('knob.*\.S\d+\.SS\d+\.NumEus')	#This includes Slices & SubSlices
+	numEUs	=	COUNT('knob.*.S\d.SS\d.R\d.uEU_\d.ClockName')	#This includes Slices & SubSlices
 	num_EU_FPU0	=	numEUs	
 	num_EU_FPU1	=	numEUs	
 	num_EU_EM	=	numEUs	
@@ -11,13 +11,16 @@
 	num_EU_GRF	=	numEUs	
 	num_EU_DFX	=	numEUs	
 	num_EU_SMALL	=	numEUs	
+	num_EU_CPunit	=	numEUs	
+	num_EU_Assign	=	numEUs	
+	num_EU_Repeater	=	numEUs	
 	num_EU_CLKGLUE	=	numEUs	
 	num_EU_NONCLKGLUE	=	numEUs	
 	num_EU_DOP	=	numEUs	
-	num_EU_TCGA	=	numEUs
-	num_EU_Pipelines	=	numEUs
-
-
+	num_EU_TCGA	=	numEUs	
+	num_EU_Pipelines	=	numEUs	
+				
+				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 @ANY_EU@	=	S\d+\.SS\d+\.R\d+\.uEU_\d+\.	
@@ -357,6 +360,13 @@
 	PS0_EU_SMALL	=	PS0_TC + PS1_TC	#Approximated SMALL using TC residencies
 	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated SMALL using TC residencies
 				
+#Cpunit				
+	PS0_EU_CPunit	=	PS0_TC + PS1_TC	
+	PS2_EU_CPunit	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+				
+#Assign				
+	PS0_EU_Assign	=	PS0_TC + PS1_TC	
+	PS2_EU_Assign	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 #CLKGLUE				
 	PS0_EU_CLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
 	PS2_EU_CLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
@@ -368,13 +378,16 @@
 	PS0_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes
 	PS1_EU_DOP	=	D(SUM('@ANY_EU@Arb\.pwr_IdleOrStalledEuTcDopGated_unfiltered_count\.CrClock') - SUM('@ANY_EU@Arb\.pwr_IdleEuTcDopGated_unfiltered_count\.CrClock')) / (numEUs * .CrClk)	
 	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP	
-
-	PS0_EU_TCGA_DOP	=	(D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)
-	PS1_EU_TCGA_DOP	=	D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)
-	PS2_EU_TCGA_DOP	=	1-PS0_EU_TCGA_DOP -PS1_EU_TCGA_DOP
-		
-	PS0_EU_Pipelines_DOP	=	(D(SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)
-	PS1_EU_Pipelines_DOP	=	D(SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)
-	PS2_EU_Pipelines_DOP	=	1-PS0_EU_Pipelines_DOP -PS1_EU_Pipelines_DOP
-
+				
+#Repeater				
+	PS0_EU_Repeater	=	PS0_TC + PS1_TC	
+	PS2_EU_Repeater	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+				
+	PS0_EU_TCGA_DOP	=	(D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)	
+	PS1_EU_TCGA_DOP	=	D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)	
+	PS2_EU_TCGA_DOP	=	1-PS0_EU_TCGA_DOP -PS1_EU_TCGA_DOP	
+				
+	PS0_EU_Pipelines_DOP	=	(D(SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)	
+	PS1_EU_Pipelines_DOP	=	D(SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)	
+	PS2_EU_Pipelines_DOP	=	1-PS0_EU_Pipelines_DOP -PS1_EU_Pipelines_DOP	
 
