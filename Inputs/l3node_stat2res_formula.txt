@@ -1,0 +1,91 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	num_L3_Slices	=	knob.global.NumSlices	
+	num_L3Node_LNI	=	num_L3_Slices	
+	num_L3Node_LNE	=	num_L3_Slices	
+	num_L3Node_LNIXS	=	num_L3_Slices	
+	num_L3Node_LNEXS	=	num_L3_Slices	
+	num_L3Node_L3BankOther	=	num_L3_Slices	#GLUE/Small
+	num_L3Node_DOP	=	num_L3_Slices	
+	num_L3Node_DFX	=	num_L3_Slices	
+	num_L3Node_SMALL	=	num_L3_Slices	
+	num_L3Node_CPunit	=	num_L3_Slices	
+	num_L3Node_Assign	=	num_L3_Slices	
+	num_L3Node_Repeater	=	num_L3_Slices	
+	num_L3Node_CLKGLUE	=	num_L3_Slices	
+	num_L3Node_NONCLKGLUE	=	num_L3_Slices	
+#Generic				
+	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
+	 .CrClk	=	D(CrClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
+	LNI_max_ports	=	numL3Banks * 2	#Max ports availabe for LNI
+	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
+	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
+	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
+	L3SuperQSize	=	knob.S0.uL3.SuperQSize	
+				
+#LNI				
+	PS0_LNI	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	.temp_LNI_weighted_sum	=	(D(SUM('S\d+.uL3\.LniWinners.1')) * 1) + (D(SUM('S\d+.uL3\.LniWinners.2')) * 2) + (D(SUM('S\d+.uL3\.LniWinners.3')) * 3) + (D(SUM('S\d+.uL3\.LniWinners.4')) * 4) + (D(SUM('S\d+.uL3\.LniWinners.5')) * 5) + (D(SUM('S\d+.uL3\.LniWinners.6')) * 6) + (D(SUM('S\d+.uL3\.LniWinners.7')) * 7) + (D(SUM('S\d+.uL3\.LniWinners.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNI_sum	=	(D(SUM('S\d+.uL3\.LniWinners.1'))) + (D(SUM('S\d+.uL3\.LniWinners.2'))) + (D(SUM('S\d+.uL3\.LniWinners.3'))) + (D(SUM('S\d+.uL3\.LniWinners.4'))) + (D(SUM('S\d+.uL3\.LniWinners.5'))) + (D(SUM('S\d+.uL3\.LniWinners.6'))) + (D(SUM('S\d+.uL3\.LniWinners.7'))) + (D(SUM('S\d+.uL3\.LniWinners.8')))	
+	PS1_LNI	=	1 - PS0_LNI - PS2_LNI	
+	PS2_LNI	=	.temp_LNI_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNI_BW	=	(.temp_LNI_sum > 0) ? (.temp_LNI_weighted_sum / (LNI_max_ports * .temp_LNI_sum)) : 0	
+#LNE				
+	PS0_LNE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	.temp_LNE_weighted_sum	=	(D(SUM('S\d+.uL3\.LneWinners.1')) * 1) + (D(SUM('S\d+.uL3\.LneWinners.2')) * 2) + (D(SUM('S\d+.uL3\.LneWinners.3')) * 3) + (D(SUM('S\d+.uL3\.LneWinners.4')) * 4) + (D(SUM('S\d+.uL3\.LneWinners.5')) * 5) + (D(SUM('S\d+.uL3\.LneWinners.6')) * 6) + (D(SUM('S\d+.uL3\.LneWinners.7')) * 7) + (D(SUM('S\d+.uL3\.LneWinners.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNE_sum	=	(D(SUM('S\d+.uL3\.LneWinners.1'))) + (D(SUM('S\d+.uL3\.LneWinners.2'))) + (D(SUM('S\d+.uL3\.LneWinners.3'))) + (D(SUM('S\d+.uL3\.LneWinners.4'))) + (D(SUM('S\d+.uL3\.LneWinners.5'))) + (D(SUM('S\d+.uL3\.LneWinners.6'))) + (D(SUM('S\d+.uL3\.LneWinners.7'))) + (D(SUM('S\d+.uL3\.LneWinners.8')))	
+	PS1_LNE	=	1 - PS0_LNE - PS2_LNE	
+	PS2_LNE	=	.temp_LNE_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNE_BW	=	(.temp_LNE_sum > 0) ? (.temp_LNE_weighted_sum / (LNE_max_ports * .temp_LNE_sum)) : 0	
+#LNIXS				
+	.temp_PS0_LNIXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_LNIXS	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) > 0 ) ? .temp_PS0_LNIXS : 1	#Force PS0 to be 1 for GT2
+	.temp_LNIXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LniXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LniXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LniXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LniXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LniXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LniXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNIXS_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')))	
+	PS1_LNIXS	=	1 - PS0_LNIXS - PS2_LNIXS	
+	PS2_LNIXS	=	.temp_LNIXS_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNIXS_BW	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_weighted_sum / (LNI_max_ports * .temp_LNIXS_sum)) : 0	#fixed the divide by 0 issue
+#LNEXS				
+	.temp_PS0_LNEXS	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_LNEXS	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) > 0 ) ? .temp_PS0_LNEXS : 1	#Force PS0 to be 1 for GT2
+	.temp_LNEXS_weighted_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1')) * 1) + (D(SUM('S\d+.uL3\.LneXSWinners\.2')) * 2) + (D(SUM('S\d+.uL3\.LneXSWinners\.3')) * 3) + (D(SUM('S\d+.uL3\.LneXSWinners\.4')) * 4) + (D(SUM('S\d+.uL3\.LneXSWinners\.5')) * 5) + (D(SUM('S\d+.uL3\.LneXSWinners\.6')) * 6) + (D(SUM('S\d+.uL3\.LneXSWinners\.7')) * 7) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')) * 8)	#assuming the max ports for any config cannot exceed 8. need to change this to be more elegant
+	.temp_LNEXS_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))	
+	PS1_LNEXS	=	1 - PS0_LNEXS - PS2_LNEXS	
+	PS2_LNEXS	=	.temp_LNEXS_sum / (.CrClk * num_L3_Slices)	
+	PS2_LNEXS_BW	=	(.temp_LNEXS_sum > 0) ? (.temp_LNEXS_weighted_sum / (LNE_max_ports * .temp_LNEXS_sum)) : 0	#fixed the divide by 0 issue
+				
+				
+#L3NODEDOP				
+	PS0_L3Node_DOP	=	0	
+	PS1_L3Node_DOP	=	0	
+	PS2_L3Node_DOP	=	1	#No DOP gating in L3
+				
+#L3NODEDFX				
+	PS0_L3Node_DFX	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_DFX	=	1-PS0_L3Node_DFX	
+				
+#L3NODESMALL				
+	PS0_L3Node_SMALL	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_SMALL	=	1-PS0_L3Node_SMALL	
+				
+#L3NODECPunit				
+	PS0_L3Node_CPunit	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_CPunit	=	1-PS0_L3Node_SMALL	
+				
+#L3NODEAssign				
+	PS0_L3Node_Assign	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_Assign	=	1-PS0_L3Node_SMALL	
+				
+#L3NODERepeater				
+	PS0_L3Node_Repeater	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_Repeater	=	1-PS0_L3Node_SMALL	
+				
+#L3NODECLKGLUE				
+	PS0_L3Node_CLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_CLKGLUE	=	1-PS0_L3Node_CLKGLUE	
+				
+#L3NONCLKGLUE				
+	PS0_L3Node_NONCLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS2_L3Node_NONCLKGLUE	=	1-PS0_L3Node_NONCLKGLUE	
+
