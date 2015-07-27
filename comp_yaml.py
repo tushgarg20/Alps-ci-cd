@@ -69,10 +69,10 @@ for cluster in sec_list:
             print ("        %-22s %10.3f %5s   %10.3f %5s  " % (type, num1, "", num2, ""), end="" )
 
         if (num1 != num2 and num2 != 0 and num1 != 0):
-            p_inc = float((float(num2)-float(num1))/float(num1))*100
-            print ("%10.1f%%" % float(p_inc))
+            p_inc = float((float(num2)-float(num1)))
+            print ("%10.1f%% %10.2f" % (float(p_inc/num1*100), p_inc))
         else:
-            print ("%10s" % "-")
+            print ("%10s %10s" % ("-","-"))
 
 category = "unit_cdyn_numbers(pF)"
 print (category, ":")
@@ -88,7 +88,11 @@ for cluster in sec_list:
         unit_list  = list(yaml_data['ref'][category][cluster].keys())
     except:
         unit_list  = []
-    unit_list += list(yaml_data['new'][category][cluster].keys())
+    try:
+        unit_list += list(yaml_data['new'][category][cluster].keys())
+    except:
+        print ()
+
     unit_list.sort()
     done_list  = {}
     for unit in unit_list:
@@ -106,11 +110,11 @@ for cluster in sec_list:
         except:
             num2 = 0
         print ("        %-22s %10.3f %10.3f" % (unit, num1, num2), end="" )
-        if (num1 != num2 and num1 != 0):
-            p_inc = float((float(num2)-float(num1))/float(num1))*100
-            print ("%10.1f%%" % float(p_inc))
+        if (num1 != num2 and num1 != 0 and num2 != 0):
+            p_inc = float(num2)-float(num1)
+            print ("%10.1f%% %10.2f" % (float(float(p_inc/float(num1)*100)), float(p_inc)))
         else:
-            print ("%10s" % "-")
+            print ("%10s %10s" % ("-", "-"))
 
 category = "ALPS Model(pF)"
 print (category, ":")
@@ -141,7 +145,10 @@ for cluster in sec_list:
             stat_list  = list(yaml_data['ref'][category]['GT'][cluster][unit].keys())
         except:
             stat_list  = []
-        stat_list += list(yaml_data['new'][category]['GT'][cluster][unit].keys())
+        try:
+            stat_list += list(yaml_data['new'][category]['GT'][cluster][unit].keys())
+        except:
+            print ();
         stat_list.sort()
         stat_done = {}
         for stat in stat_list:
@@ -160,18 +167,45 @@ for cluster in sec_list:
                     new_num = yaml_data['new'][category]['GT'][cluster][unit][stat]
                 except:
                     new_num = 0.0
-                print ("%8s %-20s %10.3f %10.3f" % ("", stat, float(ref_num), float(new_num)))
-                continue
+                try:
+                    print ("%8s %-40s   %10.3f %10.3f" % ("", stat, float(ref_num), float(new_num)), end="")
+                    num1 = ref_num
+                    num2 = new_num
+                    if (num1 != num2 and num1 != 0 and num2 != 0):
+                        p_inc = float(float(num2)-float(num1))
+                        print ("%10.1f%% %10.2f" % (float(p_inc/float(num1)*100), p_inc))
+                    else:
+                        print ("%10s %10s" % ("-","-"))
+                    continue
+                except:
+                    print ()
 
             print ("%8s %-20s" % ("", stat))
             try:
                 ref_num = yaml_data['ref'][category]['GT'][cluster][unit][stat]['total']
             except:
                 ref_num = 0.0
-            print ("%10s %-40s %10.3f %10.3f" %
-                   ("", "total",
-                    ref_num,
-                    yaml_data['new'][category]['GT'][cluster][unit][stat]['total']))
+            try:
+                print ("%10s %-40s %10.3f %10.3f" %
+                       ("", "total",
+                        ref_num,
+                        yaml_data['new'][category]['GT'][cluster][unit][stat]['total']), end="")
+            except:
+                try:
+                    new_num = yaml_data['new'][category]['GT'][cluster][unit][stat]
+                except:
+                    new_num = 0.0
+                print ("%10s %-40s %10.3f %10.3f" % ("", "total", ref_num, new_num))
+                continue
+
+            num1 = ref_num
+            num2 = yaml_data['new'][category]['GT'][cluster][unit][stat]['total']
+            if (num1 != num2 and num1 != 0 and num2 != 0):
+                p_inc = float(float(num2)-float(num1))
+                print ("%10.1f%% %10.2f" % (float(p_inc/float(num1)*100), p_inc))
+            else:
+                print ("%10s %10s" % ("-","-"))
+
             for sub_stat in key_list:
                 if sub_stat == "total":
                     continue
@@ -183,7 +217,14 @@ for cluster in sec_list:
                 print ("%10s %-40s %10.3f %10.3f" %
                        ("", stat_print,
                         ref_num,
-                        yaml_data['new'][category]['GT'][cluster][unit][stat][sub_stat]))
+                        yaml_data['new'][category]['GT'][cluster][unit][stat][sub_stat]), end="")
 
+                num1 = ref_num
+                num2 = yaml_data['new'][category]['GT'][cluster][unit][stat][sub_stat]
+                if (num1 != num2 and num1 != 0 and num2 != 0):
+                    p_inc = float(float(num2)-float(num1))
+                    print ("%10.1f%% %10.2f" % (float(p_inc/float(num1)*100), p_inc))
+                else:
+                    print ("%10s %10s" % ("-","-"))
 
 print ()
