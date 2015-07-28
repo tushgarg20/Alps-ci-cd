@@ -4,7 +4,7 @@
 		num_Other_ClockSpine			=		1
 		num_Other_WIDI					=		1
 	num_Other_Blitter	=	1
-	num_Other_Slice	=	knob.Icl.NumSlices
+	num_Other_Slice	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
 	num_Other_UnSlice	=	1
 	num_Other_RC	=	num_Other_Slice - 1
 			

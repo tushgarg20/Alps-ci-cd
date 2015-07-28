@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 				
-	numSlices	=	knob.Icl.NumSlices	
+	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')	
 	num_Z_HIZ	=	numSlices	
 	num_Z_IZ	=	numSlices	
 	num_Z_RCZ	=	numSlices	

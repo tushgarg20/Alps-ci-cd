@@ -1,6 +1,6 @@
 #Unit	GSIM residency		
 #Instance Counts			
-	numSlices	=	knob.Icl.NumSlices
+	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
 	numGAM	=	COUNT('knob.uGAM.NumSlices')
 	num_GAM_GAMTLB	=	numGAM
 	num_GAM_GAMW	=	numGAM

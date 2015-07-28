@@ -7,8 +7,8 @@
 	num_DSSC_PSD	=	COUNT('knob\.S\d+\.SS\d+\.uPSD\.ClockName') + COUNT('knob.*\.S\d+.*\.uPSD_\d\.ClockName')	
 	num_DSSC_PSD_Scoreboard	=	num_DSSC_PSD	
 	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSD	
-	num_DSSC_DAPRSS	=	num_DSSC_PSD	
-	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_PSD	
+	num_DSSC_DAPRSS	=	COUNT('knob\.S\d+\.SS\d+\.uDAPRF\.ClockName') + COUNT('knob.*\.S\d+.*\.uDAPRF_\d\.ClockName')
+	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS	
 	num_DSSC_GWL	=	num_DSSC_PSD	
 	num_DSSC_CPSS	=	num_DSSC_PSD	
 
@@ -38,28 +38,28 @@
 	 @ANY_ICACHE@	=	S\d+\.SS\d+\.uICACHE\.	
 	 @ANY_GWC@	=	Med\.uGWC\.	
 #BC				
-	PS0_BC	=	(D(SUM('@ANY_BC@pwr_bc_idle\.CrClock')) / (numROSS * .CrClk)) - PS0_BC_DOP	
+	PS0_BC	=	(D(SUM('@ANY_BC@pwr_bc_idle\.CrClock')) / (num_DSSC_BC * .CrClk)) - PS0_BC_DOP	
 	PS0_BC_DOP	=	0	#BC is not covered by 3D DOP
 	PS1_BC	=	1 - (PS0_BC + PS0_BC_DOP + PS2_BC_COMPUTE + PS2_BC_FLOWTHROUGH)	
-	PS2_BC_COMPUTE	=	D(SUM('@ANY_BC@pwr_bc_active_compute\.CrClock')) / (numROSS * .CrClk)	
-	PS2_BC_FLOWTHROUGH	=	D(SUM('@ANY_BC@pwr_bc_active_flowthrough\.CrClock')) / (numROSS * .CrClk)	
+	PS2_BC_COMPUTE	=	D(SUM('@ANY_BC@pwr_bc_active_compute\.CrClock')) / (num_DSSC_BC * .CrClk)	
+	PS2_BC_FLOWTHROUGH	=	D(SUM('@ANY_BC@pwr_bc_active_flowthrough\.CrClock')) / (num_DSSC_BC * .CrClk)	
 	PS2_BC_BARYRAM_READ	=	0	#No GSIM model
 	PS2_BC_BARYRAM_WRITE	=	0	#No GSIM model
 #PSD				
-	PS0_PSD	=	(D(SUM('@ANY_PSD@pwr_psd_idle\.CrClock')) / (numROSS * .CrClk)) - PS0_PSD_DOP	
+	PS0_PSD	=	(D(SUM('@ANY_PSD@pwr_psd_idle\.CrClock')) / (num_DSSC_PSD * .CrClk)) - PS0_PSD_DOP	
 	PS0_PSD_DOP	=	0	#PSD is not covered by 3D DOP
 	PS1_PSD	=	(1 - (PS0_PSD + PS0_PSD_DOP + PS2_PSD_THREADDISPATCH + PS2_PSD_NOTHREADDISPATCH + PS2_PSD_WAITINGONFLUSH))	
-	PS2_PSD_THREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveThreadDispatch\.CrClock')) / (numROSS * .CrClk)	
-	PS2_PSD_NOTHREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock')) / (numROSS * .CrClk)	
-	PS2_PSD_WAITINGONFLUSH	=	D(SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock')) / (numROSS * .CrClk)	
+	PS2_PSD_THREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveThreadDispatch\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+	PS2_PSD_NOTHREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+	PS2_PSD_WAITINGONFLUSH	=	D(SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock')) / (num_DSSC_PSD * .CrClk)	
 #PSD SCOREBOARD				
 	PS0_PSD_SCOREBOARD	=	0	
-	PS2_PSD_SCOREBOARD_READ	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardRead\.CrClock')) / (numROSS * .CrClk)	
-	PS2_PSD_SCOREBOARD_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardWrite\.CrClock')) / (numROSS * .CrClk)	
+	PS2_PSD_SCOREBOARD_READ	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+	PS2_PSD_SCOREBOARD_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardWrite\.CrClock')) / (num_DSSC_PSD * .CrClk)	
 #PSD BARY PAYLOAD RAM				
 	PS0_PSD_BARYPAYLDASMRAM	=	0	
-	PS2_PSD_BARYPAYLDASMRAM_READ	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (numROSS * .CrClk)	
-	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (numROSS * .CrClk)	
+	PS2_PSD_BARYPAYLDASMRAM_READ	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
 #MA IN				
 	PS0_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
 	PS1_MA_IN	=	1 - PS0_MA_IN - PS2_MA_IN	
@@ -85,18 +85,18 @@
 	PS2_IC_DATARAM_WRITE	=	D(SUM('@ANY_ICACHE@pwr_IC_Writes\.CrClock')) / (numROSS * .CrClk)	
 				
 #DAPRSS				
-	PS0_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock')) / (numROSS * .CrClk)) - PS0_DAPRSS_DOP	
+	PS0_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)) - PS0_DAPRSS_DOP	
 	PS0_DAPRSS_DOP	=	0	#DAPRSS is not covered by 3D DOP
-	PS1_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Stalled_or_Idle\.CrClock')) - D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock'))) / (numROSS * .CrClk)	
-	PS2_DAPRSS_WRITEFLUSH	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_FlushMsgsFromPSD\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_RENDERTARGETWRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (numROSS * .CrClk)	
-	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (numROSS * .CrClk)	
+	PS1_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Stalled_or_Idle\.CrClock')) - D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock'))) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_WRITEFLUSH	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_FlushMsgsFromPSD\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_RENDERTARGETWRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
 #DAPRSS BYPASS RAM				
 	PS0_DAPRSS_BYPASSRAM	=	0	#ROSS units are not covered by 3D DOP
-	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamRd\.CrClock')) / (numROSS * .CrClk)	
-	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamWr\.CrClock')) / (numROSS * .CrClk)	
+	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamRd\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamWr\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
 #GWL				
 	PS0_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Idle\.CrClock')) / (.CrClk)	#GWC is 1 in count
 	PS1_GWL	=	1 - PS0_GWL - PS2_GWL	
