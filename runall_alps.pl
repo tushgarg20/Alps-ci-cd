@@ -37,12 +37,14 @@ my $script = $sdir . "run_alps_nb.py";
 my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml";
 $cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
 
+my $class = '2G&&nosusp&&(SLES10||SLES11)';
+
 open(FILE,"<$tracelist") or die "Can't open $tracelist\n";
 while(my $line = <FILE>){
 	$line =~ s/\r//g; chomp($line);
 	my $wl = (split/\.stat/,$line)[0];
 	my $prefix = $wl;
-	system("nbjob run --target $pool --qslot $qslot  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+	system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
 	#print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
 }
 close(FILE);
