@@ -2492,9 +2492,10 @@ PS2_GA_FPU3Src_SinglePipe_25%,Gen9LPClient,A0,54.99,syn,244769,Swapped 20% with 
 PS2_GA_FPU3Src_SinglePipe_35%,Gen9LPClient,A0,56.86,syn,244769,Swapped 30% with 10% for linearity
 PS2_GA_FPU3Src_SinglePipe_46%,Gen9LPClient,A0,58.84,syn,244769,Swapped 50% with 20% for linearity
 PS2_GA_FPU3Src_SinglePipe_65%,Gen9LPClient,A0,59.26,syn,244769,
-PS2_GACB,Gen9LPClient,C0,5.382,syn,200335,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAFM,Gen9LPClient,C0,1.033,syn,60863,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAFS,Gen9LPClient,C0,39.551,syn,729565,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_GACB,Gen9LPClient,C0,32.01678,syn,200335,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAFM,Gen9LPClient,C0,5.333078,syn,60863,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAFS_ONLYRD,Gen9LPClient,C0,181.6536,syn,729565,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAFS_ONLYWR,Gen9LPClient,C0,70.66495,syn,729565,Taken from CNL Cdyn weight from Kamal and backscaled
 PS2_GAM_Assign,Gen9LPClient,C0,9.924,syn,19530,
 PS2_GAM_CLKGLUE,Gen9LPClient,C0,62.421,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_GAM_CPunit,Gen9LPClient,C0,12.879,syn,32520,
@@ -2524,10 +2525,10 @@ PS2_GAMW_TLB_PEND_READ,Gen9LPClient,A0,4.3565,ebb,1,
 PS2_GAMW_TLB_PEND_WRITE,Gen9LPClient,A0,6.0749,ebb,1,
 PS2_GAMW_Two_Walk,Gen9LPClient,A0,57.99,syn,1748882,
 PS2_GAMW_WRITE,Gen9LPClient,A0,10.6023,ebb,1,
-PS2_GAPC,Gen9LPClient,C0,0.649,syn,39372,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAPL3,Gen9LPClient,C0,2.931,syn,103293,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAPS,Gen9LPClient,C0,3.1,syn,96074,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_GAPZ,Gen9LPClient,C0,2.139,syn,72068,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_GAPC,Gen9LPClient,C0,12.59165,syn,39372,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAPL3,Gen9LPClient,C0,34.88962,syn,103293,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAPS,Gen9LPClient,C0,32.45123,syn,96074,Taken from CNL Cdyn weight from Kamal and backscaled
+PS2_GAPZ,Gen9LPClient,C0,26.66865,syn,72068,Taken from CNL Cdyn weight from Kamal and backscaled
 PS2_GRF_READ,Gen9LPClient,A0,9.6776,ebb,1,
 PS2_GRF_WRITE,Gen9LPClient,A0,7.1452,ebb,1,
 PS2_GS_Cache_Read,Gen9LPClient,A0,3.779,ebb,1,
@@ -2678,13 +2679,13 @@ PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3XSRC,Gen9LPClient,C0,223.995,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNE,Gen9LPClient,A0,205.62,syn,449149.31,
-PS2_LNEXS,Gen9LPClient,C0,22.106,syn,533934,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_LNEXS,Gen9LPClient,C0,239.7666,syn,533934,Using PS2_LNE as the base Cdyn weight
 PS2_LNEXS_BW,Gen9LPClient,A0,0,syn,1,
 PS2_LNI,Gen9LPClient,A0,311.8,syn,889910.56,
 PS2_LNI_1Bank,Gen9LPClient,A0,81.59,syn,889910.56,
 PS2_LNI_2Bank,Gen9LPClient,A0,183.26,syn,889910.56,
 PS2_LNI_4Bank,Gen9LPClient,A0,311.8,syn,889910.56,
-PS2_LNIXS,Gen9LPClient,C0,25.735,syn,624036,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS2_LNIXS,Gen9LPClient,C0,218.6449,syn,624036,Using PS2_LNI as the base Cdyn weight
 PS2_LNIXS_BW,Gen9LPClient,A0,0,syn,1,
 PS2_LSLM_Atomics,Gen9LPClient,A0,45.99,syn,239136.8,
 PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.61,syn,239136.8,
@@ -2982,7 +2983,7 @@ PS2_STC_CACHE_WRITE,Gen9LPClient,A0,14.2904,ebb,1,Using 128 bits. Need to confir
 PS2_SVG,Gen9LPClient,C0,5.238,syn,119350,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVL,Gen9LPClient,C0,4.421,syn,94058,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVSM,Gen9LPClient,C0,2.307,syn,139630,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_TC,Gen9LPClient,A0,28.08,syn,523738,Mul opcode fp32 30%tr TC number* 1.01472
+PS2_TC,Gen9LPClient,A0,28.08,syn,486036,Mul opcode fp32 30%tr TC number* 1.01472
 PS2_TDC,Gen9LPClient,C0,5.719,syn,181516,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_TDG,Gen9LPClient,A0,8.56,syn,148289.48,66hit test 30.038us to 30.05 us
 PS2_TDL_NONPSDDISPATCH,Gen9LPClient,A0,56.82,syn,460616.71,0% TR 20% VLD

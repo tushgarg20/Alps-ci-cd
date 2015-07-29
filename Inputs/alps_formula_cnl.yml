@@ -1297,7 +1297,9 @@ GAM:
    GAFS:
     PS0_GAFS: R * C
     PS1_GAFS: R * C
-    PS2_GAFS: R * C
+    PS2_GAFS:
+     PS2_GAFS_ONLYRD: R * C
+     PS2_GAFS_ONLYWR: R * C
    GAPL3:
     PS0_GAPL3: R * C
     PS1_GAPL3: R * C
