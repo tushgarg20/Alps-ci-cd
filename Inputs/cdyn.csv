@@ -1771,7 +1771,8 @@ PS0_GATRW,Gen9LPClient,C0,6.319,syn,202394,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GS,Gen9LPClient,A0,10.44,syn,652799.14,Looks suspicious
 PS0_GS_Cache_Idle,Gen9LPClient,A0,0,ebb,1,
 PS0_GS_DOP,Gen9LPClient,A0,0,syn,652799.14,
-PS0_GT3BFRC,Gen9LPClient,C0,394.017,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_GT3BFRC_Base,Gen9LPClient,C0,394.017,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_GT3BFRC_Slice,Gen9LPClient,C0,194.8008,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GTI_Assign,Gen9LPClient,C0,20.112,syn,42720,
 PS0_GTI_CLKGLUE,Gen9LPClient,C0,109.279,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_GTI_CPunit,Gen9LPClient,C0,10.861,syn,40960,
@@ -2536,7 +2537,8 @@ PS2_GS_Cache_ReadWrite,Gen9LPClient,A0,15.83,ebb,1,
 PS2_GS_Cache_Write,Gen9LPClient,A0,9.6732,ebb,1,
 PS2_GS_Disabled,Gen9LPClient,A0,18.19,syn,652799.14,No TR information
 PS2_GS_Enabled,Gen9LPClient,A0,63.47,syn,652799.14,GSPerf test 3pF EBB
-PS2_GT3BFRC,Gen9LPClient,C0,591.026,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_GT3BFRC_Base,Gen9LPClient,C0,591.026,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_GT3BFRC_Slice,Gen9LPClient,C0,292.201,syn,1972246,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_GTI_Assign,Gen9LPClient,C0,20.112,syn,42720,
 PS2_GTI_CLKGLUE,Gen9LPClient,C0,109.279,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS2_GTI_CPunit,Gen9LPClient,C0,10.861,syn,40960,
