@@ -414,6 +414,8 @@ GTI:
    DFX:
     PS0_GTI_DFX: R * C
     PS2_GTI_DFX: R * C
+   CKgated:
+    PS0_GTI_CKgated: R * C
    DOP:
     PS0_GTI_DOP: R * C
     PS2_GTI_DOP: R * C
@@ -1299,7 +1301,9 @@ GAM:
    GAFS:
     PS0_GAFS: R * C
     PS1_GAFS: R * C
-    PS2_GAFS: R * C
+    PS2_GAFS:
+     PS2_GAFS_ONLYRD: R * C
+     PS2_GAFS_ONLYWR: R * C
    GAPL3:
     PS0_GAPL3: R * C
     PS1_GAPL3: R * C
@@ -1658,16 +1662,11 @@ rFF:
     PS0_rVF_URBFifo_Idle: R * C
     PS2_rVF_URBFifo_Read: R * C
     PS2_rVF_URBFifo_Write: R * C
-   rVSFE:
-    PS0_rVSFE_DOP: R * C
-    PS0_rVSFE: R * C
-    PS1_rVSFE: R * C
-    PS2_rVSFE: R * C
-   rVSBE:
-    PS0_rVSBE_DOP: R * C
-    PS0_rVSBE: R * C
-    PS1_rVSBE: R * C
-    PS2_rVSBE: R * C
+   rVS:
+    PS0_rVS_DOP: R * C
+    PS0_rVS: R * C
+    PS1_rVS: R * C
+    PS2_rVS: R * C
    rVS_Cache:
     PS0_rVS_Cache_Idle: R * C
     PS2_rVS_Cache:

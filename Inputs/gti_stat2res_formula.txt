@@ -27,6 +27,7 @@
 	num_GTI_MIDI	=	num_GTI_GTI	
 	num_GTI_MISD	=	num_GTI_GTI	
 	num_GTI_MSQD	=	num_GTI_GTI	
+	num_GTI_CKgated	=	num_GTI_GTI	
 				
 				
 #GTI stats				
@@ -120,4 +121,7 @@
 #DOP				
 	PS0_GTI_DOP	=	PS0_GTI_SMALL	
 	PS2_GTI_DOP	=	PS2_GTI_SMALL	
+
+#CKgated
+	PS0_GTI_CKgated	=	1
 

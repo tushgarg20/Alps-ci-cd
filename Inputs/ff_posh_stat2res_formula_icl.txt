@@ -5,6 +5,7 @@
 	num_rFF_rVFBE1	=	numrFF	
 	num_rFF_rVFBE2	=	numrFF	
 	num_rFF_rVF_Cache	=	numrFF	
+	num_rFF_rVS	=	numrFF	
 	num_rFF_rVSFE	=	numrFF	
 	num_rFF_rVSBE	=	numrFF	
 	num_rFF_rVS_Cache	=	numrFF	
@@ -65,6 +66,16 @@
 	PS0_rVSBE	=	(D(GeoR.uVS.pwr_vsbe_idle.2xGeoClock) / .GeoClk2x) - PS0_rVSBE_DOP	
 	PS1_rVSBE	=	(D(GeoR.uVS.pwr_vsbe_stalled_or_idle.2xGeoClock) - D(GeoR.uVS.pwr_vsbe_idle.2xGeoClock)) / .GeoClk2x	
 	PS2_rVSBE	=	((PS0_rVSBE_DOP + PS0_rVSBE + PS1_rVSBE) > 0) ? 1 - PS0_rVSBE_DOP - PS0_rVSBE - PS1_rVSBE : 0	
+
+#VS
+	PS0_rVS_DOP	=	 .temp_3DPipeDisable	
+    .temp_vs_avg_idle_clock =	(D(GeoR.uVS.pwr_vsbe_idle.2xGeoClock) + D(GeoR.uVS.pwr_vsfe_stalled_or_idle.2xGeoClock)) / 2
+    .temp_vs_avg_stall_or_idle_clock =	(D(GeoR.uVS.pwr_vsbe_stalled_or_idle.2xGeoClock) + D(GeoR.uVS.pwr_vsbe_stalled_or_idle.2xGeoClock)) / 2
+    .temp_vs_avg_stall_clock =	.temp_vs_avg_stall_or_idle_clock - .temp_vs_avg_idle_clock
+	PS0_rVS	=	(.temp_vs_avg_idle_clock / .GeoClk2x) - PS0_rVS_DOP	
+	PS1_rVS	=	.temp_vs_avg_stall_clock / .GeoClk2x	
+	PS2_rVS	=	((PS0_rVS_DOP + PS0_rVS + PS1_rVS) > 0) ? 1 - PS0_rVS_DOP - PS0_rVS - PS1_rVS : 0	
+
 #VS Cache				
 	PS0_rVS_Cache_Idle	=	(D(GeoR.uVS.pwr_vscache_active.2xGeoClock) > 0) ? 1 - (D(GeoR.uVS.pwr_vscache_active.2xGeoClock) / .GeoClk2x )	: 0
 	PS2_rVS_Cache_Read	=	D(GeoR.uVS.pwr_vscache_read.2xGeoClock) / .GeoClk2x	

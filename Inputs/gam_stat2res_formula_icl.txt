@@ -1,6 +1,6 @@
 #Unit	GSIM residency		
 #Instance Counts			
-	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
+	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices') 
 	numGAM	=	COUNT('knob.uGAM.NumSlices')
 	num_GAM_GAMTLB	=	numGAM
 	num_GAM_GAMW	=	numGAM
@@ -9,9 +9,9 @@
 	num_GAM_GAFM	=	numGAM
 	num_GAM_GAFS	=	numGAM
 	num_GAM_GAP	=	numGAM
-	num_GAM_GAPL3	=	numGAM
-	num_GAM_GAPZ	=	numGAM
-	num_GAM_GAPC	=	numGAM
+	num_GAM_GAPL3	=	numSlices
+	num_GAM_GAPZ	=	numSlices
+	num_GAM_GAPC	=	numSlices
 	num_GAM_DOP	=	numGAM
 	num_GAM_CLKGLUE	=	numGAM
 	num_GAM_NONCLKGLUE	=	numGAM
@@ -20,12 +20,17 @@
 	num_GAM_Assign	=	numGAM
 	num_GAM_Repeater	=	numGAM
 	num_GAM_DFX	=	numGAM
-	num_GAM_GAPS	=	numGAM
+	num_GAM_GAPS	=	numSlices
 	num_GAM_GAMD_Cache  	=	numGAM
 	num_GAM_GAMTLB_EBB  	=	numGAM
 	num_GAM_GAMW_EBB    	=	numGAM
 	num_GAM_GATR	=	numGAM
 	num_GAM_GATRW	=	numGAM
+         @GAPL3@        =       S\d+\.uL3\.GapL3OutputBuf\.
+         @GAPZ@         =       S\d+\.uL3\.GapZBuf\.
+         @GAPC@         =       S\d+\.uL3\.GapCBuf\.
+         @GAPS@         =       S\d+\.uL3\.GapsReadys\.
+         @GAFS@         =       uGAFS\.
 	 @CLOCKS@	=	D(CrClock.Clocks)
 	 @2XCLOCKS@	=	D(SUM('2xCrClock\.Clocks'))
 			
@@ -73,30 +78,54 @@
 	PS2_GAFM	=	0
 			
 #GAFS			
-	PS0_GAFS	=	1
-	PS1_GAFS	=	0
-	PS2_GAFS	=	0
-			
+#	PS0_GAFS	=	1
+#	PS1_GAFS	=	0
+#	PS2_GAFS	=	0
+        PS0_GAFS               =       (.temp_PS2_GAFS_ONLYRD + .temp_PS2_GAFS_ONLYWR > 1) ? 0 : (1 - (.temp_PS2_GAFS_ONLYRD + .temp_PS2_GAFS_ONLYWR))
+        PS1_GAFS               =       0
+        .temp_PS2_GAFS_ONLYRD  =       D(SUM('@GAFS@ReadReturnOut'))/(@CLOCKS@ * num_GAM_GAFS)
+        .temp_PS2_GAFS_ONLYWR  =       D(SUM('@GAFS@WriteOut'))/(@CLOCKS@ * num_GAM_GAFS)
+        PS2_GAFS_ONLYRD        =       .temp_PS2_GAFS_ONLYRD
+        PS2_GAFS_ONLYWR        =       .temp_PS2_GAFS_ONLYWR
 			
 #GAPL3			
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPL3	=	D(SUM(uGAM.GapArbiter.pwr_L3Arb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPL3	=	D(SUM(uGAM.GapArbiter.pwr_L3Arb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_L3Arb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPL3	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_L3Arb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPL3	=	D(SUM(uGAM.GapArbiter.pwr_L3Arb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPL3	=	D(SUM(uGAM.GapArbiter.pwr_L3Arb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_L3Arb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPL3	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_L3Arb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPL3)
+        PS0_GAPL3       =       (.temp_PS1_GAPL3 + .temp_PS2_GAPL3 > 1) ? 0 : (1 - (.temp_PS1_GAPL3 + .temp_PS2_GAPL3))
+        .temp_PS1_GAPL3 =       D(SUM('@GAPL3@stalled\.CrClock'))/(@CLOCKS@ * num_GAM_GAPL3)
+        PS1_GAPL3       =       (.temp_PS1_GAPL3 + .temp_PS2_GAPL3 > 1) ? (1 - .temp_PS2_GAPL3) : .temp_PS1_GAPL3
+        .temp_PS2_GAPL3 =       D(SUM('@GAPL3@popped'))/(@CLOCKS@ * num_GAM_GAPL3)
+        PS2_GAPL3       =       (.temp_PS2_GAPL3 > 1) ? 1 : .temp_PS2_GAPL3
  			
 #GAPZ			
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPZ	=	D(SUM( uGAM.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPZ	=	D(SUM(uGAM.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPZ	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPZ	=	D(SUM( uGAM.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPZ	=	D(SUM(uGAM.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPZ	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
+        PS0_GAPZ        =       (.temp_PS1_GAPZ + .temp_PS2_GAPZ > 1) ? 0 : (1 - (.temp_PS1_GAPZ + .temp_PS2_GAPZ))
+        .temp_PS1_GAPZ  =       D(SUM('@GAPZ@stalled\.CrClock'))/(@CLOCKS@ * num_GAM_GAPZ)
+        PS1_GAPZ        =       (.temp_PS1_GAPZ + .temp_PS2_GAPZ > 1) ? (1 - .temp_PS2_GAPZ) : .temp_PS1_GAPZ
+        .temp_PS2_GAPZ  =       D(SUM('@GAPZ@popped'))/(@CLOCKS@ * num_GAM_GAPZ)
+        PS2_GAPZ        =       (.temp_PS2_GAPZ > 1) ? 1 : .temp_PS2_GAPZ
 			
 #GAPS			
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPS	=	D(SUM( uGAM.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPS	=	D(SUM(uGAM.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPS	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPS	=	D(SUM( uGAM.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPS	=	D(SUM(uGAM.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPS	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
+        .temp_PS0_GAPS  =       D(SUM('@GAPS@0Rd\.0Wr'))/(@CLOCKS@ * num_GAM_GAPS)
+        PS0_GAPS        =       (.temp_PS0_GAPS > 1) ? 1 : .temp_PS0_GAPS
+        PS1_GAPS        =       0
+        PS2_GAPS        =       (.temp_PS0_GAPS > 1) ? 0 : (1 - .temp_PS0_GAPS)
 			
 #GAPC			
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPC	=	D(SUM(uGAM.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPC	=	D(SUM(uGAM.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
- 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPC	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPC	=	D(SUM(uGAM.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPC	=	D(SUM(uGAM.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1} -  uGAM.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
+# 'uGAM\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPC	=	D(SUM(D({$1}.Clocks) -  uGAM.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
+        PS0_GAPC        =       (.temp_PS1_GAPC + .temp_PS2_GAPC > 1) ? 0 : (1 - (.temp_PS1_GAPC + .temp_PS2_GAPC))
+        .temp_PS1_GAPC  =       D(SUM('@GAPC@stalled\.CrClock'))/(@CLOCKS@ * num_GAM_GAPC)
+        PS1_GAPC        =       (.temp_PS1_GAPC + .temp_PS2_GAPC > 1) ? (1 - .temp_PS2_GAPC) : .temp_PS1_GAPC
+        .temp_PS2_GAPC  =       D(SUM('@GAPC@popped'))/(@CLOCKS@ * num_GAM_GAPC)
+        PS2_GAPC        =       (.temp_PS2_GAPC > 1) ? 1 : .temp_PS2_GAPC
 			
 #GACB			
 	PS0_GACB	=	1
