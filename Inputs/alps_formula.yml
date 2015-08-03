@@ -1359,7 +1359,9 @@ GAM:
    GAFS:
     PS0_GAFS: R * C
     PS1_GAFS: R * C
-    PS2_GAFS: R * C
+    PS2_GAFS:
+     PS2_GAFS_ONLYRD: R * C
+     PS2_GAFS_ONLYWR: R * C
    GAPL3:
     PS0_GAPL3: R * C
     PS1_GAPL3: R * C
@@ -1655,8 +1657,12 @@ RC:
     PS0_L3XSRC: R * C
     PS2_L3XSRC: R * C
    GT3BFRC:
-    PS0_GT3BFRC: R * C
-    PS2_GT3BFRC: R * C
+    PS0_GT3BFRC:
+     PS0_GT3BFRC_Base: R * C
+     PS0_GT3BFRC_Slice: R * C
+    PS2_GT3BFRC:
+     PS2_GT3BFRC_Base: R * C
+     PS2_GT3BFRC_Slice: R * C
    Fabric:
     PS0_Fabric: R * C
     PS2_Fabric_GT2: R * C

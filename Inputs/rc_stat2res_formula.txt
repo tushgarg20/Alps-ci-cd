@@ -2,7 +2,7 @@
 #Instance Counts				
 	num_RC_SliceRC	=	(numSlices - 1)	#Fabric instances  approx with Num Slices - 1
 	num_RC_L3XSRC	=	(numSlices - 1)	
-	num_RC_GT3BFRC	=	(numSlices - 1)	
+	num_RC_GT3BFRC	=	1	#BGF doesnot scale linearly with slices
 	num_RC_Fabric	=	(numSlices - 1)	
 				
 #Generic				
@@ -34,13 +34,17 @@
 	.LNEXS_Read_Writes	=	((D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))) / (.CrClk * numSlices)	
 	PS2_L3XSRC	=	(.isSKLGT3 > 0) ? (.LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
 #GT3BF				
-	PS0_GT3BFRC	=	(.isSKLGT3 > 0) ? (1 - PS2_GT3BFRC) : 0	
-	.CL_L3_Reads	=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	
-	.TE_L3_Reads	=	D(Geo.uTE.TE_URBReadRequestFifo.pushed) / .GeoClk2x	
-	.GS_L3_Reads	=	D(Geo.uGS.UrbInBuffer.pushed) / .GeoClk2x	
-	.SOL_L3_Reads	=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	#No GSIM model - approx with Clipper
-	.VF_L3_Writes	=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.UrbWrites')) / (num_vtxpipes * .GeoClk2x)	
-	PS2_GT3BFRC	=	(.isSKLGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes) : 0	
+	PS0_GT3BFRC		=	(.isSKLGT3 > 0) ? (1 - .temp_PS2_GT3BFRC) : 0	
+	PS0_GT3BFRC_Base	=	(.isSKLGT3 > 0) ? (1 - .temp_PS2_GT3BFRC) : 0	
+	PS0_GT3BFRC_Slice	=	(numSlices > 2) ? (1 - .temp_PS2_GT3BFRC) * (numSlices - 2) : 0	
+	.CL_L3_Reads		=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	
+	.TE_L3_Reads		=	D(Geo.uTE.TE_URBReadRequestFifo.pushed) / .GeoClk2x	
+	.GS_L3_Reads		=	D(Geo.uGS.UrbInBuffer.pushed) / .GeoClk2x	
+	.SOL_L3_Reads		=	D(Geo.uCL.CL_URBRdRequestFifo.pushed) / .GeoClk2x	#No GSIM model - approx with Clipper
+	.VF_L3_Writes		=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.UrbWrites')) / (num_vtxpipes * .GeoClk2x)	
+	.temp_PS2_GT3BFRC	=	(.isSKLGT3 > 0) ? (.CL_L3_Reads + .TE_L3_Reads + .GS_L3_Reads + .SOL_L3_Reads + .VF_L3_Writes) : 0	
+	PS2_GT3BFRC_Base	=	.temp_PS2_GT3BFRC
+	PS2_GT3BFRC_Slice	=	(numSlices > 2) ? .temp_PS2_GT3BFRC * (numSlices - 2) : 0
 				
 #Fabric				
 	PS0_Fabric	=	1 - (PS2_Fabric_GT2 + PS2_Fabric_GT2P5 + PS2_Fabric_GT3 + PS2_Fabric_GT4 + PS2_Fabric_Halo)	#Use all PS2_*. Only the corresponding GT* will be ON at any given point

@@ -336,7 +336,7 @@
 					
 #TC					
 	PS0_TC	=	D(SUM('@ANY_EU@pwr_ThdControllerIdle\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks	
-	PS1_TC	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')) - D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk) - PS1_EU_DOP	# workaround for a known issue in GSIM stats	
+	PS1_TC	=	((D(SUM('@ANY_EU@Arb\.pwr_PS1_TC\.CrClock')))/ (numEUs * .CrClk)) - PS1_EU_DOP	# workaround for a known issue in GSIM stats	
 	PS2_TC	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP		
 					
 #GRF					
@@ -379,10 +379,3 @@
 	PS0_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes	
 	PS1_EU_DOP	=	D(SUM('@ANY_EU@Arb\.pwr_IdleOrStalledEuTcDopGated_unfiltered_count\.CrClock') - SUM('@ANY_EU@Arb\.pwr_IdleEuTcDopGated_unfiltered_count\.CrClock')) / (numEUs * .CrClk)		
 	PS2_EU_DOP	=	1 - PS0_EU_DOP - PS1_EU_DOP		
-					
-					
-					
-					
-					
-					
-
