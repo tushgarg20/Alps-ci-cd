@@ -78,8 +78,8 @@
 #LSLM				
 	PS0_LSLM	=	D(SUM('@ANY_L3BANK@SLMIdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	#Place holder
 	PS1_LSLM	=	1 - PS0_LSLM - PS2_LSLM_Atomics - PS2_LSLM_NonAtomics	
-	PS2_LSLM_Atomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * .CrClk)	
-	PS2_LSLM_NonAtomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW'))) / (16 * .CrClk)	
+	PS2_LSLM_Atomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS2_LSLM_NonAtomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWr')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
