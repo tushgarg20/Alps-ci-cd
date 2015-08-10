@@ -1063,6 +1063,7 @@ FPU0_mad_fp32_25%,Gen9LPClient,A0,55.12412829,syn,383376,
 FPU0_mad_fp32_35%,Gen9LPClient,A0,59.88144637,syn,383376,
 FPU0_mad_fp32_46%,Gen9LPClient,A0,70.38594322,syn,383376,
 FPU0_mad_fp32_65%,Gen9LPClient,A0,72.49636067,syn,383376,
+FPU0_mad_fp32_85%,Gen9LPClient,A0,94.093,syn,383376,Approximated from C0 ECO1 virus data
 FPU0_mad_fp64_11%,Gen9LPClient,A0,50.97,syn,383376,
 FPU0_mad_fp64_16%,Gen9LPClient,A0,58.76,syn,383376,
 FPU0_mad_fp64_18%,Gen9LPClient,A0,62.3,syn,383376,
@@ -1423,6 +1424,7 @@ FPU1_mad_fp32_25%,Gen9LPClient,A0,57.34372976,syn,346094,
 FPU1_mad_fp32_35%,Gen9LPClient,A0,62.9933938,syn,346094,
 FPU1_mad_fp32_46%,Gen9LPClient,A0,73.28155205,syn,346094,
 FPU1_mad_fp32_65%,Gen9LPClient,A0,75.77756362,syn,346094,
+FPU1_mad_fp32_85%,Gen9LPClient,A0,85.943,syn,346094,Approximated using C0 ECO1 virus data
 FPU1_mad_fp64_11%,Gen9LPClient,A0,51.37,syn,346094,
 FPU1_mad_fp64_16%,Gen9LPClient,A0,59,syn,346094,
 FPU1_mad_fp64_18%,Gen9LPClient,A0,64.03,syn,346094,
@@ -2046,7 +2048,7 @@ PS1_DG,Gen9LPClient,A0,0.65,syn,223798.87,
 PS1_DM,Gen9LPClient,C0,5.551,syn,1000370,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_EU_DOP,Gen9LPClient,A0,0,syn,1,No stall DOP gating in SKL
 PS1_EU_FPU0,Gen9LPClient,C0,9.773,syn,383031,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS1_EU_FPU1,Gen9LPClient,C0,11.733,syn,459868,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_EU_FPU1,Gen9LPClient,C0,11.733,syn,346094,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_FL,Gen9LPClient,C0,14.321,syn,961152,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_FT,Gen9LPClient,A0,0.86,syn,134954.95,
 PS1_GA,Gen9LPClient,C0,5.719,syn,240488,Taken from SKL C0 ECO1 GT3 CGDIS data
