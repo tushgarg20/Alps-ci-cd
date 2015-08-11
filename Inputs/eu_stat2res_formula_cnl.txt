@@ -86,9 +86,9 @@
 	GA_toggle_rate	=	MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 	.EuIntegerBypass	=	knob.Stats.EnableEuIntegerBypass	#EU Integer bypass knob for CNL+
 #FPU				
-	PS0_EU_FPU0	=	D(SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_DOP	#DOP Clock ungated
+	PS0_EU_FPU0	=	D(SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_Pipelines_DOP	#DOP Clock ungated
 	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) + (FPU_simd2_count/2) + ((FPU_simd4_count + FPU_simd8_count + FPU_simd16_count + FPU_simd32_count)/4) + ((FPU_simd8_hp_count + FPU_simd16_hp_count + FPU_simd32_hp_count)/8))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
-	PS1_EU_FPU0	=	1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
+	PS1_EU_FPU0	=	1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_Pipelines_DOP - PS1_EU_Pipelines_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
 	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mul_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
@@ -202,9 +202,9 @@
 	FPU0_mov_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_mov_intbypass : 0	
 	FPU0_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_intbypass : 0	
 #EM				
-	PS0_EU_FPU1	=	D(SUM('@ANY_EUPIPE@pwr_EmIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_DOP	#DOP Clock ungated
+	PS0_EU_FPU1	=	D(SUM('@ANY_EUPIPE@pwr_EmIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_Pipelines_DOP	#DOP Clock ungated
 	.temp_PS2_EU_EM	=	(( EM_simd1_count/1) + (EM_simd2_count/2) + ((EM_simd4_count + EM_simd8_count + EM_simd16_count + EM_simd32_count)/4) + ((EM_simd8_hp_count + EM_simd16_hp_count + EM_simd32_hp_count)/8))/(numEUs * .CrClk)	#EM Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
-	PS1_EU_FPU1	=	1 - PS0_EU_FPU1 - .temp_PS2_EU_EM - PS0_EU_DOP - PS1_EU_DOP	#EM stall - sparse scenario: (Total Clocks - EM executed clocks - EM Idle clocks - EU idle DOP gated clocks - EU stalled DOP gated clocks)
+	PS1_EU_FPU1	=	1 - PS0_EU_FPU1 - .temp_PS2_EU_EM - PS0_EU_Pipelines_DOP - PS1_EU_Pipelines_DOP	#EM stall - sparse scenario: (Total Clocks - EM executed clocks - EM Idle clocks - EU idle DOP gated clocks - EU stalled DOP gated clocks)
 	PS2_EU_FPU1	=	.temp_PS2_EU_EM	
 	FPU1_mad_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
 	FPU1_mul_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
@@ -320,7 +320,7 @@
 	FPU1_mov_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_intbypass : 0	
 	FPU1_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_intbypass : 0	
 #GA				
-	PS0_GA	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP	
+	PS0_GA	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 	PS1_GA	=	0	#GA does not have a stall
 	PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_EM2Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
@@ -339,9 +339,9 @@
 	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
 				
 #TC				
-	PS0_TC	=	D(SUM('@ANY_EU@pwr_ThdControllerIdle\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
-	PS1_TC	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')) - D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk) - PS1_EU_DOP	# workaround for a known issue in GSIM stats
-	PS2_TC	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS0_TC	=	D(SUM('@ANY_EU@pwr_ThdControllerIdle\.CrClock')) / (numEUs * .CrClk) - PS0_EU_TCGA_DOP	#Subtracted EU idle DOP gated clocks
+	PS1_TC	=	(D(SUM('@ANY_EU@Arb\.pwr_PS1_TC\.CrClock'))) / (numEUs * .CrClk) - PS1_EU_TCGA_DOP   #After the fix from Paul 
+	PS2_TC	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 				
 #GRF				
 	PS0_GRF	=	0	#no PS0 for GRF
@@ -354,26 +354,26 @@
 				
 #DFX				
 	PS0_EU_DFX	=	PS0_TC + PS1_TC	#Approximated DFX using TC residencies
-	PS2_EU_DFX	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated DFX using TC residencies
+	PS2_EU_DFX	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	#Approximated DFX using TC residencies
 				
 #SMALL				
 	PS0_EU_SMALL	=	PS0_TC + PS1_TC	#Approximated SMALL using TC residencies
-	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated SMALL using TC residencies
+	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	#Approximated SMALL using TC residencies
 				
 #Cpunit				
 	PS0_EU_CPunit	=	PS0_TC + PS1_TC	
-	PS2_EU_CPunit	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_EU_CPunit	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 				
 #Assign				
 	PS0_EU_Assign	=	PS0_TC + PS1_TC	
-	PS2_EU_Assign	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_EU_Assign	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 #CLKGLUE				
 	PS0_EU_CLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
-	PS2_EU_CLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_EU_CLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 				
 #NONCLKGLUE				
 	PS0_EU_NONCLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
-	PS2_EU_NONCLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_EU_NONCLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 #DOP				
 	PS0_EU_DOP	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdle\.CrClock')))/ (numEUs * .CrClk)	#DOP Clock gated. This should be per EU to subtract from FPU/EM pipes
 	PS1_EU_DOP	=	D(SUM('@ANY_EU@Arb\.pwr_IdleOrStalledEuTcDopGated_unfiltered_count\.CrClock') - SUM('@ANY_EU@Arb\.pwr_IdleEuTcDopGated_unfiltered_count\.CrClock')) / (numEUs * .CrClk)	
@@ -381,10 +381,11 @@
 				
 #Repeater				
 	PS0_EU_Repeater	=	PS0_TC + PS1_TC	
-	PS2_EU_Repeater	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_EU_Repeater	=	1 - PS0_TC - PS1_TC - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 				
 	PS0_EU_TCGA_DOP	=	(D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)	
-	PS1_EU_TCGA_DOP	=	D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)	
+	#PS1_EU_TCGA_DOP	=	D(SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdleOrStalled\.CrClock')-SUM('@ANY_EU@pwr_EuNonPipelinesDopGatedIdle\.CrClock'))/(numEUs * .CrClk)	
+	PS1_EU_TCGA_DOP	=	(D(SUM('@ANY_EU@Arb\.pwr_PS1_TC_DOP_ON\.CrClock')))/(numEUs * .CrClk) 
 	PS2_EU_TCGA_DOP	=	1-PS0_EU_TCGA_DOP -PS1_EU_TCGA_DOP	
 				
 	PS0_EU_Pipelines_DOP	=	(D(SUM('@ANY_EU@pwr_EuPipelinesDopGatedIdle\.CrClock')))/(numEUs * .CrClk)	

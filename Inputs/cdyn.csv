@@ -2987,7 +2987,8 @@ PS2_STC_CACHE_WRITE,Gen9LPClient,A0,14.2904,ebb,1,Using 128 bits. Need to confir
 PS2_SVG,Gen9LPClient,C0,5.238,syn,119350,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVL,Gen9LPClient,C0,4.421,syn,94058,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_SVSM,Gen9LPClient,C0,2.307,syn,139630,Taken from SKL C0 ECO1 GT3 CGDIS data
-PS2_TC,Gen9LPClient,A0,28.08,syn,486036,Mul opcode fp32 30%tr TC number* 1.01472
+PS2_TC,Gen9LPClient,A0,28.08,syn,486036,Mul opcode fp32 30%tr TC number* 1.01472 from 22.36
+PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
 PS2_TDC,Gen9LPClient,C0,5.719,syn,181516,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_TDG,Gen9LPClient,A0,8.56,syn,148289.48,66hit test 30.038us to 30.05 us
 PS2_TDL_NONPSDDISPATCH,Gen9LPClient,A0,56.82,syn,460616.71,0% TR 20% VLD
