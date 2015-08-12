@@ -435,7 +435,10 @@ input_hash = {}
 infile = open(options.input_file,'r')
 for line in infile:
     data = get_data(line,"=")
-    input_hash[data[0]] = scripts_dir + "/" + data[1]
+    if (data[1].find("/") == 0):
+        input_hash[data[0]] = data[1]
+    else:
+        input_hash[data[0]] = scripts_dir + "/" + data[1]
 
 ##############################
 # Parsing Residency File and storing data in a hash 
@@ -637,6 +640,7 @@ unit_cdyn_numbers = {'unit_cdyn_numbers(pF)':{}}
 gt_cdyn['Total_GT_Cdyn(nF)'] = float('%.3f'%float(output_cdyn_data['GT']['cdyn']/1000))
 gt_cdyn['Total_GT_Cdyn_syn(nF)'] = 0
 gt_cdyn['Total_GT_Cdyn_ebb(nF)'] = 0
+gt_cdyn['Total_GT_Cdyn_infra(nF)'] = 0
 for cluster in output_cdyn_data['GT']:
     if(cluster == 'cdyn'):
         continue
@@ -645,6 +649,7 @@ for cluster in output_cdyn_data['GT']:
     cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['total'] = float('%.3f'%float(output_cdyn_data['GT'][cluster]['cdyn']))
     cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] = 0
     cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] = 0
+    cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] = 0
     unit_cdyn_numbers['unit_cdyn_numbers(pF)'][cluster] = {}
     for unit in output_cdyn_data['GT'][cluster]:
         if(unit == 'cdyn'):
@@ -654,20 +659,55 @@ for cluster in output_cdyn_data['GT']:
         if(unit_lc.find("grf") != -1 or unit_lc.find("ram") != -1 or unit_lc.find("cache") != -1 or unit_lc.find("ebb") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+        elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or 
+              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or unit_lc.find("repeater") != -1):
+            cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
+            gt_cdyn['Total_GT_Cdyn_infra(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         else:
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_syn(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn'])
         cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'])
+        cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'])
 
-gt_cdyn['Total_GT_Cdyn_syn(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_syn(nF)']/1000))
-gt_cdyn['Total_GT_Cdyn_ebb(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_ebb(nF)']/1000))
+phy_cdyn_numbers = {'physical_cdyn_numbers(pF)':{}}
+phy_cdyn_numbers['physical_cdyn_numbers(pF)'] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf'] = 0
+for cluster in cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']:
+    cluster_lc = cluster.lower()
+    if ( cluster_lc.find("ff") != -1 or cluster_lc.find("gti") != -1 or cluster_lc.find("other") != -1 or cluster_lc.find("gam") != -1):
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
+    else:
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
+        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
+
+gt_cdyn['Total_GT_Cdyn_syn(nF)']   = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_syn(nF)']/1000))
+gt_cdyn['Total_GT_Cdyn_ebb(nF)']   = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_ebb(nF)']/1000))
+gt_cdyn['Total_GT_Cdyn_infra(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_infra(nF)']/1000))
+
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf']/1000))
 
 ####################################
 # Generating output YAML file
 ####################################
 of = open(options.output_file,'w')
 yaml.dump(gt_cdyn,of,default_flow_style=False)
+yaml.dump(phy_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(key_stats,of,default_flow_style=False)
