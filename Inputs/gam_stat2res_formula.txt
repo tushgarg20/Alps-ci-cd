@@ -26,9 +26,9 @@
 	num_GAM_GAMW_EBB    	=	numGAM
 	num_GAM_GATR	=	numGAM
 	num_GAM_GATRW	=	numGAM
-         @GAPL3@        =       S\d+\.uL3\.GapL3OutputBuf\.
+         @GAPL3@        =       S\d+\.uL3\.GapL3OutputBuf(|[0-9]+)\.
          @GAPZ@         =       S\d+\.uL3\.GapZBuf\.
-         @GAPC@         =       S\d+\.uL3\.GapCBuf\.
+         @GAPC@         =       S\d+\.uL3\.GapCBuf(|[0-9]+)\.
          @GAPS@         =       S\d+\.uL3\.GapsReadys\.
          @GAFS@         =       uGAFS\.
 	 @CLOCKS@	=	D(CrClock.Clocks)
