@@ -57,12 +57,8 @@ PS0_EU_Repeater,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_EU_SMALL,Gen10LP,A0,0,syn,14140.87221,from cnl fso cgen ss
 PS0_EU_TCGA_DOP,Gen10LP,A0,1.432128521,syn,1,from cnl fso cgen ss
 PS0_Fabric_Assign,Gen10LP,A0,0.03665858,syn,20375.85,from cnl fso cgen ss
-PS0_Fabric_BGF_CMD,Gen10LP,A0,1.7,syn,1,per bus aprrox (107pf)
-PS0_Fabric_BGF_DATA,Gen10LP,A0,9,syn,1,per bus approx (107pf)
 PS0_Fabric_CLKGLUE,Gen10LP,A0,4.201806426,syn,1,from cnl fso cgen ss
-PS0_Fabric_CMD,Gen10LP,A0,0.95,syn,1,from cnl fso cgen ss
 PS0_Fabric_CPunit,Gen10LP,A0,0.092868402,syn,9142.87,from cnl fso cgen ss
-PS0_Fabric_DATA,Gen10LP,A0,4.75,syn,1,from cnl fso cgen ss
 PS0_Fabric_DFX,Gen10LP,A0,0.105087929,syn,88973.79,from cnl fso cgen ss
 PS0_Fabric_DOP,Gen10LP,A0,0.919,syn,1,from cnl fso cgen ss
 PS0_Fabric_NONCLKGLUE,Gen10LP,A0,0.149322615,syn,1,from cnl fso cgen ss
@@ -429,22 +425,12 @@ PS2_EU_Repeater,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_EU_SMALL,Gen10LP,A0,0.342146746,syn,14140.87221,cnl cgdis ss
 PS2_EU_TCGA_DOP,Gen10LP,A0,1.432128521,syn,1,cnl cgdis ss
 PS2_Fabric_Assign,Gen10LP,A0,0.03665858,syn,20375.85,cnl cgdis ss
-PS2_Fabric_BGF_CMD,Gen10LP,A0,2.42484,syn,1,per bus From mehul (150pf)
-PS2_Fabric_BGF_DATA,Gen10LP,A0,12.1242,syn,1,per bus From mehul (150pf)
 PS2_Fabric_CLKGLUE,Gen10LP,A0,4.201562036,syn,1,cnl cgdis ss
 PS2_Fabric_CPunit,Gen10LP,A0,0.217507574,syn,9142.87,cnl cgdis ss
 PS2_Fabric_DFX,Gen10LP,A0,0.105087929,syn,88973.79,cnl cgdis ss
 PS2_Fabric_DOP,Gen10LP,A0,1.359300142,syn,1,cnl cgdis ss
-PS2_Fabric_LSN_CMD_S2S,Gen10LP,A0,20.85,syn,1674695.99,per bus From Kamal Sinha 
-PS2_Fabric_LSN_CMD_U2S,Gen10LP,A0,10.43,syn,1674695.99,per bus From Kamal Sinha 
-PS2_Fabric_LSN_DATA_S2S,Gen10LP,A0,95.09,syn,1674695.99,per bus From Kamal Sinha
-PS2_Fabric_LSN_DATA_U2S,Gen10LP,A0,47.54,syn,1674695.99,per bus From Kamal Sinha
 PS2_Fabric_NONCLKGLUE,Gen10LP,A0,0.149322615,syn,1,
 PS2_Fabric_Repeater,Gen10LP,A0,0,syn,1859007.9,
-PS2_Fabric_Repeaters_CMD_S2S,Gen10LP,A0,21,syn,1859007.9, per busFrom Kamal Sinha
-PS2_Fabric_Repeaters_CMD_U2S,Gen10LP,A0,11.825,syn,1859007.9, per busFrom Kamal Sinha
-PS2_Fabric_Repeaters_DATA_S2S,Gen10LP,A0,95.78,syn,1859007.9,per bus From Kamal Sinha
-PS2_Fabric_Repeaters_DATA_U2S,Gen10LP,A0,53.92,syn,1859007.9,per bus From Kamal Sinha
 PS2_Fabric_Top_Level,Gen10LP,A0,0,syn,1,From Kamal Sinha added 13.2 for scrightpar1and4
 PS2_FF_OTHER_Assign,Gen10LP,A0,1.075318343,syn,8907.795726,cnl cgdis ss
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,cnl cgdis ss
@@ -4757,3 +4743,78 @@ PS2_GA_EM2Src_FPU2Src_DualPipe_mac_21%,Gen10LP,B0,59.67806654,syn,432175.83,from
 PS2_GA_EM2Src_FPU2Src_DualPipe_mac_30%,Gen10LP,B0,61.18195921,syn,432175.83,from durga
 PS2_GA_EM2Src_FPU2Src_DualPipe_mac_45%,Gen10LP,B0,64.32614634,syn,432175.83,from durga
 PS2_GA_EM2Src_FPU2Src_DualPipe_mac_63%,Gen10LP,B0,67.29482891,syn,432175.83,from durga
+PS0_LSN_XSLDN_DATA,Gen10LP,A0,2.82,syn,1674695.99,fabric
+PS1_LSN_XSLDN_DATA,Gen10LP,A0,11.92,syn,1674695.99,fabric
+PS2_LSN_XSLDN_DATA,Gen10LP,A0,82.82,syn,1674695.99,fabric
+PS0_LSN_XSLDN_CMD,Gen10LP,A0,0.86,syn,1674695.99,fabric
+PS1_LSN_XSLDN_CMD,Gen10LP,A0,5.1,syn,1674695.99,fabric
+PS2_LSN_XSLDN_CMD,Gen10LP,A0,21.26,syn,1674695.99,fabric
+PS0_LSN_XSLUP_DATA,Gen10LP,A0,3.38,syn,1674695.99,fabric
+PS1_LSN_XSLUP_DATA,Gen10LP,A0,13.54,syn,1674695.99,fabric
+PS2_LSN_XSLUP_DATA,Gen10LP,A0,109.64,syn,1674695.99,fabric
+PS0_LSN_XSLUP_CMD,Gen10LP,A0,1.18,syn,1674695.99,fabric
+PS1_LSN_XSLUP_CMD,Gen10LP,A0,7.04,syn,1674695.99,fabric
+PS2_LSN_XSLUP_CMD,Gen10LP,A0,27.78,syn,1674695.99,fabric
+PS0_LSN_LNI_DATA,Gen10LP,A0,0.26,syn,1674695.99,fabric
+PS1_LSN_LNI_DATA,Gen10LP,A0,6.57,syn,1674695.99,fabric
+PS2_LSN_LNI_DATA,Gen10LP,A0,40.23,syn,1674695.99,fabric
+PS0_LSN_LNI_CMD,Gen10LP,A0,0.33,syn,1674695.99,fabric
+PS1_LSN_LNI_CMD,Gen10LP,A0,8.37,syn,1674695.99,fabric
+PS2_LSN_LNI_CMD,Gen10LP,A0,11,syn,1674695.99,fabric
+PS0_LSN_LNE_DATA,Gen10LP,A0,0.33,syn,1674695.99,fabric
+PS1_LSN_LNE_DATA,Gen10LP,A0,8.3,syn,1674695.99,fabric
+PS2_LSN_LNE_DATA,Gen10LP,A0,18.58,syn,1674695.99,fabric
+PS0_LSNtoUnslice_UP_DATA,Gen10LP,A0,1.69,syn,1674695.99,fabric
+PS1_LSNtoUnslice_UP_DATA,Gen10LP,A0,6.77,syn,1674695.99,fabric
+PS2_LSNtoUnslice_UP_DATA,Gen10LP,A0,54.82,syn,1674695.99,fabric
+PS0_LSNtoUnslice_UP_CMD,Gen10LP,A0,0.59,syn,1674695.99,fabric
+PS1_LSNtoUnslice_UP_CMD,Gen10LP,A0,3.52,syn,1674695.99,fabric
+PS2_LSNtoUnslice_UP_CMD,Gen10LP,A0,13.89,syn,1674695.99,fabric
+PS0_GAFStoLSN_DN_DATA,Gen10LP,A0,1.41,syn,1674695.99,fabric
+PS1_GAFStoLSN_DN_DATA,Gen10LP,A0,5.96,syn,1674695.99,fabric
+PS2_GAFStoLSN_DN_DATA,Gen10LP,A0,41.41,syn,1674695.99,fabric
+PS0_GAFStoLSN_DN_CMD,Gen10LP,A0,0.43,syn,1674695.99,fabric
+PS1_GAFStoLSN_DN_CMD,Gen10LP,A0,2.55,syn,1674695.99,fabric
+PS2_GAFStoLSN_DN_CMD,Gen10LP,A0,10.63,syn,1674695.99,fabric
+PS0_BGF_SL_UNSL_INTF_DATA_UP,Gen10LP,A0,10.61049872,syn,1,fabric
+PS1_BGF_SL_UNSL_INTF_DATA_UP,Gen10LP,A0,11.138552,syn,1,fabric
+PS2_BGF_SL_UNSL_INTF_DATA_UP,Gen10LP,A0,12.83144709,syn,1,fabric
+PS0_BGF_SL_UNSL_INTF_CMD_UP,Gen10LP,A0,2.326554536,syn,1,fabric
+PS1_BGF_SL_UNSL_INTF_CMD_UP,Gen10LP,A0,2.442340306,syn,1,fabric
+PS2_BGF_SL_UNSL_INTF_CMD_UP,Gen10LP,A0,2.813539893,syn,1,fabric
+PS0_BGF_SL_UNSL_INTF_DATA_DN,Gen10LP,A0,10.61049872,syn,1,fabric
+PS1_BGF_SL_UNSL_INTF_DATA_DN,Gen10LP,A0,11.138552,syn,1,fabric
+PS2_BGF_SL_UNSL_INTF_DATA_DN,Gen10LP,A0,12.83144709,syn,1,fabric
+PS0_BGF_SL_UNSL_INTF_CMD_DN,Gen10LP,A0,2.326554536,syn,1,fabric
+PS1_BGF_SL_UNSL_INTF_CMD_DN,Gen10LP,A0,2.442340306,syn,1,fabric
+PS2_BGF_SL_UNSL_INTF_CMD_DN,Gen10LP,A0,2.813539893,syn,1,fabric
+PS0_Repeaters_XSLDN_DATA,Gen10LP,A0,4.68,syn,1,fabric
+PS1_Repeaters_XSLDN_DATA,Gen10LP,A0,4.68,syn,1,fabric
+PS2_Repeaters_XSLDN_DATA,Gen10LP,A0,51.8,syn,1,fabric
+PS0_Repeaters_XSLDN_CMD,Gen10LP,A0,1.02,syn,1,fabric
+PS1_Repeaters_XSLDN_CMD,Gen10LP,A0,1.02,syn,1,fabric
+PS2_Repeaters_XSLDN_CMD,Gen10LP,A0,11.36,syn,1,fabric
+PS0_Repeaters_XSLUP_DATA,Gen10LP,A0,4.52,syn,1,fabric
+PS1_Repeaters_XSLUP_DATA,Gen10LP,A0,4.52,syn,1,fabric
+PS2_Repeaters_XSLUP_DATA,Gen10LP,A0,51.8,syn,1,fabric
+PS0_Repeaters_XSLUP_CMD,Gen10LP,A0,1,syn,1,fabric
+PS1_Repeaters_XSLUP_CMD,Gen10LP,A0,1,syn,1,fabric
+PS2_Repeaters_XSLUP_CMD,Gen10LP,A0,11.36,syn,1,fabric
+PS0_RepeaterstoUnslice_UP_DATA,Gen10LP,A0,0.349418764,syn,1,fabric
+PS1_RepeaterstoUnslice_UP_DATA,Gen10LP,A0,0.349418764,syn,1,fabric
+PS2_RepeaterstoUnslice_UP_DATA,Gen10LP,A0,11.28797317,syn,1,fabric
+PS0_RepeaterstoUnslice_UP_CMD,Gen10LP,A0,0.076616739,syn,1,fabric
+PS1_RepeaterstoUnslice_UP_CMD,Gen10LP,A0,0.076616739,syn,1,fabric
+PS2_RepeaterstoUnslice_UP_CMD,Gen10LP,A0,2.475103752,syn,1,fabric
+PS0_RepeatersfromUnslice_DN_DATA,Gen10LP,A0,1.630620899,syn,1,fabric
+PS1_RepeatersfromUnslice_DN_DATA,Gen10LP,A0,1.630620899,syn,1,fabric
+PS2_RepeatersfromUnslice_DN_DATA,Gen10LP,A0,18.66500403,syn,1,fabric
+PS0_RepeatersfromUnslice_DN_CMD,Gen10LP,A0,0.357544782,syn,1,fabric
+PS1_RepeatersfromUnslice_DN_CMD,Gen10LP,A0,0.357544782,syn,1,fabric
+PS2_RepeatersfromUnslice_DN_CMD,Gen10LP,A0,4.092658691,syn,1,fabric
+PS0_XStack_DATA,Gen10LP,A0,3.092016349,syn,1,fabric
+PS1_XStack_DATA,Gen10LP,A0,3.715340599,syn,1,fabric
+PS2_XStack_DATA,Gen10LP,A0,15.73893733,syn,1,fabric
+PS0_XStack_CMD,Gen10LP,A0,0.677983651,syn,1,fabric
+PS1_XStack_CMD,Gen10LP,A0,0.814659401,syn,1,fabric
+PS2_XStack_CMD,Gen10LP,A0,3.45106267,syn,1,fabric
