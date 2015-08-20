@@ -2630,10 +2630,10 @@ PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,96.26,syn,720863.55,25% TR
 PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,99.31,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,26.33,syn,720863.55,
 PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,43.88,syn,720863.55,
-PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,75.8137,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,154.602,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen9LPClient,A0,46.5695,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen9LPClient,A0,102.8469,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,86.40507,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,113.9279,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Read,Gen9LPClient,A0,127.057,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,152.2744,ebb,1,Normalized to 1.2GHz
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,124.74,syn,720863.55,25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,128.7,syn,720863.55,
 PS2_MA_IN,Gen9LPClient,C0,9.004,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
