@@ -20,14 +20,16 @@
 	num_L3_Bank_CLKGLUE	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_NONCLKGLUE	=	num_L3_Slices * numL3Banks	
 #Generic				
-	 @ANY_L3BANK@	=	S\d+\.uL3\.Bank_\d+\.	
-	 .CrClk	=	D(CrClock.Clocks)	
-	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
+	@ANY_L3BANK@	=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
+	@ANY_L3@	=	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)
+	.CrClk	=	D(CrClock.Clocks)	
+	.CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	LNI_max_ports	=	numL3Banks * 2	#Max ports availabe for LNI
 	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
 	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
 	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
 	L3SuperQSize	=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
+
 				
 #LTCD_EBB				
 	PS0_LTCD_EBB	=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
@@ -75,15 +77,13 @@
 	PS0_LTCC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS1_LTCC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS2_LTCC	=	1 - PS0_LTCC - PS1_LTCC	
-
 #LSLM				
 	PS0_LSLM	=	D(SUM('@ANY_L3BANK@SLMIdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	#Place holder
 	PS1_LSLM	=	1 - PS0_LSLM - PS2_LSLM_Atomics - PS2_LSLM_NonAtomics	
-	PS2_LSLM_Atomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS2_LSLM_Atomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
 	PS2_LSLM_NonAtomics	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWr')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	
 #L3Other				
-	PS0_L3BankOther	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
 	PS2_L3BankOther	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
 				
@@ -92,30 +92,30 @@
 	PS2_L3_Bank_DOP	=	1	#No DOP gating in L3
 				
 #L3DFX				
-	PS0_L3_Bank_DFX	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_DFX	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_DFX	=	1-PS0_L3_Bank_DFX	
 				
 #L3SMALL				
-	PS0_L3_Bank_SMALL	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_SMALL	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_SMALL	=	1-PS0_L3_Bank_SMALL	
 				
 #L3CPunit				
-	PS0_L3_Bank_CPunit	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_CPunit	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_CPunit	=	1-PS0_L3_Bank_SMALL	
 				
 #L3Assign				
-	PS0_L3_Bank_Assign	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_Assign	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_Assign	=	1-PS0_L3_Bank_SMALL	
 				
 #L3Repeater				
-	PS0_L3_Bank_Repeater	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_Repeater	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_Repeater	=	1-PS0_L3_Bank_SMALL	
 				
 #L3CLKGLUE				
-	PS0_L3_Bank_CLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_CLKGLUE	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_CLKGLUE	=	1-PS0_L3_Bank_CLKGLUE	
 				
 #L3NONCLKGLUE				
-	PS0_L3_Bank_NONCLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3_Bank_NONCLKGLUE	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS2_L3_Bank_NONCLKGLUE	=	1-PS0_L3_Bank_NONCLKGLUE	
 

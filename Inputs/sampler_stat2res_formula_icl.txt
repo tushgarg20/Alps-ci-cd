@@ -1,6 +1,7 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	numSamplers	=	SUM('knob\.S\d+\.NumSubSlices') + SUM('knob\.STK\d\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
+	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
+	numSamplers	=	numSlices * ( SUM('knob\.S0\.NumSubSlices') + SUM('knob\.STK0\.S0\.NumSubSlices'))	#Change to handle assymetric configs
 	num_Sampler_FL	=	numSamplers	
 	num_Sampler_PL	=	numSamplers	
 	num_Sampler_SC	=	numSamplers	
@@ -41,9 +42,10 @@
 	num_Sampler_DFRSMP_DOP	=	numSamplers	
 				
 #Generic				
-	 @ANY_SAMPLER@	=	S\d+\.SS\d+\.uSampler\.	
-	 @ANY_CRE@	=	S\d+\.SS\d+\.uCRE\.	
-	 @ANY_IME@	=	S\d+\.SS\d+\.uIME\.	
+# @ANY_SAMPLER@	=	(STK\d+\.S\d+\.SS\d+\.uSampler\.|S\d+\.SS\d+\.uSampler\.)	
+	 @ANY_SAMPLER@	=	(STK\d+\.S\d+\.SS\d+\.uSampler\.|S\d+\.SS\d+\.uSampler\.)	
+	 @ANY_CRE@	=	(STK\d+\.S\d+\.SS\d+\.uCRE\.|S\d+\.SS\d+\.uCRE\.)	
+	 @ANY_IME@	=	(STK\d+\.S\d+\.SS\d+\.uIME\.|S\d+\.SS\d+\.uIME\.)	
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	FL_Toggle_Rate	=	(.temp_PS2_FL > 0) ? D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count')) / (512 * .temp_PS2_FL * numSamplers * .CrClk) : 0	#FL bus width 512 (32 * UL, UR, LL, LR)
@@ -223,7 +225,7 @@
 	PS0_SO_DOP	=	PS0_DFRSMP_DOP	
 	PS0_SO	=	D(SUM('@ANY_SAMPLER@pwr_so_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_SO_DOP	
 	PS1_SO	=	1 - (PS0_SO + PS2_SO_ANYPIXELMODE +PS0_SO_DOP)	
-	PS2_SO_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@SOInBuffer\.popped')))/ (numSamplers * .CrClk)	
+	PS2_SO_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@SOInBuffer\d+\.popped')))/ (numSamplers * .CrClk)	
 #DM_BDM				
 	PS0_DM_DOP	=	PS0_DFRSMP_DOP	
 	PS0_DM	=	D(SUM('@ANY_SAMPLER@pwr_dm_idle\.CrClock')) / (numSamplers * .CrClk) -PS0_DM_DOP	

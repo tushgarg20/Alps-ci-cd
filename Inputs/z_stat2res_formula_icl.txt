@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 				
-	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')	
+	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
 	num_Z_HIZ	=	numSlices	
 	num_Z_IZ	=	numSlices	
 	num_Z_RCZ	=	numSlices	
@@ -22,12 +22,12 @@
 				
 				
 #Generic				
-	 @ANY_HIZ@	=	S\d+\.uHZ\.	
-	 @ANY_HIZCACHE@	=	S\d+\.uHzCache\.	
-	 @ANY_IZ@	=	S\d+\.uIZ\.	
-	 @ANY_WM@	=	S\d+\.uWM\.	
-	 @ANY_RCZ@	=	S\d+\.uZCache\.	
-	 @ANY_STC@	=	S\d+\.uStcCache\.	
+	 @ANY_HIZ@	=	(STK\d+\.S\d+\.uHZ\.|S\d+\.uHZ\.)	
+	 @ANY_HIZCACHE@	=	(STK\d+\.S\d+\.uHZCache\.|S\d+\.uHzCache\.)	
+	 @ANY_IZ@	=	(STK\d+\.S\d+\.uIZ\.|S\d+\.uIZ\.)	
+	 @ANY_WM@	=	(STK\d+\.S\d+\.uWM\.|S\d+\.uWM\.)	
+	 @ANY_RCZ@	=	(STK\d+\.S\d+\.uZCache\.|S\d+\.uZCache\.)	
+	 @ANY_STC@	=	(STK\d+\.S\d+\.uStcCache\.|S\d+\.uStcCache\.)	
 	 @HIZDEFIPTYPE@	=	(8x8)	
 	 @HIZOTHIPTYPE@	=	(8x4|4x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	

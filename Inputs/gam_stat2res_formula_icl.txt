@@ -1,7 +1,7 @@
 #Unit	GSIM residency		
 #Instance Counts			
-	numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices') 
-	numGAM	=	COUNT('knob.uGAM.NumSlices')
+	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices') 
+	numGAM	=	COUNT('knob\.uGAM\.NumSlices')
 	num_GAM_GAMTLB	=	numGAM
 	num_GAM_GAMW	=	numGAM
 	num_GAM_GACB	=	numGAM
@@ -26,10 +26,10 @@
 	num_GAM_GAMW_EBB    	=	numGAM
 	num_GAM_GATR	=	numGAM
 	num_GAM_GATRW	=	numGAM
-         @GAPL3@        =       S\d+\.uL3\.GapL3OutputBuf\.
-         @GAPZ@         =       S\d+\.uL3\.GapZBuf\.
-         @GAPC@         =       S\d+\.uL3\.GapCBuf\.
-         @GAPS@         =       S\d+\.uL3\.GapsReadys\.
+         @GAPL3@        =       (STK\d+\.S\d+\.uL3\.GapL3OutputBuf\d+\.|S\d+\.uL3\.GapL3OutputBuf\.)
+         @GAPZ@         =       (STK\d+\.S\d+\.uL3\.GapZBuf\.|S\d+\.uL3\.GapZBuf\.)
+         @GAPC@         =       (STK\d+\.S\d+\.uL3\.GapCBuf\d+\.|S\d+\.uL3\.GapCBuf\.)
+         @GAPS@         =       (STK\d+\.S\d+\.uL3\.GapsReadys\.|S\d+\.uL3\.GapsReadys\.)
          @GAFS@         =       uGAFS\.
 	 @CLOCKS@	=	D(CrClock.Clocks)
 	 @2XCLOCKS@	=	D(SUM('2xCrClock\.Clocks'))

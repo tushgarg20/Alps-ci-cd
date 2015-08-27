@@ -1594,46 +1594,107 @@ Other:
 
 Fabric:
    LSN:
-    PS2_Fabric_LSN_CMD_S2S: R * C * R[numBuses]
-    PS2_Fabric_LSN_DATA_S2S: R * C * R[numBuses]
-    PS2_Fabric_LSN_CMD_U2S: R * C * R[numBuses]
-    PS2_Fabric_LSN_DATA_U2S: R * C * R[numBuses]
+    PS0_LSN_XSLDN_DATA: R * C *R[numBuses]
+    PS1_LSN_XSLDN_DATA: R * C *R[numBuses]
+    PS2_LSN_XSLDN_DATA: R * C *R[numBuses]
+    PS0_LSN_XSLDN_CMD: R * C *R[numBuses]
+    PS1_LSN_XSLDN_CMD: R * C *R[numBuses]
+    PS2_LSN_XSLDN_CMD: R * C *R[numBuses]
+    PS0_LSN_XSLUP_DATA: R * C *R[numBuses]
+    PS1_LSN_XSLUP_DATA: R * C *R[numBuses]
+    PS2_LSN_XSLUP_DATA: R * C *R[numBuses]
+    PS0_LSN_XSLUP_CMD: R * C *R[numBuses]
+    PS1_LSN_XSLUP_CMD: R * C *R[numBuses]
+    PS2_LSN_XSLUP_CMD: R * C *R[numBuses]
+    PS0_LSN_LNI_DATA: R * C *R[numBuses]
+    PS1_LSN_LNI_DATA: R * C *R[numBuses]
+    PS2_LSN_LNI_DATA: R * C *R[numBuses]
+    PS0_LSN_LNI_CMD: R * C *R[numBuses]
+    PS1_LSN_LNI_CMD: R * C *R[numBuses]
+    PS2_LSN_LNI_CMD: R * C *R[numBuses]
+    PS0_LSN_LNE_DATA: R * C *R[numBuses]
+    PS1_LSN_LNE_DATA: R * C *R[numBuses]
+    PS2_LSN_LNE_DATA: R * C *R[numBuses]
+   UnsliceLSN:
+    PS0_LSNtoUnslice_UP_DATA: R * C *R[numBuses]
+    PS1_LSNtoUnslice_UP_DATA: R * C *R[numBuses]
+    PS2_LSNtoUnslice_UP_DATA: R * C *R[numBuses]
+    PS0_LSNtoUnslice_UP_CMD: R * C *R[numBuses]
+    PS1_LSNtoUnslice_UP_CMD: R * C *R[numBuses]
+    PS2_LSNtoUnslice_UP_CMD: R * C *R[numBuses]
+    PS0_GAFStoLSN_DN_DATA: R * C *R[numBuses]
+    PS1_GAFStoLSN_DN_DATA: R * C *R[numBuses]
+    PS2_GAFStoLSN_DN_DATA: R * C *R[numBuses]
+    PS0_GAFStoLSN_DN_CMD: R * C *R[numBuses]
+    PS1_GAFStoLSN_DN_CMD: R * C *R[numBuses]
+    PS2_GAFStoLSN_DN_CMD: R * C *R[numBuses]
    Repeaters:
-    PS2_Fabric_Repeaters_CMD_S2S: R * C * R[numBuses]
-    PS2_Fabric_Repeaters_DATA_S2S: R * C * R[numBuses]
-    PS2_Fabric_Repeaters_CMD_U2S: R * C * R[numBuses]
-    PS2_Fabric_Repeaters_DATA_U2S: R * C * R[numBuses]
+    PS0_Repeaters_XSLDN_DATA: R * C *R[numBuses]
+    PS1_Repeaters_XSLDN_DATA: R * C *R[numBuses]
+    PS2_Repeaters_XSLDN_DATA: R * C *R[numBuses]
+    PS0_Repeaters_XSLDN_CMD: R * C *R[numBuses]
+    PS1_Repeaters_XSLDN_CMD: R * C *R[numBuses]
+    PS2_Repeaters_XSLDN_CMD: R * C *R[numBuses]
+    PS0_Repeaters_XSLUP_DATA: R * C *R[numBuses]
+    PS1_Repeaters_XSLUP_DATA: R * C *R[numBuses]
+    PS2_Repeaters_XSLUP_DATA: R * C *R[numBuses]
+    PS0_Repeaters_XSLUP_CMD: R * C *R[numBuses]
+    PS1_Repeaters_XSLUP_CMD: R * C *R[numBuses]
+    PS2_Repeaters_XSLUP_CMD: R * C *R[numBuses]
+   UnsliceRepeaters:   
+    PS0_RepeaterstoUnslice_UP_DATA: R * C *R[numBuses]
+    PS1_RepeaterstoUnslice_UP_DATA: R * C *R[numBuses]
+    PS2_RepeaterstoUnslice_UP_DATA: R * C *R[numBuses]
+    PS0_RepeaterstoUnslice_UP_CMD: R * C *R[numBuses]
+    PS1_RepeaterstoUnslice_UP_CMD: R * C *R[numBuses]
+    PS2_RepeaterstoUnslice_UP_CMD: R * C *R[numBuses]
+    PS0_RepeatersfromUnslice_DN_DATA: R * C *R[numBuses]
+    PS1_RepeatersfromUnslice_DN_DATA: R * C *R[numBuses]
+    PS2_RepeatersfromUnslice_DN_DATA: R * C *R[numBuses]
+    PS0_RepeatersfromUnslice_DN_CMD: R * C *R[numBuses]
+    PS1_RepeatersfromUnslice_DN_CMD: R * C *R[numBuses]
+    PS2_RepeatersfromUnslice_DN_CMD: R * C *R[numBuses]
    BGF:
-    PS0_Fabric_BGF_CMD: R * C * R[numBuses]
-    PS0_Fabric_BGF_DATA: R * C * R[numBuses]
-    PS2_Fabric_BGF_CMD: R * C * R[numBuses]
-    PS2_Fabric_BGF_DATA: R * C * R[numBuses]
-   TopLevel:
-    PS0_Fabric_CMD: R * C * R[numBuses]
-    PS0_Fabric_DATA: R * C * R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_DATA_UP: R * C *R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_UP: R * C *R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_DATA_UP: R * C *R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_CMD_UP: R * C *R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_UP: R * C *R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_CMD_UP: R * C *R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_DATA_DN: R * C *R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_DN: R * C *R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_DATA_DN: R * C *R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_CMD_DN: R * C *R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_DN: R * C *R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_CMD_DN: R * C *R[numBuses]
+   HorizontalFabric:
+    PS0_XStack_DATA: R * C *R[numhorBuses]
+    PS1_XStack_DATA: R * C *R[numhorBuses]
+    PS2_XStack_DATA: R * C *R[numhorBuses]
+    PS0_XStack_CMD: R * C *R[numhorBuses]
+    PS1_XStack_CMD: R * C *R[numhorBuses]
+    PS2_XStack_CMD: R * C *R[numhorBuses]
    SMALL:
-    PS0_Fabric_SMALL: R * C * R[numBuses]
-    PS2_Fabric_SMALL: R * C * R[numBuses]
+    PS0_Fabric_SMALL: R * C * R[numBuses] * 2
+    PS2_Fabric_SMALL: R * C * R[numBuses] * 2
    CPunit:
-    PS0_Fabric_CPunit: R * C * R[numBuses]
-    PS2_Fabric_CPunit: R * C * R[numBuses]
+    PS0_Fabric_CPunit: R * C * R[numBuses] * 2
+    PS2_Fabric_CPunit: R * C * R[numBuses] * 2
    Assign:
-    PS0_Fabric_Assign: R * C * R[numBuses]
-    PS2_Fabric_Assign: R * C * R[numBuses]
-   Repeater:
-    PS0_Fabric_Repeater: R * C * R[numBuses]
+    PS0_Fabric_Assign: R * C * R[numBuses] * 2
+    PS2_Fabric_Assign: R * C * R[numBuses] * 2
    CLKGLUE:
-    PS0_Fabric_CLKGLUE: R * C * R[numBuses]
-    PS2_Fabric_CLKGLUE: R * C * R[numBuses]
+    PS0_Fabric_CLKGLUE: R * C * R[numBuses] * 2
+    PS2_Fabric_CLKGLUE: R * C * R[numBuses] * 2
    NONCLKGLUE:
-    PS0_Fabric_NONCLKGLUE: R * C * R[numBuses]
-    PS2_Fabric_NONCLKGLUE: R * C * R[numBuses]
+    PS0_Fabric_NONCLKGLUE: R * C * R[numBuses] * 2
+    PS2_Fabric_NONCLKGLUE: R * C * R[numBuses] * 2
    DFX:
-    PS0_Fabric_DFX: R * C * R[numBuses]
-    PS2_Fabric_DFX: R * C * R[numBuses]
+    PS0_Fabric_DFX: R * C * R[numBuses] * 2
+    PS2_Fabric_DFX: R * C * R[numBuses] * 2
    DOP:
-    PS0_Fabric_DOP: R * C * R[numBuses]
-    PS2_Fabric_DOP: R * C * R[numBuses]
+    PS0_Fabric_DOP: R * C * R[numBuses] * 2
+    PS2_Fabric_DOP: R * C * R[numBuses] * 2
 
 rFF:
    rVF:
