@@ -342,6 +342,8 @@ PS1_HDC_CLKGLUE,Gen10LP,A0,8.925142249,syn,1,from cnl fso cgdis ss
 PS1_HDC_DFX,Gen10LP,A0,0.733171598,syn,89968.09,from cnl fso cgdis ss
 PS1_HDC_NONCLKGLUE,Gen10LP,A0,0.701400828,syn,1,from cnl fso cgdis ss
 PS1_HDC_SMALL,Gen10LP,A0,1.612977515,syn,115040.58,from cnl fso cgdis ss
+PS1_HDC_Ret1,Gen10LP,A0,11.02201302,syn,1026652.027,cnl cgdis ss
+PS1_HDC_Ret2,Gen10LP,A0,2.23481455,syn,19930.64861,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS1_L3_Bank_CLKGLUE,Gen10LP,A0,26.90984154,syn,1,from cnl fso cgdis ss
 PS1_L3_Bank_DFX,Gen10LP,A0,1.002001183,syn,127000.43,from cnl fso cgdis ss
 PS1_L3_Bank_DOP,Gen10LP,A0,11.57433562,syn,1,from cnl fso cgdis ss
@@ -563,8 +565,43 @@ PS2_HDC_DOP,Gen10LP,A0,5.545221183,syn,1,cnl cgdis ss
 PS2_HDC_NONCLKGLUE,Gen10LP,A0,0.701400828,syn,1,cnl cgdis ss
 PS2_HDC_Repeater,Gen10LP,A0,0.171073373,syn,10523.45,cnl cgdis ss
 PS2_HDC_SMALL,Gen10LP,A0,1.612977515,syn,115040.58,cnl cgdis ss
+PS1_HDCL1,Gen10LP,A0,12.03765029,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HDCL1_CACHE_READS,Gen10LP,A0,17.53488545,ebb,1,CNL EBB Spreadsheet
 PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,16.30781429,ebb,1,CNL EBB Spreadsheet
+PS2_HDCL1_Read_Hit,Gen10LP,A0,25.862,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCL1_Read_Miss,Gen10LP,A0,31.23705,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCL1_Write_Invalidate,Gen10LP,A0,18.287715,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCL1_Bypass,Gen10LP,A0,15.01154,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_NonSequenced_Read,Gen10LP,A0,32.8486,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_NonSequenced_Write,Gen10LP,A0,46.9376,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read,Gen10LP,A0,38.438845,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write,Gen10LP,A0,36.3612,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read,Gen10LP,A0,38.6965,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write,Gen10LP,A0,42.0161,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Typed_Read,Gen10LP,A0,34.667625,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd1_Sequenced_Typed_Write,Gen10LP,A0,34.667625,syn,496174.7421,Approximated with Sequenced_Typed_Read
+PS2_HDC_ReqCmd1_Other_GW_CPSS,Gen10LP,A0,36.75685,syn,496174.7421,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_NonSequenced_Read,Gen10LP,A0,47.17885,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_NonSequenced_Write,Gen10LP,A0,47.31395,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read,Gen10LP,A0,112.18125,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write,Gen10LP,A0,93.8366,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Read,Gen10LP,A0,128.6345,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Else_SLM_Write,Gen10LP,A0,121.976,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Typed_Read,Gen10LP,A0,86.6763,syn,966421.3492,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqCmd2_Sequenced_Typed_Write,Gen10LP,A0,86.6763,syn,966421.3492,Approximated with PS2_HDC_ReqCmd2_Sequenced_Typed_Read
+PS2_HDC_ReqData_NonSequenced_Write,Gen10LP,A0,38.3298,syn,263581.8145,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqData_Sequenced_Else_Data_Write,Gen10LP,A0,38.3298,syn,263581.8145,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqData_Sequenced_Else_SLM_Write,Gen10LP,A0,38.3298,syn,263581.8145,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_ReqData_Sequenced_Typed_Write,Gen10LP,A0,26.19975,syn,263581.8145,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_Ret1_Message ,Gen10LP,A0,161.33063,syn,1026652.027,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_Ret1_MediaBlock ,Gen10LP,A0,171.33063,syn,1026652.027,Model with Message+ 20k combogates (10pF)
+PS2_HDC_Ret2_Message,Gen10LP,A0,3.2038,syn,19930.64861,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDC_Ret2_MediaBlock,Gen10LP,A0,3.11695,syn,19930.64861,Approximated with Ret2_Other_GW_DAPB
+PS2_HDC_Ret2_Other_GW_DAPB,Gen10LP,A0,3.11695,syn,19930.64861,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCTLB_Read_Hit,Gen10LP,A0,38.20435,syn,604649.3009,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCTLB_Read_Miss,Gen10LP,A0,25.7462,syn,604649.3009,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCTLB_Write_Hit,Gen10LP,A0,40.442185,syn,604649.3009,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_HDCTLB_Write_Miss,Gen10LP,A0,24.46275,syn,604649.3009,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HIZ_CACHE_READ,Gen10LP,A0,3.3276,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_CACHE_WRITE,Gen10LP,A0,2.6184,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_HIZ_LATFIFO_READ,Gen10LP,A0,14.1832,ebb,1,
