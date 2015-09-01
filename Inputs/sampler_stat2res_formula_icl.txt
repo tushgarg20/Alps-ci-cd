@@ -258,10 +258,10 @@
 	PS0_FT_DOP	=	PS0_DFRSMP_DOP	
 	PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_FT_DOP	
 	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock'))) / (numSamplers * .CrClk)	
-	PS2_FT	=	1 - PS0_FT - PS1_FT	
+	PS2_FT	=	1 - PS0_FT - PS1_FT - PS0_FT_DOP	
 #MT				
 	PS0_MT_DOP	=	PS0_DFRSMP_DOP	
-	PS0_MT	=	D(SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock')) / (numSamplers * .CrClk)	
+	PS0_MT	=	D(SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_MT_DOP	
 	PS1_MT	=	1- (PS0_MT_DOP + PS0_MT + PS2_MT_BYPASS + PS2_MT_Tile_Y)	
 	PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass\.CrClock')) / (numSamplers * .CrClk)	
 	.temp_PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x\.CrClock')) / (numSamplers * .CrClk)	

@@ -16,6 +16,9 @@
 	num_HDC_Assign	=	numHDCs	
 	num_HDC_Repeater	=	numHDCs	
 	num_HDC_DFX	=	numHDCs	
+	num_HDC_HDCRET1	=	numHDCs
+	num_HDC_HDCRET2	=	numHDCs
+
 #Generic				
 	 @ANY_HDC@	=	(STK\d+\.S\d+\.uHDC_\d+\.|STK\d\.S\d\.SS\d\.uHDC\.|S\d+\.uHDC_\d+\.)	
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -35,7 +38,8 @@
 #HDCREQCMD1				
 	PS0_HDC_ReqCmd1_DOP	=	.HDC_DOP	
 	PS0_HDC_ReqCmd1	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
-	PS1_HDC_ReqCmd1	=	1 - (PS0_HDC_ReqCmd1_DOP + PS0_HDC_ReqCmd1 + PS2_HDC_ReqCmd1_Sequenced_Typed_Read + PS2_HDC_ReqCmd1_Sequenced_Typed_Write + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write + PS2_HDC_ReqCmd1_NonSequenced_Read + PS2_HDC_ReqCmd1_NonSequenced_Write)	
+	PS1_HDC_ReqCmd1	=	1 - (PS0_HDC_ReqCmd1_DOP + PS0_HDC_ReqCmd1 + PS2_HDC_ReqCmd1_Sequenced_Typed_Read + PS2_HDC_ReqCmd1_Sequenced_Typed_Write + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read + PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Read + PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write + PS2_HDC_ReqCmd1_NonSequenced_Read + PS2_HDC_ReqCmd1_NonSequenced_Write + PS2_HDC_ReqCmd1_Other_GW_CPSS) 
+
 	PS2_HDC_ReqCmd1_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_Sequenced_Typed_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_WRITE@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
@@ -44,6 +48,8 @@
 	PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_WRITE@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqCmd1_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
+	PS2_HDC_ReqCmd1_Other_GW_CPSS	=	(D(SUM('@ANY_HDC@NumGwMsg')) + D(SUM('@ANY_HDC@NumTsgMsg')) + D(SUM('@ANY_HDC@NumPiMsg'))) / (numHDCs * .CrClk)
+
 #HDCREQCMD2				
 	PS0_HDC_ReqCmd2_DOP	=	.HDC_DOP	
 	PS0_HDC_ReqCmd2	=	(D(SUM('@ANY_HDC@HDCReq_cmd_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
@@ -66,14 +72,21 @@
 	PS2_HDC_ReqData_Sequenced_Else_SLM_Write	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_WRITE@')) / (numHDCs * .CrClk)	
 	PS2_HDC_ReqData_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
 				
-#HDCRET				
-	PS0_HDC_Ret_DOP	=	.HDC_DOP	
-	PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
-	PS1_HDC_Ret	=	1 - (PS0_HDC_Ret_DOP + PS0_HDC_Ret + PS2_HDC_Ret_Sequenced_Typed_Read + PS2_HDC_Ret_Sequenced_Else_Data_Read + PS2_HDC_Ret_Sequenced_Else_SLM_Read + PS2_HDC_Ret_NonSequenced_Read)	
-	PS2_HDC_Ret_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_Sequenced_Else_Data_Read	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_Sequenced_Else_SLM_Read	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
+#HDCRET1
+	PS0_HDC_Ret1_DOP	=	.HDC_DOP    
+	PS0_HDC_Ret1	=	(D(SUM('@ANY_HDC@RET1_Idle')) / (numHDCs * .CrClk)) - .HDC_DOP  
+	PS1_HDC_Ret1	=	(D(SUM('@ANY_HDC@RET1_Stall')) / (numHDCs * .CrClk))    
+	PS2_HDC_Ret1_Message	=	D(SUM('@ANY_HDC@RET1_Msg')) / (numHDCs * .CrClk) #Transaction Based Model   
+	PS2_HDC_Ret1_MediaBlock	=	D(SUM('@ANY_HDC@RET1_MediaBlk')) / (numHDCs * .CrClk) #Transaction Based Model
+
+#HDCRET2                
+	PS0_HDC_Ret2_DOP	=	.HDC_DOP    
+	PS0_HDC_Ret2	=	(D(SUM('@ANY_HDC@RET2_Idle')) / (numHDCs * .CrClk)) - .HDC_DOP  
+	PS1_HDC_Ret2	=	(D(SUM('@ANY_HDC@RET2_Stall')) / (numHDCs * .CrClk))        
+	PS2_HDC_Ret2_Message	=	D(SUM('@ANY_HDC@RET2_Msg')) / (numHDCs * .CrClk) #Transaction Based Model   
+	PS2_HDC_Ret2_MediaBlock 	=	D(SUM('@ANY_HDC@RET2_MediaBlk')) / (numHDCs * .CrClk) #Transaction Based Model  
+	PS2_HDC_Ret2_Other_GW_DAPB 	=	D(SUM('@ANY_HDC@RET2_GW_DAPB')) / (numHDCs * .CrClk) #Transaction Based Model
+
 #HDCTLB				
 	PS0_HDCTLB_DOP	=	0	#HDCTLB is not DOP gated
 	PS0_HDCTLB	=	(D(SUM('@ANY_HDC@@ANY_TLB@_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - PS0_HDCTLB_DOP	
@@ -89,12 +102,12 @@
 				
 #HDCCLKGlue				
 	PS0_HDC_CLKGLUE_DOP	=	.HDC_DOP	
-	PS0_HDC_CLKGLUE	=	AVG(PS0_HDC_ReqCmd1, PS0_HDC_ReqCmd2, PS0_HDC_ReqData, PS0_HDC_Ret)	#Approximating Glue with HDC Data
+	PS0_HDC_CLKGLUE	=	AVG(PS0_HDC_ReqCmd1, PS0_HDC_ReqCmd2, PS0_HDC_ReqData, PS0_HDC_Ret1, PS0_HDC_Ret2)	#Approximating Glue with HDC Data
 	PS2_HDC_CLKGLUE	=	1 - PS0_HDC_CLKGLUE - PS0_HDC_CLKGLUE_DOP	
 				
 #HDCNONCLKGlue				
 	PS0_HDC_NONCLKGLUE_DOP	=	.HDC_DOP	
-	PS0_HDC_NONCLKGLUE	=	AVG(PS0_HDC_ReqCmd1, PS0_HDC_ReqCmd2, PS0_HDC_ReqData, PS0_HDC_Ret)	#Approximating Glue with HDC Data
+	PS0_HDC_NONCLKGLUE	=	AVG(PS0_HDC_ReqCmd1, PS0_HDC_ReqCmd2, PS0_HDC_ReqData, PS0_HDC_Ret1, PS0_HDC_Ret2)	#Approximating Glue with HDC Data
 	PS2_HDC_NONCLKGLUE	=	1 - PS0_HDC_NONCLKGLUE - PS0_HDC_NONCLKGLUE_DOP	
 				
 #HDCSmall				
@@ -122,13 +135,19 @@
 	PS0_HDC_DFX	=	PS0_HDC_NONCLKGLUE	
 	PS2_HDC_DFX	=	PS2_HDC_NONCLKGLUE	
 				
-#HDCL1				
-	PS0_HDCL1_DOP	=	.HDC_DOP	
-	PS0_HDCL1	=	1 - PS0_HDCL1_DOP - PS2_HDCL1	
-	PS2_HDCL1	=	D(SUM('@ANY_HDC@HDCL1(Hits|Misses|PartialHits)'))/(numHDCs * .CrClk)	
 				
+#HDCL1			
+	PS0_HDCL1_DOP	=	.HDC_DOP
+	PS0_HDCL1	=	(D(SUM('@ANY_HDC@L1_Idle')) / (numHDCs * .CrClk)) - .HDC_DOP		
+	PS1_HDCL1	=	(D(SUM('@ANY_HDC@L1_Stall')) / (numHDCs * .CrClk))		
+	PS2_HDCL1_Read_Hit	=	(D(SUM('@ANY_HDC@L1_RdHit')) / (numHDCs * .CrClk))
+	PS2_HDCL1_Read_Miss	=	(D(SUM('@ANY_HDC@L1_RdMiss')) / (numHDCs * .CrClk))		
+	PS2_HDCL1_Write_Invalidate	=	(D(SUM('@ANY_HDC@L1_WrInv')) / (numHDCs * .CrClk))		
+	PS2_HDCL1_Bypass	=	(D(SUM('@ANY_HDC@L1_Bypass')) / (numHDCs * .CrClk))
 				
 #HDCL1_CACHE				
-	PS2_HDCL1_CACHE_READS	=	D(SUM('@ANY_HDC@HDCL1Hits'))/(numHDCs * .CrClk)	
-	PS2_HDCL1_CACHE_WRITES	=	D(SUM('@ANY_HDC@HDCL1Misses'))/(numHDCs * .CrClk)	
+	#PS2_HDCL1_CACHE_READS	=	D(SUM('@ANY_HDC@HDCL1Hits'))/(numHDCs * .CrClk)	
+	#PS2_HDCL1_CACHE_WRITES	=	D(SUM('@ANY_HDC@HDCL1Misses'))/(numHDCs * .CrClk)
+	PS2_HDCL1_CACHE_READS	=	(D(SUM('@ANY_HDC@L1EBB_Rd')) / (numHDCs * .CrClk))  #Transactions Based Model
+	PS2_HDCL1_CACHE_WRITES	=	(D(SUM('@ANY_HDC@L1EBB_Wr')) / (numHDCs * .CrClk))  #Transactions Based Model	
 

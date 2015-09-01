@@ -1095,6 +1095,7 @@ HDC:
      PS2_HDC_ReqCmd1_Sequenced_Else_SLM_Write: R * C
      PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
      PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
+     PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
    HDCREQCMD2:
     PS0_HDC_ReqCmd2_DOP: R * C
     PS0_HDC_ReqCmd2: R * C
@@ -1117,15 +1118,21 @@ HDC:
       PS2_HDC_ReqData_Sequenced_Else_Data_Write: R * C
       PS2_HDC_ReqData_Sequenced_Else_SLM_Write: R * C
       PS2_HDC_ReqData_NonSequenced_Write: R * C
-   HDCRET:
-    PS0_HDC_Ret_DOP: R * C
-    PS0_HDC_Ret: R * C
-    PS1_HDC_Ret: R * C
-    PS2_HDC_Ret:
-      PS2_HDC_Ret_Sequenced_Typed_Read: R * C
-      PS2_HDC_Ret_Sequenced_Else_Data_Read: R * C
-      PS2_HDC_Ret_Sequenced_Else_SLM_Read: R * C
-      PS2_HDC_Ret_NonSequenced_Read: R * C
+   HDCRET1:
+    PS0_HDC_Ret1_DOP: R * C
+    PS0_HDC_Ret1: R * C
+    PS1_HDC_Ret1: R * C
+    PS2_HDC_Ret1:
+      PS2_HDC_Ret1_Message: R * C
+      PS2_HDC_Ret1_MediaBlock: R * C
+   HDCRET2:
+    PS0_HDC_Ret2_DOP: R * C
+    PS0_HDC_Ret2: R * C
+    PS1_HDC_Ret2: R * C
+    PS2_HDC_Ret2:
+      PS2_HDC_Ret2_Message: R * C
+      PS2_HDC_Ret2_MediaBlock: R * C
+      PS2_HDC_Ret2_Other_GW_DAPB: R * C
    HDCTLB:
     PS0_HDCTLB_DOP: R * C
     PS0_HDCTLB: R * C
@@ -1138,7 +1145,12 @@ HDC:
    HDCL1:
      PS0_HDCL1_DOP: R * C
      PS0_HDCL1: R * C
-     PS2_HDCL1: R * C
+     PS1_HDCL1: R * C
+     PS2_HDCL1:
+       PS2_HDCL1_Read_Hit: R * C
+       PS2_HDCL1_Read_Miss: R * C
+       PS2_HDCL1_Write_Invalidate: R * C
+       PS2_HDCL1_Bypass: R * C 
    HDCL1_CACHE:
      PS2_HDCL1_CACHE_READS: R * C
      PS2_HDCL1_CACHE_WRITES: R * C

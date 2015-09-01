@@ -44,10 +44,10 @@ print ("**********************************")
 # Global Variables
 #################################
 
-I = {} ### Instance Hash 
+I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP'],
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11halo'],
                         'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP']
                        };
 
@@ -65,8 +65,8 @@ common_cfg = options.dest_config.lower() ##Config chosen
 paths = []
 linest_coeff = {}
 
-log_file = options.output_file + ".log"
-debug_file = options.output_file + ".cdyn.log"
+log_file     = options.output_file + ".log"
+debug_file   = options.output_file + ".cdyn.log"
 patriot_file = options.output_file + ".patriot"
 
 ###Print basic details in log file
@@ -85,6 +85,8 @@ elif common_cfg.find('chv') > -1 :
     cfg ='Gen8SoC'
 elif common_cfg.find('bxt') > -1 :
     cfg ='Gen9LPSoC'
+elif common_cfg.find('cnlh') > -1 :
+    cfg ='Gen11LP'
 elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif common_cfg.find('owf') > -1 :
@@ -101,11 +103,16 @@ else:
     lf.close()
     exit(2);
 
+if common_cfg.find('cnlh') > -1 :
+    cfg_gc = "Gen11halo"
+else:
+    cfg_gc = cfg
+
 print("Generating results for " + cfg.upper() + " aka " + common_cfg)
 print(" ")
 
 print("Command Line -->",file=lf)
-print (" ".join(sys.argv),file=lf)
+print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
 if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11LP'):
@@ -199,7 +206,7 @@ def get_eff_cdyn(cluster,unit,stat):
         #print (stat,",",base_cfg,",",stepping,file=df)
     base_cdyn = cdyn_hash[stat][base_cfg][stepping]['weight']
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
-    ref_gc = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
+    ref_gc    = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
 
     if(ref_gc == ''): #If ref gc is not present in cdyn sheet, picking it from gc sheet
         if(cdyn_type == 'syn'):
@@ -217,7 +224,7 @@ def get_eff_cdyn(cluster,unit,stat):
         process_sf = process_hash[base_cfg][cfg]['ebb']
     if(process_sf == 'NA'):
         process_sf = 0
-    
+
     ##voltage scaling information
     if(options.operating_voltage):
         voltage_sf = Cdyn_VSF(float(options.operating_voltage),new_voltage_hash[base_cfg],voltage_cdyn_scaling_factor_hash[cfg])
@@ -227,7 +234,7 @@ def get_eff_cdyn(cluster,unit,stat):
     ##voltage_sf = voltage_hash[base_cfg][cfg]
     ##if(voltage_sf == 'NA'):
     ##    voltage_sf = 0
-    
+
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
     instances = 0
@@ -243,7 +250,7 @@ def get_eff_cdyn(cluster,unit,stat):
             print ("Gate count is not available for", cluster, ",", unit, file=lf)
             newproduct_gc = 0
         else:
-            newproduct_gc = new_gc[cluster][unit][cfg]
+            newproduct_gc = new_gc[cluster][unit][cfg_gc]
     else:
         newproduct_gc = 1
 
@@ -413,7 +420,7 @@ def dump_patriot_output():
             for state in power_list:
                 stat_str = cluster + '.' + unit
                 length = len(state)
-                for i in range(0,length-1): 
+                for i in range(0,length-1):
                     if(i == length-2):
                         if(state[i] == 'total'):
                             stat_str = stat_str + '.Cdyn'
@@ -421,7 +428,7 @@ def dump_patriot_output():
                             stat_str = stat_str + '.' + state[i] + '.Cdyn'
                     else:
                         stat_str = stat_str + '.' + state[i]
-                print('{0} {1}'.format(stat_str,state[-1]),file=pf)         
+                print('{0} {1}'.format(stat_str,state[-1]),file=pf)
     pf.close()
 
 
@@ -441,7 +448,7 @@ for line in infile:
         input_hash[data[0]] = scripts_dir + "/" + data[1]
 
 ##############################
-# Parsing Residency File and storing data in a hash 
+# Parsing Residency File and storing data in a hash
 ##############################
 R = {}
 resfile = open(options.residency_file,'r')
@@ -463,8 +470,8 @@ resfile.close()
 ##############################
 # Parsing Cdyn File
 ##############################
-cdyn_hash = {}
-cdyn_file = open(input_hash['Cdyn'],'r') ##Getting Cdyn file path from hash
+cdyn_hash  = {}
+cdyn_file  = open(input_hash['Cdyn'],'r') ##Getting Cdyn file path from hash
 first_line = cdyn_file.readline()  ##never used again - used to only move down a line
 for line in cdyn_file:
     data = get_data(line,",")
@@ -501,7 +508,7 @@ gc_file.close()
 ################################
 # Process Scaling Factor
 process_file = open(input_hash['Process_Scaling_Factors'],'r')
-first_line = process_file.readline()
+first_line   = process_file.readline()
 for line in process_file:
     data = get_data(line,",")
     if(data[0] not in process_hash):
@@ -512,7 +519,7 @@ for line in process_file:
     process_hash[data[0]][data[1]]['ebb'] = float(data[3]) if data[3] != 'NA' else data[3]
 process_file.close()
 
-##the voltage.csv file has only the configs and their default operating voltages
+# the voltage.csv file has only the configs and their default operating voltages
 new_voltage_hash = {}
 voltage_cdyn_scaling_factor_hash = {}
 voltage_file = open(input_hash['Voltage_Scaling_Factors'],'r')
@@ -659,7 +666,7 @@ for cluster in output_cdyn_data['GT']:
         if(unit_lc.find("grf") != -1 or unit_lc.find("ram") != -1 or unit_lc.find("cache") != -1 or unit_lc.find("ebb") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
-        elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or 
+        elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or
               unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or unit_lc.find("repeater") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_infra(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
@@ -898,7 +905,7 @@ if(options.timegraph_file and options.output_timegraph_file):
         new_file_name = options.timegraph_file.replace('.tar.gz','')
         uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
     elif options.timegraph_file.lower().endswith('.zip'):
-        subprocess.call(["unzip", options.timegraph_file, "-d", scripts_dir]) 
+        subprocess.call(["unzip", options.timegraph_file, "-d", scripts_dir])
         new_file_name = options.timegraph_file.replace('.zip','')
         uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
     else:
@@ -935,7 +942,7 @@ if(options.timegraph_file and options.output_timegraph_file):
         with_header= False
 
     timegraph_file.close()
-    subprocess.call(["rm", uncompressed_file]) 
+    subprocess.call(["rm", uncompressed_file])
     op_timegraph_file.close()
 
 

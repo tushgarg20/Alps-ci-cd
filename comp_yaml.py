@@ -37,42 +37,43 @@ header_list = [ 'FPS', 'Total_GT_Cdyn(nF)', 'Total_GT_Cdyn_ebb(nF)', 'Total_GT_C
 for header in header_list:
     print ("%-30s %10.3f    %15.3f" % (header, yaml_data['ref'][header], yaml_data['new'][header]) )
 
-category = "cluster_cdyn_numbers(pF)"
-print (category, ":")
-sec_list  = list(yaml_data['ref'][category].keys())
-sec_list += list(yaml_data['new'][category].keys())
-sec_list.sort()
-sec_done  = {}
+cat_list = [ "physical_cdyn_numbers(pF)",  "cluster_cdyn_numbers(pF)" ]
+for category in cat_list:
+    print (category, ":")
+    sec_list  = list(yaml_data['ref'][category].keys())
+    sec_list += list(yaml_data['new'][category].keys())
+    sec_list.sort()
+    sec_done  = {}
 
-cdyn_total_ref = yaml_data['ref']['Total_GT_Cdyn(nF)']
-cdyn_total_new = yaml_data['new']['Total_GT_Cdyn(nF)']
+    cdyn_total_ref = yaml_data['ref']['Total_GT_Cdyn(nF)']
+    cdyn_total_new = yaml_data['new']['Total_GT_Cdyn(nF)']
 
-for cluster in sec_list:
-    if cluster in sec_done.keys():
-        continue
-    else:
-        sec_done[cluster] = 1
-
-    print ("    ", cluster)
-    for type in [ 'ebb', 'syn', 'total' ]:
-        try:
-            num1 = yaml_data['ref'][category][cluster][type]
-        except:
-            num1 = 0
-        try:
-            num2 = yaml_data['new'][category][cluster][type]
-        except:
-            num2 = 0
-        if (type == 'total'):
-            print ("        %-22s %10.3f %5.1f%%  %10.3f %5.1f%% " % (type, num1, num1/cdyn_total_ref/10, num2, num2/cdyn_total_ref/10), end="" )
+    for cluster in sec_list:
+        if cluster in sec_done.keys():
+            continue
         else:
-            print ("        %-22s %10.3f %5s   %10.3f %5s  " % (type, num1, "", num2, ""), end="" )
+            sec_done[cluster] = 1
 
-        if (num1 != num2 and num2 != 0 and num1 != 0):
-            p_inc = float((float(num2)-float(num1)))
-            print ("%10.1f%% %10.2f" % (float(p_inc/num1*100), p_inc))
-        else:
-            print ("%10s %10s" % ("-","-"))
+        print ("    ", cluster)
+        for type in [ 'ebb', 'syn', 'inf', 'total' ]:
+            try:
+                num1 = yaml_data['ref'][category][cluster][type]
+            except:
+                num1 = 0
+            try:
+                num2 = yaml_data['new'][category][cluster][type]
+            except:
+                num2 = 0
+            if (type == 'total'):
+                print ("        %-22s %10.3f %5.1f%%  %10.3f %5.1f%% " % (type, num1, num1/cdyn_total_ref/10, num2, num2/cdyn_total_ref/10), end="" )
+            else:
+                print ("        %-22s %10.3f %5s   %10.3f %5s  " % (type, num1, "", num2, ""), end="" )
+
+            if (num1 != num2 and num2 != 0 and num1 != 0):
+                p_inc = float((float(num2)-float(num1)))
+                print ("%10.1f%% %10.2f" % (float(p_inc/num1*100), p_inc))
+            else:
+                print ("%10s %10s" % ("-","-"))
 
 category = "unit_cdyn_numbers(pF)"
 print (category, ":")
