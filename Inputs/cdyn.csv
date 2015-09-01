@@ -177,7 +177,6 @@ PS0_L3Node_DFX,Gen10LP,C0,1.539660355,syn,65930.11,from cnl fso cgen ss
 PS0_L3Node_DOP,Gen10LP,A0,12.19019976,syn,1,from cnl fso cgen ss
 PS0_L3Node_NONCLKGLUE,Gen10LP,C0,1.283050296,syn,1,from cnl fso cgen ss
 PS0_L3Node_Repeater,Gen10LP,A0,14.6389929,syn,721319.43,from cnl fso cgen ss
-PS0_L3Node_SMALL,Gen10LP,A0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3Node_SMALL,Gen10LP,C0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3XSRC,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_LNE,Gen10LP,A0,1.906246154,syn,890288.66,from cnl fso cgen ss
@@ -226,18 +225,10 @@ PS0_PSD,Gen10LP,A0,1.344147929,syn,758273.11,from cnl fso cgen ss
 PS0_PSD_BARYPAYLDASMRAM,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_PSD_SCOREBOARD,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_RCC,Gen10LP,A0,0.855366864,syn,957262.81,from cnl fso cgen ss
-PS0_rCL,Gen10LP,A0,4.036366281,syn,0,from cnl fso cgen ss
 PS0_RCPBCOM,Gen10LP,A0,1.05087929,syn,517770.05,from cnl fso cgen ss
 PS0_RCPBPIX,Gen10LP,A0,0.439902959,syn,1525307.92,from cnl fso cgen ss
 PS0_RCPFE,Gen10LP,A0,3.812492308,syn,698964.86,from cnl fso cgen ss
 PS0_RCZ,Gen10LP,A0,2.810491124,syn,863344.09,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX,Gen10LP,A0,3.754609768,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,19.01657355,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
 PS0_ROSC_Assign,Gen10LP,A0,0.244390533,syn,12438.13,from cnl fso cgen ss
 PS0_ROSC_Assign_DOP,Gen10LP,A0,0.019671694,syn,12438.13,from cnl fso cgen ss
 PS0_ROSC_CLKGLUE,Gen10LP,A0,22.03913822,syn,1,from cnl fso cgen ss
@@ -270,15 +261,6 @@ PS0_ROSS_SMALL,Gen10LP,A0,3.836931361,syn,354868.84,from cnl fso cgen ss
 PS0_ROSS_SMALL_DOP,Gen10LP,A0,3.836931361,syn,354868.84,from cnl fso cgen ss
 PS0_RoutingChannel,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
 PS0_RS,Gen10LP,A0,0.171073373,syn,318404.5951,from cnl fso cgen ss
-PS0_rSF,Gen10LP,A0,3.755353439,syn,0,from cnl fso cgen ss
-PS0_rVF,Gen10LP,A0,4.879404808,syn,0,from cnl fso cgen ss
-PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
-PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
-PS0_rVFBE1,Gen10LP,A0,0.357652708,syn,0,from cnl fso cgen ss
-PS0_rVFBE2,Gen10LP,A0,0.408745952,syn,0,from cnl fso cgen ss
-PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
-PS0_rVSBE,Gen10LP,A0,0.740852039,syn,0,from cnl fso cgen ss
-PS0_rVSFE,Gen10LP,A0,0.562025684,syn,0,from cnl fso cgen ss
 PS0_SARB,Gen10LP,A0,0.439902959,syn,175996.44,from cnl fso cgen ss
 PS0_SBE_CALC,Gen10LP,A0,1.500777664,syn,1193857.13,from cnl fso cgen ss
 PS0_SBE_FETCH,Gen10LP,A0,0.24355322,syn,1193857.13,from cnl fso cgen ss
@@ -701,10 +683,6 @@ PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,1.582,ebb,1,
 PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,1.2547,ebb,1,
 PS2_RCZ_CACHE_READ,Gen10LP,A0,4.4186,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_RCZ_CACHE_WRITE,Gen10LP,A0,3.1094,ebb,1,Using 128 bits. Need to confirm with gSim.
-PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,Taken from CNL  CGEN data
-PS2_rFF_rOTHER_DFX,Gen10LP,A0,17.78271504,syn,338851.4526,Taken from CNL  CGEN data
-PS2_rFF_rOTHER_DOP,Gen10LP,A0,26.62536763,syn,1,
-PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,18.80010713,syn,1,Taken from CNL  CGDIS data
 PS2_ROSC_Assign,Gen10LP,A0,0.244390533,syn,12438.13,cnl cgdis ss
 PS2_ROSC_CLKGLUE,Gen10LP,A0,22.04158213,syn,1,cnl cgdis ss
 PS2_ROSC_CPunit,Gen10LP,A0,4.472346746,syn,17191.99,cnl cgdis ss
@@ -721,12 +699,6 @@ PS2_ROSS_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
 PS2_ROSS_NONCLKGLUE,Gen10LP,A0,1.923353491,syn,1,cnl cgdis ss
 PS2_ROSS_Repeater,Gen10LP,A0,2.150636686,syn,98496.81,cnl cgdis ss
 PS2_ROSS_SMALL,Gen10LP,A0,10.5087929,syn,354868.84,cnl cgdis ss
-PS2_rVF_Cache_Read,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_Cache_Write,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Read,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Write,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVS_Cache_Read,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_rVS_Cache_Write,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen10LP,A0,53.23532533,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen10LP,A0,53.34783791,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen10LP,A0,38.76644763,syn,495353.1406,from Praneeth
@@ -871,7 +843,6 @@ PS1_VSFE,Gen10LP,A0,9.971133728,syn,728350.0838,cnl cgdis ss
 PS1_WMBE,Gen10LP,A0,2.883808284,syn,908715.43,cnl cgdis ss
 PS1_WMFE,Gen10LP,A0,8.40703432,syn,594102.69,cnl cgdis ss
 PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
-PS0_rVS_Cache_Idle,Gen10LP,A0,4.879404808,syn,1699440.61,from cnl fso cgen ss
 PS0_GTI_CKgated,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
 FPU0_add_fp64_10%,Gen10LP,B0,14.0849312,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_15%,Gen10LP,B0,15.20358917,syn,382681.36,from durga with Astep to Bstep scalars
@@ -2326,7 +2297,6 @@ PS0_L3Node_DOP,Gen9LPClient,C0,21.712,syn,1,
 PS0_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.676,syn,1,
 PS0_L3Node_Repeater,Gen9LPClient,C0,22.154,syn,157040,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
-PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
 PS0_L3XSRC,Gen9LPClient,C0,149.33,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNE,Gen9LPClient,A0,5.51,syn,449149.31,
 PS0_LNEXS,Gen9LPClient,C0,5.19,syn,533934,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -3164,7 +3134,6 @@ PS2_L3Node_DFX,Gen9LPClient,C0,2.907,syn,93630,
 PS2_L3Node_DOP,Gen9LPClient,C0,21.712,syn,1,
 PS2_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.628,syn,1,
 PS2_L3Node_Repeater,Gen9LPClient,C0,22.274,syn,157040,
-PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3XSRC,Gen9LPClient,C0,223.995,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNE,Gen9LPClient,A0,205.62,syn,449149.31,
@@ -4946,7 +4915,6 @@ PS0_GTI_SMALL,Gen9LPSoc,B0,20.87777778,syn,655321.74,
 PS0_HDC_SMALL,Gen9LPSoc,B0,13.98888889,syn,118537.92,
 PS0_L3_Bank_SMALL,Gen9LPSoc,B0,0.411111111,syn,39930.16,
 PS0_L3Node_SMALL,Gen9LPSoc,B0,0.955555556,syn,94276.93,
-PS0_L3Node_SMALL,Gen9LPSoc,B0,0.955555556,syn,94276.93,
 PS0_MEDIASMP_SMALL,Gen9LPSoc,B0,0.077777778,syn,12454.51,
 PS0_ROSC_SMALL,Gen9LPSoc,B0,0,syn,0,
 PS0_ROSS_SMALL,Gen9LPSoc,B0,7.688888889,syn,293448.69,
@@ -4960,7 +4928,6 @@ PS2_GAM_SMALL,Gen9LPSoc,B0,34.58333333,syn,204166.88,
 PS2_GTI_SMALL,Gen9LPSoc,B0,27.38333333,syn,655321.74,
 PS2_HDC_SMALL,Gen9LPSoc,B0,15.63888889,syn,118537.92,
 PS2_L3_Bank_SMALL,Gen9LPSoc,B0,1.355555556,syn,39930.16,
-PS2_L3Node_SMALL,Gen9LPSoc,B0,1.6,syn,94276.93,
 PS2_L3Node_SMALL,Gen9LPSoc,B0,1.6,syn,94276.93,
 PS2_MEDIASMP_SMALL,Gen9LPSoc,B0,0.077777778,syn,12454.51,
 PS2_ROSC_SMALL,Gen9LPSoc,B0,0,syn,0,
@@ -5013,3 +4980,20 @@ PS2_L3_Bank_CLKGLUE,Gen9LPSoc,B0,29.76222222,syn,1,
 PS2_MEDIASMP_CLKGLUE,Gen9LPSoc,B0,11.76777778,syn,1,
 PS2_ROSC_CLKGLUE,Gen9LPSoc,B0,19.78444444,syn,1,
 PS2_ROSS_CLKGLUE,Gen9LPSoc,B0,24.80555556,syn,1,
+PS0_rCL,Gen10LP,A0,3.763614201,syn,1692289.962,from cnl fso cgen ss
+PS0_rSF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
+PS0_rVF,Gen10LP,A0,4.545663905,syn,1695009.145,from cnl fso cgen ss
+PS0_rVFE,Gen10LP,A0,0.07331716,syn,106164.475,from cnl fso cgen ss
+PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_rVFBE1,Gen10LP,A0,0.317707692,syn,795859.9759,from cnl fso cgen ss
+PS0_rVFBE2,Gen10LP,A0,0.366585799,syn,795859.9759,from cnl fso cgen ss
+PS0_rVSBE,Gen10LP,A0,0.684293491,syn,1097712.546,from cnl fso cgen ss
+PS0_rVSFE,Gen10LP,A0,0.537659172,syn,728350.0838,from cnl fso cgen ss
+PS2_rVF_Cache_Read,Gen10LP,A0,2.7003,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Read,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen10LP,A0,1.882,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
+PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
