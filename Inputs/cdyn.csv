@@ -1,4 +1,16 @@
 State,Source,Stepping,Weight,Type,RefGC,Comments
+PS1_MBGFGT,Gen10LP,A0,21.476,syn,168549.91,from cnl fso cgdis ss
+PS1_MBGFUC,Gen10LP,A0,25.5116,syn,200242.88,from cnl fso cgdis ss
+PS1_MDRB,Gen10LP,A0,18.9272,syn,391685.56,from cnl fso cgdis ss
+PS1_MFC,Gen10LP,A0,0.708,syn,28063.21,from cnl fso cgdis ss
+PS1_MSNP,Gen10LP,A0,9.3692,syn,652727.29,from cnl fso cgdis ss
+PS0_MBGFGT,Gen10LP,A0,18.37804769,syn,168549.91,from cnl fso cgen ss
+PS0_MBGFUC,Gen10LP,A0,22.24,syn,200242.88,from cnl fso cgen ss
+PS0_MDRB,Gen10LP,A0,0.807557355,syn,391685.56,from cnl fso cgen ss
+PS0_MFC,Gen10LP,A0,0.19577148,syn,28063.21,from cnl fso cgen ss
+PS0_MSNP,Gen10LP,A0,9.88645974,syn,652727.29,from cnl fso cgen ss
+PS0_HDC_Ret2,Gen10LP,A0,0.049,syn,19930,from cnl fso cgen ss
+PS0_HDC_Ret1,Gen10LP,A0,0.194,syn,1026652,from cnl fso cgen ss
 PS0_AVS,Gen10LP,A0,0.782049704,syn,1310585.85,from cnl fso cgen ss
 PS0_BC,Gen10LP,A0,0.366585799,syn,711851.94,from cnl fso cgen ss
 PS0_Blitter,Gen10LP,A0,13.18731314,syn,1019950.8,from cnl fso cgen ss
@@ -126,7 +138,7 @@ PS0_GTI_DFX,Gen10LP,A0,5.10776213,syn,670976.28,from cnl fso cgen ss
 PS0_GTI_DOP,Gen10LP,A0,17.12933243,syn,1,from cnl fso cgen ss
 PS0_GTI_NONCLKGLUE,Gen10LP,A0,7.060442485,syn,1,from cnl fso cgen ss
 PS0_GTI_Repeater,Gen10LP,A0,2.004002367,syn,48454.4,from cnl fso cgen ss
-PS0_GTI_SMALL,Gen10LP,A0,82.16409704,syn,1280692.06,from cnl fso cgen ss
+PS0_GTI_SMALL,Gen10LP,A0,49.26,syn,1280692.06,from cnl fso cgen ss
 PS0_GTP24C,Gen10LP,A0,0,syn,1195292.21,from cnl fso cgen ss
 PS0_GWL,Gen10LP,A0,0.659854438,syn,97940.55,from cnl fso cgen ss
 PS0_HDC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
@@ -177,6 +189,7 @@ PS0_L3Node_DFX,Gen10LP,C0,1.539660355,syn,65930.11,from cnl fso cgen ss
 PS0_L3Node_DOP,Gen10LP,A0,12.19019976,syn,1,from cnl fso cgen ss
 PS0_L3Node_NONCLKGLUE,Gen10LP,C0,1.283050296,syn,1,from cnl fso cgen ss
 PS0_L3Node_Repeater,Gen10LP,A0,14.6389929,syn,721319.43,from cnl fso cgen ss
+PS0_L3Node_SMALL,Gen10LP,A0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3Node_SMALL,Gen10LP,C0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3XSRC,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_LNE,Gen10LP,A0,1.906246154,syn,890288.66,from cnl fso cgen ss
@@ -225,10 +238,18 @@ PS0_PSD,Gen10LP,A0,1.344147929,syn,758273.11,from cnl fso cgen ss
 PS0_PSD_BARYPAYLDASMRAM,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_PSD_SCOREBOARD,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_RCC,Gen10LP,A0,0.855366864,syn,957262.81,from cnl fso cgen ss
+PS0_rCL,Gen10LP,A0,4.036366281,syn,0,from cnl fso cgen ss
 PS0_RCPBCOM,Gen10LP,A0,1.05087929,syn,517770.05,from cnl fso cgen ss
 PS0_RCPBPIX,Gen10LP,A0,0.439902959,syn,1525307.92,from cnl fso cgen ss
 PS0_RCPFE,Gen10LP,A0,3.812492308,syn,698964.86,from cnl fso cgen ss
 PS0_RCZ,Gen10LP,A0,2.810491124,syn,863344.09,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX,Gen10LP,A0,3.754609768,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,19.01657355,syn,0,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_ROSC_Assign,Gen10LP,A0,0.244390533,syn,12438.13,from cnl fso cgen ss
 PS0_ROSC_Assign_DOP,Gen10LP,A0,0.019671694,syn,12438.13,from cnl fso cgen ss
 PS0_ROSC_CLKGLUE,Gen10LP,A0,22.03913822,syn,1,from cnl fso cgen ss
@@ -261,6 +282,15 @@ PS0_ROSS_SMALL,Gen10LP,A0,3.836931361,syn,354868.84,from cnl fso cgen ss
 PS0_ROSS_SMALL_DOP,Gen10LP,A0,3.836931361,syn,354868.84,from cnl fso cgen ss
 PS0_RoutingChannel,Gen10LP,A0,0,syn,1,from cnl fso cgen ss
 PS0_RS,Gen10LP,A0,0.171073373,syn,318404.5951,from cnl fso cgen ss
+PS0_rSF,Gen10LP,A0,3.755353439,syn,0,from cnl fso cgen ss
+PS0_rVF,Gen10LP,A0,4.879404808,syn,0,from cnl fso cgen ss
+PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
+PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
+PS0_rVFBE1,Gen10LP,A0,0.357652708,syn,0,from cnl fso cgen ss
+PS0_rVFBE2,Gen10LP,A0,0.408745952,syn,0,from cnl fso cgen ss
+PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,0,from cnl fso cgen ss
+PS0_rVSBE,Gen10LP,A0,0.740852039,syn,0,from cnl fso cgen ss
+PS0_rVSFE,Gen10LP,A0,0.562025684,syn,0,from cnl fso cgen ss
 PS0_SARB,Gen10LP,A0,0.439902959,syn,175996.44,from cnl fso cgen ss
 PS0_SBE_CALC,Gen10LP,A0,1.500777664,syn,1193857.13,from cnl fso cgen ss
 PS0_SBE_FETCH,Gen10LP,A0,0.24355322,syn,1193857.13,from cnl fso cgen ss
@@ -346,20 +376,20 @@ PS2_ClockSpine_Slice,Gen10LP,A0,114,syn,1,from nevin
 PS2_ClockSpine_UnSlice,Gen10LP,A0,76,syn,1,from nevin
 PS2_COLOR_Assign,Gen10LP,A0,10.67986627,syn,115795.74,cnl cgdis ss
 PS2_COLOR_CLKGLUE,Gen10LP,C0,48.32578391,syn,1,cnl cgdis ss
-PS2_COLOR_CPunit,Gen10LP,A0,7.918253254,syn,31790.03,cnl cgdis ss
+PS2_COLOR_CPunit,Gen10LP,A0,3.739175148,syn,31790.03,cnl cgdis ss
 PS2_COLOR_DFX,Gen10LP,C0,3.348150296,syn,322447.94,cnl cgdis ss
 PS2_COLOR_DOP,Gen10LP,A0,23.87695503,syn,1,cnl cgdis ss
-PS2_COLOR_NONCLKGLUE,Gen10LP,C0,3.580321302,syn,1,cnl cgdis ss
+PS2_COLOR_NONCLKGLUE,Gen10LP,C0,3.296828284,syn,1,average of cgdis and pv
 PS2_COLOR_Repeater,Gen10LP,A0,2.73,syn,138699.42,cnl cgdis ss
-PS2_COLOR_SMALL,Gen10LP,C0,5.425469822,syn,211163.51,cnl cgdis ss
+PS2_COLOR_SMALL,Gen10LP,C0,3.507004142,syn,211163.51,avg cgdis and pv
 PS2_DFRSMP_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_DFRSMP_CLKGLUE,Gen10LP,A0,11.20530592,syn,1,cnl cgdis ss
-PS2_DFRSMP_CPunit,Gen10LP,A0,4.423468639,syn,15334.52,cnl cgdis ss
+PS2_DFRSMP_CPunit,Gen10LP,A0,1.808489941,syn,15334.52,cnl cgdis ss
 PS2_DFRSMP_DFX,Gen10LP,A0,1.319708876,syn,159995.32,cnl cgdis ss
 PS2_DFRSMP_DOP,Gen10LP,A0,7.529672308,syn,1,cnl cgdis ss
-PS2_DFRSMP_NONCLKGLUE,Gen10LP,A0,1.199957515,syn,1,cnl cgdis ss
+PS2_DFRSMP_NONCLKGLUE,Gen10LP,A0,2.706625148,syn,1,average of cgdis and pv
 PS2_DFRSMP_Repeater,Gen10LP,A0,0.07331716,syn,16922.2,cnl cgdis ss
-PS2_DFRSMP_SMALL,Gen10LP,A0,2.517222485,syn,112204.12,cnl cgdis ss
+PS2_DFRSMP_SMALL,Gen10LP,A0,1.845148521,syn,112204.12,avg cgdis and pv
 PS2_DG_AnisoGreaterThan_8way_128BPT,Gen10LP,A0,15.8099568,syn,268740.6679,from Praneeth
 PS2_DG_AnisoGreaterThan_8way_32BPT,Gen10LP,A0,20.54324448,syn,268740.6679,from Praneeth
 PS2_DG_AnisoGreaterThan_8way_64BPT,Gen10LP,A0,17.61209498,syn,268740.6679,from Praneeth
@@ -401,37 +431,37 @@ PS2_DX9_Cache_ReadWrite,Gen10LP,A0,33.84269972,ebb,1,512 bits assumed. Need to c
 PS2_DX9_Cache_Write,Gen10LP,A0,0,ebb,1,512 bits assumed. Need to check with gSim.
 PS2_EU_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_EU_CLKGLUE,Gen10LP,A0,5.234845207,syn,1,cnl cgdis ss
-PS2_EU_CPunit,Gen10LP,A0,1.148635503,syn,6964.54,cnl cgdis ss
+PS2_EU_CPunit,Gen10LP,A0,0.562098225,syn,6964.54,cnl cgdis ss
 PS2_EU_DFX,Gen10LP,A0,0.293268639,syn,64665.69,cnl cgdis ss
 PS2_EU_NONCLKGLUE,Gen10LP,A0,2.641205,syn,1,Average of all opcodes at 30%
 PS2_EU_Pipelines_DOP,Gen10LP,A0,0.74783503,syn,0,cnl cgdis ss
 PS2_EU_Repeater,Gen10LP,A0,0,syn,0,cnl cgdis ss
-PS2_EU_SMALL,Gen10LP,A0,0.342146746,syn,19950.07,cnl cgdis ss
+PS2_EU_SMALL,Gen10LP,A0,2.724954438,syn,19950.07,avg cgdis and pv
 PS2_EU_TCGA_DOP,Gen10LP,A0,1.432128521,syn,0,cnl cgdis ss
 PS2_Fabric_Assign,Gen10LP,A0,0.03665858,syn,20076.1,cnl cgdis ss
 PS2_Fabric_CLKGLUE,Gen10LP,A0,4.201562036,syn,1,cnl cgdis ss
-PS2_Fabric_CPunit,Gen10LP,A0,0.217507574,syn,9048.17,cnl cgdis ss
+PS2_Fabric_CPunit,Gen10LP,A0,0.092868402,syn,9048.17,cnl cgdis ss
 PS2_Fabric_DFX,Gen10LP,A0,0.105087929,syn,89802.21,cnl cgdis ss
 PS2_Fabric_DOP,Gen10LP,A0,1.359300142,syn,1,cnl cgdis ss
-PS2_Fabric_NONCLKGLUE,Gen10LP,A0,0.149322615,syn,1,
+PS2_Fabric_NONCLKGLUE,Gen10LP,A0,1.534772544,syn,1,average of cgdis and pv
 PS2_Fabric_Repeater,Gen10LP,A0,0,syn,1867252.2,
 PS2_Fabric_Top_Level,Gen10LP,A0,0,syn,1,From Kamal Sinha added 13.2 for scrightpar1and4
 PS2_FF_OTHER_Assign,Gen10LP,A0,1.075318343,syn,8943.882194,cnl cgdis ss
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,cnl cgdis ss
-PS2_FF_OTHER_CPunit,Gen10LP,A0,11.07089112,syn,41218.82154,cnl cgdis ss
+PS2_FF_OTHER_CPunit,Gen10LP,A0,4.838932544,syn,41218.82154,cnl cgdis ss
 PS2_FF_OTHER_DFX,Gen10LP,A0,3.763614201,syn,358151.005,cnl cgdis ss
 PS2_FF_OTHER_DOP,Gen10LP,A0,25.72943527,syn,1,cnl cgdis ss
-PS2_FF_OTHER_NONCLKGLUE,Gen10LP,A0,3.626755503,syn,1,cnl cgdis ss
+PS2_FF_OTHER_NONCLKGLUE,Gen10LP,A0,3.51067,syn,1,average of cgdis and pv
 PS2_FF_OTHER_Repeater,Gen10LP,A0,9.23796213,syn,365625.735,cnl cgdis ss
-PS2_FF_OTHER_SMALL,Gen10LP,A0,7.747179882,syn,260302.7943,cnl cgdis ss
+PS2_FF_OTHER_SMALL,Gen10LP,A0,5.14442071,syn,260302.7943,avg cgdis and pv
 PS2_FF_TEGSSOL_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_FF_TEGSSOL_CLKGLUE,Gen10LP,A0,17.97247976,syn,1,cnl cgdis ss
-PS2_FF_TEGSSOL_CPunit,Gen10LP,A0,5.303274556,syn,25997.64747,cnl cgdis ss
+PS2_FF_TEGSSOL_CPunit,Gen10LP,A0,2.419466272,syn,25997.64747,cnl cgdis ss
 PS2_FF_TEGSSOL_DFX,Gen10LP,A0,1.295269822,syn,177504.9812,cnl cgdis ss
 PS2_FF_TEGSSOL_DOP,Gen10LP,A0,7.402589231,syn,1,cnl cgdis ss
-PS2_FF_TEGSSOL_NONCLKGLUE,Gen10LP,A0,1.236616095,syn,1,cnl cgdis ss
+PS2_FF_TEGSSOL_NONCLKGLUE,Gen10LP,A0,1.276940533,syn,1,average of cgdis and pv
 PS2_FF_TEGSSOL_Repeater,Gen10LP,A0,0.879805917,syn,21778.29031,cnl cgdis ss
-PS2_FF_TEGSSOL_SMALL,Gen10LP,A0,4.325712426,syn,111216.2207,cnl cgdis ss
+PS2_FF_TEGSSOL_SMALL,Gen10LP,A0,2.810491124,syn,111216.2207,avg cgdis and pv
 PS2_FL_Bilinear_Else_13%,Gen10LP,A0,96.78642167,syn,1043103.473,from Praneeth
 PS2_FL_Bilinear_Else_17%,Gen10LP,A0,104.3627858,syn,1043103.473,from Praneeth
 PS2_FL_Bilinear_Else_23%,Gen10LP,A0,115.7273318,syn,1043103.473,from Praneeth
@@ -514,12 +544,12 @@ PS2_FL_Trilinear_Float32_50%,Gen10LP,A0,189.4791742,syn,1043103.473,from Praneet
 PS2_FT,Gen10LP,A0,17.06359908,syn,161245.082,from Praneeth
 PS2_GAM_Assign,Gen10LP,A0,8.40703432,syn,106839.87,cnl cgdis ss
 PS2_GAM_CLKGLUE,Gen10LP,A0,33.33731254,syn,1,cnl cgdis ss
-PS2_GAM_CPunit,Gen10LP,A0,7.160642604,syn,28460.73,cnl cgdis ss
+PS2_GAM_CPunit,Gen10LP,A0,3.22595503,syn,28460.73,cnl cgdis ss
 PS2_GAM_DFX,Gen10LP,A0,3.22595503,syn,304210.53,cnl cgdis ss
 PS2_GAM_DOP,Gen10LP,A0,14.84672485,syn,1,cnl cgdis ss
-PS2_GAM_NONCLKGLUE,Gen10LP,A0,2.790939882,syn,1,cnl cgdis ss
+PS2_GAM_NONCLKGLUE,Gen10LP,A0,2.860591183,syn,1,average of cgdis and pv
 PS2_GAM_Repeater,Gen10LP,A0,2.419466272,syn,105141.84,cnl cgdis ss
-PS2_GAM_SMALL,Gen10LP,A0,1.881807101,syn,53113.88,cnl cgdis ss
+PS2_GAM_SMALL,Gen10LP,A0,1.185294083,syn,53113.88,avg cgdis and pv
 PS2_GAMD_Cache_READ,Gen10LP,A0,13.0921,ebb,1,
 PS2_GAMD_Cache_WRITE,Gen10LP,A0,7.6371,ebb,1,
 PS2_GAMW_READ,Gen10LP,A0,4.5822,ebb,1,
@@ -533,20 +563,20 @@ PS2_GS_Cache_ReadWrite,Gen10LP,A0,8.789237699,ebb,1,
 PS2_GS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,
 PS2_GTI_Assign,Gen10LP,A0,5.205518343,syn,73602.82,cnl cgdis ss
 PS2_GTI_CLKGLUE,Gen10LP,A0,78.76218083,syn,1,cnl cgdis ss
-PS2_GTI_CPunit,Gen10LP,A0,9.751182249,syn,62477.48,cnl cgdis ss
+PS2_GTI_CPunit,Gen10LP,A0,5.596543195,syn,62477.48,cnl cgdis ss
 PS2_GTI_DFX,Gen10LP,A0,5.10776213,syn,670976.28,cnl cgdis ss
 PS2_GTI_DOP,Gen10LP,A0,17.12933243,syn,1,cnl cgdis ss
-PS2_GTI_NONCLKGLUE,Gen10LP,A0,7.788726272,syn,1,cnl cgdis ss
+PS2_GTI_NONCLKGLUE,Gen10LP,A0,7.734960355,syn,1,average of cgdis and pv
 PS2_GTI_Repeater,Gen10LP,A0,2.737173964,syn,48454.4,cnl cgdis ss
-PS2_GTI_SMALL,Gen10LP,A0,123.1239503,syn,1280692.06,cnl cgdis ss
+PS2_GTI_SMALL,Gen10LP,A0,59.315,syn,1280692.06,avg cgdis and pv
 PS2_HDC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_HDC_CLKGLUE,Gen10LP,A0,8.925142249,syn,1,cnl cgdis ss
-PS2_HDC_CPunit,Gen10LP,A0,2.883808284,syn,11422.03,cnl cgdis ss
+PS2_HDC_CPunit,Gen10LP,A0,1.295269822,syn,11422.03,cnl cgdis ss
 PS2_HDC_DFX,Gen10LP,A0,0.733171598,syn,89968.09,cnl cgdis ss
 PS2_HDC_DOP,Gen10LP,A0,5.545221183,syn,1,cnl cgdis ss
-PS2_HDC_NONCLKGLUE,Gen10LP,A0,0.701400828,syn,1,cnl cgdis ss
+PS2_HDC_NONCLKGLUE,Gen10LP,A0,0.701400828,syn,1,average of cgdis and pv
 PS2_HDC_Repeater,Gen10LP,A0,0.171073373,syn,10523.45,cnl cgdis ss
-PS2_HDC_SMALL,Gen10LP,A0,1.612977515,syn,115040.58,cnl cgdis ss
+PS2_HDC_SMALL,Gen10LP,A0,1.234172189,syn,115040.58,avg cgdis and pv
 PS1_HDCL1,Gen10LP,A0,12.03765029,syn,373422.6434,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HDCL1_CACHE_READS,Gen10LP,A0,17.53488545,ebb,1,CNL EBB Spreadsheet
 PS2_HDCL1_CACHE_WRITES,Gen10LP,A0,16.30781429,ebb,1,CNL EBB Spreadsheet
@@ -606,32 +636,32 @@ PS2_IZ_ZCOEFFFIFO_READ,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_IZ_ZCOEFFFIFO_WRITE,Gen10LP,A0,0,ebb,1,Does not exist in SKL anymore
 PS2_L3_Bank_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_L3_Bank_CLKGLUE,Gen10LP,A0,26.90984154,syn,1,cnl cgdis ss
-PS2_L3_Bank_CPunit,Gen10LP,A0,3.030442604,syn,12821,cnl cgdis ss
+PS2_L3_Bank_CPunit,Gen10LP,A0,1.344147929,syn,12821,cnl cgdis ss
 PS2_L3_Bank_DFX,Gen10LP,A0,1.002001183,syn,127000.43,cnl cgdis ss
 PS2_L3_Bank_DOP,Gen10LP,A0,11.57433562,syn,1,cnl cgdis ss
-PS2_L3_Bank_NONCLKGLUE,Gen10LP,A0,0.916464497,syn,1,cnl cgdis ss
+PS2_L3_Bank_NONCLKGLUE,Gen10LP,A0,0.916464497,syn,1,average of cgdis and pv
 PS2_L3_Bank_Repeater,Gen10LP,A0,3.128198817,syn,87058.42,cnl cgdis ss
-PS2_L3_Bank_SMALL,Gen10LP,A0,3.861370414,syn,191328.57,cnl cgdis ss
+PS2_L3_Bank_SMALL,Gen10LP,A0,4.044663314,syn,191328.57,avg cgdis and pv
 PS2_L3Node_Assign,Gen10LP,A0,4.716737278,syn,91326.18,cnl cgdis ss
 PS2_L3Node_CLKGLUE,Gen10LP,C0,48.0471787,syn,1,cnl cgdis ss
-PS2_L3Node_CPunit,Gen10LP,A0,3.201515976,syn,12703.83,cnl cgdis ss
+PS2_L3Node_CPunit,Gen10LP,A0,1.344147929,syn,12703.83,cnl cgdis ss
 PS2_L3Node_DFX,Gen10LP,C0,1.539660355,syn,65930.11,cnl cgdis ss
 PS2_L3Node_DOP,Gen10LP,A0,12.19019976,syn,1,cnl cgdis ss
-PS2_L3Node_NONCLKGLUE,Gen10LP,C0,1.366143077,syn,1,cnl cgdis ss
+PS2_L3Node_NONCLKGLUE,Gen10LP,C0,1.379584556,syn,1,average of cgdis and pv
 PS2_L3Node_Repeater,Gen10LP,A0,14.71231006,syn,721319.43,cnl cgdis ss
-PS2_L3Node_SMALL,Gen10LP,A0,8.920254438,syn,277618.19,cnl cgdis ss
+PS2_L3Node_SMALL,Gen10LP,A0,5.682079882,syn,277618.19,avg cgdis and pv
 PS2_LTCD_EBB_HB_Read,Gen10LP,A0,59.5365,ebb,1,Normalized to 1.2GHz
 PS2_LTCD_EBB_HB_Write,Gen10LP,A0,59.722,ebb,1,Normalized to 1.2GHz
 PS2_LTCD_EBB_Read,Gen10LP,A0,87.4991,ebb,1,Normalized to 1.2GHz
 PS2_LTCD_EBB_Write,Gen10LP,A0,80.6258,ebb,1,Normalized to 1.2GHz
 PS2_MEDIASMP_Assign,Gen10LP,A0,0,syn,0,
 PS2_MEDIASMP_CLKGLUE,Gen10LP,A0,9.910036095,syn,1,
-PS2_MEDIASMP_CPunit,Gen10LP,A0,2.908247337,syn,11336.86,
+PS2_MEDIASMP_CPunit,Gen10LP,A0,1.368586982,syn,11336.86,
 PS2_MEDIASMP_DFX,Gen10LP,A0,0.830927811,syn,148454.39,
 PS2_MEDIASMP_DOP,Gen10LP,A0,8.206634083,syn,1,
-PS2_MEDIASMP_NONCLKGLUE,Gen10LP,A0,0.894469349,syn,1,
+PS2_MEDIASMP_NONCLKGLUE,Gen10LP,A0,6.079214497,syn,1,average of cgdis and pv
 PS2_MEDIASMP_Repeater,Gen10LP,A0,0,syn,28598.69,
-PS2_MEDIASMP_SMALL,Gen10LP,A0,2.883808284,syn,188048.64,
+PS2_MEDIASMP_SMALL,Gen10LP,A0,16.3375071,syn,188048.64,avg cgdis and pv
 PS2_MSC_CACHE_READ,Gen10LP,A0,16.8016,ebb,1,Assuming 512 bits. No banking in gSim for MSC
 PS2_MSC_CACHE_WRITE,Gen10LP,A0,12.0011,ebb,1,Assuming 512 bits. No banking in gSim for MSC
 PS2_MT_BYPASS,Gen10LP,A0,10.42503832,syn,388445.4835,from Praneeth
@@ -683,22 +713,32 @@ PS2_RCPFE_RCCLATFIFO_READ,Gen10LP,A0,1.582,ebb,1,
 PS2_RCPFE_RCCLATFIFO_WRITE,Gen10LP,A0,1.2547,ebb,1,
 PS2_RCZ_CACHE_READ,Gen10LP,A0,4.4186,ebb,1,Using 128 bits. Need to confirm with gSim.
 PS2_RCZ_CACHE_WRITE,Gen10LP,A0,3.1094,ebb,1,Using 128 bits. Need to confirm with gSim.
+PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,55.74009888,syn,1,Taken from CNL  CGEN data
+PS2_rFF_rOTHER_DFX,Gen10LP,A0,17.78271504,syn,338851.4526,Taken from CNL  CGEN data
+PS2_rFF_rOTHER_DOP,Gen10LP,A0,26.62536763,syn,1,
+PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,0,syn,1,
 PS2_ROSC_Assign,Gen10LP,A0,0.244390533,syn,12438.13,cnl cgdis ss
 PS2_ROSC_CLKGLUE,Gen10LP,A0,22.04158213,syn,1,cnl cgdis ss
-PS2_ROSC_CPunit,Gen10LP,A0,4.472346746,syn,17191.99,cnl cgdis ss
+PS2_ROSC_CPunit,Gen10LP,A0,2.150636686,syn,17191.99,cnl cgdis ss
 PS2_ROSC_DFX,Gen10LP,A0,1.710733728,syn,132362.32,cnl cgdis ss
 PS2_ROSC_DOP,Gen10LP,A0,14.65854414,syn,1,cnl cgdis ss
-PS2_ROSC_NONCLKGLUE,Gen10LP,A0,1.256167337,syn,1,cnl cgdis ss
+PS2_ROSC_NONCLKGLUE,Gen10LP,A0,1.258611243,syn,1,average of cgdis and pv
 PS2_ROSC_Repeater,Gen10LP,A0,3.201515976,syn,135372.47,cnl cgdis ss
-PS2_ROSC_SMALL,Gen10LP,A0,1.784050888,syn,48197.89,cnl cgdis ss
+PS2_ROSC_SMALL,Gen10LP,A0,1.234172189,syn,48197.89,avg cgdis and pv
 PS2_ROSS_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_ROSS_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,cnl cgdis ss
-PS2_ROSS_CPunit,Gen10LP,A0,6.818495858,syn,30559,cnl cgdis ss
+PS2_ROSS_CPunit,Gen10LP,A0,3.274833136,syn,30559,cnl cgdis ss
 PS2_ROSS_DFX,Gen10LP,A0,1.637416568,syn,185260.21,cnl cgdis ss
 PS2_ROSS_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
-PS2_ROSS_NONCLKGLUE,Gen10LP,A0,1.923353491,syn,1,cnl cgdis ss
+PS2_ROSS_NONCLKGLUE,Gen10LP,A0,11.00857154,syn,1,average of cgdis and pv
 PS2_ROSS_Repeater,Gen10LP,A0,2.150636686,syn,98496.81,cnl cgdis ss
-PS2_ROSS_SMALL,Gen10LP,A0,10.5087929,syn,354868.84,cnl cgdis ss
+PS2_ROSS_SMALL,Gen10LP,A0,9.775621302,syn,354868.84,avg cgdis and pv
+PS2_rVF_Cache_Read,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Read,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen10LP,A0,0,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVS_Cache_Read,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen10LP,A0,0,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_SC_Bilinear_Trilinear_Aniso_128BPT,Gen10LP,A0,53.23532533,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_32BPT,Gen10LP,A0,53.34783791,syn,495353.1406,from Praneeth
 PS2_SC_Bilinear_Trilinear_Aniso_64BPT,Gen10LP,A0,38.76644763,syn,495353.1406,from Praneeth
@@ -735,12 +775,12 @@ PS2_VS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gS
 PS2_VS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_Z_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_Z_CLKGLUE,Gen10LP,C0,24.05291621,syn,1,cnl cgdis ss
-PS2_Z_CPunit,Gen10LP,A0,3.98356568,syn,14908.05,cnl cgdis ss
+PS2_Z_CPunit,Gen10LP,A0,1.759611834,syn,14908.05,cnl cgdis ss
 PS2_Z_DFX,Gen10LP,C0,2.272,syn,139880.36,cnl cgdis ss
 PS2_Z_DOP,Gen10LP,A0,15.68498438,syn,1,cnl cgdis ss
-PS2_Z_NONCLKGLUE,Gen10LP,C0,1.903802249,syn,1,cnl cgdis ss
+PS2_Z_NONCLKGLUE,Gen10LP,C0,1.850036331,syn,1,average of cgdis and pv
 PS2_Z_Repeater,Gen10LP,A0,6.965130178,syn,158994.88,cnl cgdis ss
-PS2_Z_SMALL,Gen10LP,C0,0.195512426,syn,660.83,cnl cgdis ss
+PS2_Z_SMALL,Gen10LP,C0,0.195512426,syn,660.83,avg cgdis and pv
 PS1_AVS,Gen10LP,A0,10.89981775,syn,1310585.85,cnl cgdis ss
 PS1_BC,Gen10LP,A0,4.447907692,syn,711851.94,cnl cgdis ss
 PS1_CC,Gen10LP,A0,17.03402012,syn,1141860.18,cnl cgdis ss
@@ -843,6 +883,7 @@ PS1_VSFE,Gen10LP,A0,9.971133728,syn,728350.0838,cnl cgdis ss
 PS1_WMBE,Gen10LP,A0,2.883808284,syn,908715.43,cnl cgdis ss
 PS1_WMFE,Gen10LP,A0,8.40703432,syn,594102.69,cnl cgdis ss
 PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
+PS0_rVS_Cache_Idle,Gen10LP,A0,4.879404808,syn,1699440.61,from cnl fso cgen ss
 PS0_GTI_CKgated,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
 FPU0_add_fp64_10%,Gen10LP,B0,14.0849312,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_15%,Gen10LP,B0,15.20358917,syn,382681.36,from durga with Astep to Bstep scalars
@@ -2297,6 +2338,7 @@ PS0_L3Node_DOP,Gen9LPClient,C0,21.712,syn,1,
 PS0_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.676,syn,1,
 PS0_L3Node_Repeater,Gen9LPClient,C0,22.154,syn,157040,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
+PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
 PS0_L3XSRC,Gen9LPClient,C0,149.33,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNE,Gen9LPClient,A0,5.51,syn,449149.31,
 PS0_LNEXS,Gen9LPClient,C0,5.19,syn,533934,Taken from SKL C0 ECO1 GT3 CGEN data
@@ -3134,6 +3176,7 @@ PS2_L3Node_DFX,Gen9LPClient,C0,2.907,syn,93630,
 PS2_L3Node_DOP,Gen9LPClient,C0,21.712,syn,1,
 PS2_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.628,syn,1,
 PS2_L3Node_Repeater,Gen9LPClient,C0,22.274,syn,157040,
+PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3XSRC,Gen9LPClient,C0,223.995,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNE,Gen9LPClient,A0,205.62,syn,449149.31,
@@ -4915,6 +4958,7 @@ PS0_GTI_SMALL,Gen9LPSoc,B0,20.87777778,syn,655321.74,
 PS0_HDC_SMALL,Gen9LPSoc,B0,13.98888889,syn,118537.92,
 PS0_L3_Bank_SMALL,Gen9LPSoc,B0,0.411111111,syn,39930.16,
 PS0_L3Node_SMALL,Gen9LPSoc,B0,0.955555556,syn,94276.93,
+PS0_L3Node_SMALL,Gen9LPSoc,B0,0.955555556,syn,94276.93,
 PS0_MEDIASMP_SMALL,Gen9LPSoc,B0,0.077777778,syn,12454.51,
 PS0_ROSC_SMALL,Gen9LPSoc,B0,0,syn,0,
 PS0_ROSS_SMALL,Gen9LPSoc,B0,7.688888889,syn,293448.69,
@@ -4928,6 +4972,7 @@ PS2_GAM_SMALL,Gen9LPSoc,B0,34.58333333,syn,204166.88,
 PS2_GTI_SMALL,Gen9LPSoc,B0,27.38333333,syn,655321.74,
 PS2_HDC_SMALL,Gen9LPSoc,B0,15.63888889,syn,118537.92,
 PS2_L3_Bank_SMALL,Gen9LPSoc,B0,1.355555556,syn,39930.16,
+PS2_L3Node_SMALL,Gen9LPSoc,B0,1.6,syn,94276.93,
 PS2_L3Node_SMALL,Gen9LPSoc,B0,1.6,syn,94276.93,
 PS2_MEDIASMP_SMALL,Gen9LPSoc,B0,0.077777778,syn,12454.51,
 PS2_ROSC_SMALL,Gen9LPSoc,B0,0,syn,0,
@@ -4980,20 +5025,3 @@ PS2_L3_Bank_CLKGLUE,Gen9LPSoc,B0,29.76222222,syn,1,
 PS2_MEDIASMP_CLKGLUE,Gen9LPSoc,B0,11.76777778,syn,1,
 PS2_ROSC_CLKGLUE,Gen9LPSoc,B0,19.78444444,syn,1,
 PS2_ROSS_CLKGLUE,Gen9LPSoc,B0,24.80555556,syn,1,
-PS0_rCL,Gen10LP,A0,3.763614201,syn,1692289.962,from cnl fso cgen ss
-PS0_rSF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
-PS0_rVF,Gen10LP,A0,4.545663905,syn,1695009.145,from cnl fso cgen ss
-PS0_rVFE,Gen10LP,A0,0.07331716,syn,106164.475,from cnl fso cgen ss
-PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_rVFBE1,Gen10LP,A0,0.317707692,syn,795859.9759,from cnl fso cgen ss
-PS0_rVFBE2,Gen10LP,A0,0.366585799,syn,795859.9759,from cnl fso cgen ss
-PS0_rVSBE,Gen10LP,A0,0.684293491,syn,1097712.546,from cnl fso cgen ss
-PS0_rVSFE,Gen10LP,A0,0.537659172,syn,728350.0838,from cnl fso cgen ss
-PS2_rVF_Cache_Read,Gen10LP,A0,2.7003,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_Cache_Write,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Read,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Write,Gen10LP,A0,1.882,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_rVS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
-PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
