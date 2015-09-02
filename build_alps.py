@@ -85,7 +85,7 @@ elif common_cfg.find('chv') > -1 :
     cfg ='Gen8SoC'
 elif common_cfg.find('bxt') > -1 :
     cfg ='Gen9LPSoC'
-elif common_cfg.find('cnlh') > -1 :
+elif common_cfg.find('cnl_h') > -1 :
     cfg ='Gen11LP'
 elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
@@ -103,7 +103,7 @@ else:
     lf.close()
     exit(2);
 
-if common_cfg.find('cnlh') > -1 :
+if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
 else:
     cfg_gc = cfg
