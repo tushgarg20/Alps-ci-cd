@@ -14,6 +14,7 @@ my $pool			= '';
 my $qslot			= '';
 my $annealing			= '';
 my $cnl				= '';
+my $icl				= '';
 
 Getopt::Long::GetOptions(
         "input|i=s"		=> \$tracelist,
@@ -23,7 +24,8 @@ Getopt::Long::GetOptions(
 	"pool|p=s"		=> \$pool,
 	"qslot|q=s"		=> \$qslot,
 	"annealing"		=> \$annealing,
-	"cnl"			=> \$cnl
+	"cnl"			=> \$cnl,
+	"icl"			=> \$icl
         
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -36,6 +38,7 @@ die "Illegal output directory specification: $odir!!" unless -e $odir and -d $od
 my $script = $sdir . "run_alps_nb.py";
 my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml";
 $cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
+$cfg_file = ($icl) ? $sdir . "alps_cfg_icl.yaml" : $cfg_file;
 
 my $class = '2G&&nosusp&&(SLES10||SLES11)';
 
