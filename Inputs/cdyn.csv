@@ -3268,22 +3268,22 @@ PS2_LNIXS_BW,Gen9LPClient,A0,0,syn,1,
 PS2_LSLM_Atomics,Gen9LPClient,A0,45.99,syn,239136.8,
 PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.61,syn,239136.8,
 PS2_LSQC,Gen9LPClient,A0,36.16,syn,376450.15,5% TR
-PS2_LSQD_atomics,Gen9LPClient,A0,170.13,syn,317471.15,Approximated using nonatomics and LSLM atomics to nonatomics ratio
-PS2_LSQD_nonatomics,Gen9LPClient,A0,124.32,syn,317471.15,26% TR
-PS2_LTCC,Gen9LPClient,A0,3.77,syn,23507.9,7% TR
-PS2_LTCD_Data_Else,Gen9LPClient,A0,18.98,syn,720863.55,
-PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,79.75,syn,720863.55,
-PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen9LPClient,A0,114.78,syn,720863.55,
-PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,96.26,syn,720863.55,25% TR
-PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,99.31,syn,720863.55,
-PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,26.33,syn,720863.55,
-PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,43.88,syn,720863.55,
-PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,86.40507,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,113.9279,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen9LPClient,A0,127.057,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen9LPClient,A0,152.2744,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,124.74,syn,720863.55,25% TR
-PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,128.7,syn,720863.55,
+PS2_LSQD_atomics,Gen9LPClient,A0,289.221,syn,317471.15,1.7x Approximated using nonatomics and LSLM atomics to nonatomics ratio
+PS2_LSQD_nonatomics,Gen9LPClient,A0,211.344,syn,317471.15,1.7x 26% TR
+PS2_LTCC,Gen9LPClient,A0,6.409,syn,23507.9,1.7x 7% TR
+PS2_LTCD_Data_Else,Gen9LPClient,A0,32.266,syn,720863.55,1.7x
+PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,135.575,syn,720863.55,1.7x
+PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen9LPClient,A0,195.126,syn,720863.55,1.7x
+PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen9LPClient,A0,163.642,syn,720863.55,1.7x 25% TR
+PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen9LPClient,A0,168.827,syn,720863.55,1.7x
+PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen9LPClient,A0,44.761,syn,720863.55,1.7x
+PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,74.596,syn,720863.55,1.7x
+PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,172.8101,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,227.8558,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Read,Gen9LPClient,A0,254.114,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,304.5488,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,212.058,syn,720863.55,1.7x 25% TR
+PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,218.79,syn,720863.55,1.7x
 PS2_MA_IN,Gen9LPClient,C0,9.004,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_MA_OUT,Gen9LPClient,C0,2.89,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_MBGF_READ,Gen9LPClient,C0,74.08,syn,449010,Taken from SKL C0 ECO1 GT3 CGEN data
