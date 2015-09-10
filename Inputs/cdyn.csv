@@ -3153,6 +3153,8 @@ PS2_HDC_Ret_NonSequenced_Read,Gen9LPClient,A0,80.95,syn,557517.49,5% TR
 PS2_HDC_Ret_Sequenced_Else_Data_Read,Gen9LPClient,A0,81.87,syn,557517.49,37% TR
 PS2_HDC_Ret_Sequenced_Else_SLM_Read,Gen9LPClient,A0,109.6,syn,557517.49,Unknown
 PS2_HDC_Ret_Sequenced_Typed_Read,Gen9LPClient,A0,81.87,syn,557517.49,Approximated with Data Read
+PS2_HDC_Ret_Message,Gen9LPClient,A0,109.6,syn,557517.49,Approximating with PS2_HDC_Ret_Sequenced_Else_SLM_Read
+PS2_HDC_Ret_MediaBlock,Gen9LPClient,A0,109.6,syn,557517.49,PS2_HDC_Ret_Sequenced_Else_SLM_Read
 PS2_HDC_SMALL,Gen9LPClient,C0,5.911,syn,38990,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_HDCTLB_Read_Hit,Gen9LPClient,A0,43.71,syn,404200.38,22% TR
 PS2_HDCTLB_Read_Miss,Gen9LPClient,A0,36.39,syn,404200.38,2% TR
