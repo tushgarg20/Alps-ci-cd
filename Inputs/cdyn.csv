@@ -3,12 +3,12 @@ PS1_MBGFGT,Gen10LP,A0,21.476,syn,168549.91,from cnl fso cgdis ss
 PS1_MBGFUC,Gen10LP,A0,25.5116,syn,200242.88,from cnl fso cgdis ss
 PS1_MDRB,Gen10LP,A0,18.9272,syn,391685.56,from cnl fso cgdis ss
 PS1_MFC,Gen10LP,A0,0.708,syn,28063.21,from cnl fso cgdis ss
-PS1_MSNP,Gen10LP,A0,9.3692,syn,652727.29,from cnl fso cgdis ss
+PS1_MSNP,Gen10LP,A0,14.0692,syn,652727.29,from cnl fso cgdis ss
 PS0_MBGFGT,Gen10LP,A0,18.37804769,syn,168549.91,from cnl fso cgen ss
 PS0_MBGFUC,Gen10LP,A0,22.24,syn,200242.88,from cnl fso cgen ss
 PS0_MDRB,Gen10LP,A0,0.807557355,syn,391685.56,from cnl fso cgen ss
 PS0_MFC,Gen10LP,A0,0.19577148,syn,28063.21,from cnl fso cgen ss
-PS0_MSNP,Gen10LP,A0,9.88645974,syn,652727.29,from cnl fso cgen ss
+PS0_MSNP,Gen10LP,A0,10.43645974,syn,652727.29,from cnl fso cgen ss
 PS0_HDC_Ret2,Gen10LP,A0,0.049,syn,19930,from cnl fso cgen ss
 PS0_HDC_Ret1,Gen10LP,A0,0.194,syn,1026652,from cnl fso cgen ss
 PS0_AVS,Gen10LP,A0,0.782049704,syn,1310585.85,from cnl fso cgen ss
