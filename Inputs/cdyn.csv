@@ -351,6 +351,8 @@ PS2_AVS_DataStorageRAM_READ,Gen10LP,A0,1.5001,ebb,1,Need to confirm with Niraj
 PS2_AVS_DataStorageRAM_WRITE,Gen10LP,A0,1.1728,ebb,1,Need to confirm with Niraj
 PS2_BC_BARYRAM_READ,Gen10LP,A0,2.6457,ebb,1,Need to check with gSim - 1x116 io assumed
 PS2_BC_BARYRAM_WRITE,Gen10LP,A0,1.9911,ebb,1,Need to check with gSim - 1x116 io assumed
+PS2_BC_COMPUTE,Gen10LP,A0,52.570305,syn,709855.1666,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_BC_FLOWTHROUGH,Gen10LP,A0,10.127675,syn,709855.1666,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_BTGEN_Cache_Read,Gen10LP,A0,0,ebb,1,
 PS2_BTGEN_Cache_ReadWrite,Gen10LP,A0,7.346806426,ebb,1,
 PS2_BTGEN_Cache_Write,Gen10LP,A0,0,ebb,1,
@@ -797,6 +799,9 @@ PS2_PSD_BARYPAYLDASMRAM_READ,Gen10LP,A0,5.8915,ebb,1,Need to check with gSim - 1
 PS2_PSD_BARYPAYLDASMRAM_WRITE,Gen10LP,A0,4.5822,ebb,1,Need to check with gSim - 1x128 io assumed
 PS2_PSD_SCOREBOARD_READ,Gen10LP,A0,1.1456,ebb,1,Need to check with gSim - 4x8 io assumed
 PS2_PSD_SCOREBOARD_WRITE,Gen10LP,A0,1.091,ebb,1,Need to check with gSim - 4x8 io assumed
+PS2_PSD_NOTHREADDISPATCH,Gen10LP,A0,7.70649,syn,757559.1473,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_PSD_THREADDISPATCH,Gen10LP,A0,59.5405,syn,757559.1473,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_PSD_WAITINGONFLUSH,Gen10LP,A0,6.236795,syn,757559.1473,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_RCC_CACHE_READ,Gen10LP,A0,4.9096,ebb,1,Assuming 160 bits even though no banking in gSim 
 PS2_RCC_CACHE_WRITE,Gen10LP,A0,3.9276,ebb,1,Assuming 160 bits even though no banking in gSim 
 PS2_RCPFE_COLORLATFIFO_READ,Gen10LP,A0,22.4203,ebb,1,
