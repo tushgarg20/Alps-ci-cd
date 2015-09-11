@@ -691,7 +691,7 @@ PS2_DAPRSC,Gen10LP,A0,53.2264307,syn,554536.3792,Raw Cdyn * 0.965 (x1r0-x1r1 sca
 PS2_SBE_CALC,Gen10LP,A0,16.81995,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_FETCH,Gen10LP,A0,15.564485,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_REPLAY,Gen10LP,A0,25.06105,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc, fetch, replay"
+PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc,fetch,replay"
 PS2_SDE_Culled,Gen10LP,A0,1.3896,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SDE_NotCulled,Gen10LP,A0,4.9215,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HS_Cache_Read,Gen10LP,A0,3.3276,ebb,1,
@@ -972,7 +972,7 @@ PS1_VSFE,Gen10LP,A0,9.971133728,syn,728350.0838,cnl cgdis ss
 PS1_WMBE,Gen10LP,A0,2.883808284,syn,908715.43,cnl cgdis ss
 PS1_WMFE,Gen10LP,A0,8.40703432,syn,594102.69,cnl cgdis ss
 PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
-PS0_GTI_CKgated,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
+PS0_GTI_MediaIdle,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
 FPU0_add_fp64_10%,Gen10LP,B0,14.0849312,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_15%,Gen10LP,B0,15.20358917,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_18%,Gen10LP,B0,16.17058346,syn,382681.36,from durga with Astep to Bstep scalars
