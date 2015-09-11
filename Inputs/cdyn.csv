@@ -724,10 +724,30 @@ PS2_L3Node_DOP,Gen10LP,A0,12.19019976,syn,1,cnl cgdis ss
 PS2_L3Node_NONCLKGLUE,Gen10LP,C0,1.379584556,syn,1,average of cgdis and pv
 PS2_L3Node_Repeater,Gen10LP,A0,14.71231006,syn,721319.43,cnl cgdis ss
 PS2_L3Node_SMALL,Gen10LP,A0,5.682079882,syn,277618.19,avg cgdis and pv
-PS2_LTCD_EBB_HB_Read,Gen10LP,A0,59.5365,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_HB_Write,Gen10LP,A0,59.722,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Read,Gen10LP,A0,87.4991,ebb,1,Normalized to 1.2GHz
-PS2_LTCD_EBB_Write,Gen10LP,A0,80.6258,ebb,1,Normalized to 1.2GHz
+PS2_LTCD_EBB_HB_Read,Gen10LP,A0,119.073,ebb,1,Normalized to 0.6GHz(1x clk)
+PS2_LTCD_EBB_HB_Write,Gen10LP,A0,119.444,ebb,1,Normalized to 0.6GHz(1x clk)
+PS2_LTCD_EBB_Read,Gen10LP,A0,174.9982,ebb,1,Normalized to 0.6GHz(1x clk)
+PS2_LTCD_EBB_Write,Gen10LP,A0,161.2516,ebb,1,Normalized to 0.6GHz(1x clk)
+PS2_LNE,Gen10LP,A0,65.5059152,syn,880216.8913,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LNEXS,Gen10LP,A0,190.0860632,syn,880216.8913,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LNEXS_BW,Gen10LP,A0,0,syn,1,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LNI,Gen10LP,A0,238.37092,syn,1591604.215,LNIXS-LSNLNIFUB
+PS2_LNIXS,Gen10LP,A0,308.37092,syn,1591604.215,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LNIXS_BW,Gen10LP,A0,0,syn,1,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LSLM_Atomics,Gen10LP,A0,200.466992,syn,422752.1143,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LSLM_NonAtomics,Gen10LP,A0,112.6267032,syn,422752.1143,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LSQC,Gen10LP,A0,109.9606763,syn,1099094.66,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LSQD_atomics,Gen10LP,A0,214.844696,syn,496857.7069,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LSQD_nonatomics,Gen10LP,A0,132.7284942,syn,496857.7069,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_Else,Gen10LP,A0,39.12692426,syn,297078.0846,Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen10LP,A0,104.8007011,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen10LP,A0,150.9130096,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen10LP,A0,253.4795023,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen10LP,A0,261.0838874,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen10LP,A0,66.05800432,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen10LP,A0,81.10899104,syn,297078.0846,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen10LP,A0,177.9132212,syn,790149.6801,1.7 * Plite*0.968(x1r0-x1r1 scalar)
+PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen10LP,A0,168.7466401,syn,790149.6801,1.7 * Plite*0.968(x1r0-x1r1 scalar)
 PS2_MEDIASMP_Assign,Gen10LP,A0,0,syn,0,
 PS2_MEDIASMP_CLKGLUE,Gen10LP,A0,9.910036095,syn,1,
 PS2_MEDIASMP_CPunit,Gen10LP,A0,1.368586982,syn,11336.86,
@@ -890,7 +910,7 @@ PS1_LNEXS,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS1_LNI,Gen10LP,A0,102.9128533,syn,1667036.22,cnl cgdis ss
 PS1_LNIXS,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS1_LSLM,Gen10LP,A0,27.20066627,syn,423613.57,cnl cgdis ss
-PS1_LSQC,Gen10LP,A0,44.35688166,syn,1109506.04,cnl cgdis ss
+PS1_LSQC,Gen10LP,A0,17.92884878,syn,1099094.66,Plite*0.968(x1r0-x1r1 scalar)-1slot active scenario
 PS1_LSQD,Gen10LP,A0,41.71746391,syn,497779.11,cnl cgdis ss
 PS1_LTCC,Gen10LP,A0,0.782049704,syn,45699.37,cnl cgdis ss
 PS1_LTCD_Data,Gen10LP,A0,39.12692426,syn,346662.35,cnl cgdis ss
