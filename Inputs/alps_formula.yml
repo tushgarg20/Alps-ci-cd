@@ -1180,10 +1180,8 @@ HDC:
     PS0_HDC_Ret: R * C
     PS1_HDC_Ret: R * C
     PS2_HDC_Ret:
-      PS2_HDC_Ret_Sequenced_Typed_Read: R * C
-      PS2_HDC_Ret_Sequenced_Else_Data_Read: R * C
-      PS2_HDC_Ret_Sequenced_Else_SLM_Read: R * C
-      PS2_HDC_Ret_NonSequenced_Read: R * C
+      PS2_HDC_Ret_Message: R * C
+      PS2_HDC_Ret_MediaBlock: R * C
    HDCTLB:
     PS0_HDCTLB_DOP: R * C
     PS0_HDCTLB: R * C

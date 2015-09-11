@@ -66,13 +66,20 @@
 	PS2_HDC_ReqData_NonSequenced_Write	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_WRITE@')) / (numHDCs * .CrClk)	
 				
 #HDCRET				
+	#PS0_HDC_Ret_DOP	=	.HDC_DOP	
+	#PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
+	#PS1_HDC_Ret	=	1 - (PS0_HDC_Ret_DOP + PS0_HDC_Ret + PS2_HDC_Ret_Sequenced_Typed_Read + PS2_HDC_Ret_Sequenced_Else_Data_Read + PS2_HDC_Ret_Sequenced_Else_SLM_Read + PS2_HDC_Ret_NonSequenced_Read)	
+	#PS2_HDC_Ret_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
+	#PS2_HDC_Ret_Sequenced_Else_Data_Read	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
+	#PS2_HDC_Ret_Sequenced_Else_SLM_Read	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
+	#PS2_HDC_Ret_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
+
 	PS0_HDC_Ret_DOP	=	.HDC_DOP	
-	PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@HDCReq_dataret_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - .HDC_DOP	
-	PS1_HDC_Ret	=	1 - (PS0_HDC_Ret_DOP + PS0_HDC_Ret + PS2_HDC_Ret_Sequenced_Typed_Read + PS2_HDC_Ret_Sequenced_Else_Data_Read + PS2_HDC_Ret_Sequenced_Else_SLM_Read + PS2_HDC_Ret_NonSequenced_Read)	
-	PS2_HDC_Ret_Sequenced_Typed_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@SEQUENCED_TYPE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_Sequenced_Else_Data_Read	=	D(SUM('@ANY_HDC@Transactions_Data\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_Sequenced_Else_SLM_Read	=	D(SUM('@ANY_HDC@Transactions_SLM\.CrClock\.@SEQUENCED_ELSE_READ@')) / (numHDCs * .CrClk)	
-	PS2_HDC_Ret_NonSequenced_Read	=	D(SUM('@ANY_HDC@Transactions_(Data|SLM)\.CrClock\.@NONSEQUENCED_READ@')) / (numHDCs * .CrClk)	
+	PS0_HDC_Ret	=	(D(SUM('@ANY_HDC@RET1_Idle')) / (numHDCs * .CrClk)) - .HDC_DOP	
+	PS1_HDC_Ret	=	(D(SUM('@ANY_HDC@RET1_Stall')) / (numHDCs * .CrClk))	
+	PS2_HDC_Ret_Message	=	D(SUM('@ANY_HDC@RET1_Msg')) / (numHDCs * .CrClk) #Transaction Based Model	
+	PS2_HDC_Ret_MediaBlock	=	D(SUM('@ANY_HDC@RET1_MediaBlk')) / (numHDCs * .CrClk) #Transaction Based Model
+
 #HDCTLB				
 	PS0_HDCTLB_DOP	=	0	#HDCTLB is not DOP gated
 	PS0_HDCTLB	=	(D(SUM('@ANY_HDC@@ANY_TLB@_idle_cycle\.CrClock')) / (numHDCs * .CrClk)) - PS0_HDCTLB_DOP	
