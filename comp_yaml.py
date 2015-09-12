@@ -40,8 +40,14 @@ for header in header_list:
 cat_list = [ "physical_cdyn_numbers(pF)",  "cluster_cdyn_numbers(pF)" ]
 for category in cat_list:
     print (category, ":")
-    sec_list  = list(yaml_data['ref'][category].keys())
-    sec_list += list(yaml_data['new'][category].keys())
+    try:
+        sec_list  = list(yaml_data['ref'][category].keys())
+    except:
+        continue
+    try:
+        sec_list += list(yaml_data['new'][category].keys())
+    except:
+        continue
     sec_list.sort()
     sec_done  = {}
 
@@ -131,7 +137,10 @@ for cluster in sec_list:
         unit_list  = list(yaml_data['ref'][category]['GT'][cluster].keys())
     except:
         unit_list  = []
-    unit_list += list(yaml_data['new'][category]['GT'][cluster].keys())
+    try:
+        unit_list += list(yaml_data['new'][category]['GT'][cluster].keys())
+    except:
+        continue
     unit_list.sort()
     done_list  = {}
     for unit in unit_list:
