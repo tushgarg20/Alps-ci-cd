@@ -694,6 +694,25 @@ PS2_SBE_REPLAY,Gen10LP,A0,25.06105,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 s
 PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc,fetch,replay"
 PS2_SDE_Culled,Gen10LP,A0,1.3896,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SDE_NotCulled,Gen10LP,A0,4.9215,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_READ,Gen10LP,A0,94.05061416,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_WRITE,Gen10LP,A0,105.7838562,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS1_MSQC,Gen10LP,A0,36.07227128,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQC,Gen10LP,A0,70.3485,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQC_ATOMICS,Gen10LP,A0,94.870115,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_U2C,Gen10LP,A0,145.912825,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_C2U,Gen10LP,A0,181.6623115,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_ATOMICS,Gen10LP,A0,156.0961805,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSNP_C2U,Gen10LP,A0,27.814195,syn,652727.29,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSNP_U2C,Gen10LP,A0,27.814195,syn,652727.29,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_U2C,Gen10LP,A0,123.708175,syn,645908.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_C2U,Gen10LP,A0,53.92034,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_U2C_AES,Gen10LP,A0,236.04286,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_C2U_AES,Gen10LP,A0,243.769615,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MIDI_U2C,Gen10LP,A0,2.237835,syn,14160.02,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MIDI_C2U,Gen10LP,A0,2.09405,syn,14160.02,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MFC,Gen10LP,A0,1.0816685,syn,28063.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MDRB_C2U,Gen10LP,A0,36.4191,syn,391685.56,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MDRB_U2C,Gen10LP,A0,36.4191,syn,391685.56,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HS_Cache_Read,Gen10LP,A0,3.3276,ebb,1,
 PS2_HS_Cache_ReadWrite,Gen10LP,A0,8.789237699,ebb,1,
 PS2_HS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,
