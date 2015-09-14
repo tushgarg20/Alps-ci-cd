@@ -3,12 +3,12 @@ PS1_MBGFGT,Gen10LP,A0,21.476,syn,168549.91,from cnl fso cgdis ss
 PS1_MBGFUC,Gen10LP,A0,25.5116,syn,200242.88,from cnl fso cgdis ss
 PS1_MDRB,Gen10LP,A0,18.9272,syn,391685.56,from cnl fso cgdis ss
 PS1_MFC,Gen10LP,A0,0.708,syn,28063.21,from cnl fso cgdis ss
-PS1_MSNP,Gen10LP,A0,14.0692,syn,652727.29,from cnl fso cgdis ss
+PS1_MSNP,Gen10LP,A0,9.7,syn,335038,from cnl fso cgdis ss
 PS0_MBGFGT,Gen10LP,A0,18.37804769,syn,168549.91,from cnl fso cgen ss
 PS0_MBGFUC,Gen10LP,A0,22.24,syn,200242.88,from cnl fso cgen ss
 PS0_MDRB,Gen10LP,A0,0.807557355,syn,391685.56,from cnl fso cgen ss
 PS0_MFC,Gen10LP,A0,0.19577148,syn,28063.21,from cnl fso cgen ss
-PS0_MSNP,Gen10LP,A0,10.43645974,syn,652727.29,from cnl fso cgen ss
+PS0_MSNP,Gen10LP,A0,0.66,syn,335038,from cnl fso cgen ss
 PS0_HDC_Ret2,Gen10LP,A0,0.049,syn,19930,from cnl fso cgen ss
 PS0_HDC_Ret1,Gen10LP,A0,0.194,syn,1026652,from cnl fso cgen ss
 PS0_AVS,Gen10LP,A0,0.782049704,syn,1310585.85,from cnl fso cgen ss
@@ -138,7 +138,7 @@ PS0_GTI_DFX,Gen10LP,A0,5.10776213,syn,670976.28,from cnl fso cgen ss
 PS0_GTI_DOP,Gen10LP,A0,17.12933243,syn,1,from cnl fso cgen ss
 PS0_GTI_NONCLKGLUE,Gen10LP,A0,7.060442485,syn,1,from cnl fso cgen ss
 PS0_GTI_Repeater,Gen10LP,A0,2.004002367,syn,48454.4,from cnl fso cgen ss
-PS0_GTI_SMALL,Gen10LP,A0,49.26,syn,1280692.06,from cnl fso cgen ss
+PS0_GTI_SMALL,Gen10LP,A0,58.96,syn,1598380,from cnl fso cgen ss
 PS0_GTP24C,Gen10LP,A0,0,syn,1195292.21,from cnl fso cgen ss
 PS0_GWL,Gen10LP,A0,0.659854438,syn,97940.55,from cnl fso cgen ss
 PS0_HDC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
@@ -563,7 +563,7 @@ PS2_GTI_DFX,Gen10LP,A0,5.10776213,syn,670976.28,cnl cgdis ss
 PS2_GTI_DOP,Gen10LP,A0,17.12933243,syn,1,cnl cgdis ss
 PS2_GTI_NONCLKGLUE,Gen10LP,A0,7.734960355,syn,1,average of cgdis and pv
 PS2_GTI_Repeater,Gen10LP,A0,2.737173964,syn,48454.4,cnl cgdis ss
-PS2_GTI_SMALL,Gen10LP,A0,59.315,syn,1280692.06,avg cgdis and pv
+PS2_GTI_SMALL,Gen10LP,A0,69.015,syn,1598380,avg cgdis and pv
 PS2_HDC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_HDC_CLKGLUE,Gen10LP,A0,8.925142249,syn,1,cnl cgdis ss
 PS2_HDC_CPunit,Gen10LP,A0,1.295269822,syn,11422.03,cnl cgdis ss
