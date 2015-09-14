@@ -414,8 +414,8 @@ GTI:
    DFX:
     PS0_GTI_DFX: R * C
     PS2_GTI_DFX: R * C
-   CKgated:
-    PS0_GTI_CKgated: R * C
+   MediaIdle:
+    PS0_GTI_MediaIdle: R * C
    DOP:
     PS0_GTI_DOP: R * C
     PS2_GTI_DOP: R * C

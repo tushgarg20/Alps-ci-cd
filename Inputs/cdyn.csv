@@ -3,12 +3,12 @@ PS1_MBGFGT,Gen10LP,A0,21.476,syn,168549.91,from cnl fso cgdis ss
 PS1_MBGFUC,Gen10LP,A0,25.5116,syn,200242.88,from cnl fso cgdis ss
 PS1_MDRB,Gen10LP,A0,18.9272,syn,391685.56,from cnl fso cgdis ss
 PS1_MFC,Gen10LP,A0,0.708,syn,28063.21,from cnl fso cgdis ss
-PS1_MSNP,Gen10LP,A0,9.3692,syn,652727.29,from cnl fso cgdis ss
+PS1_MSNP,Gen10LP,A0,14.0692,syn,652727.29,from cnl fso cgdis ss
 PS0_MBGFGT,Gen10LP,A0,18.37804769,syn,168549.91,from cnl fso cgen ss
 PS0_MBGFUC,Gen10LP,A0,22.24,syn,200242.88,from cnl fso cgen ss
 PS0_MDRB,Gen10LP,A0,0.807557355,syn,391685.56,from cnl fso cgen ss
 PS0_MFC,Gen10LP,A0,0.19577148,syn,28063.21,from cnl fso cgen ss
-PS0_MSNP,Gen10LP,A0,9.88645974,syn,652727.29,from cnl fso cgen ss
+PS0_MSNP,Gen10LP,A0,10.43645974,syn,652727.29,from cnl fso cgen ss
 PS0_HDC_Ret2,Gen10LP,A0,0.049,syn,19930,from cnl fso cgen ss
 PS0_HDC_Ret1,Gen10LP,A0,0.194,syn,1026652,from cnl fso cgen ss
 PS0_AVS,Gen10LP,A0,0.782049704,syn,1310585.85,from cnl fso cgen ss
@@ -691,9 +691,28 @@ PS2_DAPRSC,Gen10LP,A0,53.2264307,syn,554536.3792,Raw Cdyn * 0.965 (x1r0-x1r1 sca
 PS2_SBE_CALC,Gen10LP,A0,16.81995,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_FETCH,Gen10LP,A0,15.564485,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_REPLAY,Gen10LP,A0,25.06105,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc, fetch, replay"
+PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc,fetch,replay"
 PS2_SDE_Culled,Gen10LP,A0,1.3896,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SDE_NotCulled,Gen10LP,A0,4.9215,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_READ,Gen10LP,A0,94.05061416,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_WRITE,Gen10LP,A0,105.7838562,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS1_MSQC,Gen10LP,A0,36.07227128,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQC,Gen10LP,A0,70.3485,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQC_ATOMICS,Gen10LP,A0,94.870115,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_U2C,Gen10LP,A0,145.912825,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_C2U,Gen10LP,A0,181.6623115,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSQD_ATOMICS,Gen10LP,A0,156.0961805,syn,861310.86,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSNP_C2U,Gen10LP,A0,27.814195,syn,652727.29,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MSNP_U2C,Gen10LP,A0,27.814195,syn,652727.29,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_U2C,Gen10LP,A0,123.708175,syn,645908.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_C2U,Gen10LP,A0,53.92034,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_U2C_AES,Gen10LP,A0,236.04286,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MISD_C2U_AES,Gen10LP,A0,243.769615,syn,657609.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MIDI_U2C,Gen10LP,A0,2.237835,syn,14160.02,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MIDI_C2U,Gen10LP,A0,2.09405,syn,14160.02,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MFC,Gen10LP,A0,1.0816685,syn,28063.21,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MDRB_C2U,Gen10LP,A0,36.4191,syn,391685.56,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MDRB_U2C,Gen10LP,A0,36.4191,syn,391685.56,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_HS_Cache_Read,Gen10LP,A0,3.3276,ebb,1,
 PS2_HS_Cache_ReadWrite,Gen10LP,A0,8.789237699,ebb,1,
 PS2_HS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,
@@ -972,7 +991,7 @@ PS1_VSFE,Gen10LP,A0,9.971133728,syn,728350.0838,cnl cgdis ss
 PS1_WMBE,Gen10LP,A0,2.883808284,syn,908715.43,cnl cgdis ss
 PS1_WMFE,Gen10LP,A0,8.40703432,syn,594102.69,cnl cgdis ss
 PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
-PS0_GTI_CKgated,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
+PS0_GTI_MediaIdle,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
 FPU0_add_fp64_10%,Gen10LP,B0,14.0849312,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_15%,Gen10LP,B0,15.20358917,syn,382681.36,from durga with Astep to Bstep scalars
 FPU0_add_fp64_18%,Gen10LP,B0,16.17058346,syn,382681.36,from durga with Astep to Bstep scalars
@@ -3290,12 +3309,12 @@ PS2_LNI_2Bank,Gen9LPClient,A0,183.26,syn,889910.56,
 PS2_LNI_4Bank,Gen9LPClient,A0,311.8,syn,889910.56,
 PS2_LNIXS,Gen9LPClient,C0,218.6449,syn,624036,Using PS2_LNI as the base Cdyn weight
 PS2_LNIXS_BW,Gen9LPClient,A0,0,syn,1,
-PS2_LSLM_Atomics,Gen9LPClient,A0,45.99,syn,239136.8,
-PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.61,syn,239136.8,
-PS2_LSQC,Gen9LPClient,A0,36.16,syn,376450.15,5% TR
-PS2_LSQD_atomics,Gen9LPClient,A0,289.221,syn,317471.15,1.7x Approximated using nonatomics and LSLM atomics to nonatomics ratio
-PS2_LSQD_nonatomics,Gen9LPClient,A0,211.344,syn,317471.15,1.7x 26% TR
-PS2_LTCC,Gen9LPClient,A0,6.409,syn,23507.9,1.7x 7% TR
+PS2_LSLM_Atomics,Gen9LPClient,A0,91.98,syn,239136.8,2x
+PS2_LSLM_NonAtomics,Gen9LPClient,A0,67.22,syn,239136.8,2x
+PS2_LSQC,Gen9LPClient,A0,72.32,syn,376450.15,2x 5% TR
+PS2_LSQD_atomics,Gen9LPClient,A0,340.26,syn,317471.15,2x Approximated using nonatomics and LSLM atomics to nonatomics ratio
+PS2_LSQD_nonatomics,Gen9LPClient,A0,248.64,syn,317471.15,2x 26% TR
+PS2_LTCC,Gen9LPClient,A0,7.54,syn,23507.9,2x 7% TR
 PS2_LTCD_Data_Else,Gen9LPClient,A0,32.266,syn,720863.55,1.7x
 PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,135.575,syn,720863.55,1.7x
 PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen9LPClient,A0,195.126,syn,720863.55,1.7x
@@ -4705,10 +4724,6 @@ PS2_IZ_POLYFIFO_READ,Gen9LPSoC,A0,8.7961,ebb,1,
 PS2_IZ_POLYFIFO_WRITE,Gen9LPSoC,A0,9.1826,ebb,1,
 PS2_IZ_WCOEFFIFO_READ,Gen9LPSoC,A0,2.8805,ebb,1,
 PS2_IZ_WCOEFFIFO_WRITE,Gen9LPSoC,A0,3.1948,ebb,1,
-PS2_LTCD_EBB_HB_Read,Gen9LPSoC,A0,96.2356,ebb,1,
-PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,158.3963,ebb,1,
-PS2_LTCD_EBB_Read,Gen9LPSoC,A0,97.9697,ebb,1,
-PS2_LTCD_EBB_Write,Gen9LPSoC,A0,164.3853,ebb,1,
 PS2_MSC_CACHE_READ,Gen9LPSoC,A0,17.8911,ebb,1,
 PS2_MSC_CACHE_WRITE,Gen9LPSoC,A0,19.9936,ebb,1,
 PS2_MT_DataRam_READ,Gen9LPSoC,A0,6.9617,ebb,1,
