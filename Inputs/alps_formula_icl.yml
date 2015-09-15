@@ -331,10 +331,12 @@ L3Node:
     PS0_LNI: R * C
     PS1_LNI: R * C
     PS2_LNI: R * C
+    PS2_LNIXS: R * C
    LNE:
     PS0_LNE: R * C
     PS1_LNE: R * C
     PS2_LNE: R * C
+    PS2_LNEXS: R * C
    DOP:
     PS0_L3Node_DOP: R * C
     PS2_L3Node_DOP: R * C
@@ -373,26 +375,44 @@ GTI:
     PS0_MSQC: R * C
     PS1_MSQC: R * C
     PS2_MSQC: R[PS2_MSQC_SlotFull] * R * C
+    PS2_MSQC_ATOMICS: R * C
    MSQD:
     PS0_MSQD: R * C
     PS1_MSQD: R * C
     PS2_MSQD:
-     PS2_MSQD_READ: R * C
-     PS2_MSQD_WRITE: R * C
+     PS2_MSQD_U2C: R * C
+     PS2_MSQD_C2U: R * C
+     PS2_MSQD_ATOMICS: R * C
    MIDI:
     PS0_MIDI: R * C
     PS1_MIDI: R * C
     PS2_MIDI:
-     PS2_MIDI_REQUEST: R * C
-     PS2_MIDI_RESPONSE: R * C
+     PS2_MIDI_U2C: R * C
+     PS2_MIDI_C2U: R * C
    MISD:
     PS0_MISD: R * C
     PS1_MISD: R * C
     PS2_MISD:
-     PS2_MISD_READ_AES_ON: R * C
-     PS2_MISD_READ_AES_OFF: R * C
-     PS2_MISD_WRITE_AES_ON: R * C
-     PS2_MISD_WRITE_AES_OFF: R * C
+     PS2_MISD_U2C_AES: R * C
+     PS2_MISD_U2C: R * C
+     PS2_MISD_C2U_AES: R * C
+     PS2_MISD_C2U: R * C
+   MSNP:
+    PS0_MSNP: R * C
+    PS1_MSNP: R * C
+    PS2_MSNP:
+     PS2_MSNP_C2U: R * C
+     PS2_MSNP_U2C: R * C
+   MDRB:
+    PS0_MDRB: R * C
+    PS1_MDRB: R * C
+    PS2_MDRB:
+     PS2_MDRB_C2U: R * C
+     PS2_MDRB_U2C: R * C
+   MFC:
+    PS0_MFC: R * C
+    PS1_MFC: R * C
+    PS2_MFC: R * C
    SMALL:
     PS0_GTI_SMALL: R * C
     PS2_GTI_SMALL: R * C

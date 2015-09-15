@@ -13,6 +13,7 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"unit_alps_map_file"	Mapping file from design unit/cluster to ALPS unit/cluster
 	"gc_alps_inp_file"	Output GC file to be used as ALPS input (YAML/CSV)
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
+	"powerdb_format"	GC CSV file in power dB format (post ww37 2015)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -50,6 +51,7 @@ our $opYaml;
 our $opCsv;
 
 our $newSklFmt;
+our $pwrDbFmt;
 
 our $gcCsvFile;
 our $unitAlpsMapFileDefault = "$Bin/unitAlpsMap.csv";
@@ -64,6 +66,7 @@ Getopt::Long::GetOptions(
 	"unit_alps_map_file=s" => \$unitAlpsMapFile,
 	"gc_alps_inp_file=s" => \$gcAlpsIpFile,
 	"new_skl_format" => \$newSklFmt,
+	"powerdb_format" => \$pwrDbFmt,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -83,6 +86,7 @@ if ($unitAlpsMapFile =~ /^\s*$/)
 }
 
 if ($newSklFmt) {print "Input GC file in new SKL format\n";}
+if ($pwrDbFmt) {print "Input GC file in power dB format\n";}
 
 if ($optYaml && !$optCsv) {print "Output file will be dumped in YAML format\n"; $opYaml = 1; $opCsv = 0;} 
 if (!$optYaml && $optCsv) {print "Output file will be dumped in CSV format\n"; $opCsv = 1; $opYaml = 0;} 
@@ -134,17 +138,35 @@ sub read_gc_csv_file {
 	my $fileR = $gcCsvFile;
 	my $fileRH;
 	open $fileRH, "$fileR" or die "Can't open file $fileR:$!";
+	my $line = <$fileRH>;
+	my %header;
+	my @headers = split/,/,$line;
+	my $hCount = 0;
+	foreach my $head (@headers)
+	{
+		$head =~ s/^\s*//;
+		$head =~ s/\s*$//;
+		$header{$head} = $hCount;
+		$hCount++;
+	}
 	my $count = 1;
 	while(<$fileRH>) {
 		my $line = $_;
 		chomp($line);
-		if ($count == 1) {$count++; next;}
+		#if ($count == 1) {$count++; next;}
 		my @parts = split(/,/, $line);
-		my $unitName = $parts[0];
+		my $unitName;
+		if ($pwrDbFmt) {
+			$unitName = $parts[$header{"Unit"}];
+		} else {
+			$unitName = $parts[0];
+		}
 		$unitName =~ s/^\s*//;
 		$unitName =~ s/\s*$//;
 		my $cluster;
-		if ($newSklFmt) {
+		if ($pwrDbFmt) {
+			$cluster = "";
+		} elsif ($newSklFmt) {
 			$cluster = $parts[1];
 		} else {
 			$cluster = $parts[2];
@@ -153,7 +175,9 @@ sub read_gc_csv_file {
 		$cluster =~ s/\s*$//;
 		if ($cluster eq "NOT USED") {$count++; next;}
 		my $gc;
-                if ($newSklFmt) {
+		if ($pwrDbFmt) {
+			$gc = $parts[$header{"GC"}];
+                } elsif ($newSklFmt) {
                         $gc = $parts[6];
                 } else {
                         $gc = $parts[10];
@@ -161,10 +185,13 @@ sub read_gc_csv_file {
 		$gc =~ s/^\s*//;
 		$gc =~ s/\s*$//;
 		#$gc = $gc*1000;
-		if ($gc ne "#N/A") {
-			$gc = $gc*1000;
-		} else {
-			$gc = 0;
+		if (!$pwrDbFmt)
+		{
+			if ($gc ne "#N/A") {
+				$gc = $gc*1000;
+			} else {
+				$gc = 0;
+			}
 		}
 		my $roundGc = sprintf("%.0f", $gc);
 		$gcHash{"$unitName"} = $roundGc;
@@ -185,6 +212,7 @@ sub create_gc_alps_inp_file {
 			my $cluster = $alpsMapHash{"$unit"}{"ALPSCLUSTER"};
 			my $alpsUnit = $alpsMapHash{"$unit"}{"ALPS"};
 			my $func = $alpsMapHash{"$unit"}{"FUNC"};
+			if ($func eq "IGNORE") {warn "Unit $unit ignored for GC rollup\n"; next;}
 			if ($alpsUnit =~ /FPUWRAP/) {
 				$alpsIpTempHash{"$cluster"}{"FPU"}{"TOTAL"} += $gc/2;	
 				$alpsIpTempHash{"$cluster"}{"FPU"}{"COUNT"} += 1;
