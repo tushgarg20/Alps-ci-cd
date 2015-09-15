@@ -1,6 +1,6 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	num_RC_SliceRC	=	(2*numSlices - 3)	#N2NRC or Slice RC GC scales approximately in this fashion
+	num_RC_SliceRC	=	((2 * numSlices) - 3)	#N2NRC or Slice RC GC scales approximately in this fashion
 	num_RC_RC	=	numSlices	#RC scales with number of slices (starting from GT3)
 	num_RC_L3XSRC	=	(numSlices - 1) #CmUnqRC or L3XSRC GC scales approximately in this fashion	
 	num_RC_LNIECS	=	numSlices       #LNIECS scales with number of slices and an additional cost for slices >= 3	
