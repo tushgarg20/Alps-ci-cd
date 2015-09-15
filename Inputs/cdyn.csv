@@ -207,7 +207,7 @@ PS0_LTCD_EBB,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_LTCD_Tag,Gen10LP,A0,1.612977515,syn,791094.59,from cnl fso cgen ss
 PS0_MA_IN,Gen10LP,A0,0.366585799,syn,112599.085,from cnl fso cgen ss
 PS0_MA_OUT,Gen10LP,A0,0.342146746,syn,112599.085,from cnl fso cgen ss
-PS0_MBGF,Gen10LP,A0,18.35372899,syn,168549.91,from cnl fso cgen ss
+PS0_MBGF,Gen10LP,A0,31.46040063,syn,168549.91,from cnl fso cgen ss
 PS0_MEDIASMP_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_MEDIASMP_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_MEDIASMP_CLKGLUE,Gen10LP,A0,9.910036095,syn,1,from cnl fso cgen ss
@@ -697,8 +697,8 @@ PS2_SBE_REPLAY,Gen10LP,A0,25.06105,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 s
 PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc,fetch,replay"
 PS2_SDE_Culled,Gen10LP,A0,1.3896,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SDE_NotCulled,Gen10LP,A0,4.9215,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_MBGF_READ,Gen10LP,A0,94.05061416,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_MBGF_WRITE,Gen10LP,A0,105.7838562,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_READ,Gen10LP,A0,61.25518452,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_WRITE,Gen10LP,A0,70.15316002,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS1_MSQC,Gen10LP,A0,36.07227128,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_MSQC,Gen10LP,A0,70.3485,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_MSQC_ATOMICS,Gen10LP,A0,94.870115,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
@@ -945,7 +945,7 @@ PS1_LTCD_EBB,Gen10LP,A0,0,ebb,1,cnl cgdis ss
 PS1_LTCD_Tag,Gen10LP,A0,44.87010178,syn,791094.59,cnl cgdis ss
 PS1_MA_IN,Gen10LP,A0,1.466343195,syn,112599.085,cnl cgdis ss
 PS1_MA_OUT,Gen10LP,A0,1.417465089,syn,112599.085,cnl cgdis ss
-PS1_MBGF,Gen10LP,A0,22.23953846,syn,168549.91,cnl cgdis ss
+PS1_MBGF,Gen10LP,A0,36.48282353,syn,168549.91,cnl cgdis ss
 PS1_MIDI,Gen10LP,A0,0.513220118,syn,14160.02,cnl cgdis ss
 PS1_MISD,Gen10LP,A0,16.66743432,syn,657609.21,cnl cgdis ss
 PS1_MSC,Gen10LP,A0,8.773620118,syn,568766.57,cnl cgdis ss
@@ -3335,8 +3335,8 @@ PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,227.8558,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Read,Gen9LPClient,A0,254.114,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Write,Gen9LPClient,A0,304.5488,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_HB_Read,Gen9LPSoC,A0,182.32,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.40,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.10,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.4,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.1,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Write,Gen9LPSoC,A0,321.31,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,212.058,syn,720863.55,1.7x 25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,218.79,syn,720863.55,1.7x
