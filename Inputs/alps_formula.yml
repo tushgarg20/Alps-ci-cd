@@ -1651,9 +1651,19 @@ RC:
    SliceRC:
     PS0_SliceRC: R * C
     PS2_SliceRC: R * C
+   RC:
+    PS0_RC: R * C
+    PS2_RC: R * C
    L3XSRC:
     PS0_L3XSRC: R * C
     PS2_L3XSRC: R * C
+   LNIECS:
+    PS0_LNIECS:
+     PS0_LNIECS_Base: R * C
+     PS0_LNIECS_Slice: R * C
+    PS2_LNIECS:
+     PS2_LNIECS_Base: R * C
+     PS2_LNIECS_Slice: R * C
    GT3BFRC:
     PS0_GT3BFRC:
      PS0_GT3BFRC_Base: R * C
