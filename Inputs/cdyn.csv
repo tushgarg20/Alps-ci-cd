@@ -3309,11 +3309,11 @@ PS2_LNI_2Bank,Gen9LPClient,A0,183.26,syn,889910.56,
 PS2_LNI_4Bank,Gen9LPClient,A0,311.8,syn,889910.56,
 PS2_LNIXS,Gen9LPClient,C0,218.6449,syn,624036,Using PS2_LNI as the base Cdyn weight
 PS2_LNIXS_BW,Gen9LPClient,A0,0,syn,1,
-PS2_LSLM_Atomics,Gen9LPClient,A0,91.98,syn,239136.8,2x
-PS2_LSLM_NonAtomics,Gen9LPClient,A0,67.22,syn,239136.8,2x
-PS2_LSQC,Gen9LPClient,A0,72.32,syn,376450.15,2x 5% TR
-PS2_LSQD_atomics,Gen9LPClient,A0,340.26,syn,317471.15,2x Approximated using nonatomics and LSLM atomics to nonatomics ratio
-PS2_LSQD_nonatomics,Gen9LPClient,A0,248.64,syn,317471.15,2x 26% TR
+PS2_LSLM_Atomics,Gen9LPClient,A0,45.99,syn,239136.8,1x
+PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.61,syn,239136.8,1x
+PS2_LSQC,Gen9LPClient,A0,36.16,syn,376450.15,1x 5% TR
+PS2_LSQD_atomics,Gen9LPClient,A0,170.13,syn,317471.15,1x Approximated using nonatomics and LSLM atomics to nonatomics ratio
+PS2_LSQD_nonatomics,Gen9LPClient,A0,124.32,syn,317471.15,1x 26% TR
 PS2_LTCC,Gen9LPClient,A0,7.54,syn,23507.9,2x 7% TR
 PS2_LTCD_Data_Else,Gen9LPClient,A0,32.266,syn,720863.55,1.7x
 PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen9LPClient,A0,135.575,syn,720863.55,1.7x
