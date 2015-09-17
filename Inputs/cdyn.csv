@@ -192,6 +192,8 @@ PS0_L3Node_Repeater,Gen10LP,A0,14.6389929,syn,721319.43,from cnl fso cgen ss
 PS0_L3Node_SMALL,Gen10LP,A0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3Node_SMALL,Gen10LP,C0,2.517222485,syn,277618.19,from cnl fso cgen ss
 PS0_L3XSRC,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_LNIECS_Base,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_LNIECS_Slice,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_LNE,Gen10LP,A0,1.906246154,syn,890288.66,from cnl fso cgen ss
 PS0_LNEXS,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_LNI,Gen10LP,A0,29.03359527,syn,1667036.22,from cnl fso cgen ss
@@ -205,7 +207,7 @@ PS0_LTCD_EBB,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_LTCD_Tag,Gen10LP,A0,1.612977515,syn,791094.59,from cnl fso cgen ss
 PS0_MA_IN,Gen10LP,A0,0.366585799,syn,112599.085,from cnl fso cgen ss
 PS0_MA_OUT,Gen10LP,A0,0.342146746,syn,112599.085,from cnl fso cgen ss
-PS0_MBGF,Gen10LP,A0,18.35372899,syn,168549.91,from cnl fso cgen ss
+PS0_MBGF,Gen10LP,A0,31.46040063,syn,168549.91,from cnl fso cgen ss
 PS0_MEDIASMP_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_MEDIASMP_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_MEDIASMP_CLKGLUE,Gen10LP,A0,9.910036095,syn,1,from cnl fso cgen ss
@@ -287,6 +289,7 @@ PS0_SDE,Gen10LP,A0,1.026440237,syn,113411.6086,from cnl fso cgen ss
 PS0_SF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
 PS0_SI,Gen10LP,A0,0.195512426,syn,514781.02,from cnl fso cgen ss
 PS0_SliceRC,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_RC,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_SO,Gen10LP,A0,0.048878107,syn,130850.26,from cnl fso cgen ss
 PS0_SOL,Gen10LP,A0,1.441904142,syn,345762.6632,from cnl fso cgen ss
 PS0_SOL_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
@@ -694,8 +697,8 @@ PS2_SBE_REPLAY,Gen10LP,A0,25.06105,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 s
 PS2_SBE_OTHER,Gen10LP,A0,19.148495,syn,1191654.608,"average of calc,fetch,replay"
 PS2_SDE_Culled,Gen10LP,A0,1.3896,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SDE_NotCulled,Gen10LP,A0,4.9215,syn,118124.6293,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_MBGF_READ,Gen10LP,A0,94.05061416,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
-PS2_MBGF_WRITE,Gen10LP,A0,105.7838562,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_READ,Gen10LP,A0,61.25518452,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_MBGF_WRITE,Gen10LP,A0,70.15316002,syn,368792.79,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS1_MSQC,Gen10LP,A0,36.07227128,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_MSQC,Gen10LP,A0,70.3485,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_MSQC_ATOMICS,Gen10LP,A0,94.870115,syn,1622709.94,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
@@ -942,7 +945,7 @@ PS1_LTCD_EBB,Gen10LP,A0,0,ebb,1,cnl cgdis ss
 PS1_LTCD_Tag,Gen10LP,A0,44.87010178,syn,791094.59,cnl cgdis ss
 PS1_MA_IN,Gen10LP,A0,1.466343195,syn,112599.085,cnl cgdis ss
 PS1_MA_OUT,Gen10LP,A0,1.417465089,syn,112599.085,cnl cgdis ss
-PS1_MBGF,Gen10LP,A0,22.23953846,syn,168549.91,cnl cgdis ss
+PS1_MBGF,Gen10LP,A0,36.48282353,syn,168549.91,cnl cgdis ss
 PS1_MIDI,Gen10LP,A0,0.513220118,syn,14160.02,cnl cgdis ss
 PS1_MISD,Gen10LP,A0,16.66743432,syn,657609.21,cnl cgdis ss
 PS1_MSC,Gen10LP,A0,8.773620118,syn,568766.57,cnl cgdis ss
@@ -2458,7 +2461,9 @@ PS0_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.676,syn,1,
 PS0_L3Node_Repeater,Gen9LPClient,C0,22.154,syn,157040,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
-PS0_L3XSRC,Gen9LPClient,C0,149.33,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_L3XSRC,Gen9LPClient,C0,345.59,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_LNIECS_Base,Gen9LPClient,C0,25.72,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_LNIECS_Slice,Gen9LPClient,C0,12.18,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNE,Gen9LPClient,A0,5.51,syn,449149.31,
 PS0_LNEXS,Gen9LPClient,C0,5.19,syn,533934,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNI,Gen9LPClient,A0,6.34,syn,889910.56,
@@ -2590,7 +2595,8 @@ PS0_SDE_DOP,Gen9LPClient,A0,0,syn,65940.64,
 PS0_SF,Gen9LPClient,A0,2.94,syn,1188962.87,
 PS0_SF_DOP,Gen9LPClient,A0,0,syn,1188962.87,
 PS0_SI,Gen9LPClient,A0,0.26,syn,362879.16,
-PS0_SliceRC,Gen9LPClient,C0,287.691,syn,942768,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_SliceRC,Gen9LPClient,C0,70.91,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_RC,Gen9LPClient,C0,58.53,syn,314218,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_SO,Gen9LPClient,A0,0.19,syn,129023.68,
 PS0_SO_DOP,Gen9LPClient,A0,0,syn,129023.68,
 PS0_SOL,Gen9LPClient,A0,4.79,syn,270005.11,
@@ -3299,7 +3305,9 @@ PS2_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.628,syn,1,
 PS2_L3Node_Repeater,Gen9LPClient,C0,22.274,syn,157040,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
-PS2_L3XSRC,Gen9LPClient,C0,223.995,syn,1125059,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_L3XSRC,Gen9LPClient,C0,518.38,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_LNIECS_Base,Gen9LPClient,C0,38.58,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_LNIECS_Slice,Gen9LPClient,C0,18.27,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNE,Gen9LPClient,A0,205.62,syn,449149.31,
 PS2_LNEXS,Gen9LPClient,C0,239.7666,syn,533934,Using PS2_LNE as the base Cdyn weight
 PS2_LNEXS_BW,Gen9LPClient,A0,0,syn,1,
@@ -3327,8 +3335,8 @@ PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,227.8558,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Read,Gen9LPClient,A0,254.114,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Write,Gen9LPClient,A0,304.5488,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_HB_Read,Gen9LPSoC,A0,182.32,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.40,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.10,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.4,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.1,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Write,Gen9LPSoC,A0,321.31,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,212.058,syn,720863.55,1.7x 25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,218.79,syn,720863.55,1.7x
@@ -3590,7 +3598,8 @@ PS2_SF_NotCulled_FastClip,Gen9LPClient,A0,181.06,syn,1188962.87,No TR informatio
 PS2_SF_NotCulled_NotFastClip,Gen9LPClient,A0,241.5,syn,1188962.87,No TR information
 PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,49.21,syn,362879.16,13% TR
 PS2_SI_Media_Sample8x8,Gen9LPClient,A0,20.29,syn,362879.16,0% TR - Need to take 100% validity
-PS2_SliceRC,Gen9LPClient,C0,431.537,syn,942768,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_SliceRC,Gen9LPClient,C0,106.37,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_RC,Gen9LPClient,C0,87.8,syn,314218,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,44.22,syn,129023.68,16% TR
 PS2_SOL_Cache_Read,Gen9LPClient,A0,1.8592,ebb,1,
 PS2_SOL_Cache_ReadWrite,Gen9LPClient,A0,5.3,ebb,1,
