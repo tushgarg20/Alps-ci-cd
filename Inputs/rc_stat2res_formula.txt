@@ -1,8 +1,8 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	num_RC_SliceRC	=	((2 * numSlices) - 3)	#N2NRC or Slice RC GC scales approximately in this fashion
+	num_RC_L3XSRC	=	((2 * numSlices) - 3)	#N2NRC or L3XSRC GC scales approximately in this fashion
 	num_RC_RC	=	numSlices	#RC scales with number of slices (starting from GT3)
-	num_RC_L3XSRC	=	(numSlices - 1) #CmUnqRC or L3XSRC GC scales approximately in this fashion	
+	num_RC_SliceRC	=	(numSlices - 1) #CmUnqRC or SliceRC GC scales approximately in this fashion	
 	num_RC_LNIECS	=	numSlices       #LNIECS scales with number of slices and an additional cost for slices >= 3	
 	num_RC_GT3BFRC	=	1	#BGF doesnot scale linearly with slices
 	num_RC_Fabric	=	(numSlices - 1)	
@@ -39,10 +39,10 @@
 	.LNEXS_Read_Writes	=	((D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))) / (.CrClk * numSlices)	
 	PS2_L3XSRC	=	(.isSKLGT3 > 0) ? (.LNIXS_Read_Writes + .LNEXS_Read_Writes) : 0	
 #LNIECS
-	PS0_LNIECS_Slice	=	(.isSKLGT3 > 0) ? (1 - PS2_L3XSRC) : 0	
-	PS0_LNIECS_Base		=	(numSlices > 2) ? (1 - PS2_L3XSRC) * (numSlices - 2) : 0	
-	PS2_LNIECS_Slice	=	PS2_L3XSRC	
-	PS2_LNIECS_Base		=	(numSlices > 2) ? PS2_L3XSRC * (numSlices - 2) : 0	
+	PS0_LNIECS_Base		=	(.isSKLGT3 > 0) ? (1 - PS2_L3XSRC) : 0	
+	PS0_LNIECS_Slice	=	(numSlices > 2) ? (1 - PS2_L3XSRC) * (numSlices - 2) : 0	
+	PS2_LNIECS_Base		=	PS2_L3XSRC	
+	PS2_LNIECS_Slice	=	(numSlices > 2) ? PS2_L3XSRC * (numSlices - 2) : 0	
 #GT3BF				
 	PS0_GT3BFRC		=	(.isSKLGT3 > 0) ? (1 - .temp_PS2_GT3BFRC) : 0	
 	PS0_GT3BFRC_Base	=	(.isSKLGT3 > 0) ? (1 - .temp_PS2_GT3BFRC) : 0	
