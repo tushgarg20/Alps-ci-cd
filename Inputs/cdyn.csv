@@ -2461,7 +2461,7 @@ PS0_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.676,syn,1,
 PS0_L3Node_Repeater,Gen9LPClient,C0,22.154,syn,157040,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
 PS0_L3Node_SMALL,Gen9LPClient,C0,4.734,syn,190080,
-PS0_L3XSRC,Gen9LPClient,C0,345.59,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_SliceRC,Gen9LPClient,C0,345.59,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNIECS_Base,Gen9LPClient,C0,25.72,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNIECS_Slice,Gen9LPClient,C0,12.18,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_LNE,Gen9LPClient,A0,5.51,syn,449149.31,
@@ -2595,7 +2595,7 @@ PS0_SDE_DOP,Gen9LPClient,A0,0,syn,65940.64,
 PS0_SF,Gen9LPClient,A0,2.94,syn,1188962.87,
 PS0_SF_DOP,Gen9LPClient,A0,0,syn,1188962.87,
 PS0_SI,Gen9LPClient,A0,0.26,syn,362879.16,
-PS0_SliceRC,Gen9LPClient,C0,70.91,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_L3XSRC,Gen9LPClient,C0,70.91,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_RC,Gen9LPClient,C0,58.53,syn,314218,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_SO,Gen9LPClient,A0,0.19,syn,129023.68,
 PS0_SO_DOP,Gen9LPClient,A0,0,syn,129023.68,
@@ -3305,7 +3305,7 @@ PS2_L3Node_NONCLKGLUE,Gen9LPClient,C0,3.628,syn,1,
 PS2_L3Node_Repeater,Gen9LPClient,C0,22.274,syn,157040,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
 PS2_L3Node_SMALL,Gen9LPClient,C0,9.035,syn,190080,
-PS2_L3XSRC,Gen9LPClient,C0,518.38,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_SliceRC,Gen9LPClient,C0,518.38,syn,864926,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNIECS_Base,Gen9LPClient,C0,38.58,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNIECS_Slice,Gen9LPClient,C0,18.27,syn,45030,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_LNE,Gen9LPClient,A0,205.62,syn,449149.31,
@@ -3598,7 +3598,7 @@ PS2_SF_NotCulled_FastClip,Gen9LPClient,A0,181.06,syn,1188962.87,No TR informatio
 PS2_SF_NotCulled_NotFastClip,Gen9LPClient,A0,241.5,syn,1188962.87,No TR information
 PS2_SI_ANYPIXELMODE,Gen9LPClient,A0,49.21,syn,362879.16,13% TR
 PS2_SI_Media_Sample8x8,Gen9LPClient,A0,20.29,syn,362879.16,0% TR - Need to take 100% validity
-PS2_SliceRC,Gen9LPClient,C0,106.37,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
+PS2_L3XSRC,Gen9LPClient,C0,106.37,syn,843656,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_RC,Gen9LPClient,C0,87.8,syn,314218,Taken from SKL C0 ECO1 GT3 CGEN data * 1.5
 PS2_SO_ANYPIXELMODE,Gen9LPClient,A0,44.22,syn,129023.68,16% TR
 PS2_SOL_Cache_Read,Gen9LPClient,A0,1.8592,ebb,1,

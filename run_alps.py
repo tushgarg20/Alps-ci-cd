@@ -66,6 +66,8 @@ else:
         filename = '%s/alps_cfg_annealing.yaml' % wd
     elif options.dest_config.find('icl') > -1:
         filename = '%s/alps_cfg_icl.yaml' % wd
+    elif options.dest_config.find('cnl_h') > -1:
+        filename = '%s/alps_cfg_icl.yaml' % wd
     elif options.dest_config.find('cnl') > -1:
         filename = '%s/alps_cfg_cnl.yaml' % wd
     else:	
