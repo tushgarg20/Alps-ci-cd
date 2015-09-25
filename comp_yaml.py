@@ -3,6 +3,7 @@ from lib.optparse_ext import OptionParser
 import lib.yaml as yaml
 import re
 import os
+import csv
 
 ################################################################################
 
@@ -19,11 +20,23 @@ def print_help ():
 parser = OptionParser()
 parser.add_option("--y1", dest="yref", help="alps yaml file #1")
 parser.add_option("--y2", dest="ynew", help="alps yaml file #2")
+parser.add_option("--cfg", dest="cfg", help="alps yaml file #2")
 (options, args) = parser.parse_args()
 
 if (not options.yref or not options.ynew):
     print_help()
     exit(0)
+
+################################################################################
+
+alps_dir = os.path.dirname(__file__)
+fh = open(os.path.dirname(__file__)+"/Inputs/Cdynmax.csv", 'r')
+cdyn_max = {}
+lines = csv.reader (fh)
+for line in lines:
+    cdyn_max[line[0]] = line[1]
+
+print()
 
 ################################################################################
 
@@ -33,7 +46,23 @@ yaml_data['ref'] = yaml.load(f)
 f = open(options.ynew, 'r')
 yaml_data['new'] = yaml.load(f)
 
-header_list = [ 'FPS', 'Total_GT_Cdyn(nF)', 'Total_GT_Cdyn_ebb(nF)', 'Total_GT_Cdyn_syn(nF)' ]
+header_list = [ 'FPS', 'Total_GT_Cdyn(nF)']
+for header in header_list:
+    print ("%-30s %10.3f    %15.3f" % (header, yaml_data['ref'][header], yaml_data['new'][header]) )
+
+try:
+    cfg    = options.cfg
+    header = 'Total_GT_Cdyn(nF)'
+    ar_ref = float(yaml_data['ref'][header]) / float(cdyn_max[cfg])
+    ar_new = float(yaml_data['new'][header]) / float(cdyn_max[cfg])
+    fps_new = yaml_data['new']['FPS']
+    fps_ref = yaml_data['ref']['FPS']
+    ar_iso = ar_ref * fps_new / fps_ref + 0.2122 * ( 1 - fps_new / fps_ref )
+    print ("%-30s %10.3f    %15.3f    %15.3f %10.3f%%" % ("Apps_Ratio",  ar_ref, ar_new, ar_iso, ar_new/ar_iso*100 - 100 ) )
+except:
+    print ()
+
+header_list = [ 'Total_GT_Cdyn_ebb(nF)', 'Total_GT_Cdyn_syn(nF)', 'Total_GT_Cdyn_infra(nF)' ]
 for header in header_list:
     print ("%-30s %10.3f    %15.3f" % (header, yaml_data['ref'][header], yaml_data['new'][header]) )
 
