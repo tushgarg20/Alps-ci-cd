@@ -35,8 +35,8 @@ for line in tracefile:
     alps_data = yaml.load(alps_file)
     alps_file.close()
     unit_data = alps_data['unit_cdyn_numbers(pF)']
-    #clusters = sorted(unit_data.keys())
-    clusters = ['GTI']
+    clusters = sorted(unit_data.keys())
+    ##clusters = ['GTI'] - if you want to analyse only a particular cluster
     num_clusters = len(clusters)
     if(count == 0):
         print("Frame",end=',',file=output_file)
@@ -46,6 +46,7 @@ for line in tracefile:
             units = sorted(unit_data[cluster].keys())
             for unit in units:
                 print(cluster+"."+unit,end=',',file=output_file)
+                ##incase you want to exclude glue,dop,dfx and small numbers
                 ##if 'GLUE' not in unit:
                 ##    if 'DOP' not in unit:
                 ##        if 'DFX' not in unit:
