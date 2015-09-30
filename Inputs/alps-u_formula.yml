@@ -10,7 +10,7 @@ EU:
      GRF_RD_COUNT: R * C
      GRF_WR_COUNT: R * C
 
-  FPU:
+  FPU0:
      PS2_EU_FPU:
       INSTR_ADD_F_FPU: R * C
       INSTR_ADD_UW_FPU: R * C
@@ -330,7 +330,7 @@ EU:
       INSTR_XOR_DF_FPU: R * C
   
  
-  EM:
+  FPU1:
      PS2_EU_EM:
       INSTR_ADD_F_EM: R * C
       INSTR_ADD_UW_EM: R * C
