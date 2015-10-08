@@ -1742,6 +1742,10 @@ Fabric:
     PS2_Fabric_DOP: R * C * R[numBuses] * 2
 
 rFF:
+   rCS:
+    PS0_rCS: R * C
+    PS1_rCS: R * C
+    PS2_rCS: R * C
    rVF:
     PS0_rVF_DOP: R * C
     PS0_rVF: R * C
@@ -1783,6 +1787,10 @@ rFF:
     PS0_rCL: R * C
     PS1_rCL: R * C
     PS2_rCL: R * C
+   rSVG:
+    PS0_rSVG: R * C
+    PS1_rSVG: R * C
+    PS2_rSVG: R * C
    rSF:
     PS0_rSF_DOP: R * C
     PS0_rSF: R * C

@@ -1,6 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	numrFF	=	1	#One Vertex pipeline
+	num_rFF_rCS	=	numrFF	
 	num_rFF_rVF	=	numrFF	
 	num_rFF_rVFBE1	=	numrFF	
 	num_rFF_rVFBE2	=	numrFF	
@@ -11,6 +12,7 @@
 	num_rFF_rVS_Cache	=	numrFF	
 	num_rFF_rCL	=	numrFF	
 	num_rFF_rSF	=	numrFF	
+	num_rFF_rSVG	=	numFF	
 	num_rFF_rOTHER_SMALL	=	numrFF	
 	num_rFF_rOTHER_CLKGLUE	=	numrFF	
 	num_rFF_rOTHER_NONCLKGLUE	=	numrFF	
@@ -25,6 +27,13 @@
 	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
 	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
 	 .temp_rTeGsSolDOP	=	D(GeoR.pwr_ModelTeGsSol_idle_dop_gated.2xGeoClock)/.GeoClk2x	#Models SKL+ TE, GS, SOL DOP Gating
+
+#CS				
+	 .CS_idle	=	D(uCS0.pwr_cs_idle.UnsliceClock)	
+	 .CS_stalled_or_idle	=	D(uCS0.pwr_cs_stalled_or_idle.UnsliceClock)	
+	PS0_rCS	=	.CS_idle/.UnsliceClk	 # GSim really only has a stub for CS.
+	PS1_rCS	=	(.CS_stalled_or_idle > .CS_idle) ? (.CS_stalled_or_idle - .CS_idle)/.UnsliceClk : 0	
+	PS2_rCS	=	1 - PS0_CS - PS1_CS	
 				
 #VF				
 	PS0_rVF_DOP	=	 .temp_3DPipeDisable	
@@ -94,8 +103,11 @@
 	PS2_rSF_NotCulled_FastClip	=	D(GeoR.uSF.pwr_SF_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
 	PS2_rSF_NotCulled_NotFastClip	=	D(GeoR.uSF.pwr_SF_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
 
-#PS2_VF
-	PS2_VF	= PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped
+#SVG				
+	PS0_rSVG_DOP	=	 .temp_3DPipeDisable	
+	PS0_rSVG	=	1 - .temp_3DPipeDisable	#No GSIM model
+	PS1_rSVG	=	0	
+	PS2_rSVG	=	0	
 				
 #CLKGLUE				
 	PS0_rFF_rOTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
