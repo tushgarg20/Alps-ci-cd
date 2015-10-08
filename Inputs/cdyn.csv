@@ -68,13 +68,15 @@ PS0_EU_Pipelines_DOP,Gen10LP,A0,0.74783503,syn,1,from cnl fso cgen ss
 PS0_EU_Repeater,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
 PS0_EU_SMALL,Gen10LP,A0,0,syn,19950.07,from cnl fso cgen ss
 PS0_EU_TCGA_DOP,Gen10LP,A0,1.432128521,syn,1,from cnl fso cgen ss
-PS0_Fabric_Assign,Gen10LP,A0,0.03665858,syn,20076.1,from cnl fso cgen ss
-PS0_Fabric_CLKGLUE,Gen10LP,A0,4.201806426,syn,1,from cnl fso cgen ss
-PS0_Fabric_CPunit,Gen10LP,A0,0.092868402,syn,9048.17,from cnl fso cgen ss
-PS0_Fabric_DFX,Gen10LP,A0,0.105087929,syn,89802.21,from cnl fso cgen ss
-PS0_Fabric_DOP,Gen10LP,A0,0.919,syn,1,from cnl fso cgen ss
-PS0_Fabric_NONCLKGLUE,Gen10LP,A0,0.149322615,syn,1,from cnl fso cgen ss
+PS0_Fabric_Assign,Gen10LP,A0,0.07331716,syn,20076.1,from cnl fso cgen ss
+PS0_Fabric_CLKGLUE,Gen10LP,A0,8.403612852,syn,1,from cnl fso cgen ss
+PS0_Fabric_CPunit,Gen10LP,A0,0.185736804,syn,9048.17,from cnl fso cgen ss
+PS0_Fabric_DFX,Gen10LP,A0,0.210175858,syn,89802.21,from cnl fso cgen ss
+PS0_Fabric_DOP,Gen10LP,A0,2.72,syn,1,from cnl fso cgen ss
+PS0_Fabric_NONCLKGLUE,Gen10LP,A0,0.29864523,syn,1,from cnl fso cgen ss
 PS0_Fabric_Repeater,Gen10LP,A0,0,syn,1867252.2,from cnl fso cgen ss
+PS0_Fabric_SMALL,Gen10LP,A0,0.014,syn,513,
+PS2_Fabric_SMALL,Gen10LP,A0,0.014,syn,513,
 PS0_FF_OTHER_Assign,Gen10LP,A0,1.026440237,syn,8943.882194,from cnl fso cgen ss
 PS0_FF_OTHER_Assign_DOP,Gen10LP,A0,0.543884101,syn,8943.882194,from cnl fso cgen ss
 PS0_FF_OTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,from cnl fso cgen ss
@@ -426,14 +428,14 @@ PS2_EU_Pipelines_DOP,Gen10LP,A0,0.74783503,syn,0,cnl cgdis ss
 PS2_EU_Repeater,Gen10LP,A0,0,syn,0,cnl cgdis ss
 PS2_EU_SMALL,Gen10LP,A0,2.724954438,syn,19950.07,avg cgdis and pv
 PS2_EU_TCGA_DOP,Gen10LP,A0,1.432128521,syn,0,cnl cgdis ss
-PS2_Fabric_Assign,Gen10LP,A0,0.03665858,syn,20076.1,cnl cgdis ss
-PS2_Fabric_CLKGLUE,Gen10LP,A0,4.201562036,syn,1,cnl cgdis ss
-PS2_Fabric_CPunit,Gen10LP,A0,0.092868402,syn,9048.17,cnl cgdis ss
-PS2_Fabric_DFX,Gen10LP,A0,0.105087929,syn,89802.21,cnl cgdis ss
-PS2_Fabric_DOP,Gen10LP,A0,1.359300142,syn,1,cnl cgdis ss
-PS2_Fabric_NONCLKGLUE,Gen10LP,A0,1.534772544,syn,1,average of cgdis and pv
+PS2_Fabric_Assign,Gen10LP,A0,0.07331716,syn,20076.1,cnl cgdis ss
+PS2_Fabric_CLKGLUE,Gen10LP,A0,8.403124072,syn,1,cnl cgdis ss
+PS2_Fabric_CPunit,Gen10LP,A0,0.185736804,syn,9048.17,cnl cgdis ss
+PS2_Fabric_DFX,Gen10LP,A0,0.210175858,syn,89802.21,cnl cgdis ss
+PS2_Fabric_DOP,Gen10LP,A0,2.718600284,syn,1,cnl cgdis ss
+PS2_Fabric_NONCLKGLUE,Gen10LP,A0,.3069545088,syn,1,average of cgdis and pv
 PS2_Fabric_Repeater,Gen10LP,A0,0,syn,1867252.2,
-PS2_Fabric_Top_Level,Gen10LP,A0,0,syn,1,From Kamal Sinha added 13.2 for scrightpar1and4
+PS2_Fabric_Top_Level,Gen10LP,A0,0,syn,1,
 PS2_FF_OTHER_Assign,Gen10LP,A0,1.075318343,syn,8943.882194,cnl cgdis ss
 PS2_FF_OTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,cnl cgdis ss
 PS2_FF_OTHER_CPunit,Gen10LP,A0,4.838932544,syn,41218.82154,cnl cgdis ss
@@ -977,7 +979,7 @@ PS1_STC,Gen10LP,A0,18.57368047,syn,779548.23,cnl cgdis ss
 PS1_SVG,Gen10LP,A0,6.207519527,syn,187521.5698,cnl cgdis ss
 PS1_SVL,Gen10LP,A0,5.840933728,syn,240956.44,cnl cgdis ss
 PS1_SVSM,Gen10LP,A0,1.881807101,syn,235815.29,cnl cgdis ss
-PS1_TC,Gen10LP,A0,10.45991479,syn,585770.18,cnl cgdis ss
+PS1_TC,Gen10LP,A0,6.829,syn,585770.18,cnl cgdis ss
 PS1_TDC,Gen10LP,A0,2.077319527,syn,185863.83,cnl cgdis ss
 PS1_TDG,Gen10LP,A0,3.250394083,syn,189506.0133,cnl cgdis ss
 PS1_TDL,Gen10LP,A0,5.669860355,syn,568030.13,cnl cgdis ss
@@ -1526,7 +1528,7 @@ PS2_XStack_DATA,Gen10LP,A0,15.73893733,syn,1,fabric
 PS0_XStack_CMD,Gen10LP,A0,0.677983651,syn,1,fabric
 PS1_XStack_CMD,Gen10LP,A0,0.814659401,syn,1,fabric
 PS2_XStack_CMD,Gen10LP,A0,3.45106267,syn,1,fabric
-PS2_HDC_NONCLKGLUE,Gen11LP,A0,3.450474471,syn,1,Taken from CNL  CGDIS data
+PS2_HDC_NONCLKGLUE,Gen10LP,A0,3.450474471,syn,1,Taken from CNL  CGDIS data
 EM_transc_bypass_16%,Gen9LPClient,A0,24.96,syn,122384,No bypass in TRANSC
 EM_transc_bypass_25%,Gen9LPClient,A0,27.42,syn,122384,No bypass in TRANSC
 EM_transc_bypass_35%,Gen9LPClient,A0,29.27,syn,122384,No bypass in TRANSC
