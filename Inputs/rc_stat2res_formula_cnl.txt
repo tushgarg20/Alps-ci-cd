@@ -142,31 +142,31 @@
 
 #SMALL			
 	PS0_Fabric_SMALL	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_SMALL	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS2_Fabric_SMALL	=	MAX(PS2_LSN_XSLDN_DATA, PS2_LSN_XSLUP_DATA,PS2_LSNtoUnslice_UP_DATA, PS2_GAFStoLSN_DN_DATA)
 
 #CPunit			
-	PS0_Fabric_CPunit	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_CPunit	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS0_Fabric_CPunit	=	1-PS2_Fabric_CPunit
+	PS2_Fabric_CPunit	=	PS2_Fabric_SMALL
 			
 #Assign			
-	PS0_Fabric_Assign	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_Assign	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS0_Fabric_Assign	=	1-PS2_Fabric_Assign
+	PS2_Fabric_Assign	=	PS2_Fabric_SMALL
 			
 #Repeater			
-	PS0_Fabric_Repeater	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_Repeater	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
-			
+	PS0_Fabric_Repeater	=	1-PS2_Fabric_Repeater
+	PS2_Fabric_Repeater	=	PS2_Fabric_SMALL
+
 #CLKGLUE			
-	PS0_Fabric_CLKGLUE	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_CLKGLUE	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS0_Fabric_CLKGLUE	=	0
+	PS2_Fabric_CLKGLUE	=	1
 			
 #NONCLKGLUE			
 	PS0_Fabric_NONCLKGLUE	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_NONCLKGLUE	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS2_Fabric_NONCLKGLUE	=	PS2_Fabric_SMALL
 			
 #DFX			
-	PS0_Fabric_DFX	=	1-PS2_Fabric_SMALL
-	PS2_Fabric_DFX	=	(PS2_LSN_XSLDN_DATA*5 + PS2_LSN_XSLDN_CMD*1)/6
+	PS0_Fabric_DFX	=	1
+	PS2_Fabric_DFX	=	0
 			
 #DOP			
 	PS0_Fabric_DOP	=0

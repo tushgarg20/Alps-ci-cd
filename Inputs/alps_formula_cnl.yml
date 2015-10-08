@@ -837,7 +837,7 @@ Z:
      PS2_HIZ_Stencil_Only: R * C
      PS2_HIZ_Bypass: R * C
      PS2_HIZ_Clear_Ambiguate: R * C
-     PS2_HIZ_Depth-Resolve: R * C
+     PS2_HIZ_Depth_Resolve: R * C
      PS2_HIZ_Zmarkers: R * C
    HIZ_Cache:
     PS2_HIZ_CACHE_READ: R * C
