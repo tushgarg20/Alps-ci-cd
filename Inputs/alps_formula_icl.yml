@@ -1772,11 +1772,16 @@ rFF:
     PS0_rVF_URBFifo_Idle: R * C
     PS2_rVF_URBFifo_Read: R * C
     PS2_rVF_URBFifo_Write: R * C
-   rVS:
-    PS0_rVS_DOP: R * C
-    PS0_rVS: R * C
-    PS1_rVS: R * C
-    PS2_rVS: R * C
+   rVSFE:
+    PS0_rVSFE_DOP: R * C
+    PS0_rVSFE: R * C
+    PS1_rVSFE: R * C
+    PS2_rVSFE: R * C
+   rVSBE:
+    PS0_rVSBE_DOP: R * C
+    PS0_rVSBE: R * C
+    PS1_rVSBE: R * C
+    PS2_rVSBE: R * C
    rVS_Cache:
     PS0_rVS_Cache_Idle: R * C
     PS2_rVS_Cache:
