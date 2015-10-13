@@ -433,7 +433,7 @@ PS2_Fabric_CLKGLUE,Gen10LP,A0,8.403124072,syn,1,cnl cgdis ss
 PS2_Fabric_CPunit,Gen10LP,A0,0.185736804,syn,9048.17,cnl cgdis ss
 PS2_Fabric_DFX,Gen10LP,A0,0.210175858,syn,89802.21,cnl cgdis ss
 PS2_Fabric_DOP,Gen10LP,A0,2.718600284,syn,1,cnl cgdis ss
-PS2_Fabric_NONCLKGLUE,Gen10LP,A0,.3069545088,syn,1,average of cgdis and pv
+PS2_Fabric_NONCLKGLUE,Gen10LP,A0,0.306954509,syn,1,average of cgdis and pv
 PS2_Fabric_Repeater,Gen10LP,A0,0,syn,1867252.2,
 PS2_Fabric_Top_Level,Gen10LP,A0,0,syn,1,
 PS2_FF_OTHER_Assign,Gen10LP,A0,1.075318343,syn,8943.882194,cnl cgdis ss
@@ -692,6 +692,7 @@ PS2_RCPBCOM_MSAA_8PPC_WRT,Gen10LP,A0,68.0518,syn,516891.226,Approximated with PS
 PS2_RCPBCOM_MSAA_8PPC_BLD,Gen10LP,A0,108.08,syn,516891.226,Approximated with PS2_RCPBCOM_NOMSAA_8PPC_BLD
 PS2_RCPBCOM_MSAA_RTR,Gen10LP,A0,70.03005,syn,516891.226,Approximated with PS2_RCPBCOM_NOMSAA_RTR
 PS2_DAPB,Gen10LP,A0,14.9575,syn,89298.06679,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
+PS2_DAPB_DIS,Gen10LP,A0,0.806488757,syn,89298.06679,Approximating with CGDIS number
 PS2_DAPRSC,Gen10LP,A0,53.2264307,syn,554536.3792,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_CALC,Gen10LP,A0,16.81995,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
 PS2_SBE_FETCH,Gen10LP,A0,15.564485,syn,1191654.608,Raw Cdyn * 0.965 (x1r0-x1r1 scalar)
