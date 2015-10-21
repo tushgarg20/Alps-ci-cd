@@ -5165,13 +5165,13 @@ PS2_MEDIASMP_CLKGLUE,Gen9LPSoc,B0,11.76777778,syn,1,
 PS2_ROSC_CLKGLUE,Gen9LPSoc,B0,19.78444444,syn,1,
 PS2_ROSS_CLKGLUE,Gen9LPSoc,B0,24.80555556,syn,1,
 PS0_rCL,Gen10LP,A0,3.763614201,syn,1692289.962,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,24.50268877,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX,Gen10LP,A0,3.763614201,syn,358151.005,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,1.255437264,syn,358151.005,from cnl fso cgen ss
-PS0_rFF_rOTHER_DOP,Gen10LP,A0,9.907015043,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,3.047549941,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0.789509378,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,12.2513,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0.627719,syn,358151.005,from cnl fso cgen ss
+PS0_rFF_rOTHER_DOP,Gen10LP,A0,4.95351,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.52377,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0.394755,syn,1,from cnl fso cgen ss
 PS0_rSF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
 PS0_rVF,Gen10LP,A0,4.545663905,syn,1695009.145,from cnl fso cgen ss
 PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
@@ -5181,10 +5181,10 @@ PS0_rVFBE2,Gen10LP,A0,0.366585799,syn,795859.9759,from cnl fso cgen ss
 PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
 PS0_rVSBE,Gen10LP,A0,0.684293491,syn,1097712.546,from cnl fso cgen ss
 PS0_rVSFE,Gen10LP,A0,0.537659172,syn,728350.0838,from cnl fso cgen ss
-PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,65.67995562,syn,1,cnl cgdis ss
-PS2_rFF_rOTHER_DFX,Gen10LP,A0,3.763614201,syn,358151.005,cnl cgdis ss
-PS2_rFF_rOTHER_DOP,Gen10LP,A0,25.72943527,syn,1,cnl cgdis ss
-PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,3.51067,syn,1,average of cgdis and pv
+PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,cnl cgdis ss
+PS2_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,cnl cgdis ss
+PS2_rFF_rOTHER_DOP,Gen10LP,A0,12.8647,syn,1,cnl cgdis ss
+PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.75534,syn,1,average of cgdis and pv
 PS2_rVF_Cache_Read,Gen10LP,A0,2.7003,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS2_rVF_Cache_Write,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
 PS2_rVF_URBFifo_Read,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
