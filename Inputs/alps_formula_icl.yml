@@ -331,12 +331,12 @@ L3Node:
     PS0_LNI: R * C
     PS1_LNI: R * C
     PS2_LNI: R * C
-    PS2_LNIXS: R * C
+    PS2_LNIXS: R * C/2
    LNE:
     PS0_LNE: R * C
     PS1_LNE: R * C
     PS2_LNE: R * C
-    PS2_LNEXS: R * C
+    PS2_LNEXS: R * C/2
    DOP:
     PS0_L3Node_DOP: R * C
     PS2_L3Node_DOP: R * C
