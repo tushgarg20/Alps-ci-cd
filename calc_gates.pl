@@ -32,6 +32,8 @@ my %infra = (
 my $gen = $::opt_gen;
 print "";
 my %total;
+
+print "units w/o instance counts in csv\n";
 foreach my $cluster (sort keys %count) {
     foreach my $unit (sort keys %{$count{$cluster}}) {
         if (defined $inst_cnt{$cluster}{$unit}) {
@@ -51,16 +53,19 @@ foreach my $cluster (sort keys %count) {
 }
 print "\n"x2;
 my $total;
+printf ("%-10s %20s %10s", "cluster", "",  "gate cnt");
+print "   instance cnt" if ($::opt_d);
+print "\n";
 foreach my $cluster (sort keys %total) {
     printf ("%-10s %20s %10.3f\n", $cluster, "", $total{$cluster}/1000);
     $total += $total{$cluster};
 
     next if (! $::opt_d);
     foreach my $unit (sort keys %{$count{$cluster}}) {
-        printf ("%-10s %-20s %10.3f %3d\n", "", $unit, $count{$cluster}{$unit}{$gen}{ref}/1000, $inst_cnt{$cluster}{$unit});
+        printf ("%-10s %-20s %10.3f   %3d\n", "", $unit, $count{$cluster}{$unit}{$gen}{ref}/1000, $inst_cnt{$cluster}{$unit});
     }
 }
-printf ("%-10s %10.3f\n", "total" , $total/1000000);
+printf ("%-20s %10.3f\n", "total in Mil" , $total/1000000);
 
 
 sub read_inst_cnt {
