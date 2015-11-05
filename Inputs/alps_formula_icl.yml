@@ -1746,6 +1746,10 @@ rFF:
     PS0_rCS: R * C
     PS1_rCS: R * C
     PS2_rCS: R * C
+   rOV:
+    PS0_rOV: R * C
+    PS1_rOV: R * C
+    PS2_rOV: R * C
    rVF:
     PS0_rVF_DOP: R * C
     PS0_rVF: R * C

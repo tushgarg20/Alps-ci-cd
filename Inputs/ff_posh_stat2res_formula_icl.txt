@@ -2,6 +2,7 @@
 #Instance Counts				
 	numrFF	=	1	#One Vertex pipeline
 	num_rFF_rCS	=	numrFF	
+	num_rFF_rOV	=	numrFF	
 	num_rFF_rVF	=	numrFF	
 	num_rFF_rVFBE1	=	numrFF	
 	num_rFF_rVFBE2	=	numrFF	
@@ -34,6 +35,11 @@
 	PS0_rCS	=	.CS_idle/.UnsliceClk	 # GSim really only has a stub for CS.
 	PS1_rCS	=	(.CS_stalled_or_idle > .CS_idle) ? (.CS_stalled_or_idle - .CS_idle)/.UnsliceClk : 0	
 	PS2_rCS	=	1 - PS0_CS - PS1_CS	
+
+#OV				
+	PS0_rOV	=	PS0_rCS
+	PS1_rOV	=	PS1_rCS
+	PS2_rOV	=	PS2_rCS
 				
 #VF				
 	PS0_rVF_DOP	=	 .temp_3DPipeDisable	
