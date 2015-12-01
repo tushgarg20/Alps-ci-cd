@@ -2811,7 +2811,7 @@ PS2_BTGEN_Cache_Write,Gen9LPClient,A0,11.08,ebb,1,
 PS2_CC_DIS,Gen9LPClient,A0,49.63,syn,587436.82,8% TR
 PS2_CC_EN_PARTIALS,Gen9LPClient,A0,40.31,syn,587436.82,3% TR
 PS2_CC_EN_WRITES,Gen9LPClient,A0,64.68,syn,587436.82,8% TR 
-PS2_CL,Gen9LPClient,A0,0,syn,1148212.05,State needs to be changed
+PS2_CL,Gen9LPClient,A0,124.95,syn,1148212.05,Average of mustmustclip and nomustclip
 PS2_CL_MustClip,Gen9LPClient,A0,63.07,syn,1148212.05,No TR information
 PS2_CL_NoMustClip,Gen9LPClient,A0,186.84,syn,1148212.05,No TR information
 PS2_ClockSpine,Gen9LPClient,A0,337,ebb,1,Taken from tttt 0.58 x1r2
