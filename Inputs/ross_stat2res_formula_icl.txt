@@ -12,6 +12,14 @@
 	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS	
 	num_DSSC_GWL	=	num_DSSC_PSD	
 	num_DSSC_CPSS	=	num_DSSC_PSD	
+	num_DSSC_CPunit	=	num_DSSC_PSD
+	num_DSSC_Repeater	=	num_DSSC_PSD
+	num_DSSC_Assign	=	num_DSSC_PSD
+	num_DSSC_CLKGLUE	=	num_DSSC_PSD
+	num_DSSC_NONCLKGLUE	=	num_DSSC_PSD
+	num_DSSC_DFX	=	num_DSSC_PSD
+	num_DSSC_DOP	=	num_DSSC_PSD
+	num_DSSC_LSLM	=	COUNT('knob\.S\d\.uSLM_\d\.ClockName')
 
 	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
@@ -38,6 +46,26 @@
 	 @ANY_TDL@	=	(S\d+\.SS\d+\.uTDL\.|STK\d+\.S\d+\.SS\d+\.uTDL\.)	
 	 @ANY_ICACHE@	=	(S\d+\.SS\d+\.uICACHE\.|STK\d+\.S\d+\.SS\d+\.uICACHE\.)	
 	 @ANY_GWC@	=	Med\.uGWC\.	
+
+
+#SLM				
+	.temp_fe_per_be	=	D(knob.S0.uSLM_0.BE.NumIoRows)
+	num_DSSC_SLMBE	=	COUNT('knob\.S\d\.uSLM_\d\.BE\.ClockName')
+	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
+
+	@ANY_SLMFE@	=	S\d\.uSLM_\d\.FE_\d\.
+	@ANY_SLMBE@	=	S\d\.uSLM_\d\.BE\.
+	PS0_SLMFE	=	1 - PS1_SLMFE - PS2_SLMFE_Atomic - PS2_SLMFE_Read - PS2_SLMFE_Write
+	PS1_SLMFE	=	D(SUM('@ANY_SLMFE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Atomic	=	D(SUM('@ANY_SLMFE@SlmAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Read  	=	D(SUM('@ANY_SLMFE@SlmRdRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Write  	=	D(SUM('@ANY_SLMFE@SlmWrRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS0_SLMBE	=	1 - PS1_SLMBE - PS2_SLMBE_Atomic - PS2_SLMBE_Read - PS2_SLMBE_Write
+	PS1_SLMBE	=	D(SUM('@ANY_SLMBE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMBE)
+	PS2_SLMBE_Atomic	=	PS2_SLMFE_Atomic * .temp_fe_per_be
+	PS2_SLMBE_Read  	=	PS2_SLMFE_Read   * .temp_fe_per_be
+	PS2_SLMBE_Write  	=	PS2_SLMFE_Write  * .temp_fe_per_be
+
 #BC				
 	PS0_BC	=	(D(SUM('@ANY_BC@pwr_bc_idle\.CrClock')) / (num_DSSC_BC * .CrClk)) - PS0_BC_DOP	
 	PS0_BC_DOP	=	0	#BC is not covered by 3D DOP
@@ -49,6 +77,7 @@
 	PS2_BC_FLOWTHROUGH	=	1 - (PS0_BC + PS0_BC_DOP + PS1_BC + PS2_BC_COMPUTE)	
 	PS2_BC_BARYRAM_READ	=	0	#No GSIM model
 	PS2_BC_BARYRAM_WRITE	=	0	#No GSIM model
+
 #PSD				
 	PS0_PSD	=	(D(SUM('@ANY_PSD@pwr_psd_idle\.CrClock')) / (num_DSSC_PSD * .CrClk)) - PS0_PSD_DOP	
 	PS0_PSD_DOP	=	0	#PSD is not covered by 3D DOP
@@ -59,31 +88,38 @@
 	#PS2_PSD_NOTHREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock')) / (numROSS * .CrClk)
 	PS2_PSD_NOTHREADDISPATCH	=	(1 - (PS0_PSD + PS0_PSD_DOP + PS1_PSD + PS2_PSD_THREADDISPATCH + PS2_PSD_WAITINGONFLUSH))
 	PS2_PSD_WAITINGONFLUSH	=	D(SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+
 #PSD SCOREBOARD				
 	PS0_PSD_SCOREBOARD	=	0	
 	PS2_PSD_SCOREBOARD_READ	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
 	PS2_PSD_SCOREBOARD_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdScoreboardWrite\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+
 #PSD BARY PAYLOAD RAM				
 	PS0_PSD_BARYPAYLDASMRAM	=	0	
 	PS2_PSD_BARYPAYLDASMRAM_READ	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
 	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+
 #MA IN				
 	PS0_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
 	PS1_MA_IN	=	1 - PS0_MA_IN - PS2_MA_IN	
 	PS2_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+
 #MA OUT				
 	PS0_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
 	PS1_MA_OUT	=	1 - PS0_MA_OUT - PS2_MA_OUT	
 	PS2_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+
 #TDL				
 	PS0_TDL	=	D(SUM('@ANY_TDL@pwr_TDL_Idle\.CrClock')) / (numROSS * .CrClk)	
 	PS1_TDL	=	(1 - (PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH))	
 	PS2_TDL_PSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock')) / (numROSS * .CrClk)	
 	PS2_TDL_NONPSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+
 #IC				
 	PS0_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Idle\.CrClock')) / (numROSS * .CrClk)	
 	PS1_IC	=	1 - PS0_IC - PS2_IC	
 	PS2_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Active\.CrClock')) / (numROSS * .CrClk)	
+
 #IC DATARAM				
 	PS0_IC_DATARAM	=	0	
 	.temp_PS2_IC_DATARAM_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Reads\.CrClock')) / (numROSS * .CrClk)	
@@ -100,53 +136,85 @@
 	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (num_DSSC_DAPRSS * .CrClk)	
 	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
 	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+
 #DAPRSS BYPASS RAM				
 	PS0_DAPRSS_BYPASSRAM	=	0	#ROSS units are not covered by 3D DOP
 	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamRd\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
 	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamWr\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+
 #GWL				
 	PS0_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Idle\.CrClock')) / (.CrClk)	#GWC is 1 in count
 	PS1_GWL	=	1 - PS0_GWL - PS2_GWL	
 	PS2_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Active\.CrClock')) / (.CrClk)	#GWC is 1 in count
 				
+	.temp_ross_avg	=	AVG(PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC)	
+	.temp_dssc_avg	=	AVG(PS0_BC, PS0_PSD, PS0_DAPRSS, PS0_GWL)	
+
 #Small				
 	PS0_ROSS_SMALL_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS0_ROSS_SMALL	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
-	PS2_ROSS_SMALL	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+	PS0_ROSS_SMALL	=	.temp_ross_avg
+	PS2_ROSS_SMALL	=	1 - PS0_ROSS_SMALL - PS0_ROSS_SMALL_DOP	
 				
 #CPunit				
 	PS0_ROSS_CPunit_DOP	=	0	
-	PS0_ROSS_CPunit	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
-	PS2_ROSS_CPunit	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+	PS0_ROSS_CPunit	=	.temp_ross_avg
+	PS2_ROSS_CPunit	=	1 - PS0_ROSS_CPunit - PS0_ROSS_CPunit_DOP	
+				
+	PS0_DSSC_CPunit_DOP	=	0	
+	PS0_DSSC_CPunit	=	.temp_dssc_avg
+	PS2_DSSC_CPunit	=	1 - PS0_DSSC_CPunit - PS0_DSSC_CPunit_DOP	
 				
 #Assign				
 	PS0_ROSS_Assign_DOP	=	0	
-	PS0_ROSS_Assign	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
-	PS2_ROSS_Assign	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+	PS0_ROSS_Assign	=	.temp_ross_avg
+	PS2_ROSS_Assign	=	1 - PS0_ROSS_Assign - PS0_ROSS_Assign_DOP	
+				
+	PS0_DSSC_Assign_DOP	=	0	
+	PS0_DSSC_Assign	=	.temp_dssc_avg
+	PS2_DSSC_Assign	=	1 - PS0_DSSC_Assign - PS0_DSSC_Assign_DOP	
 				
 #Repeater				
 	PS0_ROSS_Repeater_DOP	=	0	
-	PS0_ROSS_Repeater	=	AVG(PS0_BC,PS0_PSD, PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC,PS0_DAPRSS,PS0_GWL)	
-	PS2_ROSS_Repeater	=	1-PS0_ROSS_SMALL-PS0_ROSS_SMALL_DOP	
+	PS0_ROSS_Repeater	=	.temp_ross_avg
+	PS2_ROSS_Repeater	=	1 - PS0_ROSS_Repeater - PS0_ROSS_Repeater_DOP	
+				
+	PS0_DSSC_Repeater_DOP	=	0	
+	PS0_DSSC_Repeater	=	.temp_dssc_avg
+	PS2_DSSC_Repeater	=	1 - PS0_DSSC_Repeater - PS0_DSSC_Repeater_DOP	
 				
 #CLKGLUE				
 	PS0_ROSS_CLKGLUE_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS0_ROSS_CLKGLUE	=	PS0_ROSS_SMALL	
-	PS2_ROSS_CLKGLUE	=	PS2_ROSS_SMALL	
+	PS0_ROSS_CLKGLUE	=	.temp_ross_avg
+	PS2_ROSS_CLKGLUE	=	1 - PS0_ROSS_CLKGLUE - PS0_ROSS_CLKGLUE_DOP
+				
+	PS0_DSSC_CLKGLUE_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS0_DSSC_CLKGLUE	=	.temp_dssc_avg
+	PS2_DSSC_CLKGLUE	=	1 - PS0_DSSC_CLKGLUE - PS0_DSSC_CLKGLUE_DOP
 				
 #NONCLKGLUE				
 	PS0_ROSS_NONCLKGLUE_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS0_ROSS_NONCLKGLUE	=	PS0_ROSS_SMALL	
-	PS2_ROSS_NONCLKGLUE	=	PS2_ROSS_SMALL	
+	PS0_ROSS_NONCLKGLUE	=	.temp_ross_avg
+	PS2_ROSS_NONCLKGLUE	=	1 - PS0_ROSS_NONCLKGLUE - PS0_ROSS_NONCLKGLUE_DOP 
+				
+	PS0_DSSC_NONCLKGLUE_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS0_DSSC_NONCLKGLUE	=	.temp_dssc_avg
+	PS2_DSSC_NONCLKGLUE	=	1 - PS0_DSSC_NONCLKGLUE - PS0_DSSC_NONCLKGLUE_DOP
 				
 #Dfx				
 	PS0_ROSS_DFX_DOP	=	0	#ROSS units are not covered by 3D DOP
-	PS0_ROSS_DFX	=	PS0_ROSS_SMALL	
-	PS2_ROSS_DFX	=	PS2_ROSS_SMALL	
+	PS0_ROSS_DFX	=	.temp_ross_avg
+	PS2_ROSS_DFX	=	1 - PS0_ROSS_DFX - PS0_ROSS_DFX_DOP
+				
+	PS0_DSSC_DFX_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS0_DSSC_DFX	=	.temp_dssc_avg
+	PS2_DSSC_DFX	=	1 - PS0_DSSC_DFX - PS0_DSSC_DFX_DOP
 				
 #DOP				
 	PS0_ROSS_DOP	=	0	#ROSS units are not covered by 3D DOP
 	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP	
+				
+	PS0_DSSC_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS2_DSSC_DOP	=	1 - PS0_DSSC_DOP	
 				
 #CPSS				
 	PS0_CPSS	=	1	

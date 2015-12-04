@@ -5195,3 +5195,33 @@ PS2_rVF_URBFifo_Write,Gen10LP,A0,1.882,ebb,1,Doubling for be1/2. Need to check w
 PS2_rVS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gSim.
 PS2_rVS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
 PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_DSSC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_DSSC_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
+PS0_DSSC_CLKGLUE_DOP,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
+PS0_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
+PS0_DSSC_CPunit_DOP,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
+PS0_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
+PS0_DSSC_DFX_DOP,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
+PS0_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,from cnl fso cgen ss
+PS0_DSSC_NONCLKGLUE,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
+PS0_DSSC_NONCLKGLUE_DOP,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
+PS0_DSSC_Repeater,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
+PS0_DSSC_Repeater_DOP,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
+PS2_DSSC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
+PS2_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,cnl cgdis ss
+PS2_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,cnl cgdis ss
+PS2_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,cnl cgdis ss
+PS2_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
+PS2_DSSC_NONCLKGLUE,Gen10LP,A0,11.00857154,syn,1,average of cgdis and pv
+PS2_DSSC_Repeater,Gen10LP,A0,2.150636686,syn,98496.81,cnl cgdis ss
+PS0_SLMFE,Gen11LP,A0,0.23,syn,280000,from cnl fso cgen ss
+PS1_SLMFE,Gen11LP,A0,1.23,syn,280000,cnl cgdis ss
+PS2_SLMFE_Atomic,Gen11LP,A0,29.45,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMFE_Read,Gen11LP,A0,21.17,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMFE_Write,Gen11LP,A0,16.10,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS0_SLMBE,Gen11LP,A0,1.20,syn,623000,from cnl fso cgen ss
+PS1_SLMBE,Gen11LP,A0,25.92,syn,623000,cnl cgdis ss
+PS2_SLMBE_Atomic,Gen11LP,A0,91.69,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMBE_Read,Gen11LP,A0,65.75,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMBE_Write,Gen11LP,A0,25.71,syn,623000,Plite*0.968(x1r0-x1r1 scalar)

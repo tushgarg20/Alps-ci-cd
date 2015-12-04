@@ -293,9 +293,7 @@ L3_Bank:
    LSLM:
     PS0_LSLM: R * C
     PS1_LSLM: R * C
-    PS2_LSLM:
-     PS2_LSLM_Atomics: R * C
-     PS2_LSLM_NonAtomics: R * C
+    PS2_LSLM: R * C
    L3BankOther:
     PS0_L3BankOther: R * C
     PS1_L3BankOther: R * C
@@ -711,6 +709,18 @@ FL_Toggle_Rate : R
 PL_Toggle_Rate : R
 
 DSSC:
+   SLMFE:
+    PS0_SLMFE: R * C
+    PS1_SLMFE: R * C
+    PS2_SLMFE_Atomic: R * C
+    PS2_SLMFE_Read: R * C
+    PS2_SLMFE_Write: R * C
+   SLMBE:
+    PS0_SLMBE: R * C
+    PS1_SLMBE: R * C
+    PS2_SLMBE_Atomic: R * C
+    PS2_SLMBE_Read: R * C
+    PS2_SLMBE_Write: R * C
    BC:
     PS0_BC: R * C
     PS0_BC_DOP: R * C
@@ -759,6 +769,33 @@ DSSC:
     PS2_GWL: R * C
    CPSS:
     PS0_CPSS: R * C
+   CPunit:
+    PS0_DSSC_CPunit_DOP: R * C
+    PS0_DSSC_CPunit: R * C
+    PS2_DSSC_CPunit: R * C
+   Assign:
+    PS0_DSSC_Assign_DOP: R * C
+    PS0_DSSC_Assign: R * C
+    PS2_DSSC_Assign: R * C
+   Repeater:
+    PS0_DSSC_Repeater_DOP: R * C
+    PS0_DSSC_Repeater: R * C
+    PS2_DSSC_Repeater: R * C
+   CLKGLUE:
+    PS0_DSSC_CLKGLUE_DOP: R * C
+    PS0_DSSC_CLKGLUE: R * C
+    PS2_DSSC_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_DSSC_NONCLKGLUE_DOP: R * C
+    PS0_DSSC_NONCLKGLUE: R * C
+    PS2_DSSC_NONCLKGLUE: R * C
+   DFX:
+    PS0_DSSC_DFX_DOP: R * C
+    PS0_DSSC_DFX: R * C
+    PS2_DSSC_DFX: R * C
+   DOP:
+    PS0_DSSC_DOP: R * C
+    PS2_DSSC_DOP: R * C
 
 ROSS:
    MA_IN:
