@@ -709,6 +709,73 @@ phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] = float('%.3f'%(
 phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb']/1000))
 phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf']/1000))
 
+
+yaml_hash    = output_yaml_data['ALPS Model(pF)']['GT']
+label        = 'idle_active_cdyn_dist'
+gt_top       = '0GT_level(fF)'
+cluster_top  = '0total'
+gt_cdyn_dist = {label:{}}
+gt_cdyn_dist[label][gt_top] = {}
+for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+    gt_cdyn_dist[label][gt_top][category] = 0
+
+for cluster in yaml_hash:
+    gt_cdyn_dist[label][cluster] = {}
+    gt_cdyn_dist[label][cluster][cluster_top] = {}
+    for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+        gt_cdyn_dist[label][cluster][cluster_top][category] = 0
+    for unit in yaml_hash[cluster]:
+        gt_cdyn_dist[label][cluster][unit] = {}
+        for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+            gt_cdyn_dist[label][cluster][unit][category] = 0
+
+        for state in yaml_hash[cluster][unit]:
+            state_lc = state.lower()
+            category = ""
+            if (state_lc.find("_dop") != -1 or state_lc.find("_clkglue") != -1 or state_lc.find("clockspine") != -1):
+                if (state_lc.find("ps0_") == 0):
+                    category = "clock_idle"
+                elif (state_lc.find("ps2_") == 0):
+                    category = "clock_active"
+                else:
+                    if (yaml_hash[cluster][unit][state] > 0):
+                        print ("")
+                    else:
+                        continue
+            else:
+                if (state_lc.find("ps0_") == 0):
+                    category = "func_idle"
+                elif (state_lc.find("ps1_") == 0):
+                    category = "func_stall"
+                else:
+                    category = "func_active"
+
+            try:
+                gt_cdyn_dist[label][cluster][unit][category]        += yaml_hash[cluster][unit][state]
+                gt_cdyn_dist[label][cluster][cluster_top][category] += yaml_hash[cluster][unit][state]
+                gt_cdyn_dist[label][gt_top][category]               += yaml_hash[cluster][unit][state]
+                print (cluster, unit, state, category, yaml_hash[cluster][unit][state])
+            except:
+                for sub in yaml_hash[cluster][unit][state]:
+                    if (sub.find("total") == 0):
+                        continue
+                    gt_cdyn_dist[label][cluster][unit][category]        += yaml_hash[cluster][unit][state][sub]
+                    gt_cdyn_dist[label][cluster][cluster_top][category] += yaml_hash[cluster][unit][state][sub]
+                    gt_cdyn_dist[label][gt_top][category]               += yaml_hash[cluster][unit][state][sub]
+                    # print (cluster, unit, sub, category, yaml_hash[cluster][unit][state][sub])
+
+for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+    gt_cdyn_dist[label][gt_top][category] = float('%.3f'%(gt_cdyn_dist[label][gt_top][category]/1000))
+
+for cluster in gt_cdyn_dist[label]:
+    if (cluster.find(gt_top) == 0):
+        continue
+    for unit in gt_cdyn_dist[label][cluster]:
+        for category in gt_cdyn_dist[label][cluster][unit]:
+            gt_cdyn_dist[label][cluster][unit][category] = float('%.3f'%(gt_cdyn_dist[label][cluster][unit][category]/1000))
+
+print ("")
+
 ####################################
 # Generating output YAML file
 ####################################
@@ -719,6 +786,7 @@ yaml.dump(cluster_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(key_stats,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
+yaml.dump(gt_cdyn_dist,of,default_flow_style=False)
 of.close()
 
 dump_patriot_output()
