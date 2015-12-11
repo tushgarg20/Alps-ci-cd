@@ -5219,9 +5219,221 @@ PS0_SLMFE,Gen11LP,A0,0.23,syn,280000,from cnl fso cgen ss
 PS1_SLMFE,Gen11LP,A0,1.23,syn,280000,cnl cgdis ss
 PS2_SLMFE_Atomic,Gen11LP,A0,29.45,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
 PS2_SLMFE_Read,Gen11LP,A0,21.17,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
-PS2_SLMFE_Write,Gen11LP,A0,16.10,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
-PS0_SLMBE,Gen11LP,A0,1.20,syn,623000,from cnl fso cgen ss
+PS2_SLMFE_Write,Gen11LP,A0,16.1,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS0_SLMBE,Gen11LP,A0,1.2,syn,623000,from cnl fso cgen ss
 PS1_SLMBE,Gen11LP,A0,25.92,syn,623000,cnl cgdis ss
 PS2_SLMBE_Atomic,Gen11LP,A0,91.69,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
 PS2_SLMBE_Read,Gen11LP,A0,65.75,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
 PS2_SLMBE_Write,Gen11LP,A0,25.71,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS0_L3Node_Assign,Gen11LP,A0,3.469123609,syn,91326.18,15% Design Optimization
+PS0_L3Node_CLKGLUE,Gen11LP,C0,30.6331924,syn,1,15%*25% Design Optimization
+PS0_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
+PS0_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
+PS0_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
+PS0_L3Node_NONCLKGLUE,Gen11LP,C0,1.090592752,syn,1,15% Design Optimization
+PS0_L3Node_Repeater,Gen11LP,A0,12.44314397,syn,721319.43,15% Design Optimization
+PS0_L3Node_SMALL,Gen11LP,A0,2.139639112,syn,277618.19,15% Design Optimization
+PS0_L3Node_SMALL,Gen11LP,C0,2.139639112,syn,277618.19,15% Design Optimization
+PS2_L3Node_Assign,Gen11LP,A0,4.009226686,syn,91326.18,15% Design Optimization
+PS2_L3Node_CLKGLUE,Gen11LP,C0,30.63007642,syn,1,15%*25% Design Optimization
+PS2_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
+PS2_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
+PS2_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
+PS2_L3Node_NONCLKGLUE,Gen11LP,C0,1.172646873,syn,1,15% Design Optimization
+PS2_L3Node_Repeater,Gen11LP,A0,12.50546355,syn,721319.43,15% Design Optimization
+PS2_L3Node_SMALL,Gen11LP,A0,4.8297679,syn,277618.19,15% Design Optimization
+PS0_LNIECS_Base,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS0_LNIECS_Slice,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS0_LNE,Gen11LP,A0,1.620309231,syn,890288.66,15% Design Optimization
+PS0_LNEXS,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS0_LNI,Gen11LP,A0,22.21070038,syn,1667036.22,15%*10% Design Optimization
+PS0_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS2_LNE,Gen11LP,A0,55.68002792,syn,880216.8913,15% Design Optimization
+PS2_LNEXS,Gen11LP,A0,161.5731537,syn,880216.8913,15% Design Optimization
+PS2_LNEXS_BW,Gen11LP,A0,0,syn,1,15% Design Optimization
+PS2_LNI,Gen11LP,A0,182.3537538,syn,1591604.215,15%*10% Design Optimization
+PS2_LNIXS,Gen11LP,A0,235.9037538,syn,1591604.215,15%*10% Design Optimization
+PS2_LNIXS_BW,Gen11LP,A0,0,syn,1,15%*10% Design Optimization
+PS1_LNE,Gen11LP,A0,30.59891662,syn,890288.66,15% Design Optimization
+PS1_LNEXS,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS1_LNI,Gen11LP,A0,78.72833277,syn,1667036.22,15%*10% Design Optimization
+PS1_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS0_LSN_XSLDN_DATA,Gen11LP,A0,2.397,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLDN_DATA,Gen11LP,A0,10.132,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLDN_DATA,Gen11LP,A0,70.397,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLDN_CMD,Gen11LP,A0,0.731,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLDN_CMD,Gen11LP,A0,4.335,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLDN_CMD,Gen11LP,A0,18.071,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLUP_DATA,Gen11LP,A0,2.873,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLUP_DATA,Gen11LP,A0,11.509,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLUP_DATA,Gen11LP,A0,93.194,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLUP_CMD,Gen11LP,A0,1.003,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLUP_CMD,Gen11LP,A0,5.984,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLUP_CMD,Gen11LP,A0,23.613,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNI_DATA,Gen11LP,A0,0.221,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNI_DATA,Gen11LP,A0,5.5845,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNI_DATA,Gen11LP,A0,34.1955,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNI_CMD,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNI_CMD,Gen11LP,A0,7.1145,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNI_CMD,Gen11LP,A0,9.35,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNE_DATA,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNE_DATA,Gen11LP,A0,7.055,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNE_DATA,Gen11LP,A0,15.793,syn,1622558.02,15% Design Optimization
+PS0_LSNtoUnslice_UP_DATA,Gen11LP,A0,1.69,syn,1622558.02,GC Reduction
+PS1_LSNtoUnslice_UP_DATA,Gen11LP,A0,6.77,syn,1622558.02,GC Reduction
+PS2_LSNtoUnslice_UP_DATA,Gen11LP,A0,54.82,syn,1622558.02,GC Reduction
+PS0_LSNtoUnslice_UP_CMD,Gen11LP,A0,0.59,syn,1622558.02,GC Reduction
+PS1_LSNtoUnslice_UP_CMD,Gen11LP,A0,3.52,syn,1622558.02,GC Reduction
+PS2_LSNtoUnslice_UP_CMD,Gen11LP,A0,13.89,syn,1622558.02,GC Reduction
+PS0_GAFStoLSN_DN_DATA,Gen11LP,A0,1.41,syn,1622558.02,GC Reduction
+PS1_GAFStoLSN_DN_DATA,Gen11LP,A0,5.96,syn,1622558.02,GC Reduction
+PS2_GAFStoLSN_DN_DATA,Gen11LP,A0,41.41,syn,1622558.02,GC Reduction
+PS0_GAFStoLSN_DN_CMD,Gen11LP,A0,0.43,syn,1622558.02,GC Reduction
+PS1_GAFStoLSN_DN_CMD,Gen11LP,A0,2.55,syn,1622558.02,GC Reduction
+PS2_GAFStoLSN_DN_CMD,Gen11LP,A0,10.63,syn,1622558.02,GC Reduction
+PS0_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLDN_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLDN_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLUP_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLUP_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
+PS0_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
+PS1_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
+PS2_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,9.594777195,syn,1,15% Design Optimization
+PS0_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
+PS1_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
+PS2_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,2.103838189,syn,1,15% Design Optimization
+PS0_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
+PS1_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
+PS2_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,15.86525343,syn,1,15% Design Optimization
+PS0_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
+PS1_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
+PS2_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,3.478759887,syn,1,15% Design Optimization
+PS0_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS1_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS2_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS0_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS1_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS2_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS0_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
+PS0_Fabric_CLKGLUE,Gen11LP,A0,5.882528996,syn,1,30% Design Optimization
+PS0_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
+PS0_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
+PS0_Fabric_DOP,Gen11LP,A0,1.904,syn,1,30% Design Optimization
+PS0_Fabric_NONCLKGLUE,Gen11LP,A0,0.29864523,syn,1,No change
+PS0_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
+PS0_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
+PS2_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
+PS2_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
+PS2_Fabric_CLKGLUE,Gen11LP,A0,5.88218685,syn,1,30% Design Optimization
+PS2_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
+PS2_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
+PS2_Fabric_DOP,Gen11LP,A0,1.903020199,syn,1,30% Design Optimization
+PS2_Fabric_NONCLKGLUE,Gen11LP,A0,0.306954509,syn,1,No change
+PS2_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
+PS2_Fabric_Top_Level,Gen11LP,A0,0,syn,1,No change
+PS0_L3_Bank_CLKGLUE,Gen11LP,A0,22.87128799,syn,1,15% Design Optimization
+PS0_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS0_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS0_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS0_L3_Bank_SMALL,Gen11LP,A0,1.599536036,syn,191328.57,15% Design Optimization
+PS0_LSQC,Gen11LP,A0,1.828041183,syn,1109506.04,15% Design Optimization
+PS0_LSQD,Gen11LP,A0,6.128092604,syn,497779.11,15% Design Optimization
+PS0_LTCC,Gen11LP,A0,0.207731953,syn,45699.37,15% Design Optimization
+PS0_LTCD_Data,Gen11LP,A0,3.277277042,syn,346662.35,10% Design Optimization
+PS0_LTCD_Tag,Gen11LP,A0,1.419420213,syn,791094.59,12% Design Optimization
+PS1_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
+PS1_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS1_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS1_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS1_L3_Bank_SMALL,Gen11LP,A0,3.282164852,syn,191328.57,15% Design Optimization
+PS2_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
+PS2_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS2_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS2_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS2_L3_Bank_SMALL,Gen11LP,A0,3.437963817,syn,191328.57,15% Design Optimization
+PS2_LSQC,Gen11LP,A0,93.46657486,syn,1099094.66,15% Design Optimization
+PS2_LSQD_atomics,Gen11LP,A0,182.6179916,syn,496857.7069,15% Design Optimization
+PS2_LSQD_nonatomics,Gen11LP,A0,112.8192201,syn,496857.7069,15% Design Optimization
+PS2_LTCD_Data_Else,Gen11LP,A0,35.21423183,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen11LP,A0,94.32063099,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen11LP,A0,135.8217086,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen11LP,A0,228.1315521,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen11LP,A0,234.9754987,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen11LP,A0,59.45220389,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen11LP,A0,72.99809194,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen11LP,A0,156.5636347,syn,790149.6801,12% Design Optimization
+PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen11LP,A0,148.4970433,syn,790149.6801,12% Design Optimization
+PS1_LSQC,Gen11LP,A0,15.23952146,syn,1099094.66,15% Design Optimization
+PS1_LSQD,Gen11LP,A0,35.45984432,syn,497779.11,15% Design Optimization
+PS1_LTCC,Gen11LP,A0,0.664742248,syn,45699.37,15% Design Optimization
+PS1_LTCD_Data,Gen11LP,A0,35.21423183,syn,346662.35,10% Design Optimization
+PS1_LTCD_Tag,Gen11LP,A0,39.48568957,syn,791094.59,12% Design Optimization
+PS0_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
+PS2_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
+PS0_HDC_Ret2,Gen11LP,A0,0.0441,syn,19930,10% Design Optimization
+PS0_HDC_Ret1,Gen11LP,A0,0.1746,syn,1026652,10% Design Optimization
+PS0_HDC_ReqCmd1,Gen11LP,A0,0.285936923,syn,496622.67,10% Design Optimization
+PS0_HDC_ReqCmd2,Gen11LP,A0,0.175961183,syn,970807.65,10% Design Optimization
+PS0_HDC_ReqData,Gen11LP,A0,0.043990296,syn,263680.94,10% Design Optimization
+PS0_HDC_Ret,Gen11LP,A0,0.175961183,syn,1027037.96,10% Design Optimization
+PS0_HDCL1,Gen11LP,A0,0.131970888,syn,375294.07,10% Design Optimization
+PS0_HDCL1_DOP,Gen11LP,A0,0.13793226,syn,375294.07,10% Design Optimization
+PS0_HDCTLB,Gen11LP,A0,0.373917515,syn,605047.84,10% Design Optimization
+PS0_HPSBE,Gen11LP,A0,0,syn,574929.26,GC Reduction
+PS0_HPSDE,Gen11LP,A0,0,syn,101437.6587,GC Reduction
+PS0_HPVS,Gen11LP,A0,0,syn,445909.136,GC Reduction
+PS0_HS,Gen11LP,A0,0.645191006,syn,433034.234,20% Design Optimization
+PS0_HS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_OACS,Gen11LP,A0,0.410576094,syn,161908.29,20% Design Optimization
+PS0_RS,Gen11LP,A0,0.136858698,syn,318404.5951,20% Design Optimization
+PS0_SDE,Gen11LP,A0,0.82115219,syn,113411.6086,20% Design Optimization
+PS0_SF,Gen11LP,A0,2.848,syn,2202101.043,20% Design Optimization
+PS0_SOL,Gen11LP,A0,1.153523314,syn,345762.6632,20% Design Optimization
+PS0_SOL_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_SVG,Gen11LP,A0,0.215063669,syn,187521.5698,20% Design Optimization
+PS0_TDG,Gen11LP,A0,0.430127338,syn,189506.0133,20% Design Optimization
+PS0_TDS,Gen11LP,A0,0.801600946,syn,1013661.089,20% Design Optimization
+PS0_TDS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_TE,Gen11LP,A0,0.723395976,syn,213563.9581,20% Design Optimization
+PS0_TSG,Gen11LP,A0,0.351922367,syn,827205.0545,20% Design Optimization
+PS0_URBM,Gen11LP,A0,0.039102486,syn,370361.0546,20% Design Optimization
+PS0_VF,Gen11LP,A0,3.636531124,syn,1695009.145,20% Design Optimization
+PS0_VF_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VF_URBFifo_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VFBE1,Gen11LP,A0,0.254166154,syn,795859.9759,20% Design Optimization
+PS0_VFBE2,Gen11LP,A0,0.293268639,syn,795859.9759,20% Design Optimization
+PS0_VFE,Gen11LP,A0,0.058653728,syn,106164.475,20% Design Optimization
+PS0_VS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VSBE,Gen11LP,A0,0.547434793,syn,1097712.546,20% Design Optimization
+PS0_VSFE,Gen11LP,A0,0.430127338,syn,728350.0838,20% Design Optimization
