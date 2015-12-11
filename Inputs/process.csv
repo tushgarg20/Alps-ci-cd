@@ -1,8 +1,8 @@
 Source,Destination,Scaling_Factor_Syn,Scaling_Factor_EBB,Column1
 Gen9LPClient,Gen9.5LP,1,1,
 Gen9.5LP,Gen9.5LP,1,1,
-Gen10LP,Gen11LP,0.9637,0.9637,(0.93/0.965)
-Gen10LP,Gen10LP,0.9637,0.9637,(0.93/0.965)
+Gen10LP,Gen11LP,0.935,0.935,(0.93/0.965*0.97)
+Gen10LP,Gen10LP,0.935,0.935,(0.93/0.965*0.97)
 Gen10LP,Gen7,NA,NA,
 Gen10LP,Gen7.5,NA,NA,
 Gen10LP,Gen8,NA,NA,
