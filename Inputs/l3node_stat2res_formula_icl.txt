@@ -32,10 +32,9 @@
 	.temp_LNIXS_sum	=	(D(SUM('S\d+.uL3\.LniXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LniXSWinners\.8')))	
 	PS1_LNI	=	1 - PS0_LNI - PS2_LNI - PS2_LNIXS	
 	PS2_LNI	=	(.temp_LNIXS_sum > 0) ? 0 :.temp_LNI_sum / (.CrClk * num_L3_Slices)
-#0.9 is to expected residency reduction from one LNE to 2 LNE models in gsim  
-        PS2_LNIXS	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_sum*0.9) / (.CrClk * num_L3_Slices):0
+    PS2_LNIXS	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_sum) / (.CrClk * num_L3_Slices):0
 	PS2_LNI_BW	=	(.temp_LNI_sum > 0) ? (.temp_LNI_weighted_sum / (LNI_max_ports * .temp_LNI_sum)) : 0
-        PS2_LNIXS_BW	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_weighted_sum / (LNI_max_ports * .temp_LNIXS_sum)) : 0	#fixed the divide by 0 issue
+    PS2_LNIXS_BW	=	(.temp_LNIXS_sum > 0) ? (.temp_LNIXS_weighted_sum / (LNI_max_ports * .temp_LNIXS_sum)) : 0	#fixed the divide by 0 issue
 
 #LNE				
 	PS0_LNE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
@@ -45,8 +44,7 @@
 	.temp_LNEXS_sum	=	(D(SUM('S\d+.uL3\.LneXSWinners\.1'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.2'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.3'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.4'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.5'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.6'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.7'))) + (D(SUM('S\d+.uL3\.LneXSWinners\.8')))	
 	PS1_LNE =	1 - PS0_LNE - PS2_LNE  - PS2_LNEXS      
 	PS2_LNE =	(.temp_LNEXS_sum > 0) ? 0 : (.temp_LNE_sum / (.CrClk * num_L3_Slices))
-#0.9 is to expected residency reduction from one LNE to 2 LNE models in gsim  
-	PS2_LNEXS=	(.temp_LNEXS_sum > 0) ? ((.temp_LNEXS_sum*0.9) / (.CrClk * num_L3_Slices)) : 0
+	PS2_LNEXS=	(.temp_LNEXS_sum > 0) ? ((.temp_LNEXS_sum) / (.CrClk * num_L3_Slices)) : 0
 	PS2_LNE_BW	=	(.temp_LNE_sum > 0) ? (.temp_LNE_weighted_sum / (LNE_max_ports * .temp_LNE_sum)) : 0
 	PS2_LNEXS_BW	=	(.temp_LNEXS_sum > 0) ? (.temp_LNEXS_weighted_sum / (LNE_max_ports * .temp_LNEXS_sum)) : 0	#fixed the divide by 0 issue	
 
