@@ -43,7 +43,7 @@
 	#PS2_BC_COMPUTE	= (D(SUM('@ANY_BC@pwr_bc_active_compute\.CrClock'))) / (numROSS * .CrClk)
 	PS2_BC_COMPUTE	=	(D(SUM('@ANY_BC@SpanInBuffer\.pushed')) / (numROSS * .CrClk)) 	
 	#PS2_BC_FLOWTHROUGH	=	D(SUM('@ANY_BC@pwr_bc_active_flowthrough\.CrClock')) / (numROSS * .CrClk)
-  PS2_BC_FLOWTHROUGH	=	1 - (PS0_BC + PS0_BC_DOP + PS1_BC + PS2_BC_COMPUTE)	
+  	PS2_BC_FLOWTHROUGH	=	1 - (PS0_BC + PS0_BC_DOP + PS1_BC + PS2_BC_COMPUTE)	
 	PS2_BC_BARYRAM_READ	=	0	#No GSIM model
 	PS2_BC_BARYRAM_WRITE	=	0	#No GSIM model
 #PSD				
@@ -51,6 +51,7 @@
 	PS0_PSD_DOP	=	0	#PSD is not covered by 3D DOP
 	#PS1_PSD	=	(1 - (PS0_PSD + PS0_PSD_DOP + PS2_PSD_THREADDISPATCH + PS2_PSD_NOTHREADDISPATCH + PS2_PSD_WAITINGONFLUSH))
 	PS1_PSD	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.stalled\.CrClock')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.stalled\.CrClock'))) / (2 * numROSS * .CrClk)	
+	#PS1_PSD	=	(D(SUM('@ANY_PSD@pwr_PsdActiveStalled\.CrClock')) / (numROSS * .CrClk)) - PS0_PSD_DOP	
 	#PS2_PSD_THREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveThreadDispatch\.CrClock')) / (numROSS * .CrClk)	
 	PS2_PSD_THREADDISPATCH	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.pushed')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.pushed'))) / (2 * numROSS * .CrClk)
 	#PS2_PSD_NOTHREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock')) / (numROSS * .CrClk)
@@ -74,9 +75,17 @@
 	PS2_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
 #TDL				
 	PS0_TDL	=	D(SUM('@ANY_TDL@pwr_TDL_Idle\.CrClock')) / (numROSS * .CrClk)	
-	PS1_TDL	=	(1 - (PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH))	
-	PS2_TDL_PSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock')) / (numROSS * .CrClk)	
-	PS2_TDL_NONPSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+	.PS1_TDL =	D(SUM('@ANY_TDL@pwr_TDL_Stalled_or_Idle\.CrClock')) / (numROSS * .CrClk)
+	.PS2_TDL =	1 - .PS1_TDL
+	PS1_TDL	=	.PS1_TDL - PS0_TDL
+#	PS1_TDL	=	(1 - (PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH))	
+	.PS2_TDL_PSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+	.PS2_TDL_NONPSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+	.PS2_TDL_DISPATCH	=	.PS2_TDL_PSDDISPATCH + .PS2_TDL_NONPSDDISPATCH
+	.PC_TDL_PSDDISPATCH	=	(.PS2_TDL_DISPATCH > 0) ? (.PS2_TDL_PSDDISPATCH / .PS2_TDL_DISPATCH) : 0
+	.PC_TDL_NONPSDDISPATCH	=	(.PS2_TDL_DISPATCH > 0) ? (.PS2_TDL_NONPSDDISPATCH / .PS2_TDL_DISPATCH) : 0
+	PS2_TDL_PSDDISPATCH	=	.PC_TDL_PSDDISPATCH * .PS2_TDL
+	PS2_TDL_NONPSDDISPATCH	=	.PC_TDL_NONPSDDISPATCH * .PS2_TDL
 #IC				
 	PS0_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Idle\.CrClock')) / (numROSS * .CrClk)	
 	PS1_IC	=	1 - PS0_IC - PS2_IC	
