@@ -95,9 +95,9 @@
 				
 #MSQD				
 				
-	PS0_MSQD	=	.temp_PS0_GTI	
-	PS1_MSQD	=	.temp_PS1_GTI	
+	PS0_MSQD	=	.temp_PS0_GTI
 # 3 to account for GC scalar between CNL & ICL (or 112 slots to 320 slots Ratio)
+	PS1_MSQD	=	(.temp_PS1_GTI)/3	
 	PS2_MSQD_U2C	=	(.temp_gti_rd_per * .temp_PS2_GTI)/3	
 	PS2_MSQD_C2U	=	(.temp_gti_wr_per * .temp_PS2_GTI)/3	
 	PS2_MSQD_ATOMICS	=	0
