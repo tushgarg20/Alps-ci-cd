@@ -44,7 +44,7 @@ Gen9LPClient,Gen7.5,NA,NA,
 Gen9LPClient,Gen8,NA,NA,
 Gen9LPClient,Gen8SoC,NA,NA,
 Gen9LPClient,Gen9LPClient,1,1,
-Gen9LPClient,Gen9LPSoC,0.938,0.938
+Gen9LPClient,Gen9LPSoC,0.92,0.92
 Gen9LPClient,Gen10LPSoC,0.628,0.647,(1/0.965)*(1/0.9832)*(0.596):ebb 3%higher
 Gen9LPSoC,Gen11LP,0.641718948,0.660970517,ebb 3% higher
 Gen9LPSoC,Gen10LP,0.641718948,0.660970517,ebb 3% higher
