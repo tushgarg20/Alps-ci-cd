@@ -1,8 +1,8 @@
 Source,Destination,Scaling_Factor_Syn,Scaling_Factor_EBB,Column1
 Gen9LPClient,Gen9.5LP,1,1,
 Gen9.5LP,Gen9.5LP,1,1,
-Gen10LP,Gen11LP,0.947,0.947,(0.942/0.965*0.97)
-Gen10LP,Gen10LP,0.947,0.947,(0.942/0.965*0.97)
+Gen10LP,Gen11LP,0.935,0.935,(0.93/0.965*0.97)
+Gen10LP,Gen10LP,0.935,0.935,(0.93/0.965*0.97)
 Gen10LP,Gen7,NA,NA,
 Gen10LP,Gen7.5,NA,NA,
 Gen10LP,Gen8,NA,NA,
@@ -37,14 +37,14 @@ Gen8SoC,Gen8,NA,NA,
 Gen8SoC,Gen8SoC,1,1,
 Gen8SoC,Gen9LPClient,NA,NA,
 Gen8SoC,Gen9LPSoC,1,1,
-Gen9LPClient,Gen11LP,0.59,0.59,
-Gen9LPClient,Gen10LP,0.59,0.59,
+Gen9LPClient,Gen11LP,0.598,0.598,
+Gen9LPClient,Gen10LP,0.598,0.598,
 Gen9LPClient,Gen7,NA,NA,
 Gen9LPClient,Gen7.5,NA,NA,
 Gen9LPClient,Gen8,NA,NA,
 Gen9LPClient,Gen8SoC,NA,NA,
 Gen9LPClient,Gen9LPClient,1,1,
-Gen9LPClient,Gen9LPSoC,0.92,0.92
+Gen9LPClient,Gen9LPSoC,0.938,0.938
 Gen9LPClient,Gen10LPSoC,0.628,0.647,(1/0.965)*(1/0.9832)*(0.596):ebb 3%higher
 Gen9LPSoC,Gen11LP,0.641718948,0.660970517,ebb 3% higher
 Gen9LPSoC,Gen10LP,0.641718948,0.660970517,ebb 3% higher
