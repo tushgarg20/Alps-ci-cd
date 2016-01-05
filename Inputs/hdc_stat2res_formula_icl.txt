@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numHDCs	=	COUNT('knob\.STK\d\.S\d\.SS\d\.uHDC\.ClockName') + COUNT('knob\.(STK\d+\.)?S\d\.uHDC_\d\.ClockName')
+	numHDCs	=	COUNT('knob\.STK\d\.S\d\.SS\d\.uHDC\.NumSlices') + COUNT('knob\.(STK\d+\.)?S\d\.uHDC_\d\.NumSlices')
 	num_HDC_HDCREQCMD1	=	numHDCs	
 	num_HDC_HDCREQCMD2	=	numHDCs	
 	num_HDC_HDCREQDATA	=	numHDCs	

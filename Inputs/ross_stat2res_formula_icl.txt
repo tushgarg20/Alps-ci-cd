@@ -4,11 +4,11 @@
 	numROSS	=	numSlices * ( SUM('knob\.(STK0\.)?S0\.NumSubSlices') )	#Change to handle assymetric configs
 	numEURows	=	knob.S0.SS0.NumRows + knob.STK0.S0.SS0.NumRows	#We need a global knob here to support Assymetrical Slices in future
 
-	num_DSSC_BC	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uBC\.ClockName') + COUNT('knob\.(STK\d+\.)?S\d\.uBC_\d\.ClockName')
-	num_DSSC_PSD	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uPSD\.ClockName') + COUNT('knob\.(STK\d+\.)?S\d+\.uPSD_\d\.ClockName')	
+	num_DSSC_BC	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uBC\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d\.uBC_\d\.NumEus')
+	num_DSSC_PSD	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uPSD\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d+\.uPSD_\d\.NumEus')	
 	num_DSSC_PSD_Scoreboard	=	num_DSSC_PSD	
 	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSD	
-	num_DSSC_DAPRSS	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uDAPRF\.ClockName') + COUNT('knob\.(STK\d+\.)?S\d+\.uDAPRF_\d\.ClockName')
+	num_DSSC_DAPRSS	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uDAPRF\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d+\.uDAPRF_\d\.NumEus')
 	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS	
 	num_DSSC_GWL	=	num_DSSC_PSD	
 	num_DSSC_CPSS	=	num_DSSC_PSD	
@@ -19,7 +19,7 @@
 	num_DSSC_NONCLKGLUE	=	num_DSSC_PSD
 	num_DSSC_DFX	=	num_DSSC_PSD
 	num_DSSC_DOP	=	num_DSSC_PSD
-	num_DSSC_LSLM	=	COUNT('knob\.S\d\.uSLM_\d\.ClockName')
+	num_DSSC_LSLM	=	COUNT('knob\.S\d\.uSLM_\d\.NumIoRows')
 
 	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
@@ -50,7 +50,7 @@
 
 #SLM				
 	.temp_fe_per_be	=	D(knob.S0.uSLM_0.BE.NumIoRows)
-	num_DSSC_SLMBE	=	COUNT('knob\.S\d\.uSLM_\d\.BE\.ClockName')
+	num_DSSC_SLMBE	=	COUNT('knob\.S\d\.uSLM_\d\.BE\.NumIoRows')
 	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
 
 	@ANY_SLMFE@	=	S\d\.uSLM_\d\.FE_\d\.
