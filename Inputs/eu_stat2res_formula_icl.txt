@@ -2,7 +2,7 @@
 #Instance Counts				
 	CrClocks	=	D(CrClock.Clocks)	
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
-	numEUs	=	COUNT('knob\.(STK\d+\.)?S\d+.SS\d.R\d.uEU_..NumEus') - SUM('knob\.(STK\d+\.)?S\d+\.SS\d\.R\d\.uEU_\d\.DisableAtStart')	#This includes Slices & SubSlices
+	numEUs	=	COUNT('knob\.(STK\d+\.)?S\d+.SS\d.R\d.uEU_\d\.NumEus') - SUM('knob\.(STK\d+\.)?S\d+\.SS\d\.R\d\.uEU_\d\.DisableAtStart')	#This includes Slices & SubSlices
 	num_EU_FPU0	=	numEUs	
 	num_EU_FPU1	=	numEUs	
 	num_EU_EM	=	numEUs	
