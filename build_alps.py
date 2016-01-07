@@ -530,7 +530,9 @@ for line in voltage_file:
     voltage_cdyn_scaling_factor_hash[data[0]] = float(data[2])
 voltage_file.close()
 
+##for printing/book-keeping purposes
 operating_voltage = new_voltage_hash[cfg]
+voltage_cdyn_scaling_factor = voltage_cdyn_scaling_factor_hash[cfg]
 
 if (options.operating_voltage):
     print ("Config: ",cfg)
@@ -542,6 +544,7 @@ if (options.voltage_cdyn_scaling_factor):
     print ("Config: ",cfg)
     print ("Voltage Cdyn Sclaing Factor: ", options.voltage_cdyn_scaling_factor)
     voltage_cdyn_scaling_factor_hash[cfg] = float(options.voltage_cdyn_scaling_factor)
+    voltage_cdyn_scaling_factor = float(options.voltage_cdyn_scaling_factor)
 #print (new_voltage_hash)
 
 ##Old way of doing things - read in a voltage scaling factor
@@ -605,6 +608,7 @@ output_cdyn_data = {'GT':{}}
 gt_cdyn = {}
 key_stats = {'key_stats':{}}
 key_stats['key_stats']['Operating Voltage'] = operating_voltage
+key_stats['key_stats']['Voltage dependent Cdyn Scaling Factor'] = voltage_cdyn_scaling_factor
 
 for path in output_list:
     path[-1] = eval_formula(path)
