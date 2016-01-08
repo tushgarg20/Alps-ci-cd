@@ -3333,7 +3333,7 @@ PS2_LNIXS,Gen9LPClient,C0,218.6449,syn,624036,Using PS2_LNI as the base Cdyn wei
 PS2_LNIXS_BW,Gen9LPClient,A0,0,syn,1,
 PS2_LSLM_Atomics,Gen9LPClient,A0,45.99,syn,239136.8,1x
 PS2_LSLM_NonAtomics,Gen9LPClient,A0,33.61,syn,239136.8,1x
-PS2_LSQC,Gen9LPClient,A0,61.9228,syn,376450.15,Scaled rom Gen10LP
+PS2_LSQC,Gen9LPClient,A0,61.9228,syn,376450.15,Scaled from Gen10LP
 PS2_LSQD_atomics,Gen9LPClient,A0,170.13,syn,317471.15,1x Approximated using nonatomics and LSLM atomics to nonatomics ratio
 PS2_LSQD_nonatomics,Gen9LPClient,A0,124.32,syn,317471.15,1x 26% TR
 PS2_LTCC,Gen9LPClient,A0,7.54,syn,23507.9,2x 7% TR
