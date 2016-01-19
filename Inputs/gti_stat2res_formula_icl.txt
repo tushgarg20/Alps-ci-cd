@@ -1,7 +1,8 @@
 #Unit	GSIM residency			Comments
 #Generic				
-   @ANY_GTI@ = uGTI_0.
-	 .Clk.GTI	=	CrClock.Clocks	
+   @ANY_GTI@ = uGTI_\d+.
+	 .Clk.GTI	=	CrClock.Clocks
+   .Unsliceclk.GTI = UnsliceClock.Clocks	
    @GTI_EMPTY@ = GtiSuperqEmptyCyclesBank_\d+
    @GTI_STALL@ = GtiSuperqAllPendingCyclesBank_\d+
 	 @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
@@ -125,36 +126,40 @@
 				
 #MIDI				
 				
-	PS0_MIDI	=	.temp_PS0_GTI	
-	PS1_MIDI	=	.temp_PS1_GTI	
-	PS2_MIDI_U2C	=	.temp_gti_rd_per * .temp_PS2_GTI	
-	PS2_MIDI_C2U	=	.temp_gti_wr_per * .temp_PS2_GTI	
+	PS0_MIDI	=	1 - PS1_MIDI - PS2_MIDI_U2C - PS2_MIDI_C2U
+  .temp_PS1_MIDI_Req =  D(SUM('@ANY_GTI@m_MidiReqBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI
+  .temp_PS1_MIDI_Resp =  D(SUM('@ANY_GTI@m_MidiRespBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI	
+	PS1_MIDI	=	AVG(.temp_PS1_MIDI_Req , .temp_PS1_MIDI_Resp) 	
+	PS2_MIDI_U2C	=	D(SUM('@ANY_GTI@m_MidiRespBuf_0.active.UnsliceClock'))/.Unsliceclk.GTI
+	PS2_MIDI_C2U	= D(SUM('@ANY_GTI@m_MidiReqBuf_0.active.UnsliceClock'))/.Unsliceclk.GTI		
 				
 #MISD				
 				
-	PS0_MISD	=	.temp_PS0_GTI	
-	PS1_MISD	=	.temp_PS1_GTI	
-	PS2_MISD_U2C_AES	=	0	#Future model
-	PS2_MISD_U2C	=	.temp_gti_rd_per * .temp_PS2_GTI	
-	PS2_MISD_C2U_AES	=	0	#Future model
-	PS2_MISD_C2U	=	.temp_gti_wr_per * .temp_PS2_GTI	
+	PS0_MISD	= 1 - PS1_MISD - PS2_MISD_U2C - PS2_MISD_U2C_AES - PS2_MISD_C2U - PS2_MISD_C2U_AES	
+  .temp_PS1_MISD_Bypass = D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
+  .temp_PS1_MISD = 	D(SUM('@ANY_GTI@m_MisdAESRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
+	PS1_MISD	=	AVG(.temp_PS1_MISD_Bypass	, .temp_PS1_MISD)
+	PS2_MISD_U2C	= D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.active.UnsliceClock'))/.Unsliceclk.GTI	
+	PS2_MISD_U2C_AES	=	D(SUM('@ANY_GTI@m_MisdAESRdPipe.active.UnsliceClock'))/.Unsliceclk.GTI	
+	PS2_MISD_C2U	= D(SUM('@ANY_GTI@m_MisdAESBypassWrPipe.active.UnsliceClock'))/.Unsliceclk.GTI	
+	PS2_MISD_C2U_AES	=	D(SUM('@ANY_GTI@m_MisdAESWrPipe.active.UnsliceClock'))/.Unsliceclk.GTI	#MIDI				
 				
 #SMALL				
-	PS0_GTI_SMALL	=	.temp_PS0_GTI	
-	PS2_GTI_SMALL	=	1 - .temp_PS0_GTI	
+	PS0_GTI_SMALL	= AVG(PS0_MBGF, PS0_MSQC, PS0_MSQD, PS0_MIDI, PS0_MISD)   		
+	PS2_GTI_SMALL	=	1 - PS0_GTI_SMALL	
 				
 #CPunit				
-	PS0_GTI_CPunit	=	.temp_PS0_GTI	
-	PS2_GTI_CPunit	=	1 - .temp_PS0_GTI	
+	PS0_GTI_CPunit	=	PS0_GTI_SMALL
+	PS2_GTI_CPunit	=	1 - PS0_GTI_SMALL	
 				
 #Assign				
-	PS0_GTI_Assign	=	.temp_PS0_GTI	
-	PS2_GTI_Assign	=	1 - .temp_PS0_GTI	
+	PS0_GTI_Assign	=		PS0_GTI_SMALL
+	PS2_GTI_Assign	=	1 - PS0_GTI_SMALL	
 				
 #Repeater				
-	PS0_GTI_Repeater	=	.temp_PS0_GTI	
-	PS2_GTI_Repeater	=	1 - .temp_PS0_GTI	
-				
+	PS0_GTI_Repeater	=	PS0_GTI_SMALL	
+	PS2_GTI_Repeater	=	1 - PS0_GTI_SMALL	
+	
 #CLKGLUE				
 	PS0_GTI_CLKGLUE	=	PS0_GTI_SMALL	
 	PS2_GTI_CLKGLUE	=	PS2_GTI_SMALL	
