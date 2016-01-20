@@ -133,12 +133,12 @@
 			
 #horizontalfabric			
 			
-	PS0_XStack_DATA	=	1-PS2_XStack_DATA
+	PS0_XStack_DATA	=	(numhorBuses==0)?0:(1-PS2_XStack_DATA)
 	PS1_XStack_DATA	=	0
-	PS2_XStack_DATA	=	D(SUM('STK\d+.uRC\d+.bus\d+_\w+DataPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric)
-	PS0_XStack_CMD	=	1-PS2_XStack_CMD
+	PS2_XStack_DATA	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+DataPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
+	PS0_XStack_CMD	=	(numhorBuses==0)?0:(1-PS2_XStack_CMD)
 	PS1_XStack_CMD	=	0
-	PS2_XStack_CMD	=	D(SUM('STK\d+.uRC\d+.bus\d+_\w+CmdPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric)
+	PS2_XStack_CMD	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+CmdPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
 
 #SMALL			
 	PS0_Fabric_SMALL	=	1-PS2_Fabric_SMALL
