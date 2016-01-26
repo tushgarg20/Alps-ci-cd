@@ -122,8 +122,9 @@
 	PS2_MSQD_ATOMICS	=	0
 				
 #MIDI				
-				
-	PS0_MIDI	=	1 - PS1_MIDI - PS2_MIDI_U2C - PS2_MIDI_C2U
+	.temp_PS0_MIDI  = 1 - PS1_MIDI - .max_ps2_misd
+  .max_ps2_midi = MAX(PS2_MIDI_U2C,	 PS2_MIDI_C2U)		
+  PS0_MIDI	= (.temp_PS0_MIDI > 0)?	.temp_PS0_MIDI : 0
   .temp_PS1_MIDI_Req =  D(SUM('@ANY_GTI@m_MidiReqBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI
   .temp_PS1_MIDI_Resp =  D(SUM('@ANY_GTI@m_MidiRespBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI	
 	PS1_MIDI	=	AVG(.temp_PS1_MIDI_Req , .temp_PS1_MIDI_Resp) 	
@@ -131,8 +132,9 @@
 	PS2_MIDI_C2U	= D(SUM('@ANY_GTI@m_MidiReqBuf_0.active.UnsliceClock'))/.Unsliceclk.GTI		
 				
 #MISD				
-				
-	PS0_MISD	= 1 - PS1_MISD - PS2_MISD_U2C - PS2_MISD_U2C_AES - PS2_MISD_C2U - PS2_MISD_C2U_AES	
+	.temp_PS0_MISD  = 1 - PS1_MISD - .max_ps2_misd
+  .max_ps2_misd = MAX(PS2_MISD_U2C,PS2_MISD_U2C_AES,PS2_MISD_C2U,PS2_MISD_C2U_AES)			
+	PS0_MISD	= 	(.temp_PS0_MISD > 0)?	.temp_PS0_MISD : 0
   .temp_PS1_MISD_Bypass = D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
   .temp_PS1_MISD = 	D(SUM('@ANY_GTI@m_MisdAESRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
 	PS1_MISD	=	AVG(.temp_PS1_MISD_Bypass	, .temp_PS1_MISD)
