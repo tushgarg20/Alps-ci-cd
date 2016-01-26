@@ -3284,8 +3284,8 @@ PS2_IC_DATARAM_READ,Gen9LPClient,A0,22.0688,ebb,1,Need to check with gSim - 512 
 PS2_IC_DATARAM_WRITE,Gen9LPClient,A0,56.6995,ebb,1,Need to check with gSim - 512 io assumed
 PS2_IEF_Bypass,Gen9LPClient,A0,33.12,syn,216441.4,7% TR
 PS2_IEF_NoBypass,Gen9LPClient,A0,37.38,syn,216441.4,7% TR - looks suspicious
-PS2_IME_BACK_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
-PS2_IME_FRONT_ACTIVE,Gen9LPClient,A0,0,syn,1140916.92,Data WIP
+PS2_IME_BACK_ACTIVE,Gen9LPClient,A0,159.456,syn,1140916.92,12X PS1 based on Gen11 Power artist
+PS2_IME_FRONT_ACTIVE,Gen9LPClient,A0,159.456,syn,1140916.92,12X PS1 based on Gen11 Power artist
 PS2_IZ_BARYCOEFFIFO_READ,Gen9LPClient,A0,11.0344,ebb,1,
 PS2_IZ_BARYCOEFFIFO_WRITE,Gen9LPClient,A0,28.3497,ebb,1,
 PS2_IZ_CMP,Gen9LPClient,A0,54.79,syn,963992.84,Using 1x depth ambig big new test
