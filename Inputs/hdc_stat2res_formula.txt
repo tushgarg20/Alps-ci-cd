@@ -20,7 +20,8 @@
 	 @ANY_HDC@	=	S\d+\.uHDC_\d+\.	
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
-	 .HDC_DOP	=	D(SUM('@ANY_HDC@pwr_hdc_idle\.CrClock')) / (numHDCs * .CrClk)	
+	 ##.HDC_DOP	=	D(SUM('@ANY_HDC@pwr_hdc_idle\.CrClock')) / (numHDCs * .CrClk)	
+	 .HDC_DOP	=   0	
 	 @SEQUENCED_TYPE_READ@	=	(TypedSurfRead|TypedAtomicOp|TypedAtomicOp4x2)	
 	 @SEQUENCED_TYPE_WRITE@	=	(TypedSurfWrite|TypedAtomicOp|TypedAtomicOp4x2)	
 	 @SEQUENCED_ELSE_READ@	=	(DWordScatteredRead|ByteScatteredRead|ScatteredRead_A64|UntypedSurfRead|UntypedSurfRead_A64|UntypedAtomicOp|UntypedAtomicOp4x2|UntypedAtomicFloatAdd|UntypedAtomicOp_A64|UntypedAtomicOp4x2_A64|UntypedAtomicFloatAdd_A64)	
