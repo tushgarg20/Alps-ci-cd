@@ -1292,8 +1292,6 @@ ROSC:
     PS0_SARB: R * C 
     PS1_SARB: R * C 
     PS2_SARB: R * C 
-   HPSBE:
-    PS0_HPSBE: R * C
    DOP:
     PS0_ROSC_DOP: R * C 
     PS2_ROSC_DOP: R * C 
