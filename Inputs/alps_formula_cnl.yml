@@ -1708,13 +1708,6 @@ Fabric:
     PS0_BGF_UNSL_CMD_DN: R * C *R[numBuses]
     PS1_BGF_UNSL_CMD_DN: R * C *R[numBuses]
     PS2_BGF_UNSL_CMD_DN: R * C *R[numBuses]   
-   HorizontalFabric:
-    PS0_XStack_DATA: R * C *R[numhorBuses]
-    PS1_XStack_DATA: R * C *R[numhorBuses]
-    PS2_XStack_DATA: R * C *R[numhorBuses]
-    PS0_XStack_CMD: R * C *R[numhorBuses]
-    PS1_XStack_CMD: R * C *R[numhorBuses]
-    PS2_XStack_CMD: R * C *R[numhorBuses]
    SMALL:
     PS0_Fabric_SMALL: R * C * R[numBuses]
     PS2_Fabric_SMALL: R * C * R[numBuses]

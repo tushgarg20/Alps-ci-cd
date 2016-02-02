@@ -1,19 +1,20 @@
 #Unit	GSIM residency			Comments
 #Generic				
-   @ANY_GTI@ = uGTI_\d+.
-	 .Clk.GTI	=	CrClock.Clocks
-   .Unsliceclk.GTI = UnsliceClock.Clocks	
-   @GTI_EMPTY@ = GtiSuperqEmptyCyclesBank_\d+
-   @GTI_STALL@ = GtiSuperqAllPendingCyclesBank_\d+
-	 @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
-   @GTI_ACTIVESLOTS@ = GtiSuperqActiveCycleOccupancyBank_\d+
-	 @GTI_RDBW_PCLK@	=	1	
-	 @GTI_WRBW_PCLK@	=	1	
-	 @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
-	 GTISuperQSize	=	knob.global.SuperQSize		
+	@ANY_GTI@ =	uGTI_\d+.
+	.Clk.GTI	=	D(CrClock.Clocks)
+	.Unsliceclk.GTI =	D(UnsliceClock.Clocks)	
+	@GTI_EMPTY@ =	GtiSuperqEmptyCyclesBank_\d+
+	@GTI_STALL@ =	GtiSuperqAllPendingCyclesBank_\d+
+	@GTI_ACTIVE@ =	GtiSuperqActiveCyclesBank_\d+
+	@GTI_ACTIVESLOTS@ =	GtiSuperqActiveCycleOccupancyBank_\d+
+	@GTI_RDBW_PCLK@	=	1	
+	@GTI_WRBW_PCLK@	=	1	
+	@GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
+	GTISuperQSize	=	knob.global.SuperQSize		
 				
 #Instance Counts				
-	num_GTI_GTI	=	COUNT('knob.uGTI_\d+.ClockName')	
+	#num_GTI_GTI	=	COUNT('knob.uGTI_\d+.NumSlices')
+  num_GTI_GTI = 1	
 	num_GTI_GLUE	=	num_GTI_GTI	
 	num_GTI_DOP	=	num_GTI_GTI	
 	num_GTI_SMALL	=	num_GTI_GTI	
@@ -23,14 +24,14 @@
 	num_GTI_CLKGLUE	=	num_GTI_GTI	
 	num_GTI_NONCLKGLUE	=	num_GTI_GTI	
 	num_GTI_DFX	=	num_GTI_GTI
-  num_GTI_MBGF	=	num_GTI_GTI		
+	num_GTI_MBGF	=	num_GTI_GTI		
 	num_GTI_MSQC	=	num_GTI_GTI	
-	num_GTI_MIDI	=	num_GTI_GTI	
-	num_GTI_MISD	=	num_GTI_GTI	
-	num_GTI_MSQD	=	num_GTI_GTI	
+	num_GTI_MIDI	=	num_GTI_GTI
+	num_GTI_MISD	=	num_GTI_GTI
+	num_GTI_MSQD	=	num_GTI_GTI
 	num_GTI_MSNP	=	num_GTI_GTI	
 	num_GTI_MDRB	=	num_GTI_GTI
-  num_GTI_MBGF  = num_GTI_GTI
+	num_GTI_MBGF	=	num_GTI_GTI
 	num_GTI_MBGFGT	=	num_GTI_GTI	
 	num_GTI_MBGFUC	=	num_GTI_GTI	
 	num_GTI_MFC	=	num_GTI_GTI	
@@ -111,8 +112,7 @@
 	#.temp_MSQCAllFullSlotCount	=	PS1_MSQC * GTISuperQSize * .Clk.GTI	
 	#.temp_MSQCAllNotFullSlotCount	=	.temp_MSQCSlotCount - .temp_MSQCAllFullSlotCount	
 	#.temp_MSQCPerClkFullSlotCount	=	(.temp_MSQCNotEmptyNotFullCount > 0) ? (.temp_MSQCAllNotFullSlotCount / .temp_MSQCNotEmptyNotFullCount) : 0	
-	PS2_MSQC_SlotFull	=	.temp_gti_superq_activeslots / (GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)
-				
+	PS2_MSQC_SlotFull	=(.temp_gti_superq_active>0)?(.temp_gti_superq_activeslots/(GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)):0			
 #MSQD				
 				
 	PS0_MSQD	=	.temp_PS0_GTI	

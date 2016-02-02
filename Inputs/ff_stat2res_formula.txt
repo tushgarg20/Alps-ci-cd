@@ -183,8 +183,8 @@
 	PS0_SF	=	(D(Geo.uSF.pwr_SF_Idle.2xGeoClock) / .GeoClk2x) - PS0_SF_DOP	
 	PS1_SF	=	(D(Geo.uSF.pwr_SF_Stalled_or_Idle.2xGeoClock) - D(Geo.uSF.pwr_SF_Idle.2xGeoClock)) / .GeoClk2x	
 	PS2_SF_Culled	=	(D(Geo.uSF.SF_SimpleCulled) + D(Geo.uSF.SF_ComplexCulled))/ .GeoClk2x	
-	PS2_SF_NotCulled_FastClip	=	D(Geo.uSF.pwr_SF_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
-	PS2_SF_NotCulled_NotFastClip	=	D(Geo.uSF.pwr_SF_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
+	PS2_SF_NotCulled_FastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
+	PS2_SF_NotCulled_NotFastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
 #SDE				
 	PS0_SDE_DOP	=	 .temp_3DPipeDisable	
 	PS0_SDE	=	(D(Geo.uSDE.pwr_SDE_Idle.GeoClock) / .GeoClk) - PS0_SDE_DOP	
