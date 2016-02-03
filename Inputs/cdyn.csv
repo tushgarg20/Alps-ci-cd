@@ -364,8 +364,6 @@ PS2_BTGEN_Cache_Write,Gen10LP,A0,0,ebb,1,
 PS2_ClockSpine_RC,Gen10LP,A0,0,ebb,1,
 PS2_ClockSpine_Slice,Gen10LP,A0,114,syn,1,from nevin
 PS2_ClockSpine_UnSlice,Gen10LP,A0,76,syn,1,from nevin
-PS2_ClockSpine_Slice,Gen11LP,A0,154.242,syn,1,gen10*1.353(accounting for slice gc growth)
-PS2_ClockSpine_UnSlice,Gen11LP,A0,122.436,syn,1,gen10*1.611(accounting for unslice gc growth)
 PS2_COLOR_Assign,Gen10LP,A0,10.67986627,syn,115795.74,cnl cgdis ss
 PS2_COLOR_CLKGLUE,Gen10LP,C0,48.32578391,syn,1,cnl cgdis ss
 PS2_COLOR_CPunit,Gen10LP,A0,3.739175148,syn,31790.03,cnl cgdis ss
@@ -1000,370 +998,6 @@ PS1_WMBE,Gen10LP,A0,2.883808284,syn,908715.43,cnl cgdis ss
 PS1_WMFE,Gen10LP,A0,8.40703432,syn,594102.69,cnl cgdis ss
 PS2_TC,Gen10LP,A0,22.43824,syn,584833.6,Mul opcode fp32 30%tr TC number from Durga(0.968*23.18)
 PS0_GTI_MediaIdle,Gen10LP,A0,1.099757396,syn,1446725.344,from cnl fso cgen ss
-FPU0_add_fp64_10%,Gen10LP,B0,14.0849312,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp64_15%,Gen10LP,B0,15.20358917,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp64_18%,Gen10LP,B0,16.17058346,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp64_20%,Gen10LP,B0,17.2730981,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp32_15%,Gen10LP,B0,16.39506263,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp32_25%,Gen10LP,B0,18.99448123,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp32_34%,Gen10LP,B0,20.72731388,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp32_46%,Gen10LP,B0,22.35035105,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp32_66%,Gen10LP,B0,24.81312209,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_floatbypass_17%,Gen10LP,B0,11.42117217,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp16_14%,Gen10LP,B0,16.6745151,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp16_28%,Gen10LP,B0,17.82044657,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp16_33%,Gen10LP,B0,18.93579115,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp16_44%,Gen10LP,B0,20.67979676,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_fp16_57%,Gen10LP,B0,22.11155349,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_intbypass_21%,Gen10LP,B0,15.09678723,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int32_16%,Gen10LP,B0,12.17337257,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int32_26%,Gen10LP,B0,15.03884068,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int32_35%,Gen10LP,B0,17.17513245,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int32_50%,Gen10LP,B0,20.4786836,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int32_77%,Gen10LP,B0,25.85548155,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int64_12%,Gen10LP,B0,11.5665483,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int64_18%,Gen10LP,B0,13.3327299,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int64_22%,Gen10LP,B0,15.03680167,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int64_25%,Gen10LP,B0,16.88590945,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int16_16%,Gen10LP,B0,12.19393495,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int16_29%,Gen10LP,B0,15.52263533,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int16_35%,Gen10LP,B0,16.66695319,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int16_50%,Gen10LP,B0,19.38695901,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_add_int16_77%,Gen10LP,B0,23.7287907,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp64_7%,Gen10LP,B0,9.72185777,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp64_11%,Gen10LP,B0,10.68655819,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp64_16%,Gen10LP,B0,11.69093756,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp64_18%,Gen10LP,B0,12.79064856,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp32_13%,Gen10LP,B0,9.828235211,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp32_22%,Gen10LP,B0,13.28795253,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp32_31%,Gen10LP,B0,15.46664253,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp32_47%,Gen10LP,B0,18.1451009,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp32_69%,Gen10LP,B0,20.22489102,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_floatbypass_31%,Gen10LP,B0,11.49653643,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp16_13%,Gen10LP,B0,10.91069812,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp16_25%,Gen10LP,B0,13.39917261,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp16_32%,Gen10LP,B0,16.66083527,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_fp16_50%,Gen10LP,B0,18.66228698,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int32_13%,Gen10LP,B0,10.44228217,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int32_22%,Gen10LP,B0,13.35906916,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int32_31%,Gen10LP,B0,15.63462004,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int32_50%,Gen10LP,B0,19.3477898,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int32_81%,Gen10LP,B0,24.93479298,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int64_9%,Gen10LP,B0,8.934821043,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int64_14%,Gen10LP,B0,9.950585466,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int64_20%,Gen10LP,B0,11.08785116,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int64_22%,Gen10LP,B0,12.88419605,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int16_13%,Gen10LP,B0,11.44759579,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int16_25%,Gen10LP,B0,14.3507882,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int16_31%,Gen10LP,B0,16.08009448,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int16_50%,Gen10LP,B0,19.84840805,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_cmp_int16_81%,Gen10LP,B0,26.03008583,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp64_10%,Gen10LP,B0,34.32460592,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp64_14%,Gen10LP,B0,38.43932352,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp64_18%,Gen10LP,B0,40.83391128,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp64_20%,Gen10LP,B0,43.3038633,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp32_13%,Gen10LP,B0,36.82497521,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp32_22%,Gen10LP,B0,39.95434656,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp32_31%,Gen10LP,B0,42.07610952,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp32_47%,Gen10LP,B0,45.72351594,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp32_69%,Gen10LP,B0,47.54467084,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_floatbypass_16%,Gen10LP,B0,17.82104158,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp16_15%,Gen10LP,B0,25.50006981,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp16_27%,Gen10LP,B0,28.3034272,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp16_33%,Gen10LP,B0,29.40883072,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp16_44%,Gen10LP,B0,31.15810436,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_fp16_58%,Gen10LP,B0,32.23835865,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_intbypass_23%,Gen10LP,B0,33.37095042,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_int16_16%,Gen10LP,B0,35.40536905,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_int16_28%,Gen10LP,B0,38.66320768,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_int16_33%,Gen10LP,B0,39.92070026,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_int16_50%,Gen10LP,B0,43.24880564,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mac_int16_78%,Gen10LP,B0,47.06240544,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp64_10%,Gen10LP,B0,32.00589217,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp64_15%,Gen10LP,B0,36.54365425,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp64_18%,Gen10LP,B0,39.41999765,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp64_20%,Gen10LP,B0,42.10644243,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp32_15%,Gen10LP,B0,31.11339538,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp32_46%,Gen10LP,B0,43.91085736,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp32_25%,Gen10LP,B0,35.34169277,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp32_34%,Gen10LP,B0,38.31797388,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp32_66%,Gen10LP,B0,45.82649973,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_floatbypass_16%,Gen10LP,B0,13.18760864,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp16_14%,Gen10LP,B0,15.36876215,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp16_26%,Gen10LP,B0,17.11013374,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp16_32%,Gen10LP,B0,18.62456177,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp16_43%,Gen10LP,B0,21.88860357,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mad_fp16_57%,Gen10LP,B0,23.98504677,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp64_10%,Gen10LP,B0,10.60193224,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp64_15%,Gen10LP,B0,11.72364961,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp64_18%,Gen10LP,B0,12.73108749,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp64_20%,Gen10LP,B0,14.13582559,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp32_15%,Gen10LP,B0,5.440786138,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp32_24%,Gen10LP,B0,6.199325237,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp32_34%,Gen10LP,B0,6.954356204,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp32_46%,Gen10LP,B0,8.070932083,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp32_66%,Gen10LP,B0,9.753890453,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp16_15%,Gen10LP,B0,6.061315376,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp16_28%,Gen10LP,B0,7.257615329,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp16_33%,Gen10LP,B0,7.753338888,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp16_44%,Gen10LP,B0,8.690969519,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_fp16_57%,Gen10LP,B0,9.896292434,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int32_16%,Gen10LP,B0,5.508426944,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int32_26%,Gen10LP,B0,6.311922006,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int32_35%,Gen10LP,B0,7.061557504,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int32_50%,Gen10LP,B0,8.360767151,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int32_78%,Gen10LP,B0,10.66820623,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int64_12%,Gen10LP,B0,9.237043613,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int64_18%,Gen10LP,B0,10.20276353,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int64_23%,Gen10LP,B0,11.24308398,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int64_25%,Gen10LP,B0,12.88589493,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int16_16%,Gen10LP,B0,5.59067375,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int16_29%,Gen10LP,B0,6.724388231,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int16_35%,Gen10LP,B0,7.262297325,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int16_50%,Gen10LP,B0,8.605664204,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mov_int16_77%,Gen10LP,B0,11.06694955,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp64_10%,Gen10LP,B0,31.80630737,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp64_15%,Gen10LP,B0,36.27779635,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp64_18%,Gen10LP,B0,39.33095356,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp64_20%,Gen10LP,B0,41.72018803,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp32_15%,Gen10LP,B0,26.6272842,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp32_25%,Gen10LP,B0,30.38082012,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp32_34%,Gen10LP,B0,33.18216141,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp32_46%,Gen10LP,B0,36.49826148,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp32_66%,Gen10LP,B0,38.10894253,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_floatbypass_16%,Gen10LP,B0,6.311454435,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp16_14%,Gen10LP,B0,16.64222754,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp16_28%,Gen10LP,B0,19.63803321,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp16_33%,Gen10LP,B0,20.6247391,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp16_44%,Gen10LP,B0,22.68660175,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_fp16_57%,Gen10LP,B0,23.812057,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_intbypass_16%,Gen10LP,B0,7.045949054,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int32_13%,Gen10LP,B0,40.35614929,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int32_19%,Gen10LP,B0,45.27965512,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int32_22%,Gen10LP,B0,48.39704641,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int32_25%,Gen10LP,B0,52.65187301,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int16_16%,Gen10LP,B0,25.6777335,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int16_29%,Gen10LP,B0,30.84993439,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int16_35%,Gen10LP,B0,32.60965794,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int16_50%,Gen10LP,B0,36.5045703,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_mul_int16_77%,Gen10LP,B0,40.1854534,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_pln_fp32_6%,Gen10LP,B0,26.10281608,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_pln_fp32_11%,Gen10LP,B0,29.67001559,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_pln_fp32_15%,Gen10LP,B0,31.60120056,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_pln_fp32_21%,Gen10LP,B0,34.87178477,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_pln_fp32_31%,Gen10LP,B0,37.91330116,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp64_10%,Gen10LP,B0,12.59777668,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp64_15%,Gen10LP,B0,14.22911731,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp64_18%,Gen10LP,B0,15.73564419,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp64_20%,Gen10LP,B0,18.01799237,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp32_15%,Gen10LP,B0,9.857123229,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp32_25%,Gen10LP,B0,12.446962,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp32_34%,Gen10LP,B0,14.97724061,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp32_46%,Gen10LP,B0,18.03957335,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp32_66%,Gen10LP,B0,22.74556781,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp16_14%,Gen10LP,B0,11.43808012,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp16_28%,Gen10LP,B0,15.09772148,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp16_33%,Gen10LP,B0,16.19131456,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp16_44%,Gen10LP,B0,18.40118736,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_fp16_57%,Gen10LP,B0,21.32672539,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int32_16%,Gen10LP,B0,11.19652248,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int32_26%,Gen10LP,B0,14.16785738,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int32_35%,Gen10LP,B0,16.84164273,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int32_50%,Gen10LP,B0,21.2922292,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int32_77%,Gen10LP,B0,28.69274011,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int64_12%,Gen10LP,B0,11.39602203,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int64_18%,Gen10LP,B0,13.10085843,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int64_22%,Gen10LP,B0,14.95497936,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int64_25%,Gen10LP,B0,17.67396568,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int16_16%,Gen10LP,B0,10.35017957,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int16_29%,Gen10LP,B0,13.83903977,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int16_35%,Gen10LP,B0,15.36391951,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int16_50%,Gen10LP,B0,19.07471013,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sel_int16_77%,Gen10LP,B0,25.5281932,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU0_sad_int16_25%,Gen10LP,B0,15.00292563,syn,385144.2422,from durga with Astep to Bstep scalars
-FPU1_add_fp64_10%,Gen10LP,B0,14.85802517,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp64_15%,Gen10LP,B0,16.05809195,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp64_18%,Gen10LP,B0,17.15570698,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp64_20%,Gen10LP,B0,18.33210324,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp32_15%,Gen10LP,B0,16.96233337,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp32_25%,Gen10LP,B0,19.66437378,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp32_34%,Gen10LP,B0,21.47548683,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp32_46%,Gen10LP,B0,22.4840193,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp32_15%,Gen10LP,B0,31.11888781,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp32_46%,Gen10LP,B0,44.00541319,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp32_66%,Gen10LP,B0,25.00688217,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_floatbypass_17%,Gen10LP,B0,11.6786359,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp16_14%,Gen10LP,B0,17.3252357,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp16_28%,Gen10LP,B0,18.12100025,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp16_33%,Gen10LP,B0,19.57653866,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp16_44%,Gen10LP,B0,21.37751202,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_fp16_57%,Gen10LP,B0,22.70142796,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_intbypass_21%,Gen10LP,B0,15.48329972,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int32_16%,Gen10LP,B0,12.51448943,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int32_26%,Gen10LP,B0,15.43351577,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int32_35%,Gen10LP,B0,17.59293651,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int32_50%,Gen10LP,B0,20.94823017,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int32_77%,Gen10LP,B0,26.38704629,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int64_12%,Gen10LP,B0,12.12154274,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int64_18%,Gen10LP,B0,14.07090758,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int64_22%,Gen10LP,B0,15.94184084,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int64_25%,Gen10LP,B0,17.92360898,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int16_16%,Gen10LP,B0,12.5424387,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int16_29%,Gen10LP,B0,15.94245156,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int16_35%,Gen10LP,B0,17.07378082,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int16_50%,Gen10LP,B0,19.77061063,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_add_int16_77%,Gen10LP,B0,24.12255378,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp64_7%,Gen10LP,B0,10.07924583,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp64_11%,Gen10LP,B0,11.18638147,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp64_16%,Gen10LP,B0,12.2924691,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp64_18%,Gen10LP,B0,13.43034839,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp32_13%,Gen10LP,B0,9.951117014,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp32_22%,Gen10LP,B0,13.78399211,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp32_31%,Gen10LP,B0,15.78969278,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp32_47%,Gen10LP,B0,18.40022912,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp32_69%,Gen10LP,B0,20.04538548,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_floatbypass_31%,Gen10LP,B0,11.66981457,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp16_13%,Gen10LP,B0,11.19380515,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp16_25%,Gen10LP,B0,13.82119907,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp16_32%,Gen10LP,B0,16.67192424,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_fp16_50%,Gen10LP,B0,19.35312069,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int32_13%,Gen10LP,B0,10.65805573,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int32_22%,Gen10LP,B0,13.66948829,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int32_31%,Gen10LP,B0,15.96987683,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int32_50%,Gen10LP,B0,19.69444942,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int32_81%,Gen10LP,B0,25.48996563,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int64_9%,Gen10LP,B0,9.254484919,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int64_14%,Gen10LP,B0,10.36808295,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int64_20%,Gen10LP,B0,11.62588229,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int64_22%,Gen10LP,B0,13.51812623,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int16_13%,Gen10LP,B0,11.95341075,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int16_25%,Gen10LP,B0,14.55119574,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int16_31%,Gen10LP,B0,16.42483666,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int16_50%,Gen10LP,B0,20.22137844,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_cmp_int16_81%,Gen10LP,B0,26.52740337,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp64_10%,Gen10LP,B0,35.57916935,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp64_14%,Gen10LP,B0,39.88141527,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp64_18%,Gen10LP,B0,42.51099284,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp64_20%,Gen10LP,B0,45.17786502,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp32_13%,Gen10LP,B0,37.50145857,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp32_22%,Gen10LP,B0,41.03318155,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp32_31%,Gen10LP,B0,43.29391748,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp32_47%,Gen10LP,B0,46.93787484,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp32_69%,Gen10LP,B0,48.94383659,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_floatbypass_16%,Gen10LP,B0,18.38442048,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp16_15%,Gen10LP,B0,26.36826799,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp16_27%,Gen10LP,B0,29.45734613,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp16_33%,Gen10LP,B0,30.62465998,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp16_44%,Gen10LP,B0,32.15382723,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_fp16_58%,Gen10LP,B0,33.64718424,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_intbypass_23%,Gen10LP,B0,34.7286419,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_int16_16%,Gen10LP,B0,36.15404739,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_int16_28%,Gen10LP,B0,39.47117373,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_int16_33%,Gen10LP,B0,40.73351473,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_int16_50%,Gen10LP,B0,43.96146558,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mac_int16_78%,Gen10LP,B0,47.9358334,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp64_10%,Gen10LP,B0,33.13344478,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp64_15%,Gen10LP,B0,37.87353095,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp64_18%,Gen10LP,B0,41.03422956,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp64_20%,Gen10LP,B0,43.89089404,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp32_25%,Gen10LP,B0,35.33781998,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp32_34%,Gen10LP,B0,38.68934094,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp32_66%,Gen10LP,B0,46.04278564,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_floatbypass_16%,Gen10LP,B0,13.57454877,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp16_14%,Gen10LP,B0,15.72497291,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp16_26%,Gen10LP,B0,17.61057917,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp16_32%,Gen10LP,B0,19.22289494,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp16_43%,Gen10LP,B0,22.3662129,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mad_fp16_57%,Gen10LP,B0,24.34003336,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp64_10%,Gen10LP,B0,10.97492884,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp64_15%,Gen10LP,B0,12.21080494,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp64_18%,Gen10LP,B0,13.31313692,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp64_20%,Gen10LP,B0,14.85584152,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp32_15%,Gen10LP,B0,5.564787111,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp32_24%,Gen10LP,B0,6.344717188,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp32_34%,Gen10LP,B0,7.126166688,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp32_46%,Gen10LP,B0,8.224401663,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp32_66%,Gen10LP,B0,9.888930437,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp16_15%,Gen10LP,B0,6.262057604,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp16_28%,Gen10LP,B0,7.519550659,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp16_33%,Gen10LP,B0,8.054357245,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp16_44%,Gen10LP,B0,9.028271653,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_fp16_57%,Gen10LP,B0,10.28397406,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int32_16%,Gen10LP,B0,5.620310181,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int32_26%,Gen10LP,B0,6.448740031,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int32_35%,Gen10LP,B0,7.206371393,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int32_50%,Gen10LP,B0,8.537466535,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int32_78%,Gen10LP,B0,10.88619064,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int64_12%,Gen10LP,B0,9.54830007,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int64_18%,Gen10LP,B0,10.61857747,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int64_23%,Gen10LP,B0,11.78274638,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int64_25%,Gen10LP,B0,13.63210604,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int16_16%,Gen10LP,B0,5.782694749,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int16_29%,Gen10LP,B0,6.998429954,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int16_35%,Gen10LP,B0,7.568531076,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int16_50%,Gen10LP,B0,8.998750373,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mov_int16_77%,Gen10LP,B0,11.64169094,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp32_15%,Gen10LP,B0,27.49042535,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp32_25%,Gen10LP,B0,30.76199928,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp32_34%,Gen10LP,B0,33.64289144,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp32_46%,Gen10LP,B0,37.22579595,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp32_66%,Gen10LP,B0,38.83539995,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_floatbypass_16%,Gen10LP,B0,6.383531213,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp16_14%,Gen10LP,B0,17.36759597,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp16_28%,Gen10LP,B0,20.54750924,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp16_33%,Gen10LP,B0,21.3484271,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp16_44%,Gen10LP,B0,23.57239244,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp16_57%,Gen10LP,B0,24.73105932,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_intbypass_16%,Gen10LP,B0,7.23985775,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int32_13%,Gen10LP,B0,41.5182743,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int32_19%,Gen10LP,B0,46.62772611,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int32_22%,Gen10LP,B0,49.817684,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int32_25%,Gen10LP,B0,54.12831489,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int16_16%,Gen10LP,B0,26.36503633,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int16_29%,Gen10LP,B0,31.51990571,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int16_35%,Gen10LP,B0,33.18287908,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int16_50%,Gen10LP,B0,37.15122087,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_int16_77%,Gen10LP,B0,41.08113241,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp64_10%,Gen10LP,B0,13.04858012,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp64_15%,Gen10LP,B0,14.85793753,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp64_18%,Gen10LP,B0,16.59742268,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp64_20%,Gen10LP,B0,19.13896041,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp32_15%,Gen10LP,B0,10.06719284,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp32_25%,Gen10LP,B0,12.75048531,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp32_34%,Gen10LP,B0,15.32503798,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp32_46%,Gen10LP,B0,18.3996184,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp32_66%,Gen10LP,B0,23.08319531,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp16_14%,Gen10LP,B0,11.71636686,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp16_28%,Gen10LP,B0,15.28704501,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp16_33%,Gen10LP,B0,16.74738709,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp16_44%,Gen10LP,B0,19.03581029,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_fp16_57%,Gen10LP,B0,21.94863532,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int32_16%,Gen10LP,B0,11.48229355,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int32_26%,Gen10LP,B0,14.55678634,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int32_35%,Gen10LP,B0,17.31161071,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int32_50%,Gen10LP,B0,21.91465909,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int32_77%,Gen10LP,B0,29.52582166,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int64_12%,Gen10LP,B0,11.80676563,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int64_18%,Gen10LP,B0,13.68293892,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int64_22%,Gen10LP,B0,15.72951457,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int64_25%,Gen10LP,B0,18.73771548,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int16_16%,Gen10LP,B0,10.59805188,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int16_29%,Gen10LP,B0,14.20820736,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int16_35%,Gen10LP,B0,15.76733318,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int16_50%,Gen10LP,B0,19.58658328,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sel_int16_77%,Gen10LP,B0,26.2521036,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_pln_fp32_6%,Gen10LP,B0,26.71230438,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_pln_fp32_11%,Gen10LP,B0,30.3696238,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_pln_fp32_15%,Gen10LP,B0,32.48406334,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_pln_fp32_21%,Gen10LP,B0,35.79638601,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_pln_fp32_31%,Gen10LP,B0,39.12355696,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp64_10%,Gen10LP,B0,32.93876116,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp64_15%,Gen10LP,B0,37.624959,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp64_18%,Gen10LP,B0,40.90776039,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_mul_fp64_20%,Gen10LP,B0,43.46781351,syn,387329.734,from durga with Astep to Bstep scalars
-FPU1_sad_int16_25%,Gen10LP,B0,15.31202426,syn,387329.734,from durga with Astep to Bstep scalars
-EM_transc_fp32_8%,Gen10LP,B0,20.44187157,syn,150063.2238,from durga with Astep to Bstep scalars
-EM_transc_fp16_7%,Gen10LP,B0,17.12966116,syn,150063.2238,from durga with Astep to Bstep scalars
 PS2_GA_EM1Src_SinglePipe_13%,Gen10LP,B0,14.29972416,syn,432175.83,from durga
 PS2_GA_EM1Src_SinglePipe_22%,Gen10LP,B0,16.03713525,syn,432175.83,from durga
 PS2_GA_EM1Src_SinglePipe_31%,Gen10LP,B0,16.83270634,syn,432175.83,from durga
@@ -1532,6 +1166,284 @@ PS0_XStack_CMD,Gen10LP,A0,0.677983651,syn,1,fabric
 PS1_XStack_CMD,Gen10LP,A0,0.814659401,syn,1,fabric
 PS2_XStack_CMD,Gen10LP,A0,3.45106267,syn,1,fabric
 PS2_HDC_NONCLKGLUE,Gen10LP,A0,3.450474471,syn,1,Taken from CNL  CGDIS data
+PS0_rOV,Gen10LP,A0,10.65542722,syn,656832.6083,from cnl fso cgen ss
+PS1_rOV,Gen10LP,A0,11.41303787,syn,656832.6083,cnl cgdis ss
+PS0_rCS,Gen10LP,A0,10.65542722,syn,656832.6083,from cnl fso cgen ss
+PS1_rCS,Gen10LP,A0,11.41303787,syn,656832.6083,cnl cgdis ss
+PS0_rSVG,Gen10LP,A0,0.268829586,syn,187521.5698,from cnl fso cgen ss
+PS1_rSVG,Gen10LP,A0,6.207519527,syn,187521.5698,cnl cgdis ss
+PS0_rCL,Gen10LP,A0,3.763614201,syn,1692289.962,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,12.2513,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,from cnl fso cgen ss
+PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0.627719,syn,358151.005,from cnl fso cgen ss
+PS0_rFF_rOTHER_DOP,Gen10LP,A0,4.95351,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.52377,syn,1,from cnl fso cgen ss
+PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0.394755,syn,1,from cnl fso cgen ss
+PS0_rSF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
+PS0_rVF,Gen10LP,A0,4.545663905,syn,1695009.145,from cnl fso cgen ss
+PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_rVFBE1,Gen10LP,A0,0.317707692,syn,795859.9759,from cnl fso cgen ss
+PS0_rVFBE2,Gen10LP,A0,0.366585799,syn,795859.9759,from cnl fso cgen ss
+PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_rVSBE,Gen10LP,A0,0.684293491,syn,1097712.546,from cnl fso cgen ss
+PS0_rVSFE,Gen10LP,A0,0.537659172,syn,728350.0838,from cnl fso cgen ss
+PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,cnl cgdis ss
+PS2_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,cnl cgdis ss
+PS2_rFF_rOTHER_DOP,Gen10LP,A0,12.8647,syn,1,cnl cgdis ss
+PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.75534,syn,1,average of cgdis and pv
+PS2_rVF_Cache_Read,Gen10LP,A0,2.7003,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_Cache_Write,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Read,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVF_URBFifo_Write,Gen10LP,A0,1.882,ebb,1,Doubling for be1/2. Need to check with gSim.
+PS2_rVS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gSim.
+PS2_rVS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
+PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
+PS0_DSSC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_DSSC_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
+PS0_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
+PS0_DSSC_CLKGLUE_DOP,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
+PS0_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
+PS0_DSSC_CPunit_DOP,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
+PS0_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
+PS0_DSSC_DFX_DOP,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
+PS0_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,from cnl fso cgen ss
+PS0_DSSC_NONCLKGLUE,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
+PS0_DSSC_NONCLKGLUE_DOP,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
+PS0_DSSC_Repeater,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
+PS0_DSSC_Repeater_DOP,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
+PS2_DSSC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
+PS2_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,cnl cgdis ss
+PS2_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,cnl cgdis ss
+PS2_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,cnl cgdis ss
+PS2_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
+PS2_DSSC_NONCLKGLUE,Gen10LP,A0,11.00857154,syn,1,average of cgdis and pv
+PS2_DSSC_Repeater,Gen10LP,A0,2.150636686,syn,98496.81,cnl cgdis ss
+PS2_ClockSpine_Slice,Gen11LP,A0,154.242,syn,1,gen10*1.353(accounting for slice gc growth)
+PS2_ClockSpine_UnSlice,Gen11LP,A0,122.436,syn,1,gen10*1.611(accounting for unslice gc growth)
+PS0_SLMFE,Gen11LP,A0,0.23,syn,280000,from cnl fso cgen ss
+PS1_SLMFE,Gen11LP,A0,1.23,syn,280000,cnl cgdis ss
+PS2_SLMFE_Atomic,Gen11LP,A0,29.45,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMFE_Read,Gen11LP,A0,21.17,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMFE_Write,Gen11LP,A0,16.1,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
+PS0_SLMBE,Gen11LP,A0,1.2,syn,623000,from cnl fso cgen ss
+PS1_SLMBE,Gen11LP,A0,25.92,syn,623000,cnl cgdis ss
+PS2_SLMBE_Atomic,Gen11LP,A0,91.69,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMBE_Read,Gen11LP,A0,65.75,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS2_SLMBE_Write,Gen11LP,A0,25.71,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
+PS0_L3Node_Assign,Gen11LP,A0,3.469123609,syn,91326.18,15% Design Optimization
+PS0_L3Node_CLKGLUE,Gen11LP,C0,30.6331924,syn,1,15%*25% Design Optimization
+PS0_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
+PS0_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
+PS0_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
+PS0_L3Node_NONCLKGLUE,Gen11LP,C0,1.090592752,syn,1,15% Design Optimization
+PS0_L3Node_Repeater,Gen11LP,A0,12.44314397,syn,721319.43,15% Design Optimization
+PS0_L3Node_SMALL,Gen11LP,A0,2.139639112,syn,277618.19,15% Design Optimization
+PS0_L3Node_SMALL,Gen11LP,C0,2.139639112,syn,277618.19,15% Design Optimization
+PS2_L3Node_Assign,Gen11LP,A0,4.009226686,syn,91326.18,15% Design Optimization
+PS2_L3Node_CLKGLUE,Gen11LP,C0,30.63007642,syn,1,15%*25% Design Optimization
+PS2_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
+PS2_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
+PS2_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
+PS2_L3Node_NONCLKGLUE,Gen11LP,C0,1.172646873,syn,1,15% Design Optimization
+PS2_L3Node_Repeater,Gen11LP,A0,12.50546355,syn,721319.43,15% Design Optimization
+PS2_L3Node_SMALL,Gen11LP,A0,4.8297679,syn,277618.19,15% Design Optimization
+PS0_LNIECS_Base,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS0_LNIECS_Slice,Gen11LP,A0,0,syn,0,15% Design Optimization
+PS0_LNE,Gen11LP,A0,1.458278308,syn,890288.66,15%*10% Design Optimization
+PS0_LNEXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS0_LNI,Gen11LP,A0,22.21070038,syn,1667036.22,15%*10% Design Optimization
+PS0_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS2_LNE,Gen11LP,A0,50.11202513,syn,880216.8913,15%*10% Design Optimization
+PS2_LNEXS,Gen11LP,A0,145.4158383,syn,880216.8913,15%*10% Design Optimization
+PS2_LNEXS_BW,Gen11LP,A0,0,syn,1,15% Design Optimization
+PS2_LNI,Gen11LP,A0,182.3537538,syn,1591604.215,15%*10% Design Optimization
+PS2_LNIXS,Gen11LP,A0,235.9037538,syn,1591604.215,15%*10% Design Optimization
+PS2_LNIXS_BW,Gen11LP,A0,0,syn,1,15%*10% Design Optimization
+PS1_LNE,Gen11LP,A0,27.53902496,syn,890288.66,15%*10% Design Optimization
+PS1_LNEXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS1_LNI,Gen11LP,A0,78.72833277,syn,1667036.22,15%*10% Design Optimization
+PS1_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
+PS0_LSN_XSLDN_DATA,Gen11LP,A0,2.397,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLDN_DATA,Gen11LP,A0,10.132,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLDN_DATA,Gen11LP,A0,70.397,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLDN_CMD,Gen11LP,A0,0.731,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLDN_CMD,Gen11LP,A0,4.335,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLDN_CMD,Gen11LP,A0,18.071,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLUP_DATA,Gen11LP,A0,2.873,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLUP_DATA,Gen11LP,A0,11.509,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLUP_DATA,Gen11LP,A0,93.194,syn,1622558.02,15% Design Optimization
+PS0_LSN_XSLUP_CMD,Gen11LP,A0,1.003,syn,1622558.02,15% Design Optimization
+PS1_LSN_XSLUP_CMD,Gen11LP,A0,5.984,syn,1622558.02,15% Design Optimization
+PS2_LSN_XSLUP_CMD,Gen11LP,A0,23.613,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNI_DATA,Gen11LP,A0,0.221,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNI_DATA,Gen11LP,A0,5.5845,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNI_DATA,Gen11LP,A0,34.1955,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNI_CMD,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNI_CMD,Gen11LP,A0,7.1145,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNI_CMD,Gen11LP,A0,9.35,syn,1622558.02,15% Design Optimization
+PS0_LSN_LNE_DATA,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
+PS1_LSN_LNE_DATA,Gen11LP,A0,7.055,syn,1622558.02,15% Design Optimization
+PS2_LSN_LNE_DATA,Gen11LP,A0,15.793,syn,1622558.02,15% Design Optimization
+PS0_LSNtoUnslice_UP_DATA,Gen11LP,A0,1.69,syn,1622558.02,GC Reduction
+PS1_LSNtoUnslice_UP_DATA,Gen11LP,A0,6.77,syn,1622558.02,GC Reduction
+PS2_LSNtoUnslice_UP_DATA,Gen11LP,A0,54.82,syn,1622558.02,GC Reduction
+PS0_LSNtoUnslice_UP_CMD,Gen11LP,A0,0.59,syn,1622558.02,GC Reduction
+PS1_LSNtoUnslice_UP_CMD,Gen11LP,A0,3.52,syn,1622558.02,GC Reduction
+PS2_LSNtoUnslice_UP_CMD,Gen11LP,A0,13.89,syn,1622558.02,GC Reduction
+PS0_GAFStoLSN_DN_DATA,Gen11LP,A0,1.41,syn,1622558.02,GC Reduction
+PS1_GAFStoLSN_DN_DATA,Gen11LP,A0,5.96,syn,1622558.02,GC Reduction
+PS2_GAFStoLSN_DN_DATA,Gen11LP,A0,41.41,syn,1622558.02,GC Reduction
+PS0_GAFStoLSN_DN_CMD,Gen11LP,A0,0.43,syn,1622558.02,GC Reduction
+PS1_GAFStoLSN_DN_CMD,Gen11LP,A0,2.55,syn,1622558.02,GC Reduction
+PS2_GAFStoLSN_DN_CMD,Gen11LP,A0,10.63,syn,1622558.02,GC Reduction
+PS0_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS1_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS2_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
+PS0_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLDN_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLDN_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLUP_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
+PS0_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
+PS1_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
+PS2_Repeaters_XSLUP_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
+PS0_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
+PS1_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
+PS2_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,9.594777195,syn,1,15% Design Optimization
+PS0_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
+PS1_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
+PS2_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,2.103838189,syn,1,15% Design Optimization
+PS0_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
+PS1_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
+PS2_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,15.86525343,syn,1,15% Design Optimization
+PS0_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
+PS1_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
+PS2_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,3.478759887,syn,1,15% Design Optimization
+PS0_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS1_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS2_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
+PS0_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS1_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS2_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
+PS0_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
+PS0_Fabric_CLKGLUE,Gen11LP,A0,5.882528996,syn,1,30% Design Optimization
+PS0_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
+PS0_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
+PS0_Fabric_DOP,Gen11LP,A0,1.904,syn,1,30% Design Optimization
+PS0_Fabric_NONCLKGLUE,Gen11LP,A0,0.29864523,syn,1,No change
+PS0_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
+PS0_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
+PS2_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
+PS2_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
+PS2_Fabric_CLKGLUE,Gen11LP,A0,5.88218685,syn,1,30% Design Optimization
+PS2_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
+PS2_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
+PS2_Fabric_DOP,Gen11LP,A0,1.903020199,syn,1,30% Design Optimization
+PS2_Fabric_NONCLKGLUE,Gen11LP,A0,0.306954509,syn,1,No change
+PS2_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
+PS2_Fabric_Top_Level,Gen11LP,A0,0,syn,1,No change
+PS0_L3_Bank_CLKGLUE,Gen11LP,A0,22.87128799,syn,1,15% Design Optimization
+PS0_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS0_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS0_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS0_L3_Bank_SMALL,Gen11LP,A0,1.599536036,syn,191328.57,15% Design Optimization
+PS0_LSQC,Gen11LP,A0,1.828041183,syn,1109506.04,15% Design Optimization
+PS0_LSQD,Gen11LP,A0,6.128092604,syn,497779.11,15% Design Optimization
+PS0_LTCC,Gen11LP,A0,0.207731953,syn,45699.37,15% Design Optimization
+PS0_LTCD_Data,Gen11LP,A0,3.277277042,syn,346662.35,10% Design Optimization
+PS0_LTCD_Tag,Gen11LP,A0,1.419420213,syn,791094.59,12% Design Optimization
+PS1_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
+PS1_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS1_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS1_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS1_L3_Bank_SMALL,Gen11LP,A0,3.282164852,syn,191328.57,15% Design Optimization
+PS2_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
+PS2_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
+PS2_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
+PS2_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
+PS2_L3_Bank_SMALL,Gen11LP,A0,3.437963817,syn,191328.57,15% Design Optimization
+PS2_LSQC,Gen11LP,A0,93.46657486,syn,1099094.66,15% Design Optimization
+PS2_LSQD_atomics,Gen11LP,A0,182.6179916,syn,496857.7069,15% Design Optimization
+PS2_LSQD_nonatomics,Gen11LP,A0,112.8192201,syn,496857.7069,15% Design Optimization
+PS2_LTCD_Data_Else,Gen11LP,A0,35.21423183,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen11LP,A0,94.32063099,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen11LP,A0,135.8217086,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen11LP,A0,228.1315521,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen11LP,A0,234.9754987,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen11LP,A0,59.45220389,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen11LP,A0,72.99809194,syn,297078.0846,10% Design Optimization
+PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen11LP,A0,156.5636347,syn,790149.6801,12% Design Optimization
+PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen11LP,A0,148.4970433,syn,790149.6801,12% Design Optimization
+PS1_LSQC,Gen11LP,A0,15.23952146,syn,1099094.66,15% Design Optimization
+PS1_LSQD,Gen11LP,A0,35.45984432,syn,497779.11,15% Design Optimization
+PS1_LTCC,Gen11LP,A0,0.664742248,syn,45699.37,15% Design Optimization
+PS1_LTCD_Data,Gen11LP,A0,35.21423183,syn,346662.35,10% Design Optimization
+PS1_LTCD_Tag,Gen11LP,A0,39.48568957,syn,791094.59,12% Design Optimization
+PS0_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
+PS2_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
+PS0_HDC_Ret2,Gen11LP,A0,0.0441,syn,19930,10% Design Optimization
+PS0_HDC_Ret1,Gen11LP,A0,0.1746,syn,1026652,10% Design Optimization
+PS0_HDC_ReqCmd1,Gen11LP,A0,0.285936923,syn,496622.67,10% Design Optimization
+PS0_HDC_ReqCmd2,Gen11LP,A0,0.175961183,syn,970807.65,10% Design Optimization
+PS0_HDC_ReqData,Gen11LP,A0,0.043990296,syn,263680.94,10% Design Optimization
+PS0_HDC_Ret,Gen11LP,A0,0.175961183,syn,1027037.96,10% Design Optimization
+PS0_HDCL1,Gen11LP,A0,0.131970888,syn,375294.07,10% Design Optimization
+PS0_HDCL1_DOP,Gen11LP,A0,0.13793226,syn,375294.07,10% Design Optimization
+PS0_HDCTLB,Gen11LP,A0,0.373917515,syn,605047.84,10% Design Optimization
+PS0_HPSBE,Gen11LP,A0,0,syn,574929.26,GC Reduction
+PS0_HPSDE,Gen11LP,A0,0,syn,101437.6587,GC Reduction
+PS0_HPVS,Gen11LP,A0,0,syn,445909.136,GC Reduction
+PS0_HS,Gen11LP,A0,0.645191006,syn,433034.234,20% Design Optimization
+PS0_HS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_OACS,Gen11LP,A0,0.410576094,syn,161908.29,20% Design Optimization
+PS0_RS,Gen11LP,A0,0.136858698,syn,318404.5951,20% Design Optimization
+PS0_SDE,Gen11LP,A0,0.82115219,syn,113411.6086,20% Design Optimization
+PS0_SF,Gen11LP,A0,2.848,syn,2202101.043,20% Design Optimization
+PS0_SOL,Gen11LP,A0,1.153523314,syn,345762.6632,20% Design Optimization
+PS0_SOL_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_SVG,Gen11LP,A0,0.215063669,syn,187521.5698,20% Design Optimization
+PS0_TDG,Gen11LP,A0,0.430127338,syn,189506.0133,20% Design Optimization
+PS0_TDS,Gen11LP,A0,0.801600946,syn,1013661.089,20% Design Optimization
+PS0_TDS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_TE,Gen11LP,A0,0.723395976,syn,213563.9581,20% Design Optimization
+PS0_TSG,Gen11LP,A0,0.351922367,syn,827205.0545,20% Design Optimization
+PS0_URBM,Gen11LP,A0,0.039102486,syn,370361.0546,20% Design Optimization
+PS0_VF,Gen11LP,A0,3.636531124,syn,1695009.145,20% Design Optimization
+PS0_VF_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VF_URBFifo_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VFBE1,Gen11LP,A0,0.254166154,syn,795859.9759,20% Design Optimization
+PS0_VFBE2,Gen11LP,A0,0.293268639,syn,795859.9759,20% Design Optimization
+PS0_VFE,Gen11LP,A0,0.058653728,syn,106164.475,20% Design Optimization
+PS0_VS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
+PS0_VSBE,Gen11LP,A0,0.547434793,syn,1097712.546,20% Design Optimization
+PS0_VSFE,Gen11LP,A0,0.430127338,syn,728350.0838,20% Design Optimization
 EM_transc_bypass_16%,Gen9LPClient,A0,24.96,syn,122384,No bypass in TRANSC
 EM_transc_bypass_25%,Gen9LPClient,A0,27.42,syn,122384,No bypass in TRANSC
 EM_transc_bypass_35%,Gen9LPClient,A0,29.27,syn,122384,No bypass in TRANSC
@@ -2520,14 +2432,8 @@ PS0_PSD_DOP,Gen9LPClient,A0,0,syn,681617.59,No 3D DOP in ROSS
 PS0_PSD_SCOREBOARD,Gen9LPClient,A0,0,ebb,1,
 PS0_RCC,Gen9LPClient,A0,1.68,syn,692394.9,
 PS0_RCC_DOP,Gen9LPClient,A0,0,syn,692394.9,
-PS0_rOV,Gen10LP,A0,10.65542722,syn,656832.6083,from cnl fso cgen ss
-PS1_rOV,Gen10LP,A0,11.41303787,syn,656832.6083,cnl cgdis ss
 PS2_rOV,Gen9LPClient,A0,22.29,syn,446632.21,
-PS0_rCS,Gen10LP,A0,10.65542722,syn,656832.6083,from cnl fso cgen ss
-PS1_rCS,Gen10LP,A0,11.41303787,syn,656832.6083,cnl cgdis ss
 PS2_rCS,Gen9LPClient,A0,22.29,syn,446632.21,
-PS0_rSVG,Gen10LP,A0,0.268829586,syn,187521.5698,from cnl fso cgen ss
-PS1_rSVG,Gen10LP,A0,6.207519527,syn,187521.5698,cnl cgdis ss
 PS2_rSVG,Gen9LPClient,C0,5.238,syn,119350,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS0_rCL,Gen9LPClient,C0,5.31,syn,1150675,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_rCL_DOP,Gen9LPClient,A0,0,syn,1148212.05,
@@ -3348,10 +3254,6 @@ PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,172.8101,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,227.8558,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Read,Gen9LPClient,A0,254.114,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_EBB_Write,Gen9LPClient,A0,304.5488,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Read,Gen9LPSoC,A0,182.32,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.4,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.1,ebb,1,Normalized to 0.6GHz
-PS2_LTCD_EBB_Write,Gen9LPSoC,A0,321.31,ebb,1,Normalized to 0.6GHz
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,212.058,syn,720863.55,1.7x 25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,218.79,syn,720863.55,1.7x
 PS2_MA_IN,Gen9LPClient,C0,9.004,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
@@ -3688,6 +3590,10 @@ PS0_rVS,Gen9LPClient,C0,0.577,syn,394370,Taken from SKL C0 ECO1 GT3 CGEN data
 PS0_rVS_DOP,Gen9LPClient,A0,0,syn,394384.07,
 PS1_rVS,Gen9LPClient,C0,6.56,syn,394370,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS2_rVS,Gen9LPClient,A0,58.4,syn,394384.07,Using 66hit test 29.5 to 29.9ns
+PS2_LTCD_EBB_HB_Read,Gen9LPSoC,A0,182.32,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_HB_Write,Gen9LPSoC,A0,240.4,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Read,Gen9LPSoC,A0,268.1,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Write,Gen9LPSoC,A0,321.31,ebb,1,Normalized to 0.6GHz
 EM_transc_bypass_16%,Gen9LPSoC,A0,25.44,syn,129025,
 EM_transc_bypass_25%,Gen9LPSoC,A0,27.55,syn,129025,
 EM_transc_bypass_35%,Gen9LPSoC,A0,29.27,syn,129025,
@@ -5169,273 +5075,355 @@ PS2_L3_Bank_CLKGLUE,Gen9LPSoC,B0,29.76222222,syn,1,
 PS2_MEDIASMP_CLKGLUE,Gen9LPSoC,B0,11.76777778,syn,1,
 PS2_ROSC_CLKGLUE,Gen9LPSoC,B0,19.78444444,syn,1,
 PS2_ROSS_CLKGLUE,Gen9LPSoC,B0,24.80555556,syn,1,
-PS0_rCL,Gen10LP,A0,3.763614201,syn,1692289.962,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,12.2513,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,from cnl fso cgen ss
-PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0.627719,syn,358151.005,from cnl fso cgen ss
-PS0_rFF_rOTHER_DOP,Gen10LP,A0,4.95351,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.52377,syn,1,from cnl fso cgen ss
-PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0.394755,syn,1,from cnl fso cgen ss
-PS0_rSF,Gen10LP,A0,3.56,syn,2202101.043,from cnl fso cgen ss
-PS0_rVF,Gen10LP,A0,4.545663905,syn,1695009.145,from cnl fso cgen ss
-PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_rVF_URBFifo_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_rVFBE1,Gen10LP,A0,0.317707692,syn,795859.9759,from cnl fso cgen ss
-PS0_rVFBE2,Gen10LP,A0,0.366585799,syn,795859.9759,from cnl fso cgen ss
-PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_rVSBE,Gen10LP,A0,0.684293491,syn,1097712.546,from cnl fso cgen ss
-PS0_rVSFE,Gen10LP,A0,0.537659172,syn,728350.0838,from cnl fso cgen ss
-PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.84,syn,1,cnl cgdis ss
-PS2_rFF_rOTHER_DFX,Gen10LP,A0,1.88181,syn,358151.005,cnl cgdis ss
-PS2_rFF_rOTHER_DOP,Gen10LP,A0,12.8647,syn,1,cnl cgdis ss
-PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.75534,syn,1,average of cgdis and pv
-PS2_rVF_Cache_Read,Gen10LP,A0,2.7003,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_Cache_Write,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Read,Gen10LP,A0,2.2093,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVF_URBFifo_Write,Gen10LP,A0,1.882,ebb,1,Doubling for be1/2. Need to check with gSim.
-PS2_rVS_Cache_Read,Gen10LP,A0,2.7275,ebb,1,32 bits assumed. Need to check with gSim.
-PS2_rVS_Cache_Write,Gen10LP,A0,2.6184,ebb,1,32 bits assumed. Need to check with gSim.
-PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss
-PS0_DSSC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
-PS0_DSSC_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss
-PS0_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
-PS0_DSSC_CLKGLUE_DOP,Gen10LP,A0,18.94515408,syn,1,from cnl fso cgen ss
-PS0_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
-PS0_DSSC_CPunit_DOP,Gen10LP,A0,3.274833136,syn,30559,from cnl fso cgen ss
-PS0_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
-PS0_DSSC_DFX_DOP,Gen10LP,A0,1.637416568,syn,185260.21,from cnl fso cgen ss
-PS0_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,from cnl fso cgen ss
-PS0_DSSC_NONCLKGLUE,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
-PS0_DSSC_NONCLKGLUE_DOP,Gen10LP,A0,1.759611834,syn,1,from cnl fso cgen ss
-PS0_DSSC_Repeater,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
-PS0_DSSC_Repeater_DOP,Gen10LP,A0,1.466343195,syn,98496.81,from cnl fso cgen ss
-PS2_DSSC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss
-PS2_DSSC_CLKGLUE,Gen10LP,A0,18.94515408,syn,1,cnl cgdis ss
-PS2_DSSC_CPunit,Gen10LP,A0,3.274833136,syn,30559,cnl cgdis ss
-PS2_DSSC_DFX,Gen10LP,A0,1.637416568,syn,185260.21,cnl cgdis ss
-PS2_DSSC_DOP,Gen10LP,A0,8.292170769,syn,1,cnl cgdis ss
-PS2_DSSC_NONCLKGLUE,Gen10LP,A0,11.00857154,syn,1,average of cgdis and pv
-PS2_DSSC_Repeater,Gen10LP,A0,2.150636686,syn,98496.81,cnl cgdis ss
-PS0_SLMFE,Gen11LP,A0,0.23,syn,280000,from cnl fso cgen ss
-PS1_SLMFE,Gen11LP,A0,1.23,syn,280000,cnl cgdis ss
-PS2_SLMFE_Atomic,Gen11LP,A0,29.45,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
-PS2_SLMFE_Read,Gen11LP,A0,21.17,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
-PS2_SLMFE_Write,Gen11LP,A0,16.1,syn,280000,Plite*0.968(x1r0-x1r1 scalar)
-PS0_SLMBE,Gen11LP,A0,1.2,syn,623000,from cnl fso cgen ss
-PS1_SLMBE,Gen11LP,A0,25.92,syn,623000,cnl cgdis ss
-PS2_SLMBE_Atomic,Gen11LP,A0,91.69,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
-PS2_SLMBE_Read,Gen11LP,A0,65.75,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
-PS2_SLMBE_Write,Gen11LP,A0,25.71,syn,623000,Plite*0.968(x1r0-x1r1 scalar)
-PS0_L3Node_Assign,Gen11LP,A0,3.469123609,syn,91326.18,15% Design Optimization
-PS0_L3Node_CLKGLUE,Gen11LP,C0,30.6331924,syn,1,15%*25% Design Optimization
-PS0_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
-PS0_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
-PS0_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
-PS0_L3Node_NONCLKGLUE,Gen11LP,C0,1.090592752,syn,1,15% Design Optimization
-PS0_L3Node_Repeater,Gen11LP,A0,12.44314397,syn,721319.43,15% Design Optimization
-PS0_L3Node_SMALL,Gen11LP,A0,2.139639112,syn,277618.19,15% Design Optimization
-PS0_L3Node_SMALL,Gen11LP,C0,2.139639112,syn,277618.19,15% Design Optimization
-PS2_L3Node_Assign,Gen11LP,A0,4.009226686,syn,91326.18,15% Design Optimization
-PS2_L3Node_CLKGLUE,Gen11LP,C0,30.63007642,syn,1,15%*25% Design Optimization
-PS2_L3Node_CPunit,Gen11LP,A0,1.14252574,syn,12703.83,15% Design Optimization
-PS2_L3Node_DFX,Gen11LP,C0,1.308711302,syn,65930.11,15% Design Optimization
-PS2_L3Node_DOP,Gen11LP,A0,7.771252347,syn,1,15%*25% Design Optimization
-PS2_L3Node_NONCLKGLUE,Gen11LP,C0,1.172646873,syn,1,15% Design Optimization
-PS2_L3Node_Repeater,Gen11LP,A0,12.50546355,syn,721319.43,15% Design Optimization
-PS2_L3Node_SMALL,Gen11LP,A0,4.8297679,syn,277618.19,15% Design Optimization
-PS0_LNIECS_Base,Gen11LP,A0,0,syn,0,15% Design Optimization
-PS0_LNIECS_Slice,Gen11LP,A0,0,syn,0,15% Design Optimization
-PS0_LNE,Gen11LP,A0,1.4582783079,syn,890288.66,15%*10% Design Optimization
-PS0_LNEXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
-PS0_LNI,Gen11LP,A0,22.21070038,syn,1667036.22,15%*10% Design Optimization
-PS0_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
-PS2_LNE,Gen11LP,A0,50.112025128,syn,880216.8913,15%*10% Design Optimization
-PS2_LNEXS,Gen11LP,A0,145.41583833,syn,880216.8913,15%*10% Design Optimization
-PS2_LNEXS_BW,Gen11LP,A0,0,syn,1,15% Design Optimization
-PS2_LNI,Gen11LP,A0,182.3537538,syn,1591604.215,15%*10% Design Optimization
-PS2_LNIXS,Gen11LP,A0,235.9037538,syn,1591604.215,15%*10% Design Optimization
-PS2_LNIXS_BW,Gen11LP,A0,0,syn,1,15%*10% Design Optimization
-PS1_LNE,Gen11LP,A0,27.539024958,syn,890288.66,15%*10% Design Optimization
-PS1_LNEXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
-PS1_LNI,Gen11LP,A0,78.72833277,syn,1667036.22,15%*10% Design Optimization
-PS1_LNIXS,Gen11LP,A0,0,syn,0,15%*10% Design Optimization
-PS0_LSN_XSLDN_DATA,Gen11LP,A0,2.397,syn,1622558.02,15% Design Optimization
-PS1_LSN_XSLDN_DATA,Gen11LP,A0,10.132,syn,1622558.02,15% Design Optimization
-PS2_LSN_XSLDN_DATA,Gen11LP,A0,70.397,syn,1622558.02,15% Design Optimization
-PS0_LSN_XSLDN_CMD,Gen11LP,A0,0.731,syn,1622558.02,15% Design Optimization
-PS1_LSN_XSLDN_CMD,Gen11LP,A0,4.335,syn,1622558.02,15% Design Optimization
-PS2_LSN_XSLDN_CMD,Gen11LP,A0,18.071,syn,1622558.02,15% Design Optimization
-PS0_LSN_XSLUP_DATA,Gen11LP,A0,2.873,syn,1622558.02,15% Design Optimization
-PS1_LSN_XSLUP_DATA,Gen11LP,A0,11.509,syn,1622558.02,15% Design Optimization
-PS2_LSN_XSLUP_DATA,Gen11LP,A0,93.194,syn,1622558.02,15% Design Optimization
-PS0_LSN_XSLUP_CMD,Gen11LP,A0,1.003,syn,1622558.02,15% Design Optimization
-PS1_LSN_XSLUP_CMD,Gen11LP,A0,5.984,syn,1622558.02,15% Design Optimization
-PS2_LSN_XSLUP_CMD,Gen11LP,A0,23.613,syn,1622558.02,15% Design Optimization
-PS0_LSN_LNI_DATA,Gen11LP,A0,0.221,syn,1622558.02,15% Design Optimization
-PS1_LSN_LNI_DATA,Gen11LP,A0,5.5845,syn,1622558.02,15% Design Optimization
-PS2_LSN_LNI_DATA,Gen11LP,A0,34.1955,syn,1622558.02,15% Design Optimization
-PS0_LSN_LNI_CMD,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
-PS1_LSN_LNI_CMD,Gen11LP,A0,7.1145,syn,1622558.02,15% Design Optimization
-PS2_LSN_LNI_CMD,Gen11LP,A0,9.35,syn,1622558.02,15% Design Optimization
-PS0_LSN_LNE_DATA,Gen11LP,A0,0.2805,syn,1622558.02,15% Design Optimization
-PS1_LSN_LNE_DATA,Gen11LP,A0,7.055,syn,1622558.02,15% Design Optimization
-PS2_LSN_LNE_DATA,Gen11LP,A0,15.793,syn,1622558.02,15% Design Optimization
-PS0_LSNtoUnslice_UP_DATA,Gen11LP,A0,1.69,syn,1622558.02,GC Reduction
-PS1_LSNtoUnslice_UP_DATA,Gen11LP,A0,6.77,syn,1622558.02,GC Reduction
-PS2_LSNtoUnslice_UP_DATA,Gen11LP,A0,54.82,syn,1622558.02,GC Reduction
-PS0_LSNtoUnslice_UP_CMD,Gen11LP,A0,0.59,syn,1622558.02,GC Reduction
-PS1_LSNtoUnslice_UP_CMD,Gen11LP,A0,3.52,syn,1622558.02,GC Reduction
-PS2_LSNtoUnslice_UP_CMD,Gen11LP,A0,13.89,syn,1622558.02,GC Reduction
-PS0_GAFStoLSN_DN_DATA,Gen11LP,A0,1.41,syn,1622558.02,GC Reduction
-PS1_GAFStoLSN_DN_DATA,Gen11LP,A0,5.96,syn,1622558.02,GC Reduction
-PS2_GAFStoLSN_DN_DATA,Gen11LP,A0,41.41,syn,1622558.02,GC Reduction
-PS0_GAFStoLSN_DN_CMD,Gen11LP,A0,0.43,syn,1622558.02,GC Reduction
-PS1_GAFStoLSN_DN_CMD,Gen11LP,A0,2.55,syn,1622558.02,GC Reduction
-PS2_GAFStoLSN_DN_CMD,Gen11LP,A0,10.63,syn,1622558.02,GC Reduction
-PS0_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_UNSL_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_UNSL_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_UNSL_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_UNSL_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_SL_UNSL_INTF_DATA_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_SL_UNSL_INTF_CMD_UP,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_SL_UNSL_INTF_DATA_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS1_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS2_BGF_SL_UNSL_INTF_CMD_DN,Gen11LP,A0,0,syn,1,GC Reduction
-PS0_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
-PS1_Repeaters_XSLDN_DATA,Gen11LP,A0,1.872,syn,1867252.2,60% Design Optimization
-PS2_Repeaters_XSLDN_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
-PS0_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
-PS1_Repeaters_XSLDN_CMD,Gen11LP,A0,0.408,syn,1867252.2,60% Design Optimization
-PS2_Repeaters_XSLDN_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
-PS0_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
-PS1_Repeaters_XSLUP_DATA,Gen11LP,A0,1.808,syn,1867252.2,60% Design Optimization
-PS2_Repeaters_XSLUP_DATA,Gen11LP,A0,20.72,syn,1867252.2,60% Design Optimization
-PS0_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
-PS1_Repeaters_XSLUP_CMD,Gen11LP,A0,0.4,syn,1867252.2,60% Design Optimization
-PS2_Repeaters_XSLUP_CMD,Gen11LP,A0,4.544,syn,1867252.2,60% Design Optimization
-PS0_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
-PS1_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,0.297005949,syn,1,15% Design Optimization
-PS2_RepeaterstoUnslice_UP_DATA,Gen11LP,A0,9.594777195,syn,1,15% Design Optimization
-PS0_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
-PS1_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,0.065124228,syn,1,15% Design Optimization
-PS2_RepeaterstoUnslice_UP_CMD,Gen11LP,A0,2.103838189,syn,1,15% Design Optimization
-PS0_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
-PS1_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,1.386027764,syn,1,15% Design Optimization
-PS2_RepeatersfromUnslice_DN_DATA,Gen11LP,A0,15.86525343,syn,1,15% Design Optimization
-PS0_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
-PS1_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,0.303913065,syn,1,15% Design Optimization
-PS2_RepeatersfromUnslice_DN_CMD,Gen11LP,A0,3.478759887,syn,1,15% Design Optimization
-PS0_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
-PS1_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
-PS2_XStack_DATA,Gen11LP,A0,0,syn,1,Not used
-PS0_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
-PS1_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
-PS2_XStack_CMD,Gen11LP,A0,0,syn,1,Not used
-PS0_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
-PS0_Fabric_CLKGLUE,Gen11LP,A0,5.882528996,syn,1,30% Design Optimization
-PS0_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
-PS0_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
-PS0_Fabric_DOP,Gen11LP,A0,1.904,syn,1,30% Design Optimization
-PS0_Fabric_NONCLKGLUE,Gen11LP,A0,0.29864523,syn,1,No change
-PS0_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
-PS0_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
-PS2_Fabric_SMALL,Gen11LP,A0,0.014,syn,513,No change
-PS2_Fabric_Assign,Gen11LP,A0,0.07331716,syn,20076.1,No change
-PS2_Fabric_CLKGLUE,Gen11LP,A0,5.88218685,syn,1,30% Design Optimization
-PS2_Fabric_CPunit,Gen11LP,A0,0.185736804,syn,9048.17,No change
-PS2_Fabric_DFX,Gen11LP,A0,0.210175858,syn,89802.21,No change
-PS2_Fabric_DOP,Gen11LP,A0,1.903020199,syn,1,30% Design Optimization
-PS2_Fabric_NONCLKGLUE,Gen11LP,A0,0.306954509,syn,1,No change
-PS2_Fabric_Repeater,Gen11LP,A0,0,syn,1867252.2,No change
-PS2_Fabric_Top_Level,Gen11LP,A0,0,syn,1,No change
-PS0_L3_Bank_CLKGLUE,Gen11LP,A0,22.87128799,syn,1,15% Design Optimization
-PS0_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
-PS0_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
-PS0_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
-PS0_L3_Bank_SMALL,Gen11LP,A0,1.599536036,syn,191328.57,15% Design Optimization
-PS0_LSQC,Gen11LP,A0,1.828041183,syn,1109506.04,15% Design Optimization
-PS0_LSQD,Gen11LP,A0,6.128092604,syn,497779.11,15% Design Optimization
-PS0_LTCC,Gen11LP,A0,0.207731953,syn,45699.37,15% Design Optimization
-PS0_LTCD_Data,Gen11LP,A0,3.277277042,syn,346662.35,10% Design Optimization
-PS0_LTCD_Tag,Gen11LP,A0,1.419420213,syn,791094.59,12% Design Optimization
-PS1_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
-PS1_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
-PS1_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
-PS1_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
-PS1_L3_Bank_SMALL,Gen11LP,A0,3.282164852,syn,191328.57,15% Design Optimization
-PS2_L3_Bank_CLKGLUE,Gen11LP,A0,22.87336531,syn,1,15% Design Optimization
-PS2_L3_Bank_DFX,Gen11LP,A0,0.851701006,syn,127000.43,15% Design Optimization
-PS2_L3_Bank_DOP,Gen11LP,A0,9.838185277,syn,1,15% Design Optimization
-PS2_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.778994822,syn,1,15% Design Optimization
-PS2_L3_Bank_SMALL,Gen11LP,A0,3.437963817,syn,191328.57,15% Design Optimization
-PS2_LSQC,Gen11LP,A0,93.46657486,syn,1099094.66,15% Design Optimization
-PS2_LSQD_atomics,Gen11LP,A0,182.6179916,syn,496857.7069,15% Design Optimization
-PS2_LSQD_nonatomics,Gen11LP,A0,112.8192201,syn,496857.7069,15% Design Optimization
-PS2_LTCD_Data_Else,Gen11LP,A0,35.21423183,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_NonSLM_ECC_NoTagRead,Gen11LP,A0,94.32063099,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_NonSLM_ECC_NoTagWrite,Gen11LP,A0,135.8217086,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_NonSLM_ECC_TagRead,Gen11LP,A0,228.1315521,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_NonSLM_ECC_TagWrite,Gen11LP,A0,234.9754987,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_SLM_ECC_NoTagRead,Gen11LP,A0,59.45220389,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen11LP,A0,72.99809194,syn,297078.0846,10% Design Optimization
-PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen11LP,A0,156.5636347,syn,790149.6801,12% Design Optimization
-PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen11LP,A0,148.4970433,syn,790149.6801,12% Design Optimization
-PS1_LSQC,Gen11LP,A0,15.23952146,syn,1099094.66,15% Design Optimization
-PS1_LSQD,Gen11LP,A0,35.45984432,syn,497779.11,15% Design Optimization
-PS1_LTCC,Gen11LP,A0,0.664742248,syn,45699.37,15% Design Optimization
-PS1_LTCD_Data,Gen11LP,A0,35.21423183,syn,346662.35,10% Design Optimization
-PS1_LTCD_Tag,Gen11LP,A0,39.48568957,syn,791094.59,12% Design Optimization
-PS0_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
-PS2_L3_Bank_Repeater,Gen11LP,A0,2.658968994,syn,87058.42,15% Design Optimization
-PS0_HDC_Ret2,Gen11LP,A0,0.0441,syn,19930,10% Design Optimization
-PS0_HDC_Ret1,Gen11LP,A0,0.1746,syn,1026652,10% Design Optimization
-PS0_HDC_ReqCmd1,Gen11LP,A0,0.285936923,syn,496622.67,10% Design Optimization
-PS0_HDC_ReqCmd2,Gen11LP,A0,0.175961183,syn,970807.65,10% Design Optimization
-PS0_HDC_ReqData,Gen11LP,A0,0.043990296,syn,263680.94,10% Design Optimization
-PS0_HDC_Ret,Gen11LP,A0,0.175961183,syn,1027037.96,10% Design Optimization
-PS0_HDCL1,Gen11LP,A0,0.131970888,syn,375294.07,10% Design Optimization
-PS0_HDCL1_DOP,Gen11LP,A0,0.13793226,syn,375294.07,10% Design Optimization
-PS0_HDCTLB,Gen11LP,A0,0.373917515,syn,605047.84,10% Design Optimization
-PS0_HPSBE,Gen11LP,A0,0,syn,574929.26,GC Reduction
-PS0_HPSDE,Gen11LP,A0,0,syn,101437.6587,GC Reduction
-PS0_HPVS,Gen11LP,A0,0,syn,445909.136,GC Reduction
-PS0_HS,Gen11LP,A0,0.645191006,syn,433034.234,20% Design Optimization
-PS0_HS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_OACS,Gen11LP,A0,0.410576094,syn,161908.29,20% Design Optimization
-PS0_RS,Gen11LP,A0,0.136858698,syn,318404.5951,20% Design Optimization
-PS0_SDE,Gen11LP,A0,0.82115219,syn,113411.6086,20% Design Optimization
-PS0_SF,Gen11LP,A0,2.848,syn,2202101.043,20% Design Optimization
-PS0_SOL,Gen11LP,A0,1.153523314,syn,345762.6632,20% Design Optimization
-PS0_SOL_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_SVG,Gen11LP,A0,0.215063669,syn,187521.5698,20% Design Optimization
-PS0_TDG,Gen11LP,A0,0.430127338,syn,189506.0133,20% Design Optimization
-PS0_TDS,Gen11LP,A0,0.801600946,syn,1013661.089,20% Design Optimization
-PS0_TDS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_TE,Gen11LP,A0,0.723395976,syn,213563.9581,20% Design Optimization
-PS0_TSG,Gen11LP,A0,0.351922367,syn,827205.0545,20% Design Optimization
-PS0_URBM,Gen11LP,A0,0.039102486,syn,370361.0546,20% Design Optimization
-PS0_VF,Gen11LP,A0,3.636531124,syn,1695009.145,20% Design Optimization
-PS0_VF_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_VF_URBFifo_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_VFBE1,Gen11LP,A0,0.254166154,syn,795859.9759,20% Design Optimization
-PS0_VFBE2,Gen11LP,A0,0.293268639,syn,795859.9759,20% Design Optimization
-PS0_VFE,Gen11LP,A0,0.058653728,syn,106164.475,20% Design Optimization
-PS0_VS_Cache_Idle,Gen11LP,A0,0,ebb,1,20% Design Optimization
-PS0_VSBE,Gen11LP,A0,0.547434793,syn,1097712.546,20% Design Optimization
-PS0_VSFE,Gen11LP,A0,0.430127338,syn,728350.0838,20% Design Optimization
+FPU0_add_fp64_10%,Gen10LP,B0,15.18616124,syn,357699.15,
+FPU0_add_fp64_15%,Gen10LP,B0,16.37231145,syn,357699.15,
+FPU0_add_fp64_18%,Gen10LP,B0,17.40997996,syn,357699.15,
+FPU0_add_fp64_20%,Gen10LP,B0,18.5160391,syn,357699.15,
+FPU0_add_fp32_15%,Gen10LP,B0,16.05880786,syn,357699.15,
+FPU0_add_fp32_25%,Gen10LP,B0,18.53434619,syn,357699.15,
+FPU0_add_fp32_34%,Gen10LP,B0,20.23801547,syn,357699.15,
+FPU0_add_fp32_46%,Gen10LP,B0,21.94189576,syn,357699.15,
+FPU0_add_fp32_66%,Gen10LP,B0,24.42016996,syn,357699.15,
+FPU0_add_floatbypass_17%,Gen10LP,B0,11.70935859,syn,357699.15,
+FPU0_add_fp16_14%,Gen10LP,B0,16.62020227,syn,357699.15,
+FPU0_add_fp16_28%,Gen10LP,B0,17.36957695,syn,357699.15,
+FPU0_add_fp16_33%,Gen10LP,B0,18.94117771,syn,357699.15,
+FPU0_add_fp16_44%,Gen10LP,B0,20.69629796,syn,357699.15,
+FPU0_add_fp16_57%,Gen10LP,B0,21.80006373,syn,357699.15,
+FPU0_add_intbypass_21%,Gen10LP,B0,15.44892983,syn,357699.15,
+FPU0_add_int32_16%,Gen10LP,B0,12.55692144,syn,357699.15,
+FPU0_add_int32_26%,Gen10LP,B0,15.37475197,syn,357699.15,
+FPU0_add_int32_35%,Gen10LP,B0,17.52367686,syn,357699.15,
+FPU0_add_int32_50%,Gen10LP,B0,20.84402169,syn,357699.15,
+FPU0_add_int32_77%,Gen10LP,B0,26.23789465,syn,357699.15,
+FPU0_add_int64_12%,Gen10LP,B0,12.45012618,syn,357699.15,
+FPU0_add_int64_18%,Gen10LP,B0,14.35147675,syn,357699.15,
+FPU0_add_int64_22%,Gen10LP,B0,16.16718052,syn,357699.15,
+FPU0_add_int64_25%,Gen10LP,B0,18.07829562,syn,357699.15,
+FPU0_add_int16_16%,Gen10LP,B0,12.55866785,syn,357699.15,
+FPU0_add_int16_29%,Gen10LP,B0,15.84822669,syn,357699.15,
+FPU0_add_int16_35%,Gen10LP,B0,16.99961362,syn,357699.15,
+FPU0_add_int16_50%,Gen10LP,B0,19.70593513,syn,357699.15,
+FPU0_add_int16_77%,Gen10LP,B0,24.16259962,syn,357699.15,
+FPU0_cmp_fp64_7%,Gen10LP,B0,10.17506749,syn,357699.15,
+FPU0_cmp_fp64_11%,Gen10LP,B0,11.16431487,syn,357699.15,
+FPU0_cmp_fp64_16%,Gen10LP,B0,12.18306582,syn,357699.15,
+FPU0_cmp_fp64_18%,Gen10LP,B0,13.32315178,syn,357699.15,
+FPU0_cmp_fp32_13%,Gen10LP,B0,9.733977656,syn,357699.15,
+FPU0_cmp_fp32_22%,Gen10LP,B0,13.04571642,syn,357699.15,
+FPU0_cmp_fp32_31%,Gen10LP,B0,14.95249571,syn,357699.15,
+FPU0_cmp_fp32_47%,Gen10LP,B0,17.7872444,syn,357699.15,
+FPU0_cmp_fp32_69%,Gen10LP,B0,19.82276738,syn,357699.15,
+FPU0_cmp_floatbypass_31%,Gen10LP,B0,11.79797172,syn,357699.15,
+FPU0_cmp_fp16_13%,Gen10LP,B0,10.83740643,syn,357699.15,
+FPU0_cmp_fp16_25%,Gen10LP,B0,13.34747758,syn,357699.15,
+FPU0_cmp_fp16_50%,Gen10LP,B0,18.37189219,syn,357699.15,
+FPU0_cmp_int32_13%,Gen10LP,B0,10.89790596,syn,357699.15,
+FPU0_cmp_int32_22%,Gen10LP,B0,13.69404107,syn,357699.15,
+FPU0_cmp_int32_31%,Gen10LP,B0,15.97621241,syn,357699.15,
+FPU0_cmp_int32_50%,Gen10LP,B0,19.74568567,syn,357699.15,
+FPU0_cmp_int32_81%,Gen10LP,B0,25.45802796,syn,357699.15,
+FPU0_cmp_int64_9%,Gen10LP,B0,9.376472735,syn,357699.15,
+FPU0_cmp_int64_14%,Gen10LP,B0,10.44606316,syn,357699.15,
+FPU0_cmp_int64_20%,Gen10LP,B0,11.62327032,syn,357699.15,
+FPU0_cmp_int64_22%,Gen10LP,B0,13.37129841,syn,357699.15,
+FPU0_cmp_int16_13%,Gen10LP,B0,11.81442792,syn,357699.15,
+FPU0_cmp_int16_25%,Gen10LP,B0,14.6982287,syn,357699.15,
+FPU0_cmp_int16_31%,Gen10LP,B0,16.3608425,syn,357699.15,
+FPU0_cmp_int16_50%,Gen10LP,B0,20.21577307,syn,357699.15,
+FPU0_cmp_int16_81%,Gen10LP,B0,26.32101555,syn,357699.15,
+FPU0_mac_fp64_10%,Gen10LP,B0,34.93216239,syn,357699.15,
+FPU0_mac_fp64_14%,Gen10LP,B0,38.97458873,syn,357699.15,
+FPU0_mac_fp64_18%,Gen10LP,B0,41.44697124,syn,357699.15,
+FPU0_mac_fp64_20%,Gen10LP,B0,43.79730275,syn,357699.15,
+FPU0_mac_floatbypass_16%,Gen10LP,B0,17.27523907,syn,357699.15,
+FPU0_mac_fp16_15%,Gen10LP,B0,24.47803911,syn,357699.15,
+FPU0_mac_fp16_27%,Gen10LP,B0,27.32604515,syn,357699.15,
+FPU0_mac_fp16_33%,Gen10LP,B0,28.40620007,syn,357699.15,
+FPU0_mac_fp16_44%,Gen10LP,B0,29.98760736,syn,357699.15,
+FPU0_mac_fp16_58%,Gen10LP,B0,31.15446102,syn,357699.15,
+FPU0_mac_intbypass_23%,Gen10LP,B0,33.46901828,syn,357699.15,
+FPU0_mac_int16_16%,Gen10LP,B0,34.29286581,syn,357699.15,
+FPU0_mac_int16_28%,Gen10LP,B0,37.78437722,syn,357699.15,
+FPU0_mac_int16_33%,Gen10LP,B0,39.23089715,syn,357699.15,
+FPU0_mac_int16_50%,Gen10LP,B0,42.57152798,syn,357699.15,
+FPU0_mac_int16_78%,Gen10LP,B0,46.52788757,syn,357699.15,
+FPU0_mad_fp64_10%,Gen10LP,B0,32.69188849,syn,357699.15,
+FPU0_mad_fp64_15%,Gen10LP,B0,37.21220936,syn,357699.15,
+FPU0_mad_fp64_18%,Gen10LP,B0,40.25423486,syn,357699.15,
+FPU0_mad_fp64_20%,Gen10LP,B0,42.85287715,syn,357699.15,
+FPU0_mad_fp32_15%,Gen10LP,B0,30.43099057,syn,357699.15,
+FPU0_mad_fp32_25%,Gen10LP,B0,34.69542503,syn,357699.15,
+FPU0_mad_fp32_34%,Gen10LP,B0,37.90222044,syn,357699.15,
+FPU0_mad_fp32_46%,Gen10LP,B0,42.86424059,syn,357699.15,
+FPU0_mad_fp32_66%,Gen10LP,B0,45.75685844,syn,357699.15,
+FPU0_mad_floatbypass_16%,Gen10LP,B0,13.20171024,syn,357699.15,
+FPU0_mad_fp16_14%,Gen10LP,B0,14.6721145,syn,357699.15,
+FPU0_mad_fp16_26%,Gen10LP,B0,16.39434386,syn,357699.15,
+FPU0_mad_fp16_32%,Gen10LP,B0,17.87840494,syn,357699.15,
+FPU0_mad_fp16_43%,Gen10LP,B0,20.78400665,syn,357699.15,
+FPU0_mad_fp16_57%,Gen10LP,B0,22.59045087,syn,357699.15,
+FPU0_mov_fp64_10%,Gen10LP,B0,11.3205832,syn,357699.15,
+FPU0_mov_fp64_15%,Gen10LP,B0,12.51837034,syn,357699.15,
+FPU0_mov_fp64_18%,Gen10LP,B0,13.61270856,syn,357699.15,
+FPU0_mov_fp64_20%,Gen10LP,B0,15.14710516,syn,357699.15,
+FPU0_mov_fp32_15%,Gen10LP,B0,5.676589546,syn,357699.15,
+FPU0_mov_fp32_24%,Gen10LP,B0,6.31089887,syn,357699.15,
+FPU0_mov_fp32_34%,Gen10LP,B0,6.942936325,syn,357699.15,
+FPU0_mov_fp32_46%,Gen10LP,B0,7.880164256,syn,357699.15,
+FPU0_mov_fp32_66%,Gen10LP,B0,9.290993918,syn,357699.15,
+FPU0_mov_fp16_15%,Gen10LP,B0,6.33895,syn,357699.15,
+FPU0_mov_fp16_28%,Gen10LP,B0,7.360435797,syn,357699.15,
+FPU0_mov_fp16_33%,Gen10LP,B0,7.794117983,syn,357699.15,
+FPU0_mov_fp16_44%,Gen10LP,B0,8.605423115,syn,357699.15,
+FPU0_mov_fp16_57%,Gen10LP,B0,9.651340211,syn,357699.15,
+FPU0_mov_int32_16%,Gen10LP,B0,5.760805417,syn,357699.15,
+FPU0_mov_int32_26%,Gen10LP,B0,6.438084615,syn,357699.15,
+FPU0_mov_int32_35%,Gen10LP,B0,7.072752439,syn,357699.15,
+FPU0_mov_int32_50%,Gen10LP,B0,8.17033151,syn,357699.15,
+FPU0_mov_int32_78%,Gen10LP,B0,10.15160414,syn,357699.15,
+FPU0_mov_int64_12%,Gen10LP,B0,9.951797455,syn,357699.15,
+FPU0_mov_int64_18%,Gen10LP,B0,11.00996195,syn,357699.15,
+FPU0_mov_int64_23%,Gen10LP,B0,12.17325929,syn,357699.15,
+FPU0_mov_int64_25%,Gen10LP,B0,14.01918158,syn,357699.15,
+FPU0_mov_int16_16%,Gen10LP,B0,5.842347899,syn,357699.15,
+FPU0_mov_int16_29%,Gen10LP,B0,6.838328944,syn,357699.15,
+FPU0_mov_int16_35%,Gen10LP,B0,7.298862819,syn,357699.15,
+FPU0_mov_int16_50%,Gen10LP,B0,8.454900011,syn,357699.15,
+FPU0_mov_int16_77%,Gen10LP,B0,10.60662428,syn,357699.15,
+FPU0_mul_fp64_10%,Gen10LP,B0,32.52080589,syn,357699.15,
+FPU0_mul_fp64_15%,Gen10LP,B0,36.95505898,syn,357699.15,
+FPU0_mul_fp64_18%,Gen10LP,B0,40.15554171,syn,357699.15,
+FPU0_mul_fp64_20%,Gen10LP,B0,42.46904702,syn,357699.15,
+FPU0_mul_fp32_15%,Gen10LP,B0,26.66212778,syn,357699.15,
+FPU0_mul_fp32_25%,Gen10LP,B0,30.08651151,syn,357699.15,
+FPU0_mul_fp32_34%,Gen10LP,B0,32.91894531,syn,357699.15,
+FPU0_mul_fp32_46%,Gen10LP,B0,36.39551647,syn,357699.15,
+FPU0_mul_fp32_66%,Gen10LP,B0,38.19766892,syn,357699.15,
+FPU0_mul_floatbypass_16%,Gen10LP,B0,6.585409894,syn,357699.15,
+FPU0_mul_fp16_14%,Gen10LP,B0,15.97652789,syn,357699.15,
+FPU0_mul_fp16_28%,Gen10LP,B0,18.65820812,syn,357699.15,
+FPU0_mul_fp16_33%,Gen10LP,B0,19.68257626,syn,357699.15,
+FPU0_mul_fp16_44%,Gen10LP,B0,21.58731517,syn,357699.15,
+FPU0_mul_fp16_57%,Gen10LP,B0,22.63590464,syn,357699.15,
+FPU0_mul_intbypass_16%,Gen10LP,B0,7.47070339,syn,357699.15,
+FPU0_mul_int32_13%,Gen10LP,B0,40.44299358,syn,357699.15,
+FPU0_mul_int32_19%,Gen10LP,B0,45.28127983,syn,357699.15,
+FPU0_mul_int32_22%,Gen10LP,B0,48.4335719,syn,357699.15,
+FPU0_mul_int32_25%,Gen10LP,B0,52.59194756,syn,357699.15,
+FPU0_mul_int16_16%,Gen10LP,B0,25.35428405,syn,357699.15,
+FPU0_mul_int16_29%,Gen10LP,B0,30.73675055,syn,357699.15,
+FPU0_mul_int16_35%,Gen10LP,B0,32.51428221,syn,357699.15,
+FPU0_mul_int16_50%,Gen10LP,B0,36.50178525,syn,357699.15,
+FPU0_mul_int16_77%,Gen10LP,B0,40.64269476,syn,357699.15,
+FPU0_pln_fp32_6%,Gen10LP,B0,26.48115569,syn,357699.15,
+FPU0_pln_fp32_11%,Gen10LP,B0,29.99560397,syn,357699.15,
+FPU0_pln_fp32_15%,Gen10LP,B0,31.89287173,syn,357699.15,
+FPU0_pln_fp32_21%,Gen10LP,B0,35.16216608,syn,357699.15,
+FPU0_pln_fp32_31%,Gen10LP,B0,38.24627852,syn,357699.15,
+FPU0_sel_fp64_10%,Gen10LP,B0,13.4632794,syn,357699.15,
+FPU0_sel_fp64_15%,Gen10LP,B0,15.22113552,syn,357699.15,
+FPU0_sel_fp64_18%,Gen10LP,B0,16.86163189,syn,357699.15,
+FPU0_sel_fp64_20%,Gen10LP,B0,19.26383535,syn,357699.15,
+FPU0_sel_fp32_15%,Gen10LP,B0,10.20074022,syn,357699.15,
+FPU0_sel_fp32_25%,Gen10LP,B0,12.69875346,syn,357699.15,
+FPU0_sel_fp32_34%,Gen10LP,B0,15.18569826,syn,357699.15,
+FPU0_sel_fp32_46%,Gen10LP,B0,18.11242794,syn,357699.15,
+FPU0_sel_fp32_66%,Gen10LP,B0,22.54899591,syn,357699.15,
+FPU0_sel_fp16_14%,Gen10LP,B0,11.35164266,syn,357699.15,
+FPU0_sel_fp16_28%,Gen10LP,B0,14.73076211,syn,357699.15,
+FPU0_sel_fp16_33%,Gen10LP,B0,15.87827621,syn,357699.15,
+FPU0_sel_fp16_44%,Gen10LP,B0,18.03675565,syn,357699.15,
+FPU0_sel_fp16_57%,Gen10LP,B0,20.65124366,syn,357699.15,
+FPU0_sel_int32_16%,Gen10LP,B0,11.75538083,syn,357699.15,
+FPU0_sel_int32_26%,Gen10LP,B0,14.69921816,syn,357699.15,
+FPU0_sel_int32_35%,Gen10LP,B0,17.36374773,syn,357699.15,
+FPU0_sel_int32_50%,Gen10LP,B0,21.75292603,syn,357699.15,
+FPU0_sel_int32_77%,Gen10LP,B0,29.07411626,syn,357699.15,
+FPU0_sel_int64_12%,Gen10LP,B0,12.17658413,syn,357699.15,
+FPU0_sel_int64_18%,Gen10LP,B0,14.00590272,syn,357699.15,
+FPU0_sel_int64_22%,Gen10LP,B0,15.98433501,syn,357699.15,
+FPU0_sel_int64_25%,Gen10LP,B0,18.89944825,syn,357699.15,
+FPU0_sel_int16_16%,Gen10LP,B0,10.90152579,syn,357699.15,
+FPU0_sel_int16_29%,Gen10LP,B0,14.34739394,syn,357699.15,
+FPU0_sel_int16_35%,Gen10LP,B0,15.84776372,syn,357699.15,
+FPU0_sel_int16_50%,Gen10LP,B0,19.48321207,syn,357699.15,
+FPU0_sel_int16_77%,Gen10LP,B0,25.84838177,syn,357699.15,
+FPU0_sad_int16_25%,Gen10LP,B0,15.36521473,syn,357699.15,
+FPU1_add_fp64_10%,Gen10LP,B0,15.43746089,syn,355702.47,
+FPU1_add_fp64_15%,Gen10LP,B0,16.58141866,syn,355702.47,
+FPU1_add_fp64_18%,Gen10LP,B0,17.54068003,syn,355702.47,
+FPU1_add_fp64_20%,Gen10LP,B0,18.64051049,syn,355702.47,
+FPU1_add_fp32_15%,Gen10LP,B0,16.52068765,syn,355702.47,
+FPU1_add_fp32_25%,Gen10LP,B0,19.05455913,syn,355702.47,
+FPU1_add_fp32_34%,Gen10LP,B0,20.76626702,syn,355702.47,
+FPU1_add_fp32_46%,Gen10LP,B0,22.69061796,syn,355702.47,
+FPU1_add_fp32_66%,Gen10LP,B0,24.48308987,syn,355702.47,
+FPU1_add_floatbypass_17%,Gen10LP,B0,12.05324868,syn,355702.47,
+FPU1_add_fp16_14%,Gen10LP,B0,17.21459205,syn,355702.47,
+FPU1_add_fp16_28%,Gen10LP,B0,17.95735905,syn,355702.47,
+FPU1_add_fp16_33%,Gen10LP,B0,19.43868426,syn,355702.47,
+FPU1_add_fp16_44%,Gen10LP,B0,21.23694339,syn,355702.47,
+FPU1_add_fp16_57%,Gen10LP,B0,22.1910485,syn,355702.47,
+FPU1_add_intbypass_21%,Gen10LP,B0,15.48085174,syn,355702.47,
+FPU1_add_int32_16%,Gen10LP,B0,12.78311683,syn,355702.47,
+FPU1_add_int32_26%,Gen10LP,B0,15.59673755,syn,355702.47,
+FPU1_add_int32_35%,Gen10LP,B0,17.65890121,syn,355702.47,
+FPU1_add_int32_50%,Gen10LP,B0,20.86392871,syn,355702.47,
+FPU1_add_int32_77%,Gen10LP,B0,26.03798246,syn,355702.47,
+FPU1_add_int64_12%,Gen10LP,B0,12.71950245,syn,355702.47,
+FPU1_add_int64_18%,Gen10LP,B0,14.65119753,syn,355702.47,
+FPU1_add_int64_22%,Gen10LP,B0,16.47424544,syn,355702.47,
+FPU1_add_int64_25%,Gen10LP,B0,18.36503151,syn,355702.47,
+FPU1_add_int16_16%,Gen10LP,B0,12.82964303,syn,355702.47,
+FPU1_add_int16_29%,Gen10LP,B0,16.08629051,syn,355702.47,
+FPU1_add_int16_35%,Gen10LP,B0,17.20082973,syn,355702.47,
+FPU1_add_int16_50%,Gen10LP,B0,19.79120295,syn,355702.47,
+FPU1_add_int16_77%,Gen10LP,B0,24.032973,syn,355702.47,
+FPU1_cmp_fp64_7%,Gen10LP,B0,10.22927482,syn,355702.47,
+FPU1_cmp_fp64_11%,Gen10LP,B0,11.39678095,syn,355702.47,
+FPU1_cmp_fp64_16%,Gen10LP,B0,12.3357768,syn,355702.47,
+FPU1_cmp_fp64_18%,Gen10LP,B0,13.37830658,syn,355702.47,
+FPU1_cmp_fp32_13%,Gen10LP,B0,10.05164805,syn,355702.47,
+FPU1_cmp_fp32_22%,Gen10LP,B0,13.63488746,syn,355702.47,
+FPU1_cmp_fp32_31%,Gen10LP,B0,15.55439864,syn,355702.47,
+FPU1_cmp_fp32_47%,Gen10LP,B0,18.67399034,syn,355702.47,
+FPU1_cmp_fp32_69%,Gen10LP,B0,19.96626183,syn,355702.47,
+FPU1_cmp_floatbypass_31%,Gen10LP,B0,12.04024433,syn,355702.47,
+FPU1_cmp_fp16_13%,Gen10LP,B0,11.26214556,syn,355702.47,
+FPU1_cmp_fp16_25%,Gen10LP,B0,13.71504203,syn,355702.47,
+FPU1_cmp_fp16_50%,Gen10LP,B0,18.91893429,syn,355702.47,
+FPU1_cmp_int32_13%,Gen10LP,B0,10.93868795,syn,355702.47,
+FPU1_cmp_int32_22%,Gen10LP,B0,13.74063077,syn,355702.47,
+FPU1_cmp_int32_31%,Gen10LP,B0,16.00312658,syn,355702.47,
+FPU1_cmp_int32_50%,Gen10LP,B0,19.55558001,syn,355702.47,
+FPU1_cmp_int32_81%,Gen10LP,B0,24.99759959,syn,355702.47,
+FPU1_cmp_int64_9%,Gen10LP,B0,9.406817244,syn,355702.47,
+FPU1_cmp_int64_14%,Gen10LP,B0,10.53351987,syn,355702.47,
+FPU1_cmp_int64_20%,Gen10LP,B0,11.64559773,syn,355702.47,
+FPU1_cmp_int64_22%,Gen10LP,B0,13.5020415,syn,355702.47,
+FPU1_cmp_int16_13%,Gen10LP,B0,12.12481768,syn,355702.47,
+FPU1_cmp_int16_25%,Gen10LP,B0,14.73421294,syn,355702.47,
+FPU1_cmp_int16_31%,Gen10LP,B0,16.61715092,syn,355702.47,
+FPU1_cmp_int16_50%,Gen10LP,B0,20.11594297,syn,355702.47,
+FPU1_cmp_int16_81%,Gen10LP,B0,26.27408886,syn,355702.47,
+FPU1_mac_fp64_10%,Gen10LP,B0,35.14427895,syn,355702.47,
+FPU1_mac_fp64_14%,Gen10LP,B0,39.17576284,syn,355702.47,
+FPU1_mac_fp64_18%,Gen10LP,B0,41.51767676,syn,355702.47,
+FPU1_mac_fp64_20%,Gen10LP,B0,43.73480381,syn,355702.47,
+FPU1_mac_floatbypass_16%,Gen10LP,B0,17.67281103,syn,355702.47,
+FPU1_mac_fp16_15%,Gen10LP,B0,25.24885724,syn,355702.47,
+FPU1_mac_fp16_27%,Gen10LP,B0,27.98449181,syn,355702.47,
+FPU1_mac_fp16_33%,Gen10LP,B0,28.94006984,syn,355702.47,
+FPU1_mac_fp16_44%,Gen10LP,B0,30.71718052,syn,355702.47,
+FPU1_mac_fp16_58%,Gen10LP,B0,31.84762897,syn,355702.47,
+FPU1_mac_intbypass_23%,Gen10LP,B0,33.49932079,syn,355702.47,
+FPU1_mac_int16_16%,Gen10LP,B0,34.31853854,syn,355702.47,
+FPU1_mac_int16_28%,Gen10LP,B0,37.63139276,syn,355702.47,
+FPU1_mac_int16_33%,Gen10LP,B0,38.99205488,syn,355702.47,
+FPU1_mac_int16_50%,Gen10LP,B0,42.06269999,syn,355702.47,
+FPU1_mac_int16_78%,Gen10LP,B0,45.81451761,syn,355702.47,
+FPU1_mad_fp64_10%,Gen10LP,B0,32.90126919,syn,355702.47,
+FPU1_mad_fp64_15%,Gen10LP,B0,37.36729873,syn,355702.47,
+FPU1_mad_fp64_18%,Gen10LP,B0,40.23845264,syn,355702.47,
+FPU1_mad_fp64_20%,Gen10LP,B0,42.78595944,syn,355702.47,
+FPU1_mad_fp32_15%,Gen10LP,B0,30.59807537,syn,355702.47,
+FPU1_mad_fp32_25%,Gen10LP,B0,34.76507861,syn,355702.47,
+FPU1_mad_fp32_34%,Gen10LP,B0,37.82499124,syn,355702.47,
+FPU1_mad_fp32_46%,Gen10LP,B0,42.87265818,syn,355702.47,
+FPU1_mad_fp32_66%,Gen10LP,B0,45.5481087,syn,355702.47,
+FPU1_mad_floatbypass_16%,Gen10LP,B0,13.63598242,syn,355702.47,
+FPU1_mad_fp16_14%,Gen10LP,B0,15.16206693,syn,355702.47,
+FPU1_mad_fp16_26%,Gen10LP,B0,16.71384466,syn,355702.47,
+FPU1_mad_fp16_32%,Gen10LP,B0,18.1478437,syn,355702.47,
+FPU1_mad_fp16_43%,Gen10LP,B0,21.29123471,syn,355702.47,
+FPU1_mad_fp16_57%,Gen10LP,B0,23.01847284,syn,355702.47,
+FPU1_mov_fp64_10%,Gen10LP,B0,11.54513666,syn,355702.47,
+FPU1_mov_fp64_15%,Gen10LP,B0,12.80041397,syn,355702.47,
+FPU1_mov_fp64_18%,Gen10LP,B0,13.95975449,syn,355702.47,
+FPU1_mov_fp64_20%,Gen10LP,B0,15.54452963,syn,355702.47,
+FPU1_mov_fp32_15%,Gen10LP,B0,6.0113051,syn,355702.47,
+FPU1_mov_fp32_24%,Gen10LP,B0,6.755545026,syn,355702.47,
+FPU1_mov_fp32_34%,Gen10LP,B0,7.5049617,syn,355702.47,
+FPU1_mov_fp32_46%,Gen10LP,B0,8.558833411,syn,355702.47,
+FPU1_mov_fp32_66%,Gen10LP,B0,10.16275658,syn,355702.47,
+FPU1_mov_fp16_15%,Gen10LP,B0,6.663501552,syn,355702.47,
+FPU1_mov_fp16_28%,Gen10LP,B0,7.835973432,syn,355702.47,
+FPU1_mov_fp16_33%,Gen10LP,B0,8.341834065,syn,355702.47,
+FPU1_mov_fp16_44%,Gen10LP,B0,9.275654192,syn,355702.47,
+FPU1_mov_fp16_57%,Gen10LP,B0,10.47224189,syn,355702.47,
+FPU1_mov_int32_16%,Gen10LP,B0,6.081968627,syn,355702.47,
+FPU1_mov_int32_26%,Gen10LP,B0,6.863139229,syn,355702.47,
+FPU1_mov_int32_35%,Gen10LP,B0,7.595195259,syn,355702.47,
+FPU1_mov_int32_50%,Gen10LP,B0,8.858932154,syn,355702.47,
+FPU1_mov_int32_78%,Gen10LP,B0,11.09756514,syn,355702.47,
+FPU1_mov_int64_12%,Gen10LP,B0,10.16757585,syn,355702.47,
+FPU1_mov_int64_18%,Gen10LP,B0,11.27357251,syn,355702.47,
+FPU1_mov_int64_23%,Gen10LP,B0,12.48573143,syn,355702.47,
+FPU1_mov_int64_25%,Gen10LP,B0,14.42424518,syn,355702.47,
+FPU1_mov_int16_16%,Gen10LP,B0,6.222958691,syn,355702.47,
+FPU1_mov_int16_29%,Gen10LP,B0,7.362477202,syn,355702.47,
+FPU1_mov_int16_35%,Gen10LP,B0,7.908446874,syn,355702.47,
+FPU1_mov_int16_50%,Gen10LP,B0,9.254715713,syn,355702.47,
+FPU1_mov_int16_77%,Gen10LP,B0,11.74955162,syn,355702.47,
+FPU1_mul_fp64_10%,Gen10LP,B0,32.71040658,syn,355702.47,
+FPU1_mul_fp64_15%,Gen10LP,B0,37.12635155,syn,355702.47,
+FPU1_mul_fp64_18%,Gen10LP,B0,40.18836909,syn,355702.47,
+FPU1_mul_fp64_20%,Gen10LP,B0,42.3941327,syn,355702.47,
+FPU1_mul_fp32_15%,Gen10LP,B0,26.56932736,syn,355702.47,
+FPU1_mul_fp32_25%,Gen10LP,B0,29.92742332,syn,355702.47,
+FPU1_mul_fp32_34%,Gen10LP,B0,32.68452284,syn,355702.47,
+FPU1_mul_fp32_46%,Gen10LP,B0,35.92014785,syn,355702.47,
+FPU1_mul_fp32_66%,Gen10LP,B0,37.4672538,syn,355702.47,
+FPU1_mul_floatbypass_16%,Gen10LP,B0,6.641048152,syn,355702.47,
+FPU1_mul_fp16_14%,Gen10LP,B0,16.48594587,syn,355702.47,
+FPU1_mul_fp16_28%,Gen10LP,B0,19.18483823,syn,355702.47,
+FPU1_mul_fp16_33%,Gen10LP,B0,20.08383156,syn,355702.47,
+FPU1_mul_fp16_44%,Gen10LP,B0,22.08877752,syn,355702.47,
+FPU1_mul_fp16_57%,Gen10LP,B0,23.24132189,syn,355702.47,
+FPU1_mul_intbypass_16%,Gen10LP,B0,7.630884498,syn,355702.47,
+FPU1_mul_int32_13%,Gen10LP,B0,40.78894659,syn,355702.47,
+FPU1_mul_int32_19%,Gen10LP,B0,45.57714827,syn,355702.47,
+FPU1_mul_int32_22%,Gen10LP,B0,48.56930225,syn,355702.47,
+FPU1_mul_int32_25%,Gen10LP,B0,52.52292597,syn,355702.47,
+FPU1_mul_int16_16%,Gen10LP,B0,25.60743562,syn,355702.47,
+FPU1_mul_int16_29%,Gen10LP,B0,30.88216041,syn,355702.47,
+FPU1_mul_int16_35%,Gen10LP,B0,32.4860846,syn,355702.47,
+FPU1_mul_int16_50%,Gen10LP,B0,36.21980512,syn,355702.47,
+FPU1_mul_int16_77%,Gen10LP,B0,39.8889218,syn,355702.47,
+FPU1_pln_fp32_6%,Gen10LP,B0,26.88203098,syn,355702.47,
+FPU1_pln_fp32_11%,Gen10LP,B0,30.33145648,syn,355702.47,
+FPU1_pln_fp32_15%,Gen10LP,B0,32.13423887,syn,355702.47,
+FPU1_pln_fp32_21%,Gen10LP,B0,35.39532663,syn,355702.47,
+FPU1_pln_fp32_31%,Gen10LP,B0,38.25743199,syn,355702.47,
+FPU1_sel_fp64_10%,Gen10LP,B0,13.55315548,syn,355702.47,
+FPU1_sel_fp64_15%,Gen10LP,B0,15.31993315,syn,355702.47,
+FPU1_sel_fp64_18%,Gen10LP,B0,16.98080054,syn,355702.47,
+FPU1_sel_fp64_20%,Gen10LP,B0,19.42414347,syn,355702.47,
+FPU1_sel_fp32_15%,Gen10LP,B0,10.35303125,syn,355702.47,
+FPU1_sel_fp32_25%,Gen10LP,B0,12.89117401,syn,355702.47,
+FPU1_sel_fp32_34%,Gen10LP,B0,15.45736791,syn,355702.47,
+FPU1_sel_fp32_46%,Gen10LP,B0,18.33639141,syn,355702.47,
+FPU1_sel_fp32_66%,Gen10LP,B0,22.69187988,syn,355702.47,
+FPU1_sel_fp16_14%,Gen10LP,B0,11.56676859,syn,355702.47,
+FPU1_sel_fp16_28%,Gen10LP,B0,14.97488561,syn,355702.47,
+FPU1_sel_fp16_33%,Gen10LP,B0,16.26029744,syn,355702.47,
+FPU1_sel_fp16_44%,Gen10LP,B0,18.3675574,syn,355702.47,
+FPU1_sel_fp16_57%,Gen10LP,B0,20.96207489,syn,355702.47,
+FPU1_sel_int32_16%,Gen10LP,B0,11.85289503,syn,355702.47,
+FPU1_sel_int32_26%,Gen10LP,B0,14.8063709,syn,355702.47,
+FPU1_sel_int32_35%,Gen10LP,B0,17.47249938,syn,355702.47,
+FPU1_sel_int32_50%,Gen10LP,B0,21.90043978,syn,355702.47,
+FPU1_sel_int32_77%,Gen10LP,B0,29.23720225,syn,355702.47,
+FPU1_sel_int64_12%,Gen10LP,B0,12.3296321,syn,355702.47,
+FPU1_sel_int64_18%,Gen10LP,B0,14.17624886,syn,355702.47,
+FPU1_sel_int64_22%,Gen10LP,B0,16.19466317,syn,355702.47,
+FPU1_sel_int64_25%,Gen10LP,B0,19.19340332,syn,355702.47,
+FPU1_sel_int16_16%,Gen10LP,B0,11.01560168,syn,355702.47,
+FPU1_sel_int16_29%,Gen10LP,B1,14.46416371,syn,355702.47,
+FPU1_sel_int16_35%,Gen10LP,B2,15.98915428,syn,355702.47,
+FPU1_sel_int16_50%,Gen10LP,B3,19.64221525,syn,355702.47,
+FPU1_sel_int16_77%,Gen10LP,B4,26.0434542,syn,355702.47,
+FPU1_sad_int16_25%,Gen10LP,B0,15.45932471,syn,355702.47,
+EM_transc_fp32_8%,Gen10LP,B0,20.19512438,syn,138731.74,
+EM_transc_fp16_7%,Gen10LP,B0,17.52178884,syn,138731.74,
