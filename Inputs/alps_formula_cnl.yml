@@ -1386,10 +1386,6 @@ GAM:
     PS0_GASS: R * C
     PS1_GASS: R * C
     PS2_GASS: R * C
-   SARB:
-    PS0_SARB: R * C
-    PS1_SARB: R * C
-    PS2_SARB: R * C
    GACB:
     PS0_GACB: R * C
     PS1_GACB: R * C
