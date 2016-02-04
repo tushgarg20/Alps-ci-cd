@@ -1,219 +1,213 @@
 #Unit	GSIM residency		
 #Instance Counts			
-	numSlices	=	knob.global.NumSlices
-	numGAM	=	COUNT('knob.uGAM.NumSlices')
-	num_GAM_GAMTG	=	numSlices
-	num_GAM_GAMTO	=	numSlices
-	num_GAM_GAMTG_L3TLBEBB	=	numSlices
-	num_GAM_GAMTG_CVSTLBEBB	=	numSlices
-	num_GAM_GAMTO_MFXEBB	=	numSlices
-	num_GAM_GAMTO_VEBXTLBEBB	=	numSlices
-	num_GAM_GAMTO_BWGTLBEBB	=	numSlices
-	num_GAM_GAMWC	=	numSlices
-	num_GAM_GAMWC_PENDQEBB	=	numSlices
-	num_GAM_GAMWD	=	numSlices
-	num_GAM_GAMWD_WRKPDEBB	=	numSlices
-	num_GAM_GAMWD_WCPEBB	=	numSlices
-	num_GAM_GAMWD_RPCEBB	=	numSlices
-	num_GAM_GAMVTD	=	numSlices
-	num_GAM_GACB	=	numSlices
-	num_GAM_GAMD	=	numSlices
-	num_GAM_GAMD_Cache  	=	numSlices
-	num_GAM_GAFM	=	numSlices
-	num_GAM_GAFS	=	numSlices
-	num_GAM_GASS	=	numSlices
-	num_GAM_SARB	=	numSlices
-	num_GAM_GAPZ	=	numSlices
-	num_GAM_GAPC	=	numSlices
-	num_GAM_GACFG	=	numSlices
-	num_GAM_GAV	=	numSlices
-	num_GAM_GAC	=	numSlices
-	num_GAM_GAB	=	numSlices
-	num_GAM_GACX	=	numSlices
-	num_GAM_GAPS	=	numSlices
-	num_GAM_DOP	=	numSlices
-	num_GAM_CLKGLUE	=	numSlices
-	num_GAM_NONCLKGLUE	=	numSlices
-	num_GAM_SMALL	=	numSlices
-	num_GAM_DFX	=	numSlices
+numSlices	=	knob.global.NumSlices
+numGAM	=	COUNT('knob.uGAM.NumSlices')
+numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
+num_GAM_GAMWC	=	numGAM
+num_GAM_GAMWC_PENDQEBB	= numGAM
+num_GAM_GAMWD	=	numGAM
+num_GAM_GAMWD_WRKPDEBB	= numGAM
+num_GAM_GACB	=	numGAM
+num_GAM_GAMD	=	numGAM
+num_GAM_GAMD_WB_HW_GAMDEBB = numGAM
+num_GAM_GAMD_WCPEBB = numGAM
+num_GAM_GAMD_RCPEBB = numGAM
+num_GAM_MARB	=	numGAM
+num_GAM_GAMTG	=	numGAM
+num_GAM_GAMTG_L3TLBEBB	=	numGAM
+num_GAM_GAMTG_CVSTLBEBB	=	numGAM
+num_GAM_GAMTO	=	numGAM
+num_GAM_GAMTO_MFXEBB	=	numGAM
+num_GAM_GAMTO_VEBXTLBEBB	=	numGAM
+num_GAM_GAMTO_BWGTLBEBB	=	numGAM
+num_GAM_GAFM	=	numGAM
+num_GAM_GAFS	=	numGAM
+num_GAM_GAPL3	=	numSlices
+num_GAM_GAPZ	=	numSlices
+num_GAM_GAPC	=	numSlices
+num_GAM_SARB	=	numSlices
+num_GAM_GASS	=	numSubslices
+num_GAM_DOP	=	numGAM
+num_GAM_CLKGLUE	=	numGAM
+num_GAM_NONCLKGLUE	=	numGAM
+num_GAM_SMALL	=	numGAM
+num_GAM_CPunit	=	numGAM
+num_GAM_Assign	=	numGAM
+num_GAM_Repeater	=	numGAM
+num_GAM_DFX	=	numGAM
+num_GAM_GAPS	=	numSlices
+num_GAM_GATR	=	numGAM
+num_GAM_GATRW	=	numGAM
+   
+   @GAPL3@        =       S\d+\.uL3\.GapL3OutputBuf(|[0-9]+)\.
+   @GAPZ@         =       S\d+\.GAPZ\.
+   @GAPC@         =       S\d+\.GAPC\.
+   @GAPS@         =       S\d+\.uL3\.
+	 @GASS@		=	S\d+\.GASS_\d+\.
+	 @SARB@		=	S\d+\.uL3\.SARB\.
 	 @CLOCKS@	=	D(CrClock.Clocks)
-	 @2XCLOCKS@	=	D(SUM('2xCrClock\.Clocks'))
-	 @GAM@	=	uGAM
+	 @UNSLICECLOCKS@	=		D(UnsliceClock.Clocks)
 			
-#GACB			
-	PS0_GACB	=	1
-	PS1_GACB	=	0
-	PS2_GACB	=	0
 			
-#GAFM			
-	PS0_GAFM	=	1
-	PS1_GAFM	=	0
-	PS2_GAFM	=	0
-			
-#GAFS			
-	PS0_GAFS	=	1
-	PS1_GAFS	=	0
-	PS2_GAFS_ONLYRD	=	0
-	PS2_GAFS_ONLYWR	=	0
-	PS2_GAFS_RDWR	=	0
-			
-#GAMD			
-	PS0_GAMD	=	D( SUM(@GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
-	PS1_GAMD	=	D(SUM(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
-	PS2_GAMD_READ	=	D( SUM(@GAM@.GamRdRoute.pwr_GAM_ReadRequests.{$1}))/(D({$1}.Clocks)*numGAM)
-	PS2_GAMD_WRITE		D( SUM(@GAM@.GamWrDp.num_total_writes))/(D({$1}.Clocks)*numGAM)
-	PS2_GAMD_READ_MEDIAMMCD 		0
-	PS2_GAMD_WRITE_MEDIAMMCD 		0
-			
-#GAMD_Cache			
-	PS2_GAMD_Cache_READ	=	PS2_GAMD_READ
-	PS2_GAMD_Cache_WRITE	=	PS2_GAMD_WRITE
-			
-#GAMTG			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	.temp_PS2_GAMTLB	=	(D({$1}.Clocks) -  D(@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1}))
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTG	=	D(SUM(@GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTG	=	D(SUM((@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_Hit	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_hits_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_hits_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_hits_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_hits_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_hits_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_Miss	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_MissTrue_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_MissTrue_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_MissTrue_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_MissTrue_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_Bypass	=	D(SUM(@GAM@.GamL3TLB.pwr_GAMTLB_Bypass +  @GAM@.GamZTLB.pwr_GAMTLB_Bypass +  @GAM@.GamFFTLB.pwr_GAMTLB_Bypass +  @GAM@.GamCTLB.pwr_GAMTLB_Bypass +  @GAM@.GamGacTLB.pwr_GAMTLB_Bypass +  @GAM@.GamGavTLB.pwr_GAMTLB_Bypass))/(D({$1}.Clocks)*numGAM)
-	PS2_GAMTG_HitNotPresent	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_MissNotPresent_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_MissNotPresent_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_MissNotPresent_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_MissNotPresent_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_MissNotPresent_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/ (D({$1}.Clocks)*numGAM)
-			
+#GAMD
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS0_GAMD	=	D(SUM(uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS1_GAMD	=	D(SUM(uGAM.pwr_GAMD_Stalled_or_Idle.{$1} -  uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ	=	D(SUM(uGAM.GtiRead))/(D({$1}.Clocks)*numGAM)
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE	=	D(SUM(uGAM.PS2_GAMD_WRITE))/(D({$1}.Clocks)*numGAM)	
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ_MEDIAMMCD	=	D(SUM(uGAM.PS2_GAMD_READ_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
+  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE_MEDIAMMCD =	D(SUM(uGAM.PS2_GAMD_WRITE_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
+
+#GAMD_EBB			
+  PS2_GAMD_WB_HW_GAMDEBB_Write  = PS2_GAMD_WRITE + PS2_GAMD_WRITE_MEDIAMMCD
+  PS2_GAMD_WCPEBB_Write  = PS2_GAMD_WRITE_MEDIAMMCS
+  PS2_GAMD_RCPEBB_Read	=	PS2_GAMD_READ_MEDIAMMCD
+
+#GAMTG
+  PS0_GAMTG	=	D(SUM(uGAM.PS0_GAMTG))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GAMTG	=	D(SUM(uGAM.PS1_GAMTG))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTG_Hit	=	D(SUM(uGAM.PS2_GAMTG_Hit))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTG_Miss	=	D(SUM(uGAM.PS2_GAMTG_Miss))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTG_Bypass	=	D(SUM(uGAM.PS2_GAMTG_Bypass))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTG_HitNotPresent	=	D(SUM(uGAM.PS2_GAMTG_HitNotPresent))/(@UNSLICECLOCKS@*numGAM)
+
 #GAMTG_L3TLBEBB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTG_L3TLBEBB	=	0
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_L3TLBEBB_READ	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_hits_GamL3TLB_L3+@GAM@.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3 +@GAM@.GamL3TLB_L3.tlb_MissNotPresent_GamL3TLB_L3))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_L3TLBEBB_WRITE	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3))/(D({$1}.Clocks)*numGAM)
+  PS0_GAMTG_L3TLBEBB	=	0
+  PS2_GAMTG_L3TLBEBB_READ	= 0.84 * PS2_GAMTG_Hit
+  PS2_GAMTG_L3TLBEBB_WRITE	=	0.84 * PS2_GAMTG_Miss
 			
 #GAMTG_CVSTLBEBB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTG_CVSTLBEBB	=	0
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_CVSTLBEBB_READ	=	D(SUM( @GAM@.GamCTLB_C.tlb_MissNotPresent_GamCTLB_C+ @GAM@.GamCTLB_C.tlb_MissTrue_GamCTLB_C+ @GAM@.GamCTLB_C.tlb_hits_GamCTLB_C )/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTG_CVSTLBEBB_WRITE	=	D(SUM(@GAM@.GamCTLB_C.tlb_MissTrue_GamCTLB_C))/(D({$1}.Clocks)*numGAM)
-			
-#GAMTO			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTO	=	D(SUM(@GAM@.pwr_GAMTLB_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMTO	=	D(SUM((@GAM@.pwr_GAMTLB_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMTLB_Idle.{$1})))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_Hit	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_hits_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_hits_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_hits_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_hits_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_hits_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_Miss	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_MissTrue_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_MissTrue_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_MissTrue_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_MissTrue_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_MissTrue_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_Bypass	=	D(SUM(@GAM@.GamL3TLB.pwr_GAMTLB_Bypass +  @GAM@.GamZTLB.pwr_GAMTLB_Bypass +  @GAM@.GamFFTLB.pwr_GAMTLB_Bypass +  @GAM@.GamCTLB.pwr_GAMTLB_Bypass +  @GAM@.GamGacTLB.pwr_GAMTLB_Bypass +  @GAM@.GamGavTLB.pwr_GAMTLB_Bypass))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_HitNotPresent	=	D(SUM(@GAM@.GamL3TLB_L3.tlb_MissNotPresent_GamL3TLB_L3 +  @GAM@.GamZTLB_Z.tlb_MissNotPresent_GamZTLB_Z +  @GAM@.GamFFTLB_FF.tlb_MissNotPresent_GamFFTLB_FF +  @GAM@.GamCTLB_C.tlb_MissNotPresent_GamCTLB_C +  @GAM@.GamGacTLB_GAC.tlb_MissNotPresent_GamGacTLB_GAC +  @GAM@.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/ (D({$1}.Clocks)*numGAM)
-			
+  PS0_GAMTG_CVSTLBEBB	=	0
+  PS2_GAMTG_CVSTLBEBB_READ	= 0.16 * PS2_GAMTG_Hit 
+  PS2_GAMTG_CVSTLBEBB_WRITE	= 0.16 * PS2_GAMTG_Miss
+
+#GAMTO
+  PS0_GAMTO	=	D(SUM(uGAM.PS0_GAMTO))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GAMTO	=	D(SUM(uGAM.PS1_GAMTO))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTO_Hit	=	D(SUM(uGAM.PS2_GAMTO_Hit))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTO_Miss	=	D(SUM(uGAM.PS2_GAMTO_Miss))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTO_Bypass	=	D(SUM(uGAM.PS2_GAMTO_Bypass))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMTO_HitNotPresent	=	D(SUM(uGAM.PS2_GAMTO_HitNotPresent))/(@UNSLICECLOCKS@*numGAM)
+
 #GAMTO_MFXEBB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTO_MFXEBB	=	0
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_MFXEBB_READ	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV+  @GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV +  @GAM@.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_MFXEBB_WRITE	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
+  PS0_GAMTO_MFXEBB	=	0
+  PS2_GAMTO_MFXEBB_READ	=	0.43 * PS2_GAMTO_Hit
+  PS2_GAMTO_MFXEBB_WRITE	=	0.43 * PS2_GAMTO_Miss
 			
 #GAMTO_VEBXTLBEBB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTO_VEBXTLBEBB	=	0
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_VEBXTLBEBB_READ	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV+  @GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV +  @GAM@.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_VEBXTLBEBB_WRITE	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
+  PS0_GAMTO_VEBXTLBEBB	=	0
+  PS2_GAMTO_VEBXTLBEBB_READ	=	0.33 * PS2_GAMTO_Hit
+  PS2_GAMTO_VEBXTLBEBB_WRITE	= 0.33 * PS2_GAMTO_Miss	
 			
 #GMATO_BWGTLBEBB			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMTO_BWGTLBEBB	=	0
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_BWGTLBEBB_READ	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_hits_GamGavTLB_GAV+  @GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV +  @GAM@.GamGavTLB_GAV.tlb_MissNotPresent_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMTO_BWGTLBEBB_WRITE	=	D(SUM(@GAM@.GamGavTLB_GAV.tlb_MissTrue_GamGavTLB_GAV))/(D({$1}.Clocks)*numGAM)
-			
-#GAMWC			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMWC	=	D(SUM(@GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMWC	=	D(SUM(@GAM@.pwr_GAMW_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMWC_Read_Hit	=	PS2_GAMTLB_Hit
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMWC_Write_hit	=	PS2_GAMTLB_Hit
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMWC_Hit_on_Miss	=	PS2_GAMTLB_HitNotPresent
-			
+  PS0_GAMTO_BWGTLBEBB	=	0
+  PS2_GAMTO_BWGTLBEBB_READ	=	0.24 * PS2_GAMTO_Hit
+  PS2_GAMTO_BWGTLBEBB_WRITE	=	0.24 * PS2_GAMTO_Miss
+		
+#GAMWC
+  PS0_GAMWC	=	D(SUM(uGAM.PS0_GAMWC))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GAMWC	=	D(SUM(uGAM.PS1_GAMWC))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMWC_TLB_PEND_WRITE	=	D(SUM(uGAM.PS2_GAMWC_TLB_PEND_WRITE))/(@UNSLICECLOCKS@*numGAM)	
+  PS2_GAMWC_Read_Hit	=	D(SUM(uGAM.PS2_GAMWC_Read_Hit))/(@UNSLICECLOCKS@*numGAM)	
+  PS2_GAMWC_Write_Hit	=	D(SUM(uGAM.PS2_GAMWC_Write_Hit))/(@UNSLICECLOCKS@*numGAM)
+
 #GAMWC_PENDQEBB			
-	PS0_GAMWC_PENDQEBB	=	0
-	PS2_GAMWC_PENDQEBB_READ	=	PS2_GAMTLB_HitNotPresent + PS2_GAMTLB_Miss
-	PS2_GAMWC_PENDQEBB_WRITE	=	PS2_GAMW_TLB_PEND_READ
-			
-#GAMWD			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMWD	=	D(SUM(@GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMWD	=	D(SUM(@GAM@.pwr_GAMW_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMWD_MISS	=	1-PS0_GAMWD-PS1_GAMWD
-			
+  PS0_GAMWC_PENDQEBB	=	0
+  PS2_GAMWC_PENDQEBB_READ	=	PS2_GAMWC_Read_Hit
+  PS2_GAMWC_PENDQEBB_WRITE	=	PS2_GAMWC_Write_Hit
+
+#GAMWD
+  PS0_GAMWD	=	D(SUM(uGAM.PS0_GAMWD.UnsliceClock))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GAMWD	=	(D(SUM(uGAM.PS0_PS1_GAMWD.UnsliceClock)) - D(SUM(uGAM.PS0_GAMWD.UnsliceClock)))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMWD_MISS	=	D(SUM(uGAM.PS2_GAMWD_MISS))/(@UNSLICECLOCKS@*numGAM)
+
 #GAMWD_WRKPDEBB			
-	PS0_GAMWD_WRKPDEBB	=	0
-	PS2_GAMWD_WRKPDEBB_READ	=	PS2_GAMTLB_HitNotPresent + PS2_GAMTLB_Miss
-	PS2_GAMWD_WRKPDPEBB_WRITE	=	PS2_GAMW_TLB_PEND_READ
+  PS0_GAMWD_WRKPDEBB	=	0
+  PS2_GAMWD_WRKPDEBB_READ	=	D(SUM(uGAM.PS2_GAMWD_WKRPDEBB_READ))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMWD_WRKPDPEBB_WRITE	=	PS2_GAMWD_MISS
+
+#MARB
+  PS0_MARB	=	D(SUM(uGAM.GapArbiter.PS0_MARB.UnsliceClock))/(@UNSLICECLOCKS@*numGAM)
+  PS1_MARB	=	(D(SUM(uGAM.GapArbiter.PS0_PS1_MARB.UnsliceClock)) - D(SUM(uGAM.GapArbiter.PS0_MARB.UnsliceClock))) /(@UNSLICECLOCKS@*numGAM)
+  PS2_MARB	=	D(SUM(uGAM.GapArbiter.PS2_MARB))/(@UNSLICECLOCKS@*numGAM)
 			
-#GAMWD_WCPEBB			
-	PS0_GAMWD_WCPEBB	=	0
-	PS2_GAMWD_WCPEBB_READ	=	PS2_GAMTLB_HitNotPresent + PS2_GAMTLB_Miss
-	PS2_GAMWD_WCPEBB_WRITE	=	PS2_GAMW_TLB_PEND_READ
+#GAFM(Small Unit)			
+  PS0_GAFM	=	1
+  PS1_GAFM	=	0
+  PS2_GAFM	=	0
 			
-#GAMWD_RPCEBB			
-	PS0_GAMWD_RPCEBB	=	0
-	PS2_GAMWD_RPCEBB_READ	=	PS2_GAMTLB_HitNotPresent + PS2_GAMTLB_Miss
-	PS2_GAMWD_RPCEBB_WRITE	=	PS2_GAMW_TLB_PEND_READ
-			
-#GAMVTD			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAMVTD	=	D(SUM(@GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAMVTD	=	D(SUM(@GAM@.pwr_GAMW_Stalled_or_Idle.{$1} -  @GAM@.pwr_GAMW_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAMVTD	=	D(SUM(D({$1}.Clocks) -  @GAM@.pwr_GAMW_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
-			
-#GAPC			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPC	=	D(SUM(@GAM@.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPC	=	D(SUM(@GAM@.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1} -  @GAM@.GapArbiter.pwr_CArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPC	=	D(SUM(D({$1}.Clocks) -  @GAM@.GapArbiter.pwr_CArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPC)
-			
-#GAPS			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPS	=	D(SUM( @GAM@.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPS	=	D(SUM(@GAM@.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1} -  @GAM@.GapArbiter.pwr_GAP_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPS	=	D(SUM(D({$1}.Clocks) -  @GAM@.GapArbiter.pwr_GAP_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPS)
-			
+#GAFS			
+  PS0_GAFS	=	D(SUM(uGAFS.Idle))/(@UNSLICECLOCKS@*numGAM)	
+  PS1_GAFS	=	D(SUM(uGAFS.Stalled))/(@UNSLICECLOCKS@*numGAM) 
+  PS2_GAFS_ONLYRD	=	D(SUM(uGAFS.ReadOnlyCycles))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAFS_ONLYWR	=	D(SUM(uGAFS.WriteOnlyCycles))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAFS_MEM_RETURN = 1 - PS0_GAFS - PS1_GAFS - PS2_GAFS_ONLYRD - PS2_GAFS_ONLYWR - PS2_GAFS_RDWR
+  PS2_GAFS_RDWR	=	D(SUM(uGAFS.ReadWriteCycles))/(@UNSLICECLOCKS@*numGAM)
+
 #GAPZ			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAPZ	=	D(SUM( @GAM@.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS1_GAPZ	=	D(SUM(@GAM@.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1} -  @GAM@.GapArbiter.pwr_ZArb_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAPZ	=	D(SUM(D({$1}.Clocks) -  @GAM@.GapArbiter.pwr_ZArb_Stalled_or_Idle.{$1}))/(D({$1}.Clocks)*num_GAM_GAPZ)
+  PS0_GAPZ        =       D(SUM('@GAPZ@Idle'))/(@CLOCKS@ * num_GAM_GAPZ)
+  PS1_GAPZ        =       D(SUM('@GAPZ@Stalled'))/(@CLOCKS@ * num_GAM_GAPZ)
+  PS2_GAPZ        =	D(SUM('@GAPZ@Active'))/(@CLOCKS@ * num_GAM_GAPZ)
+
+#GAPS			
+  PS0_GAPS        =        D(SUM('@GAPS@GapsIdle'))/(@CLOCKS@ * num_GAM_GAPS)
+  PS1_GAPS        =        D(SUM('@GAPS@GapsStalled'))/(@CLOCKS@ * num_GAM_GAPS)
+  PS2_GAPS        =        D(SUM('@GAPS@GapsActive'))/(@CLOCKS@ * num_GAM_GAPS)
 			
-#GASS			
-	PS0_GASS	=	1
-	PS1_GASS	=	0
-	PS2_GASS	=	0
-			
-#SARB			
-	PS0_SARB	=	1
-	PS1_SARB	=	0
-	PS2_SARB	=	0
-			
-#GACFG			
-	PS0_GACFG	=	1
-	PS1_GACFG	=	0
-	PS2_GACFG	=	0
-			
-#GAV			
-	PS0_GAV	=	1
-	PS1_GAV	=	0
-	PS2_GAV	=	0
-			
-#GAC			
-	PS0_GAC	=	1
-	PS1_GAC	=	0
-	PS2_GAC	=	0
-			
-#GAB			
-	PS0_GAB	=	1
-	PS1_GAB	=	0
-	PS2_GAB	=	0
-			
-#GACX			
-	PS0_GACX	=	1
-	PS1_GACX	=	0
-	PS2_GACX	=	0
+#GAPC
+  PS0_GAPC        =       D(SUM('@GAPC@Idle'))/(@CLOCKS@ * num_GAM_GAPC)
+  PS1_GAPC	=       D(SUM('@GAPC@Stalled'))/(@CLOCKS@ * num_GAM_GAPC)
+  PS2_GAPC        =       D(SUM('@GAPC@Active'))/(@CLOCKS@ * num_GAM_GAPC)
+
+#GASS
+  PS0_GASS        =       D(SUM('@GASS@Idle'))/(@CLOCKS@ * num_GAM_GASS)
+  PS1_GASS	=       D(SUM('@GASS@Stalled'))/(@CLOCKS@ * num_GAM_GASS)
+  PS2_GASS        =       D(SUM('@GASS@Active'))/(@CLOCKS@ * num_GAM_GASS)
+
+#SARB
+  PS0_SARB        =       D(SUM('@SARB@Idle'))/(@CLOCKS@ * num_GAM_SARB)
+  PS1_SARB	=       D(SUM('@SARB@Stalled'))/(@CLOCKS@ * num_GAM_SARB)
+  PS2_SARB        =       D(SUM('@SARB@Active'))/(@CLOCKS@ * num_GAM_SARB)
+    			
+#GACB			
+  PS0_GACB	=	D(SUM(uGAM.GACB.Idle))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GACB	=	D(SUM(uGAM.GACB.Stalled))/(@UNSLICECLOCKS@*numGAM)	
+  PS2_GACB	=	D(SUM(uGAM.GACB.Active))/(@UNSLICECLOCKS@*numGAM)	
 			
 #GAM_DOP			
-	PS0_GAM_DOP	=	0
-	PS2_GAM_DOP	=	1
+  PS0_GAM_DOP	=	0
+  PS2_GAM_DOP	=	1
 			
 #GAM_SMALL			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_SMALL	=	PS0_GAMTG
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_SMALL	=	1-PS0_GAMTG
+  PS0_GAM_SMALL	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_SMALL	=	1-PS0_GAM_SMALL
+			
+#GAM_CPunit			
+  PS0_GAM_CPunit	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_CPunit	=	1-PS0_GAM_SMALL
+			
+#GAM_Assign			
+  PS0_GAM_Assign	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_Assign	=	1-PS0_GAM_SMALL
+			
+#GAM_Repeater			
+  PS0_GAM_Repeater	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_Repeater	=	1-PS0_GAM_SMALL
 			
 #GAM_CLKGLUE			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_CLKGLUE	=	PS0_GAMTG
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_CLKGLUE	=	1-PS0_GAMTG
+  PS0_GAM_CLKGLUE	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_CLKGLUE	=	1-PS0_GAM_CLKGLUE
 			
 #GAM_NONCLKGLUE			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_NONCLKGLUE	=	PS0_GAMTG
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_NONCLKGLUE	=	1-PS0_GAMTG
+  PS0_GAM_NONCLKGLUE	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_NONCLKGLUE	=	1-PS0_GAM_NONCLKGLUE
 			
 #GAM_DFX			
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS0_GAM_DFX	=	PS0_GAMTG
- '@GAM@\.pwr_GAMTLB_Idle\.(\w*Clock)' : 	PS2_GAM_DFX	=	1-PS0_GAMTG
+  PS0_GAM_DFX	=	AVG(PS0_GAMD,PS0_GAMTG,PS0_GAMTO,PS0_GAMWD,PS0_GAMWC)
+  PS2_GAM_DFX	=	1-PS0_DFX
+			
+#GATR			
+  PS0_GATR	=	1
+
+#GATRW			
+  PS0_GATRW	=	1
+

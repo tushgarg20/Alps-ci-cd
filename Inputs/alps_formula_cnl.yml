@@ -1246,11 +1246,11 @@ ROSC:
    SVL:
     PS0_SVL: R * C 
     PS1_SVL: R * C 
-    PS2_SVL: R * C 
+    PS2_SVL: R * C
    SARB:
     PS0_SARB: R * C 
     PS1_SARB: R * C 
-    PS2_SARB: R * C 
+    PS2_SARB: R * C  
    HPSBE:
     PS0_HPSBE: R * C
    DOP:
@@ -1285,43 +1285,79 @@ ROSC:
     PS0_ROSC_DFX: R * C 
     PS2_ROSC_DFX: R * C 
 GAM:
-   GAMTLB:
-    PS0_GAMTLB: R * C
-    PS1_GAMTLB: R * C
-    PS2_GAMTLB:
-     PS2_GAMTLB_Hit: R * C
-     PS2_GAMTLB_Miss: R * C
-     PS2_GAMTLB_HitNotPresent: R * C
-     PS2_GAMTLB_Bypass: R * C
-   GAMTLB_EBB:
-    PS2_GAMTLB_EBB_WRITE: R * C
-    PS2_GAMTLB_EBB_READ: R * C
+   GAMTG:
+    PS0_GAMTG: R * C
+    PS1_GAMTG: R * C
+    PS2_GAMTG:
+     PS2_GAMTG_Hit: R * C
+     PS2_GAMTG_Miss: R * C
+     PS2_GAMTG_HitNotPresent: R * C
+     PS2_GAMTG_Bypass: R * C
+   GAMTG_L3TLBEBB:
+    PS0_GAMTG_L3TLBEBB: R * C
+    PS2_GAMTG_L3TLBEBB_READ: R * C
+    PS2_GAMTG_L3TLBEBB_WRITE: R * C
+   GAMTG_CVSTLBEBB:
+    PS0_GAMTG_CVSTLBEBB: R * C
+    PS2_GAMTG_CVSTLBEBB_READ: R * C
+    PS2_GAMTG_CVSTLBEBB_WRITE: R * C 
+   GAMTO:
+    PS0_GAMTO: R * C
+    PS1_GAMTO: R * C
+    PS2_GAMTO:
+     PS2_GAMTO_Hit: R * C
+     PS2_GAMTO_Miss: R * C
+     PS2_GAMTO_HitNotPresent: R * C
+     PS2_GAMTO_Bypass: R * C
+   GAMTO_MFXEBB:
+    PS0_GAMTO_MFXEBB: R * C
+    PS2_GAMTO_MFXEBB_READ: R * C
+    PS2_GAMTO_MFXEBB_WRITE: R * C
+   GAMTO_VEBXTLBEBB:
+    PS0_GAMTO_VEBXTLBEBB: R * C
+    PS2_GAMTO_VEBXTLBEBB_READ: R * C
+    PS2_GAMTO_VEBXTLBEBB_WRITE: R * C
+   GAMTO_BWGTLBEBB:
+    PS0_GAMTO_BWGTLBEBB: R * C
+    PS2_GAMTO_BWGTLBEBB_READ: R * C
+    PS2_GAMTO_BWGTLBEBB_WRITE: R * C
    GAMD:
     PS0_GAMD: R * C
     PS1_GAMD: R * C
     PS2_GAMD:
      PS2_GAMD_READ: R * C
-     PS2_GAMD_WRITE_Media: R * C
      PS2_GAMD_WRITE: R * C
-   GAMD_Cache: 
-    PS2_GAMD_Cache: 
-     PS2_GAMD_Cache_READ: R * C
-     PS2_GAMD_Cache_WRITE: R * C
-   GAMW:
-    PS0_GAMW: R * C
-    PS1_GAMW: R * C
-    PS2_GAMW:
-     PS2_GAMW_Hit: R * C
-     PS2_GAMW_Hit_on_Miss: R * C
-     PS2_GAMW_One_Walk: R * C
-     PS2_GAMW_Two_Walk: R * C
-     PS2_GAMW_Three_Walk: R * C
-   GAMW_EBB:
-    PS2_GAMW_EBB:
-     PS2_GAMW_READ: R * C
-     PS2_GAMW_WRITE: R * C
-     PS2_GAMW_TLB_PEND_READ: R * C
-     PS2_GAMW_TLB_PEND_WRITE: R * C
+     PS2_GAMD_READ_MEDIAMMCD: R * C
+     PS2_GAMD_READ_MEDIAMMCD: R * C
+   GAMD_WB_HW_GAMDEBB:
+    PS2_GAMD_WB_HW_GAMDEBB_Write: R * C
+   GAMD_WCPEBB:
+    PS2_GAMD_WCPEBB_Write: R * C
+   GAMD_RCPEBB:
+    PS2_GAMD_RCPEBB_Read: R * C
+   GAMWC:
+    PS0_GAMWC: R * C
+    PS1_GAMWC: R * C
+    PS2_GAMWC:
+     PS2_GAMWC_Read_Hit: R * C
+     PS2_GAMWC_Write_Hit: R * C
+     PS2_GAMWC_TLB_PEND_WRITE: R * C
+   GAMWC_PENDQEBB:
+    PS0_GAMWC_PENDQEBB: R * C
+    PS2_GAMWC_PENDQEBB_READ: R * C
+    PS2_GAMWC_PENDQEBB_WRITE: R * C
+   GAMWD:
+    PS0_GAMWD: R * C
+    PS1_GAMWD: R * C
+    PS2_GAMWD_MISS: R * C
+   GAMWD_WRKPDEBB:
+    PS0_GAMWD_WRKPDEBB: R * C
+    PS2_GAMWD_WRKPDEBB_READ: R * C
+    PS2_GAMWD_WRKPDPEBB_WRITE: R * C
+   MARB:
+    PS0_MARB: R * C
+    PS1_MARB: R * C
+    PS2_MARB: R * C 
    GAFM:
     PS0_GAFM: R * C
     PS1_GAFM: R * C
@@ -1332,10 +1368,8 @@ GAM:
     PS2_GAFS:
      PS2_GAFS_ONLYRD: R * C
      PS2_GAFS_ONLYWR: R * C
-   GAPL3:
-    PS0_GAPL3: R * C
-    PS1_GAPL3: R * C
-    PS2_GAPL3: R * C
+     PS2_GAFS_MEM_RETURN: R * C
+     PS2_GAFS_RDWR: R * C
    GAPZ:
     PS0_GAPZ: R * C
     PS1_GAPZ: R * C
@@ -1348,6 +1382,14 @@ GAM:
     PS0_GAPC: R * C
     PS1_GAPC: R * C
     PS2_GAPC: R * C
+   GASS:
+    PS0_GASS: R * C
+    PS1_GASS: R * C
+    PS2_GASS: R * C
+   SARB:
+    PS0_SARB: R * C
+    PS1_SARB: R * C
+    PS2_SARB: R * C
    GACB:
     PS0_GACB: R * C
     PS1_GACB: R * C
