@@ -217,12 +217,9 @@ EU:
       PS2_GA_EM3Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_EM3Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
   DOP:
-    PS0_EU_TCGA_DOP: R * C
-    PS1_EU_TCGA_DOP: R * C
-    PS2_EU_TCGA_DOP: R * C
-    PS0_EU_Pipelines_DOP: R * C
-    PS1_EU_Pipelines_DOP: R * C
-    PS2_EU_Pipelines_DOP: R * C
+    PS0_EU_DOP: R * C
+    PS1_EU_DOP: R * C
+    PS2_EU_DOP: R * C
   SMALL:
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
