@@ -47,8 +47,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11halo'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11halo'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11']
                        };
 
 new_gc = {}         ##Gate Count
@@ -86,13 +86,13 @@ elif common_cfg.find('chv') > -1 :
 elif common_cfg.find('bxt') > -1 :
     cfg ='Gen9LPSoC'
 elif common_cfg.find('cnl_h') > -1 :
-    cfg ='Gen11LP'
+    cfg ='Gen11'
 elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
 elif common_cfg.find('icl') > -1 :
-    cfg ='Gen11LP'
+    cfg ='Gen11'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -115,7 +115,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11LP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -758,7 +758,7 @@ for cluster in yaml_hash:
                 gt_cdyn_dist[label][cluster][unit][category]        += yaml_hash[cluster][unit][state]
                 gt_cdyn_dist[label][cluster][cluster_top][category] += yaml_hash[cluster][unit][state]
                 gt_cdyn_dist[label][gt_top][category]               += yaml_hash[cluster][unit][state]
-                print (cluster, unit, state, category, yaml_hash[cluster][unit][state])
+                # print (cluster, unit, state, category, yaml_hash[cluster][unit][state])
             except:
                 for sub in yaml_hash[cluster][unit][state]:
                     if (sub.find("total") == 0):

@@ -68,7 +68,7 @@ foreach my $cluster (sort keys %count) {
 sub print_help {
     my $path = abs_path($0);
     print "
-$path -ref gc.csv_#1 -new gc.csv_#2 -gen Gen10LP,Gen11LP
+$path -ref gc.csv_#1 -new gc.csv_#2 -gen Gen10LP,Gen11
 
     compare gate count numbers on specified Gen from two gc.csv files
 ";
