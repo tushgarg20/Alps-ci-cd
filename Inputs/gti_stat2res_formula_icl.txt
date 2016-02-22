@@ -1,8 +1,8 @@
 #Unit	GSIM residency			Comments
 #Generic				
    @ANY_GTI@ = uGTI_\d+.
-	 .Clk.GTI	=	CrClock.Clocks
-   .Unsliceclk.GTI = UnsliceClock.Clocks	
+	 .Clk.GTI	=	D(CrClock.Clocks)
+   .Unsliceclk.GTI = D(UnsliceClock.Clocks)
    @GTI_EMPTY@ = GtiSuperqEmptyCyclesBank_\d+
    @GTI_STALL@ = GtiSuperqAllPendingCyclesBank_\d+
 	 @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
@@ -113,8 +113,8 @@
 	#.temp_MSQCAllNotFullSlotCount	=	.temp_MSQCSlotCount - .temp_MSQCAllFullSlotCount	
 	#.temp_MSQCPerClkFullSlotCount	=	(.temp_MSQCNotEmptyNotFullCount > 0) ? (.temp_MSQCAllNotFullSlotCount / .temp_MSQCNotEmptyNotFullCount) : 0
   # 3 to account for GC scalar between CNL & ICL (or 112 slots to 320 slots Ratio)	
-	PS2_MSQC_SlotFull	=	.temp_gti_superq_activeslots / (3 * GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)
-				
+	PS2_MSQC_SlotFull	=(.temp_gti_superq_active>0)?(.temp_gti_superq_activeslots/(3 * GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)):0						
+
 #MSQD				
 				
 	PS0_MSQD	=	.temp_PS0_GTI	
@@ -125,8 +125,9 @@
 	PS2_MSQD_ATOMICS	=	0
 				
 #MIDI				
-				
-	PS0_MIDI	=	1 - PS1_MIDI - PS2_MIDI_U2C - PS2_MIDI_C2U
+	.temp_PS0_MIDI  = 1 - PS1_MIDI - .max_ps2_misd
+  .max_ps2_midi = MAX(PS2_MIDI_U2C,	 PS2_MIDI_C2U)		
+  PS0_MIDI	= (.temp_PS0_MIDI > 0)?	.temp_PS0_MIDI : 0			
   .temp_PS1_MIDI_Req =  D(SUM('@ANY_GTI@m_MidiReqBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI
   .temp_PS1_MIDI_Resp =  D(SUM('@ANY_GTI@m_MidiRespBuf_0.stalled.UnsliceClock'))/.Unsliceclk.GTI	
 	PS1_MIDI	=	AVG(.temp_PS1_MIDI_Req , .temp_PS1_MIDI_Resp) 	
@@ -134,8 +135,9 @@
 	PS2_MIDI_C2U	= D(SUM('@ANY_GTI@m_MidiReqBuf_0.active.UnsliceClock'))/.Unsliceclk.GTI		
 				
 #MISD				
-				
-	PS0_MISD	= 1 - PS1_MISD - PS2_MISD_U2C - PS2_MISD_U2C_AES - PS2_MISD_C2U - PS2_MISD_C2U_AES	
+	.temp_PS0_MISD  = 1 - PS1_MISD - .max_ps2_misd
+  .max_ps2_misd = MAX(PS2_MISD_U2C,PS2_MISD_U2C_AES,PS2_MISD_C2U,PS2_MISD_C2U_AES)			
+	PS0_MISD	= 	(.temp_PS0_MISD > 0)?	.temp_PS0_MISD : 0			
   .temp_PS1_MISD_Bypass = D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
   .temp_PS1_MISD = 	D(SUM('@ANY_GTI@m_MisdAESRdPipe.stalled.UnsliceClock'))/.Unsliceclk.GTI
 	PS1_MISD	=	AVG(.temp_PS1_MISD_Bypass	, .temp_PS1_MISD)

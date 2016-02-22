@@ -106,8 +106,8 @@
 	PS0_rSF	=	(D(GeoR.uSF.pwr_SF_Idle.2xGeoClock) / .GeoClk2x) - PS0_rSF_DOP	
 	PS1_rSF	=	(D(GeoR.uSF.pwr_SF_Stalled_or_Idle.2xGeoClock) - D(GeoR.uSF.pwr_SF_Idle.2xGeoClock)) / .GeoClk2x	
 	PS2_rSF_Culled	=	(D(GeoR.uSF.SF_SimpleCulled) + D(GeoR.uSF.SF_ComplexCulled))/ .GeoClk2x	
-	PS2_rSF_NotCulled_FastClip	=	D(GeoR.uSF.pwr_SF_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
-	PS2_rSF_NotCulled_NotFastClip	=	D(GeoR.uSF.pwr_SF_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
+	PS2_rSF_NotCulled_FastClip	=	D(GeoR.uSF.pwr_SFFE_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
+	PS2_rSF_NotCulled_NotFastClip	=	D(GeoR.uSF.pwr_SFFE_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x	
 
 #SVG				
 	PS0_rSVG_DOP	=	 .temp_3DPipeDisable	
@@ -118,17 +118,17 @@
 #CLKGLUE				
 	PS0_rFF_rOTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
 	PS0_rFF_rOTHER_CLKGLUE	=	PS0_rVF	#Approximating GLUE units with VF residencies
-	PS2_rFF_rOTHER_CLKGLUE	=	PS1_rVF + PS2_rVF	
+	PS2_rFF_rOTHER_CLKGLUE	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
 				
 #NONCLKGLUE				
 	PS0_rFF_rOTHER_NONCLKGLUE_DOP	=	 .temp_3DPipeDisable	
 	PS0_rFF_rOTHER_NONCLKGLUE	=	PS0_rVF	#Approximating GLUE units with VF residencies
-	PS2_rFF_rOTHER_NONCLKGLUE	=	PS1_rVF + PS2_rVF	
+	PS2_rFF_rOTHER_NONCLKGLUE	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
 				
 #DFX				
 	PS0_rFF_OTHER_DFX_DOP	=	 .temp_3DPipeDisable	
 	PS0_rFF_OTHER_DFX	=	PS0_rVF	
-	PS2_rFF_OTHER_DFX	=	PS1_rVF + PS2_rVF	
+	PS2_rFF_OTHER_DFX	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
 				
 #DOP				
 	PS0_rFF_rOTHER_DOP	=	 .temp_3DPipeDisable	

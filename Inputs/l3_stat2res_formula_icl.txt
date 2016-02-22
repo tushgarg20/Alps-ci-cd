@@ -1,8 +1,8 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	numL3Banks	=	knob.global.NumL3Banks	
-	num_L3_Slices	=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')	
-	num_L3_SubSlices	=	knob.S0.NumSubSlices + knob.STK0.S0.NumSubSlices	
+	num_L3_Slices	=	knob.global.NumSlices
+	num_L3_SubSlices	=	knob.S0.NumSubSlices
 	num_L3_Bank_LTCD_EBB	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LTCD_Data	=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_LTCD_Tag	=	num_L3_Slices * numL3Banks	
@@ -28,7 +28,7 @@
 	.temp_LNE_max1	=	D(MIN(6, (num_L3_SubSlices + 3)))	
 	.temp_LNE_max2	=	D(MIN(4, (num_L3_SubSlices + 3)))	
 	LNE_max_ports	=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
-	L3SuperQSize	=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
+	L3SuperQSize	=	knob.S0.uL3.SuperQSize
 
 				
 #LTCD_EBB				

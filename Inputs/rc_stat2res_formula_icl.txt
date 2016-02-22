@@ -7,7 +7,7 @@
 	num_Fabric_TopLevel	=	numSlices
 	num_Fabric_BGF	=	((knob.Icl.NumDownFabricBus)?numStacks:(numSlices>2)?1:0)
 	num_Fabric_BGFunslice  =  (knob.Icl.NumDownFabricBus>0)?0:1
-	num_Fabric_HorizontalFabric	=	(knob.global.NumStacks)*(numSlices/2-1)							
+	#num_Fabric_HorizontalFabric	=	(knob.global.NumStacks)*(numSlices/2-1)							
 	num_Fabric_Small	=	numSlices
 	num_Fabric_Assign	=	numSlices
 	num_Fabric_CPunit	=	numSlices
@@ -22,9 +22,10 @@
 	.UnsliceClock= D(UnsliceClock.Clocks)
 	.GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))
     numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
-	numBuses	=	(D(SUM('knob.S0.uL3.NumUpFabricBus'))+D(SUM('knob.S0.uL3.NumDownFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumUpFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumDownFabricBus')))/2
-	numhorBuses	=	D(SUM('knob.STK0.S0.uL3.NumLateralFabricBus'))
-	numStacks      =   (knob.STK0.S0.uL3.LSN.NumStacks)?knob.STK0.S0.uL3.LSN.NumStacks:1
+	numBuses	=	((SUM('knob.S0.uL3.NumUpFabricBus'))+(SUM('knob.S0.uL3.NumDownFabricBus'))+(SUM('knob.STK0.S0.uL3.NumUpFabricBus'))+(SUM('knob.STK0.S0.uL3.NumDownFabricBus')))/2
+	#numhorBuses	=	D(SUM('knob.STK0.S0.uL3.NumLateralFabricBus'))
+	#numStacks      =   (knob.STK0.S0.uL3.LSN.NumStacks)?knob.STK0.S0.uL3.LSN.NumStacks:1
+  numStacks = 1
 	@anytraffic@	=	(VC0_TCC0|VC1_TCC1|VC1_TCC0|VC1_TCC1|VCC2)
 	@anyL3@	=	 (STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)							
 	@anyS0@ =  (STK\d+\.S0\.uL3\.LSN_\d\.|S0\.uL3\.LSN_\d\.)
@@ -133,12 +134,12 @@
 			
 #horizontalfabric			
 			
-	PS0_XStack_DATA	=	(numhorBuses==0)?0:(1-PS2_XStack_DATA)
-	PS1_XStack_DATA	=	0
-	PS2_XStack_DATA	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+DataPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
-	PS0_XStack_CMD	=	(numhorBuses==0)?0:(1-PS2_XStack_CMD)
-	PS1_XStack_CMD	=	0
-	PS2_XStack_CMD	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+CmdPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
+	#PS0_XStack_DATA	=	(numhorBuses==0)?0:(1-PS2_XStack_DATA)
+	#PS1_XStack_DATA	=	0
+	#PS2_XStack_DATA	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+DataPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
+	#PS0_XStack_CMD	=	(numhorBuses==0)?0:(1-PS2_XStack_CMD)
+	#PS1_XStack_CMD	=	0
+	#PS2_XStack_CMD	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+CmdPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
 
 #SMALL			
 	PS0_Fabric_SMALL	=	1-PS2_Fabric_SMALL
