@@ -359,6 +359,100 @@ L3Node:
 PS2_LNI_BW: R
 PS2_LNE_BW: R
 
+SQIDI:
+   MIDI:
+    PS0_MIDI: R * C
+    PS1_MIDI: R * C
+    PS2_MIDI:
+     PS2_MIDI_U2C: R * C
+     PS2_MIDI_C2U: R * C
+   MISD:
+    PS0_MISD: R * C
+    PS1_MISD: R * C
+    PS2_MISD:
+     PS2_MISD_U2C_AES: R * C
+     PS2_MISD_U2C: R * C
+     PS2_MISD_C2U_AES: R * C
+     PS2_MISD_C2U: R * C
+   MSQC:
+    PS0_MSQC: R * C
+    PS1_MSQC: R * C
+    PS2_MSQC: R[PS2_MSQC_SlotFull] * R * C
+    PS2_MSQC_ATOMICS: R * C
+   MSQD:
+    PS0_MSQD: R * C
+    PS1_MSQD: R * C
+    PS2_MSQD:
+     PS2_MSQD_U2C: R * C
+     PS2_MSQD_C2U: R * C
+     PS2_MSQD_ATOMICS: R * C
+   MSNP:
+    PS0_MSNP: R * C
+    PS1_MSNP: R * C
+    PS2_MSNP:
+     PS2_MSNP_C2U: R * C
+     PS2_MSNP_U2C: R * C
+   MFC:
+    PS0_MFC: R * C
+    PS1_MFC: R * C
+    PS2_MFC: R * C
+   SMALL:
+    PS0_SQIDI_SMALL: R * C
+    PS2_SQIDI_SMALL: R * C
+   CPunit:
+    PS0_SQIDI_CPunit: R * C
+    PS2_SQIDI_CPunit: R * C
+   Assign:
+    PS0_SQIDI_Assign: R * C
+    PS2_SQIDI_Assign: R * C
+   Repeater:
+    PS0_SQIDI_Repeater: R * C
+    PS2_SQIDI_Repeater: R * C
+   CLKGLUE:
+    PS0_SQIDI_CLKGLUE: R * C
+    PS2_SQIDI_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_SQIDI_NONCLKGLUE: R * C
+    PS2_SQIDI_NONCLKGLUE: R * C
+   DOP:
+    PS0_SQIDI_DOP: R * C
+    PS2_SQIDI_DOP: R * C
+   DFX:
+    PS0_SQIDI_DFX: R * C
+    PS2_SQIDI_DFX: R * C
+
+UNCORE:
+   MDRB:
+    PS0_MDRB: R * C
+    PS1_MDRB: R * C
+    PS2_MDRB:
+     PS2_MDRB_C2U: R * C
+     PS2_MDRB_U2C: R * C
+   SMALL:
+    PS0_UNCORE_SMALL: R * C
+    PS2_UNCORE_SMALL: R * C
+   CPunit:
+    PS0_UNCORE_CPunit: R * C
+    PS2_UNCORE_CPunit: R * C
+   Assign:
+    PS0_UNCORE_Assign: R * C
+    PS2_UNCORE_Assign: R * C
+   Repeater:
+    PS0_UNCORE_Repeater: R * C
+    PS2_UNCORE_Repeater: R * C
+   CLKGLUE:
+    PS0_UNCORE_CLKGLUE: R * C
+    PS2_UNCORE_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_UNCORE_NONCLKGLUE: R * C
+    PS2_UNCORE_NONCLKGLUE: R * C
+   DOP:
+    PS0_UNCORE_DOP: R * C
+    PS2_UNCORE_DOP: R * C
+   DFX:
+    PS0_UNCORE_DFX: R * C
+    PS2_UNCORE_DFX: R * C
+
 GTI:
    MBGF:
     PS0_MBGF: R * C
