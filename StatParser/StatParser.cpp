@@ -24,8 +24,8 @@ class CDummyReaderManager : public CParser::CReaderManager
 public:
     CParser::CReader* FindReader(std::string){ return 0;}
     std::vector<std::vector<std::string> > MatchPattern(std::string){ std::vector<std::vector<std::string> > V; return V;}
-    std::vector<CParser::CReader*> FindRegExAsVector(std::string){ std::vector<CParser::CReader*> V; return V;}
-    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string){ std::map<std::string, CParser::CReader*> M; return M;}
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string, std::map<std::string, double>* dumper=NULL){ std::vector<CParser::CReader*> V; return V;}
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string, std::map<std::string, double>* dumper=NULL){ std::map<std::string, CParser::CReader*> M; return M;}
 };
 
 /// Timegraph reader
@@ -44,8 +44,8 @@ public:
     ~CTimegraphReaderManager();
     CParser::CReader* FindReader(std::string);
     std::vector<std::vector<std::string> > MatchPattern(std::string);
-    std::vector<CParser::CReader*> FindRegExAsVector(std::string);
-    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string, std::map<std::string, double>* dumper=NULL);
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string, std::map<std::string, double>* dumper=NULL);
     bool ReadLine();
 };
 
@@ -72,10 +72,10 @@ CTimegraphReaderManager::CTimegraphReaderManager(const char*fname)
     int i, n;
     for(n=0;(i=S.find("\t", n))!=-1;n=i+1) names.push_back(S.substr(n, i-n));
     names.push_back(S.substr(n));
-    for(unsigned i=0;i<names.size();i++)
+    for(uint32_t i=0;i<names.size();i++)
     {   if(names[i]!="") by_name[names[i]]=i;
         nnn.insert(names[i]);
-        for(unsigned i=1;i<names[i].length();i++) if(names[i][i]=='.') nnn.insert(names[i].substr(0, i));
+        for(uint32_t i=1;i<names[i].length();i++) if(names[i][i]=='.') nnn.insert(names[i].substr(0, i));
     }
 }
 
@@ -96,11 +96,11 @@ std::vector<std::vector<std::string> > CTimegraphReaderManager::MatchPattern(std
     for(std::set<std::string>::iterator J=nnn.begin();J!=nnn.end();J++)
     {   if(!boost::regex_match(*J, match, rx)) continue;
         std::vector<std::string> W;
-        for(unsigned k=1;k<match.size();k++) W.push_back(match[k]);
+        for(uint32_t k=1;k<match.size();k++) W.push_back(match[k]);
         bool found=false;
-        for(unsigned j=0;j<V.size();j++)
+        for(uint32_t j=0;j<V.size();j++)
         {   if(V[j].size()!=W.size()) continue;
-            unsigned k;
+            uint32_t k;
             for(k=0;k<W.size();k++) if(W[k]!=V[j][k]) break;
             if(k<W.size()) continue;
             found=true; break;
@@ -117,7 +117,7 @@ CParser::CReader* CTimegraphReaderManager::FindReader(std::string name)
     return readers[name];
 }
 
-std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegExAsMap(std::string str)
+std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegExAsMap(std::string str, std::map<std::string, double>* dumper)
 {   std::map<std::string, CParser::CReader*> M;
     boost::regex re(str);
     for(std::map<std::string, int>::iterator J=by_name.begin();J!=by_name.end();J++)
@@ -128,7 +128,7 @@ std::map<std::string, CParser::CReader*> CTimegraphReaderManager::FindRegExAsMap
     return M;
 }
 
-std::vector<CParser::CReader*> CTimegraphReaderManager::FindRegExAsVector(std::string str)
+std::vector<CParser::CReader*> CTimegraphReaderManager::FindRegExAsVector(std::string str, std::map<std::string, double>* dumper)
 {   std::map<std::string, CParser::CReader*> M=FindRegExAsMap(str);
     std::vector<CParser::CReader*> V;
     for(std::map<std::string, CParser::CReader*>::iterator J=M.begin();J!=M.end();J++) V.push_back(J->second);
@@ -146,8 +146,8 @@ public:
     ~CStatReaderManager(){ for(std::map<std::string, CParser::CReader*>::iterator J=readers.begin();J!=readers.end();J++) delete J->second;}
     CParser::CReader* FindReader(std::string);
     std::vector<std::vector<std::string> > MatchPattern(std::string);
-    std::vector<CParser::CReader*> FindRegExAsVector(std::string);
-    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string);
+    std::vector<CParser::CReader*> FindRegExAsVector(std::string, std::map<std::string, double>*);
+    std::map<std::string, CParser::CReader*> FindRegExAsMap(std::string, std::map<std::string, double>*);
 };
 
 class CStatReader : public CParser::CReader
@@ -177,7 +177,7 @@ CStatReaderManager::CStatReaderManager(const char*fname)
         std::string right=CParser::Clip(S.substr(n));
         values[left]=atof(right.c_str());
         nnn.insert(left);
-        for(unsigned i=1;i<left.length();i++) if(left[i]=='.') nnn.insert(left.substr(0, i));
+        for(uint32_t i=1;i<left.length();i++) if(left[i]=='.') nnn.insert(left.substr(0, i));
     }
 }
 
@@ -188,11 +188,11 @@ std::vector<std::vector<std::string> > CStatReaderManager::MatchPattern(std::str
     for(std::set<std::string>::iterator J=nnn.begin();J!=nnn.end();J++)
     {   if(!boost::regex_match(*J, match, rx)) continue;
         std::vector<std::string> W;
-        for(unsigned k=1;k<match.size();k++) W.push_back(match[k]);
+        for(uint32_t k=1;k<match.size();k++) W.push_back(match[k]);
         bool found=false;
-        for(unsigned j=0;j<V.size();j++)
+        for(uint32_t j=0;j<V.size();j++)
         {   if(V[j].size()!=W.size()) continue;
-            unsigned k;
+            uint32_t k;
             for(k=0;k<W.size();k++) if(W[k]!=V[j][k]) break;
             if(k<W.size()) continue;
             found=true; break;
@@ -209,19 +209,20 @@ CParser::CReader* CStatReaderManager::FindReader(std::string str)
     return readers[str];
 }
 
-std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegExAsMap(std::string str)
+std::map<std::string, CParser::CReader*> CStatReaderManager::FindRegExAsMap(std::string str, std::map<std::string, double>* dumper)
 {   std::map<std::string, CParser::CReader*> M;
     boost::regex re(str);
     for(std::map<std::string, double>::iterator J=values.begin();J!=values.end();J++)
     {   if(!boost::regex_match(J->first, re)) continue;
         if(readers.find(str)==readers.end()) readers[J->first]=new CStatReader(J->second);
         M[J->first]=readers[J->first];
+        (*dumper)[J->first] = J->second;
     }
     return M;
 }
 
-std::vector<CParser::CReader*> CStatReaderManager::FindRegExAsVector(std::string str)
-{   std::map<std::string, CParser::CReader*> M=FindRegExAsMap(str);
+std::vector<CParser::CReader*> CStatReaderManager::FindRegExAsVector(std::string str, std::map<std::string, double>* dumper)
+{   std::map<std::string, CParser::CReader*> M=FindRegExAsMap(str, dumper);
     std::vector<CParser::CReader*> V;
     for(std::map<std::string, CParser::CReader*>::iterator J=M.begin();J!=M.end();J++) V.push_back(J->second);
     return V;
@@ -236,6 +237,8 @@ char* Usage=
 "\t-s <stat-file>\t- parse a stat file\n"
 "\t-t <timegraph>\t- parse a timegraph file\n"
 "\t-o <output>\t- output stream (default: stdout)\n"
+"\t-os <output>\t- output stream containing stats (default: file name)\n"
+"\t-dv\t- output stream with stats will have values instead of 0\n"
 "\t-e <error-log>\t- error stream (default: stderr)\n"
 "\t-d\t- debug output\n"
 "\t-csv\t- output in .csv format (default: tab-delimited)\n"
@@ -254,10 +257,13 @@ void print_error(CParser::CError& e)
 int main(int argc, char** argv)
 {   bool csv=false;
     bool dbg=false;
+    bool dumpstats=false;
+    bool dumpstatsval=false;
     std::string statfile;
     std::string timegraph;
     std::string outfile;
     std::string errfile;
+    std::string outstatfile;
     std::vector<std::string> iii;
     std::vector<std::string> fff;
     std::vector<std::string> input;
@@ -265,6 +271,7 @@ int main(int argc, char** argv)
     {   for(int i=1;i<argc;i++)
         {   if(std::string("-csv")==argv[i]){ csv=true; continue;}
             if(std::string("-d")==argv[i]){ dbg=true; continue;}
+            if(std::string("-dv")==argv[i]){ dumpstatsval=true; continue;}
             if(std::string("-t")==argv[i])
             {   if(!timegraph.empty()) throw 0;
                 i++; if(i>=argc) throw 0;
@@ -279,6 +286,12 @@ int main(int argc, char** argv)
             {   if(!outfile.empty()) throw 0;
                 i++; if(i>=argc) throw 0;
                 outfile=argv[i]; continue;
+            }
+            if(std::string("-os")==argv[i])
+            {   if(!outstatfile.empty()) throw 0;
+                i++; if(i>=argc) throw 0;
+                dumpstats=true;
+                outstatfile=argv[i]; continue;
             }
             if(std::string("-e")==argv[i])
             {   if(!errfile.empty()) throw 0;
@@ -303,6 +316,7 @@ int main(int argc, char** argv)
 
     std::ofstream err;
     std::ofstream out;
+    std::ofstream outstat;
     std::string S;
 
     if(!errfile.empty())
@@ -315,7 +329,11 @@ int main(int argc, char** argv)
         if(out.is_open()) std::cout.rdbuf(out.rdbuf()); // STYLE_IGNORE_COUT
         else std::cerr<<"Cannot open "<<outfile<<"\n";
     }
-    for(unsigned i=0;i<iii.size();i++)
+    if(!outstatfile.empty())
+    {   outstat.open(outstatfile.c_str());
+        if(!outstat.is_open()) {std::cerr<<"Cannot open "<<outstatfile<<"\n"; dumpstats=false;}
+    }
+    for(uint32_t i=0;i<iii.size();i++)
     {   if(!iii[i].empty()) input.push_back(iii[i]);
         else
         {   std::ifstream file(fff[i].c_str());
@@ -333,7 +351,7 @@ int main(int argc, char** argv)
     std::map<std::string, std::vector<CParser::CError> > EEE;
     std::map<std::string, std::string> comm;
 
-    for(unsigned i=0;i<input.size();i++)
+    for(uint32_t i=0;i<input.size();i++)
     {   std::ifstream file;
         file.open(input[i].c_str());
         if(!file.is_open()){ std::cerr<<"Cannot open "<<input[i]<<"\n"; return 0;}
@@ -361,21 +379,35 @@ int main(int argc, char** argv)
     if(!statfile.empty())
     {   CStatReaderManager STM(statfile.c_str());
         std::vector<CParser::CError> Err=P.Initialize(&STM);
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        std::map<std::string, double> Statdump;
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.CheckDependencies();
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
-        Err=P.BindReader(&STM);
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
-        for(unsigned i=0;i<input.size();i++)
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        Err=P.BindReader(&STM, &Statdump);
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
+            for(uint32_t i=0;i<E.size();i++) print_error(E[i]);
+        }
+
+        if(dumpstats)
+        {
+            for(std::map<std::string, double>::iterator J=Statdump.begin();J!=Statdump.end();J++)
+            {
+                if(dumpstatsval) {
+                    outstat<<","<<J->first<<","<<J->second<<",,!,,ALPs"<<std::endl;
+                } else {
+                    if(J->second) outstat<<","<<J->first<<",0,,!,,ALPs"<<std::endl;
+                }
+            }
+            outstat.close();
         }
 
         P.Execute();
-        for(int i=0;i<P.Size();i++)
+        for(size_t i=0;i<P.Size();i++)
         {   const CParser::CReport* R=P.Report(i);
-            for(int j=0;j<R->Size();j++)
+            for(size_t j=0;j<R->Size();j++)
             {   if(!dbg && R->Name(j)[0]=='.') continue;
                 std::cout<<R->Name(j)<<(csv?",":"\t");                              // STYLE_IGNORE_COUT
                 if(R->Bad(j)) std::cout<<"n/a";                                     // STYLE_IGNORE_COUT
@@ -389,21 +421,21 @@ int main(int argc, char** argv)
     else if(!timegraph.empty())
     {   CTimegraphReaderManager TGM(timegraph.c_str());
         std::vector<CParser::CError> Err=P.Initialize(&TGM);
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.CheckDependencies();
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.BindReader(&TGM);
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
-        for(unsigned i=0;i<input.size();i++)
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
+            for(uint32_t i=0;i<E.size();i++) print_error(E[i]);
         }
         
         bool separate=false;
-        for(int i=0;i<P.Size();i++)
+        for(size_t i=0;i<P.Size();i++)
         {   const CParser::CReport* R=P.Report(i);
-            for(int j=0;j<R->Size();j++)
+            for(size_t j=0;j<R->Size();j++)
             {   if(dbg && R->Name(j)[0]=='.') continue;
                 std::cout<<(separate?(csv?",":"\t"):"")<<R->Name(j); // STYLE_IGNORE_COUT
                 separate=true;
@@ -414,9 +446,9 @@ int main(int argc, char** argv)
         while(TGM.ReadLine())
         {   P.Execute();
             separate=false;
-            for(int i=0;i<P.Size();i++)
+            for(size_t i=0;i<P.Size();i++)
             {   const CParser::CReport* R=P.Report(i);
-                for(int j=0;j<R->Size();j++)
+                for(size_t j=0;j<R->Size();j++)
                 {   if(dbg && R->Name(j)[0]=='.') continue;
                     std::cout<<(separate?(csv?",":"\t"):"");    // STYLE_IGNORE_COUT
                     if(R->Bad(j)) std::cout<<"n/a";             // STYLE_IGNORE_COUT
@@ -430,14 +462,14 @@ int main(int argc, char** argv)
     else
     {   CDummyReaderManager DMM;
         std::vector<CParser::CError> Err=P.Initialize(&DMM);
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
         Err=P.CheckDependencies();
-        for(unsigned i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
+        for(uint32_t i=0;i<Err.size();i++) EEE[Err[i].file].push_back(Err[i]);
 
-        for(unsigned i=0;i<input.size();i++)
+        for(uint32_t i=0;i<input.size();i++)
         {   std::vector<CParser::CError>& E=EEE[input[i]];
             std::stable_sort(E.begin(), E.end(), CParser::CError::Cmp);
-            for(unsigned i=0;i<E.size();i++) print_error(E[i]);
+            for(uint32_t i=0;i<E.size();i++) print_error(E[i]);
         }
     }
 }

@@ -1,3 +1,6 @@
+#ifndef _ECPRPARSER_HPP_
+#define _ECPRPARSER_HPP_
+
 #include <string>
 #include <vector>
 #include <map>
@@ -13,6 +16,8 @@ public:
         virtual bool IsConst(){ return false;}
         virtual bool IsDefault(){ return false;}
         virtual bool IsDynamic(){ return false;}
+        virtual bool IsText(){ return false;}
+        virtual std::string Text(){ return "";}
         virtual double Value()=0;
     };
     struct CDynamicReader : public CReader
@@ -24,8 +29,8 @@ public:
     {   virtual ~CReaderManager(){}
         virtual CReader* FindReader(std::string)=0;
         virtual std::vector<std::vector<std::string> > MatchPattern(std::string)=0;
-        virtual std::vector<CReader*> FindRegExAsVector(std::string)=0;
-        virtual std::map<std::string, CReader*> FindRegExAsMap(std::string)=0;
+        virtual std::vector<CReader*> FindRegExAsVector(std::string, std::map<std::string, double>* dumper=NULL)=0;
+        virtual std::map<std::string, CReader*> FindRegExAsMap(std::string, std::map<std::string, double>* dumper=NULL)=0;
         virtual void ExportGlobal(std::string){}
     };
     struct CLocation
@@ -89,6 +94,8 @@ public:
         virtual bool IsConst(){ return false;}
         virtual bool IsList(){ return false;}
         virtual bool IsEmpty(){ return false;}
+        virtual bool IsText(){ return false;}
+        virtual std::string Text(){ return "";}
         virtual void Accept(CWalker* w){ w->Visit(this);}
         virtual CNode* Flatten(){ return this;}
         CNode* Scalar();
@@ -145,6 +152,7 @@ public:
         std::vector<bool> nahistory;
         uint32_t size;
         CReader* reader;
+        std::string text;
         double value;
         bool bad;
         bool na;
@@ -158,6 +166,8 @@ public:
     {   CVariable* V;
         uint32_t T;
         CVarNode(CVariable* v, uint32_t t=0) : V(v), T(t) { if(V->size<t) V->size=T; }
+        bool IsText(){ return (V->reader && V->reader->IsText()) || !V->text.empty();}
+        std::string Text(){ return (V->reader && !V->reader->Text().empty()) ? V->reader->Text() : V->text;}
         double Evaluate();
         CNode* Flatten();
     };
@@ -290,6 +300,8 @@ public:
         virtual size_t Size() const = 0;
         virtual std::string Name(size_t) const = 0;
         virtual double Value(size_t) const = 0;
+        virtual bool IsText(size_t) const = 0;
+        virtual std::string Text(size_t) const = 0;
         virtual bool Bad(size_t) const = 0;
     };
     class CPlainVariable : public CReport
@@ -299,6 +311,8 @@ public:
         size_t Size() const { return 1;}
         std::string Name(size_t) const { return V->name;}
         double Value(size_t) const { return V->value;}
+        bool IsText(size_t) const  { return !V->text.empty();}
+        std::string Text(size_t) const  { return V->text;}
         bool Bad(size_t) const { return V->na;}
     };
     class CPassThroughVariable : public CReport
@@ -309,6 +323,8 @@ public:
         size_t Size() const { return 1;}
         std::string Name(size_t) const { return name;}
         double Value(size_t) const { return R->Value();}
+        bool IsText(size_t) const  { return R->IsText();}
+        std::string Text(size_t) const  { return R->Text();}
         bool Bad(size_t) const { return !R;}
         friend class CParser;
     };
@@ -326,6 +342,8 @@ public:
         size_t Size() const { return names.size();}
         std::string Name(size_t n) const { return pref+names[n];}
         double Value(size_t n) const { return value[n];}
+        bool IsText(size_t n) const  { return readers[n]->IsText();}
+        std::string Text(size_t n) const  { return readers[n]->Text();}
         bool Bad(size_t) const { return false;}
         void Update(){ for(uint32_t i=0;i<readers.size();i++){ if(diff) old_val[i]=new_val[i]; new_val[i]=readers[i]->Value(); value[i]=diff?new_val[i]-old_val[i]:new_val[i];}}
         friend class CParser;
@@ -338,7 +356,7 @@ public:
     void ReadLine(const char*);
     std::vector<CError> CheckDependencies();
     std::vector<CError> Initialize(CReaderManager*);
-    std::vector<CError> BindReader(CReaderManager*);
+    std::vector<CError> BindReader(CReaderManager*, std::map<std::string, double>* dumper=NULL);
     bool Defined(const char*s){ return variables.find(s)!=variables.end() && variables[s]->expr.size();}
     void Define(std::string name, std::string expr){ DefineVariable(name, expr, false, "", 0);}    // may throw exception
     bool Ready();
@@ -395,3 +413,6 @@ protected:
     uint32_t token_ptr;
     CVariable* dot;
 };
+
+
+#endif // _ECPRPARSER_HPP_

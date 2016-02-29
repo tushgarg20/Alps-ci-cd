@@ -926,18 +926,20 @@ CParser::CNode* CParser::CRangeNode::Flatten()
     return new CVector(W);
 }
 
-std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
+std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM, std::map<std::string, double>* dumper)
 {   std::vector<CParser::CError> Err;
+    // iterate through stat regular expression term list (regexes) and expand each to full set of readers
     for(std::map<std::string, CRegEx*>::iterator J=regexes.begin();J!=regexes.end();J++)
     {   if(J->second->is_map)
-        {   J->second->map=RM->FindRegExAsMap(J->second->str);
+        {   J->second->map=RM->FindRegExAsMap(J->second->str, dumper);
             if(J->second->map.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
         }
         else
-        {   J->second->vector=RM->FindRegExAsVector(J->second->str);
+        {   J->second->vector=RM->FindRegExAsVector(J->second->str, dumper);
             if(J->second->vector.empty()) Err.push_back(CError(J->second->file, J->second->line, "", std::string("no matches found: '")+J->second->str+"'"));
         }
     }
+    // iterate through variable regular expression list (p_t_regs) and expand each to full set of readers
     for(size_t i=0;i<p_t_regs.size();i++)
     {   std::map<std::string, CReader*> M=RM->FindRegExAsMap(p_t_regs[i]->rex);
         if(M.empty()) Err.push_back(CError(p_t_regs[i]->file, p_t_regs[i]->line, "", std::string("no matches found: '")+p_t_regs[i]->rex+"'"));
@@ -950,10 +952,12 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             p_t_regs[i]->value.push_back(0);
         }
     }
+    // iterate through p_t_vars list and get reader for each element
     for(size_t i=0;i<p_t_vars.size();i++)
     {   p_t_vars[i]->R=RM->FindReader(p_t_vars[i]->name);
         if(!p_t_vars[i]->R) Err.push_back(CError(p_t_vars[i]->file, p_t_vars[i]->line, "", std::string("no matches found: '")+p_t_vars[i]->name+"'"));
     }
+    // iterate through all_vars list and get reader for each element
     for(std::map<std::string, CVariable*>::iterator J=all_vars.begin();J!=all_vars.end();J++)
     {   CVariable* V=J->second;
         CReader* R=RM->FindReader(V->name);
@@ -971,6 +975,7 @@ std::vector<CParser::CError> CParser::BindReader(CReaderManager* RM)
             V->bad=true; V->na=true;
         }
     }
+    // check vars list 
     for(size_t i=0;i<vars.size();i++)
     {   CVariable* V=vars[i];
         if(V->bad) continue;
@@ -1018,7 +1023,9 @@ void CParser::Execute()
         V->na=true;
         for(size_t j=0;j<V->expr.size();j++)
         {   try
-            {   V->value=V->expr[j]->Evaluate();
+            {
+                if(V->expr[j]->IsText()) V->text=V->expr[j]->Text();
+                else V->value=V->expr[j]->Evaluate();
                 V->na=false;
                 break;
             }
