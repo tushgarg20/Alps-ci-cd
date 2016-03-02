@@ -56,7 +56,7 @@ process_hash = {}   ##Process
 voltage_hash = {}   ##Voltage scaling factor
 
 ##Used for parsing scaling factor files
-cdyn_cagr_hash = {'syn':{},'ebb':{}}
+cdyn_cagr_hash = {'syn':{},'ebb':{}, 'unit':{} }
 stepping_hash = {}
 
 common_cfg = options.dest_config.lower() ##Config chosen
@@ -236,7 +236,11 @@ def get_eff_cdyn(cluster,unit,stat):
     ##    voltage_sf = 0
 
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
-    cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg]
+    try:
+        unit_scalar = float (cdyn_cagr_hash['unit'][unit][base_cfg])
+    except:
+        unit_scalar = 1
+    cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
     instance_string = cluster + "_" + unit
@@ -591,6 +595,17 @@ for line in stepping_file:
         stepping_hash[data[0]][data[1]] = {}
     stepping_hash[data[0]][data[1]][data[2]] = float(data[3]) if data[3]!='NA' else data[3]
 stepping_file.close()
+
+unit_cdyn_cagr_file = open(input_hash['unit_cdyn_cagr'],'r')
+first_line = unit_cdyn_cagr_file.readline()
+for line in unit_cdyn_cagr_file:
+    data = get_data(line,",")
+    if(data[0] not in cdyn_cagr_hash['unit']):
+        cdyn_cagr_hash['unit'][data[0]] = {}
+    cdyn_cagr_hash['unit'][data[0]][data[1]] = data[2]
+
+unit_cdyn_cagr_file.close()
+
 
 #############################
 # Parse ALPS Formula File
