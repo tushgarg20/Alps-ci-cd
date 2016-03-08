@@ -1575,16 +1575,11 @@ FF:
      PS2_VF_Sequential: R * C
      PS2_VF_Control: R * C
      PS2_VF_Dropped: R * C
-   VFBE1:
-    PS0_VFBE1_DOP: R * C
-    PS0_VFBE1: R * C
-    PS1_VFBE1: R * C
-    PS2_VFBE1: R * C
-   VFBE2:
-    PS0_VFBE2_DOP: R * C
-    PS0_VFBE2: R * C
-    PS1_VFBE2: R * C
-    PS2_VFBE2: R * C
+   VFBE:
+    PS0_VFBE_DOP: R * C
+    PS0_VFBE: R * C
+    PS1_VFBE: R * C
+    PS2_VFBE: R * C
    VF_Cache:
     PS0_VF_Cache_Idle: R * C
     PS2_VF_Cache_Read: R * C
@@ -1916,16 +1911,11 @@ rFF:
      PS2_rVF_Sequential: R * C
      PS2_rVF_Control: R * C
      PS2_rVF_Dropped: R * C
-   rVFBE1:
-    PS0_rVFBE1_DOP: R * C
-    PS0_rVFBE1: R * C
-    PS1_rVFBE1: R * C
-    PS2_rVFBE1: R * C
-   rVFBE2:
-    PS0_rVFBE2_DOP: R * C
-    PS0_rVFBE2: R * C
-    PS1_rVFBE2: R * C
-    PS2_rVFBE2: R * C
+   rVFBE:
+    PS0_rVFBE_DOP: R * C
+    PS0_rVFBE: R * C
+    PS1_rVFBE: R * C
+    PS2_rVFBE: R * C
    rVF_Cache:
     PS0_rVF_Cache_Idle: R * C
     PS2_rVF_Cache_Read: R * C

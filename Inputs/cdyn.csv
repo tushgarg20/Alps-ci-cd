@@ -5899,3 +5899,13 @@ FPU1_sel_int64_12%,Gen11,A0,12.03576522,syn,329922.47,Gen10LP Cdyn weight w/ ref
 FPU1_sel_int64_18%,Gen11,A0,13.83836935,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_sel_int64_22%,Gen11,A0,15.80867638,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_sel_int64_25%,Gen11,A0,18.73594397,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
+PS0_VFBE,Gen11,A0,0.2671935625,syn,795859.9759,average of VFBE1 / VFBE2
+PS1_VFBE,Gen10LP,A0,3.160995266,syn,795859.9759,average of VFBE1 / VFBE2
+PS2_VFBE,Gen9LPClient,A0,41.535,syn,524341.77,average of VFBE1 / VFBE2
+PS0_rVFBE,Gen10LP,A0,0.3339919525,syn,795859.9759,average of VFBE1 / VFBE2
+PS0_rVFBE_DOP,Gen9LPClient,A0,0,syn,524341.77,average of VFBE1 / VFBE2
+PS1_rVFBE,Gen9LPClient,C0,5.31,syn,524391,average of VFBE1 / VFBE2
+PS2_rVFBE,Gen9LPClient,A0,41.535,syn,524341.77,average of VFBE1 / VFBE2
+PS0_VFBE,Gen9LPClient,C0,0.613,syn,526159,Taken from SKL C0 ECO1 GT3 CGEN data
+PS0_VFBE_DOP,Gen9LPClient,A0,0,syn,527906.24,
+PS1_VFBE,Gen9LPClient,C0,5.31,syn,526159,Taken from SKL C0 ECO1 GT3 CGDIS data

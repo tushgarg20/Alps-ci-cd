@@ -4,12 +4,15 @@
 	num_rFF_rCS	=	numrFF	
 	num_rFF_rOV	=	numrFF	
 	num_rFF_rVF	=	numrFF	
+	num_rFF_rVFBE	=	knob.global.NumVfVtxPipesPosh
 	num_rFF_rVFBE1	=	numrFF	
 	num_rFF_rVFBE2	=	numrFF	
 	num_rFF_rVF_Cache	=	numrFF	
 	num_rFF_rVS	=	numrFF	
-	num_rFF_rVSFE	=	numrFF	
-	num_rFF_rVSBE	=	numrFF	
+	num_rFF_rVSFE	=	knob.global.NumVsVtxPipesInGeoR
+	num_rFF_rVSBE	=	knob.global.NumVsVtxPipesInGeoR
+#	num_rFF_rVSFE	=	numrFF	
+#	num_rFF_rVSBE	=	numrFF	
 	num_rFF_rVS_Cache	=	numrFF	
 	num_rFF_rCL	=	numrFF	
 	num_rFF_rSF	=	numrFF	
@@ -52,12 +55,12 @@
 	PS2_rVF_Control	=	.temp_rvf_active_control1x + .temp_rvf_active_control2x	# Added to catch control packets
 	PS2_rVF_Dropped	=	D(GeoR.uVF.pwr_vf_active_dropped.2xGeoClock) / .GeoClk2x	# Added to catch verts dropped because of cut, dangling, or auto-strip.
 #VFBE1				
-	PS0_rVFBE1_DOP	=	 .temp_3DPipeDisable	
+	PS0_rVFBE_DOP	=	 .temp_3DPipeDisable	
 	.temp_num_rvertex_pipes	=	knob.GeoR.uVF.NumVfVtxPipes	
 	.temp_rvertex_pipe_clocks	=	.temp_num_rvertex_pipes * .GeoClk	
-	PS0_rVFBE1	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_VFBE1_DOP	# Not active rollup of all structures.
-	PS1_rVFBE1	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_rvertex_pipe_clocks	
-	PS2_rVFBE1	=	((PS0_rVFBE1_DOP + PS0_rVFBE1 + PS1_rVFBE1) > 0) ? 1 - (PS0_rVFBE1_DOP + PS0_rVFBE1 + PS1_rVFBE1) : 0	
+	PS0_rVFBE	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_VFBE_DOP	# Not active rollup of all structures.
+	PS1_rVFBE	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_rvertex_pipe_clocks	
+	PS2_rVFBE	=	((PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) > 0) ? 1 - (PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) : 0	
 #VFBE2				
 	PS0_rVFBE2_DOP	=	 .temp_3DPipeDisable	# same as VFBE1
 	PS0_rVFBE2	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_VFBE1_DOP	

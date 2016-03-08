@@ -1428,16 +1428,11 @@ FF:
      PS2_VF_Sequential: R * C
      PS2_VF_Control: R * C
      PS2_VF_Dropped: R * C
-   VFBE1:
-    PS0_VFBE1_DOP: R * C
-    PS0_VFBE1: R * C
-    PS1_VFBE1: R * C
-    PS2_VFBE1: R * C
-   VFBE2:
-    PS0_VFBE2_DOP: R * C
-    PS0_VFBE2: R * C
-    PS1_VFBE2: R * C
-    PS2_VFBE2: R * C
+   VFBE:
+    PS0_VFBE_DOP: R * C
+    PS0_VFBE: R * C
+    PS1_VFBE: R * C
+    PS2_VFBE: R * C
    VF_Cache:
     PS0_VF_Cache_Idle: R * C
     PS2_VF_Cache_Read: R * C

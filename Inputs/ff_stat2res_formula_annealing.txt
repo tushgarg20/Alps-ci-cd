@@ -5,11 +5,11 @@
 	num_FF_RS	=	numFF	
 	num_FF_RS_Cache	=	numFF	
 	num_FF_VF	=	numFF	
-	num_FF_VFBE1	=	numFF	
-	num_FF_VFBE2	=	numFF	
+	num_FF_VFBE	=	knob.global.NumVfVtxPipes	
+#	num_FF_VFBE2	=	numFF	
 	num_FF_VF_Cache	=	numFF	
-	num_FF_VSFE	=	numFF	
-	num_FF_VSBE	=	numFF	
+	num_FF_VSFE	=	knob.global.NumVsVtxPipes
+	num_FF_VSBE	=	knob.global.NumVsVtxPipes
 	num_FF_VS_Cache	=	numFF	
 	num_FF_HS	=	numFF	
 	num_FF_HS_Cache	=	numFF	
@@ -81,17 +81,12 @@
 	PS2_VF_Control	=	.temp_vf_active_control1x + .temp_vf_active_control2x	# Added to catch control packets
 	PS2_VF_Dropped	=	D(Geo.uVF.pwr_vf_active_dropped.2xGeoClock) / .GeoClk2x	# Added to catch verts dropped because of cut, dangling, or auto-strip.
 #VFBE1				
-	PS0_VFBE1_DOP	=	 .temp_3DPipeDisable	
+	PS0_VFBE_DOP	=	 .temp_3DPipeDisable	
 	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVtxPipes	
 	.temp_vertex_pipe_clocks	=	.temp_num_vertex_pipes * .GeoClk	
-	PS0_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	# Not active rollup of all structures.
-	PS1_VFBE1	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_vertex_pipe_clocks	
-	PS2_VFBE1	=	1 - (PS0_VFBE1_DOP + PS0_VFBE1 + PS1_VFBE1)	
-#VFBE2				
-	PS0_VFBE2_DOP	=	 .temp_3DPipeDisable	# same as VFBE1
-	PS0_VFBE2	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE1_DOP	
-	PS1_VFBE2	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_vertex_pipe_clocks	
-	PS2_VFBE2	=	1 - (PS0_VFBE1_DOP + PS0_VFBE1 + PS1_VFBE1)	
+	PS0_VFBE	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_vertex_pipe_clocks) - PS0_VFBE_DOP	# Not active rollup of all structures.
+	PS1_VFBE	=	(D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_vertex_pipe_clocks	
+	PS2_VFBE	=	1 - (PS0_VFBE_DOP + PS0_VFBE + PS1_VFBE)	
 #VF Cache				
 	PS0_VF_Cache_Idle	=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_idle\.GeoClock')) / .temp_vertex_pipe_clocks	
 	PS2_VF_Cache_Read	=	D(SUM('Geo\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_read\.GeoClock')) / .temp_vertex_pipe_clocks	
