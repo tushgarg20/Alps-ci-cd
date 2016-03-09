@@ -67,12 +67,13 @@
 	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	D(SUM('@ANY_PSD@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) / (numROSS * .CrClk)	
 #MA IN				
 	PS0_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
-	PS1_MA_IN	=	1 - PS0_MA_IN - PS2_MA_IN	
+	PS1_MA_IN	=	(PS0_MA_IN + PS2_MA_IN > 1) ? 0 : (1 - PS0_MA_IN - PS2_MA_IN)
 	PS2_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
 #MA OUT				
 	PS0_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
-	PS1_MA_OUT	=	1 - PS0_MA_OUT - PS2_MA_OUT	
-	PS2_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+	PS1_MA_OUT	=	(PS0_MA_OUT + PS2_MA_OUT > 1) ? 0 : (1 - PS0_MA_OUT - PS2_MA_OUT)	
+	#PS2_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+	PS2_MA_OUT	=	(D(SUM('@ANY_MA_OUT@SBusPhases')) + D(SUM('@ANY_MA_OUT@OBusPhases')) - D(SUM('@ANY_MA_OUT@BothOSBus'))) / (numEURows * numROSS * .CrClk)
 #TDL				
 	PS0_TDL	=	D(SUM('@ANY_TDL@pwr_TDL_Idle\.CrClock')) / (numROSS * .CrClk)	
 	.PS1_TDL =	D(SUM('@ANY_TDL@pwr_TDL_Stalled_or_Idle\.CrClock')) / (numROSS * .CrClk)

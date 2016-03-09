@@ -128,7 +128,7 @@
 	PS0_HS_DOP	=	( .temp_3DPipeDisable > 0 )? .temp_3DPipeDisable : .temp_TeGsSolDOP	
 	PS0_HS	=	(D(Geo.uHS.pwr_hs_idle.2xGeoClock) / .GeoClk2x) - PS0_HS_DOP	
 	PS1_HS	=	(D(Geo.uHS.pwr_hs_stalled_or_idle.2xGeoClock) - D(Geo.uHS.pwr_hs_idle.2xGeoClock)) / .GeoClk2x	
-	PS2_HS_Enabled	=	1 - (PS0_HS_DOP + PS0_HS + PS1_HS + PS2_HS_Disabled)	
+	PS2_HS_Enabled	=	1 - (PS0_HS_DOP + PS0_HS + PS1_HS)	#based on the assumption that TeGsSolDOP gating happens when it is disabled	
 	PS2_HS_Disabled	=	D(Geo.uHS.pwr_hs_active_disabled.2xGeoClock) / .GeoClk2x	
 #HS Cache				
 	PS0_HS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
@@ -139,13 +139,13 @@
 	PS0_TE_DOP	=	( .temp_3DPipeDisable > 0 )? .temp_3DPipeDisable : .temp_TeGsSolDOP	
 	PS0_TE	=	(D(Geo.uTE.pwr_te_idle.2xGeoClock) / .GeoClk2x) - PS0_TE_DOP	
 	PS1_TE	=	(D(Geo.uTE.pwr_te_stalled_or_idle.2xGeoClock) - D(Geo.uTE.pwr_te_idle.2xGeoClock)) / .GeoClk2x	
-	PS2_TE_Enabled	=	1 - (PS0_TE_DOP + PS0_TE + PS1_TE + PS2_TE_Disabled)	
+	PS2_TE_Enabled	=	1 - (PS0_TE_DOP + PS0_TE + PS1_TE)	#based on the assumption that TeGsSolDOP gating happens when it is disabled	
 	PS2_TE_Disabled	=	D(Geo.uTE.pwr_te_active_disabled.2xGeoClock) / .GeoClk2x	
 #TDS				
 	PS0_TDS_DOP	=	( .temp_3DPipeDisable > 0 )? .temp_3DPipeDisable : .temp_TeGsSolDOP	
 	PS0_TDS	=	(D(Geo.uDS.pwr_ds_idle.2xGeoClock) / .GeoClk2x) - PS0_TDS_DOP	
 	PS1_TDS	=	(D(Geo.uDS.pwr_ds_stalled_or_idle.2xGeoClock) - D(Geo.uDS.pwr_ds_idle.2xGeoClock)) / .GeoClk2x	
-	PS2_TDS_Enabled	=	1 - (PS0_TDS_DOP + PS0_TDS + PS1_TDS + PS2_TDS_Disabled)	
+	PS2_TDS_Enabled	=	1 - (PS0_TDS_DOP + PS0_TDS + PS1_TDS)	#based on the assumption that TeGsSolDOP gating happens when it is disabled	
 	PS2_TDS_Disabled	=	D(Geo.uDS.pwr_ds_active_disabled.2xGeoClock) / .GeoClk2x	
 #TDS Cache				
 	PS0_TDS_Cache_Idle	=	0	# 0 Cdyn for PS0 Domain Shader EBB
@@ -156,7 +156,7 @@
 	PS0_GS_DOP	=	( .temp_3DPipeDisable > 0 )? .temp_3DPipeDisable : .temp_TeGsSolDOP	
 	PS0_GS	=	(D(Geo.uGS.pwr_gs_idle.2xGeoClock) / .GeoClk2x) - PS0_GS_DOP	
 	PS1_GS	=	(D(Geo.uGS.pwr_gs_stalled_or_idle.2xGeoClock)  - D(Geo.uGS.pwr_gs_idle.2xGeoClock))/ .GeoClk2x	
-	PS2_GS_Enabled	=	1 - (PS0_GS_DOP + PS0_GS + PS1_GS + PS2_GS_Disabled)	
+	PS2_GS_Enabled	=	1 - (PS0_GS_DOP + PS0_GS + PS1_GS)	#based on the assumption that TeGsSolDOP gating happens when it is disabled	
 	PS2_GS_Disabled	=	D(Geo.uGS.pwr_gs_active_disabled.2xGeoClock) / .GeoClk2x	
 #GS Cache				
 	PS0_GS_Cache_Idle	=	0	# 0 Cdyn for PS0 Deref EBB
