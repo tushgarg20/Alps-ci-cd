@@ -31,7 +31,7 @@
 	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / (.CrClk * numSlices)	
 	PS2_SliceRC	=	(.isSKLGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
 #RC
-	PS0_RC	= (.isSKLGT3 > 0) ? (1 - PS2_SliceRC) : 0		
+	PS0_RC	= (.isSKLGT3 > 0) ? (1 - PS2_SliceRC) : 1		
 	PS2_RC	= PS2_SliceRC		
 #L3XS				
 	PS0_L3XSRC	=	(.isSKLGT3 > 0) ? (1 - PS2_L3XSRC) : 0	

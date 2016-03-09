@@ -350,25 +350,29 @@
 	EU_IPC	=	numEUs * EU_Utilization	
 				
 #DFX				
-	PS0_EU_DFX	=	PS0_TC + PS1_TC	#Approximated DFX using TC residencies
-	PS2_EU_DFX	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated DFX using TC residencies
+	PS0_EU_DFX	=	PS0_TC + PS1_TC	+ PS0_EU_DOP + PS1_EU_DOP	#Approximated DFX using TC residencies
+	PS2_EU_DFX	=	1 - PS0_EU_DFX	#Approximated DFX using TC residencies
 				
 #SMALL				
+	PS0_EU_SMALL_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Approximated SMALL using TC residencies
 	PS0_EU_SMALL	=	PS0_TC + PS1_TC	#Approximated SMALL using TC residencies
 	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated SMALL using TC residencies
 				
 #Cpunit				
-	PS0_EU_CPunit	=	PS0_TC + PS1_TC	
-	PS2_EU_CPunit	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS0_EU_CPunit	=	PS0_TC + PS1_TC + PS0_EU_DOP + PS1_EU_DOP	
+	PS2_EU_CPunit	=	1 - PS0_EU_CPunit	
 				
 #Assign				
+	PS0_EU_Assign_DOP	=	PS0_EU_DOP + PS1_EU_DOP	
 	PS0_EU_Assign	=	PS0_TC + PS1_TC	
 	PS2_EU_Assign	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 #CLKGLUE				
+	PS0_EU_CLKGLUE_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Added DOP Glue
 	PS0_EU_CLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
 	PS2_EU_CLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 				
 #NONCLKGLUE				
+	PS0_EU_NONCLKGLUE_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Added DOP Glue
 	PS0_EU_NONCLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
 	PS2_EU_NONCLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 #DOP				
@@ -378,6 +382,7 @@
 	PS2_EU_DOP	=	1-PS0_EU_DOP -PS1_EU_DOP		
 	
 #Repeater				
+	PS0_EU_Repeater_DOP	=	PS0_EU_DOP + PS1_EU_DOP	
 	PS0_EU_Repeater	=	PS0_TC + PS1_TC	
 	PS2_EU_Repeater	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
 				

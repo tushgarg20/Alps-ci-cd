@@ -221,21 +221,26 @@ EU:
     PS1_EU_DOP: R * C
     PS2_EU_DOP: R * C
   SMALL:
+    PS0_EU_SMALL_DOP : R * C
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
   CPunit:
     PS0_EU_CPunit : R * C
     PS2_EU_CPunit : R * C
   Assign:
+    PS0_EU_Assign_DOP : R * C
     PS0_EU_Assign : R * C
     PS2_EU_Assign : R * C
   Repeater:
+    PS0_EU_Repeater_DOP : R * C
     PS0_EU_Repeater : R * C
     PS2_EU_Repeater : R * C 
   CLKGLUE:
+    PS0_EU_CLKGLUE_DOP: R * C
     PS0_EU_CLKGLUE: R * C
     PS2_EU_CLKGLUE: R * C
   NONCLKGLUE:
+    PS0_EU_NONCLKGLUE_DOP: R * C
     PS0_EU_NONCLKGLUE: R * C
     PS2_EU_NONCLKGLUE: R * C
   DFX:
