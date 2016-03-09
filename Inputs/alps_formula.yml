@@ -279,6 +279,7 @@ L3_Bank:
     PS2_LSQD:
      PS2_LSQD_nonatomics: R * C
      PS2_LSQD_atomics: R * C
+     PS2_LSQD_Else: R * C
    LSQC:
     PS0_LSQC: R * C
     PS1_LSQC: R * C
