@@ -31,8 +31,8 @@
 	 @ANY_DAPRSC@	=	S\d+\.uDAPRB_\d+\.	
 	 @ANY_PB@	=	S\d+\.uPB_\d+\.	
 	 @ANY_RCC@	=	S\d+\.uColorCache_\d+\.	
-	 @ANY_READREQ@	=	pwr_CC(PbeRead|GamWrite)RequestsBank\d+
-	 @ANY_WRITEREQ@	=	pwr_CC(PbeWrite|GamRead)RequestsBank\d+
+	 @ANY_READREQ@	=	pwr_CC(Pbe|Gam)ReadRequestsBank\d+
+	 @ANY_WRITEREQ@	=	pwr_CC(Pbe|Gam)WriteRequestsBank\d+
 	 @ANY_MSC@	=	S\d+\.uMSC_\d+\.	
 	 @ANY1SRC2PPC@	=	1SS.1SRC.gte128bpp	
 	 @ANY1SRC4PPCNOSEQ@	=	(1SS.1SRC.lte32bpp|1SS.1SRC.gt32lt128bpp)	
