@@ -307,24 +307,26 @@
 	PS2_IEF_NoBypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_NoBypass\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_IEF_Bypass	=	D(SUM('@ANY_SAMPLER@pwr_ief_Bypass\.CrClock')) / (numSamplers * .CrClk)	
 	.temp_PS2_IEF	=	PS2_IEF_NoBypass + PS2_IEF_Bypass	
-				
-#CRE				
-	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))	
-	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR	
-				
-#IME				
+
+#CRE					
+	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value	
+	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented	
+	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))		
+	#PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_FRONT_ACTIVE	=	1 - ((D(SUM('@ANY_CRE@pwr_cre_front_end_idle_or_stall\.CrClock'))) / (numSamplers * .CrClk))
+	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra\.CrClock')) / (numSamplers * .CrClk)		
+	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr\.CrClock')) / (numSamplers * .CrClk)		
+	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR		
+					
+#IME
 	PS0_IME_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
 	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle\.CrClock')) / (numSamplers * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented
-	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))	
-	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
-	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
-	.temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
+	PS1_IME_FRONT	=	(D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) - D(SUM('@ANY_IME@pwr_ime_front_end_idle\.CrClock')))/ (numSamplers * .CrClk)
+  PS1_IME_BACK = (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) -  D(SUM('@ANY_IME@pwr_ime_back_end_idle\.CrClock')))/ (numSamplers * .CrClk)
+	PS2_IME_BACK_ACTIVE = 1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))	
+	PS2_IME_FRONT_ACTIVE  = 1 - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall\.CrClock')) / (numSamplers * .CrClk))
+  .temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE
 				
 #Small				
 	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state

@@ -1,10 +1,10 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	num_RC_L3XSRC	=	((2 * numSlices) - 3)	#N2NRC or L3XSRC GC scales approximately in this fashion
+	num_RC_L3XSRC	=	(numSlices > 1) ? ((2 * numSlices) - 3) : 0	#N2NRC or L3XSRC GC scales approximately in this fashion
 	num_RC_RC	=	numSlices	#RC scales with number of slices (starting from GT3)
 	num_RC_SliceRC	=	(numSlices - 1) #CmUnqRC or SliceRC GC scales approximately in this fashion	
-	num_RC_LNIECS	=	numSlices       #LNIECS scales with number of slices and an additional cost for slices >= 3	
-	num_RC_GT3BFRC	=	1	#BGF doesnot scale linearly with slices
+	num_RC_LNIECS	=	(numSlices > 1) ? numSlices : 0       #LNIECS scales with number of slices and an additional cost for slices >= 3	
+	num_RC_GT3BFRC	=	(numSlices > 1) ? 1 : 0	#BGF doesnot scale linearly with slices
 	num_RC_Fabric	=	(numSlices - 1)	
 				
 #Generic				
@@ -31,7 +31,7 @@
 	.HiZ_writes	=	D(SUM('S\d+\.uHzCache\.NumWriteBacksToMem')) / (.CrClk * numSlices)	
 	PS2_SliceRC	=	(.isSKLGT3 > 0) ? (.MSC_misses + .MSC_writes + .RCC_misses + .RCC_writes + .RCZ_misses + .RCZ_writes + .HiZ_misses + .HiZ_writes) : 0	
 #RC
-	PS0_RC	= (.isSKLGT3 > 0) ? (1 - PS2_SliceRC) : 0		
+	PS0_RC	= (.isSKLGT3 > 0) ? (1 - PS2_SliceRC) : 1		
 	PS2_RC	= PS2_SliceRC		
 #L3XS				
 	PS0_L3XSRC	=	(.isSKLGT3 > 0) ? (1 - PS2_L3XSRC) : 0	

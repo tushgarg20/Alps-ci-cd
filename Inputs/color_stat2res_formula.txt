@@ -31,6 +31,8 @@
 	 @ANY_DAPRSC@	=	S\d+\.uDAPRB_\d+\.	
 	 @ANY_PB@	=	S\d+\.uPB_\d+\.	
 	 @ANY_RCC@	=	S\d+\.uColorCache_\d+\.	
+	 @ANY_READREQ@	=	pwr_CC(Pbe|Gam)ReadRequestsBank\d+
+	 @ANY_WRITEREQ@	=	pwr_CC(Pbe|Gam)WriteRequestsBank\d+
 	 @ANY_MSC@	=	S\d+\.uMSC_\d+\.	
 	 @ANY1SRC2PPC@	=	1SS.1SRC.gte128bpp	
 	 @ANY1SRC4PPCNOSEQ@	=	(1SS.1SRC.lte32bpp|1SS.1SRC.gt32lt128bpp)	
@@ -178,8 +180,10 @@
 	PS2_RCC_ALLOC_MISSES	=	D(SUM('@ANY_RCC@AllocMisses')) / .Clk.num_COLOR_RCC	
 				
 #RCC_CACHE				
-	PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@ReadRequests')) / .Clk.num_COLOR_RCC	
-	PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@WriteRequests')) / .Clk.num_COLOR_RCC	
+	#PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@ReadRequests')) / .Clk.num_COLOR_RCC	
+	PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@@ANY_READREQ@')) / .Clk.num_COLOR_RCC	
+	#PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@WriteRequests')) / .Clk.num_COLOR_RCC	
+	PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@@ANY_WRITEREQ@')) / .Clk.num_COLOR_RCC	
 				
 #MSC				
 	PS0_MSC	=	(D(SUM('@ANY_MSC@@ANYIDLE@.CrClock')) / .Clk.num_COLOR_MSC) - .COLOR_DOP	

@@ -2,22 +2,23 @@
 #Instance Counts				
 				
 	numSlices	=	knob.global.NumSlices	
-	num_Z_HIZ	=	numSlices	
-	num_Z_IZ	=	numSlices	
-	num_Z_RCZ	=	numSlices	
-	num_Z_STC	=	numSlices	
-	num_Z_HIZ_Cache	=	numSlices	
-	num_Z_IZ_Cache	=	numSlices	
-	num_Z_RCZ_Cache	=	numSlices	
-	num_Z_STC_Cache	=	numSlices	
-	num_Z_DOP	=	numSlices	
-	num_Z_CLKGLUE	=	numSlices	
-	num_Z_NONCLKGLUE	=	numSlices	
-	num_Z_SMALL	=	numSlices	
-	num_Z_CPunit	=	numSlices	
-	num_Z_Assign	=	numSlices	
-	num_Z_Repeater	=	numSlices	
-	num_Z_DFX	=	numSlices	
+	numZPipes       =       SUM('knob\.S\d+\.NumZPipes')
+	num_Z_HIZ	=	numZPipes	
+	num_Z_IZ	=	numZPipes	
+	num_Z_RCZ	=	numZPipes	
+	num_Z_STC	=	numZPipes	
+	num_Z_HIZ_Cache	=	numZPipes	
+	num_Z_IZ_Cache	=	numZPipes	
+	num_Z_RCZ_Cache	=	numZPipes	
+	num_Z_STC_Cache	=	numZPipes	
+	num_Z_DOP	=	numZPipes	
+	num_Z_CLKGLUE	=	numZPipes	
+	num_Z_NONCLKGLUE	=	numZPipes	
+	num_Z_SMALL	=	numZPipes	
+	num_Z_CPunit	=	numZPipes	
+	num_Z_Assign	=	numZPipes	
+	num_Z_Repeater	=	numZPipes	
+	num_Z_DFX	=	numZPipes	
 				
 				
 				

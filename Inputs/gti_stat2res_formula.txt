@@ -8,6 +8,7 @@
 	 @GTI_WRBW_PCLK@	=	1	
 	 @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
 	 @GTI_MSQC_SLOT_MEAN@	=	(gti_superq_occupancy_histo|gti_fifo_read_occupancy_histo|gti_fifo_write_occupancy_histo).Mean	
+	 @GTI_MSQC_SLOT_OCCU@	=	gti_superq_occupancy
 	GTISuperQSize	=	knob.indigo.gti_superq_size	
 	 @GTI_ZERO_BW@	=	(gti_superq_not_empty_0_bw_cycles|gti_superq_not_empty_0_rw_0_bw_cycles)	
 				
@@ -61,7 +62,8 @@
 	PS1_MSQC	=	(.temp_gti_superq_full)?(.temp_gti_superq_full/(.Clk.GTI * num_GTI_GTI)):0	
 	PS2_MSQC	=	1 - PS0_MSQC - PS1_MSQC	
 	.temp_MSQCNotEmptyNotFullCount	=	PS2_MSQC * .Clk.GTI 	
-	.temp_MSQCSlotCount	=	(D(SUM('@ANY_GTI@@GTI_MSQC_SLOT_MEAN@')) * .Clk.GTI) / (num_GTI_GTI)	
+	#.temp_MSQCSlotCount	=	(D(SUM('@ANY_GTI@@GTI_MSQC_SLOT_MEAN@')) * .Clk.GTI) / (num_GTI_GTI)	
+	.temp_MSQCSlotCount	=	D(SUM('@ANY_GTI@@GTI_MSQC_SLOT_OCCU@')) / num_GTI_GTI	
 	.temp_MSQCAllFullSlotCount	=	PS1_MSQC * GTISuperQSize * .Clk.GTI	
 	.temp_MSQCAllNotFullSlotCount	=	.temp_MSQCSlotCount - .temp_MSQCAllFullSlotCount	
 	.temp_MSQCPerClkFullSlotCount	=	(.temp_MSQCNotEmptyNotFullCount > 0) ? (.temp_MSQCAllNotFullSlotCount / .temp_MSQCNotEmptyNotFullCount) : 0	

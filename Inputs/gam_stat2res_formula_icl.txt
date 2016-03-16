@@ -50,12 +50,18 @@
 			
 			
 #GAMD
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS0_GAMD	=	D(SUM(uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS1_GAMD	=	D(SUM(uGAM.pwr_GAMD_Stalled_or_Idle.{$1} -  uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ	=	D(SUM(uGAM.GtiRead))/(D({$1}.Clocks)*numGAM)
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE	=	D(SUM(uGAM.PS2_GAMD_WRITE))/(D({$1}.Clocks)*numGAM)	
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ_MEDIAMMCD	=	D(SUM(uGAM.PS2_GAMD_READ_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
-  'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE_MEDIAMMCD =	D(SUM(uGAM.PS2_GAMD_WRITE_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS0_GAMD	=	D(SUM(uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' : 	PS1_GAMD	=	D(SUM(uGAM.pwr_GAMD_Stalled_or_Idle.{$1} -  uGAM.pwr_GAMD_Idle.{$1}))/(D({$1}.Clocks)*numGAM)
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ	=	D(SUM(uGAM.GtiRead))/(D({$1}.Clocks)*numGAM)
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE	=	D(SUM(uGAM.PS2_GAMD_WRITE))/(D({$1}.Clocks)*numGAM)	
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_READ_MEDIAMMCD	=	D(SUM(uGAM.PS2_GAMD_READ_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
+  #'uGAM\.pwr_GAMD_Idle\.(\w*Clock)' :	PS2_GAMD_WRITE_MEDIAMMCD =	D(SUM(uGAM.PS2_GAMD_WRITE_MEDIAMMCD))/(D({$1}.Clocks)*numGAM)
+  PS0_GAMD	=	D(SUM(uGAM.PS0_GAMD))/(@UNSLICECLOCKS@*numGAM)
+  PS1_GAMD	=	D(SUM(uGAM.PS1_GAMD))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMD_READ	=	D(SUM(uGAM.PS2_GAMD_READ))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMD_WRITE	=	D(SUM(uGAM.PS2_GAMD_WRITE))/(@UNSLICECLOCKS@*numGAM)	
+  PS2_GAMD_READ_MEDIAMMCD	=	D(SUM(uGAM.PS2_GAMD_READ_MEDIAMMCD))/(@UNSLICECLOCKS@*numGAM)
+  PS2_GAMD_WRITE_MEDIAMMCD =	D(SUM(uGAM.PS2_GAMD_WRITE_MEDIAMMCD))/(@UNSLICECLOCKS@*numGAM)
 
 #GAMD_EBB			
   PS2_GAMD_WB_HW_GAMDEBB_Write  = PS2_GAMD_WRITE + PS2_GAMD_WRITE_MEDIAMMCD
