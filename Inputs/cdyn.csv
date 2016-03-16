@@ -1018,6 +1018,8 @@ PS1_HS,Gen10LP,A0,6.632125917,syn,433034.234,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0
 PS1_IC,Gen10LP,A0,3.769337751,syn,286827.82,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_IEF,Gen10LP,A0,2.099377988,syn,218126,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_IME,Gen10LP,A0,12.93025988,syn,1176694.44,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS1_IME_BACK,Gen10LP,A0,3.879,syn,1176694.44, 30% of PS1_IME cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS1_IME_FRONT,Gen10LP,A0,9.051,syn,1176694.44,70% of PS1_IME cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_IZ,Gen10LP,A0,10.40146367,syn,1021954.05,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_LNE,Gen10LP,A0,35.14072473,syn,890288.66,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_LNEXS,Gen10LP,A0,0,syn,0,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -3066,6 +3068,8 @@ PS1_HS,Gen9LPClient,A0,7.36,syn,387550.06,
 PS1_IC,Gen9LPClient,A0,4.68,syn,285768.33,
 PS1_IEF,Gen9LPClient,A0,2.65,syn,216441.4,
 PS1_IME,Gen9LPClient,C0,13.288,syn,1140892,Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_IME_BACK,Gen9LPClient,C0,9.3016,syn,1140892,70% of PS1_IME Taken from SKL C0 ECO1 GT3 CGDIS data
+PS1_IME_FRONT,Gen9LPClient,C0,3.9864,syn,1140892,30% of PS1_IME Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_IZ,Gen9LPClient,C0,12.759,syn,1028881,Taken from SKL C0 ECO1 GT3 CGDIS data
 PS1_L3_Bank_CLKGLUE,Gen9LPClient,C0,11.933,syn,1,Taken from SKL C0 ECO1 GT3 CGEN data
 PS1_L3_Bank_DFX,Gen9LPClient,C0,0.985,syn,95261,Taken from SKL C0 ECO1 GT3 CGEN data

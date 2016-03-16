@@ -642,7 +642,8 @@ Sampler:
    IME:
     PS0_IME_DOP: R * C        
     PS0_IME: R * C        
-    PS1_IME: R * C        
+    PS1_IME_BACK: R * C
+    PS1_IME_FRONT: R * C        
     PS2_IME:      
      PS2_IME_BACK_ACTIVE: R * C
      PS2_IME_FRONT_ACTIVE: R * C
