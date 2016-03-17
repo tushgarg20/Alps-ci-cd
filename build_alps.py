@@ -47,7 +47,7 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11halo'],
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11LP','Gen11halo'],
                         'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11']
                        };
 
@@ -105,6 +105,8 @@ else:
 
 if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
+elif common_cfg.find('icllp') > -1 :
+    cfg_gc = "Gen11LP"
 else:
     cfg_gc = cfg
 
@@ -237,7 +239,7 @@ def get_eff_cdyn(cluster,unit,stat):
 
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     try:
-        unit_scalar = float (cdyn_cagr_hash['unit'][unit][base_cfg])
+        unit_scalar = float (cdyn_cagr_hash['unit'][unit][base_cfg][cfg])
     except:
         unit_scalar = 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
@@ -250,7 +252,7 @@ def get_eff_cdyn(cluster,unit,stat):
     else:
         instances = I[instance_string]
     if(cdyn_type == 'syn'):
-        if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg not in new_gc[cluster][unit])):
+        if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg_gc not in new_gc[cluster][unit])):
             print ("Gate count is not available for", cluster, ",", unit, file=lf)
             newproduct_gc = 0
         else:
@@ -602,7 +604,9 @@ for line in unit_cdyn_cagr_file:
     data = get_data(line,",")
     if(data[0] not in cdyn_cagr_hash['unit']):
         cdyn_cagr_hash['unit'][data[0]] = {}
-    cdyn_cagr_hash['unit'][data[0]][data[1]] = data[2]
+    if(data[1] not in cdyn_cagr_hash['unit'][data[0]]):
+        cdyn_cagr_hash['unit'][data[0]][data[1]] = {}
+    cdyn_cagr_hash['unit'][data[0]][data[1]][data[2]] = float(data[3])
 
 unit_cdyn_cagr_file.close()
 
