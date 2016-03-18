@@ -78,10 +78,18 @@
 
 #MBGF				
 				
-	PS0_MBGF	=	.temp_PS0_GTI	
-	PS1_MBGF	=	.temp_PS1_GTI	
-	PS2_MBGF_READ	=	.temp_gti_rd_per * .temp_PS2_GTI	
-	PS2_MBGF_WRITE	=	.temp_gti_wr_per * .temp_PS2_GTI
+	PS0_MBGFGT	=	.temp_PS0_GTI	
+	PS1_MBGFGT	=	.temp_PS1_GTI	
+	PS2_MBGFGT_READ	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	PS2_MBGFGT_WRITE	=	.temp_gti_wr_per * .temp_PS2_GTI
+
+#MBGF				
+				
+	PS0_MBGFUC	=	.temp_PS0_GTI	
+	PS1_MBGFUC	=	.temp_PS1_GTI	
+	PS2_MBGFUC_READ	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	PS2_MBGFUC_WRITE	=	.temp_gti_wr_per * .temp_PS2_GTI
+
 
 #MFC
     PS0_MFC = 1
@@ -115,11 +123,15 @@
 	PS2_MSQC_SlotFull	=(.temp_gti_superq_active>0)?(.temp_gti_superq_activeslots/(GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)):0			
 #MSQD				
 				
-	PS0_MSQD	=	.temp_PS0_GTI	
-	PS1_MSQD	=	.temp_PS1_GTI	
-	PS2_MSQD_U2C	=	.temp_gti_rd_per * .temp_PS2_GTI	
-	PS2_MSQD_C2U	=	.temp_gti_wr_per * .temp_PS2_GTI	
+	PS0_MSQD	=	.temp_PS0_GTI
+	PS1_MSQD	=	1 - PS0_MSQD - PS2_MSQD_U2C - PS2_MSQD_C2U - PS2_MSQD_ReadWrite - PS2_MSQD_ExcessBW - PS2_MSQD_Bypass - PS2_MSQD_ATOMICS	
+  PS2_MSQD_U2C	=	D(SUM('@ANY_GTI@SQDBRead')) / (.Unsliceclk.GTI)
+	PS2_MSQD_C2U	=	D(SUM('@ANY_GTI@SQDBReadWrite')) / (.Unsliceclk.GTI)
+  PS2_MSQD_ReadWrite  = D(SUM('@ANY_GTI@SQDBReadWrite')) / (.Unsliceclk.GTI)
+  PS2_MSQD_ExcessBW =  D(SUM('@ANY_GTI@SQDBExcessBW')) / (.Unsliceclk.GTI)
+  PS2_MSQD_Bypass = D(SUM('@ANY_GTI@TotalBypassable')) / (.Unsliceclk.GTI)
 	PS2_MSQD_ATOMICS	=	0
+
 				
 #MIDI				
 	.temp_PS0_MIDI  = 1 - PS1_MIDI - .max_ps2_misd

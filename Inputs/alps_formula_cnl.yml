@@ -371,12 +371,18 @@ PS2_LNI_BW: R
 PS2_LNE_BW: R
 
 GTI:
-   MBGF:
-    PS0_MBGF: R * C
-    PS1_MBGF: R * C
-    PS2_MBGF:
-     PS2_MBGF_READ: R * C
-     PS2_MBGF_WRITE: R * C
+   MBGFGT:
+    PS0_MBGFGT: R * C
+    PS1_MBGFGT: R * C
+    PS2_MBGFGTC:
+     PS2_MBGFGT_READ: R * C
+     PS2_MBGFGT_WRITE: R * C
+   MBGFUC:
+    PS0_MBGFUC: R * C
+    PS1_MBGFUC: R * C
+    PS2_MBGFUC:
+     PS2_MBGFUC_READ: R * C
+     PS2_MBGFUC_WRITE: R * C
    MSQC:
     PS0_MSQC: R * C
     PS1_MSQC: R * C
