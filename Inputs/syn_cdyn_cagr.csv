@@ -296,7 +296,7 @@ L3_Bank,Gen9LPSoC,Gen8SoC,NA
 L3_Bank,Gen9LPSoC,Gen9LPClient,NA
 L3_Bank,Gen9LPSoC,Gen9LPSoC,1.03
 L3_Bank,Gen9LPSoC,Gen10LPSoC,0.9
-L3_Bank,Gen11,Gen11,0.93
+L3_Bank,Gen11,Gen11,1
 L3_Bank,Gen11,Gen10LP,NA
 L3_Bank,Gen11,Gen8,NA
 L3_Bank,Gen11,Gen8SoC,NA
@@ -610,7 +610,7 @@ L3Node,Gen9LPSoC,Gen8SoC,NA
 L3Node,Gen9LPSoC,Gen9LPClient,NA
 L3Node,Gen9LPSoC,Gen9LPSoC,1.03
 L3Node,Gen9LPSoC,Gen10LPSoC,0.9
-L3Node,Gen11,Gen11,0.93
+L3Node,Gen11,Gen11,1
 L3Node,Gen11,Gen10LP,NA
 L3Node,Gen11,Gen8,NA
 L3Node,Gen11,Gen8SoC,NA
