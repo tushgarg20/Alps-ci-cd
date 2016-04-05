@@ -221,21 +221,26 @@ EU:
     PS1_EU_DOP: R * C
     PS2_EU_DOP: R * C
   SMALL:
+    PS0_EU_SMALL_DOP : R * C
     PS0_EU_SMALL : R * C
     PS2_EU_SMALL : R * C
   CPunit:
     PS0_EU_CPunit : R * C
     PS2_EU_CPunit : R * C
   Assign:
+    PS0_EU_Assign_DOP : R * C
     PS0_EU_Assign : R * C
     PS2_EU_Assign : R * C
   Repeater:
+    PS0_EU_Repeater_DOP : R * C
     PS0_EU_Repeater : R * C
     PS2_EU_Repeater : R * C
   CLKGLUE:
+    PS0_EU_CLKGLUE_DOP: R * C
     PS0_EU_CLKGLUE: R * C
     PS2_EU_CLKGLUE: R * C
   NONCLKGLUE:
+    PS0_EU_NONCLKGLUE_DOP: R * C
     PS0_EU_NONCLKGLUE: R * C
     PS2_EU_NONCLKGLUE: R * C
   DFX:
@@ -375,13 +380,21 @@ L3Node:
 PS2_LNI_BW: R
 PS2_LNE_BW: R
 
-GTI:
-   MBGF:
-    PS0_MBGF: R * C
-    PS1_MBGF: R * C
-    PS2_MBGF:
-     PS2_MBGF_READ: R * C
-     PS2_MBGF_WRITE: R * C
+SQIDI:
+   MIDI:
+    PS0_MIDI: R * C
+    PS1_MIDI: R * C
+    PS2_MIDI:
+     PS2_MIDI_U2C: R * C
+     PS2_MIDI_C2U: R * C
+   MISD:
+    PS0_MISD: R * C
+    PS1_MISD: R * C
+    PS2_MISD:
+     PS2_MISD_U2C_AES: R * C
+     PS2_MISD_U2C: R * C
+     PS2_MISD_C2U_AES: R * C
+     PS2_MISD_C2U: R * C
    MSQC:
     PS0_MSQC: R * C
     PS1_MSQC: R * C
@@ -393,6 +406,101 @@ GTI:
     PS2_MSQD:
      PS2_MSQD_U2C: R * C
      PS2_MSQD_C2U: R * C
+     PS2_MSQD_ATOMICS: R * C
+   MSNP:
+    PS0_MSNP: R * C
+    PS1_MSNP: R * C
+    PS2_MSNP:
+     PS2_MSNP_C2U: R * C
+     PS2_MSNP_U2C: R * C
+   MFC:
+    PS0_MFC: R * C
+    PS1_MFC: R * C
+    PS2_MFC: R * C
+   SMALL:
+    PS0_SQIDI_SMALL: R * C
+    PS2_SQIDI_SMALL: R * C
+   CPunit:
+    PS0_SQIDI_CPunit: R * C
+    PS2_SQIDI_CPunit: R * C
+   Assign:
+    PS0_SQIDI_Assign: R * C
+    PS2_SQIDI_Assign: R * C
+   Repeater:
+    PS0_SQIDI_Repeater: R * C
+    PS2_SQIDI_Repeater: R * C
+   CLKGLUE:
+    PS0_SQIDI_CLKGLUE: R * C
+    PS2_SQIDI_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_SQIDI_NONCLKGLUE: R * C
+    PS2_SQIDI_NONCLKGLUE: R * C
+   DOP:
+    PS0_SQIDI_DOP: R * C
+    PS2_SQIDI_DOP: R * C
+   DFX:
+    PS0_SQIDI_DFX: R * C
+    PS2_SQIDI_DFX: R * C
+
+UNCORE:
+   MDRB:
+    PS0_MDRB: R * C
+    PS1_MDRB: R * C
+    PS2_MDRB:
+     PS2_MDRB_C2U: R * C
+     PS2_MDRB_U2C: R * C
+   SMALL:
+    PS0_UNCORE_SMALL: R * C
+    PS2_UNCORE_SMALL: R * C
+   CPunit:
+    PS0_UNCORE_CPunit: R * C
+    PS2_UNCORE_CPunit: R * C
+   Assign:
+    PS0_UNCORE_Assign: R * C
+    PS2_UNCORE_Assign: R * C
+   Repeater:
+    PS0_UNCORE_Repeater: R * C
+    PS2_UNCORE_Repeater: R * C
+   CLKGLUE:
+    PS0_UNCORE_CLKGLUE: R * C
+    PS2_UNCORE_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_UNCORE_NONCLKGLUE: R * C
+    PS2_UNCORE_NONCLKGLUE: R * C
+   DOP:
+    PS0_UNCORE_DOP: R * C
+    PS2_UNCORE_DOP: R * C
+   DFX:
+    PS0_UNCORE_DFX: R * C
+    PS2_UNCORE_DFX: R * C
+
+GTI:
+   MBGFGT:
+    PS0_MBGFGT: R * C
+    PS1_MBGFGT: R * C
+    PS2_MBGFGTC:
+     PS2_MBGFGT_READ: R * C
+     PS2_MBGFGT_WRITE: R * C
+   MBGFUC:
+    PS0_MBGFUC: R * C
+    PS1_MBGFUC: R * C
+    PS2_MBGFUC:
+     PS2_MBGFUC_READ: R * C
+     PS2_MBGFUC_WRITE: R * C
+   MSQC:
+    PS0_MSQC: R * C
+    PS1_MSQC: R * C
+    PS2_MSQC: R[PS2_MSQC_SlotFull] * R * C
+    PS2_MSQC_ATOMICS: R * C
+   MSQD:
+    PS0_MSQD: R * C
+    PS1_MSQD: R * C
+    PS2_MSQD:
+     PS2_MSQD_U2C: R * C
+     PS2_MSQD_C2U: R * C
+     PS2_MSQD_ReadWrite: R * C
+     PS2_MSQD_ExcessBW: R * C
+     PS2_MSQD_Bypass: R * C
      PS2_MSQD_ATOMICS: R * C
    MIDI:
     PS0_MIDI: R * C
@@ -649,7 +757,8 @@ Sampler:
    IME:
     PS0_IME_DOP: R * C        
     PS0_IME: R * C        
-    PS1_IME: R * C        
+    PS1_IME_BACK: R * C
+    PS1_IME_FRONT: R * C
     PS2_IME:      
      PS2_IME_BACK_ACTIVE: R * C
      PS2_IME_FRONT_ACTIVE: R * C
@@ -1337,43 +1446,79 @@ ROSC:
     PS0_ROSC_DFX: R * C 
     PS2_ROSC_DFX: R * C 
 GAM:
-   GAMTLB:
-    PS0_GAMTLB: R * C
-    PS1_GAMTLB: R * C
-    PS2_GAMTLB:
-     PS2_GAMTLB_Hit: R * C
-     PS2_GAMTLB_Miss: R * C
-     PS2_GAMTLB_HitNotPresent: R * C
-     PS2_GAMTLB_Bypass: R * C
-   GAMTLB_EBB:
-    PS2_GAMTLB_EBB_WRITE: R * C
-    PS2_GAMTLB_EBB_READ: R * C
+   GAMTG:
+    PS0_GAMTG: R * C
+    PS1_GAMTG: R * C
+    PS2_GAMTG:
+     PS2_GAMTG_Hit: R * C
+     PS2_GAMTG_Miss: R * C
+     PS2_GAMTG_HitNotPresent: R * C
+     PS2_GAMTG_Bypass: R * C
+   GAMTG_L3TLBEBB:
+    PS0_GAMTG_L3TLBEBB: R * C
+    PS2_GAMTG_L3TLBEBB_READ: R * C
+    PS2_GAMTG_L3TLBEBB_WRITE: R * C
+   GAMTG_CVSTLBEBB:
+    PS0_GAMTG_CVSTLBEBB: R * C
+    PS2_GAMTG_CVSTLBEBB_READ: R * C
+    PS2_GAMTG_CVSTLBEBB_WRITE: R * C 
+   GAMTO:
+    PS0_GAMTO: R * C
+    PS1_GAMTO: R * C
+    PS2_GAMTO:
+     PS2_GAMTO_Hit: R * C
+     PS2_GAMTO_Miss: R * C
+     PS2_GAMTO_HitNotPresent: R * C
+     PS2_GAMTO_Bypass: R * C
+   GAMTO_MFXEBB:
+    PS0_GAMTO_MFXEBB: R * C
+    PS2_GAMTO_MFXEBB_READ: R * C
+    PS2_GAMTO_MFXEBB_WRITE: R * C
+   GAMTO_VEBXTLBEBB:
+    PS0_GAMTO_VEBXTLBEBB: R * C
+    PS2_GAMTO_VEBXTLBEBB_READ: R * C
+    PS2_GAMTO_VEBXTLBEBB_WRITE: R * C
+   GAMTO_BWGTLBEBB:
+    PS0_GAMTO_BWGTLBEBB: R * C
+    PS2_GAMTO_BWGTLBEBB_READ: R * C
+    PS2_GAMTO_BWGTLBEBB_WRITE: R * C
    GAMD:
     PS0_GAMD: R * C
     PS1_GAMD: R * C
     PS2_GAMD:
      PS2_GAMD_READ: R * C
-     PS2_GAMD_WRITE_Media: R * C
      PS2_GAMD_WRITE: R * C
-   GAMD_Cache: 
-    PS2_GAMD_Cache: 
-     PS2_GAMD_Cache_READ: R * C
-     PS2_GAMD_Cache_WRITE: R * C
-   GAMW:
-    PS0_GAMW: R * C
-    PS1_GAMW: R * C
-    PS2_GAMW:
-     PS2_GAMW_Hit: R * C
-     PS2_GAMW_Hit_on_Miss: R * C
-     PS2_GAMW_One_Walk: R * C
-     PS2_GAMW_Two_Walk: R * C
-     PS2_GAMW_Three_Walk: R * C
-   GAMW_EBB:
-    PS2_GAMW_EBB:
-     PS2_GAMW_READ: R * C
-     PS2_GAMW_WRITE: R * C
-     PS2_GAMW_TLB_PEND_READ: R * C
-     PS2_GAMW_TLB_PEND_WRITE: R * C
+     PS2_GAMD_READ_MEDIAMMCD: R * C
+     PS2_GAMD_READ_MEDIAMMCD: R * C
+   GAMD_WB_HW_GAMDEBB:
+    PS2_GAMD_WB_HW_GAMDEBB_Write: R * C
+   GAMD_WCPEBB:
+    PS2_GAMD_WCPEBB_Write: R * C
+   GAMD_RCPEBB:
+    PS2_GAMD_RCPEBB_Read: R * C
+   GAMWC:
+    PS0_GAMWC: R * C
+    PS1_GAMWC: R * C
+    PS2_GAMWC:
+     PS2_GAMWC_Read_Hit: R * C
+     PS2_GAMWC_Write_Hit: R * C
+     PS2_GAMWC_TLB_PEND_WRITE: R * C
+   GAMWC_PENDQEBB:
+    PS0_GAMWC_PENDQEBB: R * C
+    PS2_GAMWC_PENDQEBB_READ: R * C
+    PS2_GAMWC_PENDQEBB_WRITE: R * C
+   GAMWD:
+    PS0_GAMWD: R * C
+    PS1_GAMWD: R * C
+    PS2_GAMWD_MISS: R * C
+   GAMWD_WRKPDEBB:
+    PS0_GAMWD_WRKPDEBB: R * C
+    PS2_GAMWD_WRKPDEBB_READ: R * C
+    PS2_GAMWD_WRKPDPEBB_WRITE: R * C
+   MARB:
+    PS0_MARB: R * C
+    PS1_MARB: R * C
+    PS2_MARB: R * C 
    GAFM:
     PS0_GAFM: R * C
     PS1_GAFM: R * C
@@ -1384,10 +1529,8 @@ GAM:
     PS2_GAFS:
      PS2_GAFS_ONLYRD: R * C
      PS2_GAFS_ONLYWR: R * C
-   GAPL3:
-    PS0_GAPL3: R * C
-    PS1_GAPL3: R * C
-    PS2_GAPL3: R * C
+     PS2_GAFS_MEM_RETURN: R * C
+     PS2_GAFS_RDWR: R * C
    GAPZ:
     PS0_GAPZ: R * C
     PS1_GAPZ: R * C
@@ -1400,6 +1543,10 @@ GAM:
     PS0_GAPC: R * C
     PS1_GAPC: R * C
     PS2_GAPC: R * C
+   GASS:
+    PS0_GASS: R * C
+    PS1_GASS: R * C
+    PS2_GASS: R * C
    GACB:
     PS0_GACB: R * C
     PS1_GACB: R * C
@@ -1459,16 +1606,11 @@ FF:
      PS2_VF_Sequential: R * C
      PS2_VF_Control: R * C
      PS2_VF_Dropped: R * C
-   VFBE1:
-    PS0_VFBE1_DOP: R * C
-    PS0_VFBE1: R * C
-    PS1_VFBE1: R * C
-    PS2_VFBE1: R * C
-   VFBE2:
-    PS0_VFBE2_DOP: R * C
-    PS0_VFBE2: R * C
-    PS1_VFBE2: R * C
-    PS2_VFBE2: R * C
+   VFBE:
+    PS0_VFBE_DOP: R * C
+    PS0_VFBE: R * C
+    PS1_VFBE: R * C
+    PS2_VFBE: R * C
    VF_Cache:
     PS0_VF_Cache_Idle: R * C
     PS2_VF_Cache_Read: R * C
@@ -1760,13 +1902,6 @@ Fabric:
     PS0_BGF_UNSL_CMD_DN: R * C *5
     PS1_BGF_UNSL_CMD_DN: R * C *5
     PS2_BGF_UNSL_CMD_DN: R * C *R[numBuses] 
-   HorizontalFabric:
-    PS0_XStack_DATA: R * C *R[numhorBuses]
-    PS1_XStack_DATA: R * C *R[numhorBuses]
-    PS2_XStack_DATA: R * C *R[numhorBuses]
-    PS0_XStack_CMD: R * C *R[numhorBuses]
-    PS1_XStack_CMD: R * C *R[numhorBuses]
-    PS2_XStack_CMD: R * C *R[numhorBuses]
    SMALL:
     PS0_Fabric_SMALL: R * C *5 
     PS2_Fabric_SMALL: R * C *R[numBuses]
@@ -1807,16 +1942,11 @@ rFF:
      PS2_rVF_Sequential: R * C
      PS2_rVF_Control: R * C
      PS2_rVF_Dropped: R * C
-   rVFBE1:
-    PS0_rVFBE1_DOP: R * C
-    PS0_rVFBE1: R * C
-    PS1_rVFBE1: R * C
-    PS2_rVFBE1: R * C
-   rVFBE2:
-    PS0_rVFBE2_DOP: R * C
-    PS0_rVFBE2: R * C
-    PS1_rVFBE2: R * C
-    PS2_rVFBE2: R * C
+   rVFBE:
+    PS0_rVFBE_DOP: R * C
+    PS0_rVFBE: R * C
+    PS1_rVFBE: R * C
+    PS2_rVFBE: R * C
    rVF_Cache:
     PS0_rVF_Cache_Idle: R * C
     PS2_rVF_Cache_Read: R * C
