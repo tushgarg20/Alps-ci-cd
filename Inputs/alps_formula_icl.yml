@@ -1837,6 +1837,18 @@ Fabric:
     PS0_LSN_LNE_DATA: R * C * 5
     PS1_LSN_LNE_DATA: R * C * 5
     PS2_LSN_LNE_DATA: R * C * R[numBuses]
+    PS0_LSN: R * C * R[numBuses]
+    PS1_LSN: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_READ: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_WRITE: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_READ: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_WRITE: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_READ: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_WRITE: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_Else: R * C * R[numBuses]
    UnsliceLSN:
     PS0_LSNtoUnslice_UP_DATA: R * C * 5
     PS1_LSNtoUnslice_UP_DATA: R * C * 5
