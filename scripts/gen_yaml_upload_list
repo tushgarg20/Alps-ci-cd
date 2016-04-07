@@ -1,0 +1,38 @@
+foreach i ( alps*.yaml )
+
+    set i1 = $i:t:r
+    # t-rex
+    set i21 = `echo $i1  | sed -e 's/ogles2p0_glbench2p7_/ogles2p0_glbench2p7-/' -e 's/_24c16z_/-24c16z_/'`
+
+    set i2  = `echo $i21 | sed -e 's/_ab-t-rex__and-hswu/-ab-t-rex_19x10_and-hswu/'`
+
+    # firestrike
+    set i3 = `echo $i2 | sed -e 's/_firestrike_/-firestrike-/;/fire/s/dx11-/dx11_/'`
+
+    # 3dmk11 perf
+    set i4 = `echo $i3 | perl -pne 's/dx11_3dmk11_perf_(gt[1234])/dx11_3dmk11-$1_perf/;'`
+
+    # 3dmkva perf
+    set i5 = `echo $i4 | perl -pne 's/3dmkva_perf_(gt[12])/3dmkva-$1_perf/'`
+
+    # ie-fish
+    set i6 = `echo $i5 | sed -e 's/__250fish-/-250fish_/'`
+
+    # manhattan
+    set i7 = `echo $i6 | sed -e 's/_manhattan__and-hswu/-manhattan_19x10_and-hswu/'`
+
+    # ice-storm
+    set i8 = `echo $i7 | sed -e 's/_ice-storm_/-ice-storm-/'`
+
+    # GPGPU
+    set i9 = `echo $i8 | perl -pne 's/_(\d+(-bdw)?)_(rkrn-\d+-\d+)_/_$3_$1_f1_/'`
+
+    # GPGPU #2
+    set t  = `echo $i9 | sed -e 's/__/_/' | sed -e 's/.*_GPGPU_apps_/alps_/; s/_throughput_/-throughput-/; s/_video_/-video-/' `
+
+    set o1 = `echo "$t" | awk -F_ '{printf("%s,%s,%s,%s,%s,%s\n", $2,$3,$4,$6,$5,$7);}'`
+
+    set o  = `echo $o1 | sed -e 's/glbench2p7-t-rex/glbench2p7_t-rex/'`
+
+    echo $o,$i | perl -pne 's/,f(\d+),/,$1,/'
+ end
