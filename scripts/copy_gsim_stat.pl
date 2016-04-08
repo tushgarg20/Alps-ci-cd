@@ -41,9 +41,9 @@ while (<$fh>) {
         printf ("making directory $odir/$dir\n");
         system ("mkdir $odir/$dir");
     }
-    my $src  = $data[$header{"test_dir"}];
+    my $src = $data[$header{"test_dir"}];
     my $src_file = "$idir/tests/$src/psim.stat";
-    my $dst = $data[$header{"test_args"}];
+    my $dst = (split ' ', $data[$header{"test_args"}])[0];
     $dst =~ s/\//_/g;
     my $dst_file = "$odir/$dir/$dst.stat";
     if (-f $src_file) {
@@ -55,10 +55,12 @@ while (<$fh>) {
     if ($stat eq "passed" || $stat eq "ran") {
         my $cmd = sprintf("cp %s %s", $src_file, $dst_file);
         print ($cmd, "\n");
-        system ($cmd);        
+        # system ($cmd);        
         if ($dst_file =~ /.gz/) {
         } else {
-            printf ("gzip %s\n", $dst_file);
+            $cmd = sprintf ("gzip %s\n", $dst_file);
+            # system ($cmd);
+            print  ($cmd);
         }
     } else {
     }
