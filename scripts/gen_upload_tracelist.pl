@@ -93,7 +93,7 @@ foreach my $file (sort keys %yaml_list) {
         printf ("%-10s | %-45s | %-35s | %-25s | %-20s | %s\n",
                 $api, $title, $setting, $capture, $num, $driver);
     } else {
-        printf $ofh ("%s,%s,%s,%s,%s,%s,%s\n",$api,$title,$setting,$num,$capture,$driver,$file);
+        printf $ofh ("%s,%s,%s,%s,%s,%s,%s\n",$api,$title,$setting,$num,$capture,$driver,"alps_".$file);
     }
 }
 close $ofh;

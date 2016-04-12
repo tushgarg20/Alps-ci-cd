@@ -9,7 +9,7 @@ print "\n\n";
 
 &GetOptions("from_dir=s",
             "to_dir=s",
-            "debug");
+            "d");
 
 my $idir = $::opt_from_dir;
 my $odir = $::opt_to_dir;
@@ -55,12 +55,18 @@ while (<$fh>) {
     if ($stat eq "passed" || $stat eq "ran") {
         my $cmd = sprintf("cp %s %s", $src_file, $dst_file);
         print ($cmd, "\n");
-        # system ($cmd);        
+        if ($::opt_d) {
+        } else {
+            system ($cmd);
+        }
         if ($dst_file =~ /.gz/) {
         } else {
             $cmd = sprintf ("gzip %s\n", $dst_file);
-            # system ($cmd);
             print  ($cmd);
+            if ($::opt_d) {
+            } else {
+                system ($cmd);
+            }
         }
     } else {
     }
