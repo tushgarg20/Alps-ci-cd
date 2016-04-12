@@ -700,37 +700,37 @@ for cluster in output_cdyn_data['GT']:
         cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'])
         cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] = float('%.3f'%cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'])
 
-phy_cdyn_numbers = {'physical_cdyn_numbers(pF)':{}}
-phy_cdyn_numbers['physical_cdyn_numbers(pF)'] = {}
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"] = {}
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] = 0
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] = 0
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] = 0
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"] = {}
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn'] = 0
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb'] = 0
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf'] = 0
+phy_cdyn_numbers = {'physical_cdyn_numbers(nF)':{}}
+phy_cdyn_numbers['physical_cdyn_numbers(nF)'] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['syn'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['ebb'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['inf'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"] = {}
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['syn'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['ebb'] = 0
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['inf'] = 0
 for cluster in cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']:
     cluster_lc = cluster.lower()
     if ( cluster_lc.find("ff") != -1 or cluster_lc.find("gti") != -1 or cluster_lc.find("other") != -1 or cluster_lc.find("gam") != -1):
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['syn'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['ebb'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['inf'] += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
     else:
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
-        phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['syn']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['syn']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['ebb']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb']
+        phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['inf']   += cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf']
 
 gt_cdyn['Total_GT_Cdyn_syn(nF)']   = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_syn(nF)']/1000))
 gt_cdyn['Total_GT_Cdyn_ebb(nF)']   = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_ebb(nF)']/1000))
 gt_cdyn['Total_GT_Cdyn_infra(nF)'] = float('%.3f'%(gt_cdyn['Total_GT_Cdyn_infra(nF)']/1000))
 
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['syn']/1000))
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['ebb']/1000))
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["slice"]['inf']/1000))
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['syn']/1000))
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['ebb']/1000))
-phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(pF)']["unslice"]['inf']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['syn']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['syn']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['ebb']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['ebb']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['inf']   = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["slice"]['inf']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['syn'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['syn']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['ebb'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['ebb']/1000))
+phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['inf'] = float('%.3f'%(phy_cdyn_numbers['physical_cdyn_numbers(nF)']["unslice"]['inf']/1000))
 
 
 yaml_hash    = output_yaml_data['ALPS Model(pF)']['GT']
