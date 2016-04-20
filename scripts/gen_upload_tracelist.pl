@@ -58,7 +58,7 @@ foreach my $file (sort keys %yaml_list) {
         $data[0] =~ s/(ci-main)/1_$1/;
     }
     if ($data[0] =~ /^apple/ || $data[0] =~ /bf3_p4/ || $data[0] =~ /fishie.25/ ||
-        $data[0] =~ /bioshock/) {
+        $data[0] =~ /bioshock/ || $data[0] =~ /car.chase/ || $data[0] =~ /ultra/) {
         $data[0] =~ s/__/_/;
     }
     if ($data[0] =~ /win-bdw/ || $data[0] =~ /and-..wu/ || $data[0] =~ /hswm/) {
@@ -76,6 +76,8 @@ foreach my $file (sort keys %yaml_list) {
         $data[0] =~ s/(19x10)_(24c16z)/$1-$2/;
     }
     if ($data[0] =~ s/(gfxbench27)_(ab-t-rex)/$1-$2_/) {
+    }
+    if ($data[0] =~ s/(3dmk06)_/$1-/) {
     }
     if ($data[0] !~ /-g2/ && $data[0] =~ s/(3-0-6)_(manhattan)/$1-$2_/) {
     }
