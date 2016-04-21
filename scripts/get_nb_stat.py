@@ -3,9 +3,14 @@
 import re
 import argparse
 parser = argparse.ArgumentParser(description="Read Power state XLSX")
-parser.add_argument('-d', '--dir',     dest="dir",      help="Gsim run output directory")
-parser.add_argument('-f', '--formula', dest="formula",  help="Gen11 power formula YAML file")
+parser.add_argument('-d', '--dir',  dest="dir",  help="GSim run output directory")
+parser.add_argument('-f', '--freq', dest="freq", help="GSim Freq; required to calulate FPS")
 args = parser.parse_args()
+
+if (args.freq):
+    freq = float(args.freq)
+else:
+    freq = 0
 
 fh_sum = open (args.dir+"/data/summary.csv.json", "r")
 for line in fh_sum:
@@ -44,7 +49,7 @@ for frame in frame_list:
     test   = frame_list[frame]["test_args"]
     cfg    = frame_list[frame]["psim_config"]
     weight = frame_list[frame]["frame_weight"].strip()
-    clock  = frame_list[frame]["run_time"]
+    clock  = frame_list[frame]["clocks"]
     wkld   = re.sub("_f\d\d\d\d\d_", "_", test)
     if (weight == "frame_weight"):
         continue
@@ -142,6 +147,13 @@ for cfg in sorted(sow.keys()):
                 local_clock = 0
             else:
                 local_clock  = fot_fps[cfg][wkld][result]['clock'] / local_weight
-            print ("{0:8.3f} {1:10.2f} |".format(local_weight, local_clock), end="")
+            if (local_weight == 0):
+                print ("{0:8s} {1:10s} |".format("   -", "   -"), end="")
+            else:
+                if (freq != 0 and local_clock != 0):
+                    fps = freq * 1000000 / local_clock
+                else:
+                    fps = local_clock
+                print ("{0:6.3f} {1:12.2f} |".format(local_weight, fps), end="")
         print(" {0:6s} {1}".format(cfg, wkld))
         
