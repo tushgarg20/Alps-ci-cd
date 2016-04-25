@@ -3,6 +3,8 @@
   numSlices	= knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
   numGAM	=	COUNT('knob\.uGAM\.NumSlices')
   numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
+  numCPipes	=	SUM('knob\.S\d+\.NumColorPipes')
+  numZPipes	=	SUM('knob\.S\d+\.NumZPipes')
   num_GAM_GAMWC	=	numGAM
   num_GAM_GAMWC_PENDQEBB	= numGAM
   num_GAM_GAMWD	=	numGAM
@@ -23,8 +25,8 @@
   num_GAM_GAFM	=	numGAM
   num_GAM_GAFS	=	numGAM
   num_GAM_GAPL3	=	numSlices
-  num_GAM_GAPZ	=	numSlices
-  num_GAM_GAPC	=	numSlices
+  num_GAM_GAPZ	=	numZPipes
+  num_GAM_GAPC	=	numColorPipes
   num_GAM_SARB	=	numSlices
   num_GAM_GASS	=	numSubslices
   num_GAM_DOP	=	numGAM
@@ -40,8 +42,8 @@
   num_GAM_GATRW	=	numGAM
    
    @GAPL3@        =       (STK\d+\.S\d+\.uL3\.GapL3OutputBuf\d+\.|S\d+\.uL3\.GapL3OutputBuf\.)
-   @GAPZ@         =       S\d+\.GAPZ\.
-   @GAPC@         =       S\d+\.GAPC\.
+   @GAPZ@         =       S\d+\.(GAPZ\.|GAPZPipe_\d+\.)
+   @GAPC@         =       S\d+\.(GAPC\.|GAPCPPipe_\d+\.|GAPCPipe_\d+\.)
    @GAPS@         =       S\d+\.uL3\.
 	 @GASS@		=	S\d+\.GASS_\d+\.
 	 @SARB@		=	S\d+\.uL3\.SARB\.
@@ -155,7 +157,8 @@
   PS2_GAPZ        =	D(SUM('@GAPZ@Active'))/(@CLOCKS@ * num_GAM_GAPZ)
 
 #GAPS			
-  PS0_GAPS        =        D(SUM('@GAPS@GapsIdle'))/(@CLOCKS@ * num_GAM_GAPS)
+  #PS0_GAPS        =        D(SUM('@GAPS@GapsIdle'))/(@CLOCKS@ * num_GAM_GAPS)
+  PS0_GAPS        =        (PS1_GAPS + PS2_GAPS > 1) ? 0 : (1 - PS1_GAPS - PS2_GAPS)
   PS1_GAPS        =        D(SUM('@GAPS@GapsStalled'))/(@CLOCKS@ * num_GAM_GAPS)
   PS2_GAPS        =        D(SUM('@GAPS@GapsActive'))/(@CLOCKS@ * num_GAM_GAPS)
 			
