@@ -294,10 +294,10 @@ L3_Bank:
     PS0_LTCC: R * C
     PS1_LTCC: R * C
     PS2_LTCC: R * C
-   LSLM:
-    PS0_LSLM: R * C
-    PS1_LSLM: R * C
-    PS2_LSLM: R * C
+#   LSLM:
+#    PS0_LSLM: R * C
+#    PS1_LSLM: R * C
+#    PS2_LSLM: R * C
    L3BankOther:
     PS0_L3BankOther: R * C
     PS1_L3BankOther: R * C
@@ -326,14 +326,15 @@ L3_Bank:
    NONCLKGLUE:
     PS0_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
-PS2_LSQC_SlotFull: R
+#PS2_LSQC_SlotFull: R
+LSQC_activeslots_per_clock: R
 
 L3Node:
    LNI:
     PS0_LNI: R * C
     PS1_LNI: R * C
-    PS2_LNI: R * C
-    PS2_LNIXS: R * C
+#    PS2_LNI: R * C
+#    PS2_LNIXS: R * C
     PS2_LNI_LOCAL_1BANK_1READ: R * C
     PS2_LNI_LOCAL_1BANK_1WRITE: R * C
     PS2_LNI_XSLICE_ING_1READ: R * C
@@ -345,8 +346,8 @@ L3Node:
    LNE:
     PS0_LNE: R * C
     PS1_LNE: R * C
-    PS2_LNE: R * C
-    PS2_LNEXS: R * C
+#    PS2_LNE: R * C
+#    PS2_LNEXS: R * C
     PS2_LNE_LSN_EGR_DATARTN: R * C
     PS2_LNE_LSN_ING_DATARTN: R * C
     PS2_LNE_SS_DATARTN: R * C
@@ -1853,11 +1854,11 @@ Fabric:
     PS0_LSNEP: R * C * R[numBuses]
     PS1_LSNEP: R * C * R[numBuses]
     PS2_LSNEP_GACB_READ: R * C * R[numBuses]
-    PS1_LSNEP_GACB_WRITE: R * C * R[numBuses]
-    PS1_LSNEP_GAFS_RR: R * C * R[numBuses]
-    PS1_LSNEP_SL_MEMFILL: R * C * R[numBuses]
-    PS1_LSNEP_SL_READ: R * C * R[numBuses]
-    PS1_LSNEP_SL_WRITE: R * C * R[numBuses]
+    PS2_LSNEP_GACB_WRITE: R * C * R[numBuses]
+    PS2_LSNEP_GAFS_RR: R * C * R[numBuses]
+    PS2_LSNEP_SL_MEMFILL: R * C * R[numBuses]
+    PS2_LSNEP_SL_READ: R * C * R[numBuses]
+    PS2_LSNEP_SL_WRITE: R * C * R[numBuses]
 #   UnsliceLSN:
 #    PS0_LSNtoUnslice_UP_DATA: R * C * 5
 #    PS1_LSNtoUnslice_UP_DATA: R * C * 5
