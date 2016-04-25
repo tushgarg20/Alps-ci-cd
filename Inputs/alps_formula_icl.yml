@@ -1816,27 +1816,27 @@ Other:
 
 Fabric:
    LSN:
-    PS0_LSN_XSLDN_DATA: R * C *5
-    PS1_LSN_XSLDN_DATA: R * C * 5
-    PS2_LSN_XSLDN_DATA: R * C * R[numBuses]
-    PS0_LSN_XSLDN_CMD: R * C * 5
-    PS1_LSN_XSLDN_CMD: R * C * 5
-    PS2_LSN_XSLDN_CMD: R * C * R[numBuses]
-    PS0_LSN_XSLUP_DATA: R * C * 5
-    PS1_LSN_XSLUP_DATA: R * C * 5
-    PS2_LSN_XSLUP_DATA: R * C * R[numBuses]
-    PS0_LSN_XSLUP_CMD: R * C * 5
-    PS1_LSN_XSLUP_CMD: R * C * 5
-    PS2_LSN_XSLUP_CMD: R * C * R[numBuses]
-    PS0_LSN_LNI_DATA: R * C * 5
-    PS1_LSN_LNI_DATA: R * C * 5
-    PS2_LSN_LNI_DATA: R * C * R[numBuses]
-    PS0_LSN_LNI_CMD: R * C * 5
-    PS1_LSN_LNI_CMD: R * C * 5
-    PS2_LSN_LNI_CMD: R * C * R[numBuses]
-    PS0_LSN_LNE_DATA: R * C * 5
-    PS1_LSN_LNE_DATA: R * C * 5
-    PS2_LSN_LNE_DATA: R * C * R[numBuses]
+#    PS0_LSN_XSLDN_DATA: R * C *5
+#    PS1_LSN_XSLDN_DATA: R * C * 5
+#    PS2_LSN_XSLDN_DATA: R * C * R[numBuses]
+#    PS0_LSN_XSLDN_CMD: R * C * 5
+#    PS1_LSN_XSLDN_CMD: R * C * 5
+#    PS2_LSN_XSLDN_CMD: R * C * R[numBuses]
+#    PS0_LSN_XSLUP_DATA: R * C * 5
+#    PS1_LSN_XSLUP_DATA: R * C * 5
+#    PS2_LSN_XSLUP_DATA: R * C * R[numBuses]
+#    PS0_LSN_XSLUP_CMD: R * C * 5
+#    PS1_LSN_XSLUP_CMD: R * C * 5
+#    PS2_LSN_XSLUP_CMD: R * C * R[numBuses]
+#    PS0_LSN_LNI_DATA: R * C * 5
+#    PS1_LSN_LNI_DATA: R * C * 5
+#    PS2_LSN_LNI_DATA: R * C * R[numBuses]
+#    PS0_LSN_LNI_CMD: R * C * 5
+#    PS1_LSN_LNI_CMD: R * C * 5
+#    PS2_LSN_LNI_CMD: R * C * R[numBuses]
+#    PS0_LSN_LNE_DATA: R * C * 5
+#    PS1_LSN_LNE_DATA: R * C * 5
+#    PS2_LSN_LNE_DATA: R * C * R[numBuses]
     PS0_LSN: R * C * R[numBuses]
     PS1_LSN: R * C * R[numBuses]
     PS2_LSN_CROSS_SLICE_READ: R * C * R[numBuses]
@@ -1849,92 +1849,101 @@ Fabric:
     PS2_LSN_CROSS_LOCAL_WRITE: R * C * R[numBuses]
     PS2_LSN_CROSS_LOCAL_READ_RETURN: R * C * R[numBuses]
     PS2_LSN_Else: R * C * R[numBuses]
-   UnsliceLSN:
-    PS0_LSNtoUnslice_UP_DATA: R * C * 5
-    PS1_LSNtoUnslice_UP_DATA: R * C * 5
-    PS2_LSNtoUnslice_UP_DATA: R * C * R[numBuses]
-    PS0_LSNtoUnslice_UP_CMD: R * C * 5
-    PS1_LSNtoUnslice_UP_CMD: R * C * 5
-    PS2_LSNtoUnslice_UP_CMD: R * C * R[numBuses]
-    PS0_GAFStoLSN_DN_DATA: R * C * 5
-    PS1_GAFStoLSN_DN_DATA: R * C * 5
-    PS2_GAFStoLSN_DN_DATA: R * C * R[numBuses]
-    PS0_GAFStoLSN_DN_CMD: R * C * 5
-    PS1_GAFStoLSN_DN_CMD: R * C * 5
-    PS2_GAFStoLSN_DN_CMD: R * C * R[numBuses]
+   LSNEP:
+    PS0_LSNEP: R * C * R[numBuses]
+    PS1_LSNEP: R * C * R[numBuses]
+    PS2_LSNEP_GACB_READ: R * C * R[numBuses]
+    PS1_LSNEP_GACB_WRITE: R * C * R[numBuses]
+    PS1_LSNEP_GAFS_RR: R * C * R[numBuses]
+    PS1_LSNEP_SL_MEMFILL: R * C * R[numBuses]
+    PS1_LSNEP_SL_READ: R * C * R[numBuses]
+    PS1_LSNEP_SL_WRITE: R * C * R[numBuses]
+#   UnsliceLSN:
+#    PS0_LSNtoUnslice_UP_DATA: R * C * 5
+#    PS1_LSNtoUnslice_UP_DATA: R * C * 5
+#    PS2_LSNtoUnslice_UP_DATA: R * C * R[numBuses]
+#    PS0_LSNtoUnslice_UP_CMD: R * C * 5
+#    PS1_LSNtoUnslice_UP_CMD: R * C * 5
+#    PS2_LSNtoUnslice_UP_CMD: R * C * R[numBuses]
+#    PS0_GAFStoLSN_DN_DATA: R * C * 5
+#    PS1_GAFStoLSN_DN_DATA: R * C * 5
+#    PS2_GAFStoLSN_DN_DATA: R * C * R[numBuses]
+#    PS0_GAFStoLSN_DN_CMD: R * C * 5
+#    PS1_GAFStoLSN_DN_CMD: R * C * 5
+#    PS2_GAFStoLSN_DN_CMD: R * C * R[numBuses]
    Repeaters:
-    PS0_Repeaters_XSLDN_DATA: R * C * 5
-    PS1_Repeaters_XSLDN_DATA: R * C * 5
+    PS0_Repeaters_XSLDN_DATA: R * C * R[numBuses]
+    PS1_Repeaters_XSLDN_DATA: R * C * R[numBuses]
     PS2_Repeaters_XSLDN_DATA: R * C * R[numBuses]
-    PS0_Repeaters_XSLDN_CMD: R * C * 5
-    PS1_Repeaters_XSLDN_CMD: R * C * 5
+    PS0_Repeaters_XSLDN_CMD: R * C * R[numBuses]
+    PS1_Repeaters_XSLDN_CMD: R * C * R[numBuses]
     PS2_Repeaters_XSLDN_CMD: R * C * R[numBuses]
-    PS0_Repeaters_XSLUP_DATA: R * C * 5
-    PS1_Repeaters_XSLUP_DATA: R * C * 5
+    PS0_Repeaters_XSLUP_DATA: R * C * R[numBuses]
+    PS1_Repeaters_XSLUP_DATA: R * C * R[numBuses]
     PS2_Repeaters_XSLUP_DATA: R * C * R[numBuses]
-    PS0_Repeaters_XSLUP_CMD: R * C * 5
-    PS1_Repeaters_XSLUP_CMD: R * C * 5
+    PS0_Repeaters_XSLUP_CMD: R * C * R[numBuses]
+    PS1_Repeaters_XSLUP_CMD: R * C * R[numBuses]
     PS2_Repeaters_XSLUP_CMD: R * C * R[numBuses]
    UnsliceRepeaters:   
-    PS0_RepeaterstoUnslice_UP_DATA: R * C * 5
-    PS1_RepeaterstoUnslice_UP_DATA: R * C * 5
+    PS0_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
+    PS1_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
     PS2_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
-    PS0_RepeaterstoUnslice_UP_CMD: R * C * 5
-    PS1_RepeaterstoUnslice_UP_CMD: R * C * 5
+    PS0_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
+    PS1_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
     PS2_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
-    PS0_RepeatersfromUnslice_DN_DATA: R * C * 5
-    PS1_RepeatersfromUnslice_DN_DATA: R * C * 5
+    PS0_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
+    PS1_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
     PS2_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
-    PS0_RepeatersfromUnslice_DN_CMD: R * C * 5
-    PS1_RepeatersfromUnslice_DN_CMD: R * C * 5
+    PS0_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
+    PS1_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
     PS2_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
    BGF:
-    PS0_BGF_SL_UNSL_INTF_DATA_UP: R * C * 5
-    PS1_BGF_SL_UNSL_INTF_DATA_UP: R * C * 5
+    PS0_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
     PS2_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
-    PS0_BGF_SL_UNSL_INTF_CMD_UP: R * C * 5
-    PS1_BGF_SL_UNSL_INTF_CMD_UP: R * C * 5
+    PS0_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
     PS2_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
-    PS0_BGF_SL_UNSL_INTF_DATA_DN: R * C * 5
-    PS1_BGF_SL_UNSL_INTF_DATA_DN: R * C * 5
+    PS0_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
     PS2_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
-    PS0_BGF_SL_UNSL_INTF_CMD_DN: R * C * 5
-    PS1_BGF_SL_UNSL_INTF_CMD_DN: R * C * 5
+    PS0_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
     PS2_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
    BGFunslice:
-    PS0_BGF_UNSL_DATA_UP: R * C *5
-    PS1_BGF_UNSL_DATA_UP: R * C *5
-    PS2_BGF_UNSL_DATA_UP: R * C *R[numBuses]
-    PS0_BGF_UNSL_CMD_UP: R * C *5
-    PS1_BGF_UNSL_CMD_UP: R * C *5
-    PS2_BGF_UNSL_CMD_UP: R * C *R[numBuses]
-    PS0_BGF_UNSL_DATA_DN: R * C *5
-    PS1_BGF_UNSL_DATA_DN: R * C *5
-    PS2_BGF_UNSL_DATA_DN: R * C *R[numBuses]
-    PS0_BGF_UNSL_CMD_DN: R * C *5
-    PS1_BGF_UNSL_CMD_DN: R * C *5
-    PS2_BGF_UNSL_CMD_DN: R * C *R[numBuses] 
+    PS0_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS1_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS2_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS0_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS1_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS2_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS0_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS1_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS2_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS0_BGF_UNSL_CMD_DN: R * C * R[numBuses]
+    PS1_BGF_UNSL_CMD_DN: R * C * R[numBuses]
+    PS2_BGF_UNSL_CMD_DN: R * C * R[numBuses]
    SMALL:
-    PS0_Fabric_SMALL: R * C *5 
-    PS2_Fabric_SMALL: R * C *R[numBuses]
+    PS0_Fabric_SMALL: R * C * R[numBuses]
+    PS2_Fabric_SMALL: R * C * R[numBuses]
    CPunit:
-    PS0_Fabric_CPunit: R * C *5
-    PS2_Fabric_CPunit: R * C *R[numBuses]
+    PS0_Fabric_CPunit: R * C * R[numBuses]
+    PS2_Fabric_CPunit: R * C * R[numBuses]
    Assign:
-    PS0_Fabric_Assign: R * C *5 
-    PS2_Fabric_Assign: R * C *R[numBuses] 
+    PS0_Fabric_Assign: R * C * R[numBuses]
+    PS2_Fabric_Assign: R * C * R[numBuses]
    CLKGLUE:
-    PS0_Fabric_CLKGLUE: R * C *5 
-    PS2_Fabric_CLKGLUE: R * C *5 
+    PS0_Fabric_CLKGLUE: R * C * R[numBuses]
+    PS2_Fabric_CLKGLUE: R * C * R[numBuses]
    NONCLKGLUE:
-    PS0_Fabric_NONCLKGLUE: R * C *5 
-    PS2_Fabric_NONCLKGLUE: R * C *R[numBuses] 
+    PS0_Fabric_NONCLKGLUE: R * C * R[numBuses]
+    PS2_Fabric_NONCLKGLUE: R * C * R[numBuses]
    DFX:
-    PS0_Fabric_DFX: R * C *5 
-    PS2_Fabric_DFX: R * C *5 
+    PS0_Fabric_DFX: R * C * R[numBuses]
+    PS2_Fabric_DFX: R * C * R[numBuses]
    DOP:
-    PS0_Fabric_DOP: R * C *5
-    PS2_Fabric_DOP: R * C *5 
+    PS0_Fabric_DOP: R * C * R[numBuses]
+    PS2_Fabric_DOP: R * C * R[numBuses]
 
 rFF:
    rCS:
