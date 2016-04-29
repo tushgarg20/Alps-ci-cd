@@ -1925,26 +1925,26 @@ Fabric:
     PS1_BGF_UNSL_CMD_DN: R * C * R[numBuses]
     PS2_BGF_UNSL_CMD_DN: R * C * R[numBuses]
    SMALL:
-    PS0_Fabric_SMALL: R * C * R[numBuses]
-    PS2_Fabric_SMALL: R * C * R[numBuses]
+    PS0_Fabric_SMALL: R * C
+    PS2_Fabric_SMALL: R * C
    CPunit:
-    PS0_Fabric_CPunit: R * C * R[numBuses]
-    PS2_Fabric_CPunit: R * C * R[numBuses]
+    PS0_Fabric_CPunit: R * C
+    PS2_Fabric_CPunit: R * C
    Assign:
-    PS0_Fabric_Assign: R * C * R[numBuses]
-    PS2_Fabric_Assign: R * C * R[numBuses]
+    PS0_Fabric_Assign: R * C
+    PS2_Fabric_Assign: R * C
    CLKGLUE:
-    PS0_Fabric_CLKGLUE: R * C * R[numBuses]
-    PS2_Fabric_CLKGLUE: R * C * R[numBuses]
+    PS0_Fabric_CLKGLUE: R * C
+    PS2_Fabric_CLKGLUE: R * C
    NONCLKGLUE:
-    PS0_Fabric_NONCLKGLUE: R * C * R[numBuses]
-    PS2_Fabric_NONCLKGLUE: R * C * R[numBuses]
+    PS0_Fabric_NONCLKGLUE: R * C
+    PS2_Fabric_NONCLKGLUE: R * C
    DFX:
-    PS0_Fabric_DFX: R * C * R[numBuses]
-    PS2_Fabric_DFX: R * C * R[numBuses]
+    PS0_Fabric_DFX: R * C
+    PS2_Fabric_DFX: R * C
    DOP:
-    PS0_Fabric_DOP: R * C * R[numBuses]
-    PS2_Fabric_DOP: R * C * R[numBuses]
+    PS0_Fabric_DOP: R * C
+    PS2_Fabric_DOP: R * C
 
 rFF:
    rCS:
