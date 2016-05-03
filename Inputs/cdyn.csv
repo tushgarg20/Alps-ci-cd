@@ -4144,7 +4144,7 @@ PS2_LTCD_Data_SLM_ECC_NoTagWrite,Gen9LPClient,A0,74.596,syn,720863.55,1.7x
 PS2_LTCD_EBB_HB_Read,Gen9LPClient,A0,258.0262,ebb,1,Normalized to 0.6GHz and 32 bits
 PS2_LTCD_EBB_HB_Write,Gen9LPClient,A0,332.6992,ebb,1,Normalized to 0.6GHz and 32 bits
 PS2_LTCD_EBB_Read,Gen9LPClient,A0,269.996,ebb,1,Normalized to 0.6GHz and 64 bits
-PS2_LTCD_EBB_Write,Gen9LPClient,A0,323.583,ebb,1,Normalized to 0.6GHz
+PS2_LTCD_EBB_Write,Gen9LPClient,A0,323.583,ebb,1,Normalized to 0.6GHz and 64 bits
 PS2_LTCD_Tag_NonSLM_ECC_TagRead,Gen9LPClient,A0,212.058,syn,720863.55,1.7x 25% TR
 PS2_LTCD_Tag_NonSLM_ECC_TagWrite,Gen9LPClient,A0,218.79,syn,720863.55,1.7x
 PS2_MA_IN,Gen9LPClient,C0,9.004,syn,76116,Taken from SKL C0 ECO1 GT3 CGDIS data
