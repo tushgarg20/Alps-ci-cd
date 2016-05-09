@@ -344,7 +344,7 @@
 	PS0_GRF	=	0	#no PS0 for GRF
 	PS2_GRF_READ	=	D(SUM('@ANY_EUPIPE@pwr_GrfReadAccesses\.CrClock')) / (numEUs * .CrClk)+planes	#GRF reads should be at 256 bit granularity (0,4)
 	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPE@pwr_GrfWriteAccesses\.CrClock')) / (numEUs *	.CrClk)	#GRF writes should be at 256 bit granularity(0,2)
-        planes= planesfpu0+planesfpu1
+        planes= (planesfpu0+planesfpu1)/2
         planesfpu0=(D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@PLN@\.exec')))/(4*.CrClk*numEUs)
         planesfpu1=(D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@PLN@\.exec')))/(4*.CrClk*numEUs)				
 #IPC				
