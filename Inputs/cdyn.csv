@@ -1404,7 +1404,7 @@ FPU0_mad_fp32_25%,Gen10LP,B0,33.86848744,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_fp32_34%,Gen10LP,B0,36.99885146,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_fp32_46%,Gen10LP,B0,41.84260584,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_fp32_66%,Gen10LP,B0,44.66628047,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
-FPU0_mad_fp32_85%,Gen10LP,B0,56.09048705,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
+FPU0_mad_fp32_97%,Gen10LP,B0,68.17,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_floatbypass_16%,Gen10LP,B0,12.88705808,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_fp16_14%,Gen10LP,B0,14.32241643,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_mad_fp16_26%,Gen10LP,B0,16.00359784,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
@@ -1580,7 +1580,7 @@ FPU1_mad_fp32_25%,Gen10LP,B0,33.93648088,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_fp32_34%,Gen10LP,B0,36.92346295,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_fp32_46%,Gen10LP,B0,41.8508228,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_fp32_66%,Gen10LP,B0,44.46250611,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
-FPU1_mad_fp32_85%,Gen10LP,B0,54.2162487,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
+FPU1_mad_fp32_97%,Gen10LP,B0,68.17,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_floatbypass_16%,Gen10LP,B0,13.31097973,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_fp16_14%,Gen10LP,B0,14.80069124,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_mad_fp16_26%,Gen10LP,B0,16.3154836,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
@@ -2049,7 +2049,7 @@ FPU0_mad_fp32_25%,Gen11,A0,33.86848744,syn,331759.15,Gen10LP Cdyn weight w/ ref 
 FPU0_mad_fp32_34%,Gen11,A0,36.99885146,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
 FPU0_mad_fp32_46%,Gen11,A0,41.84260584,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
 FPU0_mad_fp32_66%,Gen11,A0,44.66628047,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
-FPU0_mad_fp32_85%,Gen11,A0,56.09048705,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
+FPU0_mad_fp32_97%,Gen11,A0,68.17,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
 FPU0_mad_fp64_10%,Gen11,A0,31.91270358,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
 FPU0_mad_fp64_15%,Gen11,A0,36.32528624,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
 FPU0_mad_fp64_18%,Gen11,A0,39.2948075,syn,331759.15,Gen10LP Cdyn weight w/ ref GC reduction
@@ -2225,7 +2225,7 @@ FPU1_mad_fp32_25%,Gen11,A0,33.93648088,syn,329922.47,Gen10LP Cdyn weight w/ ref 
 FPU1_mad_fp32_34%,Gen11,A0,36.92346295,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_mad_fp32_46%,Gen11,A0,41.8508228,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_mad_fp32_66%,Gen11,A0,44.46250611,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
-FPU1_mad_fp32_85%,Gen11,A0,54.2162487,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
+FPU1_mad_fp32_97%,Gen11,A0,68.17,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_mad_fp64_10%,Gen11,A0,32.11709386,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_mad_fp64_15%,Gen11,A0,36.47667917,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
 FPU1_mad_fp64_18%,Gen11,A0,39.27940144,syn,329922.47,Gen10LP Cdyn weight w/ ref GC reduction
