@@ -7,9 +7,11 @@ import lib.yaml as yaml
 #############################
 # Command Line Arguments
 #############################
-parser = lib.argparse.ArgumentParser(description='Get Cdyn numbers for all units in GT')
+parser = lib.argparse.ArgumentParser(description='Script to traverse yaml file to obtain Cdyn numbers at unit level')
 parser.add_argument("-i","--input",dest="input_file",
                   help="Input file containing path to all ALPS Models")
+parser.add_argument("-c","--cluster",dest="cluster_of_interest",
+				  help="Input name of cluster if interested in generating unit level data for that cluster alone")
 parser.add_argument("-o","--output",dest="output_file",
 				  help="Output CSV file")
 
@@ -35,9 +37,15 @@ for line in tracefile:
     alps_data = yaml.load(alps_file)
     alps_file.close()
     unit_data = alps_data['unit_cdyn_numbers(pF)']
-    clusters = sorted(unit_data.keys())
-    ##clusters = ['GTI'] - if you want to analyse only a particular cluster
-    num_clusters = len(clusters)
+
+    ##Setting cluster of interest
+    clusters=[]
+    if(options.cluster_of_interest):
+        ##clusters = ['ROSC'] ####- if you want to analyse only a particular cluster
+        clusters.append(options.cluster_of_interest)
+    else:
+        clusters = sorted(unit_data.keys())
+
     if(count == 0):
         print("Frame",end=',',file=output_file)
         print("FPS",end=',',file=output_file)
