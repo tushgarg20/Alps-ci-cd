@@ -39,6 +39,9 @@ parser.add_option("-t","--tg_file",action="store", dest="tg_file", default='',
                   help=" Input Timegraph File. Please make sure the TG file has ALPS residencies as well. [default: %default]")
 parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
+parser.add_option("--compile",action="store_true",dest="compile",default=False,
+                  help="Compile Stat Parser from source [default: %default]")
+
 
 (options,args) = parser.parse_args()
 
@@ -120,16 +123,31 @@ if not options.run_local:
         build_alps_cmd += ['--debug']
 
 else:
-    try:
-        process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
-        output = process.communicate()[0]
-        ExitCode = process.wait()
-    except Exception:
-        print ('Error: StatParser compile failed to open subprocess')
+    if not sys.platform == 'win32':
+        if options.compile:
+            try:
+                process = subprocess.Popen(['/usr/intel/pkgs/cmake/3.4.0/bin/cmake','.'], cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+                output = process.communicate()[0]
+                ExitCode = process.wait()
+            except Exception:
+                ExitCode = 10000
+                print ('Error: StatParser compile failed to open subprocess')
 
-    if ExitCode > 1:
-        print ("StatParser compile failed with exitcode : ", ExitCode)
-        exit(ExitCode) 
+            if ExitCode > 1:
+                print ("StatParser compile failed with exitcode : ", ExitCode)
+                exit(ExitCode) 
+
+            try:
+                process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+                output = process.communicate()[0]
+                ExitCode = process.wait()
+            except Exception:
+                ExitCode = 10000
+                print ('Error: StatParser compile failed to open subprocess')
+
+            if ExitCode > 1:
+                print ("StatParser compile failed with exitcode : ", ExitCode)
+                exit(ExitCode)  
 
     stat_parser_script = options.user_dir + '/StatParser/StatParser'
     build_alps_script = options.user_dir + '/build_alps.py'

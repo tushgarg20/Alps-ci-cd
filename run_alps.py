@@ -147,6 +147,18 @@ else:
     if not sys.platform == 'win32':
         if options.compile:
             try:
+                process = subprocess.Popen(['/usr/intel/pkgs/cmake/3.4.0/bin/cmake','.'], cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+                output = process.communicate()[0]
+                ExitCode = process.wait()
+            except Exception:
+                ExitCode = 10000
+                print ('Error: StatParser compile failed to open subprocess')
+
+            if ExitCode > 1:
+                print ("StatParser compile failed with exitcode : ", ExitCode)
+                exit(ExitCode) 
+
+            try:
                 process = subprocess.Popen('make', cwd='%s/%s' % (options.user_dir, 'StatParser'), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
                 output = process.communicate()[0]
                 ExitCode = process.wait()
