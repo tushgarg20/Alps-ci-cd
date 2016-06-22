@@ -444,6 +444,12 @@ UNCORE:
     PS2_MDRB:
      PS2_MDRB_C2U: R * C
      PS2_MDRB_U2C: R * C
+   MBGFUC:
+    PS0_MBGFUC: R * C
+    PS1_MBGFUC: R * C
+    PS2_MBGFUC:
+     PS2_MBGFUC_READ: R * C
+     PS2_MBGFUC_WRITE: R * C
    SMALL:
     PS0_UNCORE_SMALL: R * C
     PS2_UNCORE_SMALL: R * C
@@ -482,51 +488,6 @@ GTI:
     PS2_MBGFUC:
      PS2_MBGFUC_READ: R * C
      PS2_MBGFUC_WRITE: R * C
-   MSQC:
-    PS0_MSQC: R * C
-    PS1_MSQC: R * C
-    PS2_MSQC: R[PS2_MSQC_SlotFull] * R * C
-    PS2_MSQC_ATOMICS: R * C
-   MSQD:
-    PS0_MSQD: R * C
-    PS1_MSQD: R * C
-    PS2_MSQD:
-     PS2_MSQD_U2C: R * C
-     PS2_MSQD_C2U: R * C
-     PS2_MSQD_ReadWrite: R * C
-     PS2_MSQD_ExcessBW: R * C
-     PS2_MSQD_Bypass: R * C
-     PS2_MSQD_ATOMICS: R * C
-   MIDI:
-    PS0_MIDI: R * C
-    PS1_MIDI: R * C
-    PS2_MIDI:
-     PS2_MIDI_U2C: R * C
-     PS2_MIDI_C2U: R * C
-   MISD:
-    PS0_MISD: R * C
-    PS1_MISD: R * C
-    PS2_MISD:
-     PS2_MISD_U2C_AES: R * C
-     PS2_MISD_U2C: R * C
-     PS2_MISD_C2U_AES: R * C
-     PS2_MISD_C2U: R * C
-   MSNP:
-    PS0_MSNP: R * C
-    PS1_MSNP: R * C
-    PS2_MSNP:
-     PS2_MSNP_C2U: R * C
-     PS2_MSNP_U2C: R * C
-   MDRB:
-    PS0_MDRB: R * C
-    PS1_MDRB: R * C
-    PS2_MDRB:
-     PS2_MDRB_C2U: R * C
-     PS2_MDRB_U2C: R * C
-   MFC:
-    PS0_MFC: R * C
-    PS1_MFC: R * C
-    PS2_MFC: R * C
    SMALL:
     PS0_GTI_SMALL: R * C
     PS2_GTI_SMALL: R * C
@@ -913,7 +874,10 @@ DSSC:
    DOP:
     PS0_DSSC_DOP: R * C
     PS2_DSSC_DOP: R * C
-
+   SMALL: 
+    PS0_DSSC_SMALL_DOP: R * C
+    PS0_DSSC_SMALL: R * C
+    PS2_DSSC_SMALL: R * C
 ROSS:
    MA_IN:
     PS0_MA_IN: R * C

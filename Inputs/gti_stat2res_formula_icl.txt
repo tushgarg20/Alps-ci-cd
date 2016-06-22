@@ -45,6 +45,7 @@
 	num_SQIDI_DFX	=	num_GTI_GTI
 
 	num_UNCORE_MBGFUC	=	num_GTI_GTI
+	num_UNCORE_MDRB   	=	num_GTI_GTI 
 	num_UNCORE_SMALL	=	num_GTI_GTI
 	num_UNCORE_DOP	=	num_GTI_GTI	
 	num_UNCORE_CPunit	=	num_GTI_GTI	

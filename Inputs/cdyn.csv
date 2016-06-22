@@ -15,13 +15,6 @@ PS0_DFRSMP_DOP,Gen10LP,A0,7.285627674,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.94
 PS0_DFRSMP_NONCLKGLUE_DOP,Gen10LP,A0,1.164834164,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_DFRSMP_Repeater_DOP,Gen10LP,A0,0.070265039,syn,16922.2,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_DFRSMP_SMALL_DOP,Gen10LP,A0,0.801990655,syn,112204.12,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_CLKGLUE_DOP,Gen10LP,A0,18.49361155,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_CPunit_DOP,Gen10LP,A0,3.196780118,syn,30559,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_DFX_DOP,Gen10LP,A0,1.598390059,syn,185260.21,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_DOP,Gen10LP,A0,8.094533538,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_NONCLKGLUE_DOP,Gen10LP,A0,1.717672899,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_Repeater_DOP,Gen10LP,A0,1.431394083,syn,98496.81,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_EU_DOP,Gen10LP,A0,0.351954991,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_EU_Pipelines_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_EU_TCGA_DOP,Gen10LP,A0,0,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -65,10 +58,6 @@ PS0_MEDIASMP_Repeater_DOP,Gen10LP,A0,0,syn,28598.69,from cnl fso cgen ss(Raw Cdy
 PS0_MEDIASMP_SMALL_DOP,Gen10LP,A0,0.056971495,syn,188048.64,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_MT_DataRam_DOP,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_MT_LatFifo_DOP,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,11.9593001,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,0.612757822,syn,358151.005,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_DOP,Gen10LP,A0,4.835447067,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,0.385346332,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_ROSC_Assign_DOP,Gen10LP,A0,0.128209763,syn,12438.13,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_ROSC_CLKGLUE_DOP,Gen10LP,A0,9.516189324,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_ROSC_CPunit_DOP,Gen10LP,A0,0.917347545,syn,17191.99,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -86,8 +75,6 @@ PS0_ROSS_NONCLKGLUE_DOP,Gen10LP,A0,1.717672899,syn,1,from cnl fso cgen ss(Raw Cd
 PS0_ROSS_Repeater_DOP,Gen10LP,A0,1.431394083,syn,98496.81,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_ROSS_SMALL_DOP,Gen10LP,A0,3.745481183,syn,354868.84,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_SC_LatFifo_DOP,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_DOP,Gen10LP,A0,16.72106855,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_DOP,Gen10LP,A0,16.72106855,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_Z_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_Z_CLKGLUE_DOP,Gen10LP,A0,7.512714267,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_Z_CPunit_DOP,Gen10LP,A0,0.58252767,syn,14908.05,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -1286,9 +1273,6 @@ PS1_rCS,Gen10LP,A0,11.14101728,syn,656832.6083,cnl cgdis ss(Raw Cdyn * 0.942 (x1
 PS0_rSVG,Gen10LP,A0,0.262422249,syn,187521.5698,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_rSVG,Gen10LP,A0,6.059568284,syn,187521.5698,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rCL,Gen10LP,A0,3.673911479,syn,1692289.962,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.05728497,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_DFX,Gen10LP,A0,1.83695857,syn,358151.005,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.487452166,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rSF,Gen10LP,A0,3.475150259,syn,2202101.043,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rVF,Gen10LP,A0,4.437321656,syn,1695009.145,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rVF_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -1298,10 +1282,6 @@ PS0_rVFBE2,Gen10LP,A0,0.357848521,syn,795859.9759,from cnl fso cgen ss(Raw Cdyn 
 PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rVSBE,Gen10LP,A0,0.667983905,syn,1097712.546,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rVSFE,Gen10LP,A0,0.524844497,syn,728350.0838,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,32.05728497,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_rFF_rOTHER_DFX,Gen10LP,A0,1.83695857,syn,358151.005,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_rFF_rOTHER_DOP,Gen10LP,A0,12.55808021,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,1.713502881,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS2_rVF_Cache_Read,Gen10LP,A0,2.635940518,ebb,1,Doubling for be1/2. Need to check with gSim.(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS2_rVF_Cache_Write,Gen10LP,A0,2.156643109,ebb,1,Doubling for be1/2. Need to check with gSim.(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS2_rVF_URBFifo_Read,Gen10LP,A0,2.156643109,ebb,1,Doubling for be1/2. Need to check with gSim.(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -1309,19 +1289,6 @@ PS2_rVF_URBFifo_Write,Gen10LP,A0,1.837144041,ebb,1,Doubling for be1/2. Need to c
 PS2_rVS_Cache_Read,Gen10LP,A0,2.662492228,ebb,1,32 bits assumed. Need to check with gSim.(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS2_rVS_Cache_Write,Gen10LP,A0,2.555992539,ebb,1,32 bits assumed. Need to check with gSim.(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_rVS_Cache_Idle,Gen10LP,A0,0,ebb,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_CLKGLUE,Gen10LP,A0,18.49361155,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_CPunit,Gen10LP,A0,3.196780118,syn,30559,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_DFX,Gen10LP,A0,1.598390059,syn,185260.21,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_NONCLKGLUE,Gen10LP,A0,1.717672899,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_DSSC_Repeater,Gen10LP,A0,1.431394083,syn,98496.81,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_CLKGLUE,Gen10LP,A0,18.49361155,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_CPunit,Gen10LP,A0,3.196780118,syn,30559,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_DFX,Gen10LP,A0,1.598390059,syn,185260.21,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_DOP,Gen10LP,A0,8.094533538,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_NONCLKGLUE,Gen10LP,A0,10.74619108,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_DSSC_Repeater,Gen10LP,A0,2.099377988,syn,98496.81,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 FPU0_add_fp64_10%,Gen10LP,B0,14.82421128,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_add_fp64_15%,Gen10LP,B0,15.98209056,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
 FPU0_add_fp64_18%,Gen10LP,B0,16.99502707,syn,357699.15,Raw Cdyn(1274 XLT x1r1)
@@ -1676,36 +1643,6 @@ FPU1_sel_int16_77%,Gen10LP,B4,25.42272938,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 FPU1_sad_int16_25%,Gen10LP,B0,15.09086412,syn,355702.47,Raw Cdyn(1274 XLT x1r1)
 EM_transc_fp32_8%,Gen10LP,B0,19.71378981,syn,138731.74,Raw Cdyn(1274 XLT x1r1)
 EM_transc_fp16_7%,Gen10LP,B0,17.10417107,syn,138731.74,Raw Cdyn(1274 XLT x1r1)
-PS0_SQIDI_Assign,Gen10LP,A0,4.485034793,syn,73602.82,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_CLKGLUE,Gen10LP,A0,76.89449013,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_DFX,Gen10LP,A0,4.986022722,syn,670976.28,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_NONCLKGLUE,Gen10LP,A0,6.892162509,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_Repeater,Gen10LP,A0,1.95623858,syn,48454.4,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_SQIDI_SMALL,Gen10LP,A0,57.55473575,syn,1598380,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_Assign,Gen10LP,A0,4.485034793,syn,73602.82,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_CLKGLUE,Gen10LP,A0,76.89449013,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_DFX,Gen10LP,A0,4.986022722,syn,670976.28,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_NONCLKGLUE,Gen10LP,A0,6.892162509,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_Repeater,Gen10LP,A0,1.95623858,syn,48454.4,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS0_UNCORE_SMALL,Gen10LP,A0,57.55473575,syn,1598380,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_Assign,Gen10LP,A0,5.081448994,syn,73602.82,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_CLKGLUE,Gen10LP,A0,76.8849475,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_DFX,Gen10LP,A0,4.986022722,syn,670976.28,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_DOP,Gen10LP,A0,16.72106855,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_NONCLKGLUE,Gen10LP,A0,7.550603787,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_Repeater,Gen10LP,A0,2.671935621,syn,48454.4,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_SQIDI_SMALL,Gen10LP,A0,67.3700829,syn,1598380,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_Assign,Gen10LP,A0,5.081448994,syn,73602.82,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_CLKGLUE,Gen10LP,A0,76.8849475,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_DFX,Gen10LP,A0,4.986022722,syn,670976.28,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_DOP,Gen10LP,A0,16.72106855,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_NONCLKGLUE,Gen10LP,A0,7.550603787,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_Repeater,Gen10LP,A0,2.671935621,syn,48454.4,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
-PS2_UNCORE_SMALL,Gen10LP,A0,67.3700829,syn,1598380,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS1_VFBE,Gen10LP,A0,3.160995266,syn,795859.9759,average of VFBE1 / VFBE2
 PS0_rVFBE,Gen10LP,A0,0.333991953,syn,795859.9759,average of VFBE1 / VFBE2
 PS2_LSQD_Else,Gen10LP,A0,40.72316166,syn,497779.11,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
@@ -5631,7 +5568,7 @@ PS0_FF_TEGSSOL_Assign_DOP,Gen9LPSoC,B0,0,syn,0,1
 PS0_COLOR_Assign_DOP,Gen9LPSoC,B0,0,syn,210.84,0
 PS0_rVSFE_DOP,Gen9LPSoC,B0,0,syn,394384.07,0
 PS0_rVS_DOP,Gen9LPSoC,B0,0,syn,394384.07,0
-PS0_rSVG_DOP,Gen9LPSoC,B0,0,syn,114957.11
+PS0_rSVG_DOP,Gen9LPSoC,B0,0,syn,114957.11,
 PS0_rVFBE2_DOP,Gen9LPSoC,B0,0,syn,524341.77,0
 PS0_rVFBE1_DOP,Gen9LPSoC,B0,0,syn,527906.24,0
 PS0_rVFBE_DOP,Gen9LPSoC,B0,0,syn,527906.24,0
@@ -5641,8 +5578,8 @@ PS0_GTP24C_DOP,Gen9LPSoC,B0,0,syn,968132,0
 PS0_rCL_DOP,Gen9LPSoC,B0,0,syn,1148212.05,0
 PS0_rSF_DOP,Gen9LPSoC,B0,0,syn,1188962.87,0
 PS0_WIDI_DOP,Gen9LPSoC,B0,0,syn,1269568,0
-PS0_rFF_rOTHER_DOP,Gen9LPSoC,B0,9.219177692,syn,1
-PS2_rFF_rOTHER_DOP,Gen9LPSoC,B0,29.82444444,syn,1
+PS0_rFF_rOTHER_DOP,Gen9LPSoC,B0,9.219177692,syn,1,
+PS2_rFF_rOTHER_DOP,Gen9LPSoC,B0,29.82444444,syn,1,
 PS0_MEDIASMP_Repeater_DOP,Gen9LPSoC,B0,0.029356574,syn,24794.45,0
 PS0_COLOR_SMALL_DOP,Gen9LPSoC,B0,0.029366905,syn,74857.9,0
 PS0_MEDIASMP_CPunit_DOP,Gen9LPSoC,B0,0.047535926,syn,12764.59,0
@@ -5683,11 +5620,11 @@ PS2_COLOR_DOP,Gen9LPSoC,B0,16.21222222,syn,1,0
 PS2_Z_DOP,Gen9LPSoC,B0,23.55444444,syn,1,0
 PS0_COLOR_DFX,Gen9LPSoC,B0,1.655555556,syn,422731.43,0
 PS0_L3Node_DFX,Gen9LPSoC,B0,0.911111111,syn,108605.08,0
-PS0_rFF_rOTHER_DFX,Gen9LPSoC,B0,3.155555556,syn,456457.36
+PS0_rFF_rOTHER_DFX,Gen9LPSoC,B0,3.155555556,syn,456457.36,
 PS0_Z_DFX,Gen9LPSoC,B0,2.277777778,syn,356408.33,0
 PS2_COLOR_DFX,Gen9LPSoC,B0,1.655555556,syn,422731.43,0
 PS2_L3Node_DFX,Gen9LPSoC,B0,0.911111111,syn,108605.08,0
-PS2_rFF_rOTHER_DFX,Gen9LPSoC,B0,3.155555556,syn,456457.36
+PS2_rFF_rOTHER_DFX,Gen9LPSoC,B0,3.155555556,syn,456457.36,
 PS2_Z_DFX,Gen9LPSoC,B0,2.277777778,syn,356408.33,0
 PS0_COLOR_SMALL,Gen9LPSoC,B0,0.144444444,syn,74857.9,0
 PS0_Z_SMALL,Gen9LPSoC,B0,3.955555556,syn,120734.14,0
@@ -5779,19 +5716,19 @@ PS2_ROSS_Assign,Gen9LPSoC,B0,0,syn,0,0
 PS2_Z_Assign,Gen9LPSoC,B0,17.76666667,syn,46118.28,0
 PS0_COLOR_NONCLKGLUE,Gen9LPSoC,B0,3.065555556,syn,1,0
 PS0_L3Node_NONCLKGLUE,Gen9LPSoC,B0,0.912222222,syn,1,0
-PS0_rFF_rOTHER_NONCLKGLUE,Gen9LPSoC,B0,4.942222222,syn,1
+PS0_rFF_rOTHER_NONCLKGLUE,Gen9LPSoC,B0,4.942222222,syn,1,
 PS0_Z_NONCLKGLUE,Gen9LPSoC,B0,4.058888889,syn,1,0
 PS2_COLOR_NONCLKGLUE,Gen9LPSoC,B0,6.649444444,syn,1,0
 PS2_L3Node_NONCLKGLUE,Gen9LPSoC,B0,4.145555556,syn,1,0
-PS2_rFF_rOTHER_NONCLKGLUE,Gen9LPSoC,B0,6.331111111,syn,1
+PS2_rFF_rOTHER_NONCLKGLUE,Gen9LPSoC,B0,6.331111111,syn,1,
 PS2_Z_NONCLKGLUE,Gen9LPSoC,B0,7.565555556,syn,1,0
 PS0_COLOR_CLKGLUE,Gen9LPSoC,B0,44.63333333,syn,1,0
 PS0_L3Node_CLKGLUE,Gen9LPSoC,B0,12.75444444,syn,1,0
-PS0_rFF_rOTHER_CLKGLUE,Gen9LPSoC,B0,60.99888889,syn,1
+PS0_rFF_rOTHER_CLKGLUE,Gen9LPSoC,B0,60.99888889,syn,1,
 PS0_Z_CLKGLUE,Gen9LPSoC,B0,55.99333333,syn,1,0
 PS2_COLOR_CLKGLUE,Gen9LPSoC,B0,44.63333333,syn,1,0
 PS2_L3Node_CLKGLUE,Gen9LPSoC,B0,12.75444444,syn,1,0
-PS2_rFF_rOTHER_CLKGLUE,Gen9LPSoC,B0,60.99888889,syn,1
+PS2_rFF_rOTHER_CLKGLUE,Gen9LPSoC,B0,60.99888889,syn,1,
 PS2_Z_CLKGLUE,Gen9LPSoC,B0,55.99333333,syn,1,0
 PS0_EU_DOP,Gen9LPSoC,B0,0,syn,1,0
 PS0_HDC_DOP,Gen9LPSoC,B0,0,syn,1,0
@@ -6032,3 +5969,83 @@ PS2_rVFBE2,Gen10LP,A0,25.726962,syn,795859.9759,Raw Cdyn * 0.942 (x1r0-x1r1 scal
 PS2_rVSBE,Gen10LP,A0,69.21816,syn,1097712.546,Raw Cdyn * 0.942 (x1r0-x1r1 scalar)
 PS2_rVSFE,Gen10LP,A0,61.17819,syn,728350.0838,Raw Cdyn * 0.942 (x1r0-x1r1 scalar)
 PS2_rVFBE,Gen10LP,A0,25.726962,syn,795859.9759,Raw Cdyn * 0.942 (x1r0-x1r1 scalar)
+PS0_DSSC_Assign_DOP,Gen10LP,A0,0,syn,0,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_CLKGLUE_DOP,Gen10LP,A0,18.49361155,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_CPunit_DOP,Gen10LP,A0,3.196780118,syn,30559,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_DFX_DOP,Gen10LP,A0,1.598390059,syn,185260.21,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_DOP,Gen10LP,A0,8.094533538,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_NONCLKGLUE_DOP,Gen10LP,A0,1.717672899,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_Repeater_DOP,Gen10LP,A0,1.431394083,syn,98496.81,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_SMALL_DOP,Gen10LP,A0,3.745481183,syn,354868.84,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_Assign,Gen10LP,A0,0,syn,0,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_CLKGLUE,Gen10LP,A0,18.49361155,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_CPunit,Gen10LP,A0,3.196780118,syn,30559,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_DFX,Gen10LP,A0,1.598390059,syn,185260.21,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_NONCLKGLUE,Gen10LP,A0,1.717672899,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_Repeater,Gen10LP,A0,1.431394083,syn,98496.81,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_DSSC_SMALL,Gen10LP,A0,3.745481183,syn,354868.84,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_Assign,Gen10LP,A0,0,syn,0,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_CLKGLUE,Gen10LP,A0,18.49361155,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_CPunit,Gen10LP,A0,3.196780118,syn,30559,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_DFX,Gen10LP,A0,1.598390059,syn,185260.21,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_DOP,Gen10LP,A0,8.094533538,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_NONCLKGLUE,Gen10LP,A0,10.74619108,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_Repeater,Gen10LP,A0,2.099377988,syn,98496.81,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_DSSC_SMALL,Gen10LP,A0,9.542627219,syn,354868.84,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_Assign_DOP,Gen10LP,A0,0.677681097,syn,8943.882194,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_CLKGLUE_DOP,Gen10LP,A0,34.29259525,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_CPunit_DOP,Gen10LP,A0,2.498702799,syn,41218.82154,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_DFX_DOP,Gen10LP,A0,1.973563369,syn,358151.005,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_DOP,Gen10LP,A0,14.20913118,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_NONCLKGLUE_DOP,Gen10LP,A0,1.471394099,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_Repeater_DOP,Gen10LP,A0,5.731393984,syn,365625.735,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_SMALL_DOP,Gen10LP,A0,1.3776367,syn,260302.7943,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_Assign,Gen10LP,A0,1.001975858,syn,8943.882194,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_CLKGLUE,Gen10LP,A0,64.11452663,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_CPunit,Gen10LP,A0,4.723600473,syn,41218.82154,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_DFX,Gen10LP,A0,3.673911479,syn,358151.005,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,2.974914036,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_Repeater,Gen10LP,A0,8.158946272,syn,365625.735,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_rFF_rOTHER_SMALL,Gen10LP,A0,2.481083076,syn,260302.7943,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_Assign,Gen10LP,A0,1.049688994,syn,8943.882194,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_CLKGLUE,Gen10LP,A0,64.11452663,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_CPunit,Gen10LP,A0,4.723600473,syn,41218.82154,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_DFX,Gen10LP,A0,3.673911479,syn,358151.005,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_DOP,Gen10LP,A0,25.11619484,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_NONCLKGLUE,Gen10LP,A0,3.426996,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_Repeater,Gen10LP,A0,9.017782722,syn,365625.735,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_rFF_rOTHER_SMALL,Gen10LP,A0,5.021807574,syn,260302.7943,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_DOP,Gen10LP,A0,16.72106854,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_Assign,Gen10LP,A0,4.485034793,syn,73602.82,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_CLKGLUE,Gen10LP,A0,76.89449013,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_DFX,Gen10LP,A0,4.986022722,syn,670976.28,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_NONCLKGLUE,Gen10LP,A0,6.892162509,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_Repeater,Gen10LP,A0,1.95623858,syn,48454.4,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_SMALL,Gen10LP,A0,59,syn,2327030,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_Assign,Gen10LP,A0,5.081448994,syn,73602.82,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_CLKGLUE,Gen10LP,A0,76.8849475,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_DFX,Gen10LP,A0,4.986022722,syn,670976.28,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_DOP,Gen10LP,A0,16.72106855,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_NONCLKGLUE,Gen10LP,A0,7.550603787,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_Repeater,Gen10LP,A0,2.671935621,syn,48454.4,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_SQIDI_SMALL,Gen10LP,A0,69,syn,2327030,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_SQIDI_MediaIdle,Gen10LP,A0,1.073545562,syn,1446725.344,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_DOP,Gen10LP,A0,16.72106854,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_Assign,Gen10LP,A0,4.485034793,syn,73602.82,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_CLKGLUE,Gen10LP,A0,76.89449013,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_DFX,Gen10LP,A0,4.986022722,syn,670976.28,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_NONCLKGLUE,Gen10LP,A0,6.892162509,syn,1,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_Repeater,Gen10LP,A0,1.95623858,syn,48454.4,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_SMALL,Gen10LP,A0,59,syn,2327030,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_Assign,Gen10LP,A0,5.081448994,syn,73602.82,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_CLKGLUE,Gen10LP,A0,76.8849475,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_CPunit,Gen10LP,A0,5.463154083,syn,62477.48,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_DFX,Gen10LP,A0,4.986022722,syn,670976.28,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_DOP,Gen10LP,A0,16.72106855,syn,1,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_NONCLKGLUE,Gen10LP,A0,7.550603787,syn,1,average of cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_Repeater,Gen10LP,A0,2.671935621,syn,48454.4,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS2_UNCORE_SMALL,Gen10LP,A0,69,syn,2327030,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_UNCORE_MediaIdle,Gen10LP,A0,1.073545562,syn,1446725.344,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))

@@ -21,6 +21,7 @@
 	num_DSSC_NONCLKGLUE	=	num_DSSC_PSD
 	num_DSSC_DFX	=	num_DSSC_PSD
 	num_DSSC_DOP	=	num_DSSC_PSD
+        num_DSSC_SMALL	=	num_DSSC_SMALL
 
 	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
@@ -164,7 +165,11 @@
 	PS0_ROSS_SMALL_DOP	=	0	#ROSS units are not covered by 3D DOP
 	PS0_ROSS_SMALL	=	.temp_ross_avg
 	PS2_ROSS_SMALL	=	1 - PS0_ROSS_SMALL - PS0_ROSS_SMALL_DOP	
+
 				
+	PS0_DSSC_SMALL_DOP	=	0	#dssc units are not covered by 3D DOP
+	PS0_DSSC_SMALL	=	.temp_dssc_avg
+	PS2_DSSC_SMALL	=	1 - PS0_DSSC_SMALL - PS0_DSSC_SMALL_DOP
 #CPunit				
 	PS0_ROSS_CPunit_DOP	=	0	
 	PS0_ROSS_CPunit	=	.temp_ross_avg
