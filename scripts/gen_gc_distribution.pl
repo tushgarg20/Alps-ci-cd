@@ -14,6 +14,9 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"gc_alps_inp_file"	Output GC file to be used as ALPS input (YAML/CSV)
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
 	"powerdb_format"	GC CSV file in power dB format (post ww37 2015)
+	"adder_data"		GC CSV file provided has HSD adder GC (post ww26 2016)
+	"unit_sd_growth_data"	CSV file with unit SD growth factors (post ww26 2016)
+	"clust_sd_growth_data"	CSV file with cluster SD growth factors (post ww26 2016)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -52,11 +55,14 @@ our $opCsv;
 
 our $newSklFmt;
 our $pwrDbFmt;
+our $adderData;
 
 our $gcCsvFile;
 our $unitAlpsMapFileDefault = "$Bin/unitAlpsMap.csv";
 our $unitAlpsMapFile;
 our $gcAlpsIpFile;
+our $unitSdGrowthFile = "";
+our $clustSdGrowthFile = "";
 
 Getopt::Long::GetOptions(
 	"help" => \$optHelp,
@@ -67,6 +73,9 @@ Getopt::Long::GetOptions(
 	"gc_alps_inp_file=s" => \$gcAlpsIpFile,
 	"new_skl_format" => \$newSklFmt,
 	"powerdb_format" => \$pwrDbFmt,
+	"adder_data" => \$adderData,
+	"unit_sd_growth_file=s" => \$unitSdGrowthFile,
+	"clust_sd_growth_file=s" => \$clustSdGrowthFile,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -87,6 +96,23 @@ if ($unitAlpsMapFile =~ /^\s*$/)
 
 if ($newSklFmt) {print "Input GC file in new SKL format\n";}
 if ($pwrDbFmt) {print "Input GC file in power dB format\n";}
+if ($adderData) {
+	if ($pwrDbFmt) { 
+		print "Will assume input GC file as HSD adder file in power dB format\n";
+		if ($unitSdGrowthFile eq "" || $clustSdGrowthFile eq "") {
+			die "Need to provide both unit and cluster SD growth files if providing HSD adder files\n";
+		} else {
+			if ((-f $unitSdGrowthFile) && (-f $clustSdGrowthFile)) {
+				print "Unit SD growth file - $unitSdGrowthFile\n";
+				print "Cluster SD growth file - $clustSdGrowthFile\n";
+			} else {
+				die "Either unit or cluster SD growth file doesn't exist or isn't a valid file\n";
+			}
+		}
+	} else {
+		die "HSD adder files support only in power dB format\n";
+	}
+}
 
 if ($optYaml && !$optCsv) {print "Output file will be dumped in YAML format\n"; $opYaml = 1; $opCsv = 0;} 
 if (!$optYaml && $optCsv) {print "Output file will be dumped in CSV format\n"; $opCsv = 1; $opYaml = 0;} 
@@ -97,10 +123,55 @@ our %alpsMapHash;
 our %gcHash;
 our %alpsIpTempHash;
 our %alpsIpHash;
+our %unitSdGrowthHash;
 
-read_unit_alps_map_file();
-read_gc_csv_file();
-create_gc_alps_inp_file();
+if ($pwrDbFmt && $adderData) { 
+	&read_unit_sd_growth_file($unitSdGrowthFile);
+	&read_unit_sd_growth_file($clustSdGrowthFile);
+}
+&read_unit_alps_map_file();
+&read_gc_csv_file();
+&create_gc_alps_inp_file();
+
+sub read_unit_sd_growth_file() {
+	my $fileR = shift @ARGV;
+	my $fileRH;
+	open $fileRH, "$fileR" or die "Can't open $fileR:$!";
+	my $line = <$fileRH>;
+	my %header;
+	my @headers = split/,/,$line;
+	my $hCount = 0;
+	foreach my $head (@headers)
+	{
+		$head =~ s/^\s*//;
+		$head =~ s/\s*$//;
+		$header{$head} = $hCount;
+		$hCount++;
+	}
+	while(<$fileRH>) {
+		my $line = $_;
+		chomp($line);
+		my @parts = split/,/,$line;
+		my $unitName;
+		my $growth;
+		if (defined $header{"unit"}) {
+			$unitName = $parts[$header{"unit"}];
+		} elsif (defined $header{"cluster"}) {
+			$unitName = $parts[$header{"cluster"}];
+		} else {
+			die "Cannot find any field for unit/cluster in SD growth file $fileR\n";
+		}
+		if (defined $header{"sd_growth"}) {
+			$growth   = $parts[$header{"sd_growth"}];
+		} elsif (defined $header{"unit_sd_growth"}) {
+			$growth   = $parts[$header{"unit_sd_growth"}];
+		} else {
+			die "Cannot find any field for unit SD growth in SD growth file $fileR\n";
+		}
+		$unitSdGrowthHash{"$unitName"} = $growth;
+	}
+	close $fileRH;
+}
 
 sub read_unit_alps_map_file {
 	my $fileR = $unitAlpsMapFile;
@@ -157,7 +228,14 @@ sub read_gc_csv_file {
 		my @parts = split(/,/, $line);
 		my $unitName;
 		if ($pwrDbFmt) {
-			$unitName = $parts[$header{"Unit"}];
+			if (defined $header{"Unit"}) {
+				$unitName = $parts[$header{"Unit"}];
+			} elsif (defined $header{"unit"}) {
+				$unitName = $parts[$header{"unit"}];
+			} else {
+				die "Cannot find any units in the inp GC file\n";
+			}
+			#$unitName = $parts[$header{"Unit"}];
 		} else {
 			$unitName = $parts[0];
 		}
@@ -175,7 +253,31 @@ sub read_gc_csv_file {
 		$cluster =~ s/\s*$//;
 		if ($cluster eq "NOT USED") {$count++; next;}
 		my $gc;
-		if ($pwrDbFmt) {
+		my $infraGc;
+		my $scalerStatus;
+		if ($pwrDbFmt && $adderData) {
+			$infraGc = $parts[$header{"hw_impact_megacluster_syn_kgates"}];
+			$infraGc =~ s/^\s*//;
+			$infraGc =~ s/\s*$//;
+			my $growth = 1.0;
+			if (defined $unitSdGrowthHash{"$unitName"}) {
+				$growth = $unitSdGrowthHash{"$unitName"};
+			} else {
+				warn "Unit $unitName doesn't have an entry in the SD growth file\n";
+				print "Assuming a SD growth factor of 1.0 for unit $unitName\n";
+			}
+			$infraGc *= $growth * 1000;
+			$scalerStatus = $parts[$header{"threed"}];
+			if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
+				$gc = $infraGc;
+			} elsif ($scalerStatus =~ /IDLE/i) {
+				$gc = $infraGc * 0.11;
+			} elsif ($scalerStatus =~ /POWER_GATED/i) {
+				$gc = 0;
+			} else {
+				die "Unknown GC growth scaler status - $scalerStatus\n";
+			}
+		} elsif ($pwrDbFmt && !$adderData) {
 			$gc = $parts[$header{"GC"}];
                 } elsif ($newSklFmt) {
                         $gc = $parts[6];
@@ -194,7 +296,14 @@ sub read_gc_csv_file {
 			}
 		}
 		my $roundGc = sprintf("%.0f", $gc);
-		$gcHash{"$unitName"} = $roundGc;
+		my $roundInfraGc;
+		if ($pwrDbFmt && $adderData) {
+			$roundInfraGc = sprintf("%.0f", $infraGc);
+			$gcHash{"$unitName"}{"GC"} += $roundGc;
+			$gcHash{"$unitName"}{"INFRAGC"} += $roundInfraGc;
+		} else {
+			$gcHash{"$unitName"}{"GC"} = $roundGc;
+		}
 		$count++;
 	}
 	close $fileRH;
@@ -213,14 +322,14 @@ sub create_gc_alps_inp_file {
 			my $alpsUnit = $alpsMapHash{"$unit"}{"ALPS"};
 			my $func = $alpsMapHash{"$unit"}{"FUNC"};
 			if ($func eq "IGNORE") {warn "Unit $unit ignored for GC rollup\n"; next;}
-			if ($alpsUnit =~ /FPUWRAP/) {
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"TOTAL"} += $gc/2;	
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"FPU"}{"FUNC"} = $func;
-				$alpsIpTempHash{"$cluster"}{"EM"}{"TOTAL"} += $gc/2;	
-				$alpsIpTempHash{"$cluster"}{"EM"}{"COUNT"} += 1;
-				$alpsIpTempHash{"$cluster"}{"EM"}{"FUNC"} = $func;
-			} elsif ($alpsUnit =~ /DFX|SmallUnits|CP|ASSIGN|RPT/) {
+			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
+			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
