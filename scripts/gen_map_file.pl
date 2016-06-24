@@ -144,7 +144,7 @@ sub read_unit_alps_map_file {
 		if ($unitName) {
 			$unitName =~ s/^\s*//;
 			$unitName =~ s/\s*$//;
-			$unitName =~ s/1$//;
+			#$unitName =~ s/1$//;
 		}
 		else
 		{
@@ -260,6 +260,7 @@ sub read_gc_csv_file {
 		{
 			if ($count == 1) {$count++; next;}
 		}
+		if ($line =~ /^#/) {next;}
 		my @parts = split(/,/, $line);
 		if ($pwrDbFmt)
 		{
@@ -287,10 +288,16 @@ sub read_gc_csv_file {
 				$gc = $parts[$header{"hw_impact_megacluster_syn_kgates"}];
 				$gcHash{"$cluster"}{"$unitName"} = $gc;
 			} else {
-				$partition = $parts[$header{"Partition"}];
-				$isGlue = $parts[$header{"Is_gluelogic"}];
-				$isPart = $parts[$header{"Is_partition"}];
-				$gc = $parts[$header{"GC"}];
+				$partition = $parts[$header{"partition"}];
+				$isGlue = $parts[$header{"is_gluelogic"}];
+				$isPart = $parts[$header{"is_partition"}];
+				if (defined $header{"GC"}) {
+					$gc = $parts[$header{"GC"}];
+				} elsif (defined $header{"gc"}) {
+					$gc = $parts[$header{"gc"}];
+				} else {
+					die "SD GC file doesn't have a field for GC\n";
+				}
 				if ($isGlue == 0 && $isPart == 0)
 				{
 					#print "Part $partition Unit $unitName\n";
@@ -424,6 +431,9 @@ sub create_new_alps_map_file {
 			foreach my $partition (keys %gcHash) {
 				my %unitHash = %{$gcHash{"$partition"}};
 				foreach my $unit (keys %unitHash) {
+					#print "UNIT $unit\n";
+					my $unit1 = $unit."1";
+					my $unit0 = $unit."0";
 					if (exists $alpsMapHash{"$unit"}) {
 	 	        	      		my $part = $alpsMapHash{"$unit"}{"PART"};
 			                	if ($partition eq $part)
@@ -432,11 +442,42 @@ sub create_new_alps_map_file {
 							print $fileWH "$line\n";
 	                        		}
 	                        		else
-	                	        	{	
-							print $fileWH "$unit,,$partition\n";
+	                	        	{
+							my $line = $alpsMapHash{"$unit"}{"LINE"};
+							$line =~ s/$part/$partition/;
+							print $fileWH "$line\n";
+							#print $fileWH "$unit,,$partition\n";
+			                	}
+					} elsif (exists $alpsMapHash{"$unit1"}) {
+						my $part = $alpsMapHash{"$unit1"}{"PART"};
+			                	if ($partition eq $part)
+			                	{
+							my $line = $alpsMapHash{"$unit1"}{"LINE"};
+							print $fileWH "$line\n";
+	                        		}
+	                        		else
+	                	        	{
+							my $line = $alpsMapHash{"$unit1"}{"LINE"};
+							$line =~ s/$part/$partition/;
+							print $fileWH "$line\n";
+							#print $fileWH "$unit,,$partition\n";
+			                	}
+					} elsif (exists $alpsMapHash{"$unit0"}) {
+						my $part = $alpsMapHash{"$unit0"}{"PART"};
+			                	if ($partition eq $part)
+			                	{
+							my $line = $alpsMapHash{"$unit0"}{"LINE"};
+							print $fileWH "$line\n";
+	                        		}
+	                        		else
+	                	        	{
+							my $line = $alpsMapHash{"$unit0"}{"LINE"};
+							$line =~ s/$part/$partition/;
+							print $fileWH "$line\n";
+							#print $fileWH "$unit,,$partition\n";
 			                	}
 					} else {
-						print $fileWH "$unit,,$partition\n";
+						print $fileWH "$unit,,$partition,Yes/No,,,\n";
 					}
 				}
 			}

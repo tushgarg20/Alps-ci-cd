@@ -15,8 +15,8 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
 	"powerdb_format"	GC CSV file in power dB format (post ww37 2015)
 	"adder_data"		GC CSV file provided has HSD adder GC (post ww26 2016)
-	"unit_sd_growth_data"	CSV file with unit SD growth factors (post ww26 2016)
-	"clust_sd_growth_data"	CSV file with cluster SD growth factors (post ww26 2016)
+	"unit_sd_growth_file"	CSV file with unit SD growth factors (post ww26 2016)
+	"clust_sd_growth_file"	CSV file with cluster SD growth factors (post ww26 2016)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -133,8 +133,9 @@ if ($pwrDbFmt && $adderData) {
 &read_gc_csv_file();
 &create_gc_alps_inp_file();
 
-sub read_unit_sd_growth_file() {
-	my $fileR = shift @ARGV;
+sub read_unit_sd_growth_file {
+	my $fileR = shift;
+	print "Using SD growth file - $fileR\n";
 	my $fileRH;
 	open $fileRH, "$fileR" or die "Can't open $fileR:$!";
 	my $line = <$fileRH>;
@@ -178,25 +179,65 @@ sub read_unit_alps_map_file {
 	my $fileRH;
 	open $fileRH, "$fileR" or die "Can't open file $fileR:$!";
 	my $count = 1;
+	my $line = <$fileRH>;
+	my %header;
+	my @headers = split/,/,$line;
+	my $hCount = 0;
+	foreach my $head (@headers)
+	{
+		$head =~ s/^\s*//;
+		$head =~ s/\s*$//;
+		$header{$head} = $hCount;
+		$hCount++;
+	}
 	while(<$fileRH>) {
 		my $line = $_;
 		chomp($line);
-		if ($count == 1) {$count++; next;}
+		$line =~ s/^\s*//;
+		$line =~ s/\s*$//;
+		#if ($count == 1) {$count++; next;}
 		my @parts = split(/,/, $line);
-		my $unitName = $parts[0];
+		my $unitName;
+		if ($pwrDbFmt && $adderData) {
+			$unitName = $parts[$header{"Unit"}];
+		} else {
+			$unitName = $parts[0];
+		}
 		$unitName =~ s/^\s*//;
 		$unitName =~ s/\s*$//;
-		my $alpsUnitName = $parts[4];
+		my $clustName;
+		if ($pwrDbFmt && $adderData) {
+			$clustName = $parts[$header{"Cluster"}];
+		} else {
+			$unitName = $parts[1];
+		}
+		my $alpsUnitName;
+		if ($pwrDbFmt && $adderData) {
+			$alpsUnitName = $parts[$header{"ALPS Unit Name"}];
+		} else {
+			$alpsUnitName = $parts[4];
+		}
 		$alpsUnitName =~ s/^\s*//;
 		$alpsUnitName =~ s/\s*$//;
-		my $alpsCluster = $parts[5];
+		my $alpsCluster;
+		if ($pwrDbFmt && $adderData) {
+			$alpsCluster = $parts[$header{"ALPS Cluster"}];
+		} else {
+			$alpsCluster = $parts[5];
+		}
 		$alpsCluster =~ s/^\s*//;
 		$alpsCluster =~ s/\s*$//;
-		if ($alpsCluster eq "NOT USED") {$count++; next;}	
-		my $function = $parts[6];
+		if ($alpsCluster eq "NOT USED") {$count++; next;}
+		my $function;
+		if ($pwrDbFmt && $adderData) {
+			$function = $parts[$header{"Functions"}];
+		} else {
+			$function = $parts[6];
+		}
 		$function =~ s/^\s*//;
 		$function =~ s/\s*$//;
 		$alpsMapHash{"$unitName"}{"ALPS"} = $alpsUnitName;
+		$alpsMapHash{"$unitName"}{"CLUSTER"} = $clustName;
 		$alpsMapHash{"$unitName"}{"ALPSCLUSTER"} = $alpsCluster;
 		$alpsMapHash{"$unitName"}{"FUNC"} = $function;		 
 		$count++;
@@ -224,6 +265,9 @@ sub read_gc_csv_file {
 	while(<$fileRH>) {
 		my $line = $_;
 		chomp($line);
+		$line =~ s/^\s*//;
+		$line =~ s/\s*$//;
+		if ($line =~ /^#/) {next;}
 		#if ($count == 1) {$count++; next;}
 		my @parts = split(/,/, $line);
 		my $unitName;
@@ -259,14 +303,20 @@ sub read_gc_csv_file {
 			$infraGc = $parts[$header{"hw_impact_megacluster_syn_kgates"}];
 			$infraGc =~ s/^\s*//;
 			$infraGc =~ s/\s*$//;
-			my $growth = 1.0;
-			if (defined $unitSdGrowthHash{"$unitName"}) {
-				$growth = $unitSdGrowthHash{"$unitName"};
-			} else {
-				warn "Unit $unitName doesn't have an entry in the SD growth file\n";
-				print "Assuming a SD growth factor of 1.0 for unit $unitName\n";
-			}
-			$infraGc *= $growth * 1000;
+			#my $growth = 1.0;
+			#my $unitName1 = $unitName."1";
+			#my $unitName0 = $unitName."0";
+			#if (defined $unitSdGrowthHash{"$unitName"}) {
+			#	$growth = $unitSdGrowthHash{"$unitName"};
+			#} elsif (defined $unitSdGrowthHash{"$unitName1"}) {
+			#	$growth = $unitSdGrowthHash{"$unitName"};
+			#} elsif (defined $unitSdGrowthHash{"$unitName0"}) {
+			#	$growth = $unitSdGrowthHash{"$unitName"};
+			#} else {
+			#	warn "Unit $unitName doesn't have an entry in the SD growth file\n";
+			#	print "Assuming a SD growth factor of 1.0 for unit $unitName\n";
+			#}
+			#$infraGc *= $growth * 1000;
 			$scalerStatus = $parts[$header{"threed"}];
 			if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
 				$gc = $infraGc;
@@ -278,7 +328,18 @@ sub read_gc_csv_file {
 				die "Unknown GC growth scaler status - $scalerStatus\n";
 			}
 		} elsif ($pwrDbFmt && !$adderData) {
-			$gc = $parts[$header{"GC"}];
+			my $isPart = $parts[$header{"is_partition"}];
+			my $isGlue = $parts[$header{"is_gluelogic"}];
+			if ($isPart || $isGlue) {next;}
+			if (defined $header{"GC"}) {
+				$gc = $parts[$header{"GC"}];
+				$infraGc = $gc;
+			} elsif (defined $header{"gc"}) {
+				$gc = $parts[$header{"gc"}];
+				$infraGc = $gc;
+			} else {
+				die "SD GC field doesn't have a field for GC\n";
+			}
                 } elsif ($newSklFmt) {
                         $gc = $parts[6];
                 } else {
@@ -296,13 +357,14 @@ sub read_gc_csv_file {
 			}
 		}
 		my $roundGc = sprintf("%.0f", $gc);
-		my $roundInfraGc;
+		my $roundInfraGc = sprintf("%.0f", $infraGc);
 		if ($pwrDbFmt && $adderData) {
-			$roundInfraGc = sprintf("%.0f", $infraGc);
+			#$roundInfraGc = sprintf("%.0f", $infraGc);
 			$gcHash{"$unitName"}{"GC"} += $roundGc;
 			$gcHash{"$unitName"}{"INFRAGC"} += $roundInfraGc;
 		} else {
 			$gcHash{"$unitName"}{"GC"} = $roundGc;
+			$gcHash{"$unitName"}{"INFRAGC"} = $roundInfraGc;
 		}
 		$count++;
 	}
@@ -316,12 +378,30 @@ sub create_gc_alps_inp_file {
 	open $fileWH, ">$fileW" or die "Can't open file $fileW:$!";
 	print $fileWH "Unit,Cluster,GC\n";
 	foreach my $unit (keys %gcHash) {
-		my $gc = $gcHash{"$unit"};	
+		my $gc = $gcHash{"$unit"}{"GC"};
+		my $infraGc = $gcHash{"$unit"}{"INFRAGC"};
+		my $unit1 = $unit."1";
+		my $unit0 = $unit."0";
 		if (exists $alpsMapHash{"$unit"}) {
 			my $cluster = $alpsMapHash{"$unit"}{"ALPSCLUSTER"};
+			my $clustName = $alpsMapHash{"$unit"}{"CLUSTER"};
 			my $alpsUnit = $alpsMapHash{"$unit"}{"ALPS"};
 			my $func = $alpsMapHash{"$unit"}{"FUNC"};
 			if ($func eq "IGNORE") {warn "Unit $unit ignored for GC rollup\n"; next;}
+			my $growth = 1.0;
+			#my $unitName1 = $unitName."1";
+			#my $unitName0 = $unitName."0";
+			if ($pwrDbFmt && $adderData) {
+				if (defined $unitSdGrowthHash{"$unit"}) {
+					$growth = $unitSdGrowthHash{"$unit"};
+				} elsif (defined $unitSdGrowthHash{"$clustName"}) {
+					$growth = $unitSdGrowthHash{"$clustName"};
+				} else {
+					warn "Unit $unit doesn't have an entry in the SD growth file\n";
+					print "Assuming a SD growth factor of 1.0 for unit $unit\n";
+				}
+			}
+			$gc = $gc * $growth * 1000.0;
 			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
@@ -338,9 +418,93 @@ sub create_gc_alps_inp_file {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			} 
+		} elsif (exists $alpsMapHash{"$unit1"}) {
+			my $cluster = $alpsMapHash{"$unit1"}{"ALPSCLUSTER"};
+			my $clustName = $alpsMapHash{"$unit1"}{"CLUSTER"};
+			my $alpsUnit = $alpsMapHash{"$unit1"}{"ALPS"};
+			my $func = $alpsMapHash{"$unit1"}{"FUNC"};
+			if ($func eq "IGNORE") {warn "Unit $unit ignored for GC rollup\n"; next;}
+			my $growth = 1.0;
+			#my $unitName1 = $unitName."1";
+			#my $unitName0 = $unitName."0";
+			if ($pwrDbFmt && $adderData) {
+				if (defined $unitSdGrowthHash{"$unit1"}) {
+					$growth = $unitSdGrowthHash{"$unit1"};
+				} elsif (defined $unitSdGrowthHash{"$clustName"}) {
+					$growth = $unitSdGrowthHash{"$clustName"};
+				} else {
+					warn "Unit $unit1 doesn't have an entry in the SD growth file\n";
+					print "Assuming a SD growth factor of 1.0 for unit $unit1\n";
+				}
+			}
+			$gc = $gc * $growth * 1000.0;
+			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
+			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
+			} else {
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
+			}
+		} elsif (exists $alpsMapHash{"$unit0"}) {
+			my $cluster = $alpsMapHash{"$unit0"}{"ALPSCLUSTER"};
+			my $clustName = $alpsMapHash{"$unit0"}{"CLUSTER"};
+			my $alpsUnit = $alpsMapHash{"$unit0"}{"ALPS"};
+			my $func = $alpsMapHash{"$unit0"}{"FUNC"};
+			if ($func eq "IGNORE") {warn "Unit $unit ignored for GC rollup\n"; next;}
+			my $growth = 1.0;
+			#my $unitName1 = $unitName."1";
+			#my $unitName0 = $unitName."0";
+			if ($pwrDbFmt && $adderData) {
+				if (defined $unitSdGrowthHash{"$unit0"}) {
+					$growth = $unitSdGrowthHash{"$unit0"};
+				} elsif (defined $unitSdGrowthHash{"$clustName"}) {
+					$growth = $unitSdGrowthHash{"$clustName"};
+				} else {
+					warn "Unit $unit0 doesn't have an entry in the SD growth file\n";
+					print "Assuming a SD growth factor of 1.0 for unit $unit0\n";
+				}
+			}
+			$gc = $gc * $growth * 1000.0;
+			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
+			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
+			} else {
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
+			}
 		} else {
 			#die "Unit $unit doesn't exist in the map file\n";
 			warn "Unit $unit doesn't exist in the map file\n";
+			my $growth = 1.0;
+			if (defined $unitSdGrowthHash{"$unit"}) {
+				$growth = $unitSdGrowthHash{"$unit"};
+				$gc = $gc * $growth * 1000.0;
+				$infraGc = $infraGc * $growth * 1000.0;
+			} else {
+				warn "Unit $unit doesn't have an entry in the SD growth file\n";
+				print "Assuming a SD growth factor of 1.0 for unit $unit\n";
+				$gc = $gc * $growth * 1000.0;
+				$infraGc = $infraGc * $growth * 1000.0;
+			}
+			print "Unit $unit GC $gc Infra GC $infraGc\n";
 		}
 	}	
 	foreach my $cluster (keys %alpsIpTempHash) {
