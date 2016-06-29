@@ -17,6 +17,7 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"adder_data"		GC CSV file provided has HSD adder GC (post ww26 2016)
 	"unit_sd_growth_file"	CSV file with unit SD growth factors (post ww26 2016)
 	"clust_sd_growth_file"	CSV file with cluster SD growth factors (post ww26 2016)
+	"fub_cg_as_idle"	Fub clock gated adders will be treated on par with idle adders (post ww26 2016)
 	"yaml"			Output in YAML format
 	"csv" 			Output in CSV format
 
@@ -63,6 +64,7 @@ our $unitAlpsMapFile;
 our $gcAlpsIpFile;
 our $unitSdGrowthFile = "";
 our $clustSdGrowthFile = "";
+our $fubCgAsIdle;
 
 Getopt::Long::GetOptions(
 	"help" => \$optHelp,
@@ -76,6 +78,7 @@ Getopt::Long::GetOptions(
 	"adder_data" => \$adderData,
 	"unit_sd_growth_file=s" => \$unitSdGrowthFile,
 	"clust_sd_growth_file=s" => \$clustSdGrowthFile,
+	"fub_cg_as_idle" => \$fubCgAsIdle,
 	"yaml"	=> \$optYaml,
 	"csv"	=> \$optCsv		
 ) or Pod::Usage::pod2usage("Try $0 --help/--man for more information...");
@@ -108,6 +111,11 @@ if ($adderData) {
 			} else {
 				die "Either unit or cluster SD growth file doesn't exist or isn't a valid file\n";
 			}
+		}
+		if ($fubCgAsIdle) {
+			print "Will treat Fub Clock Gated adders on par with idle adders\n";
+		} else {
+			print "Will treat Fub Clock Gated adders on par with active adders\n";
 		}
 	} else {
 		die "HSD adder files support only in power dB format\n";
@@ -318,14 +326,26 @@ sub read_gc_csv_file {
 			#}
 			#$infraGc *= $growth * 1000;
 			$scalerStatus = $parts[$header{"threed"}];
-			if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
-				$gc = $infraGc;
-			} elsif ($scalerStatus =~ /IDLE/i) {
-				$gc = $infraGc * 0.11;
-			} elsif ($scalerStatus =~ /POWER_GATED/i) {
-				$gc = 0;
+			if ($fubCgAsIdle) {
+				if ($scalerStatus =~ /ACTIVE/i) {
+					$gc = $infraGc;
+				} elsif ($scalerStatus =~ /IDLE|Fub_Clock_Gated/i) {
+					$gc = $infraGc * 0.11;
+				} elsif ($scalerStatus =~ /POWER_GATED/i) {
+					$gc = 0;
+				} else {
+					die "Unknown GC growth scaler status - $scalerStatus\n";
+				}
 			} else {
-				die "Unknown GC growth scaler status - $scalerStatus\n";
+				if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
+					$gc = $infraGc;
+				} elsif ($scalerStatus =~ /IDLE/i) {
+					$gc = $infraGc * 0.11;
+				} elsif ($scalerStatus =~ /POWER_GATED/i) {
+					$gc = 0;
+				} else {
+					die "Unknown GC growth scaler status - $scalerStatus\n";
+				}
 			}
 		} elsif ($pwrDbFmt && !$adderData) {
 			my $isPart = $parts[$header{"is_partition"}];
@@ -376,7 +396,7 @@ sub create_gc_alps_inp_file {
 	my $fileW = $gcAlpsIpFile;
 	my $fileWH;
 	open $fileWH, ">$fileW" or die "Can't open file $fileW:$!";
-	print $fileWH "Unit,Cluster,GC\n";
+	print $fileWH "Unit,Cluster,GC,INFRAGC\n";
 	foreach my $unit (keys %gcHash) {
 		my $gc = $gcHash{"$unit"}{"GC"};
 		my $infraGc = $gcHash{"$unit"}{"INFRAGC"};
@@ -402,19 +422,24 @@ sub create_gc_alps_inp_file {
 				}
 			}
 			$gc = $gc * $growth * 1000.0;
+			$infraGc = $infraGc * $growth * 1000.0;
 			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
-				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
-				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
 			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			} else {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			} 
@@ -438,19 +463,24 @@ sub create_gc_alps_inp_file {
 				}
 			}
 			$gc = $gc * $growth * 1000.0;
+			$infraGc = $infraGc * $growth * 1000.0;
 			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
-				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
-				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
 			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			} else {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			}
@@ -474,19 +504,24 @@ sub create_gc_alps_inp_file {
 				}
 			}
 			$gc = $gc * $growth * 1000.0;
+			$infraGc = $infraGc * $growth * 1000.0;
 			if ($alpsUnit =~ /FPUWRAP|FPU0/) {
-				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU0"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU0"}{"FUNC"} = $func;
-				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;	
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTAL"} += $gc/2;
+				$alpsIpTempHash{"$cluster"}{"FPU1"}{"TOTALINFRA"} += $infraGc/2;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"FPU1"}{"FUNC"} = $func;
 			} elsif ($alpsUnit =~ /DFX|SmallUnits|SMALL|CP|ASSIGN|RPT/) {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			} else {
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTAL"} += $gc;
+				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"TOTALINFRA"} += $infraGc;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"COUNT"} += 1;
 				$alpsIpTempHash{"$cluster"}{"$alpsUnit"}{"FUNC"} = $func;
 			}
@@ -512,9 +547,11 @@ sub create_gc_alps_inp_file {
 		foreach my $unit (keys %unitHash) {
 			my $func = $unitHash{"$unit"}{"FUNC"};
 			if ($func eq "SUM") {
-				$alpsIpHash{"$cluster"}{"$unit"} = $unitHash{"$unit"}{"TOTAL"};
+				$alpsIpHash{"$cluster"}{"$unit"}{"GC"} = $unitHash{"$unit"}{"TOTAL"};
+				$alpsIpHash{"$cluster"}{"$unit"}{"INFRAGC"} = $unitHash{"$unit"}{"TOTALINFRA"};
 			} elsif ($func eq "AVG") {
-				$alpsIpHash{"$cluster"}{"$unit"} = $unitHash{"$unit"}{"TOTAL"}/$unitHash{"$unit"}{"COUNT"};
+				$alpsIpHash{"$cluster"}{"$unit"}{"GC"} = $unitHash{"$unit"}{"TOTAL"}/$unitHash{"$unit"}{"COUNT"};
+				$alpsIpHash{"$cluster"}{"$unit"}{"INFRAGC"} = $unitHash{"$unit"}{"TOTALINFRA"}/$unitHash{"$unit"}{"COUNT"};
 			} else {
 				die "Function $func is not yet supported\n";
 			}
@@ -528,8 +565,10 @@ sub create_gc_alps_inp_file {
 		#push(@alpsIpArray, \%alpsIpHash);	 
 		foreach my $cluster (keys %alpsIpHash) {
 			foreach my $unit (keys %{$alpsIpHash{"$cluster"}}) {
-					my $gc = $alpsIpHash{"$cluster"}{"$unit"};
-				print $fileWH "$unit,$cluster,$gc\n";
+				my $gc = $alpsIpHash{"$cluster"}{"$unit"}{"GC"};
+				my $infraGc = $alpsIpHash{"$cluster"}{"$unit"}{"INFRAGC"};
+				print $fileWH "$unit,$cluster,$gc,$infraGc\n";
+				#print "$unit,$cluster,$gc,$infraGc\n";
 			}  
 		}
 		#my $csv = Text::CSV::Slurp->create( input => \@alpsIpArray);
