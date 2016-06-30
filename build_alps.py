@@ -95,6 +95,8 @@ elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
+elif common_cfg.find('tgllp') > -1 :
+    cfg ='Gen11'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -109,6 +111,10 @@ if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
 elif common_cfg.find('icllp') > -1 :
     cfg_gc = "Gen11LP"
+elif common_cfg.find('tgllpall') > -1 :
+    cfg_gc = "Gen12LPAllGc"
+elif common_cfg.find('tgllppwr') > -1 :
+    cfg_gc = "Gen12LPPwrGc"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
