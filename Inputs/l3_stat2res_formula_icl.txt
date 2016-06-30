@@ -18,7 +18,9 @@
 	num_L3_Bank_Assign						=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_Repeater					=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_CLKGLUE						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_NONCLKGLUE					=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_NONCLKGLUE					=	num_L3_Slices * numL3Banks
+	num_L3_Bank_LBI							=	num_L3_Slices * numL3Banks
+	
 #Generic				
 	@ANY_L3BANK@							=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
 	@ANY_L3@								=	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)
@@ -29,7 +31,7 @@
 	.temp_LNE_max2							=	D(MIN(4, (num_L3_SubSlices + 3)))	
 	LNE_max_ports							=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
 	L3SuperQSize							=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
-
+	@ANY_LNI@								=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
 				
 #LTCD_EBB				
 	PS0_LTCD_EBB							=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
@@ -50,17 +52,19 @@
 	.residualltcddata						=	1- (PS0_LTCD_DATA+PS1_LTCD_DATA+PS2_LTCD_DATA_READ+PS2_LTCD_DATA_WRITE+PS2_LTCD_DATA_EVICT)
 	PS2_LTCD_DATA_Else						=	(.residualltcddata<0)?0:.residualltcddata
 	
-#LTCD_Tag_Syn				# Total SLM Writes
+#LTCD_Tag_Syn			
 	.PS2_LTCD_Data_NonSLM_ECC_NoTagRead		=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	.PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
 	PS0_LTCD_TAG							=	D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS1_LTCD_TAG							=	(D(SUM('@ANY_L3BANK@TagIdleOrStallCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	#original equation PS2_LTCD_TAG_READ	=	D(SUM('@ANY_L3BANK@TagInputRd\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)		
-	#original equation PS2_LTCD_TAG_WRITE	=	D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagInputRd\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks))	- .PS2_LTCD_Data_NonSLM_ECC_NoTagRead	
-	PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .PS2_LTCD_Data_NonSLM_ECC_NoTagWrite
+	#non stallable PS1_LTCD_TAG							=	(D(SUM('@ANY_L3BANK@TagIdleOrStallCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	#original equation (erroneous) PS2_LTCD_TAG_READ	=	D(SUM('@ANY_L3BANK@TagInputRd\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)		
+	#original equation (erroneous) PS2_LTCD_TAG_WRITE	=	D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	#less accurate PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagInputRd\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks))	- .PS2_LTCD_Data_NonSLM_ECC_NoTagRead	
+	#less accurate PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .PS2_LTCD_Data_NonSLM_ECC_NoTagWrite
+	PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagRamRd')) / (.CrClk2x * num_L3_Slices * numL3Banks))	- .PS2_LTCD_Data_NonSLM_ECC_NoTagRead	
+	PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagRamWr')) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .PS2_LTCD_Data_NonSLM_ECC_NoTagWrite
 	PS2_LTCD_TAG_EVICT						=	D(SUM('@ANY_L3BANK@Evict')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	.residualltcdtag						=	1- (PS0_LTCD_TAG+PS1_LTCD_TAG+PS2_LTCD_TAG_READ+PS2_LTCD_TAG_WRITE+PS2_LTCD_TAG_EVICT)
+	.residualltcdtag						=	1- (PS0_LTCD_TAG+PS2_LTCD_TAG_READ+PS2_LTCD_TAG_WRITE+PS2_LTCD_TAG_EVICT)
 	PS2_LTCD_TAG_Else						=	(.residualltcdtag<0)?0:.residualltcdtag
 
 
@@ -95,7 +99,20 @@
 	PS1_LTCC								=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS2_LTCC								=	1 - PS0_LTCC - PS1_LTCC	
 											
+#LBI
 	
+	PS0_LBI=D(SUM('@ANY_L3@LNI_\d\.Idle'))/ (.CrClk2x * num_L3_Slices * numL3Banks)
+	PS1_LBI=D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)#LBI ingress fifo not empty and no LSQC slot credit
+	PS2_LBI_BANK_READ = (D(SUM('@ANY_LNI@LocalSliceRead')) + D(SUM('@ANY_LNI@XSliceSliceRead')))/ ((.CrClk2x * num_L3_Slices * numL3Banks))  #bank read on port0 #divide by 2 to make it per port
+	PS2_LBI_BANK_WRITE = (D(SUM('@ANY_LNI@LocalSliceWrite')) + D(SUM('@ANY_LNI@XSliceSliceWrite')))/ ((.CrClk2x * num_L3_Slices * numL3Banks)) #bank write on port0
+	PS2_LBI_MEFFILL=D(SUM('@ANY_LNI@MemReturn'))/ ((.CrClk2x * num_L3_Slices * numL3Banks))#Mem fill to LSQD
+	.residuallbi							=	1- (PS0_LBI + PS1_LBI + PS2_LBI_BANK_WRITE + PS2_LBI_BANK_READ + PS2_LBI_MEFFILL)
+	PS2_LBI_Else							=	(.residuallbi<0)?0:.residuallbi
+
+#Other stats	
+	BankURBRd								=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbRd'))/(.CrClk2x * num_L3_Slices * numL3Banks)
+	BankURBWr								=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(.CrClk2x * num_L3_Slices * numL3Banks)
+
 #LSLM				
 #	PS0_LSLM	=	D(SUM('@ANY_L3BANK@SLMIdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	#Place holder#
 #	PS1_LSLM	=	1 - PS0_LSLM - PS2_LSLM_Atomics - PS2_LSLM_NonAtomics	

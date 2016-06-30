@@ -288,6 +288,13 @@ L3_Bank:
     PS0_LTCC: R * C
     PS1_LTCC: R * C
     PS2_LTCC: R * C
+   LBI:
+    PS0_LBI: R * C
+    PS1_LBI: R * C
+    PS2_LBI_BANK_READ: R * C
+    PS2_LBI_BANK_WRITE: R * C
+    PS2_LBI_MEFFILL: R * C
+    PS2_LBI_Else: R * C
 #   LSLM:
 #    PS0_LSLM: R * C
 #    PS1_LSLM: R * C
