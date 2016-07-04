@@ -76,16 +76,25 @@
 #	PS1_LSN_LNE_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LneDataStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
 #	PS2_LSN_LNE_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LneDataPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
 
-#LSNEND
+#LSNEND #per bus
+	numL3WrBuses = knob.uLSNEND_0.L3WrMemfillBusCount
+	numL3RdBuses = knob.uLSNEND_0.L3RdBusCount
+	numGAPZ= D(SUM('S\d.GAPZ.Active'))
+	numGAPC= D(SUM('S\d.GAPC.Active'))
+	numGAPL3=D(SUM('S\d.uL3.LNE_\d.GapL3Rds')) + D(SUM('S\d.uL3.LNE_\d.GapL3Wrs'))
+	numGACB=numGAPZ + numGAPC + numGAPL3
+	
 	@anyLSNEP@ 		=	(uLSNEND_\d+\.)
-	PS0_LSNEP		=	D(SUM('@anyLSNEP@Idle'))/(num_Fabric_LSNEP*.CrClk*numBuses)
-	PS1_LSNEP		=	D(SUM('@anyLSNEP@Stalled'))/(num_Fabric_LSNEP*.CrClk*numBuses)
+#Overestimation as counted only at op	PS0_LSNEP		=	D(SUM('@anyLSNEP@bus\d_DownDataIdle'))/(num_Fabric_LSNEP*.CrClk*numBuses)
+	PS1_LSNEP		=	D(SUM('@anyLSNEP@bus\d_DownDataStalled'))/(num_Fabric_LSNEP*.CrClk*numBuses)
 	PS2_LSNEP_GACB_READ	=	PS2_LSNEP_SL_MEMFILL
-	PS2_LSNEP_GACB_WRITE	=	0
+	PS2_LSNEP_GACB_WRITE	=	(numGACB/(num_Fabric_LSNEP*.CrClk*numBuses))-PS2_LSNEP_GACB_READ
 	PS2_LSNEP_GAFS_RR	=	PS2_LSNEP_SL_READ
 	PS2_LSNEP_SL_MEMFILL	=	D(SUM('@anyLSNEP@MemReturnInBuf_\d+\.popped'))/(num_Fabric_LSNEP*.CrClk*numBuses)
 	PS2_LSNEP_SL_READ	=	D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped'))/(num_Fabric_LSNEP*.CrClk*numBuses)
-	PS2_LSNEP_SL_WRITE	=	D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped'))/(num_Fabric_LSNEP*.CrClk*numBuses)	
+	PS2_LSNEP_SL_WRITE	=	D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped'))/(num_Fabric_LSNEP*.CrClk*numBuses)
+	.residual = 1-(PS2_LSNEP_GACB_READ + PS2_LSNEP_GACB_WRITE + PS2_LSNEP_GAFS_RR + PS2_LSNEP_SL_MEMFILL + PS2_LSNEP_SL_READ + PS2_LSNEP_SL_WRITE) 
+	PS0_LSNEP=.residual
 			
 #LSNtoUnslice			
 			

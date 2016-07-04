@@ -112,7 +112,7 @@ except IOError:
 
 for line in wf:
   data = get_data(line,',')
-  matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',data[0])
+  matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
   frame = int(matchObj.group(2))
   wl = matchObj.group(1) + '_' + matchObj.group(3)
   if(wl[-1] == '.' or wl[-1] == '_'):
