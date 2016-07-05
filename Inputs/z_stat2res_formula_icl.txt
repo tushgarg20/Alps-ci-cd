@@ -2,7 +2,9 @@
 #Instance Counts				
 				
 	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
-	numZPipes       =       SUM('knob\.S\d+\.NumZPipes')
+	.numZPipes_pby       =       SUM('knob\.S\d+\.NumZPipes')
+	.numZPipes_iclhp	=	SUM('knob\.S\d+.uIZ.NumZPipes')
+	numZPipes = (.numZPipes_pby>0)?.numZPipes_pby:.numZPipes_iclhp  
 	num_Z_HIZ	=	numZPipes	
 	num_Z_IZ	=	numZPipes	
 	num_Z_RCZ	=	numZPipes	
@@ -23,12 +25,12 @@
 				
 				
 #Generic				
-	 @ANY_HIZ@	=	(STK\d+\.S\d+\.uHZ\.|S\d+\.uHZ\.)	
-	 @ANY_HIZCACHE@	=	(STK\d+\.S\d+\.uHZCache\.|S\d+\.uHzCache\.)	
-	 @ANY_IZ@	=	(STK\d+\.S\d+\.uIZ\.|S\d+\.uIZ\.)	
+	 @ANY_HIZ@	=	(STK\d+\.S\d+\.uHZ\.|S\d+\.uHZ\.|S\d+\.uHZ_\d\.)	
+	 @ANY_HIZCACHE@	=	(STK\d+\.S\d+\.uHZCache\.|S\d+\.uHzCache\.|S\d+\.uHzCache_\d\.)	
+	 @ANY_IZ@	=	(STK\d+\.S\d+\.uIZ\.|S\d+\.uIZ\.|S\d+\.uIZ_\d\.)	
 	 @ANY_WM@	=	(STK\d+\.S\d+\.uWM\.|S\d+\.uWM\.)	
-	 @ANY_RCZ@	=	(STK\d+\.S\d+\.uZCache\.|S\d+\.uZCache\.)	
-	 @ANY_STC@	=	(STK\d+\.S\d+\.uStcCache\.|S\d+\.uStcCache\.)	
+	 @ANY_RCZ@	=	(STK\d+\.S\d+\.uZCache\.|S\d+\.uZCache\.|S\d+\.uZCache_\d\.)	
+	 @ANY_STC@	=	(STK\d+\.S\d+\.uStcCache\.|S\d+\.uStcCache\.|S\d+\.uStcCache_\d\.)	
 	 @HIZDEFIPTYPE@	=	(8x8)	
 	 @HIZOTHIPTYPE@	=	(8x4|4x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	
