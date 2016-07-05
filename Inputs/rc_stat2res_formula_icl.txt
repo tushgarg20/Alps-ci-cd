@@ -79,8 +79,8 @@
 #LSNEND #per bus
 	numL3WrBuses = knob.uLSNEND_0.L3WrMemfillBusCount
 	numL3RdBuses = knob.uLSNEND_0.L3RdBusCount
-	numGAPZ= D(SUM('S\d.GAPZ.Active'))
-	numGAPC= D(SUM('S\d.GAPC.Active'))
+	numGAPZ= D(SUM('S\d.GAPZ.Active')) + D(SUM('S\d.GAPZPipe_\d.Active'))
+	numGAPC= D(SUM('S\d.GAPC.Active')) + D(SUM('S\d.GAPCPPipe_\d.Active'))
 	numGAPL3=D(SUM('S\d.uL3.LNE_\d.GapL3Rds')) + D(SUM('S\d.uL3.LNE_\d.GapL3Wrs'))
 	numGACB=numGAPZ + numGAPC + numGAPL3
 	

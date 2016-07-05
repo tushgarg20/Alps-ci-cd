@@ -85,7 +85,7 @@ EU,Gen11,Gen8SoC,NA
 EU,Gen11,Gen9LPClient,NA
 EU,Gen11,Gen9LPSoC,NA
 EU,Gen11,Gen10LPSoC,NA
-Fabric,Gen11,Gen11,0.93
+Fabric,Gen11,Gen11,1
 Fabric,Gen10LP,Gen10LP,1
 Fabric,Gen10LP,Gen11,0.93
 FF,Gen10LP,Gen11,0.93
