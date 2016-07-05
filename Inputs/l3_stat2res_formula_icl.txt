@@ -61,9 +61,9 @@
 	#original equation (erroneous) PS2_LTCD_TAG_WRITE	=	D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)
 	#less accurate PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagInputRd\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks))	- .PS2_LTCD_Data_NonSLM_ECC_NoTagRead	
 	#less accurate PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagInputWr\d\.pushed')) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .PS2_LTCD_Data_NonSLM_ECC_NoTagWrite
-	PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagRamRd')) / (.CrClk2x * num_L3_Slices * numL3Banks))	- .PS2_LTCD_Data_NonSLM_ECC_NoTagRead	
-	PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagRamWr')) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .PS2_LTCD_Data_NonSLM_ECC_NoTagWrite
-	PS2_LTCD_TAG_EVICT						=	D(SUM('@ANY_L3BANK@Evict')) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagRamWr'))) / (.CrClk2x * num_L3_Slices * numL3Banks) 
+	PS2_LTCD_TAG_EVICT						=	(D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
 	.residualltcdtag						=	1- (PS0_LTCD_TAG+PS2_LTCD_TAG_READ+PS2_LTCD_TAG_WRITE+PS2_LTCD_TAG_EVICT)
 	PS2_LTCD_TAG_Else						=	(.residualltcdtag<0)?0:.residualltcdtag
 
