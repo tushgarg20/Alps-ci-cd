@@ -388,6 +388,9 @@ GTI:
     PS2_MSQD:
      PS2_MSQD_U2C: R * C
      PS2_MSQD_C2U: R * C
+     PS2_MSQD_ReadWrite: R * C
+     PS2_MSQD_ExcessBW: R * C
+     PS2_MSQD_Bypass: R * C
      PS2_MSQD_ATOMICS: R * C
    MIDI:
     PS0_MIDI: R * C

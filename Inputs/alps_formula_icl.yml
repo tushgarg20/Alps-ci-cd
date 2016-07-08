@@ -383,6 +383,12 @@ PS2_LNI_BW: R
 PS2_LNE_BW: R
 
 SQIDI:
+   MBGFGT:
+    PS0_MBGFGT: R * C
+    PS1_MBGFGT: R * C
+    PS2_MBGFGTC:
+     PS2_MBGFGT_READ: R * C
+     PS2_MBGFGT_WRITE: R * C
    MIDI:
     PS0_MIDI: R * C
     PS1_MIDI: R * C
@@ -408,6 +414,9 @@ SQIDI:
     PS2_MSQD:
      PS2_MSQD_U2C: R * C
      PS2_MSQD_C2U: R * C
+     PS2_MSQD_ReadWrite: R * C
+     PS2_MSQD_ExcessBW: R * C
+     PS2_MSQD_Bypass: R * C
      PS2_MSQD_ATOMICS: R * C
    MSNP:
     PS0_MSNP: R * C
@@ -415,10 +424,6 @@ SQIDI:
     PS2_MSNP:
      PS2_MSNP_C2U: R * C
      PS2_MSNP_U2C: R * C
-   MFC:
-    PS0_MFC: R * C
-    PS1_MFC: R * C
-    PS2_MFC: R * C
    SMALL:
     PS0_SQIDI_SMALL: R * C
     PS2_SQIDI_SMALL: R * C
@@ -495,6 +500,10 @@ GTI:
     PS2_MBGFUC:
      PS2_MBGFUC_READ: R * C
      PS2_MBGFUC_WRITE: R * C
+   MFC:
+    PS0_MFC: R * C
+    PS1_MFC: R * C
+    PS2_MFC: R * C
    SMALL:
     PS0_GTI_SMALL: R * C
     PS2_GTI_SMALL: R * C

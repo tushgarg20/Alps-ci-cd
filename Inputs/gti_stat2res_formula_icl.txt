@@ -33,7 +33,7 @@
 	num_SQIDI_MISD	=	num_GTI_GTI	
 	num_SQIDI_MSQD	= numSQBanks	
 	num_SQIDI_MSNP	=	num_GTI_GTI	
-  num_SQIDI_MBGF	=	num_GTI_GTI		
+    num_SQIDI_MBGF	=	num_GTI_GTI		
 	num_SQIDI_MBGFGT	=	num_GTI_GTI	
 	num_SQIDI_SMALL	=	num_GTI_GTI	
 	num_SQIDI_DOP	=	num_GTI_GTI	
@@ -145,7 +145,7 @@
 	PS0_MSQD	=	.temp_PS0_GTI/(num_SQIDI_MSQD)	
 	PS1_MSQD	=	1 - PS0_MSQD - PS2_MSQD_U2C - PS2_MSQD_C2U - PS2_MSQD_ReadWrite - PS2_MSQD_ExcessBW - PS2_MSQD_Bypass - PS2_MSQD_ATOMICS
 	PS2_MSQD_U2C	=	D(SUM('@ANY_GTI@SQDBRead')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
-	PS2_MSQD_C2U	=	D(SUM('@ANY_GTI@SQDBReadWrite')) / (num_SQIDI_MSQD	* .Unsliceclk.GTI)
+	PS2_MSQD_C2U	=	D(SUM('@ANY_GTI@SQDBWrite')) / (num_SQIDI_MSQD	* .Unsliceclk.GTI)
   PS2_MSQD_ReadWrite  = D(SUM('@ANY_GTI@SQDBReadWrite')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
   PS2_MSQD_ExcessBW =  D(SUM('@ANY_GTI@SQDBExcessBW')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
   PS2_MSQD_Bypass = D(SUM('@ANY_GTI@TotalBypassable')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
