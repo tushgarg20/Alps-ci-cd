@@ -15,6 +15,8 @@ gen_gc_distribution.pl - Creates the GC distribution for use with ALPS
 	"new_skl_format"	GC CSV file in new SKL format (post ww39 2014)
 	"powerdb_format"	GC CSV file in power dB format (post ww37 2015)
 	"adder_data"		GC CSV file provided has HSD adder GC (post ww26 2016)
+	"use_hsd_pwr_field"	Use the HSD power fields from the HSD adder GC (post ww26 2016)
+	"donot_use_hsd_pwr_field"	Use the design dB power fields from the HSD adder GC (post ww26 2016)
 	"unit_sd_growth_file"	CSV file with unit SD growth factors (post ww26 2016)
 	"clust_sd_growth_file"	CSV file with cluster SD growth factors (post ww26 2016)
 	"fub_cg_as_idle"	Fub clock gated adders will be treated on par with idle adders (post ww26 2016)
@@ -65,6 +67,8 @@ our $gcAlpsIpFile;
 our $unitSdGrowthFile = "";
 our $clustSdGrowthFile = "";
 our $fubCgAsIdle;
+our $hsdPwrField;
+our $noHsdPwrField;
 
 Getopt::Long::GetOptions(
 	"help" => \$optHelp,
@@ -76,6 +80,8 @@ Getopt::Long::GetOptions(
 	"new_skl_format" => \$newSklFmt,
 	"powerdb_format" => \$pwrDbFmt,
 	"adder_data" => \$adderData,
+	"use_hsd_pwr_field" => \$hsdPwrField,
+	"donot_use_hsd_pwr_field" => \$noHsdPwrField,
 	"unit_sd_growth_file=s" => \$unitSdGrowthFile,
 	"clust_sd_growth_file=s" => \$clustSdGrowthFile,
 	"fub_cg_as_idle" => \$fubCgAsIdle,
@@ -100,6 +106,10 @@ if ($unitAlpsMapFile =~ /^\s*$/)
 if ($newSklFmt) {print "Input GC file in new SKL format\n";}
 if ($pwrDbFmt) {print "Input GC file in power dB format\n";}
 if ($adderData) {
+	if ($hsdPwrField && $noHsdPwrField) {die "--use_hsd_pwr_field and --donot_use_hsd_pwr_field are mutually exclusive knobs\n";}
+	if (!($hsdPwrField || $noHsdPwrField)) { die "Need to provided either --use_hsd_pwr_field or --donot_use_hsd_pwr_field with HSD adder GC\n";}
+	if ($hsdPwrField) {print "Will use the HSD power field instead of the power scalers from design dB\n";}
+	if ($noHsdPwrField) {print "Will use the power scalers from design dB instead of the HSD power field\n";}
 	if ($pwrDbFmt) { 
 		print "Will assume input GC file as HSD adder file in power dB format\n";
 		if ($unitSdGrowthFile eq "" || $clustSdGrowthFile eq "") {
@@ -120,6 +130,9 @@ if ($adderData) {
 	} else {
 		die "HSD adder files support only in power dB format\n";
 	}
+} else {
+	if ($hsdPwrField && $noHsdPwrField) {die "--use_hsd_pwr_field and --donot_use_hsd_pwr_field are mutually exclusive knobs\n";}
+	if ($hsdPwrField || $noHsdPwrField) {warn "Power field knobs are only applicable with adder files\n";}
 }
 
 if ($optYaml && !$optCsv) {print "Output file will be dumped in YAML format\n"; $opYaml = 1; $opCsv = 0;} 
@@ -325,27 +338,33 @@ sub read_gc_csv_file {
 			#	print "Assuming a SD growth factor of 1.0 for unit $unitName\n";
 			#}
 			#$infraGc *= $growth * 1000;
-			$scalerStatus = $parts[$header{"threed"}];
-			if ($fubCgAsIdle) {
-				if ($scalerStatus =~ /ACTIVE/i) {
-					$gc = $infraGc;
-				} elsif ($scalerStatus =~ /IDLE|Fub_Clock_Gated/i) {
-					$gc = $infraGc * 0.11;
-				} elsif ($scalerStatus =~ /POWER_GATED/i) {
-					$gc = 0;
+			my $hsdScalerStatus = $parts[$header{"threed"}];
+			my $pwrScalerStatus = $parts[$header{"threed_pv_x"}];
+			if ($hsdPwrField) {
+				if ($fubCgAsIdle) {
+					if ($scalerStatus =~ /ACTIVE/i) {
+						$gc = $infraGc;
+					} elsif ($scalerStatus =~ /IDLE|Fub_Clock_Gated/i) {
+						$gc = $infraGc * 0.11;
+					} elsif ($scalerStatus =~ /POWER_GATED/i) {
+						$gc = 0;
+					} else {
+						die "Unknown GC growth scaler status - $scalerStatus\n";
+					}
 				} else {
-					die "Unknown GC growth scaler status - $scalerStatus\n";
+					if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
+						$gc = $infraGc;
+					} elsif ($scalerStatus =~ /IDLE/i) {
+						$gc = $infraGc * 0.11;
+					} elsif ($scalerStatus =~ /POWER_GATED/i) {
+						$gc = 0;
+					} else {
+						die "Unknown GC growth scaler status - $scalerStatus\n";
+					}
 				}
-			} else {
-				if ($scalerStatus =~ /ACTIVE|Fub_Clock_Gated/i) {
-					$gc = $infraGc;
-				} elsif ($scalerStatus =~ /IDLE/i) {
-					$gc = $infraGc * 0.11;
-				} elsif ($scalerStatus =~ /POWER_GATED/i) {
-					$gc = 0;
-				} else {
-					die "Unknown GC growth scaler status - $scalerStatus\n";
-				}
+			}
+			if ($noHsdPwrField) {
+				$gc = $infraGc * $pwrScalerStatus;
 			}
 		} elsif ($pwrDbFmt && !$adderData) {
 			my $isPart = $parts[$header{"is_partition"}];
