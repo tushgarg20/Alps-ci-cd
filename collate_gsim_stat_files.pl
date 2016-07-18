@@ -1,3 +1,9 @@
+###########################################
+############# USAGE #######################
+# perl collate_gsim_stat_files.pl <run_area> <Output_directory where files need to be copied to>
+###########################################
+###########################################
+
 use strict;
 use warnings;
 
