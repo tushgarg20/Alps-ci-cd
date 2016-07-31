@@ -56,7 +56,8 @@ process_hash = {}   ##Process
 voltage_hash = {}   ##Voltage scaling factor
 
 ##Used for parsing scaling factor files
-cdyn_cagr_hash = {'syn':{},'ebb':{}, 'unit':{} }
+cdyn_cagr_hash = {'syn':{},'ebb':{}}
+unit_cdyn_cagr_hash ={}
 stepping_hash = {}
 
 common_cfg = options.dest_config.lower() ##Config chosen
@@ -249,7 +250,7 @@ def get_eff_cdyn(cluster,unit,stat):
 
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     try:
-        unit_scalar = float (cdyn_cagr_hash['unit'][unit][base_cfg][cfg])
+        unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
@@ -612,11 +613,13 @@ unit_cdyn_cagr_file = open(input_hash['unit_cdyn_cagr'],'r')
 first_line = unit_cdyn_cagr_file.readline()
 for line in unit_cdyn_cagr_file:
     data = get_data(line,",")
-    if(data[0] not in cdyn_cagr_hash['unit']):
-        cdyn_cagr_hash['unit'][data[0]] = {}
-    if(data[1] not in cdyn_cagr_hash['unit'][data[0]]):
-        cdyn_cagr_hash['unit'][data[0]][data[1]] = {}
-    cdyn_cagr_hash['unit'][data[0]][data[1]][data[2]] = float(data[3])
+    if(data[0] not in unit_cdyn_cagr_hash):
+        unit_cdyn_cagr_hash[data[0]] = {}
+    if(data[1] not in unit_cdyn_cagr_hash[data[0]]):
+        unit_cdyn_cagr_hash[data[0]][data[1]] = {}
+    if(data[2] not in unit_cdyn_cagr_hash[data[0]][data[1]]):
+        unit_cdyn_cagr_hash[data[0]][data[1]][data[2]] = {}
+    unit_cdyn_cagr_hash[data[0]][data[1]][data[2]][data[3]] = float(data[4])
 
 unit_cdyn_cagr_file.close()
 
