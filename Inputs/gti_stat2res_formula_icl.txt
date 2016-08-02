@@ -1,23 +1,22 @@
 #Unit	GSIM residency			Comments
 #Generic
    numSlices	=	knob.global.NumSlices
-	 GTISuperQSize	=	knob.global.SuperQSize		
+   GTISuperQSize	=	knob.global.SuperQSize		
    numSQBanks = knob.global.SuperQBanks
    @ANY_GTI@ = uGTI_\d+.
-	 .Clk.GTI	=	D(CrClock.Clocks)
+   .Clk.GTI	=	D(CrClock.Clocks)
    .Unsliceclk.GTI = D(UnsliceClock.Clocks)
    @GTI_EMPTY@ = GtiSuperqEmptyCyclesBank_\d+
    @GTI_STALL@ = GtiSuperqAllPendingCyclesBank_\d+
-	 @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
+   @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
    @GTI_ACTIVESLOTS@ = GtiSuperqActiveCycleOccupancyBank_\d+
-	 @GTI_RDBW_PCLK@	=	1	
-	 @GTI_WRBW_PCLK@	=	1	
-	 @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
+   @GTI_RDBW_PCLK@	=	1	
+   @GTI_WRBW_PCLK@	=	1	
+   @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
 				
-#Instance Counts				
+#Instance Counts(MLINT & MCFG units should be in small bucket for GTI)				
 	num_GTI_GTI	=	knob.global.NumGTIs
 	num_GTI_MFC	=	1
-	num_GTI_MDRB	=	1
 	num_GTI_DOP	=	1
 	num_GTI_SMALL	=	1	
 	num_GTI_CPunit	=	1	
@@ -28,12 +27,12 @@
 	num_GTI_DFX	=	1
 	num_GTI_MediaIdle	=	1	
 
+#Units MAC,MAD,PSMI,MGSQ should be considered under small bucket for SQIDI cluster
 	num_SQIDI_MSQC	= numSQBanks		
 	num_SQIDI_MIDI	=	num_GTI_GTI	
 	num_SQIDI_MISD	=	num_GTI_GTI	
 	num_SQIDI_MSQD	= numSQBanks	
 	num_SQIDI_MSNP	=	num_GTI_GTI	
-    num_SQIDI_MBGF	=	num_GTI_GTI		
 	num_SQIDI_MBGFGT	=	num_GTI_GTI	
 	num_SQIDI_SMALL	=	num_GTI_GTI	
 	num_SQIDI_DOP	=	num_GTI_GTI	
@@ -44,6 +43,7 @@
 	num_SQIDI_NONCLKGLUE	=	num_GTI_GTI	
 	num_SQIDI_DFX	=	num_GTI_GTI
 
+#MGSR,SNP_FILTER,SNP_FILTER_COMMON should be considered under Uncore domain.
 	num_UNCORE_MBGFUC	=	num_GTI_GTI
 	num_UNCORE_MDRB   	=	num_GTI_GTI 
 	num_UNCORE_SMALL	=	num_GTI_GTI
@@ -137,7 +137,6 @@
  	PS1_MSQC	=	.temp_PS1_GTI/num_SQIDI_MSQC	
 	PS2_MSQC	=	1 - PS0_MSQC - PS1_MSQC	
 	PS2_MSQC_ATOMICS	=  0	
-  # 3 to account for GC scalar between CNL & ICL (or 112 slots to 320 slots Ratio)	
 	PS2_MSQC_SlotFull	=(.temp_gti_superq_active>0)?(.temp_gti_superq_activeslots/(num_SQIDI_MSQC * GTISuperQSize * .temp_gti_superq_active * num_GTI_GTI)):0						
 
 #MSQD				
