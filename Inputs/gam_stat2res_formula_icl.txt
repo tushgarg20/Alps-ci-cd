@@ -3,8 +3,8 @@
   numSlices	= knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
   numGAM	=	COUNT('knob\.uGAM\.NumSlices')
   numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
-  numCPipes	=	SUM('knob\.S\d+\.NumColorPipes')
-  numZPipe	=	SUM('knob\.S\d+\.NumZPipes')
+  numCPipesGAM	=	SUM('knob\.S\d+\.NumColorPipes')
+  numZPipesGAM	=	SUM('knob\.S\d+\.NumZPipes')
   num_GAM_GAMWC	=	numGAM
   num_GAM_GAMWC_PENDQEBB	= numGAM
   num_GAM_GAMWD	=	numGAM
@@ -25,8 +25,8 @@
   num_GAM_GAFM	=	numGAM
   num_GAM_GAFS	=	numGAM
   num_GAM_GAPL3	=	numSlices
-  num_GAM_GAPZ	=	numZPipe
-  num_GAM_GAPC	=	numColorPipes
+  num_GAM_GAPZ	=	numZPipesGAM
+  num_GAM_GAPC	=	numCPipesGAM
   num_GAM_SARB	=	numSlices
   num_GAM_GASS	=	numSubslices
   num_GAM_DOP	=	numGAM
