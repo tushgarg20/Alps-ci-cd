@@ -17,6 +17,7 @@ my $runLocal			= '';
 my $annealing		= '';
 my $cnl				= '';
 my $icl				= '';
+my $tgl				= '';
 
 Getopt::Long::GetOptions(
     "input|i=s"		=> \$tracelist,
@@ -30,6 +31,7 @@ Getopt::Long::GetOptions(
 	"annealing"		=> \$annealing,
 	"cnl"			=> \$cnl,
 	"icl"			=> \$icl,
+	"tgl"			=> \$tgl
         
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -45,6 +47,7 @@ my $script = ($runLocal) ? $sdir . "run_alps.py" : $sdir . "run_alps_nb.py";
 my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml";
 $cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
 $cfg_file = ($icl) ? $sdir . "alps_cfg_icl.yaml" : $cfg_file;
+$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
 
 my $class = '8G&&nosusp&&SLES11';
 
