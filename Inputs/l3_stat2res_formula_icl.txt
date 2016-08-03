@@ -74,7 +74,7 @@
 	PS1_LSQD								=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdStalled'))/(.CrClk2x * num_L3_Slices * numL3Banks)
 	PS2_LSQD_WRITE							=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdWrite'))/(.CrClk2x * num_L3_Slices * numL3Banks)
 	PS2_LSQD_LNE_READ_RETURN				=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdReadRet'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LSQD_HIT_WRITE						=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdHitWrite'))/(.CrClk2x * num_L3_Slices * numL3Banks)
+	PS2_LSQD_HIT_WRITE						=  (D(SUM('@ANY_L3BANK@DataRamRd'))+  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
 	PS2_LSQD_ATOMIC_WRITE					=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdAtomic'))/(.CrClk2x * num_L3_Slices * numL3Banks)
 	.residuallsqd							=	1- (PS0_LSQD + PS1_LSQD + PS2_LSQD_WRITE + PS2_LSQD_LNE_READ_RETURN + PS2_LSQD_HIT_WRITE + PS2_LSQD_ATOMIC_WRITE)
 	PS2_LSQD_Else							=	(.residuallsqd<0)?0:.residuallsqd

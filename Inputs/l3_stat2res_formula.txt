@@ -46,17 +46,18 @@
 	.URB_bank_writes	=	((D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)) - .URB_HB_bank_writes	#Normal Bank writes = Total URB writes - HB writes
 	PS1_LTCD_Data	=	0	#No stall by design
 	PS2_LTCD_Data_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	
-	PS2_LTCD_Data_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	
+	PS2_LTCD_Data_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes
 	PS2_LTCD_Data_NonSLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
 	PS2_LTCD_Data_SLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk2x * num_L3_Slices * numL3Banks))	# Total URB (Non SLM - No Tag) Writes
 	PS2_LTCD_Data_SLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk2x * num_L3_Slices * numL3Banks))	# Total SLM Reads
 	PS2_LTCD_Data_Else	=	1 - (PS0_LTCD_Data + PS2_LTCD_Data_NonSLM_ECC_TagRead + PS2_LTCD_Data_NonSLM_ECC_TagWrite + PS2_LTCD_Data_NonSLM_ECC_NoTagRead + PS2_LTCD_Data_NonSLM_ECC_NoTagWrite + PS2_LTCD_Data_SLM_ECC_NoTagRead + PS2_LTCD_Data_SLM_ECC_NoTagWrite)	# Assign bubbles to PS2_ELSE
 #LTCD_Tag_Syn				# Total SLM Writes
-	PS0_LTCD_Tag	=	1 - (PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite)	#Changed to use residual residency
-	PS1_LTCD_Tag	=	0	#No stall by design
-	PS2_LTCD_Tag_NonSLM_ECC_TagRead	=	PS2_LTCD_EBB_Read - .URB_bank_reads	#Tag Reads = Total Normal Bank reads - URB Normal bank reads
-	PS2_LTCD_Tag_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes	#Tag Writes = Total Normal Bank writes - URB Normal bank writes
+	#PS0_LTCD_Tag	=	1 - (PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite)	#Changed to use residual residency
+	PS0_LTCD_Tag	=	D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	PS2_LTCD_Tag_NonSLM_ECC_TagRead	=	((D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)) +((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks))
+	PS2_LTCD_Tag_NonSLM_ECC_TagWrite	=	PS2_LTCD_EBB_Write - .URB_bank_writes +((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks))	#Tag Writes = Total Normal Bank writes - URB Normal bank writes
+	PS1_LTCD_Tag	=	1 - (PS2_LTCD_Tag_NonSLM_ECC_TagRead + PS2_LTCD_Tag_NonSLM_ECC_TagWrite+PS0_LTCD_Tag)	#Changed to use residual residency
 #LSQD				
 	#PS0_LSQD	=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
 	PS0_LSQD	=	D(SUM('@ANY_L3BANK@LsqdIdle')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
@@ -72,8 +73,8 @@
 	PS2_LSQD_Else		=	(PS0_LSQD + PS1_LSQD + PS2_LSQD_nonatomics + PS2_LSQD_atomics > 1) ? 0 : (1 - PS0_LSQD - PS1_LSQD - PS2_LSQD_nonatomics - PS2_LSQD_atomics)
 #LSQC				
 	PS0_LSQC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS1_LSQC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS2_LSQC	=	1 - PS0_LSQC - PS1_LSQC	
+	PS1_LSQC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
+    PS2_LSQC	=	1 - PS0_LSQC - PS1_LSQC	
 	.temp_LSQCNotEmptyNotFullCount	=	(1 - (PS0_LSQC + PS1_LSQC)) * (.CrClk2x/2) 	
 	.temp_LSQCEmptySlotCount	=	D(SUM('@ANY_L3BANK@SuperQEntries_Empty')) / (num_L3_Slices * numL3Banks)	
 	.temp_LSQCAllEmptySlotCount	=	PS0_LSQC * L3SuperQSize * (.CrClk2x/2)	
