@@ -116,6 +116,8 @@ elif common_cfg.find('tgllpall') > -1 :
     cfg_gc = "Gen12LPAllGc"
 elif common_cfg.find('tgllppwr') > -1 :
     cfg_gc = "Gen12LPPwrGc"
+elif common_cfg.find('tgllp') > -1 :
+    cfg_gc = "Gen12LP"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
