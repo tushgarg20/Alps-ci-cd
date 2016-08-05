@@ -20,7 +20,8 @@
 	num_HDC_HDCRET2	=	numHDCs
 
 #Generic				
-	 @ANY_HDC@	=	(STK\d+\.S\d+\.uHDC_\d+\.|STK\d\.S\d\.SS\d\.uHDC\.|S\d+\.uHDC_\d+\.)	
+	 #@ANY_HDC@	=	(STK\d+\.S\d+\.uHDC_\d+\.|STK\d\.S\d\.SS\d\.uHDC\.|S\d+\.uHDC_\d+\.)	
+	 @ANY_HDC@	=	((STK\d+\.)?S\d+\.(SS\d+\.)?uHDC(_\d+|)\.)	
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	 .HDC_DOP	=	D(SUM('@ANY_HDC@pwr_hdc_idle\.CrClock')) / (numHDCs * .CrClk)	
