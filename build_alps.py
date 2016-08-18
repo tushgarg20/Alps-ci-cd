@@ -48,7 +48,7 @@ I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
 cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11LP','Gen11halo'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11']
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11','Gen11LP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -94,6 +94,8 @@ elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
+elif common_cfg.find('icllp') > -1 :
+    cfg ='Gen11LP'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('tgllp') > -1 :
@@ -107,7 +109,6 @@ else:
     print("Exit",file=lf)
     lf.close()
     exit(2);
-
 if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
 elif common_cfg.find('icllp') > -1 :
@@ -130,7 +131,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
