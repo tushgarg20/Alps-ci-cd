@@ -99,7 +99,7 @@ elif common_cfg.find('icllp') > -1 :
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('tgllp') > -1 :
-    cfg ='Gen11'
+    cfg ='Gen11LP'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
