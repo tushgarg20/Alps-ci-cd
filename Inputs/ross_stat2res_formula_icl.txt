@@ -103,7 +103,8 @@
 
 #MA IN				
 	PS0_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
-	PS1_MA_IN	=	(PS0_MA_IN + PS1_MA_IN > 1) ? 0 : (1 - PS0_MA_IN - PS2_MA_IN)	
+	#PS1_MA_IN	=	(PS0_MA_IN + PS1_MA_IN > 1) ? 0 : (1 - PS0_MA_IN - PS2_MA_IN)	
+	PS1_MA_IN	=	(PS0_MA_IN + PS2_MA_IN > 1) ? 0 : (1 - PS0_MA_IN - PS2_MA_IN)	
 	PS2_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
 
 #MA OUT				

@@ -48,7 +48,7 @@ I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
 cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11LP','Gen11halo'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11']
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11','Gen11LP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -56,7 +56,8 @@ process_hash = {}   ##Process
 voltage_hash = {}   ##Voltage scaling factor
 
 ##Used for parsing scaling factor files
-cdyn_cagr_hash = {'syn':{},'ebb':{}, 'unit':{} }
+cdyn_cagr_hash = {'syn':{},'ebb':{}}
+unit_cdyn_cagr_hash ={}
 stepping_hash = {}
 
 common_cfg = options.dest_config.lower() ##Config chosen
@@ -93,10 +94,12 @@ elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
+elif common_cfg.find('icllp') > -1 :
+    cfg ='Gen11LP'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('tgllp') > -1 :
-    cfg ='Gen11'
+    cfg ='Gen11LP'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -106,7 +109,6 @@ else:
     print("Exit",file=lf)
     lf.close()
     exit(2);
-
 if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
 elif common_cfg.find('icllp') > -1 :
@@ -115,6 +117,8 @@ elif common_cfg.find('tgllpall') > -1 :
     cfg_gc = "Gen12LPAllGc"
 elif common_cfg.find('tgllppwr') > -1 :
     cfg_gc = "Gen12LPPwrGc"
+elif common_cfg.find('tgllp') > -1 :
+    cfg_gc = "Gen12LP"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
@@ -127,7 +131,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -249,7 +253,7 @@ def get_eff_cdyn(cluster,unit,stat):
 
     stepping_sf = stepping_hash[base_cfg][stepping]['C0'] if (stepping =='A0' or stepping == 'B0') else 1
     try:
-        unit_scalar = float (cdyn_cagr_hash['unit'][unit][base_cfg][cfg])
+        unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
@@ -612,11 +616,13 @@ unit_cdyn_cagr_file = open(input_hash['unit_cdyn_cagr'],'r')
 first_line = unit_cdyn_cagr_file.readline()
 for line in unit_cdyn_cagr_file:
     data = get_data(line,",")
-    if(data[0] not in cdyn_cagr_hash['unit']):
-        cdyn_cagr_hash['unit'][data[0]] = {}
-    if(data[1] not in cdyn_cagr_hash['unit'][data[0]]):
-        cdyn_cagr_hash['unit'][data[0]][data[1]] = {}
-    cdyn_cagr_hash['unit'][data[0]][data[1]][data[2]] = float(data[3])
+    if(data[0] not in unit_cdyn_cagr_hash):
+        unit_cdyn_cagr_hash[data[0]] = {}
+    if(data[1] not in unit_cdyn_cagr_hash[data[0]]):
+        unit_cdyn_cagr_hash[data[0]][data[1]] = {}
+    if(data[2] not in unit_cdyn_cagr_hash[data[0]][data[1]]):
+        unit_cdyn_cagr_hash[data[0]][data[1]][data[2]] = {}
+    unit_cdyn_cagr_hash[data[0]][data[1]][data[2]][data[3]] = float(data[4])
 
 unit_cdyn_cagr_file.close()
 

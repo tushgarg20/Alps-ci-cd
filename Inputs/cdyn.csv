@@ -6055,3 +6055,119 @@ PS2_UNCORE_NONCLKGLUE,Gen10LP,A0,7.550603787,syn,1,average of cgdis and pv(Raw C
 PS2_UNCORE_Repeater,Gen10LP,A0,2.671935621,syn,48454.4,cnl cgdis ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS2_UNCORE_SMALL,Gen10LP,A0,69,syn,2327030,avg cgdis and pv(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
 PS0_UNCORE_MediaIdle,Gen10LP,A0,1.073545562,syn,1446725.344,from cnl fso cgen ss(Raw Cdyn * 0.942 (x1r0-x1r1 scalar))
+PS0_LSNEP,Gen11LP,A0,1.166,syn,337984.44,ww34.2 PA weights *1.1
+PS1_LSN,Gen11LP,A0,7.48,syn,1107173.06,ww34.2 PA weights *1.1
+PS1_LSNEP,Gen11LP,A0,1.54,syn,337984.44,ww34.2 PA weights *1.1
+PS2_LSN_CROSS_LOCAL_READ,Gen11LP,A0,12.287,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSN_CROSS_LOCAL_WRITE,Gen11LP,A0,32.351,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSN_CROSS_SLICE_READ,Gen11LP,A0,13.101,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSN_CROSS_SLICE_WRITE,Gen11LP,A0,32.032,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSN_LOCAL_CROSS_READ,Gen11LP,A0,10.40381041,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSN_LOCAL_CROSS_WRITE,Gen11LP,A0,20.37520236,syn,1107173.06,ww34.2 PA weights *1.1
+PS2_LSNEP_GACB_READ,Gen11LP,A0,2.88,syn,337984.44,ww30.6 Plite weights
+PS2_LSNEP_GACB_WRITE,Gen11LP,A0,11.473,syn,337984.44,ww30.6 PA weights *1.1
+PS2_LSNEP_GAFS_RR,Gen11LP,A0,21.934,syn,337984.44,ww30.6 PA weights *1.1
+PS2_LSNEP_SL_MEMFILL,Gen11LP,A0,27.291,syn,337984.44,ww30.6 PA weights *1.1
+PS2_LSNEP_SL_READ,Gen11LP,A0,6.655,syn,337984.44,ww34.2 PA weights *1.1
+PS2_LSNEP_SL_WRITE,Gen11LP,A0,35.97,syn,337984.44,ww34.2 PA weights *1.1
+PS0_LSN,Gen11LP,A0,3.201,syn,1107173.06,ww34.2 PA weights *1.1
+PS0_LNI,Gen11LP,A0,4.9258,syn,1477582.49,ww30.6 PA weights *1.1
+PS1_LNI,Gen11LP,A0,57.068,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_Else,Gen11LP,A0,57.068,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_LOCAL_1BANK_1READ,Gen11LP,A0,59.169,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_LOCAL_1BANK_1WRITE,Gen11LP,A0,84.953,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_XSLICE_EGR_1READ,Gen11LP,A0,28.226,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_XSLICE_EGR_1WRITE,Gen11LP,A0,44.924,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_XSLICE_ING_1READ,Gen11LP,A0,22.264,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_XSLICE_ING_1WRITE,Gen11LP,A0,45.782,syn,1477582.49,ww30.6 PA weights *1.1
+PS2_LNI_XSLICE_ING_MEMFILL,Gen11LP,A0,26.653,syn,1477582.49,ww30.6 PA weights *1.1
+PS0_LNE,Gen11LP,A0,4.202,syn,1517417.55,ww34.2 PA weights *1.1
+PS1_LNE,Gen11LP,A0,4.6651,syn,1517417.55,ww30.6 Plite weights
+PS2_LNE_Else,Gen11LP,A0,4.6651,syn,1517417.55,ww30.6 Plite weights
+PS2_LNE_LSN_EGR_DATARTN,Gen11LP,A0,77.41,syn,1517417.55,ww34.2 PA weights *1.1
+PS2_LNE_LSN_EGR_READ,Gen11LP,A0,12.529,syn,1517417.55,ww34.2 PA weights *1.1
+PS2_LNE_LSN_ING_DATARTN,Gen11LP,A0,27.929,syn,1517417.55,ww34.2 PA weights *1.1
+PS2_LNE_SS_DATARTN,Gen11LP,A0,49.83,syn,1517417.55,ww34.2 PA weights *1.1
+PS0_LTCD_DATA,Gen11LP,A0,2.61,syn,259958.87,ww30.6 Plite weights
+PS0_LTCD_TAG,Gen11LP,A0,2.49,syn,1467424.87,ww30.6 Plite weights
+PS2_LTCD_DATA_Else,Gen11LP,A0,14.79,syn,259958.87,ww34.2 Plite weights
+PS2_LTCD_DATA_EVICT,Gen11LP,A0,183.91,syn,259958.87,ww34.2 Plite weights
+PS2_LTCD_DATA_READ,Gen11LP,A0,114.08,syn,259958.87,ww30.6 Plite weights
+PS2_LTCD_DATA_WRITE,Gen11LP,A0,69.82,syn,259958.87,ww34.2 Plite weights
+PS2_LTCD_TAG_Else,Gen11LP,A0,38.24,syn,1467424.87,ww30.6 Plite weights
+PS2_LTCD_TAG_EVICT,Gen11LP,A0,485.65,syn,1467424.87,ww34.2 Plite weights
+PS2_LTCD_TAG_READ,Gen11LP,A0,206.15,syn,1467424.87,ww30.6 Plite weights
+PS2_LTCD_TAG_WRITE,Gen11LP,A0,279.5,syn,1467424.87,ww34.2 Plite weights
+PS0_LTCC,Gen11LP,A0,0.16,syn,46577.51,ww30.6 Plite weights
+PS1_LTCC,Gen11LP,A0,0.77,syn,46577.51,ww30.6 Plite weights
+PS2_LTCC,Gen11LP,A0,4.295,syn,46577.51,ww30.6 Plite weights
+PS0_LSQD,Gen11LP,A0,1.85,syn,391636.85,ww34.2 Plite weights
+PS1_LSQD,Gen11LP,A0,13.99,syn,391636.85,ww30.6 Plite weights
+PS2_LSQD_ATOMIC_WRITE,Gen11LP,A0,131.6,syn,391636.85,ww30.6 Plite weights
+PS2_LSQD_LNE_READ_RETURN,Gen11LP,A0,48.28,syn,391636.85,ww30.6 Plite weights
+PS2_LSQD_WRITE,Gen11LP,A0,208.3,syn,391636.85,ww34.2 PA weights *1.1
+PS2_LSQD_HIT_WRITE,Gen11LP,A0,208.3,syn,391636.85,ww34.2 PA weights *1.1
+PS0_LSQC,Gen11LP,A0,1.34,syn,638168.39,ww34.2 Plite weights
+PS1_LSQC,Gen11LP,A0,1.46,syn,638168.39,ww34.2 Plite weights
+PS2_LSQC_12%,Gen11LP,A0,9.43,syn,638168.39,ww34.2 Plite weights
+PS2_LSQC_16%,Gen11LP,A0,12.89,syn,638168.39,ww34.2 Plite weights
+PS2_LSQC_33%,Gen11LP,A0,22.29,syn,638168.39,ww34.2 Plite weights
+PS2_LSQC_67%,Gen11LP,A0,38.3,syn,638168.39,ww34.2 Plite weights
+PS0_LBI,Gen11LP,A0,0.34,syn,173259.13,ww30.6 Plite weights
+PS1_LBI,Gen11LP,A0,2.6,syn,173259.13,ww30.6 Plite weights
+PS2_LBI_BANK_READ,Gen11LP,A0,4.95,syn,173259.13,ww30.6 Plite weights
+PS2_LBI_BANK_WRITE,Gen11LP,A0,35.01,syn,173259.13,ww30.6 Plite weights
+PS2_LBI_MEFFILL,Gen11LP,A0,27.83,syn,173259.13,ww34.2 Plite weights
+PS0_L3_Bank_Assign,Gen11LP,A0,0,syn,1,GEN11LP New Infra weights from Amit
+PS0_L3_Bank_CLKGLUE,Gen11LP,A0,12.38,syn,1,ww34.2 Plite weights
+PS0_L3_Bank_Cpunit,Gen11LP,A0,1.51,syn,11673.41744,ww34.2 Plite weights
+PS0_L3_Bank_DFX,Gen11LP,A0,0.6,syn,81353.19406,ww34.2 Plite weights
+PS0_L3_Bank_DOP,Gen11LP,A0,5.33,syn,1,ww34.2 Plite weights
+PS0_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.51,syn,1,ww34.2 Plite weights
+PS0_L3_Bank_Repeater,Gen11LP,A0,0.17,syn,2878.670872,ww34.2 Plite weights
+PS0_L3_Bank_SMALL,Gen11LP,A0,1.86,syn,153597.9206,ww34.2 Plite weights
+PS1_L3_Bank_CLKGLUE,Gen11LP,A0,12.6,syn,1,ww34.2 Plite weights
+PS1_L3_Bank_DFX,Gen11LP,A0,1.44,syn,81353.19406,ww34.2 Plite weights
+PS1_L3_Bank_DOP,Gen11LP,A0,5.33,syn,1,ww34.2 Plite weights
+PS1_L3_Bank_NONCLKGLUE,Gen11LP,A0,0.52,syn,1,ww34.2 Plite weights
+PS1_L3_Bank_SMALL,Gen11LP,A0,9.46,syn,153597.9206,ww34.2 Plite weights
+PS2_L3_Bank_Assign,Gen11LP,A0,0,syn,1,ww34.2 Plite weights
+PS2_L3_Bank_CLKGLUE,Gen11LP,A0,12.38,syn,1,ww34.2 Plite weights
+PS2_L3_Bank_CPunit,Gen11LP,A0,1.51,syn,11673.41744,ww34.2 Plite weights
+PS2_L3_Bank_DFX,Gen11LP,A0,0.61,syn,81353.19406,ww34.2 Plite weights
+PS2_L3_Bank_DOP,Gen11LP,A0,5.33,syn,1,ww34.2 Plite weights
+PS2_L3_Bank_NONCLKGLUE,Gen11LP,A0,1.3,syn,1,ww34.2 Plite weights
+PS2_L3_Bank_Repeater,Gen11LP,A0,0.25,syn,2878.670872,ww34.2 Plite weights
+PS2_L3_Bank_SMALL,Gen11LP,A0,3.22,syn,153597.9206,ww34.2 Plite weights
+PS0_L3Node_Assign,Gen11LP,A0,0,syn,1,ww34.2 Plite weights
+PS0_L3Node_CLKGLUE,Gen11LP,A0,35.88890178,syn,1,ww34.2 Plite weights
+PS0_L3Node_CPunit,Gen11LP,A0,2.941940828,syn,25499.28089,ww34.2 Plite weights
+PS0_L3Node_DFX,Gen11LP,A0,1.929330178,syn,210695.8174,ww34.2 Plite weights
+PS0_L3Node_DOP,Gen11LP,A0,9.260049704,syn,1,ww34.2 Plite weights
+PS0_L3Node_NONCLKGLUE,Gen11LP,A0,1.188137555,syn,1,ww34.2 Plite weights
+PS0_L3Node_Repeater,Gen11LP,A0,21.74346112,syn,218335.485,ww34.2 Plite weights
+PS0_L3Node_SMALL,Gen11LP,A0,3.684919669,syn,161445.7135,ww34.2 Plite weights
+PS2_L3Node_Assign,Gen11LP,A0,0,syn,1,ww34.2 Plite weights
+PS2_L3Node_CLKGLUE,Gen11LP,A0,32.06,syn,1,ww34.2 Plite weights
+PS2_L3Node_CPunit,Gen11LP,A0,2.94,syn,25499.28089,ww34.2 Plite weights
+PS2_L3Node_DFX,Gen11LP,A0,2.04,syn,210695.8174,ww34.2 Plite weights
+PS2_L3Node_DOP,Gen11LP,A0,9.26,syn,1,ww34.2 Plite weights
+PS2_L3Node_NONCLKGLUE,Gen11LP,A0,23.5,syn,1,ww34.2 Plite weights
+PS2_L3Node_Repeater,Gen11LP,A0,33.9,syn,218335.485,ww34.2 Plite weights
+PS2_L3Node_SMALL,Gen11LP,A0,13.1,syn,161445.7135,ww34.2 Plite weights
+PS0_Fabric_Assign,Gen11LP,A0,0,syn,1,ww34.2 Plite weights
+PS0_Fabric_CLKGLUE,Gen11LP,A0,12.24,syn,1,ww34.2 Plite weights
+PS0_Fabric_CPunit,Gen11LP,A0,0.96,syn,7468.330241,ww34.2 Plite weights
+PS0_Fabric_DFX,Gen11LP,A0,2.06,syn,73876.34805,ww34.2 Plite weights
+PS0_Fabric_DOP,Gen11LP,A0,4.84,syn,1,ww34.2 Plite weights
+PS0_Fabric_NONCLKGLUE,Gen11LP,A0,0.26,syn,1,ww34.2 Plite weights
+PS0_Fabric_Repeater,Gen11LP,A0,0.68,syn,6344.92987,ww34.2 Plite weights
+PS0_Fabric_SMALL,Gen11LP,A0,1.78,syn,139744.466,ww34.2 Plite weights
+PS2_Fabric_Assign,Gen11LP,A0,0,syn,1,ww34.2 Plite weights
+PS2_Fabric_CLKGLUE,Gen11LP,A0,12.26,syn,1,ww34.2 Plite weights
+PS2_Fabric_CPunit,Gen11LP,A0,0.96,syn,7468.330241,ww34.2 Plite weights
+PS2_Fabric_DFX,Gen11LP,A0,2.08,syn,73876.34805,ww34.2 Plite weights
+PS2_Fabric_DOP,Gen11LP,A0,4.84,syn,1,ww34.2 Plite weights
+PS2_Fabric_NONCLKGLUE,Gen11LP,A0,8.54,syn,1,ww34.2 Plite weights
+PS2_Fabric_Repeater,Gen11LP,A0,1.84,syn,6344.92987,ww34.2 Plite weights
+PS2_Fabric_SMALL,Gen11LP,A0,17.02,syn,139744.466,ww34.2 Plite weights
