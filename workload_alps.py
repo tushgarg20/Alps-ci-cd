@@ -83,7 +83,13 @@ except IOError:
 for line in tf:
   line = line.strip()
   matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',line)
-  frame = int(matchObj.group(2))
+  # added to work around frame naming issues
+  try:
+    frame = int(matchObj.group(2))
+  except AttributeError:
+    matchObj = re.search('(.*)_f(\d+)(.*)res.csv',line)
+    frame = int(matchObj.group(2))
+  #frame = int(matchObj.group(2))
   wl = matchObj.group(1) + '_' + matchObj.group(3)
   if(wl[-1] == '.' or wl[-1] == '_'):
     wl = wl[:-1]
@@ -113,7 +119,13 @@ except IOError:
 for line in wf:
   data = get_data(line,',')
   matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
-  frame = int(matchObj.group(2))
+  # Added to work around frame naming issues
+  try:
+    frame = int(matchObj.group(2))
+  except AttributeError:
+    matchObj = re.search('(.*)_f(\d+)(.*)',data[0])
+    frame = int(matchObj.group(2))
+  #frame = int(matchObj.group(2))
   wl = matchObj.group(1) + '_' + matchObj.group(3)
   if(wl[-1] == '.' or wl[-1] == '_'):
     wl = wl[:-1]
