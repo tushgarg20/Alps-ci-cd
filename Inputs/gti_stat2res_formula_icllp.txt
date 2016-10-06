@@ -1,0 +1,332 @@
+#Unit	GSIM residency			Comments
+#Generic
+   numSlices	=	knob.global.NumSlices
+   GTISuperQSize	=	knob.global.SuperQSize		
+   numSQBanks = SUM('knob\.uGTI_\d+\.SuperQBanks')
+   #numSQBanks = knob.global.SuperQBanks
+   @ANY_GTI@ = uGTI_\d+.
+   #.Clk.GTI	=	D(CrClock.Clocks)
+   .Clk.GTI	=	.Unsliceclk.GTI 
+   .Unsliceclk.GTI = D(UnsliceClock.Clocks)
+   @GTI_EMPTY@ = GtiSuperqEmptyCyclesBank_\d+
+   @GTI_STALL@ = GtiSuperqAllPendingCyclesBank_\d+
+   @GTI_ACTIVE@ = GtiSuperqActiveCyclesBank_\d+
+   @GTI_ACTIVESLOTS@ = GtiSuperqActiveCycleOccupancyBank_\d+
+   @GTI_RDBW_PCLK@	=	1	
+   @GTI_WRBW_PCLK@	=	1	
+   @GTI_BW_PCLK@	=	(@GTI_RDBW_PCLK@ + @GTI_WRBW_PCLK@)	
+				
+#Instance Counts				
+	num_GTI_GTI	=	knob.global.NumGTIs
+	num_GTI_MFC	=	1
+    num_GTI_MLINT   =   1
+	num_GTI_DOP	=	1
+	num_GTI_SMALL	=	1	
+	num_GTI_CPunit	=	1	
+	num_GTI_Assign	=	1	
+	num_GTI_Repeater	=	1	
+	num_GTI_CLKGLUE	=	1	
+	num_GTI_NONCLKGLUE	=	1	
+	num_GTI_DFX	=	1
+	num_GTI_MediaIdle	=	1	
+
+	num_SQIDI_MSQC	= numSQBanks		
+	num_SQIDI_MIDI	=	num_GTI_GTI	
+	num_SQIDI_MISD	=	num_GTI_GTI	
+	num_SQIDI_MSQD	= numSQBanks	
+    num_SQIDI_MAC   =   num_GTI_GTI
+    num_SQIDI_MAD   =   num_GTI_GTI
+	num_SQIDI_MSNP	=	num_GTI_GTI	
+	num_SQIDI_MBGFGT	=	num_GTI_GTI	
+	num_SQIDI_SMALL	=	num_GTI_GTI	
+	num_SQIDI_DOP	=	num_GTI_GTI	
+	num_SQIDI_CPunit	=	num_GTI_GTI	
+	num_SQIDI_Assign	=	num_GTI_GTI	
+	num_SQIDI_Repeater	=	num_GTI_GTI	
+	num_SQIDI_CLKGLUE	=	num_GTI_GTI	
+	num_SQIDI_NONCLKGLUE	=	num_GTI_GTI	
+	num_SQIDI_DFX	=	num_GTI_GTI
+
+	num_UNCORE_MBGFUC	=	num_GTI_GTI
+	num_UNCORE_MDRB	=   1
+    num_UNCORE_SNP_FILTER    =   num_GTI_GTI		
+	num_UNCORE_SMALL	=	num_GTI_GTI
+	num_UNCORE_DOP	=	num_GTI_GTI	
+	num_UNCORE_CPunit	=	num_GTI_GTI	
+	num_UNCORE_Assign	=	num_GTI_GTI	
+	num_UNCORE_Repeater	=	num_GTI_GTI	
+	num_UNCORE_CLKGLUE	=	num_GTI_GTI	
+	num_UNCORE_NONCLKGLUE	=	num_GTI_GTI	
+	num_UNCORE_DFX	=	num_GTI_GTI
+
+#GTI stats				
+	.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@@GTI_EMPTY@'))	
+	#.temp_PS0_GTI	=	(.temp_gti_superq_empty)?(.temp_gti_superq_empty/(.Clk.GTI * num_GTI_GTI)):0	
+	.temp_PS0_GTI	=	(.temp_gti_superq_empty)?(.temp_gti_superq_empty/(.Clk.GTI * numSQBanks)):0	
+	.temp_gti_superq_stall	=	D(SUM('@ANY_GTI@@GTI_STALL@'))	
+	#.temp_PS1_GTI	=	(.temp_gti_superq_stall)?(.temp_gti_superq_stall/(.Clk.GTI * num_GTI_GTI)):0
+	.temp_PS1_GTI	=	(.temp_gti_superq_stall)?(.temp_gti_superq_stall/(.Clk.GTI * numSQBanks)):0
+    .temp_gti_superq_active = D(SUM('@ANY_GTI@@GTI_ACTIVE@'))
+    .temp_gti_superq_activeslots = D(SUM('@ANY_GTI@@GTI_ACTIVESLOTS@'))
+  	#.temp_PS2_GTI	=	(.temp_gti_superq_active)?(.temp_gti_superq_active/(.Clk.GTI * num_GTI_GTI)):0	
+  	.temp_PS2_GTI	=	(.temp_gti_superq_active)?(.temp_gti_superq_active/(.Clk.GTI * numSQBanks)):0	
+	.temp_gti_rd_reqs	=	D(SUM('@ANY_GTI@ReadReq'))	
+	.temp_gti_wr_reqs	=	D(SUM('@ANY_GTI@WriteReq'))	
+	.temp_gti_reqs	=	.temp_gti_rd_reqs + .temp_gti_wr_reqs	
+	.temp_gti_rd_per	=	.temp_gti_reqs?(.temp_gti_rd_reqs/.temp_gti_reqs):0	
+	.temp_gti_wr_per	=	.temp_gti_reqs?(.temp_gti_wr_reqs/.temp_gti_reqs):0	
+	#PS2_GTI_BW	=	(.temp_gti_reqs)?(.temp_gti_reqs/(@GTI_BW_PCLK@ * .temp_gti_superq_active)):0	
+	PS2_GTI_BW	=	(.temp_gti_reqs)?(.temp_gti_reqs/(@GTI_BW_PCLK@ * .temp_PS2_GTI * .Clk.GTI * num_GTI_GTI)):0	
+				
+#MBGFGT				
+				
+	#PS0_MBGFGT	=	.temp_PS0_GTI	
+	#PS1_MBGFGT	=	.temp_PS1_GTI	
+	#PS2_MBGFGT_U2CDATA	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFGT_U2CREQ	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFGT_U2CRSP	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFGT_C2UDATA  =	.temp_gti_wr_per * .temp_PS2_GTI	
+	#PS2_MBGFGT_C2UREQ   =	.temp_gti_wr_per * .temp_PS2_GTI	
+	#PS2_MBGFGT_C2URSP   =	.temp_gti_wr_per * .temp_PS2_GTI	
+				
+#MBGFUC	- new addition		
+				
+	#PS0_MBGFUC	=	.temp_PS0_GTI	
+	#PS1_MBGFUC	=	.temp_PS1_GTI	
+	#PS2_MBGFUC_U2CDATA	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFUC_U2CREQ	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFUC_U2CRSP	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGFUC_C2UDATA  =	.temp_gti_wr_per * .temp_PS2_GTI	
+	#PS2_MBGFUC_C2UREQ   =	.temp_gti_wr_per * .temp_PS2_GTI	
+	#PS2_MBGFUC_C2URSP   =	.temp_gti_wr_per * .temp_PS2_GTI
+
+#MBGF				
+				
+	#PS0_MBGF	=	.temp_PS0_GTI	
+	#PS1_MBGF	=	.temp_PS1_GTI	
+	#PS2_MBGF_READ	=	.temp_gti_rd_per * .temp_PS2_GTI	
+	#PS2_MBGF_WRITE	=	.temp_gti_wr_per * .temp_PS2_GTI
+
+#MBGFGT(Approximating MBGF residencies to MSQC residencies)				
+				
+	#PS0_MBGFGT	=	.temp_PS0_GTI/num_SQIDI_MSQC	
+	PS0_MBGFGT	=	.temp_PS0_GTI	
+	#PS1_MBGFGT	=	.temp_PS1_GTI/num_SQIDI_MSQC	
+	PS1_MBGFGT	=	.temp_PS1_GTI	
+	#PS2_MBGFGT_READ	=	(.temp_gti_rd_per * .temp_PS2_GTI) / num_SQIDI_MSQC 
+	PS2_MBGFGT_READ	=	(.temp_gti_rd_per * .temp_PS2_GTI) 
+	#PS2_MBGFGT_WRITE	=	(.temp_gti_wr_per * .temp_PS2_GTI) / num_SQIDI_MSQC
+	PS2_MBGFGT_WRITE	=	(.temp_gti_wr_per * .temp_PS2_GTI)
+    PS2_MBGFGT_SNOOP_HIT    =   0
+    PS2_MBGFGT_SNOOP_MISS   =   0
+
+#MBGFUC				
+				
+	#PS0_MBGFUC	=	.temp_PS0_GTI / num_SQIDI_MSQC	
+	PS0_MBGFUC	=	.temp_PS0_GTI 	
+	#PS1_MBGFUC	=	.temp_PS1_GTI / num_SQIDI_MSQC	
+	PS1_MBGFUC	=	.temp_PS1_GTI 	
+	#PS2_MBGFUC_READ	=	(.temp_gti_rd_per * .temp_PS2_GTI) / (num_SQIDI_MSQC)	
+	PS2_MBGFUC_READ	=	(.temp_gti_rd_per * .temp_PS2_GTI) 	
+	#PS2_MBGFUC_WRITE	=	(.temp_gti_wr_per * .temp_PS2_GTI) / (num_SQIDI_MSQC)
+	PS2_MBGFUC_WRITE	=	(.temp_gti_wr_per * .temp_PS2_GTI) 
+    PS2_MBGFUC_SNOOP_HIT   =   0
+    PS2_MBGFUC_SNOOP_MISS   =   0
+
+#MAC
+
+    PS0_MAC =   1 - PS1_MAC - PS2_MAC_READ - PS2_MAC_WRITE
+    PS1_MAC =   0
+    PS2_MAC_READ    =   D(SUM('@ANY_GTI@MidiReqQ_Bank\d+.pushed')) / (2 * .Clk.GTI * numSQBanks)
+    PS2_MAC_WRITE   =   D(SUM('@ANY_GTI@MidiReqQ_Bank\d+.pushed')) / (2 * .Clk.GTI * numSQBanks)
+
+#MAD
+
+    PS0_MAD =   1 - PS1_MAD - PS2_MAD_READ - PS2_MAD_WRITE
+    PS1_MAD =  0 
+    PS2_MAD_READ    =   D(SUM('@ANY_GTI@MadPipeFifo.pushed')) / (2 * .Clk.GTI * num_SQIDI_MAD)
+    PS2_MAD_WRITE   =   D(SUM('@ANY_GTI@MadPipeFifo.pushed')) / (2 * .Clk.GTI * num_SQIDI_MAD)
+
+    PS0_MLINT   =  1 
+    PS1_MLINT   =   0
+    PS2_MLINT_COHERENT   =  0        
+    PS2_MLINT_EVICTIONS =   0
+    PS2_MLINT_SNOOP_HIT =   0
+    PS2_MLINT_SNOOP_MISS    =   0 
+
+#MFC
+    PS0_MFC = 1
+    PS1_MFC = 0
+    PS2_MFC_FENCE = 0
+
+#MSNP ( Approximate model from Rachit)
+    PS0_MSNP = 1 - PS2_MSNP_SNOOP_HIT - PS2_MSNP_SNOOP_MISS
+    PS1_MSNP = 0 
+    PS2_MSNP_SNOOP_HIT = 	(D(SUM('@ANY_GTI@SnoopL3Hits')) + D(SUM('@ANY_GTI@SnoopSQHit')) + D(SUM('@ANY_GTI@SnoopSQHitM')))/(.Clk.GTI * num_SQIDI_MSNP )
+    PS2_MSNP_SNOOP_MISS = 	D(SUM('@ANY_GTI@SnoopMisses')) / (.Clk.GTI * num_SQIDI_MSNP)
+
+#SNP_FILTER
+    PS0_SNPFILTER   =   PS0_MBGFGT
+    PS1_SNPFILTER   =   PS1_MBGFGT
+    PS2_SNPFILTER_READ  =  PS2_MBGFGT_READ 
+    PS2_SNPFILTER_WRITE =  PS2_MBGFGT_WRITE 
+    PS2_SNPFILTER_SNOOP_HIT     =   PS2_MBGFUC_SNOOP_HIT
+    PS2_SNPFILTER_SNOOP_MISS    =   PS2_MBGFGT_SNOOP_MISS
+
+#MDRB
+    PS0_MDRB = 1
+    PS1_MDRB = 0
+    PS2_MDRB_DOORBELL = 0
+
+#MSQC				
+				
+	#PS0_MSQC	=	.temp_PS0_GTI/num_SQIDI_MSQC	
+	PS0_MSQC	=	.temp_PS0_GTI	
+ 	#PS1_MSQC	=	.temp_PS1_GTI/num_SQIDI_MSQC	
+ 	PS1_MSQC	=	.temp_PS1_GTI	
+	#PS2_MSQC	=	1 - PS0_MSQC - PS1_MSQC	
+    PS2_MSQC_READ   =   (.temp_gti_rd_per * .temp_PS2_GTI) 
+    PS2_MSQC_WRITE  =   (.temp_gti_wr_per * .temp_PS2_GTI)
+    PS2_MSQC_READWRITE  =   0
+	PS2_MSQC_ATOMICS	=  0	
+	PS2_MSQC_SlotFull	=(.temp_gti_superq_active>0)?(.temp_gti_superq_activeslots/(GTISuperQSize * .temp_gti_superq_active)):0						
+
+#MSQD				
+				
+	PS1_MSQD	=	0	
+	PS0_MSQD	=	1 - PS1_MSQD - PS2_MSQD_READ - PS2_MSQD_WRITE - PS2_MSQD_ReadWrite - PS2_MSQD_ExcessBW - PS2_MSQD_Bypass - PS2_MSQD_ATOMICS
+	PS2_MSQD_READ	=	D(SUM('@ANY_GTI@SQDBRead')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
+	PS2_MSQD_WRITE	=	D(SUM('@ANY_GTI@SQDBWrite')) / (num_SQIDI_MSQD	* .Unsliceclk.GTI)
+    PS2_MSQD_ReadWrite  = D(SUM('@ANY_GTI@SQDBReadWrite')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
+    PS2_MSQD_ExcessBW =  D(SUM('@ANY_GTI@SQDBExcessBW')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
+    PS2_MSQD_Bypass = D(SUM('@ANY_GTI@TotalBypassable')) / (num_SQIDI_MSQD * .Unsliceclk.GTI)
+	PS2_MSQD_ATOMICS	=	0
+				
+#MIDI				
+	#.temp_PS0_MIDI  = 1 - PS1_MIDI - .max_ps2_misd
+	.temp_PS0_MIDI  = (PS1_MIDI + .max_ps2_midi > 1)? 0 : (1 - PS1_MIDI - .max_ps2_midi)
+  .max_ps2_midi = MAX(PS2_MIDI_WRITE,	 PS2_MIDI_READ)		
+  PS0_MIDI	= (.temp_PS0_MIDI > 0)?	.temp_PS0_MIDI : 0			
+  .num_MIDI_Req	= COUNT('@ANY_GTI@m_MidiReqBuf_\d+\.pushed')
+  .num_MIDI_Resp	= COUNT('@ANY_GTI@m_MidiRespBuf_\d+\.pushed')
+  #.temp_PS1_MIDI_Req =  D(SUM('@ANY_GTI@m_MidiReqBuf_\d+.stalled.UnsliceClock'))/(2 * .Unsliceclk.GTI	* num_SQIDI_MIDI)
+  .temp_PS1_MIDI_Req =  D(SUM('@ANY_GTI@m_MidiReqBuf_\d+.stalled.UnsliceClock'))/(.num_MIDI_Req * .Clk.GTI)
+  #.temp_PS1_MIDI_Resp =  D(SUM('@ANY_GTI@m_MidiRespBuf_\d+.stalled.UnsliceClock'))/(2 * .Unsliceclk.GTI	* num_SQIDI_MIDI)
+  .temp_PS1_MIDI_Resp =  D(SUM('@ANY_GTI@m_MidiRespBuf_\d+.stalled.UnsliceClock'))/(.num_MIDI_Resp * .Clk.GTI)
+	PS1_MIDI	=	AVG(.temp_PS1_MIDI_Req , .temp_PS1_MIDI_Resp) 	
+	PS2_MIDI_WRITE	=	D(SUM('@ANY_GTI@m_MidiRespBuf_\d+.pushed'))/(.num_MIDI_Resp * .Clk.GTI)
+	PS2_MIDI_READ	= D(SUM('@ANY_GTI@m_MidiReqBuf_\d+.pushed'))/(.num_MIDI_Req * .Clk.GTI)		
+				
+#MISD				
+	#.temp_PS0_MISD  = 1 - PS1_MISD - .max_ps2_misd
+	.temp_PS0_MISD  = (PS1_MISD + .max_ps2_misd > 1) ? 0 : (1 - PS1_MISD - .max_ps2_misd)
+  .max_ps2_misd = MAX(PS2_MISD_READ,PS2_MISD_ENCRYPT,PS2_MISD_WRITE,PS2_MISD_C2U_DECRYPT)			
+	PS0_MISD	= 	(.temp_PS0_MISD > 0)?	.temp_PS0_MISD : 0			
+	.num_MISD_Bypass_Rd	=	COUNT('@ANY_GTI@m_MisdAESBypassRdPipe.pushed')
+	.num_MISD_Bypass_Wr	=	COUNT('@ANY_GTI@m_MisdAESBypassWrPipe.pushed')
+	.num_MISD_AES_Rd	=	COUNT('@ANY_GTI@m_MisdAESRdPipe.pushed')
+	.num_MISD_AES_Wr	=	COUNT('@ANY_GTI@m_MisdAESWrPipe.pushed')
+  #.temp_PS1_MISD_Bypass = D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.stalled.UnsliceClock'))/(.Unsliceclk.GTI * num_SQIDI_MISD)
+  .temp_PS1_MISD_Bypass_Rd = D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.stalled.UnsliceClock'))/(.num_MISD_Bypass_Rd * .Clk.GTI)
+  .temp_PS1_MISD_Bypass_Wr = D(SUM('@ANY_GTI@m_MisdAESBypassWrPipe.stalled.UnsliceClock'))/(.num_MISD_Bypass_Wr * .Clk.GTI)
+  .temp_PS1_MISD_AES_Rd = D(SUM('@ANY_GTI@m_MisdAESRdPipe.stalled.UnsliceClock'))/(.num_MISD_AES_Rd * .Clk.GTI)
+  .temp_PS1_MISD_AES_Wr = D(SUM('@ANY_GTI@m_MisdAESWrPipe.stalled.UnsliceClock'))/(.num_MISD_AES_Rd * .Clk.GTI)
+  #.temp_PS1_MISD = 	D(SUM('@ANY_GTI@m_MisdAESRdPipe.stalled.UnsliceClock'))/(.Unsliceclk.GTI * num_SQIDI_MISD)
+  .temp_PS1_MISD = 	(.temp_PS1_MISD_AES_Rd + .temp_PS1_MISD_AES_Wr > 0) ? AVG(.temp_PS1_MISD_Bypass_Rd, .temp_PS1_MISD_Bypass_Wr, .temp_PS1_MISD_AES_Rd, .temp_PS1_MISD_AES_Wr) : AVG(.temp_PS1_MISD_Bypass_Rd, .temp_PS1_MISD_Bypass_Wr)
+	#PS1_MISD	=	AVG(.temp_PS1_MISD_Bypass	, .temp_PS1_MISD)
+	PS1_MISD	=	.temp_PS1_MISD
+	PS2_MISD_READ	= D(SUM('@ANY_GTI@m_MisdAESBypassRdPipe.pushed'))/ (.num_MISD_Bypass_Rd * .Clk.GTI)
+	PS2_MISD_ENCRYPT	= D(SUM('@ANY_GTI@m_MisdAESRdPipe.pushed'))/ (.num_MISD_AES_Rd * .Clk.GTI)
+	PS2_MISD_WRITE	= D(SUM('@ANY_GTI@m_MisdAESBypassWrPipe.pushed'))/ (.num_MISD_Bypass_Wr * .Clk.GTI)
+	PS2_MISD_DECRYPT	= D(SUM('@ANY_GTI@m_MisdAESWrPipe.pushed'))/ (.num_MISD_AES_Wr * .Clk.GTI)
+				
+#SMALL				
+	PS0_GTI_SMALL	= PS0_MBGFGT   		
+	PS1_GTI_SMALL	=	PS1_MBGFGT
+	PS2_GTI_SMALL	=	1 - PS0_GTI_SMALL -PS1_GTI_SMALL	
+	PS0_UNCORE_SMALL	=	PS0_MBGFUC
+	PS1_UNCORE_SMALL	=	PS1_MBGFUC
+    PS2_UNCORE_SMALL	=	1 - PS0_UNCORE_SMALL -PS1_UNCORE_SMALL 
+	PS0_SQIDI_SMALL	= AVG(PS0_MSQC, PS0_MIDI, PS0_MISD)
+	PS1_SQIDI_SMALL	=	AVG(PS1_MSQC, PS1_MIDI, PS1_MISD)
+	PS2_SQIDI_SMALL	=	1 - PS0_SQIDI_SMALL - PS1_SQIDI_SMALL
+#CPunit				
+	PS0_GTI_CPunit	=	PS0_GTI_SMALL
+	PS2_GTI_CPunit	=	1 - PS0_GTI_SMALL	
+	#PS0_UNCORE_CPunit	=	PS0_GTI_SMALL
+	PS0_UNCORE_CPunit	=	PS0_UNCORE_SMALL
+	#PS2_UNCORE_CPunit	=	1 - PS0_GTI_SMALL	
+	PS2_UNCORE_CPunit	=	1 - PS0_UNCORE_SMALL	
+	PS0_SQIDI_CPunit	=	PS0_SQIDI_SMALL
+	PS2_SQIDI_CPunit	=	1 - PS0_SQIDI_SMALL	
+				
+#Assign				
+	PS0_GTI_Assign	=		PS0_GTI_SMALL
+	PS2_GTI_Assign	=	1 - PS0_GTI_SMALL	
+	#PS0_UNCORE_Assign	=	PS0_GTI_SMALL
+	PS0_UNCORE_Assign	=	PS0_UNCORE_SMALL
+	#PS2_UNCORE_Assign	=	1 - PS0_GTI_SMALL	
+	PS2_UNCORE_Assign	=	1 - PS0_UNCORE_SMALL	
+	PS0_SQIDI_Assign	=	PS0_SQIDI_SMALL
+	PS2_SQIDI_Assign	=	1 - PS0_SQIDI_SMALL	
+				
+#Repeater				
+	PS0_GTI_Repeater	= PS0_MBGFGT   		
+	PS1_GTI_Repeater	=	PS1_MBGFGT
+	PS2_GTI_Repeater	=	1 - PS0_GTI_Repeater -PS1_GTI_Repeater	
+	PS0_UNCORE_Repeater	=	PS0_MBGFUC
+	PS1_UNCORE_Repeater	=	PS1_MBGFUC
+    PS2_UNCORE_Repeater	=	1 - PS0_UNCORE_Repeater -PS1_UNCORE_Repeater
+	PS0_SQIDI_Repeater	=	AVG(PS0_MSQC, PS0_MIDI, PS0_MISD)
+	PS1_SQIDI_Repeater	=	AVG(PS1_MSQC, PS1_MIDI, PS1_MISD)
+	PS2_SQIDI_Repeater	=	1 - PS0_SQIDI_Repeater - PS1_SQIDI_Repeater
+#CPunit				
+	PS0_GTI_CPunit	=	PS0_GTI_SMALL
+	PS2_GTI_CPunit	=	1 - PS0_GTI_SMALL	
+
+#CLKGLUE				
+	PS0_GTI_CLKGLUE	=	PS0_GTI_SMALL	
+	PS2_GTI_CLKGLUE	=	PS2_GTI_SMALL	
+	#PS0_UNCORE_CLKGLUE	=	PS0_GTI_SMALL
+	PS0_UNCORE_CLKGLUE	=	PS0_UNCORE_SMALL
+	#PS2_UNCORE_CLKGLUE	=	1 - PS0_GTI_SMALL	
+	PS2_UNCORE_CLKGLUE	=	1 - PS0_UNCORE_SMALL	
+	PS0_SQIDI_CLKGLUE	=	PS0_SQIDI_SMALL
+	PS2_SQIDI_CLKGLUE	=	1 - PS0_SQIDI_SMALL	
+				
+#NONCLKGLUE				
+	PS0_GTI_NONCLKGLUE	= PS0_MBGFGT   		
+	PS1_GTI_NONCLKGLUE	=	PS1_MBGFGT
+	PS2_GTI_NONCLKGLUE	=	1 - PS0_GTI_NONCLKGLUE -PS1_GTI_NONCLKGLUE	
+	PS0_UNCORE_NONCLKGLUE	=	PS0_MBGFUC
+	PS1_UNCORE_NONCLKGLUE	=	PS1_MBGFUC
+    PS2_UNCORE_NONCLKGLUE	=	1 - PS0_UNCORE_NONCLKGLUE -PS1_UNCORE_NONCLKGLUE
+	PS0_SQIDI_NONCLKGLUE	=	AVG(PS0_MSQC,  PS0_MIDI, PS0_MISD)
+	PS1_SQIDI_NONCLKGLUE	=	AVG(PS1_MSQC,  PS1_MIDI, PS1_MISD)
+	PS2_SQIDI_NONCLKGLUE	=	1 - PS0_SQIDI_NONCLKGLUE - PS1_SQIDI_NONCLKGLUE
+#CPunit				
+	PS0_GTI_CPunit	=	PS0_GTI_SMALL
+	PS2_GTI_CPunit	=	1 - PS0_GTI_SMALL	
+				
+#DFX				
+	PS0_GTI_DFX	=	PS0_GTI_SMALL	
+	PS2_GTI_DFX	=	PS2_GTI_SMALL	
+	#PS0_UNCORE_DFX	=	PS0_GTI_SMALL
+	PS0_UNCORE_DFX	=	PS0_UNCORE_SMALL
+	#PS2_UNCORE_DFX	=	1 - PS0_GTI_SMALL	
+	PS2_UNCORE_DFX	=	1 - PS0_UNCORE_SMALL	
+	PS0_SQIDI_DFX	=	PS0_SQIDI_SMALL
+	PS2_SQIDI_DFX	=	1 - PS0_SQIDI_SMALL	
+				
+#DOP				
+	PS0_GTI_DOP	=	PS0_GTI_SMALL	
+	PS2_GTI_DOP	=	PS2_GTI_SMALL
+	#PS0_UNCORE_DOP	=	PS0_GTI_SMALL
+	PS0_UNCORE_DOP	=	PS0_UNCORE_SMALL
+	#PS2_UNCORE_DOP	=	1 - PS0_GTI_SMALL	
+	PS2_UNCORE_DOP	=	1 - PS0_UNCORE_SMALL	
+	PS0_SQIDI_DOP	=	PS0_SQIDI_SMALL
+	PS2_SQIDI_DOP	=	1 - PS0_SQIDI_SMALL	
+
+#MediaIdle
+	PS0_GTI_MediaIdle	=	1	

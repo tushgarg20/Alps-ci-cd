@@ -1,4 +1,10 @@
-Unit,Cluster,Source,Cdyn Reduction
+Unit,Cluster,Source,Cdyn Reduction,
 EM,EU,Gen11,Gen11,0.8997
 FPU0,EU,Gen11,Gen11,0.8997
 FPU1,EU,Gen11,Gen11,0.8997
+EM,EU,Gen11,Gen11LP,0.8997
+FPU0,EU,Gen11,Gen11LP,0.8997
+FPU1,EU,Gen11,Gen11LP,0.8997
+EM,EU,Gen11LP,Gen11LP,1
+FPU0,EU,Gen11LP,Gen11LP,1
+FPU1,EU,Gen11LP,Gen11LP,1

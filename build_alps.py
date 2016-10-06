@@ -755,17 +755,17 @@ gt_top       = '0GT_level(fF)'
 cluster_top  = '0total'
 gt_cdyn_dist = {label:{}}
 gt_cdyn_dist[label][gt_top] = {}
-for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
     gt_cdyn_dist[label][gt_top][category] = 0
 
 for cluster in yaml_hash:
     gt_cdyn_dist[label][cluster] = {}
     gt_cdyn_dist[label][cluster][cluster_top] = {}
-    for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+    for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
         gt_cdyn_dist[label][cluster][cluster_top][category] = 0
     for unit in yaml_hash[cluster]:
         gt_cdyn_dist[label][cluster][unit] = {}
-        for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+        for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
             gt_cdyn_dist[label][cluster][unit][category] = 0
 
         for state in yaml_hash[cluster][unit]:
@@ -774,6 +774,8 @@ for cluster in yaml_hash:
             if (state_lc.find("_dop") != -1 or state_lc.find("_clkglue") != -1 or state_lc.find("clockspine") != -1):
                 if (state_lc.find("ps0_") == 0):
                     category = "clock_idle"
+                elif (state_lc.find("ps1_") == 0):
+                    category = "clock_stall"
                 elif (state_lc.find("ps2_") == 0):
                     category = "clock_active"
                 else:

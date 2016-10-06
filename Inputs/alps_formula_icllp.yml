@@ -1,0 +1,2092 @@
+--- # ALPS Formula File version WW07.1 2013
+
+ # R == Residency
+ # C == Cdyn weight
+
+CrClocks: R
+FPS: R
+GT_BW_GBPS : R
+GT_RD_BW_GBPS : R
+GT_WR_BW_GBPS : R
+GT_PTL_WR_BW_GBPS : R
+GT_RCZ_RD_BW_GBPS : R
+GT_RCZ_WR_BW_GBPS : R
+GT_HIZ_RD_BW_GBPS : R
+GT_HIZ_WR_BW_GBPS : R
+GT_STC_RD_BW_GBPS : R
+GT_STC_WR_BW_GBPS : R
+GT_RCC_RD_BW_GBPS : R
+GT_RCC_WR_BW_GBPS : R
+GT_MT_RD_BW_GBPS : R
+GT_VERTEX_RD_BW_GBPS : R
+GT_DC_RD_BW_GBPS : R
+GT_DC_WR_BW_GBPS : R
+GT_CS_RD_BW_GBPS : R
+GT_CS_WR_BW_GBPS : R
+GT_GAM_RD_BW_GBPS : R
+GT_OTHER_RD_BW_GBPS : R
+GT_OTHER_WR_BW_GBPS : R
+LLC_LOOKUP_BW_GBPS : R
+LLC_HIT_BW_GBPS : R
+LLC_MISS_BW_GBPS : R
+LLC_RD_LOOKUP_BW_GBPS : R
+LLC_RD_HIT_BW_GBPS : R
+LLC_RD_MISS_BW_GBPS : R
+LLC_UC_RD_LOOKUP_BW_GBPS : R
+LLC_UC_RD_MISS_BW_GBPS : R
+LLC_LOAD_LOOKUP_BW_GBPS : R
+LLC_LOAD_HIT_BW_GBPS : R
+LLC_LOAD_MISS_BW_GBPS : R
+LLC_DLOAD_LOOKUP_BW_GBPS : R
+LLC_DLOAD_HIT_BW_GBPS : R
+LLC_DLOAD_MISS_BW_GBPS : R
+LLC_C_WR_LOOKUP_BW_GBPS : R
+LLC_C_WR_HIT_BW_GBPS : R
+LLC_C_WR_MISS_BW_GBPS : R
+LLC_UC_WR_LOOKUP_BW_GBPS : R
+LLC_UC_WR_MISS_BW_GBPS : R
+DRAM_RD_BW_GBPS : R
+DRAM_WR_BW_GBPS : R
+DRAM_BW_GBPS : R
+
+
+EU:
+  TC:
+    PS0_TC: R * C
+    PS1_TC: R * C
+    PS2_TC: R * C
+
+  GRF:
+     PS2_GRF_READ: R * C
+     PS2_GRF_WRITE: R * C
+
+  FPU0:
+     PS0_EU_FPU0: R * C
+     PS1_EU_FPU0: R * C
+     PS2_EU_FPU0:
+      FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+  
+  FPU1:
+    PS0_EU_FPU1: R * C
+    PS1_EU_FPU1: R * C
+    PS2_EU_FPU1:
+      FPU1_mad_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+  
+  EM:
+      EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+  GA:
+    PS0_GA: R * C
+    PS1_GA: R * C
+    PS2_GA:
+      PS2_GA_EM1Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_FPU1Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_FPU2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM1Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM1Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM1Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM2Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM2Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM2Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM3Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM3Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_EM3Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+  DOP:
+    PS0_EU_DOP: R * C
+    PS1_EU_DOP: R * C
+    PS2_EU_DOP: R * C
+  SMALL:
+    PS0_EU_SMALL_DOP : R * C
+    PS0_EU_SMALL : R * C
+    PS1_EU_SMALL : R * C
+    PS2_EU_SMALL : R * C
+  CPunit:
+    PS0_EU_CPunit : R * C
+    PS2_EU_CPunit : R * C
+  Assign:
+    PS0_EU_Assign_DOP : R * C
+    PS0_EU_Assign : R * C
+    PS2_EU_Assign : R * C
+  Repeater:
+    PS0_EU_Repeater_DOP : R * C
+    PS0_EU_Repeater : R * C
+    PS1_EU_Repeater : R * C
+    PS2_EU_Repeater : R * C
+  CLKGLUE:
+    PS0_EU_CLKGLUE_DOP: R * C
+    PS0_EU_CLKGLUE: R * C
+    PS2_EU_CLKGLUE: R * C
+  NONCLKGLUE:
+    PS0_EU_NONCLKGLUE_DOP: R * C
+    PS0_EU_NONCLKGLUE: R * C
+    PS1_EU_NONCLKGLUE: R * C
+    PS2_EU_NONCLKGLUE: R * C
+  DFX:
+    PS0_EU_DFX: R * C
+    PS2_EU_DFX: R * C
+EU_Utilization: R
+EU_IPC: R
+GA_toggle_rate: R
+FPU1_toggle_rate: R
+FPU0_toggle_rate: R
+
+L3_Bank:
+   LTCD_EBB:
+    PS0_LTCD_EBB: R * C
+    PS1_LTCD_EBB: R * C
+    PS2_LTCD_EBB:
+     PS2_LTCD_EBB_Read: R * C
+     PS2_LTCD_EBB_Write: R * C
+     PS2_LTCD_EBB_HB_Read: R * C
+     PS2_LTCD_EBB_HB_Write: R * C 
+   LTCD_Data:
+    PS0_LTCD_DATA: R * C
+    PS1_LTCD_DATA: R * C
+    PS2_LTCD_Data:
+     PS2_LTCD_DATA_READ: R * C
+     PS2_LTCD_DATA_WRITE: R * C
+     PS2_LTCD_DATA_EVICT: R * C
+     PS2_LTCD_DATA_Else: R * C
+   LTCD_Tag:
+    PS0_LTCD_TAG: R * C
+    PS2_LTCD_Tag:    
+     PS2_LTCD_TAG_READ: R * C
+     PS2_LTCD_TAG_WRITE: R * C
+     PS2_LTCD_TAG_EVICT: R * C
+     PS2_LTCD_TAG_Else: R * C
+   LSQD:
+    PS0_LSQD: R * C
+    PS1_LSQD: R * C
+    PS2_LSQD:
+     PS2_LSQD_WRITE: R * C
+     PS2_LSQD_LNE_READ_RETURN: R * C
+     PS2_LSQD_HIT_WRITE: R * C
+     PS2_LSQD_ATOMIC_WRITE: R * C
+     PS2_LSQD_Else: R * C
+   LSQC:
+    PS0_LSQC: R * C
+    PS1_LSQC: R * C
+    PS2_LSQC: R * LINEST[C,R[LSQC_activeslots_per_clock]]
+   LTCC:
+    PS0_LTCC: R * C
+    PS1_LTCC: R * C
+    PS2_LTCC: R * C
+   LBI:
+    PS0_LBI: R * C
+    PS1_LBI: R * C
+    PS2_LBI_BANK_READ: R * C
+    PS2_LBI_BANK_WRITE: R * C
+    PS2_LBI_MEFFILL: R * C
+    PS2_LBI_Else: R * C
+#   LSLM:
+#    PS0_LSLM: R * C
+#    PS1_LSLM: R * C
+#    PS2_LSLM: R * C
+   L3BankOther:
+    PS0_L3BankOther: R * C
+    PS1_L3BankOther: R * C
+    PS2_L3BankOther: R * C
+   DOP:
+    PS0_L3_Bank_DOP: R * C
+    PS2_L3_Bank_DOP: R * C
+   DFX:
+    PS0_L3_Bank_DFX: R * C
+    PS2_L3_Bank_DFX: R * C
+   SMALL:
+    PS0_L3_Bank_SMALL: R * C
+    PS1_L3_Bank_SMALL: R * C
+    PS2_L3_Bank_SMALL: R * C
+   CPunit:
+    PS0_L3_Bank_CPunit: R * C
+    PS2_L3_Bank_CPunit: R * C
+   Assign:
+    PS0_L3_Bank_Assign: R * C
+    PS2_L3_Bank_Assign: R * C
+   Repeater:
+    PS0_L3_Bank_Repeater: R * C
+    PS1_L3_Bank_Repeater: R * C
+    PS2_L3_Bank_Repeater: R * C
+   CLKGLUE:
+    PS0_L3_Bank_CLKGLUE: R * C
+    PS2_L3_Bank_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_L3_Bank_NONCLKGLUE: R * C
+    PS1_L3_Bank_NONCLKGLUE: R * C
+    PS2_L3_Bank_NONCLKGLUE: R * C
+#PS2_LSQC_SlotFull: R
+LSQC_activeslots_per_clock: R
+
+L3Node:
+   LNI:
+    PS0_LNI: R * C
+    PS1_LNI: R * C
+#    PS2_LNI: R * C
+#    PS2_LNIXS: R * C
+    PS2_LNI_LOCAL_1BANK_1READ: R * C
+    PS2_LNI_LOCAL_1BANK_1WRITE: R * C
+    PS2_LNI_XSLICE_ING_1READ: R * C
+    PS2_LNI_XSLICE_ING_1WRITE: R * C
+    PS2_LNI_XSLICE_ING_MEMFILL: R * C
+    PS2_LNI_XSLICE_EGR_1READ: R * C
+    PS2_LNI_XSLICE_EGR_1WRITE: R * C
+    PS2_LNI_Else: R * C
+   LNE:
+    PS0_LNE: R * C
+    PS1_LNE: R * C
+#    PS2_LNE: R * C
+#    PS2_LNEXS: R * C
+    PS2_LNE_LSN_EGR_DATARTN: R * C
+    PS2_LNE_LSN_ING_DATARTN: R * C
+    PS2_LNE_SS_DATARTN: R * C
+    PS2_LNE_LSN_EGR_READ: R * C
+    PS2_LNE_LSN_EGR_WRITE: R * C
+    PS2_LNE_Else: R * C
+   DOP:
+    PS0_L3Node_DOP: R * C
+    PS2_L3Node_DOP: R * C
+   DFX:
+    PS0_L3Node_DFX: R * C
+    PS2_L3Node_DFX: R * C
+   SMALL:
+    PS0_L3Node_SMALL: R * C
+    PS1_L3Node_SMALL: R * C
+    PS2_L3Node_SMALL: R * C
+   CPunit:
+    PS0_L3Node_CPunit: R * C
+    PS2_L3Node_CPunit: R * C
+   Assign:
+    PS0_L3Node_Assign: R * C
+    PS2_L3Node_Assign: R * C
+   Repeater:
+    PS0_L3Node_Repeater: R * C
+    PS1_L3Node_Repeater: R * C
+    PS2_L3Node_Repeater: R * C
+   CLKGLUE:
+    PS0_L3Node_CLKGLUE: R * C
+    PS2_L3Node_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_L3Node_NONCLKGLUE: R * C
+    PS1_L3Node_NONCLKGLUE: R * C
+    PS2_L3Node_NONCLKGLUE: R * C
+PS2_LNI_BW: R
+PS2_LNE_BW: R
+
+SQIDI:
+   MBGFGT:
+    PS0_MBGFGT: R * C
+    PS1_MBGFGT: R * C
+    PS2_MBGFGTC:
+     PS2_MBGFGT_READ: R * C
+     PS2_MBGFGT_WRITE: R * C
+     PS2_MBGFGT_SNOOP_HIT: R * C
+     PS2_MBGFGT_SNOOP_MISS: R * C
+   MIDI:
+    PS0_MIDI: R * C
+    PS1_MIDI: R * C
+    PS2_MIDI:
+     PS2_MIDI_READ: R * C
+     PS2_MIDI_WRITE: R * C
+   MISD:
+    PS0_MISD: R * C
+    PS1_MISD: R * C
+    PS2_MISD:
+     PS2_MISD_ENCRYPT: R * C
+     PS2_MISD_READ: R * C
+     PS2_MISD_DECRYPT: R * C
+     PS2_MISD_WRITE: R * C
+   MSQC:
+    PS0_MSQC: R * C
+    PS1_MSQC: R * C
+    PS2_MSQC_READ: R * LINEST[C,R[PS2_MSQC_SlotFull]]
+    PS2_MSQC_WRITE: R * LINEST[C,R[PS2_MSQC_SlotFull]]
+    PS2_MSQC_READWRITE: R * C
+    PS2_MSQC_ATOMICS: R * C
+   MSQD:
+    PS0_MSQD: R * C
+    PS1_MSQD: R * C
+    PS2_MSQD:
+     PS2_MSQD_READ: R * C
+     PS2_MSQD_WRITE: R * C
+     PS2_MSQD_ReadWrite: R * C
+     PS2_MSQD_ExcessBW: R * C
+     PS2_MSQD_Bypass: R * C
+     PS2_MSQD_ATOMICS: R * C
+   MSNP:
+    PS0_MSNP: R * C
+    PS1_MSNP: R * C
+    PS2_MSNP:
+     PS2_MSNP_SNOOP_HIT: R * C
+     PS2_MSNP_SNOOP_MISS: R * C
+   MAC:
+    PS0_MAC: R * C
+    PS1_MAC: R * C
+    PS2_MAC:
+     PS2_MAC_READ: R * C
+     PS2_MAC_WRITE: R * C
+   MAD:
+    PS0_MAD: R * C
+    PS1_MAD: R * C
+    PS2_MAD:
+     PS2_MAD_READ: R * C
+     PS2_MAD_WRITE: R * C
+   SMALL:
+    PS0_SQIDI_SMALL: R * C
+    PS1_SQIDI_SMALL: R * C
+    PS2_SQIDI_SMALL: R * C
+   CPunit:
+    PS0_SQIDI_CPunit: R * C
+    PS2_SQIDI_CPunit: R * C
+   Assign:
+    PS0_SQIDI_Assign: R * C
+    PS2_SQIDI_Assign: R * C
+   Repeater:
+    PS0_SQIDI_Repeater: R * C
+    PS1_SQIDI_Repeater: R * C
+    PS2_SQIDI_Repeater: R * C
+   CLKGLUE:
+    PS0_SQIDI_CLKGLUE: R * C
+    PS2_SQIDI_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_SQIDI_NONCLKGLUE: R * C
+    PS1_SQIDI_NONCLKGLUE: R * C
+    PS2_SQIDI_NONCLKGLUE: R * C
+   DOP:
+    PS0_SQIDI_DOP: R * C
+    PS2_SQIDI_DOP: R * C
+   DFX:
+    PS0_SQIDI_DFX: R * C
+    PS2_SQIDI_DFX: R * C
+
+UNCORE:
+   MBGFUC:
+    PS0_MBGFUC: R * C
+    PS1_MBGFUC: R * C
+    PS2_MBGFUC:
+     PS2_MBGFUC_READ: R * C
+     PS2_MBGFUC_WRITE: R * C
+     PS2_MBGFUC_SNOOP_HIT: R * C
+     PS2_MBGFUC_SNOOP_MISS: R * C
+   SNP_FILTER:
+    PS0_SNPFILTER: R * C
+    PS1_SNPFILTER: R * C
+    PS2_SNPFILTER:
+     PS2_SNPFILTER_READ: R * C
+     PS2_SNPFILTER_WRITE: R * C
+     PS2_SNPFILTER_SNOOP_READ: R * C
+     PS2_SNPFILTER_SNOOP_WRITE: R * C
+   MDRB:
+    PS0_MDRB: R * C
+    PS1_MDRB: R * C
+    PS2_MDRB_DOORBELL: R * C
+   SMALL:
+    PS0_UNCORE_SMALL: R * C
+    PS1_UNCORE_SMALL: R * C
+    PS2_UNCORE_SMALL: R * C
+   CPunit:
+    PS0_UNCORE_CPunit: R * C
+    PS2_UNCORE_CPunit: R * C
+   Assign:
+    PS0_UNCORE_Assign: R * C
+    PS2_UNCORE_Assign: R * C
+   Repeater:
+    PS0_UNCORE_Repeater: R * C
+    PS1_UNCORE_Repeater: R * C
+    PS2_UNCORE_Repeater: R * C
+   CLKGLUE:
+    PS0_UNCORE_CLKGLUE: R * C
+    PS2_UNCORE_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_UNCORE_NONCLKGLUE: R * C
+    PS1_UNCORE_NONCLKGLUE: R * C
+    PS2_UNCORE_NONCLKGLUE: R * C
+   DOP:
+    PS0_UNCORE_DOP: R * C
+    PS2_UNCORE_DOP: R * C
+   DFX:
+    PS0_UNCORE_DFX: R * C
+    PS2_UNCORE_DFX: R * C
+
+GTI:
+   MLINT:
+    PS0_MLINT: R * C
+    PS1_MLINT: R * C
+    PS2_MLINT:
+     PS2_MLINT_COHERENT: R * C
+     PS2_MLINT_EVICTIONS: R * C
+     PS2_MLINT_SNOOP_HIT: R * C
+     PS2_MLINT_SNOOP_MISS: R * C
+   MFC:
+    PS0_MFC: R * C
+    PS1_MFC: R * C
+    PS2_MFC_FENCE: R * C
+   SMALL:
+    PS0_GTI_SMALL: R * C
+    PS1_GTI_SMALL: R * C
+    PS2_GTI_SMALL: R * C
+   CPunit:
+    PS0_GTI_CPunit: R * C
+    PS2_GTI_CPunit: R * C
+   Assign:
+    PS0_GTI_Assign: R * C
+    PS2_GTI_Assign: R * C
+   Repeater:
+    PS0_GTI_Repeater: R * C
+    PS1_GTI_Repeater: R * C
+    PS2_GTI_Repeater: R * C
+   CLKGLUE:
+    PS0_GTI_CLKGLUE: R * C
+    PS2_GTI_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_GTI_NONCLKGLUE: R * C
+    PS1_GTI_NONCLKGLUE: R * C
+    PS2_GTI_NONCLKGLUE: R * C
+   DFX:
+    PS0_GTI_DFX: R * C
+    PS2_GTI_DFX: R * C
+   MediaIdle:
+    PS0_GTI_MediaIdle: R * C
+   DOP:
+    PS0_GTI_DOP: R * C
+    PS2_GTI_DOP: R * C
+PS2_GTI_BW: R
+PS2_MSQC_SlotFull: R
+
+Sampler:
+   FL:
+    PS0_FL_DOP: R * C
+    PS0_FL: R * C
+    PS1_FL: R * C
+    PS2_FL:
+     PS2_FL_SampleC_Gather4C: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_LD_Bypass: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Gather4: R *  LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_FastVolumetric: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Data_Dep_Bypass_Bilinear: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Data_Dep_Bypass_Trilinear: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Data_Dep_Bypass_LinearAniso: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Data_Dep_Bypass_FastAniso: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Data_Dep_Bypass_FastLinear: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Bilinear_Float16: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Bilinear_Float32: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Bilinear_Else: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Trilinear_Float16: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Trilinear_Float32: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Trilinear_Else: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_LinearAniso_Float16: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_LinearAniso_Float32: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_LinearAniso_Else: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_FastAniso: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_FastLinear: R * LINEST[C,R[FL_Toggle_Rate]]
+     PS2_FL_Else: R * LINEST[C,R[FL_Toggle_Rate]]
+    
+   PL:
+    PS0_PL_DOP: R * C
+    PS0_PL: R * C
+    PS1_PL: R * C
+    PS2_PL:
+     PS2_PL_Sample_L: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_LD: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Vol_Bilinear: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Vol_Bilinear_EWA: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Bilinear: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Bilinear_EWA:  R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Vol_Trilinear:  R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Vol_Trilinear_EWA:  R * LINEST[C,R[PL_Toggle_Rate]] 
+     PS2_PL_NonVol_Trilinear: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Trilinear_EWA: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Aniso_Trilin: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Aniso_Trilin_EWA: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Aniso_Nearest: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_NonVol_Aniso_Nearest_EWA: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Else: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_Sample8x8: R * LINEST[C,R[PL_Toggle_Rate]]
+    
+   SC:
+    PS0_SC_DOP: R * C
+    PS0_SC: R * C
+    PS1_SC: R * C
+    PS2_SC:
+     PS2_SC_NearestMode_32BPT: R * C
+     PS2_SC_NearestMode_64BPT: R * C
+     PS2_SC_NearestMode_128BPT: R * C
+     PS2_SC_FastLinear: R * C
+     PS2_SC_FastAniso: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_32BPT: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_64BPT: R * C
+     PS2_SC_Bilinear_Trilinear_Aniso_128BPT: R * C
+     PS2_SC_Other: R * C
+     PS2_SC_Media_Sample8x8: R * C
+   SC_Cache:
+     PS2_SC_DataRam:
+      PS2_SC_DataRam_READ: R * C
+      PS2_SC_DataRam_WRITE: R * C
+     PS2_SC_LatFifo:      
+      PS2_SC_LatFifo_READ: R * C
+      PS2_SC_LatFifo_WRITE: R * C
+   ST:
+    PS0_ST_DOP: R * C
+    PS0_ST: R * C
+    PS1_ST: R * C
+    PS2_ST:
+     PS2_ST_1Bank_Enable : R * C
+     PS2_ST_2Bank_Enable : R * C
+     PS2_ST_3Bank_Enable : R * C
+     PS2_ST_4Bank_Enable : R * C
+     PS2_ST_1Bank_Enable_SameADD: R * C
+
+   DG:
+    PS0_DG_DOP: R * C
+    PS0_DG: R * C
+    PS1_DG: R * C
+    PS2_DG:
+     PS2_DG_Volumetric: R * C
+     PS2_DG_Aniso: R * C
+     PS2_DG_BabyDG_Enable: R * C
+     PS2_DG_Else: R * C
+     PS2_DG_Sample8x8: R * C
+     PS2_DG_Linear_or_Gather4: R * C
+
+   SI:
+    PS0_SI: R * C
+    PS1_SI: R * C
+    PS2_SI:
+     PS2_SI_ANYPIXELMODE: R * C
+     PS2_SI_Media_Sample8x8: R * C
+   SO:
+    PS0_SO_DOP: R * C
+    PS0_SO: R * C
+    PS1_SO: R * C
+    PS2_SO_ANYPIXELMODE: R * C
+   DM:
+    PS0_DM_DOP: R * C
+    PS0_DM: R * C
+    PS1_DM: R * C
+    PS2_DM_BDM:
+     PS2_DM_BC1_5: R * C
+     PS2_DM_BC6_7: R * C
+     PS2_DM_BC1_3_SRGB: R * C
+     PS2_DM_BC7_SRGB: R * C
+     PS2_DM_ETC: R * C
+     PS2_DM_Other: R * C
+     PS2_DM_HIZ_Z: R * C
+     PS2_DM_LOSSLESS: R * C
+     PS2_DM_ASTC_LDR_2D: R * C
+     PS2_DM_ASTC_LDR_3D: R * C
+     PS2_DM_ASTC_HDR_2D: R * C
+     PS2_DM_ASTC_HDR_3D: R * C
+     PS2_DM_Expanded: R * C
+     PS2_DM_Expanded_BYPASS: R * C
+     PS2_DM_Media_BYPASS: R * C
+     PS2_DM_Media_SRGB: R * C
+     PS2_DM_Media_Planar: R * C
+     PS2_DM_Bypass: R * C
+
+   DM_PALRAM:
+     PS2_DM_PALRAM_READ: R * C
+     PS2_DM_PALRAM_WRITE: R * C
+   FT:
+    PS0_FT_DOP: R * C
+    PS0_FT: R * C
+    PS1_FT: R * C
+    PS2_FT: R * C
+   MT:
+    PS0_MT_DOP: R * C
+    PS0_MT: R * C
+    PS1_MT: R * C
+    PS2_MT:
+     PS2_MT_BYPASS: R * C
+     PS2_MT_Tile_Y: R * C
+   MT_Cache:
+    PS2_MT_LatFifo:
+     PS2_MT_LatFifo_READ: R * C
+     PS2_MT_LatFifo_WRITE: R * C
+    PS2_MT_DataRam:
+     PS2_MT_DataRam_READ: R * C
+     PS2_MT_DataRam_WRITE: R * C
+   SVSM:
+    PS0_SVSM: R * C
+    PS1_SVSM: R * C
+    PS2_SVSM: R * C
+   AVS:
+    PS0_AVS_DOP: R * C        
+    PS0_AVS: R * C        
+    PS1_AVS: R * C        
+    PS2_AVS:      
+     PS2_AVS_Scalar: R * C
+     PS2_AVS_Convolution: R * C
+     PS2_AVS_CorrelationSearch: R * C
+     PS2_AVS_Centroid: R * C
+     PS2_AVS_MinMax: R * C
+     PS2_AVS_MinMaxFilter: R * C
+     PS2_AVS_Erode: R * C
+     PS2_AVS_Dilate: R * C
+     PS2_AVS_BoolCentroid: R * C
+
+   IEF:
+    PS0_IEF_DOP: R * C        
+    PS0_IEF: R * C        
+    PS1_IEF: R * C        
+    PS2_IEF:      
+     PS2_IEF_NoBypass: R * C
+     PS2_IEF_Bypass: R * C
+   CRE:
+    PS0_CRE_DOP: R * C        
+    PS0_CRE: R * C        
+    PS1_CRE: R * C        
+    PS2_CRE:      
+     PS2_CRE_FRONT_ACTIVE: R * C
+     PS2_CRE_INTRA: R * C
+     PS2_CRE_INTRA_SKIP: R * C
+     PS2_CRE_FBR: R * C
+   IME:
+    PS0_IME_DOP: R * C        
+    PS0_IME: R * C        
+    PS1_IME_BACK: R * C
+    PS1_IME_FRONT: R * C
+    PS2_IME:      
+     PS2_IME_BACK_ACTIVE: R * C
+     PS2_IME_FRONT_ACTIVE: R * C
+   MEDIASMP_SMALL:
+    PS0_MEDIASMP_SMALL_DOP: R * C
+    PS0_MEDIASMP_SMALL: R * C
+    PS1_MEDIASMP_SMALL: R * C
+    PS2_MEDIASMP_SMALL: R * C
+   MEDIASMP_CPunit:
+    PS0_MEDIASMP_CPunit_DOP: R * C
+    PS0_MEDIASMP_CPunit: R * C
+    PS2_MEDIASMP_CPunit: R * C
+   MEDIASMP_Assign:
+    PS0_MEDIASMP_Assign_DOP: R * C
+    PS0_MEDIASMP_Assign: R * C
+    PS2_MEDIASMP_Assign: R * C
+   MEDIASMP_Repeater:
+    PS0_MEDIASMP_Repeater_DOP: R * C
+    PS0_MEDIASMP_Repeater: R * C
+    PS1_MEDIASMP_Repeater: R * C
+    PS2_MEDIASMP_Repeater: R * C
+   MEDIASMP_DFX:
+    PS0_MEDIASMP_DFX_DOP: R * C
+    PS0_MEDIASMP_DFX: R * C
+    PS2_MEDIASMP_DFX: R * C
+   MEDIASMP_CLKGLUE:
+    PS0_MEDIASMP_CLKGLUE_DOP: R * C
+    PS0_MEDIASMP_CLKGLUE: R * C
+    PS2_MEDIASMP_CLKGLUE: R * C
+   MEDIASMP_NONCLKGLUE:
+    PS0_MEDIASMP_NONCLKGLUE_DOP: R * C
+    PS0_MEDIASMP_NONCLKGLUE: R * C
+    PS1_MEDIASMP_NONCLKGLUE: R * C
+    PS2_MEDIASMP_NONCLKGLUE: R * C
+   MEDIASMP_DOP:
+    PS0_MEDIASMP_DOP: R * C
+    PS2_MEDIASMP_DOP: R * C
+   DFRSMP_SMALL:
+    PS0_DFRSMP_SMALL_DOP: R * C
+    PS0_DFRSMP_SMALL: R * C
+    PS1_DFRSMP_SMALL: R * C
+    PS2_DFRSMP_SMALL: R * C
+   DFRSMP_CPunit:
+    PS0_DFRSMP_CPunit_DOP: R * C
+    PS0_DFRSMP_CPunit: R * C
+    PS2_DFRSMP_CPunit: R * C
+   DFRSMP_Assign:
+    PS0_DFRSMP_Assign_DOP: R * C
+    PS0_DFRSMP_Assign: R * C
+    PS2_DFRSMP_Assign: R * C
+   DFRSMP_Repeater:
+    PS0_DFRSMP_Repeater_DOP: R * C
+    PS0_DFRSMP_Repeater: R * C
+    PS1_DFRSMP_Repeater: R * C
+    PS2_DFRSMP_Repeater: R * C
+   DFRSMP_DFX:
+    PS0_DFRSMP_DFX_DOP: R * C
+    PS0_DFRSMP_DFX: R * C
+    PS2_DFRSMP_DFX: R * C
+   DFRSMP_CLKGLUE:
+    PS0_DFRSMP_CLKGLUE_DOP: R * C
+    PS0_DFRSMP_CLKGLUE: R * C
+    PS2_DFRSMP_CLKGLUE: R * C
+   DFRSMP_NONCLKGLUE:
+    PS0_DFRSMP_NONCLKGLUE_DOP: R * C
+    PS0_DFRSMP_NONCLKGLUE: R * C
+    PS1_DFRSMP_NONCLKGLUE: R * C
+    PS2_DFRSMP_NONCLKGLUE: R * C
+   DFRSMP_DOP:
+    PS0_DFRSMP_DOP: R * C
+    PS2_DFRSMP_DOP: R * C
+   DFRSMP_DOP:
+    PS0_DFRSMP_DOP: R * C
+    PS2_DFRSMP_DOP: R * C    
+FL_Toggle_Rate : R
+PL_Toggle_Rate : R
+
+DSSC:
+   SLMFE:
+    PS0_SLMFE: R * C
+    PS1_SLMFE: R * C
+    PS2_SLMFE_Atomic_Read: R * C
+    PS2_SLMFE_Atomic_Write: R * C
+    PS2_SLMFE_Read: R * C
+    PS2_SLMFE_Write: R * C
+   SLMBE:
+    PS0_SLMBE: R * C
+    PS1_SLMBE: R * C
+    PS2_SLMBE_Atomic_Read: R * C
+    PS2_SLMBE_Atomic_Write: R * C
+    PS2_SLMBE_Read: R * C
+    PS2_SLMBE_Write: R * C
+   BC:
+    PS0_BC: R * C
+    PS0_BC_DOP: R * C
+    PS1_BC: R * C
+    PS2_BC:
+     PS2_BC_COMPUTE: R * C
+     PS2_BC_FLOWTHROUGH: R * C
+     PS2_BC_BARYRAM_READ: R * C
+     PS2_BC_BARYRAM_WRITE: R * C
+   PSD:
+    PS0_PSD: R * C
+    PS0_PSD_DOP: R * C
+    PS1_PSD: R * C
+    PS2_PSD:
+     PS2_PSD_THREADDISPATCH: R * C
+     PS2_PSD_NOTHREADDISPATCH: R * C
+     PS2_PSD_WAITINGONFLUSH: R * C
+   PSD_Scoreboard:
+    PS0_PSD_SCOREBOARD: R * C
+    PS2_PSD_SCOREBOARD:
+     PS2_PSD_SCOREBOARD_READ: R * C
+     PS2_PSD_SCOREBOARD_WRITE: R * C
+   PSD_BaryPayloadRAM:
+    PS0_PSD_BARYPAYLDASMRAM: R * C
+    PS2_PSD_BARYPAYLDASMRAM:
+     PS2_PSD_BARYPAYLDASMRAM_READ: R * C
+     PS2_PSD_BARYPAYLDASMRAM_WRITE: R * C
+   DAPRSS:
+    PS0_DAPRSS: R * C
+    PS0_DAPRSS_DOP: R * C
+    PS1_DAPRSS: R * C
+    PS2_DAPRSS:
+     PS2_DAPRSS_WRITEFLUSH: R * C
+     PS2_DAPRSS_RTW_ALPHA_2PPC: R * C
+     PS2_DAPRSS_RTW_ALPHA_4PPC: R * C
+     PS2_DAPRSS_RTW_NOALPHA_2PPC: R * C
+     PS2_DAPRSS_RTW_NOALPHA_4PPC: R * C
+     PS2_DAPRSS_RTW_Z_ALPHA_2PPC: R * C
+     PS2_DAPRSS_RTW_Z_NOALPHA_2PPC: R * C
+     PS2_DAPRSS_CLEARRESOLVE: R * C
+     PS2_DAPRSS_RENDERTARGETREAD: R * C
+     PS2_DAPRSS_ELSE: R * C
+     PS2_DAPRSS_REPCOL_2PPC: R * C
+     PS2_DAPRSS_REPCOL_4PPC: R * C
+   DAPRSS_BypassRAM:
+    PS0_DAPRSS_BYPASSRAM: R * C
+    PS2_DAPRSS_BYPASSRAM:
+     PS2_DAPRSS_BYPASSRAM_READ: R * C
+     PS2_DAPRSS_BYPASSRAM_WRITE: R * C
+   GWL:
+    PS0_GWL: R * C
+    PS1_GWL: R * C
+    PS2_GWL: R * C
+   CPSS:
+    PS0_CPSS: R * C
+    PS1_CPSS: R * C
+    PS2_CPSS_CPSdisstr: R * C
+    PS2_CPSS_CPSenDap: R * C
+    PS2_CPSS_CPSenPullstr: R * C
+    PS2_CPSS_CPSenstr: R * C
+   CPunit:
+    PS0_DSSC_CPunit_DOP: R * C
+    PS0_DSSC_CPunit: R * C
+    PS2_DSSC_CPunit: R * C
+   Assign:
+    PS0_DSSC_Assign_DOP: R * C
+    PS0_DSSC_Assign: R * C
+    PS2_DSSC_Assign: R * C
+   Repeater:
+    PS0_DSSC_Repeater_DOP: R * C
+    PS0_DSSC_Repeater: R * C
+    PS1_DSSC_Repeater: R * C
+    PS2_DSSC_Repeater: R * C
+   CLKGLUE:
+    PS0_DSSC_CLKGLUE_DOP: R * C
+    PS0_DSSC_CLKGLUE: R * C
+    PS2_DSSC_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_DSSC_NONCLKGLUE_DOP: R * C
+    PS0_DSSC_NONCLKGLUE: R * C
+    PS1_DSSC_NONCLKGLUE: R * C
+    PS2_DSSC_NONCLKGLUE: R * C
+   SMALL:
+    PS0_DSSC_SMALL_DOP: R * C
+    PS0_DSSC_SMALL: R * C
+    PS1_DSSC_SMALL: R * C
+    PS2_DSSC_SMALL: R * C
+   DFX:
+    PS0_DSSC_DFX_DOP: R * C
+    PS0_DSSC_DFX: R * C
+    PS2_DSSC_DFX: R * C
+   DOP:
+    PS0_DSSC_DOP: R * C
+    PS2_DSSC_DOP: R * C
+
+ROSS:
+   MA_IN:
+    PS0_MA_IN: R * C
+    PS1_MA_IN: R * C
+    PS2_MA_IN: R * C
+   MA_OUT:
+    PS0_MA_OUT: R * C
+    PS1_MA_OUT: R * C
+    PS2_MA_OUT: R * C
+   TDL:
+    PS0_TDL: R * C
+    PS1_TDL: R * C
+    PS2_TDL:
+     PS2_TDL_PSDDISPATCH: R * C
+     PS2_TDL_NONPSDDISPATCH: R * C
+   IC:
+    PS0_IC: R * C
+    PS1_IC: R * C
+    PS2_IC: R * C
+   IC_DataRAM:
+    PS0_IC_DATARAM: R * C
+    PS2_IC_DATARAM: 
+     PS2_IC_DATARAM_READ: R * C
+     PS2_IC_DATARAM_FRONTBUFFER_READ: R * C
+     PS2_IC_DATARAM_WRITE: R * C
+   SMALL:
+    PS0_ROSS_SMALL_DOP: R * C
+    PS0_ROSS_SMALL: R * C
+    PS1_ROSS_SMALL: R * C
+    PS2_ROSS_SMALL: R * C
+   CPunit:
+    PS0_ROSS_CPunit_DOP: R * C
+    PS0_ROSS_CPunit: R * C
+    PS2_ROSS_CPunit: R * C
+   Assign:
+    PS0_ROSS_Assign_DOP: R * C
+    PS0_ROSS_Assign: R * C
+    PS2_ROSS_Assign: R * C
+   Repeater:
+    PS0_ROSS_Repeater_DOP: R * C
+    PS0_ROSS_Repeater: R * C
+    PS1_ROSS_Repeater: R * C
+    PS2_ROSS_Repeater: R * C
+   CLKGLUE: 
+    PS0_ROSS_CLKGLUE_DOP: R * C
+    PS0_ROSS_CLKGLUE: R * C
+    PS2_ROSS_CLKGLUE: R * C
+   NONCLKGLUE: 
+    PS0_ROSS_NONCLKGLUE_DOP: R * C
+    PS0_ROSS_NONCLKGLUE: R * C
+    PS1_ROSS_NONCLKGLUE: R * C
+    PS2_ROSS_NONCLKGLUE: R * C
+   DFX:
+    PS0_ROSS_DFX_DOP: R * C
+    PS0_ROSS_DFX: R * C
+    PS2_ROSS_DFX: R * C
+   DOP:
+    PS0_ROSS_DOP: R * C
+    PS2_ROSS_DOP: R * C
+Z:
+   HIZ:
+    PS0_HIZ: R * C
+    PS0_HIZ_DOP: R * C
+    PS1_HIZ: R * C
+    PS2_HIZ:
+     PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_3lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_Zonly_4lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_1lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_2lit_4x4_all_lit_Fail: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail : R * C
+     PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig: R * C
+     PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail : R * C
+     PS2_HIZ_Stencil_Only: R * C
+     PS2_HIZ_Bypass: R * C
+     PS2_HIZ_Clear_Ambiguate: R * C
+     PS2_HIZ_Depth_Resolve: R * C
+     PS2_HIZ_Zmarkers: R * C
+   HIZ_Cache:
+    PS2_HIZ_CACHE_READ: R * C
+    PS2_HIZ_CACHE_WRITE: R * C
+    PS2_HIZ_LATFIFO_READ: R * C
+    PS2_HIZ_LATFIFO_WRITE: R * C
+   IZ:
+    PS0_IZ: R * C
+    PS0_IZ_DOP: R * C
+    PS1_IZ: R * C
+    PS2_IZ:
+     PS2_IZ_CMP: R * C
+     PS2_IZ_NORMAL_DEPTHEN_PASS: R * C
+     PS2_IZ_NORMAL_DEPTHEN_FAIL: R * C
+     PS2_IZ_NORMAL_DEPTHDIS: R * C
+     PS2_IZ_ZMARKERS: R * C 
+   IZ_Cache:
+    PS2_IZ_Cache:
+     PS2_IZ_LATFIFO_READ: R * C
+     PS2_IZ_LATFIFO_WRITE: R * C
+     PS2_IZ_ZCOEFFFIFO_READ: R * C
+     PS2_IZ_ZCOEFFFIFO_WRITE: R * C
+     PS2_IZ_POLYFIFO_READ: R * C
+     PS2_IZ_POLYFIFO_WRITE: R * C
+     PS2_IZ_BARYCOEFFIFO_READ: R * C
+     PS2_IZ_BARYCOEFFIFO_WRITE: R * C
+     PS2_IZ_WCOEFFIFO_READ: R * C
+     PS2_IZ_WCOEFFIFO_WRITE: R * C
+   RCZ:
+    PS0_RCZ: R * C
+    PS0_RCZ_DOP: R * C
+    PS1_RCZ: R * C
+    PS2_RCZ:
+     PS2_RCZ_ALLOC_HITS: R * C
+     PS2_RCZ_ALLOC_MISSES: R * C
+     PS2_RCZ_ALLOC_MISSES_DIRTY: R * C
+     PS2_RCZ_DIRTY_FLUSH: R * C
+     PS2_RCZ_IZ_READ: R * C
+     PS2_RCZ: R * C
+   RCZ_Cache:
+    PS2_RCZ_Cache:    
+     PS2_RCZ_CACHE_READ: R * C
+     PS2_RCZ_CACHE_WRITE: R * C
+   STC:
+    PS0_STC: R * C
+    PS0_STC_DOP: R * C
+    PS1_STC: R * C
+    PS2_STC:
+     PS2_STC_ALLOC_HITS: R * C
+     PS2_STC_ALLOC_MISSES: R * C
+     PS2_STC_ALLOC_MISSES_DIRTY: R * C
+     PS2_STC_DIRTY_FLUSH: R * C
+     PS2_STC_HIZ_READ: R * C
+     PS2_STC: R * C
+   STC_Cache:
+    PS2_STC_Cache:
+     PS2_STC_CACHE_READ: R * C
+     PS2_STC_CACHE_WRITE: R * C
+   DOP:
+    PS0_Z_DOP: R * C 
+    PS2_Z_DOP: R * C 
+   CLKGLUE:
+    PS0_Z_CLKGLUE_DOP: R * C 
+    PS0_Z_CLKGLUE: R * C 
+    PS2_Z_CLKGLUE: R * C 
+   NONCLKGLUE:
+    PS0_Z_NONCLKGLUE_DOP: R * C 
+    PS0_Z_NONCLKGLUE: R * C 
+    PS1_Z_NONCLKGLUE: R * C 
+    PS2_Z_NONCLKGLUE: R * C 
+   SMALL:
+    PS0_Z_SMALL_DOP: R * C 
+    PS0_Z_SMALL: R * C 
+    PS1_Z_SMALL: R * C 
+    PS2_Z_SMALL: R * C 
+   CPunit:
+    PS0_Z_CPunit_DOP: R * C 
+    PS0_Z_CPunit: R * C 
+    PS2_Z_CPunit: R * C 
+   Assign:
+    PS0_Z_Assign_DOP: R * C 
+    PS0_Z_Assign: R * C 
+    PS2_Z_Assign: R * C 
+   Repeater:
+    PS0_Z_Repeater_DOP: R * C 
+    PS0_Z_Repeater: R * C 
+    PS1_Z_Repeater: R * C 
+    PS2_Z_Repeater: R * C 
+   DFX:
+    PS0_Z_DFX_DOP: R * C 
+    PS0_Z_DFX: R * C 
+    PS2_Z_DFX: R * C
+COLOR:
+   DAPRSC:
+    PS0_DAPRSC: R * C
+    PS0_DAPRSC_DOP: R * C
+    PS1_DAPRSC: R * C
+    PS2_DAPRSC: R * C
+   RCPFE:
+    PS0_RCPFE: R * C
+    PS0_RCPFE_DOP: R * C
+    PS1_RCPFE: R * C
+    PS2_RCPFE: 
+     PS2_RCPFE_RTR: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_INT_DTE: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_INT_DTD: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_COMPZ_DTE: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_NPSTC: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_NPSTC_DTE: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_COMPS_STE: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_COMPS_STE_DTE: R * C
+     PS2_RCPFE_MSAA_4PPC_WRT_CO: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_INT_DTE: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_INT_DTD: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_COMPZ_DTE: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_NPSTC: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_NPSTC_DTE: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_COMPS_STE: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_COMPS_STE_DTE: R * C
+     PS2_RCPFE_MSAA_8PPC_WRT_CO: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_INT_DTE: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_INT_DTD: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_COMPZ_DTE: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_NPSTC: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_NPSTC_DTE: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_COMPS_STE: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_COMPS_STE_DTE: R * C
+     PS2_RCPFE_NOMSAA_4PPC_WRT_CO: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_INT_DTE: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_INT_DTD: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_COMPZ_DTE: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_NPSTC: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_NPSTC_DTE: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_COMPS_STE: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_COMPS_STE_DTE: R * C
+     PS2_RCPFE_NOMSAA_8PPC_WRT_CO: R * C
+   RCPFE_Cache:
+    PS2_RCPFE_Cache:
+     PS2_RCPFE_COLORLATFIFO_READ: R * C
+     PS2_RCPFE_COLORLATFIFO_WRITE: R * C
+     PS2_RCPFE_MCSLATFIFO_READ: R * C
+     PS2_RCPFE_MCSLATFIFO_WRITE: R * C
+     PS2_RCPFE_RCCLATFIFO_READ: R * C
+     PS2_RCPFE_RCCLATFIFO_WRITE: R * C
+   RCPBCOM:
+    PS0_RCPBCOM: R * C
+    PS0_RCPBCOM_DOP: R * C
+    PS1_RCPBCOM: R * C
+    PS2_RCPBCOM:
+     PS2_RCPBCOM_WRT: R * C
+     PS2_RCPBCOM_FIX_BLD: R * C
+     PS2_RCPBCOM_RTR: R * C
+     PS2_RCPBCOM_2PPC_FLT_BLD: R * C    
+     PS2_RCPBCOM_4PPC_FLT_BLD: R * C
+     #PS2_RCPBCOM_NOMSAA_2PPC_WRT: R * C
+     #PS2_RCPBCOM_NOMSAA_2PPC_BLD: R * C
+     #PS2_RCPBCOM_NOMSAA_4PPC_WRT: R * C
+     #PS2_RCPBCOM_NOMSAA_4PPC_BLD: R * C
+     #PS2_RCPBCOM_NOMSAA_8PPC_WRT: R * C
+     #PS2_RCPBCOM_NOMSAA_8PPC_BLD: R * C
+     #PS2_RCPBCOM_NOMSAA_RTR: R * C
+     #PS2_RCPBCOM_MSAA_2PPC_WRT: R * C
+     #PS2_RCPBCOM_MSAA_2PPC_BLD: R * C
+     #PS2_RCPBCOM_MSAA_4PPC_WRT: R * C
+     #PS2_RCPBCOM_MSAA_4PPC_BLD: R * C
+     #PS2_RCPBCOM_MSAA_8PPC_WRT: R * C
+     #PS2_RCPBCOM_MSAA_8PPC_BLD: R * C
+     #PS2_RCPBCOM_MSAA_RTR: R * C
+   RCPBPIX:
+    PS0_RCPBPIX: R * C
+    PS0_RCPBPIX_DOP: R * C
+    PS1_RCPBPIX: R * C
+    PS2_RCPBPIX:
+     PS2_RCPBPIX_2PPC_FLT_BLD : R * C
+     PS2_RCPBPIX_2PPC_FLT_WRT : R * C
+     PS2_RCPBPIX_4PPC_FIX_BLD : R * C
+     PS2_RCPBPIX_4PPC_FIX_WRT : R * C
+     PS2_RCPBPIX_4PPC_FLT_BLD : R * C
+     PS2_RCPBPIX_4PPC_FLT_WRT : R * C
+     PS2_RCPBPIX_8PPC_FIX_BLD : R * C
+     PS2_RCPBPIX_8PPC_FIX_WRT : R * C
+     #PS2_RCPBPIX_NOMSAA_2PPC_WRT: R * C
+     #PS2_RCPBPIX_NOMSAA_2PPC_BLD: R * C
+     #PS2_RCPBPIX_NOMSAA_4PPC_WRT: R * C
+     #PS2_RCPBPIX_NOMSAA_4PPC_BLD: R * C
+     #PS2_RCPBPIX_NOMSAA_8PPC_WRT: R * C
+     #PS2_RCPBPIX_NOMSAA_8PPC_BLD: R * C
+     #PS2_RCPBPIX_MSAA_2PPC_WRT: R * C
+     #PS2_RCPBPIX_MSAA_2PPC_BLD: R * C
+     #PS2_RCPBPIX_MSAA_4PPC_WRT: R * C
+     #PS2_RCPBPIX_MSAA_4PPC_BLD: R * C
+     #PS2_RCPBPIX_MSAA_8PPC_WRT: R * C
+     #PS2_RCPBPIX_MSAA_8PPC_BLD: R * C
+   RCC:
+    PS0_RCC: R * C
+    PS0_RCC_DOP: R * C
+    PS1_RCC: R * C
+    PS2_RCC:
+     PS2_RCC_ALLOC_HITS: R * C
+     PS2_RCC_ALLOC_MISSES: R * C
+   RCC_Cache:
+    PS2_RCC_Cache:
+     PS2_RCC_CACHE_READ: R * C
+     PS2_RCC_CACHE_WRITE: R * C
+   MSC:
+    PS0_MSC: R * C
+    PS0_MSC_DOP: R * C
+    PS1_MSC: R * C
+    PS2_MSC:
+     PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE: R * C
+     PS2_MSC_NOMSAA_4PPC_DATA: R * C
+     PS2_MSC_NOMSAA_8PPC_CLEARRESOLVE: R * C
+     PS2_MSC_NOMSAA_8PPC_DATA: R * C
+     PS2_MSC_MSAA_4PPC_DATA: R * C
+     PS2_MSC_MSAA_8PPC_DATA: R * C
+   MSC_Cache:
+    PS2_MSC_Cache:
+     PS2_MSC_CACHE_READ: R * C
+     PS2_MSC_CACHE_WRITE: R * C
+   CC:
+    PS0_CC: R * C
+    PS0_CC_DOP: R * C
+    PS1_CC: R * C
+    PS2_CC:
+     PS2_CC_EN_FULL_WRITES: R * C
+     PS2_CC_EN_PARTIALS: R * C
+     PS2_CC_EN_COMP_PARTIALS: R * C
+     PS2_CC_DIS_PARTIALS: R * C
+     PS2_CC_DIS_FULL_WRITES: R * C
+   DAPB:
+    PS0_DAPB: R * C
+    PS0_DAPB_DOP: R * C
+    PS1_DAPB: R * C
+    PS2_DAPB: R * C
+   DOP:
+    PS0_COLOR_DOP: R * C 
+    PS2_COLOR_DOP: R * C 
+   CLKGLUE:
+    PS0_COLOR_CLKGLUE_DOP: R * C 
+    PS0_COLOR_CLKGLUE: R * C 
+    PS2_COLOR_CLKGLUE: R * C 
+   NONCLKGLUE:
+    PS0_COLOR_NONCLKGLUE_DOP: R * C 
+    PS0_COLOR_NONCLKGLUE: R * C 
+    PS1_COLOR_NONCLKGLUE: R * C 
+    PS2_COLOR_NONCLKGLUE: R * C 
+   SMALL:
+    PS0_COLOR_SMALL_DOP: R * C 
+    PS0_COLOR_SMALL: R * C 
+    PS1_COLOR_SMALL: R * C 
+    PS2_COLOR_SMALL: R * C 
+   CPunit:
+    PS0_COLOR_CPunit_DOP: R * C 
+    PS0_COLOR_CPunit: R * C 
+    PS2_COLOR_CPunit: R * C 
+   Assign:
+    PS0_COLOR_Assign_DOP: R * C 
+    PS0_COLOR_Assign: R * C 
+    PS2_COLOR_Assign: R * C 
+   Repeater:
+    PS0_COLOR_Repeater_DOP: R * C 
+    PS0_COLOR_Repeater: R * C 
+    PS1_COLOR_Repeater: R * C 
+    PS2_COLOR_Repeater: R * C 
+   DFX:
+    PS0_COLOR_DFX_DOP: R * C 
+    PS0_COLOR_DFX: R * C 
+    PS2_COLOR_DFX: R * C
+HDC:
+   HDCREQCMD1:
+    PS0_HDC_ReqCmd1_DOP: R * C
+    PS0_HDC_ReqCmd1: R * C
+    PS1_HDC_ReqCmd1: R * C
+    PS2_HDC_ReqCmd1:
+     PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
+     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
+     PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
+     PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
+     PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
+   HDCREQCMD2:
+    PS0_HDC_ReqCmd2_DOP: R * C
+    PS0_HDC_ReqCmd2: R * C
+    PS1_HDC_ReqCmd2: R * C
+    PS2_HDC_ReqCmd2:
+      PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
+      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
+      PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
+      PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
+   HDCREQDATA:
+    PS0_HDC_ReqData_DOP: R * C
+    PS0_HDC_ReqData: R * C
+    PS1_HDC_ReqData: R * C
+    PS2_HDC_ReqData:
+      PS2_HDC_ReqData_Sequenced_Typed_Write: R * C
+      PS2_HDC_ReqData_Sequenced_Else_Data_Write: R * C
+      PS2_HDC_ReqData_NonSequenced_Write: R * C
+   HDCRET1:
+    PS0_HDC_Ret1_DOP: R * C
+    PS0_HDC_Ret1: R * C
+    PS1_HDC_Ret1: R * C
+    PS2_HDC_Ret1:
+      PS2_HDC_Ret1_Message: R * C
+      PS2_HDC_Ret1_MediaBlock: R * C
+   HDCRET2:
+    PS0_HDC_Ret2_DOP: R * C
+    PS0_HDC_Ret2: R * C
+    PS1_HDC_Ret2: R * C
+    PS2_HDC_Ret2:
+      PS2_HDC_Ret2_Message: R * C
+      PS2_HDC_Ret2_MediaBlock: R * C
+      PS2_HDC_Ret2_Other_GW: R * C
+   HDCTLB:
+    PS0_HDCTLB_DOP: R * C
+    PS0_HDCTLB: R * C
+    PS1_HDCTLB: R * C
+    PS2_HDCTLB:
+     PS2_HDCTLB_Read_Hit: R * C
+     PS2_HDCTLB_Read_Miss: R * C
+     PS2_HDCTLB_Write_Hit: R * C
+     PS2_HDCTLB_Write_Miss: R * C
+   HDCL1:
+     PS0_HDCL1_DOP: R * C
+     PS0_HDCL1: R * C
+     PS1_HDCL1: R * C
+     PS2_HDCL1:
+       PS2_HDCL1_Read_Hit: R * C
+       PS2_HDCL1_Read_Miss: R * C
+       PS2_HDCL1_Write_Invalidate: R * C
+       PS2_HDCL1_Bypass: R * C 
+   HDCL1_CACHE:
+     PS2_HDCL1_CACHE_READS: R * C
+     PS2_HDCL1_CACHE_WRITES: R * C
+   SMALL:
+    PS0_HDC_SMALL_DOP: R * C
+    PS0_HDC_SMALL: R * C
+    PS1_HDC_SMALL: R * C
+    PS2_HDC_SMALL: R * C
+   CPunit:
+    PS0_HDC_CPunit_DOP: R * C
+    PS0_HDC_CPunit: R * C
+    PS2_HDC_CPunit: R * C
+   Assign:
+    PS0_HDC_Assign_DOP: R * C
+    PS0_HDC_Assign: R * C
+    PS2_HDC_Assign: R * C
+   Repeater:
+    PS0_HDC_Repeater_DOP: R * C
+    PS0_HDC_Repeater: R * C
+    PS1_HDC_Repeater: R * C
+    PS2_HDC_Repeater: R * C
+   CLKGLUE:
+    PS0_HDC_CLKGLUE_DOP: R * C
+    PS0_HDC_CLKGLUE: R * C
+    PS2_HDC_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_HDC_NONCLKGLUE_DOP: R * C
+    PS0_HDC_NONCLKGLUE: R * C
+    PS1_HDC_NONCLKGLUE: R * C
+    PS2_HDC_NONCLKGLUE: R * C
+   DOP:
+    PS0_HDC_DOP: R * C
+    PS2_HDC_DOP: R * C
+   DFX:
+    PS0_HDC_DFX_DOP: R * C
+    PS0_HDC_DFX: R * C
+    PS2_HDC_DFX: R * C  
+ROSC:
+   WMFE:
+    PS0_WMFE: R * C 
+    PS0_WMFE_DOP: R * C 
+    PS1_WMFE: R * C
+    PS2_WMFE:
+     PS2_WMFE_NULLTOPSC: R * C 
+     PS2_WMFE_NOTNULLTOPSC: R * C 
+     PS2_WMFE_POLYFIFO_READ: R * C 
+     PS2_WMFE_POLYFIFO_WRITE: R * C 
+   WMBE:
+    PS0_WMBE: R * C 
+    PS0_WMBE_DOP: R * C 
+    PS1_WMBE: R * C
+    PS2_WMBE:
+     PS2_WMBE_MSAA_FULLYLIT: R * C 
+     PS2_WMBE_MSAA_PARTIALLYLIT: R * C 
+     PS2_WMBE_NOMSAA_FULLYLIT: R * C 
+     PS2_WMBE_NOMSAA_PARTIALLYLIT: R * C 
+     PS2_WMBE_NULLTOPSC: R * C 
+     PS2_WMBE_ANTIALIASING: R * C 
+   SBE:
+    PS0_SBE_FETCH: R * C 
+    PS0_SBE_FETCH_DOP: R * C 
+    PS1_SBE_FETCH: R * C 
+    PS2_SBE_FETCH: R * C 
+    PS0_SBE_REPLAY: R * C 
+    PS0_SBE_REPLAY_DOP: R * C 
+    PS1_SBE_REPLAY: R * C 
+    PS2_SBE_REPLAY: R * C 
+    PS0_SBE_CALC: R * C 
+    PS0_SBE_CALC_DOP: R * C 
+    PS1_SBE_CALC: R * C 
+    PS2_SBE_CALC: R * C 
+    PS0_SBE_OTHER: R * C 
+    PS0_SBE_OTHER_DOP: R * C 
+    PS1_SBE_OTHER: R * C 
+    PS2_SBE_OTHER: R * C 
+   TDC:
+    PS0_TDC: R * C 
+    PS1_TDC: R * C 
+    PS2_TDC: R * C 
+   SVL:
+    PS0_SVL: R * C 
+    PS1_SVL: R * C 
+    PS2_SVL: R * C 
+   SARB:
+    PS0_SARB: R * C 
+    PS1_SARB: R * C 
+    PS2_SARB: R * C 
+   DOP:
+    PS0_ROSC_DOP: R * C 
+    PS2_ROSC_DOP: R * C 
+   CLKGLUE:
+    PS0_ROSC_CLKGLUE_DOP: R * C 
+    PS0_ROSC_CLKGLUE: R * C 
+    PS2_ROSC_CLKGLUE: R * C 
+   NONCLKGLUE:
+    PS0_ROSC_NONCLKGLUE_DOP: R * C 
+    PS0_ROSC_NONCLKGLUE: R * C 
+    PS1_ROSC_NONCLKGLUE: R * C 
+    PS2_ROSC_NONCLKGLUE: R * C 
+   SMALL:
+    PS0_ROSC_SMALL_DOP: R * C 
+    PS0_ROSC_SMALL: R * C 
+    PS1_ROSC_SMALL: R * C 
+    PS2_ROSC_SMALL: R * C 
+   CPunit:
+    PS0_ROSC_CPunit_DOP: R * C 
+    PS0_ROSC_CPunit: R * C 
+    PS2_ROSC_CPunit: R * C 
+   Assign:
+    PS0_ROSC_Assign_DOP: R * C 
+    PS0_ROSC_Assign: R * C 
+    PS2_ROSC_Assign: R * C 
+   Repeater:
+    PS0_ROSC_Repeater_DOP: R * C 
+    PS0_ROSC_Repeater: R * C 
+    PS1_ROSC_Repeater: R * C 
+    PS2_ROSC_Repeater: R * C 
+   DFX:
+    PS0_ROSC_DFX_DOP: R * C 
+    PS0_ROSC_DFX: R * C 
+    PS2_ROSC_DFX: R * C 
+GAM:
+   GAMTG:
+    PS0_GAMTG: R * C
+    PS1_GAMTG: R * C
+    PS2_GAMTG:
+     PS2_GAMTG_Hit: R * C
+     PS2_GAMTG_Miss: R * C
+   GAMTG_L3TLBEBB:
+    PS0_GAMTG_L3TLBEBB: R * C
+    PS2_GAMTG_L3TLBEBB_READ: R * C
+    PS2_GAMTG_L3TLBEBB_WRITE: R * C
+   GAMTG_CVSTLBEBB:
+    PS0_GAMTG_CVSTLBEBB: R * C
+    PS2_GAMTG_CVSTLBEBB_READ: R * C
+    PS2_GAMTG_CVSTLBEBB_WRITE: R * C 
+   GAMTO:
+    PS0_GAMTO: R * C
+    PS1_GAMTO: R * C
+    PS2_GAMTO:
+     PS2_GAMTO_Hit: R * C
+     PS2_GAMTO_Miss: R * C
+   GAMTO_MFXEBB:
+    PS0_GAMTO_MFXEBB: R * C
+    PS2_GAMTO_MFXEBB_READ: R * C
+    PS2_GAMTO_MFXEBB_WRITE: R * C
+   GAMTO_VEBXTLBEBB:
+    PS0_GAMTO_VEBXTLBEBB: R * C
+    PS2_GAMTO_VEBXTLBEBB_READ: R * C
+    PS2_GAMTO_VEBXTLBEBB_WRITE: R * C
+   GAMTO_BWGTLBEBB:
+    PS0_GAMTO_BWGTLBEBB: R * C
+    PS2_GAMTO_BWGTLBEBB_READ: R * C
+    PS2_GAMTO_BWGTLBEBB_WRITE: R * C
+   GAMD:
+    PS0_GAMD: R * C
+    PS1_GAMD: R * C
+    PS2_GAMD:
+     PS2_GAMD_WRITE: R * C
+     PS2_GAMD_WRITE_MEDIAMMCD: R * C
+   GAMD_WB_HW_GAMDEBB:
+    PS2_GAMD_WB_HW_GAMDEBB_Write: R * C
+   GAMD_WCPEBB:
+    PS2_GAMD_WCPEBB_Write: R * C
+   GAMDRTN:
+    PS0_GAMDRTN: R * C
+    PS1_GAMDRTN: R * C
+    PS2_GAMDRTN: R * C
+   GAMWC:
+    PS0_GAMWC: R * C
+    PS1_GAMWC: R * C
+    PS2_GAMWC:
+     PS2_GAMWC_Read_Hit: R * C
+     PS2_GAMWC_Write_Hit: R * C
+     PS2_GAMWC_TLB_PEND_WRITE: R * C
+   GAMWC_PENDQEBB:
+    PS0_GAMWC_PENDQEBB: R * C
+    PS2_GAMWC_PENDQEBB_READ: R * C
+    PS2_GAMWC_PENDQEBB_WRITE: R * C
+   GAMWD:
+    PS0_GAMWD: R * C
+    PS1_GAMWD: R * C
+    PS2_GAMWD_MISS: R * C
+   GAMWD_WRKPDEBB:
+    PS0_GAMWD_WRKPDEBB: R * C
+    PS2_GAMWD_WRKPDEBB_READ: R * C
+    PS2_GAMWD_WRKPDPEBB_WRITE: R * C
+   MARB:
+    PS0_MARB: R * C
+    PS1_MARB: R * C
+    PS2_MARB: R * C 
+   GAFM:
+    PS0_GAFM: R * C
+    PS1_GAFM: R * C
+    PS2_GAFM: R * C
+   GAFSRD:
+    PS0_GAFSRD: R * C
+    PS1_GAFSRD: R * C
+    PS2_GAFSRD: R * C
+   GAFSWR:
+    PS0_GAFSWR: R * C
+    PS1_GAFSWR: R * C
+    PS2_GAFSWR: R * C
+   GAPZ:
+    PS0_GAPZ: R * C
+    PS1_GAPZ: R * C
+    PS2_GAPZ: R * C
+   GAPS:
+    PS0_GAPS: R * C
+    PS1_GAPS: R * C
+    PS2_GAPS: R * C
+   GAPC:
+    PS0_GAPC: R * C
+    PS1_GAPC: R * C
+    PS2_GAPC: R * C
+   GASS:
+    PS0_GASS: R * C
+    PS1_GASS: R * C
+    PS2_GASS: R * C
+   GACB:
+    PS0_GACB: R * C
+    PS1_GACB: R * C
+    PS2_GACB: R * C
+   GATR:
+    PS0_GATR: R * C
+    PS1_GATR: R * C
+    PS2_GATR_TLB_HIT: R * C
+    PS2_GATR_TLB_MISS: R * C
+    PS2_GATR_TR_DISABLE: R * C
+   GATRW:
+    PS0_GATRW: R * C
+    PS1_GATRW: R * C
+    PS2_GATRW: R * C
+   DOP:
+    PS0_GAM_DOP: R * C
+    PS2_GAM_DOP: R * C
+   SMALL:
+    PS0_GAM_SMALL: R * C
+    PS1_GAM_SMALL: R * C
+    PS2_GAM_SMALL: R * C
+   CPunit:
+    PS0_GAM_CPunit: R * C
+    PS2_GAM_CPunit: R * C
+   Assign:
+    PS0_GAM_Assign: R * C
+    PS2_GAM_Assign: R * C
+   Repeater:
+    PS0_GAM_Repeater: R * C
+    PS1_GAM_Repeater: R * C
+    PS2_GAM_Repeater: R * C
+   CLKGLUE:
+    PS0_GAM_CLKGLUE: R * C
+    PS2_GAM_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_GAM_NONCLKGLUE: R * C
+    PS1_GAM_NONCLKGLUE: R * C
+    PS2_GAM_NONCLKGLUE: R * C
+   DFX:
+    PS0_GAM_DFX: R * C
+    PS2_GAM_DFX: R * C
+FF:
+   CS:
+    PS0_CS: R * C
+    PS1_CS: R * C
+    PS2_CS: R * C
+   RS:
+    PS0_RS: R * C
+    PS1_RS: R * C
+    PS2_RS: R * C
+   RS_Cache:
+    PS0_DX9_Cache_Idle: R * C
+    PS2_DX9_Cache_Read: R * C
+    PS2_DX9_Cache_Write: R * C
+    PS2_DX9_Cache_ReadWrite: R * C
+    PS0_BTGEN_Cache_Idle: R * C
+    PS2_BTGEN_Cache_Read: R * C
+    PS2_BTGEN_Cache_Write: R * C
+    PS2_BTGEN_Cache_ReadWrite: R * C
+   VF:
+    PS0_VF_DOP: R * C
+    PS0_VF: R * C
+    PS1_VF: R * C
+    PS2_VF:
+     PS2_VF_Indexed: R * C
+     PS2_VF_Sequential: R * C
+     PS2_VF_Control: R * C
+     PS2_VF_Dropped: R * C
+   VFBE:
+    PS0_VFBE_DOP: R * C
+    PS0_VFBE: R * C
+    PS1_VFBE: R * C
+    PS2_VFBE: R * C
+   VF_Cache:
+    PS0_VF_Cache_Idle: R * C
+    PS2_VF_Cache_Read: R * C
+    PS2_VF_Cache_Write: R * C
+    PS0_VF_URBFifo_Idle: R * C
+    PS2_VF_URBFifo_Read: R * C
+    PS2_VF_URBFifo_Write: R * C
+   VSFE:
+    PS0_VSFE_DOP: R * C
+    PS0_VSFE: R * C
+    PS1_VSFE: R * C
+    PS2_VSFE: R * C
+   VSBE:
+    PS0_VSBE_DOP: R * C
+    PS0_VSBE: R * C
+    PS1_VSBE: R * C
+    PS2_VSBE: R * C
+   VS_Cache:
+    PS0_VS_Cache_Idle: R * C
+    PS2_VS_Cache:
+     PS2_VS_Cache_Read: R * C
+     PS2_VS_Cache_Write: R * C
+   HS:
+    PS0_HS_DOP: R * C
+    PS0_HS: R * C
+    PS1_HS: R * C
+    PS2_HS:
+     PS2_HS_Enabled: R * C
+     PS2_HS_Disabled: R * C
+   HS_Cache:
+    PS0_HS_Cache_Idle: R * C
+    PS2_HS_Cache:
+     PS2_HS_Cache_Read: R * C
+     PS2_HS_Cache_Write: R * C
+     PS2_HS_Cache_ReadWrite: R * C
+   TE:
+    PS0_TE_DOP: R * C
+    PS0_TE: R * C
+    PS1_TE: R * C
+    PS2_TE:
+     PS2_TE_Enabled: R * C
+     PS2_TE_Disabled: R * C
+   TDS:
+    PS0_TDS_DOP: R * C
+    PS0_TDS: R * C
+    PS1_TDS: R * C
+    PS2_TDDS:
+     PS2_TDS_Enabled: R * C
+     PS2_TDS_Disabled: R * C
+   TDS_Cache:
+    PS0_TDS_Cache_Idle: R * C
+    PS2_TDS_CaCHE:
+     PS2_TDS_Cache_Read: R * C
+     PS2_TDS_Cache_Write: R * C
+     PS2_TDS_Cache_ReadWrite: R * C
+   GS:
+    PS0_GS_DOP: R * C
+    PS0_GS: R * C
+    PS1_GS: R * C
+    PS2_GS:
+     PS2_GS_Enabled: R * C
+     PS2_GS_Disabled: R * C
+   GS_Cache:
+    PS0_GS_Cache_Idle: R * C
+    PS2_GS_Cache:
+     PS2_GS_Cache_Read: R * C
+     PS2_GS_Cache_Write: R * C
+     PS2_GS_Cache_ReadWrite: R * C
+   SOL:
+    PS0_SOL_DOP: R * C
+    PS0_SOL: R * C
+    PS1_SOL: R * C
+    PS2_SOL:
+     PS2_SOL_Enabled: R * C
+     PS2_SOL_Disabled: R * C
+   SOL_Cache:
+    PS0_SOL_Cache_Idle: R * C
+    PS2_SOL_Cache:
+     PS2_SOL_Cache_Read: R * C
+     PS2_SOL_Cache_Write: R * C
+     PS2_SOL_Cache_ReadWrite: R * C
+   CL:
+    PS0_CL_DOP: R * C
+    PS0_CL: R * C
+    PS1_CL: R * C
+    PS2_CL: R * C
+   SFFE:
+    PS0_SFFE_DOP: R * C
+    PS0_SFFE: R * C
+    PS1_SFFE: R * C
+    PS2_SFFE:
+     PS2_SFFE_Culled: R * C
+     PS2_SFFE_NotCulled_FastClip: R * C
+     PS2_SFFE_NotCulled_NotFastClip: R * C
+   SFBE:
+    PS0_SFBE_DOP: R * C
+    PS0_SFBE: R * C
+    PS1_SFBE: R * C
+    PS2_SFBE: R * C
+   SDE:
+    PS0_SDE_DOP: R * C
+    PS0_SDE: R * C
+    PS1_SDE: R * C
+    PS2_SDE:
+     PS2_SDE_Culled: R * C
+     PS2_SDE_NotCulled: R * C
+   TDG:
+    PS0_TDG: R * C
+    PS1_TDG: R * C
+    PS2_TDG: R * C
+   URBM:
+    PS0_URBM_DOP: R * C
+    PS0_URBM: R * C
+    PS1_URBM: R * C
+    PS2_URBM: R * C
+   SVG:
+    PS0_SVG: R * C
+    PS1_SVG: R * C
+    PS2_SVG: R * C
+   VFE:
+    PS0_VFE: R * C
+    PS1_VFE: R * C
+    PS2_VFE: R * C
+   TSG:
+    PS0_TSG: R * C
+    PS1_TSG: R * C
+    PS2_TSG: R * C
+   HPVS:
+    PS0_HPVS: R * C
+   HPSDE:
+    PS0_HPSDE: R * C
+   TEGSSOL_SMALL:
+    PS0_FF_TEGSSOL_SMALL_DOP: R * C
+    PS0_FF_TEGSSOL_SMALL: R * C
+    PS1_FF_TEGSSOL_SMALL: R * C
+    PS2_FF_TEGSSOL_SMALL: R * C
+   TEGSSOL_CPunit:
+    PS0_FF_TEGSSOL_CPunit_DOP: R * C
+    PS0_FF_TEGSSOL_CPunit: R * C
+    PS2_FF_TEGSSOL_CPunit: R * C
+   TEGSSOL_Assign:
+    PS0_FF_TEGSSOL_Assign_DOP: R * C
+    PS0_FF_TEGSSOL_Assign: R * C
+    PS2_FF_TEGSSOL_Assign: R * C
+   TEGSSOL_Repeater:
+    PS0_FF_TEGSSOL_Repeater_DOP: R * C
+    PS0_FF_TEGSSOL_Repeater: R * C
+    PS1_FF_TEGSSOL_Repeater: R * C
+    PS2_FF_TEGSSOL_Repeater: R * C
+   TEGSSOL_CLKGLUE:
+    PS0_FF_TEGSSOL_CLKGLUE_DOP: R * C
+    PS0_FF_TEGSSOL_CLKGLUE: R * C
+    PS2_FF_TEGSSOL_CLKGLUE: R * C
+   TEGSSOL_NONCLKGLUE:
+    PS0_FF_TEGSSOL_NONCLKGLUE_DOP: R * C
+    PS0_FF_TEGSSOL_NONCLKGLUE: R * C
+    PS1_FF_TEGSSOL_NONCLKGLUE: R * C
+    PS2_FF_TEGSSOL_NONCLKGLUE: R * C
+   TEGSSOL_DOP:
+    PS0_FF_TEGSSOL_DOP: R * C
+    PS2_FF_TEGSSOL_DOP: R * C
+   TEGSSOL_DFX:
+    PS0_FF_TEGSSOL_DFX_DOP: R * C
+    PS0_FF_TEGSSOL_DFX: R * C
+    PS2_FF_TEGSSOL_DFX: R * C
+   OTHER_SMALL:
+    PS0_FF_OTHER_SMALL_DOP: R * C
+    PS0_FF_OTHER_SMALL: R * C
+    PS1_FF_OTHER_SMALL: R * C
+    PS2_FF_OTHER_SMALL: R * C
+   OTHER_CPunit:
+    PS0_FF_OTHER_CPunit_DOP: R * C
+    PS0_FF_OTHER_CPunit: R * C
+    PS2_FF_OTHER_CPunit: R * C
+   OTHER_Assign:
+    PS0_FF_OTHER_Assign_DOP: R * C
+    PS0_FF_OTHER_Assign: R * C
+    PS2_FF_OTHER_Assign: R * C
+   OTHER_Repeater:
+    PS0_FF_OTHER_Repeater_DOP: R * C
+    PS0_FF_OTHER_Repeater: R * C
+    PS1_FF_OTHER_Repeater: R * C
+    PS2_FF_OTHER_Repeater: R * C
+   OTHER_CLKGLUE:
+    PS0_FF_OTHER_CLKGLUE_DOP: R * C
+    PS0_FF_OTHER_CLKGLUE: R * C
+    PS2_FF_OTHER_CLKGLUE: R * C
+   OTHER_NONCLKGLUE:
+    PS0_FF_OTHER_NONCLKGLUE_DOP: R * C
+    PS0_FF_OTHER_NONCLKGLUE: R * C
+    PS1_FF_OTHER_NONCLKGLUE: R * C
+    PS2_FF_OTHER_NONCLKGLUE: R * C
+   OTHER_DOP:
+    PS0_FF_OTHER_DOP: R * C
+    PS2_FF_OTHER_DOP: R * C
+   OTHER_DFX:
+    PS0_FF_OTHER_DFX_DOP: R * C
+    PS0_FF_OTHER_DFX: R * C
+    PS2_FF_OTHER_DFX: R * C
+Other:
+   GTP24C:
+    PS0_GTP24C_DOP: R * C
+    PS0_GTP24C: R * C
+   ClockSpine:
+    PS2_ClockSpine:
+     PS2_ClockSpine_Slice: R * C
+     PS2_ClockSpine_UnSlice: R * C
+     PS2_ClockSpine_RC: R * C
+   WIDI:
+    PS0_WIDI_DOP: R * C
+    PS0_WIDI: R * C
+   Blitter:
+    PS0_Blitter: R * C
+
+Fabric:
+   LSN:
+#    PS0_LSN_XSLDN_DATA: R * C *5
+#    PS1_LSN_XSLDN_DATA: R * C * 5
+#    PS2_LSN_XSLDN_DATA: R * C * R[numBuses]
+#    PS0_LSN_XSLDN_CMD: R * C * 5
+#    PS1_LSN_XSLDN_CMD: R * C * 5
+#    PS2_LSN_XSLDN_CMD: R * C * R[numBuses]
+#    PS0_LSN_XSLUP_DATA: R * C * 5
+#    PS1_LSN_XSLUP_DATA: R * C * 5
+#    PS2_LSN_XSLUP_DATA: R * C * R[numBuses]
+#    PS0_LSN_XSLUP_CMD: R * C * 5
+#    PS1_LSN_XSLUP_CMD: R * C * 5
+#    PS2_LSN_XSLUP_CMD: R * C * R[numBuses]
+#    PS0_LSN_LNI_DATA: R * C * 5
+#    PS1_LSN_LNI_DATA: R * C * 5
+#    PS2_LSN_LNI_DATA: R * C * R[numBuses]
+#    PS0_LSN_LNI_CMD: R * C * 5
+#    PS1_LSN_LNI_CMD: R * C * 5
+#    PS2_LSN_LNI_CMD: R * C * R[numBuses]
+#    PS0_LSN_LNE_DATA: R * C * 5
+#    PS1_LSN_LNE_DATA: R * C * 5
+#    PS2_LSN_LNE_DATA: R * C * R[numBuses]
+    PS0_LSN: R * C * R[numBuses]
+    PS1_LSN: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_READ: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_WRITE: R * C * R[numBuses]
+    PS2_LSN_CROSS_SLICE_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_READ: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_WRITE: R * C * R[numBuses]
+    PS2_LSN_LOCAL_CROSS_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_READ: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_WRITE: R * C * R[numBuses]
+    PS2_LSN_CROSS_LOCAL_READ_RETURN: R * C * R[numBuses]
+    PS2_LSN_Else: R * C * R[numBuses]
+   LSNEP:
+    PS0_LSNEP: R * C * R[numBuses]
+    PS1_LSNEP: R * C * R[numBuses]
+    PS2_LSNEP_GACB_READ: R * C * R[numBuses]
+    PS2_LSNEP_GACB_WRITE: R * C * R[numBuses]
+    PS2_LSNEP_GAFS_RR: R * C * R[numBuses]
+    PS2_LSNEP_SL_MEMFILL: R * C * R[numBuses]
+    PS2_LSNEP_SL_READ: R * C * R[numBuses]
+    PS2_LSNEP_SL_WRITE: R * C * R[numBuses]
+#   UnsliceLSN:
+#    PS0_LSNtoUnslice_UP_DATA: R * C * 5
+#    PS1_LSNtoUnslice_UP_DATA: R * C * 5
+#    PS2_LSNtoUnslice_UP_DATA: R * C * R[numBuses]
+#    PS0_LSNtoUnslice_UP_CMD: R * C * 5
+#    PS1_LSNtoUnslice_UP_CMD: R * C * 5
+#    PS2_LSNtoUnslice_UP_CMD: R * C * R[numBuses]
+#    PS0_GAFStoLSN_DN_DATA: R * C * 5
+#    PS1_GAFStoLSN_DN_DATA: R * C * 5
+#    PS2_GAFStoLSN_DN_DATA: R * C * R[numBuses]
+#    PS0_GAFStoLSN_DN_CMD: R * C * 5
+#    PS1_GAFStoLSN_DN_CMD: R * C * 5
+#    PS2_GAFStoLSN_DN_CMD: R * C * R[numBuses]
+   Repeaters:
+    PS0_Repeaters_XSLDN_DATA: R * C * R[numBuses]
+    PS1_Repeaters_XSLDN_DATA: R * C * R[numBuses]
+    PS2_Repeaters_XSLDN_DATA: R * C * R[numBuses]
+    PS0_Repeaters_XSLDN_CMD: R * C * R[numBuses]
+    PS1_Repeaters_XSLDN_CMD: R * C * R[numBuses]
+    PS2_Repeaters_XSLDN_CMD: R * C * R[numBuses]
+    PS0_Repeaters_XSLUP_DATA: R * C * R[numBuses]
+    PS1_Repeaters_XSLUP_DATA: R * C * R[numBuses]
+    PS2_Repeaters_XSLUP_DATA: R * C * R[numBuses]
+    PS0_Repeaters_XSLUP_CMD: R * C * R[numBuses]
+    PS1_Repeaters_XSLUP_CMD: R * C * R[numBuses]
+    PS2_Repeaters_XSLUP_CMD: R * C * R[numBuses]
+   UnsliceRepeaters:   
+    PS0_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
+    PS1_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
+    PS2_RepeaterstoUnslice_UP_DATA: R * C * R[numBuses]
+    PS0_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
+    PS1_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
+    PS2_RepeaterstoUnslice_UP_CMD: R * C * R[numBuses]
+    PS0_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
+    PS1_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
+    PS2_RepeatersfromUnslice_DN_DATA: R * C * R[numBuses]
+    PS0_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
+    PS1_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
+    PS2_RepeatersfromUnslice_DN_CMD: R * C * R[numBuses]
+   BGF:
+    PS0_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_DATA_UP: R * C * R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_CMD_UP: R * C * R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_DATA_DN: R * C * R[numBuses]
+    PS0_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
+    PS1_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
+    PS2_BGF_SL_UNSL_INTF_CMD_DN: R * C * R[numBuses]
+   BGFunslice:
+    PS0_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS1_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS2_BGF_UNSL_DATA_UP: R * C * R[numBuses]
+    PS0_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS1_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS2_BGF_UNSL_CMD_UP: R * C * R[numBuses]
+    PS0_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS1_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS2_BGF_UNSL_DATA_DN: R * C * R[numBuses]
+    PS0_BGF_UNSL_CMD_DN: R * C * R[numBuses]
+    PS1_BGF_UNSL_CMD_DN: R * C * R[numBuses]
+    PS2_BGF_UNSL_CMD_DN: R * C * R[numBuses]
+   SMALL:
+    PS0_Fabric_SMALL: R * C
+    PS1_Fabric_SMALL: R * C
+    PS2_Fabric_SMALL: R * C
+   CPunit:
+    PS0_Fabric_CPunit: R * C
+    PS2_Fabric_CPunit: R * C
+   Assign:
+    PS0_Fabric_Assign: R * C
+    PS2_Fabric_Assign: R * C
+   CLKGLUE:
+    PS0_Fabric_CLKGLUE: R * C
+    PS2_Fabric_CLKGLUE: R * C
+   NONCLKGLUE:
+    PS0_Fabric_NONCLKGLUE: R * C
+    PS1_Fabric_NONCLKGLUE: R * C
+    PS2_Fabric_NONCLKGLUE: R * C
+   DFX:
+    PS0_Fabric_DFX: R * C
+    PS2_Fabric_DFX: R * C
+   DOP:
+    PS0_Fabric_DOP: R * C
+    PS2_Fabric_DOP: R * C
+
+rFF:
+   rCS:
+    PS0_rCS: R * C
+    PS1_rCS: R * C
+    PS2_rCS: R * C
+   rOV:
+    PS0_rOV: R * C
+    PS1_rOV: R * C
+    PS2_rOV: R * C
+   rVF:
+    PS0_rVF_DOP: R * C
+    PS0_rVF: R * C
+    PS1_rVF: R * C
+    PS2_rVF:
+     PS2_rVF_Indexed: R * C
+     PS2_rVF_Sequential: R * C
+     PS2_rVF_Control: R * C
+     PS2_rVF_Dropped: R * C
+   rVFBE:
+    PS0_rVFBE_DOP: R * C
+    PS0_rVFBE: R * C
+    PS1_rVFBE: R * C
+    PS2_rVFBE: R * C
+   rVF_Cache:
+    PS0_rVF_Cache_Idle: R * C
+    PS2_rVF_Cache_Read: R * C
+    PS2_rVF_Cache_Write: R * C
+    PS0_rVF_URBFifo_Idle: R * C
+    PS2_rVF_URBFifo_Read: R * C
+    PS2_rVF_URBFifo_Write: R * C
+   rVSFE:
+    PS0_rVSFE_DOP: R * C
+    PS0_rVSFE: R * C
+    PS1_rVSFE: R * C
+    PS2_rVSFE: R * C
+   rVSBE:
+    PS0_rVSBE_DOP: R * C
+    PS0_rVSBE: R * C
+    PS1_rVSBE: R * C
+    PS2_rVSBE: R * C
+   rVS_Cache:
+    PS0_rVS_Cache_Idle: R * C
+    PS2_rVS_Cache:
+     PS2_rVS_Cache_Read: R * C
+     PS2_rVS_Cache_Write: R * C
+   rCL:
+    PS0_rCL_DOP: R * C
+    PS0_rCL: R * C
+    PS1_rCL: R * C
+    PS2_rCL: R * C
+   rSVG:
+    PS0_rSVG: R * C
+    PS1_rSVG: R * C
+    PS2_rSVG: R * C
+   rSFFE:
+    PS0_rSFFE_DOP: R * C
+    PS0_rSFFE: R * C
+    PS1_rSFFE: R * C
+    PS2_rSFFE:
+     PS2_rSFFE_Culled: R * C
+     PS2_rSFFE_NotCulled_FastClip: R * C
+     PS2_rSFFE_NotCulled_NotFastClip: R * C
+   rSFBE:
+    PS0_rSFBE_DOP: R * C
+    PS0_rSFBE: R * C
+    PS1_rSFBE: R * C
+    PS2_rSFBE: R * C
+   rOTHER_CLKGLUE:
+    PS0_rFF_rOTHER_CLKGLUE_DOP: R * C
+    PS0_rFF_rOTHER_CLKGLUE: R * C
+    PS2_rFF_rOTHER_CLKGLUE: R * C
+   rOTHER_NONCLKGLUE:
+    PS0_rFF_rOTHER_NONCLKGLUE_DOP: R * C
+    PS0_rFF_rOTHER_NONCLKGLUE: R * C
+    PS1_rFF_rOTHER_NONCLKGLUE: R * C
+    PS2_rFF_rOTHER_NONCLKGLUE: R * C
+   rOTHER_DOP:
+    PS0_rFF_rOTHER_DOP: R * C
+    PS2_rFF_rOTHER_DOP: R * C
+   rOTHER_DFX:
+    PS0_rFF_rOTHER_DFX_DOP: R * C
+    PS0_rFF_rOTHER_DFX: R * C
+    PS2_rFF_rOTHER_DFX: R * C
+
