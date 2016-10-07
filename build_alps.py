@@ -94,7 +94,7 @@ elif common_cfg.find('cnl') > -1 :
     cfg ='Gen10LP'
 elif common_cfg.find('owf') > -1 :
     cfg ='Gen10LPSoC'
-elif common_cfg.find('icllp') > -1 :
+elif common_cfg.find('icllp') > -1  or common_cfg.find('icl_gen11_1x8x8') > -1:
     cfg ='Gen11LP'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
@@ -111,7 +111,7 @@ else:
     exit(2);
 if common_cfg.find('cnl_h') > -1 :
     cfg_gc = "Gen11halo"
-elif common_cfg.find('icllp') > -1 :
+elif common_cfg.find('icllp') > -1 or common_cfg.find('icl_gen11_1x8x8') > -1 :
     cfg_gc = "Gen11LP"
 elif common_cfg.find('tgllpall') > -1 :
     cfg_gc = "Gen12LPAllGc"

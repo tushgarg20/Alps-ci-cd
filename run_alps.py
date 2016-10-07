@@ -64,7 +64,7 @@ if options.alps_config is not None:
 else:
     if options.dest_config.find('bdw') > -1 or  options.dest_config.find('chv') > -1:
         filename = '%s/alps_cfg_annealing.yaml' % wd
-    elif options.dest_config.find('icllp') > -1:
+    elif options.dest_config.find('icllp') > -1 or options.dest_config.find('icl_gen11_1x8x8') > -1:
         filename = '%s/alps_cfg_icllp.yaml' % wd
     elif options.dest_config.find('icl') > -1:
         filename = '%s/alps_cfg_icl.yaml' % wd
