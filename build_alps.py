@@ -100,6 +100,8 @@ elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen11LP'
+elif common_cfg.find('tgl') > -1 :
+    cfg ='Gen11LP'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -118,6 +120,8 @@ elif common_cfg.find('tgllpall') > -1 :
 elif common_cfg.find('tgllppwr') > -1 :
     cfg_gc = "Gen12LPPwrGc"
 elif common_cfg.find('tgllp') > -1 :
+    cfg_gc = "Gen12LP"
+elif common_cfg.find('tgl') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
