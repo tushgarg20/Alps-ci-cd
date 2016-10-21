@@ -47,8 +47,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11LP','Gen11halo'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11','Gen11LP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11','Gen11LP','Gen11halo','Gen12LP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11','Gen11LP','Gen12LP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -99,9 +99,9 @@ elif common_cfg.find('icllp') > -1  or common_cfg.find('icl_gen11_1x8x8') > -1:
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('tgllp') > -1 :
-    cfg ='Gen11LP'
+    cfg ='Gen12LP'
 elif common_cfg.find('tgl') > -1 :
-    cfg ='Gen11LP'
+    cfg ='Gen12LP'
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -135,7 +135,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
