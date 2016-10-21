@@ -189,6 +189,7 @@ for i in range(len(keys)):
   except IOError:
     print("Can't open output file for",wl)
     exit(10000)
+  print ("Creating WL model for: ", wl)
   for k in range(len(stats_order)):
     stat = stats_order[k]
     wl_value = 0
