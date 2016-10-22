@@ -33,7 +33,7 @@
 	 @HP@	=	(hf|w|uw)	
 	FPU_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
 	FPU_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd4_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd4_count	= 	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
 	.temp_FPU_simd8_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.8\.\w+\.(exec|@BYPASS@)'))	
 	.temp_FPU_simd8_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.8\.\w+\.(exec|@BYPASS@)'))	
 	FPU_simd8_count	=	.temp_FPU_simd8_count - .temp_FPU_simd8_hp_count	
@@ -79,18 +79,20 @@
 	.max_EM_toggle	=	MAX(.avg_EMSrc1_toggle, .avg_EMSrc2_toggle, .avg_EMSrc3_toggle, .avg_EMSrc4_toggle)	
 	.avg_EU_idle_stall_clocks	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')))/(numEUs)	
 	.avg_EU_active_clocks	=	.CrClk - .avg_EU_idle_stall_clocks	
-	FPU1_toggle_rate	=	(.temp_PS2_EU_EM > 0) ? (.max_EM_toggle / (32 * 4 * .temp_PS2_EU_EM * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	FPU1_toggle_rate	=	(.temp_PS2_EU_EM > 0) ?	(.max_EM_toggle / (32 * 2 * .temp_PS2_EU_EM * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 	.avg_FPUSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc4_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock'))/numEUs)?=0	
 	.max_FPU_toggle	=	MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle)	
-	FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ? (.max_FPU_toggle / (32 * 4 * .temp_PS2_EU_FPU * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ?	(.max_FPU_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	#FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ?	(.max_FPU_toggle / (1864)) : 0
+	#FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ? (.max_FPU_toggle *numEUs) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 	GA_toggle_rate	=	MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 	.EuIntegerBypass	=	knob.Stats.EnableEuIntegerBypass	#EU Integer bypass knob for CNL+
 #FPU				
 	PS0_EU_FPU0	=	D(SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	#DOP Clock ungated
-	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) + (FPU_simd2_count/2) + ((FPU_simd4_count + FPU_simd8_count + FPU_simd16_count + FPU_simd32_count)/4) + ((FPU_simd8_hp_count + FPU_simd16_hp_count + FPU_simd32_hp_count)/8))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
+	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + FPU_simd4_count/4 + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + ((FPU_simd8_hp_count + FPU_simd16_hp_count + FPU_simd32_hp_count)/8))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU0	=		1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
 	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
@@ -206,7 +208,7 @@
 	FPU0_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_intbypass : 0	
 #EM				
 	PS0_EU_FPU1	=	D(SUM('@ANY_EUPIPE@pwr_EmIdle.CrClock'))/(numEUs * .CrClk) -	PS0_EU_DOP -PS1_EU_DOP	 #DOP Clock ungated
-	.temp_PS2_EU_EM	=	(( EM_simd1_count/1) + (EM_simd2_count/2) +((EM_simd4_count + EM_simd8_count + EM_simd16_count + EM_simd32_count)/4) + ((EM_simd8_hp_count + EM_simd16_hp_count + EM_simd32_hp_count)/8))/(numEUs * .CrClk)	#EM Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
+	.temp_PS2_EU_EM	=	(( EM_simd1_count/1) + (EM_simd2_count/2)	+((EM_simd4_count + EM_simd8_count + EM_simd16_count +	EM_simd32_count)/2) + ((EM_simd8_hp_count + EM_simd16_hp_count +EM_simd32_hp_count)/2))/(numEUs * .CrClk)	#EM Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU1	=	1 - PS0_EU_FPU1 - .temp_PS2_EU_EM - PS0_EU_DOP - PS1_EU_DOP	#EM stall - sparse scenario: (Total Clocks - EM executed clocks - EM Idle clocks - EU idle DOP gated clocks - EU stalled DOP gated clocks)
 	PS2_EU_FPU1	=	.temp_PS2_EU_EM	
 	FPU1_mad_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
