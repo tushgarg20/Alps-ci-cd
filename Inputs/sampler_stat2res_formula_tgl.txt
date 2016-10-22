@@ -1,10 +1,9 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	#numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
 	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')	
 	#numSamplers	=	numSlices * ( SUM('knob\.S0\.NumSubSlices') + SUM('knob\.STK0\.S0\.NumSubSlices'))	#Change to handle assymetric configs
 	numSamplers	=	SUM('knob\.S\d+\.SS\d+\.NumSamplers') + SUM('knob\.STK\d+\.S\d+\.SS\d+\.NumSamplers')	#Change to handle assymetric configs
-        numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
+    numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
 	num_Sampler_FL	=	numSamplerComputePaths	
 	num_Sampler_PL	=	numSamplerComputePaths	
 	num_Sampler_SC	=	numSamplers	
@@ -24,9 +23,7 @@
 	num_Sampler_AVS_DataRAM	=	numSamplers	
 	num_Sampler_AVS_CoeffRAM	=	numSamplers	
 	num_Sampler_IEF	=	numSamplers	
-	#num_Sampler_CRE	=	numSamplerComputePaths
 	num_Sampler_CRE	=	numSamplers
-	#num_Sampler_IME	=	numSamplerComputePaths	
 	num_Sampler_IME	=	numSamplers	
 	num_Sampler_DM_PALRAM	=	numSamplers	
 	num_Sampler_MEDIASMP_SMALL	=	numSamplers	
@@ -155,7 +152,8 @@
 	PS2_PL_NonVol_Aniso_Nearest	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_Legacy-Aniso@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
 	PS2_PL_NonVol_Aniso_Nearest_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_EWA-Aniso@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
 	PS2_PL_Else	=	D(SUM('@ANY_SAMPLER@pwr_pl_else@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
-	PS2_PL_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+	#PS2_PL_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+	PS2_PL_Media_sample8x8 = 0
 	.temp_PS2_PL	=	1 - (PS0_PL + PS1_PL)	
 #SC				
 	PS0_SC_DOP	=	PS0_DFRSMP_DOP	
@@ -174,14 +172,14 @@
 	PS2_SC_Bilinear_Trilinear_Aniso_64BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_64BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_64BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_64BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_64BPT@ANY_DS@\.CrClock'))) / (numSamplerComputePaths * .CrClk)	
 	PS2_SC_Bilinear_Trilinear_Aniso_128BPT	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_128BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Trilinear_128BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_LinearAnisotropic_128BPT@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_NonLinearAnisotropic_128BPT@ANY_DS@\.CrClock'))) / (numSamplerComputePaths * .CrClk)	
 	PS2_SC_Other	=	D(SUM('@ANY_SAMPLER@pwr_sc_Else@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
-	PS2_SC_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_sc_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
-				
+	#PS2_SC_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_sc_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+	PS2_SC_Media_Sample8x8 = 0
+
 #SC Cache				
 	PS2_SC_DataRam_READ	=	(D(SUM('@ANY_SAMPLER@pwr_sc_Bank0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank2@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank3@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank4@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank5@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank6@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_sc_Bank7@ANY_DS@\.CrClock'))) / (8 * numSamplerComputePaths * .CrClk)	# 8 banks in SC
 	PS2_SC_DataRam_WRITE	=	D(SUM('@ANY_SAMPLER@pwr_sc_data_ram_write@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-				
-	PS2_SC_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.pushed')) / (numSamplers * .CrClk)	
-	PS2_SC_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\.popped')) / (numSamplers * .CrClk)	
+	PS2_SC_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\d+\.pushed')) / (numSamplerComputePaths * .CrClk)	
+	PS2_SC_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\d+\.popped')) / (numSamplerComputePaths * .CrClk)	
 #ST				
 	PS0_ST_DOP	=	PS0_DFRSMP_DOP	
 	PS0_ST	=	D(SUM('@ANY_SAMPLER@pwr_st_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_ST_DOP	
@@ -224,13 +222,16 @@
 	PS2_DG_Fastbilinear	=	D(SUM('@ANY_SAMPLER@pwr_dg_FastLinear_\w+@ANY_DS@\.CrClock')) / (32 * numSamplerComputePaths * .CrClk)	
 	PS2_DG_BabyDG_Enable	=	D(SUM('@ANY_SAMPLER@pwr_dg_babydg@ANY_DS@\.CrClock')) / (32 * numSamplerComputePaths * .CrClk)	
 	PS2_DG_Else	=	D(SUM('@ANY_SAMPLER@pwr_dg_else@ANY_DS@\.CrClock')) / (32 * numSamplerComputePaths * .CrClk) + .temp_PS2_DG_Nearest_32BPT + .temp_PS2_DG_Nearest_64BPT + .temp_PS2_DG_Nearest_128BPT	
-	PS2_DG_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_dg_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+	#PS2_DG_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_dg_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+    PS2_DG_Media_Sample8x8 = 0
+
 				
 #SI				
 	PS0_SI	=	D(SUM('@ANY_SAMPLER@pwr_si_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
 	PS1_SI	=	1 - (PS0_SI + PS2_SI_ANYPIXELMODE)	
 	PS2_SI_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@pwr_si_ldmode@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_sampleg@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_media@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_si_else@ANY_DS@\.CrClock')))/ (numSamplerComputePaths * .CrClk)	
-	PS2_SI_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_si_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+	#PS2_SI_Media_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_si_sample_8x8@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#first rev media states
+    PS2_SI_Media_Sample8x8 = 0
 				
 #SO				
 	PS0_SO_DOP	=	PS0_DFRSMP_DOP	
@@ -251,7 +252,8 @@
 	 PS2_DM_Other	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
 	.temp_PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
 	.temp_PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	 PS2_DM_HIZ_Z	=	.temp_PS2_DM_HIZ + .temp_PS2_DM_Z	
+	#PS2_DM_HIZ_Z	=	.temp_PS2_DM_HIZ + .temp_PS2_DM_Z
+	PS2_DM_HIZ_Z = 0
 	PS2_DM_LOSSLESS	=	D(SUM('@ANY_SAMPLER@L2CCSRequests')) / (numSamplers * .CrClk)	#Using MT stat
 	PS2_DM_ASTC_LDR_2D	=	0	
 	PS2_DM_ASTC_LDR_3D	=	0	
@@ -311,7 +313,7 @@
 	.temp_PS2_AVS	=	PS2_AVS_Scalar + PS2_AVS_Convolution + PS2_AVS_CorrelationSearch + PS2_AVS_Centroid + PS2_AVS_MinMax + PS2_AVS_MinMaxFilter + PS2_AVS_Erode + PS2_AVS_Dilate + PS2_AVS_BoolCentroid	
 				
 #AVS - Data Storage				
-	PS2_AVS_DataStorageRAM_READ	=	0	#first rev media states
+	PS2_AVS_DataStorageRAM_READ	    =	0	#first rev media states
 	PS2_AVS_DataStorageRAM_WRITE	=	0	
 				
 #AVS - Coeff Storage				
