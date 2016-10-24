@@ -1,9 +1,9 @@
 #Unit	GSIM residency			
 #Instance Counts				
-	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')	
-	#numSamplers	=	numSlices * ( SUM('knob\.S0\.NumSubSlices') + SUM('knob\.STK0\.S0\.NumSubSlices'))	#Change to handle assymetric configs
+	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')
+        numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	
 	numSamplers	=	SUM('knob\.S\d+\.SS\d+\.NumSamplers') + SUM('knob\.STK\d+\.S\d+\.SS\d+\.NumSamplers')	#Change to handle assymetric configs
-    numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
+        numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
 	num_Sampler_FL	=	numSamplerComputePaths	
 	num_Sampler_PL	=	numSamplerComputePaths	
 	num_Sampler_SC	=	numSamplers	
@@ -18,22 +18,23 @@
 	num_Sampler_MT_Cache	=	numSamplers	
 	num_Sampler_SVSM	=	numSamplers	
 	num_Sampler_Media	=	numSamplers	
-	num_Sampler_GLUE	=	numSamplerComputePaths	
-	num_Sampler_AVS	=	numSamplers	
-	num_Sampler_AVS_DataRAM	=	numSamplers	
-	num_Sampler_AVS_CoeffRAM	=	numSamplers	
+	num_Sampler_GLUE	=	numSamplerComputePaths
+        numMediaSamplers        = 0	
+	num_Sampler_AVS	=	numMediaSamplers	
+	num_Sampler_AVS_DataRAM	=	numMediaSamplers	
+	num_Sampler_AVS_CoeffRAM	=	numMediaSamplers	
 	num_Sampler_IEF	=	numSamplers	
 	num_Sampler_CRE	=	numSamplers
 	num_Sampler_IME	=	numSamplers	
 	num_Sampler_DM_PALRAM	=	numSamplers	
-	num_Sampler_MEDIASMP_SMALL	=	numSamplers	
-	num_Sampler_MEDIASMP_CPunit	=	numSamplers	
-	num_Sampler_MEDIASMP_Assign	=	numSamplers	
-	num_Sampler_MEDIASMP_Repeater	=	numSamplers	
-	num_Sampler_MEDIASMP_CLKGLUE	=	numSamplers	
-	num_Sampler_MEDIASMP_NONCLKGLUE	=	numSamplers	
-	num_Sampler_MEDIASMP_DFX	=	numSamplers	
-	num_Sampler_MEDIASMP_DOP	=	numSamplers	
+	num_Sampler_MEDIASMP_SMALL	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_CPunit	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_Assign	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_Repeater	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_CLKGLUE	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_NONCLKGLUE	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_DFX	=	numMediaSamplers	
+	num_Sampler_MEDIASMP_DOP	=	numMediaSamplers	
 	num_Sampler_DFRSMP_SMALL	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_CPunit	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_Assign	=	numSamplerComputePaths	
@@ -41,8 +42,8 @@
 	num_Sampler_DFRSMP_CLKGLUE	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_DFX	=	numSamplerComputePaths
-	
 	num_Sampler_DFRSMP_DOP	=	numSamplerComputePaths	
+        num_GAM_GASS = numSubSlices
 				
 #Generic				
 # @ANY_SAMPLER@	=	(STK\d+\.S\d+\.SS\d+\.uSampler\.|S\d+\.SS\d+\.uSampler\.)	
@@ -50,6 +51,8 @@
 	 @ANY_CRE@	=	(STK\d+\.S\d+\.SS\d+\.uCRE\.|S\d+\.SS\d+\.uCRE\.)	
 	 @ANY_IME@	=	(STK\d+\.S\d+\.SS\d+\.uIME\.|S\d+\.SS\d+\.uIME\.)	
 	 @ANY_DS@	=	(|_0)	
+         @GASS@		=	S\d+\.GASS_\d+\.
+         @GATS@         =   S\d+\.GATS_\d+\.
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	FL_Toggle_Rate	=	(.temp_PS2_FL > 0) ? D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count@ANY_DS@')) / (512 * .temp_PS2_FL * numSamplerComputePaths * .CrClk) : 0	#FL bus width 512 (32 * UL, UR, LL, LR)
@@ -331,25 +334,26 @@
 				
 #CRE				
 	PS0_CRE_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS0_CRE	=	(D(SUM('@ANY_CRE@pwr_cre_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)) - PS0_CRE_DOP	#would evaluate to 0 till 3D DOP is implemented
 	PS1_CRE	=	(1 - (PS0_CRE_DOP + PS0_CRE + .temp_PS2_CRE))	
-	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
-	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
-	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
-	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	
+	PS2_CRE_FRONT_ACTIVE	=	D(SUM('@ANY_CRE@pwr_fe_active_be_not_active@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_INTRA	=	D(SUM('@ANY_CRE@pwr_intra_only@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_INTRA_SKIP	=	D(SUM('@ANY_CRE@pwr_skip_and_intra@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_CRE_FBR	=	D(SUM('@ANY_CRE@pwr_fbr@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
 	.temp_PS2_CRE	=	PS2_CRE_FRONT_ACTIVE + PS2_CRE_INTRA + PS2_CRE_INTRA_SKIP + PS2_CRE_FBR	
 				
 #IME				
 	PS0_IME_DOP	=	PS0_MEDIASMP_DOP	#not implemented - hardcoded to 3D value
-	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented
+	PS0_IME	=	(D(SUM('@ANY_IME@pwr_ime_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)) - PS0_IME_DOP	#would evaluate to 0 till 3D DOP is implemented
 	PS1_IME	=	(1 - (PS0_IME_DOP + PS0_IME + .temp_PS2_IME))	
-	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk))	
-	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk))	
+	PS2_IME_BACK_ACTIVE	=	1 - (D(SUM('@ANY_IME@pwr_ime_back_end_idle_or_stall@ANY_DS@\.CrClock')) / (numSamplers * .CrClk))	
+	PS2_IME_FRONT_ACTIVE	=	1 - PS2_IME_BACK_ACTIVE - (D(SUM('@ANY_IME@pwr_ime_front_end_idle_or_stall@ANY_DS@\.CrClock')) / (numSamplers * .CrClk))	
 	.temp_PS2_IME	=	PS2_IME_BACK_ACTIVE + PS2_IME_FRONT_ACTIVE 	
 				
 #Small				
 	PS0_MEDIASMP_SMALL_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
 	PS0_MEDIASMP_SMALL	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	#first rev media states
+	PS1_MEDIASMP_SMALL	=	AVG(PS1_AVS, PS1_IEF, PS1_CRE, PS1_IME)	#first rev media states
 	PS2_MEDIASMP_SMALL	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
 				
 #CPunit				
@@ -365,6 +369,7 @@
 #Repeater				
 	PS0_MEDIASMP_Repeater_DOP	=	PS0_MEDIASMP_DOP	
 	PS0_MEDIASMP_Repeater	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)	
+	PS1_MEDIASMP_Repeater	=	AVG(PS1_AVS, PS1_IEF, PS1_CRE, PS1_IME)	
 	PS2_MEDIASMP_Repeater	=	1 - (PS0_MEDIASMP_SMALL_DOP + PS0_MEDIASMP_SMALL)	
 				
 				
@@ -375,8 +380,9 @@
 				
 #GLUE				
 	PS0_MEDIASMP_NONCLKGLUE_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
-	PS0_MEDIASMP_NONCLKGLUE	=	PS0_MEDIASMP_SMALL	#first rev media states
-	PS2_MEDIASMP_NONCLKGLUE	=	PS2_MEDIASMP_SMALL	
+	PS0_MEDIASMP_NONCLKGLUE	=	AVG(PS0_AVS, PS0_IEF, PS0_CRE, PS0_IME)
+        PS1_MEDIASMP_NONCLKGLUE	=	AVG(PS1_AVS, PS1_IEF, PS1_CRE, PS1_IME)
+        PS2_MEDIASMP_NONCLKGLUE	=	1 - (PS0_MEDIASMP_NONCLKGLUE_DOP +PS0_MEDIASMP_NONCLKGLUE +PS1_MEDIASMP_NONCLKGLUE)
 				
 #Dfx				
 	PS0_MEDIASMP_DFX_DOP	=	PS0_MEDIASMP_DOP	#3d context media state
@@ -389,9 +395,10 @@
 	PS2_MEDIASMP_DOP	=	1 - PS0_MEDIASMP_DOP	#first rev media states
 				
 #DFR Small				
-	PS0_DFRSMP_SMALL_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_SMALL	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	#first rev media states
-	PS2_DFRSMP_SMALL	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+    PS0_DFRSMP_SMALL_DOP	=	PS0_DFRSMP_DOP	#3d context media state
+    PS0_DFRSMP_SMALL            =       1 - PS0_DFRSMP_DOP - .temp_PS1_GASS - .temp_PS2_GASS
+    PS1_DFRSMP_SMALL            =       .temp_PS1_GASS
+    PS2_DFRSMP_SMALL            =       .temp_PS2_GASS
 				
 #DFR CPunit				
 	PS0_DFRSMP_CPunit_DOP	=	PS0_DFRSMP_DOP	
@@ -405,8 +412,10 @@
 				
 #DFR Repeater				
 	PS0_DFRSMP_Repeater_DOP	=	PS0_DFRSMP_DOP	
-	PS0_DFRSMP_Repeater	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	
-	PS2_DFRSMP_Repeater	=	1 - (PS0_DFRSMP_SMALL_DOP + PS0_DFRSMP_SMALL)	
+	#PS0_DFRSMP_Repeater	=	AVG(PS0_FL, PS0_PL, PS0_SC, PS0_DG, PS0_SC, PS0_SO, PS0_DM, PS0_FT)	
+	PS0_DFRSMP_Repeater	=	AVG(PS0_TDL, PS0_BC, PS0_MA_IN, PS0_MA_OUT)	
+	PS1_DFRSMP_Repeater	=	AVG(PS0_TDL, PS0_BC, PS0_MA_IN, PS0_MA_OUT)	
+	PS2_DFRSMP_Repeater	=	1 - (PS0_DFRSMP_Repeater_DOP + PS0_DFRSMP_Repeater + PS1_DFRSMP_Repeater)	
 				
 				
 #DFR ClkGlue				
@@ -416,8 +425,9 @@
 				
 #DFR NonClkGlue				
 	PS0_DFRSMP_NONCLKGLUE_DOP	=	PS0_DFRSMP_DOP	#3d context media state
-	PS0_DFRSMP_NONCLKGLUE	=	PS0_DFRSMP_SMALL	#first rev media states
-	PS2_DFRSMP_NONCLKGLUE	=	PS2_DFRSMP_SMALL	
+	PS0_DFRSMP_NONCLKGLUE	=       AVG(PS0_TDL, PS0_BC, PS0_MA_IN, PS0_MA_OUT)
+	PS1_DFRSMP_NONCLKGLUE	=       AVG(PS1_TDL, PS1_BC, PS1_MA_IN, PS1_MA_OUT)
+	PS2_DFRSMP_NONCLKGLUE	=	1 - (PS0_DFRSMP_NONCLKGLUE_DOP + PS0_DFRSMP_NONCLKGLUE + PS1_DFRSMP_NONCLKGLUE + PS1_DFRSMP_NONCLKGLUE)	
 				
 #DFR DFX				
 	PS0_DFRSMP_DFX_DOP	=	PS0_DFRSMP_DOP	#3d context media state
@@ -425,5 +435,11 @@
 	PS2_DFRSMP_DFX	=	PS2_DFRSMP_SMALL	
 #DFR DOP				
 	PS0_DFRSMP_DOP	=	D(SUM('@ANY_SAMPLER@DFR_Clock_Squash@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)	#Using a shortcut to avoid divide-by-zero exception. DFRClockHisto.total_count = crclock
-	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP	
+	PS2_DFRSMP_DOP	=	1 - PS0_DFRSMP_DOP
+
+#GASS
+    .temp_PS0_GASS    =     (.temp_gass_ps2 < 1)? (1 - .temp_gass_ps2) : 0
+    .temp_gass_ps2    =      .temp_PS1_GASS +  .temp_PS2_GASS 
+    .temp_PS1_GASS    =       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS2_GASS    =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)	
 
