@@ -33,6 +33,8 @@ parser.add_argument('-a','--architecture',dest="dest_config",
            help="Specify Gsim Config used for run. For e.g. bdw_gt2.cfg")
 parser.add_argument('--debug',action="store_true",dest="run_debug",default=False,
            help="Run build_alps in debug mode [default: %sdefault]" % "%%")
+parser.add_argument('--gc',action="store_true",dest="dump_gc",default=False,
+           help="Dump gate counts in output files [default: %sdefault]" % "%%")
 
 options = parser.parse_args()
 
@@ -821,6 +823,22 @@ for cluster in gt_cdyn_dist[label]:
 
 print ("")
 
+######################################
+# Including gatecounts in output files
+######################################
+
+if (options.dump_gc):
+    for cluster in new_gc.keys():
+        for unit in new_gc[cluster].keys():
+            inst_name = cluster + '_' + unit 
+            if inst_name not in I.keys():
+                new_gc[cluster][unit].update({'numInstances': 'NA'}) 
+                new_gc[cluster][unit].update({'total_gc' : 'NA'})
+            else:
+                new_gc[cluster][unit].update({'numInstances':I[cluster + '_' + unit]}) 
+                total_gc_unit = new_gc[cluster][unit]['numInstances'] * new_gc[cluster][unit]['Gen11LP'] 
+                new_gc[cluster][unit].update({'total_gc' : total_gc_unit})
+
 ####################################
 # Generating output YAML file
 ####################################
@@ -832,6 +850,10 @@ yaml.dump(unit_cdyn_numbers,of,default_flow_style=False)
 yaml.dump(key_stats,of,default_flow_style=False)
 yaml.dump(output_yaml_data,of,default_flow_style=False)
 yaml.dump(gt_cdyn_dist,of,default_flow_style=False)
+
+if (options.dump_gc):
+    yaml.dump(new_gc,of,default_flow_style=False)
+
 of.close()
 
 dump_patriot_output()

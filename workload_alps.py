@@ -27,6 +27,8 @@ parser.add_option("-w","--weights",dest="weights",
                   help="CSV file containing frame weights")
 parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
+parser.add_option("--gc",action="store_true",dest="dump_gc",default=False,
+           help="Dump gate counts in output files [default: %sdefault]" % "%%")
 
 (options,args) = parser.parse_args()
 
@@ -50,6 +52,8 @@ else:
         filename = '%s/alps_cfg_annealing.yaml' % sd
     elif options.dest_config.find('icl') > -1:
         filename = '%s/alps_cfg_icl.yaml' % sd
+    elif options.dest_config.find('icllp') > -1:
+        filename = '%s/alps_cfg_icllp.yaml' % sd
     else:
         filename = '%s/alps_cfg.yaml' % sd
 
@@ -213,6 +217,8 @@ for i in range(len(keys)):
   build_alps_cmd += ['-i',input_file,'-a',arch,'-r',res_file,'-o',alps_file]
   if options.run_debug:
     build_alps_cmd += ['--debug']
+  if options.dump_gc:
+    build_alps_cmd += ['--gc']
 
   try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
