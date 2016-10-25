@@ -60,6 +60,7 @@ voltage_hash = {}   ##Voltage scaling factor
 ##Used for parsing scaling factor files
 cdyn_cagr_hash = {'syn':{},'ebb':{}}
 unit_cdyn_cagr_hash ={}
+gc_scaling_cfg_hash ={}
 stepping_hash = {}
 
 common_cfg = options.dest_config.lower() ##Config chosen
@@ -281,6 +282,15 @@ def get_eff_cdyn(cluster,unit,stat):
         newproduct_gc = 1
 
     gc_sf = newproduct_gc/ref_gc if ref_gc > 0 else 0
+
+    try:
+        gc_scalar_bool = gc_scaling_cfg_hash[cluster][base_cfg][cfg]
+    except:
+        gc_scalar_bool = 'True'
+
+    if(gc_scalar_bool == 'False'):
+        gc_sf = 1.0
+
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     return eff_cdyn
 
@@ -631,6 +641,25 @@ for line in unit_cdyn_cagr_file:
     unit_cdyn_cagr_hash[data[0]][data[1]][data[2]][data[3]] = float(data[4])
 
 unit_cdyn_cagr_file.close()
+
+try:
+    gc_scaling_cfg_file = open(input_hash['gc_scaling_cfg'],'r')
+    first_line = gc_scaling_cfg_file.readline()
+    for line in gc_scaling_cfg_file:
+        data = get_data(line,",")
+        if(data[0] not in gc_scaling_cfg_hash):
+            gc_scaling_cfg_hash[data[0]] = {}
+        if(data[1] not in gc_scaling_cfg_hash[data[0]]):
+            gc_scaling_cfg_hash[data[0]][data[1]] = {}
+        gc_scaling_cfg_hash[data[0]][data[1]][data[2]] = data[3]
+
+    gc_scaling_cfg_file.close()
+except KeyError:
+    print("GC scaling options file not defined in input file - ",options.input_file)
+except IOError:
+    print("Can't open GC scaling options file - usually defined in <alps repo>/Inputs/gc_scaling_cfg.csv")
+    print("Exiting")
+    exit(2)
 
 
 #############################

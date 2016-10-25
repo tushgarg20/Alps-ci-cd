@@ -1,0 +1,7 @@
+Cluster,Source,Destination,Gate Count Scaling
+EU,Gen11LP,Gen12LP,False
+EU,Gen12LP,Gen12LP,False
+L3_Bank,Gen11LP,Gen12LP,False
+L3_Bank,Gen12LP,Gen12LP,False
+GAM,Gen11LP,Gen12LP,False
+GAM,Gen12LP,Gen12LP,False
