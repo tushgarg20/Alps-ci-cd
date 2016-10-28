@@ -56,9 +56,9 @@
 	PS2_rVF_Dropped	=	D(GeoR.uVF.pwr_vf_active_dropped.2xGeoClock) / .GeoClk2x	# Added to catch verts dropped because of cut, dangling, or auto-strip.
 #VFBE1				
 	PS0_rVFBE_DOP	=	 .temp_3DPipeDisable	
-	.temp_num_rvertex_pipes	=	knob.GeoR.uVF.NumVfVtxPipes	
+	.temp_num_rvertex_pipes	=	knob.GeoR.uVF.NumVfVtxPipesPosh	
 	.temp_rvertex_pipe_clocks	=	.temp_num_rvertex_pipes * .GeoClk	
-	PS0_rVFBE	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_VFBE_DOP	# Not active rollup of all structures.
+	PS0_rVFBE	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_rVFBE_DOP	# Not active rollup of all structures.
 	PS1_rVFBE	=	(D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('GeoR\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_rvertex_pipe_clocks	
 	PS2_rVFBE	=	((PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) > 0) ? 1 - (PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) : 0	
 #VFBE2				
