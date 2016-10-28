@@ -344,10 +344,13 @@
 	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
 				
 #TC				
-	PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
-	PS1_TC	=	(D(SUM('@ANY_EUControl@Arb\.pwr_PS1_TC\.CrClock'))) /(num_EU_TC * .CrClk) - PS1_EU_DOP   #After the fix from Paul 
-	PS2_TC	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
-		
+        PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
+	PS1_TC	=	1 - PS0_TC - PS2_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_TC	=	PS2_TC_1Dispatch+PS2_TC_2Dispatch+PS2_TC_3Dispatch+PS2_TC_4Dispatch
+	PS2_TC_1Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.1')))*2/(numEUs * .CrClk)
+	PS2_TC_2Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.2')))*2/(numEUs * .CrClk)
+	PS2_TC_3Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.3')))*2/(numEUs * .CrClk)
+	PS2_TC_4Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.4')))*2/(numEUs * .CrClk)		
 #GRF				
 	PS0_GRF	=	0	#no PS0 for GRF
         #planes=	planesfpu0+planesfpu1
