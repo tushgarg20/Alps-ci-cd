@@ -196,7 +196,7 @@ foreach my $frame (keys %consolidatedAlpsData) {
 			if ($count == 0) {push @orderArray, $stat;}
 		}
 		foreach my $clus (keys %frameDataTemp) {
-			print "CLUS $clus\n";	
+			#print "CLUS $clus\n";	
 			if ($clus =~ /FPS|^GT$|KEYSTATS|CDYN/i) {next;}
 			my %clusDataTemp = %{$frameDataTemp{$clus}};
 			push(@{$outputCsvFileHash{$clus}},$clusDataTemp{CDYN});
@@ -204,6 +204,8 @@ foreach my $frame (keys %consolidatedAlpsData) {
 			foreach my $unit (keys %clusDataTemp) {
 				if ($unit =~ /CDYN/) {next;}
 				my %unitDataTemp = %{$clusDataTemp{$unit}};
+                #print "Cluster is $clus Unit is $unit Cdyn is $unitDataTemp{CDYN}\n";
+                if($unit =~/^CPunit|^Repeater|^Assign|^CLKGLUE|^NONCLKGLUE|^SMALL|^DFX|^DOP/i) {$unit = $clus . '_' . $unit;} 
 				push(@{$outputCsvFileHash{$unit}},$unitDataTemp{CDYN});
 				if ($count ==0) {push @orderArray, $unit;}
 				foreach my $pState (keys %unitDataTemp) {
