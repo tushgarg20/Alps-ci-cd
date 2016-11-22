@@ -59,6 +59,9 @@ EU:
   GRF:
      PS2_GRF_READ: R * C
      PS2_GRF_WRITE: R * C
+  Accumulator:
+     PS2_Accumulator_READ: R * C
+     PS2_Accumulator_WRITE: R * C
 
   FPU0:
      PS0_EU_FPU0: R * C
@@ -189,8 +192,8 @@ EU:
       FPU1_sel_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   
   EM:
-      EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_int32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
   GA:
     PS0_GA: R * C
     PS1_GA: R * C
