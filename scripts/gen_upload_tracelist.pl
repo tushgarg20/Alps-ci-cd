@@ -52,10 +52,19 @@ foreach my $file (sort keys %yaml_list) {
     }
     if ($data[0] =~ s/GPGPU_apps_//) {
         $data[0] =~ s/_throughput_/-throughput-/;
+        $data[0] =~ s/intel_vpg_/intel-vpg-/;
         $data[0] =~ s/_video_/-video-/;
         $data[0] =~ s/_(\d+(-bdw)?)_(rkrn.*)_/_$3_$1_/;
         $data[0] =~ s/_(win-skl)_(rkrn.*)_/_$2_$1_/;
         $data[0] =~ s/(ci-main)/1_$1/;
+    }
+    if ($data[0] =~ /ogl_svp/) {
+        $data[0] =~ s/__/_/;
+        $data[0] =~ s/_(win-skl-gt2)_(f*)_/_$2_$1_/;
+    }
+     if ($data[0] =~ /ogles_daim/) {
+        $data[0] =~ s/__/_/;
+        $data[0] =~ s/_(win-skl)_(f*)_/_$2_$1_/;
     }
     if ($data[0] =~ /^apple/ || $data[0] =~ /bf3_p4/ || $data[0] =~ /fishie.25/ ||
         $data[0] =~ /bioshock/ || $data[0] =~ /car.chase/ || $data[0] =~ /ultra/) {
