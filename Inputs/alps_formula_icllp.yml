@@ -54,7 +54,10 @@ EU:
   TC:
     PS0_TC: R * C
     PS1_TC: R * C
-    PS2_TC: R * C
+    PS2_TC_1Dispatch: R * C
+    PS2_TC_2Dispatch: R * C
+    PS2_TC_3Dispatch: R * C
+    PS2_TC_4Dispatch: R * C
 
   GRF:
      PS2_GRF_READ: R * C

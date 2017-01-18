@@ -14,7 +14,8 @@
 	num_COLOR_CC	=	numPbs	
 	num_COLOR_DAPB	=	numPbs	
 	num_COLOR_RCPFE_Cache	=	numPbs	
-	num_COLOR_RCC_Cache	=	numPbs	
+	num_COLOR_RCC_Cache	=	numPbs
+    num_COLOR_RCC_Banks =   8	
 	num_COLOR_MSC_Cache	=	numPbs	
 	num_COLOR_DOP	=	numPbs	
 	num_COLOR_CLKGLUE	=	numPbs	
@@ -176,9 +177,9 @@
 				
 #RCC_CACHE				
 	#PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@ReadRequests')) / .Clk.num_COLOR_RCC	
-	PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@@ANY_READREQ@')) / .Clk.num_COLOR_RCC	
+	PS2_RCC_CACHE_READ	=	D(SUM('@ANY_RCC@@ANY_READREQ@')) / (num_COLOR_RCC_Banks * .Clk.num_COLOR_RCC)
 	#PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@WriteRequests')) / .Clk.num_COLOR_RCC	
-	PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@@ANY_WRITEREQ@')) / .Clk.num_COLOR_RCC	
+	PS2_RCC_CACHE_WRITE	=	D(SUM('@ANY_RCC@@ANY_WRITEREQ@')) /(num_COLOR_RCC_Banks * .Clk.num_COLOR_RCC)
 				
 #MSC				
 	PS0_MSC	=	(D(SUM('@ANY_MSC@@ANYIDLE@.CrClock')) / .Clk.num_COLOR_MSC) - .COLOR_DOP	
