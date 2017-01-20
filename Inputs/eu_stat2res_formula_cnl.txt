@@ -350,13 +350,13 @@
 #GA				
 	PS0_GA	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_TCGA_DOP - PS1_EU_TCGA_DOP	
 	PS1_GA	=	0	#GA does not have a stall
-	PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock'))*2 / (numEUs * .CrClk)	
 	PS2_GA_EM2Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_EM3Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_FPU1Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_FPU2Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_FPU3Src_SinglePipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM1Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM1Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_1\.CrClock'))*2 / (numEUs * .CrClk)	
 	PS2_GA_EM1Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_EM1Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	#PLN instructions take 2 clocks to complete
 	PS2_GA_EM2Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPE@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
