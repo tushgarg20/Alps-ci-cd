@@ -1329,6 +1329,8 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
     neg_res_states_tar=[]
     undef_res_src=[]
     undef_res_tar=[]
+    check_one={}
+    check_two={}
     given_units = re.split(',',unit_list)
     FPS_of_resdir1=res_dict1.get('FPS')
     FPS_of_resdir2=res_dict2.get('FPS')
@@ -1356,8 +1358,12 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
                                 neg_res_states_tar.append(source_pstate)
                                 neg_res_state_tar[source_pstate]=res_value_tar
                             if res_value_src > 0.0 and res_value_tar> 0.0 and res_dict1[source_pstate][0] != 'n/a' and res_dict2[source_pstate][0] != 'n/a':
-                                res_diff= scal_fact*(res_value_tar/res_value_src)*(float(FPS_of_resdir2[0])/float(FPS_of_resdir1[0]))
-                                print((source_pstate+",\t"+str(res_value_src)+",\t"+str(res_value_tar)+",\t"+str(res_diff)).expandtabs(sw),file=lf)
+                                res_diff= round(scal_fact*(res_value_tar/res_value_src),2)
+                                check_one[source_pstate]=[res_value_src,res_value_tar,res_diff]
+                            if res_value_src > 0.0 and res_value_tar> 0.0 and res_dict1[source_pstate][0] != 'n/a' and res_dict2[source_pstate][0] != 'n/a':
+                                res_diff= round(scal_fact*(res_value_tar/res_value_src)*(float(FPS_of_resdir2[0])/float(FPS_of_resdir1[0])),2)
+                                check_two[source_pstate]=[res_value_src,res_value_tar,res_diff]
+                                #print((source_pstate+",\t"+str(res_value_src)+",\t"+str(res_value_tar)+",\t"+str(res_diff)).expandtabs(sw),file=lf)
                         else:
                             if source_pstate not in list_of_only_src_states:
                                 list_of_only_src_states.append(source_pstate)
@@ -1432,7 +1438,20 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
                         res_lt_xstates_tar[unit[1]]=fin_res
                     res1=res2=res3=0
                     temp.clear()
-    
+    print ("",file=lf)
+    print ("######### Check 1: Ratio between target residncy and source residency #########",file=lf)
+    print (("State,\tValue").expandtabs(sw),file=lf)
+    for key, value in check_one.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+    print ("",file=lf)
+
+    print ("",file=lf)
+    print ("######### Check 2: Ratio between target residncy and source residency when FPS is considered #########",file=lf)
+    print (("State,\tValue").expandtabs(sw),file=lf)
+    for key, value in check_two.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+    print ("",file=lf) 
+  
     print ("",file=lf)
     print ("######### Source power states with negative residencies #########",file=lf)
     print (("State,\tValue").expandtabs(sw),file=lf)
