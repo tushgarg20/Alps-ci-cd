@@ -14,8 +14,7 @@ import logging.handlers
 import os
 from pathlib import Path
 import time
-
-
+from collections import OrderedDict
 
 ## Finds the slope and intercept for the given data_points
 def get_linest_coeff(data_points):
@@ -120,9 +119,9 @@ def compare_gc(gc_dict, src_gen, target_gen, scaling_factor, tolerance, log_dir,
 
     log_f = "compare_gc-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
     lf = open(log_dir+"/"+log_f,'w')
-    print ('########### Check1: Units for which '+abs_path+':gate count differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
+    print ('########### Check 1: Units for which '+abs_path+':Design DB gate count differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
     print ("",file=lf)
-    print (('Unit,\tCluster,\tGC:'+str(src_gen)+',\tGC:'+str(target_gen)+',\tDiff').expandtabs(usw), file = lf)
+    print (('Unit,\tCluster,\t'+str(src_gen)+',\t'+str(target_gen)+',\tRealtive_diff'+',\tAbsolute_diff').expandtabs(usw), file = lf)
     
     for cluster in gc_dict[sgen].keys():
         gc_src_sum = 0.0
@@ -144,6 +143,7 @@ def compare_gc(gc_dict, src_gen, target_gen, scaling_factor, tolerance, log_dir,
                     tar_gc_zero.append(units)
                 if src_gc != 0.0 and tgt_gc != 0.0:
                     pstate_gc_diff = round((((sf*tgt_gc)/src_gc)-1)*100,1)
+                    abs_diff = round((tgt_gc - src_gc),1)
                     gc_src_sum = round(gc_src_sum+src_gc,1)
                     gc_tgt_sum = round(gc_tgt_sum+tgt_gc,1)
                     if units in xinfra_states:
@@ -154,59 +154,60 @@ def compare_gc(gc_dict, src_gen, target_gen, scaling_factor, tolerance, log_dir,
                     ratio_diff_bin[cluster] = [src_ratio,tgt_ratio] 
                     
                     cluster_gc_diff = round((((sf*gc_tgt_sum)/gc_src_sum)-1)*100,1)
+                    abs_diff1 = round((gc_tgt_sum-gc_src_sum),2)
                         
                     if tolerance < 0.0:
                         # Check if the difference in RefGC is more than tolerance.
                         if cluster_gc_diff < tolerance:
-                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff]
+                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff,abs_diff1]
 
                         if pstate_gc_diff < tolerance:
                             if tolerance >= pstate_gc_diff >= (tolerance+(bin_range*1.0)):
-                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) >= pstate_gc_diff >= (tolerance+(bin_range*2.0)):
-                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) >= pstate_gc_diff >= (tolerance+(bin_range*3.0)):
-                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) >= pstate_gc_diff >= (tolerance+(bin_range*4.0)):
-                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) >= pstate_gc_diff >= (tolerance+(bin_range*5.0)):
                                 if any(x in units for x in xinfra_states):
                                     continue
-                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             else:
                                 if pstate_gc_diff < -100.0:
-                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                     else:
                         if cluster_gc_diff > tolerance:
-                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff]
+                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff,abs_diff1]
 
                         if pstate_gc_diff > tolerance:
                             if tolerance <= pstate_gc_diff <= (tolerance+(bin_range*1.0)):
-                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) <= pstate_gc_diff <= (tolerance+(bin_range*2.0)):
-                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) <= pstate_gc_diff <= (tolerance+(bin_range*3.0)):
-                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) <= pstate_gc_diff <= (tolerance+(bin_range*4.0)):
-                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) <= pstate_gc_diff <= (tolerance+(bin_range*5.0)):
                                 if any(x in units for x in xinfra_states):
                                     continue
-                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             else:
                                 if pstate_gc_diff > 100.0:
-                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
     list_dict=[bin_one,bin_two,bin_three,bin_four,bin_five]
     index = 1
@@ -214,30 +215,33 @@ def compare_gc(gc_dict, src_gen, target_gen, scaling_factor, tolerance, log_dir,
         temp = round(tolerance,2)
         temp2= temp+bin_range
         print ("",file=lf)
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][4],reverse = True ))
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
-        for key, value in value.items():
-            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%").expandtabs(usw),file=lf)
+        for key, value in d_sorted_by_value.items():
+            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%"+",\t"+str(value[4])).expandtabs(usw),file=lf)
         tolerance=tolerance+bin_range
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%").expandtabs(usw),file=lf) 
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][4],reverse = True ))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%"+",\t"+str(value[4])).expandtabs(usw),file=lf) 
 
     print ("",file=lf)
-    print ('########### Check2: Clusters for which '+abs_path+':gate count differ by more than tolerance of '+str(tol)+'% ##########', file=lf)
+    print ('########### Check 2: Clusters for which '+abs_path+':gate count differ by more than tolerance of '+str(tol)+'% ##########', file=lf)
     print ("",file=lf)
-    print (('Cluster,\tCluster GC:'+str(src_gen)+',\tCluster GC:'+str(target_gen)+',\tDiff').expandtabs(usw), file = lf)
-    for key, value in cluster_gc_diff_bin.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)
+    print (('Cluster,\tCluster GC:'+str(src_gen)+',\tCluster GC:'+str(target_gen)+',\tRelative_diff'+',\tAbsolute_diff').expandtabs(sw), file = lf)
+    d_sorted_by_value = OrderedDict(sorted(cluster_gc_diff_bin.items(), key=lambda x: x[1][3],reverse = True ))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
 
     print ("",file=lf)
-    print ('########### Check3: Clusters for which '+abs_path+': ratio between non-infra units gate count to total cluster gate count ##########', file=lf)
+    print ('########### Check 3: Clusters for which '+abs_path+': ratio between non-infra units gate count to total cluster gate count ##########', file=lf)
     print ("",file=lf)
-    print (('Cluster,\tSource_gen_ratio:'+str(sgen)+',\tTarget_gen_ratio:'+str(tgen)).expandtabs(usw), file = lf)
+    print (('Cluster,\tSource_gen_ratio:'+str(sgen)+',\tTarget_gen_ratio:'+str(tgen)).expandtabs(sw), file = lf)
     for key, value in ratio_diff_bin.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])).expandtabs(usw),file=lf)
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])).expandtabs(sw),file=lf)
         
     print ("",file=lf)
     print ("########## "+src_gen+" units with Design DB GC 0.0 ##########",file=lf)
@@ -283,9 +287,9 @@ def compare_gc_files(gc_dict1, gc_dict2, src_gen, target_gen, scaling_factor, to
 
     log_f = "compare_gc-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
     lf = open(log_dir+"/"+log_f,'w')
-    print ('########### Units for which '+abs_path1+' and '+abs_path2+':gate counts differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
-    #print ('Unit,Cluster,GC:'+str(src_gen)+',GC:'+str(target_gen)+',Diff', file = lf)
-    print (('Unit,\tCluster,\tGC:'+str(src_gen)+',\tGC:'+str(target_gen)+',\tDiff').expandtabs(usw), file = lf)
+    print ('########### Units for which '+abs_path1+' and '+abs_path2+':Design DB gate counts differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
+    print ("",file =lf)
+    print (('Unit,\tCluster,\t'+str(src_gen)+',\t'+str(target_gen)+',\tRealtive_diff'+',\tAbsolute_diff').expandtabs(usw), file = lf)
     
     for cluster in gc_dict1[sgen].keys():
         gc_src_sum = 0.0
@@ -306,6 +310,7 @@ def compare_gc_files(gc_dict1, gc_dict2, src_gen, target_gen, scaling_factor, to
                     tar_gc_zero.append(units)
                 if src_gc != 0.0 and tgt_gc != 0.0:
                     pstate_gc_diff = round((((sf*tgt_gc)/src_gc)-1)*100,1)
+                    abs_diff = round((tgt_gc - src_gc),1)
                     gc_src_sum = round(gc_src_sum+src_gc,1)
                     gc_tgt_sum = round(gc_tgt_sum+tgt_gc,1)
                     if units in xinfra_states:
@@ -316,59 +321,60 @@ def compare_gc_files(gc_dict1, gc_dict2, src_gen, target_gen, scaling_factor, to
                     ratio_diff_bin[cluster] = [src_ratio,tgt_ratio] 
                     
                     cluster_gc_diff = round((((sf*gc_tgt_sum)/gc_src_sum)-1)*100,1)
+                    abs_diff1 = round((gc_tgt_sum - gc_src_sum),2)
 
                     if tolerance < 0.0:
                         if cluster_gc_diff < tolerance:
-                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff]
+                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff,abs_diff1]
 
                         # Check if the difference in GC is more than tolerance.
                         if pstate_gc_diff < tolerance:
                             if tolerance >= pstate_gc_diff >= (tolerance+(bin_range*1.0)):
-                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) >= pstate_gc_diff >= (tolerance+(bin_range*2.0)):
-                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) >= pstate_gc_diff >= (tolerance+(bin_range*3.0)):
-                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) >= pstate_gc_diff >= (tolerance+(bin_range*4.0)):
-                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) >= pstate_gc_diff >= (tolerance+(bin_range*5.0)):
                                 if any(x in units for x in xinfra_states):
                                     continue
-                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             else:
                                 if pstate_gc_diff < -100.0:
-                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                     else:
                         if cluster_gc_diff > tolerance:
-                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff]
+                            cluster_gc_diff_bin[cluster]=[gc_src_sum,gc_tgt_sum,cluster_gc_diff,abs_diff1]
 
                         if pstate_gc_diff > tolerance:
                             if tolerance <= pstate_gc_diff <= (tolerance+(bin_range*1.0)):
-                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_one[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) <= pstate_gc_diff <= (tolerance+(bin_range*2.0)):
-                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_two[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) <= pstate_gc_diff <= (tolerance+(bin_range*3.0)):
-                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_three[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) <= pstate_gc_diff <= (tolerance+(bin_range*4.0)):
-                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_four[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) <= pstate_gc_diff <= (tolerance+(bin_range*5.0)):
                                 if any(x in units for x in xinfra_states):
                                     continue
-                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                bin_five[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
                             else:
                                 if pstate_gc_diff > 100.0:
-                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff]
+                                    bin_six[units]=[cluster, src_gc,tgt_gc,pstate_gc_diff,abs_diff]
 
     list_dict=[bin_one,bin_two,bin_three,bin_four,bin_five]
     index = 1
@@ -376,30 +382,33 @@ def compare_gc_files(gc_dict1, gc_dict2, src_gen, target_gen, scaling_factor, to
         temp = round(tolerance,2)
         temp2=round(temp+bin_range,2)
         print ("",file=lf)
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][4],reverse = True ))
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
-        for key, value in value.items():
-            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%").expandtabs(usw),file=lf)
+        for key, value in d_sorted_by_value.items():
+            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%"+",\t"+str(value[4])).expandtabs(usw),file=lf)
         tolerance=round(tolerance+bin_range,2)
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%").expandtabs(usw),file=lf) 
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][4],reverse = True ))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+"%"+",\t"+str(value[4])).expandtabs(usw),file=lf)
 
     print ("",file=lf)
-    print ('########### Check2: Clusters for which '+abs_path1+' and '+abs_path2+':gate counts differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
+    print ('########### Check2: Clusters for which '+abs_path1+' and '+abs_path2+':gate counts differ by more than tolerance of '+str(tol)+'% ##########', file=lf)
     print ("",file=lf)
-    print (('Cluster,\tCluster GC:'+str(src_gen)+',\tCluster GC:'+str(target_gen)+',\tDiff').expandtabs(usw), file = lf)
-    for key, value in cluster_gc_diff_bin.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)
+    print (('Cluster,\tCluster GC:'+str(src_gen)+',\tCluster GC:'+str(target_gen)+',\tRelative_diff'+',\tAbsolute_diff').expandtabs(sw), file = lf)
+    d_sorted_by_value = OrderedDict(sorted(cluster_gc_diff_bin.items(), key=lambda x: x[1][3],reverse = True ))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
 
     print ("",file=lf)
     print ('########### Check3: Clusters for which '+abs_path+'and '+abs_path2+': ratio between non-infra units gate count to total cluster gate count ##########', file=lf)
     print ("",file=lf)
-    print (('Cluster,\tSource_gen_ratio:'+str(sgen)+',\tTarget_gen_ratio:'+str(tgen)).expandtabs(usw), file = lf)
+    print (('Cluster,\tSource_gen_ratio:'+str(sgen)+',\tTarget_gen_ratio:'+str(tgen)).expandtabs(sw), file = lf)
     for key, value in ratio_diff_bin.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])).expandtabs(usw),file=lf)
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])).expandtabs(sw),file=lf)
         
     print ("",file=lf)
     print ("########## "+abs_path1+":"+src_gen+" units with Design DB GC 0.0 ##########",file=lf)
@@ -442,10 +451,10 @@ def compare_cdyn_Refgc(cdyn_dict, src_gen_step, target_gen_step, scaling_factor,
         bin_range=-round((100.0+tolerance)/bin_count,2)
     infra_states=['Assign','CLKGLUE','DOP','DFX','SMALL','NONCLKGLUE','CPunit','Repeater']
 
-    log_f = "compare_cdyn_gc-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
+    log_f = "compare_cdyn_Refgc-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
     lf = open(log_dir+"/"+log_f,'w')
     print ('########### Units for which '+abs_path+':RefGC  differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
-    print (('Unit,\tRefGC: '+str(src_gen_step)+',\tRefGC: '+str(target_gen_step)+',\tDiff').expandtabs(usw), file = lf)
+    print (('Unit,\tGC:'+str(src_gen_step)+',\tGC:'+str(target_gen_step)+',\tRelative_diff'+',\tAbsolute_diff').expandtabs(usw), file = lf)
 
     for src_pstate in  cdyn_dict[sgen][sstep].keys():
         if any(x in src_pstate for x in infra_states):
@@ -464,48 +473,49 @@ def compare_cdyn_Refgc(cdyn_dict, src_gen_step, target_gen_step, scaling_factor,
                     tar_gc_zero.append(unit_name[1])
                 if src_pstate_cdyn_gc != 0.0 and tgt_pstate_cdyn_gc != 0.0:
                     pstate_cdyn_diff = round((((sf*tgt_pstate_cdyn_gc)/src_pstate_cdyn_gc)-1)*100,1)
+                    abs_diff = round((tgt_pstate_cdyn_gc - src_pstate_cdyn_gc),1)
                     if tolerance < 0.0:
                         # Check if the difference in RefGC is more than tolerance.
                         if pstate_cdyn_diff < tolerance:
                             if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                                bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                                bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                                bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                                bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                                bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             else:
                                 if pstate_cdyn_diff < -100.0:
-                                    bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                     else:
                         if pstate_cdyn_diff > tolerance:
                             if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                                bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                                bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                                bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                                bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                                bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                             else:
                                 if pstate_cdyn_diff > 100.0:
-                                    bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
             else:
                 list_of_xstates.append(unit_name[1])
 
@@ -524,17 +534,19 @@ def compare_cdyn_Refgc(cdyn_dict, src_gen_step, target_gen_step, scaling_factor,
         temp2= round(temp+bin_range,2)
         print ("",file=lf)
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
-        for key, value in value.items():
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][3],reverse = True ))
+        for key, value in d_sorted_by_value .items():
             new_key = re.split('PS0_', key)
-            print ((new_key[1]+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)
+            print ((new_key[1]+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(usw),file=lf)
         tolerance=tolerance+bin_range
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][3],reverse = True ))
+    for key, value in d_sorted_by_value.items():
         new_key = re.split('PS0_', key)
-        print ((new_key[1]+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)                    
+        print ((new_key[1]+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(usw),file=lf)                    
         
     print ("",file=lf)
     print ("########## "+src_gen_step+" units with RefGC 0.0 ##########",file=lf)
@@ -590,7 +602,7 @@ def compare_cdyn_Refgc_files(cdyn_dict1,cdyn_dict2,src_gen_step, target_gen_step
     lf = open(log_dir+"/"+log_f,'w')
 
     print ('########### Units for which '+abs_path1+':RefGC and '+abs_path2+':RefGC differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
-    print (('Unit,\tRefGC: '+str(src_gen_step)+',\tRefGC: '+str(target_gen_step)+',\tDiff').expandtabs(usw), file = lf)
+    print (('Unit,\tGC:'+str(src_gen_step)+',\tGC:'+str(target_gen_step)+',\tRelative_diff'+',\tAbsolute_diff').expandtabs(usw), file = lf)
 
     for src_pstate in  cdyn_dict1[sgen][sstep].keys():
         if any(x in src_pstate for x in infra_states):
@@ -610,47 +622,48 @@ def compare_cdyn_Refgc_files(cdyn_dict1,cdyn_dict2,src_gen_step, target_gen_step
                         tar_gc_zero.append(unit_name[1])
                     if src_pstate_cdyn_gc != 0.0 and tgt_pstate_cdyn_gc != 0.0:
                         pstate_cdyn_diff = round((((sf*tgt_pstate_cdyn_gc)/src_pstate_cdyn_gc)-1)*100,1)
+                        abs_diff=round((tgt_pstate_cdyn_gc-src_pstate_cdyn_gc),1)
                         if tolerance < 0.0:
                             if pstate_cdyn_diff < tolerance:
                                 if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                                    bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                                    bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                                    bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                                    bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                                    bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 else:
                                     if pstate_cdyn_diff < -100.0:
-                                        bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                        bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                         else:
                             if pstate_cdyn_diff > tolerance:
                                 if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                                    bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_one[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                                    bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_two[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                                    bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_three[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                                    bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_four[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                                    bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                    bin_five[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
 
                                 else:
                                     if pstate_cdyn_diff > 100.0:
-                                        bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff]
+                                        bin_six[src_pstate]=[src_pstate_cdyn_gc,tgt_pstate_cdyn_gc,pstate_cdyn_diff,abs_diff]
                 else:
                     list_of_xstates.append(unit_name[1])
 
@@ -669,17 +682,19 @@ def compare_cdyn_Refgc_files(cdyn_dict1,cdyn_dict2,src_gen_step, target_gen_step
         temp2= round(temp+bin_range,2)
         print ("",file=lf)
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][3],reverse = True ))
         for key, value in value.items():
             new_key = re.split('PS0_',key)
-            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)
+            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(usw),file=lf)
         tolerance=tolerance+bin_range
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][3],reverse = True ))
+    for key, value in d_sorted_by_value.items():
         new_key = re.split('PS0_',key)
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(usw),file=lf)
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(usw),file=lf)
     
     print ("",file=lf)
     print ("########## "+abs_path1+":"+src_gen_step+" units with RefGC 0.0 ##########",file=lf)
@@ -731,7 +746,8 @@ def compare_cdyn_wt(cdyn_dict, src_gen_step, target_gen_step, scaling_factor, to
     log_f = "compare_cdyn_wt-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
     lf = open(log_dir+"/"+log_f,'w')
     print ('########### Power states for which '+abs_path+':Cdyn weights differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
-    print (('Power State,\tCdyn Weight: '+str(src_gen_step)+',\tCdyn Weight: '+str(target_gen_step)+',\tDiff').expandtabs(sw), file = lf)
+    print ("",file=lf)
+    print (('Power State,\t').expandtabs(sw1)+('Cdyn Weight: '+str(src_gen_step)+',\tCdyn Weight: '+str(target_gen_step)+',\tRelative Diff'+',\tAbsolute Diff').expandtabs(sw), file = lf)
 
     for src_pstate in  cdyn_dict[sgen][sstep].keys():
         src_pstate_cdyn_wt = round(float(cdyn_dict[sgen][sstep][src_pstate][0]),2) # Replaced 'Weight by 0
@@ -746,48 +762,49 @@ def compare_cdyn_wt(cdyn_dict, src_gen_step, target_gen_step, scaling_factor, to
             if (tgt_pstate_cdyn_wt == 0.0):
                 tar_wt_zero.append(src_pstate)
             if src_pstate_cdyn_wt != 0.0 and tgt_pstate_cdyn_wt != 0.0:
-                pstate_cdyn_diff = round((((sf*tgt_pstate_cdyn_wt)/src_pstate_cdyn_wt)-1)*100,1)
+                pstate_cdyn_diff = round(((((sf*tgt_pstate_cdyn_wt)/src_pstate_cdyn_wt)-1)*100),1)
+                abs_diff = round((tgt_pstate_cdyn_wt - src_pstate_cdyn_wt),2)
                 if tolerance < 0.0:
                     if pstate_cdyn_diff < tolerance:
                         if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         else:
                             if pstate_cdyn_diff < -100.0:
-                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                 else:
                     if pstate_cdyn_diff > tolerance:
                         if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         else:
                             if pstate_cdyn_diff > 100.0:
-                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
         else:
             continue
 
@@ -846,50 +863,52 @@ def compare_cdyn_wt(cdyn_dict, src_gen_step, target_gen_step, scaling_factor, to
 
             tar_matchObj = re.search('_(\d+)%', temp_tar_pstate)
             tar_x_val = float(tar_matchObj.group(1))/100
-            tar_new_weight = round(float((slope*tar_x_val+intercept)),5)
-            tar_old_weight = round(float(cdyn_dict[tgen][tstep][temp_tar_pstate][0]),5)
-            pstate_cdyn_diff = round((((sf*tar_old_weight)/tar_new_weight)-1)*100,2)
+            tar_new_weight = round(float((slope*tar_x_val+intercept)),2)
+            tar_old_weight = round(float(cdyn_dict[tgen][tstep][temp_tar_pstate][0]),2)
+            pstate_cdyn_diff = round((((sf*tar_old_weight)/tar_new_weight)-1)*100,1)
+            abs_diff= round((tar_old_weight - tar_new_weight),2)
             if tolerance < 0.0:
                 if pstate_cdyn_diff < tolerance:
                     if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                        bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_one[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
+                        #[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                        bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_two[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                        bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_three[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                        bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_four[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                        bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_five[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     else:
                         if pstate_cdyn_diff < -100.0:
-                            bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_six[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
             else:
                 if pstate_cdyn_diff > tolerance:
                     if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                        bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_one[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                        bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_two[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                        bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_three[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                        bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_four[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                        bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_five[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     else:
                         if pstate_cdyn_diff > 100.0:
-                            bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]     
+                            bin_six[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
             temp_src_pstate.clear()
             data_points.clear()
@@ -910,24 +929,25 @@ def compare_cdyn_wt(cdyn_dict, src_gen_step, target_gen_step, scaling_factor, to
             src_pstate_new= re.split('_(\d+)%', src_pstate)
             if src_pstate_new[0] not in list_of_comm_states:
                 list_of_xstates.append(src_pstate)
-        
-    
+
     list_dict=[bin_one,bin_two,bin_three,bin_four,bin_five]
     index = 1
     for value in list_dict:
         temp = round(tolerance,2)
-        temp2= round(temp+bin_range),2
+        temp2= round((temp+bin_range),2)
         print ("",file=lf)
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
-        for key, value in value.items():
-            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][3],reverse = True ))
+        for key, value in d_sorted_by_value.items():
+            print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
         tolerance=tolerance+bin_range
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][3],reverse = True))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
     
     print ("",file=lf)
     print ("########## "+src_gen_step+" states with weights 0.0 ##########",file=lf)
@@ -937,11 +957,6 @@ def compare_cdyn_wt(cdyn_dict, src_gen_step, target_gen_step, scaling_factor, to
     print ("########## "+target_gen_step+" states with weights 0.0 ##########",file=lf)
     for states in tar_wt_zero:
         print(states, file =lf)
-
-    '''print("",file=lf)
-    print("#####Common states#####", file=lf)
-    for states in list_of_comm_states:
-        print(states,file=lf)'''
 
     print ("",file=lf)
     print ("########## "+target_gen_step+" states not in "+src_gen_step+" ##########", file=lf)
@@ -1001,7 +1016,9 @@ def compare_cdyn_csv(cdyn_dict1, cdyn_dict2, src_gen_step, target_gen_step,scali
     lf = open(log_dir+"/"+log_f,'w')
 
     print ('########### Power states for which '+abs_path1+':Cdyn weights and '+abs_path2+':Cdyn weights differ by more than tolerance of '+str(tolerance)+'% ##########', file=lf)
-    print (('Power State,\tCdyn Weight: '+str(src_gen_step)+',\tCdyn Weight: '+str(target_gen_step)+',\tDiff').expandtabs(sw), file = lf)
+    print ("",file=lf)
+    print (('Power State,\t').expandtabs(sw1)+('Cdyn Weight: '+str(src_gen_step)+',\tCdyn Weight: '+str(target_gen_step)+',\tRelative Diff'+',\tAbsolute Diff').expandtabs(sw), file = lf)
+    #print (('Power State,\t').expandtabs(sw1)+('Cdyn Weight: '+str(src_gen_step)+',\tCdyn Weight: '+str(target_gen_step)+',\tDiff').expandtabs(sw), file = lf)
 
     for src_pstate in  cdyn_dict1[sgen][sstep].keys():
         src_pstate_cdyn_wt = round(float(cdyn_dict1[sgen][sstep][src_pstate][0]),2) # Replaced 'Weight by 0
@@ -1017,47 +1034,48 @@ def compare_cdyn_csv(cdyn_dict1, cdyn_dict2, src_gen_step, target_gen_step,scali
                 tar_wt_zero.append(src_pstate)
             if src_pstate_cdyn_wt != 0.0 and tgt_pstate_cdyn_wt != 0.0:
                 pstate_cdyn_diff = round((((sf*tgt_pstate_cdyn_wt)/src_pstate_cdyn_wt)-1)*100,1)
+                abs_diff = round((tgt_pstate_cdyn_wt - src_pstate_cdyn_wt),2)
                 if tolerance < 0.0:
                     if pstate_cdyn_diff < tolerance:
                         if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         else:
                             if pstate_cdyn_diff < -100.0:
-                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                 else:
                     if pstate_cdyn_diff > tolerance:
                         if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
 
                         else:
                             if pstate_cdyn_diff > 100.0:
-                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                                bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff,abs_diff]
         else:
             continue
 
@@ -1118,47 +1136,48 @@ def compare_cdyn_csv(cdyn_dict1, cdyn_dict2, src_gen_step, target_gen_step,scali
             tar_new_weight = round(float((slope*tar_x_val+intercept)),2)
             tar_old_weight = round(float(cdyn_dict2[tgen][tstep][temp_tar_pstate][0]),2)
             pstate_cdyn_diff = round((((sf*tar_old_weight)/tar_new_weight)-1)*100,1)
+            abs_diff= round((tar_old_weight - tar_new_weight),2)
             if tolerance < 0.0:
                 if pstate_cdyn_diff < tolerance:
                     if tolerance >= pstate_cdyn_diff >= (tolerance+(bin_range*1.0)):
-                        bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_one[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*1.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*2.0)):
-                        bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_two[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*2.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*3.0)):
-                        bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_three[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*3.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*4.0)):
-                        bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_four[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*4.0)) >= pstate_cdyn_diff >= (tolerance+(bin_range*5.0)):
-                        bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_five[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     else:
                         if pstate_cdyn_diff < -100.0:
-                            bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_six[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
             else:
                 if pstate_cdyn_diff > tolerance:
                     if tolerance <= pstate_cdyn_diff <= (tolerance+(bin_range*1.0)):
-                        bin_one[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_one[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*1.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*2.0)):
-                        bin_two[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_two[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*2.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*3.0)):
-                        bin_three[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_three[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*3.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*4.0)):
-                        bin_four[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_four[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     elif (tolerance+(bin_range*4.0)) <= pstate_cdyn_diff <= (tolerance+(bin_range*5.0)):
-                        bin_five[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                        bin_five[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
                     else:
                         if pstate_cdyn_diff > 100.0:
-                            bin_six[src_pstate]=[src_pstate_cdyn_wt,tgt_pstate_cdyn_wt,pstate_cdyn_diff]
+                            bin_six[temp_tar_pstate]=[tar_new_weight,tar_old_weight,pstate_cdyn_diff,abs_diff]
 
             temp_src_pstate.clear()
             data_points.clear()
@@ -1189,15 +1208,17 @@ def compare_cdyn_csv(cdyn_dict1, cdyn_dict2, src_gen_step, target_gen_step,scali
         temp2= round(temp+bin_range,2)
         print ("",file=lf)
         print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
-        for key, value in value.items():
-            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+        d_sorted_by_value = OrderedDict(sorted(value.items(), key=lambda x: x[1][3],reverse = True ))
+        for key, value in d_sorted_by_value.items():
+            print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
         tolerance=tolerance+bin_range
         index=index+1
 
     print ("",file=lf)
     print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
-    for key, value in bin_six.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+    d_sorted_by_value = OrderedDict(sorted(bin_six.items(), key=lambda x: x[1][3],reverse = True ))
+    for key, value in d_sorted_by_value.items():
+        print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%"+",\t"+str(value[3])).expandtabs(sw),file=lf)
 
     print ("",file=lf)
     print ("########## "+abs_path1+":"+src_gen_step+" states with weights 0.0 ##########",file=lf)
@@ -1255,7 +1276,6 @@ def sum_of_residencies(res_dict, neg_res_states, undef_res):
                         continue
                     res2 = float(res_dict['PS1_'+unit[1]][0])
                 for ps2_states in res_dict.keys():
-                    res3=0
                     if ps2_states.startswith('PS2'):
                         if ps2_states not in neg_res_states:
                             if '_'+unit[1]+'_' in ps2_states:
@@ -1281,7 +1301,7 @@ def residency_check(res_dict,lf):
     res_lt_xstates = {}
     res_state_values=[]
     neg_res_state={}
-    undef_res=[]
+    undef_res=[] 
     for states in res_dict.keys():
         if states.startswith('PS'):
             if res_dict[states][0] == 'n/a':
@@ -1296,9 +1316,9 @@ def residency_check(res_dict,lf):
 
     print ("######### Power states with negative residencies #########",file=lf)
     print("",file=lf)
-    print (("States,\tValue").expandtabs(sw),file=lf)
+    print (("States,\tValue").expandtabs(sw1),file=lf)
     for key, value in neg_res_state.items():
-        print((key+",\t"+str(value)).expandtabs(sw),file=lf)  
+        print((key+",\t"+str(value)).expandtabs(sw1),file=lf)  
 
     print ("",file=lf)
     print ("########## Units for which sum of residencies more than 1.0 ##########",file=lf)
@@ -1334,7 +1354,7 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
     given_units = re.split(',',unit_list)
     FPS_of_resdir1=res_dict1.get('FPS')
     FPS_of_resdir2=res_dict2.get('FPS')
-    print (("State,\tSource_reidency,\tTarget_residency,\tRatio").expandtabs(sw),file=lf)
+    print (('State,\t').expandtabs(sw1)+('Source_reidency,\tTarget_residency,\tRatio').expandtabs(sw),file=lf)
     print ("", file=lf)
     for state in res_dict1.keys():
         if state.startswith('PS0'):
@@ -1392,7 +1412,6 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
                             continue
                         res2 = float(res_dict1['PS1_'+unit[1]][0])
                     for ps2_states in res_dict1.keys():
-                        res3=0
                         if ps2_states.startswith('PS2'):
                             if ps2_states not in neg_res_states_src:
                                 if '_'+unit[1]+'_' in ps2_states:
@@ -1422,7 +1441,6 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
                             continue
                         res2 = float(res_dict2['PS1_'+unit[1]][0])
                     for ps2_states in res_dict2.keys():
-                        res3=0
                         if ps2_states.startswith('PS2'):
                             if ps2_states not in neg_res_states_tar:
                                 if '_'+unit[1]+'_' in ps2_states:
@@ -1440,28 +1458,27 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
                     temp.clear()
     print ("",file=lf)
     print ("######### Check 1: Ratio between target residncy and source residency #########",file=lf)
-    print (("State,\tValue").expandtabs(sw),file=lf)
     for key, value in check_one.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+        print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])).expandtabs(sw),file=lf)
     print ("",file=lf)
 
     print ("",file=lf)
     print ("######### Check 2: Ratio between target residncy and source residency when FPS is considered #########",file=lf)
-    print (("State,\tValue").expandtabs(sw),file=lf)
     for key, value in check_two.items():
-        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+"%").expandtabs(sw),file=lf)
+        print ((key+",\t").expandtabs(sw1)+(str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])).expandtabs(sw),file=lf)
     print ("",file=lf) 
   
     print ("",file=lf)
     print ("######### Source power states with negative residencies #########",file=lf)
-    print (("State,\tValue").expandtabs(sw),file=lf)
+    print (("State,\tValue").expandtabs(sw1),file=lf)
     for key, value in neg_res_state_src.items():
-        print((key+",\t"+str(value)).expandtabs(sw),file=lf)
+        print((key+",\t"+str(value)).expandtabs(sw1),file=lf)
     print ("",file=lf)
 
     print ("######### Target power states with negative residencies #########",file=lf)
+    print (("State,\tValue").expandtabs(sw1),file=lf)
     for key, value in neg_res_state_tar.items():
-        print(key+","+str(value),file=lf)
+        print((key+",\t"+str(value)).expandtabs(sw1),file=lf)
     print("",file=lf)
 
 
@@ -1510,6 +1527,86 @@ def residency_compare(res_dict1, res_dict2, scal_fact, unit_list, lf):
         print (states, file=lf)
     print("",file=lf)
 
+def idle_residencies(res_dict, unit_list, lf):
+    
+    given_units = re.split(',',unit_list)
+
+    neg_res_states = []
+    res_xstates = {}
+    res_lt_xstates = {}
+    res_state_values=[]
+    neg_res_state={}
+    undef_res=[]
+
+    for state in res_dict.keys():
+        if state.startswith('PS0'):
+            unit=re.split('PS0_', state)
+            if unit[1] in given_units:
+                for states in res_dict.keys():
+                    if ('_'+unit[1]+'_' in states and states.startswith('PS2')) or ('_'+unit[1] in states and states.startswith('PS0')) or ('_'+unit[1] in states and states.startswith('PS1')):
+                        if states.startswith('PS'):
+                            if res_dict[states][0] == 'n/a':
+                                undef_res.append(states)
+                                continue
+                            res_value = round(float(res_dict[states][0]),2)
+                            if res_value < 0.0:
+                                neg_res_states.append(states)
+                                neg_res_state[states]=res_value
+
+    res1=0.0
+    res2=0.0
+    res3=0.0
+    res_xstates_src={}
+    res_lt_xstates_src={}
+    res_xstates_tar={}
+    res_lt_xstates_tar={}
+    res_ratio={}
+    temp=[]
+    for source_pstate in res_dict.keys():
+        if source_pstate.startswith('PS0'):
+            if source_pstate not in neg_res_states:
+                unit=re.split('PS0_', source_pstate)
+                if unit[1] in given_units:
+                    if res_dict[source_pstate][0] == 'n/a':
+                        continue
+                    res1=float(res_dict[source_pstate][0])
+                    if 'PS1_'+unit[1] in res_dict.keys():
+                        if res_dict['PS1_'+unit[1]][0] == 'n/a':
+                            continue
+                        res2 = float(res_dict['PS1_'+unit[1]][0])
+                    for ps2_states in res_dict.keys():
+                        if ps2_states.startswith('PS2'):
+                            if ps2_states not in neg_res_states:
+                                if '_'+unit[1]+'_' in ps2_states:
+                                    if res_dict[ps2_states][0] == 'n/a':
+                                        continue
+                                    res3=res3+float(res_dict[ps2_states][0])
+                                    temp.append(ps2_states)
+                    ps0_by_ps2 = round((res1/res3),2)
+                    ps1_by_ps2 = round((res2/res3),2)
+                    ps1_by_ps0 = round((res2/res1),2)
+                    res_ratio[unit[1]]=[round(res1,2),round(res2,2),ps1_by_ps0]
+                    res1=res2=res3=0
+                    temp.clear()
+    sw=20
+    print ("",file=lf)
+    print ("########## Ratio of idle states residencies ##########",file=lf)
+    print ("",file=lf)
+    print (("Unit,\tPS0_res,\tPS1_res,\tPS1/PS0").expandtabs(sw),file=lf)
+    for key, value in res_ratio.items():
+        print((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])).expandtabs(sw),file=lf)
+    print ("",file=lf)
+
+    print ("######### Power states with negative residencies #########",file=lf)
+    print("",file=lf)
+    print (("States,\tValue").expandtabs(sw1),file=lf)
+    for key, value in neg_res_state.items():
+        print((key+",\t"+str(value)).expandtabs(sw1),file=lf)
+    print("",file=lf)
+
+    print ("########## States with undefined residencies ##########",file=lf)
+    for states in undef_res:
+        print(states, file=lf)
 
 def residency_histogram(ps_list,res_dir,lf,abs_path):
     given_states = re.split(',',ps_list)
@@ -1584,6 +1681,171 @@ def res_histo(pstate, res_dir, lf,abs_path):
     for key, values in res_not_defined.items():
         print (key+","+str(value[0]),file=lf)
     print ("",file=lf)
+
+def cdynwt_gc(cdyn_wt_dict, source_process,log_dir,index,abs_path):
+
+    skey = re.split('_', source_process)
+    sgen = skey[0]
+    sstep = skey[1]
+    cdynwt_gc={}
+    infra_states=['Assign','CLKGLUE','DOP','DFX','SMALL','NONCLKGLUE','CPunit','Repeater']
+    log_f = "cdynwt_gc-"+sgen+"-"+str(index)+".log"
+    lf = open(log_dir+"/"+log_f,'w')
+    print ('########### Input cdyn_wt file:'+abs_path+'##########', file=lf)
+    print (('Unit,\t').expandtabs(sw)+('RefGC,\tcdyn_wt(PS0)\tcdyn_wt(PS1)').expandtabs(usw), file = lf)
+    
+    for src_pstate in  cdyn_dict[sgen][sstep].keys():
+        if any(x in src_pstate for x in infra_states):
+            continue
+        elif src_pstate.startswith('PS0') and cdyn_dict[sgen][sstep][src_pstate][1] == 'syn' :
+            unit_name = re.split('PS0_', src_pstate)
+            src_pstate_cdyn_gc = round(float(cdyn_dict[sgen][sstep][src_pstate][2]),1)
+            src_pstate_PS0_cdyn_wt = round(float(cdyn_dict[sgen][sstep][src_pstate][0]),1)
+            if 'PS1_'+unit_name[1] in cdyn_dict[sgen][sstep].keys():
+                src_pstate_PS1_cdyn_wt = round(float(cdyn_dict[sgen][sstep]['PS1_'+unit_name[1]][0]),1)
+                cdynwt_gc[unit_name[1]]= [src_pstate_cdyn_gc,src_pstate_PS0_cdyn_wt,src_pstate_PS1_cdyn_wt]
+            else:
+                cdynwt_gc[unit_name[1]]= [src_pstate_cdyn_gc,src_pstate_PS0_cdyn_wt,'Not defined']
+
+    print ("",file=lf)
+    for key, values in cdynwt_gc.items():
+        print((key+",\t").expandtabs(sw)+(str(values[0])+",\t"+str(values[1])+",\t"+str(values[2])).expandtabs(usw),file=lf)
+
+def compare_refgc_dbgc(cdyn_dict,gc_dict, source_process, target_process, scal_fact, tolerance, log_dir ,index,abs_path):
+
+    skey = re.split('_', source_process)
+    sgen = skey[0]
+    sstep = skey[1]
+    tkey = re.split('_',target_process)
+    tgen = tkey[0]
+    tstep = tkey[1]
+    list_of_xstates = []
+    list_of_comm_states = []
+    list_of_individual_tarstates = []
+    src_tar_gc_zero=[]
+    src_gc_zero=[]
+    tar_gc_zero=[]
+    new_tar_pstate=[]
+    sf=scal_fact
+    bin_one={}
+    bin_two={}
+    bin_three={}
+    bin_four={}
+    bin_five={}
+    bin_six={}
+    cluster_gc_diff_bin={}
+    ratio_diff_bin = {}
+    tolerance=float(tolerance)
+    bin_count=5.0
+    tol=tolerance
+    if tolerance > 0.0:
+        bin_range=round((100.0-tolerance)/bin_count,2)
+    else:
+        bin_range=-round((100.0+tolerance)/bin_count,2)
+    infra_states=['Assign','CLKGLUE','DOP','NONCLKGLUE','CPunit','Repeater','SMALL','DFX']
+
+    log_f = "compare_refgc_dbgc-"+sgen+"-"+tgen+"-tol_"+str(tolerance)+"-scal_fact_"+str(sf)+"-"+str(index)+".log"
+    lf = open(log_dir+"/"+log_f,'w')
+    print ('########### Check 1: Units for which '+abs_path+':gate count differ by more than tolerance of '+str(tol)+'% ##########', file=lf)
+    print ("",file=lf)
+    print (('Unit,\tCluster,\tState_name,\tDGC:'+str(source_process)+',\tRGC:'+str(target_process)+',\tDiff').expandtabs(usw), file = lf)
+    #print (('State,\tDBGC'+str(source_process)+',\tREFGC:'+str(target_process)+',\tDiff').expandtabs(usw), file = lf)
+    for cluster in gc_dict[sgen].keys():
+
+        for units in gc_dict[sgen][cluster].keys():
+            if any(x in units for x in infra_states):
+                continue
+            #print (units,cluster)
+            src_gc = round(float(gc_dict[sgen][cluster][units][0]),1)
+            tar_state = 'PS0_'+units
+            #print (tar_state)
+            if tar_state in cdyn_dict[tgen][tstep].keys():
+                tgt_gc = round(float(cdyn_dict[tgen][tstep][tar_state][2]),1)
+            else:
+                continue
+            if (src_gc == 0.0 and tgt_gc == 0.0):
+                src_tar_gc_zero.append(units)
+            if (src_gc == 0.0):
+                src_gc_zero.append(units)
+            if (tgt_gc == 0.0):
+                tar_gc_zero.append(units)
+            if src_gc != 0.0 and tgt_gc != 0.0:
+                pstate_gc_diff = round((((sf*tgt_gc)/src_gc)-1)*100,1)
+                        
+                if tolerance < 0.0:
+                    # Check if the difference in RefGC is more than tolerance.
+
+                    if pstate_gc_diff < tolerance:
+                        if tolerance >= pstate_gc_diff >= (tolerance+(bin_range*1.0)):
+                            bin_one[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*1.0)) >= pstate_gc_diff >= (tolerance+(bin_range*2.0)):
+                            bin_two[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*2.0)) >= pstate_gc_diff >= (tolerance+(bin_range*3.0)):
+                            bin_three[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*3.0)) >= pstate_gc_diff >= (tolerance+(bin_range*4.0)):
+                            bin_four[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*4.0)) >= pstate_gc_diff >= (tolerance+(bin_range*5.0)):
+                            '''if any(x in units for x in xinfra_states):
+                                continue'''
+                            bin_five[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        else:
+                            if pstate_gc_diff < -100.0:
+                                bin_six[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                else:
+
+                    if pstate_gc_diff > tolerance:
+                        if tolerance <= pstate_gc_diff <= (tolerance+(bin_range*1.0)):
+                            bin_one[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*1.0)) <= pstate_gc_diff <= (tolerance+(bin_range*2.0)):
+                            bin_two[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*2.0)) <= pstate_gc_diff <= (tolerance+(bin_range*3.0)):
+                            bin_three[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*3.0)) <= pstate_gc_diff <= (tolerance+(bin_range*4.0)):
+                            bin_four[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        elif (tolerance+(bin_range*4.0)) <= pstate_gc_diff <= (tolerance+(bin_range*5.0)):
+                            '''if any(x in units for x in xinfra_states):
+                                continue'''
+                            bin_five[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+                        else:
+                            if pstate_gc_diff > 100.0:
+                                bin_six[units]=[cluster,tar_state, src_gc,tgt_gc,pstate_gc_diff]
+
+    list_dict=[bin_one,bin_two,bin_three,bin_four,bin_five]
+    index = 1
+    for value in list_dict:
+        temp = round(tolerance,2)
+        temp2= temp+bin_range
+        print ("",file=lf)
+        print ("########## Bin:"+str(index)+" Difference range: "+str(temp)+"% - "+str(temp2)+"% ##########",file=lf)
+        for key, value in value.items():
+            print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+",\t"+str(value[4])+"%").expandtabs(usw),file=lf)
+        tolerance=tolerance+bin_range
+        index=index+1
+
+    print ("",file=lf)
+    print ("########## Difference more than "+str(tol+(bin_range*5.0))+"% ##########",file=lf)
+    for key, value in bin_six.items():
+        print ((key+",\t"+str(value[0])+",\t"+str(value[1])+",\t"+str(value[2])+",\t"+str(value[3])+",\t"+str(value[4])+"%").expandtabs(usw),file=lf) 
+        
+    print ("",file=lf)
+    print ("########## "+source_process+" units with Design DB GC 0.0 ##########",file=lf)
+    for states in src_gc_zero:
+        print(states, file =lf)
+    print ("",file=lf)
+    print ("########## "+target_process+" units with Design DB GC 0.0 ##########",file=lf)
+    for states in tar_gc_zero:
+        print(states, file =lf)
         
      
 if __name__ == '__main__':
@@ -1619,7 +1881,8 @@ if __name__ == '__main__':
     sgen_notin_rev=[]
     tgen_notin_rev=[]
     improper_inputs=[]
-    sw = 44
+    sw1 = 46
+    sw = 30
     usw = 20
     index=1
     ip_file = open(args.input_text,'r')
@@ -1815,6 +2078,65 @@ if __name__ == '__main__':
             else:
                 improper_inputs.append(lines)
                 continue
+
+        elif "idle_residencies" in cmd_args:
+            res_file_index=cmd_args.index("-f1")
+            res_file=cmd_args[res_file_index+1]
+            unit_list_index=cmd_args.index("-l")
+            unit_list=cmd_args[unit_list_index+1]
+            cdyn_wt_file_index=cmd_args.index("-f2")
+            cdyn_wt_file=cmd_args[cdyn_wt_file_index+1]
+            gen_index = cmd_args.index("-g")
+            gen = cmd_args[gen_index+1]
+            abs_path1=os.path.abspath(res_file)
+            abs_path2=os.path.abspath(cdyn_wt_file)
+            if os.path.isdir(res_file):
+                log_f = "idle_res_"+str(index)+".log"
+                lf = open(log_directory+"/"+log_f,'w')
+                print ('########### Input residency file:'+abs_path1+'Input cdyn weight file:'+abs_path2+'##########',file=lf)
+                print ("", file =lf)
+                cdyn_dict = read_cdyn_file(cdyn_wt_file)
+                units = re.split(',',unit_list)
+                gen_step = re.split('_',gen)
+                tgen=gen_step[0]
+                tstep=gen_step[1]
+                print('########## Ratio of idle states cdyn weights ##########',file=lf)
+                print(('Unit,\tPS0_wt,\tPS1_wt,\tPS1/PS0').expandtabs(usw),file=lf)
+                for unit in units:
+                    ps0_wt=round(float(cdyn_dict[tgen][tstep]['PS0_'+unit][0]),2)
+                    ps1_wt=round(float(cdyn_dict[tgen][tstep]['PS1_'+unit][0]),2)
+                    ratio = round(float(ps1_wt/ps0_wt),2)
+                    print ((unit+',\t'+str(ps0_wt)+',\t'+str(ps1_wt)+',\t'+str(ratio)).expandtabs(usw),file=lf)
+                for files in os.listdir(res_file):
+                    if files.endswith(".csv"):
+                        wl = re.split('.res.csv', files)
+                        print ("###### Workload: "+wl[0]+"######",file=lf)
+                        print ("", file=lf)
+                        res_dict=read_residency_file(files,optional=abs_path)
+                        idle_residencies(res_dict,unit_list,lf)
+                            
+            elif os.path.isfile(res_file):
+                log_f = "idle_res_"+str(index)+".log"
+                lf = open(log_directory+"/"+log_f,'w')
+                print ('########### Input residency file:'+abs_path1+'Input cdyn weight file:'+abs_path2+'##########',file=lf)
+                print ("",file=lf)
+                cdyn_dict = read_cdyn_file(cdyn_wt_file)
+                units = re.split(',',unit_list)
+                gen_step = re.split('_',gen)
+                tgen=gen_step[0]
+                tstep=gen_step[1]
+                print('########## Ratio of idle states cdyn weights ##########',file=lf)
+                print(('Unit,\tPS0_wt,\tPS1_wt,\tPS1/PS0').expandtabs(usw),file=lf)
+                for unit in units:
+                    ps0_wt=round(float(cdyn_dict[tgen][tstep]['PS0_'+unit][0]),2)
+                    ps1_wt=round(float(cdyn_dict[tgen][tstep]['PS1_'+unit][0]),2)
+                    ratio = round(float(ps1_wt/ps0_wt),2)
+                    print ((unit+',\t'+str(ps0_wt)+',\t'+str(ps1_wt)+',\t'+str(ratio)).expandtabs(usw),file=lf)
+                res_dict=read_residency_file(res_file)
+                idle_residencies(res_dict,unit_list,lf)
+            else:
+                improper_inputs.append(lines)
+                continue
                 
 
         elif "compare_cdyn_Refgc" in cmd_args:
@@ -1990,7 +2312,48 @@ if __name__ == '__main__':
                 log_f = "res_histogram_"+str(index)+".log"
                 lf = open(log_directory+"/"+log_f,'w')
                 print ("########### Input residency file/directory:"+abs_path+"##########",file=lf)
-                residency_histogram(ps_list,res_dir,lf,abs_path)        
+                residency_histogram(ps_list,res_dir,lf,abs_path)
+
+        elif "cdynwt_gc" in cmd_args:
+            cdyn_wt_file_index=cmd_args.index("-i")
+            cdyn_wt_file=cmd_args[cdyn_wt_file_index+1]
+            abs_path=os.path.abspath(cdyn_wt_file)
+            source_process_index=cmd_args.index("-g")
+            source_process=cmd_args[source_process_index+1]
+            if source_process not in list_of_gens:
+                not_src_gen.append(lines)
+                continue
+            cdyn_wt_dict = read_cdyn_file(cdyn_wt_file)
+            cdynwt_gc(cdyn_wt_dict, source_process,log_directory,index,abs_path)
+
+        elif "compare_refgc_dbgc" in cmd_args:
+            cdyn_wt_file_index=cmd_args.index("-f2")
+            cdyn_wt_file=cmd_args[cdyn_wt_file_index+1]
+            gc_file_index=cmd_args.index("-f1")
+            gc_file=cmd_args[gc_file_index+1]
+            abs_path1=os.path.abspath(cdyn_wt_file)
+            abs_path2=os.path.abspath(gc_file)
+            source_process_index=cmd_args.index("-s")
+            source_process=cmd_args[source_process_index+1]
+            target_process_index=cmd_args.index("-t")
+            target_process=cmd_args[target_process_index+1]
+            tol_index=cmd_args.index("-tol")
+            tolerance=cmd_args[tol_index+1]
+            if source_process not in list_of_gens:
+                not_src_gen.append(lines)
+                continue
+            if target_process not in list_of_gens:
+                not_tar_gen.append(lines)
+                continue
+            gc_dict = read_gc_file(gc_file)
+            cdyn_dict = read_cdyn_file(cdyn_wt_file)
+            if "-c" in cmd_args:
+                scal_fact_index=cmd_args.index("-c")
+                scal_fact=float(cmd_args[scal_fact_index+1])
+                compare_refgc_dbgc(cdyn_dict,gc_dict, source_process, target_process, scal_fact, tolerance, log_directory,index,abs_path)
+            else:
+                scal_fact=1
+                compare_refgc_dbgc(cdyn_dict,gc_dict, source_process, target_process, scal_fact, tolerance, log_directory,index,abs_path)
             
         else:
             sys.exit("You have given unsupported functionality in the Input file")
