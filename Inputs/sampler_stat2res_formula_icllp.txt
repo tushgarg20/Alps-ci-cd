@@ -432,8 +432,10 @@
 #GASS
     .temp_PS0_GASS        =     (.temp_gass_ps2 < 1)? (1 - .temp_gass_ps2) : 0
     .temp_gass_ps2    =   .temp_PS1_GASS +  .temp_PS2_GASS 
-    .temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
-    .temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)
+    #.temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(.CrClk * num_GAM_GASS)
+    #.temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(.CrClk * num_GAM_GASS)
 
 
 

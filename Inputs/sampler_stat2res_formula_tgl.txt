@@ -1,9 +1,12 @@
 #Unit	GSIM residency			
 #Instance Counts				
+	isDS		=	SUM('knob\.S\d+\.SS\d+\.uSampler\.SamplerConfig')
+	numSamplers	=	COUNT('knob\.S\d+\.SS\d+\.uSampler\.SamplerConfig')
 	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')
-        numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	
-	numSamplers	=	SUM('knob\.S\d+\.SS\d+\.NumSamplers') + SUM('knob\.STK\d+\.S\d+\.SS\d+\.NumSamplers')	#Change to handle assymetric configs
-        numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
+        numSubSlices	=	SUM('knob\.S\d+\.NumSubSlices')	
+#	numSamplers	=	SUM('knob\.S\d+\.SS\d+\.NumSamplers') + SUM('knob\.STK\d+\.S\d+\.SS\d+\.NumSamplers')	#Change to handle assymetric configs
+        #numSamplerComputePaths = numSlices * ( SUM('knob\.S0\.SS\d\.uSampler\.NumLODEngines'))
+        numSamplerComputePaths = (isDS > 0) ? numSamplers * 2 : numSamplers
 	num_Sampler_FL	=	numSamplerComputePaths	
 	num_Sampler_PL	=	numSamplerComputePaths	
 	num_Sampler_SC	=	numSamplers	
@@ -17,16 +20,22 @@
 	num_Sampler_MT	=	numSamplers	
 	num_Sampler_MT_Cache	=	numSamplers	
 	num_Sampler_SVSM	=	numSamplers	
-	num_Sampler_Media	=	numSamplers	
-	num_Sampler_GLUE	=	numSamplerComputePaths
+	#num_Sampler_Media	=	numSamplers	
+	num_Sampler_Media	=	numMediaSamplers	
+	#num_Sampler_GLUE	=	numSamplerComputePaths
+	num_Sampler_GLUE	=	0
         numMediaSamplers        = 0	
 	num_Sampler_AVS	=	numMediaSamplers	
 	num_Sampler_AVS_DataRAM	=	numMediaSamplers	
 	num_Sampler_AVS_CoeffRAM	=	numMediaSamplers	
-	num_Sampler_IEF	=	numSamplers	
-	num_Sampler_CRE	=	numSamplers
-	num_Sampler_IME	=	numSamplers	
-	num_Sampler_DM_PALRAM	=	numSamplers	
+	#num_Sampler_IEF	=	numSamplers	
+	num_Sampler_IEF	=	numMediaSamplers	
+	#num_Sampler_CRE	=	numSamplers
+	num_Sampler_CRE	=	numMediaSamplers
+	#num_Sampler_IME	=	numSamplers	
+	num_Sampler_IME	=	numMediaSamplers	
+	#num_Sampler_DM_PALRAM	=	numSamplers	
+	num_Sampler_DM_PALRAM	=	numMediaSamplers	
 	num_Sampler_MEDIASMP_SMALL	=	numMediaSamplers	
 	num_Sampler_MEDIASMP_CPunit	=	numMediaSamplers	
 	num_Sampler_MEDIASMP_Assign	=	numMediaSamplers	
@@ -50,7 +59,8 @@
 	 @ANY_SAMPLER@	=	(STK\d+\.S\d+\.SS\d+\.uSampler\.|S\d+\.SS\d+\.uSampler\.)	
 	 @ANY_CRE@	=	(STK\d+\.S\d+\.SS\d+\.uCRE\.|S\d+\.SS\d+\.uCRE\.)	
 	 @ANY_IME@	=	(STK\d+\.S\d+\.SS\d+\.uIME\.|S\d+\.SS\d+\.uIME\.)	
-	 @ANY_DS@	=	(|_0)	
+	 #@ANY_DS@	=	(|_0)	
+	 @ANY_DS@	=	(_0|_1)	
          @GASS@		=	S\d+\.GASS_\d+\.
          @GATS@         =   S\d+\.GATS_\d+\.
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -187,14 +197,19 @@
 	PS2_SC_LatFifo_WRITE	=	D(SUM('@ANY_SAMPLER@SC-LatencyFifo\d+\.popped')) / (numSamplerComputePaths * .CrClk)	
 #ST				
 	PS0_ST_DOP	=	PS0_DFRSMP_DOP	
-	PS0_ST	=	D(SUM('@ANY_SAMPLER@pwr_st_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_ST_DOP	
+	#PS0_ST	=	D(SUM('@ANY_SAMPLER@pwr_st_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_ST_DOP	
+	PS0_ST	=	D(SUM('@ANY_SAMPLER@pwr_st_idle\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_ST_DOP	
 	.temp_PS_ST	= PS0_ST + PS2_ST_1Bank_Enable + PS2_ST_2Bank_Enable + PS2_ST_3Bank_Enable + PS2_ST_4Bank_Enable
 	#PS1_ST	=	1- (PS0_ST + PS2_ST_1Bank_Enable + PS2_ST_2Bank_Enable + PS2_ST_3Bank_Enable + PS2_ST_4Bank_Enable + PS0_ST_DOP)	
 	PS1_ST	=	(.temp_PS_ST > 1) ? 0 : (1 - .temp_PS_ST)	
-	PS2_ST_1Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit1Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit0Miss1@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_2Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit2Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit1Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit0Miss2@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_3Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit3Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit2Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit1Miss2@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit0Miss3@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
-	PS2_ST_4Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit4Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit3Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit2Miss2@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit1Miss3@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit0Miss4@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
+	#PS2_ST_1Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit1Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit0Miss1@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
+	PS2_ST_1Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit1Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq1Hit0Miss1\.CrClock')))/ (numSamplers * .CrClk)	
+	#PS2_ST_2Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit2Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit1Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit0Miss2@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
+	PS2_ST_2Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit2Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit1Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq2Hit0Miss2\.CrClock')))/ (numSamplers * .CrClk)	
+	#PS2_ST_3Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit3Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit2Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit1Miss2@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit0Miss3@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
+	PS2_ST_3Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit3Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit2Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit1Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq3Hit0Miss3\.CrClock')))/ (numSamplers * .CrClk)	
+	#PS2_ST_4Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit4Miss0@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit3Miss1@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit2Miss2@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit1Miss3@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit0Miss4@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	
+	PS2_ST_4Bank_Enable 	=	(D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit4Miss0\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit3Miss1\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit2Miss2\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit1Miss3\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_StL1Bankreq4Hit0Miss4\.CrClock')))/ (numSamplers * .CrClk)	
 	PS2_ST_1Bank_Enable_SameADD	=	0	#Next phase implementation
 #DG				
 	PS0_DG_DOP	=	PS0_DFRSMP_DOP	
@@ -249,18 +264,27 @@
 	PS2_SO_ANYPIXELMODE	=	(D(SUM('@ANY_SAMPLER@SOInBuffer\d+\.popped')))/ (numSamplerComputePaths * .CrClk)	
 #DM_BDM				
 	PS0_DM_DOP	=	PS0_DFRSMP_DOP	
-	PS0_DM	=	D(SUM('@ANY_SAMPLER@pwr_dm_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) -PS0_DM_DOP	
+	#PS0_DM	=	D(SUM('@ANY_SAMPLER@pwr_dm_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) -PS0_DM_DOP	
+	PS0_DM	=	D(SUM('@ANY_SAMPLER@pwr_dm_idle\.CrClock')) / (numSamplers * .CrClk) -PS0_DM_DOP	
 	.temp_PS_DM	=	PS0_DM_DOP + PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7_SRGB + PS2_DM_ETC +  PS2_DM_Other +  PS2_DM_HIZ_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Media_BYPASS + PS2_DM_Media_SRGB + PS2_DM_Media_Planar	
 	#PS1_DM	=	1-(PS0_DM_DOP + PS0_DM + PS2_DM_BC1_5 + PS2_DM_BC6_7 + PS2_DM_BC1_3_SRGB + PS2_DM_BC7_SRGB + PS2_DM_ETC +  PS2_DM_Other +  PS2_DM_HIZ_Z + PS2_DM_LOSSLESS + PS2_DM_ASTC_LDR_2D + PS2_DM_ASTC_LDR_3D + PS2_DM_ASTC_HDR_2D + PS2_DM_ASTC_HDR_3D + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS + PS2_DM_Media_BYPASS + PS2_DM_Media_SRGB + PS2_DM_Media_Planar)	
 	PS1_DM	=	(.temp_PS_DM > 1) ? 0 : (1 - .temp_PS_DM)	
-	PS2_DM_BC1_5	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-5@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC6_7	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC6-7@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	 PS2_DM_Other	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
-	.temp_PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_BC1_5	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-5@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_BC1_5	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-5\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_BC6_7	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC6-7@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_BC6_7	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC6-7\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_BC1_3_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC1-3-SRGB\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_BC7_SRGB	=	D(SUM('@ANY_SAMPLER@pwr_dm_BC7-SRGB\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_ETC	=	D(SUM('@ANY_SAMPLER@pwr_dm_ETC\.CrClock')) / (numSamplers * .CrClk)	
+	 #PS2_DM_Other	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else@ANY_DS@\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
+	 PS2_DM_Other	=	(D(SUM('@ANY_SAMPLER@pwr_dm_Else\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_bdm_else\.CrClock')))/ (numSamplers * .CrClk)	#Added DM Bypass Else stat
+	#.temp_PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_DM_HIZ	=	D(SUM('@ANY_SAMPLER@pwr_dm_HIZ\.CrClock')) / (numSamplers * .CrClk)	
+	#.temp_PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_DM_Z	=	D(SUM('@ANY_SAMPLER@pwr_dm_Z\.CrClock')) / (numSamplers * .CrClk)	
 	#PS2_DM_HIZ_Z	=	.temp_PS2_DM_HIZ + .temp_PS2_DM_Z
 	PS2_DM_HIZ_Z = 0
 	PS2_DM_LOSSLESS	=	D(SUM('@ANY_SAMPLER@L2CCSRequests')) / (numSamplers * .CrClk)	#Using MT stat
@@ -268,9 +292,12 @@
 	PS2_DM_ASTC_LDR_3D	=	0	
 	PS2_DM_ASTC_HDR_2D	=	0	
 	PS2_DM_ASTC_HDR_3D	=	0	
-	PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	PS2_DM_Media_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
+	#PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_Expanded	=	D(SUM('@ANY_SAMPLER@pwr_dm_expanded\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_DM_Expanded_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_expanded\.CrClock')) / (numSamplers * .CrClk)	
+	#PS2_DM_Media_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
+	PS2_DM_Media_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
 	PS2_DM_Media_SRGB	=	0	
 	PS2_DM_Media_Planar	=	0	
 				
@@ -280,19 +307,26 @@
 				
 #FT				
 	PS0_FT_DOP	=	PS0_DFRSMP_DOP	
-	PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) - PS0_FT_DOP	
-	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle@ANY_DS@\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle@ANY_DS@\.CrClock'))) / (numSamplers * .CrClk)	
+	#PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) - PS0_FT_DOP	
+	PS0_FT	=	D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_FT_DOP	
+	#PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle@ANY_DS@\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle@ANY_DS@\.CrClock'))) / (numSamplers * .CrClk)	
+	PS1_FT	=	(D(SUM('@ANY_SAMPLER@pwr_ft_stalled_or_idle\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_ft_idle\.CrClock'))) / (numSamplers * .CrClk)	
 	PS2_FT	=	1 - PS0_FT - PS1_FT - PS0_FT_DOP	
 #MT				
 	PS0_MT_DOP	=	PS0_DFRSMP_DOP	
-	PS0_MT	=	D(SUM('@ANY_SAMPLER@pwr_mt_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) - PS0_MT_DOP	
+	#PS0_MT	=	D(SUM('@ANY_SAMPLER@pwr_mt_idle@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) - PS0_MT_DOP	
+	PS0_MT	=	D(SUM('@ANY_SAMPLER@pwr_mt_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_MT_DOP	
 	.temp_PS_MT	= PS0_MT_DOP + PS0_MT + PS2_MT_BYPASS + PS2_MT_Tile_Y
 	#PS1_MT	=	1- (PS0_MT_DOP + PS0_MT + PS2_MT_BYPASS + PS2_MT_Tile_Y)	
 	PS1_MT	=	(.temp_PS_MT > 1) ? 0 : (1 - .temp_PS_MT)	
-	PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
-	.temp_PS2_MT_Tile_Y	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_y@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)) - PS2_MT_BYPASS	#bypass is a subset of tileY
-	.temp_PS2_MT_Tile_else	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_w@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_mt_tile_else@ANY_DS@\.CrClock'))) / (numSamplers * .CrClk)	
+	#PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	PS2_MT_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_mt_bypass\.CrClock')) / (numSamplers * .CrClk)	
+	#.temp_PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	
+	.temp_PS2_MT_Tile_X	=	D(SUM('@ANY_SAMPLER@pwr_mt_tile_x\.CrClock')) / (numSamplers * .CrClk)	
+	#.temp_PS2_MT_Tile_Y	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_y@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)) - PS2_MT_BYPASS	#bypass is a subset of tileY
+	.temp_PS2_MT_Tile_Y	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_y\.CrClock')) / (numSamplers * .CrClk)) - PS2_MT_BYPASS	#bypass is a subset of tileY
+	#.temp_PS2_MT_Tile_else	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_w@ANY_DS@\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_mt_tile_else@ANY_DS@\.CrClock'))) / (numSamplers * .CrClk)	
+	.temp_PS2_MT_Tile_else	=	(D(SUM('@ANY_SAMPLER@pwr_mt_tile_w\.CrClock')) + D(SUM('@ANY_SAMPLER@pwr_mt_tile_else\.CrClock'))) / (numSamplers * .CrClk)	
 	PS2_MT_Tile_Y	=	.temp_PS2_MT_Tile_X + .temp_PS2_MT_Tile_Y + .temp_PS2_MT_Tile_else	
 #MT_Cache				
 	PS2_MT_LatFifo_READ	=	D(SUM('@ANY_SAMPLER@MT-LatencyFifo\.pushed')) / (numSamplers * .CrClk)	
@@ -446,6 +480,8 @@
 #GASS
     .temp_PS0_GASS    =     (.temp_gass_ps2 < 1)? (1 - .temp_gass_ps2) : 0
     .temp_gass_ps2    =      .temp_PS1_GASS +  .temp_PS2_GASS 
-    .temp_PS1_GASS    =       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
-    .temp_PS2_GASS    =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)	
+    #.temp_PS1_GASS    =       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS1_GASS    =       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(.CrClk * num_GAM_GASS)
+    #.temp_PS2_GASS    =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)	
+    .temp_PS2_GASS    =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(.CrClk * num_GAM_GASS)	
 
