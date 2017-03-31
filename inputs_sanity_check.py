@@ -1633,7 +1633,7 @@ def res_histo(pstate, res_dir, lf,abs_path):
                 if states == pstate:
                     wl_name = wl[0]
                     if res_dict[states][0] == 'n/a':
-                        res_not_defined[wl_name] = [residency_value]
+                        res_not_defined[wl_name] = [res_dict[states][0]]
                         continue
                     residency_value = round(float(res_dict[states][0]),2)
                     if residency_value < 0.0:

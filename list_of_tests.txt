@@ -10,5 +10,5 @@ compare_cdyn_Refgc_rev -r1 r1460 -r2 r1560 -s Gen9LPClient_A0 -t Gen10LP_A0 -tol
 idle_residencies -f1 dx11.bioshock-infinite.g3__orig-20130513_f00518_ci-main-35548-refresh-ww18.res.csv -l FL,MT,PL,SI,SO -f2 Inputs/cdyn.csv -g Gen10LP_A0
 compare_gc -tol -20.0 -s Gen10LP_A0 -t Gen11LP_A0 -i Inputs/gc.csv
 compare_gc_files -tol -17.0 -s Gen10LP_A0 -t Gen11LP_A0 -f1 Inputs/gc.csv -f2 Inputs/gc.csv
-residency_histogram -l PS2_FL_Else,PS0_DAPRSC -d Q2_MODEL_BUILDS/ICLGT2LP
+residency_histogram -l PS2_FL_Else,PS0_DAPRSC -d /nfs/iind/disks/sklgt_disk0509/ssachink/Gsim_runs/Q2_MODEL_BUILDS/ICLGT2LP
 compare_refgc_dbgc -f1 Inputs/gc.csv -f2 Inputs/cdyn.csv -s Gen9LPClient_A0 -t Gen11LP_A0 -tol 10
