@@ -8,10 +8,10 @@
 	num_FF_VFBE	=	knob.global.NumVfVtxPipes
 #	num_FF_VFBE2	=	numFF	
 	num_FF_VF_Cache	=	numFF	
-	num_FF_VSFE	=	knob.global.NumVsVtxPipes	
-	num_FF_VSBE	=	knob.global.NumVsVtxPipes	
-#	num_FF_VSFE	=	numFF	
-#	num_FF_VSBE	=	numFF	
+	#num_FF_VSFE	=	knob.global.NumVsVtxPipes	
+	#num_FF_VSBE	=	knob.global.NumVsVtxPipes	
+	num_FF_VSFE	=	numFF	
+	num_FF_VSBE	=	numFF	
 	num_FF_VS_Cache	=	numFF	
 	num_FF_HS	=	numFF	
 	num_FF_HS_Cache	=	numFF	

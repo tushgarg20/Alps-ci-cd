@@ -5,6 +5,8 @@
 	numROSS	=	numSlices * numSubSlices	#Change to handle assymetric configs
 
 	numEURows	=	knob.S0.SS0.NumRows #We need a global knob here to support Assymetrical Slices in future
+	isEUFusion	=	knob.S0.SS0.R0.EnableEuFusion
+	fusionFactor	=	knob.S0.SS0.R0.EuFusionFactor
 
 	num_DSSC_BC	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uBC\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d\.uBC_\d\.NumEus')
 	num_DSSC_PSD	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uPSD\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d+\.uPSD_\d\.NumEus')	
@@ -23,8 +25,10 @@
 	num_DSSC_DFX	=	num_DSSC_PSD
 	num_DSSC_DOP	=	num_DSSC_PSD
 
-	num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
-	num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
+	#num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_IN	=	(isEUFusion > 0) ? ((numEURows/fusionFactor) * numROSS ) : (numEURows * numROSS)	#MA is per row
+	#num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_OUT	=	(isEUFusion > 0) ? ((numEURows/fusionFactor) * numROSS ) : (numEURows * numROSS)	#MA is per row
 	num_ROSS_TDL	=	numROSS	
 	num_ROSS_IC	=	numROSS	
 	num_ROSS_IC_DataRAM	=	numROSS	
