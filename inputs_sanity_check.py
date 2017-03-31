@@ -1631,13 +1631,14 @@ def res_histo(pstate, res_dir, lf,abs_path):
             res_dict=read_residency_file(files,optional=abs_path)
             for states in res_dict.keys():
                 if states == pstate:
-                    residency_value = round(float(res_dict[states][0]),2)
                     wl_name = wl[0]
+                    if res_dict[states][0] == 'n/a':
+                        res_not_defined[wl_name] = [residency_value]
+                        continue
+                    residency_value = round(float(res_dict[states][0]),2)
                     if residency_value < 0.0:
                         res_negative[wl_name] = [residency_value]
                         continue
-                    elif residency_value == 'n/a':
-                        res_not_defined[wl_name] = [residency_value]
                     elif residency_value >= 0.0 and residency_value != 'n/a' :
                         if 0.0 <= residency_value <= 0.2:
                             bin_one[wl_name] = [residency_value]
@@ -1678,7 +1679,7 @@ def res_histo(pstate, res_dir, lf,abs_path):
 
     print ("",file=lf)
     print ("########## Workload for which residency is not defined ##########",file=lf)
-    for key, values in res_not_defined.items():
+    for key, value in res_not_defined.items():
         print (key+","+str(value[0]),file=lf)
     print ("",file=lf)
 
@@ -2308,6 +2309,7 @@ if __name__ == '__main__':
             res_dir_index=cmd_args.index("-d")
             res_dir=cmd_args[res_dir_index+1]
             abs_path=os.path.abspath(res_dir)
+            abs_path
             if os.path.isdir(res_dir):
                 log_f = "res_histogram_"+str(index)+".log"
                 lf = open(log_directory+"/"+log_f,'w')
