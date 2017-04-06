@@ -194,7 +194,7 @@
 	PS0_SFFE_DOP	=	 .temp_3DPipeDisable	
 	PS0_SFFE	=	(D(Geo.uSF.pwr_SFFE_Idle.2xGeoClock) / .GeoClk2x) - PS0_SFFE_DOP	
 	PS1_SFFE	=	(D(Geo.uSF.pwr_SFFE_Stalled_or_Idle.2xGeoClock) - D(Geo.uSF.pwr_SFFE_Idle.2xGeoClock)) / .GeoClk2x	
-	PS2_SFFE_Culled	=	(D(Geo.uSF.SFFE_Culled)) / .GeoClk2x	
+	PS2_SFFE_Culled	=	(D(Geo.uSF.pwr_SFFE_Culled)) / .GeoClk2x	
 	PS2_SFFE_NotCulled_FastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
 	PS2_SFFE_NotCulled_NotFastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x
 

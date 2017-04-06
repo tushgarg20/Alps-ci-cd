@@ -2096,4 +2096,22 @@ rFF:
     PS0_rFF_rOTHER_DFX_DOP: R * C
     PS0_rFF_rOTHER_DFX: R * C
     PS2_rFF_rOTHER_DFX: R * C
-
+   rOTHER_SMALL:
+    PS0_rFF_rOTHER_SMALL_DOP: R * C
+    PS0_rFF_rOTHER_SMALL: R * C
+    PS1_rFF_rOTHER_SMALL: R * C
+    PS2_rFF_rOTHER_SMALL: R * C
+   rOTHER_Repeater:
+    PS0_rFF_rOTHER_Repeater_DOP: R * C
+    PS0_rFF_rOTHER_Repeater: R * C
+    PS1_rFF_rOTHER_Repeater: R * C
+    PS2_rFF_rOTHER_Repeater: R * C
+   rOTHER_Assign:
+    PS0_rFF_rOTHER_Assign_DOP: R * C
+    PS0_rFF_rOTHER_Assign: R * C
+    PS1_rFF_rOTHER_Assign: R * C
+    PS2_rFF_rOTHER_Assign: R * C
+   rOTHER_CPunit: 
+    PS0_rFF_rOTHER_CPunit_DOP: R * C
+    PS0_rFF_rOTHER_CPunit: R * C
+    PS2_rFF_rOTHER_CPunit: R * C

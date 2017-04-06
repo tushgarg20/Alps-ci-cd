@@ -220,7 +220,7 @@
 #MISD				
 	#.temp_PS0_MISD  = 1 - PS1_MISD - .max_ps2_misd
 	.temp_PS0_MISD  = (PS1_MISD + .max_ps2_misd > 1) ? 0 : (1 - PS1_MISD - .max_ps2_misd)
-  .max_ps2_misd = MAX(PS2_MISD_READ,PS2_MISD_ENCRYPT,PS2_MISD_WRITE,PS2_MISD_C2U_DECRYPT)			
+  .max_ps2_misd = MAX(PS2_MISD_READ,PS2_MISD_ENCRYPT,PS2_MISD_WRITE,PS2_MISD_DECRYPT)			
 	PS0_MISD	= 	(.temp_PS0_MISD > 0)?	.temp_PS0_MISD : 0			
 	.num_MISD_Bypass_Rd	=	COUNT('@ANY_GTI@m_MisdAESBypassRdPipe.pushed')
 	.num_MISD_Bypass_Wr	=	COUNT('@ANY_GTI@m_MisdAESBypassWrPipe.pushed')

@@ -30,7 +30,7 @@
 	@anyLSNEP@ 		=	(uLSNEND_\d+\.)
 #LNI	
 	num_L3_Banks = num_L3_Slices * 4
-	num_L3_Buses = (D(SUM('knob.S0.uL3.NumUpFabricBus'))+D(SUM('knob.S0.uL3.NumDownFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumUpFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumDownFabricBus')))/2
+	num_L3_Buses = (SUM('knob.S0.uL3.NumUpFabricBus')+SUM('knob.S0.uL3.NumDownFabricBus')+SUM('knob.STK0.S0.uL3.NumUpFabricBus')+SUM('knob.STK0.S0.uL3.NumDownFabricBus'))/2
 	
 	PS0_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNI*.CrClk)
 	PS1_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNI*.CrClk)

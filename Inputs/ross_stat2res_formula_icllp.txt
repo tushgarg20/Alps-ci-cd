@@ -55,7 +55,7 @@
 
 
 #SLM				
-	.temp_fe_per_be	=	D(knob.S0.uSLM_0.BE.NumIoRows)
+	.temp_fe_per_be	=	knob.S0.uSLM_0.BE.NumIoRows
 	num_DSSC_SLMBE	=	COUNT('knob\.S\d\.uSLM_\d\.BE\.NumIoRows')
 	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
 
@@ -63,14 +63,14 @@
 	@ANY_SLMBE@	=	S\d\.uSLM_\d\.BE\.
 	PS0_SLMFE	=	1 - PS1_SLMFE - PS2_SLMFE_Atomic_Read - PS2_SLMFE_Atomic_Write - PS2_SLMFE_Read - PS2_SLMFE_Write
 	PS1_SLMFE	=	D(SUM('@ANY_SLMFE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMFE)
-	PS2_SLMFE_Atomic_Read	=	D(SUM('@ANY_SLMFE@SlmAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
-    PS2_SLMFE_Atomic_Write  =   D(SUM('@ANY_SLMFE@SlmAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Atomic_Read	=	D(SUM('@ANY_SLMFE@SlmRdAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
+    PS2_SLMFE_Atomic_Write  =   D(SUM('@ANY_SLMFE@SlmWrAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
 	PS2_SLMFE_Read  	=	D(SUM('@ANY_SLMFE@SlmRdRequest')) / (.CrClk * num_DSSC_SLMFE)
 	PS2_SLMFE_Write  	=	D(SUM('@ANY_SLMFE@SlmWrRequest')) / (.CrClk * num_DSSC_SLMFE)
 	PS0_SLMBE	=	1 - PS1_SLMBE - PS2_SLMBE_Atomic_Read - PS2_SLMBE_Atomic_Write - PS2_SLMBE_Read - PS2_SLMBE_Write
 	PS1_SLMBE	=	D(SUM('@ANY_SLMBE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMBE)
-	PS2_SLMBE_Atomic_Read	=	PS2_SLMFE_Atomic * .temp_fe_per_be
-	PS2_SLMBE_Atomic_Write	=	PS2_SLMFE_Atomic * .temp_fe_per_be
+	PS2_SLMBE_Atomic_Read	=	PS2_SLMFE_Atomic_Read * .temp_fe_per_be
+	PS2_SLMBE_Atomic_Write	=	PS2_SLMFE_Atomic_Write * .temp_fe_per_be
 	PS2_SLMBE_Read  	=	PS2_SLMFE_Read   * .temp_fe_per_be
 	PS2_SLMBE_Write  	=	PS2_SLMFE_Write  * .temp_fe_per_be
 
