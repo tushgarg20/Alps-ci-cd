@@ -625,6 +625,13 @@ Sampler:
      PS2_PL_NonVol_Aniso_Nearest_EWA: R * LINEST[C,R[PL_Toggle_Rate]]
      PS2_PL_Else: R * LINEST[C,R[PL_Toggle_Rate]]
      PS2_PL_Sample8x8: R * LINEST[C,R[PL_Toggle_Rate]]
+   
+   SmallPL:
+    PS0_SmallPL_DOP: R * C
+    PS0_SmallPL: R * C
+    PS1_SmallPL: R * C
+    PS2_SmallPL_NO_LOD: R * C
+    PS2_SmallPL_LOD: R * C 
     
    SC:
     PS0_SC_DOP: R * C
