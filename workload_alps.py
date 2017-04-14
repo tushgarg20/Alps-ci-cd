@@ -89,7 +89,7 @@ for line in tf:
   frame = re.search('GPGPU_apps_ocl1p0_(.*)',line)
   if frame:
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
-    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+    #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
   else:  
     matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',line)
     # added to work around frame naming issues
@@ -130,7 +130,7 @@ for line in wf:
   frame1 = re.search('GPGPU_apps_ocl1p0_(.*)',data[0])
   if frame:
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
-    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+    #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
   else:  
     matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
   # Added to work around frame naming issues
