@@ -86,8 +86,13 @@ except IOError:
 
 for line in tf:
   line = line.strip()
-  matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',line)
-  # added to work around frame naming issues
+  frame = re.search('GPGPU_apps_ocl1p0_(.*)',line)
+  if frame:
+    matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
+    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+  else:  
+    matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',line)
+    # added to work around frame naming issues
   try:
     frame = int(matchObj.group(2))
   except AttributeError:
@@ -122,7 +127,12 @@ except IOError:
 
 for line in wf:
   data = get_data(line,',')
-  matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
+  frame1 = re.search('GPGPU_apps_ocl1p0_(.*)',data[0])
+  if frame:
+    matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
+    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+  else:  
+    matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
   # Added to work around frame naming issues
   try:
     frame = int(matchObj.group(2))
@@ -234,5 +244,3 @@ sum_file.close()
 ####################################
 # End of Script
 ####################################
-
-
