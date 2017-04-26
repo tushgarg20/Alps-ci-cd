@@ -307,7 +307,7 @@ L3_Bank:
     PS0_LSQC: R * C
     PS1_LSQC: R * C
     PS1_LSQC_PW_STALL: R * C
-    PS2_LSQC: R * LINEST[C,R[.LSQC_activeslots_per_clock]]
+    PS2_LSQC: R * LINEST[C,R[LSQC_activeslots_per_clock]]
    LTCC:
     PS0_LTCC: R * C
     PS1_LTCC: R * C

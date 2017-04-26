@@ -106,7 +106,7 @@
 	PS1_LSQC								=D(SUM('@ANY_L3BANK@Stalled'))/(((.CrClk2x)/2) * num_L3_Slices * numL3Banks)
 	PS1_LSQC_PW_STALL						=	0
 	.active_count_per_bank					=	((L3SuperQSize*(.CrClk2x)/2) -.idle_count_per_bank -.stalled_count_per_bank) #ProcessSuperQ done at 1x clock#Confirm
-	.LSQC_activeslots_per_clock			=	.active_count_per_bank/(((.CrClk2x)/2)*(PS2_LSQC)*L3SuperQSize)
+	LSQC_activeslots_per_clock			=	.active_count_per_bank/(((.CrClk2x)/2)*(PS2_LSQC)*L3SuperQSize)
 	PS2_LSQC							=	1 - PS0_LSQC - PS1_LSQC
 
 	#Cdyn									=	(1.26974*LSQC_activeslots_per_clock)+ 7.45155
