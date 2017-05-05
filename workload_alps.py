@@ -127,17 +127,17 @@ except IOError:
 
 for line in wf:
   data = get_data(line,',')
-  frame1 = re.search('GPGPU_apps_ocl1p0_(.*)',data[0])
+  frame = re.search('GPGPU_apps_ocl1p0_(.*)',data[0])
   if frame:
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
     #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
   else:  
-    matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
+    matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',data[0])
   # Added to work around frame naming issues
   try:
     frame = int(matchObj.group(2))
   except AttributeError:
-    matchObj = re.search('(.*)_f(\d+)(.*)',data[0])
+    matchObj = re.search('(.*)_f(\d+)(.*)res.csv',data[0])
     frame = int(matchObj.group(2))
   #frame = int(matchObj.group(2))
   wl = matchObj.group(1) + '_' + matchObj.group(3)
