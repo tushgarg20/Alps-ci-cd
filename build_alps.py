@@ -741,7 +741,7 @@ for cluster in output_cdyn_data['GT']:
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or
-              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or unit_lc.find("repeater") != -1):
+              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or	      unit_lc.find("repeater") != -1 or unit_lc.find("spine") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_infra(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         else:
