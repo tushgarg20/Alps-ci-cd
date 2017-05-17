@@ -86,7 +86,7 @@ except IOError:
 
 for line in tf:
   line = line.strip()
-  frame = re.search('GPGPU_apps_ocl1p0_(.*)',line)
+  frame = re.search('GPGPU.apps.ocl1p0(.*)',line)
   if frame:
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
     #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
@@ -127,22 +127,27 @@ except IOError:
 
 for line in wf:
   data = get_data(line,',')
-  frame = re.search('GPGPU_apps_ocl1p0_(.*)',data[0])
+  frame = re.search('GPGPU.apps.ocl1p0(.*)',data[0])
   if frame:
-    matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
-    #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+    #matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
+    matchObj = re.search('(.*)-(\d+)-\d+_(.*)',line)
+    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
   else:  
-    matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',data[0])
+    #matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',data[0])
+    matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
   # Added to work around frame naming issues
   try:
     frame = int(matchObj.group(2))
   except AttributeError:
-    matchObj = re.search('(.*)_f(\d+)(.*)res.csv',data[0])
+    #matchObj = re.search('(.*)_f(\d+)(.*)res.csv',data[0])
+    matchObj = re.search('(.*)_f(\d+)(.*)',data[0])
     frame = int(matchObj.group(2))
   #frame = int(matchObj.group(2))
   wl = matchObj.group(1) + '_' + matchObj.group(3)
   if(wl[-1] == '.' or wl[-1] == '_'):
     wl = wl[:-1]
+  if(wl[-1] == '1' and wl[-2] == ','):
+    wl = wl[:-2] 
   if(wl not in weights_hash):
     weights_hash[wl] = {}
   if(frame not in weights_hash[wl]):
