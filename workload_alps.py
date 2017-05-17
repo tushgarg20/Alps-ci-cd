@@ -131,7 +131,7 @@ for line in wf:
   if frame:
     #matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)',line)
-    print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
+    #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
   else:  
     #matchObj = re.search('(.*)_f(\d+)_(.*)res.csv',data[0])
     matchObj = re.search('(.*)_f(\d+)_(.*)',data[0])
