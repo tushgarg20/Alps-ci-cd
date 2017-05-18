@@ -1,4 +1,4 @@
-ALPS_formula_file = Inputs/alps_formula_tgl.yml
+ALPS_formula_file = Inputs/alps_formula_tgllp.yml
 Cdyn = Inputs/cdyn.csv
 GateCount = Inputs/gc.csv
 Process_Scaling_Factors = Inputs/process.csv
