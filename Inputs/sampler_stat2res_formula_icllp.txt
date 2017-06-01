@@ -4,7 +4,8 @@
 	numSamplers	=	numSlices * ( SUM('knob\.S0\.NumSubSlices') + SUM('knob\.STK0\.S0\.NumSubSlices'))	#Change to handle assymetric configs
         numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
 	num_Sampler_FL	=	numSamplers	
-	num_Sampler_PL	=	numSamplers	
+	num_Sampler_PL	=	numSamplers
+    num_Sampler_SmallPL = numSamplers	
 	num_Sampler_SC	=	numSamplers	
 	num_Sampler_SC_Cache	=	numSamplers	
 	num_Sampler_ST	=	numSamplers	
@@ -160,7 +161,13 @@
 	PS2_PL_NonVol_Aniso_Nearest_EWA	=	D(SUM('@ANY_SAMPLER@pwr_pl_NonLinearAniso_EWA-Aniso\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_PL_Else	=	D(SUM('@ANY_SAMPLER@pwr_pl_else\.CrClock')) / (numSamplers * .CrClk)	
 	PS2_PL_Sample8x8	=	D(SUM('@ANY_SAMPLER@pwr_pl_sample_8x8\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
-	.temp_PS2_PL	=	1 - (PS0_PL + PS1_PL)	
+	.temp_PS2_PL	=	1 - (PS0_PL + PS1_PL)
+#Mini PL
+    PS0_SmallPL_DOP =   PS0_DFRSMP_DOP
+    PS0_SmallPL     =   D(SUM('@ANY_SAMPLER@pwr_small_pl_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_MPL_DOP
+    PS1_SmallPL     =   (D(SUM('@ANY_SAMPLER@pwr_small_pl_idle_or_stall\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_small_pl_idle\.CrClock')))/ (numSamplers * .CrClk)
+    PS2_SmallPL_NO_LOD  =   D(SUM('@ANY_SAMPLER@pwr_small_pl_nolod\.CrClock')) / (numSamplers * .CrClk)
+    PS2_SmallPL_LOD     =    D(SUM('@ANY_SAMPLER@pwr_small_pl_lod\.CrClock')) / (numSamplers * .CrClk)	
 #SC				
 	PS0_SC_DOP	=	PS0_DFRSMP_DOP	
 	PS0_SC	=	D(SUM('@ANY_SAMPLER@pwr_sc_idle\.CrClock')) / (numSamplers * .CrClk) - PS0_SC_DOP	
@@ -432,8 +439,10 @@
 #GASS
     .temp_PS0_GASS        =     (.temp_gass_ps2 < 1)? (1 - .temp_gass_ps2) : 0
     .temp_gass_ps2    =   .temp_PS1_GASS +  .temp_PS2_GASS 
-    .temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
-    .temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)
+    #.temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS1_GASS	=       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(.CrClk * num_GAM_GASS)
+    #.temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(@CLOCKS@ * num_GAM_GASS)
+    .temp_PS2_GASS        =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(.CrClk * num_GAM_GASS)
 
 
 

@@ -58,7 +58,7 @@
 	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
 	 .GeoClk	=	D(GeoClock.Clocks)	
 	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
-	 .is2xClk	=	1
+	 .is2xClk	=	0
 	 #@GeoRefClk@	=	(.is2xClk > 0) ? 2xGeoClock : GeoClock
 	 @GeoRefClk@	=	(2xGeoClock|GeoClock)
 	 .GeoClkCount	=	(.is2xClk > 0) ? .GeoClk2x : .GeoClk

@@ -741,7 +741,7 @@ for cluster in output_cdyn_data['GT']:
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or
-              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or unit_lc.find("repeater") != -1):
+              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or	      unit_lc.find("repeater") != -1 or unit_lc.find("spine") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_infra(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         else:
@@ -790,29 +790,41 @@ gt_top       = '0GT_level(fF)'
 cluster_top  = '0total'
 gt_cdyn_dist = {label:{}}
 gt_cdyn_dist[label][gt_top] = {}
-for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+for category in ['clock_idle', 'clock_stall', 'clock_active', 'infra_idle', 'infra_stall', 'infra_active', 'func_idle', 'func_stall', 'func_active']:
     gt_cdyn_dist[label][gt_top][category] = 0
 
 for cluster in yaml_hash:
     gt_cdyn_dist[label][cluster] = {}
     gt_cdyn_dist[label][cluster][cluster_top] = {}
-    for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+    for category in ['clock_idle', 'clock_stall', 'clock_active', 'infra_idle', 'infra_stall', 'infra_active','func_idle', 'func_stall', 'func_active']:
         gt_cdyn_dist[label][cluster][cluster_top][category] = 0
     for unit in yaml_hash[cluster]:
         gt_cdyn_dist[label][cluster][unit] = {}
-        for category in ['clock_idle', 'clock_stall', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+        for category in ['clock_idle', 'clock_stall', 'clock_active', 'infra_idle', 'infra_stall', 'infra_active', 'func_idle', 'func_stall', 'func_active']:
             gt_cdyn_dist[label][cluster][unit][category] = 0
 
         for state in yaml_hash[cluster][unit]:
             state_lc = state.lower()
             category = ""
-            if (state_lc.find("_dop") != -1 or state_lc.find("_clkglue") != -1 or state_lc.find("clockspine") != -1):
+            if (state_lc.find("_dop") != -1 or state_lc.find("_clkglue") != -1 or state_lc.find("clockspine") != -1 or state_lc.find("cpunit") != -1 ):
                 if (state_lc.find("ps0_") == 0):
                     category = "clock_idle"
                 elif (state_lc.find("ps1_") == 0):
                     category = "clock_stall"
                 elif (state_lc.find("ps2_") == 0):
                     category = "clock_active"
+                else:
+                    if (yaml_hash[cluster][unit][state] > 0):
+                        print ("")
+                    else:
+                        continue
+            elif (state_lc.find("_nonclkglue") != -1 or state_lc.find("_dfx") != -1 or state_lc.find("repeater") != -1 or state_lc.find("assign") != -1 ):
+                if (state_lc.find("ps0_") == 0):
+                    category = "infra_idle"
+                elif (state_lc.find("ps1_") == 0):
+                    category = "infra_stall"
+                elif (state_lc.find("ps2_") == 0):
+                    category = "infra_active"
                 else:
                     if (yaml_hash[cluster][unit][state] > 0):
                         print ("")
@@ -840,7 +852,7 @@ for cluster in yaml_hash:
                     gt_cdyn_dist[label][gt_top][category]               += yaml_hash[cluster][unit][state][sub]
                     # print (cluster, unit, sub, category, yaml_hash[cluster][unit][state][sub])
 
-for category in ['clock_idle', 'clock_active', 'func_idle', 'func_stall', 'func_active']:
+for category in ['clock_idle', 'clock_stall' , 'clock_active', 'infra_idle', 'infra_stall', 'infra_active', 'func_idle', 'func_stall', 'func_active', ]:
     gt_cdyn_dist[label][gt_top][category] = float('%.3f'%(gt_cdyn_dist[label][gt_top][category]/1000))
 
 for cluster in gt_cdyn_dist[label]:

@@ -65,13 +65,13 @@ Gen11,Gen9LPClient,NA,NA,
 Gen11,Gen9LPSoC,1,1,
 Gen11,Gen10LPSoC,0.663860514,0.683776329,ebb 3% higher - Including Star RC bug factor of 1.03 
 Gen10LP,Gen11LP,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen11LP,1.03,1.03,Including Star RC bug factor of 1.03
-Gen11LP,Gen11LP,1.03,1.03,Including Star RC bug factor of 1.03
+Gen11,Gen11LP,1.0,1.0,
+Gen11LP,Gen11LP,1.0,1.0,
 Gen9LPClient,Gen11LP,0.6077,0.6077,Including Star RC bug factor of 1.03
 Gen9LPSoC,Gen11LP,0.660970516,0.680799633,ebb 3% higher - Including Star RC bug factor of 1.03 
 Gen10LP,Gen12LP,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen12LP,1.03,1.03,Including Star RC bug factor of 1.03
-Gen11LP,Gen12LP,1.03,1.03,Including Star RC bug factor of 1.03
+Gen11,Gen12LP,1.0,1.0,
+Gen11LP,Gen12LP,1.0,1.0,
 Gen9LPClient,Gen12LP,0.6077,0.6077,Including Star RC bug factor of 1.03
 Gen9LPSoC,Gen12LP,0.660970516,0.680799633,Including Star RC bug factor of 1.03
-Gen12LP,Gen12LP,1.03,1.03,Including Star RC bug factor of 1.03
+Gen12LP,Gen12LP,1.0,1.0,
