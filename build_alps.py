@@ -5,6 +5,8 @@ import os
 import sys
 import subprocess
 import string
+import zipfile
+import gzip
 from copy import deepcopy
 
 #############################
@@ -1074,30 +1076,23 @@ if(options.timegraph_file and options.output_timegraph_file):
     #Read the timegraph input file row by row
     #And essentially run build_alps for each row
     #And dump output values into a timegraph style file
-
-    ##Adding the capability to handle compressed files
     if options.timegraph_file.lower().endswith('.gz'):
-        subprocess.call(["tar", "-xvzf", options.timegraph_file, "-C", scripts_dir])
-        new_file_name = options.timegraph_file.replace('.tar.gz','')
-        uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
+        timegraph_file = gzip.open(options.timegraph_file, 'r')
     elif options.timegraph_file.lower().endswith('.zip'):
-        subprocess.call(["unzip", options.timegraph_file, "-d", scripts_dir])
-        new_file_name = options.timegraph_file.replace('.zip','')
-        uncompressed_file =  scripts_dir + "/" + new_file_name.split("/")[len(new_file_name.split("/"))-1]
+        zip_root = zipfile.ZipFile(options.timegraph_file, 'r')
+        timegraph_file = zip_root.open(zip_root.namelist()[0])
     else:
-        subprocess.call(["cp", options.timegraph_file, scripts_dir])
-        uncompressed_file = scripts_dir + "/" + options.timegraph_file.split("/")[len(options.timegraph_file.split("/"))-1]
+        timegraph_file = open(options.timegraph_file, 'rb')     #'b' needed for decode()
 
-    timegraph_file = open(uncompressed_file,'r')
     #Creating timegraph output file
     op_timegraph_file = open(options.output_timegraph_file, 'w')
     #tiny_build_alps(True)
     with_header = True
-    header = timegraph_file.readline().strip().split('\t')
+    header = timegraph_file.readline().decode().strip().split('\t')
     for line in timegraph_file:
         R = {}
         I = {}
-        row = line.split()
+        row = line.decode().strip().split('\t')
         index = 0
         for ele in header:
             if(strip_num(ele) is False):
@@ -1118,7 +1113,6 @@ if(options.timegraph_file and options.output_timegraph_file):
         with_header= False
 
     timegraph_file.close()
-    subprocess.call(["rm", uncompressed_file])
     op_timegraph_file.close()
 
 
