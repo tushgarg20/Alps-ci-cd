@@ -1674,7 +1674,7 @@ def res_histo(pstate, res_dir, lf,abs_path):
     
     print ("",file=lf)
     print ("########## Workload for which residency is negative ##########",file=lf)
-    for key, values in res_negative.items():
+    for key, value in res_negative.items():
         print (key+","+str(value[0]),file=lf)
 
     print ("",file=lf)
@@ -1682,6 +1682,83 @@ def res_histo(pstate, res_dir, lf,abs_path):
     for key, value in res_not_defined.items():
         print (key+","+str(value[0]),file=lf)
     print ("",file=lf)
+
+
+def residency_histogram_unitwise(ps_list,res_dir,lf,abs_path):
+    given_states = re.split(',',ps_list)
+    for elements in given_states:
+        print ("########## Input unit name: "+elements+" ##########",file=lf)
+        res_histo_unit(elements, res_dir,lf,abs_path)
+
+def res_histo_unit(pstate, res_dir, lf,abs_path):
+    res_negative = {}
+    res_not_defined ={}
+    bin_one=[]
+    bin_two=[]
+    bin_three=[]
+    bin_four=[]
+    bin_five=[]
+    bin_six=[]
+    for files in os.listdir(res_dir):
+        if files.endswith(".csv"):
+            wl = re.split('.res.csv', files)
+            wl_name = wl[0]
+            #print ("###### Workload: "+wl[0]+"######",file=lf)
+            #print ("", file=lf)
+            res_dict=read_residency_file(files,optional=abs_path)
+            for states in res_dict.keys():
+                if ('_'+pstate+'_' in states and states.startswith('PS2')) or ('_'+pstate in states and states.startswith('PS0')) or ('_'+pstate in states and states.startswith('PS1')):
+                    if res_dict[states][0] == 'n/a':
+                        res_not_defined[wl_name] = [res_dict[states][0]]
+                        continue
+                    residency_value = round(float(res_dict[states][0]),2)
+                    if residency_value < 0.0:
+                        res_negative[wl_name] = [residency_value]
+                        continue
+                    elif residency_value >= 0.0 and residency_value != 'n/a' :
+                        if 0.0 <= residency_value <= 0.2:
+                            bin_one.append([wl_name,states,residency_value])
+                        elif 0.2 <= residency_value <= 0.4:
+                            bin_two.append([wl_name,states,residency_value])
+                        elif 0.4 <= residency_value <= 0.6:
+                            bin_three.append([wl_name,states,residency_value])
+                        elif 0.6 <= residency_value <= 0.8:
+                            bin_four.append([wl_name,states,residency_value])
+                        elif 0.8 <= residency_value <= 1.0:
+                            bin_five.append([wl_name,states,residency_value])
+                        else:
+                            bin_six.append([wl_name,states,residency_value])
+                else:
+                    continue
+
+    list_dict=[bin_one,bin_two,bin_three,bin_four,bin_five]
+    index = 1
+    temp = 0.0
+    for value in list_dict:
+        temp2= round((temp+0.2),2)
+        print ("",file=lf)
+        print ("########## Bin:"+str(index)+" Residency range: "+str(temp)+" - "+str(temp2)+" ##########",file=lf)
+        for ele in value:
+            print (ele[0]+","+str(ele[1])+","+str(ele[2]),file=lf)
+        temp=temp2
+        index=index+1
+    
+    print ("",file=lf)
+    print ("########## Bin:6 Residency more than 1.0 ##########",file=lf)
+    for ele in value:
+        print (ele[0]+","+str(ele[1])+","+str(ele[2]),file=lf)
+    
+    print ("",file=lf)
+    print ("########## Workload for which residency is negative ##########",file=lf)
+    for key, value in res_negative.items():
+        print (key+","+str(value[0]),file=lf)
+
+    print ("",file=lf)
+    print ("########## Workload for which residency is not defined ##########",file=lf)
+    for key, value in res_not_defined.items():
+        print (key+","+str(value[0]),file=lf)
+    print ("",file=lf)
+
 
 def cdynwt_gc(cdyn_wt_dict, source_process,log_dir,index,abs_path):
 
@@ -2315,6 +2392,20 @@ if __name__ == '__main__':
                 lf = open(log_directory+"/"+log_f,'w')
                 print ("########### Input residency file/directory:"+abs_path+"##########",file=lf)
                 residency_histogram(ps_list,res_dir,lf,abs_path)
+
+
+        elif "residency_histogram_unitwise" in cmd_args:
+            ps_list_index = cmd_args.index("-l")
+            ps_list = cmd_args[ps_list_index+1]
+            res_dir_index=cmd_args.index("-d")
+            res_dir=cmd_args[res_dir_index+1]
+            abs_path=os.path.abspath(res_dir)
+            abs_path
+            if os.path.isdir(res_dir):
+                log_f = "res_histogram_unitwise"+str(index)+".log"
+                lf = open(log_directory+"/"+log_f,'w')
+                print ("########### Input residency file/directory:"+abs_path+"##########",file=lf)
+                residency_histogram_unitwise(ps_list,res_dir,lf,abs_path)
 
         elif "cdynwt_gc" in cmd_args:
             cdyn_wt_file_index=cmd_args.index("-i")
