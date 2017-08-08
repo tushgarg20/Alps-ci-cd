@@ -1,132 +1,139 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numL3Banks								=	knob.global.NumL3Banks	
-	num_L3_Slices							=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')	
-	num_L3_SubSlices						=	knob.S0.NumSubSlices + knob.STK0.S0.NumSubSlices	
-	num_L3_Bank_LTCD_EBB					=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LTCD_Data					=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LTCD_Tag					=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LSQD						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LSQC						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LTCC						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_LSLM						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_L3BankOther					=	num_L3_Slices * numL3Banks	#GLUE/Small
-	num_L3_Bank_DOP							=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_DFX							=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_SMALL						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_CPunit						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_Assign						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_Repeater					=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_CLKGLUE						=	num_L3_Slices * numL3Banks	
-	num_L3_Bank_NONCLKGLUE					=	num_L3_Slices * numL3Banks
-	num_L3_Bank_LBI							=	num_L3_Slices * numL3Banks
-	
+	numL3Banks			=	knob.global.NumL3Banks	
+	num_L3_Slices			=	knob.global.NumSlices + SUM('knob\.STK\d+\.NumSlices')	
+	num_L3_SubSlices		=	knob.S0.NumSubSlices + knob.STK0.S0.NumSubSlices	
+	num_L3_Bank_LTCD_EBB		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Data		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCD_Tag		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQD		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQC		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCC		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSLM		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_L3BankOther		=	num_L3_Slices * numL3Banks	#GLUE/Small
+	num_L3_Bank_DOP			=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_DFX		        =	num_L3_Slices * numL3Banks	
+	num_L3_Bank_SMALL		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_CPunit		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_Assign		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_Repeater		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_CLKGLUE		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_NONCLKGLUE		=	num_L3_Slices * numL3Banks
+	num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
+
 #Generic				
-	@ANY_L3BANK@							=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
-	@ANY_L3@								=	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)
-	.CrClk									=	D(CrClock.Clocks)	
-	.CrClk2x								=	D(SUM('2xCrClock\.Clocks'))	
-	LNI_max_ports							=	numL3Banks * 2	#Max ports availabe for LNI
-	.temp_LNE_max1							=	D(MIN(6, (num_L3_SubSlices + 3)))	
-	.temp_LNE_max2							=	D(MIN(4, (num_L3_SubSlices + 3)))	
-	LNE_max_ports							=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
-	L3SuperQSize							=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
-	@ANY_LNI@								=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
+	@ANY_L3BANK@			=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
+	@ANY_L3@			=	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)
+	.CrClk				=	D(CrClock.Clocks)	
+	.CrClk2x			=	D(SUM('2xCrClock\.Clocks'))	
+	LNI_max_ports			=	numL3Banks * 2	#Max ports availabe for LNI
+	.temp_LNE_max1			=	D(MIN(6, (num_L3_SubSlices + 3)))	
+	.temp_LNE_max2			=	D(MIN(4, (num_L3_SubSlices + 3)))	
+	LNE_max_ports			=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
+	L3SuperQSize			=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
+	@ANY_LNI@			=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
 	num_L3Node_LNI			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')				
 
 #Other stats	
-	.BankURBRd								=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbRd'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	.BankURBWr								=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(.CrClk2x * num_L3_Slices * numL3Banks)
+	.BankURBRd			=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbRd'))/(.CrClk * num_L3_Slices * numL3Banks)
+	.BankURBWr			=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(.CrClk * num_L3_Slices * numL3Banks)
 
+#LTCD_EBB	
+	PS0_LTCD_EBB	                =	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)
+	PS1_LTCD_EBB             	=       0 #No stall by design
+	PS2_LTCD_EBB_Write		=	(D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_EBB_HB_Read		=   ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')))/(16 * (.CrClk * num_L3_Slices * numL3Banks))) + ((D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk * num_L3_Slices * numL3Banks)))               
+	PS2_LTCD_EBB_HB_Write		=   ((D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')))/(16 * (.CrClk * num_L3_Slices * numL3Banks))) + ((D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk * num_L3_Slices * numL3Banks)))   
 
-#LTCD_EBB				
-	PS0_LTCD_EBB							=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
-	PS1_LTCD_EBB							=	0	#No stall by design
-	PS2_LTCD_EBB_Read						=	(D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS2_LTCD_EBB_Write						=	(D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	#PS2_LTCD_EBB_HB_Read					=	(D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	
-	#PS2_LTCD_EBB_HB_Write					=	(D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (16 * (.CrClk * num_L3_Slices * numL3Banks))	
-	PS2_LTCD_EBB_HB_Read					=   ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')))/(16 * (.CrClk2x * num_L3_Slices * numL3Banks))) + ((D(SUM('@ANY_L3BANK@HBDataRamSlmRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk2x * num_L3_Slices * numL3Banks)))               
-	PS2_LTCD_EBB_HB_Write					=   ((D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW')))/(16 * (.CrClk2x * num_L3_Slices * numL3Banks))) + ((D(SUM('@ANY_L3BANK@HBDataRamSlmWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamSlmAtomicDW'))) / (64 * (.CrClk2x * num_L3_Slices * numL3Banks)))   
-
-#LTCD_Data_Syn				
-	PS0_LTCD_DATA							=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS1_LTCD_DATA							=	(D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_DATA_READ						=	(D(SUM('@ANY_L3BANK@DataRamRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_DATA_WRITE						=	D(SUM('@ANY_L3BANK@DataRamWr')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_DATA_EVICTION							=   D(SUM('@ANY_L3BANK@Evict')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	#new states for new features - not yet coded in Gsim
+#LTCD_Data_Syn
+	#PS0_LTCD_DATA	=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	.temp_ps0_ltcd_data	=	(D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) - (D(SUM('@ANY_L3BANK@DataRamRd') + D(SUM('@ANY_L3BANK@DataRamWr') +  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	#PS0_LTCD_DATA	=	(D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) - (D(SUM('@ANY_L3BANK@DataRamRd') + D(SUM('@ANY_L3BANK@DataRamWr') +  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	PS0_LTCD_DATA	        =	.temp_ps0_ltcd_data	
+	#PS1_LTCD_DATA	=	(D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	PS1_LTCD_DATA	        =	((D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')))/(.CrClk * num_L3_Slices * numL3Banks)) - .temp_ps0_ltcd_data
+	PS2_LTCD_DATA_READ	=	D(SUM('@ANY_L3BANK@DataRamRd')) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LTCD_DATA_WRITE	=	D(SUM('@ANY_L3BANK@DataRamWr')) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LTCD_DATA_EVICTION	=       D(SUM('@ANY_L3BANK@Evict')) / (.CrClk * num_L3_Slices * numL3Banks)
+#New states for new features - not yet coded in Gsim
+#****Ignore Atomics for now
 	PS2_LTCD_ATOMIC_WRITE_HIT	=	0
 	PS2_LTCD_ATOMIC_WRITE_MISS	=	0
-	PS2_LTCD_ATOMIC_READ	=	0
+	PS2_LTCD_ATOMIC_READ	        =	0
 	PS2_LTCD_COAMA_ATOMICS_HIT	=	0
-	PS2_LTCD_DATA_WRITE_CC_128	=	0
-	PS2_LTCD_DATA_EVICT_CC_128_128B_FILL	=	0
-	PS2_LTCD_DATA_EVICT_CC_128_64B_FILL	=	0
+#****End of Atomics****
+	PS2_LTCD_DATA_EVICT_CC_128_128B_FILL	=	(D(SUM('@ANY_L3BANK@LtcdDataEvict128BCC'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LTCD_DATA_EVICT_CC_128_64B_FILL	=       (D(SUM('@ANY_L3BANK@LtcdDataEvict64BCC'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+
 	PS2_LTCD_URB_READ_32b	=	.BankURBRd
-	PS2_LTCD_URB_READ_64b	=	0 #as per cpo, most urb transactions are 32B - so ignoring 64B for now
-	PS2_LTCD_URB_WRITE_64b	=	0
+	PS2_LTCD_URB_READ_64b	=	0        #as per cpo, most urb transactions are 32B - so ignoring 64B for now
 	PS2_LTCD_URB_WRITE_32B	=	.BankURBWr
+	PS2_LTCD_URB_WRITE_64b	=	0
+
 	PS2_LTCD_URB_partial_write	=	0   #need a stat for it
-	.residualltcddata						=	1- (PS0_LTCD_DATA+PS1_LTCD_DATA+PS2_LTCD_DATA_READ+PS2_LTCD_DATA_WRITE+PS2_LTCD_DATA_EVICTION+PS2_LTCD_ATOMIC_WRITE_HIT+PS2_LTCD_ATOMIC_WRITE_MISS+PS2_LTCD_ATOMIC_READ+PS2_LTCD_COAMA_ATOMICS_HIT+PS2_LTCD_DATA_WRITE_CC_128+PS2_LTCD_DATA_EVICT_CC_128_128B_FILL+PS2_LTCD_DATA_EVICT_CC_128_64B_FILL+PS2_LTCD_URB_READ_32b+PS2_LTCD_URB_READ_64b+PS2_LTCD_URB_WRITE_64b+PS2_LTCD_URB_WRITE_32B+PS2_LTCD_URB_partial_write)
-	PS2_LTCD_DATA_Else						=	(.residualltcddata<0)?0:.residualltcddata
+
+	.residualltcddata		=	1- (PS0_LTCD_DATA+PS1_LTCD_DATA+PS2_LTCD_DATA_READ+PS2_LTCD_DATA_WRITE+PS2_LTCD_DATA_EVICTION+PS2_LTCD_ATOMIC_WRITE_HIT+PS2_LTCD_ATOMIC_WRITE_MISS+PS2_LTCD_ATOMIC_READ+PS2_LTCD_COAMA_ATOMICS_HIT+PS2_LTCD_DATA_WRITE_CC_128+PS2_LTCD_DATA_EVICT_CC_128_128B_FILL+PS2_LTCD_DATA_EVICT_CC_128_64B_FILL+PS2_LTCD_URB_READ_32b+PS2_LTCD_URB_READ_64b+PS2_LTCD_URB_WRITE_64b+PS2_LTCD_URB_WRITE_32B+PS2_LTCD_URB_partial_write)
+
+	PS2_LTCD_DATA_Else		=	(.residualltcddata<0)?0:.residualltcddata
 	
 #LTCD_Tag_Syn			
-	.PS2_LTCD_Data_NonSLM_ECC_NoTagRead		=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	.PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
-	PS0_LTCD_TAG							=	D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_TAG_READ						=	(D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_TAG_WRITE						=	(D(SUM('@ANY_L3BANK@TagFullLineWriteMiss'))) / (.CrClk2x * num_L3_Slices * numL3Banks) 
-	PS2_LTCD_TAG_WRITE_FILL_HIT	=	((D(SUM('@ANY_L3BANK@TagRamWr'))) / (.CrClk2x * num_L3_Slices * numL3Banks))-PS2_LTCD_TAG_WRITE 	
+	.PS2_LTCD_Data_NonSLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	.PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
+
+	#PS0_LTCD_TAG			=	D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) - (D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('ANY_L3BANK@TagFullLinearWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@2CLEvict')) + D(SUM('@ANY_L3BANK@TagRamWr128B')) + D(SUM('@ANY_L3BANK@DataRamWr128B')))) / (.CrClk * num_L3_Slices * numL3Banks)
+
+        PS0_LTCD_TAG                    =       .temp_ps0_ltcd_tag
+	PS2_LTCD_TAG_READ		=	(D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LTCD_TAG_WRITE		=	(D(SUM('@ANY_L3BANK@TagFullLineWriteMiss'))) / (.CrClk * num_L3_Slices * numL3Banks) 
+	PS2_LTCD_TAG_WRITE_FILL_HIT	=	((D(SUM('@ANY_L3BANK@TagRamWr'))) / (.CrClk * num_L3_Slices * numL3Banks))-PS2_LTCD_TAG_WRITE 	
 	#Discussed with Akif - tag hit write - tag write after a hit/ all others in tag write state
-	PS2_LTCD_TAG_EVICTION_1_SUBSEC	=	((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks)) - ((D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk2x * num_L3_Slices * numL3Banks))
-	PS2_LTCD_TAG_EVICTION_2_SUBSEC	=	(D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LTCD_TAG_WRITE_CC_128	=	0 #not available from gsim yet
-	.residualltcdtag						=	1- (PS0_LTCD_TAG+PS2_LTCD_TAG_READ+PS2_LTCD_TAG_WRITE+PS2_LTCD_TAG_WRITE_FILL_HIT+PS2_LTCD_TAG_EVICTION_1_SUBSEC+PS2_LTCD_TAG_EVICTION_2_SUBSEC+PS2_LTCD_TAG_WRITE_CC_128)
-	PS2_LTCD_TAG_Else						=	(.residualltcdtag<0)?0:.residualltcdtag
+	PS2_LTCD_TAG_EVICTION_1_SUBSEC	=	((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)) - ((D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks))
+	PS2_LTCD_TAG_EVICTION_2_SUBSEC	=	(D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks)
+
+	PS2_LTCD_TAG_WRITE_CC_128	=       (D(SUM('@ANY_L3BANK@TagRamWr128B')))/(.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_DATA_WRITE_CC_128	=       (D(SUM('@ANY_L3BANK@DataRamWr128B')))/(.CrClk * num_L3_Slices * numL3Banks)	
+	PS2_LTCD_TAG_Else		=	(.residualltcdtag<0) ? 0:.residualltcdtag
 
 
-
-	#LSQD				
-	PS0_LSQD								=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdIdle'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	PS1_LSQD								=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdStalled'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LSQD_WRITE							=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdWrite'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LSQD_READ_RF				=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdReadRet'))/(.CrClk2x * num_L3_Slices * numL3Banks)
-	#PS2_LSQD_HIT_WRITE						=  (D(SUM('@ANY_L3BANK@DataRamRd'))+  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS2_LSQD_LNE_HIT_DATA_RETURN	=	(D(SUM('@ANY_L3BANK@DataRamRd'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
+	#LSQD
+	PS0_LSQD	=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdIdle'))/(.CrClk * num_L3_Slices * numL3Banks)
+	PS1_LSQD	=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdStalled'))/(.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LSQD_WRITE	=	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdWrite'))/(.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LSQD_READ_RF    =	D(SUM('S\d+\.uL3.Bank_\d+\.LsqdReadRet'))/(.CrClk * num_L3_Slices * numL3Banks)
+	#PS2_LSQD_HIT_WRITE	=  (D(SUM('@ANY_L3BANK@DataRamRd'))+  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LSQD_LNE_HIT_DATA_RETURN	=	(D(SUM('@ANY_L3BANK@DataRamRd'))) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LSQD_WRITE_CC_128	=	0 #not yet modelled in gsim #new feature 
-	.residuallsqd							=	1- (PS0_LSQD + PS1_LSQD + PS2_LSQD_WRITE + PS2_LSQD_LNE_HIT_DATA_RETURN + PS2_LSQD_READ_RF)
-	PS2_LSQD_Else							=	(.residuallsqd<0)?0:.residuallsqd
+	.residuallsqd		=	1 - (PS0_LSQD + PS1_LSQD + PS2_LSQD_WRITE + PS2_LSQD_LNE_HIT_DATA_RETURN + PS2_LSQD_READ_RF)
+	PS2_LSQD_Else		=	(.residuallsqd<0)?0:.residuallsqd
 	
 #LSQC		#new PS1 stats are not available		
-	PS0_LSQC								=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	.idle_count_per_bank						=	D(SUM('@ANY_L3BANK@SuperQEntries_Empty')) / (num_L3_Slices * numL3Banks)
-	.stalled_count_per_bank					=	(D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToMem'))+D(SUM('@ANY_L3BANK@SuperQEntries_InFlightToMem'))+D(SUM('@ANY_L3BANK@SuperQEntries_NotReadyDependent'))+D(SUM('@ANY_L3BANK@SuperQEntries_WaitingOnEviction'))+D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToUrb'))+D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToArray'))) / (num_L3_Slices * numL3Banks)
-	.temp_ps1_lsqc							=	stalled_count_per_bank / L3SuperQSize
-	PS1_LSQC								=D(SUM('@ANY_L3BANK@Stalled'))/(((.CrClk2x)/2) * num_L3_Slices * numL3Banks)
-	PS1_LSQC_PW_STALL						=	0
-	.active_count_per_bank					=	((L3SuperQSize*(.CrClk2x)/2) -.idle_count_per_bank -.stalled_count_per_bank) #ProcessSuperQ done at 1x clock#Confirm
-	LSQC_activeslots_per_clock			=	.active_count_per_bank/(((.CrClk2x)/2)*(PS2_LSQC)*L3SuperQSize)
-	PS2_LSQC							=	1 - PS0_LSQC - PS1_LSQC
+	PS0_LSQC	        =	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	.idle_count_per_bank	=	D(SUM('@ANY_L3BANK@SuperQEntries_Empty')) / (num_L3_Slices * numL3Banks)
+	.stalled_count_per_bank	=	(D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToMem'))+D(SUM('@ANY_L3BANK@SuperQEntries_InFlightToMem'))+D(SUM('@ANY_L3BANK@SuperQEntries_NotReadyDependent'))+D(SUM('@ANY_L3BANK@SuperQEntries_WaitingOnEviction'))+D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToUrb'))+D(SUM('@ANY_L3BANK@SuperQEntries_ReadyButNoSlotToArray'))) / (num_L3_Slices * numL3Banks)
+	.temp_ps1_lsqc		=	stalled_count_per_bank / L3SuperQSize
+	PS1_LSQC		=D(SUM('@ANY_L3BANK@Stalled'))/(((.CrClk2x)/2) * num_L3_Slices * numL3Banks)
+	PS1_LSQC_PW_STALL	=	0
+	.active_count_per_bank	=	((L3SuperQSize*(.CrClk2x)/2) - .idle_count_per_bank - .stalled_count_per_bank) #ProcessSuperQ done at 1x clock#Confirm
+	LSQC_activeslots_per_clock	=	.active_count_per_bank/(((.CrClk2x)/2)*(PS2_LSQC)*L3SuperQSize)
+	PS2_LSQC			=	1 - PS0_LSQC - PS1_LSQC
 
-	#Cdyn									=	(1.26974*LSQC_activeslots_per_clock)+ 7.45155
-	#PS2_LSQC								=	(Cdyn * PS2_LSQC_temp)/88.715
+	#Cdyn		=	(1.26974*LSQC_activeslots_per_clock)+ 7.45155
+	#PS2_LSQC	=	(Cdyn * PS2_LSQC_temp)/88.715
         	        			
 #LTCC	#new stats are not available			
-	PS0_LTCC								=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS1_LTCC								=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	PS2_LTCC_LKUP								=	1 - PS0_LTCC - PS1_LTCC	
-	PS2_LTCC_FILL								=	0	
-	PS2_LTCC_DCH								=	0	
-											
-
+	PS0_LTCC	=	D(SUM('@ANY_L3BANK@SQEmptyCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS1_LTCC	=	D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
+	PS2_LTCC_LKUP	=	1 - PS0_LTCC - PS1_LTCC	
+	PS2_LTCC_FILL	=	0	
+	PS2_LTCC_DCH    =	0	
 #LBI
 
-	PS0_LBI=D(SUM('@ANY_L3@LNI_\d\.Idle'))/ (.CrClk * num_L3_Slices * num_L3Node_LNI)
-	PS1_LBI=D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)#LBI ingress fifo not empty and no LSQC slot credit
-	PS2_LBI_BANK_READ = ((D(SUM('@ANY_LNI@LocalSliceRead')) + D(SUM('@ANY_LNI@XSliceSliceRead')))/ ((.CrClk2x * num_L3_Slices * numL3Banks))) - .BankURBRd #bank read on port0 #divide by 2 to make it per port
-	PS2_LBI_BANK_WRITE = ((D(SUM('@ANY_LNI@LocalSliceWrite')) + D(SUM('@ANY_LNI@XSliceSliceWrite')))/ ((.CrClk2x * num_L3_Slices * numL3Banks))) - .BankURBWr #bank write on port0
-	PS2_LBI_MEFFILL=D(SUM('@ANY_LNI@MemReturn'))/ ((.CrClk2x * num_L3_Slices * numL3Banks))#Mem fill to LSQD
+	PS0_LBI         =       D(SUM('@ANY_L3@LNI_\d\.Idle'))/ (.CrClk * num_L3_Slices * num_L3Node_LNI)
+	PS1_LBI         =       D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)#LBI ingress fifo not empty and no LSQC slot credit
+	PS2_LBI_BANK_READ = ((D(SUM('@ANY_LNI@LocalSliceRead')) + D(SUM('@ANY_LNI@XSliceSliceRead')))/ ((.CrClk * num_L3_Slices * numL3Banks))) - .BankURBRd #bank read on port0 #divide by 2 to make it per port
+	PS2_LBI_BANK_WRITE = ((D(SUM('@ANY_LNI@LocalSliceWrite')) + D(SUM('@ANY_LNI@XSliceSliceWrite')))/ ((.CrClk * num_L3_Slices * numL3Banks))) - .BankURBWr #bank write on port0
+	PS2_LBI_MEFFILL = D(SUM('@ANY_LNI@MemReturn'))/ ((.CrClk * num_L3_Slices * numL3Banks))#Mem fill to LSQD
 	PS2_LBI_BANK_READ_URB	=	.BankURBRd
 	PS2_LBI_BANK_WRITE_URB	=	.BankURBWr
 	.residuallbi							=	1- (PS0_LBI + PS1_LBI + PS2_LBI_BANK_WRITE + PS2_LBI_BANK_READ + PS2_LBI_MEFFILL + PS2_LBI_BANK_READ_URB + PS2_LBI_BANK_WRITE_URB)
@@ -134,7 +141,7 @@
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
-	PS2_L3BankOther	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk2x * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk2x * num_L3_Slices * numL3Banks))	
+	PS2_L3BankOther	=	((D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) + D(SUM('@ANY_L3BANK@DataRamAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)) + ((D(SUM('@ANY_L3BANK@HBDataRamUrbRdDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbWrDW')) + D(SUM('@ANY_L3BANK@HBDataRamUrbAtomicDW'))) / (16 * .CrClk * num_L3_Slices * numL3Banks))	
 				
 #L3DOP				
 	PS0_L3_Bank_DOP	=	0	

@@ -1,0 +1,246 @@
+GT Common Assets:
+  CGP INF:
+    UNCORE:
+      MBGFUC: "-"
+      MDRB: "-"
+      SNP_FILTER: "-"
+  Globals:
+    NA:
+      NA: "-"
+  Blitter:
+    Other:
+      Blitter: "-"
+  P24C:
+    Other:
+      GTP24C: "-"
+3D Core:
+  GTI:
+    Others:
+      GTI:
+        MFC: "-"
+        MLINT: "-"
+        MediaIdle: "-"
+    CGP COH:
+      NA:
+        NA: "-"
+    BGF:
+      SQIDI:
+        MBGFGT: "-"
+    SQ Bank:
+      SQIDI:
+        MSQC: "-"
+        MSQD: "-"
+    SQIDI:
+      SQIDI:
+        MIDI: "-"
+        MISD: "-"
+        MSNP: "-"
+        MAC: "-"
+        MAD: "-"
+  GAM/GA:
+    GAM/GA 3D:
+      GAM:
+        GACB: "-"
+        GAFM: "-"
+        GAFSRD: "-"
+        GAFSWR: "-"
+        GAMD: "-"
+        GAMDRTN: "-"
+        GAMD_WB_HW_GAMDEBB: "-"
+        GAMD_WCPEBB: "-"
+        GAMTG: "-"
+        GAMTG_CVSTLBEBB: "-"
+        GAMTG_L3TLBEBB: "-"
+        GAMTO: "-"
+        GAMTO_BWGTLBEBB: "-"
+        GAMTO_MFXEBB: "-"
+        GAMTO_VEBXTLBEBB: "-"
+        GAMWC: "-"
+        GAMWC_PENDQEBB: "-"
+        GAMWD: "-"
+        GAMWD_WRKPDEBB: "-"
+        GAPC: "-"
+        GAPS: "-"
+        GAPZ: "-"
+        GASS: "-"
+        GATR: "-"
+        GATRW: "-"
+        MARB: "-"
+  Slice:
+    Dual Subslice:
+      Subslice:
+        EU_TC:
+          EU:
+            TC: "-"
+        EU:
+          EU:
+            Accumulator: "-"
+            FPU0: "-"
+            FPU1: "-"
+            EM: "-"
+            GA: "-"
+            GRF: "-"
+        Row Uniq:
+          ROSS:
+            TDL: "-"
+            IC: "-"
+        3D Sampler Uniq:
+          Sampler:
+            SVSM: "-"
+            SI: "-"
+            PL: "-"
+            DG: "-"
+            FL: "-"
+            SO: "-"
+      3D Subslice Common:
+        SLM:
+          DSSC:
+            SLMFE: "-"
+            SLMBE: "-"
+        IC-TDL:
+          ROSS:
+            TDL: "-"
+            IC: "-"
+            IC_DataRAM: "-"
+            MA_IN: "-"
+            MA_OUT: "-"
+        3D Sampler Shared:
+          Sampler:
+            ST: "-"
+            FT: "-"
+            MT: "-"
+            DM: "-"
+            SC: "-"
+            SSLA: "-"
+            MT_Cache: "-"
+            SC_Cache: "-"
+        Media Sampler:
+          Sampler:
+            AVS: "-"
+            IEF: "-"
+            CRE: "-"
+            IME: "-"
+        HDC:
+          HDC:
+            HDCL1: "-"
+            HDCL1_CACHE: "-"
+            HDCREQCMD1: "-"
+            HDCREQCMD2: "-"
+            HDCREQDATA: "-"
+            HDCRET1: "-"
+            HDCRET2: "-"
+            HDCTLB: "-"
+        Pixel:
+          DSSC:
+            BC: "-"
+            CPSS: "-"
+            PSD: "-"
+            PSD_BaryPayloadRAM: "-"
+            PSD_Scoreboard: "-"
+            DAPRSS: "-"
+            DAPRSS_BypassRAM: "-"
+            GWL: "-"
+    L3:
+      L3 Bank:
+        L3_Bank:
+          L3BankOther: "-"
+          LBI: "-"
+          LSQC: "-"
+          LSQD: "-"
+          LTCC: "-"
+          LTCD_Data: "-"
+          LTCD_EBB: "-"
+          LTCD_Tag: "-"
+      L3 Node:
+        L3Node:
+          LNE: "-"
+          LNIB: "-"
+          LNIC: "-"
+        Fabric:
+          BGF: "-"
+          BGFunslice: "-"
+          LSN: "-"
+          LSNEP: "-"
+          UnsliceRepeaters: "-"
+    SliceCommon:
+      Color Pipe:
+        COLOR:
+          CC: "-"
+          DAPB: "-"
+          DAPRSC: "-"
+          MSC: "-"
+          MSC_Cache: "-"
+          RCC: "-"
+          RCC_Cache: "-"
+          RCPBCOM: "-"
+          RCPBPIX: "-"
+          RCPFE: "-"
+          RCPFE_Cache: "-"
+      Z Pipe:
+        Z:
+          HIZ: "-"
+          HIZ_Cache: "-"
+          IZ: "-"
+          IZ_Cache: "-"
+          RCZ: "-"
+          RCZ_Cache: "-"
+          STC: "-"
+          STC_Cache: "-"
+    Geomean-Raster:
+      GFX-Front-End:
+        FF:
+          CS: "-"
+        rFF:
+          rCS: "-"
+      Geom:
+        FF:
+          CL: "-"
+          CS: "-"
+          GS: "-"
+          GS_Cache: "-"
+          HPSDE: "-"
+          HPVS: "-"
+          HS: "-"
+          HS_Cache: "-"
+          RS: "-"
+          RS_Cache: "-"
+          SDE: "-"
+          SFBE: "-"
+          SFFE: "-"
+          SOL: "-"
+          SOL_Cache: "-"
+          SVG: "-"
+          TDG: "-"
+          TDS: "-"
+          TDS_Cache: "-"
+          TE: "-"
+          TSG: "-"
+          URBM: "-"
+          VF: "-"
+          VFBE: "-"
+          VFE: "-"
+          VF_Cache: "-"
+          VSBE: "-"
+          VSFE: "-"
+          VS_Cache: "-"
+        rFF:
+          rCL: "-"
+          rCS: "-"
+          rOV: "-"
+          rSFBE: "-"
+          rSFFE: "-"
+          rSVG: "-"
+          rVF: "-"
+          rVFBE: "-"
+          rVF_Cache: "-"
+          rVSBE: "-"
+          rVSFE: "-"
+          rVS_Cache: "-"
+      Raster:
+        ROSC:
+          SARB: "-"
+          SBE: "-"
+          SVL: "-"
+          TDC: "-"
+          WMBE: "-"
+          WMFE: "-"

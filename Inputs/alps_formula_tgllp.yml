@@ -281,7 +281,7 @@ L3_Bank:
      PS2_LTCD_URB_READ_32b: R * C
      PS2_LTCD_URB_READ_64b: R * C
      PS2_LTCD_URB_WRITE_64b: R * C
-     PS2_LTCD_URB_WRITE_32B: R * C
+     PS2_LTCD_URB_WRITE_32b: R * C
      PS2_LTCD_URB_partial_write: R * C
      PS2_LTCD_DATA_Else: R * C
    LTCD_Tag:
@@ -766,24 +766,13 @@ Sampler:
     PS0_DM: R * C
     PS1_DM: R * C
     PS2_DM_BDM:
-     PS2_DM_BC1_5: R * C
+     PS2_DM_BC1: R * C
+     PS2_DM_BC2_5: R * C
      PS2_DM_BC6_7: R * C
-     PS2_DM_BC1_3_SRGB: R * C
-     PS2_DM_BC7_SRGB: R * C
      PS2_DM_ETC: R * C
-     PS2_DM_Other: R * C
-     PS2_DM_HIZ_Z: R * C
-     PS2_DM_LOSSLESS: R * C
-     PS2_DM_ASTC_LDR_2D: R * C
-     PS2_DM_ASTC_LDR_3D: R * C
-     PS2_DM_ASTC_HDR_2D: R * C
-     PS2_DM_ASTC_HDR_3D: R * C
+     PS2_DM_ETC_EAC: R * C
+     PS2_DM_ELSE: R * C
      PS2_DM_Expanded: R * C
-     PS2_DM_Expanded_BYPASS: R * C
-     PS2_DM_Media_BYPASS: R * C
-     PS2_DM_Media_SRGB: R * C
-     PS2_DM_Media_Planar: R * C
-     PS2_DM_Bypass: R * C
 
    DM_PALRAM:
      PS2_DM_PALRAM_READ: R * C

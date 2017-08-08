@@ -177,7 +177,7 @@
 	PS0_SOL_DOP	=	( .temp_3DPipeDisable > .temp_TeGsSolDOP )? .temp_3DPipeDisable : .temp_TeGsSolDOP	#Stub model
 	PS0_SOL	=	(D('Geo\.uSOL\.pwr_sol_idle\.@GeoRefClk@') / .GeoClkCount) - PS0_SOL_DOP	
 	PS1_SOL	=	(D('Geo\.uSOL\.pwr_sol_stalled_or_idle\.@GeoRefClk@') - D('Geo\.uSOL\.pwr_sol_idle\.@GeoRefClk@')) / .GeoClkCount	
-	PS2_SOL_Enabled	=	D('Geo\.uSOL\.pwr_sol_active_enabled\.@GeoRefClock@') / .GeoClkCount	
+	PS2_SOL_Enabled	=	D('Geo\.uSOL\.pwr_sol_active_enabled\.@GeoRefClk@') / .GeoClkCount	
 	PS2_SOL_Disabled	=	1 - (PS0_SOL_DOP + PS0_SOL + PS1_SOL + PS2_SOL_Enabled)	
 #SOL Cache				
 	PS0_SOL_Cache_Idle	=	0	#NO GSIM model
