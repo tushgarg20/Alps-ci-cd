@@ -46,7 +46,7 @@ def read_cdyn_file(cdyn_file_name):
     return cdyn_wt
 
 
-def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,lf,options,arch_name,cluster_list=None,units_list=None):
+def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,wl,lf,options,arch_name,cluster_list=None,units_list=None):
 
     cluster_cdyn1={}
     cluster_cdyn2={}
@@ -64,10 +64,19 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
             diff=round(float(num2-num1),2)
             print ((elements+",\t").expandtabs(26)+(str(num1)+",\t"+str(num1)+",\t"+str(diff)).expandtabs(16),file=lf)
         cdyn_by_fps1 = round(cdyn_dict1['Total_GT_Cdyn(nF)']/cdyn_dict1['FPS'],2)
-        cdyn_by_fps2 = round(cdyn_dict2['Total_GT_Cdyn(nF)']/cdyn_dict1['FPS'],2)
+        cdyn_by_fps2 = round(cdyn_dict2['Total_GT_Cdyn(nF)']/cdyn_dict2['FPS'],2)
         ratio_diff = round(float(cdyn_by_fps2-cdyn_by_fps1),2)
         print (("Total_GT_Cdyn/FPS,\t").expandtabs(26)+(str(cdyn_by_fps1)+",\t"+str(cdyn_by_fps2)+",\t"+str(diff)).expandtabs(16),file=lf)
         print ("",file=lf)
+    print ("Workload name,FPS1,FPS2",file=lf)
+    if "fps" in options:
+        
+        # FPS Comparision
+        fps1=cdyn_dict1['FPS']
+        fps2=cdyn_dict2['FPS']
+        diff=round(float(fps2-fps1),2)
+        #print (("Workload name,FPS1,FPS2,file=lf)
+        print (wl+","+str(fps1)+","+str(fps2)+","+str(diff),file=lf)
 
 
     if "clusters" in options:
@@ -457,6 +466,8 @@ if __name__ == '__main__':
             abs_path2=os.path.abspath(cdyn_out_dir2)
             arch_index=cmd_args.index("-arch")
             arch=cmd_args[arch_index+1]
+            if "-fps" in cmd_args:
+                options.append("fps")
             if "-gt" in cmd_args:
                 options.append("gt")
             if "-clusters" in cmd_args:
@@ -518,8 +529,8 @@ if __name__ == '__main__':
                                     wl2 = re.split('.yaml', files2)
                                     if files == files2:
                                 
-                                        print ("###### Workload: "+wl1[0]+"######",file=lf)
-                                        print ("", file=lf)
+                                        #print ("###### Workload: "+wl1[0]+"######",file=lf)
+                                        #print ("", file=lf)
                                         yaml_file1 = open(cdyn_out_dir1+"/"+files,'r')
                                         yaml_file2 = open(cdyn_out_dir2+"/"+files2,'r')
                                         cdyn_dict1 = yaml.load(yaml_file1)
@@ -528,7 +539,7 @@ if __name__ == '__main__':
                                         res_file2=wl2[0]+".res.csv"
                                         res_file_dict1=read_residency_file(res_file1,optional=abs_path1)
                                         res_file_dict2=read_residency_file(res_file2,optional=abs_path2)
-                                        compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,lf,options,arch,clusters,units)
+                                        compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,wl1[0],lf,options,arch,clusters,units)
                             else:
                                 continue
                             
