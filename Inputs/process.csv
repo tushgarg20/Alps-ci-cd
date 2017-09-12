@@ -75,3 +75,4 @@ Gen11LP,Gen12LP,1.0,1.0,
 Gen9LPClient,Gen12LP,0.6077,0.6077,Including Star RC bug factor of 1.03
 Gen9LPSoC,Gen12LP,0.660970516,0.680799633,Including Star RC bug factor of 1.03
 Gen12LP,Gen12LP,1.0,1.0,
+Gen11LP,Gen11,1.0,1.0
