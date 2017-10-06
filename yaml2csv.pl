@@ -87,7 +87,7 @@ foreach my $alps (@alpsModelFile) {
 	my $alpsData = LoadFile("$alps");
 	foreach my $key (keys %{$alpsData}) {
 		if ($key =~ /fps/i) {$consolidatedAlpsData{$frameName}{FPS} = $alpsData->{$key};}
-		if ($key =~ /total_gt_cdyn/i) {$consolidatedAlpsData{$frameName}{CDYN} = $alpsData->{$key};}
+		if ($key =~ /total_gt_cdyn\(nF\)/i) {$consolidatedAlpsData{$frameName}{CDYN} = $alpsData->{$key};}
 		if ($key =~ /cluster_cdyn/i) {
 			#my %clusterCdynData = %{$alpsData{$key}};
 			my $clusterCdynData = $alpsData->{$key};
@@ -98,6 +98,26 @@ foreach my $alps (@alpsModelFile) {
 				}
 			}
 		}
+		
+
+		
+		if ($key =~ /physical_cdyn_numbers/i){
+		    my $physicalCdynData = $alpsData->{$key};
+		    foreach my $item (keys %{$physicalCdynData}){
+		        my %sliceunslice  = %{$physicalCdynData->{$item}};
+			my $sliceunslice_sum = 0;
+			    foreach my $category (keys %sliceunslice){
+			        $sliceunslice_sum = $sliceunslice_sum+$sliceunslice{$category};
+				}
+			    $consolidatedAlpsData{$frameName}{$item}{CDYN} = $sliceunslice_sum;
+			}
+                }
+		
+		
+		
+		
+		
+		
 		if ($key =~ /unit_cdyn/i) {
 			#my %unitCdynHash = %{$alpsData{$key}};
 			my %unitCdynHash = %{$alpsData->{$key}};
