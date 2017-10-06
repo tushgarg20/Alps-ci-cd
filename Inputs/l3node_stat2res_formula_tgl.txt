@@ -2,10 +2,10 @@
 #Instance Counts				
 	num_L3_Slices			=	knob.global.NumSlices	+ SUM('knob\.STK\d+\.NumSlices')
 	#num_L3Node_LNI			=	2 * num_L3_Slices
-	num_L3Node_LNI			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
-	num_L3Node_LNIB			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
-	num_L3Node_LNIC			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
-	num_L3Node_LNE			=	COUNT('knob\.S\d\.uL3\.LNE_\d\.CReturnQ.PopEvent')	
+	num_L3Node_LNI			=	2.0 #COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
+	num_L3Node_LNIB			=	2.0 #COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
+	num_L3Node_LNIC			=	2.0 #COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
+	num_L3Node_LNE			=	2.0 #COUNT('knob\.S\d\.uL3\.LNE_\d\.CReturnQ.PopEvent')	
 	num_L3Node_LNIXS		=	0	
 	num_L3Node_LNEXS		=	0	
 	num_L3Node_L3BankOther	=	num_L3_Slices	#GLUE/Small
@@ -16,13 +16,14 @@
 	num_L3Node_Assign		=	num_L3_Slices	
 	num_L3Node_Repeater		=	num_L3_Slices	
 	num_L3Node_CLKGLUE		=	num_L3_Slices	
-	num_L3Node_NONCLKGLUE	=	num_L3_Slices	
+	num_L3Node_NONCLKGLUE	        =	num_L3_Slices	
 #Generic				
 	 #@ANY_L3BANK@			=	S\d+\.uL3\.Bank_\d+\.	
 	 @ANY_L3BANK@			=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
-	 @ANY_LNI@				=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
-	 .CrClk					=	D(CrClock.Clocks)	
-	 .CrClk2x				=	D(SUM('2xCrClock\.Clocks'))	
+	 @ANY_LNI@			=	(S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
+	 @ANY_LNI_BUS@			=	(S\d+\.uL3\.LNI_\d+\.bus_\d+\_)
+	 .CrClk				=	D(CrClock.Clocks)	
+	 .CrClk2x			=	D(SUM('2xCrClock\.Clocks'))	
 	LNI_max_ports			=	numL3Banks * 2	#Max ports availabe for LNI
 	.temp_LNE_max1			=	D(MIN(6, (num_L3_SubSlices + 3)))	
 	.temp_LNE_max2			=	D(MIN(4, (num_L3_SubSlices + 3)))	
@@ -37,39 +38,39 @@
 	.URBWr								=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))
 
 	
-	PS0_LNIB						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNI*.CrClk)
-	PS0_LNIB_FLUSHBLOCK					=	0
-	PS1_LNIB						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIB_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI@XSliceSliceWrite'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIB_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI@XSliceSliceRead'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIB_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIB_LOCAL_1BANK_1READ_URB  = 	.URBRd/(num_L3Node_LNI*.CrClk)
-	PS2_LNIB_LOCAL_1BANK_1READ_NON_URB =   (D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNI*.CrClk))- (PS2_LNIB_LOCAL_1BANK_1READ_URB)
-	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B =  	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNI*.CrClk)
+	PS0_LNIB			=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNIB * .CrClk)
+	PS0_LNIB_FLUSHBLOCK		=	0
+	PS1_LNIB			=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI_BUS@XSliceSliceWrite'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI_BUS@XSliceSliceRead'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_LOCAL_1BANK_1READ_URB  = 	.URBRd/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_LOCAL_1BANK_1READ_NON_URB =   (D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNIB * .CrClk))- (PS2_LNIB_LOCAL_1BANK_1READ_URB)
+	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B =  	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_32B = 0 #Unavailability of any stat for differentiating between 32B and 64B states
-	PS2_LNIB_LOCAL_1BANK_1WRITE_NON_URB_64B =	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNI*.CrClk) - (D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNI*.CrClk))
+	PS2_LNIB_LOCAL_1BANK_1WRITE_NON_URB_64B =	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNIB * .CrClk) - (D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNIB * .CrClk))
 	.residuallnib				=	1- (PS0_LNIB + PS1_LNIB + PS2_LNIB_XSLICE_ING_1WRITE + PS2_LNIB_XSLICE_ING_1READ + PS2_LNIB_XSLICE_ING_MEMFILL + PS2_LNIB_LOCAL_1BANK_1READ_URB + PS2_LNIB_LOCAL_1BANK_1READ_NON_URB + PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B + PS2_LNIB_LOCAL_1BANK_1WRITE_URB_32B + PS2_LNIB_LOCAL_1BANK_1WRITE_NON_URB_64B )
 	PS2_LNIB_Else				=	(.residuallnib<0)?0:.residuallnib
 
-	PS0_LNIC						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNI*.CrClk)
+	PS0_LNIC						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNIC * .CrClk)
 	PS0_LNIC_FLUSHBLOCK					=	0
 	PS0_LNIC_SQCOMP						=	0
-	PS1_LNIC						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNI*.CrClk)
-	.PS2_LNIC_LOCAL_1BANK_1READ	=	D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNI*.CrClk)
-	.PS2_LNIC_LOCAL_1BANK_1WRITE	=	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNI*.CrClk)
+	PS1_LNIC						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNIC * .CrClk)
+	.PS2_LNIC_LOCAL_1BANK_1READ	=	D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNIC * .CrClk)
+	.PS2_LNIC_LOCAL_1BANK_1WRITE	=	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNIC * .CrClk)
 	#temporary hack till the feature is modelled - FF will not contribute to Xslice traffic (nor will C and Z))
-	PS2_LNIC_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI@XSliceSliceRead')) - (D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped'))*num_L3_Buses))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIC_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI@XSliceSliceWrite')) - (D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped'))*num_L3_Buses))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIC_LOCAL_1BANK_1READ_URB_FF = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.FF\.RD\.URB\.local'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIC_LOCAL_1BANK_1READ_URB_DSS = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.TDL\.RD\.URB\.local'))/(num_L3Node_LNI*.CrClk) + 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.TDL\.RD\.URB\.xslice'))/(num_L3Node_LNI*.CrClk) + 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.FF\.RD\.URB\.local'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.CS\.RD\.GTI\.local'))/(num_L3Node_LNI*.CrClk) #cpo- ALSO look for TES stats
+	PS2_LNIC_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceRead')) - (D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped'))*num_L3_Buses))/(num_L3Node_LNIC *. CrClk)
+	PS2_LNIC_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceWrite')) - (D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped'))*num_L3_Buses))/(num_L3Node_LNIC * .CrClk)
+	PS2_LNIC_LOCAL_1BANK_1READ_URB_FF = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.FF\.RD\.URB\.local'))/(num_L3Node_LNIC * .CrClk)
+	PS2_LNIC_LOCAL_1BANK_1READ_URB_DSS = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.TDL\.RD\.URB\.local'))/(num_L3Node_LNIC * .CrClk) + 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.TDL\.RD\.URB\.xslice'))/(num_L3Node_LNIC * .CrClk) + 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.FF\.RD\.URB\.local'))/(num_L3Node_LNIC * .CrClk)
+	PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF = 	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.CS\.RD\.GTI\.local'))/(num_L3Node_LNIC * .CrClk) #cpo- ALSO look for TES stats
 	PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF_GAM 	= 	0 #what are these?
 	PS2_LNIC_LOCAL_1BANK_1READ_NON_FF = .PS2_LNIC_LOCAL_1BANK_1READ -  (.URBRd/(num_L3Node_LNI*.CrClk)) - PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF - PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF_GAM
 	PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_32B 	=	0 #need to get breakup from sim
-	PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_64B 	=	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.FF\.WR\.URB\.local'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNIC_LOCAL_1BANK_1WRITE_URB_DSS 	=	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.HDC\.WR\.URB\.local'))/(num_L3Node_LNI*.CrClk)  + D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.2xCrClock\.HDC\.WR\.URB\.xslice'))/(num_L3Node_LNI*.CrClk)
+	PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_64B 	=	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.FF\.WR\.URB\.local'))/(num_L3Node_LNIC * .CrClk)
+	PS2_LNIC_LOCAL_1BANK_1WRITE_URB_DSS 	=	D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.HDC\.WR\.URB\.local'))/(num_L3Node_LNIC * .CrClk)  + D(SUM('S\d+\.uL3\.Bank_\d\.InputRequests\.CrClock\.HDC\.WR\.URB\.xslice'))/(num_L3Node_LNIC * .CrClk)
 	PS2_LNIC_LOCAL_1BANK_1WRITE_NONURB_FF_GAM 	= 	0 #need clarity
-	PS2_LNIC_LOCAL_1BANK_1WRITE_NON_FF	=		(D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNI*.CrClk))- PS2_LNIC_LOCAL_1BANK_1WRITE_URB_URB_FF_64B - PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_32B - PS2_LNIC_LOCAL_1BANK_1WRITE_NONURB_FF_GAM
+	PS2_LNIC_LOCAL_1BANK_1WRITE_NON_FF	=		(D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNIC * .CrClk))- PS2_LNIC_LOCAL_1BANK_1WRITE_URB_URB_FF_64B - PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_32B - PS2_LNIC_LOCAL_1BANK_1WRITE_NONURB_FF_GAM
     PS2_LNIC_SQCOMP 	= 	0 
 	PS2_LNIC_STATE_READ = 	0 
 	.residuallnic	=	1- (PS0_LNIC+PS0_LNIC_FLUSHBLOCK+PS0_LNIC_SQCOMP+PS1_LNIC+PS2_LNIC_XSLICE_EGR_1READ+PS2_LNIC_XSLICE_EGR_1WRITE+PS2_LNIC_LOCAL_1BANK_1READ_URB_FF+PS2_LNIC_LOCAL_1BANK_1READ_URB_DSS+PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF+PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF_GAM+PS2_LNIC_LOCAL_1BANK_1READ_NON_FF+PS2_LNIC_LOCAL_1BANK_1READ_NONURB_FF_GAM+PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_32B+PS2_LNIC_LOCAL_1BANK_1WRITE_URB_FF_64B+PS2_LNIC_LOCAL_1BANK_1WRITE_URB_DSS+PS2_LNIC_LOCAL_1BANK_1WRITE_NONURB_FF_GAM+PS2_LNIC_LOCAL_1BANK_1WRITE_NON_FF+PS2_LNIC_LOCAL_1BANK_1WRITE_NONURB_FF_GAM+PS2_LNIC_SQCOMP+PS2_LNIC_STATE_READ )
@@ -104,32 +105,32 @@
 	PS1_L3Node_DOP	=	0	
 	PS2_L3Node_DOP	=	1	#No DOP gating in L3
 				
-#L3NODEDFX				
-	PS0_L3Node_DFX	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+#L3NODEDFX			
+	PS0_L3Node_DFX	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_DFX	=	1-PS0_L3Node_DFX	
 				
 #L3NODESMALL				
-	PS0_L3Node_SMALL	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_SMALL	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_SMALL	=	1-PS0_L3Node_SMALL	
 				
 #L3NODECPunit				
-	PS0_L3Node_CPunit	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_CPunit	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_CPunit	=	1-PS0_L3Node_SMALL	
 				
 #L3NODEAssign				
-	PS0_L3Node_Assign	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_Assign	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_Assign	=	1-PS0_L3Node_SMALL	
 				
 #L3NODERepeater				
-	PS0_L3Node_Repeater	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_Repeater	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_Repeater	=	1-PS0_L3Node_SMALL	
 				
 #L3NODECLKGLUE				
-	PS0_L3Node_CLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_CLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_CLKGLUE	=	1-PS0_L3Node_CLKGLUE	
 				
 #L3NONCLKGLUE				
-	PS0_L3Node_NONCLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.2xCrClock')) / (.CrClk2x * num_L3_Slices)	
+	PS0_L3Node_NONCLKGLUE	=	D(SUM('S\d+.uL3\.IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS2_L3Node_NONCLKGLUE	=	1-PS0_L3Node_NONCLKGLUE	
 
 

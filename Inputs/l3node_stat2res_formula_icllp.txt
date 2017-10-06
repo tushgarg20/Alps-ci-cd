@@ -2,8 +2,8 @@
 #Instance Counts				
 	num_L3_Slices			=	knob.global.NumSlices	+ SUM('knob\.STK\d+\.NumSlices')
 	#num_L3Node_LNI			=	2 * num_L3_Slices
-	num_L3Node_LNI			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
-	num_L3Node_LNE			=	COUNT('knob\.S\d\.uL3\.LNE_\d\.CReturnQ.PopEvent')	
+	num_L3Node_LNI			=	2.0 #COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
+	num_L3Node_LNE			=	2.0 #COUNT('knob\.S\d\.uL3\.LNE_\d\.CReturnQ.PopEvent')	
 	num_L3Node_LNIXS		=	0	
 	num_L3Node_LNEXS		=	0	
 	num_L3Node_L3BankOther	=	num_L3_Slices	#GLUE/Small
