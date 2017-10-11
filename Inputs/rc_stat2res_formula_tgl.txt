@@ -19,18 +19,18 @@
 	num_Fabric_DOP	=	numSlices
 			
 #Generic			
-	.CrClk	=	D(CrClock.Clocks)
+	.CrClk	        =	D(CrClock.Clocks)
 	.UnsliceClock= D(UnsliceClock.Clocks)
 	.GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))
-    numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
+        numSlices	=	knob.global.NumSlices + SUM('knob.STK\d\.NumSlices')
 	numBuses	=	(D(SUM('knob.S0.uL3.NumUpFabricBus'))+D(SUM('knob.S0.uL3.NumDownFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumUpFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumDownFabricBus')))/2
 	numhorBuses	=	D(SUM('knob.STK0.S0.uL3.NumLateralFabricBus'))
-	numStacks      =   (knob.STK0.S0.uL3.LSN.NumStacks)?knob.STK0.S0.uL3.LSN.NumStacks:1
+	numStacks       =       (knob.STK0.S0.uL3.LSN.NumStacks)?knob.STK0.S0.uL3.LSN.NumStacks:1
 	@anytraffic@	=	(VC0_TCC0|VC1_TCC1|VC1_TCC0|VC1_TCC1|VCC2)
-	@anyL3@	=	 (STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)							
-	@anyS0@ =  (STK\d+\.S0\.uL3\.LSN_\d\.|S0\.uL3\.LSN_\d\.)
-        @ANY_L3BANK@			=	(S\d+\.uL3\.Bank_\d+\.)
-			
+	@anyL3@	        =	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)							
+	@anyS0@         =       (STK\d+\.S0\.uL3\.LSN_\d\.|S0\.uL3\.LSN_\d\.)
+        @ANY_L3BANK@	=	(S\d+\.uL3\.Bank_\d+\.)
+	@ANY_LNI@	=	(S\d+\.uL3\.LNI_\d+\.bank_\d+\_)		
 #LSN			
 	@anyLSN@ = (STK\d+\.S\d+\.uLSN_\d\.|S\d+\.uL3\.LSN_\d\.)
 	.num_idle=(D(SUM('@anyLSN@bus\d+_UpCmdIdle'))+ D(SUM('@anyLSN@bus\d+_DownCmdIdle')) + D(SUM('@anyLSN@bus\d+_UpDataIdle'))+ D(SUM('@anyLSN@bus\d+_DownDataIdle')) +D(SUM('@anyLSN@bus\d+_LniCmdIdle'))+ D(SUM('@anyLSN@bus\d+_LniDataIdle'))+ D(SUM('@anyLSN@bus\d+_LneDataIdle')))/7

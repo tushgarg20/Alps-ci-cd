@@ -19,6 +19,7 @@
 	 #@ANY_L3BANK@			=	S\d+\.uL3\.Bank_\d+\.	
 	 @ANY_L3BANK@			=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
 	 @ANY_LNI@				=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
+	 @ANY_LNI_BUS@				=	(S\d+\.uL3\.LNI_\d+\.bus_\d+\_)
 	 .CrClk					=	D(CrClock.Clocks)	
 	 .CrClk2x				=	D(SUM('2xCrClock\.Clocks'))	
 	LNI_max_ports			=	numL3Banks * 2	#Max ports availabe for LNI
@@ -36,17 +37,17 @@
 	PS1_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNI*.CrClk)
 	PS2_LNI_LOCAL_1BANK_1READ	=	D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNI*.CrClk)
 	PS2_LNI_LOCAL_1BANK_1WRITE	=	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI@XSliceSliceWrite'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI@XSliceSliceRead'))/(num_L3Node_LNI*.CrClk)
+	PS2_LNI_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI_BUS@XSliceSliceWrite'))/(num_L3Node_LNI*.CrClk)
+	PS2_LNI_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI_BUS@XSliceSliceRead'))/(num_L3Node_LNI*.CrClk)
 	PS2_LNI_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI@XSliceSliceRead')) - D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI@XSliceSliceWrite')) - D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
+	PS2_LNI_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceRead')) - D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
+	PS2_LNI_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceWrite')) - D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
 	.residuallni				=	1- (PS0_LNI + PS1_LNI + PS2_LNI_LOCAL_1BANK_1READ + PS2_LNI_LOCAL_1BANK_1WRITE + PS2_LNI_XSLICE_ING_1WRITE + PS2_LNI_XSLICE_ING_1READ + PS2_LNI_XSLICE_ING_MEMFILL )
 	PS2_LNI_Else				=	(.residuallni<0)?0:.residuallni
 #LNE				#Divide by 2 - 2 ports /bank and 2 banks/LNIe
 	
 	PS0_LNE						=	D(SUM('@ANY_L3@LNE_\d\.Idle'))/(num_L3Node_LNE*.CrClk)
-	PS1_LNE						=	D(SUM('@ANY_L3@LNE\d\.Stalled'))/(num_L3Node_LNE*.CrClk)
+	PS1_LNE						=	D(SUM('@ANY_L3@LNE_\d\.Stalled'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_SS_DATARTN			=	D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_EGR_DATARTN		=	D(SUM('@ANY_L3BANK@BankOutCSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_ING_DATARTN		=	(D(SUM('@ANY_L3@LNE_\d\.CrossSliceReturnIngressQ_\d\.pushed')))/(num_L3Node_LNE*.CrClk)

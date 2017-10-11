@@ -31,7 +31,8 @@
 	.temp_LNE_max2							=	D(MIN(4, (num_L3_SubSlices + 3)))	
 	LNE_max_ports							=	(num_L3_Slices > 1) ? .temp_LNE_max1 : .temp_LNE_max2	#Max ports available for LNE
 	L3SuperQSize							=	knob.S0.uL3.SuperQSize + knob.STK0.S0.uL3.SuperQSize	
-	@ANY_LNI@								=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
+	@ANY_LNI@							=	(STK\d+\.S\d+\.uL3\.LNI_\d+\.Bank_\d+_|S\d+\.uL3\.LNI_\d+\.bank_\d+\_)
+	@ANY_LNI_BUS@							=	(S\d+\.uL3\.LNI_\d+\.bus_\d+\_)
 	num_L3Node_LNI			=	COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')					
 #LTCD_EBB				
 	PS0_LTCD_EBB							=	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)	#Changed to use residual residency
@@ -103,8 +104,8 @@
 	
 	PS0_LBI=D(SUM('@ANY_L3@LNI_\d\.Idle'))/ (.CrClk * num_L3_Slices * num_L3Node_LNI)
 	PS1_LBI=D(SUM('@ANY_L3BANK@SQFullCount.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)#LBI ingress fifo not empty and no LSQC slot credit
-	PS2_LBI_BANK_READ = (D(SUM('@ANY_LNI@LocalSliceRead')) + D(SUM('@ANY_LNI@XSliceSliceRead')))/ ((.CrClk2x * num_L3_Slices * numL3Banks))  #bank read on port0 #divide by 2 to make it per port
-	PS2_LBI_BANK_WRITE = (D(SUM('@ANY_LNI@LocalSliceWrite')) + D(SUM('@ANY_LNI@XSliceSliceWrite')))/ ((.CrClk2x * num_L3_Slices * numL3Banks)) #bank write on port0
+	PS2_LBI_BANK_READ = (D(SUM('@ANY_LNI@LocalSliceRead')) + D(SUM('@ANY_LNI_BUS@XSliceSliceRead')))/ ((.CrClk2x * num_L3_Slices * numL3Banks))  #bank read on port0 #divide by 2 to make it per port
+	PS2_LBI_BANK_WRITE = (D(SUM('@ANY_LNI@LocalSliceWrite')) + D(SUM('@ANY_LNI_BUS@XSliceSliceWrite')))/ ((.CrClk2x * num_L3_Slices * numL3Banks)) #bank write on port0
 	PS2_LBI_MEFFILL=D(SUM('@ANY_LNI@MemReturn'))/ ((.CrClk2x * num_L3_Slices * numL3Banks))#Mem fill to LSQD
 	.residuallbi							=	1- (PS0_LBI + PS1_LBI + PS2_LBI_BANK_WRITE + PS2_LBI_BANK_READ + PS2_LBI_MEFFILL)
 	PS2_LBI_Else							=	(.residuallbi<0)?0:.residuallbi

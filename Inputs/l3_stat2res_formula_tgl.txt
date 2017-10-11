@@ -48,11 +48,11 @@
 
 #LTCD_Data_Syn
 	#PS0_LTCD_DATA	=	D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)	
-	.temp_ps0_ltcd_data	=	(D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) +  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)	
+	.temp_ps0_ltcd_data	=	(D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')/2) - D(SUM('@ANY_L3BANK@DataRamRd')) + D(SUM('@ANY_L3BANK@DataRamWr')) +  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)	
 	#PS0_LTCD_DATA	=	(D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock')) - (D(SUM('@ANY_L3BANK@DataRamRd') + D(SUM('@ANY_L3BANK@DataRamWr') +  D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)	
 	PS0_LTCD_DATA	        =	.temp_ps0_ltcd_data	
 	#PS1_LTCD_DATA	=	(D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@DataIdleCount\.2xCrClock'))) / (.CrClk2x * num_L3_Slices * numL3Banks)
-	PS1_LTCD_DATA	        =	((D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')))/(.CrClk * num_L3_Slices * numL3Banks)) - .temp_ps0_ltcd_data
+	PS1_LTCD_DATA	        =	((D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.2xCrClock')/2))/(.CrClk * num_L3_Slices * numL3Banks)) - .temp_ps0_ltcd_data
 	PS2_LTCD_DATA_READ	=	D(SUM('@ANY_L3BANK@DataRamRd')) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_DATA_WRITE	=	D(SUM('@ANY_L3BANK@DataRamWr')) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_DATA_EVICTION	=       D(SUM('@ANY_L3BANK@Evict')) / (.CrClk * num_L3_Slices * numL3Banks)
@@ -83,7 +83,7 @@
 
 	#PS0_LTCD_TAG			=	D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) / (.CrClk2x * num_L3_Slices * numL3Banks)
 	#.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('@ANY_L3BANK@TagFullLinearWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@2CLEvict')) + D(SUM('@ANY_L3BANK@TagRamWr128B')) + D(SUM('@ANY_L3BANK@DataRamWr128B'))) / (.CrClk * num_L3_Slices * numL3Banks)
-	.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')) - D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('@ANY_L3BANK@TagFullLineWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.2xCrClock')/2) - D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('@ANY_L3BANK@TagFullLineWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks)
 
         PS0_LTCD_TAG                    =       .temp_ps0_ltcd_tag
 	PS2_LTCD_TAG_READ		=	(D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk * num_L3_Slices * numL3Banks)
