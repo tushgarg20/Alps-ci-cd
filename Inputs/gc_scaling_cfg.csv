@@ -8,3 +8,5 @@ GAM,Gen12LP,Gen12LP,False
 Sampler,Gen12LP,Gen12LP,False
 L3Node,Gen11LP,Gen12LP,False
 L3Node,Gen12LP,Gen12LP,False
+Fabric,Gen11LP,Gen12LP,False
+Fabric,Gen12LP,Gen12LP,False
