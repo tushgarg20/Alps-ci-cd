@@ -7644,7 +7644,7 @@ PS2_UNCORE_DOP,Gen12LP,A0,0.54,syn,1,Gen12LP adjustment to match 2nF Idle target
 PS2_Z_DOP,Gen12LP,A0,2.42,syn,1,Gen12LP adjustment to match 2nF Idle target,,,,,
 PS2_ClockSpine_Slice,Gen12LP,A0,73.83,syn,1,Gen12LP adjustment to match 2nF Idle target,to,add,up,to,332pf
 PS2_ClockSpine_UnSlice,Gen12LP,A0,53.32,syn,1,Gen12LP adjustment to match 2nF Idle target,to,add,up,to,332pF
-PS0_GADSS,Gen12LP,A0,0.10,syn,1,Gen12LP Plite,,,,,
+PS0_GADSS,Gen12LP,A0,0.1,syn,1,Gen12LP Plite,,,,,
 PS1_GADSS,Gen12LP,A0,0.57,syn,1,Gen12LP Plite,,,,,
 PS2_GADSS,Gen12LP,A0,28.41,syn,1,Gen12LP Plite,,,,,
 PS0_GAFARB,Gen12LP,A0,0.161420118,syn,1,Gen12 PA,,,,,
@@ -7869,3 +7869,9 @@ PS2_SNPFILTER_SNOOP_HIT,Gen12LP,A0,10,syn,1,Gen12 Approx,,,,,
 PS2_SNPFILTER_SNOOP_MISS,Gen12LP,A0,8,syn,1,Gen12 Approx,,,,,
 PS2_SNPFILTER_WRITE,Gen12LP,A0,4.456804734,syn,1,Gen12 Approx,,,,,
 PS0_SNPFILTERCOMMON,Gen12LP,A0,1,syn,1,Gen12 Approx,,,,,
+PS0_RCPFE,Gen12LP,A1,0.46,syn,257935.6118,0,,,,,
+PS1_RCPFE,Gen12LP,A2,1.61,syn,257935.6118,0,,,,,
+PS2_RCPFE_RTR,Gen12LP,A3,23,syn,257935.6118,0,,,,,
+PS2_RCPFE_4PPC,Gen12LP,A4,26.28,syn,257935.6118,0,,,,,
+PS2_RCPFE_8PPC,Gen12LP,A5,38,syn,257935.6118,0,,,,,
+PS2_RCPFE_FLUSH,Gen12LP,A6,0.46,syn,257935.6118,0,,,,,
