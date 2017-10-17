@@ -10,3 +10,8 @@ L3Node,Gen11LP,Gen12LP,False
 L3Node,Gen12LP,Gen12LP,False
 Fabric,Gen11LP,Gen12LP,False
 Fabric,Gen12LP,Gen12LP,False
+GTI,Gen12LP,Gen12LP,False
+SQIDI,Gen12LP,Gen12LP,False
+UNCORE,Gen12LP,Gen12LP,False
+COLOR,Gen12LP,Gen12LP,False
+Z,Gen12LP,Gen12LP,False
