@@ -7936,6 +7936,7 @@ PS0_DFRSMP_CPunit,Gen12LP,A0,0.248889263,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_DFRSMP_DFX,Gen12LP,A0,0.321809905,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_DFRSMP_DOP,Gen12LP,A0,2.150218554,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_DFRSMP_NONCLKGLUE,Gen12LP,A0,0.726837162,syn,1,WW41 Infra from Durga * 1.04,,,,
+PS0_DFRSMP_SMALL,Gen12LP,A0,1.13,syn,1,WW41 Infra from Durga * 1.04,,,,                         
 PS0_DSSC_CLKGLUE,Gen12LP,A0,9.911820036,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_DSSC_CPunit,Gen12LP,A0,0.171283045,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_DSSC_DFX,Gen12LP,A0,0.217087208,syn,1,WW41 Infra from Durga * 1.04,,,,
@@ -8116,6 +8117,7 @@ PS2_DFRSMP_CPunit,Gen12LP,A0,0.248889263,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_DFRSMP_DFX,Gen12LP,A0,0.321809905,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_DFRSMP_DOP,Gen12LP,A0,2.150218554,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_DFRSMP_NONCLKGLUE,Gen12LP,A0,22.58927254,syn,1,WW41 Infra from Durga * 1.04,,,,
+PS2_DFRSMP_SMALL,Gen12LP,A0,11.22,syn,1,from Durga ICC *1.04(PTPX Factor),,,,                       
 PS2_DSSC_CLKGLUE,Gen12LP,A0,9.911820036,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_DSSC_CPunit,Gen12LP,A0,0.171283045,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_DSSC_DFX,Gen12LP,A0,0.217087208,syn,1,WW41 Infra from Durga * 1.04,,,,
@@ -8198,9 +8200,9 @@ PS2_Z_DOP,Gen12LP,A0,2.248539077,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS2_Z_NONCLKGLUE,Gen12LP,A0,0.433649231,syn,1,WW41 Infra from Durga * 1.04,,,,
 PS0_HIZ,Gen12LP,A0,3.5,syn,1,PA Cdyn wts,PS0_HIZ == (PS0_HIZFE & PS0_HIZBE),,,
 PS1_HIZ,Gen12LP,A0,8.3,syn,1,PA Cdyn wts,PS1_HIZ == (PS1_HIZFE & PS1_HIZBE),,,
-PS2_HIZ_color_only_or_marker_or_noalloc,Gen12LP,A0,16.25,syn,1,PA Cdyn wts,PS2_HIZ_color_only_or_marker_or_noalloc == (PS2_HIZBE_Bypass & PS2_HIZFE_Bypass),,,
-PS2_HIZ_Z_active,Gen12LP,A0,153.455,syn,1,PA Cdyn wts,PS2_HIZ_Z_active ==  (PS2_HIZBE_Clear_Ambiguate | PS2_HIZBE_Depth_Resolve | PS2_HIZBE_Zonly_*) & ,,,
-PS0_IZ,Gen12LP,A0,5.2,syn,1,PA Cdyn wts,PS0_IZ == PS0_IZFE & PS0_IZBE,,,
-PS1_IZ,Gen12LP,A0,24.77,syn,1,PA Cdyn wts,PS1_IZ == PS1_IZFE & PS1_IZBE,,,
-PS2_IZ_compressed_or_color_only_or_marker,Gen12LP,A0,35.84,syn,1,PA Cdyn wts,PS2_IZ_compressed_or_color_only_or_marker == PS2_IZFE_DEPTHDIS | PS2_IZFE_MARKER | PS2_IZFE_CMP,,,
-PS2_IZ_Z_active,Gen12LP,A0,277.15,syn,1,PA Cdyn wts,PS2_IZ_Z_active == PS2_IZBE_DEPTH* & PS2_IZFE_DEPTH*,,,
+PS2_HIZ_color_only_or_marker_or_noalloc,Gen12LP,A0,16.25,syn,1,PA Cdyn wts
+PS2_HIZ_Z_active,Gen12LP,A0,153.455,syn,1,PA Cdyn wts
+PS0_IZ,Gen12LP,A0,5.2,syn,1,PA Cdyn wts
+PS1_IZ,Gen12LP,A0,24.77,syn,1,PA Cdyn wts
+PS2_IZ_compressed_or_color_only_or_marker,Gen12LP,A0,35.84,syn,1,PA Cdyn wts
+PS2_IZ_Z_active,Gen12LP,A0,277.15,syn,1,PA Cdyn wts
