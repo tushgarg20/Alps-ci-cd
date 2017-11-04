@@ -264,6 +264,10 @@ L3_Bank:
      PS2_LTCD_EBB_Write: R * C
      PS2_LTCD_EBB_HB_Read: R * C
      PS2_LTCD_EBB_HB_Write: R * C 
+     PS2_LTCD_EBB_URB_32B_Read: R * C                                          
+     PS2_LTCD_EBB_URB_32B_Write: R * C                                         
+     PS2_LTCD_EBB_URB_64B_Read: R * C                                          
+     PS2_LTCD_EBB_URB_64B_Write: R * C  
    LTCD_Data:
     PS0_LTCD_DATA: R * C
     PS1_LTCD_DATA: R * C
@@ -735,6 +739,8 @@ Sampler:
     PS0_DG_DOP: R * C
     PS0_DG: R * C
     PS1_DG: R * C
+    PS0_SMALL_DG: R * C
+    PS1_SMALL_DG: R * C
     PS2_DG:
      PS2_DG_point_nearest_linear_32bpt: R * C
      PS2_DG_point_nearest_linear_not32bpt: R * C
@@ -773,6 +779,7 @@ Sampler:
      PS2_DM_BC2_5: R * C
      PS2_DM_BC6_7: R * C
      PS2_DM_ETC: R * C
+     PS2_DM_ETC2: R * C
      PS2_DM_ETC_EAC: R * C
      PS2_DM_ELSE: R * C
      PS2_DM_Expanded: R * C
@@ -796,6 +803,8 @@ Sampler:
      PS2_MT_tile_y_paired: R * C
      PS2_MT_tile_else: R * C
    MT_Cache:
+    PS0_MT_LatFifo: R * C
+    PS0_MT_DataRam: R * C
     PS2_MT_LatFifo:
      PS2_MT_LatFifo_READ: R * C
      PS2_MT_LatFifo_WRITE: R * C
@@ -803,6 +812,7 @@ Sampler:
     PS2_MT_DataRam:
      PS2_MT_DataRam_READ: R * C
      PS2_MT_DataRam_WRITE: R * C
+     PS2_MT_DataRam_READ&WRITE: R * C
    SVSM:
     PS0_SVSM: R * C
     PS1_SVSM: R * C
