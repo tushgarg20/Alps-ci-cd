@@ -1089,91 +1089,27 @@ ROSS:
    DOP:
     PS0_ROSS_DOP: R * C
     PS2_ROSS_DOP: R * C
+    
 Z:
    HIZ:
     PS0_HIZ: R * C
     PS0_HIZ_DOP: R * C
     PS1_HIZ: R * C
     PS2_HIZ:
-     PS2_HIZ_Zonly_1lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_Zonly_1lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_Zonly_2lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_Zonly_2lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_Zonly_3lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_Zonly_3lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_Zonly_4lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_Zonly_4lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_ZSTC_1lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_ZSTC_1lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_ZSTC_2lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_ZSTC_2lit_4x4_all_lit_Fail: R * C
-     PS2_HIZ_ZSTC_3lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_ZSTC_3lit_4x4_all_lit_Fail : R * C
-     PS2_HIZ_ZSTC_4lit_4x4_Pass_Ambig: R * C
-     PS2_HIZ_ZSTC_4lit_4x4_all_lit_Fail : R * C
-     PS2_HIZ_Stencil_Only: R * C
-     PS2_HIZ_Bypass: R * C
-     PS2_HIZ_Clear_Ambiguate: R * C
-     PS2_HIZ_Depth_Resolve: R * C
-     PS2_HIZ_Zmarkers: R * C
-   HIZ_Cache:
-    PS2_HIZ_CACHE_READ: R * C
-    PS2_HIZ_CACHE_WRITE: R * C
-    PS2_HIZ_LATFIFO_READ: R * C
-    PS2_HIZ_LATFIFO_WRITE: R * C
+     PS2_HIZ_color_only_or_marker_or_noalloc: R * C
+     PS2_HIZ_Z_active: R * C
    IZ:
     PS0_IZ: R * C
     PS0_IZ_DOP: R * C
     PS1_IZ: R * C
     PS2_IZ:
-     PS2_IZ_CMP: R * C
-     PS2_IZ_NORMAL_DEPTHEN_PASS: R * C
-     PS2_IZ_NORMAL_DEPTHEN_FAIL: R * C
-     PS2_IZ_NORMAL_DEPTHDIS: R * C
-     PS2_IZ_ZMARKERS: R * C
-     PS2_IZ_EXPANSIONS: R * C 
-   IZ_Cache:
-    PS2_IZ_Cache:
-     PS2_IZ_LATFIFO_READ: R * C
-     PS2_IZ_LATFIFO_WRITE: R * C
-     PS2_IZ_ZCOEFFFIFO_READ: R * C
-     PS2_IZ_ZCOEFFFIFO_WRITE: R * C
-     PS2_IZ_POLYFIFO_READ: R * C
-     PS2_IZ_POLYFIFO_WRITE: R * C
-     PS2_IZ_BARYCOEFFIFO_READ: R * C
-     PS2_IZ_BARYCOEFFIFO_WRITE: R * C
-     PS2_IZ_WCOEFFIFO_READ: R * C
-     PS2_IZ_WCOEFFIFO_WRITE: R * C
-   RCZ:
-    PS0_RCZ: R * C
-    PS0_RCZ_DOP: R * C
-    PS1_RCZ: R * C
-    PS2_RCZ:
-     PS2_RCZ_ALLOC_HITS: R * C
-     PS2_RCZ_ALLOC_MISSES: R * C
-     PS2_RCZ_ALLOC_MISSES_DIRTY: R * C
-     PS2_RCZ_DIRTY_FLUSH: R * C
-     PS2_RCZ_IZ_READ: R * C
-     PS2_RCZ: R * C
-   RCZ_Cache:
-    PS2_RCZ_Cache:    
-     PS2_RCZ_CACHE_READ: R * C
-     PS2_RCZ_CACHE_WRITE: R * C
-   STC:
-    PS0_STC: R * C
-    PS0_STC_DOP: R * C
-    PS1_STC: R * C
-    PS2_STC:
-     PS2_STC_ALLOC_HITS: R * C
-     PS2_STC_ALLOC_MISSES: R * C
-     PS2_STC_ALLOC_MISSES_DIRTY: R * C
-     PS2_STC_DIRTY_FLUSH: R * C
-     PS2_STC_HIZ_READ: R * C
-     PS2_STC: R * C
-   STC_Cache:
-    PS2_STC_Cache:
-     PS2_STC_CACHE_READ: R * C
-     PS2_STC_CACHE_WRITE: R * C
+     PS2_IZ_compressed_or_color_only_or_marker: R * C
+     PS2_IZ_Z_active: R * C
+   ZPBE:
+    PS0_ZPBE: R * C
+    PS0_ZPBE_DOP: R * C
+    PS1_ZPBE: R * C
+    PS2_ZPBE: R * C
    DOP:
     PS0_Z_DOP: R * C 
     PS2_Z_DOP: R * C 
@@ -1208,6 +1144,34 @@ Z:
     PS0_Z_DFX_DOP: R * C 
     PS0_Z_DFX: R * C 
     PS2_Z_DFX: R * C
+    HIZ_Cache:
+    PS2_HIZ_CACHE_READ: R * C
+    PS2_HIZ_CACHE_WRITE: R * C
+    PS2_HIZ_LATFIFO_READ: R * C
+    PS2_HIZ_LATFIFO_WRITE: R * C
+   IZ_Cache:
+    PS2_IZ_Cache:
+     PS2_IZ_LATFIFO_READ: R * C
+     PS2_IZ_LATFIFO_WRITE: R * C
+     PS2_IZ_ZCOEFFFIFO_READ: R * C
+     PS2_IZ_ZCOEFFFIFO_WRITE: R * C
+     PS2_IZ_POLYFIFO_READ: R * C
+     PS2_IZ_POLYFIFO_WRITE: R * C
+     PS2_IZ_BARYCOEFFIFO_READ: R * C
+     PS2_IZ_BARYCOEFFIFO_WRITE: R * C
+     PS2_IZ_WCOEFFIFO_READ: R * C
+     PS2_IZ_WCOEFFIFO_WRITE: R * C
+   RCZ_Cache:
+    PS2_RCZ_Cache:    
+     PS2_RCZ_CACHE_READ: R * C
+     PS2_RCZ_CACHE_WRITE: R * C
+
+
+   STC_Cache:
+    PS2_STC_Cache:
+     PS2_STC_CACHE_READ: R * C
+     PS2_STC_CACHE_WRITE: R * C
+
 COLOR:
    DAPRSC:
     PS0_DAPRSC: R * C
