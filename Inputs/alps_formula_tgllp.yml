@@ -664,6 +664,9 @@ Sampler:
      PS2_PL_vol_nearest:  R * LINEST[C,R[PL_Toggle_Rate]]
      PS2_PL_else: R * LINEST[C,R[PL_Toggle_Rate]]
      PS2_PL_aniso: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_bilinear: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_trilinear: R * LINEST[C,R[PL_Toggle_Rate]]
+     PS2_PL_nearest: R * LINEST[C,R[PL_Toggle_Rate]]
 
    SSLA:
      PS0_SSLA_DOP: R * C
@@ -796,6 +799,7 @@ Sampler:
     PS2_MT_LatFifo:
      PS2_MT_LatFifo_READ: R * C
      PS2_MT_LatFifo_WRITE: R * C
+     PS2_MT_LatFifo_READ&WRITE: R * C
     PS2_MT_DataRam:
      PS2_MT_DataRam_READ: R * C
      PS2_MT_DataRam_WRITE: R * C
