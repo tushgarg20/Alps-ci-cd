@@ -1,0 +1,180 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+				
+	numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
+	.numZPipes_pby       =       SUM('knob\.S\d+\.NumZPipes')
+	.numZPipes_iclhp	=	SUM('knob\.S\d+.uIZ.NumZPipes')
+	numZPipes = (.numZPipes_pby>0)?.numZPipes_pby:.numZPipes_iclhp  
+	num_Z_HIZ	=	numZPipes	
+	num_Z_IZ	=	numZPipes	
+	num_Z_ZPBE  =   numZPipes
+	num_Z_DOP	=	numZPipes	
+	num_Z_CLKGLUE	=	numZPipes	
+	num_Z_NONCLKGLUE	=	numZPipes	
+	num_Z_SMALL	=	numZPipes	
+	num_Z_CPunit	=	numZPipes	
+	num_Z_Assign	=	numZPipes	
+	num_Z_Repeater	=	numZPipes	
+	num_Z_DFX	=	numZPipes	
+				
+				
+				
+#Generic				
+	 @ANY_HIZ@	=	(STK\d+\.S\d+\.uHZ\.|S\d+\.uHZ\.|S\d+\.uHZ_\d\.)	
+	 @ANY_IZ@	=	(STK\d+\.S\d+\.uIZ\.|S\d+\.uIZ\.|S\d+\.uIZ_\d\.)	
+	 @ANY_ZPBE@	=	(STK\d+\.S\d+\.uPB\.|S\d+\.uPB\.|S\d+\.uPB_\d\.)	
+	 
+	 @ANY_WM@	=	(STK\d+\.S\d+\.uWM\.|S\d+\.uWM\.)	
+
+	 @HIZDEFIPTYPE@	=	(8x8)	
+	 @HIZOTHIPTYPE@	=	(8x4|4x4)	
+	 @IZIPTYPE@	=	(4x4|4x2)	
+	 @HIZFAILTEST@	=	(Fail|NA)	
+	 @IZTEST@	=	(Accept|Fail|Deferred)	
+	 @IZDEPTH@	=	(DepthPresent|DepthNotPresent)	
+	 @IZCMPRESTYPE@	=	(ColorOnlyCount|PlaneAcceptCount|PassCount)
+	 @IZCMPIPTYPE@	=	(PostPlane)
+	 @IZCMPPKTTYPE@	=	(ZOnly|ZSTC)	
+
+	 .Z_DOP	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
+	.Clk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
+	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
+	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
+	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
+	.Clk.num_Z_ZPBE	=	.Clk * num_Z_ZPBE	
+	
+	
+
+###Gen12LP new power states - added by pjamrani 10/11/2017
+
+#ZPBE - New Unit in Gen12LP. Need to add new unit in ALPS, Cdyn, GC etc
+    
+    # All buffers empty.
+	PS0_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock'))/.Clk.num_Z_ZPBE) - .Z_DOP
+	PS0_ZPBE_DOP	=	.Z_DOP	
+    
+    # Buffers had objects in them, but didn't make forward progress.
+	PS1_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_IdleOrStalled.CrClock')) - D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock')))/.Clk.num_Z_ZPBE
+    
+    # All remaining clocks must then be considered active.
+    PS2_ZPBE = 1 - PS0_ZPBE - PS1_ZPBE
+    
+    
+#Note that the below power states won't account for all clocks- there is some leakage. This is because the PS0 and PS1 states are sampling all buffers every clock, but the PS2 states are sampled at one particular pipestage- there will be some % of time spent filling and draining the pipeline where the PS2's measurement pipestage won't have any activity but HZ unit as a whole will not be idle or stalled.
+    
+#HIZ power stats can be derived from the existing IZ stats using the below regular expressions. ALPS team should decide how to handle aggregating multiple slices'/subslices' stats.
+    
+    # All buffers empty
+	PS0_HIZ = (D(SUM('@ANY_HIZ@pwr_Idle.CrClock'))/.Clk.num_Z_HIZ) - .Z_DOP
+	PS0_HIZ_DOP	=	.Z_DOP	
+    
+    # Buffers had objects in them, but didn't make forward progress.
+	#PS1_HIZ = (D(SUM('@ANY_HIZ@pwr_IdleOrStalled.CrClock')) - D(SUM('@ANY_HIZ@pwr_Idle.CrClock')))/.Clk.num_Z_HIZ
+    PS1_HIZ = 1 - PS0_HIZ - PS0_HIZ_DOP - PS2_HIZ_color_only_or_marker_or_noalloc - PS2_HIZ_Z_active
+	
+    # Count control packets, unlit end of object markers, color-only packets, and anything that doesn't allocate in HZ cache.
+    PS2_HIZ_color_only_or_marker_or_noalloc = (D(SUM('@ANY_HIZ@pwr_Markers.CrClock')) + D(SUM('@ANY_HIZ@pwr_HizBypassCount')))/.Clk.num_Z_HIZ
+	
+    # Count all remaining objects that went through this buffer by taking the total and subtracting off the other PS2 count.
+    PS2_HIZ_Z_active = D(SUM('@ANY_HIZ@CollectionStage.popped'))/.Clk.num_Z_HIZ - PS2_HIZ_color_only_or_marker_or_noalloc
+	
+	
+#HIZ - Cache				
+	PS2_HIZ_CACHE_READ	=	D(SUM('@ANY_HIZCACHE@ReadRequests'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_CACHE_WRITE	=	D(SUM('@ANY_HIZCACHE@WriteRequests'))/.Clk.num_Z_HIZ	
+				#Not implemented in GSIM yet
+#HIZ - Latency FIFO				#Not implemented in GSIM yet
+	PS2_HIZ_LATFIFO_READ	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.popped'))/.Clk.num_Z_HIZ	
+	PS2_HIZ_LATFIFO_WRITE	=	D(SUM('@ANY_HIZ@AllocationWaitBuffer.pushed'))/.Clk.num_Z_HIZ
+	
+    
+#IZ power stats can be derived from the existing IZ stats using the below regular expressions. ALPS team should decide how to handle aggregating multiple slices'/subslices' stats.
+    
+    # All buffers empty
+	PS0_IZ = (D(SUM('@ANY_IZ@pwr_Idle.CrClock'))/.Clk.num_Z_IZ) - .Z_DOP
+	PS0_IZ_DOP	=	.Z_DOP	
+    
+    # Buffers had objects in them, but didn't make forward progress.
+	#PS1_IZ = (D(SUM('@ANY_IZ@pwr_IdleOrStalled.CrClock')) - D(SUM('@ANY_IZ@pwr_Idle.CrClock')))/.Clk.num_Z_IZ
+    PS1_IZ = 1 - PS0_IZ - PS0_IZ_DOP - PS2_IZ_compressed_or_color_only_or_marker - PS2_IZ_Z_active
+	
+    # Measure packets  a) regardless of size  b) that didn't make a Z alloc  c) regardless of accept/deferred/fail/depthpresent/depthnotpresent.
+    PS2_IZ_compressed_or_color_only_or_marker = (D(SUM('@ANY_IZ@pwr_IzMarkers.CrClock')) + D(SUM('@ANY_IZ@pwr_IzSpans.CrClock.(4x4|4x2).Compressed.(Accept|Deferred|Fail).(DepthPresent|DepthNotPresent)')))/.Clk.num_Z_IZ
+
+    # Measure packets a) regardless of size b) that made a z alloc c) regardless of accept/deferred/fail/depthpresent/depthnotpresent. Not expecting to see DepthNotPresent happen, but include it as a catchall.
+    PS2_IZ_Z_active = D(SUM('@ANY_IZ@pwr_IzSpans.CrClock.(4x4|4x2).(Expand|Uncompressed).(Accept|Deferred|Fail).(DepthPresent|DepthNotPresent)'))/.Clk.num_Z_IZ
+	
+###END Gen12LP new power states - added by pjamrani 10/11/2017
+
+#IZ - Latency FIFO				
+	PS2_IZ_LATFIFO_READ	=	D(SUM('@ANY_IZ@ZAllocWaitBuffer.popped'))/.Clk.num_Z_IZ	
+	PS2_IZ_LATFIFO_WRITE	=	D(SUM('@ANY_IZ@ZAllocWaitBuffer.pushed'))/.Clk.num_Z_IZ	
+				
+#IZ - Z Coefficiency FIFO				
+	PS2_IZ_ZCOEFFFIFO_READ	=	D(SUM('@ANY_WM@WmInputObjectCount'))/.Clk.num_Z_IZ	
+	PS2_IZ_ZCOEFFFIFO_WRITE	=	PS2_IZ_ZCOEFFFIFO_READ	
+				
+#IZ - Poly FIFO 				
+	PS2_IZ_POLYFIFO_READ	=	D(SUM('@ANY_WM@WmInputObjectCount'))/.Clk.num_Z_IZ	
+	PS2_IZ_POLYFIFO_WRITE	=	PS2_IZ_POLYFIFO_READ	
+				
+#IZ - Bary Coefficiency FIFO				
+	PS2_IZ_BARYCOEFFIFO_READ	=	D(SUM('@ANY_WM@RasterSpanOutBuffer.pushed'))/.Clk.num_Z_IZ	
+	PS2_IZ_BARYCOEFFIFO_WRITE	=	PS2_IZ_BARYCOEFFIFO_READ	
+				
+#IZ - W Coefficiency FIFO				
+	PS2_IZ_WCOEFFIFO_READ	=	D(SUM('@ANY_WM@RasterSpanOutBuffer.pushed'))/.Clk.num_Z_IZ	
+	PS2_IZ_WCOEFFIFO_WRITE	=	PS2_IZ_WCOEFFIFO_READ	
+	
+#RCZ - Cache				
+	PS2_RCZ_CACHE_READ	=	D(SUM('@ANY_RCZ@ReadRequests'))/.Clk.num_Z_RCZ	
+	PS2_RCZ_CACHE_WRITE	=	D(SUM('@ANY_RCZ@WriteRequests'))/.Clk.num_Z_RCZ	
+	
+#STC - Cache				
+	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
+	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC	
+				
+
+				
+#DOP				
+	PS0_Z_DOP	=	.Z_DOP	
+	PS2_Z_DOP	=	1 - PS0_Z_DOP	
+				
+				
+#CLKGLUE				
+	PS0_Z_CLKGLUE_DOP	=	.Z_DOP	
+	PS0_Z_CLKGLUE	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS2_Z_CLKGLUE	=	1 - (PS0_Z_CLKGLUE_DOP + PS0_Z_CLKGLUE)	
+				
+#NONCLKGLUE				
+	PS0_Z_NONCLKGLUE_DOP	=	.Z_DOP	
+	PS0_Z_NONCLKGLUE	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS1_Z_NONCLKGLUE	=	AVG(PS1_IZ,PS1_HIZ,PS1_ZPBE)	
+	PS2_Z_NONCLKGLUE	=	1 - (PS0_Z_NONCLKGLUE_DOP + PS0_Z_NONCLKGLUE +PS1_Z_NONCLKGLUE)				
+#SMALL				
+	PS0_Z_SMALL_DOP	=	.Z_DOP	
+	PS0_Z_SMALL	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS1_Z_SMALL	=	AVG(PS1_IZ,PS1_HIZ,PS1_ZPBE)	
+	PS2_Z_SMALL	=	1 - (PS0_Z_SMALL_DOP + PS0_Z_SMALL +PS1_Z_SMALL)	
+				
+#CPunit				
+	PS0_Z_CPunit_DOP	=	.Z_DOP	
+	PS0_Z_CPunit	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS2_Z_CPunit	=	1 - (PS0_Z_SMALL_DOP + PS0_Z_SMALL)	
+				
+#Assign				
+	PS0_Z_Assign_DOP	=	.Z_DOP	
+	PS0_Z_Assign	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS2_Z_Assign	=	1 - (PS0_Z_SMALL_DOP + PS0_Z_SMALL)	
+				
+#Repeater				
+	PS0_Z_Repeater_DOP	=	.Z_DOP	
+	PS0_Z_Repeater	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS1_Z_Repeater	=	AVG(PS1_IZ,PS1_HIZ,PS1_ZPBE)
+	PS2_Z_Repeater	=	1 - (PS0_Z_Repeater_DOP + PS0_Z_Repeater +PS1_Z_Repeater)			
+#DFX				
+	PS0_Z_DFX_DOP	=	.Z_DOP	
+	PS0_Z_DFX	=	AVG(PS0_IZ,PS0_HIZ,PS0_ZPBE)	
+	PS2_Z_DFX	=	1 - (PS0_Z_DFX_DOP + PS0_Z_DFX)	
+
