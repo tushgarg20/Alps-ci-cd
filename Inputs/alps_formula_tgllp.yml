@@ -264,6 +264,10 @@ L3_Bank:
      PS2_LTCD_EBB_Write: R * C
      PS2_LTCD_EBB_HB_Read: R * C
      PS2_LTCD_EBB_HB_Write: R * C 
+     PS2_LTCD_EBB_URB_32B_Read: R * C                                          
+     PS2_LTCD_EBB_URB_32B_Write: R * C                                         
+     PS2_LTCD_EBB_URB_64B_Read: R * C                                          
+     PS2_LTCD_EBB_URB_64B_Write: R * C  
    LTCD_Data:
     PS0_LTCD_DATA: R * C
     PS1_LTCD_DATA: R * C
