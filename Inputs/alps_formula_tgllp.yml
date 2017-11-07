@@ -1144,7 +1144,7 @@ Z:
     PS0_Z_DFX_DOP: R * C 
     PS0_Z_DFX: R * C 
     PS2_Z_DFX: R * C
-    HIZ_Cache:
+   HIZ_Cache:
     PS2_HIZ_CACHE_READ: R * C
     PS2_HIZ_CACHE_WRITE: R * C
     PS2_HIZ_LATFIFO_READ: R * C
