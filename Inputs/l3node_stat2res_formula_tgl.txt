@@ -45,8 +45,8 @@
 	PS2_LNIB_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1READ_URB  = 	.URBRd/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1READ_NON_URB =   (D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNIB * .CrClk))- (PS2_LNIB_LOCAL_1BANK_1READ_URB)
-	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B =  	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNIB * .CrClk)
-	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_32B = 0 #Unavailability of any stat for differentiating between 32B and 64B states
+	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B =  	D(SUM('S\d+\.uL3.Bank_\d+\.Urb64BWr'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_32B =   D(SUM('S\d+\.uL3.Bank_\d+\.Urb32BWr'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1WRITE_NON_URB_64B =	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNIB * .CrClk) - (D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))/(num_L3Node_LNIB * .CrClk))
 	.residuallnib				=	1- (PS0_LNIB + PS1_LNIB + PS2_LNIB_XSLICE_ING_1WRITE + PS2_LNIB_XSLICE_ING_1READ + PS2_LNIB_XSLICE_ING_MEMFILL + PS2_LNIB_LOCAL_1BANK_1READ_URB + PS2_LNIB_LOCAL_1BANK_1READ_NON_URB + PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B + PS2_LNIB_LOCAL_1BANK_1WRITE_URB_32B + PS2_LNIB_LOCAL_1BANK_1WRITE_NON_URB_64B )
 	PS2_LNIB_Else				=	(.residuallnib<0)?0:.residuallnib
@@ -88,7 +88,7 @@
 	PS2_LNE_LOC_DATARTN_64B_UNPACKED = 	(D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk))/2
 	#same as lne_ss_datartn #as we do not have break upu of packed and unpacked - so diving it in 50-50 ratio
 	PS2_LNE_LOC_DATARTN_32B	=	(D(SUM('@ANY_L3@LNE_\d\.FFReturnQ_\d\.pushed')))/(num_L3Node_LNE*.CrClk)
-	PS2_LNE_LOC_DATARTN_64B_PACKED	=	PS2_LNE_LOC_DATARTN_64B_UNPACKED	
+	PS2_LNE_LOC_DATARTN_64B_PACKED	=	0	
 	#do not have breakup for all clients in SC - usinh C,Z for nor - dividing it equally in these three states
 	#PS2_LNE_LOCAL_SC0_DATARTN =  ((D(SUM('@ANY_L3@LNE_\d\.ZReturnQ_\d\.pushed'))) + (D(SUM('@ANY_L3@LNE_\d\.DaprssReturnQ_\d\.pushed'))) + (D(SUM('@ANY_L3@LNE_\d\.ZCReturnQ_\d\.pushed'))))/(3 * num_L3Node_LNE*.CrClk)
 	#PS2_LNE_LOCAL_SC1_DATARTN = PS2_LNE_LOCAL_SC0_DATARTN
