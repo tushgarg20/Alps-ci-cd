@@ -20,6 +20,7 @@
 	num_L3_Bank_CLKGLUE		=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_NONCLKGLUE		=	num_L3_Slices * numL3Banks
 	num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
+        num_L3Node_LNI                  =       2.0
 
 #Generic				
 	@ANY_L3BANK@			=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
