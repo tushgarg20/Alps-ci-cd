@@ -1111,11 +1111,6 @@ Z:
     PS2_IZ:
      PS2_IZ_compressed_or_color_only_or_marker: R * C
      PS2_IZ_Z_active: R * C
-   ZPBE:
-    PS0_ZPBE: R * C
-    PS0_ZPBE_DOP: R * C
-    PS1_ZPBE: R * C
-    PS2_ZPBE: R * C
    DOP:
     PS0_Z_DOP: R * C 
     PS2_Z_DOP: R * C 
@@ -1171,8 +1166,6 @@ Z:
     PS2_RCZ_Cache:    
      PS2_RCZ_CACHE_READ: R * C
      PS2_RCZ_CACHE_WRITE: R * C
-
-
    STC_Cache:
     PS2_STC_Cache:
      PS2_STC_CACHE_READ: R * C
@@ -1201,6 +1194,19 @@ COLOR:
      PS2_RCPFE_MCSLATFIFO_WRITE: R * C
      PS2_RCPFE_RCCLATFIFO_READ: R * C
      PS2_RCPFE_RCCLATFIFO_WRITE: R * C
+   RCPBE:
+    PS0_RCPBE: R * C
+    PS1_RCPBE: R * C
+    PS2_RCPBE_RTR: R * C
+    PS2_RCPBE_2PPC_FLT_BLD: R * C
+    PS2_RCPBE_4PPC_FLT_BLD: R * C
+    PS2_RCPBE_2PPC_FLT_WRT: R * C
+    PS2_RCPBE_4PPC_FLT_WRT: R * C
+    PS2_RCPBE_4PPC_FIX_BLD: R * C
+    PS2_RCPBE_8PPC_FIX_BLD: R * C
+    PS2_RCPBE_4PPC_FIX_WRT: R * C
+    PS2_RCPBE_8PPC_FIX_WRT: R * C
+    
    RCPBCOM:
     PS0_RCPBCOM: R * C
     PS0_RCPBCOM_DOP: R * C
@@ -1266,10 +1272,7 @@ COLOR:
     PS0_MSC_DOP: R * C
     PS1_MSC: R * C
     PS2_MSC:
-     PS2_MSC_NOMSAA_4PPC_CLEARRESOLVE: R * C
-     PS2_MSC_NOMSAA_4PPC_DATA: R * C
-     PS2_MSC_NOMSAA_8PPC_CLEARRESOLVE: R * C
-     PS2_MSC_NOMSAA_8PPC_DATA: R * C
+     PS2_MSC_NOMSAA: R * C
      PS2_MSC_MSAA_4PPC_DATA: R * C
      PS2_MSC_MSAA_8PPC_DATA: R * C
    MSC_Cache:

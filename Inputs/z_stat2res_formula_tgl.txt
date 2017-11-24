@@ -7,7 +7,13 @@
 	numZPipes = (.numZPipes_pby>0)?.numZPipes_pby:.numZPipes_iclhp  
 	num_Z_HIZ	=	numZPipes	
 	num_Z_IZ	=	numZPipes	
-	num_Z_ZPBE  =   numZPipes
+	#num_Z_ZPBE  =   numZPipes
+	num_Z_RCZ	=	numZPipes	
+	num_Z_STC	=	numZPipes
+	num_Z_HIZ_Cache	=	numZPipes	
+	num_Z_IZ_Cache	=	numZPipes	
+	num_Z_RCZ_Cache	=	numZPipes	
+	num_Z_STC_Cache	=	numZPipes
 	num_Z_DOP	=	numZPipes	
 	num_Z_CLKGLUE	=	numZPipes	
 	num_Z_NONCLKGLUE	=	numZPipes	
@@ -21,11 +27,12 @@
 				
 #Generic				
 	 @ANY_HIZ@	=	(STK\d+\.S\d+\.uHZ\.|S\d+\.uHZ\.|S\d+\.uHZ_\d\.)	
+	 @ANY_HIZCACHE@	=	(STK\d+\.S\d+\.uHZCache\.|S\d+\.uHzCache\.|S\d+\.uHzCache_\d\.)	
 	 @ANY_IZ@	=	(STK\d+\.S\d+\.uIZ\.|S\d+\.uIZ\.|S\d+\.uIZ_\d\.)	
-	 @ANY_ZPBE@	=	(STK\d+\.S\d+\.uPB\.|S\d+\.uPB\.|S\d+\.uPB_\d\.)	
-	 
-	 @ANY_WM@	=	(STK\d+\.S\d+\.uWM\.|S\d+\.uWM\.)	
-
+	 #@ANY_ZPBE@	=	(STK\d+\.S\d+\.uPB\.|S\d+\.uPB\.|S\d+\.uPB_\d\.)	
+	 @ANY_RCZ@	=	(STK\d+\.S\d+\.uZCache\.|S\d+\.uZCache\.|S\d+\.uZCache_\d\.)
+	 @ANY_STC@	=	(STK\d+\.S\d+\.uStcCache\.|S\d+\.uStcCache\.|S\d+\.uStcCache_\d\.)
+	 @ANY_WM@	=	(STK\d+\.S\d+\.uWM\.|S\d+\.uWM\.)		
 	 @HIZDEFIPTYPE@	=	(8x8)	
 	 @HIZOTHIPTYPE@	=	(8x4|4x4)	
 	 @IZIPTYPE@	=	(4x4|4x2)	
@@ -42,7 +49,9 @@
 	.Clk.x2	=	D(SUM('2xCrClock\.Clocks'))	
 	.Clk.num_Z_HIZ	=	.Clk * num_Z_HIZ	
 	.Clk.num_Z_IZ	=	.Clk * num_Z_IZ	
-	.Clk.num_Z_ZPBE	=	.Clk * num_Z_ZPBE	
+	#.Clk.num_Z_ZPBE	=	.Clk * num_Z_ZPBE
+	.Clk.num_Z_RCZ	=	.Clk * num_Z_RCZ	
+	.Clk.num_Z_STC	=	.Clk * num_Z_STC	
 	
 	
 
@@ -51,14 +60,14 @@
 #ZPBE - New Unit in Gen12LP. Need to add new unit in ALPS, Cdyn, GC etc
     
     # All buffers empty.
-	PS0_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock'))/.Clk.num_Z_ZPBE) - .Z_DOP
-	PS0_ZPBE_DOP	=	.Z_DOP	
+	#PS0_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock'))/.Clk.num_Z_ZPBE) - .Z_DOP
+	#PS0_ZPBE_DOP	=	.Z_DOP	
     
     # Buffers had objects in them, but didn't make forward progress.
-	PS1_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_IdleOrStalled.CrClock')) - D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock')))/.Clk.num_Z_ZPBE
+	#PS1_ZPBE = (D(SUM('@ANY_ZPBE@pwr_Zpbe_IdleOrStalled.CrClock')) - D(SUM('@ANY_ZPBE@pwr_Zpbe_Idle.CrClock')))/.Clk.num_Z_ZPBE
     
     # All remaining clocks must then be considered active.
-    PS2_ZPBE = 1 - PS0_ZPBE - PS1_ZPBE
+    #PS2_ZPBE = 1 - PS0_ZPBE - PS1_ZPBE
     
     
 #Note that the below power states won't account for all clocks- there is some leakage. This is because the PS0 and PS1 states are sampling all buffers every clock, but the PS2 states are sampled at one particular pipestage- there will be some % of time spent filling and draining the pipeline where the PS2's measurement pipestage won't have any activity but HZ unit as a whole will not be idle or stalled.
@@ -127,12 +136,18 @@
 	PS2_IZ_WCOEFFIFO_READ	=	D(SUM('@ANY_WM@RasterSpanOutBuffer.pushed'))/.Clk.num_Z_IZ	
 	PS2_IZ_WCOEFFIFO_WRITE	=	PS2_IZ_WCOEFFIFO_READ	
 	
-#RCZ - Cache				
-	PS2_RCZ_CACHE_READ	=	D(SUM('@ANY_RCZ@ReadRequests'))/.Clk.num_Z_RCZ	
+#RCZ - Cache	
+        .temp_PbReadReqInBuffer	= D(SUM('S\d+\.uZCache.PbReadReqInBuffer_\d+\.popped'))
+	.temp_ReadTestSendBuf = D(SUM('S\d+\.uZCache.ReadTestSendBuf_\d+\.popped'))
+	.temp_IzRead = D(SUM('S\d+\.uZCache.IzReadReqInBuffer.popped'))
+	PS2_RCZ_CACHE_READ	= (D(SUM('@ANY_RCZ@ReadRequests'))/.Clk.num_Z_RCZ)*(( .temp_IzRead + .temp_PbReadReqInBuffer) / .temp_ReadTestSendBuf)
 	PS2_RCZ_CACHE_WRITE	=	D(SUM('@ANY_RCZ@WriteRequests'))/.Clk.num_Z_RCZ	
 	
-#STC - Cache				
-	PS2_STC_CACHE_READ	=	D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC	
+#STC - Cache	
+        .temp_PbReadReqInBuffer = D(SUM('S\d+\.uStcCache.PbReadReqInBuffer_\d+\.popped'))
+	.temp_ReadTestSendBuf = D(SUM('S\d+\.uStcCache.ReadTestSendBuf_\d+\.popped'))
+	.temp_stc_IzRead = D(SUM('S\d+\.uStcCache.IzReadReqInBuffer.popped'))
+	PS2_STC_CACHE_READ	=	(D(SUM('@ANY_STC@ReadRequests'))/.Clk.num_Z_STC)*((.temp_stc_IzRead +.temp_PbReadReqInBuffer ) / .temp_ReadTestSendBuf )
 	PS2_STC_CACHE_WRITE	=	D(SUM('@ANY_STC@WriteRequests'))/.Clk.num_Z_STC	
 				
 
