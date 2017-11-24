@@ -6,6 +6,7 @@
         numSamplerComputePaths  =       (knob.S0.SS0.uSampler.SamplerConfig > 0) ? numSamplers*2 : numSamplers
 	num_Sampler_FL	        =	numSamplerComputePaths	
 	num_Sampler_PL	        =	numSamplerComputePaths
+        num_Sampler_SMALL_PL    =       numSamplerComputePaths
         num_Sampler_SSLA        =       numSamplerComputePaths    	
 	num_Sampler_SC	        =	numSamplers	
 	num_Sampler_SC_Cache	=	numSamplers	
@@ -137,17 +138,12 @@
     PS2_PL_nearest      =   D(SUM('@ANY_SAMPLER@pwr_pl_sample_nearest@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
     PS2_PL_else         =   D(SUM('@ANY_SAMPLER@pwr_pl_else@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
 
-#SSLA (Mini PL)
-    #PS0_SSLA_DOP            =   PS0_DFRSMP_DOP
-    #PS0_SSLA                =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_idle\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_SSLA_DOP
-    #PS1_SSLA                =   (D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_idle_or_stall\.CrClock')) - D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_idle\.CrClock')))/(numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_sample_l       =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_sample_l\.CrClock')) / (numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_ld             =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_ld\.CrClock')) / (numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_bilinear_ogl   =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_sample_bilinear_ogl\.CrClock')) / (numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_bilinear_dx    =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_sample_bilinear_dx\.CrClock')) / (numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_trilinear_ogl  =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_sample_trilinear_ogl\.CrClock')) / (numSamplerComputePaths * .CrClk)
-    #PS2_SSLA_trilinear_dx   =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_sample_trilinear_dx\.CrClock')) / (numSamplerComputePaths * .CrClk) 
-    #PS2_SSLA_else           =   D(SUM('@ANY_SAMPLER@@ANY_SSLA@pwr_ssla_else\.CrClock')) / (numSamplerComputePaths * .CrClk)
+#SMALL PL
+    PS0_DMALL_PL_DOP = PS0_DFRSMP_DOP
+    PS0_SMALL_PL     =  (D(SUM('@ANY_SAMPLER@pwr_small_pl_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)) - PS0_SMALL_PL_DOP
+    PS1_SMALL_PL     =   ( D(SUM('@ANY_SAMPLER@pwr_small_pl_idle_or_stall@ANY_DS@\.CrClock')) - D(SUM('@ANY_SAMPLER@pwr_small_pl_idle@ANY_DS@\.CrClock')))/(numSamplerComputePaths * .CrClk)
+    PS2_SMALL_PL_LOD = D(SUM('@ANY_SAMPLER@pwr_small_pl_lod@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
+    PS2_SMALL_PL_NOLOD = D(SUM('@ANY_SAMPLER@pwr_small_pl_nolod@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
 
 #SC (Gen12 Based)
     PS0_SC_DOP	=  PS0_DFRSMP_DOP	
