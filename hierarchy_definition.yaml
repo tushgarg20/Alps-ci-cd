@@ -40,8 +40,16 @@ GT Common Assets:
   GAM/GA:
     GAM/GA 3D:
       GAM:
+        GADSS: "-"
+        GAMCMDI: "-"
+        GAMDATI: "-"
+        GAMFTLB: "-"
+        GAMREQSTRM: "-"
+        GAMSTLB: "-"
+        GAMWKRS: "-"
         GACB: "-"
         GAFM: "-"
+        GAFARB: "-"
         GAFSRD: "-"
         GAFSWR: "-"
         GAMD: "-"
@@ -110,6 +118,7 @@ GT Common Assets:
             FT: "-"
             MT: "-"
             DM: "-"
+            DM_PALRAM: "-"
             SC: "-"
             SSLA: "-"
             MT_Cache: "-"
@@ -174,6 +183,7 @@ GT Common Assets:
           RCC_Cache: "-"
           RCPBCOM: "-"
           RCPBPIX: "-"
+          RCPBE: "-"
           RCPFE: "-"
           RCPFE_Cache: "-"
       Z Pipe:

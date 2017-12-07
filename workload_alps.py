@@ -29,6 +29,8 @@ parser.add_option("--debug",action="store_true",dest="run_debug",default=False,
                   help="Run build_alps in debug mode [default: %default]")
 parser.add_option("--gc",action="store_true",dest="dump_gc",default=False,
            help="Dump gate counts in output files [default: %sdefault]" % "%%")
+parser.add_option("--cw",action="store_true",dest="dump_cw",default=False,
+           help="Dump cdyn weights [default: %sdefault]" % "%%")
 
 (options,args) = parser.parse_args()
 
@@ -234,6 +236,8 @@ for i in range(len(keys)):
     build_alps_cmd += ['--debug']
   if options.dump_gc:
     build_alps_cmd += ['--gc']
+  if options.dump_cw:
+    build_alps_cmd += ['--cw']
 
   try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)

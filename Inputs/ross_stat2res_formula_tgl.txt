@@ -50,8 +50,8 @@
 	 @ANY_PSD@	=	(S\d+\.SS\d+\.uPSD\.|S\d+\.uPSD_\d\.|STK\d.S\d+\.uPSD_\d\.|STK\d.S\d+\.SS\d\.uPSD\.)		
 	 @ANY_PSS@	=	 (S\d+\.SS\d+\.uPSS\.|S\d+\.uPSS_\d\.|STK\d.S\d+\.uPSS_\d\.|STK\d.S\d+\.SS\d\.uPSS\.)		
 	 @ANY_DAPRF@	=	(S\d+\.SS\d+\.uDAPRF\.|S\d+\.uDAPRF_\d\.|STK\d\.S\d+\.uDAPRF_\d\.|STK\d\.S\d+\.SS\d+\.uDAPRF\.)				
-	 @ANY_MA_IN@	=	(S\d+\.SS\d+\.R\d+\.uMAI\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAI\.)	
-	 @ANY_MA_OUT@	=	(S\d+\.SS\d+\.R\d+\.uMAO\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAO\.)	
+	 @ANY_MA_IN@	=	(S\d+\.SS\d+\.FgMAI\d+\.MAI_F\d+\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAI\.)	
+	 @ANY_MA_OUT@	=	(S\d+\.SS\d+\.FgMAO\d+\.uMAO\d+\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAO\.)	
 	 @ANY_TDL@	=	(S\d+\.SS\d+\.uTDL\.|STK\d+\.S\d+\.SS\d+\.uTDL\.)	
 	 @ANY_ICACHE@	=	(S\d+\.SS\d+\.uICACHE\.|STK\d+\.S\d+\.SS\d+\.uICACHE\.)	
 	 @ANY_GWC@	=	Med\.uGWC\.	
