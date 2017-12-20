@@ -94,12 +94,12 @@
 	PS0_VF_DOP	=	 .temp_3DPipeDisable	
 	PS0_VF	=	(D(Geo.uVF.pwr_vf_idle.GeoClock) / .GeoClk) - PS0_VF_DOP	
 	PS1_VF	=	1 - (PS0_VF_DOP + PS0_VF + PS2_VF_Indexed + PS2_VF_Sequential + PS2_VF_Control + PS2_VF_Dropped)	
-	PS2_VF_Indexed	=	D(Geo.uVF.pwr_vf_active_indexed.2xGeoClock) / .GeoClk2x	
-	PS2_VF_Sequential	=	D(Geo.uVF.pwr_vf_active_sequential.2xGeoClock) / .GeoClk2x	
+	PS2_VF_Indexed	=	D(Geo.uVF.pwr_vf_active_indexed.GeoClock) / .GeoClk	
+	PS2_VF_Sequential	=	D(Geo.uVF.pwr_vf_active_sequential.GeoClock) / .GeoClk	
 	.temp_vf_active_control1x	=	D(Geo.uVF.pwr_vf_active_control1x.GeoClock) / .GeoClk	
-	.temp_vf_active_control2x	=	D(Geo.uVF.pwr_vf_active_control2x.2xGeoClock) / .GeoClk2x	
-	PS2_VF_Control	=	.temp_vf_active_control1x + .temp_vf_active_control2x	# Added to catch control packets
-	PS2_VF_Dropped	=	D(Geo.uVF.pwr_vf_active_dropped.2xGeoClock) / .GeoClk2x	# Added to catch verts dropped because of cut, dangling, or auto-strip.
+	.temp_vf_active_control2x	=	D(Geo.uVF.pwr_vf_active_control2x.GeoClock) / .GeoClk	
+	PS2_VF_Control	=	.temp_vf_active_control1x + .temp_vf_active_control	# Added to catch control packets
+	PS2_VF_Dropped	=	D(Geo.uVF.pwr_vf_active_dropped.GeoClock) / .GeoClk	# Added to catch verts dropped because of cut, dangling, or auto-strip.
 #VFBE1				
 	PS0_VFBE_DOP	=	 .temp_3DPipeDisable	
 	.temp_num_vertex_pipes	=	knob.Geo.uVF.NumVfVtxPipes	
@@ -202,7 +202,7 @@
 	PS0_SFFE_DOP	=	 .temp_3DPipeDisable	
 	PS0_SFFE	=	(D(Geo.uSF.pwr_SFFE_Idle.2xGeoClock) / .GeoClk2x) - PS0_SFFE_DOP	
 	PS1_SFFE	=	(D(Geo.uSF.pwr_SFFE_Stalled_or_Idle.2xGeoClock) - D(Geo.uSF.pwr_SFFE_Idle.2xGeoClock)) / .GeoClk2x	
-	PS2_SFFE_Culled	=	(D(Geo.uSF.pwr_SFFE_Culled)) / .GeoClk2x	
+	PS2_SFFE_Culled	=	(D(Geo.uSF.pwr_SFFE_Culled.)) / .GeoClk2x	
 	PS2_SFFE_NotCulled_FastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_FastClip.2xGeoClock) / .GeoClk2x	
 	PS2_SFFE_NotCulled_NotFastClip	=	D(Geo.uSF.pwr_SFFE_NotCulled_NotFastClip.2xGeoClock) / .GeoClk2x
 
