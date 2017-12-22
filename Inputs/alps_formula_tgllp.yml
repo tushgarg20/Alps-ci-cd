@@ -494,6 +494,14 @@ SQIDI:
     PS2_MAD:
      PS2_MAD_READ: R * C
      PS2_MAD_WRITE: R * C
+   MCFG:
+    PS0_MCFG: R * C
+   MGSQ:
+    PS0_MGSQ: R * C
+    PS1_MGSQ_CRS_WRITE_COMPLETION: R * C
+    PS2_MGSQ_1READ: R * C
+    PS2_MGSQ_1WRIRE: R * C
+    PS2_MGSQ_2READ: R * C
    SMALL:
     PS0_SQIDI_SMALL: R * C
     PS1_SQIDI_SMALL: R * C
@@ -737,6 +745,7 @@ Sampler:
     PS1_DG: R * C
     PS0_SMALL_DG: R * C
     PS1_SMALL_DG: R * C
+    PS2_SMALL_DG_EN: R * C
     PS2_DG:
      PS2_DG_point_nearest_linear_32bpt: R * C
      PS2_DG_point_nearest_linear_not32bpt: R * C
