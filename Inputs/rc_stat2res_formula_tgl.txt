@@ -49,17 +49,17 @@
 	#.num_local_cross_write_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_write'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_write')))
 	.num_local_cross_write_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_write')))
 	PS2_LSN_LOCAL_CROSS_WRITE = .num_local_cross_write_txns/(num_Fabric_LSN*.CrClk*numBuses)
-	#.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_return'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_return')))
-	.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_return')))
+	#.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_return')) + D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_return')))
+	.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_return'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_return')))
 	PS2_LSN_LOCAL_CROSS_READ_RETURN = .num_local_cross_read_return_txns/(num_Fabric_LSN*.CrClk*numBuses)
 	PS2_LSN_CROSS_LOCAL_READ= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_read')))/(num_Fabric_LSN*.CrClk*numBuses)
 	PS2_LSN_CROSS_LOCAL_WRITE= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_write')))/(num_Fabric_LSN*.CrClk*numBuses)
-	PS2_LSN_CROSS_LOCAL_READ_RETURN= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_return')))/(num_Fabric_LSN*.CrClk*numBuses)
+	PS2_LSN_CROSS_LOCAL_READ_RETURN= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_return')))/(num_Fabric_LSN*.CrClk*numBuses) - PS2_LSN_CROSS_LOCAL_MEMFILL_L3
 	#Because these are the unique number of transactions - Ideally, number of L2X transactions should be eqal to X2L transactions . X2X can be more than this because of additional hops	
 	PS2_LSN_CROSS_SLICE_MEM_FILL    = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_CROSS_SLICE_SNP_DATA    =       0 #stat unavailable
-	#PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@ANY_LNI@MemReturn'))/(num_Fabric_LSN*.CrClk)
-	PS2_LSN_CROSS_LOCAL_MEMFILL_L3  = 	D(SUM('@anyLSN@bus\d+_XsliceToLocalMemFill_return'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_CROSS_LOCAL_MEMFILL_L3  = 	D(SUM('@anyLSN@bus\d+_XsliceToLocalMemFill_return'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@ANY_LNI@MemReturn'))/(num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_CROSS_LOCAL_MEMFILL_SLC =       0 #stat unavailable
 	#PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@ANY_L3BANK@MemOp_RD'))/(num_Fabric_LSN * .CrClk)
 	PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_read'))/(num_Fabric_LSN * .CrClk * numBuses)
