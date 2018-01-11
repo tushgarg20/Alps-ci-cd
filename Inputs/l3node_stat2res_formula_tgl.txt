@@ -99,7 +99,7 @@
 		
 #L3NODEDOP				
 	PS0_L3Node_DOP	=	0	
-	PS1_L3Node_DOP	=	0	
+	#PS1_L3Node_DOP	=	0	
 	PS2_L3Node_DOP	=	1	#No DOP gating in L3
 				
 #L3NODEDFX			

@@ -59,8 +59,8 @@
 	PS1_LTCD_DATA	                =	((D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.CrClock')))/(.CrClk * num_L3_Slices * numL3Banks)) - .temp_ps0_ltcd_data
 	#PS2_LTCD_DATA_READ	        =	D(SUM('@ANY_L3BANK@DataRamRd')) / (.CrClk * num_L3_Slices * numL3Banks)
 	#PS2_LTCD_DATA_WRITE	        =	D(SUM('@ANY_L3BANK@DataRamWr')) / (.CrClk * num_L3_Slices * numL3Banks)
-        PS2_LTCD_DATA_Read              =       D(SUM('@ANY_L3BANK@MemRdRequest')) / (.CrClk * num_L3_Slices * numL3Banks)   
-        PS2_LTCD_DATA_Write             =       D(SUM('@ANY_L3BANK@MemWrRequest')) / (.CrClk * num_L3_Slices * numL3Banks)
+        PS2_LTCD_DATA_READ              =       D(SUM('@ANY_L3BANK@MemRdRequest')) / (.CrClk * num_L3_Slices * numL3Banks)   
+        PS2_LTCD_DATA_WRITE             =       D(SUM('@ANY_L3BANK@MemWrRequest')) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_DATA_EVICTION	        =       D(SUM('@ANY_L3BANK@Evict')) / (.CrClk * num_L3_Slices * numL3Banks)
 #New states for new features - not yet coded in Gsim
 #****Ignore Atomics for now
