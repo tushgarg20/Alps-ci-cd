@@ -31,7 +31,7 @@
 	num_SQIDI_MSQC	=       numSQBanks		
 	num_SQIDI_MIDI	=	num_GTI_GTI	
 	num_SQIDI_MISD	=	num_GTI_GTI	
-	num_SQIDI_MSQD	=       numSQBanks	
+	num_SQIDI_MSQD	=       numSQBanks/2    # fix for Gen12LP - need a thorough review for Gen12HP	
         num_SQIDI_MAC   =       num_GTI_GTI
         num_SQIDI_MAD   =       num_GTI_GTI
 	num_SQIDI_MSNP	=	num_GTI_GTI	
