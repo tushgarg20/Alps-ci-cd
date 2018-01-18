@@ -59,7 +59,7 @@
 	PS1_LTCD_DATA	                =	((D(SUM('@ANY_L3BANK@DataIdleOrStallCount\.CrClock')))/(.CrClk * num_L3_Slices * numL3Banks)) - .temp_ps0_ltcd_data
 	#PS2_LTCD_DATA_READ	        =	D(SUM('@ANY_L3BANK@DataRamRd')) / (.CrClk * num_L3_Slices * numL3Banks)
 	#PS2_LTCD_DATA_WRITE	        =	D(SUM('@ANY_L3BANK@DataRamWr')) / (.CrClk * num_L3_Slices * numL3Banks)
-        PS2_LTCD_DATA_READ              =       D(SUM('@ANY_L3BANK@MemRdRequest')) / (.CrClk * num_L3_Slices * numL3Banks)   
+        PS2_LTCD_DATA_READ              =       D(SUM('@ANY_L3BANK@MemRdRequest')) / (.CrClk * num_L3_Slices * numL3Banks)
         PS2_LTCD_DATA_WRITE             =       D(SUM('@ANY_L3BANK@MemWrRequest')) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_DATA_EVICTION	        =       D(SUM('@ANY_L3BANK@Evict')) / (.CrClk * num_L3_Slices * numL3Banks)
 #New states for new features - not yet coded in Gsim
@@ -124,6 +124,7 @@
 	PS2_LTCC_LKUP	=       D(SUM('@ANY_L3BANK@LtccLookUp'))/(.CrClk * num_L3_Slices * numL3Banks)	
 	PS2_LTCC_FILL	=       D(SUM('@ANY_L3BANK@LtccFill'))/(.CrClk * num_L3_Slices * numL3Banks)	
 	PS2_LTCC_DCH	=       D(SUM('@ANY_L3BANK@LtccDCH'))/(.CrClk * num_L3_Slices * numL3Banks)	
+        PS2_LTCC_ELSE   =       1 - (PS0_LTCC + PS1_LTCC + PS2_LTCC_LKUP + PS2_LTCC_FILL + PS2_LTCC_DCH)
 #LBI
 	PS0_LBI         =       D(SUM('@ANY_L3@LNI_\d\.Idle'))/ (.CrClk * num_L3_Slices * num_L3Node_LNI)
 	PS1_LBI         =       D(SUM('@ANY_L3BANK@SQFullCount.CrClock')) / (.CrClk * num_L3_Slices * numL3Banks)#LBI ingress fifo not empty and no LSQC slot credit

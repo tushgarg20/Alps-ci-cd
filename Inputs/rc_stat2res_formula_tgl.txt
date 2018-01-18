@@ -58,13 +58,13 @@
 	#Because these are the unique number of transactions - Ideally, number of L2X transactions should be eqal to X2L transactions . X2X can be more than this because of additional hops	
 	PS2_LSN_CROSS_SLICE_MEM_FILL    = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_CROSS_SLICE_SNP_DATA    =       0 #stat unavailable
-	#PS2_LSN_CROSS_LOCAL_MEMFILL_L3  = 	D(SUM('@anyLSN@bus\d+_XsliceToLocalMemFill_return'))/(num_Fabric_LSN * .CrClk * numBuses)
-	PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@ANY_LNI@MemReturn'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@anyLSN@bus\d+_XsliceToLocalMemFill_return'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_CROSS_LOCAL_MEMFILL_L3  = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_CROSS_LOCAL_MEMFILL_SLC =       0 #stat unavailable
-	#PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@ANY_L3BANK@MemOp_RD'))/(num_Fabric_LSN * .CrClk)
-	PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_read'))/(num_Fabric_LSN * .CrClk * numBuses)
-	#PS2_LSN_LOCAL_CROSS_LNEWRITE	=	D(SUM('@ANY_L3BANK@MemOp_WR'))/(num_Fabric_LSN * .CrClk)
-	PS2_LSN_LOCAL_CROSS_LNEWRITE 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_write'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@ANY_L3BANK@MemOp_RD'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_read'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_LOCAL_CROSS_LNEWRITE	=	D(SUM('@ANY_L3BANK@MemOp_WR'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_LOCAL_CROSS_LNEWRITE 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_write'))/(num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_LOCAL_CROSS_SNP_DATA = 0 #stat unavailable
 	.residuallsn=1-(PS0_LSN + PS1_LSN + PS2_LSN_CROSS_SLICE_MEM_FILL + PS2_LSN_CROSS_LOCAL_READ + PS2_LSN_CROSS_SLICE_SNP_DATA + PS2_LSN_LOCAL_CROSS_SNP_DATA + PS2_LSN_CROSS_LOCAL_MEMFILL_L3 + PS2_LSN_CROSS_LOCAL_MEMFILL_SLC + PS2_LSN_LOCAL_CROSS_LNEREAD + PS2_LSN_LOCAL_CROSS_LNEWRITE + PS2_LSN_CROSS_LOCAL_WRITE + PS2_LSN_CROSS_LOCAL_READ_RETURN + PS2_LSN_LOCAL_CROSS_READ + PS2_LSN_LOCAL_CROSS_WRITE + PS2_LSN_LOCAL_CROSS_READ_RETURN+PS2_LSN_CROSS_SLICE_READ+ PS2_LSN_CROSS_SLICE_WRITE + PS2_LSN_CROSS_SLICE_READ_RETURN)
 	PS2_LSN_Else  =  (.residuallsn<0)?0:.residuallsn
