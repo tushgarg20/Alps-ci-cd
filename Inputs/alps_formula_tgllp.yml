@@ -1967,6 +1967,8 @@ FF:
     PS0_FF_OTHER_DFX: R * C
     PS2_FF_OTHER_DFX: R * C
 Other:
+   CCD:
+    PS2_CCD: R*C
    GTP24C:
     PS0_GTP24C_DOP: R * C
     PS0_GTP24C: R * C

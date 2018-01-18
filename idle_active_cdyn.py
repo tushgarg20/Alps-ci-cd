@@ -65,23 +65,26 @@ def idle_stall_active(cdyn_dict,lf):
                             active_cdyn = active_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat]
                             cluster_active_cdyn_val = cluster_active_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat]                               
 
-                    for sub_stat in key_list:
-                        if sub_stat == "total":
-                            continue
+                    if len(key_list) != 0:
+		    
+                        for sub_stat in key_list:
+                            if sub_stat == "total":
+                                continue
                                     #stat_print = sub_stat.replace(stat+"_",'  ')
-                        if sub_stat.startswith('PS0_'):
-                            idle_cdyn = idle_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
-                            cluster_idle_cdyn_val = cluster_idle_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
-                        elif sub_stat.startswith('PS1_'):
-                            stall_cdyn = stall_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
-                            cluster_stall_cdyn_val = cluster_stall_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
-                        else:
-                            active_cdyn = active_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
-                            cluster_active_cdyn_val = cluster_active_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                            if sub_stat.startswith('PS0_'):
+                                idle_cdyn = idle_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                                cluster_idle_cdyn_val = cluster_idle_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                            elif sub_stat.startswith('PS1_'):
+                                stall_cdyn = stall_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                                cluster_stall_cdyn_val = cluster_stall_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                            else:
+                                active_cdyn = active_cdyn + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
+                                cluster_active_cdyn_val = cluster_active_cdyn_val + cdyn_dict[category]['GT'][cluster][unit][stat][sub_stat]
 			    
-                unit_idle_cdyn[unit] = [cluster,"idle",round(idle_cdyn,2)]
-                unit_stall_cdyn[unit] = [cluster,"stall",round(stall_cdyn,2)]
-                unit_active_cdyn[unit] = [cluster,"active",round(active_cdyn,2)]
+                
+                unit_idle_cdyn[unit+","+cluster] = ["idle",round(idle_cdyn,2)]
+                unit_stall_cdyn[unit+","+cluster] = ["stall",round(stall_cdyn,2)]
+                unit_active_cdyn[unit+","+cluster] = ["active",round(active_cdyn,2)]
                 #print (cluster,unit,unit_idle_cdyn[unit][2])
             cluster_idle_cdyn[cluster] = ["idle",round(cluster_idle_cdyn_val,2)]
             cluster_stall_cdyn[cluster] = ["stall",round(cluster_stall_cdyn_val,2)]
@@ -118,7 +121,7 @@ def idle_stall_active(cdyn_dict,lf):
     temp_list2 = [unit_idle_cdyn,unit_stall_cdyn,unit_active_cdyn]
     for item in temp_list2:
         for key,values in item.items():
-            print(str(key)+","+str(values[0])+","+str(values[1])+","+str(values[2]),file=lf)
+            print(str(key)+","+str(values[0])+","+str(values[1]),file=lf)
 
 
 if __name__ == '__main__':
