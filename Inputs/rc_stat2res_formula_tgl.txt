@@ -42,48 +42,32 @@
 	.num_cross_slice_write_transactions = (D(SUM('@anyLSN@bus\d+_UpXSliceToXSlice_write'))+ D(SUM('@anyLSN@bus\d+_DownXSliceToXSlice_write')))
 	PS2_LSN_CROSS_SLICE_WRITE = .num_cross_slice_write_transactions/(num_Fabric_LSN*.CrClk*numBuses)
 	.num_cross_slice_read_return_transactions = (D(SUM('@anyLSN@bus\d+_UpXSliceToXSlice_return'))+ D(SUM('@anyLSN@bus\d+_DownXSliceToXSlice_return')))
-	PS2_LSN_CROSS_SLICE_READ_RETURN = .num_cross_slice_read_return_transactions/(num_Fabric_LSN*.CrClk*numBuses)
-	.num_local_cross_read_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_read'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_read')))
+	PS2_LSN_CROSS_SLICE_READ_RETURN = .num_cross_slice_read_return_transactions/(num_Fabric_LSN*.CrClk*numBuses) - PS2_LSN_CROSS_SLICE_MEM_FILL
+	#.num_local_cross_read_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_read'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_read')))
+	.num_local_cross_read_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_read')))
 	PS2_LSN_LOCAL_CROSS_READ = .num_local_cross_read_txns/(num_Fabric_LSN*.CrClk*numBuses)
-	.num_local_cross_write_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_write'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_write')))
+	#.num_local_cross_write_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_write'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_write')))
+	.num_local_cross_write_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_write')))
 	PS2_LSN_LOCAL_CROSS_WRITE = .num_local_cross_write_txns/(num_Fabric_LSN*.CrClk*numBuses)
+	#.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_LNILocalToXSlice_return')) + D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_return')))
 	.num_local_cross_read_return_txns= (D(SUM('@anyLSN@bus\d+_UpLocalToXSlice_return'))+ D(SUM('@anyLSN@bus\d+_DownLocalToXSlice_return')))
 	PS2_LSN_LOCAL_CROSS_READ_RETURN = .num_local_cross_read_return_txns/(num_Fabric_LSN*.CrClk*numBuses)
 	PS2_LSN_CROSS_LOCAL_READ= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_read')))/(num_Fabric_LSN*.CrClk*numBuses)
 	PS2_LSN_CROSS_LOCAL_WRITE= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_write')))/(num_Fabric_LSN*.CrClk*numBuses)
-	PS2_LSN_CROSS_LOCAL_READ_RETURN= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_return')))/(num_Fabric_LSN*.CrClk*numBuses)
+	PS2_LSN_CROSS_LOCAL_READ_RETURN= (D(SUM('@anyLSN@bus\d+_XSliceToLocal_return')))/(num_Fabric_LSN*.CrClk*numBuses) - PS2_LSN_CROSS_LOCAL_MEMFILL_L3
 	#Because these are the unique number of transactions - Ideally, number of L2X transactions should be eqal to X2L transactions . X2X can be more than this because of additional hops	
-	PS2_LSN_CROSS_SLICE_MEM_FILL = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN*.CrClk)
-	PS2_LSN_CROSS_SLICE_SNP_DATA = 0 #stat unavailable
-	PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@ANY_LNI@MemReturn'))/(num_Fabric_LSN*.CrClk)
-	PS2_LSN_CROSS_LOCAL_MEMFILL_SLC= 0 #stat unavailable
-	PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@ANY_L3BANK@ReqMiss'))/(num_Fabric_LSN * .CrClk)
-	PS2_LSN_LOCAL_CROSS_LNEWRITE	=	D(SUM('@ANY_L3BANK@Evict'))/(num_Fabric_LSN * .CrClk)
+	PS2_LSN_CROSS_SLICE_MEM_FILL    = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_CROSS_SLICE_SNP_DATA    =       0 #stat unavailable
+	#PS2_LSN_CROSS_LOCAL_MEMFILL_L3 = 	D(SUM('@anyLSN@bus\d+_XsliceToLocalMemFill_return'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_CROSS_LOCAL_MEMFILL_L3  = 	D(SUM('@ANY_LNI@MemReturn'))/(2 * num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_CROSS_LOCAL_MEMFILL_SLC =       0 #stat unavailable
+	PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@ANY_L3BANK@MemOp_RD'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_LOCAL_CROSS_LNEREAD 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_read'))/(num_Fabric_LSN * .CrClk * numBuses)
+	PS2_LSN_LOCAL_CROSS_LNEWRITE	=	D(SUM('@ANY_L3BANK@MemOp_WR'))/(num_Fabric_LSN * .CrClk * numBuses)
+	#PS2_LSN_LOCAL_CROSS_LNEWRITE 	=	D(SUM('@anyLSN@bus\d+_LNELocalToXSlice_write'))/(num_Fabric_LSN * .CrClk * numBuses)
 	PS2_LSN_LOCAL_CROSS_SNP_DATA = 0 #stat unavailable
 	.residuallsn=1-(PS0_LSN + PS1_LSN + PS2_LSN_CROSS_SLICE_MEM_FILL + PS2_LSN_CROSS_LOCAL_READ + PS2_LSN_CROSS_SLICE_SNP_DATA + PS2_LSN_LOCAL_CROSS_SNP_DATA + PS2_LSN_CROSS_LOCAL_MEMFILL_L3 + PS2_LSN_CROSS_LOCAL_MEMFILL_SLC + PS2_LSN_LOCAL_CROSS_LNEREAD + PS2_LSN_LOCAL_CROSS_LNEWRITE + PS2_LSN_CROSS_LOCAL_WRITE + PS2_LSN_CROSS_LOCAL_READ_RETURN + PS2_LSN_LOCAL_CROSS_READ + PS2_LSN_LOCAL_CROSS_WRITE + PS2_LSN_LOCAL_CROSS_READ_RETURN+PS2_LSN_CROSS_SLICE_READ+ PS2_LSN_CROSS_SLICE_WRITE + PS2_LSN_CROSS_SLICE_READ_RETURN)
 	PS2_LSN_Else  =  (.residuallsn<0)?0:.residuallsn
-
-#	PS0_LSN_XSLDN_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_DownDataIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_XSLDN_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_DownDataStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_XSLDN_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_DownDataPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_XSLDN_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_DownCmdIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_XSLDN_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_DownCmdStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_XSLDN_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_DownCmdPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_XSLUP_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_UpDataIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_XSLUP_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_UpDataStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_XSLUP_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_UpDataPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_XSLUP_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_UpCmdIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_XSLUP_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_UpCmdStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_XSLUP_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_UpCmdPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_LNI_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LniDataIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_LNI_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LniDataStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_LNI_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LniDataPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_LNI_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_LniCmdIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_LNI_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_LniCmdStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_LNI_CMD=	D(SUM('@anyL3@LSN_\d.bus\d+_LniCmdPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS0_LSN_LNE_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LneDataIdle'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS1_LSN_LNE_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LneDataStalled'))/(num_Fabric_LSN*.CrClk*numBuses)
-#	PS2_LSN_LNE_DATA=	D(SUM('@anyL3@LSN_\d.bus\d+_LneDataPkts'))/(num_Fabric_LSN*.CrClk*numBuses)
 
 #LSNEND #per bus
 	numL3WrBuses = knob.uLSNEND_0.L3WrMemfillBusCount
@@ -102,23 +86,6 @@
 	.residual = 1-(PS2_LSNEP_GAM_READ + PS2_LSNEP_GAM_WRITE + PS2_LSNEP_SL_MEMFILL) 
 	PS0_LSNEP=.residual
 			
-#LSNtoUnslice			
-			
-#	PS0_LSNtoUnslice_UP_DATA=	D(SUM('@anyS0@bus\d+_UpDataIdle'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-#	PS1_LSNtoUnslice_UP_DATA=	D(SUM('@anyS0@bus\d+_UpDataStalled'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-#	PS2_LSNtoUnslice_UP_DATA=	D(SUM('@anyS0@bus\d+_UpDataPkts'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-#	PS0_LSNtoUnslice_UP_CMD	=	D(SUM('@anyS0@bus\d+_UpCmdIdle'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-#	PS1_LSNtoUnslice_UP_CMD	=	D(SUM('@anyS0@bus\d+_UpCmdStalled'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-#	PS2_LSNtoUnslice_UP_CMD	=	D(SUM('@anyS0@bus\d+_UpCmdPkts'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
-			
-#GAFStoLSN			
-			
-#	PS0_GAFStoLSN_DN_DATA=	D(SUM('uGAFS.bus\d+_DownDataIdle'))/(.UnsliceClock*numBuses*numStacks)
-#	PS1_GAFStoLSN_DN_DATA=	D(SUM('uGAFS.bus\d+_DownDataStalled'))/(.UnsliceClock*numBuses*numStacks)
-#	PS2_GAFStoLSN_DN_DATA=	D(SUM('uGAFS.bus\d+_DownDataPkts'))/(.UnsliceClock*numBuses*numStacks)
-#	PS0_GAFStoLSN_DN_CMD=	D(SUM('uGAFS.bus\d+_DownCmdIdle'))/(.UnsliceClock*numBuses*numStacks)
-#	PS1_GAFStoLSN_DN_CMD=	D(SUM('uGAFS.bus\d+_DownCmdStalled'))/(.UnsliceClock*numBuses*numStacks)
-#	PS2_GAFStoLSN_DN_CMD=	D(SUM('uGAFS.bus\d+_DownCmdPkts'))/(.UnsliceClock*numBuses*numStacks)
 #BGF			
 	PS0_BGF_SL_UNSL_INTF_DATA_UP	=	D(SUM('@anyS0@bus\d+_UpDataIdle'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
 	PS1_BGF_SL_UNSL_INTF_DATA_UP	=	D(SUM('@anyS0@bus\d+_UpDataStalled'))/(.CrClk*numBuses*numStacks*num_Fabric_LSN)
@@ -177,14 +144,6 @@
 	PS1_RepeatersfromUnslice_DN_CMD	        =	D(SUM('uGAFS.bus\d+_DownCmdStalled'))/(.UnsliceClock*numBuses*numStacks)
 	PS2_RepeatersfromUnslice_DN_CMD	        =	D(SUM('uGAFS.bus\d+_DownCmdPkts'))/(.UnsliceClock*numBuses*numStacks)
 			
-#horizontalfabric			
-	#PS0_XStack_DATA	=	(numhorBuses==0)?0:(1-PS2_XStack_DATA)
-	#PS1_XStack_DATA	=	0
-	#PS2_XStack_DATA	=	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+DataPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
-	#PS0_XStack_CMD	        =	(numhorBuses==0)?0:(1-PS2_XStack_CMD)
-	#PS1_XStack_CMD	        =	0
-	#PS2_XStack_CMD	        =	(numhorBuses==0)?0:(D(SUM('STK\d+.uRC\d+.bus\d+_\w+CmdPkts'))/(.CrClk*numhorBuses*num_Fabric_HorizontalFabric))
-
 #SMALL			
 	PS0_Fabric_SMALL	=	PS0_LSN + PS1_LSN
 	PS2_Fabric_SMALL	=	1-PS0_Fabric_SMALL

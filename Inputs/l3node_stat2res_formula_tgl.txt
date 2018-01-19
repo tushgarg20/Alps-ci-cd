@@ -42,7 +42,7 @@
 	PS1_LNIB			=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI_BUS@XSliceSliceWrite'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI_BUS@XSliceSliceRead'))/(num_L3Node_LNIB * .CrClk)
-	PS2_LNIB_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNIB * .CrClk)
+	PS2_LNIB_XSLICE_ING_1MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1READ_URB  = 	.URBRd/(num_L3Node_LNIB * .CrClk)
 	PS2_LNIB_LOCAL_1BANK_1READ_NON_URB =   (D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNIB * .CrClk))- (PS2_LNIB_LOCAL_1BANK_1READ_URB)
 	PS2_LNIB_LOCAL_1BANK_1WRITE_URB_64B =  	D(SUM('S\d+\.uL3.Bank_\d+\.Urb64BWr'))/(num_L3Node_LNIB * .CrClk)
@@ -82,7 +82,7 @@
 	#PS2_LNE_SS_DATARTN		=	D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_EGR_DATARTN		=	D(SUM('@ANY_L3BANK@BankOutCSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_ING_DATARTN		=	(D(SUM('@ANY_L3@LNE_\d\.CrossSliceReturnIngressQ_\d\.pushed')))/(num_L3Node_LNE*.CrClk)
-	PS2_LNE_LSN_EGR_READ		=	D(SUM('@ANY_L3BANK@ReqMiss'))/(num_L3Node_LNE*.CrClk)
+	PS2_LNE_LSN_EGR_READ		=	D(SUM('@ANY_L3BANK@ReqMissRD'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_EGR_WRITE		=	D(SUM('@ANY_L3BANK@Evict'))/(num_L3Node_LNE*.CrClk)
 	#PS2_LNE_colorz_returns=?
 	PS2_LNE_LOC_DATARTN_64B_UNPACKED = 	(D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk))/2
@@ -99,7 +99,7 @@
 		
 #L3NODEDOP				
 	PS0_L3Node_DOP	=	0	
-	PS1_L3Node_DOP	=	0	
+	#PS1_L3Node_DOP	=	0	
 	PS2_L3Node_DOP	=	1	#No DOP gating in L3
 				
 #L3NODEDFX			

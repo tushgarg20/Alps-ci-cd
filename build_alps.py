@@ -37,6 +37,10 @@ parser.add_argument('--debug',action="store_true",dest="run_debug",default=False
            help="Run build_alps in debug mode [default: %sdefault]" % "%%")
 parser.add_argument('--gc',action="store_true",dest="dump_gc",default=False,
            help="Dump gate counts in output files [default: %sdefault]" % "%%")
+parser.add_argument('--bcw',action="store_true",dest="dump_cw",default=False,
+           help="Dump base cdyn weights [default: %sdefault]" % "%%")
+parser.add_argument('--ecw',action="store_true",dest="dump_ecw",default=False,
+           help="Dump eff cdyn weights [default: %sdefault]" % "%%")
 
 options = parser.parse_args()
 
@@ -74,6 +78,13 @@ linest_coeff = {}
 log_file     = options.output_file + ".log"
 debug_file   = options.output_file + ".cdyn.log"
 patriot_file = options.output_file + ".patriot"
+
+if (options.dump_cw):
+    weights_file = options.output_file + ".base_weights.csv"
+    wf = open(weights_file,'w')
+if (options.dump_ecw):
+    eff_weights_file = options.output_file + ".eff_weights.csv"
+    eff_wf = open(eff_weights_file,'w')
 
 ###Print basic details in log file
 lf = open(log_file,'w')
@@ -294,6 +305,11 @@ def get_eff_cdyn(cluster,unit,stat):
         gc_sf = 1.0
 
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
+    e_cdyn = base_cdyn*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
+    if (options.dump_cw):
+        print (str(stat)+","+str(base_cfg)+","+str(base_cdyn),file=wf)
+    if (options.dump_ecw):
+        print (str(stat)+","+str(base_cfg)+","+str(e_cdyn),file=eff_wf)
     return eff_cdyn
 
 def which_cfg_to_use(track_cfg):
@@ -743,7 +759,7 @@ for cluster in output_cdyn_data['GT']:
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['ebb'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_ebb(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         elif (unit_lc.find("assign") != -1 or unit_lc.find("clkglue") != -1 or unit_lc.find("cpunit") != -1 or
-              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or	      unit_lc.find("repeater") != -1 or unit_lc.find("spine") != -1):
+              unit_lc.find("dfx") != -1    or unit_lc.find("dop") != -1     or        unit_lc.find("repeater") != -1 or unit_lc.find("spine") != -1):
             cluster_cdyn_numbers['cluster_cdyn_numbers(pF)'][cluster]['inf'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
             gt_cdyn['Total_GT_Cdyn_infra(nF)'] += float(output_cdyn_data['GT'][cluster][unit]['cdyn'])
         else:

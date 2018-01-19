@@ -1,5 +1,6 @@
 #Unit	GSIM residency		
-#Instance Counts			
+#Instance Counts	
+	num_Other_CCD	= 1		
 		num_Other_GTP24C				=		1
 		num_Other_ClockSpine			=		1
 		num_Other_WIDI					=		1
@@ -8,7 +9,8 @@
 	num_Other_UnSlice	=	1
 	num_Other_RC	=	num_Other_Slice - 1
 			
-#Other			
+#Other	
+	PS2_CCD	= 1		
 	PS0_GTP24C_DOP 	=   0	
 	PS0_GTP24C 	=	1
 	PS2_ClockSpine 	=	1
