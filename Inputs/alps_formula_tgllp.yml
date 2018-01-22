@@ -1659,6 +1659,12 @@ GAM:
     PS2_GAFM: 
      PS2_RD_GAFM: R * C
      PS2_WR_GAFM: R * C
+   GAFD:
+    PS0_GAFD: R * C
+    PS1_GAFD: R * C
+    PS2_GAFD: 
+     PS2_RD_GAFD: R * C
+     PS2_WR_GAFD: R * C
    GAFARB:
     PS0_GAFARB: R * C
     PS1_GAFARB: R * C
@@ -1690,24 +1696,24 @@ GAM:
     PS0_SARB: R * C
     PS1_SARB: R * C
     PS2_SARB: R * C
-   GASS:
-    PS0_GASS: R * C
-    PS1_GASS: R * C
-    PS2_GASS: R * C
-   GACB:
-    PS0_GACB: R * C
-    PS1_GACB: R * C
-    PS2_GACB: R * C
+   #GASS:
+   # PS0_GASS: R * C
+   # PS1_GASS: R * C
+   # PS2_GASS: R * C
+   #GACB:
+   # PS0_GACB: R * C
+   # PS1_GACB: R * C
+   # PS2_GACB: R * C
    GAMDRTN:
     PS0_GAMDRTN: R * C
     PS1_GAMDRTN: R * C
     PS2_GAMDRTN: R * C
-   GATR:
-    PS0_GATR: R * C
-    PS1_GATR: R * C
-    PS2_GATR_TLB_HIT: R * C
-    PS2_GATR_TLB_MISS: R * C
-    PS2_GATR_TR_DISABLE: R * C
+   #GATR:
+   # PS0_GATR: R * C
+   # PS1_GATR: R * C
+   # PS2_GATR_TLB_HIT: R * C
+   # PS2_GATR_TLB_MISS: R * C
+   # PS2_GATR_TR_DISABLE: R * C
    DOP:
     PS0_GAM_DOP: R * C
     PS2_GAM_DOP: R * C
