@@ -88,13 +88,13 @@
 	.PS2_LTCD_Data_NonSLM_ECC_NoTagRead	=	(D(SUM('@ANY_L3BANK@UrbRd')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	
 	.PS2_LTCD_Data_NonSLM_ECC_NoTagWrite	=	(D(SUM('@ANY_L3BANK@UrbWr')) + D(SUM('@ANY_L3BANK@UrbAtomic'))) / (.CrClk * num_L3_Slices * numL3Banks)	# Total URB (Non SLM - No Tag) Reads
 
-	.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.CrClock')) - D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('@ANY_L3BANK@TagFullLineWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	.temp_ps0_ltcd_tag		=	(D(SUM('@ANY_L3BANK@TagIdleCount\.CrClock')) - D(SUM('@ANY_L3BANK@TagRamRd')) + D(SUM('@ANY_L3BANK@TagFullLineWriteMiss')) + D(SUM('@ANY_L3BANK@TagRamWr')) + D(SUM('@ANY_L3BANK@Evict')) + D(SUM('@ANY_L3BANK@DirtyEvict_2CL'))) / (.CrClk * num_L3_Slices * numL3Banks)
         PS0_LTCD_TAG                    =       .temp_ps0_ltcd_tag
 	PS2_LTCD_TAG_READ		=	(D(SUM('@ANY_L3BANK@TagRamRd'))) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_TAG_WRITE		=	(D(SUM('@ANY_L3BANK@TagFullLineWriteMiss'))) / (.CrClk * num_L3_Slices * numL3Banks) 
 	PS2_LTCD_TAG_WRITE_FILL_HIT	=	((D(SUM('@ANY_L3BANK@TagRamWr'))) / (.CrClk * num_L3_Slices * numL3Banks))-PS2_LTCD_TAG_WRITE 	
-	PS2_LTCD_TAG_EVICTION_1_SUBSEC	=	((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)) - ((D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks))
-	PS2_LTCD_TAG_EVICTION_2_SUBSEC	=	(D(SUM('@ANY_L3BANK@2CLEvict'))) / (.CrClk * num_L3_Slices * numL3Banks)
+	PS2_LTCD_TAG_EVICTION_1_SUBSEC	=	((D(SUM('@ANY_L3BANK@Evict'))) / (.CrClk * num_L3_Slices * numL3Banks)) - ((D(SUM('@ANY_L3BANK@DirtyEvict_2CL'))) / (.CrClk * num_L3_Slices * numL3Banks))
+	PS2_LTCD_TAG_EVICTION_2_SUBSEC	=	(D(SUM('@ANY_L3BANK@DirtyEvict_2CL'))) / (.CrClk * num_L3_Slices * numL3Banks)
 	PS2_LTCD_TAG_WRITE_CC_128	=       (D(SUM('@ANY_L3BANK@TagRamWr128B')))/(.CrClk * num_L3_Slices * numL3Banks)	
         .residualltcdtag		=	1 - (PS0_LTCD_TAG + PS2_LTCD_TAG_READ + PS2_LTCD_TAG_WRITE + PS2_LTCD_TAG_WRITE_FILL_HIT + PS2_LTCD_TAG_EVICTION_1_SUBSEC + PS2_LTCD_TAG_EVICTION_2_SUBSEC)
 	PS2_LTCD_TAG_Else		=	(.residualltcdtag<0) ? 0:.residualltcdtag
