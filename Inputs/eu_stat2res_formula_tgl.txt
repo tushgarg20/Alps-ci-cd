@@ -21,7 +21,6 @@
 	num_EU_TCGA	=	numEUs	
 	num_EU_Pipelines	=	numEUs	
 	num_EU_Accumulator	=	numEUs			
-        num_EU_DP4A     =       numEUs
 				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -92,7 +91,8 @@
 	EM_total_count	=	EM_simd1_count + EM_simd2_count + EM_simd4_count + EM_simd8_count + EM_simd8_hp_count + EM_simd16_count + EM_simd16_hp_count + EM_simd32_count + EM_simd32_hp_count		-	EM_total_trans_count	
 	EM_total_trans_count	=	EM_simd1_trans_count + EM_simd2_trans_count + EM_simd4_trans_count + EM_simd8_trans_count + EM_simd8_hp_trans_count + EM_simd16_trans_count + EM_simd16_hp_trans_count + EM_simd32_trans_count + EM_simd32_hp_trans_count	
         
-       DP4A_total_count = 	D(SUM('@ANY_EU@Num_Dp4a_Exec'))
+       DP4A_total_count       = 	D(SUM('@ANY_EU@Num_Dp4a_Exec'))        # Total number of DP4A instructions issued 
+       DP4A_total_cycle_count = 	D(SUM('@ANY_EU@Num_Cycles_Dp4a_Exec')) # Total number of DP4A instructions issued 
 	
 
 	 @PLN@	=	(pln|lrp)	
@@ -104,7 +104,7 @@
 	 @MOV@	=	(mov|movi)	
 	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop|csel)	#club sel with mov - add control flow separately
 	 @TRANS@	=	(math)	#Transcendentals
-         @SYS@          =       (dp4a)  #Dp4 instructions
+         @DP4A@         =       (dp4a)  #Dp4 instructions
 	.avg_EMSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
@@ -128,6 +128,7 @@
 	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + FPU_simd4_count/4 + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + ((FPU_simd8_hp_count +	FPU_simd16_hp_count + FPU_simd32_hp_count)/16))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU0	=		1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
+        PS2_EU_DP4A     =       DP4A_total_count / (2 * numEUs * .CrClk) # Each DP4A instruction is counted as two cycles  
 	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mul_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_add_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
@@ -361,8 +362,8 @@
 	FPU1_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_intbypass : 0	
 
 #DP4a instruction modeling
-       PS2_EU_DP4A_bypass =  (DP4A_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@SYS@\.masked')) / (DP4A_total_count)) : 0
-       PS2_EU_DP4A_exec =   (DP4A_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@SYS@\.exec')) / (DP4A_total_count)) : 0
+       FPU0_DP4A_bypass =  (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.masked')) / (FPU_total_count)) : 0
+       FPU0_DP4A_exec =   (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.exec')) / (FPU_total_count)) : 0 # Divide by num of SIMD channels x No. of DP4A operations
   
 #GA				
 	PS0_GA	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	
