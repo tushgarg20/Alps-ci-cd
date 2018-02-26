@@ -1,4 +1,4 @@
-#Unit	GSIM residency			Comments
+PE#Unit	GSIM residency			Comments
 #Instance Counts				
 	CrClocks	=	D(CrClock.Clocks)	
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
@@ -385,7 +385,8 @@
 	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
 
 
-        
+       #Temporary variable for DualPipe GA residencies
+        .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
 				
 #TC				
         PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
@@ -393,6 +394,7 @@
 	PS2_TC	=	PS2_TC_1Dispatch+PS2_TC_2Dispatch+PS2_TC_3Dispatch+PS2_TC_4Dispatch
 	PS2_TC_1Dispatch =	(D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.1')))/(num_EU_TC * .CrClk)
 	PS2_TC_2Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.2')))/(num_EU_TC * .CrClk)
+	#PS2_TC_2Dispatch = .temp_GA_DualPipe/2 
 	PS2_TC_3Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.3')))/(num_EU_TC * .CrClk)
 	PS2_TC_4Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.4')))/(num_EU_TC * .CrClk)		
 #GRF				
@@ -402,7 +404,7 @@
     PS2_GRF_READ_suppressed	=	D(SUM('@ANY_EUPIPEControl@pwr_GrfReadSuppressed')) / (numEUs * .CrClk)	
 
 #Send path GRF modeling
-        PS2_GRF_SEND_PATH = D(SUM('@ANY_EUPIPEControl@WritebackBuffer\.active\.CrClock'))/(numEUs*.CrClk)  
+        PS2_GRF_SEND_PATH = D(SUM('@ANY_EU@uGRF\.WritebackBuffer\.active\.CrClock'))/(numEUs * .CrClk)  
         
 
 	planes= (planesfpu0+planesfpu1)/2

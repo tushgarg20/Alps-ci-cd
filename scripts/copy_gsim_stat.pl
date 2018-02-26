@@ -42,6 +42,13 @@ while (<$fh>) {
         system ("mkdir $odir/$dir");
     }
     my $src = $data[$header{"test_dir"}];
+    my $err_inf = $data[$header{"error_info"}];
+    my @stat_value =$err_inf =~  /\((.*?)\)/;
+    if ($stat_value[0] <= 10.0 && $stat_value[0] >= -10.0 ){
+    	print ($stat_value[0],"\n");
+	$data[$header{"result"}] = "passed"
+    }
+    	
     my $src_file = "$idir/tests/$src/psim.stat";
     my $dst = (split ' ', $data[$header{"test_args"}])[0];
     $dst =~ s/\//_/g;
