@@ -95,8 +95,13 @@ if(not flag):
     stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
-yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
+change_hereyaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
+
+python_exe = '/usr/intel/pkgs/python/3.1.2/bin/python'
+
+if not os.path.exists(python_exe):
+    python_exe = 'sys.executable'
 
 alps_log = open(runalps_log,'w')
 
@@ -139,7 +144,7 @@ if not options.run_local:
         stat_parser_cmd += ['-i', formula_file]
    
     input_file = '/p/gat/tools/gsim_alps/' + cfg_data['ALPS Input File'][0]
-    build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd = [python_exe, '/p/gat/tools/gsim_alps/build_alps.py', '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
     if(options.voltage):
         build_alps_cmd += ['-v', '%f' % (options.voltage)]
     if(options.sf_voltage):
@@ -178,7 +183,7 @@ else:
 
         stat_parser_script = options.user_dir + '/StatParser/StatParser'
         build_alps_script = options.user_dir + '/build_alps.py'
-        build_alps_cmd = ['/usr/intel/pkgs/python/3.1.2/bin/python', build_alps_script]
+        build_alps_cmd = [python_exe, build_alps_script]
     else:
         stat_parser_script = options.user_dir + '/StatParser/StatParser.exe'
         build_alps_cmd = ['%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py']
