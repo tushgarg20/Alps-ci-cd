@@ -383,18 +383,25 @@ def eval_linest(key_tuple,cluster,unit):
         if(use_cfg not in cdyn_hash[cdyn] or use_stepping not in cdyn_hash[cdyn][use_cfg]):
             continue
         cdyn_val = get_eff_cdyn(cluster,unit,cdyn)
+        base_config,stepping = get_base_config(cdyn) 
         matchObj = re.search(k_cdyn+'_(\d+)%',cdyn)
         x_val = float(matchObj.group(1))/100
-        if(cdyn_val > 0):
-            data_points.append([x_val,cdyn_val])
+        #if(cdyn_val > 0):
+        data_points.append([x_val,cdyn_val])
+
 
     if(len(data_points) == 0):
         return 0
     if(len(data_points) == 1):
+        if (options.dump_ecw):
+            print (str(k_cdyn)+","+str(base_config)+","+str(data_points[0][1]/I[cluster+"_"+unit]),file=eff_wf)
         return data_points[0][1]
-
     linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
     linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
+    temp = 0
+    temp = (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]
+    if (options.dump_ecw):
+        print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=eff_wf)
     return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
 
 def eval_formula(alist):

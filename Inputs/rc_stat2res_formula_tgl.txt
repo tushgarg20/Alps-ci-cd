@@ -1,5 +1,6 @@
 #Unit	GSIM	residency	
-#Instance	Counts		
+#Instance	Counts	
+        numSlices	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')	
 	num_Fabric_LSN	        =	COUNT('knob\.S\d\.uL3\.LSN_\d\.ClockName')
         num_Fabric_LSNEP	=	numStacks
         num_Fabric_UnsliceLSN	=	numStacks
@@ -9,7 +10,7 @@
 	num_Fabric_BGF	        =	((knob.Icl.NumDownFabricBus)?numStacks:(numSlices>2)?1:0)
 	num_Fabric_BGFunslice   =       (knob.Icl.NumDownFabricBus>0)?0:1
 	#num_Fabric_HorizontalFabric	=	(knob.global.NumStacks)*(numSlices/2-1)							
-	num_Fabric_Small	=	numSlices
+	num_Fabric_SMALL	=	numSlices
 	num_Fabric_Assign	=	numSlices
 	num_Fabric_CPunit	=	numSlices
 	num_Fabric_Repeater	=	numSlices

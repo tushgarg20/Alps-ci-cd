@@ -1,4 +1,4 @@
-#Unit	GSIM residency			Comments
+PE#Unit	GSIM residency			Comments
 #Instance Counts				
 	CrClocks	=	D(CrClock.Clocks)	
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
@@ -90,6 +90,9 @@
         FPU_total_count	=	FPU_simd1_count + FPU_simd2_count + FPU_simd4_count + FPU_simd8_count + FPU_simd8_hp_count + FPU_simd16_count + FPU_simd16_hp_count + FPU_simd32_count + FPU_simd32_hp_count	
 	EM_total_count	=	EM_simd1_count + EM_simd2_count + EM_simd4_count + EM_simd8_count + EM_simd8_hp_count + EM_simd16_count + EM_simd16_hp_count + EM_simd32_count + EM_simd32_hp_count		-	EM_total_trans_count	
 	EM_total_trans_count	=	EM_simd1_trans_count + EM_simd2_trans_count + EM_simd4_trans_count + EM_simd8_trans_count + EM_simd8_hp_trans_count + EM_simd16_trans_count + EM_simd16_hp_trans_count + EM_simd32_trans_count + EM_simd32_hp_trans_count	
+        
+       DP4A_total_count       = 	D(SUM('@ANY_EU@Num_Dp4a_Exec'))        # Total number of DP4A instructions issued 
+       DP4A_total_cycle_count = 	D(SUM('@ANY_EU@Num_Cycles_Dp4a_Exec')) # Total number of DP4A instructions issued 
 	
 
 	 @PLN@	=	(pln|lrp)	
@@ -101,6 +104,7 @@
 	 @MOV@	=	(mov|movi)	
 	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop|csel)	#club sel with mov - add control flow separately
 	 @TRANS@	=	(math)	#Transcendentals
+         @DP4A@         =       (dp4a)  #Dp4 instructions
 	.avg_EMSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
@@ -124,6 +128,7 @@
 	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + FPU_simd4_count/4 + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + ((FPU_simd8_hp_count +	FPU_simd16_hp_count + FPU_simd32_hp_count)/16))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU0	=		1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
+        PS2_EU_DP4A     =       DP4A_total_count / (2 * numEUs * .CrClk) # Each DP4A instruction is counted as two cycles  
 	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mul_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_add_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
@@ -355,6 +360,11 @@
 	FPU1_sad_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_intbypass : 0	
 	FPU1_mov_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_intbypass : 0	
 	FPU1_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_intbypass : 0	
+
+#DP4a instruction modeling
+       FPU0_DP4A_bypass =  (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.masked')) / (FPU_total_count)) : 0
+       FPU0_DP4A_exec =   (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.exec')) / (FPU_total_count)) : 0 # Divide by num of SIMD channels x No. of DP4A operations
+  
 #GA				
 	PS0_GA	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	
 	PS1_GA	=	0	#GA does not have a stall
@@ -373,6 +383,10 @@
 	PS2_GA_EM3Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_EM3Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
 	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+
+
+       #Temporary variable for DualPipe GA residencies
+        .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
 				
 #TC				
         PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
@@ -380,6 +394,7 @@
 	PS2_TC	=	PS2_TC_1Dispatch+PS2_TC_2Dispatch+PS2_TC_3Dispatch+PS2_TC_4Dispatch
 	PS2_TC_1Dispatch =	(D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.1')))/(num_EU_TC * .CrClk)
 	PS2_TC_2Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.2')))/(num_EU_TC * .CrClk)
+	#PS2_TC_2Dispatch = .temp_GA_DualPipe/2 
 	PS2_TC_3Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.3')))/(num_EU_TC * .CrClk)
 	PS2_TC_4Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.4')))/(num_EU_TC * .CrClk)		
 #GRF				
@@ -387,6 +402,11 @@
 	PS2_GRF_READ=D(SUM('@ANY_EUPIPEControl@pwr_GrfReadAccesses\.CrClock'))/(numEUs*.CrClk)+D(SUM('@ANY_EUControl@PipelinesControl\.pwr_GrfReadAccesses\.CrClock'))/(numEUs*.CrClk)+planes	- PS2_GRF_READ_suppressed#GRF reads should be at 256 bit granularity (0,4)
 	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPEControl@pwr_GrfWriteAccesses\.CrClock'))/(numEUs * .CrClk)+D(SUM('@ANY_EUControl@PipelinesControl\.pwr_GrfWriteAccesses\.CrClock'))/(numEUs*.CrClk)	#GRF writes should be at 256 bit granularity(0,2)
     PS2_GRF_READ_suppressed	=	D(SUM('@ANY_EUPIPEControl@pwr_GrfReadSuppressed')) / (numEUs * .CrClk)	
+
+#Send path GRF modeling
+        PS2_GRF_SEND_PATH = D(SUM('@ANY_EU@uGRF\.WritebackBuffer\.active\.CrClock'))/(numEUs * .CrClk)  
+        
+
 	planes= (planesfpu0+planesfpu1)/2
 	   
 	PS2_Accumulator_READ=planes +  D(SUM('@ANY_EUControl@NumAccRd'))/(numEUs * .CrClk)

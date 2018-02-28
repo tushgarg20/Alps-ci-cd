@@ -13,6 +13,13 @@ import lib.argparse
 import logging
 from pathlib import Path
 import time
+import re
+from io import StringIO
+import tokenize
+import parser 
+import argparse
+#import yaml
+
 #from collections import OrderedDict
 
 cluster_syn_dict={'list_of_FF_syn_items': ['CL', 'CS', 'DFX', 'GS', 'HPSDE', 'HPVS', 'HS', 'OACS', 'RS', 'SDE', 'SF', 'SOL', 'SVG', 'TDG', 'TDS', 'TE', 'TETG', 'TSG', 'URBM', 'VF', 'VFBE1', 'VFBE2', 'VFE', 'VSBE', 'VSFE'],'list_of_Sampler_syn_items' : ['AVS', 'CRE', 'DG', 'DM', 'FL', 'FT', 'IEF', 'IME', 'Media', 'MT', 'PL', 'SC', 'SI', 'SO', 'ST', 'SVSM'],'list_of_COLOR_syn_items': ['RCC', 'CC', 'DAPB', 'DAPRSC', 'MSC', 'RCPBCOM', 'RCPBPIX', 'RCPFE' ],'list_of_HDC_syn_items': ['HDCL1', 'HDCREQCMD1', 'HDCREQCMD2', 'HDCREQDATA', 'HDCRET', 'HDCRET1', 'HDCRET2', 'HDCTLB'],'list_of_Z_syn_items':['HIZ', 'RCZ', 'IZ', 'STC'],'list_of_rFF_syn_items':['rCL', 'rCS', 'rOV', 'rSF', 'rSVG', 'rVF', 'rVSBE', 'rVSFE', 'rVS_Cache'],'list_of_ROSS_syn_items':['BC', 'CPSS', 'GWL', 'IC', 'MA_IN', 'MA_OUT', 'PSD', 'TDL'],'list_of_eu_syn_items': ['EM', 'FPU0', 'FPU1', 'GA', 'TC'],'list_of_DSSC_syn_items':['BC', 'CPSS', 'DAPRSS', 'GWL', 'PSD'],'list_of_L3Node_syn_items':['LNE', 'LNI'],'list_of_L3Bank_syn_items':['LBI', 'LSQC', 'LSQD', 'LTCC', 'LTCD_Data', 'LTCD_EBB', 'LTCD_Tag', 'L3BankOther']}
@@ -259,6 +266,295 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
                 else:
                     continue
     
+def mysplit(formula):
+     return([token[1] for token in tokenize.generate_tokens(StringIO(formula).readline) if token[1]])
+
+def unlist_res_func(res_dir):
+    unlist_res={}
+    for key in res_dir.keys():
+        try:
+            unlist_res[key]=float(res_dir[key][0])
+        except ValueError:
+            unlist_res[key]=res_dir[key][0]
+    return unlist_res
+    
+def validate_variables(list_of_var,gen_named_dict,comment,eqn):
+
+    logical_operators=['>','<','==','>=','<=','!=']
+    arithmetic_operators=['+','-','*','/','**','%','(',')']
+    numbers=['0','1','2','3','4','5','6','7','8','9']
+    boolean_operators=['and','or','not']
+
+    res_dict={}
+    for i in list_of_var:
+           
+            if(i not in arithmetic_operators and i[0] not in numbers and i not in boolean_operators and i not in logical_operators ):
+             
+                 try:
+                     if(gen_named_dict[i]<0):
+                         invalid_eqn[eqn]=["Invalid",comment,"Value Negative"]
+                         return "Err"
+                     else:
+                         
+                         res_dict.update({i:gen_named_dict[i]})
+                 except KeyError as e:
+                     invalid_eqn[eqn]=["Invalid",comment,"Value Not Found"]
+                     return "Err"
+    return res_dict
+    
+def evaluate_equation(line,unlist_res1,unlist_res2,lf):
+
+    if(len(line.strip())==0):
+        return
+    if(',' not in line):
+        print("Specify comment after equation separated by a ,")
+        return
+    eqn,comm=line.split(",")
+    comment=comm.rstrip()
+    eqn1=eqn
+
+    if(unlist_res2==None):
+        
+
+        tokenized_eqn=mysplit(eqn)
+        #print(tokenized_eqn)
+
+        if( '[' in tokenized_eqn):
+            #print("Invalid")
+            invalid_eqn[eqn1]=["Invalid",comment,"Incorrect eqn format"]
+            return
+        
+        res_dict=validate_variables(tokenized_eqn,unlist_res1,comment,eqn)
+        if(res_dict=="Err"):
+            return
+        
+        #print("Res dict is :")
+        #print(res_dict)
+
+        for key,value in res_dict.items():
+            eqn=eqn.replace(key,str(value))
+
+        #print("Final eqn is :"+eqn)
+
+        try:
+            print("Result :"+str(eval(eqn)))
+            if(eval(eqn)):
+                pass_eqn[eqn1]=["Pass",comment,"-"]
+            else:
+                fail_eqn[eqn1]=["Fail",comment,"-"]
+        except NameError:
+            invalid_eqn[eqn1]=["Invalid",comment,"Incorrect Eqn Format"]
+            
+        '''if(validate(tokenized_eqn,unlist_res1,comment,eqn)==0):
+            return
+        else:
+            print(eqn+":"+str(eval(eqn,unlist_res1)))
+            if(eval(eqn,unlist_res1)):
+                
+                pass_eqn[eqn]=["Pass",comment,"-"]
+            else:
+                fail_eqn[eqn]=["Fail",comment,"-"]'''
+           
+
+    else:
+
+        for key in unlist_res1.keys():
+            if(key.startswith('GenName_')):
+                gen_name1=key
+                break
+        gen_name,gen_f1=gen_name1.split('_')
+
+        print(gen_f1)
+
+        for key in unlist_res2.keys():
+            if(key.startswith('GenName_')):
+                gen_name2=key
+                break
+        gen_name,gen_f2=gen_name2.split('_')
+
+        print(gen_f2)
+
+
+        #print("Eqn is ")
+        #print(eqn)
+        
+        tokenized_eqn=mysplit(eqn)
+        #print("Tokenized eqn is :")
+        #print(tokenized_eqn)
+
+        if('[' and ']' not in tokenized_eqn):
+            
+            invalid_eqn[eqn1]=["Invalid",comment,"Incorrect eqn format"]
+            return
+
+        gen_named_dict={}
+        
+        for key,value in unlist_res1.items():
+            gen_named_dict[key+"["+str(gen_f1)+"]"]=value
+        for key,value in unlist_res2.items():
+            gen_named_dict[key+"["+str(gen_f2)+"]"]=value
+
+        
+        pat='\w+\[\w+\]'
+
+        list_of_variables=re.findall(pat,eqn)
+
+        #print("List of variables are :")
+        #print(list_of_variables)
+
+        res_dict=validate_variables(list_of_variables,gen_named_dict,comment,eqn)
+        if(res_dict=="Err"):
+            return
+        
+        #print("Res dict is :")
+        #print(res_dict)
+
+        for key,value in res_dict.items():
+            eqn=eqn.replace(key,str(value))
+
+        #print("Final eqn is :"+eqn)
+
+        try:
+            #print("Result :"+str(eval(eqn)))
+            if(eval(eqn)):
+                    
+                pass_eqn[eqn1]=["Pass",comment,"-"]
+            else:
+                fail_eqn[eqn1]=["Fail",comment,"-"]
+        except NameError:
+            invalid_eqn[eqn1]=["Invalid",comment,"Incorrect Eqn Format"]
+			
+def validate_variables_as_list(list_of_var,gen_named_dict,comment,eqn):
+
+    logical_operators=['>','<','==','>=','<=','!=']
+    arithmetic_operators=['+','-','*','/','**','%','(',')']
+    numbers=['0','1','2','3','4','5','6','7','8','9']
+    boolean_operators=['and','or','not']
+    res_dict={}
+    for i in list_of_var:
+            
+            if(i not in arithmetic_operators and i[0] not in numbers and i not in boolean_operators and i not in logical_operators ):
+             
+                 try:
+                     print(float(gen_named_dict[i][0]))
+                     if(float(gen_named_dict[i][0])<0):
+                         cdyn_invalid_eqn[eqn]=["Invalid",comment,"Value Negative"]
+                         return "Err"
+                     else:
+                         
+                         res_dict.update({i:gen_named_dict[i]})
+                 except KeyError as e:
+                     cdyn_invalid_eqn[eqn]=["Invalid",comment,"Value Not Found"]
+                     return "Err"
+    return res_dict
+
+def evaluate_cdyn_equation(line,cdyn_dict1,cdyn_dict2,res_dict1,res_dict2,ecw_dict1,ecw_dict2,lf):
+
+    if(len(line.strip())==0):
+        return
+    if(',' not in line):
+        print("Specify comment after equation separated by a ,")
+        return
+    eqn,comm=line.split(",")
+    comment=comm.rstrip()
+    eqn1=eqn
+
+    if(cdyn_dict2==None and res_dict2==None and ecw_dict2==None):
+        tokenized_eqn=mysplit(eqn)
+       
+        if( '[' in tokenized_eqn):
+            
+            cdyn_invalid_eqn[eqn1]=["Invalid",comment,"Incorrect eqn format"]
+            return
+
+       
+        res=validate_variables_as_list(tokenized_eqn,cdyn_dict1,comment,eqn)
+        if(res=="Err"):
+            return
+       
+        for key,value in res.items():
+            eqn=eqn.replace(key,str(value[0]))
+
+        try:
+            print("Result :"+str(eval(eqn)))
+            if(eval(eqn)):
+                cdyn_pass_eqn[eqn1]=["Pass",comment,"-"]
+            else:
+                res1=validate_variables_as_list(tokenized_eqn,res_dict1,comment,eqn1)
+                res2=validate_variables_as_list(tokenized_eqn,ecw_dict1,comment,eqn1)
+                tot="Res File Values "+str(res1)+" Eff cdyn wt values "+str(res2)
+                tot1=tot.replace(","," ")
+                
+                cdyn_fail_eqn[eqn1]=["Fail",comment,tot1]
+        except NameError:
+            cdyn_invalid_eqn[eqn1]=["Invalid",comment,"Incorrect Eqn Format"]
+       
+    else:
+
+        for key in res_dict1.keys():
+            if(key.startswith('GenName_')):
+                gen_name1=key
+                break
+        gen_name,gen_f1=gen_name1.split('_')
+
+        for key in res_dict2.keys():
+            if(key.startswith('GenName_')):
+                gen_name2=key
+                break
+        gen_name,gen_f2=gen_name2.split('_')
+      
+        tokenized_eqn=mysplit(eqn)
+       
+        if('[' and ']' not in tokenized_eqn):
+            
+            cdyn_invalid_eqn[eqn1]=["Invalid",comment,"Incorrect eqn format"]
+            return
+
+        gen_named_dict={}
+        
+        for key,value in res_dict1.items():
+            gen_named_dict[key+"["+str(gen_f1)+"]"]=value
+        for key,value in res_dict2.items():
+            gen_named_dict[key+"["+str(gen_f2)+"]"]=value
+
+        named_cdyn_dict={}
+
+        for key,value in cdyn_dict1.items():
+            named_cdyn_dict[key+"["+str(gen_f1)+"]"]=value
+        for key,value in cdyn_dict2.items():
+            named_cdyn_dict[key+"["+str(gen_f2)+"]"]=value
+
+        eff_cdyn_dict={}
+
+        for key,value in ecw_dict1.items():
+            eff_cdyn_dict[key+"["+str(gen_f1)+"]"]=value
+        for key,value in ecw_dict2.items():
+            eff_cdyn_dict[key+"["+str(gen_f2)+"]"]=value
+
+        pat='\w+\[\w+\]'
+
+        list_of_variables=re.findall(pat,eqn)
+        
+        res_dict=validate_variables_as_list(list_of_variables,named_cdyn_dict,comment,eqn)
+        if(res_dict=="Err"):
+            return
+        for key,value in res_dict.items():
+            eqn=eqn.replace(key,str(value[0]))
+        try:
+            if(eval(eqn)):
+                cdyn_pass_eqn[eqn1]=["Pass",comment,"-"]
+            else:
+                
+                res1=validate_variables_as_list(list_of_variables,gen_named_dict,comment,eqn1)
+               
+                res2=validate_variables_as_list(list_of_variables,eff_cdyn_dict,comment,eqn1)
+               
+                tot="Res File Values "+str(res1)+" Eff cdyn wt values "+str(res2)
+                tot1=tot.replace(","," ")
+               
+                cdyn_fail_eqn[eqn1]=["Fail",comment,tot1]
+        except NameError:
+            cdyn_invalid_eqn[eqn1]=["Invalid",comment,"Incorrect Eqn Format"]
 
 
 if __name__ == '__main__':
@@ -278,6 +574,14 @@ if __name__ == '__main__':
     sgen_notin_rev=[]
     tgen_notin_rev=[]
     improper_inputs=[]
+    
+    pass_eqn={}
+    fail_eqn={}
+    invalid_eqn={}
+	
+    cdyn_fail_eqn={}
+    cdyn_pass_eqn={}
+    cdyn_invalid_eqn={}
     
     timestr = time.strftime("%Y%m%d-%H%M%S")
     if args.out_log:
@@ -299,6 +603,234 @@ if __name__ == '__main__':
     i=1
     for lines in ip_file:
         cmd_args = lines.split()
+        if("evaluate_cdyn_equation" in cmd_args):
+
+            if("-d1" in cmd_args):
+                res_dir1_index=cmd_args.index("-d1")
+                res_dir1=cmd_args[res_dir1_index+1]
+                abs_path1=os.path.abspath(res_dir1)
+                print("D1 is "+res_dir1)
+            else:
+                print("Please specify name of Directory after -d1")
+                sys.exit(1)
+            
+            if("-d2" in cmd_args):
+                res_dir2_index=cmd_args.index("-d2")
+                res_dir2=cmd_args[res_dir2_index+1]
+                abs_path2=os.path.abspath(res_dir2)
+            else:
+                res_dir2_index=None
+                res_dir2=None
+
+            if("-eq" in cmd_args):
+                eqn_file_index=cmd_args.index("-eq")
+                eqn_file=cmd_args[eqn_file_index+1]
+                abs_path3=os.path.abspath(eqn_file)
+                print("Eq file is "+eqn_file)
+            else:
+                print("Please specify name of Equation File after -eq")
+                sys.exit(1)
+
+            if(res_dir2!=None):
+                if os.path.isdir(res_dir1) and os.path.isdir(res_dir2) and os.path.isfile(eqn_file):
+
+                    log_f="evaluate_cdyn_equation"+str(index)+".csv"
+                    lf=open(log_directory+"/"+log_f,"w")
+
+                    
+                    for files in os.listdir(res_dir1):
+                            if(files.endswith('res.csv')):
+                                res_file1=files
+                            elif(files.endswith('eff_weights.csv')):
+                                eff_cdyn_wt_file1=files
+                            else:
+                                cdyn_wt_file1=files
+
+                    for files in os.listdir(res_dir2):
+                            if(files.endswith('res.csv')):
+                                res_file2=files
+                            elif(files.endswith('eff_weights.csv')):
+                                eff_cdyn_wt_file2=files
+                            else:
+                                cdyn_wt_file2=files
+
+                    res_dict1=read_residency_file(res_dir1+"/"+res_file1)
+                    res_dict2=read_residency_file(res_dir2+"/"+res_file2)
+
+                    ecw_dict1=read_weight_file(res_dir1+"/"+eff_cdyn_wt_file1)
+                    ecw_dict2=read_weight_file(res_dir2+"/"+eff_cdyn_wt_file2)
+
+                    cdyn_dict1=read_residency_file(res_dir1+"/"+cdyn_wt_file1)
+                    cdyn_dict2=read_residency_file(res_dir2+"/"+cdyn_wt_file2)
+
+                    eqn_f=open(eqn_file,'r')
+                    for each_line in eqn_f:
+                        evaluate_cdyn_equation(each_line,cdyn_dict1,cdyn_dict2,res_dict1,res_dict2,ecw_dict1,ecw_dict2,lf)
+
+                    try:    
+                        print("Equations "+",\t"+"Result"+",\t"+"Comment"+",\t"+"Reason(if any)"+",\t",file=lf)
+                        for key,value in cdyn_pass_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                        for key,value in cdyn_fail_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                        for key,value in cdyn_invalid_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                        print ("",file=lf)
+
+                        print("Pass : "+str(len(cdyn_pass_eqn))+" Fail : "+str(len(cdyn_fail_eqn))+" Invalid : "+str(len(cdyn_invalid_eqn)),file=lf)
+                        print("Done!!")
+                    except NameError:
+                        print("Improper log file")
+                else:
+                    print("Improper files")
+
+            else:
+                    if os.path.isdir(res_dir1) and os.path.isfile(eqn_file):
+
+                        log_f="evaluate_cdyn_equation"+str(index)+".csv"
+                        lf=open(log_directory+"/"+log_f,"w")
+                        
+                        for files in os.listdir(res_dir1):
+                            if(files.endswith('res.csv')):
+                                res_file1=files
+                            elif(files.endswith('eff_weights.csv')):
+                                eff_cdyn_wt_file1=files
+                            else:
+                                cdyn_wt_file1=files
+
+                        res_dict1=read_residency_file(res_dir1+"/"+res_file1)
+                        cdyn_dict1=read_residency_file(res_dir1+"/"+cdyn_wt_file1)
+                        ecw_dict1=read_weight_file(res_dir1+"/"+eff_cdyn_wt_file1)
+
+                        eqn_f=open(eqn_file,'r')
+                        for each_line in eqn_f:
+                            evaluate_cdyn_equation(each_line,cdyn_dict1,None,res_dict1,None,ecw_dict1,None,lf)
+
+                        try:    
+                            print("Equations "+",\t"+"Result"+",\t"+"Comment"+",\t"+"Reason(if any)"+",\t",file=lf)
+                            for key,value in cdyn_pass_eqn.items():
+                                print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                            for key,value in cdyn_fail_eqn.items():
+                                print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                            for key,value in cdyn_invalid_eqn.items():
+                                print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2],file=lf)
+
+                            print ("",file=lf)
+
+                            print("Pass : "+str(len(cdyn_pass_eqn))+" Fail : "+str(len(cdyn_fail_eqn))+" Invalid : "+str(len(cdyn_invalid_eqn)),file=lf)
+                            print("Done!!")
+                        except NameError:
+                            print("Improper log file")
+                    else:
+                        print("Improper files!Please check the files")
+                        sys.exit(1)
+						
+        if("evaluate_equation" in cmd_args):
+
+            if("-f1" in cmd_args):
+                res_file1_index=cmd_args.index("-f1")
+                res_file1=cmd_args[res_file1_index+1]
+                abs_path1=os.path.abspath(res_file1)
+            else:
+                print("Please specify name of File1 after -f1")
+                sys.exit(1)
+            
+            if("-f2" in cmd_args):
+                res_file2_index=cmd_args.index("-f2")
+                res_file2=cmd_args[res_file2_index+1]
+                abs_path2=os.path.abspath(res_file2)
+            else:
+                res_file2_index=None
+                res_file2=None
+                unlist_res2=None
+
+            if("-eq" in cmd_args):
+                eqn_file_index=cmd_args.index("-eq")
+                eqn_file=cmd_args[eqn_file_index+1]
+                abs_path3=os.path.abspath(eqn_file)
+            else:
+                print("Please specify name of Equation File after -eq")
+                sys.exit(1)
+
+            if(res_file2!=None):
+            
+                if(os.path.isfile(res_file1) and os.path.isfile(res_file2) and os.path.isfile(eqn_file)):
+
+                    log_f="analyze_equation"+str(index)+".csv"
+                    lf=open(log_directory+"/"+log_f,"w")
+                
+                    res_dict1=read_residency_file(res_file1)
+                    res_dict2=read_residency_file(res_file2)
+                    unlist_res1=unlist_res_func(res_dict1)
+                    unlist_res2=unlist_res_func(res_dict2)
+                    eqn_f=open(eqn_file,'r')
+                    for each_line in eqn_f:
+                        if (len(each_line.strip())==0):
+                            continue
+                        else:
+                            evaluate_equation(each_line,unlist_res1,unlist_res2,lf)
+                    try:    
+                        print("Equations "+",\t"+"Result"+",\t"+"Comment"+",\t"+"Reason(if any)"+",\t",file=lf)
+                        for key,value in pass_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        for key,value in fail_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        for key,value in invalid_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        print ("",file=lf)
+
+                        print("Pass : "+str(len(pass_eqn))+" Fail : "+str(len(fail_eqn))+" Invalid : "+str(len(invalid_eqn)),file=lf)
+                        print("Done!!")
+                    except NameError:
+                        print("Improper file")
+                else:
+                    print("Improper files!Please check the files")
+                    sys.exit(1)
+                    
+            else:
+                if(os.path.isfile(res_file1) and os.path.isfile(eqn_file)):
+
+                    log_f="analyze_equation"+str(index)+".csv"
+                    lf=open(log_directory+"/"+log_f,"w")
+                    
+                    res_dict1=read_residency_file(res_file1)
+                    unlist_res1=unlist_res_func(res_dict1)
+                    eqn_f=open(eqn_file,'r')
+                    for each_line in eqn_f:
+                        if (len(each_line.strip())==0):
+                            continue
+                        evaluate_equation(each_line,unlist_res1,None,lf)
+                    try:    
+                        print("Equations "+",\t"+"Result"+",\t"+"Comment"+",\t"+"Reason(if any)"+",\t",file=lf)
+                        for key,value in pass_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        for key,value in fail_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        for key,value in invalid_eqn.items():
+                            print ((key+",\t")+value[0]+",\t"+value[1]+",\t"+value[2]+",\t",file=lf)
+
+                        print ("",file=lf)
+
+                        print("Pass : "+str(len(pass_eqn))+" Fail : "+str(len(fail_eqn))+" Invalid : "+str(len(invalid_eqn)),file=lf)
+                        print("Done!!")
+                    except NameError:
+                        print("Improper file")
+                    
+
+    
+                else:
+                    print("Improper files!Please check the files")
+                    sys.exit(1)
 
         if "compare_cdyn_dir" in cmd_args:
             options.clear()
@@ -371,14 +903,20 @@ if __name__ == '__main__':
                                         yaml_file2 = open(cdyn_out_dir2+"/"+files2,'r')
                                         cdyn_dict1 = yaml.load(yaml_file1)
                                         cdyn_dict2 = yaml.load(yaml_file2)
-                                        res_file1=wl1[0]+".res.csv"
-                                        res_file2=wl2[0]+".res.csv"
-                                        weights_file1=wl1[0]+".yaml.weights.csv"
-                                        weights_file2=wl2[0]+".yaml.weights.csv"
-                                        cdyn_csv_dict1=read_weight_file(weights_file1,optional=abs_path1)
-                                        cdyn_csv_dict2=read_weight_file(weights_file2,optional=abs_path2)
-                                        res_file_dict1=read_residency_file(res_file1,optional=abs_path1)
-                                        res_file_dict2=read_residency_file(res_file2,optional=abs_path2)
+                                        if "-states" in cmd_args:
+                                            res_file1=wl1[0]+".res.csv"
+                                            res_file2=wl2[0]+".res.csv"
+                                            weights_file1=wl1[0]+".yaml.eff_weights.csv"
+                                            weights_file2=wl2[0]+".yaml.eff_weights.csv"
+                                            cdyn_csv_dict1=read_weight_file(weights_file1,optional=abs_path1)
+                                            cdyn_csv_dict2=read_weight_file(weights_file2,optional=abs_path2)
+                                            res_file_dict1=read_residency_file(res_file1,optional=abs_path1)
+                                            res_file_dict2=read_residency_file(res_file2,optional=abs_path2)
+                                        else:
+                                            cdyn_csv_dict1= None
+                                            cdyn_csv_dict2= None
+                                            res_file_dict1= None
+                                            res_file_dict2= None
                                         compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,wl1[0],lf,options,clusters,units)
                             else:
                                 continue
@@ -390,6 +928,8 @@ if __name__ == '__main__':
                 lf = open(log_directory+"/"+log_f,'w')
                 print ('########### Output file/directory:'+abs_path1+' and '+abs_path2+'##########',file=lf) 
                 compare_cdyn_dir(cdyn_dict1,cdyn_dict2,tolerance,lf)
+		
+	    
 
             else:
                 improper_inputs.append(lines)
