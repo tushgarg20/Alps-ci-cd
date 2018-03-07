@@ -101,7 +101,7 @@ runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 python_exe = '/usr/intel/pkgs/python/3.1.2/bin/python'
 
 if not os.path.exists(python_exe):
-    python_exe = 'sys.executable'
+    python_exe = sys.executable
 
 alps_log = open(runalps_log,'w')
 
