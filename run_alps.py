@@ -95,7 +95,7 @@ if(not flag):
     stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '_res.csv'
 log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
-change_hereyaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
+yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
 python_exe = '/usr/intel/pkgs/python/3.1.2/bin/python'
