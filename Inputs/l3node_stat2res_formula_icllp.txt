@@ -1,11 +1,9 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
 	num_L3_Slices			=	knob.global.NumSlices	+ SUM('knob\.STK\d+\.NumSlices')
-	#num_L3Node_LNI			=	2 * num_L3_Slices
-	num_L3Node_LNI			=	2.0 #COUNT('knob\.S\d\.uL3\.LNI_\d\.MemFillBuf\.PopEvent')	
-	num_L3Node_LNE			=	2.0 #COUNT('knob\.S\d\.uL3\.LNE_\d\.CReturnQ.PopEvent')	
-	num_L3Node_LNIXS		=	0	
-	num_L3Node_LNEXS		=	0	
+	num_L3Node_LNI = 2
+	num_L3Node_LNE = 2
+	
 	num_L3Node_L3BankOther	=	num_L3_Slices	#GLUE/Small
 	num_L3Node_DOP			=	num_L3_Slices	
 	num_L3Node_DFX			=	num_L3_Slices	
@@ -30,22 +28,23 @@
  	@ANY_L3@				=	(STK\d+\.S\d+\.uL3\.|S\d+\.uL3\.)
 	@anyLSNEP@ 		=	(uLSNEND_\d+\.)
 #LNI	
+	
 	num_L3_Banks = num_L3_Slices * 4
 	num_L3_Buses = (SUM('knob.S0.uL3.NumUpFabricBus')+SUM('knob.S0.uL3.NumDownFabricBus')+SUM('knob.STK0.S0.uL3.NumUpFabricBus')+SUM('knob.STK0.S0.uL3.NumDownFabricBus'))/2
-	
-	PS0_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNI*.CrClk)
-	PS1_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_LOCAL_1BANK_1READ	=	D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_LOCAL_1BANK_1WRITE	=	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI_BUS@XSliceSliceWrite'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI_BUS@XSliceSliceRead'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceRead')) - D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
-	PS2_LNI_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceWrite')) - D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped')))/(num_L3Node_LNI*.CrClk)
+
+	PS0_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNE *.CrClk)
+	PS1_LNI						=	D(SUM('@ANY_L3@LNI_\d\.Stalled'))/(num_L3Node_LNE *.CrClk)
+	PS2_LNI_LOCAL_1BANK_1READ	=	D(SUM('@ANY_LNI@LocalSliceRead'))/(num_L3Node_LNE * .CrClk)
+	PS2_LNI_LOCAL_1BANK_1WRITE	=	D(SUM('@ANY_LNI@LocalSliceWrite'))/(num_L3Node_LNE * .CrClk)
+	PS2_LNI_XSLICE_ING_1WRITE	=	D(SUM('@ANY_LNI_BUS@XSliceSliceWrite'))/(num_L3Node_LNE * .CrClk)
+	PS2_LNI_XSLICE_ING_1READ	=	D(SUM('@ANY_LNI_BUS@XSliceSliceRead'))/(num_L3Node_LNE * .CrClk)
+	PS2_LNI_XSLICE_ING_MEMFILL	=	D(SUM('@ANY_LNI@MemReturn'))/(num_L3Node_LNE * .CrClk)
+	PS2_LNI_XSLICE_EGR_1READ	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceRead')) - D(SUM('@anyLSNEP@GafsReadInBuf_\d+\.popped')))/(num_L3Node_LNE*.CrClk)
+	PS2_LNI_XSLICE_EGR_1WRITE	=	(D(SUM('@ANY_LNI_BUS@XSliceSliceWrite')) - D(SUM('@anyLSNEP@GafsWriteInBuf_\d+\.popped')))/(num_L3Node_LNE*.CrClk)
 	.residuallni				=	1- (PS0_LNI + PS1_LNI + PS2_LNI_LOCAL_1BANK_1READ + PS2_LNI_LOCAL_1BANK_1WRITE + PS2_LNI_XSLICE_ING_1WRITE + PS2_LNI_XSLICE_ING_1READ + PS2_LNI_XSLICE_ING_MEMFILL )
 	PS2_LNI_Else				=	(.residuallni<0)?0:.residuallni
 #LNE				#Divide by 2 - 2 ports /bank and 2 banks/LNIe
-	
+
 	PS0_LNE						=	D(SUM('@ANY_L3@LNE_\d\.Idle'))/(num_L3Node_LNE*.CrClk)
 	PS1_LNE						=	D(SUM('@ANY_L3@LNE_\d\.Stalled'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_SS_DATARTN			=	D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
