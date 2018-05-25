@@ -8,6 +8,13 @@
 	num_Other_Slice	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')
 	num_Other_UnSlice	=	1
 	num_Other_RC	=	num_Other_Slice - 1
+	num_Other_INFRA	=	1
+	num_Other_DELTA	=	1
+#New State for infrastructure
+        PS2_OTHER_INFRA =       1
+#New power state for approximation of power states removed by reduced model
+        PS2_OTHER_DELTA =       1
+
 			
 #Other	
 	PS2_CCD	= 1		
