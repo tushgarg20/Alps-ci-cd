@@ -24,6 +24,8 @@
 	num_COLOR_Assign	=	numPbs	
 	num_COLOR_Repeater	=	numPbs	
 	num_COLOR_DFX	=	numPbs	
+        num_EU_INFRA    =       1
+        num_EU_DELTA    =       1
 				
 				
 				
@@ -79,6 +81,9 @@
 	PS2_RCPFE_8PPC = (D(SUM('@ANY_PB@4x2Tg')))/.Clk.num_COLOR_RCPFE
 	PS2_RCPFE_FLUSH = (D(SUM('@ANY_PB@daprMsgLastPhase_flush')))/.Clk.num_COLOR_RCPFE
     PS1_RCPFE = 1-PS0_RCPFE - PS2_RCPFE_RTR - PS2_RCPFE_4PPC - PS2_RCPFE_8PPC - PS2_RCPFE_FLUSH
+
+#### Combined state added by santosh 05/03/2018
+        PS2_RCPFE_PPC = PS2_RCPFE_4PPC + PS2_RCPFE_8PPC
     
     
 #RCPFE_COLORLATFIFO				
@@ -202,3 +207,6 @@
 	PS0_COLOR_DFX_DOP	=	.COLOR_DOP	
 	PS0_COLOR_DFX	=	AVG(PS0_DAPB,PS0_CC,PS0_MSC,PS0_RCC,PS0_RCPBE,PS0_RCPFE,PS0_DAPRSC)	
 	PS2_COLOR_DFX	=	1 - (PS0_COLOR_DFX_DOP + PS0_COLOR_DFX)	
+
+#INFRA 
+        PS2_COLOR_INFRA = 1
