@@ -18,6 +18,8 @@
 	num_Fabric_NONCLKGLUE	=	numSlices
 	num_Fabric_DFX	        =	numSlices
 	num_Fabric_DOP	        =	numSlices
+	num_Fabric_INFRA	=	1
+        num_Fabric_DELTA        =       1
 			
 #Generic			
 	.CrClk	        =	D(CrClock.Clocks)
@@ -144,7 +146,19 @@
 	PS0_RepeatersfromUnslice_DN_CMD	        =	D(SUM('uGAFS.bus\d+_DownCmdIdle'))/(.UnsliceClock*numBuses*numStacks)
 	PS1_RepeatersfromUnslice_DN_CMD	        =	D(SUM('uGAFS.bus\d+_DownCmdStalled'))/(.UnsliceClock*numBuses*numStacks)
 	PS2_RepeatersfromUnslice_DN_CMD	        =	D(SUM('uGAFS.bus\d+_DownCmdPkts'))/(.UnsliceClock*numBuses*numStacks)
-			
+#New power state for infrastructure
+        PS2_Fabric_INFRA        =       1
+        PS2_Fabric_DELTA        =       1
+
+#Combined power states, states that map to the same HW signal are combined
+# Six PS2 states - PS2_LSN_CROSS_SLICE_READ, PS2_LSN_LOCAL_CROSS_READ_RETURN,
+# PS2_LSN_CROSS_LOCAL_READ, PS2_LSN_CROSS_SLICE_READ_RETURN,
+# PS2_LSN_LOCAL_CROSS_READ, PS2_LSN_CROSS_LOCAL_READ_RETURN map to the same HW signal LSNLniCmd.RD
+        PS2_LSN_READ = PS2_LSN_CROSS_SLICE_READ
+#PS2_LSN_LOCAL_CROSS_WRITE, PS2_LSN_CROSS_LOCAL_WRITE and PS2_LSN_CROSS_SLICE_WRITE all map to the same HW signal
+        PS2_LSN_WRITE = PS2_LSN_CROSS_SLICE_WRITE
+#PS2_LSNEP_SL_MEMFILL,PS2_LSN_CROSS_SLICE_MEM_FILL, PS2_LSN_CROSS_LOCAL_MEMFILL_L3, PS2_LSN_LOCAL_CROSS_LNEREAD, all these map to L3.Miss  
+        PS2_LSN_LNE_MEMFILL   = PS2_LSNEP_SL_MEMFILL
 #SMALL			
 	PS0_Fabric_SMALL	=	PS0_LSN + PS1_LSN
 	PS2_Fabric_SMALL	=	1-PS0_Fabric_SMALL
