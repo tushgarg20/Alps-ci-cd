@@ -44,7 +44,9 @@
 	num_Sampler_DFRSMP_CLKGLUE	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_NONCLKGLUE	=	numSamplerComputePaths	
 	num_Sampler_DFRSMP_DFX	=	numSamplerComputePaths
-	num_Sampler_DFRSMP_DOP	=	numSamplerComputePaths	
+	num_Sampler_DFRSMP_DOP	=	numSamplerComputePaths
+        num_Sampler_INFRA       =       1	
+        num_Sampler_DELTA       =       1	
         num_GAM_GASS            = numSubSlices
 				
 #Generic				
@@ -61,7 +63,10 @@
 	.CrClk2x	=   D(SUM('2xCrClock\.Clocks'))	
 	FL_Toggle_Rate	=   (.temp_PS2_FL > 0) ? D(SUM('@ANY_SAMPLER@pwr_fl_toggle_count@ANY_DS@')) / (512 * .temp_PS2_FL * numSamplerComputePaths * .CrClk) : 0 #FL bus width 512 (32 * UL, UR, LL, LR)
 	PL_Toggle_Rate	=   (.temp_PS2_PL > 0) ? D(SUM('@ANY_SAMPLER@pwr_pl_toggle_count@ANY_DS@')) / (512 * .temp_PS2_PL * numSamplerComputePaths * .CrClk) : 0	#PL bus width 512 (32*U,V,Q,AI)
-
+#INFRA
+        PS2_Sampler_INFRA = 1 
+#New power state for approximation of power states removed by reduced model
+        PS2_Sampler_DELTA = 1 
 #FL (Gen12 States)
 	PS0_FL_DOP	=   PS0_DFRSMP_DOP	
 	PS0_FL	        =   D(SUM('@ANY_SAMPLER@pwr_fl_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk) - PS0_FL_DOP
@@ -140,6 +145,9 @@
     PS2_PL_nearest      =   D(SUM('@ANY_SAMPLER@pwr_pl_sample_nearest@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
     PS2_PL_else         =   D(SUM('@ANY_SAMPLER@pwr_pl_else@ANY_DS@\.CrClock'))/(numSamplerComputePaths * .CrClk)
 
+#Combined state for PL
+    PS2_PL = PS2_PL_LD + PS2_PL_sample_l + PS2_PL_vol_bilinear + PS2_PL_vol_nearest + PS2_PL_aniso + PS2_PL_bilinear + PS2_PL_trilinear + PS2_PL_nearest + PS2_PL_else
+
 #SMALL PL
     PS0_DMALL_PL_DOP = PS0_DFRSMP_DOP
     PS0_SMALL_PL     =  (D(SUM('@ANY_SAMPLER@pwr_small_pl_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)) - PS0_SMALL_PL_DOP
@@ -169,7 +177,14 @@
     PS2_SC_Bilinear_Else_SRGB       =  D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_Else_SRGB@ANY_DS@\.CrClock')) / (0.8 * numSamplerComputePaths * .CrClk) 
     #PS2_SC_Bilinear_Else_NoSRGB     =  D(SUM('@ANY_SAMPLER@pwr_sc_Bilinear_Else_NoSRGB@ANY_DS@\.CrClock')) / (0.8 * numSamplerComputePaths * .CrClk) 
     PS2_SC_Bilinear_Else_NoSRGB     =  D(SUM('@ANY_SAMPLER@SC-LatencyFifo\d+\.pushed')) / (numSamplerComputePaths * .CrClk) #Temporary hack for Gen12LP power review 
-
+#Combined SC states as per Reduced Model
+    PS2_SC_Bilinear                 =  PS2_SC_Bilinear_Else_SRGB + PS2_SC_Bilinear_Else_NoSRGB
+    PS2_SC_FastLinear_SC            =  PS2_SC_FastLinear_SC_SRGB + PS2_SC_FastLinear_SC_NoSRGB 
+    PS2_SC_Aniso                    =  PS2_SC_Aniso_NoSRGB + PS2_SC_Aniso_SRGB
+    PS2_SC_Nearest                  =  PS2_SC_sample_8x8 + PS2_SC_Nearest_32BPT_SRGB +  PS2_SC_Nearest_32BPT_NoSRGB + PS2_SC_Nearest_64BPT_SRGB +PS2_SC_Nearest_64BPT_NoSRGB +   PS2_SC_Nearest_128BPT_SRGB +  PS2_SC_Nearest_128BPT_NoSRGB
+    PS2_SC_FastAniso                =  PS2_SC_FastAniso_SRGB + PS2_SC_FastAniso_NoSRGB
+    PS2_SC_DataRam                  =  PS2_SC_DataRam_READ_1PORT + PS2_SC_DataRam_READ_2PORT + PS2_SC_DataRam_WRITE
+ 
 #SC Cache				
     PS2_SC_DataRam_READ_1PORT	    =	D(SUM('@ANY_SAMPLER@pwr_sc_dataram_read_1port_@ANY_1PORT@\.CrClock'))/ (16 * numSamplers * .CrClk) # 8 * 2 sub-banks
     PS2_SC_DataRam_READ_2PORT	    =	D(SUM('@ANY_SAMPLER@pwr_sc_dataram_read_2ports_@ANY_2PORT@\.CrClock'))/ (16 * numSamplers * .CrClk) # 8 * 2 sub-banks 
@@ -198,6 +213,16 @@
     PS2_ST_Bank4_Access6    =   D(SUM('@ANY_SAMPLER@pwr_st_L1BankAccess_Bank4_Access6@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) 
     PS2_ST_Bank4_Access7    =   D(SUM('@ANY_SAMPLER@pwr_st_L1BankAccess_Bank4_Access7@ANY_DS@\.CrClock')) / (numSamplers * .CrClk) 
     PS2_ST_Bank4_Access8    =   D(SUM('@ANY_SAMPLER@pwr_st_L1BankAccess_Bank4_Access8@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)
+# Combined power states as per the reduced model
+    PS2_ST_Bank_Access1     =   PS2_ST_Bank1_Access1
+    PS2_ST_Bank_Access2     =   PS2_ST_Bank1_Access2 + PS2_ST_Bank2_Access2
+    PS2_ST_Bank_Access3     =   PS2_ST_Bank2_Access3 + PS2_ST_Bank3_Access3
+    PS2_ST_Bank_Access4     =   PS2_ST_Bank2_Access4 + PS2_ST_Bank3_Access4 + PS2_ST_Bank4_Access4
+    PS2_ST_Bank_Access5     =   PS2_ST_Bank3_Access5 + PS2_ST_Bank4_Access5
+    PS2_ST_Bank_Access6     =   PS2_ST_Bank3_Access6 + PS2_ST_Bank4_Access6
+    PS2_ST_Bank_Access7     =   PS2_ST_Bank4_Access7 
+    PS2_ST_Bank_Access8     =   PS2_ST_Bank4_Access8 
+
 
 #DG (Updated Gen12)
 	PS0_DG_DOP	                        =   PS0_DFRSMP_DOP	
@@ -220,6 +245,9 @@
 	.temp_ps2_small_dg_en                   =   D(SUM('@ANY_SAMPLER@pwr_dg_point_nearest_linear_32bpt@ANY_DS@\.CrClock') + SUM('@ANY_SAMPLER@pwr_dg_point_nearest_linear_not32bpt@ANY_DS@\.CrClock')+  SUM('@ANY_SAMPLER@pwr_dg_aniso_2way@ANY_DS@\.CrClock') + SUM('@ANY_SAMPLER@pwr_dg_volumetric_point@ANY_DS@\.CrClock') +SUM('@ANY_SAMPLER@pwr_dg_volumetric_linear@ANY_DS@\.CrClock')+ SUM('@ANY_SAMPLER@pwr_dg_else@ANY_DS@\.CrClock'))
         .small_dg_res_scaling_factor            =   0.58
         PS2_SMALL_DG_EN                         =   .small_dg_res_scaling_factor * .temp_ps2_small_dg_en/(32 * numSamplerComputePaths * .CrClk)
+#Combined states as per Reduced Model
+        PS2_DG_volumetric                       =   PS2_DG_volumetric_point + PS2_DG_volumetric_linear
+        PS2_DG_aniso                            =   PS2_DG_aniso_gt_2way + PS2_DG_aniso_2way
 
 #SI ( Updated Gen12)
     PS0_SI 		=   D(SUM('@ANY_SAMPLER@pwr_si_idle@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
@@ -234,6 +262,8 @@
     PS2_SI_ld2dms       =   D(SUM('@ANY_SAMPLER@pwr_si_ld2dms@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
     PS2_SI_media        =   D(SUM('@ANY_SAMPLER@pwr_si_media@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
     PS2_SI_else         =   D(SUM('@ANY_SAMPLER@pwr_si_else@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
+#Combined state as per the reduced model
+    PS2_SI = PS2_SI_sample_1_2 + PS2_SI_sample_3 + PS2_SI_sample_4 + PS2_SI_sample_8x8 + PS2_SI_ldmode + PS2_SI_sampleg + PS2_SI_ld2dms + PS2_SI_media + PS2_SI_else
     
 #SO				
     PS0_SO_DOP	=	PS0_DFRSMP_DOP	
@@ -263,7 +293,8 @@
 	PS2_DM_Media_BYPASS	=	D(SUM('@ANY_SAMPLER@pwr_bdm_compressed@ANY_DS@\.CrClock')) / (numSamplers * .CrClk)	#first rev media states
 	PS2_DM_Media_SRGB	=	0	
 	PS2_DM_Media_Planar	=	0	
-				
+#Combined States as per Reduced Model
+        PS2_DM      =       PS2_DM_BC1 + PS2_DM_BC2_5 + PS2_DM_ELSE + PS2_DM_Expanded + PS2_DM_Expanded_BYPASS 
 #DM_PALRAM				
 	PS2_DM_PALRAM_READ	=	0	#first rev media states
 	PS2_DM_PALRAM_WRITE	=	0	
@@ -447,3 +478,14 @@
         .temp_gass_ps2    =      .temp_PS1_GASS +  .temp_PS2_GASS 
         .temp_PS1_GASS    =       (D(SUM('@GASS@Stalled'))+ D(SUM('@GATS@Stalled'))) /(.CrClk * num_GAM_GASS)
         .temp_PS2_GASS    =       (D(SUM('@GASS@Active')) +  D(SUM('@GATS@Active')))/(.CrClk * num_GAM_GASS)
+
+# Combined states for Sampler - as per the Reduced Model
+       PS2_FL_Bilinear_no_data_dep_bypass = PS2_FL_Bilinear_NoUnorm_no_data_dep_bypass + PS2_FL_Bilinear_Unorm_Alpha_no_data_dep_bypass + PS2_FL_Bilinear_Unorm_NoAlpha_no_data_dep_bypass
+       PS2_FL_Bilinear_data_dep_bypass    = PS2_FL_Bilinear_NoUnorm_data_dep_bypass + PS2_FL_Bilinear_Unorm_Alpha_data_dep_bypass + PS2_FL_Bilinear_Unorm_NoAlpha_data_dep_bypass 
+       PS2_FL_Trilinear_no_data_dep_bypass = PS2_FL_Trilinear + PS2_FL_Trilinear_Eff_no_data_dep_bypass
+       PS2_FL_Trilinear_data_dep_bypass  = PS2_FL_Trilinear_Eff_data_dep_bypass
+       PS2_FL_FastAniso_no_data_dep_bypass = PS2_FL_Aniso + PS2_FL_FastAniso_2W_no_data_dep_bypass
+       PS2_FL_FastBilinear_FastLinear_data_dep_bypass = PS2_FL_FastBilinear_data_dep_bypass + PS2_FL_FastLinear_data_dep_bypass
+       PS2_FL_FastLinear_no_data_dep_bypass = PS2_FL_FastBilinear_no_data_dep_bypass + PS2_FL_FastLinear_no_data_dep_bypass
+       PS2_FL_FastAniso_data_dep_bypass = PS2_FL_FastAniso_gt2W_data_dep_bypass + PS2_FL_FastAniso_2W_data_dep_bypass
+       PS2_PL_SMALL_PL  = PS2_SMALL_PL_LOD + PS2_SMALL_PL_NOLOD 
