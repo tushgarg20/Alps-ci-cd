@@ -50,9 +50,7 @@
 	num_FF_OTHER_DFX	=	numFF	
 	num_FF_OTHER_DOP	=	numFF	
 	num_FF_HPVS	=	numFF	
-	num_FF_HPSDE	=	numFF
-        num_FF_INFRA    =       1
-        num_FF_DELTA    =       1
+	num_FF_HPSDE	=	numFF	
 				
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
@@ -78,10 +76,6 @@
 	PS1_CS	=	(.CS_stalled_or_idle > .CS_idle) ? (.CS_stalled_or_idle - .CS_idle)/.UnsliceClk : 0	
 	PS2_CS	=	1 - PS0_CS - PS1_CS	
 	PS2_CS_Media	=	0	#Breaking out media/GPGPU
-#New power state for infra
-        PS2_FF_INFRA    =       1
-#New power state for approximation of reduced power states in FF
-        PS2_FF_DELTA    =       1
 				
 #RS				
 	PS0_RS	=	0	 # No GSIM model
