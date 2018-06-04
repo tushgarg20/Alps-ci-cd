@@ -53,8 +53,6 @@
   num_GAM_GAPS     = numSlices
   num_GAM_SARB	   = numSlices
   num_GAM_GAFARB   = numGAM
-  num_GAM_INFRA    = 1
-  num_GAM_DELTA    = 1
    
    @GAPL3@        =    (STK\d+\.S\d+\.uL3\.GapL3InputBuf\d+\.|S\d+\.uL3\.GapL3InputBuf(\d+|)\.)
    @GAPZ@         =    S\d+\.(GAPZ\.|GAPZPipe_\d+\.)
@@ -67,10 +65,7 @@
    @CLOCKS2X@     =    D('2xCrClock.Clocks')	#temporary fix for GAM running on 2xCrClock in Gen12LP
    @UNSLICECLOCKS@=    D(UnsliceClock.Clocks)
    @GAFM@         =    S\d+\.uL3\.LNI_\d+\.
-#New power state for infrastructure
-  PS2_GAM_INFRA =       1
-#New power state for approximation of reduced power states in GAM
-  PS2_GAM_DELTA =       1			
+			
 #GASS
   PS0_GADSS        =     (.temp_gadss_ps2 < 1)? (1 - .temp_gadss_ps2) : 0
   .temp_gadss_ps2  =     PS1_GADSS + PS2_GADSS 

@@ -19,9 +19,6 @@
 	num_HDC_DFX	=	numHDCs	
 	num_HDC_HDCRET1	=	numHDCs
 	num_HDC_HDCRET2	=	numHDCs
-        num_HDC_INFRA   =       1
-        num_HDC_DELTA   =       1
-
 
 #Generic				
 	 @ANY_HDC@	=	((STK\d+\.)?S\d+\.(SS\d+\.)?uHDC(_\d+|)\.)	
@@ -38,10 +35,7 @@
 	 @ANY_TLB@	=	(TLB|HDCTlb)	
 	@READ_MISS@	=	(_Read_Misses|_Read_misses)
 	@WRITE_MISS@	=	(_Write_Misses|_Write_misses)
-#New power state for infrastructure
-        PS2_HDC_INFRA   =       1
-#New power state for approximation of reduced power states
-        PS2_HDC_DELTA   =       1
+
 				
 #HDCREQCMD1				
 	PS0_HDC_ReqCmd1_DOP	=	.HDC_DOP	

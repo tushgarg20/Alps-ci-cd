@@ -59,10 +59,6 @@
 	num_UNCORE_CLKGLUE	=	num_GTI_GTI	
 	num_UNCORE_NONCLKGLUE	=	num_GTI_GTI	
 	num_UNCORE_DFX	        =	num_GTI_GTI
-        num_GTI_INFRA           =       1
-        num_GTI_DELTA           =       1
-        num_UNCORE_INFRA           =       1
-        num_SQIDI_INFRA           =       1
 
 #GTI stats				
 	.temp_gti_superq_empty	=	D(SUM('@ANY_GTI@@GTI_EMPTY@'))	
@@ -78,12 +74,7 @@
 	.temp_gti_rd_per	=	.temp_gti_reqs?(.temp_gti_rd_reqs/.temp_gti_reqs):0	
 	.temp_gti_wr_per	=	.temp_gti_reqs?(.temp_gti_wr_reqs/.temp_gti_reqs):0	
 	PS2_GTI_BW	        =	(.temp_gti_reqs)?(.temp_gti_reqs/(@GTI_BW_PCLK@ * .temp_PS2_GTI * .Clk.GTI * num_GTI_GTI)):0	
-#New power state for infra
-        PS2_GTI_INFRA   =       1
-        PS2_UNCORE_INFRA   =       1
-        PS2_SQIDI_INFRA   =       1
-#New power state for the approximation of states removed by reduced model
-        PS2_GTI_DELTA   =       1
+				
 #MBGFGT(Approximating MBGF residencies to MSQC residencies)				
 	PS0_MBGFGT	=	.temp_PS0_GTI	
 	PS1_MBGFGT	=	.temp_PS1_GTI	
