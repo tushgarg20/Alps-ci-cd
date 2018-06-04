@@ -16,9 +16,7 @@
 	num_L3Node_Assign		=	num_L3_Slices	
 	num_L3Node_Repeater		=	num_L3_Slices	
 	num_L3Node_CLKGLUE		=	num_L3_Slices	
-	num_L3Node_NONCLKGLUE	        =	num_L3_Slices
-        num_L3Node_INFRA                =       1
-        num_L3Node_DELTA                =       1	
+	num_L3Node_NONCLKGLUE	        =	num_L3_Slices	
 #Generic				
 	 #@ANY_L3BANK@			=	S\d+\.uL3\.Bank_\d+\.	
 	 @ANY_L3BANK@			=	(STK\d+\.S\d+\.uL3\.Bank_\d+\.|S\d+\.uL3\.Bank_\d+\.)
@@ -38,10 +36,6 @@
 	num_L3_Buses                    =       (D(SUM('knob.S0.uL3.NumUpFabricBus'))+D(SUM('knob.S0.uL3.NumDownFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumUpFabricBus'))+D(SUM('knob.STK0.S0.uL3.NumDownFabricBus')))/2
 	.URBRd				=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbRd'))
 	.URBWr				=	D(SUM('S\d+\.uL3.Bank_\d+\.UrbWr'))
-#New power state for infrastructure
-        PS2_L3NODE_INFRA                =       1
-#New power state for approximation of power states removed by reduced model
-        PS2_L3NODE_DELTA                =       1
 	
 	PS0_LNIB			=	D(SUM('@ANY_L3@LNI_\d\.Idle'))/(num_L3Node_LNIB * .CrClk)
 	PS0_LNIB_FLUSHBLOCK		=	0
@@ -88,7 +82,7 @@
 	#PS2_LNE_SS_DATARTN		=	D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_EGR_DATARTN		=	D(SUM('@ANY_L3BANK@BankOutCSBuf\.pushed'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_ING_DATARTN		=	(D(SUM('@ANY_L3@LNE_\d\.CrossSliceReturnIngressQ_\d\.pushed')))/(num_L3Node_LNE*.CrClk)
-	PS2_LNE_LSN_EGR_READ		=	D(SUM('@ANY_L3BANK@ReqMissRD'))/(num_L3Node_LNE*.CrClk)CC
+	PS2_LNE_LSN_EGR_READ		=	D(SUM('@ANY_L3BANK@ReqMissRD'))/(num_L3Node_LNE*.CrClk)
 	PS2_LNE_LSN_EGR_WRITE		=	D(SUM('@ANY_L3BANK@Evict'))/(num_L3Node_LNE*.CrClk)
 	#PS2_LNE_colorz_returns=?
 	PS2_LNE_LOC_DATARTN_64B_UNPACKED = 	(D(SUM('@ANY_L3BANK@BankOutLSBuf\.pushed'))/(num_L3Node_LNE*.CrClk))/2
@@ -102,13 +96,6 @@
 	PS2_LNE_LSN_EGR_SNPDATA = 0
 	.residuallne				=	1-(PS0_LNE + PS1_LNE + PS2_LNE_LSN_EGR_DATARTN + PS2_LNE_LSN_ING_DATARTN + PS2_LNE_LSN_EGR_READ + PS2_LNE_LSN_EGR_WRITE + PS2_LNE_LOC_DATARTN_64B_UNPACKED + PS2_LNE_LOC_DATARTN_32B + PS2_LNE_LOC_DATARTN_64B_PACKED + PS2_LNE_LOCAL_SC0_DATARTN + PS2_LNE_LOCAL_SC1_DATARTN + PS2_LNE_LOCAL_SC2_DATARTN + PS2_LNE_LSN_EGR_SNPDATA)
 	PS2_LNE_Else				=	(.residuallne<0)?0:.residuallne
-
-#Combined states as per reduced model
-#All states that map to the same HW signal are combined
-        #PS2_LNE_LSN_ING_DATARTN and PS2_LNE_LSN_EGR_DATARTN map to the same HW signal
-        PS2_LNE_LSN_DATARTN = PS2_LNE_LSN_ING_DATARTN
-        
-
 		
 #L3NODEDOP				
 	PS0_L3Node_DOP	=	0	
