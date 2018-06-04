@@ -62,8 +62,6 @@ EU:
   GRF:
      PS2_GRF_READ: R * C
      PS2_GRF_WRITE: R * C
-     PS2_GRF_SEND_PATH: R * C
-
   Accumulator:
      PS2_Accumulator_READ: R * C
      PS2_Accumulator_WRITE: R * C
