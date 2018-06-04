@@ -21,10 +21,7 @@
 	num_Z_CPunit	=	numZPipes	
 	num_Z_Assign	=	numZPipes	
 	num_Z_Repeater	=	numZPipes	
-	num_Z_DFX	=	numZPipes
-        num_Z_INFRA     =       1
-        num_Z_DELTA     =       1
-	
+	num_Z_DFX	=	numZPipes	
 				
 				
 				
@@ -59,10 +56,7 @@
 	
 
 ###Gen12LP new power states - added by pjamrani 10/11/2017
-#INFRA
-         PS2_Z_INFRA    =       1 
-#New power state for approximation of power states removed by reduced model
-         PS2_Z_DELTA    =       1 
+
 #ZPBE - New Unit in Gen12LP. Need to add new unit in ALPS, Cdyn, GC etc
     
     # All buffers empty.

@@ -26,7 +26,6 @@
     num_DSSC_SMALL  =       num_DSSC_PSD
 	num_DSSC_DFX	=	num_DSSC_PSD
 	num_DSSC_DOP	=	num_DSSC_PSD
-        num_DSSC_INFRA  =   1
 
 	#num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
 	num_ROSS_MA_IN	=	(isEUFusion > 0) ? ((numEURows/fusionFactor) * numROSS ) : (numEURows * numROSS)	#MA is per row
@@ -42,14 +41,7 @@
 	num_ROSS_CLKGLUE	=	numROSS	
 	num_ROSS_NONCLKGLUE	=	numROSS	
 	num_ROSS_DFX	=	numROSS	
-	num_ROSS_DOP	=	numROSS
-	num_ROSS_INFRA	=	1	
-	num_ROSS_DELTA	=	1	
-#New power state for infrastructure
-        PS2_ROSS_INFRA  =       1
-        PS2_DSSC_INFRA  =       1
-#New power state for approximation of power states removed by reduced model
-        PS2_ROSS_DELTA  =       1
+	num_ROSS_DOP	=	numROSS	
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
@@ -188,11 +180,6 @@
     PS2_DAPRSS_RTW_NOALPHA_4PPC =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
     PS2_DAPRSS_RTW_Z_ALPHA_2PPC =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
     PS2_DAPRSS_RTW_Z_NOALPHA_2PPC   = D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)  
-
-#Combined state for all the DAPRSS states - Santosh 05/3/2018
-
-    PS2_DAPRSS_RTW  = D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)  
-
 	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (num_DSSC_DAPRSS * .CrClk)	
 	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
 	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)
