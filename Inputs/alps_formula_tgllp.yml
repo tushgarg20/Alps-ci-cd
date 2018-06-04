@@ -51,10 +51,6 @@ DRAM_BW_GBPS : R
 
 
 EU:
-  INFRA:
-    PS2_EU_INFRA: R * C
-  DELTA:
-    PS2_EU_DELTA: R * C
   TC:
     PS0_TC: R * C
     PS1_TC: R * C
@@ -136,11 +132,7 @@ EU:
       FPU0_mov_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_sel_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_DP4A_exec: R[PS2_EU_FPU0] * R * C 
-      FPU0_DP4A_bypass: R[PS2_EU_FPU0] * R * C
-
-  ExtraPipe:
-     PS2_EU_ExtraPipe:
-      ExtraPipe_DP4AS: R[PS2_EU_ExtraPipe] * R * C
+      FPU0_DP4A_bypass: R[PS2_EU_FPU0] * R * C 
   
   FPU1:
     PS0_EU_FPU1: R * C
@@ -268,11 +260,6 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 
 L3_Bank:
-   INFRA:
-    PS2_L3_BANK_INFRA: R * C
-   DELTA:
-    PS2_L3_BANK_DELTA: R * C
-
    LTCD_EBB:
     PS0_LTCD_EBB: R * C
     PS1_LTCD_EBB: R * C
@@ -378,11 +365,6 @@ L3_Bank:
     PS1_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
 L3Node:
-   INFRA:
-    PS2_L3NODE_INFRA: R * C
-   DELTA:
-    PS2_L3NODE_DELTA: R * C
-
    LNIB:
     PS0_LNIB: R * C
     PS0_LNIB_FLUSHBLOCK: R * C
@@ -459,11 +441,6 @@ PS2_LNI_BW: R
 PS2_LNE_BW: R
 
 SQIDI:
-   INFRA:
-    PS2_SQIDI_INFRA: R * C
-   DELTA:
-    PS2_SQIDI_DELTA: R * C
-
    MBGFGT:
     PS0_MBGFGT: R * C
     PS1_MBGFGT: R * C
@@ -558,9 +535,6 @@ SQIDI:
     PS2_SQIDI_DFX: R * C
 
 UNCORE:
-   INFRA:
-    PS2_UNCORE_INFRA: R * C
-
    MBGFUC:
     PS0_MBGFUC: R * C
     PS1_MBGFUC: R * C
@@ -610,11 +584,6 @@ UNCORE:
     PS2_UNCORE_DFX: R * C
 
 GTI:
-   INFRA:
-    PS2_GTI_INFRA: R * C
-   DELTA:
-    PS2_GTI_DELTA: R * C
-
    MLINT:
     PS0_MLINT: R * C
     PS1_MLINT: R * C
@@ -660,11 +629,6 @@ PS2_GTI_BW: R
 PS2_MSQC_SlotFull: R
 
 Sampler:
-   INFRA:
-    PS2_Sampler_INFRA: R * C
-   DELTA:
-    PS2_Sampler_DELTA: R * C
-
    FL:
     PS0_FL_DOP: R * C
     PS0_FL: R * C
@@ -976,11 +940,6 @@ FL_Toggle_Rate : R
 PL_Toggle_Rate : R
 
 DSSC:
-   INFRA:
-    PS2_DSSC_INFRA: R * C
-   DELTA:
-    PS2_DSSC_DELTA: R * C
-
    SLMFE:
     PS0_SLMFE: R * C
     PS1_SLMFE: R * C
@@ -1091,11 +1050,6 @@ DSSC:
     PS2_DSSC_DOP: R * C
 
 ROSS:
-   INFRA:
-    PS2_ROSS_INFRA: R * C
-   DELTA:
-    PS2_ROSS_DELTA: R * C
-
    MA_IN:
     PS0_MA_IN: R * C
     PS1_MA_IN: R * C
@@ -1156,11 +1110,6 @@ ROSS:
     PS2_ROSS_DOP: R * C
     
 Z:
-   INFRA:
-    PS2_Z_INFRA: R * C
-   DELTA:
-    PS2_Z_DELTA: R * C
-
    HIZ:
     PS0_HIZ: R * C
     PS0_HIZ_DOP: R * C
@@ -1236,11 +1185,6 @@ Z:
      PS2_STC_CACHE_WRITE: R * C
 
 COLOR:
-   INFRA:
-    PS2_COLOR_INFRA: R * C
-   DELTA:
-    PS2_COLOR_DELTA: R * C
-
    DAPRSC:
     PS0_DAPRSC: R * C
     PS0_DAPRSC_DOP: R * C
@@ -1398,11 +1342,6 @@ COLOR:
     PS0_COLOR_DFX: R * C 
     PS2_COLOR_DFX: R * C
 HDC:
-   INFRA:
-    PS2_HDC_INFRA: R * C
-   DELTA:
-    PS2_HDC_DELTA: R * C
-
    HDCREQCMD1:
     PS0_HDC_ReqCmd1_DOP: R * C
     PS0_HDC_ReqCmd1: R * C
@@ -1505,11 +1444,6 @@ HDC:
     PS0_HDC_DFX: R * C
     PS2_HDC_DFX: R * C  
 ROSC:
-   INFRA:
-    PS2_ROSC_INFRA: R * C
-   DELTA:
-    PS2_ROSC_DELTA: R * C
-
    WMFE:
     PS0_WMFE: R * C 
     PS0_WMFE_DOP: R * C 
@@ -1594,11 +1528,6 @@ ROSC:
     PS0_ROSC_DFX: R * C 
     PS2_ROSC_DFX: R * C 
 GAM:
-   INFRA:
-    PS2_GAM_INFRA: R * C
-   DELTA:
-    PS2_GAM_DELTA: R * C
-
    GAMCMDI:
     PS0_GAMCMDI_GFX_IDLE: R * C
     PS0_GAMCMDI_HDC_IDLE: R * C
@@ -1817,11 +1746,6 @@ GAM:
     PS0_GAM_DFX: R * C
     PS2_GAM_DFX: R * C
 FF:
-   INFRA:
-    PS2_FF_INFRA: R * C
-   DELTA:
-    PS2_FF_DELTA: R * C
-
    CS:
     PS0_CS: R * C
     PS1_CS: R * C
@@ -2053,11 +1977,6 @@ FF:
     PS0_FF_OTHER_DFX: R * C
     PS2_FF_OTHER_DFX: R * C
 Other:
-   INFRA:
-    PS2_OTHER_INFRA: R * C
-   DELTA:
-    PS2_OTHER_DELTA: R * C
-
    CCD:
     PS2_CCD: R*C
    GTP24C:
@@ -2075,11 +1994,6 @@ Other:
     PS0_Blitter: R * C
 
 Fabric:
-   INFRA:
-    PS2_Fabric_INFRA: R * C
-   DELTA:
-    PS2_Fabric_DELTA: R * C
-
    LSN:
     PS0_LSN: R * C * R[numBuses]
     PS1_LSN: R * C * R[numBuses]
@@ -2160,11 +2074,6 @@ Fabric:
     PS2_Fabric_DOP: R * C
 
 rFF:
-   INFRA:
-    PS2_rFF_INFRA: R * C
-   DELTA:
-    PS2_rFF_DELTA: R * C
-
    rCS:
     PS0_rCS: R * C
     PS1_rCS: R * C
