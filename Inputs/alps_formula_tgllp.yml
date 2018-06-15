@@ -1342,29 +1342,36 @@ COLOR:
     PS0_COLOR_DFX: R * C 
     PS2_COLOR_DFX: R * C
 HDC:
-   HDCREQCMD1:
-    PS0_HDC_ReqCmd1_DOP: R * C
-    PS0_HDC_ReqCmd1: R * C
-    PS1_HDC_ReqCmd1: R * C
-    PS2_HDC_ReqCmd1:
-     PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
-     PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
-     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
-     PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
-     PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
-     PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
-     PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
-   HDCREQCMD2:
-    PS0_HDC_ReqCmd2_DOP: R * C
-    PS0_HDC_ReqCmd2: R * C
-    PS1_HDC_ReqCmd2: R * C
-    PS2_HDC_ReqCmd2:
-      PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
-      PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
-      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
-      PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
-      PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
-      PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
+   #HDCREQCMD1:
+   # PS0_HDC_ReqCmd1_DOP: R * C
+   # PS0_HDC_ReqCmd1: R * C
+   # PS1_HDC_ReqCmd1: R * C
+   # PS2_HDC_ReqCmd1:
+   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
+   #  PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
+   #  PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
+   #  PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
+   #HDCREQCMD2:
+   # PS0_HDC_ReqCmd2_DOP: R * C
+   # PS0_HDC_ReqCmd2: R * C
+   # PS1_HDC_ReqCmd2: R * C
+   # PS2_HDC_ReqCmd2:
+   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
+   #   PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
+   #   PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
+   HDCREQCMD:
+    PS0_HDCREQCMD: R * C
+    PS1_HDCREQCMD: R * C
+    PS2_HDCREQCMD_SIMD8_READ: R * C
+    PS2_HDCREQCMD_SIMD8_WRITE: R * C
+    PS2_HDCREQCMD_SIMD16_READ: R * C
+    PS2_HDCREQCMD_SIMD16_WRITE: R * C
    HDCREQDATA:
     PS0_HDC_ReqData_DOP: R * C
     PS0_HDC_ReqData: R * C
