@@ -19,6 +19,9 @@ my $cnl				= '';
 my $icl				= '';
 my $icllp			= '';
 my $tgl				= '';
+my $tglhp_512			= '';
+my $tglhp_384			= '';
+my $tglhp			= '';
 
 Getopt::Long::GetOptions(
     "input|i=s"		=> \$tracelist,
@@ -33,7 +36,10 @@ Getopt::Long::GetOptions(
 	"cnl"			=> \$cnl,
 	"icl"			=> \$icl,
 	"icllp"			=> \$icllp,
-	"tgl"			=> \$tgl
+	"tgl"			=> \$tgl,
+	"tglhp"			=> \$tglhp,
+	"tglhp_512"		=> \$tglhp_512,
+	"tglhp_384"		=> \$tglhp_384
         
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -51,6 +57,11 @@ $cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
 $cfg_file = ($icl) ? $sdir . "alps_cfg_icl.yaml" : $cfg_file;
 $cfg_file = ($icllp) ? $sdir . "alps_cfg_icllp.yaml" : $cfg_file;
 $cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
+$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
+$cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
+$cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
+
+
 
 my $class = '8G&&nosusp&&SLES11';
 

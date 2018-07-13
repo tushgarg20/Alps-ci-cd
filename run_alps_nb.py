@@ -4,6 +4,8 @@ import subprocess
 import os
 import sys
 import lib.yaml as yaml
+#User defined functions
+import opcode_pattern_analysis as op
 
 
 #############################
@@ -176,6 +178,34 @@ if not options.build_alps_only:
     if ExitCode > 1:
         print ("StatParser failed with exitcode : ", ExitCode)
         exit(ExitCode) 
+
+#Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
+#Open the residency file
+f = open(res, "a+")
+swizzle_count = [0,0,0]
+scalar_count = [0,0,0]
+swizzle_percentage = [0,0,0]
+scalar_percentage = [0,0,0]
+#Estimate the swizzle and scalar residencies from the stat file
+swizzle_count, swizzle_percentage, scalar_count, scalar_percentage = op.swizzle_count_estimator(stat)
+f.write("PS2_GA_SRC0_Swizzle,%f\n" % swizzle_percentage[0])
+f.write("PS2_GA_SRC1_Swizzle,%f\n" % swizzle_percentage[1])
+f.write("PS2_GA_SRC2_Swizzle,%f\n" % swizzle_percentage[2])
+f.write("PS2_GA_SRC0_Scalar,%f\n" % scalar_percentage[0])
+f.write("PS2_GA_SRC1_Scalar,%f\n" % scalar_percentage[1])
+f.write("PS2_GA_SRC2_Scalar,%f\n" % scalar_percentage[2])
+#Estimate the datatype switching percentage 
+dtype_sw_count, switch_percentage = op.datatype_switch_count_estimator(stat)
+f.write("FPU0_dtype_sw,%f\n" % switch_percentage)
+#Opcode switching percentage estimate
+opcode_sw_count, switch_percentage, mad_mul_percent, mad_add_percent = op.opcode_switch_count_estimator(stat)
+f.write("FPU0_mad_mul_sw,%f\n" % mad_mul_percent)
+f.write("FPU0_mad_add_sw,%f\n" % mad_add_percent)
+raw_mov_patterns = []   
+raw_mov_count, raw_mov_patterns, raw_mov_percentage = op.raw_mov_count_estimator(stat)
+f.write("FPU0_raw_mov,%f\n" % raw_mov_percentage)
+f.close()
+
 
 try:
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)

@@ -55,8 +55,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12HP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12HP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -114,10 +114,17 @@ elif common_cfg.find('icllp') > -1  or common_cfg.find('icl_gen11_1x8x8') > -1:
     cfg ='Gen11LP'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
+elif common_cfg.find('tglhp_512') > -1 :
+    cfg ='Gen12HP_512'
+elif common_cfg.find('tglhp_384') > -1 :
+    cfg ='Gen12HP_384'
+elif common_cfg.find('tglhp') > -1 :
+    cfg ='Gen12HP'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen12LP'
 elif common_cfg.find('tgl') > -1 :
     cfg ='Gen12LP'
+
 else:
     print (cfg, "--> Config not supported\n");
     print("Command Line -->",file=lf)
@@ -135,10 +142,17 @@ elif common_cfg.find('tgllpall') > -1 :
     cfg_gc = "Gen12LPAllGc"
 elif common_cfg.find('tgllppwr') > -1 :
     cfg_gc = "Gen12LPPwrGc"
+elif common_cfg.find('tglhp_512') > -1 :
+    cfg_gc ='Gen12HP_512'
+elif common_cfg.find('tglhp_384') > -1 :
+    cfg_gc ='Gen12HP_384'
+elif common_cfg.find('tglhp') > -1 :
+    cfg_gc = "Gen12HP"
 elif common_cfg.find('tgllp') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('tgl') > -1 :
     cfg_gc = "Gen12LP"
+
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
@@ -151,7 +165,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12HP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -310,6 +324,8 @@ def get_eff_cdyn(cluster,unit,stat):
         print (str(stat)+","+str(base_cfg)+","+str(base_cdyn),file=wf)
     if (options.dump_ecw):
         print (str(stat)+","+str(base_cfg)+","+str(e_cdyn),file=eff_wf)
+        #print (str(stat)+","+str(base_cfg)+","+str(gc_sf)+","+str(process_sf)+","+str(voltage_sf)+","+str(stepping_sf)+","+str(cdyn_cagr_sf)+","+str(e_cdyn),file=eff_wf)
+
     return eff_cdyn
 
 def which_cfg_to_use(track_cfg):

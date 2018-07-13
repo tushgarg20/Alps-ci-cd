@@ -132,7 +132,8 @@ except IOError:
 for line in wf:
   data = get_data(line,',')
   frame = re.search('GPGPU.apps.ocl1p0(.*)',data[0])
-  if frame:
+  resnet_frame=re.search('ocl(.*)',data[0])
+  if frame or resnet_frame:
     #matchObj = re.search('(.*)-(\d+)-\d+_(.*)res.csv',line)
     matchObj = re.search('(.*)-(\d+)-\d+_(.*)',line)
     #print("details are matchObj.group", matchObj.group(1), matchObj.group(2),matchObj.group(3))
