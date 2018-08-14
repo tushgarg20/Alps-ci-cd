@@ -1,0 +1,202 @@
+!!python/object/apply:collections.OrderedDict
+- - - Gen12HP
+    - Frequency: 1550
+      fps: !!python/object/apply:collections.OrderedDict
+      - - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00018_ci-main-70455-berta-posh-on
+          - 162.349
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00071_ci-main-70455-berta-posh-on
+          - 149.385
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00108_ci-main-70455-berta-posh-on
+          - 187.34400000000002
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00125_ci-main-70455-berta-posh-on
+          - 158.611
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00150_ci-main-70455-berta-posh-on
+          - 137.39600000000002
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00171_ci-main-70455-berta-posh-on
+          - 154.134
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00203_ci-main-70455-berta-posh-on
+          - 209.517
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00229_ci-main-70455-berta-posh-on
+          - 169.83
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00255_ci-main-70455-berta-posh-on
+          - 163.708
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00272_ci-main-70455-berta-posh-on
+          - 180.868
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1__1-ref-1_f00289_ci-main-70455-berta-posh-on
+          - 189.82
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00033_ci-main-70455-berta-posh-on
+          - 105.838
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00102_ci-main-70455-berta-posh-on
+          - 132.65
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00153_ci-main-70455-berta-posh-on
+          - 97.48899999999999
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00236_ci-main-70455-berta-posh-on
+          - 89.598
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00269_ci-main-70455-berta-posh-on
+          - 100.385
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00311_ci-main-70455-berta-posh-on
+          - 95.93799999999999
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00334_ci-main-70455-berta-posh-on
+          - 103.574
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2__1-ref-1_f00356_ci-main-70455-berta-posh-on
+          - 106.397
+        - - dx11_3dmark11v132_ab-gt1-performance-deferred-nv-980__1-ref-1_f00087_ci-main-70455-berta-posh-on
+          - 268.39099999999996
+        - - dx11_3dmark11v132_ab-gt1-performance-deferred-nv-980__1-ref-1_f00251_ci-main-70455-berta-posh-on
+          - 209.705
+        - - dx11_3dmark11v132_ab-gt1-performance-deferred-nv-980__1-ref-1_f00334_ci-main-70455-berta-posh-on
+          - 192.965
+        - - dx11_3dmark11v132_ab-gt2-performance-deferred-nv-980__1-ref-1_f00402_ci-main-70455-berta-posh-on
+          - 240.27599999999998
+        - - dx11_3dmark11v132_ab-gt2-performance-deferred-nv-980__1-ref-1_f00851_ci-main-70455-berta-posh-on
+          - 225.9
+        - - dx11_3dmark11v132_ab-gt2-performance-deferred-nv-980__1-ref-1_f01337_ci-main-70455-berta-posh-on
+          - 257.73
+        - - dx11_3dmark11v132_ab-gt3-performance-deferred-nv-980__1-ref-1_f00644_ci-main-70455-berta-posh-on
+          - 274.11
+        - - dx11_3dmark11v132_ab-gt3-performance-deferred-nv-980__1-ref-1_f01483_ci-main-70455-berta-posh-on
+          - 284.599
+        - - dx11_3dmark11v132_ab-gt4-performance-deferred-nv-980__1-ref-1_f00066_ci-main-70455-berta-posh-on
+          - 151.936
+        - - dx11_3dmark11v132_ab-gt4-performance-deferred-nv-980__1-ref-1_f00204_ci-main-70455-berta-posh-on
+          - 102.04
+        - - dx11_3dmark11v132_ab-gt4-performance-deferred-nv-980__1-ref-1_f00348_ci-main-70455-berta-posh-on
+          - 114.71700000000001
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00106_ci-main-70455-berta-posh-on
+          - 156.739
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00236_ci-main-70455-berta-posh-on
+          - 143.424
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00356_ci-main-70455-berta-posh-on
+          - 154.564
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00479_ci-main-70455-berta-posh-on
+          - 156.893
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00573_ci-main-70455-berta-posh-on
+          - 155.362
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00629_ci-main-70455-berta-posh-on
+          - 155.33
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00651_ci-main-70455-berta-posh-on
+          - 153.83700000000002
+        - - dx11_battlefield1_ab-intel-nuc-long-g3__1-ref-1_f00717_ci-main-70455-berta-posh-on
+          - 142.806
+        - - dx11_vrmark1-0-1227_ab-orange-default-rend-res2264x1348-intel-nuc-g2__1-ref-1_f00183_ci-main-70455-berta-posh-on
+          - 311.29
+        - - dx11_vrmark1-0-1227_ab-orange-default-rend-res2264x1348-intel-nuc-g2__1-ref-1_f00576_ci-main-70455-berta-posh-on
+          - 373.105
+        - - dx11_vrmark1-0-1227_ab-orange-default-rend-res2264x1348-intel-nuc-g2__1-ref-1_f01053_ci-main-70455-berta-posh-on
+          - 355.67699999999996
+        - - dx11_vrmark1-0-1227_ab-orange-default-rend-res2264x1348-intel-nuc-g2__1-ref-1_f01205_ci-main-70455-berta-posh-on
+          - 313.143
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00023_ci-main-70455-berta-ptbr-on
+          - 154.315
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00054_ci-main-70455-berta-ptbr-on
+          - 188.007
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00088_ci-main-70455-berta-ptbr-on
+          - 154.905
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00135_ci-main-70455-berta-ptbr-on
+          - 158.727
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00175_ci-main-70455-berta-ptbr-on
+          - 170.38299999999998
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00246_ci-main-70455-berta-ptbr-on
+          - 167.737
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00281_ci-main-70455-berta-ptbr-on
+          - 191.858
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00297_ci-main-70455-berta-ptbr-on
+          - 174.013
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00387_ci-main-70455-berta-ptbr-on
+          - 138.494
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00479_ci-main-70455-berta-ptbr-on
+          - 188.468
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00500_ci-main-70455-berta-ptbr-on
+          - 149.72299999999998
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00537_ci-main-70455-berta-ptbr-on
+          - 158.716
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00572_ci-main-70455-berta-ptbr-on
+          - 145.372
+        - - ogl_unigine-valley_ab-g3__1-ref-1_f00607_ci-main-70455-berta-ptbr-on
+          - 168.075
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-ul-gt1__1-ref-1_f00053_ci-main-70455-berta-posh-on
+          - 55.275
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-ul-gt2__1-ref-1_f00022_ci-main-70455-berta-posh-on
+          - 30.151999999999997
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00212_ci-main-70455-berta-posh-on
+          - 91.875
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00545_ci-main-70455-berta-posh-on
+          - 93.82799999999999
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00585_ci-main-70455-berta-posh-on
+          - 86.787
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00667_ci-main-70455-berta-posh-on
+          - 77.929
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00672_ci-main-70455-berta-posh-on
+          - 83.075
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00731_ci-main-70455-berta-posh-on
+          - 80.17699999999999
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00768_ci-main-70455-berta-posh-on
+          - 77.14
+        - - dx11_battlefield1_ab-intel-nuc-long-g6__1-ref-1_f00832_ci-main-70455-berta-posh-on
+          - 75.207
+        - - dx11_star-wars-battlefront-2_sc-custom-wookie-g6__1-ref-1_f00092_ci-main-70455-berta-posh-on
+          - 58.373000000000005
+        - - ogl_svp-12_ws-medical-01-05__win-skl-gt2_f00198_ci-main-70520-ac-180509-r1-ptbr-on-comp-on
+          - 56.273999999999994
+        - - ogl_svp-12_ws-medical-01-05__win-skl-gt2_f00285_ci-main-70520-ac-180509-r1-ptbr-on-comp-on
+          - 72.726
+        - - ogl_svp-12_ws-medical-01-05__win-skl-gt2_f00406_ci-main-70520-ac-180509-r1-ptbr-on-comp-on
+          - 60.303999999999995
+        - - dx11_ashes-of-the-singularity_ab-acoff0-nvidia-gtx980-g3__win-hsw_f00046_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 29.375
+        - - dx11_assassins-creed4_ab-g2__hswm_f00029_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 199.267
+        - - dx11_assassins-creed4_ab-g2__hswm_f00099_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 186.75400000000002
+        - - dx11_assassins-creed4_ab-g2__hswm_f00160_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 209.173
+        - - dx11_assassins-creed4_ab-g2__hswm_f00239_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 179.96
+        - - dx11_assassins-creed4_ab-g2__hswm_f00356_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 203.032
+        - - dx11_assassins-creed4_ab-g2__hswm_f00385_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 188.021
+        - - dx11_assassins-creed4_ab-g2__hswm_f00416_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 190.533
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00116_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 73.264
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00266_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 79.625
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00482_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 86.61200000000001
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00656_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 87.695
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00781_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 81.264
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f00848_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 76.916
+        - - dx11_batman-ao_ab-g3-8x__win-bdw_f01136_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 90.898
+        - - dx11_batman-ao_ab-g3__hswm_f00138_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 186.365
+        - - dx11_batman-ao_ab-g3__hswm_f00282_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 225.38
+        - - dx11_batman-ao_ab-g3__hswm_f00505_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 273.83
+        - - dx11_batman-ao_ab-g3__hswm_f00692_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 233.81099999999998
+        - - dx11_batman-ao_ab-g3__hswm_f00815_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 227.77700000000002
+        - - dx11_batman-ao_ab-g3__hswm_f00874_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 231.21099999999998
+        - - dx11_batman-ao_ab-g3__hswm_f01214_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 221.672
+        - - dx11_bioshock-infinite_g3__orig-20130513_f00996_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 274.235
+        - - dx11_gta5_ab-nvidia-g3__win-hsw_f00335_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 137.804
+        - - dx11_gta5_ab-nvidia-g3__win-hsw_f01636_ci-main-70797-ac-180522-r1-posh-on-comp-on
+          - 155.996
+        - - dx11_war-of-warcraft-legion_ab-intel-nuc-g5__win-skl_f00023_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 234.011
+        - - dx11_war-of-warcraft-legion_ab-intel-nuc-g5__win-skl_f00568_ci-main-70520-ac-180509-r1-posh-on-comp-on
+          - 124.335
+      n_EU: 4
+      n_Rows: 4
+      n_Slices: 8
+      n_SubSlices: 4

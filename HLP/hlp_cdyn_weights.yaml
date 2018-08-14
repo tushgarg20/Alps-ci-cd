@@ -1,0 +1,35 @@
+!!python/object/apply:collections.OrderedDict
+- - - Gen12LP
+    - !!python/object/apply:collections.OrderedDict
+      - - - ogles_gfxbench3-0-6_ab-manhattan-1920x1080
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 99.44791666643692
+                    - - Inactive
+                      - 4.541416590215029
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 488.6666666662614
+                    - - Inactive
+                      - 52.86847634029999
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 305.25499999966866
+                    - - Inactive
+                      - 13.727528855902841
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 242.51999999965287
+                    - - Inactive
+                      - 38.74025792940937
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2224.069999999655
+                    - - Inactive
+                      - 0

@@ -1,0 +1,18 @@
+instances-arguments:
+  chosen-workloads : wl_instances.txt
+  hlpm-output : /nfs/sc/disks/sc_vpg_00682/parthsur/hlpm_output/
+  output-path: /nfs/sc/disks/sc_vpg_00682/parthsur/predictions/
+  DepthZ: 16
+  EU_IPC: 512
+  GEOM: 8
+  GTI: 8
+  HDC: 32
+  L3: 32
+  MEM: 4
+  PB: 16
+  PSD: 32
+  ROWBUS: 1
+  SAMPLER: 32
+  SBE: 1
+  TLB: 1
+  WM: 1

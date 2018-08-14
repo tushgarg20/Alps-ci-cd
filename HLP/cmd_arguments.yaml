@@ -1,0 +1,8 @@
+config_arguments:
+  Default_base_config: Gen9LP
+  Base_config: Gen12LP
+  hlpm-output: /nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/modified_hlpm_output_test/
+  ccf-file: /nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/ccf_yaml.yaml
+  chosen-workloads: chosen_wl.txt
+  target_config: Gen12HP
+  output-path: /nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_predictions/

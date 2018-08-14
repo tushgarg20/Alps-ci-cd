@@ -1,0 +1,45 @@
+#general knobs
+	run-tg:true
+	modify-tg:false
+	run-alps:false
+	run-hlpm:false
+	run-hlpm-only:false
+
+#tg profiler related stats	
+	input-path:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/tg_input_sample
+	output-path:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/tg_output_sample
+	tg-path:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/TGProf/GSim_New/GraphProf
+	cfg: tgl_gen12_1x6x16.cfg
+	
+
+#knobs related to psim timegraph modification
+	base-config:tgl_gen12_1x6x16.cfg
+	target-config:ats_gen12_8x4x16.cfg
+	target-file:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/target-arch-values.yaml
+	input-path-base:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/tg_input_sample
+	output-path-modified:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/modified_tg_input
+	
+
+#knobs related to alps
+	gsim-output-path:/nfs/sc/disks/sc_vpg_00682/ssachink/power_analysis_1/gsim_src/_output/ww25_release_weekly_8_6/
+	alps-path: /nfs/sc/disks/sc_vpg_00612/parthsur/ALPS/alps/
+	alps-output-path:/nfs/sc/disks/sc_vpg_00682/alanjaco/HLP/wl3/alps_output
+	alps-arch: tgl
+	
+#knobs related to hlpm
+	hlpm-output-path:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/modified_hlpm_output_test
+	alps-output-path-base:
+	alps-output-path-target:
+	tg-results-target:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/modified_tg_new_test
+	tg-results-base:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/tg_new_test
+	cdyn-factor-scalar:2.425
+	base-conf : tgl_gen12_1x6x16.cfg
+	target-conf: ats_gen12_8x4x16.cfg
+	
+#knobs related to hlpm only
+	hlpm-input:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/hlpm_output_test/ogles_gfxbench3-0-6_ab-manhattan-1920x1080/util_data/
+	hlpm-output:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/hlpm_output_test/ogles_gfxbench3-0-6_ab-manhattan-1920x1080/util_data/
+	idle-act-path:/nfs/sc/disks/sc_vpg_00612/alanjaco/HLP_trial/hlpm_output_test/ogles_gfxbench3-0-6_ab-manhattan-1920x1080/input_data/
+	base-cfg:tgl_gen12_1x6x16.cfg
+	target-cfg:ats_gen12_8x4x16.cfg
+	cdyn-scalar:2.0

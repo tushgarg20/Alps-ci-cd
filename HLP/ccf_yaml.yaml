@@ -1,0 +1,1027 @@
+!!python/object/apply:collections.OrderedDict
+- - - Gen12LP
+    - !!python/object/apply:collections.OrderedDict
+      - - - dx11_3dmark-v2-3-3663_ab-firestrike-gt1
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 100.12791699337848
+                    - - Inactive
+                      - 5.619790284404815
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 543.6990029710887
+                    - - Inactive
+                      - 57.51754583112277
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 334.372001263116
+                    - - Inactive
+                      - 15.13124881621777
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 258.9040442792688
+                    - - Inactive
+                      - 43.53585660895731
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2037.7736456934076
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-gt2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 87.11715225274428
+                    - - Inactive
+                      - 6.264082874512312
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 424.5773375455443
+                    - - Inactive
+                      - 67.88872035095096
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 387.3406839088544
+                    - - Inactive
+                      - 18.37222422097988
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 308.84154235936757
+                    - - Inactive
+                      - 47.88550928064678
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2340.8927312303404
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-ul-gt1
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 106.5374218748319
+                    - - Inactive
+                      - 4.703290217185483
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 676.9824999997036
+                    - - Inactive
+                      - 51.011398112748324
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 260.8630624997758
+                    - - Inactive
+                      - 13.316202771146594
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 212.54449999974642
+                    - - Inactive
+                      - 38.9144098665749
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2015.1299999997666
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark-v2-3-3663_ab-firestrike-ul-gt2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 88.11603124994842
+                    - - Inactive
+                      - 6.129469206511009
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 445.1749999999097
+                    - - Inactive
+                      - 75.61015463032189
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 384.7118749999029
+                    - - Inactive
+                      - 19.58484167273674
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 320.40799999994596
+                    - - Inactive
+                      - 50.03683244368881
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2438.459999999888
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark-v2-3-3663_ab-skydiver-gt1
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 81.98958344303499
+                    - - Inactive
+                      - 6.213087480438469
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 580.2427090262805
+                    - - Inactive
+                      - 59.777186913433766
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 360.2289068221599
+                    - - Inactive
+                      - 19.975017770940646
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 247.043754967633
+                    - - Inactive
+                      - 50.69479518049219
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2311.655002096852
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark-v2-3-3663_ab-skydiver-gt2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 105.50584392097899
+                    - - Inactive
+                      - 4.660978523404494
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 367.878002039098
+                    - - Inactive
+                      - 54.996503687410645
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 300.7985019997483
+                    - - Inactive
+                      - 15.189503485170556
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 219.3260235874909
+                    - - Inactive
+                      - 42.125936199573395
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1981.594292124495
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark11v132_ab-gt1-performance-deferred-nv-980
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 112.21025000047302
+                    - - Inactive
+                      - 4.510180578620764
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 372.5610000006883
+                    - - Inactive
+                      - 50.538347438539596
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 199.23125000100836
+                    - - Inactive
+                      - 13.34004175059087
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 158.36600000345715
+                    - - Inactive
+                      - 36.37033767696747
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1983.2766666690122
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark11v132_ab-gt2-performance-deferred-nv-980
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 108.8410642361933
+                    - - Inactive
+                      - 5.375706299907504
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 293.96311111128733
+                    - - Inactive
+                      - 58.48797878051371
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 251.61210416725254
+                    - - Inactive
+                      - 16.480561965196074
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 194.7818333334763
+                    - - Inactive
+                      - 40.32828787910755
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2162.4466666671656
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark11v132_ab-gt3-performance-deferred-nv-980
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 78.50427864560513
+                    - - Inactive
+                      - 7.007628043398716
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 319.658833333002
+                    - - Inactive
+                      - 70.22614021865176
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 437.18909374958236
+                    - - Inactive
+                      - 19.59333917689542
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 308.12249999964126
+                    - - Inactive
+                      - 50.79464622961688
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2327.22999999964
+                    - - Inactive
+                      - 0
+        - - dx11_3dmark11v132_ab-gt4-performance-deferred-nv-980
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 67.046461802031
+                    - - Inactive
+                      - 7.533766189085301
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 311.187027771944
+                    - - Inactive
+                      - 78.20067171629962
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 411.53783332330033
+                    - - Inactive
+                      - 25.909333678750475
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 288.1786666580404
+                    - - Inactive
+                      - 58.97235975598028
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2171.329999993416
+                    - - Inactive
+                      - 0
+        - - dx11_ashes-of-the-singularity_ab-acoff0-nvidia-gtx980-g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 81.91075238678437
+                    - - Inactive
+                      - 5.6334650411022125
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 589.7014305667497
+                    - - Inactive
+                      - 72.43481071542155
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 287.70469946774386
+                    - - Inactive
+                      - 21.362054236076663
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 256.0713076033088
+                    - - Inactive
+                      - 52.3323524660261
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1755.177863794416
+                    - - Inactive
+                      - 0
+        - - dx11_assassins-creed4_ab-g2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 85.14843750033943
+                    - - Inactive
+                      - 5.387361566333912
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 650.8678571426
+                    - - Inactive
+                      - 65.14871337497401
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 278.2709821426351
+                    - - Inactive
+                      - 20.84873753465124
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 242.33214285702445
+                    - - Inactive
+                      - 49.67714469654235
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2023.7499999997037
+                    - - Inactive
+                      - 0
+        - - dx11_batman-ao_ab-g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 87.2636198941245
+                    - - Inactive
+                      - 5.891058335500069
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 915.6844175831749
+                    - - Inactive
+                      - 65.61284561467886
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 357.75568874879997
+                    - - Inactive
+                      - 16.818613610197122
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 320.5590059860403
+                    - - Inactive
+                      - 47.103064588183834
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2117.3171457449203
+                    - - Inactive
+                      - 0
+        - - dx11_batman-ao_ab-g3-8x
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 57.196363095607104
+                    - - Inactive
+                      - 6.072867793849528
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 616.8277618993759
+                    - - Inactive
+                      - 102.22931199027715
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 524.0619999947065
+                    - - Inactive
+                      - 21.759157957074688
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 526.0534285687274
+                    - - Inactive
+                      - 67.83704404118798
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1876.761428568449
+                    - - Inactive
+                      - 0
+        - - dx11_battlefield1_ab-intel-nuc-long-g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 89.13876505219967
+                    - - Inactive
+                      - 5.81270007754835
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 735.3768518600258
+                    - - Inactive
+                      - 61.87404511686739
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 356.5730625092193
+                    - - Inactive
+                      - 16.078518870431942
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 280.0991667017276
+                    - - Inactive
+                      - 45.34195351773972
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2112.0644444668596
+                    - - Inactive
+                      - 0
+        - - dx11_battlefield1_ab-intel-nuc-long-g6
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 91.29440106278766
+                    - - Inactive
+                      - 5.620440673305329
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 729.8120833383815
+                    - - Inactive
+                      - 58.947145557775826
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 351.99562500936105
+                    - - Inactive
+                      - 14.654616635534591
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 278.0275001187837
+                    - - Inactive
+                      - 43.127379354746175
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2137.2800000271727
+                    - - Inactive
+                      - 0
+        - - dx11_bioshock-infinite_g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 82.93149999994202
+                    - - Inactive
+                      - 4.794684417937007
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 866.9119999998898
+                    - - Inactive
+                      - 66.18765048224216
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 432.29299999988547
+                    - - Inactive
+                      - 15.761539318696721
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 310.8079999999395
+                    - - Inactive
+                      - 47.08052065267979
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2112.6299999998687
+                    - - Inactive
+                      - 0
+        - - dx11_civilization6_ab-intel-nuc-g2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 71.202636458087
+                    - - Inactive
+                      - 6.456119826889716
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 592.5417583329637
+                    - - Inactive
+                      - 77.71090029168506
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 416.4590062496425
+                    - - Inactive
+                      - 23.851433691505207
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 318.98394999964756
+                    - - Inactive
+                      - 56.88581380319015
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2173.484999999628
+                    - - Inactive
+                      - 0
+        - - dx11_civilization6_ab-intel-nuc-g2-4x
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 79.98056770788978
+                    - - Inactive
+                      - 5.82449311776079
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 619.510916666075
+                    - - Inactive
+                      - 74.70965421935895
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 396.46299999942477
+                    - - Inactive
+                      - 21.62713675101821
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 306.0209999994238
+                    - - Inactive
+                      - 54.080775793384284
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2149.359999999396
+                    - - Inactive
+                      - 0
+        - - dx11_civilization6_ab-intel-nuc-g2-8x
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 82.58075954827203
+                    - - Inactive
+                      - 5.733499979594627
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 609.8086111108117
+                    - - Inactive
+                      - 75.24951685031209
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 397.7603124992618
+                    - - Inactive
+                      - 21.159043588012903
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 310.83624999992526
+                    - - Inactive
+                      - 53.49871937928724
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2129.423333332799
+                    - - Inactive
+                      - 0
+        - - dx11_gta5_ab-nvidia-g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 81.48073567666951
+                    - - Inactive
+                      - 6.188274962703173
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 600.5567833344301
+                    - - Inactive
+                      - 78.98600655342229
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 376.3054468745215
+                    - - Inactive
+                      - 22.2193284160324
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 313.93227500235275
+                    - - Inactive
+                      - 56.28079633032117
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1997.2875000000975
+                    - - Inactive
+                      - 0
+        - - dx11_star-wars-battlefront-2_sc-custom-wookie-g2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 95.78079427070477
+                    - - Inactive
+                      - 5.606052712392144
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 559.9343749994823
+                    - - Inactive
+                      - 66.96166039400562
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 323.0015624993685
+                    - - Inactive
+                      - 18.59243797350412
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 263.9624999995437
+                    - - Inactive
+                      - 48.727896559199564
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2073.8249999993027
+                    - - Inactive
+                      - 0
+        - - dx11_star-wars-battlefront-2_sc-custom-wookie-g6
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 99.31261718709975
+                    - - Inactive
+                      - 5.374476449557647
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 503.2156249993914
+                    - - Inactive
+                      - 59.431894585109674
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 308.072656249215
+                    - - Inactive
+                      - 14.88044776746773
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 250.61749999947511
+                    - - Inactive
+                      - 43.71183173051606
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2031.659999999195
+                    - - Inactive
+                      - 0
+        - - dx11_vrmark1-0-1227_ab-orange-default-rend-res2264x1348-intel-nuc-g2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 87.33642187458007
+                    - - Inactive
+                      - 6.005553564057134
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 377.57191666600323
+                    - - Inactive
+                      - 68.23934946317652
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 382.75756249926155
+                    - - Inactive
+                      - 20.994586077948668
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 282.95899999935324
+                    - - Inactive
+                      - 50.72224169479718
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2285.4424999992666
+                    - - Inactive
+                      - 0
+        - - dx11_war-of-warcraft-legion_ab-intel-nuc-g5
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 80.07211458294539
+                    - - Inactive
+                      - 5.719548476691555
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 673.3290833327283
+                    - - Inactive
+                      - 72.32533438319071
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 446.4920624993953
+                    - - Inactive
+                      - 16.862358309953763
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 341.4649999993945
+                    - - Inactive
+                      - 49.84253179902117
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1990.953333332689
+                    - - Inactive
+                      - 0
+        - - ogl_svp-12_ws-catia-04-05
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 10.796184895571242
+                    - - Inactive
+                      - 3.0226053047195114
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 12.341004817210399
+                    - - Inactive
+                      - 45.141666667065614
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 332.5379687503323
+                    - - Inactive
+                      - 19.687358570219914
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 177.93750002965692
+                    - - Inactive
+                      - 34.53466494465502
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2401.1750000074803
+                    - - Inactive
+                      - 0
+        - - ogl_svp-12_ws-catia-04-07
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 17.244625000539347
+                    - - Inactive
+                      - 3.568058138994297
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 14.620506214395116
+                    - - Inactive
+                      - 53.48799999814295
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 333.3856249981939
+                    - - Inactive
+                      - 30.683463126178328
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 225.75800001189162
+                    - - Inactive
+                      - 40.33035402432036
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2326.720000000016
+                    - - Inactive
+                      - 0
+        - - ogl_svp-12_ws-medical-01-05
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 59.34933333392266
+                    - - Inactive
+                      - 6.104250234520928
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 581.8153333331142
+                    - - Inactive
+                      - 58.884291115899615
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 106.71162500017418
+                    - - Inactive
+                      - 21.422249001932716
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 112.02200000061279
+                    - - Inactive
+                      - 45.43044658315712
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1580.353333333713
+                    - - Inactive
+                      - 0
+        - - ogl_unigine-valley_ab-g3
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 70.3910910414956
+                    - - Inactive
+                      - 5.467828539152668
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 1004.9481588644835
+                    - - Inactive
+                      - 52.25507531458
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 335.0559765381481
+                    - - Inactive
+                      - 12.459069772548352
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 254.16524744772568
+                    - - Inactive
+                      - 41.19651310493654
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2077.9741178278427
+                    - - Inactive
+                      - 0
+        - - ogles_daimlerhupf-29-06-2016_ab-c217-25x9-defaultp-2xaa-r2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 48.661749999062614
+                    - - Inactive
+                      - 4.281023968110949
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 76.74799999891903
+                    - - Inactive
+                      - 62.63191939773626
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 417.9379999978937
+                    - - Inactive
+                      - 24.316816584789173
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 332.50400000809543
+                    - - Inactive
+                      - 42.95082484734785
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2537.1599999993246
+                    - - Inactive
+                      - 0
+        - - ogles_gfxbench3-0-6_ab-manhattan-1920x1080
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 99.44791666643692
+                    - - Inactive
+                      - 4.541416590215029
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 488.6666666662614
+                    - - Inactive
+                      - 52.86847634029999
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 305.25499999966866
+                    - - Inactive
+                      - 13.727528855902841
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 242.51999999965287
+                    - - Inactive
+                      - 38.74025792940937
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2224.069999999655
+                    - - Inactive
+                      - 0
+        - - ogles_gfxbench4-0-gold-final_ab-car-chase-fts30-t2
+          - !!python/object/apply:collections.OrderedDict
+            - - - EU
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 73.3879974238912
+                    - - Inactive
+                      - 5.573751961441009
+              - - Sampler
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 566.3115364720703
+                    - - Inactive
+                      - 57.450838048287864
+              - - L3
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 329.12987111734066
+                    - - Inactive
+                      - 17.291848131577876
+              - - GAM
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 273.2142814772447
+                    - - Inactive
+                      - 43.61420850375504
+              - - Rest
+                - !!python/object/apply:collections.OrderedDict
+                  - - - Active
+                      - 2200.6800000549106
+                    - - Inactive
+                      - 0
