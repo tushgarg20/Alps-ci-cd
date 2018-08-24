@@ -24,6 +24,8 @@ class HLPM:
 	cw_pred = []
 	GT_active_cdyn = []
 	GT_inactive_cdyn = []
+	frame_cluster_cdyn_original = []
+	frame_cluster_cdyn_calculated = []
 	is_rest_broken = False
 
 
@@ -305,6 +307,7 @@ class HLPM:
 		for frame in frame_dict:
 			res_list = []
 			util_list = []
+			cluster_cdyn_original = []
 			N_cluster = 0
 			sum_cl_cdyn = 0.0
 			util_rest = 1.0
@@ -323,6 +326,8 @@ class HLPM:
 				#####@Find the cluster cdyn values of this frame######
 				cdyn_cluster_active = self.cdyn_clusters[N_cluster][N_frame][0]
 				cdyn_cluster_inactive = self.cdyn_clusters[N_cluster][N_frame][1]
+				cluster_cdyn_original.append(round(cdyn_cluster_active + cdyn_cluster_inactive, 2))
+				
 				sum_cl_cdyn = sum_cl_cdyn + cdyn_cluster_active + cdyn_cluster_inactive
 				#sum_cw_clusters[N_cluster][0] = sum_cw_clusters[N_cluster][0] + (cdyn_cluster_active / res_active)
 				self.sum_cw_clusters[N_cluster][0] = self.sum_cw_clusters[N_cluster][0] + (cdyn_cluster_active / N_instances)
@@ -337,6 +342,7 @@ class HLPM:
 			#####@Get the values of gtcdyn, restcdyn etc######
 			GTCdyn = frame_dict[frame]['cdyn'] * 1000
 			RESTCdyn = GTCdyn - sum_cl_cdyn
+			cluster_cdyn_original.append(round(RESTCdyn,2))
 			#rest_cdyn.append(RESTCdyn)
 			#print("%s %s: %s" % (RESTCdyn, util_rest, RESTCdyn/util_rest))
 			util_list.append(1.0)
@@ -347,6 +353,7 @@ class HLPM:
 			self.util_frames.append(util_list)
 			self.res_frames.append(res_list)
 			N_frame = N_frame + 1
+			self.frame_cluster_cdyn_original.append(cluster_cdyn_original)
 		sum_cw_rest = sum_rest
 		fgh = open(path + "/utilizations_" + cfg + ".csv", "w+")
 		wr = csv.writer(fgh)
@@ -477,7 +484,8 @@ class HLPM:
 		###@Definitions######
 		original_cdyn = []
 		calculated_cdyn = []
-		err_cdyn = []
+		err_cdyn = []	
+		
 		util_clusters_active = []
 		f1 = open(result_file, 'r')
 		frame_dict = yaml.load(f1);
@@ -485,7 +493,9 @@ class HLPM:
 		for frame in frame_dict:
 			f_sum = 0.0
 			m = 0
+			rest_cdyn = 0.0
 			original_cdyn.append(frame_dict[frame]['cdyn'] * 1000.0)
+			cluster_cdyn_calculated = []
 			for cluster in self.clusters:
 				N_inst = frame_dict[frame]['cluster_stat'][cluster]['num_instances']
 				sf = frame_dict[frame]['cluster_stat'][cluster]['scaling_factor']
@@ -499,7 +509,9 @@ class HLPM:
 
 				util_clusters_active.append(util_active)
 				print("%s: %s %s" %(cluster, cdyn_active,cdyn_inactive))
-				f_sum = f_sum + cdyn_active + cdyn_inactive
+				c_sum = cdyn_active + cdyn_inactive
+				f_sum = f_sum + c_sum
+				cluster_cdyn_calculated.append(round(c_sum,2))
 				m = m + 2
 			ssf = 1.0
 			ssf_a = 1.0
@@ -525,7 +537,8 @@ class HLPM:
 				util_inactive_rest = 1 - util_active_rest
 				rest_cdyn_active = ssf_a * self.cw_pred[m] * util_active_rest
 				rest_cdyn_inactive = ssf_i * self.cw_pred[m+1] * util_inactive_rest
-				f_sum = f_sum + rest_cdyn_active + rest_cdyn_inactive
+				rest_cdyn = rest_cdyn_active + rest_cdyn_inactive
+				f_sum = f_sum + rest_cdyn
 				print("Rest scaling factors used: ", ssf_a, ssf_i)
 				print("Computed Rest Cdyn value: ", rest_cdyn_active + rest_cdyn_inactive)
 				print("\n")
@@ -555,8 +568,11 @@ class HLPM:
 				f_sum = f_sum + rest_cdyn
 				print("Rest scaling factor used: ", ssf)
 				print("Computed Rest Cdyn value: ", rest_cdyn)
+			cluster_cdyn_calculated.append(round(rest_cdyn,2))
+			self.frame_cluster_cdyn_calculated.append(cluster_cdyn_calculated)
 			calculated_cdyn.append(f_sum)	
 			print("\n")
+		
 		print("\nOriginal Cdyn: ", original_cdyn)
 		print("\n")
 		print("Calculated Cdyn: ", calculated_cdyn)
@@ -582,6 +598,23 @@ class HLPM:
 			op_fl.write(text + "\n")
 			b = b + 1
 		op_fl.write("\n")
+		f_idx = 1
+		c_fn = op_path + "/cluster_wise_error_of_frames.txt"
+		c_file = open(c_fn, 'w')
+		
+		for i in range(len(self.frame_cluster_cdyn_original)):
+			print("frame_"+ str(f_idx))
+			c_file.write("frame" + str(f_idx) + "\n")
+			c_idx = 1
+			for j in range(len(self.frame_cluster_cdyn_original[i])):
+				e_data = "cluster_" + str(c_idx) + ": original = " + str(self.frame_cluster_cdyn_original[i][j]) + " \tcalculated  = " + str(self.frame_cluster_cdyn_calculated[i][j]) + " \t%Error: " + str(round((((self.frame_cluster_cdyn_calculated[i][j] - self.frame_cluster_cdyn_original[i][j]) / self.frame_cluster_cdyn_original[i][j])*100), 2))
+				print(e_data)
+				c_file.write(e_data + "\n")
+				c_idx = c_idx + 1
+			f_idx = f_idx + 1
+			c_file.write("\n")
+			print("############")
+		
 		####HLPM Functions ends here
 	###Function Invoker
 	def Invoke(self, ut, ib, cb, ct, sf, op_path):
@@ -1043,10 +1076,11 @@ class Data:
 						level_wl_dict[lvl] = set()
 				####to set the status to 'passed' for wls with status = 'failed' but with mismatch gold less than 10% abs.
 				elif result== 'failed':
-					error_value=error_info.replace(')','(').split('(')
-					if (len(error_value)>1):
-						if (float(error_value[1]) > -10 and float(error_value[1]) < 10):
-							data_f[row, data_f.columns.get_loc('result')]='passed'
+					if error_info.startswith("mismatch"):
+						error_value=error_info.replace(')','(').split('(')
+						if (len(error_value)>1):
+							if (float(error_value[1]) > -10 and float(error_value[1]) < 10):
+								data_f[row, data_f.columns.get_loc('result')]='passed'
 			lvl_list = list(level_wl_dict.keys())
 			lvl_index = 1
 			print("###################The list of Available Levels###################\n")

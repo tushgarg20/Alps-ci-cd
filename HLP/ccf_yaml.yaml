@@ -38,31 +38,31 @@
             - - - EU
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 87.11715225274428
+                      - 95.81842910859118
                     - - Inactive
-                      - 6.264082874512312
+                      - 6.307648940341878
               - - Sampler
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 424.5773375455443
+                      - 427.09554673541066
                     - - Inactive
-                      - 67.88872035095096
+                      - 68.29137497412798
               - - L3
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 387.3406839088544
+                      - 389.6388475695734
                     - - Inactive
-                      - 18.37222422097988
+                      - 18.481505387757185
               - - GAM
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 308.84154235936757
+                      - 310.67260741980886
                     - - Inactive
-                      - 47.88550928064678
+                      - 48.16746202481973
               - - Rest
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 2340.8927312303404
+                      - 2340.30818610518
                     - - Inactive
                       - 0
         - - dx11_3dmark-v2-3-3663_ab-firestrike-ul-gt1
@@ -966,31 +966,31 @@
             - - - EU
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 99.44791666643692
+                      - 86.33398155085446
                     - - Inactive
-                      - 4.541416590215029
+                      - 4.841753464067473
               - - Sampler
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 488.6666666662614
+                      - 466.79592645562144
                     - - Inactive
-                      - 52.86847634029999
+                      - 52.998684539661355
               - - L3
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 305.25499999966866
+                      - 378.1351393756726
                     - - Inactive
-                      - 13.727528855902841
+                      - 12.68229437389891
               - - GAM
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 242.51999999965287
+                      - 293.5977834699904
                     - - Inactive
-                      - 38.74025792940937
+                      - 36.90209386342411
               - - Rest
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 2224.069999999655
+                      - 2533.3761127804205
                     - - Inactive
                       - 0
         - - ogles_gfxbench4-0-gold-final_ab-car-chase-fts30-t2
