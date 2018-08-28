@@ -136,10 +136,10 @@ if __name__ == '__main__':
     timestr = time.strftime("%Y%m%d-%H%M%S")
     if args.out_log:
         log_d = args.out_log
-        log_directory = "./"+log_d
+        log_directory = "/"+log_d
     else:
         log_d = "out_log"
-        log_directory = "./"+log_d+"-"+timestr
+        log_directory = "/"+log_d+"-"+timestr
 
     if os.path.isdir(log_directory):
         sys.exit("Error: Log directory already exists")

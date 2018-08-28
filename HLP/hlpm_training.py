@@ -1179,13 +1179,16 @@ class Data:
 		for i in self.alps_knobs:
 			mini_dict[i] =knob_dict[i]
 		alps_path = mini_dict['alps-path']
+		alps_op_path = mini_dict['alps-output-path']
 		op_lev_wl_dict = self.copyGsimStatFiles(mini_dict)
 		self.op_lw_dict = op_lev_wl_dict
 		#####################################################################################################################################
 		
 		for lev in op_lev_wl_dict:
 			for wl in op_lev_wl_dict[lev]:
-				#run ALPS here	 
+				#run ALPS here	
+				print("level" + lev)
+				
 				a = mini_dict['alps-arch']
 				s = " -s " + mini_dict['alps-path']	
 				i = " -i " +lev.split("_nfs")[0] + wl + "tracelist"
@@ -1208,15 +1211,18 @@ class Data:
 				os.system("mkdir " +lev.split("_nfs")[0]  + wl + "/idle_active/")
 				print("\n########Generating idle_active files########\n")
 				os.system("ls "+lev.split("_nfs")[0]+wl)
-				ia_path = lev.split("_nfs")[0]+ wl + "idle_active/"
+				ia_path = "/" + lev + "/" + wl + "/idle_active/"
+				
+				
 				os.system("ls " + lev.split("_nfs")[0]+ wl + "*.yaml > "+lev.split("_nfs")[0] + wl + "/yaml_list.txt")
 				yaml_list = open( lev.split("_nfs")[0]+wl +"/yaml_list.txt", "r")
 				yaml_list = [line.split() for line in yaml_list]
 				i = 0
 				for yaml_file in yaml_list:
-					s_file = yaml_file[0]
-					s_file=s_file.split(".yaml")[0] + "/"
-					ia_cmd = "python " + alps_path + "/idle_active_cdyn.py" + " -f " + yaml_file[0] + " -o " + ia_path + s_file.split("/")[-2] + "/" 
+				
+					s_file = ((yaml_file[0]).split('/')[-1]).strip()
+					
+					ia_cmd = "python " + alps_path + "/idle_active_cdyn.py" + " -f " + yaml_file[0] + " -o " + ia_path + "/" + s_file
 					print("Executing: ")
 					os.system(ia_cmd)
 					i = i + 1
@@ -1339,7 +1345,7 @@ class Data:
 				#	sub_dict['scaling_factor'] = 1
 				else:
 					sub_dict['num_instances'] = float(num_instances)
-					sub_dict['scaling_factor'] = 1
+					sub_dict['scaling_factor'] = 1.2
 			else:
 				sub_dict['num_instances'] = float(num_instances)
 				sub_dict['scaling_factor'] = 1
