@@ -30,9 +30,9 @@
 	hlpm-output-path:/nfs/sc/disks/sc_vpg_00612/rginne/work/hlpm_output/
 	alps-output-path-base:/nfs/sc/disks/sc_vpg_00612/rginne/work/alps_output/
 	alps-output-path-target:/nfs/sc/disks/sc_vpg_00612/rginne/work/alps_output/
-	tg-results-target:/nfs/sc/disks/sc_vpg_00612/rginne/work/tg_output/firestrike
-	tg-results-base:/nfs/sc/disks/sc_vpg_00612/rginne/work/tg_output/firestrike
-	cdyn-factor-scalar:2.425
+	tg-results-target:/nfs/sc/disks/sc_vpg_00612/rginne/work/tg_output/manhattan
+	tg-results-base:/nfs/sc/disks/sc_vpg_00612/rginne/work/tg_output/manhattan
+	cdyn-factor-scalar:2.0
 	base-conf : tgl_gen12_1x6x16.cfg
 	target-conf: tgl_gen12_1x6x16.cfg
 	

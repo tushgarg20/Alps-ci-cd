@@ -4,7 +4,7 @@ from subprocess import PIPE, Popen, call
 from collections import OrderedDict
 from cvxopt import matrix, solvers
 from pathlib import Path
-import pdb
+import pdb, datetime
 
 
 class HLPM:
@@ -12,7 +12,7 @@ class HLPM:
 	##Data related to QP
 	#clusters=["EU_IPC","SAMPLER", "L3"]
 	clusters = []
-	names = ["EU", "Sampler", "L3_Bank", "L3Node", "Fabric", "GAM"]
+	names = ["EU", "Sampler", "L3_Bank", "L3Node", "Fabric"]
 	cl_cdyn = []
 	res_frames = []
 	util_frames = []
@@ -584,7 +584,8 @@ class HLPM:
 			k = k + 1
 		print("Error: ", err_cdyn)
 		####@Write to a CSV file#####
-		fn = op_path + "/comparision_" + c_b + "_" + c_t + "_" + str(s_b) + ".csv"
+		d_str2 = str(datetime.datetime.now()).replace(' ','_')
+		fn = op_path + "/comparision_" + c_b + "_" + c_t + "_" + str(s_b) + "_" + d_str2 + ".csv"
 		op_fl = open(fn, "w")
 		cw_str = "CdynFactor_Predicted"
 		for x in self.cw_pred:
@@ -599,7 +600,9 @@ class HLPM:
 			b = b + 1
 		op_fl.write("\n")
 		f_idx = 1
-		c_fn = op_path + "/cluster_wise_error_of_frames.txt"
+		d_str = str(datetime.datetime.now()).replace(' ','_')
+		
+		c_fn = op_path + "/cluster_wise_error_of_frames_" + d_str + ".txt"
 		c_file = open(c_fn, 'w')
 		
 		for i in range(len(self.frame_cluster_cdyn_original)):
@@ -1399,7 +1402,7 @@ class Data:
 		util_target = inp_path + "util_data.yaml"
 		base_cfg = mini_dict['base-cfg']
 		target_cfg = mini_dict['target-cfg']
-		clusters = ['EU_IPC', 'SAMPLER', 'L3', 'TLB']
+		clusters = ['EU_IPC', 'SAMPLER', 'L3']
 		hlpm = HLPM(clusters)
 		hlpm.Invoke(util_target, id_act_path, base_cfg, target_cfg, cfs, op_path)
 	
@@ -1638,6 +1641,7 @@ class Data:
 		for tf in range(len(self.control_block)):
 			if self.control_block[tf] == True:
 				self.call_list[tf](self.knob_dict)
+		
 	#####Constructor#####
 	def __init__(self, f):
 		self.call_list = [self.generateTG_new, self.modify_psimTGFile_new, self.runALPS_edited, self.runHLPM_new, self.execHLPM]

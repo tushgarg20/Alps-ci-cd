@@ -966,31 +966,25 @@
             - - - EU
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 86.33398155085446
+                      - 86.33398148738863
                     - - Inactive
-                      - 4.841753464067473
+                      - 4.841753417204578
               - - Sampler
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 466.79592645562144
+                      - 466.7959259365324
                     - - Inactive
-                      - 52.998684539661355
+                      - 52.9986839272209
               - - L3
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 378.1351393756726
+                      - 378.13513889865914
                     - - Inactive
-                      - 12.68229437389891
+                      - 12.682293951008836
               - - GAM
                 - !!python/object/apply:collections.OrderedDict
                   - - - Active
-                      - 293.5977834699904
-                    - - Inactive
-                      - 36.90209386342411
-              - - Rest
-                - !!python/object/apply:collections.OrderedDict
-                  - - - Active
-                      - 2533.3761127804205
+                      - 2699.188888895017
                     - - Inactive
                       - 0
         - - ogles_gfxbench4-0-gold-final_ab-car-chase-fts30-t2
