@@ -1220,8 +1220,8 @@ class Data:
 				i = 0
 				for yaml_file in yaml_list:
 				
-					s_file = ((yaml_file[0]).split('/')[-1]).strip()
-					
+					s_file = ((yaml_file[0]).split('/')[-1]).replace('.yaml','')
+					s_file = s_file.strip()
 					ia_cmd = "python " + alps_path + "/idle_active_cdyn.py" + " -f " + yaml_file[0] + " -o " + ia_path + "/" + s_file
 					print("Executing: ")
 					os.system(ia_cmd)
