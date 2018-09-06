@@ -117,7 +117,7 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
                 if cluster_list != None:
                     clust=re.split(',',cluster_list)
                     if clusters in clust:
-                        types=['syn','inf','ebb','total']
+                        types=['total']
                         for elements in types:
                             num1=cdyn_dict1['cluster_cdyn_numbers(pF)'][clusters][elements]
                             num2=cdyn_dict2['cluster_cdyn_numbers(pF)'][clusters][elements]
@@ -126,7 +126,7 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
                             
                     
             if "clusters_all" in options:
-                types=['syn','inf','ebb','total']
+                types=['total']
                 for elements in types:
                     num1=cdyn_dict1['cluster_cdyn_numbers(pF)'][clusters][elements]
                     num2=cdyn_dict2['cluster_cdyn_numbers(pF)'][clusters][elements]
@@ -204,19 +204,19 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
                                 new_num = 0.0
 
                             if (stat in cdyn_csv_dict1.keys()):
-                                wt1=round(float(cdyn_csv_dict1[stat][0]),2)
+                                wt1=(float(cdyn_csv_dict1[stat][0]))
                             else: 
                                 wt1="-"
                             if (stat in cdyn_csv_dict2.keys()):
-                                wt2=round(float(cdyn_csv_dict2[stat][0]),2)
+                                wt2=(float(cdyn_csv_dict2[stat][0]))
                             else: 
                                 wt2="-"
                             if stat in res_file_dict1.keys():
-                                res1=round(float(res_file_dict1[stat][0]),2)
+                                res1=(float(res_file_dict1[stat][0]))
                             else:
                                 res1="-"
                             if stat in res_file_dict2.keys():
-                                res2=round(float(res_file_dict2[stat][0]),2)
+                                res2=(float(res_file_dict2[stat][0]))
                             else:
                                 res2="-"
                                     
@@ -241,19 +241,19 @@ def compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_cs
                                 new_num = 0.0
                                     
                             if (sub_stat in cdyn_csv_dict1.keys()):
-                                wt1=round(float(cdyn_csv_dict1[sub_stat][0]),2)
+                                wt1=(float(cdyn_csv_dict1[sub_stat][0]))
                             else: 
                                 wt1="-"
                             if (sub_stat in cdyn_csv_dict2.keys()):
-                                wt2=round(float(cdyn_csv_dict2[sub_stat][0]),2)
+                                wt2=(float(cdyn_csv_dict2[sub_stat][0]))
                             else: 
                                 wt2="-"
                             if sub_stat in res_file_dict1.keys():
-                                res1=round(float(res_file_dict1[sub_stat][0]),2)
+                                res1=(float(res_file_dict1[sub_stat][0]))
                             else:
                                 res1="-"
                             if sub_stat in res_file_dict2.keys():
-                                res2=round(float(res_file_dict2[sub_stat][0]),2)
+                                res2=(float(res_file_dict2[sub_stat][0]))
                             else:
                                 res2="-"
 
@@ -891,12 +891,16 @@ if __name__ == '__main__':
                 for lines in wl_txt:
                     for files in os.listdir(cdyn_out_dir1):
                         if files.endswith(".yaml"):
-                            if files == lines.strip():
+                            match11=re.split('__',files)
+                            lines11=re.split('__',lines)
+                            if match11[0] == lines11[0]: #files == lines.strip():
+                                print (files)
                                 for files2 in os.listdir(cdyn_out_dir2):
-                                    wl1 = re.split('.yaml', files)
-                                    wl2 = re.split('.yaml', files2)
-                                    if files == files2:
-                                
+                                    match1 = re.split('__',files)
+                                    match2 = re.split('__',files2)
+                                    if (files2.endswith(".yaml")) and (match1[0] ==match2[0]):
+                                        wl1 = re.split('.yaml', files)
+                                        wl2 = re.split('.yaml', files2)
                                         print ("###### Workload: "+wl1[0]+"######",file=lf)
                                         print ("", file=lf)
                                         yaml_file1 = open(cdyn_out_dir1+"/"+files,'r')
@@ -918,6 +922,8 @@ if __name__ == '__main__':
                                             res_file_dict1= None
                                             res_file_dict2= None
                                         compare_cdyn_dir(cdyn_dict1,cdyn_dict2,res_file_dict1,res_file_dict2,cdyn_csv_dict1,cdyn_csv_dict2,wl1[0],lf,options,clusters,units)
+                                    else:
+                                        continue
                             else:
                                 continue
                             

@@ -4,6 +4,7 @@ GT Common Assets:
       MBGFUC: "-"
       MDRB: "-"
       SNP_FILTER: "-"
+      SMALL: "-"
   Globals:
     NA:
       NA: "-"
@@ -13,6 +14,9 @@ GT Common Assets:
   P24C:
     Other:
       GTP24C: "-"
+      SMALL: "-"
+      ClockSpine: "-"
+      WIDI: "-"
 3D Core:
   GTI:
     Others:
@@ -20,25 +24,31 @@ GT Common Assets:
         MFC: "-"
         MLINT: "-"
         MediaIdle: "-"
+        SMALL: "-"
     CGP COH:
       NA:
         NA: "-"
     BGF:
       SQIDI:
         MBGFGT: "-"
-    SQ Bank:
+    sqidicom:
       SQIDI:
         MSQC: "-"
-        MSQD: "-"
-    SQIDI:
+        MAC: "-"
+        MAD: "-"
+        MCFG: "-"
+    sqidi:
       SQIDI:
+        MSQD: "-"
+        MGSQ: "-"
         MIDI: "-"
         MISD: "-"
         MSNP: "-"
-        MAC: "-"
-        MAD: "-"
+        SMALL: "-"
   GAM/GA:
     GAM/GA 3D:
+      Other:
+        CCD: "-"
       GAM:
         GADSS: "-"
         GAMCMDI: "-"
@@ -67,13 +77,11 @@ GT Common Assets:
         GAMWC_PENDQEBB: "-"
         GAMWD: "-"
         GAMWD_WRKPDEBB: "-"
-        GAPC: "-"
-        GAPS: "-"
-        GAPZ: "-"
         GASS: "-"
         GATR: "-"
         GATRW: "-"
         MARB: "-"
+        SMALL: "-"
   Slice:
     Dual Subslice:
       Subslice:
@@ -88,18 +96,19 @@ GT Common Assets:
             EM: "-"
             GA: "-"
             GRF: "-"
+            SMALL: "-"
         Row Uniq:
           ROSS:
-            TDL: "-"
-            IC: "-"
+            MA_IN: "-"
+            MA_OUT: "-"
         3D Sampler Uniq:
           Sampler:
-            SVSM: "-"
             SI: "-"
             PL: "-"
             DG: "-"
             FL: "-"
             SO: "-"
+            SMALL_PL: "-"
       3D Subslice Common:
         SLM:
           DSSC:
@@ -110,17 +119,16 @@ GT Common Assets:
             TDL: "-"
             IC: "-"
             IC_DataRAM: "-"
-            MA_IN: "-"
-            MA_OUT: "-"
+            SMALL: "-"
         3D Sampler Shared:
           Sampler:
+            SVSM: "-"
             ST: "-"
             FT: "-"
             MT: "-"
             DM: "-"
             DM_PALRAM: "-"
             SC: "-"
-            SSLA: "-"
             MT_Cache: "-"
             SC_Cache: "-"
         Media Sampler:
@@ -133,12 +141,14 @@ GT Common Assets:
           HDC:
             HDCL1: "-"
             HDCL1_CACHE: "-"
-            HDCREQCMD1: "-"
-            HDCREQCMD2: "-"
+            HDCREQCMD: "-"
             HDCREQDATA: "-"
             HDCRET1: "-"
             HDCRET2: "-"
             HDCTLB: "-"
+            SMALL: "-"
+          DSSC:
+            GWL: "-"
         Pixel:
           DSSC:
             BC: "-"
@@ -148,7 +158,7 @@ GT Common Assets:
             PSD_Scoreboard: "-"
             DAPRSS: "-"
             DAPRSS_BypassRAM: "-"
-            GWL: "-"
+            SMALL: "-"
     L3:
       L3 Bank:
         L3_Bank:
@@ -160,17 +170,20 @@ GT Common Assets:
           LTCD_Data: "-"
           LTCD_EBB: "-"
           LTCD_Tag: "-"
+          SMALL: "-"
       L3 Node:
         L3Node:
           LNE: "-"
           LNIB: "-"
           LNIC: "-"
+          SMALL: "-"
         Fabric:
           BGF: "-"
           BGFunslice: "-"
           LSN: "-"
           LSNEP: "-"
           UnsliceRepeaters: "-"
+          SMALL: "-"
     SliceCommon:
       Color Pipe:
         COLOR:
@@ -186,6 +199,7 @@ GT Common Assets:
           RCPBE: "-"
           RCPFE: "-"
           RCPFE_Cache: "-"
+          SMALL: "-"
       Z Pipe:
         Z:
           HIZ: "-"
@@ -196,6 +210,9 @@ GT Common Assets:
           RCZ_Cache: "-"
           STC: "-"
           STC_Cache: "-"
+          SMALL: "-"
+        GAM:
+          GAPZ: "-"
     Geomean-Raster:
       GFX-Front-End:
         FF:
@@ -204,8 +221,6 @@ GT Common Assets:
           rCS: "-"
       Geom:
         FF:
-          CL: "-"
-          CS: "-"
           GS: "-"
           GS_Cache: "-"
           HPSDE: "-"
@@ -215,8 +230,6 @@ GT Common Assets:
           RS: "-"
           RS_Cache: "-"
           SDE: "-"
-          SFBE: "-"
-          SFFE: "-"
           SOL: "-"
           SOL_Cache: "-"
           SVG: "-"
@@ -234,11 +247,7 @@ GT Common Assets:
           VSFE: "-"
           VS_Cache: "-"
         rFF:
-          rCL: "-"
-          rCS: "-"
           rOV: "-"
-          rSFBE: "-"
-          rSFFE: "-"
           rSVG: "-"
           rVF: "-"
           rVFBE: "-"
@@ -254,3 +263,15 @@ GT Common Assets:
           TDC: "-"
           WMBE: "-"
           WMFE: "-"
+          SMALL: "-"
+        GAM:
+          GAPC: "-"
+          GAPS: "-"
+        FF:
+          rSFBE: "-"
+          rSFFE: "-"
+          SFBE: "-"
+          SFFE: "-"
+          CL: "-"
+        rFF:
+          rCL: "-"

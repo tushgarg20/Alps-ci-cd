@@ -7344,12 +7344,11 @@ FPU0_mad_fp16_29%,Gen12LP,A0,38.9237,syn,1,"From Praneeth WW21_2018, extrapolate
 FPU0_mad_fp16_35%,Gen12LP,A0,39.6795,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
 FPU0_mad_fp16_44%,Gen12LP,A0,40.8132,syn,1,"From Praneeth WW21_2018,  extrapolated for TR at 1% per 3% TR increase",
 FPU0_mad_fp16_57%,Gen12LP,A0,42.7027,syn,1,"From Praneeth WW21_2018,  extrapolated for TR at 1% per 3% TR increase",
-FPU0_mad_fp32_20%,Gen12LP,A0,44.68,syn,1,From Praneeth WW21_2018,
-FPU0_mad_fp32_28%,Gen12LP,A0,49.7,syn,1,From Praneeth WW21_2018,
-FPU0_mad_fp32_32%,Gen12LP,A0,50.48,syn,1,From Praneeth WW21_2018,
-FPU0_mad_fp32_46%,Gen12LP,A0,53.004,syn,1,"From Praneeth WW21_2018,  extrapolated at 1% for 3% increase in TR",
-FPU0_mad_fp32_65%,Gen12LP,A0,56.0328,syn,1,"From Praneeth WW21_2018, extrapolated at 1% for 3% increase in TR",
-FPU0_mad_fp32_85%,Gen12LP,A0,59.5664,syn,1,"From Praneeth WW21_2018,  extrapolated at 1% for 3% increase in TR",
+FPU0_mad_fp32_20%,Gen12LP,A0,49.609,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_mad_fp32_30%,Gen12LP,A0,53.254,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_mad_fp32_45%,Gen12LP,A0,58.935,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_mad_fp32_65%,Gen12LP,A0,63.065,syn,1,"From Krishna WW35_2018-PTPX numbers, extrapolated at 1% for 3% increase in TR",
+FPU0_mad_fp32_85%,Gen12LP,A0,66.5965,syn,1,"From Krishna WW35_2018-PTPX numbers,  extrapolated at 1% for 3% increase in TR",
 FPU0_mul_floatbypass_30%,Gen12LP,A0,15.75,syn,1,From Ram WW2_2018,
 FPU0_mul_floatbypass_16%,Gen12LP,A0,15,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
 FPU0_mul_floatbypass_35%,Gen12LP,A0,16.065,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
@@ -7360,12 +7359,9 @@ FPU0_mul_fp16_29%,Gen12LP,A0,31.5695,syn,1,"From Praneeth WW21_2018, Extrapolate
 FPU0_mul_fp16_35%,Gen12LP,A0,32.1825,syn,1,"From Praneeth WW21_2018, Extrapolated at the rate 1% Cdyn increase for 3% TR",
 FPU0_mul_fp16_44%,Gen12LP,A0,33.102,syn,1,"From Praneeth WW21_2018, Extrapolated at the rate 1% Cdyn increase for 3% TR",
 FPU0_mul_fp16_57%,Gen12LP,A0,34.6345,syn,1,"From Praneeth WW21_2018, Extrapolated at the rate 1% Cdyn increase for 3% TR", 
-FPU0_mul_fp32_20%,Gen12LP,A0,34.33,syn,1,From Praneeth WW21_2018,
-FPU0_mul_fp32_29%,Gen12LP,A0,37.75,syn,1,From Praneeth WW21_2018,
-FPU0_mul_fp32_31%,Gen12LP,A0,37.99,syn,1,From Praneeth WW21_2018,
-FPU0_mul_fp32_37%,Gen12LP,A0,38.28,syn,1,From Praneeth WW21_2018,
-FPU0_mul_fp32_22%,Gen12LP,A0,34.28,syn,1,From Praneeth WW21_2018,
-FPU0_mul_fp32_44%,Gen12LP,A0,39.6375,syn,1,"From Praneeth WW21_2018, extrapolated at 1% for 3% increase in TR",
+FPU0_mul_fp32_20%,Gen12LP,A0,33.941,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_mul_fp32_30%,Gen12LP,A0,36.592,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_mul_fp32_45%,Gen12LP,A0,40.118,syn,1,From Krishna WW35_2018-PTPX numbers,
 FPU0_add_floatbypass_29%,Gen12LP,A0,16.97,syn,1,From praneeth WW21 2018,
 FPU0_add_floatbypass_16%,Gen12LP,A0,16.16190476,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
 FPU0_add_floatbypass_25%,Gen12LP,A0,16.6372549,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
@@ -7378,12 +7374,10 @@ FPU0_add_fp16_31%,Gen12LP,A0,29.41,syn,1,From Praneeth WW21_2018,
 FPU0_add_fp16_21%,Gen12LP,A0,25.8,syn,1,From Praneeth WW21_2018,
 FPU0_add_fp16_44%,Gen12LP,A0,27.864,syn,1,"From Praneeth WW21_2018,  extrapolated for TR at 1% per 3% TR increase",
 FPU0_add_fp16_57%,Gen12LP,A0,28.896,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
-FPU0_add_fp32_29%,Gen12LP,A0,32.69,syn,1,From Praneeth WW21_2018,
-FPU0_add_fp32_16%,Gen12LP,A0,31.432,syn,1,From Praneeth WW21_2018,
-FPU0_add_fp32_25%,Gen12LP,A0,32.366,syn,1,From Praneeth WW21_2018,
-FPU0_add_fp32_35%,Gen12LP,A0,33.3438,syn,1,"From Praneeth WW21_2018, extrapolated at 1% for 3% increase in TR",
-FPU0_add_fp32_44%,Gen12LP,A0,34.3245,syn,1,"From Praneeth WW21_2018, extrapolated at 1% for 3% increase in TR",
-FPU0_add_fp32_57%,Gen12LP,A0,35.6321,syn,1,"From Praneeth WW21_2018,  extrapolated at 1% for 3% increase in TR",
+FPU0_add_fp32_30%,Gen12LP,A0,33.325,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_add_fp32_20%,Gen12LP,A0,27.74,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_add_fp32_45%,Gen12LP,A0,34.438,syn,1,From Krishna WW35_2018-PTPX numbers,
+FPU0_add_fp32_57%,Gen12LP,A0,35.8155,syn,1,"From Krishna WW35_2018-PTPX numbers,  extrapolated at 1% for 3% increase in TR",
 FPU0_mov_floatbypass_29%,Gen12LP,A0,11.90025,syn,1,From Ram WW2_2018,
 FPU0_mov_floatbypass_16%,Gen12LP,A0,11.42424,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
 FPU0_mov_floatbypass_25%,Gen12LP,A0,11.78124,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
@@ -7500,20 +7494,20 @@ EM_transc_fp16_4%,Gen12LP,A0,24.35,syn,118631,From Ram WW29.2017,
 EM_transc_fp32_2%,Gen12LP,A0,26.5,syn,1,From Praneeth WW21_2018,
 PS2_GA_FPU1Src_SinglePipe_34%,Gen12LP,A0,25.58,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_FPU1Src_SinglePipe_46%,Gen12LP,A0,28.58,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU2Src_SinglePipe_46%,Gen12LP,A0,33.73,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU2Src_SinglePipe_34%,Gen12LP,A0,30.73,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU3Src_SinglePipe_34%,Gen12LP,A0,35.5,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU3Src_SinglePipe_46%,Gen12LP,A0,38.5,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU2Src_SinglePipe_65%,Gen12LP,A0,38.48,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU3Src_SinglePipe_65%,Gen12LP,A0,43.25,syn,1,FSO Plite Numbers - x3r2 Based,
+PS2_GA_FPU2Src_SinglePipe_45%,Gen12LP,A0,29.020,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU2Src_SinglePipe_20%,Gen12LP,A0,24.263,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU2Src_SinglePipe_30%,Gen12LP,A0,26.18,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU3Src_SinglePipe_20%,Gen12LP,A0,25.61,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU3Src_SinglePipe_30%,Gen12LP,A0,28.663,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU3Src_SinglePipe_45%,Gen12LP,A0,34.036,syn,1,From Krishna WW35_2018-PTPX numbers,
+PS2_GA_FPU2Src_SinglePipe_65%,Gen12LP,A0,31.051,syn,1,From Krishna WW35_2018-PTPX numbers-extrapoltaed at 1% for 3% increase in TR,
+PS2_GA_FPU3Src_SinglePipe_65%,Gen12LP,A0,36.418,syn,1,From Krishna WW35_2018-PTPX numbers-extrapolated at 1% for every 3% increase in TR,
 PS2_GA_FPU1Src_SinglePipe_65%,Gen12LP,A0,33.33,syn,1,FSO Plite Numbers - x3r2 Based,
 PS0_GA,Gen12LP,A0,0.32,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_EM1Src_FPU3Src_DualPipe_29%,Gen12LP,A0,28.2,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_EM1Src_FPU2Src_DualPipe_29%,Gen12LP,A0,23,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_EM1Src_FPU1Src_DualPipe_29%,Gen12LP,A0,18.9,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_EM1Src_SinglePipe_29%,Gen12LP,A0,6,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU2Src_SinglePipe_29%,Gen12LP,A0,22.23,syn,1,FSO Plite Numbers - x3r2 Based,
-PS2_GA_FPU3Src_SinglePipe_29%,Gen12LP,A0,27,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_FPU1Src_SinglePipe_29%,Gen12LP,A0,17.08,syn,1,FSO Plite Numbers - x3r2 Based,
 PS2_GA_SRC0_Swizzle,Gen12LP,A0,4.22,syn,1,From Ram WW23_2018,
 PS2_GA_SRC1_Swizzle,Gen12LP,A0,3.06,syn,1,From Ram WW23_2018,
@@ -8445,6 +8439,27 @@ PS2_LTCD_TAG_EVICTION_1_SUBSEC,Gen12LP,A0,92.36311143,syn,801183.29,Includes RF 
 PS2_LTCD_TAG_EVICTION_2_SUBSEC,Gen12LP,A0,92.50512327,syn,801183.29,2 * PS2_LTCD_TAG_EVICTION_1_SUBSEC,New
 PS2_LTCD_TAG_WRITE_CC_128,Gen12LP,A0,70.64637007,syn,801183.29,PS2_LTCD_TAG_WRITE,New
 PS2_LTCD_TAG_Else,Gen12LP,A0,10.22485207,syn,801183.29,PS0_LTCD_TAG_CGDIS,New
+PS0_LTCD_DATA,Gen12DG,A0,0.366163921,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS0_LTCD_DATA_CGDIS,Gen12DG,A0,5.100252465,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS1_LTCD_DATA,Gen12DG,A0,1.983355424,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_DATA_EVICTION,Gen12DG,A0,35.96691401,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_DATA_READ,Gen12DG,A0,33.36444234,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_DATA_WRITE,Gen12DG,A0,37.38526223,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_URB_READ_32b,Gen12DG,A0,26.84183033,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_URB_READ_64b,Gen12DG,A0,41.00591716,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_URB_WRITE_32b,Gen12DG,A0,20.68639053,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_URB_WRITE_64b,Gen12DG,A0,37.72544379,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_URB_partial_write,Gen12DG,A0,38.81656805,syn,330253.36,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_DATA_Else,Gen12DG,A0,4.473372781,syn,330253.36,PS0_LTCD_DATA_CGDIS,New
+PS0_LTCD_TAG,Gen12DG,A0,0.125070423,syn,801183.29,FSO Plite Numbers - x3r2 Based,New
+PS0_LTCD_TAG_CGDIS,Gen12DG,A0,12.98292261,syn,801183.29,FSO Plite Numbers - x3r2 Based,New
+PS2_LTCD_TAG_READ,Gen12DG,A0,73.05161957,syn,801183.29,Includes RF CDynWeight.,New
+PS2_LTCD_TAG_WRITE,Gen12DG,A0,87.00086209,syn,801183.29,Includes RF CDynWeight.,New
+PS2_LTCD_TAG_WRITE_FILL_HIT,Gen12DG,A0,88.23433885,syn,801183.29,Includes RF CDynWeight.,New
+PS2_LTCD_TAG_EVICTION_1_SUBSEC,Gen12DG,A0,108.8248737,syn,801183.29,Includes RF CDynWeight.,New
+PS2_LTCD_TAG_EVICTION_2_SUBSEC,Gen12DG,A0,108.9877382,syn,801183.29,2 * PS2_LTCD_TAG_EVICTION_1_SUBSEC,New
+PS2_LTCD_TAG_WRITE_CC_128,Gen12DG,A0,87.00086209,syn,801183.29,PS2_LTCD_TAG_WRITE,New
+PS2_LTCD_TAG_Else,Gen12DG,A0,12.98292261,syn,801183.29,PS0_LTCD_TAG_CGDIS,New
 PS0_LTCC,Gen12LP,A0,0.085020413,syn,55169.6,FSO Plite Numbers - x3r2 Based,New
 PS0_LTCC_CGDIS,Gen12LP,A0,0.613727811,syn,55169.6,FSO Plite Numbers - x3r2 Based,New
 PS1_LTCC,Gen12LP,A0,0.091431953,syn,55169.6,FSO Plite Numbers - x3r2 Based,New

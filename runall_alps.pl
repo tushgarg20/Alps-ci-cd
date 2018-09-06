@@ -22,6 +22,7 @@ my $tgl				= '';
 my $tglhp_512			= '';
 my $tglhp_384			= '';
 my $tglhp			= '';
+my $tgldg			= '';
 
 Getopt::Long::GetOptions(
     "input|i=s"		=> \$tracelist,
@@ -39,7 +40,8 @@ Getopt::Long::GetOptions(
 	"tgl"			=> \$tgl,
 	"tglhp"			=> \$tglhp,
 	"tglhp_512"		=> \$tglhp_512,
-	"tglhp_384"		=> \$tglhp_384
+	"tglhp_384"		=> \$tglhp_384,
+	"tgldg"			=> \$tgldg
         
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -60,6 +62,8 @@ $cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
 $cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
 $cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
 $cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
+$cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;
+
 
 
 

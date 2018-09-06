@@ -78,6 +78,8 @@ else:
         filename = '%s/alps_cfg_glv.yaml' % wd
     elif options.dest_config.find('tgl') > -1:
         filename = '%s/alps_cfg_tgl.yaml' % wd
+    elif options.dest_config.find('tgldg') > -1:
+        filename = '%s/alps_cfg_tgldg.yaml' % wd
     elif options.dest_config.find('tglhp') > -1:
         filename = '%s/alps_cfg_tglhp.yaml' % wd
     elif options.dest_config.find('tgl_512') > -1:

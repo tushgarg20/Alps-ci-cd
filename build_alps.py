@@ -55,8 +55,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12HP'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12HP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12DG','Gen12HP_512','Gen12HP_384','Gen12HP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12DG','Gen12HP_512','Gen12HP_384','Gen12HP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -120,6 +120,8 @@ elif common_cfg.find('tglhp_384') > -1 :
     cfg ='Gen12HP_384'
 elif common_cfg.find('tglhp') > -1 :
     cfg ='Gen12HP'
+elif common_cfg.find('tgldg') > -1 :
+    cfg ='Gen12DG'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen12LP'
 elif common_cfg.find('tgl') > -1 :
@@ -152,7 +154,8 @@ elif common_cfg.find('tgllp') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('tgl') > -1 :
     cfg_gc = "Gen12LP"
-
+elif common_cfg.find('tgldg') > -1 :
+    cfg_gc = "Gen12LP"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
@@ -165,7 +168,7 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12HP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12DG' or cfg == 'Gen12HP'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
