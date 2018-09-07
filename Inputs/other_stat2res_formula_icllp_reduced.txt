@@ -1,0 +1,40 @@
+#Unit	GSIM residency		
+#Instance Counts	
+	num_Other_CCD	= 1		
+		num_Other_GTP24C				=		1
+		num_Other_ClockSpine			=		1
+		num_Other_WIDI					=		1
+	num_Other_Blitter	=	1
+	num_Other_Slice	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')
+	num_Other_UnSlice	=	1
+	num_Other_RC	=	num_Other_Slice - 1
+	num_Other_INFRA	=	1
+	num_Other_DELTA	=	1
+#New State for infrastructure
+        PS2_OTHER_INFRA =       1
+#New power state for approximation of power states removed by reduced model
+        PS2_OTHER_DELTA =       1
+		
+#Other	
+	PS2_CCD	= 1		
+	PS0_GTP24C_DOP 	=   0	
+	PS0_GTP24C 	=	1
+	PS2_ClockSpine 	=	1
+	PS0_WIDI_DOP 	=	1
+	PS0_WIDI 	=	0
+	PS0_Blitter	=	1
+	PS2_ClockSpine_Slice 	=	num_Other_Slice
+	PS2_ClockSpine_UnSlice 	=	num_Other_UnSlice
+	PS2_ClockSpine_RC 	=	num_Other_RC
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
