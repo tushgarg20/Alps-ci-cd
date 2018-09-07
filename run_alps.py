@@ -106,8 +106,8 @@ stat = options.output_dir + '/' + options.prefix + '.stat.gz'
 flag = os.path.isfile(stat)
 if(not flag):
     stat = options.output_dir + '/' + options.prefix + '.stat'
-res = options.output_dir + '/' + options.wl_name + '_res.csv'
-log = options.output_dir + '/' + options.wl_name + '_res_log.txt'
+res = options.output_dir + '/' + options.wl_name + '.res.csv'
+log = options.output_dir + '/' + options.wl_name + '.res.log.txt'
 yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
