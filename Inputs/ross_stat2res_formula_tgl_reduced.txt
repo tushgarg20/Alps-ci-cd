@@ -1,0 +1,298 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numSlices	=	knob.Icl.NumSlices + SUM('knob\.STK\d\.NumSlices')	
+	numSubSlices	=	knob.Icl.NumSubSlices + SUM('knob\.STK\d\.NumSlices')	
+	numROSS	=	numSlices * numSubSlices	#Change to handle assymetric configs
+
+	numEURows	=	knob.S0.SS0.NumRows #We need a global knob here to support Assymetrical Slices in future
+	isEUFusion	=	knob.S0.SS0.R0.EnableEuFusion
+	fusionFactor	=	knob.S0.SS0.R0.EuFusionFactor
+
+#	num_DSSC_BC	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uBC\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d\.uBC_\d\.NumEus')
+        num_DSSC_BC    =   num_DSSC_PSD
+        num_DSSC_PSD	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uPSD\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d+\.uPSD_\d\.NumEus')	
+        num_DSSC_PSS	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uPSS\.NumEus') +	COUNT('knob\.(STK\d+\.)?S\d+\.uPSS_\d\.NumEus')	
+        num_DSSC_PSD_Scoreboard	=	num_DSSC_PSS	
+	num_DSSC_PSD_BaryPayloadRAM	=	num_DSSC_PSS	
+	num_DSSC_DAPRSS	=	COUNT('knob\.(STK\d+\.)?S\d+\.SS\d+\.uDAPRF\.NumEus') + COUNT('knob\.(STK\d+\.)?S\d+\.uDAPRF_\d\.NumEus')
+	num_DSSC_DAPRSS_BypassRAM	=	num_DSSC_DAPRSS	
+	num_DSSC_GWL	=	num_DSSC_PSD	
+	num_DSSC_CPSS	=	num_DSSC_PSD	
+	num_DSSC_CPunit	=	num_DSSC_PSD
+	num_DSSC_Repeater	=	num_DSSC_PSD
+	num_DSSC_Assign	=	num_DSSC_PSD
+	num_DSSC_CLKGLUE	=	num_DSSC_PSD
+	num_DSSC_NONCLKGLUE	=	num_DSSC_PSD
+    num_DSSC_SMALL  =       num_DSSC_PSD
+	num_DSSC_DFX	=	num_DSSC_PSD
+	num_DSSC_DOP	=	num_DSSC_PSD
+        num_DSSC_INFRA  =   1
+
+	#num_ROSS_MA_IN	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_IN	=	(isEUFusion > 0) ? ((numEURows/fusionFactor) * numROSS ) : (numEURows * numROSS)	#MA is per row
+	#num_ROSS_MA_OUT	=	numEURows * numROSS	#MA is per row
+	num_ROSS_MA_OUT	=	(isEUFusion > 0) ? ((numEURows/fusionFactor) * numROSS ) : (numEURows * numROSS)	#MA is per row
+	num_ROSS_TDL	=	numROSS	
+	num_ROSS_IC	=	numROSS	
+	num_ROSS_IC_DataRAM	=	numROSS	
+	num_ROSS_SMALL	=	numROSS	
+	num_ROSS_CPunit	=	numROSS	
+	num_ROSS_Assign	=	numROSS	
+	num_ROSS_Repeater	=	numROSS	
+	num_ROSS_CLKGLUE	=	numROSS	
+	num_ROSS_NONCLKGLUE	=	numROSS	
+	num_ROSS_DFX	=	numROSS	
+	num_ROSS_DOP	=	numROSS
+	num_ROSS_INFRA	=	1	
+	num_ROSS_DELTA	=	1	
+#New power state for infrastructure
+        PS2_ROSS_INFRA  =       1
+        PS2_DSSC_INFRA  =       1
+#New power state for approximation of power states removed by reduced model
+        PS2_ROSS_DELTA  =       1
+#Generic				
+	 .CrClk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
+	.temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
+	 @ANY_BC@	=	(S\d+\.SS\d+\.uBC\.|S\d+\.uBC_\d\.|STK\d.S\d+\.uBC_\d\.|STK\d.S\d+\.SS\d\.uBC\.)		
+	 @ANY_PSD@	=	(S\d+\.SS\d+\.uPSD\.|S\d+\.uPSD_\d\.|STK\d.S\d+\.uPSD_\d\.|STK\d.S\d+\.SS\d\.uPSD\.)		
+	 @ANY_PSS@	=	 (S\d+\.SS\d+\.uPSS\.|S\d+\.uPSS_\d\.|STK\d.S\d+\.uPSS_\d\.|STK\d.S\d+\.SS\d\.uPSS\.)		
+	 @ANY_DAPRF@	=	(S\d+\.SS\d+\.uDAPRF\.|S\d+\.uDAPRF_\d\.|STK\d\.S\d+\.uDAPRF_\d\.|STK\d\.S\d+\.SS\d+\.uDAPRF\.)				
+	 @ANY_MA_IN@	=	(S\d+\.SS\d+\.FgMAI\d+\.MAI_F\d+\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAI\.)	
+	 @ANY_MA_OUT@	=	(S\d+\.SS\d+\.FgMAO\d+\.uMAO\d+\.|STK\d+\.S\d+\.SS\d+\.R\d+\.uMAO\.)	
+	 @ANY_TDL@	=	(S\d+\.SS\d+\.uTDL\.|STK\d+\.S\d+\.SS\d+\.uTDL\.)	
+	 @ANY_ICACHE@	=	(S\d+\.SS\d+\.uICACHE\.|STK\d+\.S\d+\.SS\d+\.uICACHE\.)	
+	 @ANY_GWC@	=	Med\.uGWC\.	
+
+
+#SLM				
+	.temp_fe_per_be	=	knob.S0.uSLM_0.BE.NumIoRows
+	num_DSSC_SLMBE	=	COUNT('knob\.S\d\.uSLM_\d\.BE\.NumIoRows')
+	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
+
+	@ANY_SLMFE@	=	S\d\.uSLM_\d\.FE_\d\.
+	@ANY_SLMBE@	=	S\d\.uSLM_\d\.BE\.
+	PS0_SLMFE	=	1 - PS1_SLMFE - PS2_SLMFE_Atomic_Read - PS2_SLMFE_Atomic_Write - PS2_SLMFE_Read - PS2_SLMFE_Write
+	PS1_SLMFE	=	D(SUM('@ANY_SLMFE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Atomic_Read	=	D(SUM('@ANY_SLMFE@SlmRdAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
+    PS2_SLMFE_Atomic_Write  =   D(SUM('@ANY_SLMFE@SlmWrAtomicRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Read  	=	D(SUM('@ANY_SLMFE@SlmRdRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS2_SLMFE_Write  	=	D(SUM('@ANY_SLMFE@SlmWrRequest')) / (.CrClk * num_DSSC_SLMFE)
+	PS0_SLMBE	=	1 - PS1_SLMBE - PS2_SLMBE_Atomic_Read - PS2_SLMBE_Atomic_Write - PS2_SLMBE_Read - PS2_SLMBE_Write
+	PS1_SLMBE	=	D(SUM('@ANY_SLMBE@.*\.stalled.CrClock')) / (.CrClk * num_DSSC_SLMBE)
+	PS2_SLMBE_Atomic_Read	=	PS2_SLMFE_Atomic_Read * .temp_fe_per_be
+	PS2_SLMBE_Atomic_Write	=	PS2_SLMFE_Atomic_Write * .temp_fe_per_be
+	PS2_SLMBE_Read  	=	PS2_SLMFE_Read   * .temp_fe_per_be
+	PS2_SLMBE_Write  	=	PS2_SLMFE_Write  * .temp_fe_per_be
+
+#BC				
+#	PS0_BC	=1- PS0_BC_DOP	-PS1_BC-PS2_BC_COMPUTE
+#	PS0_BC_DOP	=	0	#BC is not covered by 3D DOP
+	#PS1_BC	=	1 - (PS0_BC + PS0_BC_DOP + PS2_BC_COMPUTE + PS2_BC_FLOWTHROUGH)
+#	PS1_BC	=	(D(SUM('@ANY_BC@SpanInBuffer\.stalled\.CrClock')) / (numROSS * .CrClk))	
+#	PS2_BC_COMPUTE	= (D(SUM('@ANY_BC@pwr_bc_active_compute\.CrClock'))) / (numROSS * .CrClk)
+#        PS2_BC_COMPUTE	=	(D(SUM('@ANY_BC@SpanInBuffer\.pushed')) / (numROSS * .CrClk)) 	
+#	PS2_BC_FLOWTHROUGH	=	D(SUM('@ANY_BC@pwr_bc_active_flowthrough\.CrClock')) / (numROSS * .CrClk)
+	#PS2_BC_FLOWTHROUGH	=	1 - (PS0_BC + PS0_BC_DOP + PS1_BC + PS2_BC_COMPUTE)	
+	PS2_BC_BARYRAM_READ	=	0	#No GSIM model
+	PS2_BC_BARYRAM_WRITE	=	0	#No GSIM model
+
+	PS0_BC	=1- PS0_BC_DOP	-PS1_BC-PS2_BC_COMPUTE
+	PS0_BC_DOP	=	0	#BC is not covered by 3D DOP
+        PS1_BC	=	PS1_PSD
+	PS2_BC_COMPUTE	= PS2_PSD_THREADDISPATCH+PS2_PSD_WAITINGONFLUSH
+
+
+
+
+
+#PSD				
+	PS0_PSD	=	1- PS0_PSD_DOP	-PS1_PSD-PS2_PSD_THREADDISPATCH-PS2_PSD_WAITINGONFLUSH
+	PS0_PSD_DOP	=	0	#PSD is not covered by 3D DOP
+	#PS1_PSD	=	(1 - (PS0_PSD + PS0_PSD_DOP + PS2_PSD_THREADDISPATCH + PS2_PSD_NOTHREADDISPATCH + PS2_PSD_WAITINGONFLUSH))
+	PS1_PSD	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.stalled\.CrClock')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.stalled\.CrClock'))) / (2 * num_DSSC_PSD * .CrClk)	
+	#PS2_PSD_THREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveThreadDispatch\.CrClock')) / (numROSS * .CrClk)	
+	PS2_PSD_THREADDISPATCH	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.pushed')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.pushed'))) / (2 * num_DSSC_PSD * .CrClk)
+	#PS2_PSD_NOTHREADDISPATCH	=	D(SUM('@ANY_PSD@pwr_PsdActiveNoThreadDispatch\.CrClock')) / (numROSS * .CrClk)
+	#PS2_PSD_NOTHREADDISPATCH	=	(1 - (PS0_PSD + PS0_PSD_DOP + PS1_PSD + PS2_PSD_THREADDISPATCH + PS2_PSD_WAITINGONFLUSH))
+	PS2_PSD_WAITINGONFLUSH	=	D(SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+
+#PSD SCOREBOARD				
+	PS0_PSD_SCOREBOARD	=	0	
+	PS2_PSD_SCOREBOARD_READ	=	D(SUM('@ANY_PSS@pwr_PsdScoreboardRead\.CrClock')) / (num_DSSC_PSS * .CrClk)	
+	PS2_PSD_SCOREBOARD_WRITE	=	D(SUM('@ANY_PSS@pwr_PsdScoreboardWrite\.CrClock')) / (num_DSSC_PSS * .CrClk)	
+
+#PSD BARY PAYLOAD RAM				
+	PS0_PSD_BARYPAYLDASMRAM	=	0	
+	PS2_PSD_BARYPAYLDASMRAM_READ	=	D(SUM('@ANY_PSS@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) /	(num_DSSC_PSS * .CrClk)	
+	PS2_PSD_BARYPAYLDASMRAM_WRITE	=	D(SUM('@ANY_PSS@pwr_PsdBaryPayloadAssemblyRAMRead\.CrClock')) /	(num_DSSC_PSS * .CrClk)	
+
+#PSS				
+
+	PS0_PSS	=	1- PS0_PSD_DOP	-PS1_PSD-PS2_PSD_THREADDISPATCH-PS2_PSD_WAITINGONFLUSH
+	PS0_PSS_DOP	=	0	#PSD is not covered by 3D DOP
+	PS1_PSS	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.stalled\.CrClock')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.stalled\.CrClock'))) / (2 * num_DSSC_PSD * .CrClk)	
+	PS2_PSS_THREADDISPATCH	=	(D(SUM('@ANY_PSD@PhasedDispatchMsg0\.pushed')) + D(SUM('@ANY_PSD@PhasedDispatchMsg1\.pushed'))) / (2 * num_DSSC_PSD * .CrClk)
+	PS2_PSS_WAITINGONFLUSH	=	D(SUM('@ANY_PSD@pwr_PsdWaitingOnFlush\.CrClock')) / (num_DSSC_PSD * .CrClk)	
+
+
+
+
+
+#MA IN				
+	PS0_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
+	PS1_MA_IN	=	(PS0_MA_IN + PS2_MA_IN > 1) ? 0 : (1 - PS0_MA_IN - PS2_MA_IN)	
+	PS2_MA_IN	=	D(SUM('@ANY_MA_IN@pwr_MAIn_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+
+#MA OUT				
+	PS0_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Idle\.CrClock')) / (numEURows * numROSS * .CrClk)	
+	PS1_MA_OUT	=	(PS0_MA_OUT + PS2_MA_OUT > 1) ? 0 : (1 - PS0_MA_OUT - PS2_MA_OUT)	
+	#PS2_MA_OUT	=	D(SUM('@ANY_MA_OUT@pwr_MAOut_Active\.CrClock')) / (numEURows * numROSS * .CrClk)	
+	PS2_MA_OUT      =       (D(SUM('@ANY_MA_OUT@SBusPhases')) + D(SUM('@ANY_MA_OUT@OBusPhases')) - D(SUM('@ANY_MA_OUT@BothOSBus'))) / (numEURows * numROSS * .CrClk)
+
+#TDL				
+	PS0_TDL	=	D(SUM('@ANY_TDL@pwr_TDL_Idle\.CrClock')) / (numROSS * .CrClk)	
+#	PS1_TDL	=	(1 - (PS0_TDL + PS2_TDL_PSDDISPATCH + PS2_TDL_NONPSDDISPATCH))	
+	.PS1_TDL =	D(SUM('@ANY_TDL@pwr_TDL_Stalled_or_Idle\.CrClock')) / (numROSS * .CrClk)
+	.PS2_TDL =	1 - .PS1_TDL
+	PS1_TDL	=	.PS1_TDL - PS0_TDL
+	.PS2_TDL_PSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_PSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+	.PS2_TDL_NONPSDDISPATCH	=	D(SUM('@ANY_TDL@pwr_TDL_NonPSDDispatch\.CrClock')) / (numROSS * .CrClk)	
+	.PS2_TDL_DISPATCH	=	.PS2_TDL_PSDDISPATCH + .PS2_TDL_NONPSDDISPATCH
+	.PC_TDL_PSDDISPATCH	=	(.PS2_TDL_DISPATCH > 0) ? (.PS2_TDL_PSDDISPATCH / .PS2_TDL_DISPATCH) : 0
+	.PC_TDL_NONPSDDISPATCH	=	(.PS2_TDL_DISPATCH > 0) ? (.PS2_TDL_NONPSDDISPATCH / .PS2_TDL_DISPATCH) : 0
+	PS2_TDL_PSDDISPATCH	=	.PC_TDL_PSDDISPATCH * .PS2_TDL
+	PS2_TDL_NONPSDDISPATCH	=	.PC_TDL_NONPSDDISPATCH * .PS2_TDL
+
+#IC				
+	PS0_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Idle\.CrClock')) / (numROSS * .CrClk)	
+	PS1_IC	=	1 - PS0_IC - PS2_IC	
+	PS2_IC	=	D(SUM('@ANY_ICACHE@pwr_IC_Active\.CrClock')) / (numROSS * .CrClk)	
+
+#IC DATARAM				
+	PS0_IC_DATARAM	=	0	
+	.temp_PS2_IC_DATARAM_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Reads\.CrClock')) / (numROSS * .CrClk)	
+	PS2_IC_DATARAM_FRONTBUFFER_READ	=	D(SUM('@ANY_ICACHE@pwr_IC_Front_Buffer_Hits\.CrClock')) / (numROSS * .CrClk)	
+	PS2_IC_DATARAM_READ	=	.temp_PS2_IC_DATARAM_READ - PS2_IC_DATARAM_FRONTBUFFER_READ	
+	PS2_IC_DATARAM_WRITE	=	D(SUM('@ANY_ICACHE@pwr_IC_Writes\.CrClock')) / (numROSS * .CrClk)	
+				
+#DAPRSS				
+	PS0_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)) - PS0_DAPRSS_DOP	
+	PS0_DAPRSS_DOP	=	0	#DAPRSS is not covered by 3D DOP
+	PS1_DAPRSS	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_Stalled_or_Idle\.CrClock')) - D(SUM('@ANY_DAPRF@pwr_DAPRF_Idle\.CrClock'))) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_WRITEFLUSH	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_FlushMsgsFromPSD\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	#PS2_DAPRSS_RENDERTARGETWRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_RTW_ALPHA_2PPC   =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk) #equally splitting the Render Traget write residencies to all 6 states.
+    PS2_DAPRSS_RTW_ALPHA_4PPC   =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_RTW_NOALPHA_2PPC =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_RTW_NOALPHA_4PPC =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_RTW_Z_ALPHA_2PPC =   D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_RTW_Z_NOALPHA_2PPC   = D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (6 * num_DSSC_DAPRSS * .CrClk)  
+
+#Combined state for all the DAPRSS states - Santosh 05/3/2018
+
+    PS2_DAPRSS_RTW  = D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetWrite\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)  
+
+	PS2_DAPRSS_CLEARRESOLVE	=	(D(SUM('@ANY_DAPRF@pwr_DAPRF_RTResolveMsgs\.CrClock')) + D(SUM('@ANY_DAPRF@pwr_DAPRF_RTFastClear\.CrClock')))/ (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_RENDERTARGETREAD	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_RenderTargetRead\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_ELSE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_BypassMsgs\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)
+    PS2_DAPRSS_REPCOL_2PPC  =   0
+    PS2_DAPRSS_REPCOL_4PPC  =   0
+	
+
+#DAPRSS BYPASS RAM				
+	PS0_DAPRSS_BYPASSRAM	=	0	#ROSS units are not covered by 3D DOP
+	PS2_DAPRSS_BYPASSRAM_READ	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamRd\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+	PS2_DAPRSS_BYPASSRAM_WRITE	=	D(SUM('@ANY_DAPRF@pwr_DAPRF_HDRBypassRamWr\.CrClock')) / (num_DSSC_DAPRSS * .CrClk)	
+
+#GWL				
+	PS0_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Idle\.CrClock')) / (.CrClk)	#GWC is 1 in count
+	PS1_GWL	=	1 - PS0_GWL - PS2_GWL	
+	PS2_GWL	=	D(SUM('@ANY_GWC@pwr_GWC_Active\.CrClock')) / (.CrClk)	#GWC is 1 in count
+				
+	.temp_ross_avg	=	AVG(PS0_MA_IN, PS0_MA_OUT, PS0_TDL, PS0_IC)	
+	.temp_dssc_avg	=	AVG(PS0_BC, PS0_PSD, PS0_DAPRSS, PS0_GWL)	
+
+#Small				
+	PS0_ROSS_SMALL_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS0_ROSS_SMALL	=	AVG( PS0_TDL, PS0_IC)
+	PS1_ROSS_SMALL	=	AVG( PS1_TDL, PS1_IC)
+	PS2_ROSS_SMALL	=	1 - PS0_ROSS_SMALL - PS0_ROSS_SMALL_DOP -PS1_ROSS_SMALL	
+	
+	PS0_DSSC_SMALL_DOP	=	0	
+	PS0_DSSC_SMALL	=	AVG(PS0_SBE_FETCH,PS0_SBE_CALC,PS0_SBE_OTHER,PS0_SBE_REPLAY, PS0_PSD)
+	PS1_DSSC_SMALL	=	AVG(PS1_SBE_FETCH,PS1_SBE_CALC,PS1_SBE_OTHER,PS1_SBE_REPLAY, PS1_PSD)
+	PS2_DSSC_SMALL	=	1 - PS0_DSSC_SMALL -	PS0_DSSC_SMALL_DOP - PS1_DSSC_SMALL
+
+			
+#CPunit				
+	PS0_ROSS_CPunit_DOP	=	0	
+	PS0_ROSS_CPunit	=	.temp_ross_avg
+	PS2_ROSS_CPunit	=	1 - PS0_ROSS_CPunit - PS0_ROSS_CPunit_DOP	
+				
+	PS0_DSSC_CPunit_DOP	=	0	
+	PS0_DSSC_CPunit	=	.temp_dssc_avg
+	PS2_DSSC_CPunit	=	1 - PS0_DSSC_CPunit - PS0_DSSC_CPunit_DOP	
+				
+#Assign				
+	PS0_ROSS_Assign_DOP	=	0	
+	PS0_ROSS_Assign	=	.temp_ross_avg
+	PS2_ROSS_Assign	=	1 - PS0_ROSS_Assign - PS0_ROSS_Assign_DOP	
+				
+	PS0_DSSC_Assign_DOP	=	0	
+	PS0_DSSC_Assign	=	.temp_dssc_avg
+	PS2_DSSC_Assign	=	1 - PS0_DSSC_Assign - PS0_DSSC_Assign_DOP	
+				
+#Repeater				
+	PS0_ROSS_Repeater_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS0_ROSS_Repeater	=	AVG( PS0_TDL, PS0_IC)
+	PS1_ROSS_Repeater	=	AVG( PS1_TDL, PS1_IC)
+	PS2_ROSS_Repeater	=	1 - PS0_ROSS_Repeater - PS0_ROSS_Repeater_DOP -PS1_ROSS_Repeater	
+			
+	PS0_DSSC_Repeater_DOP	=	0	
+	PS0_DSSC_Repeater	=	AVG(PS0_BC, PS0_PSD, PS0_DAPRSS, PS0_GWL)
+	PS1_DSSC_Repeater	=	AVG(PS1_BC, PS1_PSD, PS1_DAPRSS, PS1_GWL)
+	PS2_DSSC_Repeater	=	1 - PS0_DSSC_Repeater -	PS0_DSSC_Repeater_DOP - PS1_DSSC_Repeater
+				
+#CLKGLUE				
+	PS0_ROSS_CLKGLUE_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS0_ROSS_CLKGLUE	=	.temp_ross_avg
+	PS2_ROSS_CLKGLUE	=	1 - PS0_ROSS_CLKGLUE - PS0_ROSS_CLKGLUE_DOP
+				
+	PS0_DSSC_CLKGLUE_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS0_DSSC_CLKGLUE	=	.temp_dssc_avg
+	PS2_DSSC_CLKGLUE	=	1 - PS0_DSSC_CLKGLUE - PS0_DSSC_CLKGLUE_DOP
+				
+#NONCLKGLUE				
+        PS0_ROSS_NONCLKGLUE_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS0_ROSS_NONCLKGLUE	=	AVG( PS0_TDL, PS0_IC)
+	PS1_ROSS_NONCLKGLUE	=	AVG( PS1_TDL, PS1_IC)
+	PS2_ROSS_NONCLKGLUE	=	1 - PS0_ROSS_NONCLKGLUE - PS0_ROSS_NONCLKGLUE_DOP -PS1_ROSS_NONCLKGLUE	
+	PS0_DSSC_NONCLKGLUE_DOP	=	0	
+	PS0_DSSC_NONCLKGLUE	=	AVG(PS0_BC, PS0_PSD, PS0_DAPRSS, PS0_GWL)
+	PS1_DSSC_NONCLKGLUE	=	AVG(PS1_BC, PS1_PSD, PS1_DAPRSS, PS1_GWL)
+	PS2_DSSC_NONCLKGLUE	=	1 - PS0_DSSC_NONCLKGLUE -	PS0_DSSC_NONCLKGLUE_DOP - PS1_DSSC_NONCLKGLUE		
+#Dfx				
+	PS0_ROSS_DFX_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS0_ROSS_DFX	=	.temp_ross_avg
+	PS2_ROSS_DFX	=	1 - PS0_ROSS_DFX - PS0_ROSS_DFX_DOP
+				
+	PS0_DSSC_DFX_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS0_DSSC_DFX	=	.temp_dssc_avg
+	PS2_DSSC_DFX	=	1 - PS0_DSSC_DFX - PS0_DSSC_DFX_DOP
+				
+#DOP				
+	PS0_ROSS_DOP	=	0	#ROSS units are not covered by 3D DOP
+	PS2_ROSS_DOP	=	1 - PS0_ROSS_DOP	
+				
+	PS0_DSSC_DOP	=	0	#DSSC units are not covered by 3D DOP
+	PS2_DSSC_DOP	=	1 - PS0_DSSC_DOP	
+				
+#CPSS				
+	PS0_CPSS	=	1
+    PS1_CPSS    =   0
+    PS2_CPSS_CPSdisstr  =   0
+    PS2_CPSS_CPSenDap   =   0
+    PS2_CPSS_CPSenPullstr   =   0
+    PS2_CPSS_CPSenstr   =   0	
+
