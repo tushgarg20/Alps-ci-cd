@@ -74,24 +74,32 @@ EU:
   FPU0:
      PS1_EU_FPU0: R * C
      PS2_EU_FPU0:
-      FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
-      FPU0_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mac_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
-      FPU0_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mul_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_add_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
-      FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_sel_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mac_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
-      FPU0_add_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
-      FPU0_mov_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_add_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_add_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      #FPU0_mov_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU_mov_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mul_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_add_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_DP4A_exec: R[PS2_EU_FPU0] * R * C 
-      FPU0_mad_mul_sw: R[PS2_EU_FPU0] * R * C 
-      FPU0_mad_add_sw: R[PS2_EU_FPU0] * R * C 
-      FPU0_dtype_sw: R[PS2_EU_FPU0] * R * C 
+      FPU0_mad_mul_sw: R * C 
+      FPU0_mad_add_sw: R * C 
+      FPU0_dtype_sw: R * C 
       FPU0_raw_mov: R[PS2_EU_FPU0] * R * C 
   EM:
       EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
@@ -124,48 +132,53 @@ L3_Bank:
     PS2_L3_BANK_INFRA: R * C
    DELTA:
     PS2_L3_BANK_DELTA: R * C
-   LTCD_EBB:
-    PS2_LTCD_EBB:
-     PS2_LTCD_EBB_Read: R * C
+   #LTCD_EBB:
+   #PS2_LTCD_EBB:
+     #PS2_LTCD_EBB_Read: R * C
      #PS2_LTCD_EBB_Write: R * C
-     PS2_LTCD_LBI_WRITE: R * C
+     #PS2_LTCD_LBI_WRITE: R * C
    LTCD_Data:
     PS2_LTCD_Data:
-     PS2_LTCD_DATA_READ: R * C
-     PS2_LTCD_DATA_WRITE: R * C
+     #PS2_LTCD_DATA_READ: R * C
+     #PS2_LTCD_DATA_WRITE: R * C
+     PS2_LTCD_READ: R * C
+     PS2_LTCD_WRITE: R * C
      #PS2_LTCD_DATA_EVICTION: R * C
-     PS2_LTCD_DATA_EVICT_CC_128_128B_FILL: R * C
+     #PS2_LTCD_DATA_EVICT_CC_128_128B_FILL: R * C
      #PS2_LTCD_DATA_EVICT_CC_128_64B_FILL: R * C
-     PS2_LTCD_URB_READ_32b: R * C
-     PS2_LTCD_URB_READ_64b: R * C
-     PS2_LTCD_URB_WRITE_32b: R * C
-     PS2_LTCD_DATA_TAG_EVICTION: R * C
+     #PS2_LTCD_URB_READ_32b: R * C
+     #PS2_LTCD_URB_READ_64b: R * C
+     #PS2_LTCD_URB_WRITE_32b: R * C
+     PS2_LTCD_URB_READ: R * C
+     PS2_LTCD_URB_WRITE: R * C
+     #PS2_LTCD_DATA_TAG_EVICTION: R * C
    LTCD_Tag:
     PS2_LTCD_Tag: 
      PS2_LTCD_TAG_READ: R * C
-     PS2_LTCD_TAG_WRITE: R * C
-     PS2_LTCD_TAG_WRITE_FILL_HIT: R * C
+     PS2_LTCD_TAG_WRITE_AND_FILL: R * C
+     #PS2_LTCD_TAG_WRITE_FILL_HIT: R * C
      #PS2_LTCD_TAG_EVICTION_1_SUBSEC: R * C
-     PS2_LTCD_TAG_EVICTION_2_SUBSEC: R * C
-     PS2_LTCD_TAG_WRITE_CC_128: R * C
-     PS2_LTCD_TAG_Else: R * C
+     #PS2_LTCD_TAG_EVICTION_2_SUBSEC: R * C
+     #PS2_LTCD_TAG_WRITE_CC_128: R * C
+     #PS2_LTCD_TAG_Else: R * C
    LSQD:
     #PS0_LSQD: R * C
     PS2_LSQD:
-     PS2_LSQD_WRITE: R * C
-     PS2_LSQD_READ_RF: R * C
-     PS2_LSQD_LNE_HIT_DATA_RETURN: R * C
+     PS2_LSQD: R * C
+     #PS2_LSQD_WRITE: R * C
+     #PS2_LSQD_READ_RF: R * C
+     #PS2_LSQD_LNE_HIT_DATA_RETURN: R * C
    LSQC:
     #PS0_LSQC: R * C
     PS2_LSQC: R * LINEST[C,R[LSQC_activeslots_per_clock]]
-   LTCC:
-    PS2_LTCC:
-     PS2_LTCC_LKUP: R * C
-   LBI:
-    PS2_LBI:
+   #LTCC:
+    #PS2_LTCC:
+     #PS2_LTCC_LKUP: R * C
+   #LBI:
+    #PS2_LBI:
      #PS2_LBI_BANK_WRITE : R * C
-     PS2_LBI_BANK_WRITE_URB: R * C
-     PS2_LBI_Else: R * C
+     #PS2_LBI_BANK_WRITE_URB: R * C
+     #PS2_LBI_Else: R * C
 L3Node:
    INFRA:
     PS2_L3NODE_INFRA: R * C
