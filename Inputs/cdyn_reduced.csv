@@ -8785,3 +8785,42 @@ PS2_LSN_LNE_MEMFILL,Gen12LP,A0,129.15835,syn,377233.54,Combination of three PS2_
 PS2_LSQD_LTCD_WRITE,Gen12LP,A0,92.14358,syn,193583.89,Combination of PS2_LSQD_WRITE and PS2_LTCD_TAG_WRITE, as both map to the same HW signal,
 PS2_LTCD_DATA_TAG_EVICTION,Gen12LP,A0,256.40094,syn,288425.04,Combination of three LTCD EVICTION power states, all three map to the same HW signal,
 PS2_LTCD_LBI_WRITE,Gen12LP,A0,141.8369612,ebb,93232.35,Combination of PS2_LTCD_EBB_WRITE and PS2_LBI_BANK_WRITE, both map to same HW signal,
+FPU_mad_fp32_20%,Gen12LP,A0,49.609,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp32_30%,Gen12LP,A0,53.254,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp32_45%,Gen12LP,A0,58.935,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp32_65%,Gen12LP,A0,63.065,syn,1,Combination of mad_fp16 and sad_fp16 states, extrapolated at 1% for 3% increase in TR",
+FPU_mad_fp32_85%,Gen12LP,A0,66.5965,syn,1,Combination of mad_fp16 and sad_fp16 states, extrapolated at 1% for 3% increase in TR",
+FPU_mad_fp16_19%,Gen12LP,A0,37.79,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp16_29%,Gen12LP,A0,38.9237,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp16_35%,Gen12LP,A0,39.6795,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp16_44%,Gen12LP,A0,40.8132,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mad_fp16_57%,Gen12LP,A0,42.7027,syn,1,Combination of mad_fp16 and sad_fp16 states,
+FPU_mul_fp16_19%,Gen12LP,A0,30.65,syn,1,Combination of mul_fp16 and add_fp16,
+FPU_mul_fp16_29%,Gen12LP,A0,31.5695,syn,1,Combination of mul_fp16 and add_fp16,
+FPU_mul_fp16_35%,Gen12LP,A0,32.1825,syn,1,Combination of mul_fp16 and add_fp16,
+FPU_mul_fp16_44%,Gen12LP,A0,33.102,syn,1,Combination of mul_fp16 and add_fp16,
+FPU_mul_fp16_57%,Gen12LP,A0,34.6345,syn,1,Combination of mul_fp16 and add_fp16, 
+FPU_mov_fp32_20%,Gen12LP,A0,10.63,syn,1,Combination of mov_fp32 and mov_fp16, 
+FPU_mov_fp32_29%,Gen12LP,A0,11.77,syn,1,Combination of mov_fp32 and mov_fp16,,
+FPU_mov_fp32_31%,Gen12LP,A0,12.5,syn,1,Combination of mov_fp32 and mov_fp16,,
+FPU_mov_fp32_37%,Gen12LP,A0,12.75,syn,1,Combination of mov_fp32 and mov_fp16,,
+FPU_mov_fp32_44%,Gen12LP,A0,13.1325,syn,1,Combination of mov_fp32 and mov_fp16,
+FPU_add_int32_11%,Gen12LP,A0,38.4519,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_add_int32_16%,Gen12LP,A0,38.825,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_add_int32_24%,Gen12LP,A0,39.99,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_add_int32_35%,Gen12LP,A0,48.11,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_add_int32_43%,Gen12LP,A0,53.8,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_add_int32_50%,Gen12LP,A0,58.78,syn,1,Combination of add_int32, sel_int32, sel_int16, add_int16, add_intbypass, mad_intbypass,
+FPU_mov_int32_24%,Gen12LP,A0,11.06,syn,1,Combination of mov_int32, mov_int16, sel_int32, sel_int16,and sel_intbypass
+FPU_mov_int32_35%,Gen12LP,A0,12.64,syn,1,From Praneeth WW21_2018,
+FPU_mov_int32_42%,Gen12LP,A0,13.76,syn,1,From Praneeth WW21_2018,
+FPU_mov_int32_50%,Gen12LP,A0,14.94,syn,1,From Praneeth WW21_2018,
+FPU_mov_int32_32%,Gen12LP,A0,12.14,syn,1,From Praneeth WW21_2018,
+FPU_fp64_20%,Gen12LP,A0,30.35,syn,1,Approximated Cdyn weight for all fp64 instructions,
+FPU_int64_25%,Gen12LP,A0,15.33,syn,1,Approximated Cdyn weight for mov_int64, add_int64, amd sel_int64,
+PS2_LSQD,Gen12LP,A0,25.07573964,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model
+PS2_LTCD_READ,Gen12LP,A0,117.372122,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model
+PS2_LTCD_WRITE,Gen12LP,A0,176.04583,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model
+PS2_LTCD_URB_READ,Gen12LP,A0,81.8119,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model
+PS2_LTCD_URB_WRITE,Gen12LP,A0,119.25527,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model
+PS2_LTCD_TAG_WRITE_AND_FILL,Gen12LP,A0,142.47617,syn,230658,FSO Plite Numbers - x3r2 Based,Reduced Model

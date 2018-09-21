@@ -192,3 +192,13 @@
         PS2_LTCD_DATA_TAG_EVICTION = PS2_LTCD_DATA_EVICTION
         #PS2_LTCD_EBB_WRITE and PS2_LBI_BANK_WRITE map to the same HW signal
         PS2_LTCD_LBI_WRITE         = PS2_LBI_BANK_WRITE
+
+# Combined States as per Reduced Model - ww38 0.5 Release, Santosh 
+# In each of these cases, using only one of the stats, as all have the same
+residency
+        PS2_LTCD_READ =  PS2_LTCD_DATA_READ 
+        PS2_LTCD_WRITE = PS2_LTCD_DATA_WRITE 
+        PS2_LTCD_URB_READ = PS2_LBI_BANK_READ_URB 
+        PS2_LTCD_URB_WRITE = PS2_LBI_BANK_WRITE_URB
+        PS2_LTCD_TAG_WRITE_AND_FILL = PS2_LTCD_TAG_WRITE_FILL_HIT + PS2_LTCD_TAG_WRITE
+        PS2_LSQD = PS2_LSQD_LNE_HIT_DATA_RETURN + PS2_LSQD_WRITE + PS2_LSQD_READ_RF

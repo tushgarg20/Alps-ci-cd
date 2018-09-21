@@ -122,7 +122,7 @@
     PS2_FL_else                                       =  D(SUM('@ANY_SAMPLER@pwr_fl_else@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
 
 #seemed to be extra states
-    PS2_FL_Trilinear_no_data_dep_bypass               =  D(SUM('@ANY_SAMPLER@pwr_fl_msg_Trilinear@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
+    #PS2_FL_Trilinear_no_data_dep_bypass               =  D(SUM('@ANY_SAMPLER@pwr_fl_msg_Trilinear@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
     PS2_FL_Nearest_no_data_dep_bypass                 =  D(SUM('@ANY_SAMPLER@pwr_fl_msg_Nearest@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
     PS2_FL_LinearAnisotropic_no_data_dep_bypass       =  D(SUM('@ANY_SAMPLER@pwr_fl_msg_LinearAnisotropic@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
     PS2_FL_NonLinearAnisotropic_no_data_dep_bypass    =  D(SUM('@ANY_SAMPLER@pwr_fl_msg_NonLinearAnisotropic@ANY_DS@\.CrClock')) / (numSamplerComputePaths * .CrClk)
@@ -481,11 +481,11 @@
 
 # Combined states for Sampler - as per the Reduced Model
        PS2_FL_Bilinear_no_data_dep_bypass = PS2_FL_Bilinear_NoUnorm_no_data_dep_bypass + PS2_FL_Bilinear_Unorm_Alpha_no_data_dep_bypass + PS2_FL_Bilinear_Unorm_NoAlpha_no_data_dep_bypass
-       PS2_FL_Bilinear_data_dep_bypass    = PS2_FL_Bilinear_NoUnorm_data_dep_bypass + PS2_FL_Bilinear_Unorm_Alpha_data_dep_bypass + PS2_FL_Bilinear_Unorm_NoAlpha_data_dep_bypass 
+       PS2_FL_Bilinear_data_dep_bypass    = PS2_FL_Bilinear_NoUnorm_data_dep_bypass + PS2_FL_Bilinear_Unorm_Alpha_data_dep_bypass + PS2_FL_Bilinear_Unorm_NoAlpha_data_dep_bypass
        PS2_FL_Trilinear_no_data_dep_bypass = PS2_FL_Trilinear + PS2_FL_Trilinear_Eff_no_data_dep_bypass
        PS2_FL_Trilinear_data_dep_bypass  = PS2_FL_Trilinear_Eff_data_dep_bypass
        PS2_FL_FastAniso_no_data_dep_bypass = PS2_FL_Aniso + PS2_FL_FastAniso_2W_no_data_dep_bypass
        PS2_FL_FastBilinear_FastLinear_data_dep_bypass = PS2_FL_FastBilinear_data_dep_bypass + PS2_FL_FastLinear_data_dep_bypass
        PS2_FL_FastLinear_no_data_dep_bypass = PS2_FL_FastBilinear_no_data_dep_bypass + PS2_FL_FastLinear_no_data_dep_bypass
        PS2_FL_FastAniso_data_dep_bypass = PS2_FL_FastAniso_gt2W_data_dep_bypass + PS2_FL_FastAniso_2W_data_dep_bypass
-       PS2_PL_SMALL_PL  = PS2_SMALL_PL_LOD + PS2_SMALL_PL_NOLOD 
+       PS2_PL_SMALL_PL  = PS2_SMALL_PL_LOD + PS2_SMALL_PL_NOLOD
