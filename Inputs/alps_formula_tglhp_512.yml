@@ -205,8 +205,6 @@ EU:
   EM:
       EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
       EM_transc_int32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
-  ExtraPipe:
-      ExtraPipe_DPAS: R * C
   GA:
     PS0_GA: R * C
     PS1_GA: R * C
@@ -232,7 +230,7 @@ EU:
       PS2_GA_SRC1_Scalar: R * C
       PS2_GA_SRC2_Swizzle: R * C
       PS2_GA_SRC2_Scalar: R * C
-      PS2_GA_ExtraPipe: R * C
+
   DOP:
     PS0_EU_DOP: R * C
     PS1_EU_DOP: R * C
@@ -1997,6 +1995,10 @@ FF:
     PS0_FF_OTHER_DFX: R * C
     PS2_FF_OTHER_DFX: R * C
 Other:
+   NODE:
+    PS2_NODE: R*C
+   URB:
+    PS2_URB: R*C
    CCD:
     PS2_CCD: R*C
    GTP24C:

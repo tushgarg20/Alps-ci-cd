@@ -21,7 +21,7 @@ PE#Unit	GSIM residency			Comments
 	num_EU_TCGA	=	numEUs	
 	num_EU_Pipelines	=	numEUs	
 	num_EU_Accumulator	=	numEUs			
-				
+	num_EU_ExtraPipe = numEUs			
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 @ANY_EU@	=	(S\d+\.SS\d+\.FG\d+\.uEuCompute_\d+\.)	
@@ -105,6 +105,7 @@ PE#Unit	GSIM residency			Comments
 	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop|csel)	#club sel with mov - add control flow separately
 	 @TRANS@	=	(math)	#Transcendentals
          @DP4A@         =       (dp4a)  #Dp4 instructions
+         @DPAS@         =       (dpas|dpasw)  #Dp4 instructions
 	.avg_EMSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_EMSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
@@ -364,6 +365,11 @@ PE#Unit	GSIM residency			Comments
 #DP4a instruction modeling
        FPU0_DP4A_bypass =  (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.masked')) / (FPU_total_count)) : 0
        FPU0_DP4A_exec =   (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.exec')) / (FPU_total_count)) : 0 # Divide by num of SIMD channels x No. of DP4A operations
+
+#ExtraPipe
+#DP4AS instruction modeling
+       ExtraPipe_DPAS = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.(sf|d).\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
+       
   
 #GA				
 	PS0_GA	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	
@@ -387,6 +393,8 @@ PE#Unit	GSIM residency			Comments
 
        #Temporary variable for DualPipe GA residencies
         .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
+       #Model approximation for GA contribution to ExtraPipe
+       PS2_GA_ExtraPipe = ExtraPipe_DPAS
 				
 #TC				
         PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks

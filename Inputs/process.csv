@@ -76,35 +76,32 @@ Gen9LPClient,Gen12LP,0.6077,0.6077,Including Star RC bug factor of 1.03
 Gen9LPSoC,Gen12LP,0.660970516,0.680799633,Including Star RC bug factor of 1.03
 Gen12LP,Gen12LP,1,1,
 Gen11LP,Gen11,1,1,
-Gen9LPClient,Gen12HP_512,0.6077,0.6077,
-Gen9LPSoC,Gen12HP_512,0.660970516,0.680799633,
-Gen11,Gen12HP_512,1,1,
-Gen10LP,Gen12HP_512,0.9991,0.9991,
-Gen11LP,Gen12HP_512,1,1,
-Gen12LP,Gen12HP_512,1,1,
-Gen12DG,Gen12HP_512,1,1,
-Gen12HP_512,Gen12HP_512,1,1,
-Gen9LPClient,Gen12HP_384,0.6077,0.6077,
-Gen9LPSoC,Gen12HP_384,0.660970516,0.680799633,
-Gen11,Gen12HP_384,1,1,
-Gen10LP,Gen12HP_384,0.9991,0.9991,
-Gen11LP,Gen12HP_384,1,1,
-Gen12LP,Gen12HP_384,1,1,
-Gen12DG,Gen12HP_384,1,1,
-Gen12HP,Gen12HP_384,1,1,
-Gen12HP_384,Gen12HP_384,1,1,
+Gen9LPClient,Gen12HP_512,0.67600548,0.67600548,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen9LPSoC,Gen12HP_512,0.735263602,0.757321512,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen11,Gen12HP_512,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen10LP,Gen12HP_512,1.11139884,1.11139884,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen11LP,Gen12HP_512,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen12LP,Gen12HP_512,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen12DG,Gen12HP_512,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen9LPClient,Gen12HP_384,0.67600548,0.67600548,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen9LPSoC,Gen12HP_384,0.735263602,0.757321512,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen11,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen10LP,Gen12HP_384,1.11139884,1.11139884,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen11LP,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen12LP,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
+Gen12DG,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
 Gen10LP,Gen12HP,0.9991,0.9991,Including Star RC bug factor of 1.03
 Gen11,Gen12HP,1,1,
 Gen11LP,Gen12HP,1,1,
 Gen9LPClient,Gen12HP,0.6077,0.6077,Including Star RC bug factor of 1.03
 Gen9LPSoC,Gen12HP,0.660970516,0.680799633,Including Star RC bug factor of 1.03
-Gen12LP,Gen12HP,1,1,
+Gen12LP,Gen12HP,1.08,1.08,To account for PV_Push
 Gen12DG,Gen12HP,1,1,
 Gen12HP,Gen12HP,1,1,
-Gen10LP,Gen12DG,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen12DG,1,1,
-Gen11LP,Gen12DG,1,1,
-Gen9LPClient,Gen12DG,0.6077,0.6077,Including Star RC bug factor of 1.03
-Gen9LPSoC,Gen12DG,0.660970516,0.680799633,Including Star RC bug factor of 1.03
-Gen12LP,Gen12DG,1,1,
-Gen12DG,Gen12DG,1,1,
+Gen10LP,Gen12DG,1.0700361,1.0700361,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen11,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen11LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen9LPClient,Gen12DG,0.6508467,0.6508467,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen9LPSoC,Gen12DG,0.707899423,0.729136407,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen12LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen12DG,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)

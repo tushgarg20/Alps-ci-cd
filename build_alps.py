@@ -55,8 +55,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12DG','Gen12HP_512','Gen12HP_384','Gen12HP'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12DG','Gen12HP_512','Gen12HP_384','Gen12HP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP']
                        };
 
 new_gc = {}         ##Gate Count
@@ -418,6 +418,7 @@ def eval_linest(key_tuple,cluster,unit):
     linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
     linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
     temp = 0
+    print (cluster, unit)
     temp = (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]
     if (options.dump_ecw):
         print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=eff_wf)

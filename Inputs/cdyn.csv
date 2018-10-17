@@ -7485,9 +7485,9 @@ FPU0_sel_int32_15%,Gen12LP,A0,50.02,syn,1,From Praneeth WW21_2018,
 FPU0_sel_int32_17%,Gen12LP,A0,55.62,syn,1,From Praneeth WW21_2018,
 FPU0_sel_int32_10%,Gen12LP,A0,40.43,syn,1,From Praneeth WW21_2018,
 FPU0_mac_int32_35%,Gen12LP,A0,75.44,syn,1,From Praneeth WW21_2018,
-FPU0_mad_mul_sw,Gen12LP,A0,54.76,syn,1,From Praneeth WW21_2018,
-FPU0_mad_add_sw,Gen12LP,A0,55.96,syn,1,From Praneeth WW21_2018,
-FPU0_dtype_sw,Gen12LP,A0,67.5,syn,1,From Praneeth WW21_2018,
+FPU0_mad_mul_sw,Gen12LP,A0,5,syn,1,From Praneeth WW21_2018,
+FPU0_mad_add_sw,Gen12LP,A0,5,syn,1,From Praneeth WW21_2018,
+FPU0_dtype_sw,Gen12LP,A0,9,syn,1,From Praneeth WW21_2018,
 FPU0_raw_mov,Gen12LP,A0,11.08,syn,1,From Praneeth WW21_2018,
 EM_transc_int32_4%,Gen12LP,A0,25,syn,1,From Ram WW2_2018,
 EM_transc_fp16_4%,Gen12LP,A0,24.35,syn,118631,From Ram WW29.2017,
@@ -7545,8 +7545,12 @@ PS2_TDL_PSDDISPATCH,Gen12LP,A0,28,syn,1,From Ram WW2_2018,
 PS2_IC_DATARAM_READ,Gen12LP,A0,9.606735597,syn,1,Gen12 EBB Sheet (Assuming only 4 Banks will be accessed per transaction),
 PS2_IC_DATARAM_WRITE,Gen12LP,A0,7.553605751,syn,1,Gen12 EBB Sheet (Assuming only 4 Banks will be accessed per transaction),
 PS2_CCD,Gen12LP,A0,100,syn,1,Color compression,
+PS2_NODE,Gen12LP,A0,243.92,syn,1,New unit in Gen12HP
+PS2_URB,Gen12LP,A0,223.26,syn,1,New unit in Gen12HP,
 FPU0_DP4A_bypass,Gen12LP,A0,48.6,syn,1,Dummy value added by Santosh,
 FPU0_DP4A_exec,Gen12LP,A0,63,syn,1,From Ram WW2_2018,
+ExtraPipe_DPAS,Gen12LP,A0,174.72,syn,1,From Krishna WW41_2018,
+PS2_GA_ExtraPipe,Gen12LP,A0,46.86,syn,1,Using fpu3src single pipe cdyn weight as  an approximated cdyn weight,
 PS2_GRF_SEND_PATH,Gen12LP,A0,12.7,syn,1,From Praneeth WW21_2018,
 PS0_COLOR_CLKGLUE,Gen12LP,A0,10.21444103,syn,1,WW18 Infra*1.04,New
 PS0_COLOR_CPunit,Gen12LP,A0,0.071351795,syn,1,WW18 Infra*1.04,New
@@ -8088,10 +8092,10 @@ PS0_rCL,Gen12LP,A0,1.264186,syn,1029189.32,FSO Plite Numbers - x3r2 Based,New
 PS1_rCL,Gen12LP,A0,6.864497,syn,1029189.32,FSO Plite Numbers - x3r2 Based,New
 PS2_rCL,Gen12LP,A0,66.130644,syn,1029189.32,FSO Plite Numbers - x3r2 Based,New
 PS0_CL,Gen12LP,A0,1.739865,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
-PS1_CL,Gen12LP,A0,13.656751,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
+PS1_CL,Gen12LP,A0,40,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
 PS2_CL_Mustclip,Gen12LP,A0,50.653962,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
 PS2_CL_NoMustclip,Gen12LP,A0,27.550962,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
-PS2_CL,Gen12LP,A0,39.102462,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
+PS2_CL,Gen12LP,A0,312.81,syn,2075932.01,FSO Plite Numbers - x3r2 Based,New
 PS0_CS,Gen12LP,A0,1.032947,syn,543558.23,FSO Plite Numbers - x3r2 Based,New
 PS1_CS,Gen12LP,A0,5.139782,syn,543558.23,FSO Plite Numbers - x3r2 Based,New
 PS2_CS,Gen12LP,A0,5.393654,syn,543558.23,FSO Plite Numbers - x3r2 Based,New
@@ -8245,6 +8249,7 @@ PS2_SNPFILTER_SNOOP_HIT,Gen12LP,A0,7.077005553,syn,79623.2,PLITE TNET3 REFRESH,N
 PS2_SNPFILTER_SNOOP_MISS,Gen12LP,A0,4.301069333,syn,79623.2,PLITE TNET3 REFRESH,New
 PS2_SNPFILTER_WRITE,Gen12LP,A0,6.575946594,syn,79623.2,PLITE TNET3 REFRESH,New
 PS0_SNPFILTERCOMMON,Gen12LP,A0,0.041421,syn,79623.2,PLITE TNET3 REFRESH,New
+PS2_GAM,Gen12LP,A0,141.55,syn,1,GAM Approximation,New
 PS0_GAMCMDI_GFX_IDLE,Gen12LP,A0,0.52,syn,160472.85,FSO Plite Numbers - x3r2 Based,New
 PS1_GAMCMDI_GFX_STALLED,Gen12LP,A0,3.84,syn,160472.85,PAR PTPX FSO,New
 PS2_GAMCMDI_GFX_ACTIVE_1RD,Gen12LP,A0,4.375016125,syn,160472.85,FSO Plite Numbers - x3r2 Based,New
