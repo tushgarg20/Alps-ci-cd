@@ -206,7 +206,8 @@ EU:
       EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
       EM_transc_int32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
   ExtraPipe:
-      ExtraPipe_DPAS: R * C
+      ExtraPipe_DPAS_Float: R * C
+      ExtraPipe_DPAS_Int: R * C
   GA:
     PS0_GA: R * C
     PS1_GA: R * C

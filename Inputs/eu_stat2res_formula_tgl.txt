@@ -368,7 +368,8 @@ PE#Unit	GSIM residency			Comments
 
 #ExtraPipe
 #DP4AS instruction modeling
-       ExtraPipe_DPAS = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.(sf|d).\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
+       ExtraPipe_DPAS_Float = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.sf.\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
+       ExtraPipe_DPAS_Int = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.d.\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
        
   
 #GA				
@@ -394,7 +395,7 @@ PE#Unit	GSIM residency			Comments
        #Temporary variable for DualPipe GA residencies
         .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
        #Model approximation for GA contribution to ExtraPipe
-       PS2_GA_ExtraPipe = ExtraPipe_DPAS
+       PS2_GA_ExtraPipe = ExtraPipe_DPAS_Int + ExtraPipe_DPAS_Float
 				
 #TC				
         PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
