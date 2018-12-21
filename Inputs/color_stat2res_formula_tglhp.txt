@@ -30,7 +30,7 @@
 #Generic				
 	 @ANY_DAPRSC@	=	(S\d+\.uDAPRB_\d+\.|S\d+\.uDAPRB_\d+\.)	
 	 @ANY_PB@	=	(S\d+\.uPB_\d+\.)	
-	 @ANY_RCC@	=	(S\d+\.uColorCache_\d+\.)	
+	 @ANY_RCC@	=	(uColorCache_\d+\.)	
 	 @ANY_READREQ@	=	pwr_CC(Pbe|Gam)ReadRequestsBank\d+
 	 @ANY_WRITEREQ@	=	pwr_CC(Pbe|Gam)WriteRequestsBank\d+
 	 @ANY_MSC@	=	(S\d+\.uMSC_\d+\.)	

@@ -197,7 +197,10 @@ f.write("PS2_GA_SRC2_Scalar,%f\n" % scalar_percentage[2])
 #Estimate the datatype switching percentage 
 dtype_sw_count, switch_percentage = op.datatype_switch_count_estimator(stat)
 #f.write("FPU0_dtype_sw,%f\n" % switch_percentage)
-f.write("FPU0_dtype_sw,0.0\n")
+if "ogles" in options.wl_name:
+    f.write("FPU0_dtype_sw,0.2\n")
+else:
+    f.write("FPU0_dtype_sw,0.0\n")
 #Opcode switching percentage estimate
 opcode_sw_count, switch_percentage, mad_mul_percent, mad_add_percent = op.opcode_switch_count_estimator(stat)
 #f.write("FPU0_mad_mul_sw,%f\n" % mad_mul_percent)

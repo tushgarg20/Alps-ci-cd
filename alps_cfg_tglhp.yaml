@@ -3,14 +3,14 @@ Stat2Res Formula Files:
   - Inputs/l3_stat2res_formula_tglhp.txt
   - Inputs/l3node_stat2res_formula_tglhp.txt
   - Inputs/eu_stat2res_formula_tgl.txt
-  - Inputs/other_stat2res_formula_icllp.txt
-  - Inputs/ff_stat2res_formula_tgl.txt
-  - Inputs/ff_posh_stat2res_formula_tgl.txt
+  - Inputs/other_stat2res_formula_tglhp.txt
+  - Inputs/ff_stat2res_formula_tglhp.txt
+  - Inputs/ff_posh_stat2res_formula_tglhp.txt
   - Inputs/rosc_stat2res_formula_icllp.txt
   - Inputs/gam_stat2res_formula_tglhp.txt
   - Inputs/ross_stat2res_formula_tglhp.txt
   - Inputs/gti_stat2res_formula_tglhp.txt
-  - Inputs/sampler_stat2res_formula_tgl.txt
+  - Inputs/sampler_stat2res_formula_tglhp.txt
   - Inputs/hdc_stat2res_formula_tgl.txt
   - Inputs/z_stat2res_formula_tgl.txt
   - Inputs/bw_stat2res_formula_icllp.txt

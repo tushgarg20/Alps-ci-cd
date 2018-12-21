@@ -414,6 +414,8 @@ def eval_linest(key_tuple,cluster,unit):
     if(len(data_points) == 1):
         if (options.dump_ecw):
             print (str(k_cdyn)+","+str(base_config)+","+str(data_points[0][1]/I[cluster+"_"+unit]),file=eff_wf)
+        if (options.dump_cw):
+            print (str(k_cdyn)+","+str(base_config)+","+str(data_points[0][1]/I[cluster+"_"+unit]),file=wf)
         return data_points[0][1]
     linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
     linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
@@ -422,6 +424,8 @@ def eval_linest(key_tuple,cluster,unit):
     temp = (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]
     if (options.dump_ecw):
         print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=eff_wf)
+    if (options.dump_cw):
+        print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=wf)
     return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
 
 def eval_formula(alist):

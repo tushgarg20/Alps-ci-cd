@@ -1,0 +1,144 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numrFF	=	knob.Ats.NumSlices	#One Vertex pipeline
+	num_rFF_rCS	=	numrFF	
+	num_rFF_rOV	=	numrFF	
+	num_rFF_rVF	=	numrFF	
+	num_rFF_rVFBE	=	knob.global.NumVfVtxPipesPosh
+	num_rFF_rVF_Cache	=	numrFF	
+	num_rFF_rVSFE	=	knob.global.NumVsVtxPipesInGeoR
+	num_rFF_rVSBE	=	knob.global.NumVsVtxPipesInGeoR
+	num_rFF_rVS_Cache	=	numrFF	
+	num_rFF_rCL	=	numrFF	
+	#num_rFF_rSF	=	numrFF	
+	num_rFF_rSFFE	=	numrFF	
+	num_rFF_rSFBE	=	numrFF	
+	num_rFF_rSVG	=	numrFF	
+	num_rFF_rOTHER_SMALL	=	numrFF
+    num_rFF_rOTHER_CPunit   =   numrFF 	
+	num_rFF_rOTHER_Repeater	=	numrFF	
+	num_rFF_rOTHER_CLKGLUE	=	numrFF	
+	num_rFF_rOTHER_NONCLKGLUE	=	numrFF	
+	num_rFF_rOTHER_DFX	=	numrFF	
+	num_rFF_rOTHER_DOP	=	numrFF	
+				
+#Generic				
+	 .CrClk	=	D(CrClock.Clocks)	
+	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
+	 .CrClk2x	=	D(SUM('2xCrClock\.Clocks'))	
+	 .GeoClk	=	D(GeoClock.Clocks)	
+	 .GeoClk2x	=	D(SUM('2xGeoClock\.Clocks'))	
+	 .temp_3DPipeDisable	=	D(uCS0.pwr_3DPipeDisabled.UnsliceClock)/.UnsliceClk	
+
+#CS				
+	 .CS_idle	=	D(uCS0.pwr_cs_idle.UnsliceClock)	
+	 .CS_stalled_or_idle	=	D(uCS0.pwr_cs_stalled_or_idle.UnsliceClock)	
+	PS0_rCS	=	.CS_idle/.UnsliceClk	 # GSim really only has a stub for CS.
+	PS1_rCS	=	(.CS_stalled_or_idle > .CS_idle) ? (.CS_stalled_or_idle - .CS_idle)/.UnsliceClk : 0	
+	PS2_rCS	=	1 - PS0_rCS - PS1_rCS	
+
+#OV				
+	PS0_rOV	=	PS0_rCS
+	PS1_rOV	=	PS1_rCS
+	PS2_rOV	=	PS2_rCS
+				
+#VF				
+	PS0_rVF_DOP	=	 .temp_3DPipeDisable	
+	PS0_rVF	=	(D(SUM('GeoR\d+\.uVF\.pwr_vf_idle\.GeoClock')) / (numrFF * .GeoClk)) - PS0_rVF_DOP	
+	PS1_rVF	=	((PS0_rVF_DOP + PS0_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped) > 0) ? 1 - (PS0_rVF_DOP + PS0_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped) : 0	
+	PS2_rVF_Indexed	=	D(SUM('GeoR\d+\.uVF\.pwr_vf_active_indexed\.GeoClock')) / (numrFF * .GeoClk)
+	PS2_rVF_Sequential	=	D(SUM('GeoR\d+\.uVF\.pwr_vf_active_sequential\.GeoClock')) / (numrFF * .GeoClk)	
+	.temp_rvf_active_control1x	=	D(SUM('GeoR\d+\.uVF\.pwr_vf_active_control1x\.GeoClock')) / (numrFF * .GeoClk)	
+	.temp_rvf_active_control2x	=	D(SUM('GeoR\d+\.uVF\.pwr_vf_active_control2x\.GeoClock')) / (numrFF * .GeoClk)	
+	PS2_rVF_Control	=	.temp_rvf_active_control1x + .temp_rvf_active_control2x	# Added to catch control packets
+	PS2_rVF_Dropped	=	D(SUM('GeoR\d+\.uVF\.pwr_vf_active_dropped\.GeoClock')) / (numrFF * .GeoClk)	# Added to catch verts dropped because of cut, dangling, or auto-strip.
+#VFBE1				
+	PS0_rVFBE_DOP	=	 .temp_3DPipeDisable	
+	.temp_num_rvertex_pipes	=	D(SUM('knob.GeoR\d+\.uVF\.NumVfVtxPipesPosh'))	
+	.temp_rvertex_pipe_clocks	=	.temp_num_rvertex_pipes * .GeoClk	
+	PS0_rVFBE	=	(D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock')) / .temp_rvertex_pipe_clocks) - PS0_VFBE_DOP	# Not active rollup of all structures.
+	PS1_rVFBE	=	(D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_stalled_or_idle\.GeoClock')) - D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_idle\.GeoClock'))) / .temp_rvertex_pipe_clocks	
+	PS2_rVFBE	=	((PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) > 0) ? 1 - (PS0_rVFBE_DOP + PS0_rVFBE + PS1_rVFBE) : 0	
+
+#VF Cache				
+	PS0_rVF_Cache_Idle	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_idle\.GeoClock')) / .temp_rvertex_pipe_clocks	
+	PS2_rVF_Cache_Read	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_cache_read\.GeoClock')) / .temp_rvertex_pipe_clocks	
+	PS2_rVF_Cache_Write	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.VfAttribMissResp\.popped')) / .temp_rvertex_pipe_clocks	
+	PS0_rVF_URBFifo_Idle	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_idle\.GeoClock')) / .temp_rvertex_pipe_clocks	
+	PS2_rVF_URBFifo_Read	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_read\.GeoClock')) / .temp_rvertex_pipe_clocks	
+	PS2_rVF_URBFifo_Write	=	D(SUM('GeoR\d+\.uVF\.VtxPipe_\d+\.pwr_vfpipe_urbfifo_write\.GeoClock')) / .temp_rvertex_pipe_clocks	
+				
+#VSFE				
+	PS0_rVSFE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rVSFE	=	(D(SUM('GeoR\d+\.uVS\.pwr_vsfe_idle\.GeoClock')) / (numrFF * .GeoClk)) - PS0_rVSFE_DOP	
+	PS1_rVSFE	=	(D(SUM('GeoR\d+\.uVS\.pwr_vsfe_stalled_or_idle\.GeoClock')) - D(SUM('GeoR\d+\.uVS\.pwr_vsfe_idle\.GeoClock'))) / (numrFF * .GeoClk)
+	PS2_rVSFE	=	((PS0_rVSFE_DOP + PS0_rVSFE + PS1_rVSFE) > 0) ? (1 - PS0_rVSFE_DOP - PS0_rVSFE - PS1_rVSFE) : 0
+#VSBE				
+	PS0_rVSBE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rVSBE	=	(D(SUM('GeoR\d+\.uVS.pwr_vsbe_idle.GeoClock')) / (numrFF * .GeoClk)) - PS0_rVSBE_DOP	
+	PS1_rVSBE	=	(D(SUM('GeoR\d+\.uVS.pwr_vsbe_stalled_or_idle.GeoClock')) - D(SUM('GeoR\d+\.uVS\.pwr_vsbe_idle.GeoClock'))) / (numrFF * .GeoClk)	
+	PS2_rVSBE	=	((PS0_rVSBE_DOP + PS0_rVSBE + PS1_rVSBE) > 0) ? 1 - PS0_rVSBE_DOP - PS0_rVSBE - PS1_rVSBE : 0	
+
+
+
+#VS Cache				
+	PS0_rVS_Cache_Idle	=	(D(SUM('GeoR\d+\.uVS\.pwr_vscache_active\.GeoClock')) > 0) ? 1 - (D(SUM('GeoR\d+\.uVS\.pwr_vscache_active\.GeoClock')) / (numrFF * .GeoClk ))	: 0
+	PS2_rVS_Cache_Read	=	D(SUM('GeoR\d+\.uVS\.pwr_vscache_read\.GeoClock')) / (numrFF * .GeoClk)
+	PS2_rVS_Cache_Write	=	D(SUM('GeoR\d+\.uVS\.pwr_vscache_write\.GeoClock')) / (numrFF * .GeoClk)	
+#CL				
+	PS0_rCL_DOP	=	 .temp_3DPipeDisable	#No GSIM model - approximating with SOL
+	PS0_rCL	=	(D(SUM('GeoR\d+\.uCL\.pwr_CL_Idle\.2xGeoClock')) / (numrFF * .GeoClk2x)) - PS0_rCL_DOP	#updated with CL stats
+	PS1_rCL	=	(D(SUM('GeoR\d+\.uCL\.pwr_CL_Stalled_or_Idle\.2xGeoClock')) - D(SUM('GeoR\d+\.uCL\.pwr_CL_Idle\.2xGeoClock'))) / (numrFF *.GeoClk2x)
+	PS2_rCL	=	((PS0_rCL_DOP + PS0_rCL + PS1_rCL) > 0) ? 1 - (PS0_rCL_DOP + PS0_rCL + PS1_rCL) : 0	
+				
+
+#SFFE
+	PS0_rSFFE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rSFFE	=	(D(SUM('GeoR\d+\.uSF\.pwr_SFFE_Idle\.2xGeoClock')) / (numrFF * .GeoClk2x)) - PS0_rSFFE_DOP	
+	PS1_rSFFE	=	(D(SUM('GeoR\d+\.uSF\.pwr_SFFE_Stalled_or_Idle\.2xGeoClock')) - D(SUM('GeoR\d+\.uSF\.pwr_SFFE_Idle\.2xGeoClock'))) / (numrFF * .GeoClk2x)	
+	PS2_rSFFE_Culled	=	(D(SUM('GeoR\d+\.uSF\.pwr_SFFE_Culled\.'))) / (numrFF * .GeoClk2x)
+	PS2_rSFFE_NotCulled_FastClip	=	D(SUM('GeoR\d+\.uSF\.pwr_SFFE_NotCulled_FastClip\.2xGeoClock')) / (numrFF * .GeoClk2x)
+	PS2_rSFFE_NotCulled_NotFastClip	=	D(SUM('GeoR\d+\.uSF\.pwr_SFFE_NotCulled_NotFastClip\.2xGeoClock')) / (numrFF * .GeoClk2x)
+
+#SFBE
+	PS0_rSFBE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rSFBE	=	(D(SUM('GeoR\d+\.uSF\.pwr_SFBE_Idle\.2xGeoClock')) / (numrFF * .GeoClk2x)) - PS0_rSFBE_DOP	
+	PS1_rSFBE	=	(D(SUM('GeoR\d+\.uSF.pwr_SFBE_Stalled_or_Idle.2xGeoClock')) - D(SUM('GeoR\d+\.uSF\.pwr_SFBE_Idle\.2xGeoClock'))) / (numrFF * .GeoClk2x)	
+	PS2_rSFBE	=   1 - PS0_rSFBE_DOP - PS0_rSFBE -PS1_rSFBE	
+
+#SVG				
+	PS0_rSVG_DOP	=	 .temp_3DPipeDisable	
+	PS0_rSVG	=	1 - .temp_3DPipeDisable	#No GSIM model
+	PS1_rSVG	=	0	
+	PS2_rSVG	=	0	
+				
+#CLKGLUE				
+	PS0_rFF_rOTHER_CLKGLUE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rFF_rOTHER_CLKGLUE	=	PS0_rVF	#Approximating GLUE units with VF residencies
+	PS2_rFF_rOTHER_CLKGLUE	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
+
+#CPunit				
+	PS0_rFF_rOTHER_CPunit_DOP	=	 .temp_3DPipeDisable	
+	PS0_rFF_rOTHER_CPunit	=	PS0_rVF	
+	PS2_rFF_rOTHER_CPunit	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped					
+
+#NONCLKGLUE				
+	PS0_rFF_rOTHER_SMALL_DOP	=	 .temp_3DPipeDisable	
+	PS0_rFF_rOTHER_SMALL	=	PS0_rVF	#Approximating GLUE units with VF residencies
+    PS1_rFF_rOTHER_SMALL       = 	PS1_rVF
+    PS2_rFF_rOTHER_SMALL	= PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
+				
+#NONCLKGLUE				
+	PS0_rFF_rOTHER_NONCLKGLUE_DOP	=	 .temp_3DPipeDisable	
+	PS0_rFF_rOTHER_NONCLKGLUE	=	PS0_rVF	#Approximating GLUE units with VF residencies
+    PS1_rFF_rOTHER_NONCLKGLUE       = 	PS1_rVF
+    PS2_rFF_rOTHER_NONCLKGLUE	= PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped
+
+#DFX				
+	PS0_rFF_OTHER_DFX_DOP	=	 .temp_3DPipeDisable	
+	PS0_rFF_OTHER_DFX	=	PS0_rVF	
+	PS2_rFF_OTHER_DFX	=	PS1_rVF + PS2_rVF_Indexed + PS2_rVF_Sequential + PS2_rVF_Control + PS2_rVF_Dropped	
+				
+#DOP				
+	PS0_rFF_rOTHER_DOP	=	 .temp_3DPipeDisable	
+	PS2_rFF_rOTHER_DOP	=	1 - .temp_3DPipeDisable

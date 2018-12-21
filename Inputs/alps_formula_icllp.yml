@@ -62,6 +62,7 @@ EU:
   GRF:
      PS2_GRF_READ: R * C
      PS2_GRF_WRITE: R * C
+     PS2_GRF_SEND_PATH: R * C
   Accumulator:
      PS2_Accumulator_READ: R * C
      PS2_Accumulator_WRITE: R * C
@@ -129,6 +130,10 @@ EU:
       FPU0_sad_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mov_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_sel_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_mul_sw: R * C
+      FPU0_mad_add_sw: R * C 
+      FPU0_dtype_sw: R * C
+      FPU0_raw_mov: R[PS2_EU_FPU0] * R * C
   
   FPU1:
     PS0_EU_FPU1: R * C
@@ -216,6 +221,12 @@ EU:
       PS2_GA_EM3Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_EM3Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_EM3Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_SRC0_Swizzle: R * C
+      PS2_GA_SRC0_Scalar: R * C
+      PS2_GA_SRC1_Swizzle: R * C
+      PS2_GA_SRC1_Scalar: R * C
+      PS2_GA_SRC2_Swizzle: R * C
+      PS2_GA_SRC2_Scalar: R * C
   DOP:
     PS0_EU_DOP: R * C
     PS1_EU_DOP: R * C

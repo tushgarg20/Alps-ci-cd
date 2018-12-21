@@ -1,4 +1,4 @@
-PE#Unit	GSIM residency			Comments
+#Unit	GSIM residency			Comments
 #Instance Counts				
 	CrClocks	=	D(CrClock.Clocks)	
 	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
