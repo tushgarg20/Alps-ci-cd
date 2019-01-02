@@ -1,0 +1,88 @@
+--- # ALPS Formula File version WW07.1 2013
+
+ # R : R * C Residency
+ # C : R * C Cdyn weight
+
+CrClocks: R
+FPS: R
+
+EU:
+  GRF:
+     PS2_GRF_READ: R * C
+     PS2_GRF_WRITE: R * C
+     PS2_GRF_SEND_PATH: R * C
+
+  FPU0:
+     PS2_EU_FPU0:
+      FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+   
+  FPU1: 
+    PS2_EU_FPU1:
+      FPU1_mad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+
+  EM:
+      EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
+  ExtraPipe:
+      ExtraPipe_DPAS_Float: R * C
+      ExtraPipe_DPAS_Int: R * C
+  GA:
+    PS2_GA:
+      PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+    
+GA_toggle_rate: R
+FPU1_toggle_rate: R
+FPU0_toggle_rate: R
+
+L3_Bank:
+   LTCD_Data:
+    PS2_LTCD_Data:
+     PS2_LTCD_DATA_READ: R * C
+     PS2_LTCD_DATA_WRITE: R * C
+
+HDC:
+   #HDCREQCMD1:
+   # PS0_HDC_ReqCmd1_DOP: R * C
+   # PS0_HDC_ReqCmd1: R * C
+   # PS1_HDC_ReqCmd1: R * C
+   # PS2_HDC_ReqCmd1:
+   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
+   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
+   #  PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
+   #  PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
+   #  PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
+   #HDCREQCMD2:
+   # PS0_HDC_ReqCmd2_DOP: R * C
+   # PS0_HDC_ReqCmd2: R * C
+   # PS1_HDC_ReqCmd2: R * C
+   # PS2_HDC_ReqCmd2:
+   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
+   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
+   #   PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
+   #   PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
+   HDCREQDATA:
+    PS2_HDC_ReqData_NonSequenced_Write: R * C
