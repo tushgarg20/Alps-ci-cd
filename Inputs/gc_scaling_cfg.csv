@@ -235,6 +235,7 @@ L3_Bank,Gen9LPSoC,Gen12HP,False
 L3_Bank,Gen10LP,Gen12HP,False
 L3_Bank,Gen11LP,Gen12HP,False
 L3_Bank,Gen12LP,Gen12HP,False
+L3_Bank,Gen12DG,Gen12HP,False
 GAM,Gen9LPClient,Gen12HP,False
 GAM,Gen9LPSoC,Gen12HP,False
 GAM,Gen10LP,Gen12HP,False
