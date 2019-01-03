@@ -42,10 +42,12 @@ EU:
       FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
 
   EM:
-      EM_transc_fp32: R[PS2_EU_EM] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_fp32: R * LINEST[C,R[FPU1_toggle_rate]]
+
   ExtraPipe:
       ExtraPipe_DPAS_Float: R * C
       ExtraPipe_DPAS_Int: R * C
+
   GA:
     PS2_GA:
       PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
@@ -55,10 +57,10 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 
 L3_Bank:
-   LTCD_Data:
+  LTCD_Data:
     PS2_LTCD_Data:
-     PS2_LTCD_DATA_READ: R * C
-     PS2_LTCD_DATA_WRITE: R * C
+      PS2_LTCD_DATA_READ: R * C
+      PS2_LTCD_DATA_WRITE: R * C
 
 HDC:
    #HDCREQCMD1:
@@ -84,5 +86,5 @@ HDC:
    #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
    #   PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
    #   PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
-   HDCREQDATA:
+  HDCREQDATA:
     PS2_HDC_ReqData_NonSequenced_Write: R * C
