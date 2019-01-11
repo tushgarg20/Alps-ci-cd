@@ -1,8 +1,8 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numL3Banks			=       1 #Dummy value`
-	num_L3_Slices			=       1 #Dummy value, represents the number of slices in the GT	
-	num_L3_SubSlices		=       1 #Dummy value, repersents the number of subslices	
+	numL3Banks			=       D(knob.numL3Banks) #Dummy value`
+	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices	
 	num_L3_Bank_LTCD_EBB		=	num_L3_Slices * numL3Banks
 	num_L3_Bank_LTCD_Data		=	num_L3_Slices * numL3Banks    
         num_L3_Bank_LTCD_Tag		=	num_L3_Slices * numL3Banks	

@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
-	numHDCs	                =       1	
+	numHDCs	                =       D(knob.numHDCs)	
         num_HDC_HDCREQDATA	=	numHDCs
 #Generic				
 	PS2_HDC_ReqData_NonSequenced_Write	        =	(D(HDC_READ) + D(HDC_WRITE)) / (numHDCs * .CrClk) 

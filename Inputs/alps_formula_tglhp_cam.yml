@@ -51,6 +51,8 @@ EU:
   GA:
     PS2_GA:
       PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_FPU2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_ExtraPipe: R * LINEST[C,R[GA_toggle_rate]]
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R
