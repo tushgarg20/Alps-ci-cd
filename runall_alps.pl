@@ -43,7 +43,7 @@ Getopt::Long::GetOptions(
 	"tgl"			=> \$tgl,
         "reduced"		=> \$reduced,
 	"tglhp"			=> \$tglhp,
-	"cam"			=> \$cam,
+	"cam|m=s"		=> \$cam,
 	"tglhp_512"		=> \$tglhp_512,
 	"tglhp_384"		=> \$tglhp_384,
 	"tgldg"			=> \$tgldg
@@ -84,9 +84,17 @@ while(my $line = <FILE>){
 	my $prefix = $wl;
 	if ($runLocal) {
 		print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
-		system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-	} else {	
-		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+                if ($cam) {
+			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
+                } else  {
+			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+                }
+	} else {
+                if ($cam)  {	
+		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
+                } else {
+		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
+                }
 	}
 	#print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
 }
