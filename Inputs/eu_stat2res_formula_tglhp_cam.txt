@@ -64,9 +64,9 @@
         ExtraPipe_DPAS_Float = D(SYS_FLOAT)/CrClocks
         ExtraPipe_DPAS_Int = D(SYS_INT)/CrClocks
 #GRF and GA related
-        PS2_GA_FPU3Src_SinglePipe = (FPU3Src_total_count / (SYS_FLOAT+SYS_INT+FPU_total_count)) * D(GA_UTILIZATION) 
-        PS2_GA_FPU2Src_SinglePipe = (FPU2Src_total_count / (SYS_FLOAT+SYS_INT+FPU_total_count)) * D(GA_UTILIZATION) 
-        PS2_GA_ExtraPipe = ((SYS_FLOAT + SYS_INT) /(SYS_FLOAT+SYS_INT+FPU_total_count)) * D(GA_UTILIZATION)
+        PS2_GA_FPU3Src_SinglePipe = (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) 
+        PS2_GA_FPU2Src_SinglePipe = (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) 
+        PS2_GA_ExtraPipe = D(GA_ExtraPipe)
         PS2_GRF_READ = D(GRF_READ)/CrClocks
         PS2_GRF_WRITE = D(GRF_WRITE)/CrClocks
         
