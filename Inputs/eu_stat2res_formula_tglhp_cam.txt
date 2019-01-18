@@ -69,5 +69,6 @@
         PS2_GA_ExtraPipe = D(GA_ExtraPipe)
         PS2_GRF_READ = D(GRF_READ)/CrClocks
         PS2_GRF_WRITE = D(GRF_WRITE)/CrClocks
+        PS2_TC_1Dispatch = D(TC)
         
         
