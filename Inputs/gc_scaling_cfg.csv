@@ -230,6 +230,7 @@ EU,Gen9LPSoC,Gen12HP,False
 EU,Gen10LP,Gen12HP,False
 EU,Gen11LP,Gen12HP,False
 EU,Gen12LP,Gen12HP,False
+EU,Gen12HP,Gen12HP,False
 L3_Bank,Gen9LPClient,Gen12HP,False
 L3_Bank,Gen9LPSoC,Gen12HP,False
 L3_Bank,Gen10LP,Gen12HP,False
