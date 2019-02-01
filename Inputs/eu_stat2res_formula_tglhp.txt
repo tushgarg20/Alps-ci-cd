@@ -1,0 +1,473 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	CrClocks	=	D(CrClock.Clocks)	
+	FPS	=	(knob.CrClock.multiplier * 1000000) / D(CrClock.Clocks)	
+	numEUs	=	SUM('knob\.S\d+\.SS\d+\.(R\d+\.NumEus)|(FG\d+\.NumEus)') 	#This includes Slices & SubSlices
+	numFGs = numEUs/(knob.S0.SS0.FG0.uEuCompute_0.EuFusionFactor)
+	num_EU_FPU0	=	numEUs	
+	num_EU_FPU1	=	numEUs	
+	num_EU_EM	=	numEUs	
+	num_EU_GA	=	numEUs
+	num_EU_TC	=	numFGs	
+	num_EU_GRF	=	numEUs	
+	num_EU_DFX	=	numEUs	
+	num_EU_SMALL	=	numEUs	
+	num_EU_CPunit	=	numEUs	
+	num_EU_Assign	=	numEUs	
+	num_EU_Repeater	=	numEUs	
+	num_EU_CLKGLUE	=	numEUs	
+	num_EU_NONCLKGLUE	=	numEUs	
+	num_EU_DOP	=	numEUs	
+	num_EU_TCGA	=	numEUs	
+	num_EU_Pipelines	=	numEUs	
+	num_EU_Accumulator	=	numEUs			
+	num_EU_ExtraPipe = numEUs			
+#Generic				
+	 .CrClk	=	D(CrClock.Clocks)	
+	 @ANY_EU@	=	(S\d+\.SS\d+\.FG\d+\.uEuCompute_\d+\.)	
+	 @ANY_EUControl@  =	(S\d+\.SS\d+\.FG\d+\.uEuControl\.)	
+	 @ANY_EUPIPE@	=	 @ANY_EU@PipelinesAlu\.
+	 @ANY_EUPIPEControl@	=	 @ANY_EU@PipelinesAlu\.	 
+	 @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
+	 @ALLINST@	=	(exec|masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
+	 @HP@	=	(hf|w|uw)	
+	 @TRANS@ =(math)
+	FPU_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd4_count	= 	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd8_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.8\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd8_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.8\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd8_count	=	.temp_FPU_simd8_count - .temp_FPU_simd8_hp_count	
+	FPU_simd8_hp_count	=	.temp_FPU_simd8_hp_count	
+	.temp_FPU_simd16_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.16\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd16_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.16\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd16_count	=	.temp_FPU_simd16_count - .temp_FPU_simd16_hp_count	
+	FPU_simd16_hp_count	=	.temp_FPU_simd16_hp_count	
+	.temp_FPU_simd32_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.32\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd32_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.32\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd32_count	=	.temp_FPU_simd32_count - .temp_FPU_simd32_hp_count	
+	FPU_simd32_hp_count	=	.temp_FPU_simd32_hp_count	
+	EM_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
+	EM_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
+	EM_simd4_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
+	.temp_EM_simd8_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.8\.\w+\.(exec|@BYPASS@)'))	
+	.temp_EM_simd8_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.8\.\w+\.(exec|@BYPASS@)'))	
+	EM_simd8_count	=	.temp_EM_simd8_count - .temp_EM_simd8_hp_count	
+	EM_simd8_hp_count	=	.temp_EM_simd8_hp_count	
+	.temp_EM_simd16_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.16\.\w+\.(exec|@BYPASS@)'))	
+	.temp_EM_simd16_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.16\.\w+\.(exec|@BYPASS@)'))	
+	EM_simd16_count	=	.temp_EM_simd16_count - .temp_EM_simd16_hp_count	
+	EM_simd16_hp_count	=	.temp_EM_simd16_hp_count	
+	.temp_EM_simd32_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.32\.\w+\.(exec|@BYPASS@)'))	
+	.temp_EM_simd32_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.32\.\w+\.(exec|@BYPASS@)'))	
+	EM_simd32_count	=	.temp_EM_simd32_count - .temp_EM_simd32_hp_count	
+	EM_simd32_hp_count	=	.temp_EM_simd32_hp_count	
+
+#for math opcodes
+
+
+	EM_simd1_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.1\.\.(exec|@BYPASS@)'))	
+	EM_simd2_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.2\.\.(exec|@BYPASS@)'))	
+	EM_simd4_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.4\.@TRANS@\.(exec|@BYPASS@)'))	
+	.temp_EM_simd8_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.8\.@TRANS@\.(exec|@BYPASS@)'))	
+	.temp_EM_simd8_hp_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.8\.@TRANS@\.(exec|@BYPASS@)'))	
+	EM_simd8_trans_count	=	.temp_EM_simd8_trans_count - .temp_EM_simd8_hp_trans_count	
+	EM_simd8_hp_trans_count	=	.temp_EM_simd8_hp_trans_count	
+	.temp_EM_simd16_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.16\.@TRANS@\.(exec|@BYPASS@)'))	
+	.temp_EM_simd16_hp_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.16\.@TRANS@\.(exec|@BYPASS@)'))	
+	EM_simd16_trans_count	=	.temp_EM_simd16_trans_count - .temp_EM_simd16_hp_trans_count	
+	EM_simd16_hp_trans_count	=	.temp_EM_simd16_hp_trans_count	
+	.temp_EM_simd32_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.32\.@TRANS@\.(exec|@BYPASS@)'))	
+	.temp_EM_simd32_hp_trans_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.@HP@\.32\.@TRANS@\.(exec|@BYPASS@)'))	
+	EM_simd32_trans_count	=	.temp_EM_simd32_trans_count - .temp_EM_simd32_hp_trans_count	
+	EM_simd32_hp_trans_count	=	.temp_EM_simd32_hp_trans_count	
+
+
+
+
+
+
+        FPU_total_count	=	FPU_simd1_count + FPU_simd2_count + FPU_simd4_count + FPU_simd8_count + FPU_simd8_hp_count + FPU_simd16_count + FPU_simd16_hp_count + FPU_simd32_count + FPU_simd32_hp_count	
+	EM_total_count	=	EM_simd1_count + EM_simd2_count + EM_simd4_count + EM_simd8_count + EM_simd8_hp_count + EM_simd16_count + EM_simd16_hp_count + EM_simd32_count + EM_simd32_hp_count		-	EM_total_trans_count	
+	EM_total_trans_count	=	EM_simd1_trans_count + EM_simd2_trans_count + EM_simd4_trans_count + EM_simd8_trans_count + EM_simd8_hp_trans_count + EM_simd16_trans_count + EM_simd16_hp_trans_count + EM_simd32_trans_count + EM_simd32_hp_trans_count	
+        
+       DP4A_total_count       = 	D(SUM('@ANY_EU@Num_Dp4a_Exec'))        # Total number of DP4A instructions issued 
+       DP4A_total_cycle_count = 	D(SUM('@ANY_EU@Num_Cycles_Dp4a_Exec')) # Total number of DP4A instructions issued 
+	
+
+	 @PLN@	=	(pln|lrp)	
+	 @MAD@ 	=	(dp4|dph|dp3|dp2|line|mad|madm|frc|rndu|rndd|rnde|rndz|lzd)	#separate out mac/sad/sada2 - diff properties
+	 @MAC@	=	(mac|mach)	#separated mac/mach opcodes
+	 @SAD@ 	=	(sad2|sada2)	#seperated sad2/sada2 opcodes
+	 @MUL@	=	(mul)	
+	 @ADD@	=	(add|avg|not|and|or|xor|shr|shl|cmp|cmpn|f2h|h2f|bfrev|bfe|bfi1|bfi2|fbh|fbl|cbit|addc|subb|asr)	#added ASR for media workloads
+	 @MOV@	=	(mov|movi)	
+	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop|csel)	#club sel with mov - add control flow separately
+	 @TRANS@	=	(math)	#Transcendentals
+         @DP4A@         =       (dp4a)  #Dp4 instructions
+         @DPAS@         =       (dpas|dpasw)  #Dp4 instructions
+	.avg_EMSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
+	.avg_EMSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
+	.avg_EMSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
+	.avg_EMSrc4_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Em_WriteTgl\.CrClock'))/numEUs)?=0	
+	.max_EM_toggle	=	MAX(.avg_EMSrc1_toggle, .avg_EMSrc2_toggle, .avg_EMSrc3_toggle, .avg_EMSrc4_toggle)	
+	.avg_EU_idle_stall_clocks	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')))/(numEUs)	
+	.avg_EU_active_clocks	=	.CrClk - .avg_EU_idle_stall_clocks	
+	FPU1_toggle_rate	=	(.temp_PS2_EU_EM > 0) ?	(.max_EM_toggle / (32 * 2 * .temp_PS2_EU_EM * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	.avg_FPUSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
+	.avg_FPUSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
+	.avg_FPUSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	
+	.avg_FPUSrc4_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock'))/numEUs)?=0	
+	.max_FPU_toggle	=	MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle)	
+	FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ?	(.max_FPU_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	#FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ?	(.max_FPU_toggle / (1864)) : 0
+	#FPU0_toggle_rate	=	(.temp_PS2_EU_FPU > 0) ? (.max_FPU_toggle *numEUs) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	GA_toggle_rate	=	MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
+	.EuIntegerBypass	=	knob.Stats.EnableEuIntegerBypass	#EU Integer bypass knob for CNL+
+#FPU				
+	PS0_EU_FPU0	=	D(SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	#DOP Clock ungated
+	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + FPU_simd4_count/4 + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + ((FPU_simd8_hp_count +	FPU_simd16_hp_count + FPU_simd32_hp_count)/16))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
+	PS1_EU_FPU0	=		1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
+	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
+        PS2_EU_DP4A     =       DP4A_total_count / (2 * numEUs * .CrClk) # Each DP4A instruction is counted as two cycles  
+	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mul_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_add_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mov_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sel_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mac_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_pln_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@PLN@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mad_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mul_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_add_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mov_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sel_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mac_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sad_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mad_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mul_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_add_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mov_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sel_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mac_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_sad_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mad_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mul_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MUL@\.exec'))/ (FPU_total_count)) : 0	
+	.temp_FPU_add_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mov_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sel_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mac_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sad_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mad_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mul_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_add_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mov_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sel_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_transc_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@TRANS@\.exec')) / (FPU_total_count)) : 0	#NA. Should be 0. No TransC on FPU
+	.temp_FPU_mac_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sad_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mad_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mul_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_add_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mov_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sel_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_mac_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
+	.temp_FPU_sad_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mad_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mul_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MUL@\.@ALLINST@'))/ (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_add_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@ADD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mov_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MOV@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sel_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@SEL@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mac_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@MAC@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sad_int16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw)\.\d+\.@SAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mad_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mul_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MUL@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_add_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@ADD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mov_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MOV@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sel_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@SEL@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_transc_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@TRANS@\.@ALLINST@')) / (FPU_total_count)) : 0	#NA. Should be 0. No TransC on FPU
+	.temp_nonbyp_FPU_mac_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@MAC@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sad_int32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(d|ud)\.\d+\.@SAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mad_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mul_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MUL@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_add_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@ADD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mov_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MOV@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sel_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@SEL@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_mac_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@MAC@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	.temp_nonbyp_FPU_sad_int64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(q|uq)\.\d+\.@SAD@\.@ALLINST@')) / (FPU_total_count)) : 0	
+	FPU0_mad_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_mad_int16 : .temp_nonbyp_FPU_mad_int16	
+	FPU0_mul_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_mul_int16 : .temp_nonbyp_FPU_mul_int16	
+	FPU0_add_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_add_int16 : .temp_nonbyp_FPU_add_int16	
+	FPU0_mov_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_mov_int16 : .temp_nonbyp_FPU_mov_int16	
+	FPU0_sel_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_int16 : .temp_nonbyp_FPU_sel_int16	
+	FPU0_mac_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_mac_int16 : .temp_nonbyp_FPU_mac_int16	
+	FPU0_sad_int16	=	(.EuIntegerBypass > 0) ? .temp_FPU_sad_int16 : .temp_nonbyp_FPU_sad_int16	
+	FPU0_mad_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_mad_int32 : .temp_nonbyp_FPU_mad_int32	
+	FPU0_mul_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_mul_int32 : .temp_nonbyp_FPU_mul_int32	
+	FPU0_add_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_add_int32 : .temp_nonbyp_FPU_add_int32	
+	FPU0_mov_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_mov_int32 : .temp_nonbyp_FPU_mov_int32	
+	FPU0_sel_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_int32 : .temp_nonbyp_FPU_sel_int32	
+	FPU0_mac_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_mac_int32 : .temp_nonbyp_FPU_mac_int32	
+	FPU0_sad_int32	=	(.EuIntegerBypass > 0) ? .temp_FPU_sad_int32 : .temp_nonbyp_FPU_sad_int32	
+	FPU0_mad_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_mad_int64 : .temp_nonbyp_FPU_mad_int64	
+	FPU0_mul_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_mul_int64 : .temp_nonbyp_FPU_mul_int64	
+	FPU0_add_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_add_int64 : .temp_nonbyp_FPU_add_int64	
+	FPU0_mov_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_mov_int64 : .temp_nonbyp_FPU_mov_int64	
+	FPU0_sel_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_int64 : .temp_nonbyp_FPU_sel_int64	
+	FPU0_mac_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_mac_int64 : .temp_nonbyp_FPU_mac_int64	
+	FPU0_sad_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_sad_int64 : .temp_nonbyp_FPU_sad_int64	
+	FPU0_mad_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MAD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_mul_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MUL@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_add_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@ADD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_pln_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@PLN@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_mac_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MAC@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_sad_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@SAD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_mov_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MOV@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_sel_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@SEL@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_mad_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@MAD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_mul_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@MUL@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_add_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@ADD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_pln_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@PLN@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_mac_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@MAC@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_sad_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@SAD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_mov_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@MOV@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	.temp_FPU_sel_intbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(w|uw|d|ud|q|uq)\.\d+\.@SEL@\.@BYPASS@')) / (FPU_total_count)) : 0	
+	FPU0_mad_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_mad_intbypass : 0	
+	FPU0_mul_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_mul_intbypass : 0	
+	FPU0_add_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_add_intbypass : 0	
+	FPU0_pln_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_pln_intbypass : 0	
+	FPU0_mac_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_mac_intbypass : 0	
+	FPU0_sad_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_sad_intbypass : 0	
+	FPU0_mov_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_mov_intbypass : 0	
+	FPU0_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_FPU_sel_intbypass : 0	
+#EM				
+	PS0_EU_FPU1	=	D(SUM('@ANY_EUPIPE@pwr_EmIdle.CrClock'))/(numEUs * .CrClk) -	PS0_EU_DOP -PS1_EU_DOP	 #DOP Clock ungated
+	.temp_PS2_EU_EM	=	(( EM_simd1_count/1) + (EM_simd2_count/2) +(EM_simd4_count/4) + ((EM_simd8_count + EM_simd16_count + EM_simd32_count)/8) + ((EM_simd8_hp_count + EM_simd16_hp_count + EM_simd32_hp_count)/16))/(numEUs * .CrClk)	#EM Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
+	.temp_PS2_EU_EM_trans=(( EM_simd1_trans_count/1) +(EM_simd2_trans_count/2) + ((EM_simd4_trans_count +	EM_simd8_trans_count + EM_simd16_trans_count +	EM_simd32_trans_count)/2) + ((EM_simd8_hp_trans_count +	EM_simd16_hp_trans_count + EM_simd32_hp_trans_count)/4))/(numEUs * .CrClk)	
+	PS1_EU_FPU1	=	1 - PS0_EU_FPU1 - PS2_EU_FPU1 -PS0_EU_DOP - PS1_EU_DOP	#EM stall - sparse scenario: (Total Clocks - EM executed clocks - EM Idle clocks - EU idle DOP gated clocks - EU stalled DOP gated clocks)
+	PS2_EU_FPU1	=	.temp_PS2_EU_EM	- .temp_PS2_EU_EM_trans
+	PS2_EU_EM=.temp_PS2_EU_EM_trans	
+	FPU1_mad_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mul_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	FPU1_add_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mov_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sel_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mac_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sad_fp16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.hf\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_pln_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@PLN@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mad_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mul_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	FPU1_add_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mov_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sel_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	EM_transc_fp32	=	(EM_total_trans_count > 0) ?	(D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@TRANS@\.exec'))/ (EM_total_trans_count)) : 0	
+	FPU1_mac_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sad_fp32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mad_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mul_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	FPU1_add_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mov_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sel_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	FPU1_mac_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	FPU1_sad_fp64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.df\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mad_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mul_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_add_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mov_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sel_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mac_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sad_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mad_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mul_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_add_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mov_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sel_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_transc_int32	=	(EM_total_trans_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@TRANS@\.exec')) / (EM_total_trans_count)) : 0	
+	.temp_EM_mac_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sad_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mad_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mul_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MUL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_add_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@ADD@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mov_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MOV@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sel_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@SEL@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_mac_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MAC@\.exec')) / (EM_total_count)) : 0	
+	.temp_EM_sad_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@SAD@\.exec')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mad_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mul_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MUL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_add_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@ADD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mov_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MOV@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sel_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@SEL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mac_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@MAC@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sad_int16	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw)\.\d+\.@SAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mad_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mul_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MUL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_add_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@ADD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mov_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MOV@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sel_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@SEL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_transc_int32	=	(EM_total_trans_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@TRANS@\.@ALLINST@')) / (EM_total_trans_count)) : 0	
+	.temp_nonbyp_EM_mac_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@MAC@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sad_int32	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(d|ud)\.\d+\.@SAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mad_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mul_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MUL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_add_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@ADD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mov_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MOV@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sel_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@SEL@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_mac_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@MAC@\.@ALLINST@')) / (EM_total_count)) : 0	
+	.temp_nonbyp_EM_sad_int64	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(q|uq)\.\d+\.@SAD@\.@ALLINST@')) / (EM_total_count)) : 0	
+	FPU1_mad_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_mad_int16 : .temp_nonbyp_EM_mad_int16	
+	FPU1_mul_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_mul_int16 : .temp_nonbyp_EM_mul_int16	
+	FPU1_add_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_add_int16 : .temp_nonbyp_EM_add_int16	
+	FPU1_mov_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_int16 : .temp_nonbyp_EM_mov_int16	
+	FPU1_sel_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_int16 : .temp_nonbyp_EM_sel_int16	
+	FPU1_mac_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_mac_int16 : .temp_nonbyp_EM_mac_int16	
+	FPU1_sad_int16	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_int16 : .temp_nonbyp_EM_sad_int16	
+	FPU1_mad_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_mad_int32 : .temp_nonbyp_EM_mad_int32	
+	FPU1_mul_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_mul_int32 : .temp_nonbyp_EM_mul_int32	
+	FPU1_add_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_add_int32 : .temp_nonbyp_EM_add_int32	
+	FPU1_mov_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_int32 : .temp_nonbyp_EM_mov_int32	
+	FPU1_sel_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_int32 : .temp_nonbyp_EM_sel_int32	
+	EM_transc_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_transc_int32 : .temp_nonbyp_EM_transc_int32	
+	FPU1_mac_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_mac_int32 : .temp_nonbyp_EM_mac_int32	
+	FPU1_sad_int32	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_int32 : .temp_nonbyp_EM_sad_int32	
+	FPU1_mad_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_mad_int64 : .temp_nonbyp_EM_mad_int64	
+	FPU1_mul_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_mul_int64 : .temp_nonbyp_EM_mul_int64	
+	FPU1_add_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_add_int64 : .temp_nonbyp_EM_add_int64	
+	FPU1_mov_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_int64 : .temp_nonbyp_EM_mov_int64	
+	FPU1_sel_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_int64 : .temp_nonbyp_EM_sel_int64	
+	FPU1_mac_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_int64 : .temp_nonbyp_EM_mac_int64	
+	FPU1_sad_int64	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_int64 : .temp_nonbyp_EM_sad_int64	
+	FPU1_mad_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@MAD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_mul_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@MUL@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_add_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@ADD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_pln_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@PLN@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_mac_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@MAC@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_sad_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@SAD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_mov_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@MOV@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_sel_floatbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(hf|sf|df)\.\d+\.@SEL@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_mad_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@MAD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_mul_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@MUL@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_add_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@ADD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_pln_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@PLN@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_mac_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@MAC@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_sad_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@SAD@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_mov_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@MOV@\.@BYPASS@')) / (EM_total_count)) : 0	
+	.temp_EM_sel_intbypass	=	(EM_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.(w|uw|d|ud|q|uq)\.\d+\.@SEL@\.@BYPASS@')) / (EM_total_count)) : 0	
+	FPU1_mad_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mad_intbypass : 0	
+	FPU1_mul_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mul_intbypass : 0	
+	FPU1_add_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_add_intbypass : 0	
+	FPU1_pln_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_pln_intbypass : 0	
+	FPU1_mac_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mac_intbypass : 0	
+	FPU1_sad_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sad_intbypass : 0	
+	FPU1_mov_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_mov_intbypass : 0	
+	FPU1_sel_intbypass	=	(.EuIntegerBypass > 0) ? .temp_EM_sel_intbypass : 0	
+
+#DP4a instruction modeling
+       FPU0_DP4A_bypass =  (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.masked')) / (FPU_total_count)) : 0
+       FPU0_DP4A_exec =   (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.d.\d+\.@DP4A@\.exec')) / (FPU_total_count)) : 0 # Divide by num of SIMD channels x No. of DP4A operations
+
+#ExtraPipe
+#DP4AS instruction modeling
+       ExtraPipe_DPAS_Float = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.sf.\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
+       ExtraPipe_DPAS_Int = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.d.\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
+       
+  
+#GA				
+	PS0_GA	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	
+	PS1_GA	=	0	#GA does not have a stall
+	PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_FPU1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_FPU2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_FPU3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM1Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM1Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM1Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	#PLN instructions take 2 clocks to complete
+	PS2_GA_EM2Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM2Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM2Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM3Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM3Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+
+
+       #Temporary variable for DualPipe GA residencies
+        .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
+       #Model approximation for GA contribution to ExtraPipe
+       PS2_GA_ExtraPipe = ExtraPipe_DPAS_Int + ExtraPipe_DPAS_Float
+				
+#TC				
+        PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks
+	PS1_TC	=	1 - PS0_TC - PS2_TC - PS0_EU_DOP - PS1_EU_DOP	
+	PS2_TC	=	PS2_TC_1Dispatch+PS2_TC_2Dispatch+PS2_TC_3Dispatch+PS2_TC_4Dispatch
+	PS2_TC_1Dispatch =	(D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.1')))/(num_EU_TC * .CrClk)
+	PS2_TC_2Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.2')))/(num_EU_TC * .CrClk) + D(SUM('@ANY_EU@uGRF\.WritebackBuffer\.active\.CrClock'))/(numEUs * .CrClk)
+	#PS2_TC_2Dispatch = .temp_GA_DualPipe/2 
+	PS2_TC_3Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.3')))/(num_EU_TC * .CrClk)
+	PS2_TC_4Dispatch = (D(SUM('@ANY_EUControl@Arb\.pwr_TC_ActiveThreads\.CrClock\.4')))/(num_EU_TC * .CrClk)		
+#GRF				
+	PS0_GRF	=	0	#no PS0 for GRF
+	PS2_GRF_READ=D(SUM('@ANY_EUPIPEControl@pwr_GrfReadAccesses\.CrClock'))/(numEUs*.CrClk)+D(SUM('@ANY_EUControl@PipelinesControl\.pwr_GrfReadAccesses\.CrClock'))/(numEUs*.CrClk)+planes	- PS2_GRF_READ_suppressed#GRF reads should be at 256 bit granularity (0,4)
+	PS2_GRF_WRITE	=	D(SUM('@ANY_EUPIPEControl@pwr_GrfWriteAccesses\.CrClock'))/(numEUs * .CrClk)+D(SUM('@ANY_EUControl@PipelinesControl\.pwr_GrfWriteAccesses\.CrClock'))/(numEUs*.CrClk)	#GRF writes should be at 256 bit granularity(0,2)
+    PS2_GRF_READ_suppressed	=	D(SUM('@ANY_EUPIPEControl@pwr_GrfReadSuppressed')) / (numEUs * .CrClk)	
+
+#Send path GRF modeling
+        PS2_GRF_SEND_PATH = D(SUM('@ANY_EU@uGRF\.WritebackBuffer\.active\.CrClock'))/(numEUs * .CrClk)  
+        
+
+	planes= (planesfpu0+planesfpu1)/2
+	   
+	PS2_Accumulator_READ=planes +  D(SUM('@ANY_EUControl@NumAccRd'))/(numEUs * .CrClk)
+	PS2_Accumulator_WRITE=planes + D(SUM('@ANY_EUControl@NumAccWr'))/(numEUs * .CrClk)
+    planesfpu0=(D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@PLN@\.exec')))/(4*.CrClk*numEUs)
+    planesfpu1=(D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.sf\.\d+\.@PLN@\.exec')))/(4*.CrClk*numEUs)					
+#IPC				
+	EU_Utilization1	=	(PS2_EU_FPU0*.8  + PS2_EU_FPU1*.2) /1	# Changed from SUM to AVG of EM/FPU active residencies
+	EU_Utilization	=	(PS2_EU_FPU1) /1	# Changed from SUM to AVG of EM/FPU active residencies
+		EU_IPC	=	numEUs * EU_Utilization	
+				
+#DFX				
+	PS0_EU_DFX	=	PS0_EU_FPU0 + PS1_EU_FPU0	+ PS0_EU_DOP + PS1_EU_DOP	#Approximated DFX using TC residencies
+	PS2_EU_DFX	=	1 - PS0_EU_DFX	#Approximated DFX using TC residencies
+				
+#SMALL				
+	PS0_EU_SMALL_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Approximated SMALL using TC residencies
+	PS0_EU_SMALL	=	PS0_TC	#Approximated SMALL using TC residencies
+	PS1_EU_SMALL	=	PS1_TC	#Approximated SMALL using TC residencies
+	PS2_EU_SMALL	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated SMALL using TC residencies
+				
+#Cpunit				
+	PS0_EU_CPunit	=	PS0_TC + PS1_TC + PS0_EU_DOP + PS1_EU_DOP	
+	PS2_EU_CPunit	=	1 - PS0_EU_CPunit	
+				
+#Assign				
+	PS0_EU_Assign_DOP	=	PS0_EU_DOP + PS1_EU_DOP	
+	PS0_EU_Assign	=	PS0_TC + PS1_TC	
+	PS2_EU_Assign	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+#CLKGLUE				
+	PS0_EU_CLKGLUE_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Added DOP Glue
+	PS0_EU_CLKGLUE	=	PS0_TC + PS1_TC	#Added DOP Glue
+	PS2_EU_CLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	
+				
+#NONCLKGLUE				
+	PS0_EU_NONCLKGLUE_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Approximated NONCLKGLUE using TC residencies
+	PS0_EU_NONCLKGLUE	=	PS0_TC	#Approximated NONCLKGLUE using TC residencies
+	PS1_EU_NONCLKGLUE	=	PS1_TC	#Approximated NONCLKGLUE using TC residencies
+	PS2_EU_NONCLKGLUE	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated NONCLKGLUE using TC residencies
+
+
+
+#DOP				
+	PS0_EU_DOP	=	(D(SUM('@ANY_EUControl@pwr_EuNonPipelinesDopGatedIdle\.CrClock')))/(num_EU_TC * .CrClk)	
+	PS1_EU_DOP	=	(D(SUM('@ANY_EUControl@Arb\.pwr_PS1_TC_DOP_ON\.CrClock')))/(num_EU_TC * .CrClk) 
+	PS2_EU_DOP	=	1-PS0_EU_DOP -PS1_EU_DOP	
+				
+#Repeater				
+	PS0_EU_Repeater_DOP	=	PS0_EU_DOP + PS1_EU_DOP	#Approximated Repeater using TC residencies
+	PS0_EU_Repeater	=	PS0_TC	#Approximated Repeater using TC residencies
+	PS1_EU_Repeater	=	PS1_TC	#Approximated Repeater using TC residencies
+	PS2_EU_Repeater	=	1 - PS0_TC - PS1_TC - PS0_EU_DOP - PS1_EU_DOP	#Approximated Repeater using TC residencies
+			
+
+
