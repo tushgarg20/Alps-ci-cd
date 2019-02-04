@@ -7559,9 +7559,6 @@ PS2_NODE,Gen12LP,A0,243.92,syn,1,New unit in Gen12HP
 PS2_URB,Gen12LP,A0,223.26,syn,1,New unit in Gen12HP,
 FPU0_DP4A_bypass,Gen12LP,A0,48.6,syn,1,Dummy value added by Santosh,
 FPU0_DP4A_exec,Gen12LP,A0,63,syn,1,From Ram WW2_2018,
-ExtraPipe_DPAS_Float,Gen12LP,A0,286.63,syn,1,From Krishna WW48_2018,
-ExtraPipe_DPAS_Int,Gen12LP,A0,213.61,syn,1,From Krishna WW48_2018,
-PS2_GA_ExtraPipe,Gen12LP,A0,63.93,syn,1,Using an approximated cdyn weight Krishna ww41- added ECC here,
 PS2_GRF_SEND_PATH,Gen12LP,A0,12.7,syn,1,From Praneeth WW21_2018,
 PS0_COLOR_CLKGLUE,Gen12LP,A0,10.21444103,syn,1,WW18 Infra*1.04,New
 PS0_COLOR_CPunit,Gen12LP,A0,0.071351795,syn,1,WW18 Infra*1.04,New
@@ -8784,3 +8781,12 @@ FPU0_sel_int64_15%,Gen12HP,A0,72.529,syn,1,Extrapolated from int32 numbers with 
 FPU0_sel_int64_17%,Gen12HP,A0,80.649,syn,1,Extrapolated from int32 numbers with 45% scaling as per ATS_DGEMM_CDYN.xlsx,
 FPU0_sel_int64_10%,Gen12HP,A0,58.6235,syn,1,Extrapolated from int32 numbers with 45% scaling as per ATS_DGEMM_CDYN.xlsx,
 FPU0_mac_int64_35%,Gen12HP,A0,109.388,syn,1,Extrapolated from int32 numbers with 45% scaling as per ATS_DGEMM_CDYN.xlsx,
+ExtraPipe_DPAS_Float_50%,Gen12HP,A0,206.71,syn,1,From Krishna WW02_2019,
+ExtraPipe_DPAS_Float_100%,Gen12HP,A0,254.42,syn,1,From Krishna WW02_2019,
+ExtraPipe_DPAS_Int,Gen12HP,A0,213.61,syn,1,From Krishna WW48_2018,
+PS2_GA_ExtraPipe,Gen12HP,A0,54.55,syn,1,Using an approximated cdyn weight Krishna ww41- added ECC here,
+PS2_GRF_READ,Gen12HP,A0,7.77112,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,
+PS2_GRF_WRITE,Gen12HP,A0,6.0749,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,
+PS2_GRF_READ_ECC,Gen12HP,A0,10.021,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,
+PS2_GRF_WRITE_ECC,Gen12HP,A0,8.3249,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,
+PS2_EU_INFRA,Gen12HP,A0,17.02,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,

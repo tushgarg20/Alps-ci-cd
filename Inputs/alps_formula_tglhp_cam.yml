@@ -10,6 +10,8 @@ EU:
   GRF:
      PS2_GRF_READ: R * C
      PS2_GRF_WRITE: R * C
+     PS2_GRF_READ_ECC: R * C
+     PS2_GRF_WRITE_ECC: R * C
      PS2_GRF_SEND_PATH: R * C
 
   FPU0:
@@ -45,8 +47,8 @@ EU:
       EM_transc_fp32: R * LINEST[C,R[FPU1_toggle_rate]]
 
   ExtraPipe:
-      ExtraPipe_DPAS_Float: R * C
-      ExtraPipe_DPAS_Int: R * C
+      ExtraPipe_DPAS_Float: R * LINEST[C,R[DPAS_Bypass_percent]] 
+      ExtraPipe_DPAS_Int: R * LINEST[C,R[DPAS_Bypass_percent]]
 
   GA:
     PS2_GA:
@@ -56,10 +58,14 @@ EU:
   TC:
     PS2_TC:
       PS2_TC_1Dispatch: R * C
+
+  INFRA:
+    PS2_EU_INFRA: R * C
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R
 FPU0_toggle_rate: R
+DPAS_Bypass_percent: R
 
 L3_Bank:
   LTCD_Data:
@@ -68,28 +74,11 @@ L3_Bank:
       PS2_LTCD_DATA_WRITE: R * C
 
 HDC:
-   #HDCREQCMD1:
-   # PS0_HDC_ReqCmd1_DOP: R * C
-   # PS0_HDC_ReqCmd1: R * C
-   # PS1_HDC_ReqCmd1: R * C
-   # PS2_HDC_ReqCmd1:
-   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Read: R * C
-   #  PS2_HDC_ReqCmd1_Sequenced_Typed_Write: R * C
-   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Read: R * C
-   #  PS2_HDC_ReqCmd1_Sequenced_Else_Data_Write: R * C
-   #  PS2_HDC_ReqCmd1_NonSequenced_Read: R * C
-   #  PS2_HDC_ReqCmd1_NonSequenced_Write: R * C
-   #  PS2_HDC_ReqCmd1_Other_GW_CPSS: R * C
-   #HDCREQCMD2:
-   # PS0_HDC_ReqCmd2_DOP: R * C
-   # PS0_HDC_ReqCmd2: R * C
-   # PS1_HDC_ReqCmd2: R * C
-   # PS2_HDC_ReqCmd2:
-   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Read: R * C
-   #   PS2_HDC_ReqCmd2_Sequenced_Typed_Write: R * C
-   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Read: R * C
-   #   PS2_HDC_ReqCmd2_Sequenced_Else_Data_Write: R * C
-   #   PS2_HDC_ReqCmd2_NonSequenced_Read: R * C
-   #   PS2_HDC_ReqCmd2_NonSequenced_Write: R * C
-  HDCREQDATA:
-    PS2_HDC_ReqData_NonSequenced_Write: R * C
+  HDCREQCMD:
+    PS2_HDCREQCMD_SIMD8_READ: R * C
+    PS2_HDCREQCMD_SIMD8_WRITE: R * C
+
+DSSC:
+   SLMBE:
+    PS2_SLMBE_Read: R * C
+    PS2_SLMBE_Write: R * C

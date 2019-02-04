@@ -2,7 +2,8 @@
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
 	numHDCs	                =       D(knob.numHDCs)	
-        num_HDC_HDCREQDATA	=	numHDCs
+        num_HDC_HDCREQCMD	=	numHDCs
 #Generic				
-	PS2_HDC_ReqData_NonSequenced_Write	        =	(D(HDC_READ) + D(HDC_WRITE)) / (numHDCs * .CrClk) 
+	PS2_HDCREQCMD_SIMD8_WRITE        =	D(HDC_WRITE)
+	PS2_HDCREQCMD_SIMD8_READ         =	D(HDC_READ)
 

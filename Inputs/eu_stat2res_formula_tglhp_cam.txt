@@ -22,6 +22,7 @@
 	num_EU_Pipelines	=	numEUs	
 	num_EU_Accumulator	=	numEUs			
 	num_EU_ExtraPipe = numEUs
+        num_EU_INFRA     = numEUs
 # Generic definitions
         @FPU@ = FPU
         @ALLINST@ = (mad|mul|mov|mac|sel|add)
@@ -36,7 +37,9 @@
 #FPU and DPAS opcodes
         FPU0_toggle_rate = 0.3
         FPU1_toggle_rate = 0.3
-        GA_toggle_rate = MAX(FPU0_toggle_rate, FPU1_toggle_rate) 
+        GA_toggle_rate = MAX(FPU0_toggle_rate, FPU1_toggle_rate)
+        ECC_Flag = D(knob.ECCflag) 
+        DPAS_Bypass_percent = 0.75 
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('@FPU@_mad_fp32')) / (FPU_total_count)) : 0
         FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('@FPU@_mul_fp32')) / (FPU_total_count)) : 0
         FPU0_add_fp32 = (FPU_total_count > 0) ? (D(SUM('@FPU@_add_fp32')) / (FPU_total_count)) : 0 
@@ -67,8 +70,12 @@
         PS2_GA_FPU3Src_SinglePipe = (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) 
         PS2_GA_FPU2Src_SinglePipe = (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) 
         PS2_GA_ExtraPipe = D(GA_ExtraPipe)
-        PS2_GRF_READ = D(GRF_READ)/CrClocks
-        PS2_GRF_WRITE = D(GRF_WRITE)/CrClocks
+        PS2_GRF_READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) : 0
+        PS2_GRF_WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_GRF_READ_ECC = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) : 0
+        PS2_GRF_WRITE_ECC = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
         PS2_TC_1Dispatch = D(TC)
+#INFRA power
+        PS2_EU_INFRA = 1
         
         
