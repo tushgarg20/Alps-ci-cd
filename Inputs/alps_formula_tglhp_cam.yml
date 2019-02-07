@@ -69,16 +69,15 @@ DPAS_Bypass_percent: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_LTCD_Data:
-      PS2_LTCD_DATA_READ: R * C
-      PS2_LTCD_DATA_WRITE: R * C
+    PS2_L3_READ: R * C
+    PS2_L3_WRITE: R * C
 
 HDC:
   HDCREQCMD:
-    PS2_HDCREQCMD_SIMD8_READ: R * C
-    PS2_HDCREQCMD_SIMD8_WRITE: R * C
+    PS2_HDC_READ: R * C
+    PS2_HDC_WRITE: R * C
 
 DSSC:
-   SLMBE:
-    PS2_SLMBE_Read: R * C
-    PS2_SLMBE_Write: R * C
+  SLMBE:
+    PS2_SLM_READ: R * C
+    PS2_SLM_WRITE: R * C
