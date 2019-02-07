@@ -1,0 +1,11 @@
+#Unit	GSIM residency			Comments
+#Generic				
+	 .CrClk	=	D(MAX_CYCLES)	
+
+#SLM				
+	.temp_fe_per_be	=	knob.SLM.BE.numIoRows
+	num_DSSC_SLMBE	=       knob.numDSSC	
+	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
+
+	PS2_SLM_READ  	=       D(SLM_READ)	
+	PS2_SLM_WRITE  	=       D(SLM_WRITE)	
