@@ -378,6 +378,8 @@ L3_Bank:
     PS0_L3_Bank_NONCLKGLUE: R * C
     PS1_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
+   L3Node_Ring:
+    PS2_L3Node_Ring: R * C
 L3Node:
    LNIB:
     PS0_LNIB: R * C
@@ -1810,6 +1812,14 @@ FF:
     PS0_FF_OTHER_DFX: R * C
     PS2_FF_OTHER_DFX: R * C
 Other:
+   Infra:
+    PS2_BGF: R * C
+    PS2_GA_SQIDI_RPT: R * C
+    PS2_Media_Channel: R * C
+    PS2_GTINFNORTH: R * C
+    PS2_RASTER_Crossbar: R * C
+    PS2_MidSlice_FF: R * C
+    PS2_MDFI_GAM: R * C
    NODE:
     PS2_NODE: R*C
    URB:

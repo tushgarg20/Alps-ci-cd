@@ -1,5 +1,7 @@
 #Unit	GSIM residency		
 #Instance Counts
+	num_Other_Infra	= 1
+
         num_Other_NODE  = 1
         num_Other_URB   = 1	
 	num_Other_CCD	= 1		
@@ -12,6 +14,14 @@
 	num_Other_RC	=	num_Other_Slice - 1
 			
 #Other	
+	PS2_BGF = 1
+    	PS2_GA_SQIDI_RPT = 1
+    	PS2_Media_Channel = 1
+    	PS2_GTINFNORTH = 1
+    	PS2_RASTER_Crossbar = 1
+    	PS2_MidSlice_FF = 1
+    	PS2_MDFI_GAM = 1
+	
 	PS2_CCD	= 1
 	PS2_NODE= 1 * num_Other_Slice
 	PS2_URB	= 1 * num_Other_Slice
