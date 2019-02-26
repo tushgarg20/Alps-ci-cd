@@ -8783,6 +8783,7 @@ FPU0_sel_int64_10%,Gen12HP,A0,58.6235,syn,1,Extrapolated from int32 numbers with
 FPU0_mac_int64_35%,Gen12HP,A0,109.388,syn,1,Extrapolated from int32 numbers with 45% scaling as per ATS_DGEMM_CDYN.xlsx,
 ExtraPipe_DPAS_Float_50%,Gen12HP,A0,206.71,syn,1,From Krishna WW02_2019,
 ExtraPipe_DPAS_Float_100%,Gen12HP,A0,254.42,syn,1,From Krishna WW02_2019,
+ExtraPipe_DPAS_Float,Gen12HP,A0,254.42,syn,1,From Krishna WW02_2019,
 ExtraPipe_DPAS_Int,Gen12HP,A0,178.18,syn,1,From Biweekly CDyn indicator WW06_2019,
 PS2_GA_ExtraPipe,Gen12HP,A0,37.93,syn,1,Using Cdyn weight from the Biweekly Cdyn indicator - WW06_2019,
 PS2_GRF_READ,Gen12HP,A0,7.77112,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx,
