@@ -125,7 +125,7 @@ alps_log = open(runalps_log,'w')
 
 try:
     if sys.platform == 'win32':
-        git_exe = 'C:/Program Files (x86)/Git/bin/git'
+        git_exe = 'git'
     else:
         git_exe = 'git'
     process = subprocess.Popen([git_exe,'describe','--tags'], cwd='%s/' % (wd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
@@ -272,8 +272,7 @@ else:
 
 
 try:
-    if options.disable_stdout::q
-    
+    if options.disable_stdout:
         process = subprocess.Popen(build_alps_cmd, shell=False)
     else:
         process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
