@@ -122,6 +122,9 @@ def opcode_switch_count_estimator(file):
     opcode_list = r"(mad|mac|mul|add)"
     curr_opcode = []
     last_opcode = []
+    opcode_sw_percentage = 0
+    mad_mul_percent = 0
+    mad_add_percent = 0
     for line in gSimFile:
         line = line.strip().decode('ascii')
         #Estimate the opcode count
@@ -143,9 +146,11 @@ def opcode_switch_count_estimator(file):
                    add_mad_sw += min(opcode_count, last_opcode_count)
            last_opcode = curr_opcode
            last_opcode_count = opcode_count
-    opcode_sw_percentage = (opcode_sw_count*100)/total_opcode_count
-    mad_mul_percent = (mad_mul_sw + mul_mad_sw)*100/total_opcode_count
-    mad_add_percent = (mad_add_sw + add_mad_sw)*100/total_opcode_count
+    #Check for divide by zero and calculate percentages
+    if total_opcode_count != 0:
+       opcode_sw_percentage = (opcode_sw_count*100)/total_opcode_count
+       mad_mul_percent = (mad_mul_sw + mul_mad_sw)*100/total_opcode_count
+       mad_add_percent = (mad_add_sw + add_mad_sw)*100/total_opcode_count
     return(opcode_sw_count, opcode_sw_percentage, mad_mul_percent, mad_add_percent)
    
 #opcode_sw_count, switch_percentage = opcode_switch_count_estimator('Instr_snapshot.txt')    
@@ -164,6 +169,7 @@ def datatype_switch_count_estimator(file):
     total_opcode_count = 0
     last_opcode_count = 0
     opcode_count = 0
+    dtype_sw_percentage = 0
     exp_list = r"(mad|mac|mul|add|mov)\s+\(\d+\)"
     opcode_list = r":(hf|f)"
     curr_datatype = []
@@ -183,7 +189,8 @@ def datatype_switch_count_estimator(file):
                datatype_sw_count += min(opcode_count, last_opcode_count)
            last_hf_flag = hf_flag
            last_opcode_count = opcode_count
-    dtype_sw_percentage = (datatype_sw_count*100)/total_opcode_count
+    if total_opcode_count != 0:
+       dtype_sw_percentage = (datatype_sw_count*100)/total_opcode_count
     return(datatype_sw_count,dtype_sw_percentage)
     
 #dtype_sw_count, switch_percentage = datatype_switch_count_estimator('Instr_snapshot.txt') 
@@ -276,13 +283,14 @@ def swizzle_count_estimator(file):
     simd16_flag = 0
     simd8_flag = 0
     num_elem = 0
-    opcode_expr = r"\w+\s+\(\d+\)"
+    opcode_expr = r"\w+\s+\(\d+\|+\w+\)"
+    opcode_expr1 = r"\w+\s+\(\d+\)"
     for line in gSimFile:  # go over each line
         #oneLine = []       # matches for one line 
         #swizzle_flag = 0   # Reset the flag to detect swizzle in next line
         line = line.strip().decode('ascii')
         #Estimate the opcode count
-        if re.search(opcode_expr, line):
+        if re.search(opcode_expr, line) or re.search(opcode_expr1, line):
            #Estimate the opcode count
            opcode_count = instr_count(line)
            total_opcode_count += opcode_count
@@ -317,6 +325,7 @@ def swizzle_count_estimator(file):
                                 swizzle_count[1] += opcode_count              
     #Calculate the overall swizzle and scalar percentages for each source
     for i in range(0,3):
+      if total_opcode_count != 0:
         swizzle_percentage[i] = swizzle_count[i]/total_opcode_count
         scalar_percentage[i] = scalar_count[i]/total_opcode_count
     return(swizzle_count, swizzle_percentage, scalar_count, scalar_percentage)
@@ -360,7 +369,10 @@ def raw_mov_count_estimator(file):
                raw_mov_count += opcode_count
             lines.append(line) #Collect all the lines that have swizzle
     #Estimate the swizzle percentage
-    raw_mov_percentage = (raw_mov_count*100)/total_opcode_count
+    if total_opcode_count != 0:
+       raw_mov_percentage = (raw_mov_count*100)/total_opcode_count
+    else:
+       raw_mov_percentage = 0.0
     return(raw_mov_count, lines, raw_mov_percentage)
 
 
@@ -411,7 +423,10 @@ def operand_num_count_estimator(file):
 #               raw_mov_count += opcode_count
 #            lines.append(line) #Collect all the lines that have swizzle
     #Estimate the swizzle percentage
-    raw_mov_percentage = (raw_mov_count*100)/total_opcode_count
+    if total_opcode_count != 0:
+       raw_mov_percentage = (raw_mov_count*100)/total_opcode_count
+    else:
+       raw_mov_percentage = 0.0
     return(raw_mov_count, raw_mov_percentage, operand_type_count)
 
 import collections
