@@ -4,6 +4,6 @@
 	numHDCs	                =       D(knob.numHDCs)	
         num_HDC_HDCREQCMD	=	numHDCs
 #Generic				
-	PS2_HDC_WRITE        =	D(HDC_WRITE)/numHDCs
-	PS2_HDC_READ         =	D(HDC_READ)/numHDCs
+	PS2_HDC_WRITE        =	D(HDC_WRITE)
+	PS2_HDC_READ         =	D(HDC_READ)
 
