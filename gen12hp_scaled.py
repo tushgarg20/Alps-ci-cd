@@ -1,8 +1,6 @@
 import os, sys, re, subprocess, csv, itertools, parser, argparse, pdb, time, shlex
-import lib.yaml as yaml
+import yaml
 from subprocess import call
-import lib.yaml as yaml  # requires PyYAML
-import lib.argparse
 from pathlib import Path
 
 
@@ -37,10 +35,10 @@ def alps_post_process(cdyn_dict,wl,lf,arch):
     num = 0
     for clusters in cdyn_dict['cluster_cdyn_numbers(pF)'].keys():
         if arch == 'tglhp':
-            if clusters == "L3Node":
+            '''if clusters == "L3Node":
                 num = cdyn_dict['cluster_cdyn_numbers(pF)']["L3_Bank"]["total"] / 2.7
             elif clusters == "Fabric":
-                num = cdyn_dict['cluster_cdyn_numbers(pF)']["L3_Bank"]["total"] / 5.03
+                num = cdyn_dict['cluster_cdyn_numbers(pF)']["L3_Bank"]["total"] / 5.03'''
             elif clusters == "SQIDI":
                 num = cdyn_dict['cluster_cdyn_numbers(pF)']["GAM"]["total"] * 1.713
             elif clusters == "GTI":
@@ -54,19 +52,15 @@ def alps_post_process(cdyn_dict,wl,lf,arch):
             num=cdyn_dict['cluster_cdyn_numbers(pF)'][clusters]["total"]
             print ((clusters+",\t").expandtabs(26)+(str(num)+",\t").expandtabs(36),file=lf)
         GT_cdyn = GT_cdyn + num
+    # Addingother infra cdyn
+    # GT_cdyn = GT_cdyn + 3500
     print (("GT_Cdyn,\t").expandtabs(26)+(str(GT_cdyn)).expandtabs(16),file=lf)
                     
-    print("##### Unit level cdyn #####",file=lf)
-    print("",file=lf)
-    for cluster in cdyn_dict['unit_cdyn_numbers(pF)'].keys():
-        for unit in cdyn_dict['unit_cdyn_numbers(pF)'][cluster].keys():
-            #cdyn_unit=cdyn_dict.get('unit_cdyn_numbers(pF)',{}).get(clusters,{}).get(units)
-            num=cdyn_dict['unit_cdyn_numbers(pF)'][cluster][unit]
-            print ((cluster+",\t"+unit+",\t").expandtabs(50)+(str(num)+",\t").expandtabs(36),file=lf)
+
 
 if __name__ == '__main__':
     
-    parser = lib.argparse.ArgumentParser(description='Script to post process the ALPS data and put it in s')
+    parser = argparse.ArgumentParser(description='Script to post process the ALPS data and put it in s')
 
     parser.add_argument('-o','--out_dir',dest="out_dir",default=False, help="Output directory")
     parser.add_argument('-i','--alps_dir',dest="alps_dir", help="ALPS directory")
@@ -87,32 +81,31 @@ if __name__ == '__main__':
     else:
         os.makedirs(out_directory)
 
-    if os.path.isdir(options.alps_dir):
+    if os.path.isdir(args.alps_dir):
 
-        for files in os.listdir(options.alps_dir):
+        for files in os.listdir(args.alps_dir):
             if files.endswith(".yaml"):
                 wl = re.split(".yaml",files)
                 out_f = wl[0]+".csv"
                 lf = open(out_directory+"/"+out_f,'w')
                 print ("###### Workload: "+wl[0]+"######",file=lf)
                 print ("", file=lf)
-                yaml_file = open(options.alps_dir+"/"+files,'r')
+                yaml_file = open(args.alps_dir+"/"+files,'r')
                 cdyn_dict = yaml.load(yaml_file)
-                alps_post_process(cdyn_dict,wl1[0],lf,options.arch)
+                alps_post_process(cdyn_dict,wl[0],lf,args.arch)
 
                             
-    elif os.path.isfile(options.alps_dir):
-        if options.alps_dir.endswith("yaml"):
+    elif os.path.isfile(args.alps_dir):
+        if args.alps_dir.endswith("yaml"):
             wl = re.split(".yaml")
             out_f = wl[0]+".csv"
             lf = open(out_directory+"/"+out_f,'w')
             print ("###### Workload: "+wl[0]+"######",file=lf)
             print ("", file=lf)
-            yaml_file = open(options.alps_dir+"/"+files,'r')
+            yaml_file = open(args.alps_dir+"/"+files,'r')
             cdyn_dict = yaml.load(yaml_file)
-            alps_post_process(cdyn_dict,wl1[0],lf,options.arch)
+            alps_post_process(cdyn_dict,wl[0],lf,args.arch)
 
     else:
         pass
-	    
-
+       
