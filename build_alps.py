@@ -55,8 +55,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','PVC_Scaled'],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','PVC_Scaled']
                        };
 
 new_gc = {}         ##Gate Count
@@ -114,6 +114,8 @@ elif common_cfg.find('icllp') > -1  or common_cfg.find('icl_gen11_1x8x8') > -1:
     cfg ='Gen11LP'
 elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
+elif common_cfg.find('pvc_scaled') > -1 :
+    cfg ='PVC_Scaled'   
 elif common_cfg.find('tglhp_512') > -1 :
     cfg ='Gen12HP_512'
 elif common_cfg.find('tglhp_384') > -1 :
@@ -420,7 +422,6 @@ def eval_linest(key_tuple,cluster,unit):
     linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
     linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
     temp = 0
-    print (cluster, unit)
     temp = (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]
     if (options.dump_ecw):
         print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=eff_wf)

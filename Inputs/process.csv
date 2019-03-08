@@ -105,3 +105,11 @@ Gen9LPClient,Gen12DG,0.6508467,0.6508467,1.05 * 1.02 to account for SD+12DG60 li
 Gen9LPSoC,Gen12DG,0.707899423,0.729136407,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen12LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen12DG,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
+Gen9LPClient,PVC_Scaled,0.577984685,0.577984685,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen9LPSoC,PVC_Scaled,0.62865038,0.647509893,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen11,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen10LP,PVC_Scaled,0.950246008,0.950246008,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen11LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen12LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen12DG,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen12HP,PVC_Scaled,0.855,0.855,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
