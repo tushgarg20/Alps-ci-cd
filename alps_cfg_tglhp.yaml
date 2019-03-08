@@ -1,7 +1,7 @@
 Stat2Res Formula Files:
   - Inputs/color_stat2res_formula_tglhp.txt
   - Inputs/l3_stat2res_formula_tglhp.txt
-  - Inputs/l3node_stat2res_formula_tglhp.txt
+  - Inputs/l3node_stat2res_formula_tglhp_scaled.txt
   - Inputs/eu_stat2res_formula_tglhp.txt
   - Inputs/other_stat2res_formula_tglhp.txt
   - Inputs/ff_stat2res_formula_tglhp.txt
@@ -14,7 +14,7 @@ Stat2Res Formula Files:
   - Inputs/hdc_stat2res_formula_tgl.txt
   - Inputs/z_stat2res_formula_tgl.txt
   - Inputs/bw_stat2res_formula_icllp.txt
-  - Inputs/rc_stat2res_formula_tglhp.txt
+  - Inputs/rc_stat2res_formula_tglhp_scaled.txt
 
 ALPS Input File:
   - inputs_tglhp.txt
