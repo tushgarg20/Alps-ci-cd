@@ -9,3 +9,4 @@
 
 	PS2_SLM_READ  	=       D(SLM_READ)	
 	PS2_SLM_WRITE  	=       D(SLM_WRITE)	
+        PS2_SLM_INFRA   =       1

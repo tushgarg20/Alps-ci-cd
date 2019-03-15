@@ -1,6 +1,6 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
-	numL3Banks			=       D(knob.numL3Banks) #Dummy value`
+	numL3Banks			=       D(knob.numL3Banks) #Dummy value
 	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
 	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices	
 	num_L3_Bank_LTCD_EBB		=	num_L3_Slices * numL3Banks
@@ -24,5 +24,6 @@
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
-	PS2_L3_READ	        =	D(L3_READ) 
-	PS2_L3_WRITE	        =	D(L3_WRITE)
+	PS2_L3_NODE	        =	D(L3_READ) 
+	PS2_L3_BANK	        =	D(L3_WRITE)
+        PS2_L3_INFRA            =       1

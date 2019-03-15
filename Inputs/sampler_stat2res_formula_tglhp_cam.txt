@@ -1,0 +1,8 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	numHDCs	                =       D(knob.numHDCs)	
+        num_HDC_HDCREQCMD	=	numHDCs
+#Generic				
+	PS2_SC_L1_CACHE        =	D(HDC_READ)
+        PS2_SC_INFRA           =        1
