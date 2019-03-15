@@ -113,3 +113,11 @@ Gen11LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03
 Gen12LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
 Gen12DG,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
 Gen12HP,PVC_Scaled,0.855,0.855,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen10LP,PVC,0.950246008,0.950246008,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen11,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen11LP,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen9LPClient,PVC,0.577984685,0.577984685,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen9LPSoC,PVC,0.62865038,0.647509893,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen12LP,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen12DG,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
+Gen12HP,PVC,0.855,0.855,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
