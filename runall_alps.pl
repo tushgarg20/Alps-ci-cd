@@ -19,6 +19,7 @@ my $cnl				= '';
 my $icl				= '';
 my $icllp			= '';
 my $tgl				= '';
+my $adl				= '';
 my $reduced			= '';
 my $tglhp_512			= '';
 my $tglhp_384			= '';
@@ -44,6 +45,7 @@ Getopt::Long::GetOptions(
 	"icl"			=> \$icl,
 	"icllp"			=> \$icllp,
 	"tgl"			=> \$tgl,
+	"adl"			=> \$adl,
         "reduced"		=> \$reduced,
 	"tglhp"			=> \$tglhp,
 	"cam|m=s"		=> \$cam,
@@ -71,9 +73,11 @@ $cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
 $cfg_file = ($icl) ? $sdir . "alps_cfg_icl.yaml" : $cfg_file;
 $cfg_file = ($icllp) ? $sdir . "alps_cfg_icllp.yaml" : $cfg_file;
 $cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
+$cfg_file = ($adl) ? $sdir . "alps_cfg_adl.yaml" : $cfg_file;
 $cfg_file = ($reduced && $tgl) ? $sdir . "alps_cfg_tgl_reduced.yaml" : $cfg_file;
 $cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
 $cfg_file = ($cam && $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
+$cfg_file = ($cam && $adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 $cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tglhp_512.yaml" : $cfg_file;
 $cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tglhp_384.yaml" : $cfg_file;
 $cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;

@@ -1,0 +1,11 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
+        num_GAM_SQIDI        =       D(knob.numSQIDI)
+#Generic				
+	PS2_GAM              =	(D(GTI_READ) + D(GTI_WRITE))/128
+        PS2_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/128
+        PS2_GAM_INFRA        =  1
+        PS2_SQIDI_INFRA      =  1
+

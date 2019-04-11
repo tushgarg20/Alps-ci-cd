@@ -1,0 +1,32 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numL3Banks			=       D(knob.numL3Banks) #Dummy value
+	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices	
+	num_L3_Bank_LTCD_EBB		=	num_L3_Slices * numL3Banks
+	num_L3_Bank_LTCD_Data		=	num_L3_Slices * numL3Banks    
+        num_L3_Bank_LTCD_Tag		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQD		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSQC		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LTCC		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_LSLM		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_L3BankOther		=	num_L3_Slices * numL3Banks
+	num_L3_Bank_DOP			=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_DFX		        =	num_L3_Slices * numL3Banks	
+	num_L3_Bank_SMALL		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_CPunit		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_Assign		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_Repeater		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_CLKGLUE		=	num_L3_Slices * numL3Banks	
+	num_L3_Bank_NONCLKGLUE		=	num_L3_Slices * numL3Banks
+	num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
+        num_L3Node_LNI                  =       1  #It was 2 for gen12lp, Need to varify
+		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)	
+        L3_Cache_Size           =       D(knob.L3CacheSize)
+        L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05 
+	#PS2_L3_READ	        =	D(L3_READ)  / (L3_Scaler  * 512)
+	#PS2_L3_WRITE	        =	D(L3_WRITE) / (L3_Scaler * 512)
+        PS2_L3                  =       (D(L3_READ)  / (L3_Scaler  * 512)) + (D(L3_WRITE)  / (L3_Scaler  * 512))
+        PS2_L3_INFRA            =       1 / L3_Scaler

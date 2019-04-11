@@ -1,0 +1,20 @@
+Stat2Res Formula Files:
+  - Inputs/color_stat2res_formula_tgl.txt
+  - Inputs/l3_stat2res_formula_tgl.txt
+  - Inputs/l3node_stat2res_formula_tgl.txt
+  - Inputs/eu_stat2res_formula_tgl.txt
+  - Inputs/other_stat2res_formula_icllp.txt
+  - Inputs/ff_stat2res_formula_tgl.txt
+  - Inputs/ff_posh_stat2res_formula_tgl.txt
+  - Inputs/rosc_stat2res_formula_icllp.txt
+  - Inputs/gam_stat2res_formula_tgl.txt
+  - Inputs/ross_stat2res_formula_tgl.txt
+  - Inputs/gti_stat2res_formula_tgl.txt
+  - Inputs/sampler_stat2res_formula_tgl.txt
+  - Inputs/hdc_stat2res_formula_tgl.txt
+  - Inputs/z_stat2res_formula_tgl.txt
+  - Inputs/bw_stat2res_formula_icllp.txt
+  - Inputs/rc_stat2res_formula_tgl.txt
+
+ALPS Input File:
+  - inputs_adl.txt
