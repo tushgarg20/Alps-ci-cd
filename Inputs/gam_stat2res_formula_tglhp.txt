@@ -68,8 +68,11 @@
    @UNSLICECLOCKS@=    D(UnsliceClock.Clocks)
    @GAFM@         =    S\d+\.uL3\.LNI_\d+\.
    
-  .temp = uGAM_0_TotalFtlbRequests
-  PS2_GAM	= .temp /(@CLOCKS@ * num_GAM_GAMFTLB)
+  .temp = D(uGAM_0_TotalFtlbRequests)
+  PS2_GAM_App	= .temp /(@CLOCKS@ * num_GAM_GAMFTLB)
+  PS2_GTI_App	= PS2_GAM_App * 0.04
+  PS2_SQIDI_App = PS2_GAM_App * 1.75
+  PS2_Uncore_App = PS2_GAM_App * 0.6
  
 
 #GAM_DOP			
