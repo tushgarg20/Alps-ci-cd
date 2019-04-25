@@ -18,7 +18,6 @@
         PS2_CC         =  1
         PS2_BGF        =  1
         PS2_GA_SQIDI_RPT = D(GTI_UTILIZATION) 
-        PS2_MEDIA      =  1
         PS2_MDFI_GAM   =  D(GTI_UTILIZATION) 
         PS2_L3NODE_RING = 1
         PS2_OTHER_INFRA = 1

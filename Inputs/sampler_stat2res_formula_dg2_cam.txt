@@ -5,6 +5,5 @@
         ECC_flag                =       D(knob.Ecc)	
         num_Sampler_SC	=	numHDCs
 #Generic				
-	PS2_SC_L1_CACHE        =	(ECC_flag == 0) ? D(HDC_UTILIZATION) : 0
-	PS2_SC_L1_CACHE_ECC    =	(ECC_flag == 1) ? D(HDC_UTILIZATION) : 0
+	PS2_SC_L1_CACHE        =	D(HDC_UTILIZATION)
         PS2_SC_INFRA           =        1

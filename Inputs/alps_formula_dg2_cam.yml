@@ -48,7 +48,6 @@ EU:
 
   ExtraPipe:
       ExtraPipe_DPAS_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
-      ExtraPipe_DPAS_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
       ExtraPipe_DPAS_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_UInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
 
@@ -98,7 +97,6 @@ Other:
     PS2_CC: R * C
     PS2_BGF: R * C
     PS2_GA_SQIDI_RPT: R * C
-    PS2_MEDIA: R * C
     PS2_MDFI_GAM: R * C
     PS2_L3NODE_RING: R * C
     PS2_OTHER_INFRA: R * C
@@ -119,6 +117,5 @@ GAM:
 Sampler:
    SC:
     PS2_SC_L1_CACHE: R * C
-    PS2_SC_L1_CACHE_ECC: R * C
     PS2_SC_INFRA: R * C
 

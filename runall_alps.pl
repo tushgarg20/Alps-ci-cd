@@ -28,6 +28,7 @@ my $cam 			= '';
 my $tgldg			= '';
 my $pvc_scaled			= '';
 my $pvc				= '';
+my $dg2			= '';
 
 
 
@@ -52,6 +53,7 @@ Getopt::Long::GetOptions(
 	"tglhp_512"		=> \$tglhp_512,
 	"tglhp_384"		=> \$tglhp_384,
 	"tgldg"			=> \$tgldg,
+	"dg2"		=> \$dg2,
 	"pvc_scaled"		=> \$pvc_scaled,
 	"pvc"		=> \$pvc
 
@@ -84,6 +86,7 @@ $cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;
 $cfg_file = ($pvc_scaled) ? $sdir . "alps_cfg_pvc_scaled.yaml" : $cfg_file;
 $cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
 $cfg_file = ($cam && $pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
+$cfg_file = ($dg2 && $cam) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
 
 
 
