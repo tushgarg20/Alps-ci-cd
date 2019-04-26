@@ -308,6 +308,7 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
+    
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
@@ -335,7 +336,6 @@ def get_eff_cdyn(cluster,unit,stat):
 
     if(gc_scalar_bool == 'False'):
         gc_sf = 1.0
-
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     e_cdyn = base_cdyn*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     if (options.dump_cw):
