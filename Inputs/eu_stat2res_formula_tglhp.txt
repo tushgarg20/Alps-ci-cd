@@ -30,23 +30,45 @@
 	 @ANY_EUPIPEControl@	=	 @ANY_EU@PipelinesAlu\.	 
 	 @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
 	 @ALLINST@	=	(exec|masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
-	 @HP@	=	(hf|w|uw)	
+	 @HP@	=	(hf|w|uw)
+         @DP@   = (df)	
 	 @TRANS@ =(math)
-	FPU_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd4_count	= 	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd1_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.1\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd1_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.1\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd1_count	=       .temp_FPU_simd1_count - .temp_FPU_simd1_hp_count - .temp_FPU_simd1_dp_count     	
+        FPU_simd1_hp_count =   .temp_FPU_simd1_hp_count
+        FPU_simd1_dp_count =   .temp_FPU_simd1_dp_count
+	.temp_FPU_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd2_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.2\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd2_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.2\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd2_count	=       .temp_FPU_simd2_count - .temp_FPU_simd2_hp_count - .temp_FPU_simd2_dp_count     	
+        FPU_simd2_hp_count =   .temp_FPU_simd2_hp_count
+        FPU_simd2_dp_count =   .temp_FPU_simd2_dp_count
+	.temp_FPU_simd4_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd4_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.4\.\w+\.(exec|@BYPASS@)'))	
+	.temp_FPU_simd4_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.4\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd4_count	=       .temp_FPU_simd4_count - .temp_FPU_simd4_hp_count - .temp_FPU_simd4_dp_count     	
+        FPU_simd4_hp_count =   .temp_FPU_simd4_hp_count
+        FPU_simd4_dp_count =   .temp_FPU_simd4_dp_count
 	.temp_FPU_simd8_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.8\.\w+\.(exec|@BYPASS@)'))	
 	.temp_FPU_simd8_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.8\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd8_count	=	.temp_FPU_simd8_count - .temp_FPU_simd8_hp_count	
+	.temp_FPU_simd8_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.8\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd8_count	=	.temp_FPU_simd8_count - .temp_FPU_simd8_hp_count -  .temp_FPU_simd8_dp_count
 	FPU_simd8_hp_count	=	.temp_FPU_simd8_hp_count	
+        FPU_simd8_dp_count      =       .temp_FPU_simd8_dp_count
 	.temp_FPU_simd16_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.16\.\w+\.(exec|@BYPASS@)'))	
 	.temp_FPU_simd16_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.16\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd16_count	=	.temp_FPU_simd16_count - .temp_FPU_simd16_hp_count	
+	.temp_FPU_simd16_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.16\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd16_count	=	.temp_FPU_simd16_count - .temp_FPU_simd16_hp_count - .temp_FPU_simd16_dp_count	
 	FPU_simd16_hp_count	=	.temp_FPU_simd16_hp_count	
+	FPU_simd16_dp_count	=	.temp_FPU_simd16_dp_count	
 	.temp_FPU_simd32_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.\w+\.32\.\w+\.(exec|@BYPASS@)'))	
 	.temp_FPU_simd32_hp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@HP@\.32\.\w+\.(exec|@BYPASS@)'))	
-	FPU_simd32_count	=	.temp_FPU_simd32_count - .temp_FPU_simd32_hp_count	
+	.temp_FPU_simd32_dp_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.@DP@\.32\.\w+\.(exec|@BYPASS@)'))	
+	FPU_simd32_count	=	.temp_FPU_simd32_count - .temp_FPU_simd32_hp_count - .temp_FPU_simd32_dp_count	
 	FPU_simd32_hp_count	=	.temp_FPU_simd32_hp_count	
+	FPU_simd32_dp_count	=	.temp_FPU_simd32_dp_count	
 	EM_simd1_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.1\.\w+\.(exec|@BYPASS@)'))	
 	EM_simd2_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.2\.\w+\.(exec|@BYPASS@)'))	
 	EM_simd4_count	=	D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Em\.\w+\.4\.\w+\.(exec|@BYPASS@)'))	
@@ -87,7 +109,7 @@
 
 
 
-        FPU_total_count	=	FPU_simd1_count + FPU_simd2_count + FPU_simd4_count + FPU_simd8_count + FPU_simd8_hp_count + FPU_simd16_count + FPU_simd16_hp_count + FPU_simd32_count + FPU_simd32_hp_count	
+        FPU_total_count	=	FPU_simd1_count + FPU_simd1_hp_count + FPU_simd1_dp_count + FPU_simd2_count + FPU_simd2_hp_count + FPU_simd2_dp_count + FPU_simd4_count + FPU_simd4_hp_count + FPU_simd4_dp_count + FPU_simd8_count + FPU_simd8_hp_count + FPU_simd8_dp_count + FPU_simd16_count + FPU_simd16_hp_count + FPU_simd16_dp_count + FPU_simd32_count + FPU_simd32_hp_count + FPU_simd32_dp_count	
 	EM_total_count	=	EM_simd1_count + EM_simd2_count + EM_simd4_count + EM_simd8_count + EM_simd8_hp_count + EM_simd16_count + EM_simd16_hp_count + EM_simd32_count + EM_simd32_hp_count		-	EM_total_trans_count	
 	EM_total_trans_count	=	EM_simd1_trans_count + EM_simd2_trans_count + EM_simd4_trans_count + EM_simd8_trans_count + EM_simd8_hp_trans_count + EM_simd16_trans_count + EM_simd16_hp_trans_count + EM_simd32_trans_count + EM_simd32_hp_trans_count	
         
@@ -126,7 +148,7 @@
 	.EuIntegerBypass	=	knob.Stats.EnableEuIntegerBypass	#EU Integer bypass knob for CNL+
 #FPU				
 	PS0_EU_FPU0	=	D(SUM('@ANY_EUPIPE@pwr_FpuIdle.CrClock'))/(numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	#DOP Clock ungated
-	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + FPU_simd4_count/4 + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + ((FPU_simd8_hp_count +	FPU_simd16_hp_count + FPU_simd32_hp_count)/16))/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
+	.temp_PS2_EU_FPU	=	(( FPU_simd1_count/1) +	(FPU_simd2_count/2) + (FPU_simd4_count/4) + ((FPU_simd8_count +	FPU_simd16_count + FPU_simd32_count)/8) + (FPU_simd1_hp_count/2) + FPU_simd1_dp_count + (FPU_simd2_hp_count/4) + (FPU_simd2_dp_count/1) + (FPU_simd4_hp_count/8) + (FPU_simd4_dp_count/2) + ((FPU_simd8_hp_count + FPU_simd16_hp_count + FPU_simd32_hp_count)/16) + ((FPU_simd8_dp_count + FPU_simd16_dp_count + FPU_simd32_dp_count)/4) )/(numEUs * .CrClk)	#FPU Active based on SIMDness. #hp_count is temporary hack. Remove after GSIM fix
 	PS1_EU_FPU0	=		1 - PS0_EU_FPU0 - .temp_PS2_EU_FPU - PS0_EU_DOP - PS1_EU_DOP	#FPU stall - sparse scenario: (Total Clocks - FPU executed clocks - FPU Idle clocks - EU idle DOP gated - EU stalled DOP gated)
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
         PS2_EU_DP4A     =       DP4A_total_count / (2 * numEUs * .CrClk) # Each DP4A instruction is counted as two cycles  

@@ -378,8 +378,6 @@ L3_Bank:
     PS0_L3_Bank_NONCLKGLUE: R * C
     PS1_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
-   L3Node_Ring:
-    PS2_L3Node_Ring: R * C
 L3Node:
    LTCD_EBB:
     PS0_LTCD_EBB: 0.588 * R * C
@@ -485,8 +483,6 @@ L3Node:
     PS0_L3_Bank_NONCLKGLUE: 0.588 * R * C
     PS1_L3_Bank_NONCLKGLUE: 0.588 * R * C
     PS2_L3_Bank_NONCLKGLUE: 0.588 * R * C
-   L3Node_Ring:
-    PS2_L3Node_Ring: 0.588 * R * C
 
 Sampler:
    FL:
@@ -1667,6 +1663,7 @@ Other:
     PS2_RASTER_Crossbar: R * C
     PS2_MidSlice_FF: R * C
     PS2_MDFI_GAM: R * C
+    PS2_L3NODE_RING: R * C
    NODE:
     PS2_NODE: R*C
    URB:
@@ -1792,8 +1789,6 @@ Fabric:
     PS0_L3_Bank_NONCLKGLUE: 0.20 * R * C
     PS1_L3_Bank_NONCLKGLUE: 0.20 * R * C
     PS2_L3_Bank_NONCLKGLUE: 0.20 * R * C
-   L3Node_Ring:
-    PS2_L3Node_Ring: 0.20 * R * C
 rFF:
    rCS:
     PS0_rCS: R * C

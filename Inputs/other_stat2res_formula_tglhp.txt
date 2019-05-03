@@ -15,16 +15,16 @@
 			
 #Other	
 	PS2_BGF = 1
-    	PS2_GA_SQIDI_RPT = 1
+    	PS2_GA_SQIDI_RPT = 0.2757
     	PS2_Media_Channel = 1
     	PS2_GTINFNORTH = 1
     	PS2_RASTER_Crossbar = 1
     	PS2_MidSlice_FF = 1
     	PS2_MDFI_GAM = 1
-	
+	PS2_L3NODE_RING = 1
 	PS2_CCD	= 1
-	PS2_NODE= 1 * num_Other_Slice
-	PS2_URB	= 1 * num_Other_Slice
+	PS2_NODE= 1
+	PS2_URB	= 0 #For compute workloads, need to account it explictly for 3D wls
 	
 	PS0_GTP24C_DOP 	=   0	
 	PS0_GTP24C 	=	1

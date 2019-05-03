@@ -75,7 +75,7 @@
         FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0 
  
         PS2_GRF_SEND_PATH = D(send)/CrClocks
-        PS2_EU_FPU0   = D(FPU_UTILIZATION)
+        PS2_EU_FPU0   = D(FPU0_UTILIZATION)
         PS2_EU_FPU1   = INT_total_count/CrClocks
         EM_transc_fp32 = D(EM_math)/CrClocks
         ExtraPipe_DPAS_Float = D(SYS_FLOAT)/CrClocks / DPAS_Scaler

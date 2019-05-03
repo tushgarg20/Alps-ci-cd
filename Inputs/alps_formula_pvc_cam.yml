@@ -47,8 +47,10 @@ EU:
       EM_transc_fp32: R * LINEST[C,R[FPU1_toggle_rate]]
 
   ExtraPipe:
-      ExtraPipe_DPAS_Float: R * LINEST[C,R[DPAS_Bypass_percent]] 
-      ExtraPipe_DPAS_Int: R * LINEST[C,R[DPAS_Bypass_percent]]
+      ExtraPipe_DPAS_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
+      ExtraPipe_DPAS_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
 
   GA:
     PS2_GA:
@@ -63,14 +65,14 @@ EU:
     PS2_EU_INFRA: R * C
     
 GA_toggle_rate: R
-#FPU1_toggle_rate: R
+FPU1_toggle_rate: R
 FPU0_toggle_rate: R
-DPAS_Bypass_percent: R
+DPAS_toggle_rate: R
+Bypass_factor: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_L3_BANK: R * C
-    PS2_L3_NODE: R * C
+    PS2_L3: R * C
     PS2_L3_INFRA: R * C
 
 HDC:
@@ -86,16 +88,37 @@ DSSC:
     PS2_SLM_INFRA: R * C
 
 Other:
+  Others: 
+    PS2_GEOM: R * C
+    PS2_ARB: R * C
+    PS2_POSH: R * C
+    PS2_Z: R * C
+    PS2_ROGT: R * C
+    PS2_NODE: R * C
+    PS2_CC: R * C
+    PS2_BGF: R * C
+    PS2_GA_SQIDI_RPT: R * C
+    PS2_MEDIA: R * C
+    PS2_MDFI_GAM: R * C
+    PS2_L3NODE_RING: R * C
+    PS2_OTHER_INFRA: R * C
   ROW:
+    PS2_PS: R * C
     PS2_ROW: R * C
-   
+  COLOR:
+    PS2_COLOR: R * C
+
 GAM: 
  GAMFTLB:
     PS2_GAM: R * C
     PS2_GAM_INFRA: R * C
  SQIDI:
+    PS2_SQIDI: R * C
     PS2_SQIDI_INFRA: R * C
 
 Sampler:
    SC:
     PS2_SC_L1_CACHE: R * C
+    PS2_SC_L1_CACHE_ECC: R * C
+    PS2_SC_INFRA: R * C
+
