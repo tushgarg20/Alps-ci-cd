@@ -45,7 +45,7 @@
         DPAS_Bypass_percent = D(SYS_BYPASS)
         Sign_Flag = D(knob.DPAS_SignedOp) 
         BF_Flag  = D(knob.DPAS_BF16)
-        Bypass_factor = 1 - 0.7*DPAS_Bypass_percent
+        Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
         DPAS_Depth = D(knob.DPAS_Depth)
         DPAS_Scaler = 8 / DPAS_Depth
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0
@@ -72,7 +72,14 @@
         FPU1_mul_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mul_fp16')) / (INT_total_count)) : 0 
         FPU1_add_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_add_fp16')) / (INT_total_count)) : 0 
         FPU1_sel_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_sel_fp16')) / (INT_total_count)) : 0 
-        FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0 
+        FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0
+        FPU0_mad_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp64')) / (FPU_total_count)) : 0
+        FPU0_mul_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp64')) / (FPU_total_count)) : 0
+        FPU0_add_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp64')) / (FPU_total_count)) : 0 
+        FPU0_sel_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mac_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp64')) / (FPU_total_count)) : 0 
+ 
  
         PS2_GRF_SEND_PATH = D(send)/CrClocks
         PS2_EU_FPU0   = D(FPU0_UTILIZATION)

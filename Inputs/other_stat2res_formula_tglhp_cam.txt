@@ -6,19 +6,19 @@
         num_Other_COLOR           =   D(knob.numCOLOR) 
 
 #Generic				
-	PS2_PS         =  1
-        PS2_GEOM       =  1
-        PS2_ARB        =  1
-        PS2_POSH       =  1
-        PS2_ROW        =  1
-        PS2_COLOR      =  1
-        PS2_Z          =  1
-        PS2_ROGT       =  1
-        PS2_NODE       =  1
-        PS2_CC         =  1
-        PS2_BGF        =  1
-        PS2_GA_SQIDI_RPT = D(GTI_UTILIZATION) 
-        PS2_MEDIA      =  1
-        PS2_MDFI_GAM   =  D(GTI_UTILIZATION) 
-        PS2_L3NODE_RING = 1
-        PS2_OTHER_INFRA = 1
+	PS2_CAM_PS         =  1
+        PS2_CAM_GEOM       =  1
+        PS2_CAM_ARB        =  1
+        PS2_CAM_POSH       =  1
+        PS2_CAM_ROW        =  1
+        PS2_CAM_COLOR      =  1
+        PS2_CAM_Z          =  1
+        PS2_CAM_ROGT       =  1
+        PS2_CAM_NODE       =  1
+        PS2_CAM_CC         =  1
+        PS2_CAM_BGF        =  1
+        PS2_CAM_GA_SQIDI_RPT = (D(GTI_READ) + D(GTI_WRITE))/512 
+        PS2_CAM_MEDIA      =  1
+        PS2_CAM_MDFI_GAM   =  (D(GTI_READ) + D(GTI_WRITE))/512
+        PS2_CAM_L3NODE_RING = 1
+        PS2_CAM_OTHER_INFRA = 1

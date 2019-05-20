@@ -45,7 +45,7 @@
         DPAS_Bypass_percent = D(SYS_BYPASS) 
         Sign_Flag = D(knob.DPAS_SignedOp) 
         BF_Flag  = D(knob.DPAS_BF16)
-        Bypass_factor = 1 - 0.65*DPAS_Bypass_percent
+        Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
         DPAS_Depth = D(knob.DPAS_Depth)
         DPAS_Scaler = 8 / DPAS_Depth
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0

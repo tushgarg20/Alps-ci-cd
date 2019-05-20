@@ -28,5 +28,5 @@
         L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05 
 	#PS2_L3_READ	        =	D(L3_READ)  / (L3_Scaler  * 512)
 	#PS2_L3_WRITE	        =	D(L3_WRITE) / (L3_Scaler * 512)
-        PS2_L3                  =       (D(L3_READ)  / (L3_Scaler  * 512)) + (D(L3_WRITE)  / (L3_Scaler  * 512))
-        PS2_L3_INFRA            =       1 / L3_Scaler
+        PS2_CAM_L3                  =       (D(L3_READ)  / (L3_Scaler  * 512)) + (D(L3_WRITE)  / (L3_Scaler  * 512))
+        PS2_CAM_L3_INFRA            =       1 / L3_Scaler

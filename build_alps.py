@@ -308,7 +308,6 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
-    
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1

@@ -434,9 +434,7 @@ L3_Bank,Gen12LP,PVC,False
 L3_Bank,Gen12HP,PVC,False
 L3_Bank,DG2,PVC,False
 L3_Bank,ADL,PVC,False
-DSSC,Gen12HP,PVC,False
-DSSC,DG2,PVC,False
-DSSC,ADL,PVC,False
+L3_Bank,PVC,PVC,False
 HDC,Gen12LP,PVC,False
 DSSC,Gen12LP,PVC,False
 HDC,Gen12LP,PVC,False
@@ -465,6 +463,7 @@ GAM,Gen12LP,PVC,False
 GAM,Gen12HP,PVC,False
 GAM,DG2,PVC,False
 GAM,ADL,PVC,False
+GAM,PVC,PVC,False
 Sampler,Gen9LPClient,PVC,False
 Sampler,Gen9LPSoC,PVC,False
 Sampler,Gen10LP,PVC,False
@@ -473,6 +472,7 @@ Sampler,Gen11LP,PVC,False
 Sampler,Gen12HP,PVC,False
 Sampler,DG2,PVC,False
 Sampler,ADL,PVC,False
+Sampler,PVC,PVC,False
 L3Node,Gen9LPClient,PVC,False
 L3Node,Gen9LPSoC,PVC,False
 L3Node,Gen10LP,PVC,False
@@ -507,6 +507,7 @@ SQIDI,Gen11LP,PVC,False
 SQIDI,Gen12HP,PVC,False
 SQIDI,DG2,PVC,False
 SQIDI,ADL,PVC,False
+SQIDI,PVC,PVC,False
 UNCORE,Gen9LPClient,PVC,False
 UNCORE,Gen9LPSoC,PVC,False
 UNCORE,Gen10LP,PVC,False
@@ -530,6 +531,10 @@ DSSC,Gen9LPSoC,PVC,False
 DSSC,Gen10LP,PVC,False
 DSSC,Gen11LP,PVC,False
 DSSC,Gen12LP,PVC,False
+DSSC,Gen12HP,PVC,False
+DSSC,DG2,PVC,False
+DSSC,ADL,PVC,False
+DSSC,PVC,PVC,False
 FF,Gen9LPClient,PVC,False
 FF,Gen9LPSoC,PVC,False
 FF,Gen10LP,PVC,False
@@ -563,6 +568,7 @@ Other,Gen12LP,PVC,False
 Other,Gen12HP,PVC,False
 Other,DG2,PVC,False
 Other,ADL,PVC,False
+Other,PVC,PVC,False
 EU,Gen9LPSoC,ADL,False
 EU,Gen10LP,ADL,False
 EU,Gen11LP,ADL,False

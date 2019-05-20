@@ -28,6 +28,10 @@ EU:
       FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_sel_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mac_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
    
   FPU1: 
     PS2_EU_FPU1:
@@ -71,51 +75,51 @@ Bypass_factor: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_L3: R * C
-    PS2_L3_INFRA: R * C
+    PS2_CAM_L3: R * C
+    PS2_CAM_L3_INFRA: R * C
 
 HDC:
   HDCREQCMD:
-    PS2_HDC_READ: R * C
-    PS2_HDC_WRITE: R * C
-    PS2_HDC_INFRA: R * C
+    PS2_CAM_HDC_READ: R * C
+    PS2_CAM_HDC_WRITE: R * C
+    PS2_CAM_HDC_INFRA: R * C
 
 DSSC:
   SLMBE:
-    PS2_SLM_READ: R * C
-    PS2_SLM_WRITE: R * C
-    PS2_SLM_INFRA: R * C
+    PS2_CAM_SLM_READ: R * C
+    PS2_CAM_SLM_WRITE: R * C
+    PS2_CAM_SLM_INFRA: R * C
 
 Other:
   Others: 
-    PS2_GEOM: R * C
-    PS2_ARB: R * C
-    PS2_POSH: R * C
-    PS2_Z: R * C
-    PS2_ROGT: R * C
-    PS2_NODE: R * C
-    PS2_CC: R * C
-    PS2_BGF: R * C
-    PS2_GA_SQIDI_RPT: R * C
-    PS2_MDFI_GAM: R * C
-    PS2_L3NODE_RING: R * C
-    PS2_OTHER_INFRA: R * C
+    PS2_CAM_GEOM: R * C
+    PS2_CAM_ARB: R * C
+    PS2_CAM_POSH: R * C
+    PS2_CAM_Z: R * C
+    PS2_CAM_ROGT: R * C
+    PS2_CAM_NODE: R * C
+    PS2_CAM_CC: R * C
+    PS2_CAM_BGF: R * C
+    PS2_CAM_GA_SQIDI_RPT: R * C
+    PS2_CAM_MDFI_GAM: R * C
+    PS2_CAM_L3NODE_RING: R * C
+    PS2_CAM_OTHER_INFRA: R * C
   ROW:
-    PS2_PS: R * C
-    PS2_ROW: R * C
+    PS2_CAM_PS: R * C
+    PS2_CAM_ROW: R * C
   COLOR:
-    PS2_COLOR: R * C
+    PS2_CAM_COLOR: R * C
 
 GAM: 
  GAMFTLB:
-    PS2_GAM: R * C
-    PS2_GAM_INFRA: R * C
+    PS2_CAM_GAM: R * C
+    PS2_CAM_GAM_INFRA: R * C
  SQIDI:
-    PS2_SQIDI: R * C
-    PS2_SQIDI_INFRA: R * C
+    PS2_CAM_SQIDI: R * C
+    PS2_CAM_SQIDI_INFRA: R * C
 
 Sampler:
    SC:
-    PS2_SC_L1_CACHE: R * C
-    PS2_SC_INFRA: R * C
+    PS2_CAM_SC_L1_CACHE: R * C
+    PS2_CAM_SC_INFRA: R * C
 
