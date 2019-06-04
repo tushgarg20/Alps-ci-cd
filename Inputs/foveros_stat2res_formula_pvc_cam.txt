@@ -1,0 +1,11 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	num_Foveros_Compute		=       8 #D(knob.numComputeChiplets) 
+        num_Foveros_DSS                 =       8*num_Foveros_Compute #D(knob.numDSSCompute)
+        num_Foveros_Rambo               =       4
+        num_Foveros_RamboDSS            =       8*num_Foveros_Rambo
+		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)	
+        PS2_CAM_FOV_COMPUTE             =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+176)/1000
+        PS2_CAM_FOV_RAMBO               =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+224)/2000

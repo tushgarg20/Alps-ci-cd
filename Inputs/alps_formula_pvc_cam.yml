@@ -47,6 +47,7 @@ EU:
       FPU1_add_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
 
   EM:
       EM_transc_fp32: R * LINEST[C,R[FPU1_toggle_rate]]
@@ -55,6 +56,9 @@ EU:
       ExtraPipe_DPAS_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
       ExtraPipe_DPAS_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPASW_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPASW_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
+      ExtraPipe_DPASW_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_UInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
 
   GA:
@@ -106,8 +110,13 @@ Other:
     PS2_CAM_L3NODE_RING: R * C
     PS2_CAM_OTHER_INFRA: R * C
   ROW:
-    PS2_CAM_PS: R * C
     PS2_CAM_ROW: R * C
+
+Foveros:
+  DSS:
+    PS2_CAM_FOV_COMPUTE: R * C
+  RamboDSS:
+    PS2_CAM_FOV_RAMBO: R * C
 
 GAM: 
  GAMFTLB:
