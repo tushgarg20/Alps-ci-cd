@@ -30,6 +30,8 @@
         @2Src_INST@ = (mul|add|sel|mov)
         @ALLDTYPE@ = (16|32|64)
         @TYPE@ = (fp|int)
+        @SYS@ = (SYS|SYSW)
+        @SYS_TYPE@ = (INT|FLOAT)
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
 	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
@@ -105,6 +107,8 @@
         PS2_GRF_WRITE_ECC = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
         PS2_TC_1Dispatch = D(TC)
 #INFRA power
-        PS2_EU_INFRA = 1
+        SYST_Active = D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
+        PS2_EU_INFRA = (SYST_Active >= 0.1) ? 0 : 1 
+        PS2_EU_SYST_INFRA = (SYST_Active >= 0.1) ? 1 : 0  
         
         

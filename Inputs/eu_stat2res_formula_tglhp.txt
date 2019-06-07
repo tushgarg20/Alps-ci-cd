@@ -394,30 +394,69 @@
        ExtraPipe_DPAS_Int = D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.ExtraPipe\.d.\d+\.@DPAS@\.exec')) / (numEUs * .CrClk) # Divide by num of SIMD channels x No. of DP4A operations
        
   
-#GA				
+#GA	
 	PS0_GA	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk) - PS0_EU_DOP - PS1_EU_DOP	
 	PS1_GA	=	0	#GA does not have a stall
-	PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_FPU1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_FPU2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_FPU3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM1Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM1Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM1Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	#PLN instructions take 2 clocks to complete
-	PS2_GA_EM2Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM2Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM2Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM3Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM3Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
-	PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_0\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_FPU1Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_FPU2Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_FPU3Src_SinglePipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_0_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM1Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM1Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM1Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_1_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	#PLN instructions take 2 clocks to complete
+	.temp_PS2_GA_EM2Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM2Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM2Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_2_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM3Src_FPU1Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_1\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM3Src_FPU2Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_2\.CrClock')) / (numEUs * .CrClk)	
+	.temp_PS2_GA_EM3Src_FPU3Src_DualPipe	=	D(SUM('@ANY_EUPIPEControl@pwr_IssueTo_EMPipe_nSrcs_3_FPUPipe_nSrcs_3\.CrClock')) / (numEUs * .CrClk)	
 
 
        #Temporary variable for DualPipe GA residencies
-        .temp_GA_DualPipe = PS2_GA_EM1Src_FPU1Src_DualPipe+PS2_GA_EM1Src_FPU2Src_DualPipe+PS2_GA_EM1Src_FPU3Src_DualPipe+PS2_GA_EM2Src_FPU1Src_DualPipe+PS2_GA_EM2Src_FPU2Src_DualPipe+PS2_GA_EM2Src_FPU3Src_DualPipe+PS2_GA_EM3Src_FPU1Src_DualPipe+PS2_GA_EM3Src_FPU2Src_DualPipe+PS2_GA_EM3Src_FPU3Src_DualPipe
+        .temp_GA_DualPipe = .temp_PS2_GA_EM1Src_FPU1Src_DualPipe+.temp_PS2_GA_EM1Src_FPU2Src_DualPipe+.temp_PS2_GA_EM1Src_FPU3Src_DualPipe+.temp_PS2_GA_EM2Src_FPU1Src_DualPipe+.temp_PS2_GA_EM2Src_FPU2Src_DualPipe+.temp_PS2_GA_EM2Src_FPU3Src_DualPipe+.temp_PS2_GA_EM3Src_FPU1Src_DualPipe+.temp_PS2_GA_EM3Src_FPU2Src_DualPipe+.temp_PS2_GA_EM3Src_FPU3Src_DualPipe
        #Model approximation for GA contribution to ExtraPipe
        PS2_GA_ExtraPipe = ExtraPipe_DPAS_Int + ExtraPipe_DPAS_Float
+       #Temporary variable for Scaling of Residencies 
+       .temp_GA_Total = (.temp_PS2_GA_FPU1Src_SinglePipe + .temp_PS2_GA_FPU2Src_SinglePipe + .temp_PS2_GA_FPU3Src_SinglePipe +.temp_PS2_GA_EM1Src_SinglePipe+.temp_PS2_GA_EM2Src_SinglePipe+.temp_PS2_GA_EM3Src_SinglePipe + .temp_GA_DualPipe) * (numEUs * .CrClk)
+ 
+       .temp_Num_Acc = D(SUM('@ANY_EUControl@NumAccRd'))
+       Acc_CDYN_Scaler = .temp_Num_Acc / .temp_GA_Total
+       # Scaling of existing GA residencies to delienate the portion due to GRF read accesses
+       PS2_GA_EM1Src_SinglePipe	        =	.temp_PS2_GA_EM1Src_SinglePipe*(1 - Acc_CDYN_Scaler)
+       PS2_GA_EM2Src_SinglePipe	        =	.temp_PS2_GA_EM2Src_SinglePipe*(1 - Acc_CDYN_Scaler)
+       PS2_GA_EM3Src_SinglePipe	        =	.temp_PS2_GA_EM3Src_SinglePipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_FPU1Src_SinglePipe	=	.temp_PS2_GA_FPU1Src_SinglePipe*(1 - Acc_CDYN_Scaler)
+       PS2_GA_FPU2Src_SinglePipe	=	.temp_PS2_GA_FPU2Src_SinglePipe*(1 - Acc_CDYN_Scaler)
+       PS2_GA_FPU3Src_SinglePipe	=	.temp_PS2_GA_FPU3Src_SinglePipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM1Src_FPU1Src_DualPipe	=	.temp_PS2_GA_EM1Src_FPU1Src_DualPipe*(1 - Acc_CDYN_Scaler)		
+       PS2_GA_EM1Src_FPU2Src_DualPipe	=	.temp_PS2_GA_EM1Src_FPU2Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM1Src_FPU3Src_DualPipe	=	.temp_PS2_GA_EM1Src_FPU3Src_DualPipe*(1 - Acc_CDYN_Scaler)	#PLN instructions take 2 clocks to complete
+       PS2_GA_EM2Src_FPU1Src_DualPipe	=	.temp_PS2_GA_EM2Src_FPU1Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM2Src_FPU2Src_DualPipe	=	.temp_PS2_GA_EM2Src_FPU2Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM2Src_FPU3Src_DualPipe	=	.temp_PS2_GA_EM2Src_FPU3Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM3Src_FPU1Src_DualPipe	=	.temp_PS2_GA_EM3Src_FPU1Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM3Src_FPU2Src_DualPipe	=	.temp_PS2_GA_EM3Src_FPU2Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       PS2_GA_EM3Src_FPU3Src_DualPipe	=	.temp_PS2_GA_EM3Src_FPU3Src_DualPipe*(1 - Acc_CDYN_Scaler)	
+       
+       # Scaling of existing GA residencies to delienate the portion due to Accumulator read accesses
+       PS2_GA_EM1Src_SinglePipe_Acc	        =	.temp_PS2_GA_EM1Src_SinglePipe*Acc_CDYN_Scaler
+       PS2_GA_EM2Src_SinglePipe_Acc	        =	.temp_PS2_GA_EM2Src_SinglePipe*Acc_CDYN_Scaler
+       PS2_GA_EM3Src_SinglePipe_Acc	        =	.temp_PS2_GA_EM3Src_SinglePipe*Acc_CDYN_Scaler	
+       PS2_GA_FPU1Src_SinglePipe_Acc    	=	.temp_PS2_GA_FPU1Src_SinglePipe*Acc_CDYN_Scaler
+       PS2_GA_FPU2Src_SinglePipe_Acc    	=	.temp_PS2_GA_FPU2Src_SinglePipe*Acc_CDYN_Scaler
+       PS2_GA_FPU3Src_SinglePipe_Acc    	=	.temp_PS2_GA_FPU3Src_SinglePipe*Acc_CDYN_Scaler	
+       PS2_GA_EM1Src_FPU1Src_DualPipe_Acc	=	.temp_PS2_GA_EM1Src_FPU1Src_DualPipe*Acc_CDYN_Scaler		
+       PS2_GA_EM1Src_FPU2Src_DualPipe_Acc	=	.temp_PS2_GA_EM1Src_FPU2Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM1Src_FPU3Src_DualPipe_Acc	=	.temp_PS2_GA_EM1Src_FPU3Src_DualPipe*Acc_CDYN_Scaler	#PLN instructions take 2 clocks to complete
+       PS2_GA_EM2Src_FPU1Src_DualPipe_Acc	=	.temp_PS2_GA_EM2Src_FPU1Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM2Src_FPU2Src_DualPipe_Acc	=	.temp_PS2_GA_EM2Src_FPU2Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM2Src_FPU3Src_DualPipe_Acc	=	.temp_PS2_GA_EM2Src_FPU3Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM3Src_FPU1Src_DualPipe_Acc	=	.temp_PS2_GA_EM3Src_FPU1Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM3Src_FPU2Src_DualPipe_Acc	=	.temp_PS2_GA_EM3Src_FPU2Src_DualPipe*Acc_CDYN_Scaler	
+       PS2_GA_EM3Src_FPU3Src_DualPipe_Acc	=	.temp_PS2_GA_EM3Src_FPU3Src_DualPipe*Acc_CDYN_Scaler
+
 				
 #TC				
         PS0_TC	=	D(SUM('@ANY_EUControl@pwr_ThdControllerIdle\.CrClock')) / (num_EU_TC * .CrClk) - PS0_EU_DOP	#Subtracted EU idle DOP gated clocks

@@ -72,6 +72,7 @@ EU:
 
   INFRA:
     PS2_EU_INFRA: R * C
+    PS2_EU_SYST_INFRA: R * C
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R
