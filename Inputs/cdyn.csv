@@ -8893,6 +8893,8 @@ PS2_EU_SYST_INFRA,Gen12HP,A0,11.5,syn,1,Approximation from the Spreadsheet for D
 PS2_EU_INFRA,Gen12HP,A0,5,syn,1,Approximation from the Spreadsheet for non-DPAS WLs,
 PS2_EU_SYST_INFRA,ADL,A0,11.96,syn,1,Approximation from the Spreadsheet for DPAS WLs,
 PS2_EU_INFRA,DG2,A0,5,syn,1,From Krishna WW02_2019 ATS_BGEMM_CDYN.xlsx; 2.5pF reducstion per EU for ECC removal,
+Foveros_compute,Gen12HP,A0,343,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
+Foveros_rambo,Gen12HP,A0,171,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 #PS2_CAM_L3,Gen12HP,A0,719.1611,syn,1,L3 Read Cdyn/Txn calculated analytically from ww1902 spreadsheet,
 PS2_CAM_L3,Gen12HP,A0,546,syn,1,L3 Read Cdyn/Txn calculated analytically from ww22.5 spreadsheet,
 PS2_CAM_L3,ADL,A0,668.556,syn,1,L3 Read Cdyn/Txn calculated analytically from ww1902 spreadsheet,
