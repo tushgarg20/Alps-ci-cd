@@ -90,14 +90,14 @@ Gen10LP,Gen12HP_384,1.11139884,1.11139884,8% scaler to account for PV_Push and 3
 Gen11LP,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
 Gen12LP,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
 Gen12DG,Gen12HP_384,1.1124,1.1124,8% scaler to account for PV_Push and 3% scaler to account for SD pv push
-Gen10LP,Gen12HP,1.200310747,1.200310747,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11,Gen12HP,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11LP,Gen12HP,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen9LPClient,Gen12HP,0.730085918,0.730085918,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen9LPSoC,Gen12HP,0.79408469,0.817907233,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12LP,Gen12HP,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12DG,Gen12HP,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12HP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler to account for SD pv push. 8% scaler to account for 10DG library
+Gen10LP,Gen12HP,1.16535024,1.16535024,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen11,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen11LP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen9LPClient,Gen12HP,0.70882128,0.70882128,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen9LPSoC,Gen12HP,0.77095601,0.794084692,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12LP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12DG,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12HP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen10LP,Gen12DG,1.0700361,1.0700361,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen11,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen11LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
@@ -105,14 +105,14 @@ Gen9LPClient,Gen12DG,0.6508467,0.6508467,1.05 * 1.02 to account for SD+12DG60 li
 Gen9LPSoC,Gen12DG,0.707899423,0.729136407,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen12LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen12DG,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen9LPClient,PVC_Scaled,0.577984685,0.577984685,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen9LPSoC,PVC_Scaled,0.62865038,0.647509893,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen11,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen10LP,PVC_Scaled,0.950246008,0.950246008,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen11LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen12LP,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen12DG,PVC_Scaled,0.951102,0.951102,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
-Gen12HP,PVC_Scaled,0.855,0.855,1.08 scaler to account for PV_Push and 1.03 scaler to account for SD pv push. 0.855 to account for change in process
+Gen9LPClient,PVC_Scaled,0.606042194,0.606042194,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen9LPSoC,PVC_Scaled,0.659167389,0.678942412,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen11,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen10LP,PVC_Scaled,0.996374455,0.996374455,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen11LP,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen12LP,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen12DG,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
+Gen12HP,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
 Gen10LP,PVC,0.950246008,0.950246008,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
 Gen11,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"
 Gen11LP,PVC,0.951102,0.951102,"8% scaler to account for PV_Push and 3% scaler to account for SD pv push, 0.855 scaler to account for new process in pvc"

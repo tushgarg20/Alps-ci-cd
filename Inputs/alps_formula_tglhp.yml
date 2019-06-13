@@ -208,6 +208,8 @@ EU:
   ExtraPipe:
       ExtraPipe_DPAS_Float: R * C
       ExtraPipe_DPAS_Int: R * C
+      ExtraPipe_DPASW_Float: R * C
+      ExtraPipe_DPASW_Int: R * C
   GA:
     PS0_GA: R * C
     PS1_GA: R * C
