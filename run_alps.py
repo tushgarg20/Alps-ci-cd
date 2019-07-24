@@ -242,7 +242,7 @@ if not options.build_alps_only:
 
 #Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
 #Open the residency file if the configuration is not CAM and write the values
-'''if options.method.find('cam') > -1:
+if options.method.find('cam') > -1:
   print("Building the CAM model")
 else:
   f = open(res, "a+")
@@ -268,7 +268,7 @@ else:
   raw_mov_patterns = []   
   raw_mov_count, raw_mov_patterns, raw_mov_percentage = op.raw_mov_count_estimator(stat)
   f.write("FPU0_raw_mov,%f\n" % raw_mov_percentage)
-  f.close()'''
+  f.close()
 
 
 try:

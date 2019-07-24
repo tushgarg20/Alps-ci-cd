@@ -135,7 +135,7 @@
 	.max_EM_toggle	=	MAX(.avg_EMSrc1_toggle, .avg_EMSrc2_toggle, .avg_EMSrc3_toggle, .avg_EMSrc4_toggle)	
 	.avg_EU_idle_stall_clocks	=	(D(SUM('@ANY_EU@pwr_EuDopGatedIdleOrStalled\.CrClock')))/(numEUs)	
 	.avg_EU_active_clocks	=	.CrClk - .avg_EU_idle_stall_clocks	
-	FPU1_toggle_rate	=	(.temp_PS2_EU_EM > 0) ?	(.max_EM_toggle / (32 * 2 * .temp_PS2_EU_EM * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+	FPU1_toggle_rate	=	(.temp_PS2_EU_EM > 0) ?	(.max_EM_toggle / (32 * 8 * .temp_PS2_EU_EM * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 	.avg_FPUSrc1_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc2_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock'))/numEUs)?=0	
 	.avg_FPUSrc3_toggle	=	(D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0	

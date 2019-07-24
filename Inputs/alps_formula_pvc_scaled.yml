@@ -4,7 +4,7 @@
  # C : R * C Cdyn weight
 
 CrClocks: R
-FPS: R
+FPS: R * 2
 GT_BW_GBPS : R
 GT_RD_BW_GBPS : R
 GT_WR_BW_GBPS : R
