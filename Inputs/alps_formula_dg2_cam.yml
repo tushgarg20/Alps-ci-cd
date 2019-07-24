@@ -104,9 +104,8 @@ Other:
     PS2_CAM_ROGT: R * C
     PS2_CAM_NODE: R * C
     PS2_CAM_CC: R * C
-    PS2_CAM_BGF: R * C
+    PS2_CAM_RASTER: R * C
     PS2_CAM_GA_SQIDI_RPT: R * C
-    PS2_CAM_MDFI_GAM: R * C
     PS2_CAM_L3NODE_RING: R * C
     PS2_CAM_OTHER_INFRA: R * C
   ROW:
