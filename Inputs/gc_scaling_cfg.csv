@@ -441,6 +441,7 @@ HDC,Gen12LP,PVC,False
 HDC,Gen12HP,PVC,False
 HDC,DG2,PVC,False
 HDC,ADL,PVC,False
+HDC,PVC,PVC,False
 EU,Gen9LPClient,PVC,False
 EU,Gen9LPSoC,PVC,False
 EU,Gen10LP,PVC,False

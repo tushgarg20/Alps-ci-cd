@@ -4,7 +4,7 @@
 	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
         num_GAM_SQIDI        =       D(knob.numSQIDI)
 #Generic				
-	PS2_CAM_GAM              =  2*((D(GTI_READ) + D(GTI_WRITE))/512)
+	PS2_CAM_GAM              =  (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
         PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/512
         PS2_CAM_GAM_INFRA        =  1 
         PS2_CAM_SQIDI_INFRA      =  1 

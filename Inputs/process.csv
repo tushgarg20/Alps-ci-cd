@@ -97,7 +97,7 @@ Gen9LPClient,Gen12HP,0.70882128,0.70882128,8% scaler to account for PV_Push and 
 Gen9LPSoC,Gen12HP,0.77095601,0.794084692,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen12LP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen12DG,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen12HP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12HP,Gen12HP,1.08,1.08,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen10LP,Gen12DG,1.0700361,1.0700361,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen11,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
 Gen11LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)

@@ -84,6 +84,7 @@ L3_Bank:
   LTCD_Data:
     PS2_CAM_L3: R * C
     PS2_CAM_L3_INFRA: R * C
+    PS2_CAM_L3_NODEX: R * C
 
 HDC:
   HDCREQCMD:
@@ -99,17 +100,21 @@ DSSC:
 
 Other:
   Others: 
-    PS2_CAM_GEOM: R * C
-    PS2_CAM_ARB: R * C
-    PS2_CAM_POSH: R * C
-    PS2_CAM_Z: R * C
+    #PS2_CAM_GEOM: R * C
+    #PS2_CAM_ARB: R * C
+    #PS2_CAM_POSH: R * C
+    #PS2_CAM_Z: R * C
     PS2_CAM_ROGT: R * C
-    PS2_CAM_NODE: R * C
+    #PS2_CAM_NODE: R * C
     PS2_CAM_CC: R * C
-    PS2_CAM_BGF: R * C
+    #PS2_CAM_BGF: R * C
     PS2_CAM_GA_SQIDI_RPT: R * C
-    PS2_CAM_L3NODE_RING: R * C
+    #PS2_CAM_L3NODE_RING: R * C
     PS2_CAM_OTHER_INFRA: R * C
+    PS2_CAM_L3_FABRICS: R * C
+    PS2_CAM_GTDSS: R * C
+    PS2_CAM_GTDSS_INFRA: R * C
+    PS2_CAM_SPINE: R * C
   ROW:
     PS2_CAM_ROW: R * C
 

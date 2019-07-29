@@ -1,0 +1,31 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	num_Other_Others	  =   D(knob.numOthers)
+        num_Other_ROW              =   D(knob.numROW)
+        num_Other_COLOR           =   D(knob.numCOLOR)
+        L3_Cache_Size           =       D(knob.L3CacheSize)
+        L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05 
+ 
+
+#Generic				
+	PS2_CAM_PS         =  1
+        PS2_CAM_GEOM       =  1
+        PS2_CAM_ARB        =  1
+        PS2_CAM_POSH       =  1
+        PS2_CAM_ROW        =  1
+        PS2_CAM_COLOR      =  1
+        PS2_CAM_Z          =  1
+        PS2_CAM_ROGT       =  1
+        PS2_CAM_NODE       =  1
+        PS2_CAM_CC         =  (D(GTI_READ) + D(GTI_WRITE))/512 
+        PS2_CAM_BGF        =  1
+        PS2_CAM_GA_SQIDI_RPT = (D(GTI_READ) + D(GTI_WRITE))/512 
+        PS2_CAM_MEDIA      =  1
+        PS2_CAM_MDFI_GAM   =  (D(GTI_READ) + D(GTI_WRITE))/512
+        PS2_CAM_L3NODE_RING = (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
+        PS2_CAM_OTHER_INFRA = 1
+        PS2_CAM_SPINE      =  1
+        PS2_CAM_GTDSS = (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
+        PS2_CAM_GTDSS_INFRA = 1
+        PS2_CAM_L3_FABRICS  = (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
