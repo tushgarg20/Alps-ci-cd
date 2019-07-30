@@ -30,3 +30,4 @@
 	#PS2_L3_WRITE	        =	D(L3_WRITE) / (L3_Scaler * 64 * 64)
         PS2_CAM_L3                  =       (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
         PS2_CAM_L3_INFRA            =       1 / L3_Scaler
+        PS2_CAM_L3_NODEX            =       (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
