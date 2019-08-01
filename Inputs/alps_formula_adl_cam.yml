@@ -32,6 +32,7 @@ EU:
       FPU0_mul_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_add_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mov_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_DP4A_exec: R[PS2_EU_FPU0] * R * C
    
   FPU1: 
     PS2_EU_FPU1:

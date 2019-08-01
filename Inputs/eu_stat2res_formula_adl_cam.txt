@@ -58,6 +58,7 @@
         FPU0_add_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp16')) / (FPU_total_count)) : 0 
         FPU0_sel_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp16')) / (FPU_total_count)) : 0 
         FPU0_mac_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp16')) / (FPU_total_count)) : 0 
+        FPU0_DP4A_exec = (FPU_total_count > 0) ? (D(SUM('FPU_DP4A')) / (FPU_total_count)) : 0 
         FPU1_mad_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int32')) / (INT_total_count)) : 0 
         FPU1_mac_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mac_int32')) / (INT_total_count)) : 0 
         FPU1_mul_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int32')) / (INT_total_count)) : 0 
