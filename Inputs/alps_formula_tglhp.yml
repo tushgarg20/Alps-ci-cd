@@ -291,6 +291,11 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 
 L3_Bank:
+   L3Node_Ring:
+    PS2_L3Node_Ring: R * C
+   #NodeFabric:
+    #PS2_Local_Nodex_to_Bank: R * C
+    #PS2_Cross_Fabric_to_Bank: R * C
    LTCD_EBB:
     PS0_LTCD_EBB: R * C
     PS1_LTCD_EBB: R * C
@@ -1680,7 +1685,6 @@ Other:
     PS2_RASTER_Crossbar: R * C
     PS2_MidSlice_FF: R * C
     PS2_MDFI_GAM: R * C
-    PS2_L3NODE_RING: R * C
    NODE:
     PS2_NODE: R*C
    URB:

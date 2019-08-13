@@ -20,9 +20,9 @@
 	num_L3_Bank_CLKGLUE		=	num_L3_Slices * numL3Banks	
 	num_L3_Bank_NONCLKGLUE		=	num_L3_Slices * numL3Banks
 	num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
-        num_L3_Bank_L3Node_Ring		=	num_L3_Slices * numL3Banks
+        num_L3_Bank_L3Node_Ring		=	num_L3_Slices
         num_L3Node_LNI                  =       1  #It was 2 for gen12lp, Need to varify
-
+	num_L3_Bank_NodeFabric = num_L3_Slices
 #Generic				
 	@ANY_L3BANK@			=	(STK\d+\.uL3_\d+\.Bank_\d+\.|uL3_\d+\.Bank_\d+\.)
 	@ANY_L3@			=	(STK\d+\.uL3_\d+\.|uL3_\d+\.)
@@ -41,6 +41,12 @@
 	.Bank64URBWr			=	D(SUM('uL3_\d+\.Bank_\d+\.Urb64BWr'))/(.CrClk * num_L3_Slices * numL3Banks)
 	.BankURBRd			=	D(SUM('uL3_\d+\.Bank_\d+\.UrbRd'))/(.CrClk * num_L3_Slices * numL3Banks)
 	.BankURBWr			=	D(SUM('uL3_\d+\.Bank_\d+\.UrbWr'))/(.CrClk * num_L3_Slices * numL3Banks)
+
+
+	PS2_Local_Nodex_to_Bank = D(SUM('uLNI\d+_lni_local_req_to_bank'))/(.CrClk * num_L3_Slices )
+	PS2_Cross_Fabric_to_Bank = D(SUM('uLNI\d+_lni_cross_req_to_bank'))/(.CrClk * num_L3_Slices )
+
+
 #LTCD_EBB	
 	PS0_LTCD_EBB	                =	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)
 	PS1_LTCD_EBB             	=       0 #No stall by design
