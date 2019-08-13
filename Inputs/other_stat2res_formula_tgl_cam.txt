@@ -1,0 +1,15 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	num_Other_Others	  =   D(knob.numOthers)
+        num_Other_ROW              =   D(knob.numROW)
+        num_Other_COLOR           =   D(knob.numCOLOR) 
+#Generic				
+	PS2_CAM_PS         =  1
+        PS2_CAM_GEOM       =  1
+        PS2_CAM_ARB        =  1
+        PS2_CAM_POSH       =  1
+        PS2_CAM_ROW        =  1
+        PS2_CAM_COLOR      =  1
+        PS2_CAM_Z          =  1
+	PS2_CAM_ROGT	= 1

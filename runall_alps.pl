@@ -79,6 +79,7 @@ $cfg_file = ($adl) ? $sdir . "alps_cfg_adl.yaml" : $cfg_file;
 $cfg_file = ($reduced && $tgl) ? $sdir . "alps_cfg_tgl_reduced.yaml" : $cfg_file;
 $cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
 $cfg_file = ($cam && $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
+$cfg_file = ($cam && $tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 $cfg_file = ($cam && $adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 $cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tglhp_512.yaml" : $cfg_file;
 $cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tglhp_384.yaml" : $cfg_file;
