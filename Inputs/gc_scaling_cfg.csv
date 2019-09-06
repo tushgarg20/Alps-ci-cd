@@ -116,6 +116,8 @@ Other,Gen9LPSoC,Gen12HP_512,False
 Other,Gen10LP,Gen12HP_512,False
 Other,Gen11LP,Gen12HP_512,False
 Other,Gen12LP,Gen12HP_512,False
+Other,Gen11LP,Gen12LP,False
+Other,Gen12LP,Gen12LP,False
 EU,Gen9LPClient,Gen12HP_384,False
 EU,Gen9LPSoC,Gen12HP_384,False
 EU,Gen10LP,Gen12HP_384,False
