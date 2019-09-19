@@ -31,7 +31,7 @@
         @ALLDTYPE@ = (16|32|64)
         @TYPE@ = (fp|int)
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
-	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
+	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) +  D(SUM('FPU_DP4A'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
         INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
         FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))		
@@ -52,11 +52,13 @@
         FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp32')) / (FPU_total_count)) : 0
         FPU0_add_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp32')) / (FPU_total_count)) : 0 
         FPU0_sel_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp32')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp32')) / (FPU_total_count)) : 0 
         FPU0_mac_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp32')) / (FPU_total_count)) : 0 
         FPU0_mad_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp16')) / (FPU_total_count)) : 0 
         FPU0_mul_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp16')) / (FPU_total_count)) : 0 
         FPU0_add_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp16')) / (FPU_total_count)) : 0 
         FPU0_sel_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp16')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp16')) / (FPU_total_count)) : 0 
         FPU0_mac_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp16')) / (FPU_total_count)) : 0 
         FPU0_DP4A_exec = (FPU_total_count > 0) ? (D(SUM('FPU_DP4A')) / (FPU_total_count)) : 0 
         FPU1_mad_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int32')) / (INT_total_count)) : 0 
@@ -64,6 +66,7 @@
         FPU1_mul_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int32')) / (INT_total_count)) : 0 
         FPU1_add_int32 = (INT_total_count > 0) ? (D(SUM('FPU_add_int32')) / (INT_total_count)) : 0 
         FPU1_sel_int32 = (INT_total_count > 0) ? (D(SUM('FPU_sel_int32')) / (INT_total_count)) : 0 
+        FPU1_mov_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mov_int32')) / (INT_total_count)) : 0 
         FPU1_mad_int16 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int16')) / (INT_total_count)) : 0 
         FPU1_mul_int16 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int16')) / (INT_total_count)) : 0 
         FPU1_add_int16 = (INT_total_count > 0) ? (D(SUM('FPU_add_int16')) / (INT_total_count)) : 0 
@@ -73,6 +76,7 @@
         FPU1_mul_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mul_fp16')) / (INT_total_count)) : 0 
         FPU1_add_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_add_fp16')) / (INT_total_count)) : 0 
         FPU1_sel_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_sel_fp16')) / (INT_total_count)) : 0 
+        FPU1_mov_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mov_fp16')) / (INT_total_count)) : 0 
         FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0 
  
         PS2_GRF_SEND_PATH = D(send)/CrClocks
