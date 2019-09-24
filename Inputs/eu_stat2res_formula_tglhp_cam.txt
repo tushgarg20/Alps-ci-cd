@@ -99,7 +99,7 @@
  
 #GRF and GA related
         PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
-        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
+        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
         PS2_GA_ExtraPipe = D(GA_ExtraPipe)
         PS2_GRF_READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) : 0
         PS2_GRF_WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
