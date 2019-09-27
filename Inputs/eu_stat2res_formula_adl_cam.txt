@@ -78,6 +78,19 @@
         FPU1_sel_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_sel_fp16')) / (INT_total_count)) : 0 
         FPU1_mov_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mov_fp16')) / (INT_total_count)) : 0 
         FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0 
+        FPU0_mad_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp64')) / (FPU_total_count)) : 0
+        FPU0_mul_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp64')) / (FPU_total_count)) : 0
+        FPU0_add_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp64')) / (FPU_total_count)) : 0 
+        FPU0_sel_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mac_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp64')) / (FPU_total_count)) : 0 
+        # Bypass power states
+        FPU0_mad_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_mac_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_mul_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_add_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_add_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_sel_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fpbypass')) / (FPU_total_count)) : 0 
+
  
         PS2_GRF_SEND_PATH = D(send)/CrClocks
         PS2_EU_FPU0   = D(FPU0_UTILIZATION)
@@ -88,15 +101,18 @@
         ExtraPipe_DPAS_SInt = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
         ExtraPipe_DPAS_UInt = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
  
-#GRF and GA related
-        PS2_GA_FPU3Src_SinglePipe = (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) 
-        PS2_GA_FPU2Src_SinglePipe = (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) 
-        PS2_GA_ExtraPipe = D(GA_ExtraPipe)
-        PS2_GRF_READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) : 0
+#GRF, ACC, TC and GA related
+        PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
+        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
+        PS2_GA_ExtraPipe = D(GA_ExtraPipe) 
+        PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
+        PS2_GRF_READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
         PS2_GRF_WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
-        PS2_GRF_READ_ECC = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) : 0
+        PS2_GRF_READ_ECC = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
         PS2_GRF_WRITE_ECC = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
         PS2_TC_1Dispatch = D(TC)
+        PS2_Accumulator_READ = D(ACCUM_READ)/CrClocks
+        PS2_Accumulator_WRITE = D(ACCUM_WRITE)/CrClocks
 #INFRA power
         PS2_EU_INFRA = 1
         
