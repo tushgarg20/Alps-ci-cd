@@ -31,7 +31,7 @@
         @ALLDTYPE@ = (16|32|64)
         @TYPE@ = (fp|int)
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
-	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) + D(SUM('FPU_DP4A'))
+	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) + D(SUM('FPU_DP4A')) + D(SUM('FPU_DP2A'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
         INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
         FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))		
@@ -61,6 +61,7 @@
         FPU0_mov_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp16')) / (FPU_total_count)) : 0 
         FPU0_mac_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp16')) / (FPU_total_count)) : 0 
         FPU0_DP4A_exec = (FPU_total_count > 0) ? (D(SUM('FPU_DP4A')) / (FPU_total_count)) : 0 
+        FPU0_DP2A = (FPU_total_count > 0) ? (D(SUM('FPU_DP2A')) / (FPU_total_count)) : 0 
         FPU1_mad_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int32')) / (INT_total_count)) : 0 
         FPU1_mac_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mac_int32')) / (INT_total_count)) : 0 
         FPU1_mul_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int32')) / (INT_total_count)) : 0 
