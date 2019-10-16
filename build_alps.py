@@ -55,8 +55,8 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'ADL','PVC_Scaled','PVC'],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','ADL','PVC_Scaled','PVC']
+cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'ADL','PVC_Scaled','PVC','PVC_A21' ],
+                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','ADL','PVC_Scaled','PVC','PVC_A21']
                        };
 
 new_gc = {}         ##Gate Count
@@ -116,6 +116,8 @@ elif common_cfg.find('icl') > -1 :
     cfg ='Gen11'
 elif common_cfg.find('pvc_scaled') > -1 :
     cfg ='PVC_Scaled'   
+elif common_cfg.find('pvc_a21') > -1 :
+    cfg ='PVC_A21'   
 elif common_cfg.find('tglhp_512') > -1 :
     cfg ='Gen12HP_512'
 elif common_cfg.find('tglhp_384') > -1 :
@@ -266,7 +268,7 @@ def Cdyn_VSF(current_operating_voltage, prev_gen_operating_voltage,cdyn_reductio
 
 def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
-    #print (cluster, unit,stat, base_cfg,stepping)
+    print (cluster, unit,stat, base_cfg,stepping)
     if(base_cfg == None or stepping == None):
         return 0
     if(options.run_debug):
@@ -308,6 +310,7 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
+    print (cluster,base_cfg,cfg,unit_scalar)
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
