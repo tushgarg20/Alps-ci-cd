@@ -7616,7 +7616,7 @@ PS2_NODE,Gen12LP,A0,243.92,syn,1,New unit in Gen12HP
 PS2_URB,Gen12LP,A0,223.26,syn,1,New unit in Gen12HP,
 FPU0_DP4A_bypass,Gen12LP,A0,48.6,syn,1,Dummy value added by Santosh,
 FPU0_DP4A_exec,Gen12LP,A0,63,syn,1,From Ram WW2_2018,
-FPU0_DP2A,Gen12LP,A0,90,syn,1, Approximated in terms of fp32 add and fp32 mov,
+FPU0_DP2A,Gen12LP,A0,50,syn,1, Approximated in terms of fp32 mad with a lower TR,
 PS2_GRF_SEND_PATH,Gen12LP,A0,12.7,syn,1,From Praneeth WW21_2018,
 PS0_COLOR_CLKGLUE,Gen12LP,A0,10.21444103,syn,1,WW18 Infra*1.04,New
 PS0_COLOR_CPunit,Gen12LP,A0,0.071351795,syn,1,WW18 Infra*1.04,New
