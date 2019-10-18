@@ -37,7 +37,7 @@ EU:
       FPU0_add_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mov_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_DP4A_exec: R[PS2_EU_FPU0] * R * C
-      FPU0_DP2A: R[PS2_EU_FPU0] * R * C
+      FPU0_mixmode_mad_fp32: R[PS2_EU_FPU0] * R * C
       FPU0_mad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_mul_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_add_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
