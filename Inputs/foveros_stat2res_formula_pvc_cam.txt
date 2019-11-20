@@ -4,8 +4,9 @@
         num_Foveros_DSS                 =       8*num_Foveros_Compute #D(knob.numDSSCompute)
         num_Foveros_Rambo               =       4
         num_Foveros_RamboDSS            =       8*num_Foveros_Rambo
+        GADSS_Scaler                    =       D(knob.GADSS)
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
-        PS2_CAM_FOV_COMPUTE             =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+176)/1000
-        PS2_CAM_FOV_RAMBO               =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+224)/2000
+        PS2_CAM_FOV_COMPUTE             =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+176)/1000 * GADSS_Scaler
+        PS2_CAM_FOV_RAMBO               =       ((D(L3_READ) / (64 * 64)) + (D(L3_WRITE)  / (64 * 64)))*(512+224)/2000 * GADSS_Scaler
