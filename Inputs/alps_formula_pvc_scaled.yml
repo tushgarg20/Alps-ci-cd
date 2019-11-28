@@ -291,6 +291,8 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 
 L3_Bank:
+   L3Node_Ring:
+    PS2_L3Node_Ring: R * C
    Foveros:
     Foveros_compute: R * C
     Foveros_rambo: R * C
@@ -1683,7 +1685,6 @@ Other:
     PS2_RASTER_Crossbar: R * C
     PS2_MidSlice_FF: R * C
     PS2_MDFI_GAM: R * C
-    PS2_L3NODE_RING: R * C
    NODE:
     PS2_NODE: R*C
    URB:

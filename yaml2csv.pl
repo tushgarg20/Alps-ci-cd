@@ -204,8 +204,8 @@ my $count = 0;
 foreach my $frame (keys %consolidatedAlpsData) {
 	my %frameDataTemp = %{$consolidatedAlpsData{$frame}};
 	#if ($count == 0) {
-		push(@{$outputCsvFileHash{"Frame"}},$frame);
-		if ($count == 0) {push @orderArray, "Frame";}
+		push(@{$outputCsvFileHash{"States"}},$frame);
+		if ($count == 0) {push @orderArray, "States";}
 		push(@{$outputCsvFileHash{"FPS"}},$frameDataTemp{FPS});
 		if ($count == 0) {push @orderArray, "FPS";}
 		push(@{$outputCsvFileHash{"CDYN"}},$frameDataTemp{CDYN});
