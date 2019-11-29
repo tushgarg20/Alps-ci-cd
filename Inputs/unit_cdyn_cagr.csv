@@ -201,6 +201,8 @@ FL,Sampler,Gen11LP,PVC,1.12
 FL,Sampler,Gen12LP,PVC,1.12
 DSS,Foveros,PVC,PVC,1
 RamboDSS,Foveros,PVC,PVC,1
+Fabrics,FabricsSpine,PVC,PVC,1
+Spine,FabricsSpine,PVC,PVC,1
 FL,Sampler,Gen10LP,PVC_A21,1.12
 FL,Sampler,Gen8,PVC_A21,1.12
 FL,Sampler,Gen8SoC,PVC_A21,1.12

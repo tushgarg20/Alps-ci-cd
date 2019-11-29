@@ -55,9 +55,20 @@ print ("**********************************")
 I = {} ### Instance Hash
 C = {} ### Effective Cdyn
 
-cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'ADL','PVC_Scaled','PVC','PVC_A21' ],
-                        'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','ADL','PVC_Scaled','PVC','PVC_A21']
-                       };
+#cdyn_precedence_selector()
+# Input: cfg - the name of the arch cfg e.g: Gen12HP, PVC etc
+# Returns the list of arch config precedence for a given arch config
+def cdyn_precedence_selector(cfg):
+  if cfg == 'ADL':
+   cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'ADL' ], 'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','ADL']}
+  elif cfg =='DG2':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2' ],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2',] }
+  else:
+    cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'PVC_Scaled','PVC','PVC_A21' ],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','PVC_Scaled','PVC','PVC_A21']
+                       }
+  return(cdyn_precedence_hash) 
 
 new_gc = {}         ##Gate Count
 process_hash = {}   ##Process
@@ -184,11 +195,13 @@ print("Command Line -->",file=lf)
 print(" ".join(sys.argv),file=lf)
 print("",file=lf)
 
+#Select the appropriate CDYN selector list 
+cdyn_precedence_hash = cdyn_precedence_selector(cfg)
 if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
-
+print("CDYN precedence is %s\n", cdyn_precedence)
 scripts_dir = os.path.abspath(os.path.dirname(__file__))
 
 print("Running scripts from: " + scripts_dir)
