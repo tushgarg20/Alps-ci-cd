@@ -112,9 +112,10 @@ Other:
 FabricsSpine:
   Fabrics:
     PS2_CAM_L3_FABRICS: R * C
-  Spine:
-    PS2_CAM_SPINE: R * C
+  SpineCompute:
     PS2_CAM_SPINE_COMPUTE: R * C
+  SpineBaseRambo:
+    PS2_CAM_SPINE: R * C
     PS2_CAM_SPINE_RAMBO: R * C 
 
 Foveros:
