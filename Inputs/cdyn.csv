@@ -9054,3 +9054,6 @@ PS2_CAM_FOV_COMPUTE,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 b
 PS2_CAM_FOV_RAMBO,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 based on Fatemeh inputs,
 PS2_Local_Nodex_to_Bank,Gen12HP,A0,120,syn,0,approximated cdyn weights for Node,
 PS2_Cross_Fabric_to_Bank,Gen12HP,A0,442.9,syn,0,approximated cdyn weights for Fabric,
+PS2_L3_Active,Gen12HP,A0,315.2,syn,0,approximated cdyn weights for L3,
+PS2_L3Node_Active,Gen12HP,A0,519.5,syn,0,approximated cdyn weights for L3,
+PS2_Fabric_Active,Gen12HP,A0,836,syn,0,approximated cdyn weights for L3,
