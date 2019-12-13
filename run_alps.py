@@ -78,18 +78,21 @@ else:
         filename = '%s/alps_cfg_cnl.yaml' % wd
     elif options.dest_config.find('glv') > -1:
         filename = '%s/alps_cfg_glv.yaml' % wd
+
+    elif options.dest_config.find('tgldg') > -1:
+        filename = '%s/alps_cfg_tgldg.yaml' % wd
+    elif options.dest_config.find('tglhp') > -1 or options.dest_config.find('ATS') > -1:
+        if options.dest_config.find('cam') > -1:
+           filename = '%s/alps_cfg_tglhp_cam.yaml' % wd
+        else:
+           filename = '%s/alps_cfg_tglhp.yaml' % wd
+    elif options.dest_config.find('pvc') > -1 :
+        filename = '%s/alps_cfg_pvc.yaml' % wd
     elif options.dest_config.find('tgl') > -1:
         if options.dest_config.find('reduced') > -1:
            filename = '%s/alps_cfg_tgl_reduced.yaml' % wd
         else:
            filename = '%s/alps_cfg_tgl.yaml' % wd
-    elif options.dest_config.find('tgldg') > -1:
-        filename = '%s/alps_cfg_tgldg.yaml' % wd
-    elif options.dest_config.find('tglhp') > -1:
-        if options.dest_config.find('cam') > -1:
-           filename = '%s/alps_cfg_tglhp_cam.yaml' % wd
-        else:
-           filename = '%s/alps_cfg_tglhp.yaml' % wd
     elif options.dest_config.find('tgl_512') > -1:
         filename = '%s/alps_cfg_tgl.yaml' % wd 
     elif options.dest_config.find('tgl_384') > -1:
@@ -242,7 +245,7 @@ if not options.build_alps_only:
 
 #Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
 #Open the residency file if the configuration is not CAM and write the values
-if options.method.find('cam') > -1:
+'''if options.method.find('cam') > -1:
   print("Building the CAM model")
 else:
   f = open(res, "a+")
@@ -268,7 +271,7 @@ else:
   raw_mov_patterns = []   
   raw_mov_count, raw_mov_patterns, raw_mov_percentage = op.raw_mov_count_estimator(stat)
   f.write("FPU0_raw_mov,%f\n" % raw_mov_percentage)
-  f.close()
+  f.close()'''
 
 
 try:

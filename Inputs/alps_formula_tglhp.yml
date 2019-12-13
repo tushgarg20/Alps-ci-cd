@@ -291,84 +291,8 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 
 L3_Bank:
-   L3Node_Ring:
-    PS2_L3Node_Ring: R * C
-   #NodeFabric:
-    #PS2_Local_Nodex_to_Bank: R * C
-    #PS2_Cross_Fabric_to_Bank: R * C
-   LTCD_EBB:
-    PS0_LTCD_EBB: R * C
-    PS1_LTCD_EBB: R * C
-    PS2_LTCD_EBB:
-     PS2_LTCD_EBB_Read: R * C
-     PS2_LTCD_EBB_Write: R * C
-     PS2_LTCD_EBB_HB_Read: R * C
-     PS2_LTCD_EBB_HB_Write: R * C 
-     PS2_LTCD_EBB_URB_32B_Read: R * C                                          
-     PS2_LTCD_EBB_URB_32B_Write: R * C                                         
-     PS2_LTCD_EBB_URB_64B_Read: R * C                                          
-     PS2_LTCD_EBB_URB_64B_Write: R * C  
-   LTCD_Data:
-    PS0_LTCD_DATA: R * C
-    PS1_LTCD_DATA: R * C
-    PS2_LTCD_Data:
-     PS2_LTCD_DATA_READ: R * C
-     PS2_LTCD_DATA_WRITE: R * C
-     PS2_LTCD_DATA_EVICTION: R * C
-     PS2_LTCD_ATOMIC_WRITE_HIT: R * C
-     PS2_LTCD_ATOMIC_WRITE_MISS: R * C
-     PS2_LTCD_ATOMIC_READ: R * C
-     PS2_LTCD_COAMA_ATOMICS_HIT: R * C
-     PS2_LTCD_DATA_WRITE_CC_128: R * C
-     PS2_LTCD_DATA_EVICT_CC_128_128B_FILL: R * C
-     PS2_LTCD_DATA_EVICT_CC_128_64B_FILL: R * C
-     PS2_LTCD_URB_READ_32b: R * C
-     PS2_LTCD_URB_READ_64b: R * C
-     PS2_LTCD_URB_WRITE_64b: R * C
-     PS2_LTCD_URB_WRITE_32b: R * C
-     PS2_LTCD_URB_partial_write: R * C
-     PS2_LTCD_DATA_Else: R * C
-   LTCD_Tag:
-    PS0_LTCD_TAG: R * C
-    PS2_LTCD_Tag: 
-     PS2_LTCD_TAG_READ: R * C
-     PS2_LTCD_TAG_WRITE: R * C
-     PS2_LTCD_TAG_WRITE_FILL_HIT: R * C
-     PS2_LTCD_TAG_EVICTION_1_SUBSEC: R * C
-     PS2_LTCD_TAG_EVICTION_2_SUBSEC: R * C
-     PS2_LTCD_TAG_WRITE_CC_128: R * C
-     PS2_LTCD_TAG_Else: R * C
-   LSQD:
-    PS0_LSQD: R * C
-    PS1_LSQD: R * C
-    PS2_LSQD:
-     PS2_LSQD_WRITE: R * C
-     PS2_LSQD_READ_RF: R * C
-     PS2_LSQD_LNE_HIT_DATA_RETURN: R * C
-     PS2_LSQD_WRITE_CC_128: R * C
-     PS2_LSQD_Else: R * C
-   LSQC:
-    PS0_LSQC: R * C
-    PS1_LSQC: R * C
-    PS1_LSQC_PW_STALL: R * C
-    PS2_LSQC: R * LINEST[C,R[LSQC_activeslots_per_clock]]
-   LTCC:
-    PS0_LTCC: R * C
-    PS1_LTCC: R * C
-    PS2_LTCC:
-     PS2_LTCC_LKUP: R * C
-     PS2_LTCC_FILL: R * C
-     PS2_LTCC_DCH: R * C
    LBI:
-    PS0_LBI: R * C
-    PS1_LBI: R * C
-    PS2_LBI:
-     PS2_LBI_BANK_READ : R * C
-     PS2_LBI_BANK_WRITE : R * C
-     PS2_LBI_MEFFILL: R * C
-     PS2_LBI_BANK_READ_URB: R * C
-     PS2_LBI_BANK_WRITE_URB: R * C
-     PS2_LBI_Else: R * C
+    PS2_L3_Active: R * C
    L3BankOther:
     PS0_L3BankOther: R * C
     PS1_L3BankOther: R * C
@@ -401,79 +325,8 @@ L3_Bank:
     PS1_L3_Bank_NONCLKGLUE: R * C
     PS2_L3_Bank_NONCLKGLUE: R * C
 L3Node:
-   LTCD_EBB:
-    PS0_LTCD_EBB: 0.588 * R * C
-    PS1_LTCD_EBB: 0.588 * R * C
-    PS2_LTCD_EBB:
-     PS2_LTCD_EBB_Read: 0.588 * R * C
-     PS2_LTCD_EBB_Write: 0.588 * R * C
-     PS2_LTCD_EBB_HB_Read: 0.588 * R * C
-     PS2_LTCD_EBB_HB_Write: 0.588 * R * C 
-     PS2_LTCD_EBB_URB_32B_Read: 0.588 * R * C                                          
-     PS2_LTCD_EBB_URB_32B_Write: 0.588 * R * C                                         
-     PS2_LTCD_EBB_URB_64B_Read: 0.588 * R * C                                          
-     PS2_LTCD_EBB_URB_64B_Write: 0.588 * R * C  
-   LTCD_Data:
-    PS0_LTCD_DATA: 0.588 * R * C
-    PS1_LTCD_DATA: 0.588 * R * C
-    PS2_LTCD_Data:
-     PS2_LTCD_DATA_READ: 0.588 * R * C
-     PS2_LTCD_DATA_WRITE: 0.588 * R * C
-     PS2_LTCD_DATA_EVICTION: 0.588 * R * C
-     PS2_LTCD_ATOMIC_WRITE_HIT: 0.588 * R * C
-     PS2_LTCD_ATOMIC_WRITE_MISS: 0.588 * R * C
-     PS2_LTCD_ATOMIC_READ: 0.588 * R * C
-     PS2_LTCD_COAMA_ATOMICS_HIT: 0.588 * R * C
-     PS2_LTCD_DATA_WRITE_CC_128: 0.588 * R * C
-     PS2_LTCD_DATA_EVICT_CC_128_128B_FILL: 0.588 * R * C
-     PS2_LTCD_DATA_EVICT_CC_128_64B_FILL: 0.588 * R * C
-     PS2_LTCD_URB_READ_32b: 0.588 * R * C
-     PS2_LTCD_URB_READ_64b: 0.588 * R * C
-     PS2_LTCD_URB_WRITE_64b: 0.588 * R * C
-     PS2_LTCD_URB_WRITE_32b: 0.588 * R * C
-     PS2_LTCD_URB_partial_write: 0.588 * R * C
-     PS2_LTCD_DATA_Else: 0.588 * R * C
-   LTCD_Tag:
-    PS0_LTCD_TAG: 0.588 * R * C
-    PS2_LTCD_Tag: 
-     PS2_LTCD_TAG_READ: 0.588 * R * C
-     PS2_LTCD_TAG_WRITE: 0.588 * R * C
-     PS2_LTCD_TAG_WRITE_FILL_HIT: 0.588 * R * C
-     PS2_LTCD_TAG_EVICTION_1_SUBSEC: 0.588 * R * C
-     PS2_LTCD_TAG_EVICTION_2_SUBSEC: 0.588 * R * C
-     PS2_LTCD_TAG_WRITE_CC_128: 0.588 * R * C
-     PS2_LTCD_TAG_Else: 0.588 * R * C
-   LSQD:
-    PS0_LSQD: 0.588 * R * C
-    PS1_LSQD: 0.588 * R * C
-    PS2_LSQD:
-     PS2_LSQD_WRITE: 0.588 * R * C
-     PS2_LSQD_READ_RF: 0.588 * R * C
-     PS2_LSQD_LNE_HIT_DATA_RETURN: 0.588 * R * C
-     PS2_LSQD_WRITE_CC_128: 0.588 * R * C
-     PS2_LSQD_Else: 0.588 * R * C
-   LSQC:
-    PS0_LSQC: 0.588 * R * C
-    PS1_LSQC: 0.588 * R * C
-    PS1_LSQC_PW_STALL: 0.588 * R * C
-    PS2_LSQC: 0.588 * R * LINEST[C,R[LSQC_activeslots_per_clock]]
-   LTCC:
-    PS0_LTCC: 0.588 * R * C
-    PS1_LTCC: 0.588 * R * C
-    PS2_LTCC:
-     PS2_LTCC_LKUP: 0.588 * R * C
-     PS2_LTCC_FILL: 0.588 * R * C
-     PS2_LTCC_DCH: 0.588 * R * C
-   LBI:
-    PS0_LBI: 0.588 * R * C
-    PS1_LBI: 0.588 * R * C
-    PS2_LBI:
-     PS2_LBI_BANK_READ : 0.588 * R * C
-     PS2_LBI_BANK_WRITE : 0.588 * R * C
-     PS2_LBI_MEFFILL: 0.588 * R * C
-     PS2_LBI_BANK_READ_URB: 0.588 * R * C
-     PS2_LBI_BANK_WRITE_URB: 0.588 * R * C
-     PS2_LBI_Else: 0.588 * R * C
+   Node:
+    PS2_L3Node_Active : R * C
    L3BankOther:
     PS0_L3BankOther: 0.588 * R * C
     PS1_L3BankOther: 0.588 * R * C
@@ -1706,79 +1559,8 @@ Other:
     PS0_Blitter: R * C
 
 Fabric:
-   LTCD_EBB:
-    PS0_LTCD_EBB: 0.20 * R * C
-    PS1_LTCD_EBB: 0.20 * R * C
-    PS2_LTCD_EBB:
-     PS2_LTCD_EBB_Read: 0.20 * R * C
-     PS2_LTCD_EBB_Write: 0.20 * R * C
-     PS2_LTCD_EBB_HB_Read: 0.20 * R * C
-     PS2_LTCD_EBB_HB_Write: 0.20 * R * C 
-     PS2_LTCD_EBB_URB_32B_Read: 0.20 * R * C                                          
-     PS2_LTCD_EBB_URB_32B_Write: 0.20 * R * C                                         
-     PS2_LTCD_EBB_URB_64B_Read: 0.20 * R * C                                          
-     PS2_LTCD_EBB_URB_64B_Write: 0.20 * R * C  
-   LTCD_Data:
-    PS0_LTCD_DATA: 0.20 * R * C
-    PS1_LTCD_DATA: 0.20 * R * C
-    PS2_LTCD_Data:
-     PS2_LTCD_DATA_READ: 0.20 * R * C
-     PS2_LTCD_DATA_WRITE: 0.20 * R * C
-     PS2_LTCD_DATA_EVICTION: 0.20 * R * C
-     PS2_LTCD_ATOMIC_WRITE_HIT: 0.20 * R * C
-     PS2_LTCD_ATOMIC_WRITE_MISS: 0.20 * R * C
-     PS2_LTCD_ATOMIC_READ: 0.20 * R * C
-     PS2_LTCD_COAMA_ATOMICS_HIT: 0.20 * R * C
-     PS2_LTCD_DATA_WRITE_CC_128: 0.20 * R * C
-     PS2_LTCD_DATA_EVICT_CC_128_128B_FILL: 0.20 * R * C
-     PS2_LTCD_DATA_EVICT_CC_128_64B_FILL: 0.20 * R * C
-     PS2_LTCD_URB_READ_32b: 0.20 * R * C
-     PS2_LTCD_URB_READ_64b: 0.20 * R * C
-     PS2_LTCD_URB_WRITE_64b: 0.20 * R * C
-     PS2_LTCD_URB_WRITE_32b: 0.20 * R * C
-     PS2_LTCD_URB_partial_write: 0.20 * R * C
-     PS2_LTCD_DATA_Else: 0.20 * R * C
-   LTCD_Tag:
-    PS0_LTCD_TAG: 0.20 * R * C
-    PS2_LTCD_Tag: 
-     PS2_LTCD_TAG_READ: 0.20 * R * C
-     PS2_LTCD_TAG_WRITE: 0.20 * R * C
-     PS2_LTCD_TAG_WRITE_FILL_HIT: 0.20 * R * C
-     PS2_LTCD_TAG_EVICTION_1_SUBSEC: 0.20 * R * C
-     PS2_LTCD_TAG_EVICTION_2_SUBSEC: 0.20 * R * C
-     PS2_LTCD_TAG_WRITE_CC_128: 0.20 * R * C
-     PS2_LTCD_TAG_Else: 0.20 * R * C
-   LSQD:
-    PS0_LSQD: 0.20 * R * C
-    PS1_LSQD: 0.20 * R * C
-    PS2_LSQD:
-     PS2_LSQD_WRITE: 0.20 * R * C
-     PS2_LSQD_READ_RF: 0.20 * R * C
-     PS2_LSQD_LNE_HIT_DATA_RETURN: 0.20 * R * C
-     PS2_LSQD_WRITE_CC_128: 0.20 * R * C
-     PS2_LSQD_Else: 0.20 * R * C
-   LSQC:
-    PS0_LSQC: 0.20 * R * C
-    PS1_LSQC: 0.20 * R * C
-    PS1_LSQC_PW_STALL: 0.20 * R * C
-    PS2_LSQC: 0.20 * R * LINEST[C,R[LSQC_activeslots_per_clock]]
-   LTCC:
-    PS0_LTCC: 0.20 * R * C
-    PS1_LTCC: 0.20 * R * C
-    PS2_LTCC:
-     PS2_LTCC_LKUP: 0.20 * R * C
-     PS2_LTCC_FILL: 0.20 * R * C
-     PS2_LTCC_DCH: 0.20 * R * C
-   LBI:
-    PS0_LBI: 0.20 * R * C
-    PS1_LBI: 0.20 * R * C
-    PS2_LBI:
-     PS2_LBI_BANK_READ : 0.20 * R * C
-     PS2_LBI_BANK_WRITE : 0.20 * R * C
-     PS2_LBI_MEFFILL: 0.20 * R * C
-     PS2_LBI_BANK_READ_URB: 0.20 * R * C
-     PS2_LBI_BANK_WRITE_URB: 0.20 * R * C
-     PS2_LBI_Else: 0.20 * R * C
+   Fabrics:
+    PS2_Fabric_Active: R * C
    L3BankOther:
     PS0_L3BankOther: 0.20 * R * C
     PS1_L3BankOther: 0.20 * R * C

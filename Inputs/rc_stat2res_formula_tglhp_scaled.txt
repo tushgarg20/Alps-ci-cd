@@ -22,7 +22,7 @@
 	num_Fabric_LBI			=	num_L3_Slices * numL3Banks
         num_Fabric_L3Node_Ring		=	num_L3_Slices * numL3Banks
         num_L3Node_LNI                  =       1  #It was 2 for gen12lp, Need to varify
-
+	num_Fabric_Fabrics		=  	num_L3_Slices
 #Generic				
 	@ANY_L3BANK@			=	(STK\d+\.uL3_\d+\.Bank_\d+\.|uL3_\d+\.Bank_\d+\.)
 	@ANY_L3@			=	(STK\d+\.uL3_\d+\.|uL3_\d+\.)
@@ -138,6 +138,7 @@
 	PS2_LBI_BANK_WRITE_URB	=	.BankURBWr
 	.residuallbi		=	1- (PS0_LBI + PS1_LBI + PS2_LBI_BANK_WRITE + PS2_LBI_BANK_READ + PS2_LBI_MEFFILL + PS2_LBI_BANK_READ_URB + PS2_LBI_BANK_WRITE_URB)
 	PS2_LBI_Else		=	(.residuallbi<0)?0:.residuallbi
+	PS2_Fabric_Active 	=	PS2_LBI_BANK_READ + PS2_LBI_BANK_WRITE
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	

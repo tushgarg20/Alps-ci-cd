@@ -133,7 +133,7 @@ elif common_cfg.find('tglhp_512') > -1 :
     cfg ='Gen12HP_512'
 elif common_cfg.find('tglhp_384') > -1 :
     cfg ='Gen12HP_384'
-elif common_cfg.find('tglhp') > -1 :
+elif common_cfg.find('tglhp') > -1 or common_cfg.find('ats') > -1:
     cfg ='Gen12HP'
 elif common_cfg.find('pvc') > -1 :
     cfg ='PVC'
@@ -169,7 +169,7 @@ elif common_cfg.find('tglhp_512') > -1 :
     cfg_gc ='Gen12HP_512'
 elif common_cfg.find('tglhp_384') > -1 :
     cfg_gc ='Gen12HP_384'
-elif common_cfg.find('tglhp') > -1 :
+elif common_cfg.find('tglhp') > -1 or common_cfg.find('ats') > -1:
     cfg_gc = "Gen12HP"
 elif common_cfg.find('pvc') > -1 :
     cfg_gc = "PVC"
