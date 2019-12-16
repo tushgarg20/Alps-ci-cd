@@ -24,7 +24,7 @@
         num_L3Node_LNI                  =       1  #It was 2 for gen12lp, Need to varify
 	num_L3Node_Node			= 	num_L3_Slices
 #Generic				
-	@ANY_L3BANK@			=	(STK\d+\.uL3_\d+\.Bank_\d+\.|uL3_\d+\.Bank_\d+\.)
+	@ANY_L3BANK@			=	(STK\d+\.uL3_\d+\.Bank_\d+\.|uL3_\d+\.Bank_\d+\.|uL3_\d+\.Bank_\d+\.)
 	@ANY_L3@			=	(STK\d+\.uL3_\d+\.|uL3_\d+\.)
 	.CrClk				=	D(CrClock.Clocks)	
 	.CrClk2x			=	D(SUM('2xCrClock\.Clocks'))	
