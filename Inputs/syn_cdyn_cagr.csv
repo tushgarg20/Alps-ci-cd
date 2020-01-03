@@ -1365,7 +1365,7 @@ DSSC,Gen12DG,Gen12HP,1
 DSSC,Gen12HP,Gen12HP,1
 DSSC,Gen12HP,DG2,1
 DSSC,DG2,DG2,1
-DSSC,PVC,PVC,0.9288
+DSSC,PVC,PVC,1.134216
 EU,Gen10LP,Gen12HP,0.8482995
 EU,Gen8,Gen12HP,0.61077564
 EU,Gen8SoC,Gen12HP,0.61077564
@@ -1829,7 +1829,7 @@ Other,Gen12DG,PVC,1
 Other,Gen12HP,PVC,1
 Other,DG2,PVC,1
 Other,ADL,PVC,1
-Other,PVC,PVC,1
+Other,PVC,PVC,1.18,Scaler for filler/clock push/config
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -2044,7 +2044,7 @@ Other,Gen12DG,PVC_A21,1
 Other,Gen12HP,PVC_A21,1
 Other,DG2,PVC_A21,1
 Other,ADL,PVC_A21,1
-Other,PVC_A21,PVC_A21,1
+Other,PVC_A21,PVC_A21,1.18,Scaler for filler/clock push/config
 RC,Gen10LP,PVC_A21,0.837
 RC,Gen8,PVC_A21,0.60264
 RC,Gen8SoC,PVC_A21,0.60264
@@ -2292,5 +2292,6 @@ Z,Gen9LPSoC,ADL,0.7533
 Z,Gen11,ADL,0.837
 Z,Gen11LP,ADL,0.9
 Z,Gen12LP,ADL,1
-Foveros,PVC,PVC,1
-FabricsSpine,PVC,PVC,1
+Foveros,PVC,PVC,1.18,Scaler for filler/clock push/config
+FabricsSpine,PVC,PVC,1.18,Scaler for filler/clock push/config
+FabricsSpine,PVC_A21,PVC_A21,1.18,Scaler for filler/clock push/config
