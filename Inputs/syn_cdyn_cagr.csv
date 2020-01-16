@@ -1730,7 +1730,7 @@ EU,Gen11,PVC,0.837
 EU,Gen11LP,PVC,0.9
 EU,Gen12LP,PVC,1.0648
 EU,Gen12DG,PVC,1.0648
-EU,Gen12HP,PVC,0.8428, LOS scaler of 0.98 and Process scaler of 0.86
+EU,Gen12HP,PVC,0.95942, LOS scaler of 0.98 , Process scaler of 0.89, Scler for filler/clock push/config(3*2*2), scaler for library(8%)and 2% for config(scaing from lower config to higher config) (from ww51.2 spreadsheet)
 EU,DG2,PVC,0.888576
 EU,ADL,PVC,0.888576
 Fabric,Gen11,PVC,1.315789474
@@ -1788,7 +1788,7 @@ HDC,Gen11,PVC,0.87885
 HDC,Gen11LP,PVC,0.945
 HDC,Gen12LP,PVC,1.05
 HDC,Gen12DG,PVC,1
-HDC,Gen12HP,PVC,0.0705
+HDC,Gen12HP,PVC,0.05251, Scaler factors as per Spreadsheet ww51.2
 HDC,PVC,PVC,0.0705
 HDC,DG2,PVC,0.1
 HDC,ADL,PVC,0.1
