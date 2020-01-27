@@ -574,6 +574,7 @@ Sampler,Gen12HP,PVC,False
 Sampler,DG2,PVC,False
 Sampler,ADL,PVC,False
 Sampler,PVC,PVC,False
+LSC,PVC,PVC,False
 L3Node,Gen9LPClient,PVC,False
 L3Node,Gen9LPSoC,PVC,False
 L3Node,Gen10LP,PVC,False

@@ -1730,7 +1730,7 @@ EU,Gen11,PVC,0.837
 EU,Gen11LP,PVC,0.9
 EU,Gen12LP,PVC,1.0648
 EU,Gen12DG,PVC,1.0648
-EU,Gen12HP,PVC,0.95942, LOS scaler of 0.98 , Process scaler of 0.89, Scler for filler/clock push/config(3*2*2), scaler for library(8%)and 2% for config(scaing from lower config to higher config) (from ww51.2 spreadsheet)
+EU,Gen12HP,PVC,0.94, LOS scaler of 0.98 , Process scaler of 0.89, Scler for filler/clock push/config(3*2*2), scaler for library(8%)and 2% for config(scaing from lower config to higher config) 8% (from 20ww03 spreadsheet)
 EU,DG2,PVC,0.888576
 EU,ADL,PVC,0.888576
 Fabric,Gen11,PVC,1.315789474
@@ -1789,7 +1789,7 @@ HDC,Gen11LP,PVC,0.945
 HDC,Gen12LP,PVC,1.05
 HDC,Gen12DG,PVC,1
 HDC,Gen12HP,PVC,0.05251, Scaler factors as per Spreadsheet ww51.2
-HDC,PVC,PVC,0.0705
+HDC,PVC,PVC,0.05251, Scaler factors as per Spreadsheet ww51.2
 HDC,DG2,PVC,0.1
 HDC,ADL,PVC,0.1
 L3_Bank,Gen10LP,PVC,1.223684211
@@ -1829,7 +1829,7 @@ Other,Gen12DG,PVC,1
 Other,Gen12HP,PVC,1
 Other,DG2,PVC,1
 Other,ADL,PVC,1
-Other,PVC,PVC,1.18,Scaler for filler/clock push/config
+Other,PVC,PVC,1.16,Scaler for filler/clock push/config
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -2044,7 +2044,7 @@ Other,Gen12DG,PVC_A21,1
 Other,Gen12HP,PVC_A21,1
 Other,DG2,PVC_A21,1
 Other,ADL,PVC_A21,1
-Other,PVC_A21,PVC_A21,1.18,Scaler for filler/clock push/config
+Other,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 RC,Gen10LP,PVC_A21,0.837
 RC,Gen8,PVC_A21,0.60264
 RC,Gen8SoC,PVC_A21,0.60264
@@ -2292,6 +2292,8 @@ Z,Gen9LPSoC,ADL,0.7533
 Z,Gen11,ADL,0.837
 Z,Gen11LP,ADL,0.9
 Z,Gen12LP,ADL,1
-Foveros,PVC,PVC,1.18,Scaler for filler/clock push/config
-FabricsSpine,PVC,PVC,1.18,Scaler for filler/clock push/config
-FabricsSpine,PVC_A21,PVC_A21,1.18,Scaler for filler/clock push/config
+Foveros,PVC,PVC,1.16,Scaler for filler/clock push/config
+FabricsSpine,PVC,PVC,1.16,Scaler for filler/clock push/config
+FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
+LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
+LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
