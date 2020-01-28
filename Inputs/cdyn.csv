@@ -8974,7 +8974,7 @@ PS2_CAM_POSH,DG2,A0,346.4145,syn,0,Sampler L1 Cache from ww1902 spreadsheet anal
 #PS2_CAM_ROW,PVC,A0,65.1733,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
 PS2_CAM_ROW,Gen12HP,A0,62.08019,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
 PS2_CAM_ROW,DG2,A0,57.48166,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
-PS2_CAM_ROW,PVC,A0,133.629,syn,0, ROW CDYN wt from 20ww03 spreadsheet analytical model,
+PS2_CAM_ROW,PVC,A0,383.022,syn,0, ROW CDYN wt from 20ww03 spreadsheet analytical model,
 PS2_CAM_COLOR,Gen12HP,A0,33.56,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
 PS2_CAM_COLOR,DG2,A0,16.6573,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
 PS2_CAM_COLOR,PVC,A0,33.56,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model,
