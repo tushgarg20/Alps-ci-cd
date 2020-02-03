@@ -1830,6 +1830,8 @@ Other,Gen12HP,PVC,1
 Other,DG2,PVC,1
 Other,ADL,PVC,1
 Other,PVC,PVC,1.16,Scaler for filler/clock push/config
+ROW,PVC,PVC,1.16,Scaler for filler/clock push/config #Separated ROW into another cluster
+ROW,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264

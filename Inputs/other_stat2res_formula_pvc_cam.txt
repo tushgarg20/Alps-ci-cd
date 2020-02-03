@@ -2,21 +2,16 @@
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
 	num_Other_Others	  =   D(knob.numOthers)
-        num_Other_ROW              =   D(knob.numROW)
         num_Other_COLOR           =   D(knob.numCOLOR)
         L3_Cache_Size           =       D(knob.L3CacheSize)
         L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05
         GADSS_Scaler            =     D(knob.GADSS) 
-        BF_Flag                 =     D(knob.DPAS_BF16) 
-        SYS_Utilization          =     (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks : D(SYSW_FLOAT)/CrClocks
-        EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
        
 #Generic				
 	PS2_CAM_PS         =  1
         PS2_CAM_GEOM       =  1
         PS2_CAM_ARB        =  1
         PS2_CAM_POSH       =  1
-        PS2_CAM_ROW        =  EU_Utilization 
         PS2_CAM_COLOR      =  1
         PS2_CAM_Z          =  1
         PS2_CAM_ROGT       =  1

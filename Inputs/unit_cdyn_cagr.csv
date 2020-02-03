@@ -205,6 +205,7 @@ Fabrics,FabricsSpine,PVC,PVC,1
 SpineCompute,FabricsSpine,PVC,PVC,1
 SpineBaseRambo,FabricsSpine,PVC,PVC,1
 LSC,LSC,PVC,PVC,1
+ROW,ROW,PVC,PVC,1
 FL,Sampler,Gen10LP,PVC_A21,1.12
 FL,Sampler,Gen8,PVC_A21,1.12
 FL,Sampler,Gen8SoC,PVC_A21,1.12

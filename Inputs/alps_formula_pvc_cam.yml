@@ -94,8 +94,6 @@ Other:
     PS2_CAM_OTHER_INFRA: R * C
     PS2_CAM_GTDSS: R * C
     PS2_CAM_GTDSS_INFRA: R * C
-  ROW:
-    PS2_CAM_ROW: R * C
 
 FabricsSpine:
   Fabrics:
@@ -126,3 +124,6 @@ LSC:
     PS2_CAM_LSC_SLM: R * C
     PS0_CAM_LSC: R * C
 
+ROW:
+   ROW:
+    PS2_CAM_ROW: R * C
