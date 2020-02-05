@@ -127,3 +127,4 @@ LSC:
 ROW:
    ROW:
     PS2_CAM_ROW: R * C
+    PS2_CAM_ROW_GEMM: R * C

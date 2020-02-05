@@ -7,4 +7,5 @@
         EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
 
 #Generic
-        PS2_CAM_ROW        =  EU_Utilization
+        PS2_CAM_ROW        =  SYS_Utilization
+        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0
