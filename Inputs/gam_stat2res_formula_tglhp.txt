@@ -40,7 +40,7 @@
   num_GAM_GAMCMDI = numGAM
   num_GAM_GAMDATI = numGAM
   num_GAM_GAMSTLB = numGAM
-  num_GAM_GAMFTLB = numGAM
+  num_GAM_GAMGTI = numGAM
   num_GAM_GAMWKRS = numGAM
   num_GAM_GAMREQSTRM = numGAM
   num_GAM_GAMDRTN    = numGAM
@@ -69,10 +69,14 @@
    @GAFM@         =    S\d+\.uL3\.LNI_\d+\.
    
   .temp = D(uGAM_0_TotalFtlbRequests)
-  PS2_GAM_App	= .temp /(@CLOCKS@ * num_GAM_GAMFTLB)
-  PS2_GTI_App	= PS2_GAM_App * 0.04
-  PS2_SQIDI_App = PS2_GAM_App * 1.75
-  PS2_Uncore_App = PS2_GAM_App * 0.6
+  .gti_reads = D(SUM('uGAM_\d+_GtiRead'))
+  .gti_writes = D(SUM('uGAM_\d+_GtiWrite'))
+
+  PS2_GAM_App	= (.gti_reads + .gti_writes) /(@CLOCKS@ * num_GAM_GAMGTI)
+  PS2_GTI_App	= PS2_GAM_App
+  PS2_SQIDI_App = PS2_GAM_App
+  PS2_GA_SQIDI_RPT = PS2_GAM_App
+  
  
 
 #GAM_DOP			

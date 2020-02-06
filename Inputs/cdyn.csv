@@ -8315,10 +8315,10 @@ PS2_SNPFILTER_SNOOP_HIT,Gen12LP,A0,7.077005553,syn,79623.2,PLITE TNET3 REFRESH,N
 PS2_SNPFILTER_SNOOP_MISS,Gen12LP,A0,4.301069333,syn,79623.2,PLITE TNET3 REFRESH,New
 PS2_SNPFILTER_WRITE,Gen12LP,A0,6.575946594,syn,79623.2,PLITE TNET3 REFRESH,New
 PS0_SNPFILTERCOMMON,Gen12LP,A0,0.041421,syn,79623.2,PLITE TNET3 REFRESH,New
-PS2_GAM_App,Gen12LP,A0,141.55,syn,1,GAM Approximation,New
-PS2_GTI_App,Gen12LP,A0,141.55,syn,1,GAM Approximation,New
-PS2_SQIDI_App,Gen12LP,A0,141.55,syn,1,GAM Approximation,New
-PS2_Uncore_App,Gen12LP,A0,141.55,syn,1,GAM Approximation,New
+PS2_GAM_App,Gen12HP,A0,532,syn,1,GAM Approximation using ATS emualtion as baseline,New
+PS2_GTI_App,Gen12HP,A0,532,syn,1,GAM Approximation,New
+PS2_SQIDI_App,Gen12HP,A0,338.12,syn,1,SQIDI Approximation using ATS emualtion as baseline,New
+PS2_Uncore_App,Gen12HP,A0,141.55,syn,1,GAM Approximation,New
 PS0_GAMCMDI_GFX_IDLE,Gen12LP,A0,0.52,syn,160472.85,FSO Plite Numbers - x3r2 Based,New
 PS1_GAMCMDI_GFX_STALLED,Gen12LP,A0,3.84,syn,160472.85,PAR PTPX FSO,New
 PS2_GAMCMDI_GFX_ACTIVE_1RD,Gen12LP,A0,4.375016125,syn,160472.85,FSO Plite Numbers - x3r2 Based,New
@@ -8787,7 +8787,7 @@ PS0_TDL,Gen12LP,A0,2.52,syn,617459.9,FSO Plite Numbers - x3r2 Based,
 PS1_TDL,Gen12LP,A0,7.34,syn,617459.9,FSO Plite Numbers - x3r2 Based,
 PS2_TDL_NONPSDDISPATCH,Gen12LP,A0,65,syn,617459.9,FSO Plite Numbers - x3r2 Based,
 PS2_TDL_PSDDISPATCH,Gen12LP,A0,36.3,syn,617459.9,FSO Plite Numbers - x3r2 Based,
-PS2_GA_SQIDI_RPT,Gen12HP,A0,4351.8518,syn,0,Approximated cdyn weight for Gsim based alps model, 
+PS2_GA_SQIDI_RPT,Gen12HP,A0,130,syn,0,Approximated cdyn weight for Gsim based alps model, 
 PS2_L3Node_Ring,Gen12HP,A0,1646.92,syn,0,Approximated cdyn weight for Gsim based alps model, 
 PS2_MDFI_GAM,Gen12HP,A0,879.6296,syn,0,Approximated cdyn weight for Gsim based alps model, 
 PS2_CAM_SLM_READ,ADL,A0,265.87,syn,1,SLM Read Cdyn/Txn calculated analytically from ww1912 ADL spreadsheet,

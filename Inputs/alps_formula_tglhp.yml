@@ -1266,11 +1266,10 @@ ROSC:
     PS0_ROSC_DFX: R * C 
     PS2_ROSC_DFX: R * C 
 GAM:
-   GAMFTLB:
+   GAMGTI:
     PS2_GAM_App: R * C
-    PS2_GTI_App: R * C
     PS2_SQIDI_App: R * C
-    PS2_Uncore_App: R * C
+    PS2_GA_SQIDI_RPT: R * C
    DOP:
     PS0_GAM_DOP: R * C
     PS2_GAM_DOP: R * C
@@ -1532,7 +1531,6 @@ FF:
 Other:
    Infra:
     PS2_BGF: R * C
-    PS2_GA_SQIDI_RPT: R * C
     PS2_Media_Channel: R * C
     PS2_GTINFNORTH: R * C
     PS2_RASTER_Crossbar: R * C

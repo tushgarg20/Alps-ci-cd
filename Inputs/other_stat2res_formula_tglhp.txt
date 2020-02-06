@@ -15,7 +15,6 @@
 			
 #Other	
 	PS2_BGF = 1
-    	PS2_GA_SQIDI_RPT = 0.2757
     	PS2_Media_Channel = 1
     	PS2_GTINFNORTH = 1
     	PS2_RASTER_Crossbar = 1
