@@ -2,8 +2,10 @@
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
         num_ROW_ROW              =   D(knob.numROW)
-        BF_Flag                 =     D(knob.DPAS_BF16) 
-        SYS_Utilization          =     (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks : D(SYSW_FLOAT)/CrClocks
+        BF_Flag                 =     D(knob.DPAS_BF16)
+        @SYS@                   =     (SYS|SYSW)
+        @SYS_TYPE@              =     (INT|FLOAT|INT4) 
+        SYS_Utilization          =    D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
         EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
 
 #Generic
