@@ -1,0 +1,48 @@
+#Unit	GSIM residency		
+#Instance Counts
+	num_Other_Infra	= 1
+
+        num_Other_NODE  = 1
+        num_Other_URB   = 1	
+	num_Other_CCD	= 1		
+		num_Other_GTP24C				=		1
+		num_Other_ClockSpine			=		1
+		num_Other_WIDI					=		1
+	num_Other_Blitter	=	1
+	num_Other_Slice	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')
+	num_Other_UnSlice	=	1
+	num_Other_RC	=	num_Other_Slice - 1
+			
+#Other	
+	PS2_BGF = 1
+    	PS2_Media_Channel = 1
+    	PS2_GTINFNORTH = 1
+    	PS2_RASTER_Crossbar = 1
+    	PS2_MidSlice_FF = 1
+    	PS2_MDFI_GAM = 1
+	PS2_L3NODE_RING = 1
+	PS2_CCD	= 1
+	PS2_NODE= 1
+	PS2_URB	= 0 #For compute workloads, need to account it explictly for 3D wls
+	
+	PS0_GTP24C_DOP 	=   0	
+	PS0_GTP24C 	=	1
+	PS2_ClockSpine 	=	1
+	PS0_WIDI_DOP 	=	1
+	PS0_WIDI 	=	0
+	PS0_Blitter	=	1
+	PS2_CAM_SPINE 	=	1
+	PS2_CAM_SPINE_COMPUTE 	=	1
+	PS2_CAM_SPINE_RAMBO 	=	1
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

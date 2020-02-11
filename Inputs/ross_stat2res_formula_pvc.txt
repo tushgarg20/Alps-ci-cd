@@ -42,7 +42,8 @@
 	num_ROSS_CLKGLUE	=	numROSS	
 	num_ROSS_NONCLKGLUE	=	numROSS	
 	num_ROSS_DFX	=	numROSS	
-	num_ROSS_DOP	=	numROSS	
+	num_ROSS_DOP	=	numROSS
+	num_DSSC_LSC = numROSS
 #Generic				
 	 .CrClk	=	D(CrClock.Clocks)	
 	 .UnsliceClk	=	D(UnsliceClock.Clocks)	
@@ -56,6 +57,15 @@
 	 @ANY_TDL@	=	(S\d+\.SS\d+\.uTDL\.|STK\d+\.S\d+\.SS\d+\.uTDL\.)	
 	 @ANY_ICACHE@	=	(S\d+\.SS\d+\.uICACHE\.|STK\d+\.S\d+\.SS\d+\.uICACHE\.)	
 	 @ANY_GWC@	=	Med\.uGWC\.	
+
+#LSC
+
+	.allochits = D(SUM('S\d+.SS\d+.uLSC.AllocHits'))
+	.numevict =  D(SUM('S\d+.SS\d+.uLSC.NumEvictions'))
+	.allocmisses = D(SUM('S\d+.SS\d+.uLSC.AllocMisses'))
+	LSC_Read_Util = (.allochits + .numevict)/(.CrClk * num_DSSC_LSC * 8)
+	LSC_Write_Util = (.allocmisses)/(.CrClk * num_DSSC_LSC * 8) 
+	PS2_LSC = LSC_Read_Util + LSC_Write_Util
 
 
 #SLM				
