@@ -47,7 +47,8 @@
         BF_Flag  = D(knob.DPAS_BF16)
         Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
         DPAS_Depth = D(knob.DPAS_Depth)
-        DPAS_Scaler = (DPAS_Depth == 8) ? 1 : 0.66
+        # Scaling form 8 deep SYS arry to 4 deep SYS array is 0.61, based on Amit's inputs 20ww04
+        DPAS_Scaler = (DPAS_Depth == 8) ? 1 : 0.61
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0
         FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp32')) / (FPU_total_count)) : 0
         FPU0_add_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp32')) / (FPU_total_count)) : 0 

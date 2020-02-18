@@ -116,7 +116,7 @@ if(not flag):
     stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '.res.csv'
 log = options.output_dir + '/' + options.wl_name + '.res.log.txt'
-yaml = options.output_dir + '/' + 'alps_' + options.wl_name + '.yaml'
+yaml = options.output_dir + '/' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
 python_exe = '/usr/intel/pkgs/python/3.1.2/bin/python'
@@ -207,7 +207,7 @@ else:
         build_alps_cmd = [python_exe, build_alps_script]
     else:
         stat_parser_script = options.user_dir + '/StatParser/StatParser.exe'
-        build_alps_cmd = ['%s/bt.cmd ' % options.user_dir, options.user_dir + '/build_alps.py']
+        build_alps_cmd = ['python ', options.user_dir + '/build_alps.py']
 
     stat_parser_cmd = [stat_parser_script,'-csv','-o', res, '-e', log, '-s', stat]
     for formula in cfg_data['Stat2Res Formula Files']:
