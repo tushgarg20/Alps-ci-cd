@@ -1,11 +1,11 @@
 ALPS_formula_file = Inputs/alps_formula_tglhp_cam.yml
 Cdyn = Inputs/cdyn.csv
 GateCount = Inputs/gc.csv
-Process_Scaling_Factors = Inputs/process.csv
+Process_Scaling_Factors = Inputs/process_cam.csv
 Voltage_Scaling_Factors = Inputs/voltage.csv
-syn_cdyn_cagr = Inputs/syn_cdyn_cagr.csv
+syn_cdyn_cagr = Inputs/syn_cdyn_cagr_cam.csv
 ebb_cdyn_cagr = Inputs/ebb_cdyn_cagr.csv
-unit_cdyn_cagr = Inputs/unit_cdyn_cagr.csv
+unit_cdyn_cagr = Inputs/unit_cdyn_cagr_cam.csv
 gc_scaling_cfg = Inputs/gc_scaling_cfg.csv
 cdyn_stepping = Inputs/stepping.csv
 Cdynmax=Cdynmax.csv
