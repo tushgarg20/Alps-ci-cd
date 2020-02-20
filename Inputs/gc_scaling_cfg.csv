@@ -243,6 +243,7 @@ EU,Gen12HP,Gen12HP,False
 EU,Gen12HP,PVC,False
 EU,DG2,PVC,False
 EU,ADL,PVC,False
+EU,PVC,PVC,False
 L3_Bank,Gen9LPClient,Gen12HP,False
 L3_Bank,Gen9LPSoC,Gen12HP,False
 L3_Bank,Gen10LP,Gen12HP,False
@@ -565,6 +566,8 @@ GAM,Gen12HP,PVC,False
 GAM,DG2,PVC,False
 GAM,ADL,PVC,False
 GAM,PVC,PVC,False
+GAM,PVC,PVC_A21,False
+GAM,Gen12HP,PVC_A21,False
 Sampler,Gen9LPClient,PVC,False
 Sampler,Gen9LPSoC,PVC,False
 Sampler,Gen10LP,PVC,False
@@ -638,6 +641,7 @@ DSSC,Gen12HP,PVC,False
 DSSC,DG2,PVC,False
 DSSC,ADL,PVC,False
 DSSC,PVC,PVC,False
+DSSC,PVC,PVC_A21,False
 FF,Gen9LPClient,PVC,False
 FF,Gen9LPSoC,PVC,False
 FF,Gen10LP,PVC,False
@@ -672,6 +676,7 @@ Other,Gen12HP,PVC,False
 Other,DG2,PVC,False
 Other,ADL,PVC,False
 Other,PVC,PVC,False
+Other,PVC,PVC_A21,False
 EU,Gen9LPSoC,ADL,False
 EU,Gen10LP,ADL,False
 EU,Gen11LP,ADL,False
