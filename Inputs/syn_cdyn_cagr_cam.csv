@@ -1730,7 +1730,8 @@ EU,Gen11,PVC,0.837
 EU,Gen11LP,PVC,0.9
 EU,Gen12LP,PVC,1.0648
 EU,Gen12DG,PVC,1.0648
-EU,Gen12HP,PVC,0.94, LOS scaler of 0.98 , Process scaler of 0.89, Scler for filler/clock push/config(3*2*2), scaler for library(8%)and 2% for config(scaing from lower config to higher config) 8% (from 20ww03 spreadsheet)
+EU,Gen12HP,PVC,0.9057, LOS scaler of 0.98 , Process scaler of 0.89, config to higher config) 8% (from 20ww09 spreadsheet) 
+EU,PVC,PVC,0.8722,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc
 EU,DG2,PVC,0.888576
 EU,ADL,PVC,0.888576
 Fabric,Gen11,PVC,1.315789474
@@ -1766,7 +1767,7 @@ GAM,Gen12DG,PVC,1
 GAM,Gen12HP,PVC,1
 GAM,DG2,PVC,1
 GAM,ADL,PVC,1
-GAM,PVC,PVC,1.08
+GAM,PVC,PVC,1
 GTI,Gen10LP,PVC,0.865458
 GTI,Gen8,PVC,0.662904
 GTI,Gen8SoC,PVC,0.662904
@@ -1829,9 +1830,9 @@ Other,Gen12DG,PVC,1
 Other,Gen12HP,PVC,1
 Other,DG2,PVC,1
 Other,ADL,PVC,1
-Other,PVC,PVC,1.16,Scaler for filler/clock push/config
-ROW,PVC,PVC,1.16,Scaler for filler/clock push/config #Separated ROW into another cluster
-ROW,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
+Other,PVC,PVC,1,Scaler based on 20ww09.4 
+ROW,PVC,PVC,0.9612,Scaler for filler/clock push/config #Separated ROW into another cluster
+ROW,PVC_A21,PVC_A21,0.9612,Scaler for filler/clock push/config
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -1946,7 +1947,7 @@ EU,Gen11,PVC_A21,0.837
 EU,Gen11LP,PVC_A21,0.9
 EU,Gen12LP,PVC_A21,1.0648
 EU,Gen12DG,PVC_A21,1.0648
-EU,Gen12HP,PVC_A21,0.8428, LOS scaler of 0.98 and Process scaler of 0.86
+EU,Gen12HP,PVC_A21,0.9057, LOS scaler of 0.98 and Process scaler of 0.89, config scaler of 8% (from 20ww09 sheet)
 EU,DG2,PVC_A21,0.888576
 EU,ADL,PVC_A21,0.888576
 Fabric,Gen11,PVC_A21,1.315789474
@@ -1983,7 +1984,7 @@ GAM,Gen12DG,PVC_A21,1
 GAM,Gen12HP,PVC_A21,1
 GAM,DG2,PVC_A21,1
 GAM,ADL,PVC_A21,1
-GAM,PVC_A21,PVC_A21,1.08
+GAM,PVC_A21,PVC_A21,1
 GTI,Gen10LP,PVC_A21,0.865458
 GTI,Gen8,PVC_A21,0.662904
 GTI,Gen8SoC,PVC_A21,0.662904
@@ -2046,7 +2047,7 @@ Other,Gen12DG,PVC_A21,1
 Other,Gen12HP,PVC_A21,1
 Other,DG2,PVC_A21,1
 Other,ADL,PVC_A21,1
-Other,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
+Other,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
 RC,Gen10LP,PVC_A21,0.837
 RC,Gen8,PVC_A21,0.60264
 RC,Gen8SoC,PVC_A21,0.60264
@@ -2294,8 +2295,13 @@ Z,Gen9LPSoC,ADL,0.7533
 Z,Gen11,ADL,0.837
 Z,Gen11LP,ADL,0.9
 Z,Gen12LP,ADL,1
-Foveros,PVC,PVC,1.16,Scaler for filler/clock push/config
-FabricsSpine,PVC,PVC,1.16,Scaler for filler/clock push/config
-FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
-LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
-LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
+#Foveros,PVC,PVC,1.16,Scaler for filler/clock push/config
+Foveros,PVC,PVC,1,Scaler based on 20www9.4 
+#FabricsSpine,PVC,PVC,1.16,Scaler for filler/clock push/config
+FabricsSpine,PVC,PVC,1,Scaler based on 20ww9.4 
+#FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
+FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
+#LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
+#LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
+LSC,PVC,PVC,1.0368,Scaler based on 20ww9.4 
+LSC,PVC_A21,PVC_A21,1.0368,Scaler based on 20ww9.4 
