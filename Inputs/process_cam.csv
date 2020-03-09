@@ -123,7 +123,6 @@ Gen12DG,PVC,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to acco
 Gen12HP,PVC,1,1,n7 scaling factors are accounted in sys_cdyn_cgr.csv for Chiplet components
 DG2,PVC,1,1,
 ADL,PVC,1,1,
-PVC,PVC,1,1,Scale factors not available
 Gen10LP,PVC_A21,1.16535024,1.16535024,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen11,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen11LP,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
@@ -134,7 +133,6 @@ Gen12DG,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to 
 Gen12HP,PVC_A21,1,1,n7 scaling factors are accounted in sys_cdyn_cgr.csv for Chiplet components
 DG2,PVC_A21,1,1,
 ADL,PVC_A21,1,1,
-PVC,PVC_A21,1,1,Scale factors not available
 Gen10LP,ADL,0.955803002,0.955803002,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 Gen11,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 Gen11LP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
@@ -150,5 +148,5 @@ Gen12HP,DG2,1.1664,1.1664,Scale factors not available
 Gen12LP,DG2,1,1,Scale factors not available
 Gen11LP,DG2,1,1,Scale factors not available
 Gen9LPClient,DG2,1,1,Scale factors not available
-PVC,PVC,1.04,1.04,Scale factors not available
-PVC,PVC_A21,1.04,1.04,Scale factors not available
+PVC,PVC,1.04,1.04,Process scaler from compute spreadsheet 20ww9.4
+PVC,PVC_A21,1.04,1.04,Process scaler from compute spreadsheet 20ww9.4
