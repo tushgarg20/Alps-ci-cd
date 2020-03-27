@@ -48,7 +48,7 @@
         Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
         DPAS_Depth = D(knob.DPAS_Depth)
         # Scaling form 8 deep SYS arry to 4 deep SYS array is 0.61, based on Amit's inputs 20ww04
-        DPAS_Scaler = (DPAS_Depth == 8) ? 1 : 0.61
+        #DPAS_Scaler = (DPAS_Depth == 8) ? 1 : 0.61
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0
         FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp32')) / (FPU_total_count)) : 0
         FPU0_add_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp32')) / (FPU_total_count)) : 0 
@@ -97,13 +97,13 @@
         PS2_EU_FPU0   = D(FPU0_UTILIZATION)
         PS2_EU_FPU1   = INT_total_count/CrClocks
         EM_transc_fp32 = D(EM_math)/CrClocks
-        ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks * DPAS_Scaler : 0
-        ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks * DPAS_Scaler : 0
-        ExtraPipe_DPAS_SInt = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  * DPAS_Scaler : 0
-        ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks *  DPAS_Scaler : 0
-        ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks * DPAS_Scaler : 0
-        ExtraPipe_DPASW_SInt = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  * DPAS_Scaler : 0
-        ExtraPipe_DPAS_UInt = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  * DPAS_Scaler : 0
+        ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks : 0
+        ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks : 0
+        ExtraPipe_DPAS_SInt = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks : 0
+        ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks : 0
+        ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks : 0
+        ExtraPipe_DPASW_SInt = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks : 0
+        ExtraPipe_DPAS_UInt = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks : 0
  
 #GRF, ACC, TC and GA related
         PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
