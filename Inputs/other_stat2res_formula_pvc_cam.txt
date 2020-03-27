@@ -5,8 +5,10 @@
         num_Other_COLOR           =   D(knob.numCOLOR)
         L3_Cache_Size           =       D(knob.L3CacheSize)
         L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05
-        GADSS_Scaler            =     D(knob.GADSS) 
-       
+        GADSS_Scaler            =     D(knob.GADSS)
+        # Number of subslices for which the CDYN weight is calculated
+        config_numSubSlices     =   4 
+        num_Other_ROGT          =   4 #D(knob.numSubSlices) 
 #Generic				
 	PS2_CAM_PS         =  1
         PS2_CAM_GEOM       =  1
@@ -14,7 +16,7 @@
         PS2_CAM_POSH       =  1
         PS2_CAM_COLOR      =  1
         PS2_CAM_Z          =  1
-        PS2_CAM_ROGT       =  1
+        PS2_CAM_ROGT       =  (1/config_numSubSlices)*(num_Other_ROGT/config_numSubSlices)
         PS2_CAM_NODE       =  1
         PS2_CAM_CC         =  (D(GTI_READ) + D(GTI_WRITE))/512 
         PS2_CAM_BGF        =  1
