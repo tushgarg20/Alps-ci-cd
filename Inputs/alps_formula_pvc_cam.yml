@@ -55,11 +55,12 @@ EU:
   ExtraPipe:
       ExtraPipe_DPAS_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
-      ExtraPipe_DPAS_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPASW_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPASW_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
-      ExtraPipe_DPASW_SInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
-      ExtraPipe_DPAS_UInt: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPASW_SInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPASW_UInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
 
   GA:
     PS2_GA:
