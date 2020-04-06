@@ -97,11 +97,12 @@
         EM_transc_fp32 = D(EM_math)/CrClocks
         ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
         ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
-        ExtraPipe_DPAS_SInt = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPAS_SInt8 = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
         ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
         ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
-        ExtraPipe_DPASW_SInt = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
-        ExtraPipe_DPAS_UInt = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_SInt8 = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_UInt8 = (Sign_Flag == 0) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
  
 #GRF, ACC, TC and GA related
         PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
