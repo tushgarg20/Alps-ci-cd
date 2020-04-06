@@ -68,6 +68,8 @@ EU:
       ExtraPipe_DPASW_SInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPASW_UInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_UInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt4: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt4: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
 
   GA:
     PS2_GA:

@@ -57,6 +57,8 @@
         DPAS_SInt8_Scaler = (DPAS_Depth == 8) ? 1.6291 : 1
         DPAS_BFloat_Scaler = (DPAS_Depth == 8) ? 1.3381 : 1
         DPAS_SFloat_Scaler = (DPAS_Depth == 8) ? 1.3178 : 1
+        DPAS_UInt4_Scaler = (DPAS_Depth == 8) ? 1.7017 : 1
+        DPAS_SInt4_Scaler = (DPAS_Depth == 8) ? 1.5899 : 1
        
         FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0
         FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp32')) / (FPU_total_count)) : 0
@@ -116,6 +118,8 @@
         ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? DPAS_UInt8_Scaler * D(SYS_INT)/CrClocks : 0
         #ExtraPipe_DPASW_SInt4 = (Sign_Flag == 1) ? DPASW_SInt4_Scaler * D(SYSW_INT4)/CrClocks : 0
         #ExtraPipe_DPASW_UInt4 = (Sign_Flag == 0) ? DPASW_UInt4_Scaler * D(SYSW_INT4)/CrClocks : 0
+        ExtraPipe_DPAS_SInt4 = (Sign_Flag == 1) ? DPAS_SInt4_Scaler * D(SYS_INT4)/CrClocks : 0
+        ExtraPipe_DPAS_UInt4 = (Sign_Flag == 0) ? DPAS_UInt4_Scaler * D(SYS_INT4)/CrClocks : 0
  
 #GRF, ACC, TC and GA related
         PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
