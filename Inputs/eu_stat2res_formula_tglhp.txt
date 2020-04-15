@@ -28,8 +28,10 @@
 	 @ANY_EUControl@  =	(S\d+\.SS\d+\.FG\d+\.uEuControl\.)	
 	 @ANY_EUPIPE@	=	 @ANY_EU@PipelinesAlu\.
 	 @ANY_EUPIPEControl@	=	 @ANY_EU@PipelinesAlu\.	 
-	 @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
-	 @ALLINST@	=	(exec|masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)	
+	 @BYPASS@   =   (masked|sgndiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero)  
+         @ALLINST@  =   (exec|masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2|shift_zero|shift_out_of_range|shift_by_zero) 
+         @MAD_ADD_BYPASS@ = (expdiff)
+	
 	 @HP@	=	(hf|w|uw)
          @DP@   = (df)	
 	 @TRANS@ =(math)
@@ -240,6 +242,7 @@
 	FPU0_mac_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_mac_int64 : .temp_nonbyp_FPU_mac_int64	
 	FPU0_sad_int64	=	(.EuIntegerBypass > 0) ? .temp_FPU_sad_int64 : .temp_nonbyp_FPU_sad_int64	
 	FPU0_mad_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MAD@\.@BYPASS@')) / (FPU_total_count)) : 0	
+         FPU0_mad_add_fp64bypass    =   (FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(df)\.\d+\.@MAD@\.@MAD_ADD_BYPASS@')) / (FPU_total_count)) : 0 
 	FPU0_mul_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@MUL@\.@BYPASS@')) / (FPU_total_count)) : 0	
 	FPU0_add_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@ADD@\.@BYPASS@')) / (FPU_total_count)) : 0	
 	FPU0_pln_floatbypass	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.(hf|sf|df)\.\d+\.@PLN@\.@BYPASS@')) / (FPU_total_count)) : 0	

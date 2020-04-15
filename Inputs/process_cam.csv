@@ -142,7 +142,7 @@ Gen12LP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv 
 Gen12DG,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 Gen12HP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 ADL,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-DG2,DG2,1.0368,1.0368,8% scaler to account for PV_Push and -4% for process scaler, no scaler to account for 10DG library
+DG2,DG2,1.02,1.02,2% config scaler, 
 DG2,ADL,1,1,Scale factors not available
 Gen12HP,DG2,1.1664,1.1664,Scale factors not available
 Gen12LP,DG2,1,1,Scale factors not available

@@ -3,21 +3,26 @@
         .CrClk	=	D(MAX_CYCLES)
 	num_Other_Others	  =   D(knob.numOthers)
         num_Other_ROW              =   D(knob.numROW)
-        num_Other_COLOR           =   D(knob.numCOLOR) 
+        num_Other_COLOR           =   D(knob.numCOLOR)
+        @SYS@                   =     (SYS|SYSW)
+        @SYS_TYPE@              =     (INT|FLOAT|INT4) 
+        SYS_Utilization          =    D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
+        EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
 
-#Generic				
+#Generic
+        PS2_CAM_ROW        =  SYS_Utilization
+        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0 				
 	PS2_CAM_PS         =  1
         PS2_CAM_GEOM       =  1
         PS2_CAM_ARB        =  1
         PS2_CAM_POSH       =  1
-        PS2_CAM_ROW        =  1
         PS2_CAM_COLOR      =  1
         PS2_CAM_Z          =  1
         PS2_CAM_ROGT       =  1
-        PS2_CAM_NODE       =  1
-        PS2_CAM_CC         =  1
+        PS2_CAM_NODEX      =  1
+        PS2_CAM_CC         =  D(L3_UTILIZATION) 
         PS2_CAM_BGF        =  1
         PS2_CAM_GA_SQIDI_RPT = D(GTI_UTILIZATION) 
         PS2_CAM_MDFI_GAM   =  D(GTI_UTILIZATION) 
-        PS2_CAM_L3NODE_RING = 1
+        PS2_CAM_L3NODE_RING = D(L3_UTILIZATION) 
         PS2_CAM_OTHER_INFRA = 1
