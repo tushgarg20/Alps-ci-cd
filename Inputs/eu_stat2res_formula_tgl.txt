@@ -96,13 +96,15 @@
 	
 
 	 @PLN@	=	(pln|lrp)	
-	 @MAD@ 	=	(dp4|dph|dp3|dp2|line|mad|frc|rndu|rndd|rnde|rndz|lzd)	#separate out mac/sad/sada2 - diff properties
+	 @MAD@ 	=	(mad)	#separate out mac/sad/sada2 - diff properties
+	 @MADA@	=	(dp4|dph|dp3|dp2|line|frc|rndu|rndd|rnde|rndz|lzd)	#separate out mac/sad/sada2 - diff properties
 	 @MAC@	=	(mac|mach)	#separated mac/mach opcodes
 	 @SAD@ 	=	(sad2|sada2)	#seperated sad2/sada2 opcodes
 	 @MUL@	=	(mul)	
 	 @ADD@	=	(add|avg|not|and|or|xor|shr|shl|cmp|cmpn|f2h|h2f|bfrev|bfe|bfi1|bfi2|fbh|fbl|cbit|addc|subb|asr)	#added ASR for media workloads
 	 @MOV@	=	(mov|movi)	
-	 @SEL@	=	(sel|jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop|csel)	#club sel with mov - add control flow separately
+	 @SEL@	=	(sel|csel)	#club sel with mov - add control flow separately
+	 @CTL@	=	(jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop) #club sel with mov - add control flow separately
 	 @TRANS@	=	(math)	#Transcendentals
          @DP4A@         =       (dp4a)  #Dp4 instructions
          @DPAS@         =       (dpas|dpasw)  #Dp4 instructions
@@ -131,18 +133,22 @@
 	PS2_EU_FPU0	=	.temp_PS2_EU_FPU	
         PS2_EU_DP4A     =       DP4A_total_count / (2 * numEUs * .CrClk) # Each DP4A instruction is counted as two cycles  
 	FPU0_mad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mada_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MADA@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mul_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_add_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mov_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_sel_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_ctl_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@CTL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mac_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_sad_fp16	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.hf\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_pln_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@PLN@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mad_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_mada_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MADA@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mul_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MUL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_add_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@ADD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mov_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MOV@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_sel_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SEL@\.exec')) / (FPU_total_count)) : 0	
+	FPU0_ctl_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@CTL@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mac_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@MAC@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_sad_fp32	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.sf\.\d+\.@SAD@\.exec')) / (FPU_total_count)) : 0	
 	FPU0_mad_fp64	=	(FPU_total_count > 0) ? (D(SUM('@ANY_EUPIPE@pwr_InstIssued\.CrClock\.Fpu\.df\.\d+\.@MAD@\.exec')) / (FPU_total_count)) : 0	

@@ -65,8 +65,8 @@ def cdyn_precedence_selector(cfg):
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2',] }
   else:
-    cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'PVC_Scaled','PVC','PVC_A21' ],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','PVC_Scaled','PVC','PVC_A21']
+    cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'PVC_Scaled','PVC','PVC_A21','PVC2' ],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','PVC_Scaled','PVC','PVC_A21','PVC2']
                        }
   return(cdyn_precedence_hash) 
 
@@ -129,6 +129,8 @@ elif common_cfg.find('pvc_scaled') > -1 :
     cfg ='PVC_Scaled'   
 elif common_cfg.find('pvc_a21') > -1 :
     cfg ='PVC_A21'   
+elif common_cfg.find('pvc2') > -1 :
+    cfg ='PVC2'   
 elif common_cfg.find('tglhp_512') > -1 :
     cfg ='Gen12HP_512'
 elif common_cfg.find('tglhp_384') > -1 :
@@ -173,6 +175,8 @@ elif common_cfg.find('tglhp') > -1 or common_cfg.find('ats') > -1:
     cfg_gc = "Gen12HP"
 elif common_cfg.find('pvc') > -1 :
     cfg_gc = "PVC"
+elif common_cfg.find('pvc2') > -1 :
+    cfg_gc = "PVC2"
 elif common_cfg.find('tgllp') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('tgl') > -1 :
@@ -197,7 +201,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg =='PVC2'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -286,7 +290,7 @@ def get_eff_cdyn(cluster,unit,stat):
         return 0
     if(options.run_debug):
         print ("{0},{1},{2}".format(stat,base_cfg,stepping),file=df)
-        #print (stat,",",base_cfg,",",stepping,file=df)
+        print (stat,",",base_cfg,",",stepping,file=df)
     base_cdyn = cdyn_hash[stat][base_cfg][stepping]['weight']
     cdyn_type = cdyn_hash[stat][base_cfg][stepping]['type']
     ref_gc    = cdyn_hash[stat][base_cfg][stepping]['ref_gc']
@@ -302,6 +306,7 @@ def get_eff_cdyn(cluster,unit,stat):
             ref_gc = 1
 
     if(cdyn_type == 'syn'):
+        print(base_cfg,cfg)
         process_sf = process_hash[base_cfg][cfg]['syn']
     else:
         process_sf = process_hash[base_cfg][cfg]['ebb']

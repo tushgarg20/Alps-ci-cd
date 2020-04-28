@@ -28,8 +28,9 @@ my $cam 			= '';
 my $tgldg			= '';
 my $pvc_scaled			= '';
 my $pvc				= '';
-my $dg2			= '';
-my $pvc_a21             = '';
+my $dg2			        = '';
+my $pvc_a21                     = '';
+my $pvc2                        = ''; 
 
 
 
@@ -57,6 +58,7 @@ Getopt::Long::GetOptions(
 	"dg2"		=> \$dg2,
 	"pvc_scaled"		=> \$pvc_scaled,
 	"pvc"		=> \$pvc,
+	"pvc2"		=> \$pvc2,
         "pvc_a21"       => \$pvc_a21 
 
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
@@ -88,6 +90,7 @@ $cfg_file = ($pvc_scaled) ? $sdir . "alps_cfg_pvc_scaled.yaml" : $cfg_file;
 $cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
 $cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_a21.yaml" : $cfg_file;
 $cfg_file = ($cam && $pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
+$cfg_file = ($cam && $pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
 $cfg_file = ($cam && $pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
 $cfg_file = ($dg2 && $cam) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
 

@@ -88,6 +88,8 @@ else:
            filename = '%s/alps_cfg_tglhp.yaml' % wd
     elif options.dest_config.find('pvc') > -1 :
         filename = '%s/alps_cfg_pvc.yaml' % wd
+    elif options.dest_config.find('pvc2') > -1 :
+        filename = '%s/alps_cfg_pvc2.yaml' % wd
     elif options.dest_config.find('tgl') > -1:
         if options.dest_config.find('reduced') > -1:
            filename = '%s/alps_cfg_tgl_reduced.yaml' % wd

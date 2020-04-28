@@ -150,3 +150,9 @@ Gen11LP,DG2,1,1,Scale factors not available
 Gen9LPClient,DG2,1,1,Scale factors not available
 PVC,PVC,1.04,1.04,Process scaler from compute spreadsheet 20ww9.4
 PVC,PVC_A21,1.04,1.04,Process scaler from compute spreadsheet 20ww9.4
+Gen9LPClient,PVC2,0.595392,0.595392,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 for n7 to n5
+Gen11LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5
+Gen12LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5 
+Gen12HP,PVC2,0.84,0.84,Process scaler from n7 to n5 process
+PVC,PVC2,0.84,0.84,Process scaler from n7 to n5 process,ATS->PVC scale accounted in syn_cdyn_cagr_cam.csv
+PVC2,PVC2,0.84,0.84,Process scaler from n7 to n5 process,ATS->PVC scale accounted in syn_cdyn_cagr_cam.csv
