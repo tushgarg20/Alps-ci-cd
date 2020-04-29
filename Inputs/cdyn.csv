@@ -9237,4 +9237,3 @@ FPU0_add_fp64_31%,PVC2,A0,126.108,syn,1,PVC CDYn weight scaled by 2 for PVC2
 FPU0_mov_fp64_20%,PVC2,A0,27.7443,syn,1,PVC CDYn weight scaled by 2 for PVC2
 FPU0_mov_fp64_29%,PVC2,A0,30.7197,syn,1,PVC CDYn weight scaled by 2 for PVC2
 FPU0_mov_fp64_31%,PVC2,A0,32.625,syn,1,PVC CDYn weight scaled by 2 for PVC2
-
