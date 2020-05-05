@@ -204,6 +204,7 @@ FL,Sampler,Gen11LP,PVC,1.12
 FL,Sampler,Gen12LP,PVC,1.12
 DSS,Foveros,PVC,PVC,1
 RamboDSS,Foveros,PVC,PVC,1
+Base,Foveros,PVC,PVC,1
 Fabrics,FabricsSpine,PVC,PVC,1
 SpineCompute,FabricsSpine,PVC,PVC,1
 SpineBaseRambo,FabricsSpine,PVC,PVC,1
@@ -211,6 +212,7 @@ LSC,LSC,PVC,PVC,1
 ROW,ROW,PVC,PVC,1
 DSS,Foveros,PVC,PVC2,1
 RamboDSS,Foveros,PVC,PVC2,1
+Base,Foveros,PVC,PVC2,1
 Fabrics,FabricsSpine,PVC,PVC2,1
 SpineCompute,FabricsSpine,PVC,PVC2,1
 SpineBaseRambo,FabricsSpine,PVC,PVC2,1
@@ -226,6 +228,7 @@ FL,Sampler,Gen11LP,PVC_A21,1.12
 FL,Sampler,Gen12LP,PVC_A21,1.12
 DSS,Foveros,PVC_A21,PVC_A21,1
 RamboDSS,Foveros,PVC_A21,PVC_A21,1
+Base,Foveros,PVC_A21,PVC_A21,1
 LSC,LSC,PVC_A21,PVC_A21,1
 FPU0,EU,Gen10LP,DG2,1.15
 FPU0,EU,Gen8,DG2,1.15
