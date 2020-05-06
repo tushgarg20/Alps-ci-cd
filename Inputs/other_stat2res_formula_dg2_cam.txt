@@ -11,8 +11,8 @@
         numEUs                  = D(knob.numEUs)
 
 #Generic
-        PS2_CAM_ROW        =  SYS_Utilization
-        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0 				
+        PS2_CAM_ROW        =  SYS_Utilization*(numEUs/512)
+        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION)*(numEUs/512):0 				
 	PS2_CAM_PS         =  numEUs/512 
         PS2_CAM_GEOM       =  numEUs/512 
         PS2_CAM_ARB        =  numEUs/512
