@@ -21,9 +21,9 @@
         PS2_CAM_Z          =  numEUs/512  
         PS2_CAM_ROGT       =  numEUs/512  
         PS2_CAM_NODEX      =  numEUs/512  
-        PS2_CAM_CC         =  D(L3_UTILIZATION) 
+        PS2_CAM_CC         =  D(L3_UTILIZATION)*(numEUs/512)  
         PS2_CAM_BGF        =  numEUs/512  
-        PS2_CAM_GA_SQIDI_RPT = D(GTI_UTILIZATION) 
-        PS2_CAM_MDFI_GAM   =  D(GTI_UTILIZATION) 
-        PS2_CAM_L3NODE_RING = D(L3_UTILIZATION) 
+        PS2_CAM_GA_SQIDI_RPT = D(GTI_UTILIZATION)*(numEUs/512) 
+        PS2_CAM_MDFI_GAM   =  D(GTI_UTILIZATION)*(numEUs/512) 
+        PS2_CAM_L3NODE_RING = D(L3_UTILIZATION)*(numEUs/512) 
         PS2_CAM_OTHER_INFRA = numEUs/512  
