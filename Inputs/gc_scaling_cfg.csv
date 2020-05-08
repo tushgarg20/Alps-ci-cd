@@ -539,6 +539,8 @@ L3_Bank,Gen12HP,PVC,False
 L3_Bank,DG2,PVC,False
 L3_Bank,ADL,PVC,False
 L3_Bank,PVC,PVC,False
+L3_Bank,PVC,PVC_A21,False
+L3_Bank,PVC_A21,PVC_A21,False
 L3_Bank,Gen12HP,PVC2,False
 L3_Bank,PVC,PVC2,False
 L3_Bank,PVC2,PVC2,False
@@ -586,9 +588,13 @@ Sampler,DG2,PVC,False
 Sampler,ADL,PVC,False
 Sampler,PVC,PVC,False
 LSC,PVC,PVC,False
+LSC,PVC,PVC_A21,False
+LSC,PVC_A21,PVC_A21,False
 LSC,PVC,PVC2,False
 LSC,PVC2,PVC2,False
 ROW,PVC,PVC,False
+ROW,PVC,PVC_A21,False
+ROW,PVC_A21,PVC_A21,False
 ROW,PVC,PVC2,False
 ROW,PVC2,PVC2,False
 L3Node,Gen9LPClient,PVC,False
@@ -626,6 +632,8 @@ SQIDI,Gen12HP,PVC,False
 SQIDI,DG2,PVC,False
 SQIDI,ADL,PVC,False
 SQIDI,PVC,PVC,False
+SQIDI,PVC,PVC_A21,False
+SQIDI,PVC_A21,PVC_A21,False
 SQIDI,PVC,PVC2,False
 SQIDI,PVC2,PVC2,False
 UNCORE,Gen9LPClient,PVC,False
@@ -655,6 +663,8 @@ DSSC,Gen12HP,PVC,False
 DSSC,DG2,PVC,False
 DSSC,ADL,PVC,False
 DSSC,PVC,PVC,False
+DSSC,PVC,PVC_A21,False
+DSSC,PVC_A21,PVC_A21,False
 DSSC,PVC,PVC2,False
 DSSC,PVC2,PVC2,False
 DSSC,PVC,PVC_A21,False
@@ -692,6 +702,8 @@ Other,Gen12HP,PVC,False
 Other,DG2,PVC,False
 Other,ADL,PVC,False
 Other,PVC,PVC,False
+Other,PVC,PVC_A21,False
+Other,PVC_A21,PVC_A21,False
 Other,PVC,PVC2,False
 Other,PVC2,PVC2,False
 Other,PVC,PVC_A21,False
@@ -861,7 +873,11 @@ EU,Gen11LP,MTL,False,
 EU,Gen9LPClient,MTL,False
 EU,DG2,MTL,False
 Foveros,PVC,PVC,False
+Foveros,PVC,PVC_A21,False
+Foveros,PVC_A21,PVC_A21,False
 FabricsSpine,PVC,PVC,False
+FabricsSpine,PVC,PVC_A21,False
+FabricsSpine,PVC_A21,PVC_A21,False
 Foveros,PVC,PVC2,False
 Foveros,PVC2,PVC2,False
 FabricsSpine,PVC,PVC2,False

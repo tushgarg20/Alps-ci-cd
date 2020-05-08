@@ -1753,10 +1753,16 @@ EU,Gen11LP,PVC,0.9
 EU,Gen12LP,PVC,1.0648
 EU,Gen11LP,PVC2,0.9
 EU,Gen12LP,PVC2,1.0648
+EU,Gen12LP,PVC,1.0648
+EU,Gen11LP,PVC_A21,0.99,Gen11 to PVC scaler of 0.9 multiplied by 1.1 for PVC to PVC_A21, from 20WW19.4 PVC_A21 Compute spreadsheet,
+EU,Gen12LP,PVC_A21,1.17128,Gen12LP to PVC scaler of 1.0648 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
 EU,Gen12DG,PVC,1.0648
+EU,Gen12DG,PVC_A21,1.17128,Gen12DG to PVC scaler of 1.0648 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
 EU,Gen12HP,PVC,0.9057, LOS scaler of 0.98 , Process scaler of 0.89, config to higher config) 2%, 2% for PV from 20ww13.5 spreadsheet) 
+EU,Gen12HP,PVC_A21,0.99627, LOS scaler of 0.98 , Process scaler of 0.89, config to higher config) 2%, 2% for PV from 20ww13.5 spreadsheet) and PVC to PVC_A21 of 1.1 (20WW19.4), 
 EU,Gen12HP,PVC2,0.9057, LOS scaler of 0.98 , Process scaler of 0.89, config to higher config) 2%,2% PV (from 20ww13.5 spreadsheet) 
 EU,PVC,PVC,0.8722,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc
+EU,PVC,PVC_A21,0.9594,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, pVC to PVC_A21 scaler of 1.1 (20WW19.4),
 EU,PVC,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
 EU,PVC2,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
 EU,DG2,PVC,0.888576
@@ -1818,6 +1824,7 @@ HDC,Gen12LP,PVC,1.05
 HDC,Gen12DG,PVC,1
 HDC,Gen12HP,PVC,0.05251, Scaler factors as per Spreadsheet ww51.2
 HDC,PVC,PVC,0.05251, Scaler factors as per Spreadsheet ww51.2
+HDC,PVC,PVC_A21,0.05251, Scaler factors as per Spreadsheet 20ww19.4 
 HDC,DG2,PVC,0.1
 HDC,ADL,PVC,0.1
 L3_Bank,Gen10LP,PVC,1.223684211
@@ -1833,6 +1840,7 @@ L3_Bank,Gen12HP,PVC,1.39534
 L3_Bank,DG2,PVC,1.39534
 L3_Bank,ADL,PVC,1.39534
 L3_Bank,PVC,PVC,1.08
+L3_Bank,PVC,PVC_A21,1.08
 L3Node,Gen10LP,PVC,1.223684211
 L3Node,Gen8,PVC,0.881052632
 L3Node,Gen8SoC,PVC,0.881052632
@@ -1858,8 +1866,10 @@ Other,Gen12HP,PVC,1
 Other,DG2,PVC,1
 Other,ADL,PVC,1
 Other,PVC,PVC,1,Scaler based on 20ww09.4 
+Other,PVC,PVC_A21,1,Scaler based on 20ww19.4 
 Other,PVC,PVC2,1,Scaler based on 20ww09.4 
 ROW,PVC,PVC,0.9612,Scaler for filler/clock push/config #Separated ROW into another cluster
+ROW,PVC,PVC_A21,0.9612,Scaler for filler/clock push/config #Separated ROW into another cluster
 ROW,PVC_A21,PVC_A21,0.9612,Scaler for filler/clock push/config
 ROW,PVC,PVC2,1.08,Scaler for filler/clock push/config multiplied by 1/0.89 #Separated ROW into another cluster
 RC,Gen10LP,PVC,0.837
@@ -2015,6 +2025,7 @@ GAM,Gen12DG,PVC_A21,1
 GAM,Gen12HP,PVC_A21,1
 GAM,DG2,PVC_A21,1
 GAM,ADL,PVC_A21,1
+GAM,PVC,PVC_A21,1
 GAM,PVC_A21,PVC_A21,1
 GAM,PVC,PVC2,1
 GTI,Gen10LP,PVC_A21,0.865458
@@ -2332,13 +2343,16 @@ Z,Gen12LP,ADL,1
 #Foveros,PVC,PVC,1.16,Scaler for filler/clock push/config
 Foveros,PVC,PVC,1,Scaler based on 20www9.4 
 Foveros,PVC,PVC2,1,Scaler for PVC2 20ww16 
+Foveros,PVC,PVC_A21,1,Scaler for PVC_A21
 #FabricsSpine,PVC,PVC,1.16,Scaler for filler/clock push/config
 FabricsSpine,PVC,PVC,1,Scaler based on 20ww9.4 
+FabricsSpine,PVC,PVC_A21,1,Scaler based on 20ww19.4 
 FabricsSpine,PVC,PVC2,1,Scaler based on 20ww16 
 #FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
 #LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
 #LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
 LSC,PVC,PVC,1.0368,Scaler based on 20ww9.4 
+LSC,PVC,PVC_A21,1.0368,Scaler based on 20ww9.4 
 LSC,PVC,PVC2,1.1649,Scaler based on PVC multiplied by 1/0.89 
 LSC,PVC_A21,PVC_A21,1.0368,Scaler based on 20ww9.4 
