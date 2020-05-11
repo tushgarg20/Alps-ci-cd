@@ -1385,7 +1385,7 @@ EU,Gen11LP,DG2,0.85733882
 EU,Gen12LP,DG2,0.85733882
 EU,Gen12HP,DG2,0.85733882
 #EU,DG2,DG2,0.85733882
-EU,DG2,DG2,0.9607,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet
+EU,DG2,DG2,0.9804,  Removed LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
 EU,Gen12LP,MTL,0.85733882
@@ -1443,9 +1443,9 @@ HDC,Gen12LP,Gen12HP,1.05
 HDC,Gen12DG,Gen12HP,1
 HDC,Gen12HP,Gen12HP,1
 HDC,Gen12HP,DG2,1
-HDC,DG2,DG2,0.76,From 20ww16 Compute spreadsheet
+HDC,DG2,DG2,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
 HDC,Gen12HP,MTL,1
-HDC,DG2,MTL,0.76,From 20ww16 Compute spreadsheet
+HDC,DG2,MTL,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
 L3_Bank,Gen10LP,Gen12HP,0.837
 L3_Bank,Gen8,Gen12HP,0.60264
 L3_Bank,Gen8SoC,Gen12HP,0.60264
@@ -1481,9 +1481,9 @@ Other,Gen12LP,Gen12HP,1
 Other,Gen12DG,Gen12HP,1
 Other,Gen12HP,Gen12HP,1
 Other,Gen12HP,DG2,1
-Other,DG2,DG2,1.08
+Other,DG2,DG2,1,20WW15 Sheet aligning to Bottoms up
 Other,Gen12HP,MTL,1
-Other,DG2,MTL,1.08
+Other,DG2,MTL,1,20WW15 Sheet aligning to Bottoms Up
 RC,Gen10LP,Gen12HP,0.837
 RC,Gen8,Gen12HP,0.60264
 RC,Gen8SoC,Gen12HP,0.60264
@@ -1539,9 +1539,9 @@ Sampler,Gen12LP,Gen12HP,0.8
 Sampler,Gen12DG,Gen12HP,1
 Sampler,Gen12HP,Gen12HP,1
 Sampler,Gen12HP,DG2,1
-Sampler,DG2,DG2,0.83,From 20WW16 Compute Spreadshet 
+Sampler,DG2,DG2,1,From 20WW15 Compute Spreadsheet aligning to Bottumps Up number
 Sampler,Gen12HP,MTL,1
-Sampler,DG2,MTL,0.83,From 20WW16 Compute Spreadshet 
+Sampler,DG2,MTL,1,From 20WW15` Compute Spreadshet aligning to DG2 bottumps up number 
 SQIDI,Gen11,Gen12HP,0.9
 SQIDI,Gen10LP,Gen12HP,0.78678
 SQIDI,Gen11LP,Gen12HP,0.9

@@ -5,5 +5,5 @@
         ECC_flag                =       D(knob.Ecc)	
         num_Sampler_SC	=	numHDCs
 #Generic				
-	PS2_CAM_SC_L1_CACHE        =	D(HDC_UTILIZATION)
+	PS2_CAM_SC_L1_CACHE        =	D(HDC_READ)/128 + D(HDC_WRITE)/128
         PS2_CAM_SC_INFRA           =        1
