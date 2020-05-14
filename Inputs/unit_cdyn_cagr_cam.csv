@@ -214,8 +214,8 @@ DSS,Foveros,PVC,PVC2,1
 RamboDSS,Foveros,PVC,PVC2,1
 Base,Foveros,PVC,PVC2,1
 Fabrics,FabricsSpine,PVC,PVC2,1
-SpineCompute,FabricsSpine,PVC,PVC2,1
-SpineBaseRambo,FabricsSpine,PVC,PVC2,1
+SpineCompute,FabricsSpine,PVC,PVC2,0.79
+SpineBaseRambo,FabricsSpine,PVC,PVC2,0.79
 LSC,LSC,PVC,PVC2,1
 ROW,ROW,PVC,PVC2,1
 FL,Sampler,Gen10LP,PVC_A21,1.12
