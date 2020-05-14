@@ -42,6 +42,7 @@ EU:
       FPU0_mac_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_sel_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
       FPU0_DP4A_exec: R[PS2_EU_FPU0] * R * C
+      FPU0_mixmode_mad_fp32: R[PS2_EU_FPU0] * R * C
    
   FPU1: 
     PS2_EU_FPU1:
