@@ -31,7 +31,7 @@
         @ALLDTYPE@ = (16|32|64)
         @TYPE@ = (fp|int)
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
-	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
+	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) + D(SUM('FPU_DP4A'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
         INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
         FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))		
@@ -101,7 +101,8 @@
         FPU0_mul_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fpbypass')) / (FPU_total_count)) : 0 
         FPU0_add_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_add_fpbypass')) / (FPU_total_count)) : 0 
         FPU0_sel_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fpbypass')) / (FPU_total_count)) : 0 
-      
+        # DP4A power state
+        FPU0_DP4A_exec = (FPU_total_count > 0) ? (D(SUM('FPU_DP4A')) / (FPU_total_count)) : 0 
  
  
         PS2_GRF_SEND_PATH = D(send)/CrClocks
