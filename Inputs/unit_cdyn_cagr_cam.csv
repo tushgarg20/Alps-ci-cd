@@ -193,7 +193,10 @@ ExtraPipe,EU,Gen12HP,PVC,1.15
 ExtraPipe,EU,Gen12HP,PVC_A21,1.15
 FPU0,EU,Gen12HP,PVC2,1.1725
 FPU1,EU,Gen12HP,PVC2,1.1725
+FPU0,EU,Gen12HP,PVC_DP,1.1725
+FPU1,EU,Gen12HP,PVC_DP,1.1725
 ExtraPipe,EU,Gen12HP,PVC2,1.15
+ExtraPipe,EU,Gen12HP,PVC_DP,1.15
 FL,Sampler,Gen10LP,PVC,1.12
 FL,Sampler,Gen8,PVC,1.12
 FL,Sampler,Gen8SoC,PVC,1.12
@@ -218,6 +221,14 @@ SpineCompute,FabricsSpine,PVC,PVC2,0.79
 SpineBaseRambo,FabricsSpine,PVC,PVC2,0.79
 LSC,LSC,PVC,PVC2,1
 ROW,ROW,PVC,PVC2,1
+DSS,Foveros,PVC,PVC_DP,1
+RamboDSS,Foveros,PVC,PVC_DP,1
+Base,Foveros,PVC,PVC_DP,1
+Fabrics,FabricsSpine,PVC,PVC_DP,1
+SpineCompute,FabricsSpine,PVC,PVC_DP,1
+SpineBaseRambo,FabricsSpine,PVC,PVC_DP,1
+LSC,LSC,PVC,PVC_DP,1
+ROW,ROW,PVC,PVC_DP,1
 FL,Sampler,Gen10LP,PVC_A21,1.12
 FL,Sampler,Gen8,PVC_A21,1.12
 FL,Sampler,Gen8SoC,PVC_A21,1.12

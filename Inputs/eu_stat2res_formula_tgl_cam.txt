@@ -1,4 +1,4 @@
-#Unit	GSIM residency			Comments
+
 #Instance Counts
 	FPS	=        D(knob.CrClock.multiplier)*1000000/CrClocks      # Dummy value as FPS is irrelevant in analytical model 	
 	numEUs	=	 D(knob.numEUs) 	#This includes Slices & SubSlices
@@ -34,7 +34,7 @@
 	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) + D(SUM('FPU_DP4A')) +  D(SUM('FPU_DP2A'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
         INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
-        FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))		
+        FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))+ D(SUM('FPU_DP4A')) +  D(SUM('FPU_DP2A'))		     
         FPU2Src_total_count = D(SUM('@FPU@_@2Src_INST@_@TYPE@@ALLDTYPE@'))		
 #FPU and DPAS opcodes
         FPU0_toggle_rate = D(SYS_TOGGLE_RATE) 
