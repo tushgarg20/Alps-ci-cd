@@ -605,6 +605,7 @@ cdyn_file  = open(input_hash['Cdyn'],'r') ##Getting Cdyn file path from hash
 first_line = cdyn_file.readline()  ##never used again - used to only move down a line
 for line in cdyn_file:
     data = get_data(line,",")
+    #print(data)
     if(data[0] not in cdyn_hash):
         cdyn_hash[data[0]] = {}
     if(data[1] not in cdyn_hash[data[0]]):

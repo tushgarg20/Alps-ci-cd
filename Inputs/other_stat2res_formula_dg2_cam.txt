@@ -9,21 +9,23 @@
         SYS_Utilization          =    D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
         EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
         numEUs                  = D(knob.numEUs)
+        maxGTI                  = D(knob.numMaxGTI)
+        numGTI                  = D(knob.numGTI) 
 
 #Generic
-        PS2_CAM_ROW        =  SYS_Utilization*(numEUs/512)
-        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION)*(numEUs/512):0 				
-	PS2_CAM_PS         =  numEUs/512 
-        PS2_CAM_GEOM       =  numEUs/512 
-        PS2_CAM_ARB        =  numEUs/512
-        PS2_CAM_POSH       =  numEUs/512  
-        PS2_CAM_COLOR      =  numEUs/512  
-        PS2_CAM_Z          =  numEUs/512  
-        PS2_CAM_ROGT       =  numEUs/512  
-        PS2_CAM_NODEX      =  numEUs/512  
-        PS2_CAM_CC         =  D(L3_UTILIZATION)*(numEUs/512)  
-        PS2_CAM_BGF        =  numEUs/512  
-        PS2_CAM_GA_SQIDI_RPT = D(GTI_UTILIZATION)*(numEUs/512) 
-        PS2_CAM_MDFI_GAM   =  D(GTI_UTILIZATION)*(numEUs/512) 
-        PS2_CAM_L3NODE_RING = D(L3_UTILIZATION)*(numEUs/512) 
-        PS2_CAM_OTHER_INFRA = numEUs/512  
+        PS2_CAM_ROW        =  SYS_Utilization*(numGTI/maxGTI)
+        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION)*(numGTI/maxGTI):0 				
+	PS2_CAM_PS         =  numGTI/maxGTI 
+        PS2_CAM_GEOM       =  numGTI/maxGTI 
+        PS2_CAM_ARB        =  numGTI/maxGTI
+        PS2_CAM_POSH       =  numGTI/maxGTI  
+        PS2_CAM_COLOR      =  numGTI/maxGTI  
+        PS2_CAM_Z          =  numGTI/maxGTI  
+        PS2_CAM_ROGT       =  numGTI/maxGTI  
+        PS2_CAM_NODEX      =  numGTI/maxGTI  
+        PS2_CAM_CC         =  D(L3_UTILIZATION)*(numGTI/maxGTI)  
+        PS2_CAM_BGF        =  numGTI/maxGTI  
+        PS2_CAM_GA_SQIDI_RPT = D(GTI_UTILIZATION)*(numGTI/maxGTI) 
+        PS2_CAM_MDFI_GAM   =  D(GTI_UTILIZATION)*(numGTI/maxGTI) 
+        PS2_CAM_L3NODE_RING = D(L3_UTILIZATION)*(numGTI/maxGTI) 
+        PS2_CAM_OTHER_INFRA = numGTI/maxGTI  

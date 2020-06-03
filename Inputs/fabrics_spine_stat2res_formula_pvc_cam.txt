@@ -9,7 +9,6 @@
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
-        PS2_CAM_L3_FABRICS              =       ((D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))) * GADSS_Scaler
         PS2_CAM_SPINE                   =       1
         PS2_CAM_SPINE_COMPUTE           =       1
         PS2_CAM_SPINE_RAMBO             =       1

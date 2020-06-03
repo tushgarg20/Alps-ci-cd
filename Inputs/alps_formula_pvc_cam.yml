@@ -87,19 +87,17 @@ L3_Bank:
     PS2_CAM_L3_NODE: R * C
     PS2_CAM_L3_INFRA: R * C
     PS2_CAM_L3_NODEX: R * C
+    PS2_CAM_L3_FABRICS: R * C
+
 
 Other:
   Others: 
     PS2_CAM_ROGT: R * C
-    PS2_CAM_CC: R * C
-    PS2_CAM_GA_SQIDI_RPT: R * C
-    PS2_CAM_OTHER_INFRA: R * C
     PS2_CAM_GTDSS: R * C
     PS2_CAM_GTDSS_INFRA: R * C
+    PS2_CAM_OTHER_INFRA: R * C
 
 FabricsSpine:
-  Fabrics:
-    PS2_CAM_L3_FABRICS: R * C
   SpineCompute:
     PS2_CAM_SPINE_COMPUTE: R * C
   SpineBaseRambo:
@@ -123,6 +121,7 @@ GAM:
  SQIDI:
     PS2_CAM_SQIDI: R * C
     PS2_CAM_SQIDI_INFRA: R * C
+    PS2_CAM_GA_SQIDI_RPT: R * C
 
 LSC:
    LSC:
