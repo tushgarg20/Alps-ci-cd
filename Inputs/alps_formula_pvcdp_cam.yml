@@ -89,10 +89,13 @@ L3_Bank:
     PS2_CAM_L3_NODEX: R * C
     PS2_CAM_L3_FABRICS: R * C
 
+
 Other:
   Others: 
     PS2_CAM_ROGT: R * C
+    PS2_CAM_GTDSS: R * C
     PS2_CAM_GTDSS_INFRA: R * C
+    PS2_CAM_OTHER_INFRA: R * C
 
 FabricsSpine:
   SpineCompute:
@@ -104,8 +107,12 @@ FabricsSpine:
 Foveros:
   DSS:
     PS2_CAM_FOV_COMPUTE: R * C
+    PS2_CAM_FOV_COMPUTE_INFRA: R * C
   RamboDSS:
     PS2_CAM_FOV_RAMBO: R * C
+    PS2_CAM_FOV_RAMBO_INFRA: R * C
+  Base:
+    PS2_CAM_FOV_BASE_INFRA: R * C
 
 GAM: 
  GAMFTLB:
