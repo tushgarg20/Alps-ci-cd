@@ -244,7 +244,13 @@ EU,Gen12HP,PVC,False
 EU,DG2,PVC,False
 EU,ADL,PVC,False
 EU,PVC,PVC,False
+EU,Gen9LPClient,PVC2,False
+EU,Gen11LP,PVC2,False
+EU,Gen12LP,PVC2,False
 EU,Gen12HP,PVC2,False
+EU,Gen9LPClient,PVC_DP,False
+EU,Gen11LP,PVC_DP,False
+EU,Gen12LP,PVC_DP,False
 EU,Gen12HP,PVC_DP,False
 EU,PVC,PVC2,False
 EU,PVC2,PVC2,False
