@@ -759,6 +759,8 @@ L3_Bank,Gen12HP,DG2,False
 L3_Bank,DG2,DG2,False
 L3_Bank,Gen12HP,MTL,False
 L3_Bank,DG2,MTL,False
+L3_Bank,Gen12HP,DG2p5,False
+L3_Bank,DG2,DG2p5,False
 GAM,Gen9LPClient,ADL,False
 GAM,Gen9LPSoC,ADL,False
 GAM,Gen10LP,ADL,False
@@ -771,6 +773,8 @@ GAM,Gen12HP,DG2,False
 GAM,DG2,DG2,False
 GAM,Gen12HP,MTL,False
 GAM,DG2,MTL,False
+GAM,Gen12HP,DG2p5,False
+GAM,DG2,DG2p5,False
 Sampler,Gen9LPClient,ADL,False
 Sampler,Gen9LPSoC,ADL,False
 Sampler,Gen10LP,ADL,False
@@ -783,6 +787,8 @@ Sampler,Gen12HP,DG2,False
 Sampler,DG2,DG2,False
 Sampler,Gen12HP,MTL,False
 Sampler,DG2,MTL,False
+Sampler,Gen12HP,DG2p5,False
+Sampler,DG2,DG2p5,False
 Sampler,DG2,PVC,False
 Sampler,ADL,PVC,False
 L3Node,Gen9LPClient,ADL,False
@@ -836,6 +842,8 @@ DSSC,Gen12HP,DG2,False
 DSSC,DG2,DG2,False
 DSSC,Gen12HP,MTL,False
 DSSC,DG2,MTL,False
+DSSC,Gen12HP,DG2p5,False
+DSSC,DG2,DG2p5,False
 FF,Gen9LPClient,ADL,False
 FF,Gen9LPSoC,ADL,False
 FF,Gen10LP,ADL,False
@@ -852,6 +860,8 @@ HDC,Gen12HP,DG2,False
 HDC,DG2,DG2,False
 HDC,Gen12HP,MTL,False
 HDC,DG2,MTL,False
+HDC,Gen12HP,DG2p5,False
+HDC,DG2,DG2p5,False
 rFF,Gen9LPClient,ADL,False
 rFF,Gen9LPSoC,ADL,False
 rFF,Gen10LP,ADL,False
@@ -868,6 +878,8 @@ ROSS,Gen12HP,DG2,False
 ROSS,DG2,DG2,False
 ROSS,Gen12HP,MTL,False
 ROSS,DG2,MTL,False
+ROSS,Gen12HP,DG2p5,False
+ROSS,DG2,DG2p5,False
 ROSS,Gen12HP,PVC,False
 ROSS,Gen12HP,PVC,False
 ROSS,DG2,PVC,False
@@ -889,6 +901,8 @@ Other,Gen12HP,DG2,False
 Other,DG2,DG2,False
 Other,Gen12HP,MTL,False
 Other,DG2,MTL,False
+Other,Gen12HP,DG2p5,False
+Other,DG2,DG2p5,False
 Sampler,Gen12HP,Gen12HP,False
 GAM,Gen12HP,Gen12HP,False
 SQIDI,Gen12HP,Gen12HP,False
@@ -904,6 +918,11 @@ EU,Gen12LP,MTL,False
 EU,Gen11LP,MTL,False,
 EU,Gen9LPClient,MTL,False
 EU,DG2,MTL,False
+EU,Gen12HP,DG2p5,False
+EU,Gen12LP,DG2p5,False
+EU,Gen11LP,DG2p5,False,
+EU,Gen9LPClient,DG2p5,False
+EU,DG2,DG2p5,False
 Foveros,PVC,PVC,False
 Foveros,PVC,PVC_A21,False
 Foveros,PVC_A21,PVC_A21,False
