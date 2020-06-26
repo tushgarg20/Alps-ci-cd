@@ -1365,7 +1365,8 @@ DSSC,Gen12DG,Gen12HP,1
 DSSC,Gen12HP,Gen12HP,1
 DSSC,Gen12HP,DG2,1
 DSSC,DG2,DG2,1
-DSSC,DG2,DG2p5,1.5, Scaling by the resource size increase factor 768/512
+#DSSC,DG2,DG2p5,1.5, Scaling by the resource size increase factor 768/512
+DSSC,DG2,DG2p5,1, Scaling by the resource size increase factor 768/512
 DSSC,PVC,PVC,1.134216
 DSSC,PVC,PVC2,1.2744, PVC scaler multiplied by 1/0.89
 DSSC,PVC,PVCDP,1.2744, PVC scaler multiplied by 1/0.89
@@ -1388,16 +1389,21 @@ EU,Gen12LP,DG2,0.85733882
 EU,Gen12HP,DG2,0.85733882
 #EU,DG2,DG2,0.85733882
 EU,DG2,DG2,0.9804,  Removed LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet
-EU,Gen9LPClient,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen9 to DG2 scaler
-EU,Gen11LP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen11 to DG2 scaler
-EU,Gen12LP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen12LP to DG2 scaler
-EU,Gen12HP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen12HP to DG2 scaler
-EU,DG2,DG2p5,1.4706, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with DG2 scaler
+#EU,Gen9LPClient,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen9 to DG2 scaler
+#EU,Gen11LP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen11 to DG2 scaler
+#EU,Gen12LP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen12LP to DG2 scaler
+#EU,Gen12HP,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen12HP to DG2 scaler
+#EU,DG2,DG2p5,1.4706, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with DG2 scaler
+EU,Gen9LPClient,DG2p5,0.8573, multipled with Gen9 to DG2 scaler
+EU,Gen11LP,DG2p5,0.8573, multipled with Gen11 to DG2 scaler
+EU,Gen12LP,DG2p5,0.8573, multipled with Gen12LP to DG2 scaler
+EU,Gen12HP,DG2p5,0.8573, multipled with Gen12HP to DG2 scaler
+EU,DG2,DG2p5,0.9804,multipled with DG2 scaler
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
 EU,Gen12LP,MTL,0.85733882
 EU,Gen12HP,MTL,0.85733882
-EU,DG2,MTL,0.9444,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet, reduction by 1.39% from Akash
+EU,DG2,MTL,0.9153,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet,5% savings from Akash (20ww20)
 Fabric,Gen11,Gen12HP,0.9
 Fabric,Gen10LP,Gen12HP,0.837
 Fabric,Gen11LP,Gen12HP,0.9
@@ -1427,8 +1433,10 @@ GAM,Gen12DG,Gen12HP,1
 GAM,Gen12HP,Gen12HP,1
 GAM,Gen12HP,DG2,1
 GAM,DG2,DG2,1
-GAM,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-GAM,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#GAM,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+GAM,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
+#GAM,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+GAM,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 GAM,Gen12HP,MTL,1
 GAM,DG2,MTL,1
 GTI,Gen10LP,Gen12HP,0.865458
@@ -1453,8 +1461,10 @@ HDC,Gen12DG,Gen12HP,1
 HDC,Gen12HP,Gen12HP,1
 HDC,Gen12HP,DG2,1
 HDC,DG2,DG2,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
-HDC,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-HDC,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#HDC,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#HDC,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+HDC,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
+HDC,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 HDC,Gen12HP,MTL,1
 HDC,DG2,MTL,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
 L3_Bank,Gen10LP,Gen12HP,0.837
@@ -1469,8 +1479,10 @@ L3_Bank,Gen12DG,Gen12HP,1
 L3_Bank,Gen12HP,Gen12HP,1
 L3_Bank,Gen12HP,DG2,1
 L3_Bank,DG2,DG2,1
-L3_Bank,Gen12HP,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
-L3_Bank,DG2,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
+#L3_Bank,Gen12HP,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
+#L3_Bank,DG2,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
+L3_Bank,Gen12HP,DG2p5,1.1, 1.1 scaler assumed for L3 size increase
+L3_Bank,DG2,DG2p5,1.1, 1.1 scaler assumed for L3 size increase
 L3_Bank,Gen12HP,MTL,1
 L3_Bank,DG2,MTL,0.9978, 0.22% reduction based on Akash Weekly CDYN indicator 20ww22
 L3Node,Gen10LP,Gen12HP,0.837
@@ -1495,8 +1507,10 @@ Other,Gen12DG,Gen12HP,1
 Other,Gen12HP,Gen12HP,1
 Other,Gen12HP,DG2,1
 Other,DG2,DG2,1,20WW15 Sheet aligning to Bottoms up
-Other,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-Other,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#Other,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#Other,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+Other,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
+Other,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 Other,Gen12HP,MTL,1
 Other,DG2,MTL,1,20WW15 Sheet aligning to Bottoms Up
 RC,Gen10LP,Gen12HP,0.837
@@ -1541,8 +1555,10 @@ ROSS,Gen12DG,Gen12HP,1
 ROSS,Gen12HP,Gen12HP,1
 ROSS,Gen12HP,DG2,1
 ROSS,DG2,DG2,1
-ROSS,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-ROSS,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#ROSS,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#ROSS,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+ROSS,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
+ROSS,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 ROSS,Gen12HP,MTL,1
 ROSS,DG2,MTL,1
 Sampler,Gen10LP,Gen12HP,0.622728
@@ -1557,10 +1573,12 @@ Sampler,Gen12DG,Gen12HP,1
 Sampler,Gen12HP,Gen12HP,1
 Sampler,Gen12HP,DG2,1
 Sampler,DG2,DG2,1,From 20WW15 Compute Spreadsheet aligning to Bottumps Up number
-Sampler,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-Sampler,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#Sampler,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+#Sampler,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
+Sampler,Gen12HP,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash),based on latest update from Yoav 20ww26
+Sampler,DG2,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash)
 Sampler,Gen12HP,MTL,1
-Sampler,DG2,MTL,0.9861,1.39% CDYN savings from Akash Weekly CDYN indicator 20ww22
+Sampler,DG2,MTL,0.9,10% CDYN savings from Akash Weekly CDYN indicator 20ww26, confirmed by Yoav
 SQIDI,Gen11,Gen12HP,0.9
 SQIDI,Gen10LP,Gen12HP,0.78678
 SQIDI,Gen11LP,Gen12HP,0.9
@@ -1783,10 +1801,10 @@ EU,Gen12DG,PVC,1.0648
 EU,Gen12DG,PVC_A21,1.17128,Gen12DG to PVC scaler of 1.0648 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
 EU,Gen12HP,PVC,0.8708, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers
 EU,Gen12HP,PVC_A21,0.9579, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
-EU,Gen12HP,PVC2,0.8708, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers
-EU,Gen12HP,PVCDP,0.7315, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers
-EU,PVC,PVC,0.8722,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc
-EU,PVC,PVC_A21,0.9594,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, pVC to PVC_A21 scaler of 1.1 (20WW19.4),
+EU,Gen12HP,PVC2,0.98, LOS scaler of 0.98 , Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCDP,0.8232, LOS scaler of 0.98 , Process scaler of 0.84, no config or PV scalers
+EU,PVC,PVC,0.98,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, LOS scaler of 0.98
+EU,PVC,PVC_A21,1.078,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, pVC to PVC_A21 scaler of 1.1 plus LOS of 0.98(20WW19.4),
 EU,PVC,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
 EU,PVC2,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
 EU,PVC,PVCDP,0.8232,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98,process scaler of 0.84 (20WW20.1),
