@@ -193,10 +193,12 @@ ExtraPipe,EU,Gen12HP,PVC,1.15
 ExtraPipe,EU,Gen12HP,PVC_A21,1.15
 FPU0,EU,Gen12HP,PVC2,1.1725
 FPU1,EU,Gen12HP,PVC2,1.1725
-FPU0,EU,Gen12HP,PVCDP,1.1725
-FPU1,EU,Gen12HP,PVCDP,1.1725
+FPU0,EU,Gen12HP,PVCDP,1.1947, added a 1.9% increase from Amit (20ww26)
+FPU1,EU,Gen12HP,PVCDP,1.1947, added a 1.9% increase from Amit (20ww26)
 ExtraPipe,EU,Gen12HP,PVC2,1.15
-ExtraPipe,EU,Gen12HP,PVCDP,1.15
+ExtraPipe,EU,Gen12HP,PVCDP,1.1718, added a 1.9% increase from Amit (20ww26)
+GA,EU,Gen12HP,PVCDP,0.948, 5.2% reduction from Amit (20ww26)
+GA,EU,PVC,PVCDP,0.948, 5.2% reduction from Amit (20ww26)
 FL,Sampler,Gen10LP,PVC,1.12
 FL,Sampler,Gen8,PVC,1.12
 FL,Sampler,Gen8SoC,PVC,1.12

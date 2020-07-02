@@ -1789,27 +1789,26 @@ EU,Gen11,PVC,0.837
 EU,Gen9LPClient,PVC2,0.739071
 EU,Gen9LPClient,PVCDP,0.739071
 EU,Gen11LP,PVC,0.9
-EU,Gen12LP,PVC,1.0648
+EU,Gen12LP,PVC,0.89, i7 process scaler for EU in PVC
 EU,Gen11LP,PVC2,0.9
-EU,Gen12LP,PVC2,1.0648
+EU,Gen12LP,PVC2,1
 EU,Gen11LP,PVCDP,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen12LP,PVCDP,0.8944, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen12LP,PVC,1.0648
+EU,Gen12LP,PVCDP,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen11LP,PVC_A21,0.99,Gen11 to PVC scaler of 0.9 multiplied by 1.1 for PVC to PVC_A21, from 20WW19.4 PVC_A21 Compute spreadsheet,
-EU,Gen12LP,PVC_A21,1.17128,Gen12LP to PVC scaler of 1.0648 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
-EU,Gen12DG,PVC,1.0648
+EU,Gen12LP,PVC_A21,0.98,Gen12LP to PVC scaler of 0.89 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
+EU,Gen12DG,PVC,0.89
 EU,Gen12DG,PVC_A21,1.17128,Gen12DG to PVC scaler of 1.0648 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
-EU,Gen12HP,PVC,0.8708, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers
-EU,Gen12HP,PVC_A21,0.9579, LOS scaler of 0.98 , Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
-EU,Gen12HP,PVC2,0.98, LOS scaler of 0.98 , Process scaler of 0.84, no config or PV scalers
-EU,Gen12HP,PVCDP,0.8232, LOS scaler of 0.98 , Process scaler of 0.84, no config or PV scalers
-EU,PVC,PVC,0.98,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, LOS scaler of 0.98
-EU,PVC,PVC_A21,1.078,There is no PVC simualtion cdyn weights yet, Using Gen12HP cdyn weights and scaling it to pvc, pVC to PVC_A21 scaler of 1.1 plus LOS of 0.98(20WW19.4),
-EU,PVC,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
-EU,PVC2,PVC2,0.98,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98
-EU,PVC,PVCDP,0.8232,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98,process scaler of 0.84 (20WW20.1),
-EU,PVC2,PVCDP,0.8232,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98,process scaler of 0.84(20WW20.1),
-EU,PVCDP,PVCDP,0.8232,PVC scaler multipled by 1/0.89; net scaler = 0.8722*1/0.89 = 0.98,process scaler of 0.84(20WW20.1),
+EU,Gen12HP,PVC,0.89, Process scaler of 0.89, no config or PV scalers
+EU,Gen12HP,PVC_A21,0.979, Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
+EU,Gen12HP,PVC2,1, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCDP,0.84, Process scaler of 0.84, no config or PV scalers
+EU,PVC,PVC,0.9615,Process scaler of 0.89 added to CDYn weights, compensatory scaler of 1/1.04 qas EU weights are PTPX measured and do not need config/filler scalers
+EU,PVC,PVC_A21,1.06, pVC to PVC_A21 scaler of 1.1 muliplied by a compensatory 1/1.04 scaler since there is no config/filler scaler 
+EU,PVC,PVC2,1.08,PVC scaler multipled by 1/0.89; net scaler = 0.84/0.89, 0.84 scaler applied in process_cam.csv compensatory 1/1.04 for config/filler scaler
+EU,PVC2,PVC2,1.08, 1/0.89 * 1/1.04 - compensatory scalers 
+EU,PVC,PVCDP,0.9075,process scaler of 0.84 (20WW20.1) multipled by 1/0.89 to remove PVC scaler compensatory 1/1.04
+EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
+EU,PVCDP,PVCDP,0.9075,PVC scaler multipled by 1/0.89; net scaler = 0.89*1/0.89 = 1,process scaler of 0.84(20WW20.1),compensatory 1/1.04
 EU,DG2,PVC,0.888576
 EU,ADL,PVC,0.888576
 Fabric,Gen11,PVC,1.315789474
@@ -1914,11 +1913,11 @@ Other,PVC,PVC,1,Scaler based on 20ww09.4
 Other,PVC,PVC_A21,1,Scaler based on 20ww19.4 
 Other,PVC,PVC2,1,Scaler based on 20ww09.4 
 Other,PVC,PVCDP,1,Scaler based on 20ww09.4 
-ROW,PVC,PVC,0.9612,Scaler for filler/clock push/config #Separated ROW into another cluster
-ROW,PVC,PVC_A21,0.9612,Scaler for filler/clock push/config #Separated ROW into another cluster
-ROW,PVC_A21,PVC_A21,0.9612,Scaler for filler/clock push/config
-ROW,PVC,PVC2,1.08,Scaler for filler/clock push/config multiplied by 1/0.89 #Separated ROW into another cluster
-ROW,PVC,PVCDP,0.9072,Scaler for filler/clock push/config multiplied by 1/0.89, process scaler 0.84 (20WW20.1 sheet) #Separated ROW into another cluster
+ROW,PVC,PVC,1,Scaler for filler/clock push/config #Separated ROW into another cluster
+ROW,PVC,PVC_A21,1,Scaler for filler/clock push/config #Separated ROW into another cluster
+ROW,PVC_A21,PVC_A21,1,Scaler for filler/clock push/config
+ROW,PVC,PVC2,1.1235,Scaler for filler/clock push/config multiplied by 1/0.89 #Separated ROW into another cluster
+ROW,PVC,PVCDP,0.9438,Scaler for filler/clock push/config multiplied by 1/0.89, process scaler 0.84 (20WW20.1 sheet) #Separated ROW into another cluster
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -2035,8 +2034,6 @@ EU,Gen9LPClient,PVCDP,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
 EU,Gen9LPSoC,PVC_A21,0.7533
 EU,Gen11,PVC_A21,0.837
 EU,Gen11LP,PVC_A21,0.9
-EU,Gen12LP,PVC_A21,1.0648
-EU,Gen12DG,PVC_A21,1.0648
 EU,Gen12HP,PVC_A21,0.9057, LOS scaler of 0.98 and Process scaler of 0.89, config scaler of 8% (from 20ww09 sheet)
 EU,DG2,PVC_A21,0.888576
 EU,ADL,PVC_A21,0.888576
@@ -2402,12 +2399,14 @@ FabricsSpine,PVC,PVC,1,Scaler based on 20ww9.4
 FabricsSpine,PVC,PVC_A21,1,Scaler based on 20ww19.4 
 FabricsSpine,PVC,PVC2,1,Scaler based on 20ww16 
 FabricsSpine,PVC,PVCDP,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,PVCDP,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww20 
 #FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
 #LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
 #LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
 LSC,PVC,PVC,1.0368,Scaler based on 20ww9.4 
 LSC,PVC,PVC_A21,1.0368,Scaler based on 20ww9.4 
-LSC,PVC,PVC2,1.1649,Scaler based on PVC multiplied by 1/0.89 
-LSC,PVC,PVCDP,0.9785,Scaler based on PVC multiplied by 1/0.89,process scaler of 0.84 (20WW20.1) 
+LSC,PVC,PVC2,1.1649, Scaler based on PVC,an additional scaler of 1/0.89 as CDYN weight is i7 (PVC), scaler = 1.0368*1/0.89 =1.1649 
+LSC,PVC,PVCDP,0.9786,Scaler based on PVC, process scaler of 0.84 (20WW20.1) 
 LSC,PVC_A21,PVC_A21,1.0368,Scaler based on 20ww9.4 
