@@ -132,6 +132,7 @@ LSC:
     PS2_CAM_LSC_L1_CACHE: R * C
     PS2_CAM_LSC_SLM: R * C
     PS0_CAM_LSC: R * C
+    PS2_CAM_LSC_INFRA: R * C
 
 ROW:
    ROW:
