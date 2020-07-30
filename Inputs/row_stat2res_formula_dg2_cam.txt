@@ -1,0 +1,14 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+        num_ROW_ROW              =   D(knob.numROW)
+        BF_Flag                 =     D(knob.DPAS_BF16)
+        @SYS@                   =     (SYS|SYSW)
+        @SYS_TYPE@              =     (INT|FLOAT|INT4) 
+        SYS_Utilization          =    D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
+        EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
+
+#Generic
+        PS2_CAM_ROW        =  SYS_Utilization
+        PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0
+        PS2_CAM_ROW_INFRA  =  1

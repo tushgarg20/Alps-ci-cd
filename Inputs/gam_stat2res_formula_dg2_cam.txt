@@ -7,5 +7,7 @@
 	PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/512
         PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/512
         PS2_CAM_GAM_INFRA        =  1 
-        PS2_CAM_SQIDI_INFRA      =  1 
+        PS2_CAM_SQIDI_INFRA      =  1
+        PS2_CAM_CC               =  (D(GTI_READ) + D(GTI_WRITE))/512
+
 

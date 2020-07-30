@@ -1,0 +1,12 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	num_FabricsSpine_Fabrics	=       1 #Fabrics is a single unit
+	num_FabricsSpine_SpineCompute  	=       1 #Spine is a single unit
+	num_FabricsSpine_SpineBaseRambo =       1 #Spine is a single unit
+        L3_Cache_Size                   =       D(knob.L3CacheSize)
+        L3_Scaler                       =       (L3_Cache_Size == 8) ? 1 : 1.05 
+        GADSS_Scaler                    =       D(knob.GADSS)
+		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)	
+        PS2_CAM_SPINE                   =       1

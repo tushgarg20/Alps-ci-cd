@@ -1433,6 +1433,9 @@ GAM,Gen12DG,Gen12HP,1
 GAM,Gen12HP,Gen12HP,1
 GAM,Gen12HP,DG2,1
 GAM,DG2,DG2,1
+FabricsSpine,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
+LSC,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
+ROW,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
 #GAM,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
 GAM,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 #GAM,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5

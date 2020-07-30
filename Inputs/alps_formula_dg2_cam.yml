@@ -94,40 +94,20 @@ Bypass_factor: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_CAM_L3: R * C
+    PS2_CAM_L3_BANK: R * C
+    PS2_CAM_L3_NODE: R * C
     PS2_CAM_L3_INFRA: R * C
+    PS2_CAM_L3_FABRICS: R * C
 
-HDC:
-  HDCREQCMD:
-    PS2_CAM_HDC_READ: R * C
-    PS2_CAM_HDC_WRITE: R * C
-    PS2_CAM_HDC_INFRA: R * C
-
-DSSC:
-  SLMBE:
-    PS2_CAM_SLM_READ: R * C
-    PS2_CAM_SLM_WRITE: R * C
-    PS2_CAM_SLM_INFRA: R * C
+FabricsSpine:
+  SpineCompute:
+    PS2_CAM_SPINE: R * C
 
 Other:
   Others: 
-    PS2_CAM_GEOM: R * C
-    PS2_CAM_ARB: R * C
-    PS2_CAM_POSH: R * C
-    PS2_CAM_Z: R * C
     PS2_CAM_ROGT: R * C
-    PS2_CAM_NODEX: R * C
-    PS2_CAM_CC: R * C
-    PS2_CAM_RASTER: R * C
-    PS2_CAM_GA_SQIDI_RPT: R * C
-    PS2_CAM_L3NODE_RING: R * C
     PS2_CAM_OTHER_INFRA: R * C
-  ROW:
-    PS2_CAM_PS: R * C
-    PS2_CAM_ROW: R * C
-    PS2_CAM_ROW_GEMM: R * C
-  COLOR:
-    PS2_CAM_COLOR: R * C
+    PS2_CAM_L3_NODEX: R * C
 
 GAM: 
  GAMFTLB:
@@ -136,9 +116,16 @@ GAM:
  SQIDI:
     PS2_CAM_SQIDI: R * C
     PS2_CAM_SQIDI_INFRA: R * C
+    PS2_CAM_CC: R * C
 
-Sampler:
-   SC:
-    PS2_CAM_SC_L1_CACHE: R * C
-    PS2_CAM_SC_INFRA: R * C
+LSC:
+   LSC:
+    PS2_CAM_LSC_L1_CACHE: R * C
+    PS2_CAM_LSC_SLM: R * C
+    PS0_CAM_LSC: R * C
 
+ROW:
+   ROW:
+    PS2_CAM_ROW: R * C
+    PS2_CAM_ROW_GEMM: R * C
+    PS2_CAM_ROW_INFRA: R * C
