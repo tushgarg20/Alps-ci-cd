@@ -25,9 +25,10 @@ my $tglhp_512			= '';
 my $tglhp_384			= '';
 my $tglhp			= '';
 my $cam 			= '';
+my $pvc				= '';
+my $kaolin			= '';
 my $tgldg			= '';
 my $pvc_scaled			= '';
-my $pvc				= '';
 my $dg2			        = '';
 my $dg2p5			= '';
 my $pvc_a21                     = '';
@@ -54,7 +55,9 @@ Getopt::Long::GetOptions(
 	"adl"			=> \$adl,
         "reduced"		=> \$reduced,
 	"tglhp"			=> \$tglhp,
+        "pvc"			=> \$pvc,
 	"cam|m=s"		=> \$cam,
+	"kaolin|m=s"		=> \$kaolin,
 	"tglhp_512"		=> \$tglhp_512,
 	"tglhp_384"		=> \$tglhp_384,
 	"tgldg"			=> \$tgldg,
@@ -62,7 +65,6 @@ Getopt::Long::GetOptions(
 	"dg2p5"		=> \$dg2p5,
 	"mtl"		=> \$mtl,
 	"pvc_scaled"		=> \$pvc_scaled,
-	"pvc"		=> \$pvc,
 	"pvc2"		=> \$pvc2,
 	"pvcdp"	=> \$pvcdp,
         "pvc_a21"       => \$pvc_a21 
@@ -87,6 +89,8 @@ $cfg_file = ($adl) ? $sdir . "alps_cfg_adl.yaml" : $cfg_file;
 $cfg_file = ($reduced && $tgl) ? $sdir . "alps_cfg_tgl_reduced.yaml" : $cfg_file;
 $cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
 $cfg_file = ($cam && $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
+$cfg_file = ($kaolin && $tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
+$cfg_file = ($kaolin && $tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
 $cfg_file = ($cam && $tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 $cfg_file = ($cam && $adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 $cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tglhp_512.yaml" : $cfg_file;
@@ -94,6 +98,7 @@ $cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tglhp_384.yaml" : $cfg_file;
 $cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;
 $cfg_file = ($pvc_scaled) ? $sdir . "alps_cfg_pvc_scaled.yaml" : $cfg_file;
 $cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
+$cfg_file = ($kaolin && $pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
 $cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_a21.yaml" : $cfg_file;
 $cfg_file = ($cam && $pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
 $cfg_file = ($cam && $pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
@@ -119,13 +124,17 @@ while(my $line = <FILE>){
 		print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
                 if ($cam) {
 			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
-                } else  {
+                }elsif($kaolin){
+			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $kaolin");
+		}else  {
 			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
                 }
 	} else {
                 if ($cam)  {	
 		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
-                } else {
+                }elsif($kaolin){
+		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $kaolin");
+		} else {
 		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
                 }
 	}

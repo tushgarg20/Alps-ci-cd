@@ -930,16 +930,4 @@ Foveros,PVC,PVC,False
 Foveros,PVC,PVC_A21,False
 Foveros,PVC_A21,PVC_A21,False
 FabricsSpine,PVC,PVC,False
-FabricsSpine,PVC,PVC_A21,False
-FabricsSpine,PVC_A21,PVC_A21,False
-Foveros,PVC,PVC2,False
-Foveros,PVC2,PVC2,False
-FabricsSpine,PVC,PVC2,False
-FabricsSpine,PVC2,PVC2,False
-Foveros,PVC,PVCDP,False
-Foveros,PVCDP,PVC2,False
-Foveros,PVCDP,PVCDP,False
-FabricsSpine,PVC,PVCDP,False
-FabricsSpine,PVCDP,PVC2,False
-FabricsSpine,PVCDP,PVCDP,False
-FabricsSpine,PVC2,PVC2,False
+LSC,Gen12HP,PVC,False
