@@ -293,7 +293,10 @@ FPU0_toggle_rate: R
 
 L3_Bank:
    LBI:
-    PS2_L3_Active: R * C
+    PS2_L3_ReadHit: R * C
+    PS2_L3_WriteHit: R * C
+    PS2_L3_ReadMiss: R * C
+    PS2_L3_Evict: R * C
    L3BankOther:
     PS0_L3BankOther: R * C
     PS1_L3BankOther: R * C

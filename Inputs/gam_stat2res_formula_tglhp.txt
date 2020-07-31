@@ -71,7 +71,8 @@
   .temp = D(uGAM_0_TotalFtlbRequests)
   .gti_reads = D(SUM('uGAM_\d+_GtiRead'))
   .gti_writes = D(SUM('uGAM_\d+_GtiWrite'))
-
+  PS2_GTI_Read = (.gti_reads)/(@CLOCKS@ * num_GAM_GAMGTI)
+  PS2_GTI_Write = (.gti_writes)/(@CLOCKS@ * num_GAM_GAMGTI)
   PS2_GAM_App	= (.gti_reads + .gti_writes) /(@CLOCKS@ * num_GAM_GAMGTI)
   PS2_GTI_App	= PS2_GAM_App
   PS2_SQIDI_App = PS2_GAM_App

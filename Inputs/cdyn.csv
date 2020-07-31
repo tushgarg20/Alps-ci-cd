@@ -9293,3 +9293,7 @@ FPU0_add_fp64_31%,PVCDP,A0,112.23612,syn,1,PVC CDYn weight scaled by 2 for PVCDP
 FPU0_mov_fp64_20%,PVCDP,A0,24.692427,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,
 FPU0_mov_fp64_29%,PVCDP,A0,27.340533,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,
 FPU0_mov_fp64_31%,PVCDP,A0,29.03625,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,
+PS2_L3_ReadHit,Gen12HP,A0,204.22,syn,0,transaction based cdyn weights from Fatemeh,
+PS2_L3_WriteHit,Gen12HP,A0,212.54,syn,0,transaction based cdyn weights from Fatemeh,
+PS2_L3_ReadMiss,Gen12HP,A0,250.11,syn,0,transaction based cdyn weights from Fatemeh,
+PS2_L3_Evict,Gen12HP,A0,229.52,syn,0,transaction based cdyn weights from Fatemeh,

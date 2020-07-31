@@ -140,7 +140,13 @@
     FPU1_toggle_rate    =   (.temp_PS2_EU_EM > 0) ? (.max_EM_toggle / (32 * 8 * .temp_PS2_EU_EM * .CrClk)) : 0  #Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
     .avg_FPUSrc1_toggle =   (D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc0Tgl\.CrClock'))/numEUs)?=0  
     .avg_FPUSrc2_toggle =   (D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc1Tgl\.CrClock'))/numEUs)?=0  
-    .avg_FPUSrc3_toggle =   (D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0  
+    .avg_FPUSrc3_toggle =   (D(SUM('@ANY_EUPIPE@pwr_Fpu_ReadSrc2Tgl\.CrClock'))/numEUs)?=0
+    
+     FPUSrc0_toggle = .avg_FPUSrc1_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)
+     FPUSrc1_toggle = .avg_FPUSrc2_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)
+     FPUSrc2_toggle = .avg_FPUSrc3_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)
+     FPU_ouput_toggle = .avg_FPUSrc4_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)
+     
     .avg_FPUSrc4_toggle =   (D(SUM('@ANY_EUPIPE@pwr_Fpu_WriteTgl\.CrClock'))/numEUs)?=0 
     .max_FPU_toggle =   MAX(.avg_FPUSrc1_toggle, .avg_FPUSrc2_toggle, .avg_FPUSrc3_toggle, .avg_FPUSrc4_toggle) 
     FPU0_toggle_rate    =   (.temp_PS2_EU_FPU > 0) ?    (.max_FPU_toggle / (32 * 8 * .temp_PS2_EU_FPU * .CrClk)) : 0    #Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles

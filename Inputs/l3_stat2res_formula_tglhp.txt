@@ -46,6 +46,13 @@
 	PS2_Local_Nodex_to_Bank = D(SUM('uLNI\d+_lni_local_req_to_bank'))/(.CrClk * num_L3_Slices )
 	PS2_Cross_Fabric_to_Bank = D(SUM('uLNI\d+_lni_cross_req_to_bank'))/(.CrClk * num_L3_Slices )
 
+#Transaction based stats
+
+PS2_L3_ReadHit = D(SUM('uL3_\d+.Bank_\d+.ReqHitRD')) /(.CrClk * num_L3_Slices * numL3Banks)
+PS2_L3_WriteHit = D(SUM('uL3_\d+.Bank_\d+.ReqHitWR')) /(.CrClk * num_L3_Slices * numL3Banks)
+PS2_L3_ReadMiss = D(SUM('uL3_\d+.Bank_\d+.ReqMissRD')) /(.CrClk * num_L3_Slices * numL3Banks)
+PS2_L3_Evict = D(SUM('uL3_\d+.Bank_\d+.Evict_\d')) /(.CrClk * num_L3_Slices * numL3Banks)
+
 
 #LTCD_EBB	
 	PS0_LTCD_EBB	                =	1 - (PS2_LTCD_EBB_Read + PS2_LTCD_EBB_Write + PS2_LTCD_EBB_HB_Read + PS2_LTCD_EBB_HB_Write)
