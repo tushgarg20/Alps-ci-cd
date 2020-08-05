@@ -9148,7 +9148,7 @@ PS2_CAM_L3_FABRICS,PVC,A0,563.4808,syn,0,Approximated cdyn weight for L3 Fabrics
 PS2_CAM_L3_FABRICS,DG2,A0,90.721,syn,0,Approximated cdyn weight for L3 Fabrics from 20ww30.1 analytical model calculated as 32 instances,,
 PS2_CAM_GTDSS,PVC,A0,2074.38263,syn,0,Approximated cdyn weight for GTDSS related states in 20ww19.4 analytical model with a process scaler of 0.89,,
 PS2_CAM_GTDSS_INFRA,PVC,A0,56.248,syn,0,Approximated cdyn weight for GTDSS Infra related states in 20ww13.5 analytical model with a process scalar of 0.89,,
-PS2_CAM_ROGT,DG2,A0,6133.0044,syn,0,Approximated cdyn weight for rest of GT using spreadsheet 20ww31.1 analytical model,,
+PS2_CAM_ROGT,DG2,A0,5930.23,syn,0,Approximated cdyn weight for rest of GT using spreadsheet 20ww31.1 analytical model,,
 PS2_CAM_FOV_COMPUTE,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 based on Fatemeh inputs,,
 PS2_CAM_FOV_RAMBO,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 based on Fatemeh inputs,,
 PS2_CAM_FOV_COMPUTE_INFRA,PVC,A0,77.52,syn,0, 1 nF increase as per 20ww27, on top of the 4nF 
