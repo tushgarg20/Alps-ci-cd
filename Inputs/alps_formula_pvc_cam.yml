@@ -100,6 +100,7 @@ Other:
     PS2_CAM_GTDSS: R * C
     PS2_CAM_GTDSS_INFRA: R * C
     PS2_CAM_OTHER_INFRA: R * C
+    PS2_CAM_REPEATER: R * C
 
 FabricsSpine:
   SpineCompute:

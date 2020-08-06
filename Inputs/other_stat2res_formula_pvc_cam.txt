@@ -26,3 +26,4 @@
         PS2_CAM_OTHER_INFRA = 1
         PS2_CAM_GTDSS = ((D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64)))*GADSS_Scaler
         PS2_CAM_GTDSS_INFRA = 1
+        PS2_CAM_REPEATER = 1
