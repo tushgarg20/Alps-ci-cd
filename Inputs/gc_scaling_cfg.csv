@@ -927,7 +927,10 @@ EU,Gen11LP,DG2p5,False,
 EU,Gen9LPClient,DG2p5,False
 EU,DG2,DG2p5,False
 Foveros,PVC,PVC,False
+Foveros,PVC,PVCDP,False
 Foveros,PVC,PVC_A21,False
 Foveros,PVC_A21,PVC_A21,False
 FabricsSpine,PVC,PVC,False
+FabricsSpine,PVC,PVCDP,False
+FabricsSpine,PVCDP,PVCDP,False
 LSC,Gen12HP,PVC,False

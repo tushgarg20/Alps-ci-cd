@@ -11,6 +11,7 @@ my $odir			= "";
 my $cmp				= '';
 my $sdir			= "";
 my $arch			= '';
+my $method			= '';
 my $pool			= '';
 my $qslot			= '';
 my $runLocal			= '';
@@ -44,6 +45,7 @@ Getopt::Long::GetOptions(
 	"odir|o=s"		=> \$odir,
 	"compressed"		=> \$cmp,
 	"arch|a=s"		=> \$arch,
+	"method|m=s"	=> \$method,
 	"pool|p=s"		=> \$pool,
 	"qslot|q=s"		=> \$qslot,
 	"runlocal"		=> \$runLocal,
@@ -56,8 +58,8 @@ Getopt::Long::GetOptions(
         "reduced"		=> \$reduced,
 	"tglhp"			=> \$tglhp,
         "pvc"			=> \$pvc,
-	"cam|m=s"		=> \$cam,
-	"kaolin|m=s"		=> \$kaolin,
+	"cam"		=> \$cam,
+	"kaolin"		=> \$kaolin,
 	"tglhp_512"		=> \$tglhp_512,
 	"tglhp_384"		=> \$tglhp_384,
 	"tgldg"			=> \$tgldg,
@@ -88,30 +90,30 @@ $cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
 $cfg_file = ($adl) ? $sdir . "alps_cfg_adl.yaml" : $cfg_file;
 $cfg_file = ($reduced && $tgl) ? $sdir . "alps_cfg_tgl_reduced.yaml" : $cfg_file;
 $cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
-$cfg_file = ($cam && $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
-$cfg_file = ($kaolin && $tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
-$cfg_file = ($kaolin && $tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
-$cfg_file = ($cam && $tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
-$cfg_file = ($cam && $adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 $cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tglhp_512.yaml" : $cfg_file;
 $cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tglhp_384.yaml" : $cfg_file;
 $cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;
 $cfg_file = ($pvc_scaled) ? $sdir . "alps_cfg_pvc_scaled.yaml" : $cfg_file;
 $cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
-$cfg_file = ($kaolin && $pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
 $cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_a21.yaml" : $cfg_file;
-$cfg_file = ($cam && $pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
-$cfg_file = ($cam && $pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
-$cfg_file = ($cam && $pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
-$cfg_file = ($cam && $mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
-$cfg_file = ($cam && $pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
-$cfg_file = ($dg2 && $cam) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
-$cfg_file = ($dg2p5 && $cam) ? $sdir . "alps_cfg_dg2p5_cam.yaml" : $cfg_file;
 
 
-
-
-
+if ($method eq "cam"){
+	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
+	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
+	$cfg_file = ($dg2) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
+	$cfg_file = ( $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
+	$cfg_file = ($dg2p5) ? $sdir . "alps_cfg_dg2p5_cam.yaml" : $cfg_file;
+	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
+	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
+}else{
+	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
+}
 
 my $class = '8G&&nosusp&&SLES11';
 
@@ -122,20 +124,16 @@ while(my $line = <FILE>){
 	my $prefix = $wl;
 	if ($runLocal) {
 		print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
-                if ($cam) {
-			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
-                }elsif($kaolin){
-			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $kaolin");
+        if ($method == "cam" or $method == "kaolin") {
+			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
 		}else  {
 			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
                 }
 	} else {
-                if ($cam)  {	
-		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $cam");
-                }elsif($kaolin){
-		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $kaolin");
-		} else {
-		system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+        if ($method == 'cam' or $method == 'kaolin')  {	
+				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
+        } else {
+				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
                 }
 	}
 	#print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
