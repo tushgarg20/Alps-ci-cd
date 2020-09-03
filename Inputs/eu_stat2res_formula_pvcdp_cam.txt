@@ -1,0 +1,126 @@
+#Unit	GSIM residency			Comments
+#Instance Counts
+	FPS	=        D(knob.CrClock.multiplier)*1000000/CrClocks      # Dummy value as FPS is irrelevant in analytical model 	
+	numEUs	=	 D(knob.numEUs) 	#This includes Slices & SubSlices
+	numFGs = D(knob.numFGs)				
+	CrClocks	=	D(MAX_CYCLES)	
+	num_EU_FPU0	=	numEUs	
+	num_EU_FPU1	=	numEUs	
+	num_EU_EM	=	numEUs	
+	num_EU_GA	=	numEUs
+	num_EU_TC	=	numFGs	
+	num_EU_GRF	=	numEUs	
+	num_EU_DFX	=	numEUs	
+	num_EU_SMALL	=	numEUs	
+	num_EU_CPunit	=	numEUs	
+	num_EU_Assign	=	numEUs	
+	num_EU_Repeater	=	numEUs	
+	num_EU_CLKGLUE	=	numEUs	
+	num_EU_NONCLKGLUE	=	numEUs	
+	num_EU_DOP	=	numEUs	
+	num_EU_TCGA	=	numEUs	
+	num_EU_Pipelines	=	numEUs	
+	num_EU_Accumulator	=	numEUs			
+	num_EU_ExtraPipe = numEUs
+        num_EU_INFRA     = numEUs
+# Generic definitions
+        @FPU@ = FPU
+        @ALLINST@ = (mad|mul|mov|mac|sel|add)
+        @3Src_INST@ = (mad|mac)
+        @2Src_INST@ = (mul|add|sel|mov)
+        @ALLDTYPE@ = (16|32|64)
+        @TYPE@ = (fp|int)
+        @SYS@ = (SYS|SYSW)
+        @SYS_TYPE@ = (INT|FLOAT)
+	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
+	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
+        #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
+        INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
+        FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))		
+        FPU2Src_total_count = D(SUM('@FPU@_@2Src_INST@_@TYPE@@ALLDTYPE@'))		
+#FPU and DPAS opcodes
+        FPU0_toggle_rate = D(SYS_TOGGLE_RATE) 
+        FPU1_toggle_rate = D(SYS_TOGGLE_RATE) 
+        DPAS_toggle_rate = D(SYS_TOGGLE_RATE) 
+        GA_toggle_rate = MAX(FPU0_toggle_rate, FPU1_toggle_rate)
+        ECC_Flag = D(knob.Ecc) 
+        DPAS_Bypass_percent = D(SYS_BYPASS)
+        Sign_Flag = D(knob.DPAS_SignedOp) 
+        BF_Flag  = D(knob.DPAS_BF16)
+        Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
+        DPAS_Depth = D(knob.DPAS_Depth)
+        DPAS_Scaler = 8 / DPAS_Depth
+        FPU0_mad_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp32')) / (FPU_total_count)) : 0
+        FPU0_mul_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp32')) / (FPU_total_count)) : 0
+        FPU0_add_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp32')) / (FPU_total_count)) : 0 
+        FPU0_sel_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp32')) / (FPU_total_count)) : 0 
+        FPU0_mac_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp32')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp32 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp32')) / (FPU_total_count)) : 0 
+        FPU0_mad_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp16')) / (FPU_total_count)) : 0 
+        FPU0_mul_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp16')) / (FPU_total_count)) : 0 
+        FPU0_add_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp16')) / (FPU_total_count)) : 0 
+        FPU0_sel_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp16')) / (FPU_total_count)) : 0 
+        FPU0_mac_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp16')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp16 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp16')) / (FPU_total_count)) : 0 
+        FPU1_mad_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int32')) / (INT_total_count)) : 0 
+        FPU1_mac_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mac_int32')) / (INT_total_count)) : 0 
+        FPU1_mul_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int32')) / (INT_total_count)) : 0 
+        FPU1_add_int32 = (INT_total_count > 0) ? (D(SUM('FPU_add_int32')) / (INT_total_count)) : 0 
+        FPU1_sel_int32 = (INT_total_count > 0) ? (D(SUM('FPU_sel_int32')) / (INT_total_count)) : 0 
+        FPU1_mov_int32 = (INT_total_count > 0) ? (D(SUM('FPU_mov_int32')) / (INT_total_count)) : 0 
+        FPU1_mad_int16 = (INT_total_count > 0) ? (D(SUM('FPU_mad_int16')) / (INT_total_count)) : 0 
+        FPU1_mul_int16 = (INT_total_count > 0) ? (D(SUM('FPU_mul_int16')) / (INT_total_count)) : 0 
+        FPU1_add_int16 = (INT_total_count > 0) ? (D(SUM('FPU_add_int16')) / (INT_total_count)) : 0 
+        FPU1_sel_int16 = (INT_total_count > 0) ? (D(SUM('FPU_sel_int16')) / (INT_total_count)) : 0 
+        FPU1_mac_int16 = (INT_total_count > 0) ? (D(SUM('FPU_mac_int16')) / (INT_total_count)) : 0
+        FPU1_mad_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mad_fp16')) / (INT_total_count)) : 0 
+        FPU1_mul_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mul_fp16')) / (INT_total_count)) : 0 
+        FPU1_add_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_add_fp16')) / (INT_total_count)) : 0 
+        FPU1_sel_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_sel_fp16')) / (INT_total_count)) : 0 
+        FPU1_mac_fp16 = (INT_total_count > 0) ? (D(SUM('FPU1_mac_fp16')) / (INT_total_count)) : 0 
+        FPU0_mad_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fp64')) / (FPU_total_count)) : 0
+        FPU0_mul_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fp64')) / (FPU_total_count)) : 0
+        FPU0_add_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_add_fp64')) / (FPU_total_count)) : 0 
+        FPU0_sel_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mac_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fp64')) / (FPU_total_count)) : 0 
+        FPU0_mov_fp64 = (FPU_total_count > 0) ? (D(SUM('FPU_mov_fp64')) / (FPU_total_count)) : 0 
+        # Bypass power states
+        FPU0_mad_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mad_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_mac_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mac_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_mul_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_mul_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_add_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_add_fpbypass')) / (FPU_total_count)) : 0 
+        FPU0_sel_floatbypass = (FPU_total_count > 0) ? (D(SUM('FPU_sel_fpbypass')) / (FPU_total_count)) : 0 
+      
+        PS2_GRF_SEND_PATH = D(send)/CrClocks 
+        PS2_EU_FPU0   = D(FPU0_UTILIZATION)
+        PS2_EU_FPU1   = INT_total_count/CrClocks
+        EM_transc_fp32 = D(EM_math)/CrClocks
+        ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPAS_Float8 =  D(SYS_FP8)/CrClocks / DPAS_Scaler
+        ExtraPipe_DPAS_TFloat32 =  D(SYS_TF32)/CrClocks / DPAS_Scaler
+        ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPAS_SInt8 = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_SInt8 = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_UInt8 = (Sign_Flag == 0) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+ 
+#GRF, ACC, TC and GA related
+        PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
+        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
+        PS2_GA_ExtraPipe = D(GA_ExtraPipe) 
+        PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
+        PS2_GRF_READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
+        PS2_GRF_WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_GRF_READ_ECC = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
+        PS2_GRF_WRITE_ECC = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_TC_1Dispatch = D(TC)
+        PS2_Accumulator_READ = D(ACCUM_READ)/CrClocks
+        PS2_Accumulator_WRITE = D(ACCUM_WRITE)/CrClocks
+#INFRA power
+        SYST_Active = D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
+        PS2_EU_INFRA = (SYST_Active >= 0.1) ? 0 : 1 
+        PS2_EU_SYST_INFRA = (SYST_Active >= 0.1) ? 1 : 0  
+        
+        
