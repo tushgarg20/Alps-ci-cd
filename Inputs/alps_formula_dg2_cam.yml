@@ -118,11 +118,23 @@ GAM:
     PS2_CAM_SQIDI_INFRA: R * C
     PS2_CAM_CC: R * C
 
-LSC:
-   LSC:
-    PS2_CAM_LSC_L1_CACHE: R * C
-    PS2_CAM_LSC_SLM: R * C
-    PS0_CAM_LSC: R * C
+HDC:
+  HDCREQCMD:
+    PS2_CAM_HDC_READ: R * C
+    PS2_CAM_HDC_WRITE: R * C
+    PS2_CAM_HDC_INFRA: R * C
+
+DSSC:
+  SLMBE:
+    PS2_CAM_SLM_READ: R * C
+    PS2_CAM_SLM_WRITE: R * C
+    PS2_CAM_SLM_INFRA: R * C
+
+Sampler:
+   SC:
+    PS2_CAM_SC_L1_CACHE: R * C
+    PS2_CAM_SC_INFRA: R * C
+
 
 ROW:
    ROW:

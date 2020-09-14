@@ -1398,7 +1398,7 @@ EU,Gen9LPClient,DG2p5,0.8573, multipled with Gen9 to DG2 scaler
 EU,Gen11LP,DG2p5,0.8573, multipled with Gen11 to DG2 scaler
 EU,Gen12LP,DG2p5,0.8573, multipled with Gen12LP to DG2 scaler
 EU,Gen12HP,DG2p5,0.8573, multipled with Gen12HP to DG2 scaler
-EU,DG2,DG2p5,0.9318,multipled with DG2 scaler with 5% savings from Kamal for Xe2 Plan
+EU,DG2,DG2p5,0.9804,multipled with DG2 scaler
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
 EU,Gen12LP,MTL,0.85733882
@@ -1488,7 +1488,7 @@ L3_Bank,DG2,DG2,1
 #L3_Bank,Gen12HP,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
 #L3_Bank,DG2,DG2p5,1.65, 1.5x resource scaler from DG2 to DG2p5, 1.1 scaler assumed for L3 size increase
 L3_Bank,Gen12HP,DG2p5,1.1, 1.1 scaler assumed for L3 size increase
-L3_Bank,DG2,DG2p5,0.98, 2% reduction for L3 as perWave 2.5 optimization trend 
+L3_Bank,DG2,DG2p5,1, perWave 2.5 optimization plan which is accounted at GT level
 L3_Bank,Gen12HP,MTL,1
 L3_Bank,DG2,MTL,0.9978, 0.22% reduction based on Akash Weekly CDYN indicator 20ww22
 L3Node,Gen10LP,Gen12HP,0.837
@@ -1580,8 +1580,8 @@ Sampler,Gen12HP,Gen12HP,1
 Sampler,Gen12HP,DG2,1
 Sampler,DG2,DG2,1,From 20WW15 Compute Spreadsheet aligning to Bottumps Up number
 #Sampler,Gen12HP,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-#Sampler,DG2,DG2p5,1.5, 1.5x resource scaler from DG2 to DG2p5
-Sampler,Gen12HP,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash),based on latest update from Yoav 20ww26
+Sampler,DG2,DG2p5,1,Wave2.5 Plan optimization accounted at GT level 
+#Sampler,Gen12HP,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash),based on latest update from Yoav 20ww26
 Sampler,DG2,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash)
 Sampler,Gen12HP,MTL,1
 Sampler,DG2,MTL,0.9,10% CDYN savings from Akash Weekly CDYN indicator 20ww26, confirmed by Yoav

@@ -143,7 +143,7 @@ Gen12DG,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv 
 Gen12HP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 ADL,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 DG2,DG2,1.0506,1.0506,2% config scaler and 3% process scaler based on 20ww31.1 sheet, 
-DG2,DG2p5,1,1,Process scalar applied to CDYNMAX, 
+DG2,DG2p5,0.95,0.95,Process scalar applied in Blizzard, 5% CDYN optimization at GT level as per Wave 2.5 opt Plan from Kamal, 
 DG2p5,DG2p5,1,1,Process scalar applied to CDYNMAX, 
 DG2,MTL,0.9145,0.9145,2% config scaler multiplied by 0.92 as 8% reduction at GT level for optimization is the target,2.55% savings based on 20ww22 weekly CDYN indicator (Akash) 
 DG2,ADL,1,1,Scale factors not available
