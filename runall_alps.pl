@@ -98,7 +98,8 @@ $cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
 $cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_a21.yaml" : $cfg_file;
 
 
-if ($method eq "cam"){
+if ($method){
+    if ($method eq "cam"){
 	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
@@ -109,10 +110,12 @@ if ($method eq "cam"){
 	$cfg_file = ($dg2p5) ? $sdir . "alps_cfg_dg2p5_cam.yaml" : $cfg_file;
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
-}else{
+    }else{
 	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($dg2) ? $sdir . "alps_cfg_dg2_kaolin.yaml" : $cfg_file;
+    }
 }
 
 my $class = '8G&&nosusp&&SLES11';
@@ -124,13 +127,13 @@ while(my $line = <FILE>){
 	my $prefix = $wl;
 	if ($runLocal) {
 		print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
-        if ($method == "cam" or $method == "kaolin") {
+        if ($method) {
 			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
 		}else  {
 			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
                 }
 	} else {
-        if ($method == 'cam' or $method == 'kaolin')  {	
+        if ($method)  {	
 				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
         } else {
 				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
