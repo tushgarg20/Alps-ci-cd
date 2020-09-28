@@ -123,8 +123,7 @@ log = options.output_dir + '/' + options.wl_name + '.res.log.txt'
 yaml = options.output_dir + '/' + options.wl_name + '.yaml'
 runalps_log = options.output_dir + '/' + 'runalps_' + options.wl_name + '.log'
 
-python_exe = '/usr/intel/pkgs/python/3.1.2/bin/python'
-
+python_exe = '/nfs/sc/disks/sc_vpg_00612/PythonPackages/Python/bin/python3.6' 
 if not os.path.exists(python_exe):
     python_exe = sys.executable
 

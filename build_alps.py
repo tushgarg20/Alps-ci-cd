@@ -8,7 +8,8 @@ import string
 import zipfile
 import gzip
 from copy import deepcopy
-
+import numpy as np
+from scipy.interpolate import pchip_interpolate
 #############################
 # Command Line Arguments
 #############################
@@ -424,6 +425,16 @@ def get_linest_coeff(data_points):
     intercept = mean_y - (slope * mean_x)
     return slope,intercept
 
+def cdyn_from_toggle_rate(data_points, res):
+    data_points1 = np.array(data_points)
+    data_points = data_points1[data_points1[:,0].argsort()]
+    x, y = data_points[:,0], data_points[:,1]
+    for i in range(len(y)-1):
+        if(y[i+1] < y[i]):
+           # raise Exception('Data Points are not Monotonically Increasing')
+            pass  
+    y1 = pchip_interpolate(x, y, [res])
+    return y1[0] 
 def eval_linest(key_tuple,cluster,unit):
     k_cdyn, k_res = key_tuple[0],key_tuple[1]
     if(k_res not in R):
@@ -470,16 +481,17 @@ def eval_linest(key_tuple,cluster,unit):
         if (options.dump_cw):
             print (str(k_cdyn)+","+str(base_config)+","+str(data_points[0][1]/I[cluster+"_"+unit]),file=wf)
         return data_points[0][1]
-    linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
-    linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
+    #linest_coeff[k_cdyn] = {'slope':0,'intercept':0}
+    #linest_coeff[k_cdyn]['slope'],linest_coeff[k_cdyn]['intercept'] = get_linest_coeff(data_points)
+    eff_cdyn_tr = cdyn_from_toggle_rate(data_points, R[k_res])
     #temp = 0
     #temp = (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]
     if (options.dump_ecw):
-        print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=eff_wf)
+        print (str(k_cdyn)+","+str(base_config)+","+str(eff_cdyn_tr / I[cluster+"_"+unit]),file=eff_wf)
     if (options.dump_cw):
         print (str(k_cdyn)+","+str(base_config)+","+str((linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept']) / I[cluster+"_"+unit]),file=wf)
-    return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
-
+    #return (linest_coeff[k_cdyn]['slope']*R[k_res] + linest_coeff[k_cdyn]['intercept'])
+    return eff_cdyn_tr
 def eval_formula(alist):
     result = 0
     formula = alist[-1]

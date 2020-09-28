@@ -1808,11 +1808,11 @@ EU,Gen12HP,PVC,0.89, Process scaler of 0.89, no config or PV scalers
 EU,Gen12HP,PVC_A21,0.979, Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
 EU,Gen12HP,PVC2,1, Process scaler of 0.84, no config or PV scalers
 EU,Gen12HP,PVCDP,0.84, Process scaler of 0.84, no config or PV scalers
-EU,PVC,PVC,0.9615,Process scaler of 0.89 added to CDYn weights, compensatory scaler of 1/1.04 qas EU weights are PTPX measured and do not need config/filler scalers
-EU,PVC,PVC_A21,1.06, pVC to PVC_A21 scaler of 1.1 muliplied by a compensatory 1/1.04 scaler since there is no config/filler scaler 
+EU,PVC,PVC,1,Process scaler of 0.89 added to CDYn weights
+EU,PVC,PVC_A21,1.1, pVC to PVC_A21 scaler of 1.1
 EU,PVC,PVC2,1.08,PVC scaler multipled by 1/0.89; net scaler = 0.84/0.89, 0.84 scaler applied in process_cam.csv compensatory 1/1.04 for config/filler scaler
 EU,PVC2,PVC2,1.08, 1/0.89 * 1/1.04 - compensatory scalers 
-EU,PVC,PVCDP,0.9075,process scaler of 0.84 (20WW20.1) multipled by 1/0.89 to remove PVC scaler compensatory 1/1.04
+EU,PVC,PVCDP,0.9343,process scaler of 0.84 (20WW20.1) multipled by 1/0.89 ove PVCDP scaler compensatory 0.99 
 EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
 EU,PVCDP,PVCDP,0.9075,PVC scaler multipled by 1/0.89; net scaler = 0.89*1/0.89 = 1,process scaler of 0.84(20WW20.1),compensatory 1/1.04
 EU,DG2,PVC,0.888576
@@ -2406,13 +2406,19 @@ FabricsSpine,PVC,PVC_A21,1,Scaler based on 20ww19.4
 FabricsSpine,PVC,PVC2,1,Scaler based on 20ww16 
 FabricsSpine,PVC,PVCDP,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,PVCDP,1,Scaler based on 20ww20 
+LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
+Other,PVCDP,PVCDP,1,Scaler based on 20ww37
+ROW,PVCDP,PVCDP,1,Scler based on 20ww37
+L3_Bank,PVCDP,PVCDP,1,Scler based on 20ww37
+Foveros,PVCDP,PVCDP,1,Scler based on 20ww37
+GAM,PVCDP,PVCDP,1,Scler based on 20ww37
 FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww20 
 #FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
 #LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
 #LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
-LSC,PVC,PVC,1.0368,Scaler based on 20ww9.4 
-LSC,PVC,PVC_A21,1.0368,Scaler based on 20ww9.4 
+LSC,PVC,PVC,1,Scaler based on 20ww37 
+LSC,PVC,PVC_A21,1,Scaler based on 20ww37 
 LSC,PVC,PVC2,1.1649, Scaler based on PVC,an additional scaler of 1/0.89 as CDYN weight is i7 (PVC), scaler = 1.0368*1/0.89 =1.1649 
 LSC,PVC,PVCDP,0.9786,Scaler based on PVC, process scaler of 0.84 (20WW20.1) 
-LSC,PVC_A21,PVC_A21,1.0368,Scaler based on 20ww9.4 
+LSC,PVC_A21,PVC_A21,1,Scaler based on 20ww37 
