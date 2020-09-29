@@ -159,8 +159,8 @@ Gen12HP,MTL,1.049,1.049, Gen12HP->DG2 scaler multiplied with 0.9 for target scal
 Gen12LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
 Gen11LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
 Gen9LPClient,MTL,0.9,0.9,Target scaler of 0.9 for MTL
-PVC,PVC,1,1,Process scaler from compute spreadsheet 20ww37
-PVC,PVC_A21,1,1,Process scaler from compute spreadsheet 20ww37
+PVC,PVC,0.89,0.89,Process scaler from compute spreadsheet 20ww37
+PVC,PVC_A21,0.89,0.89,Process scaler from compute spreadsheet 20ww37
 Gen9LPClient,PVC2,0.595392,0.595392,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 for n7 to n5
 Gen11LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5
 Gen12LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5 
@@ -171,6 +171,6 @@ Gen9LPClient,PVCDP,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler 
 Gen11LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen12LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen12HP,PVCDP,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-PVC,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
+PVC,PVCDP,0.89,0.89,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
+PVCDP,PVCDP,0.89,0.89,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCDP,PVC2,0.8736,0.8736,Process scaler from PVCDP to PVC2

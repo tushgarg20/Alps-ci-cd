@@ -3,8 +3,11 @@
         .CrClk	=	D(MAX_CYCLES)
 	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
         num_GAM_SQIDI        =       D(knob.numSQIDI)
+        L3_Cache_Size           =       D(knob.L3CacheSize)
+        GADSS_Scaler            =       D(knob.GADSS)
+        L3_Scaler               =       (L3_Cache_Size >= 8) ? 1 : 1.05         
 #Generic				
-	PS2_CAM_BASE_GAM         =  (D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))
+	PS2_CAM_BASE_GAM         =  (D(L3_READ)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler
         PS2_CAM_BASE_GAM_INFRA   =  1
         PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/512
         PS2_CAM_BASE_SQIDI_INFRA =  1
