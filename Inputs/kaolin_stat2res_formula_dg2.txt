@@ -8,7 +8,10 @@
     num_Z_HIZ = (model.NumSlices * model.NumZPipes)
     num_COLOR_RCC = num_Z_HIZ
 	numEUs	=	( model.NumDss * model.NumEus * model.NumSlices * 2)
+    numFGs	=	( model.NumDss * model.NumEus * model.NumSlices)    # taking fusion factor as 2
 	#numFGs = numEUs/(knob.S0.SS0.FG0.uEuCompute_0.EuFusionFactor)
+
+    num_EU_TC   =   numFGs
 	num_EU_FPU0	=	numEUs	
 	num_EU_FPU1	=	numEUs	
 	num_EU_EM	=	numEUs
@@ -17,8 +20,9 @@
     num_EU_GA = numEUs
     num_EU_Accumulator = numEUs
     num_FF_VFBE = num_Slices
-    num_ROSS_MA_TDL = num_DSS
-
+    num_ROSC_WMFE = num_Slices
+    num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
+    num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
 	num_L3_Bank_LTCD_Data = model.NumSlices * model.NumDss
 	num_L3Node_Node = model.NumSlices
 	num_Fabric_Fabrics = model.NumSlices
@@ -45,8 +49,9 @@
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
 
-	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs)
-	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs)
+	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs * 0.5)
+	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)
+        DPAS_Utilization = (Total_SystCycles)/(.CrClk * numEUs * 0.5)
 	PS2_EU_FPU0 =  FPU0_Utilization
 	PS2_EU_FPU1 =  FPU1_Utilization
 
@@ -55,13 +60,14 @@
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
 	PS2_ROW = EU_Utilization
+    PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
-    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
+    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
     PS1_VFBE        = D(SUM('Vf\.\d+\.\d+\..*\.stall'))                 / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Vf\.\d+\.\d+\..*\.stall
     PS2_TE_Enabled  = D(SUM('Te\.\d+\.\d+\.OutputDs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_VSFE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???
-    PS2_HS_Enabled  = D(SUM('Hs\.\d+\.\d+\.OutputPatch.active'))        / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## (lookup for bypass later)
+    PS2_HS_Enabled  = D(SUM('Hs\.\d+\.\d+\.LookupHs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## (lookup for bypass later)
     PS2_GS_Enabled  = D(SUM('Gs\.\d+\.\d+\.OutVtx.active'))             / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_TDS_Enabled = D(SUM('Tdl\.\d+\.\d+\.\d+\.ThDisp'))              / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##( check the arcitecture and apply the correction)
     PS1_VF          = PS1_VFBE                                          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
@@ -73,25 +79,25 @@
     PS2_WM_FLUSH                = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_WM_NOMSAA_PARTIALLYLIT  = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_RASTERXBAR              = D(SUM('Sf\.\d+\.Input.active'))       / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-
+#ROSC
+    PS1_WMFE            = D(SUM('Wm\.\d+\.\d+\.Span.full'))             / (.CrClk * num_ROSC_WMFE)          #TODO: verify_num_instances
 
 #ROSS
     PS2_TDL_PSDDISPATCH = D(SUM('Tdl\.\d+\.\d+\.\d+\.PsdThIn'))         / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
     PS2_IC              = D(SUM('Ic\.\d+\.\d+\.\d+\..*\.active'))       / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##what is *?
     PS2_MA_OUT          = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.EuOSBusIn'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##(HdcMsgOut, SlmMsgOut, DaprMsgOut, GwyMsgOut, SampMsgOut, RtaMsgOut)
     PS1_PSD             = D(SUM('Hs\.\d+\.\d+\.TdgPhaseDispatch.full')) / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
-    PS1_WMFE            = D(SUM('Wm\.\d+\.\d+\.Span.full'))             / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##ROSC?
     #PS1_MA_IN           
     PS1_TDL             = D(SUM('Tdl\.\d+\.\d+\.\d+\.Input.full'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
     PS1_MA_OUT          = D(SUM('Mao\.\d+\.\d+\.\d+\.OSBus.full'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
     PS2_IC_EBB_MISS     = D(SUM('Ic\.\d+\.\d+\.\d+\.Miss'))             / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
-    PS1_IC_Stall        = D(SUM('Ic\.\d+\.\d+\.\d+\.Request.full'))     / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_HDC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Hdc.active'))      / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_TDL_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Tdl.active'))      / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_LSC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Slm.active'))      / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_SAMP_IN      = D(SUM('Mai\.\d+\.\d+\.\d+\.Samp.active'))     / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_LSC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.SlmMsgOut'))  / (.CrClk * num_DSS)          #TODO: verify_num_instances
-    PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_DSS)          #TODO: verify_num_instances
+    PS1_IC_Stall        = D(SUM('Ic\.\d+\.\d+\.\d+\.Request.full'))     / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_HDC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Hdc.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_TDL_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Tdl.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_LSC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Slm.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_SAMP_IN      = D(SUM('Mai\.\d+\.\d+\.\d+\.Samp.active'))     / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_LSC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.SlmMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
 
 #COLOR
     PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
@@ -100,7 +106,7 @@
     PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     #BE
-    PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                 #/ (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                                                     #TODO: verify_num_instances
     PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
     PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
@@ -120,12 +126,12 @@
     PS2_Z_HIZ_AMBIG_IZ_FAIL         = PS2_Z_HIZ_DEPTH_FAIL - PS2_Z_HIZ_FAIL_IZ_PASS                                              #TODO: verify_num_instances
 
 #SQIDI
-    PS2_SQIDI_NSRDF         = D(SUM('Squidi\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSWF          = D(SUM('Squidi\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSRD32        = D(SUM('Squidi\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSW32         = D(SUM('Squidi\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSRDF_ENCRYPT = D(SUM('Squidi\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances     
-    PS2_SQIDI_NSWF_ENCRYPT  = D(SUM('Squidi\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRDF         = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSWF          = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRD32        = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSW32         = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRDF_ENCRYPT = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances     
+    PS2_SQIDI_NSWF_ENCRYPT  = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
 
 #Compression
     PS2_CC_READ_4_1             = D(SUM('Gam\.\d+\.\d+\.Read4to1'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
@@ -146,24 +152,26 @@
 	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
-#HDC
+#LSC
+    .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))
+    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
 
-    #PS2_L1_Hit_Miss = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
-    PS2_HDC =  D(SUM('Hdc\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_HDC_HDCREQCMD)
-    #PS2_HDC = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
-    #PS2_HDC_WRITE = 
-    #PS2_HDC_INFRA = 
-
+    PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
+    PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
+    PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1 * Lsc.Banks)
+    
 # Sampler States : SC:
-    PS2_Sampler =  D(SUM('Samp\.\d+\.\d+\.\d+\.HdcIn')) /  (.CrClk * num_HDC_HDCREQCMD)
+
+    PS2_Sampler =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
     
 # Slm read and write util
    PS2_SLMBE_READ =  D(SUM('Slm\.\d+\.\d+\.\d+\.Read')) / (.CrClk * num_DSSC_SLMBE)
    PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
    
 # GAM: GAMFTLB:
-    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active'))/ (.CrClk * num_SQIDI_SQD)
+    PS2_GAM = (D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active')))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_SQIDI = (D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active')))/ (.CrClk * num_SQIDI_SQD)
     PS2_SQIDI_RPT = PS2_SQIDI
 
 # Others
@@ -189,6 +197,7 @@
          @DP4A@         =       (dp4a)  #Dp4 instructions
          @DPAS@         =       (dpas|dpasw)  #Dp4 instructions
          @ALLFPU0INST@  = (AddFp32|AddFpBy|MadFp32|MadFpBy|MovFp32|MulFp32|MulFpBy|SelFp32|SelFpBy|AddFp16|AddFp64|MadFp16|MadFp64|MovFp16|MovFp64|MulFp16|MulFp64|SelFp16|SelFp64|MacFp32|MacFpBy|MacFp16|MacFp64|AddI32|AddIBy|MadI32|MadIBy|MovI32|MulI32|MulIBy|SelI32|SelIBy|AddI16|AddI64|MadI16|MadI64|MovI16|MovI64|MulI16|MulI64|SelI16|SelI64|MacI32|MacI16|MacI64|MacIBy)  
+         @ALLDPAS@ = (SysFp|SysBFp|SysI|SysI4)
          @ALLFPU0INST@  = (AddFp32|MadFp32|MovFp32|MulFp32|SelFp32|AddFp16|AddFp64|MadFp16|MadFp64|MovFp16|MovFp64|MulFp16|MulFp64|SelFp16|SelFp64|MacFp32|MacFp16|MacFp64)  
          @ALLFPU1INST@  = (AddI32|MadI32|MovI32|MulI32|SelI32|AddI16|AddI64|MadI16|MadI64|MovI16|MovI64|MulI16|MulI64|SelI16|SelI64|MacI32|MacI16|MacI64)  
          @MADFPBYPASS@ = (MadFpBy16|MadFpBy32|MadFpBy64)
@@ -205,8 +214,15 @@
          FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
          FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
          EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+         DPAS_total_count = (D(SUM('pwr\.@ALLDPAS@')) 
 
 #Toggle Rates
+         .avg_DPAS_Src0_toggle = D('pwr\.TrDpS0')/numEUs
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/numEUs
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/numEUs
+         .avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
+         .max_DPAS_toggle_rate = MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle, .avg_DPAS_Write_toggle)
+          DPAS_toggle_rate = (DPAS_Utilization > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * DPAS_Utilization * .CrClk)) : 0 
          .avg_FPU0_Src0_toggle = D('pwr\.TrFpS0')/numEUs
          .avg_FPU0_Src1_toggle = D('pwr\.TrFpS1')/numEUs
          .avg_FPU0_Src2_toggle = D('pwr\.TrFpS2')/numEUs
@@ -220,7 +236,14 @@
          .max_EM_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle, .avg_EM_Write_toggle)
 
          FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 2 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         GA_toggle_rate	=	MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
+         GA_toggle_rate	=	FPU0_toggle_rate #Approximating GA toggle rate as FPU0 toggle rate
+
+#DPAS states
+        ExtraPipe_DPAS_BFloat = (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SFloat = (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SInt8 = (D(SUM('pwr\.SysI'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SInt4 = (D(SUM('pwr\.SysI4'))) / (.CrClk * numEUs)
+
 
 #FPU0 instructions
          .temp_mad_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy32')) / (FPU0_total_count)):0
@@ -337,17 +360,31 @@
          EM_transc_fp32 = (EM_total_count > 0) ? (D(SUM('pwr\.MathFp32'))) / (EM_total_count):0
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
+#GA and GRF power states
+         PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8)
+         PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
+         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+ 
 #DPAS instructions
         
 #GRF power states - Read and Write
-         PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
-         PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8 )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
+         #PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
+         #PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8 )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
 #Accumulator power states - Read and Write
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)
 
 
-         
+    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)         
          
 
 

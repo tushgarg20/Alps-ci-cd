@@ -295,6 +295,7 @@ L3_Bank:
    Foveros:
     Foveros_compute: R * C
     Foveros_rambo: R * C
+    Foveros_base: R * C
    LBI:
     PS2_L3_Active: R * C
    L3BankOther:

@@ -17,7 +17,8 @@ EU:
   Accumulator:
      PS2_Accumulator_READ: R * C
      PS2_Accumulator_WRITE: R * C
-
+  Infra:
+    PS2_EU_Infra: R * C
   FPU0:
      PS2_EU_FPU0:
       FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
@@ -180,29 +181,29 @@ Bypass_factor: R
 L3_Bank:
   LTCD_Data:
     PS2_L3_Active: R * C
+    PS2_L3_Bank_idle: R * C
+  Foveros:
+    Foveros_compute: R * C
+    Foveros_rambo: R * C
+    Foveros_compute_idle: R * C
+    Foveros_rambo_idle: R * C
+    Foveros_base_idle: R * C
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
+    PS2_L3_Node_idle: R * C
 Fabric:
   Fabrics:
     PS2_Fabric_Active: R * C
-    #PS2_L3_INFRA: R * C
-
-HDC:
-  HDCREQCMD:
-    PS2_HDC_READ: R * C
-    PS2_HDC_WRITE: R * C
-    PS2_HDC_INFRA: R * C
+    PS2_Fabric_Idle: R * C
 LSC:
   L1:
     PS2_LSC_Read: R * C
     PS2_LSC_Write: R * C
-DSSC:
-  SLMBE:
-    PS2_SLMBE_READ: R * C
-    PS2_SLMBE_WRITE: R * C
-    PS2_SLM_INFRA: R * C
-
+  ROW:
+    #PS2_PS: R * C
+    PS2_ROW: R * C
+    PS2_ROW_idle: R * C
 Other:
   Others: 
     #PS2_GEOM: R * C
@@ -218,12 +219,12 @@ Other:
     #PS2_MDFI_GAM: R * C
     #PS2_L3_FABRICS: R * C
     #PS2_OTHER_INFRA: R * C
-    PS2_SPINE: R * C
+    PS2_CAM_SPINE: R * C
+    PS2_CAM_SPINE_COMPUTE: R * C
+    PS2_CAM_SPINE_RAMBO: R * C
     #PS2_GTDSS: R * C
     #PS2_GTDSS_INFRA: R * C
-  ROW:
-    #PS2_PS: R * C
-    PS2_ROW: R * C
+
   #COLOR:
     #PS2_COLOR: R * C
   NodeX:
@@ -234,14 +235,9 @@ GAM:
     PS2_GAM: R * C
     PS2_GAM_INFRA: R * C
 SQIDI:
-  SQIDI:
+  SQ:
     PS2_SQIDI: R * C
     PS2_SQIDI_INFRA: R * C
     PS2_SQIDI_RPT: R * C
-
-
-Sampler:
-   SC:
-    PS2_Sampler: R * C
 
 

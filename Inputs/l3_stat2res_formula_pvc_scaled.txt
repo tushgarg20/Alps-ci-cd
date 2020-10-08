@@ -21,7 +21,7 @@
 	num_L3_Bank_NONCLKGLUE		=	num_L3_Slices * numL3Banks
 	num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
         num_L3_Bank_L3Node_Ring		=	num_L3_Slices
-	num_L3_Bank_Foveros = 1
+	num_L3_Bank_Foveros = num_L3_Slices * numL3Banks
         num_L3Node_LNI                  =       1  #It was 2 for gen12lp, Need to varify
 	num_L3_Bank_NodeFabric = num_L3_Slices
 #Generic				
@@ -144,6 +144,7 @@
 	
 	Foveros_compute = ((PS2_LBI_BANK_READ*512 + PS2_LBI_BANK_WRITE*512+ (PS2_LBI_BANK_READ+PS2_LBI_BANK_WRITE)*176) * num_L3_Slices)/1000
 	Foveros_rambo = ((PS2_LBI_BANK_READ*512 + PS2_LBI_BANK_WRITE*512+ (PS2_LBI_BANK_READ+PS2_LBI_BANK_WRITE)*224) * num_L3_SubSlices)/1000
+	Foveros_base = 1 
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	

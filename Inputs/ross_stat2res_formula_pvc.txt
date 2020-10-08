@@ -59,12 +59,14 @@
 	 @ANY_GWC@	=	Med\.uGWC\.	
 
 #LSC
+	LSC_Read_Util = D(SUM('S\d+.SS\d+.uLSC.L1BankReadsForAvfAndPower'))/(.CrClk * num_DSSC_LSC * 8)
+	LSC_Write_Util = D(SUM('S\d+.SS\d+.uLSC.L1BankWritesForAvfAndPower'))/(.CrClk * num_DSSC_LSC * 8)
 
 	.allochits = D(SUM('S\d+.SS\d+.uLSC.AllocHits'))
 	.numevict =  D(SUM('S\d+.SS\d+.uLSC.NumEvictions'))
 	.allocmisses = D(SUM('S\d+.SS\d+.uLSC.AllocMisses'))
-	LSC_Read_Util = (.allochits + .numevict)/(.CrClk * num_DSSC_LSC * 8)
-	LSC_Write_Util = (.allocmisses)/(.CrClk * num_DSSC_LSC * 8) 
+	#LSC_Read_Util = (.allochits + .numevict)/(.CrClk * num_DSSC_LSC * 8)
+	#LSC_Write_Util = (.allocmisses)/(.CrClk * num_DSSC_LSC * 8) 
 	PS2_LSC = LSC_Read_Util + LSC_Write_Util
 
 

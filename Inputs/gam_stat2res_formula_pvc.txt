@@ -1,0 +1,120 @@
+#Unit	GSIM residency		
+#Instance Counts			
+  numSlices	=       knob.Ats.NumSlices + SUM('knob\.STK\d\.NumSlices')	
+  #numGAM	=	COUNT('knob\.uGAM\.NumSlices')
+  numGAM	=	knob.global.NumGAMs
+
+  numSubslices	=	SUM('knob\.S\d+\.NumSubSlices')	#Change to handle assymetric configs
+  numCPipesGAM	=	SUM('knob\.S\d+\.NumColorPipes')
+  numZPipesGAM	=	SUM('knob\.S\d+\.NumZPipes')
+  num_GAM_GAMWC	=	numGAM
+  num_GAM_GAMWC_PENDQEBB	= numGAM
+  num_GAM_GAMWD	=	numGAM
+  num_GAM_GAMWD_WRKPDEBB	= numGAM
+  num_GAM_GACB	=	numGAM
+  num_GAM_GAMD	=	numGAM
+  num_GAM_GAMD_WB_HW_GAMDEBB = numGAM
+  num_GAM_GAMD_WCPEBB = numGAM
+  num_GAM_GAMD_RCPEBB = numGAM
+  num_GAM_MARB	=	numGAM
+  num_GAM_GAMTG	=	numGAM
+  num_GAM_GAMTG_L3TLBEBB	=	numGAM
+  num_GAM_GAMTG_CVSTLBEBB	=	numGAM
+  num_GAM_GAMTO	=	numGAM
+  num_GAM_GAMTO_MFXEBB	=	numGAM
+  num_GAM_GAMTO_VEBXTLBEBB	=	numGAM
+  num_GAM_GAMTO_BWGTLBEBB	=	numGAM
+  num_GAM_GAPL3	=	numSlices
+  num_GAM_GASS	=	numSubslices
+  num_GAM_DOP	=	numGAM
+  num_GAM_CLKGLUE	=	numGAM
+  num_GAM_NONCLKGLUE	=	numGAM
+  num_GAM_SMALL	        =	numGAM
+  num_GAM_CPunit	=	numGAM
+  num_GAM_Assign	=	numGAM
+  num_GAM_Repeater	=	numGAM
+  num_GAM_DFX	=	numGAM
+  num_GAM_GATR	=	numGAM
+  num_GAM_GATRW	=	numGAM
+
+  num_GAM_GAMCMDI = numGAM
+  num_GAM_GAMDATI = numGAM
+  num_GAM_GAMSTLB = numGAM
+  num_GAM_GAMGTI = numGAM
+  num_GAM_GAMWKRS = numGAM
+  num_GAM_GAMREQSTRM = numGAM
+  num_GAM_GAMDRTN    = numGAM
+
+  num_GAM_GADSS    = numGAM 
+  num_GAM_GAFM	   = numGAM
+  num_GAM_GAFD	   = numGAM
+  num_GAM_GAFSRD   = numGAM
+  num_GAM_GAFSWR   = numGAM
+  num_GAM_GAPZ	   = numZPipesGAM
+  num_GAM_GAPC	   = numCPipesGAM
+  num_GAM_GAPS     = numSlices
+  num_GAM_SARB	   = numSlices
+  num_GAM_GAFARB   = numGAM
+   
+   @GAPL3@        =    (STK\d+\.S\d+\.uL3\.GapL3InputBuf\d+\.|S\d+\.uL3\.GapL3InputBuf(\d+|)\.)
+   @GAPZ@         =    S\d+\.(GAPZ\.|GAPZPipe_\d+\.)
+   @GAPC@         =    S\d+\.(GAPCPPipe_\d+\.|GAPCPipe_\d+\.)
+   @GAPS@         =    S\d+\.uL3\.
+   @GASS@  	  =    S\d+\.GASS_\d+\.
+   @GATS@         =    S\d+\.GATS_\d+\.
+   @SARB@	  =    S\d+\.uL3\.SARB\.
+   @CLOCKS@	  =    D(CrClock.Clocks)
+   @CLOCKS2X@     =    D('2xCrClock.Clocks')	#temporary fix for GAM running on 2xCrClock in Gen12LP
+   @UNSLICECLOCKS@=    D(UnsliceClock.Clocks)
+   @GAFM@         =    S\d+\.uL3\.LNI_\d+\.
+   
+  .temp = D(uGAM_0_TotalFtlbRequests)
+  .gti_reads = D(SUM('uGTI_\d+_ReadReq'))
+  .gti_writes = D(SUM('uGTI_\d+_WriteReq'))
+  
+  #.gti_reads = D(SUM('uGAM_\d+_GtiRead'))
+  #.gti_writes = D(SUM('uGAM_\d+_GtiWrite'))
+  PS2_GTI_Read = (.gti_reads)/(@CLOCKS@ * num_GAM_GAMGTI)
+  PS2_GTI_Write = (.gti_writes)/(@CLOCKS@ * num_GAM_GAMGTI)
+  PS2_GAM_App	= (.gti_reads + .gti_writes) /(@CLOCKS@ * num_GAM_GAMGTI)
+  PS2_GTI_App	= PS2_GAM_App
+  PS2_SQIDI_App = PS2_GAM_App
+  PS2_GA_SQIDI_RPT = PS2_GAM_App
+  
+ 
+
+#GAM_DOP			
+  PS0_GAM_DOP	        =	0
+  PS2_GAM_DOP	        =	1
+			
+#GAM_SMALL			
+  PS0_GAM_SMALL	        =	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS1_GAM_SMALL	        =	AVG(PS1_GAMCMDI_GFX_IDLE,PS1_GAMDATI,PS1_GAMFTLB,PS1_GAMSTLB,PS1_GAMWKRS,PS1_GAMREQSTRM,PS1_GAMDRTN)
+  PS2_GAM_SMALL	        =	1-PS0_GAM_SMALL-PS1_GAM_SMALL
+			
+#GAM_CPunit			
+  PS0_GAM_CPunit	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS2_GAM_CPunit	=	1-PS0_GAM_CPunit
+			
+#GAM_Assign			
+  PS0_GAM_Assign	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS2_GAM_Assign	=	1-PS0_GAM_Assign
+			
+#GAM_Repeater			
+  PS0_GAM_Repeater	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS1_GAM_Repeater	=	AVG(PS1_GAMCMDI_GFX_IDLE,PS1_GAMDATI,PS1_GAMFTLB,PS1_GAMSTLB,PS1_GAMWKRS,PS1_GAMREQSTRM,PS1_GAMDRTN)
+  PS2_GAM_Repeater	=	1-PS0_GAM_Repeater-PS1_GAM_Repeater
+			
+#GAM_CLKGLUE			
+  PS0_GAM_CLKGLUE	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS2_GAM_CLKGLUE	=	1-PS0_GAM_CLKGLUE
+			
+#GAM_NONCLKGLUE			
+  PS0_GAM_NONCLKGLUE	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS1_GAM_NONCLKGLUE	=	AVG(PS1_GAMCMDI_GFX_IDLE,PS1_GAMDATI,PS1_GAMFTLB,PS1_GAMSTLB,PS1_GAMWKRS,PS1_GAMREQSTRM,PS1_GAMDRTN)
+  PS2_GAM_NONCLKGLUE	=	1-PS0_GAM_NONCLKGLUE-PS1_GAM_NONCLKGLUE
+			
+#GAM_DFX			
+  PS0_GAM_DFX	=	AVG(PS0_GAMCMDI_GFX_IDLE,PS0_GAMDATI,PS0_GAMFTLB,PS0_GAMSTLB,PS0_GAMWKRS,PS0_GAMREQSTRM,PS0_GAMDRTN)
+  PS2_GAM_DFX	=	1-PS0_GAM_DFX
+

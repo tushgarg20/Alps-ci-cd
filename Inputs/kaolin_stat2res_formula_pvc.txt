@@ -13,20 +13,23 @@
     num_EU_GRF = numEUs
     num_EU_GA = numEUs
     num_EU_Accumulator = numEUs
+    num_EU_Infra = numEUs
 
 	num_L3_Bank_LTCD_Data = model.NumSlices * model.NumDss
 	num_L3Node_Node = model.NumSlices
 	num_Fabric_Fabrics = model.NumSlices
+    num_L3_Slices = model.NumSlices 
+    num_L3_Bank_Foveros = 1
 
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_GAM_GAMFTLB = model.NumDss
-	num_SQIDI_SQIDI = model.NumDss
+	num_SQIDI_SQ = model.NumDss
 
 	num_DSSC_SLMBE = model.NumSlices * model.NumDss
 	num_HDC_HDCREQCMD = model.NumSlices * model.NumDss
     num_LSC_L1 = 64  # temporary hack
 	num_Other_Others =  1
-	num_Other_ROW = numEUs
+	num_LSC_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 
 		
@@ -46,7 +49,9 @@
 	PS2_EU_FPU1 =  FPU1_Utilization
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs * 0.5)
-	PS2_ROW = EU_Utilization
+	PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+	PS2_ROW_idle = 1
+    PS2_EU_Infra = 1
 
 
 #L3 utilization
@@ -56,11 +61,23 @@
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Bank_idle = 1
+	PS2_L3_Node_idle = 1
+	PS2_Fabric_Idle = 1
 
 	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
+
+#Foveros
+	
+	Foveros_compute = (((PS2_L3_Active*512) + (PS2_L3_Active*176)) * num_L3_Slices * num_L3_Slices)/1000
+	Foveros_rambo = (((PS2_L3_Active*512)+ (PS2_L3_Active*224)) * (num_L3_Slices/2)*(num_L3_Slices/2))/1000
+    Foveros_compute_idle = 1
+    Foveros_rambo_idle =1
+    Foveros_base_idle = 1
+
 #HDC
 
     #PS2_L1_Hit_Miss = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
@@ -96,9 +113,11 @@
     PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
 
 # Others
-	PS2_SPINE =  1
 	PS2_NodeX = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_Other_NodeX)
 	PS2_BGF = 1
+    PS2_CAM_SPINE= 1
+    PS2_CAM_SPINE_COMPUTE = 1
+    PS2_CAM_SPINE_RAMBO = 1
 
 #EU Stat2Res Equations for EU power states
          @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2)	
@@ -267,10 +286,13 @@
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #DPAS instructions
-         ExtraPipe_DPAS_Float = (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
-         ExtraPipe_DPAS_BFloat = (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
-         ExtraPipe_DPAS_SInt8 = (D(SUM('pwr\.SysI'))) / (.CrClk * numEUs)
-         ExtraPipe_DPAS_SInt4 = (D(SUM('pwr\.SysI4'))) / (.CrClk * numEUs)
+	 ExtraPipe_DPAS_BFloat_count_fulsim = pwr.DpasFp32
+	 ExtraPipe_DPAS_BFloat_count_kaolin = (D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle')))
+	 ExtraPipe_DPAS_SInt8_count = pwr.DpasI32
+     ExtraPipe_DPAS_Float = (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
+     #ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_BFloat_count_kaolin / (.CrClk * numEUs * 0.5)
+     ExtraPipe_DPAS_SInt8 = (D(SUM('pwr\.SysI'))) / (.CrClk * numEUs)
+     ExtraPipe_DPAS_SInt4 = (D(SUM('pwr\.SysI4'))) / (.CrClk * numEUs)
         
        
 #GRF power states - Read and Write
