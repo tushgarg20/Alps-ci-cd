@@ -106,6 +106,7 @@ FabricsSpine:
 Other:
   Others: 
     PS2_CAM_ROGT: R * C
+    PS2_CAM_COMPUTE_ROGT: R * C
     PS2_CAM_OTHER_INFRA: R * C
     PS2_CAM_NODEX: R * C
 

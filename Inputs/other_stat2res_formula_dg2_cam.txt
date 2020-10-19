@@ -11,8 +11,10 @@
         numEUs                  = D(knob.numEUs)
         maxGTI                  = D(knob.numMaxGTI)
         numGTI                  = D(knob.numGTI) 
+        computeFlag         = D(knob.computeonly)
 
 #Generic
-        PS2_CAM_ROGT       =  numGTI/maxGTI  
+        PS2_CAM_ROGT          = (computeFlag == 0) ? numGTI/maxGTI : 0 
+        PS2_CAM_COMPUTE_ROGT  = (computeFlag == 1) ? numGTI/maxGTI : 0 
         PS2_CAM_NODEX      =  numGTI/maxGTI  
         PS2_CAM_OTHER_INFRA = numGTI/maxGTI  
