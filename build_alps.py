@@ -65,6 +65,9 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='DG2':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2',] }
+  elif cfg =='Xe2':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2'] }
   elif cfg =='DG2p5':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'DG2p5',],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','DG2p5',] }
@@ -154,8 +157,10 @@ elif common_cfg.find('tgldg') > -1 :
     cfg ='Gen12DG'
 elif common_cfg.find('dg2p5') > -1 :
     cfg ='DG2p5'
-elif common_cfg.find('dg2') > -1 :
+elif common_cfg.find('xe2_2xsp') > -1 :
     cfg ='DG2'
+elif common_cfg.find('dg2') > -1 :
+    cfg ='Xe2'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen12LP'
 elif common_cfg.find('adl') > -1 :
@@ -202,6 +207,8 @@ elif common_cfg.find('tgldg') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('dg2p5') > -1 :
     cfg_gc = "DG2p5"
+elif common_cfg.find('xe2_2xsp') > -1 :
+    cfg_gc = "Xe2"
 elif common_cfg.find('dg2') > -1 :
     cfg_gc = "DG2"
 elif common_cfg.find('adl') > -1 :
@@ -211,7 +218,6 @@ elif common_cfg.find('glv') > -1 :
 else:
     cfg_gc = cfg
 
-print("Generating results for " + cfg.upper() + " aka " + common_cfg)
 print(" ")
 
 print("Command Line -->",file=lf)
@@ -220,7 +226,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg =='PVCDP'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg =='PVCDP' or cfg == 'Xe2'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -304,7 +310,6 @@ def Cdyn_VSF(current_operating_voltage, prev_gen_operating_voltage,cdyn_reductio
 
 def get_eff_cdyn(cluster,unit,stat):
     base_cfg,stepping = get_base_config(stat)
-    print (cluster, unit,stat, base_cfg,stepping)
     if(base_cfg == None or stepping == None):
         return 0
     if(options.run_debug):
@@ -323,9 +328,7 @@ def get_eff_cdyn(cluster,unit,stat):
                 ref_gc = new_gc[cluster][unit][base_cfg]
         else:
             ref_gc = 1
-
     if(cdyn_type == 'syn'):
-        print(base_cfg,cfg)
         process_sf = process_hash[base_cfg][cfg]['syn']
     else:
         process_sf = process_hash[base_cfg][cfg]['ebb']
@@ -347,7 +350,7 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
-    print (cluster,base_cfg,cfg,unit_scalar)
+    #print (cluster,base_cfg,cfg,unit_scalar)
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
@@ -358,6 +361,7 @@ def get_eff_cdyn(cluster,unit,stat):
     else:
         instances = I[instance_string]
     if(cdyn_type == 'syn'):
+        #print(cluster, unit,cfg_gc)
         if((cluster not in new_gc) or (unit not in new_gc[cluster]) or (cfg_gc not in new_gc[cluster][unit])):
             print ("Gate count is not available for", cluster, ",", unit, file=lf)
             newproduct_gc = 0
@@ -429,12 +433,16 @@ def cdyn_from_toggle_rate(data_points, res):
     data_points1 = np.array(data_points)
     data_points = data_points1[data_points1[:,0].argsort()]
     x, y = data_points[:,0], data_points[:,1]
-    for i in range(len(y)-1):
-        if(y[i+1] < y[i]):
-           # raise Exception('Data Points are not Monotonically Increasing')
-            pass  
-    y1 = pchip_interpolate(x, y, [res])
-    return y1[0] 
+    if res < x[0]:
+        return y[0] - (((y[1] - y[0]) / (x[1] - x[0])) * (x[0] - res))
+    elif res > x[-1]:
+        return y[-1] + (res - x[-1]) * ((y[-1] - y[-2]) / (x[-1] - x[-2]))
+    else: 
+        y1 = pchip_interpolate(x, y, [res])
+        return y1[0] 
+
+
+
 def eval_linest(key_tuple,cluster,unit):
     k_cdyn, k_res = key_tuple[0],key_tuple[1]
     if(k_res not in R):
@@ -795,6 +803,7 @@ key_stats['key_stats']['Operating Voltage'] = operating_voltage
 key_stats['key_stats']['Voltage dependent Cdyn Scaling Factor'] = voltage_cdyn_scaling_factor
 
 for path in output_list:
+    #print(path)
     path[-1] = eval_formula(path)
     d = output_yaml_data['ALPS Model(pF)']['GT']
     cdyn_d = output_cdyn_data['GT']
