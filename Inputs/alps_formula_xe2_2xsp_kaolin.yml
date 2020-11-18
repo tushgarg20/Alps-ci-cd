@@ -1,0 +1,367 @@
+--- # ALPS Formula File version WW07.1 2013
+
+ # R : R * C Residency
+ # C : R * C Cdyn weight
+
+CrClocks: R
+FPS: R
+
+EU:
+  GRF:
+     PS2_GA_GRF_READ: R * LINEST[C,R[GA_toggle_rate]]
+     PS2_GA_GRF_WRITE: R * LINEST[C,R[GA_toggle_rate]] 
+     PS2_GRF_SEND_PATH: R * C
+
+  Accumulator:
+     PS2_Accumulator_READ: R * C
+     PS2_Accumulator_WRITE: R * C
+
+  FPU0:
+     PS2_EU_FPU0:
+      FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_fp64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int32: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_int64: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_floatbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mad_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mul_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_add_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_pln_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mac_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sad_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_mov_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+      FPU0_sel_intbypass: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
+  
+  FPU11:
+    PS2_EU_FPU11:
+      FPU11_mad_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_fp16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_pln_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_fp32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_fp64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_int16: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_int32: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_int64: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_pln_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_floatbypass: R[PS2_EU_FPU11] * R * C 
+      FPU11_mul_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_floatbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mad_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mul_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_add_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_pln_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mac_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sad_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_mov_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+      FPU11_sel_intbypass: R[PS2_EU_FPU11] * R * LINEST[C,R[FPU11_toggle_rate]]
+
+  FPU1:
+    PS0_EU_FPU1: R * C
+    PS1_EU_FPU1: R * C
+    PS2_EU_FPU1:
+      FPU1_mad_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_fp64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_int64: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_floatbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_pln_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sad_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_intbypass: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+  
+  EM:
+      EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+  GA:
+      PS2_GA_Syn_Read: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_Write: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+
+
+  ExtraPipe:
+      ExtraPipe_DPAS_Float: R * C
+      ExtraPipe_DPAS_BFloat:  R * C
+      ExtraPipe_DPAS_BFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_BFloat16_Bypass: R * C 
+      ExtraPipe_DPAS_SFloat16_Bypass: R * C
+      ExtraPipe_DPAS_SInt8_Bypass: R * C
+      ExtraPipe_DPAS_UInt8_Bypass: R * C
+      ExtraPipe_DPAS_SInt4_Bypass: R * C
+      ExtraPipe_DPAS_UInt4_Bypass: R * C
+    
+GA_toggle_rate: R
+FPU1_toggle_rate: R
+FPU0_toggle_rate: R
+DPAS_toggle_rate: R
+Bypass_factor: R
+
+L3_Bank:
+  LTCD_Data:
+    PS2_L3_Read_Hit: R * C
+    PS2_L3_Write_Hit: R * C
+    PS2_L3_Read_Miss: R * C
+    PS2_L3_Write_Evict: R * C
+L3Node:
+  Node:
+    PS2_L3Node_Active: R * C
+Fabric:
+  Fabrics:
+    PS2_Fabric_Active: R * C
+
+LSC:
+  L1:
+    PS2_L1_Read_Hit: R * C
+    PS2_L1_Read_Miss: R * C
+    PS2_L1_Write_Hit: R * C
+
+Other:
+  Others: 
+    #PS2_GEOM: R * C
+    #PS2_ARB: R * C
+    #PS2_POSH: R * C
+    #PS2_Z: R * C
+    #PS2_ROGT: R * C
+    #PS2_NODE: R * C
+    #PS2_CC: R * C
+    PS2_BGF: R * C
+    #PS2_GA_SQIDI_RPT: R * C
+    #PS2_MEDIA: R * C
+    #PS2_MDFI_GAM: R * C
+    #PS2_L3_FABRICS: R * C
+    #PS2_OTHER_INFRA: R * C
+    PS2_SPINE: R * C
+    #PS2_GTDSS: R * C
+    #PS2_GTDSS_INFRA: R * C
+  ROW:
+    #PS2_PS: R * C
+    PS2_ROW: R * C
+  #COLOR:
+    #PS2_COLOR: R * C
+  NodeX:
+    PS2_NodeX: R * C
+
+GAM: 
+ GAMFTLB:
+    PS2_GAM: R * C
+    PS2_GAM_INFRA: R * C
+SQIDI:
+  SQD:
+    PS2_SQIDI: R * C
+    PS2_SQIDI_INFRA: R * C
+    #PS2_SQIDI_RPT: R * C
+Sampler:
+   SC:
+    PS2_Sampler: R * C
+FF:
+  VFBE:
+    PS2_VFBE        : R * C 
+    PS1_VFBE        : R * C 
+    PS2_TE_Enabled  : R * C 
+    PS2_VSFE        : R * C 
+    PS2_HS_Enabled  : R * C 
+    PS2_GS_Enabled  : R * C 
+    PS2_TDS_Enabled : R * C 
+    PS1_VF: R * C
+    PS1_VSFE        : R * C 
+    PS1_GS: R * C 
+    PS1_CS: R * C 
+    PS2_CL_NoMustclip : R * C 
+    PS2_WM_MSAA_PARTIALLYLIT    : R * C 
+    PS2_WM_FLUSH      : R * C 
+    PS2_WM_NOMSAA_PARTIALLYLIT  : R * C 
+    PS2_RASTERXBAR    : R * C 
+COLOR:
+  RCC:
+    PS1_RCC : R * C
+    PS2_RCC_ALLOC_MISSES: R * C
+    PS2_RCC_ALLOC_HITS: R * C
+    PS2_RCPBE_8PPC_FIX_BLD: R * C
+    PS2_RCPBE_8PPC_FIX_WRT: R * C
+    PS2_RCC_CACHE_READ: R * C
+    PS2_RCPBE_16PPC_FIX_BLD: R * C
+    PS2_RCPBE_16PPC_WRT: R * C
+    PS2_RCPBE_4PPC_FLT_BLD: R * C
+    PS2_RCPBE_4PPC_WRT: R * C
+    PS2_CC_READ_4_1: R * C
+    PS2_CC_READ_4_3: R * C
+    PS2_CC_READ_UNCOMPRESSED: R * C
+    PS2_CC_WRITE_4_1: R * C
+    PS2_CC_WRITE_4_3: R * C
+    PS2_CC_WRITE_UNCOMPRESSED: R * C
+Z:
+  HIZ:
+    PS1_HIZ: R * C
+    PS1_IZ: R * C
+    PS0_Z_IDLE: R * C
+    PS2_Z_HIZ_CLR: R * C
+    PS2_Z_HIZ_STC_CLR: R * C
+    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT: R * C
+    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT: R * C
+    PS2_Z_HIZ_DEPTH_FAIL: R * C
+    PS2_Z_HIZ_FAIL_IZ_PASS: R * C
+    PS2_Z_HIZ_AMBIG_IZ_PASS: R * C
+    PS2_Z_HIZ_AMBIG_IZ_FAIL: R * C
+
+ROSS:
+  MA_TDL:
+    PS2_TDL_PSDDISPATCH: R * C
+    PS2_IC: R * C
+    PS2_MA_OUT: R * C
+    PS1_PSD: R * C
+    PS1_WMFE: R * C
+    PS1_TDL: R * C
+    PS1_MA_OUT: R * C
+    PS2_IC_EBB_MISS: R * C
+    PS1_IC_Stall: R * C
+    PS2_MA_HDC_IN: R * C
+    PS2_MA_TDL_IN: R * C
+    PS2_MA_LSC_IN: R * C
+    PS2_MA_SAMP_IN: R * C
+    PS2_MA_LSC_OUT: R * C
+    PS2_MA_HDC_OUT: R * C
+
+
+
+
