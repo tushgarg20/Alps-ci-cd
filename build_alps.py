@@ -158,9 +158,9 @@ elif common_cfg.find('tgldg') > -1 :
 elif common_cfg.find('dg2p5') > -1 :
     cfg ='DG2p5'
 elif common_cfg.find('xe2_2xsp') > -1 :
-    cfg ='DG2'
-elif common_cfg.find('dg2') > -1 :
     cfg ='Xe2'
+elif common_cfg.find('dg2') > -1 :
+    cfg ='DG2'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen12LP'
 elif common_cfg.find('adl') > -1 :
