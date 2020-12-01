@@ -19,7 +19,7 @@
 	num_L3Node_Node = model.NumSlices
 	num_Fabric_Fabrics = model.NumSlices
     num_L3_Slices = model.NumSlices 
-    num_L3_Bank_Foveros = 1
+    num_L3_Bank_Foveros = model.NumSlices * model.NumDss
 
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_GAM_GAMFTLB = model.NumDss
@@ -72,11 +72,12 @@
 
 #Foveros
 	
-	Foveros_compute = (((PS2_L3_Active*512) + (PS2_L3_Active*176)) * num_L3_Slices * num_L3_Slices)/1000
-	Foveros_rambo = (((PS2_L3_Active*512)+ (PS2_L3_Active*224)) * (num_L3_Slices/2)*(num_L3_Slices/2))/1000
-    Foveros_compute_idle = 1
-    Foveros_rambo_idle =1
-    Foveros_base_idle = 1
+	Foveros_compute = PS2_L3_Active
+	Foveros_compute_idle = 1
+	Foveros_rambo = PS2_L3_Active
+	Foveros_rambo_idle = 1
+	Foveros_base =  PS2_L3_Active
+	Foveros_base_idle = 1
 
 #HDC
 
@@ -158,17 +159,17 @@
          .avg_FPU0_Src0_toggle = D('pwr\.TrFpS0')/numEUs
          .avg_FPU0_Src1_toggle = D('pwr\.TrFpS1')/numEUs
          .avg_FPU0_Src2_toggle = D('pwr\.TrFpS2')/numEUs
-         .avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         .max_FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle, .avg_FPU0_Write_toggle)
+         #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
+         .max_FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
          FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
          .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/numEUs
          .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/numEUs
          .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/numEUs
-         .avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
-         .max_EM_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle, .avg_EM_Write_toggle)
+         #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
+         .max_EM_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
          FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 2 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         GA_toggle_rate	=	MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
+         GA_toggle_rate	=	FPU0_toggle_rate #MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 
 #FPU0 instructions
          .temp_mad_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy32')) / (FPU0_total_count)):0
@@ -285,19 +286,50 @@
          EM_transc_fp32 = (EM_total_count > 0) ? (D(SUM('pwr\.MathFp32'))) / (EM_total_count):0
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
-#DPAS instructions
-	 ExtraPipe_DPAS_BFloat_count_fulsim = pwr.DpasFp32
-	 ExtraPipe_DPAS_BFloat_count_kaolin = (D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle')))
-	 ExtraPipe_DPAS_SInt8_count = pwr.DpasI32
-     ExtraPipe_DPAS_Float = (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
-     #ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_BFloat_count_kaolin / (.CrClk * numEUs * 0.5)
-     ExtraPipe_DPAS_SInt8 = (D(SUM('pwr\.SysI'))) / (.CrClk * numEUs)
-     ExtraPipe_DPAS_SInt4 = (D(SUM('pwr\.SysI4'))) / (.CrClk * numEUs)
-        
+#DPAS
+        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysBFp  =  (D(SUM('pwr\.SysBFp ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW    ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUB   =  (D(SUM('pwr\.SysUB  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUV   =  (D(SUM('pwr\.SysUV  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUD   =  (D(SUM('pwr\.SysUD  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUQ   =  (D(SUM('pwr\.SysUQ  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other))) / (.CrClk * numEUs)
+
+        ExtraPipe_DPAS_Float = ExtraPipe_DPAS_DpasFp32
+        ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_DpasFp16
+
+
+
+#GA and GRF power states
+         PS2_GA_GRF_1Read_ECC = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8)
+         PS2_GA_GRF_1Write_ECC = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
+         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
+         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
        
 #GRF power states - Read and Write
          PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
          PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
+
 #Accumulator power states - Read and Write
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)

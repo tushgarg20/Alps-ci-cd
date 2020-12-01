@@ -294,8 +294,11 @@ FPU0_toggle_rate: R
 L3_Bank:
    Foveros:
     Foveros_compute: R * C
+    Foveros_compute_idle: R * C
     Foveros_rambo: R * C
+    Foveros_rambo_idle: R * C
     Foveros_base: R * C
+    Foveros_base_idle: R * C
    LBI:
     PS2_L3_Active: R * C
    L3BankOther:
