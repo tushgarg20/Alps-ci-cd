@@ -31,6 +31,7 @@
 	num_Other_Others =  1
 	num_LSC_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
+	num_Other_inf = numEUs
 
 		
 #Generic				
@@ -119,6 +120,7 @@
     PS2_CAM_SPINE= 1
     PS2_CAM_SPINE_COMPUTE = 1
     PS2_CAM_SPINE_RAMBO = 1
+    PS2_Infra_emu_const = 1
 
 #EU Stat2Res Equations for EU power states
          @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2)	

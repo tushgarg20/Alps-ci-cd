@@ -9353,4 +9353,6 @@ ExtraPipe_DPAS_UInt8_10%,PVC,A0,105.59,syn,1,PVC 20WW30 TAPEIN CDYN weights from
 ExtraPipe_DPAS_UInt8_20%,PVC,A0,129.57,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 ExtraPipe_DPAS_UInt8_30%,PVC,A0,143.38,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 ExtraPipe_DPAS_UInt8_45%,PVC,A0,163.96,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
-PS2_EU_DPAS,PVC,A0,197,syn,0,,PS2_infra,DG2,A0,25.11,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
+PS2_EU_DPAS,PVC,A0,197,syn,0,,
+PS2_infra,DG2,A0,25.11,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
+PS2_Infra_emu_const,PVC,A0,21.91,syn,0,from pvc emualtion results,
