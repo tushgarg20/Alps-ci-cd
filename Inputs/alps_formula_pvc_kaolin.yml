@@ -198,27 +198,12 @@ LSC:
     PS2_ROW_idle: R * C
 Other:
   Others: 
-    #PS2_GEOM: R * C
-    #PS2_ARB: R * C
-    #PS2_POSH: R * C
-    #PS2_Z: R * C
-    #PS2_ROGT: R * C
-    #PS2_NODE: R * C
-    #PS2_CC: R * C
-    PS2_BGF: R * C
-    #PS2_GA_SQIDI_RPT: R * C
-    #PS2_MEDIA: R * C
-    #PS2_MDFI_GAM: R * C
-    #PS2_L3_FABRICS: R * C
-    #PS2_OTHER_INFRA: R * C
     PS2_CAM_SPINE: R * C
     PS2_CAM_SPINE_COMPUTE: R * C
     PS2_CAM_SPINE_RAMBO: R * C
-    #PS2_GTDSS: R * C
-    #PS2_GTDSS_INFRA: R * C
 
-  #COLOR:
-    #PS2_COLOR: R * C
+  inf:
+    PS2_Infra_emu_const: R * C
   NodeX:
     PS2_NodeX: R * C
 
