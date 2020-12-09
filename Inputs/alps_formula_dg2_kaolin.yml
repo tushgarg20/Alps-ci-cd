@@ -150,7 +150,7 @@ EU:
       PS2_GA_Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
-
+      PS2_GA_ExtraPipe: R * C
 
   ExtraPipe:
       ExtraPipe_DPAS_BFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
@@ -216,6 +216,8 @@ Other:
     #PS2_COLOR: R * C
   NodeX:
     PS2_NodeX: R * C
+  Infra:
+    PS2_infra: R * C
 
 GAM: 
  GAMFTLB:

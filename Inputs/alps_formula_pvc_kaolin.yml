@@ -10,8 +10,8 @@ EU:
   GRF:
      PS2_GRF_READ: R * C
      PS2_GRF_WRITE: R * C
-     PS2_GRF_READ_ECC: R * C
-     PS2_GRF_WRITE_ECC: R * C
+     PS2_GA_GRF_1Read_ECC: R * C
+     PS2_GA_GRF_1Write_ECC: R * C
      PS2_GRF_SEND_PATH: R * C
 
   Accumulator:
@@ -148,29 +148,20 @@ EU:
       EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   GA:
-    PS0_GA: R * C
-    PS1_GA: R * C
-    PS2_GA:
-      PS2_GA_EM1Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_FPU1Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_FPU2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM1Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM1Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM1Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM2Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM2Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM2Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM3Src_FPU1Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM3Src_FPU2Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_EM3Src_FPU3Src_DualPipe: R * LINEST[C,R[GA_toggle_rate]]
-
-
+      PS2_GA_Syn_Read: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_Write: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_DPAS_dispatch : R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_ExtraPipe: R * LINEST[C,R[GA_toggle_rate]]
   ExtraPipe:
       PS2_EU_DPAS: R * C
-
+      ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_BFloat:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_SInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_UInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R
@@ -184,9 +175,10 @@ L3_Bank:
     PS2_L3_Bank_idle: R * C
   Foveros:
     Foveros_compute: R * C
-    Foveros_rambo: R * C
     Foveros_compute_idle: R * C
+    Foveros_rambo: R * C
     Foveros_rambo_idle: R * C
+    Foveros_base: R * C
     Foveros_base_idle: R * C
 L3Node:
   Node:
@@ -206,27 +198,12 @@ LSC:
     PS2_ROW_idle: R * C
 Other:
   Others: 
-    #PS2_GEOM: R * C
-    #PS2_ARB: R * C
-    #PS2_POSH: R * C
-    #PS2_Z: R * C
-    #PS2_ROGT: R * C
-    #PS2_NODE: R * C
-    #PS2_CC: R * C
-    PS2_BGF: R * C
-    #PS2_GA_SQIDI_RPT: R * C
-    #PS2_MEDIA: R * C
-    #PS2_MDFI_GAM: R * C
-    #PS2_L3_FABRICS: R * C
-    #PS2_OTHER_INFRA: R * C
     PS2_CAM_SPINE: R * C
     PS2_CAM_SPINE_COMPUTE: R * C
     PS2_CAM_SPINE_RAMBO: R * C
-    #PS2_GTDSS: R * C
-    #PS2_GTDSS_INFRA: R * C
 
-  #COLOR:
-    #PS2_COLOR: R * C
+  inf:
+    PS2_Infra_emu_const: R * C
   NodeX:
     PS2_NodeX: R * C
 

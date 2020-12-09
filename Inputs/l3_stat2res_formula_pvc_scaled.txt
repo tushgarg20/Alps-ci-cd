@@ -142,9 +142,12 @@
 	PS2_LBI_Else		=	(.residuallbi<0)?0:.residuallbi
 #Foveros
 	
-	Foveros_compute = ((PS2_LBI_BANK_READ*512 + PS2_LBI_BANK_WRITE*512+ (PS2_LBI_BANK_READ+PS2_LBI_BANK_WRITE)*176) * num_L3_Slices)/1000
-	Foveros_rambo = ((PS2_LBI_BANK_READ*512 + PS2_LBI_BANK_WRITE*512+ (PS2_LBI_BANK_READ+PS2_LBI_BANK_WRITE)*224) * num_L3_SubSlices)/1000
-	Foveros_base = 1 
+	Foveros_compute = PS2_L3_Active
+	Foveros_compute_idle = 1
+	Foveros_rambo = PS2_L3_Active
+	Foveros_rambo_idle = 1
+	Foveros_base =  PS2_L3_Active
+	Foveros_base_idle = 1
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
