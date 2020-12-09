@@ -780,11 +780,16 @@ GAM,DG2,MTL,False
 GAM,Gen12HP,DG2p5,False
 GAM,DG2,DG2p5,False
 ROW,DG2,DG2,False
+ROW,DG2,MTL,False
 ROW,DG2,DG2p5,False
 ROW,DG2,Xe2,False
 LSC,DG2,DG2,False
+LSC,DG2,DG2p5,False
+LSC,DG2,MTL,False
 LSC,DG2,Xe2,False
 FabricsSpine,DG2,DG2,False
+FabricsSpine,DG2,DG2p5,False
+FabricsSpine,DG2,MTL,False
 FabricsSpine,DG2,Xe2,False
 Sampler,Gen9LPClient,ADL,False
 Sampler,Gen9LPSoC,ADL,False

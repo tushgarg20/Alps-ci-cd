@@ -6,7 +6,10 @@
         L3_Cache_Size                   =       D(knob.L3CacheSize)
         L3_Scaler                       =       (L3_Cache_Size == 8) ? 1 : 1.05 
         GADSS_Scaler                    =       D(knob.GADSS)
+      	numEUs	                        =	D(knob.numEUs) 	#This includes Slices & SubSlices
+        maxEUs                          =       512
+
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
-        PS2_CAM_SPINE                   =       1
+        PS2_CAM_SPINE                   =       numEUs/maxEUs 
