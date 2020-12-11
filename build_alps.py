@@ -230,7 +230,6 @@ if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10L
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
-print("CDYN precedence is %s\n", cdyn_precedence)
 scripts_dir = os.path.abspath(os.path.dirname(__file__))
 
 print("Running scripts from: " + scripts_dir)
@@ -329,6 +328,7 @@ def get_eff_cdyn(cluster,unit,stat):
         else:
             ref_gc = 1
     if(cdyn_type == 'syn'):
+        print(base_cfg, cfg)
         process_sf = process_hash[base_cfg][cfg]['syn']
     else:
         process_sf = process_hash[base_cfg][cfg]['ebb']
