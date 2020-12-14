@@ -6,7 +6,7 @@
         num_Other_URB   = 1	
 	num_Other_CCD	= 1		
 		num_Other_GTP24C				=		1
-		num_Other_ClockSpine			=		1
+		num_Other_ClockSpine			=	SUM('knob\.S\d+\.SS\d+\.(R\d+\.NumEus)|(FG\d+\.NumEus)')	
 		num_Other_WIDI					=		1
 	num_Other_Blitter	=	1
 	num_Other_Slice	=	knob.global.NumSlices + SUM('knob\.STK\d\.NumSlices')
@@ -31,9 +31,9 @@
 	PS0_WIDI_DOP 	=	1
 	PS0_WIDI 	=	0
 	PS0_Blitter	=	1
-	PS2_CAM_SPINE 	=	1
-	PS2_CAM_SPINE_COMPUTE 	=	1
-	PS2_CAM_SPINE_RAMBO 	=	1
+	PS2_SPINE_Base 	=	1
+	PS2_SPINE_Compute 	=	1
+	PS2_SPINE_Rambo 	=	1
 			
 			
 			

@@ -301,71 +301,10 @@ L3_Bank:
     Foveros_base_idle: R * C
    LBI:
     PS2_L3_Active: R * C
-   L3BankOther:
-    PS0_L3BankOther: R * C
-    PS1_L3BankOther: R * C
-    PS2_L3BankOther: R * C
-   DOP:
-    PS0_L3_Bank_DOP: R * C
-    PS2_L3_Bank_DOP: R * C
-   DFX:
-    PS0_L3_Bank_DFX: R * C
-    PS2_L3_Bank_DFX: R * C
-   SMALL:
-    PS0_L3_Bank_SMALL: R * C
-    PS1_L3_Bank_SMALL: R * C
-    PS2_L3_Bank_SMALL: R * C
-   CPunit:
-    PS0_L3_Bank_CPunit: R * C
-    PS2_L3_Bank_CPunit: R * C
-   Assign:
-    PS0_L3_Bank_Assign: R * C
-    PS2_L3_Bank_Assign: R * C
-   Repeater:
-    PS0_L3_Bank_Repeater: R * C
-    PS1_L3_Bank_Repeater: R * C
-    PS2_L3_Bank_Repeater: R * C
-   CLKGLUE:
-    PS0_L3_Bank_CLKGLUE: R * C
-    PS2_L3_Bank_CLKGLUE: R * C
-   NONCLKGLUE:
-    PS0_L3_Bank_NONCLKGLUE: R * C
-    PS1_L3_Bank_NONCLKGLUE: R * C
-    PS2_L3_Bank_NONCLKGLUE: R * C
+
 L3Node:
    Node:
     PS2_L3Node_Active : R * C
-   L3BankOther:
-    PS0_L3BankOther: 0.588 * R * C
-    PS1_L3BankOther: 0.588 * R * C
-    PS2_L3BankOther: 0.588 * R * C
-   DOP:
-    PS0_L3_Bank_DOP: 0.588 * R * C
-    PS2_L3_Bank_DOP: 0.588 * R * C
-   DFX:
-    PS0_L3_Bank_DFX: 0.588 * R * C
-    PS2_L3_Bank_DFX: 0.588 * R * C
-   SMALL:
-    PS0_L3_Bank_SMALL: 0.588 * R * C
-    PS1_L3_Bank_SMALL: 0.588 * R * C
-    PS2_L3_Bank_SMALL: 0.588 * R * C
-   CPunit:
-    PS0_L3_Bank_CPunit: 0.588 * R * C
-    PS2_L3_Bank_CPunit: 0.588 * R * C
-   Assign:
-    PS0_L3_Bank_Assign: 0.588 * R * C
-    PS2_L3_Bank_Assign: 0.588 * R * C
-   Repeater:
-    PS0_L3_Bank_Repeater: 0.588 * R * C
-    PS1_L3_Bank_Repeater: 0.588 * R * C
-    PS2_L3_Bank_Repeater: 0.588 * R * C
-   CLKGLUE:
-    PS0_L3_Bank_CLKGLUE: 0.588 * R * C
-    PS2_L3_Bank_CLKGLUE: 0.588 * R * C
-   NONCLKGLUE:
-    PS0_L3_Bank_NONCLKGLUE: 0.588 * R * C
-    PS1_L3_Bank_NONCLKGLUE: 0.588 * R * C
-    PS2_L3_Bank_NONCLKGLUE: 0.588 * R * C
 
 
 DSSC:
@@ -546,41 +485,8 @@ GAM:
     PS2_GAM_App: R * C
     PS2_SQIDI_App: R * C
     PS2_GA_SQIDI_RPT: R * C
-   DOP:
-    PS0_GAM_DOP: R * C
-    PS2_GAM_DOP: R * C
-   SMALL:
-    PS0_GAM_SMALL: R * C
-    PS1_GAM_SMALL: R * C
-    PS2_GAM_SMALL: R * C
-   CPunit:
-    PS0_GAM_CPunit: R * C
-    PS2_GAM_CPunit: R * C
-   Assign:
-    PS0_GAM_Assign: R * C
-    PS2_GAM_Assign: R * C
-   Repeater:
-    PS0_GAM_Repeater: R * C
-    PS1_GAM_Repeater: R * C
-    PS2_GAM_Repeater: R * C
-   CLKGLUE:
-    PS0_GAM_CLKGLUE: R * C
-    PS2_GAM_CLKGLUE: R * C
-   NONCLKGLUE:
-    PS0_GAM_NONCLKGLUE: R * C
-    PS1_GAM_NONCLKGLUE: R * C
-    PS2_GAM_NONCLKGLUE: R * C
-   DFX:
-    PS0_GAM_DFX: R * C
-    PS2_GAM_DFX: R * C
+
 Other:
-   Infra:
-    PS2_BGF: R * C
-    PS2_Media_Channel: R * C
-    PS2_GTINFNORTH: R * C
-    PS2_RASTER_Crossbar: R * C
-    PS2_MidSlice_FF: R * C
-    PS2_MDFI_GAM: R * C
    NODE:
     PS2_NODE: R*C
    URB:
@@ -592,9 +498,9 @@ Other:
     PS0_GTP24C: R * C
    ClockSpine:
     PS2_ClockSpine:
-     PS2_CAM_SPINE: R * C
-     PS2_CAM_SPINE_COMPUTE: R * C
-     PS2_CAM_SPINE_RAMBO: R * C
+     PS2_SPINE_Base: R * C
+     PS2_SPINE_Compute: R * C
+     PS2_SPINE_Rambo: R * C
    WIDI:
     PS0_WIDI_DOP: R * C
     PS0_WIDI: R * C
@@ -604,34 +510,4 @@ Other:
 Fabric:
    Fabrics:
     PS2_Fabric_Active: R * C
-   L3BankOther:
-    PS0_L3BankOther: 0.20 * R * C
-    PS1_L3BankOther: 0.20 * R * C
-    PS2_L3BankOther: 0.20 * R * C
-   DOP:
-    PS0_L3_Bank_DOP: 0.20 * R * C
-    PS2_L3_Bank_DOP: 0.20 * R * C
-   DFX:
-    PS0_L3_Bank_DFX: 0.20 * R * C
-    PS2_L3_Bank_DFX: 0.20 * R * C
-   SMALL:
-    PS0_L3_Bank_SMALL: 0.20 * R * C
-    PS1_L3_Bank_SMALL: 0.20 * R * C
-    PS2_L3_Bank_SMALL: 0.20 * R * C
-   CPunit:
-    PS0_L3_Bank_CPunit: 0.20 * R * C
-    PS2_L3_Bank_CPunit: 0.20 * R * C
-   Assign:
-    PS0_L3_Bank_Assign: 0.20 * R * C
-    PS2_L3_Bank_Assign: 0.20 * R * C
-   Repeater:
-    PS0_L3_Bank_Repeater: 0.20 * R * C
-    PS1_L3_Bank_Repeater: 0.20 * R * C
-    PS2_L3_Bank_Repeater: 0.20 * R * C
-   CLKGLUE:
-    PS0_L3_Bank_CLKGLUE: 0.20 * R * C
-    PS2_L3_Bank_CLKGLUE: 0.20 * R * C
-   NONCLKGLUE:
-    PS0_L3_Bank_NONCLKGLUE: 0.20 * R * C
-    PS1_L3_Bank_NONCLKGLUE: 0.20 * R * C
-    PS2_L3_Bank_NONCLKGLUE: 0.20 * R * C
+    PS2_Fabric_Idle: R * C

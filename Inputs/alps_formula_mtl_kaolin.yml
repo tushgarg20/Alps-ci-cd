@@ -229,33 +229,8 @@ SQIDI:
     PS2_SQIDI_INFRA: R * C
     #PS2_SQIDI_RPT: R * C
 Sampler:
- Main:
-    PS0_Sampler: R * C
-    PS2_Sampler_Point_LD: R * C
-    PS2_Sampler_Point_Sample_L: R * C
-    PS2_Sampler_Point_Else: R * C
-    PS2_Sampler_Small_Trilinear: R * C
-    PS2_Sampler_Small_Bilinear_Sample_L: R * C
-    PS2_Sampler_Small_Bilinear_Else: R * C
-    PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt: R * C
-    PS2_Sampler_Samp_16Bits_Trilinear_Float_Else: R * C
-    PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt: R * C
-    PS2_Sampler_Samp_16Bits_Trilinear_Else_Else: R * C
-    PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt: R * C
-    PS2_Sampler_Samp_16Bits_Bilinear_Float_Else: R * C
-    PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt: R * C
-    PS2_Sampler_Samp_16Bits_Bilinear_Else_Else: R * C
-    PS2_Sampler_High_Aniso: R * C
-    PS2_Sampler_High_Else_64bpt: R * C
-    PS2_Sampler_High_Else_Else: R * C
- Fetch:
-    PS2_Sampler_Fetch_Bypass: R * C
-    PS2_Sampler_Fetch_Fast: R * C
-    PS2_Sampler_Fetch_High: R * C
-    PS2_Sampler_Fetch_Low: R * C
- SC:
-    PS2_Sampler_SC: R * C
-
+   SC:
+    PS2_Sampler: R * C
 FF:
   VFBE:
     PS2_VFBE        : R * C 
