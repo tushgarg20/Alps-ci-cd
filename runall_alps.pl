@@ -118,6 +118,8 @@ if ($method){
 	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($dg2) ? $sdir . "alps_cfg_dg2_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($xe2_2xsp) ? $sdir . "alps_cfg_xe2_2xsp_kaolin.yaml" : $cfg_file;
+    	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_kaolin.yaml" : $cfg_file;
+
     }
 }
 

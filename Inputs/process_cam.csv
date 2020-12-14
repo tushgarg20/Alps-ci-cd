@@ -171,6 +171,8 @@ Gen9LPClient,PVCDP,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler 
 Gen11LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen12LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
 Gen12HP,PVCDP,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
+DG2,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
+DG2,PVC2,0.8736,0.8736,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVC,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCDP,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCDP,PVC2,0.8736,0.8736,Process scaler from PVCDP to PVC2

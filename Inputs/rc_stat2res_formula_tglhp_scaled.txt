@@ -139,6 +139,7 @@
 	.residuallbi		=	1- (PS0_LBI + PS1_LBI + PS2_LBI_BANK_WRITE + PS2_LBI_BANK_READ + PS2_LBI_MEFFILL + PS2_LBI_BANK_READ_URB + PS2_LBI_BANK_WRITE_URB)
 	PS2_LBI_Else		=	(.residuallbi<0)?0:.residuallbi
 	PS2_Fabric_Active 	=	PS2_LBI_BANK_READ + PS2_LBI_BANK_WRITE
+	PS2_Fabric_Idle = 1
 #L3Other				
 	PS0_L3BankOther	=	D(SUM('@ANY_L3@IdleCount.CrClock')) / (.CrClk * num_L3_Slices)	
 	PS1_L3BankOther	=	1 - PS0_L3BankOther - PS2_L3BankOther	
