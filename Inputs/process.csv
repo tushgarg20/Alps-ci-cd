@@ -155,3 +155,11 @@ Gen11LP,DG2,1,1,Scale factors not available
 Gen11LP,Xe2,1,1,Scale factors not available
 Gen9LPClient,DG2,1,1,Scale factors not available
 Gen10LP,DG2,1,1,Scale factors not available
+Gen9LPClient,MTL,1,1,
+Gen10LP,MTL,1,1,
+Gen11LP,MTL,1,1,
+Gen12LP,MTL,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12DG,MTL,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
+Gen12HP,MTL,1,1,No scaler, pv push and 10dg scaler are already accounted in cdyn weights
+DG2,MTL,1,1,
+MTL,MTL,1,1,

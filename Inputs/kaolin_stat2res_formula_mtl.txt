@@ -167,16 +167,16 @@
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
-    @SAMPLER_MAIN@ = (Point_LD | Point_Sample_L | Point_Else | Small_Trilinear | Small_Bilinear_Sample_L | Small_Bilinear_Else | Samp_16Bits_Trilinear_Fl
-    @SAMPLER_FETCH@ = (Fetch_Bypass | Fetch_Fast | Fetch_High | Fetch_Low) 
+    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Fl)
+    @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
     Total_Sampler_fetch = (D(SUM('pwr\.@SAMPLER_FETCH@')))
   
-    Sampler_main_active : D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
-    Sampler_fetch_active: D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
+    Sampler_main_active = D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
+    Sampler_fetch_active= D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
     
-    PS0_Sampler: 1 - Sampler_main_active
+    PS0_Sampler = 1 - Sampler_main_active
     
     #Main path
     PS2_Sampler_Point_LD =  D('pwr\.Point_LD') * Sampler_main_active / Total_Sampler_main
