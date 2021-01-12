@@ -152,26 +152,37 @@
          @MULIBYPASS@ = (MulIBy16|MulIBy32|MulIBy64)
          @ADDIBYPASS@ = (AddIBy16|AddIBy32|AddIBy64)
          @SELIBYPASS@ = (SelIBy16|SelIBy32|SelIBy64)
+         @ALLDPAS@ = (SysFp|SysBFp|SysI|SysI4) 
 
          FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
          FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
          EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+        DPAS_total_count =  (D(SUM('pwr\.@ALLDPAS@')))
+        Total_instr_count = FPU0_total_count + FPU1_total_count + EM_total_count + DPAS_total_count
+
 
 #Toggle Rates
-         .avg_FPU0_Src0_toggle = D('pwr\.TrFpS0')/numEUs
-         .avg_FPU0_Src1_toggle = D('pwr\.TrFpS1')/numEUs
-         .avg_FPU0_Src2_toggle = D('pwr\.TrFpS2')/numEUs
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * numEUs)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * numEUs)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * numEUs)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         .max_FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
-         FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/numEUs
-         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/numEUs
-         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/numEUs
+         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*numEUs)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*numEUs)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*numEUs)
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
-         .max_EM_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
+         FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
-         FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 2 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         GA_toggle_rate	=	FPU0_toggle_rate #MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
+         #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+#DPAS toggle rate
+        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*numEUs)
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*numEUs)
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*numEUs)
+         #.avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
+         DPAS_toggle_rate = MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
+         #DPAS_toggle_rate = 	(PS2_EU_DPAS > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * PS2_EU_DPAS * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         GA_toggle_rate	= MAX(DPAS_toggle_rate, FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to the maximum of the 2 execution pipes
 
 #FPU0 instructions
          .temp_mad_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy32')) / (FPU0_total_count)):0
@@ -289,44 +300,42 @@
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #DPAS
-        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysBFp  =  (D(SUM('pwr\.SysBFp ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW    ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUB   =  (D(SUM('pwr\.SysUB  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUV   =  (D(SUM('pwr\.SysUV  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUD   =  (D(SUM('pwr\.SysUD  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUQ   =  (D(SUM('pwr\.SysUQ  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other))) / (.CrClk * numEUs)
-
-        ExtraPipe_DPAS_Float = ExtraPipe_DPAS_DpasFp32
-        ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_DpasFp16
+        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_Float =  (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_BFloat  =  (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all' ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB' ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW'    ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUB   =  (D(SUM('pwr\.SysUB'  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUV   =  (D(SUM('pwr\.SysUV'  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW' ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUD   =  (D(SUM('pwr\.SysUD'  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUQ   =  (D(SUM('pwr\.SysUQ'  ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other'))) / (.CrClk * numEUs)
 
 
 
 #GA and GRF power states
-         PS2_GA_GRF_1Read_ECC = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8)
-         PS2_GA_GRF_1Write_ECC = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
+         PS2_GA_GRF_1Read_ECC = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
+         PS2_GA_GRF_1Write_ECC = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
+         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
+         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+        PS2_GA_GRF_Floor = Total_instr_count  / (.CrClk * numEUs)
        
 #GRF power states - Read and Write
          PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats

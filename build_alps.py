@@ -350,7 +350,7 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
-    #print (cluster,base_cfg,cfg,unit_scalar)
+    print (cluster,base_cfg,cfg,unit_scalar)
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
@@ -803,7 +803,7 @@ key_stats['key_stats']['Operating Voltage'] = operating_voltage
 key_stats['key_stats']['Voltage dependent Cdyn Scaling Factor'] = voltage_cdyn_scaling_factor
 
 for path in output_list:
-    #print(path)
+    print(path)
     path[-1] = eval_formula(path)
     d = output_yaml_data['ALPS Model(pF)']['GT']
     cdyn_d = output_cdyn_data['GT']

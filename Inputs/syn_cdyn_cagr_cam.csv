@@ -1404,6 +1404,7 @@ EU,Gen11LP,MTL,0.85733882
 EU,Gen12LP,MTL,0.85733882
 EU,Gen12HP,MTL,0.85733882
 EU,DG2,MTL,0.9153,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet,5% savings from Akash (20ww20)
+EU,MTL,MTL,1
 Fabric,Gen11,Gen12HP,0.9
 Fabric,Gen10LP,Gen12HP,0.837
 Fabric,Gen11LP,Gen12HP,0.9
