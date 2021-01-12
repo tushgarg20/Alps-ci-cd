@@ -118,6 +118,7 @@ GAM:
     PS2_CAM_SQIDI: R * C
     PS2_CAM_SQIDI_INFRA: R * C
     PS2_CAM_CC: R * C
+    PS2_GA_SQIDI_RPT: R * C 
 
 LSC:
    LSC:

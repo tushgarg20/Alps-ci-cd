@@ -8,8 +8,6 @@ FPS: R
 
 EU:
   GRF:
-     PS2_GRF_READ: R * C
-     PS2_GRF_WRITE: R * C
      PS2_GA_GRF_1Read_ECC: R * C
      PS2_GA_GRF_1Write_ECC: R * C
      PS2_GRF_SEND_PATH: R * C
@@ -154,6 +152,7 @@ EU:
       PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_Read_DPAS_dispatch : R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_ExtraPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_GRF_Floor: R * C
   ExtraPipe:
       PS2_EU_DPAS: R * C
       ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]

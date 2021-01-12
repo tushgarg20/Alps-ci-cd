@@ -146,6 +146,7 @@ DG2,DG2,1.0506,1.0506,2% config scaler and 3% process scaler based on 20ww31.1 s
 DG2,DG2p5,0.9,0.9,Process scalar applied in Blizzard, 10% CDYN optimization at GT level for all Compute WLs as per Wave 2.5 opt Plan from Kamal 20ww42, 
 DG2p5,DG2p5,1,1,Process scalar applied to CDYNMAX, 
 DG2,MTL,0.9145,0.9145,2% config scaler multiplied by 0.92 as 8% reduction at GT level for optimization is the target,2.55% savings based on 20ww22 weekly CDYN indicator (Akash) 
+MTL,MTL,1,1,Scale factors not available
 DG2,ADL,1,1,Scale factors not available
 Gen12HP,DG2,1.1664,1.1664,Scale factors not available
 Gen12LP,DG2,1,1,Scale factors not available
