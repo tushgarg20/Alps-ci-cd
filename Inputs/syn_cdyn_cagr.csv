@@ -1402,10 +1402,11 @@ EU,Gen11LP,DG2,0.85733882
 EU,Gen11LP,Xe2,0.85733882
 EU,Gen12LP,DG2,0.85733882
 EU,Gen12LP,Xe2,0.85733882
-EU,Gen12HP,DG2,0.85733882
-EU,Gen12HP,Xe2,0.85733882
-EU,DG2,DG2,0.85733882
-EU,DG2,Xe2,0.85733882
+EU,Gen12HP,DG2,0.85,to match with emualtion cdyn 
+EU,Gen12HP,Xe2,0.85,to match with emualtion cdyn 
+EU,DG2,DG2,0.85,to match with emualtion cdyn 
+EU,DG2,Xe2,1
+EU,PVC,Xe2,1
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen10LP,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
@@ -1502,13 +1503,13 @@ Other,Gen12LP,DG2,1
 GAM,Gen12LP,DG2,1
 SQIDI,Gen12LP,DG2,1
 Sampler,Gen12LP,DG2,1
-FF,Gen12LP,DG2,1
-FF,Gen11LP,DG2,1
-COLOR,Gen12LP,DG2,1
-Z,Gen12LP,DG2,1
-Z,DG2,DG2,1
-ROSS,Gen11LP,DG2,1
-ROSS,Gen12LP,DG2,1
+FF,Gen12LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen11LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,Gen12LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,Gen12LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,DG2,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+ROSS,Gen11LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+ROSS,Gen12LP,DG2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Other,Gen10LP,Gen12HP,0.837
 Other,Gen8,Gen12HP,0.60264
 Other,Gen8SoC,Gen12HP,0.60264
@@ -2356,3 +2357,86 @@ FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
 LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
 LSC,DG2,DG2,1
+EU,Gen10LP,Xe3,0.739886824
+EU,Gen8,Xe3,0.532718513
+EU,Gen8SoC,Xe3,0.532718513
+EU,Gen9LPClient,Xe3,0.653320066
+EU,Gen9LPSoC,Xe3,0.665898142
+EU,Gen11,Xe3,0.739886824
+EU,Gen11LP,Xe3,0.79557723
+EU,Gen12LP,Xe3,0.941256261
+EU,Gen12DG,Xe3,0.941256261
+EU,Gen12HP,Xe3,0.8722
+EU,PVC,Xe3,1
+EU,DG2,Xe3,1
+EU,ADL,Xe3,1
+L3_Bank,PVC,Xe3,1
+L3Node,PVC,Xe3,1
+Fabric,PVC,Xe3,1
+LSC,PVC,Xe3,1
+Other,Gen12LP,Xe3,1
+Other,PVC,Xe3,1
+GAM,Gen12LP,Xe3,1
+SQIDI,Gen12LP,Xe3,1
+FF,Gen12LP,Xe3,1
+FF,Gen11LP,Xe3,1
+COLOR,Gen12LP,Xe3,1
+Z,Gen12LP,Xe3,1
+Z,DG2,Xe3,1
+ROSS,Gen12LP,Xe3,1
+ROSS,Gen11LP,Xe3,1
+Sampler,DG2,Xe3,1
+Sampler,Gen12LP,Xe3,1
+EU,Gen10LP,Xe2,0.739886824
+EU,Gen8,Xe2,0.532718513
+EU,Gen8SoC,Xe2,0.532718513
+EU,Gen9LPClient,Xe2,0.653320066
+EU,Gen9LPSoC,Xe2,0.665898142
+EU,Gen11,Xe2,0.739886824
+EU,Gen11LP,Xe2,0.79557723
+EU,Gen12LP,Xe2,0.941256261
+EU,Gen12DG,Xe2,0.941256261
+EU,Gen12HP,Xe2,0.8722
+EU,DG2,Xe2,0.888576
+EU,ADL,Xe2,0.888576
+L3_Bank,Gen12HP,Xe2,1
+L3Node,Gen12HP,Xe2,1
+L3Node,PVC,Xe2,1
+Fabric,Gen12HP,Xe2,1
+Fabric,PVC,Xe2,1
+Other,Gen12LP,Xe2,1
+Other,Gen12HP,Xe2,1
+Other,DG2,Xe2,1
+Other,PVC,Xe2,1
+GAM,Gen12LP,Xe2,1
+SQIDI,Gen12LP,Xe2,1
+FF,Gen12LP,Xe2,1
+FF,Gen11LP,Xe2,1
+COLOR,Gen12LP,Xe2,1
+Z,Gen12LP,Xe2,1
+Z,DG2,Xe2,1
+ROSS,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+ROSS,Gen11LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Sampler,DG2,Xe2,1
+Sampler,Gen12LP,Xe2,1
+LSC,DG2,Xe2,1
+DSSC,Gen12HP,MTL,1
+DSSC,DG2,MTL,1
+DSSC,MTL,MTL,1
+FF,Gen12LP,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen11LP,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,MTL,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,Gen12LP,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,MTL,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,Gen12LP,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,DG2,MTL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen11LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,DG2,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen11LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+Z,DG2,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
