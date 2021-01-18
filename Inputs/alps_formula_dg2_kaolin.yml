@@ -8,8 +8,8 @@ FPS: R
 
 EU:
   GRF:
-     PS2_GA_GRF_READ: R * LINEST[C,R[GA_toggle_rate]]
-     PS2_GA_GRF_WRITE: R * LINEST[C,R[GA_toggle_rate]] 
+     PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
+     PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
      PS2_GRF_SEND_PATH: R * C
 
   Accumulator:
@@ -200,7 +200,6 @@ Other:
     #PS2_ROGT: R * C
     #PS2_NODE: R * C
     #PS2_CC: R * C
-    PS2_BGF: R * C
     #PS2_GA_SQIDI_RPT: R * C
     #PS2_MEDIA: R * C
     #PS2_MDFI_GAM: R * C

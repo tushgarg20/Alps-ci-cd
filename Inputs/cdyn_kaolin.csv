@@ -9058,7 +9058,6 @@ PS2_Fabric_Active,Gen12HP,A0,836,syn,0,approximated cdyn weights for L3,
 #PS2_EU_FPU0,Gen12LP,A0,158.61,syn,1,,
 #PS2_EU_FPU0_Idle,Gen12LP,A0,8.18,syn,1,,
 PS2_EU_FPU1,Gen12LP,A0,1,syn,1,,
-PS2_ROW,Gen12LP,A0,9.29,syn,1,,
 EM_transc_fp32,Gen12LP,A0,1,syn,1,,
 ExtraPipe_DPAS_Float,Gen12LP,A0,1,syn,1,,
 ExtraPipe_DPAS_BFloat,Gen12LP,A0,1,syn,1,,
@@ -9100,7 +9099,6 @@ PS2_SPINE,Gen12LP,A0,170,syn,1,,
 PS2_GTDSS,Gen12LP,A0,1,syn,1,,
 PS2_GTDSS_INFRA,Gen12LP,A0,1,syn,1,,
 PS2_PS,Gen12LP,A0,1,syn,1,,
-PS2_ROW,Gen12LP,A0,1,syn,1,,
 PS2_COLOR,Gen12LP,A0,1,syn,1,,
 PS2_GAM,Gen12LP,A0,302,syn,1,,
 PS2_SQIDI,Gen12LP,A0,312,syn,1,,
@@ -9116,6 +9114,7 @@ PS2_L3_Active,Gen12HP,A0,315.2,syn,0,approximated cdyn weights for L3,
 PS2_L3Node_Active,Gen12HP,A0,519.5,syn,0,approximated cdyn weights for L3,
 PS2_Fabric_Active,Gen12HP,A0,836,syn,0,approximated cdyn weights for L3,
 PS2_Sampler_SC,Gen12LP,A0,329,syn,1,,
+PS2_Sampler_SC,DG2,A0,621.75,syn,1,,
 PS0_Sampler,DG2,A0,4.176,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_Sampler_Point_Sample_L,DG2,A0,401.546457,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_Sampler_Point_Else,DG2,A0,339.371674,syn,0,approx cdyn weights for sampler based on existing test cases,
@@ -9139,14 +9138,12 @@ PS2_Sampler_Fetch_High,DG2,A0,60.45346675,syn,0,approx cdyn weights for sampler 
 PS2_Sampler_Fetch_Low,DG2,A0,60.45346675,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_LSC_Read,PVC,A0,1444.1,syn,0,approximated cdyn weights for LSC from CSS,
 PS2_LSC_Write,PVC,A0,1300.9,syn,0,approximated cdyn weights for LSS from CSS,
-PS2_SPINE,PVC,A0,13500,syn,1,,
 Foveros_compute,PVC,A0,91.54,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
 Foveros_compute_idle,PVC,A0,74.38,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
 Foveros_rambo,PVC,A0,20.17,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
 Foveros_rambo_idle,PVC,A0,17.18,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
 Foveros_base,PVC,A0,137.88,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
 Foveros_base_idle,PVC,A0,148.06,syn,1,Approximated Foverso compute cdyn weight from compute sheet,,,
-PS2_ROW,Gen12LP,A0,5.85,syn,1,temporary number need to be updated with actual number later,
 PS2_L3_Active,PVC,A0,323.665625,syn,0,approximated cdyn weights for L3,
 PS2_L3_Bank_idle,PVC,A0,15.44221875,syn,0,,
 PS2_L3Node_Active,PVC,A0,1071.3125,syn,0,approximated cdyn weights for L3,
@@ -9309,24 +9306,28 @@ PS2_GA_Syn_Read_10%,DG2,A0,14.28,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synt
 PS2_GA_Syn_Read_20%,DG2,A0,14.89,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth",
 PS2_GA_Syn_Read_30%,DG2,A0,15.52,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth",
 PS2_GA_Syn_Read_45%,DG2,A0,15.79,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth",
+PS2_GA_Syn_Write_10%,DG2,A0,9.614491315,syn,0,Approximated based on ratio between GA_GRF_Read to GA_GRF_Write
+PS2_GA_Syn_Write_20%,DG2,A0,10.67794045,syn,0,Approximated based on ratio between GA_GRF_Read to GA_GRF_Write
+PS2_GA_Syn_Write_30%,DG2,A0,11.81009098,syn,0,Approximated based on ratio between GA_GRF_Read to GA_GRF_Write
+PS2_GA_Syn_Write_45%,DG2,A0,13.0473201,syn,0,Approximated based on ratio between GA_GRF_Read to GA_GRF_Write
 PS2_EU_DPAS,PVC,A0,197,syn,0,,
-ExtraPipe_DPAS_Float_10%,DG2,A0,105.51,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-ExtraPipe_DPAS_Float_20%,DG2,A0,135.41,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-ExtraPipe_DPAS_Float_30%,DG2,A0,161.19,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-ExtraPipe_DPAS_Float_45%,DG2,A0,184.27,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_dp4a_sint32_30%,DG2,A0,59.38,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_dp4a_sint32_45%,DG2,A0,69.85,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mad_fp32_10%,DG2,A0,48.48,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mad_fp32_20%,DG2,A0,56.69,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mad_fp32_30%,DG2,A0,62.94,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mad_fp32_45%,DG2,A0,68.57,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mul_floatbypass,DG2,A0,15.53,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_mad_floatbypass,DG2,A0,29.49,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-FPU0_add_floatbypass,DG2,A0,26.56,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-PS2_GA_ExtraPipe_10%,DG2,A0,35.83,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-PS2_GA_ExtraPipe_20%,DG2,A0,41.02,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-PS2_GA_ExtraPipe_30%,DG2,A0,45.53,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
-PS2_GA_ExtraPipe_45%,DG2,A0,51.37,syn,0,"20WW20 DG2	A0	FSO	Cdyn	EU	FPU	PS2_FPU_em_cos_fp32_45t	Sim	No bypass",
+ExtraPipe_DPAS_Float_10%,DG2,A0,105.51,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+ExtraPipe_DPAS_Float_20%,DG2,A0,135.41,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+ExtraPipe_DPAS_Float_30%,DG2,A0,161.19,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+ExtraPipe_DPAS_Float_45%,DG2,A0,184.27,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_dp4a_sint32_30%,DG2,A0,59.38,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_dp4a_sint32_45%,DG2,A0,69.85,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mad_fp32_10%,DG2,A0,48.48,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mad_fp32_20%,DG2,A0,56.69,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mad_fp32_30%,DG2,A0,62.94,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mad_fp32_45%,DG2,A0,68.57,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mul_floatbypass,DG2,A0,15.53,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_mad_floatbypass,DG2,A0,29.49,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+FPU0_add_floatbypass,DG2,A0,26.56,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+PS2_GA_ExtraPipe_10%,DG2,A0,35.83,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+PS2_GA_ExtraPipe_20%,DG2,A0,41.02,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+PS2_GA_ExtraPipe_30%,DG2,A0,45.53,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
+PS2_GA_ExtraPipe_45%,DG2,A0,51.37,syn,0,"20WW20 DG2,A0,FSO,Cdyn,EU,FPU,PS2_FPU_em_cos_fp32_45t,Sim,No bypass",
 PS2_GA_GRF_1Read_ECC_10%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 PS2_GA_GRF_1Read_ECC_20%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 PS2_GA_GRF_1Read_ECC_30%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
@@ -9659,3 +9660,120 @@ PS0_CC_IDLE_CGEN,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.
 PS0_CC_IDLE_CGDIS,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
 PS2_CC_READ_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
 PS2_CC_WRITE_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
+FPU11_add_fp32_bypass,PVC,A0,28.9344,syn,1,,
+FPU11_add_fp64_20%,PVC,A0,53.24,syn,1,,
+FPU11_add_fp64_30%,PVC,A0,62.78,syn,1,,
+FPU11_add_fp64_45%,PVC,A0,75.05,syn,1,,
+FPU11_mad_fp16_20%,PVC,A0,53.86,syn,1,,
+FPU11_mad_fp16_30%,PVC,A0,57.56,syn,1,,
+FPU11_mad_fp16_45%,PVC,A0,60.13,syn,1,,
+FPU11_mad_fp32_10%,PVC,A0,51.22,syn,1,,
+FPU11_mad_fp32_20%,PVC,A0,56.61,syn,1,,
+FPU11_mad_fp32_30%,PVC,A0,63.85,syn,1,,
+FPU11_mad_fp32_45%,PVC,A0,68.48,syn,1,,
+FPU11_mad_fp32_bypass,PVC,A0,14.308,syn,1,,
+FPU11_mad_fp32_mul_bypass,PVC,A0,32.8704,syn,1,,
+FPU11_mov_fp16_45%,PVC,A0,20.36,syn,1,,
+FPU11_mov_fp32_45%,PVC,A0,20.36,syn,1,,
+FPU11_mul_fp16_20%,PVC,A0,38.86,syn,1,,
+FPU11_mul_fp16_30%,PVC,A0,45.67,syn,1,,
+FPU11_mul_fp16_45%,PVC,A0,49.03,syn,1,,
+FPU11_mul_fp32_20%,PVC,A0,42.82,syn,1,,
+FPU11_mul_fp32_30%,PVC,A0,48.82,syn,1,,
+FPU11_mul_fp32_45%,PVC,A0,52.65,syn,1,,
+FPU11_mul_fp32_bypass,PVC,A0,15.2685,syn,1,,
+FPU11_mul_fp64_20%,PVC,A0,79.56,syn,1,,
+PS2_GA_1Read_FPU11_dispatch_10%,PVC,A0,1.39,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
+PS2_GA_1Read_FPU11_dispatch_20%,PVC,A0,1.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
+PS2_GA_1Read_FPU11_dispatch_30%,PVC,A0,2.43,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
+PS2_GA_1Read_FPU11_dispatch_45%,PVC,A0,3.23,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
+FPU11_add_fp64_20%,PVC,A0,53.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_add_fp64_30%,PVC,A0,62.78,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_add_fp64_45%,PVC,A0,75.05,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mad_add_fp64bypass_20%,PVC,A0,55.819999,syn,1,CDYN weight extrapolated from mad_fp64 with process scaler of 0.89, mad_floatfp64bypass, mul_fp64 and add_fp64
+FPU11_mad_add_fp64bypass_30%,PVC,A0,61.196934,syn,1,CDYN weight extrapolated from mad_fp64 with process scaler of 0.89, mad_floatfp64bypass, mul_fp64 and add_fp64
+FPU11_mad_add_fp64bypass_45%,PVC,A0,65.355815,syn,1,CDYN weight extrapolated from mad_fp64 with process scaler of 0.89, mad_floatfp64bypass, mul_fp64 and add_fp64
+FPU11_mad_fp64_20%,PVC,A0,95.18,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mad_fp64_30%,PVC,A0,105.69,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mad_fp64_45%,PVC,A0,116.34,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mov_fp64_20%,PVC,A0,12.3462135,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,
+FPU11_mov_fp64_29%,PVC,A0,13.6702665,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,
+FPU11_mov_fp64_31%,PVC,A0,14.518125,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,
+FPU11_mul_fp64_20%,PVC,A0,79.56,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mul_fp64_30%,PVC,A0,86.82,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_mul_fp64_45%,PVC,A0,94.07,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,
+FPU11_add_fp16_30%,DG2,A0,47.83,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_fp16_45%,DG2,A0,50.34,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_fp32_10%,DG2,A0,26.35,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_fp32_20%,DG2,A0,31.95,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_fp32_30%,DG2,A0,37.55,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_fp32_45%,DG2,A0,42.16,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_cmp_fp32_45%,DG2,A0,27.22,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_sel_fp32_45%,DG2,A0,31.01,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_30%,DG2,A0,60.32,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_45%,DG2,A0,60.89,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_10%,DG2,A0,48.48,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_20%,DG2,A0,56.69,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_30%,DG2,A0,62.94,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp16_45%,DG2,A0,68.57,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mov_fp16_45%,DG2,A0,13.16,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mov_fp32_45%,DG2,A0,15.63,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp16_30%,DG2,A0,38.96,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp16_45%,DG2,A0,46.29,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp32_10%,DG2,A0,35.64,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp32_20%,DG2,A0,41.14,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp32_30%,DG2,A0,46.56,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mul_fp32_45%,DG2,A0,50.09,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_mad_fp32_0%,DG2,A0,16.18,syn,1,DG2d1p0 EU CDYN weight release 20WW10 from Prasanth,,,
+FPU11_mad_fp32_10%,DG2,A0,48.72,syn,1,DG2d1p0 EU CDYN weight release 20WW10 from Prasanth,,,
+FPU11_mad_fp32_20%,DG2,A0,58.51,syn,1,DG2d1p0 EU CDYN weight release 20WW10 from Prasanth,,,
+FPU11_mad_fp32_30%,DG2,A0,63.2,syn,1,DG2d1p0 EU CDYN weight release 20WW10 from Prasanth,,,
+FPU11_mad_fp32_45%,DG2,A0,69.93,syn,1,DG2d1p0 EU CDYN weight release 20WW10 from Prasanth,,,
+FPU11_mad_floatbypass,DG2,A0,28.09,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
+PS2_GA_Read_FPU11_dispatch_10%,DG2,A0,5.38,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+PS2_GA_Read_FPU11_dispatch_20%,DG2,A0,1.46,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+PS2_GA_Read_FPU11_dispatch_30%,DG2,A0,1.77,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+PS2_GA_Read_FPU11_dispatch_45%,DG2,A0,2.25,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+PS2_GA_Read_FPU11_dispatch,DG2,A0,2.25,syn,0,"20WW35 DG2 FS0 CDYN weight based on Synthetic PTPX tests, provided by Prasanth"
+FPU11_add_floatbypass_16%,Gen12LP,A0,16.16190476,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_add_floatbypass_25%,Gen12LP,A0,16.6372549,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_add_floatbypass_35%,Gen12LP,A0,17.3094,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_add_floatbypass_44%,Gen12LP,A0,17.8185,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_add_floatbypass_57%,Gen12LP,A0,18.4973,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_mac_floatbypass_30%,Gen12LP,A0,31.64,syn,1,From praneeth WW21 2018,
+FPU11_mac_floatbypass_16%,Gen12LP,A0,30.1333,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_mac_floatbypass_25%,Gen12LP,A0,31.01,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_mac_floatbypass_46%,Gen12LP,A0,33.222,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_mac_floatbypass_65%,Gen12LP,A0,35.4368,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_sel_floatbypass_29%,Gen12LP,A0,16.97,syn,1,From Praneeth WW21 2018,
+FPU11_sel_floatbypass_16%,Gen12LP,A0,16.16190476,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_sel_floatbypass_25%,Gen12LP,A0,16.6372549,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_sel_floatbypass_35%,Gen12LP,A0,17.3094,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_sel_floatbypass_44%,Gen12LP,A0,17.8185,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_sel_floatbypass_58%,Gen12LP,A0,18.4973,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR ,
+FPU11_mac_fp16_19%,Gen12LP,A0,37.79,syn,1,From Praneeth WW21 2018,
+FPU11_mac_fp16_29%,Gen12LP,A0,38.9237,syn,1,"From Praneeth WW21 2018, extrapolated at 1% for 3% increase in TR",
+FPU11_mac_fp16_35%,Gen12LP,A0,39.6795,syn,1,"From Praneeth WW21 2018, extrapolated at 1% for 3% increase in TR",
+FPU11_mac_fp16_44%,Gen12LP,A0,40.77,syn,1,"From Praneeth WW21 2018, extrapolated at 1% for 3% increase in TR",
+FPU11_mac_fp16_57%,Gen12LP,A0,42.7027,syn,1,"From Praneeth WW21 2018, extrapolated at 1% for 3% increase in TR",
+FPU11_mac_fp32_20%,Gen12HP,A0,48.41,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR
+FPU11_mac_fp32_30%,Gen12HP,A0,53.825,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR
+FPU11_mac_fp32_45%,Gen12HP,A0,58.41,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR
+FPU11_mad_floatbypass_30%,Gen12LP,A0,31.64,syn,1,From praneeth WW21 2018,
+FPU11_mad_floatbypass_16%,Gen12LP,A0,30.13333333,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mad_floatbypass_25%,Gen12LP,A0,31.01960784,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mad_floatbypass_46%,Gen12LP,A0,33.222,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mad_floatbypass_65%,Gen12LP,A0,35.4368,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mul_floatbypass_30%,Gen12LP,A0,15.75,syn,1,From Ram WW2_2018,
+FPU11_mul_floatbypass_16%,Gen12LP,A0,15,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mul_floatbypass_35%,Gen12LP,A0,16.065,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mul_floatbypass_46%,Gen12LP,A0,16.5375,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_mul_floatbypass_65%,Gen12LP,A0,17.64,syn,1,Extrapolated at the rate 1% Cdyn increase for 3% TR,
+FPU11_sel_fp16_6%,Gen12LP,A0,17.18,syn,1,From Praneeth WW21_2018,
+FPU11_sel_fp16_7%,Gen12LP,A0,17.13,syn,1,From Praneeth WW21_2018,
+FPU11_sel_fp16_9%,Gen12LP,A0,19.08,syn,1,From Praneeth WW21_2018,
+FPU11_sel_fp16_10%,Gen12LP,A0,20.34,syn,1,From Praneeth WW21_2018,
+FPU11_sel_fp16_16%,Gen12LP,A0,20.7468,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
+FPU11_sel_fp16_29%,Gen12LP,A0,21.5604,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
+PS2_SPINE,DG2,A0,4.16,syn,1,,
+PS2_ROW,DG2,A0,570,syn,1,,
