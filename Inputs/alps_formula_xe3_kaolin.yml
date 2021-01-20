@@ -244,7 +244,10 @@ L3Node:
   Node:
     PS2_L3Node_Active: R * C
     PS2_L3_Node_idle: R * C
-
+Fabric:
+  Fabrics:
+    PS2_Fabric_Active: R * C
+    PS2_Fabric_Idle: R * C
 LSC:
   L1:
     PS2_LSC_Read: R * C
