@@ -181,10 +181,7 @@ L3_Bank:
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
-Fabric:
-  Fabrics:
-    PS2_Fabric_Active: R * C
-
+    PS2_L3Node_Idle: R * C
 LSC:
   L1:
     PS2_L1_Read_Hit: R * C
