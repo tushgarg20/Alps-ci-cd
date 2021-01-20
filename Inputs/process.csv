@@ -148,6 +148,7 @@ DG2,DG2,1,1,
 DG2,ADL,1,1,Scale factors not available
 DG2,Xe2,1,1,Scale factors not available
 PVC,Xe2,1,1,Scale factors not available
+Xe2,Xe2,1,1,Scale factoes not available
 Gen12HP,DG2,1.1664,1.1664,Scale factors not available
 Gen12HP,Xe2,1.1664,1.1664,Scale factors not available
 Gen12LP,DG2,1,1,Scale factors not available
@@ -171,9 +172,12 @@ Gen12LP,Xe3,1,1,
 Gen12HP,Xe3,1,1,
 DG2,Xe3,1,1,
 PVC,Xe3,1,1,
+PVCDP,Xe3,1,1,
 Gen9LPClient,Xe2,1,1,
 Gen10LP,Xe2,1,1,
 Gen11LP,Xe2,1,1,
 Gen12LP,Xe2,1,1,
 Gen12HP,Xe2,1,1,
 DG2,Xe2,1,1,
+PVC,Xe2,1,1,
+PVCDP,Xe2,1,1,

@@ -8,6 +8,7 @@ FPS: R
 
 EU:
   GRF:
+     PS2_GA_GRF_FLOOR: R * C
      PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
      PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
      PS2_GRF_SEND_PATH: R * C
@@ -247,10 +248,7 @@ L3_Bank:
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
-Fabric:
-  Fabrics:
-    PS2_Fabric_Active: R * C
-
+    PS2_L3Node_Idle: R * C
 LSC:
   L1:
     PS2_L1_Read_Hit: R * C

@@ -65,9 +65,9 @@
 
     Total_Fpu11Cycles = Total_ExFpuCycles + Total_ExLongCycles
 
-    instruction_ratio_11 = Total_Fpu11Cycles / Total_Fpu0Cycles
-    instruction_ratio_01 = Total_ExFpuCycles / Total_Fpu0Cycles
-    instruction_ratio_02 = Total_ExLongCycles / Total_Fpu0Cycles
+    instruction_ratio_11 = 1 #Total_Fpu11Cycles / Total_Fpu0Cycles
+    instruction_ratio_01 = 1 #Total_ExFpuCycles / Total_Fpu0Cycles
+    instruction_ratio_02 = 1 #Total_ExLongCycles / Total_Fpu0Cycles
 
 	FPU0_Utilization = (Total_Fpu0Cycles)/(.CrClk * numEUs * 0.5)
 	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)

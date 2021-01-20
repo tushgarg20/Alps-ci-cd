@@ -1407,6 +1407,7 @@ EU,Gen12HP,Xe2,0.85,to match with emualtion cdyn
 EU,DG2,DG2,0.85,to match with emualtion cdyn 
 EU,DG2,Xe2,1
 EU,PVC,Xe2,1
+EU,PVCDP,Xe2,1
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen10LP,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
@@ -1496,6 +1497,7 @@ L3Node,Gen12LP,Gen12HP,1
 L3Node,Gen12DG,Gen12HP,1
 L3Node,Gen12HP,Gen12HP,1
 L3Node,Gen12HP,DG2,1
+L3Node,DG2,DG2,1
 Fabric,Gen12HP,DG2,1
 DSSC,Gen12LP,DG2,1
 DSSC,Gen12HP,DG2,1
@@ -2370,6 +2372,7 @@ EU,Gen12HP,Xe3,0.8722
 EU,PVC,Xe3,1
 EU,DG2,Xe3,1
 EU,ADL,Xe3,1
+EU,PVCDP,Xe3,1
 L3_Bank,PVC,Xe3,1
 L3Node,PVC,Xe3,1
 Fabric,PVC,Xe3,1
@@ -2400,7 +2403,10 @@ EU,Gen12HP,Xe2,0.8722
 EU,DG2,Xe2,0.888576
 EU,ADL,Xe2,0.888576
 L3_Bank,Gen12HP,Xe2,1
+L3_Bank,Xe2,Xe2,1
 L3Node,Gen12HP,Xe2,1
+L3Node,DG2,Xe2,1
+L3Node,Xe2,Xe2,1
 L3Node,PVC,Xe2,1
 Fabric,Gen12HP,Xe2,1
 Fabric,PVC,Xe2,1
@@ -2414,10 +2420,10 @@ FF,Gen12LP,Xe2,1
 FF,Gen11LP,Xe2,1
 COLOR,Gen12LP,Xe2,1
 Z,Gen12LP,Xe2,1
-Z,DG2,Xe2,1
+Z,DG2,Xe2,0.82, process scaler from n7 to n5
 ROSS,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 ROSS,Gen11LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-Sampler,DG2,Xe2,1
+Sampler,DG2,Xe2,0.82, process scaler from n7 to n5
 Sampler,Gen12LP,Xe2,1
 LSC,DG2,Xe2,1
 DSSC,Gen12HP,MTL,1

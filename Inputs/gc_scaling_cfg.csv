@@ -1151,6 +1151,7 @@ EU,Gen11LP,Xe3,False
 EU,Gen9LPClient,Xe3,False
 EU,DG2,Xe3,False
 EU,PVC,Xe3,False
+EU,PVCDP,Xe3,False
 ROSS,Gen9LPClient,Xe3,False
 ROSS,Gen9LPSoC,Xe3,False
 ROSS,Gen10LP,Xe3,False
@@ -1307,6 +1308,7 @@ EU,Gen11LP,Xe2,False
 EU,Gen9LPClient,Xe2,False
 EU,DG2,Xe2,False
 EU,PVC,Xe2,False
+EU,PVCDP,Xe2,False
 ROSS,Gen9LPClient,Xe2,False
 ROSS,Gen9LPSoC,Xe2,False
 ROSS,Gen10LP,Xe2,False
@@ -1413,6 +1415,7 @@ L3Node,Gen11LP,Xe2,False
 L3Node,Gen12LP,Xe2,False
 L3Node,Gen12HP,Xe2,False
 L3Node,DG2,Xe2,False
+L3Node,Xe2,Xe2,False
 L3Node,MTL,Xe2,False
 L3Node,PVC,Xe2,False
 L3_Bank,Gen9LPClient,Xe2,False
@@ -1421,6 +1424,7 @@ L3_Bank,Gen10LP,Xe2,False
 L3_Bank,Gen11LP,Xe2,False
 L3_Bank,Gen12LP,Xe2,False
 L3_Bank,Gen12HP,Xe2,False
+L3_Bank,Xe2,Xe2,False
 L3_Bank,DG2,Xe2,False
 L3_Bank,MTL,Xe2,False
 L3_Bank,PVC,Xe2,False
