@@ -55,6 +55,13 @@
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
 
+        FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
+        FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
+        EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+        DPAS_total_count =  (D(SUM('pwr\.@ALLDPAS@')))
+        Total_instr_count = FPU0_total_count + FPU1_total_count + EM_total_count + DPAS_total_count
+
+
 	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs * 0.5)
 	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)
         DPAS_Utilization = (Total_SystCycles)/(.CrClk * numEUs * 0.5)
@@ -434,6 +441,9 @@
          PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
+        PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
+
  
 #DPAS instructions
         

@@ -11,6 +11,7 @@ EU:
      PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
      PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
      PS2_GRF_SEND_PATH: R * C
+     PS2_GA_GRF_FLOOR: R * C
 
   Accumulator:
      PS2_Accumulator_READ: R * C
@@ -151,6 +152,7 @@ EU:
       PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_ExtraPipe: R * C
+      PS2_GA_SYN_FLOOR: R * C
 
   ExtraPipe:
       ExtraPipe_DPAS_BFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
