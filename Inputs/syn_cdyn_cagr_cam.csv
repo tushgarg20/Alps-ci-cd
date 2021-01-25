@@ -1818,9 +1818,9 @@ EU,PVC,PVC,0.93,Process scaler gap of 0.93 since PVC CDYN weights are A0 and inc
 EU,PVC,PVC_A21,1.1, pVC to PVC_A21 scaler of 1.1
 EU,PVC,PVC2,1.08,PVC scaler multipled by 1/0.89; net scaler = 0.84/0.89, 0.84 scaler applied in process_cam.csv compensatory 1/1.04 for config/filler scaler
 EU,PVC2,PVC2,1.08, 1/0.89 * 1/1.04 - compensatory scalers 
-EU,PVC,PVCDP,0.8689,process scaler of 0.84 (20WW20.1) multipled by 1/0.89 ove PVCDP scaler compensatory 0.99,plus process gap of 7% 
+EU,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
-EU,PVCDP,PVCDP,0.9343,PVC scaler multipled by 1/0.89; net scaler = 0.89*1/0.89 = 1,process scaler of 0.84(20WW20.1),compensatory 1/1.04
+EU,PVCDP,PVCDP,1
 EU,DG2,PVC,0.888576
 EU,DG2,PVCDP,0.888576
 EU,DG2,PVC2,0.888576
@@ -1935,7 +1935,7 @@ ROW,PVC,PVC,1,Scaler for filler/clock push/config #Separated ROW into another cl
 ROW,PVC,PVC_A21,1,Scaler for filler/clock push/config #Separated ROW into another cluster
 ROW,PVC_A21,PVC_A21,1,Scaler for filler/clock push/config
 ROW,PVC,PVC2,1.1235,Scaler for filler/clock push/config multiplied by 1/0.89 #Separated ROW into another cluster
-ROW,PVC,PVCDP,0.9438,Scaler for filler/clock push/config multiplied by 1/0.89, process scaler 0.84 (20WW20.1 sheet) #Separated ROW into another cluster
+ROW,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -2432,5 +2432,5 @@ FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4
 LSC,PVC,PVC,1,Scaler based on 20ww37 
 LSC,PVC,PVC_A21,1,Scaler based on 20ww37 
 LSC,PVC,PVC2,1.1649, Scaler based on PVC,an additional scaler of 1/0.89 as CDYN weight is i7 (PVC), scaler = 1.0368*1/0.89 =1.1649 
-LSC,PVC,PVCDP,0.9786,Scaler based on PVC, process scaler of 0.84 (20WW20.1) 
+LSC,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 LSC,PVC_A21,PVC_A21,1,Scaler based on 20ww37 

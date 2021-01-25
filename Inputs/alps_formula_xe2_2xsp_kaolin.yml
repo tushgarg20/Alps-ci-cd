@@ -9,8 +9,8 @@ FPS: R
 EU:
   GRF:
      PS2_GA_GRF_FLOOR: R * C
-     PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
-     PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
+     PS2_GA_GRF_1Read_ECC: R * LINEST[C,R[GA_toggle_rate]]
+     PS2_GA_GRF_1Write_ECC: R * LINEST[C,R[GA_toggle_rate]] 
      PS2_GRF_SEND_PATH: R * C
 
   Accumulator:
@@ -209,13 +209,14 @@ EU:
       EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   GA:
-      PS2_GA_Syn_Read: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_Syn_Write: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_Read_FPU11_dispatch: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_1Read: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_FPU_1Write_ECC: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_FPU11_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_ExtraPipe: R * C
+      PS2_GA_SYN_FLOOR: R * C
 
   ExtraPipe:
       ExtraPipe_DPAS_Float: R * C
