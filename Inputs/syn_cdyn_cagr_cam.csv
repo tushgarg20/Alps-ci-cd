@@ -1372,7 +1372,9 @@ DSSC,PVC,PVC2,1.2744, PVC scaler multiplied by 1/0.89
 DSSC,PVC,PVCDP,1.2744, PVC scaler multiplied by 1/0.89
 DSSC,Gen12HP,MTL,1
 DSSC,DG2,MTL,1
+DSSC,DG2,LNL,1
 DSSC,MTL,MTL,1
+DSSC,LNL,LNL,1
 EU,Gen10LP,Gen12HP,0.8482995
 EU,Gen8,Gen12HP,0.61077564
 EU,Gen8SoC,Gen12HP,0.61077564
@@ -1405,6 +1407,12 @@ EU,Gen12LP,MTL,0.85733882
 EU,Gen12HP,MTL,0.85733882
 EU,DG2,MTL,0.9153,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet,5% savings from Akash (20ww20)
 EU,MTL,MTL,1
+EU,Gen9LPClient,LNL,0.85733882
+EU,Gen11LP,LNL,0.85733882
+EU,Gen12LP,LNL,0.85733882
+EU,Gen12HP,LNL,0.85733882
+EU,DG2,LNL,1
+EU,LNL,LNL,1
 Fabric,Gen11,Gen12HP,0.9
 Fabric,Gen10LP,Gen12HP,0.837
 Fabric,Gen11LP,Gen12HP,0.9
@@ -1436,10 +1444,13 @@ GAM,Gen12HP,DG2,1
 GAM,DG2,DG2,1
 FabricsSpine,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
 FabricsSpine,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet 
+FabricsSpine,DG2,LNL,1,Newly added for LNL 
 LSC,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
 LSC,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet 
+LSC,DG2,LNL,1,Newly added 21WW06.2 
 ROW,DG2,DG2,1,Newly added cluster based on 20ww31.1 sheet 
 ROW,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet 
+ROW,DG2,LNL,1,Newly added 21Ww06.2 
 FabricsSpine,DG2,DG2p5,1,Newly added cluster based on 20ww31.1 sheet 
 LSC,DG2,DG2p5,1,Newly added cluster based on 20ww31.1 sheet 
 ROW,DG2,DG2p5,1,Newly added cluster based on 20ww31.1 sheet 
@@ -1449,6 +1460,7 @@ GAM,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 GAM,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 GAM,Gen12HP,MTL,1
 GAM,DG2,MTL,1
+GAM,DG2,LNL,1
 GTI,Gen10LP,Gen12HP,0.865458
 GTI,Gen8,Gen12HP,0.662904
 GTI,Gen8SoC,Gen12HP,0.662904
@@ -1477,6 +1489,7 @@ HDC,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 HDC,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 HDC,Gen12HP,MTL,1
 HDC,DG2,MTL,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
+HDC,DG2,LNL,1,From 20ww15 Compute spreadsheet, aligning to the Bottums Up number
 L3_Bank,Gen10LP,Gen12HP,0.837
 L3_Bank,Gen8,Gen12HP,0.60264
 L3_Bank,Gen8SoC,Gen12HP,0.60264
@@ -1495,6 +1508,7 @@ L3_Bank,Gen12HP,DG2p5,1.1, 1.1 scaler assumed for L3 size increase
 L3_Bank,DG2,DG2p5,1, perWave 2.5 optimization plan which is accounted at GT level
 L3_Bank,Gen12HP,MTL,1
 L3_Bank,DG2,MTL,0.9978, 0.22% reduction based on Akash Weekly CDYN indicator 20ww22
+L3_Bank,DG2,LNL,1
 L3Node,Gen10LP,Gen12HP,0.837
 L3Node,Gen8,Gen12HP,0.60264
 L3Node,Gen8SoC,Gen12HP,0.60264
@@ -1523,6 +1537,7 @@ Other,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 Other,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 Other,Gen12HP,MTL,1
 Other,DG2,MTL,1,20WW15 Sheet aligning to Bottoms Up
+Other,DG2,LNL,1,20WW15 Sheet aligning to Bottoms Up
 RC,Gen10LP,Gen12HP,0.837
 RC,Gen8,Gen12HP,0.60264
 RC,Gen8SoC,Gen12HP,0.60264
@@ -1571,6 +1586,7 @@ ROSS,Gen12HP,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 ROSS,DG2,DG2p5,1, 1.5x resource scaler from DG2 to DG2p5
 ROSS,Gen12HP,MTL,1
 ROSS,DG2,MTL,1
+ROSS,DG2,LNL,1
 Sampler,Gen10LP,Gen12HP,0.622728
 Sampler,Gen8,Gen12HP,0.482112
 Sampler,Gen8SoC,Gen12HP,0.482112
@@ -1589,6 +1605,7 @@ Sampler,DG2,DG2p5,1,Wave2.5 Plan optimization accounted at GT level
 Sampler,DG2,DG2p5,0.9,10% reduction from 20ww20 optimization MTL (Akash)
 Sampler,Gen12HP,MTL,1
 Sampler,DG2,MTL,0.9,10% CDYN savings from Akash Weekly CDYN indicator 20ww26, confirmed by Yoav
+Sampler,DG2,LNL,1
 SQIDI,Gen11,Gen12HP,0.9
 SQIDI,Gen10LP,Gen12HP,0.78678
 SQIDI,Gen11LP,Gen12HP,0.9
