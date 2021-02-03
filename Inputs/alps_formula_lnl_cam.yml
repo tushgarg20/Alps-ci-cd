@@ -114,18 +114,12 @@ GAM:
  GAMFTLB:
     PS2_CAM_GAM: R * C
     PS2_CAM_GAM_INFRA: R * C
- SQIDI:
-    PS2_CAM_SQIDI: R * C
-    PS2_CAM_SQIDI_INFRA: R * C
-    PS2_CAM_CC: R * C
-    PS2_GA_SQIDI_RPT: R * C 
 
 LSC:
    LSC:
     PS2_CAM_LSC_L1_CACHE: R * C
     PS2_CAM_LSC_SLM: R * C
     PS0_CAM_LSC: R * C
-
 
 ROW:
    ROW:

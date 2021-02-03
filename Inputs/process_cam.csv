@@ -146,6 +146,8 @@ DG2,DG2,1.0506,1.0506,2% config scaler and 3% process scaler based on 20ww31.1 s
 DG2,DG2p5,0.9,0.9,Process scalar applied in Blizzard, 10% CDYN optimization at GT level for all Compute WLs as per Wave 2.5 opt Plan from Kamal 20ww42, 
 DG2p5,DG2p5,1,1,Process scalar applied to CDYNMAX, 
 DG2,MTL,0.9145,0.9145,2% config scaler multiplied by 0.92 as 8% reduction at GT level for optimization is the target,2.55% savings based on 20ww22 weekly CDYN indicator (Akash) 
+DG2,LNL,1,1,Scale factors not available
+LNL,LNL,1,1,Scale factors not available
 MTL,MTL,1,1,Scale factors not available
 DG2,ADL,1,1,Scale factors not available
 Gen12HP,DG2,1.1664,1.1664,Scale factors not available
@@ -160,6 +162,10 @@ Gen12HP,MTL,1.049,1.049, Gen12HP->DG2 scaler multiplied with 0.9 for target scal
 Gen12LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
 Gen11LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
 Gen9LPClient,MTL,0.9,0.9,Target scaler of 0.9 for MTL
+Gen12HP,LNL,1.049,1.049, Gen12HP->DG2 scaler multiplied with 0.9 for target scaler for LNL,
+Gen12LP,LNL,0.9,0.9,Target scaler of 0.9 for LNL
+Gen11LP,LNL,0.9,0.9,Target scaler of 0.9 for LNL
+Gen9LPClient,LNL,0.9,0.9,Target scaler of 0.9 for LNL
 PVC,PVC,1,1,Process scaler from compute spreadsheet 20ww37
 PVC,PVC_A21,1,1,Process scaler from compute spreadsheet 20ww37
 Gen9LPClient,PVC2,0.595392,0.595392,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 for n7 to n5
