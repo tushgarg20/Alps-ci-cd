@@ -117,6 +117,7 @@ if ($method){
 	$cfg_file = ($dg2p5) ? $sdir . "alps_cfg_dg2p5_cam.yaml" : $cfg_file;
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_cam.yaml" : $cfg_file;
     }else{
 	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
