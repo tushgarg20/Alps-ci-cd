@@ -50,7 +50,12 @@ EU:
       FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       FPU1_mov_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-
+ 
+  FPU2:
+    PS2_EU_FPU2:
+      FPU2_mad_fp32: R[PS2_EU_FPU2] * R * LINEST[C,R[FPU2_toggle_rate]]
+      FPU2_mad_fp64: R[PS2_EU_FPU2] * R * LINEST[C,R[FPU2_toggle_rate]]
+      
   EM:
       EM_transc_fp32: R * LINEST[C,R[FPU1_toggle_rate]]
 

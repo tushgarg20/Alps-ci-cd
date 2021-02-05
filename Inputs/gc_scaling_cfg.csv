@@ -258,6 +258,8 @@ EU,DG2,PVCDP,False
 EU,PVC,PVCDP,False
 EU,PVCDP,PVC2,False
 EU,PVCDP,PVCDP,False
+EU,PVCDP,Xe3,False
+EU,Xe3,Xe3,False
 L3_Bank,Gen9LPClient,Gen12HP,False
 L3_Bank,Gen9LPSoC,Gen12HP,False
 L3_Bank,Gen10LP,Gen12HP,False
@@ -558,6 +560,8 @@ L3_Bank,PVC2,PVC2,False
 L3_Bank,Gen12HP,PVCDP,False
 L3_Bank,PVC,PVCDP,False
 L3_Bank,PVC2,PVCDP,False
+L3_Bank,PVCDP,Xe3,False
+L3_Bank,Xe3,Xe3,False
 L3_Bank,PVCDP,PVCDP,False
 HDC,Gen12LP,PVC,False
 DSSC,Gen12LP,PVC,False
@@ -596,6 +600,8 @@ GAM,PVC2,PVC2,False
 GAM,PVC,PVCDP,False
 GAM,PVC2,PVCDP,False
 GAM,PVCDP,PVCDP,False
+GAM,PVCDP,Xe3,False
+GAM,PVCDP,Xe3,False
 Sampler,Gen9LPClient,PVC,False
 Sampler,Gen9LPSoC,PVC,False
 Sampler,Gen10LP,PVC,False
@@ -613,6 +619,8 @@ LSC,PVC2,PVC2,False
 LSC,PVC,PVCDP,False
 LSC,PVC2,PVCDP,False
 LSC,PVCDP,PVCDP,False
+LSC,PVCDP,Xe3,False
+LSC,Xe3,Xe3,False
 ROW,PVC,PVC,False
 ROW,PVC,PVC_A21,False
 ROW,PVC_A21,PVC_A21,False
@@ -621,6 +629,8 @@ ROW,PVC2,PVC2,False
 ROW,PVC,PVCDP,False
 ROW,PVC2,PVCDP,False
 ROW,PVCDP,PVCDP,False
+ROW,PVCDP,Xe3,False
+ROW,Xe3,Xe3,False
 L3Node,Gen9LPClient,PVC,False
 L3Node,Gen9LPSoC,PVC,False
 L3Node,Gen10LP,PVC,False
@@ -665,6 +675,8 @@ SQIDI,PVC2,PVC2,False
 SQIDI,PVC,PVCDP,False
 SQIDI,PVC2,PVCDP,False
 SQIDI,PVCDP,PVCDP,False
+SQIDI,PVCDP,Xe3,False
+SQIDI,Xe3,Xe3,False
 UNCORE,Gen9LPClient,PVC,False
 UNCORE,Gen9LPSoC,PVC,False
 UNCORE,Gen10LP,PVC,False
@@ -699,6 +711,8 @@ DSSC,PVC2,PVC2,False
 DSSC,PVC,PVCDP,False
 DSSC,PVC2,PVCDP,False
 DSSC,PVCDP,PVCDP,False
+DSSC,PVCDP,Xe3,False
+DSSC,Xe3,Xe3,False
 DSSC,PVC,PVC_A21,False
 FF,Gen9LPClient,PVC,False
 FF,Gen9LPSoC,PVC,False
@@ -741,6 +755,8 @@ Other,PVC2,PVC2,False
 Other,PVC,PVCDP,False
 Other,PVC2,PVCDP,False
 Other,PVCDP,PVCDP,False
+Other,PVCDP,Xe3,False
+Other,Xe3,Xe3,False
 Other,PVC,PVC_A21,False
 EU,Gen9LPSoC,ADL,False
 EU,Gen10LP,ADL,False
@@ -1014,11 +1030,15 @@ EU,DG2,DG2p5,False
 Foveros,PVC,PVC,False
 Foveros,PVC,PVCDP,False
 Foveros,PVCDP,PVCDP,False
+Foveros,PVCDP,Xe3,False
+Foveros,Xe3,Xe3,False
 Foveros,PVC,PVC_A21,False
 Foveros,PVC_A21,PVC_A21,False
 FabricsSpine,PVC,PVC,False
 FabricsSpine,PVC,PVCDP,False
 FabricsSpine,PVCDP,PVCDP,False
+FabricsSpine,PVCDP,Xe3,False
+FabricsSpine,Xe3,Xe3,False
 LSC,Gen12HP,PVC,False
 ROSS,Gen9LPClient,MTL,False
 ROSS,Gen9LPSoC,MTL,False

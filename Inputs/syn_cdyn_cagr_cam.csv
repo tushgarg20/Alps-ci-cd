@@ -1817,12 +1817,15 @@ EU,Gen9LPSoC,PVC,0.7533
 EU,Gen11,PVC,0.837
 EU,Gen9LPClient,PVC2,0.739071
 EU,Gen9LPClient,PVCDP,0.739071
+EU,Gen9LPClient,Xe3,0.739071
 EU,Gen11LP,PVC,0.9
 EU,Gen12LP,PVC,0.89, i7 process scaler for EU in PVC
 EU,Gen11LP,PVC2,0.9
 EU,Gen12LP,PVC2,1
 EU,Gen11LP,PVCDP,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen12LP,PVCDP,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen11LP,Xe3,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen12LP,Xe3,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen11LP,PVC_A21,0.99,Gen11 to PVC scaler of 0.9 multiplied by 1.1 for PVC to PVC_A21, from 20WW19.4 PVC_A21 Compute spreadsheet,
 EU,Gen12LP,PVC_A21,0.98,Gen12LP to PVC scaler of 0.89 multiplied by 1.1 PVC to PVC_A21 from 20ww19.4 compuetsheet,
 EU,Gen12DG,PVC,0.89
@@ -1831,15 +1834,19 @@ EU,Gen12HP,PVC,0.89, Process scaler of 0.89, no config or PV scalers
 EU,Gen12HP,PVC_A21,0.979, Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
 EU,Gen12HP,PVC2,1, Process scaler of 0.84, no config or PV scalers
 EU,Gen12HP,PVCDP,0.84, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,Xe3,0.84, Process scaler of 0.84, no config or PV scalers
 EU,PVC,PVC,0.93,Process scaler gap of 0.93 since PVC CDYN weights are A0 and incorporates only 4% of the 11% target
 EU,PVC,PVC_A21,1.1, pVC to PVC_A21 scaler of 1.1
 EU,PVC,PVC2,1.08,PVC scaler multipled by 1/0.89; net scaler = 0.84/0.89, 0.84 scaler applied in process_cam.csv compensatory 1/1.04 for config/filler scaler
 EU,PVC2,PVC2,1.08, 1/0.89 * 1/1.04 - compensatory scalers 
 EU,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
+EU,PVC,Xe3,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
 EU,PVCDP,PVCDP,1
+EU,PVCDP,Xe3,1
 EU,DG2,PVC,0.888576
 EU,DG2,PVCDP,0.888576
+EU,DG2,Xe3,0.888576
 EU,DG2,PVC2,0.888576
 EU,ADL,PVC,0.888576
 Fabric,Gen11,PVC,1.315789474
@@ -1948,11 +1955,13 @@ Other,PVC,PVC,1,Scaler based on 20ww09.4
 Other,PVC,PVC_A21,1,Scaler based on 20ww19.4 
 Other,PVC,PVC2,1,Scaler based on 20ww09.4 
 Other,PVC,PVCDP,1,Scaler based on 20ww09.4 
+Other,PVC,Xe3,1,Scaler based on 20ww09.4 
 ROW,PVC,PVC,1,Scaler for filler/clock push/config #Separated ROW into another cluster
 ROW,PVC,PVC_A21,1,Scaler for filler/clock push/config #Separated ROW into another cluster
 ROW,PVC_A21,PVC_A21,1,Scaler for filler/clock push/config
 ROW,PVC,PVC2,1.1235,Scaler for filler/clock push/config multiplied by 1/0.89 #Separated ROW into another cluster
 ROW,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04
+ROW,PVC,Xe3,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04
 RC,Gen10LP,PVC,0.837
 RC,Gen8,PVC,0.60264
 RC,Gen8SoC,PVC,0.60264
@@ -2019,6 +2028,7 @@ SQIDI,ADL,PVC,1
 SQIDI,PVC,PVC,1
 SQIDI,PVC,PVC2,1
 SQIDI,PVC,PVCDP,1
+SQIDI,PVC,Xe3,1
 UNCORE,Gen10LP,PVC,0.78678
 UNCORE,Gen11,PVC,0.9
 UNCORE,Gen11LP,PVC,0.9
@@ -2110,6 +2120,7 @@ GAM,PVC,PVC_A21,1
 GAM,PVC_A21,PVC_A21,1
 GAM,PVC,PVC2,1
 GAM,PVC,PVCDP,1
+GAM,PVC,Xe3,1
 GTI,Gen10LP,PVC_A21,0.865458
 GTI,Gen8,PVC_A21,0.662904
 GTI,Gen8SoC,PVC_A21,0.662904
@@ -2150,6 +2161,7 @@ L3_Bank,ADL,PVC_A21,1.39534
 L3_Bank,PVC_A21,PVC_A21,1.08
 L3_Bank,PVC,PVC2,0.9, estimated scaler for PVC2 20ww16
 L3_Bank,PVC,PVCDP,1,identical as PVC 
+L3_Bank,PVC,Xe3,1,identical as PVC 
 L3_Bank,Gen12HP,PVC2,1.1, estimated scaler for PVC2 20ww16
 L3_Bank,Gen12HP,PVCDP,1.1, estimated scaler for PVC DP 20ww20.1
 L3Node,Gen10LP,PVC_A21,1.223684211
@@ -2435,12 +2447,19 @@ FabricsSpine,PVC,PVC_A21,1,Scaler based on 20ww19.4
 FabricsSpine,PVC,PVC2,1,Scaler based on 20ww16 
 FabricsSpine,PVC,PVCDP,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,PVCDP,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,Xe3,1,Scaler based on 20ww20 
 LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
+LSC,PVCDP,Xe3,1,Scaler based on 20ww20 
 Other,PVCDP,PVCDP,1,Scaler based on 20ww37
+Other,PVCDP,Xe3,1,Scaler based on 20ww37
 ROW,PVCDP,PVCDP,1,Scler based on 20ww37
+ROW,PVCDP,Xe3,1,Scler based on 20ww37
 L3_Bank,PVCDP,PVCDP,1,Scler based on 20ww37
+L3_Bank,PVCDP,Xe3,0.85,Scler based on new L3 arch and inputs from L3 uArch team 
 Foveros,PVCDP,PVCDP,1,Scler based on 20ww37
+Foveros,PVCDP,Xe3,1,Scler based on 20ww37
 GAM,PVCDP,PVCDP,1,Scler based on 20ww37
+GAM,PVCDP,Xe3,1,Scler based on 20ww37
 FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww20 
 #FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 FabricsSpine,PVC_A21,PVC_A21,1,Scaler based on 20ww9.4 
