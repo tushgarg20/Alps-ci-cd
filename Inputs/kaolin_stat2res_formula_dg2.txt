@@ -72,7 +72,6 @@
     #PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
-	PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
     PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
@@ -173,7 +172,9 @@
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1 * Lsc.Banks)
-    
+    PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+    PS2_ROW_Idle = 1
+   
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
@@ -270,13 +271,13 @@
          .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 256)
          .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 256)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         FPU0_toggle_rate = 0.3 #MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
          .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*256)
          .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*256)
          .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*256)
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
-         FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
+         FPU1_toggle_rate = 0.3# MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
          #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 #DPAS toggle rate

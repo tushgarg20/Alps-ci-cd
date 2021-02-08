@@ -210,6 +210,7 @@ Other:
   ROW:
     #PS2_PS: R * C
     PS2_ROW: R * C
+    PS2_ROW_Idle: R * C
   #COLOR:
     #PS2_COLOR: R * C
   NodeX:
