@@ -1,14 +1,19 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
+        numEUs	=	 D(knob.numEUs) 	#This includes Slices & SubSlices
 	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
         num_GAM_SQIDI        =       D(knob.numSQIDI)
+        maxGTIBW             =       64*num_GAM_GAMFTLB
+        maxGTI                  = D(knob.numMaxGTI)
+        numGTI                  = D(knob.numGTI) 
+	
 #Generic				
-	PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/512
-        PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/512
-        PS2_CAM_GAM_INFRA        =  1 
-        PS2_CAM_SQIDI_INFRA      =  1
-        PS2_CAM_CC               =  (D(GTI_READ) + D(GTI_WRITE))/512
-       PS2_CAM_GA_SQIDI_RPT      =  (D(GTI_READ) + D(GTI_WRITE))/512
+	PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI)
+        PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
+        PS2_CAM_GAM_INFRA        =  numGTI/maxGTI 
+        PS2_CAM_SQIDI_INFRA      =  numGTI/maxGTI
+        PS2_CAM_CC               =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
+       PS2_CAM_GA_SQIDI_RPT      =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
 
 

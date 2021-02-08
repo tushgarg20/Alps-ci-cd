@@ -26,8 +26,9 @@
 	.CrClk			=	D(MAX_CYCLES)	
         L3_Cache_Size           =       D(knob.L3CacheSize)
         L3_Scaler               =       (L3_Cache_Size >= 8) ? 1 : 1.05 
-        PS2_CAM_L3_BANK                  =       (D(L3_READ)  / (L3_Scaler  * 64 * 32)) + (D(L3_WRITE)  / (L3_Scaler  * 32 * 64))
-        PS2_CAM_L3_NODE                  =       (D(L3_READ)  / (L3_Scaler  * 64 * 32)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 32))
+        PS2_CAM_L3_BANK                  =       (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))
+        PS2_CAM_L3_NODE                  =       (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI) + (D(L3_WRITE)  / (L3_Scaler  * 64 * num_L3_Bank_LBI))
         PS2_CAM_L3_INFRA            =       1 / L3_Scaler
-        PS2_CAM_L3_FABRICS              =   (D(L3_READ)  / (L3_Scaler  * 64 * 32)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 32)) 
+        PS2_CAM_L3_FABRICS              =   (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) 
+        PS2_CAM_NODEX                   =   (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) 
 

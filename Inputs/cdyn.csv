@@ -8808,9 +8808,9 @@ FPU0_mad_floatbypass,Gen12HP,A0,28.09,syn,1,ATS EU Cdyn Weights Release WW13 201
 FPU0_mad_fp64_20%,Gen12HP,A0,95.828,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR,,
 FPU0_mad_fp64_30%,Gen12HP,A0,106.155,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR,,
 FPU0_mad_fp64_45%,Gen12HP,A0,114.8,syn,1,ww20 Biweekly CDYN indicator and RTL6 based, sceled for 20% TR,,
-FPU0_mad_fp64_20%,PVC,A0,95.18,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp64_30%,PVC,A0,105.69,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp64_45%,PVC,A0,116.34,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp64_20%,PVC,B0,93.46,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp64_30%,PVC,B0,107.85,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp64_45%,PVC,B0,117.02,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 FPU0_mul_fp64_15%,Gen12HP,A0,87.57,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
 FPU0_mul_fp64_20%,Gen12HP,A0,93.42,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
 FPU0_mul_fp64_31%,Gen12HP,A0,102.72,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
@@ -8920,48 +8920,49 @@ PS2_GA_ExtraPipe,Gen12HP,A0,48.987,syn,1,ATS PTPX based menasurements ww022020 f
 PS2_GA_ExtraPipe_ECC_21%,Gen12HP,A0,44.28,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
 PS2_GA_ExtraPipe_ECC_31%,Gen12HP,A0,49.49,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
 PS2_GA_ExtraPipe_ECC_45%,Gen12HP,A0,56.82,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul,,,
-ExtraPipe_DPAS_Float_10%,PVC,A0,138.0014,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 6% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_Float_20%,PVC,A0,191.901,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 6% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_Float_30%,PVC,A0,217.187,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 6% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_Float_45%,PVC,A0,238.8822,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 6% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_Float,PVC,A0,238.8822,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 6% for B0 based on 20ww15 indicator",,,
+ExtraPipe_DPAS_Float_10%,PVC,B0,148.41,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_Float_20%,PVC,B0,204.86,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_Float_30%,PVC,B0,234.17,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_Float_45%,PVC,B0,256.68,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_Float,PVC,B0,256.68,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 ExtraPipe_DPAS_Float8_30%,PVCDP,A0,191.88,syn,1,Derived from PVC FP16 CDYN weight with a 0.95 scaler as per Kamal indication,,,
 ExtraPipe_DPAS_Float8_45%,PVCDP,A0,211.05,syn,1,Derived from PVC FP16 CDYN weight with a 0.95 scaler as per Kamal indication,,,
 ExtraPipe_DPAS_Float8,PVCDP,A0,211.05,syn,1,Derived from PVC FP16 CDYN weight with a 0.95 scaler as per Kamal indication,,,
 ExtraPipe_DPAS_TFloat32_30%,PVCDP,A0,121.19,syn,1,Derived from PVC FP16 CDYN weight with a 0.6 scaler as per Kamal indication,,,
 ExtraPipe_DPAS_TFloat32_45%,PVCDP,A0,133.296,syn,1,Derived from PVC FP16 CDYN weight with a 0.6 scaler as per Kamal indication,,,
 ExtraPipe_DPAS_TFloat32,PVCDP,A0,133.296,syn,1,Derived from PVC FP16 CDYN weight with a 0.6 scaler as per Kamal indication,,,
-ExtraPipe_DPASW_Float_0%,PVC,A0,42.44582126,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 6% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPASW_Float_30%,PVC,A0,188.3425031,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 6% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPASW_Float_45%,PVC,A0,204.691424,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 6% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPASW_Float_100%,PVC,A0,210.2495434,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 6% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPASW_Float,PVC,A0,204.691424,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 6% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPAS_BFloat_10%,PVC,A0,124.527,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 7% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_BFloat_20%,PVC,A0,165.0471,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 7% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_BFloat_30%,PVC,A0,190.5849,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 7% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_BFloat_45%,PVC,A0,222.0096,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 7% for B0 based on 20ww15 indicator",,,
-ExtraPipe_DPAS_BFloat,PVC,A0,222.0096,syn,1,"PVC 20WW30 TAPEIN CDYN weights from Prashant, scaled down by 7% for B0 based on 20ww15 indicator",,,
+ExtraPipe_DPAS_BFloat_Bypass,PVC,B0,70.752,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_Float_Bypass,PVC,B0,71.8704,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt8_Bypass,PVC,B0,53.1279,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt8_Bypass,PVC,B0,53.878,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt4_Bypass,PVC,B0,54.4823,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt4_Bypass,PVC,B0,53.1209,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_BFloat_10%,PVC,B0,132.44,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_BFloat_20%,PVC,B0,174.86,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_BFloat_30%,PVC,B0,202.77,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_BFloat_45%,PVC,B0,235.84,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_BFloat,PVC,B0,235.84,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 ExtraPipe_DPASW_BFloat_0%,PVC,A0,42.25340326,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 7% for PVC based on 20WW15 Biweekly CDYn indicator,,
 ExtraPipe_DPASW_BFloat_30%,PVC,A0,163.9869856,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 7% for PVC based on 20WW15 Biweekly CDYn indicator,,
 ExtraPipe_DPASW_BFloat_45%,PVC,A0,183.7290724,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 7% for PVC based on 20WW15 Biweekly CDYn indicator,,
 ExtraPipe_DPASW_BFloat_100%,PVC,A0,210.2495434,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 7% for PVC based on 20WW15 Biweekly CDYn indicator,,
 ExtraPipe_DPASW_BFloat,PVC,A0,183.7290724,syn,1,ATS EU Cdyn Weights Release WW02 2020 from Prasanth with a process scaler of 0.89, scaled down by 7% for PVC based on 20WW15 Biweekly CDYn indicator,,
-ExtraPipe_DPAS_SInt4_10%,PVC,A0,101.99,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt4_20%,PVC,A0,126.2,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt4_30%,PVC,A0,146.8,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt4_45%,PVC,A0,173.79,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt8_10%,PVC,A0,109.32,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt8_20%,PVC,A0,141.52,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt8_30%,PVC,A0,161.64,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_SInt8_45%,PVC,A0,184.78,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt4_10%,PVC,A0,85.08,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt4_20%,PVC,A0,101.67,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt4_30%,PVC,A0,115.49,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt4_45%,PVC,A0,132.85,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt8_10%,PVC,A0,105.59,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt8_20%,PVC,A0,129.57,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt8_30%,PVC,A0,143.38,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-ExtraPipe_DPAS_UInt8_45%,PVC,A0,163.96,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt4_10%,PVC,B0,110.13,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt4_20%,PVC,B0,132.91,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt4_30%,PVC,B0,156.64,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt4_45%,PVC,B0,187.87,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt8_10%,PVC,B0,111.02,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt8_20%,PVC,B0,148.06,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt8_30%,PVC,B0,169.86,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_SInt8_45%,PVC,B0,196.77,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt4_10%,PVC,B0,88.74,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt4_20%,PVC,B0,107.06,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt4_30%,PVC,B0,122.93,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt4_45%,PVC,B0,143.57,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt8_10%,PVC,B0,109.3,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt8_20%,PVC,B0,136.88,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt8_30%,PVC,B0,151.63,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+ExtraPipe_DPAS_UInt8_45%,PVC,B0,173.8,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 PS2_GA_ExtraPipe_10%,DG2,A0,14.01111094,syn,1,DG2_sd1p0_EU_20WW10 updates from Prasanth,,,
 PS2_GA_ExtraPipe_20%,DG2,A0,16.33511898,syn,1,DG2_sd1p0_EU_20WW10 updates from Prasanth,,,
 PS2_GA_ExtraPipe_30%,DG2,A0,18.16964818,syn,1,DG2_sd1p0_EU_20WW10 updates from Prasanth,,,
@@ -9006,7 +9007,9 @@ PS2_CAM_L3,PVC,A0,808.6388,syn,1,L3 Read Cdyn/Txn calculated analytically from 2
 #PS2_CAM_L3_BANK,PVC,A0,516.4241,syn,1,L3 Bank Cdyn/Txn calculated analytically from 20ww24.1 spreadsheet accounting for a 15% increase wrt 20ww19.4,,,
 #PS2_CAM_L3_NODE,PVC,A0,166.8948,syn,1,L3 Node Cdyn/Txn calculated analytically from 20ww24.1 spreadsheet accounting for a 15% increase wrt 20ww19.4,,,
 PS2_CAM_L3_BANK,PVC,A0,354.67,syn,1,L3 Bank Cdyn/Txn calculated analytically from 20ww29.4 spreadsheet accounting for 20ww27 weekly indicator,,,
+PS2_CAM_L3_BANK,PVCDP,A0,359.42,syn,1,L3 Bank Cdyn/Txn calculated analytically from 21ww03 indicator, 
 PS2_CAM_L3_NODE,PVC,A0,183.3527,syn,1,L3 Node Cdyn/Txn calculated analytically from 20ww29.4 spreadsheet accounting for 20ww27 weekly indicator,,,
+PS2_CAM_L3_NODE,PVCDP,A0,277.92,syn,1,L3 Node Cdyn/Txn calculated analytically from 21ww03 indicator, 
 PS2_L3_BANK,Gen12HP,A0,415.73,syn,1,L3 Read Cdyn/Txn calculated analytically from ww1902 spreadsheet,,,
 PS2_L3_BANK,DG2,A0,436.5165,syn,1,L3 Read Cdyn/Txn calculated from ww1902 spreadsheet scaled by 5% for increse from 10M to 16M,,,
 PS2_L3_NODE,Gen12HP,A0,252.826,syn,1,L3 Write Cdyn/Txn calculated analytically from ww1902 spreadsheet,,,
@@ -9145,7 +9148,7 @@ PS2_CAM_GA_SQIDI_RPT,DG2,A0,741.125,syn,0,GA-SQIDI_RPT from 20ww34.4 compute spr
 PS2_CAM_GA_SQIDI_RPT,PVC,A0,545.284,syn,0,GA-SQIDI_RPT from 20ww19.4 compute spreadsheet for PVC moved this under SQIDI which has 16 instances so divide by 16, ,,
 PS2_CAM_MEDIA,Gen12HP,A0,44.444,syn,0,GA-SQIDI_RPT from ww1504 compute spreadsheet for PVC and Gen12HP, ,,
 PS2_CAM_MDFI_GAM,Gen12HP,A0,879.6296,syn,0,GA-SQIDI_RPT from ww1504 compute spreadsheet for PVC and Gen12HP, ,,
-PS2_CAM_NODEX,DG2,A0,1644.45,syn,0,Nodex from 20ww16 compute spreadsheet for DG2,,,
+PS2_CAM_NODEX,DG2,A0,51.389,syn,0,Nodex from 20ww16 compute spreadsheet for DG2 scaled ny number of L3 Banks or numDSS,,,
 PS2_CAM_OTHER_INFRA,Gen12HP,A0,623.2,syn,0,GA-SQIDI_RPT and MDFI_GAM infra components, plus L3NODE_RING infra -- ww24,,
 PS2_CAM_OTHER_INFRA,PVC,A0,489.4,syn,0,Other Cluster infra components other than GTDSS infra -- 20ww9.4, ,,
 PS2_CAM_OTHER_INFRA,DG2,A0,594.9,syn,0,Other infra components, 20ww16 for DG2,,
@@ -9171,6 +9174,7 @@ PS2_CAM_SPINE,PVCDP,A0,11508.2,syn,0,Approximated cdyn weight for Spine in 20ww1
 PS2_CAM_SPINE_COMPUTE,PVCDP,A0,3037.54,syn,0,Approximated cdyn weight for Spine in 20ww11.4 compute spreadsheet scaled by GC increase factor (Amit 20ww26.5),,,
 PS2_CAM_SPINE_RAMBO,PVCDP,A0,321.2,syn,0,Approximated cdyn weight for Spine in 20ww11.4 compute spreadsheet scaled by GC increase factor (Amit 20ww26.5),,,
 PS2_CAM_L3_FABRICS,PVC,A0,563.4808,syn,0,Approximated cdyn weight for L3 Fabrics from 20wwi19.4 analytical model calculated as 64 instances,,,
+PS2_CAM_L3_FABRICS,PVCDP,A0,480.47,syn,0,Approximated cdyn weight for L3 Fabrics from 21ww03 indicator, 
 PS2_CAM_L3_FABRICS,DG2,A0,90.721,syn,0,Approximated cdyn weight for L3 Fabrics from 20ww30.1 analytical model calculated as 32 instances,,,
 PS2_CAM_GTDSS,PVC,A0,2074.38263,syn,0,Approximated cdyn weight for GTDSS related states in 20ww19.4 analytical model with a process scaler of 0.89,,,
 PS2_CAM_GTDSS_INFRA,PVC,A0,56.248,syn,0,Approximated cdyn weight for GTDSS Infra related states in 20ww13.5 analytical model with a process scalar of 0.89,,,
@@ -9181,6 +9185,7 @@ PS2_CAM_FOV_RAMBO,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 bas
 PS2_CAM_FOV_COMPUTE_INFRA,PVC,A0,124.395,syn,0, 1 nF increase as per 20ww27, on top of the 4nF, plus 3nF as per 20ww31, 
 PS2_CAM_FOV_RAMBO_INFRA,PVC,A0,30.645,syn,0,0.5nF increase in FOV RAMBO - updated 20ww19 based on AMit inuts and ww17.5 computesheet 0.5nF increase based on 20ww27,,,
 PS2_CAM_FOV_BASE_INFRA,PVC,A0,7423.07,syn,0,5.5nF increase in FOV BASE - updated 20ww19 based on AMit inuts and ww17.5 computesheet 2nF based on 20ww27,,,
+PS2_CAM_FOV_BASE_INFRA,PVCDP,A0,7868.45,syn,0,6% scaler from PVC XL value based on 21WW03 indicator,
 PS2_CAM_LSC_L1_CACHE,PVC,A0,1307,syn,0,LSC L1 Avg. CDYN weight across Read/Write Hit/Miss - updated 2020 ww04 based on Fatemeh inputs,,,
 PS2_CAM_LSC_SLM,PVC,A0,1077.9,syn,0,LSC SLM Avg. CDYN weight across Read/Write - updated 2020 ww04 based on Fatemeh inputs,,,
 PS0_CAM_LSC,PVC,A0,35.5,syn,0,LSC Idle CDYN weight - updated 2020 ww27 based on indicator from Amit, ,,
@@ -9327,86 +9332,109 @@ FPU0_mov_fp32_45%,Gen12HP,A0,14.71,syn,1,ATS Tapein Snapshor 20WW02,,,
 FPU0_mov_fp32_0%,PVC2,A0,13.50842,syn,1,Scaled by 2 from ATS ,,,
 FPU0_mov_fp32_30%,PVC2,A0,22.5526,syn,1,Scaled by 2 from ATS ,,,
 FPU0_mov_fp32_45%,PVC2,A0,26.1838,syn,1,Scaled by 2 from ATS ,,,
-FPU0_mad_fp64_20%,PVCDP,A0,171.324,syn,1,Scaled by 2 fromPVC, 10% reduction for fp64 optimization in PVC,,
-FPU0_mad_fp64_30%,PVCDP,A0,190.242,syn,1,Scaled by 2 fromPVC, 10% reduction for fp64 optimization in PVC,,
-FPU0_mad_fp64_45%,PVCDP,A0,209.412,syn,1,Scaled by 2 fromPVC, 10% reduction for fp64 optimization in PVC,,
-FPU0_mad_add_fp64bypass_20%,PVCDP,A0,111.639998,syn,1,Scaled by 2 fromPVC, mad_floatfp64bypass, mul_fp64 and add_fp64,
-FPU0_mad_add_fp64bypass_30%,PVCDP,A0,122.393868,syn,1,Scaled by 2 fromPVC, mad_floatfp64bypass, mul_fp64 and add_fp64,
-FPU0_mad_add_fp64bypass_45%,PVCDP,A0,130.71163,syn,1,Scaled by 2 fromPVC, mad_floatfp64bypass, mul_fp64 and add_fp64,
+FPU0_add_fp16_20%,PVC,B0,42.95,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp16_30%,PVC,B0,47.83,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp32_20%,PVC,B0,32.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp32_30%,PVC,B0,38.02,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp32_45%,PVC,B0,40.76,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 FPU0_mul_fp64_20%,PVC,A0,79.56,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
 FPU0_mul_fp64_30%,PVC,A0,86.82,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
 FPU0_mul_fp64_45%,PVC,A0,94.07,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_add_fp64_20%,PVC,A0,53.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_add_fp64_30%,PVC,A0,62.78,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_add_fp64_45%,PVC,A0,75.05,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp64_10%,PVC,B0,45.44,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp64_20%,PVC,B0,53.06,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp64_30%,PVC,B0,63.56,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp64_45%,PVC,B0,74,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 FPU0_mov_fp64_20%,PVC,A0,12.3462135,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,,
 FPU0_mov_fp64_29%,PVC,A0,13.6702665,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,,
 FPU0_mov_fp64_31%,PVC,A0,14.518125,syn,1,ATS EU Cdyn Weights Release WW13 2019 RTL5 Refresh.xlsx from Atul, 10% reduction for PVC due to optimization,,
-FPU0_mad_fp16_20%,PVC,A0,53.86,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp16_30%,PVC,A0,57.56,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp16_45%,PVC,A0,60.13,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_10%,PVC,A0,51.22,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_20%,PVC,A0,56.61,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_30%,PVC,A0,63.85,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_45%,PVC,A0,68.48,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint16_20%,PVC,A0,32.12,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint16_30%,PVC,A0,40.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint16_45%,PVC,A0,46.72,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint32_20%,PVC,A0,65.91,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint32_30%,PVC,A0,73.99,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_sint32_45%,PVC,A0,86.97,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint16_20%,PVC,A0,28.7,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint16_30%,PVC,A0,35.78,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint16_45%,PVC,A0,39.69,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint32_20%,PVC,A0,60.42,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint32_30%,PVC,A0,68.35,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mad_uint32_45%,PVC,A0,78.89,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mov_fp16_45%,PVC,A0,20.36,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mov_fp32_45%,PVC,A0,20.36,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mov_sint16_45%,PVC,A0,25.98,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mov_sint32_45%,PVC,A0,47.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mov_unit32_45%,PVC,A0,37.96,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp16_20%,PVC,A0,38.86,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp16_30%,PVC,A0,45.67,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp16_45%,PVC,A0,49.03,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp32_20%,PVC,A0,42.82,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp32_30%,PVC,A0,48.82,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp32_45%,PVC,A0,52.65,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_sint16_20%,PVC,A0,33.25,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_sint16_30%,PVC,A0,38.4,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_sint16_45%,PVC,A0,43.89,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_uint16_20%,PVC,A0,30.3,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_uint16_30%,PVC,A0,34.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU1_mul_uint16_45%,PVC,A0,38.39,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_TC_1Dispatch,PVC,A0,4.24,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Read_ECC_10%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Read_ECC_20%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Read_ECC_30%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Read_ECC_45%,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Read_ECC,PVC,A0,7.87,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Write_ECC_10%,PVC,A0,3.92,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Write_ECC_20%,PVC,A0,4.44,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Write_ECC_30%,PVC,A0,5.01,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Write_ECC_45%,PVC,A0,5.76,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_GA_GRF_1Write_ECC,PVC,A0,5.76,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp16_20%,PVC,B0,51.2,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp16_30%,PVC,B0,55.33,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp16_45%,PVC,B0,58.91,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_10%,PVC,B0,51.41,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_20%,PVC,B0,57.98,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_30%,PVC,B0,62.21,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_45%,PVC,B0,66.71,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_sint16_45%,PVC,B0,33.69,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_sint32_10%,PVC,B0,33.35,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_sint32_20%,PVC,B0,41.68,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_sint32_30%,PVC,B0,49.54,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_sint32_45%,PVC,B0,57.12,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint16_20%,PVC,B0,33.62,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint16_30%,PVC,B0,39.99,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint16_45%,PVC,B0,47.1,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint32_20%,PVC,B0,63.28,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint32_30%,PVC,B0,73.72,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_sint32_45%,PVC,B0,87.71,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint16_20%,PVC,B0,29.83,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint16_30%,PVC,B0,33.45,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint16_45%,PVC,B0,40.14,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint32_10%,PVC,B0,53.14,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint32_20%,PVC,B0,58.78,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint32_30%,PVC,B0,68.58,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mad_uint32_45%,PVC,B0,79.52,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_uint16_45%,PVC,B0,24.54,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_uint32_20%,PVC,B0,37.38,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_uint32_30%,PVC,B0,43.13,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_uint32_45%,PVC,B0,49.61,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_sel_fp32_45%,PVC,B0,31.63,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+EM_transc_fp32_45%,PVC,B0,22.9,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mov_fp16_45%,PVC,B0,20.18,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mov_fp32_45%,PVC,B0,19.65,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mov_sint16_45%,PVC,B0,27.13,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mov_sint32_45%,PVC,B0,46.11,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mov_unit32_45%,PVC,B0,40.16,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp16_20%,PVC,B0,37.28,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp16_30%,PVC,B0,44.06,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp16_45%,PVC,B0,47.95,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp32_20%,PVC,B0,39.73,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp32_30%,PVC,B0,45.38,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp32_45%,PVC,B0,50.3,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_sint16_20%,PVC,B0,35.56,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_sint16_30%,PVC,B0,37.79,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_sint16_45%,PVC,B0,44.8,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_uint16_30%,PVC,B0,33.54,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_uint16_45%,PVC,B0,38.63,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_TC_1Dispatch,PVC,B0`,5.25,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_FLOOR,PVC,B0,1.68,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Read_ECC_10%,PVC,B0,8.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Read_ECC_20%,PVC,B0,8.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Read_ECC_30%,PVC,B0,8.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Read_ECC_45%,PVC,B0,8.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Read_ECC,PVC,B0,8.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Write_ECC_10%,PVC,B0,3.42,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Write_ECC_20%,PVC,B0,3.87,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Write_ECC_30%,PVC,B0,4.36,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Write_ECC_45%,PVC,B0,5.02,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_GRF_1Write_ECC,PVC,B0,5.02,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 PS2_GA_FPU3Src_SinglePipe,PVC,A0,44.16,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
 PS2_GA_FPU2Src_SinglePipe,PVC,A0,34.66,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
 PS2_GA_ExtraPipe,PVC,A0,35.46,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_Accumulator_READ,PVC,A0,5.29,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-PS2_Accumulator_WRITE,PVC,A0,5.29,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_bypass,PVC,A0,14.308,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mad_fp32_mul_bypass,PVC,A0,32.8704,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp32_bypass,PVC,A0,15.2685,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_add_fp32_bypass,PVC,A0,28.9344,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,,,
-FPU0_mul_fp64_15%,PVCDP,A0,140.28714,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_mul_fp64_20%,PVCDP,A0,149.65884,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_mul_fp64_31%,PVCDP,A0,164.55744,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_add_fp64_15%,PVCDP,A0,100.10898,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_add_fp64_20%,PVCDP,A0,105.4116,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_add_fp64_31%,PVCDP,A0,112.23612,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_mov_fp64_20%,PVCDP,A0,24.692427,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_mov_fp64_29%,PVCDP,A0,27.340533,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
-FPU0_mov_fp64_31%,PVCDP,A0,29.03625,syn,1,PVC CDYn weight scaled by 2 for PVCDP,,,
+PS2_GA_1Read_FPU0_dispatch_10%,PVC,B0,1.4,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU0_dispatch_20%,PVC,B0,1.85,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU0_dispatch_30%,PVC,B0,2.31,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU0_dispatch_45%,PVC,B0,3.01,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU1_dispatch_10%,PVC,B0,1.28,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU1_dispatch_20%,PVC,B0,1.83,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU1_dispatch_30%,PVC,B0,2.42,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_FPU1_dispatch_45%,PVC,B0,3.05,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_DPAS_dispatch_10%,PVC,B0,0.11,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_DPAS_dispatch_20%,PVC,B0,0.17,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_DPAS_dispatch_30%,PVC,B0,0.21,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_1Read_DPAS_dispatch_45%,PVC,B0,0.28,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_Syn_FPU_1Write_ECC_10%,PVC,B0,4.18,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_Syn_FPU_1Write_ECC_20%,PVC,B0,4.42,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_Syn_FPU_1Write_ECC_30%,PVC,B0,4.75,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_GA_Syn_FPU_1Write_ECC_45%,PVC,B0,4.57,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_Accumulator_READ,PVC,B0,3.98,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+PS2_Accumulator_WRITE,PVC,B0,3.98,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_bypass,PVC,B0,14.308,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mad_fp32_mul_bypass,PVC,B0,32.8704,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_mul_fp32_bypass,PVC,B0,15.09,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp32_bypass,PVC,B0,26.5,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU0_add_fp64_bypass,PVC,B0,59.94,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_int32_bypass,PVC,B0,35.98,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_mul_int16_bypass,PVC,B0,31.36,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
+FPU1_add_int16_bypass,PVC,B0,20.55,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,,,
 PS2_L3_ReadHit,Gen12HP,A0,204.22,syn,0,transaction based cdyn weights from Fatemeh,,,
 PS2_L3_WriteHit,Gen12HP,A0,212.54,syn,0,transaction based cdyn weights from Fatemeh,,,
 PS2_L3_ReadMiss,Gen12HP,A0,250.11,syn,0,transaction based cdyn weights from Fatemeh,,,
@@ -9434,9 +9462,13 @@ PS2_CAM_BASE_NONSPINE,PVC ,A0,28939,syn,0,Calculated as per new model in 20WW37 
 PS2_CAM_BASE_FOV_INFRA,PVC ,A0,9476,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_FOVEROS,PVC ,A0,8824.9,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_BANK_INFRA,PVC ,A0,17.25,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_BASE_L3_BANK_INFRA,PVCDP,A0,14.36,syn,0,Calculated as per new model in 21ww03 indicator, 
 PS2_CAM_BASE_L3_BANK,PVC ,A0,299.2,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_BASE_L3_BANK,PVCDP,A0,359.42,syn,0,Calculated as per new model in 21ww03 indicator, 
 PS2_CAM_BASE_L3_NODE_INFRA,PVC ,A0,50.15,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_NODE,PVC ,A0,262.344,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_BASE_L3_NODE_INFRA,PVCDP,A0,58.74,syn,0,Calculated as per new model in 21ww03 indicator, 
+PS2_CAM_BASE_L3_NODE,PVCDP,A0,277.92,syn,0,Calculated as per new model in 21ww03 indicator, 
 PS2_CAM_BASE_ROGT,PVC ,A0,259.56,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_GAM_INFRA,PVC ,A0,54.395,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_GAM,PVC ,A0,234.985,syn,0,Calculated as per new model in 20WW37 Compute worksheet applying a 0.66 scaler as per ResNet,,,
@@ -9444,247 +9476,247 @@ PS2_CAM_BASE_SQIDI_INFRA,PVC ,A0,25.5525,syn,0,Calculated as per new model in 20
 PS2_CAM_BASE_SQIDI,PVC ,A0,177.219,syn,0,Calculated as per new model in 20WW37 Compute worksheet applying 0.66 scaler as per ResNet,,,
 PS2_CAM_BASE_COMP_INFRA,PVC ,A0,319.78,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_COMPRESSION,PVC ,A0,5218.62,syn,0,Calculated as per new model in 20WW37 Compute worksheet applying 0.66 scaler as per ResNet50 data,,,
-PS2_CAM_COMPUTE_SPINE_INFRA,PVCDP,A0,2954.698,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_NONSPINE_INFRA,PVCDP,A0,5918.384,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_ARB_INFRA,PVCDP,A0,54.37726,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_ARB,PVCDP,A0,1942.164,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_HDC_INFRA,PVCDP,A0,33.026,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_LSC_INFRA,PVCDP,A0,64.145606,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_LSC,PVCDP,A0,1038.7216,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_ROW_INFRA,PVCDP,A0,38.665606,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_ROW,PVCDP,A0,84.315182,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_FOV_INFRA,PVCDP,A0,72.893674,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_COMPUTE_FOVEROS,PVCDP,A0,89.709788,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_SPINE_INFRA,PVCDP,A0,292,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_NONSPINE_INFRA,PVCDP,A0,364.6,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_FOV_INFRA,PVCDP,A0,34.3688,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_FOVEROS,PVCDP,A0,40.3438,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_L3_BANK_INFRA,PVCDP,A0,0.5638,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_RAMBO_L3_BANK,PVCDP,A0,19.859,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_SPINE,PVCDP,A0,10462,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_NONSPINE_INFRA,PVCDP,A0,10119,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_NONSPINE,PVCDP,A0,28939,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_FOV_INFRA,PVCDP,A0,9476,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_FOVEROS,PVCDP,A0,8824.9,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_COMPUTE_SPINE_INFRA,PVCDP,A0,2966.55,syn,0,Calculated as per new model in 21WW03 indicator, 
+PS2_CAM_COMPUTE_NONSPINE_INFRA,PVCDP,A0,16580.42,syn,0,Calculated as per new model in 21WW03 indicator,
+PS2_CAM_COMPUTE_ARB_INFRA,PVCDP,A0,70.42,syn,0,Calculated as per new model in 21WW03 indicator, 
+PS2_CAM_COMPUTE_ARB,PVCDP,A0,1907.8,syn,0,Calculated as per new model in 21WW03 indicator,
+PS2_CAM_COMPUTE_HDC_INFRA,PVCDP,A0,32.80,syn,0,Calculated as per new model in 21WW03 indicator,
+PS2_CAM_COMPUTE_LSC_INFRA,PVCDP,A0,63.22,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_COMPUTE_LSC,PVCDP,A0,1037.39,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_COMPUTE_ROW_INFRA,PVCDP,A0,52.96,syn,0,Calculated as per new model in 21ww03 indicator, 
+PS2_CAM_COMPUTE_ROW,PVCDP,A0,54.21,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_COMPUTE_FOV_INFRA,PVCDP,A0,78.41,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_COMPUTE_FOVEROS,PVCDP,A0,82.52,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_RAMBO_SPINE_INFRA,PVCDP,A0,291.95,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_RAMBO_NONSPINE_INFRA,PVCDP,A0,363.25,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_RAMBO_FOV_INFRA,PVCDP,A0,17.66,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_RAMBO_FOVEROS,PVCDP,A0,20.92,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_RAMBO_L3_BANK_INFRA,PVCDP,A0,0.65,syn,0,Calculated as per new model in 21ww03 indicator, 
+PS2_CAM_RAMBO_L3_BANK,PVCDP,A0,20.74,syn,0,Calculated as per new model in 21ww03 indicator, 
+PS2_CAM_BASE_SPINE,PVCDP,A0,10462,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_BASE_NONSPINE_INFRA,PVCDP,A0,10341,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_BASE_NONSPINE,PVCDP,A0,30750,syn,0,Calculated as per new model in 21ww03 indicator,
+PS2_CAM_BASE_FOV_INFRA,PVCDP,A0,10793,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_BASE_FOVEROS,PVCDP,A0,8193.8,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_BANK_INFRA,PVCDP,A0,17.25,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_BANK,PVCDP,A0,299.2,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_NODE_INFRA,PVCDP,A0,50.15,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
 PS2_CAM_BASE_L3_NODE,PVCDP,A0,262.344,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_ROGT,PVCDP,A0,259.56,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_GAM_INFRA,PVCDP,A0,54.395,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_GAM,PVCDP,A0,234.985,syn,0,Calculated as per new model in 20WW37 Compute worksheet with 0.66 scaler,,,
-PS2_CAM_BASE_SQIDI_INFRA,PVCDP,A0,25.5525,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_SQIDI,PVCDP,A0,177.219,syn,0,Calculated as per new model in 20WW37 Compute worksheet with 0.66 scaler,,,
-PS2_CAM_BASE_COMP_INFRA,PVCDP,A0,319.78,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
-PS2_CAM_BASE_COMPRESSION,PVCDP,A0,5218.62,syn,0,Calculated as per new model in 20WW37 Compute worksheet with 0.66 scaler,,,
+PS2_CAM_BASE_ROGT,PVCDP,A0,258.87,syn,0,Calculated as per new model in 20WW37 Compute worksheet,,,
+PS2_CAM_BASE_GAM_INFRA,PVCDP,A0,25.80,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_BASE_GAM,PVCDP,A0,627.95,syn,0,Calculated as per new model in 21ww03 indicator sheet, 
+PS2_CAM_BASE_SQIDI_INFRA,PVCDP,A0,12.85,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_BASE_SQIDI,PVCDP,A0,200.9,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_BASE_COMP_INFRA,PVCDP,A0,40,syn,0,Calculated as per new model in 21ww03 indicator sheet,
+PS2_CAM_BASE_COMPRESSION,PVCDP,A0,3790.3,syn,0,Calculated as per new model in 21ww03 indicator sheet,
 PS2_EU_INFRA,PVC,A0,5,syn,0,Estimate of 5nF as EU infra CDYN based on 20ww37 compute worksheet,,,
 PS2_EU_SYST_INFRA,PVC,A0,10,syn,0,Estimate of 5nF as EU infra CDYN based on 20ww37 compute worksheet,,,
-PS2_SPINE_Base,PVC,A0,8.80,syn,0,Approximated cdyn weight for Spine in 20ww11.4 compute spreadsheet,,,
+PS2_SPINE_Base,PVC,A0,8.8,syn,0,Approximated cdyn weight for Spine in 20ww11.4 compute spreadsheet,,,
 PS2_SPINE_Compute,PVC,A0,2.31,syn,0,Approximated cdyn weight for Spine Compute in 20ww11.4 compute spreadsheet,,,
 PS2_SPINE_Rambo,PVC,A0,0.24,syn,0,Approximated cdyn weight for Spine Rambo in 20ww11.4 compute spreadsheet,,,
-PS0_FPU_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_FPU_CGEN,MTL,A0,0.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_FPU_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp16_20%,MTL,A0,31.96,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp16_30%,MTL,A0,36.51,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp16_45%,MTL,A0,39.39,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp32_10%,MTL,A0,20.76,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp32_20%,MTL,A0,24.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp32_30%,MTL,A0,29.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp32_45%,MTL,A0,32.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_add_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint16_20%,MTL,A0,30.27,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint16_45%,MTL,A0,41.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint32_10%,MTL,A0,20.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint32_30%,MTL,A0,31.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_sint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint16_20%,MTL,A0,23.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint16_45%,MTL,A0,29.86,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint32_10%,MTL,A0,19.09,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint32_20%,MTL,A0,24,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint32_30%,MTL,A0,27.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_add_uint32_45%,MTL,A0,33.36,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_cmp_fp32_45%,MTL,A0,21.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_dp4a_sint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_dp4a_sint32_20%,MTL,A0,33.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_dp4a_sint32_30%,MTL,A0,42.11,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_dp4a_sint32_45%,MTL,A0,51.76,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_cos_fp32_45%,MTL,A0,25.15,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_exp_fp32_45%,MTL,A0,13.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_inv_fp32_45%,MTL,A0,24.57,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_log_fp32_45%,MTL,A0,25.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_rsq_fp32_45%,MTL,A0,24.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_sin_fp32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_FPU_em_sqrt_fp32_45%,MTL,A0,25.01,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp16_20%,MTL,A0,41.79,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp16_45%,MTL,A0,46.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp32_10%,MTL,A0,40.41,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp32_20%,MTL,A0,47.42,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp32_30%,MTL,A0,52.26,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp32_45%,MTL,A0,57.68,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mad_fp64_45%,MTL,A0,10.95,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint16_10%,MTL,A0,44.14,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint16_20%,MTL,A0,53.89,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint16_30%,MTL,A0,58.08,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint16_45%,MTL,A0,62.58,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint32_10%,MTL,A0,35.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint32_30%,MTL,A0,49.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_sint32_45%,MTL,A0,58.95,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint16_10%,MTL,A0,39.85,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint16_20%,MTL,A0,46.45,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint16_45%,MTL,A0,50.68,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint32_10%,MTL,A0,33.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint32_20%,MTL,A0,40.53,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint32_30%,MTL,A0,45.47,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mad_uint32_45%,MTL,A0,52.72,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mov_fp16_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mov_fp32_45%,MTL,A0,13,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mov_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mov_sint16_45%,MTL,A0,31.26,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mov_sint32_45%,MTL,A0,29.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp16_20%,MTL,A0,29.01,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp16_30%,MTL,A0,33.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp16_45%,MTL,A0,36.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp32_10%,MTL,A0,29.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp32_20%,MTL,A0,35.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp32_30%,MTL,A0,38.97,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp32_45%,MTL,A0,42.4,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_mul_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint16_20%,MTL,A0,41.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint16_45%,MTL,A0,57.32,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint32_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_sint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint16_20%,MTL,A0,37.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint16_45%,MTL,A0,49.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint32_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU1_mul_uint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-FPU0_sel_fp32_45%,MTL,A0,24.16,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_GA_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_GA_CGEN,MTL,A0,1.1,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_GA_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_Accumulator_READ,MTL,A0,4.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_Accumulator_WRITE,MTL,A0,4.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Read_10%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Read_20%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Read_30%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Read_45%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Write_10%,MTL,A0,6.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Write_20%,MTL,A0,7.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Write_30%,MTL,A0,8.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_GRF_Write_45%,MTL,A0,10.06,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_TC_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_TC_CGEN,MTL,A0,0.39,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_TC_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_TC_1Dispatch,MTL,A0,2.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_TC_2Dispatch,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_IDLE_CGDIS,MTL,A0,6.707,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_IDLE_CGEN,MTL,A0,0.24,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-2x_fast_2D_linear_aniso_BC1_UNORM,MTL,A0,1060.1,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-bilinear_sample_2D_linear_nearest_BC1_UNORM,MTL,A0,573.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-bilinear_sample_2D_linear_nearest_BC1_UNORM_SRGB,MTL,A0,897.32,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-bilinear_sample_2D_linear_nearest_R16_FLOAT,MTL,A0,592.55,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-bilinear_sample_2D_linear_nearest_R16G16B16A16_FLOAT,MTL,A0,933.99,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_ld_2D_R8G8B8A8_UNORM_SRGB,MTL,A0,451.31,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_sample_2D_nearest_nearest_BC1_UNORM,MTL,A0,364.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_sample_2D_nearest_nearest_BC1_UNORM_SRGB,MTL,A0,633.56,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_sample_2D_nearest_nearest_R16_FLOAT,MTL,A0,331.96,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_sample_2D_nearest_nearest_R16G16B16A16_FLOAT,MTL,A0,499.54,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_sample_2D_nearest_nearest_R8G8B8A8_UNORM_SRGB,MTL,A0,663.86,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-trilinear_fast_sample_2D_linear_linear_R8G8B8A8_UNORM,MTL,A0,362.62,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-trilinear_sample_2D_linear_linear_BC4_UNorm,MTL,A0,453.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-trilinear_sample_2D_linear_linear_BC1_UNorm_SRGB,MTL,A0,653.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-point_ld_2D_R10G10B10A2_UNorm,MTL,A0,289.2,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-SLM Write Hit,MTL,A0,263.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_NULL_BVH_SIMD8,MTL,A0,39.54,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_ALL_RAY_MISS_SIMD8,MTL,A0,44.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_NULL_BVH_SIMD16,MTL,A0,41.09,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_ALL_RAY_MISS_SIMD16,MTL,A0,47.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_BOX_SIMD8,MTL,A0,113.35,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_BOX_SIMD16,MTL,A0,126.7,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_QUAD_SIMD8,MTL,A0,95.04,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RT_QUAD_SIMD16,MTL,A0,116.97,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_MA_HDC_IN,MTL,A0,7.57,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_MA_TDL_IN,MTL,A0,34.45,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_MA_LSC_IN,MTL,A0,13.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_MA_SAMP_IN,MTL,A0,26.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_MA_OUT,MTL,A0,56.79,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_TDL_PSD_DISPATCH,MTL,A0,28.92,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_TDL_NONPSD_DISPATCH,MTL,A0,36.29,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_VFM,MTL,A0,9.5,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_VSFE,MTL,A0,31.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_VSBE,MTL,A0,50.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_TDG,MTL,A0,9.02,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SOL,MTL,A0,23.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SVG,MTL,A0,12.59,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_CS,MTL,A0,10.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_CCS,MTL,A0,5.78,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_SQIDI_IDLE_CGEN,MTL,A0,3.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_SQIDI_IDLE_CGDIS,MTL,A0,3.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_SQIDI_RC6_IDLE,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSRDF,MTL,A0,245.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSWF,MTL,A0,269.17,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSRD32,MTL,A0,185.78,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSW32,MTL,A0,134.59,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSRDF_ENCRYPT,MTL,A0,412.51,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SQIDI_NSWF_ENCRYPT,MTL,A0,483.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_CL_NOMUSTCLIP,MTL,A0,147.9,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SFFE_NOTCULLED_NOTFASTCLIP,MTL,A0,102.16,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_SFBE,MTL,A0,180.89,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_WM_MSAA_PARTIALLYLIT,MTL,A0,149.07,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_WM_FLUSH,MTL,A0,3.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_WM_NOMSAA_PARTIALLYLIT,MTL,A0,195.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_GA_IDLE_CGEN,MTL,A0,8.8,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_GA_IDLE_CGDIS,MTL,A0,8.8,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_READ_FTLB_HIT,MTL,A0,214.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_READ_FTLB_MISS_STLB_HIT,MTL,A0,224.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_READ_FTLB_MISS_STLB_MISS,MTL,A0,231.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_WRITE_FTLB_HIT,MTL,A0,374.07,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_WRITE_FTLB_MISS_STLB_MISS,MTL,A0,383.82,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_GA_WRITE_FTLB_MISS_STLB_MISS,MTL,A0,383.82,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS1_RCC,MTL,A0,73.22956,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCC_CACHE_WRITE,MTL,A0,78.72328,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCC_ALLOC_MISSES,MTL,A0,59.26264,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCC_ALLOC_HITS,MTL,A0,52.29018,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCC_CACHE_READ,MTL,A0,82.30246,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_8PPC_FIX_BLD,MTL,A0,386.344,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_8PPC_FIX_WRT,MTL,A0,51.37714,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_16PPC_FIX_BLD,MTL,A0,304.2269,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_16PPC_FIX_WRT,MTL,A0,54.12646,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_4PPC_FIX_BLD,MTL,A0,363.4618,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_RCPBE_4PPC_FIX_WRT,MTL,A0,53.59313,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-RTREAD,MTL,A0,63.32797,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_CC_IDLE_CGEN,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS0_CC_IDLE_CGDIS,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_CC_READ_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
-PS2_CC_WRITE_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone)
+PS0_FPU_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_FPU_CGEN,MTL,A0,0.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_FPU_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp16_20%,MTL,A0,31.96,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp16_30%,MTL,A0,36.51,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp16_45%,MTL,A0,39.39,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp32_10%,MTL,A0,20.76,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp32_20%,MTL,A0,24.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp32_30%,MTL,A0,29.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp32_45%,MTL,A0,32.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_add_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint16_20%,MTL,A0,30.27,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint16_45%,MTL,A0,41.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint32_10%,MTL,A0,20.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint32_30%,MTL,A0,31.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_sint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint16_20%,MTL,A0,23.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint16_45%,MTL,A0,29.86,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint32_10%,MTL,A0,19.09,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint32_20%,MTL,A0,24,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint32_30%,MTL,A0,27.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_add_uint32_45%,MTL,A0,33.36,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_cmp_fp32_45%,MTL,A0,21.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_dp4a_sint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_dp4a_sint32_20%,MTL,A0,33.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_dp4a_sint32_30%,MTL,A0,42.11,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_dp4a_sint32_45%,MTL,A0,51.76,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_cos_fp32_45%,MTL,A0,25.15,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_exp_fp32_45%,MTL,A0,13.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_inv_fp32_45%,MTL,A0,24.57,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_log_fp32_45%,MTL,A0,25.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_rsq_fp32_45%,MTL,A0,24.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_sin_fp32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_FPU_em_sqrt_fp32_45%,MTL,A0,25.01,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp16_20%,MTL,A0,41.79,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp16_45%,MTL,A0,46.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp32_10%,MTL,A0,40.41,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp32_20%,MTL,A0,47.42,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp32_30%,MTL,A0,52.26,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp32_45%,MTL,A0,57.68,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mad_fp64_45%,MTL,A0,10.95,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint16_10%,MTL,A0,44.14,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint16_20%,MTL,A0,53.89,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint16_30%,MTL,A0,58.08,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint16_45%,MTL,A0,62.58,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint32_10%,MTL,A0,35.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint32_30%,MTL,A0,49.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_sint32_45%,MTL,A0,58.95,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint16_10%,MTL,A0,39.85,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint16_20%,MTL,A0,46.45,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint16_45%,MTL,A0,50.68,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint32_10%,MTL,A0,33.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint32_20%,MTL,A0,40.53,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint32_30%,MTL,A0,45.47,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mad_uint32_45%,MTL,A0,52.72,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mov_fp16_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mov_fp32_45%,MTL,A0,13,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mov_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mov_sint16_45%,MTL,A0,31.26,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mov_sint32_45%,MTL,A0,29.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp16_20%,MTL,A0,29.01,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp16_30%,MTL,A0,33.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp16_45%,MTL,A0,36.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp32_10%,MTL,A0,29.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp32_20%,MTL,A0,35.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp32_30%,MTL,A0,38.97,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp32_45%,MTL,A0,42.4,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp64_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp64_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp64_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_mul_fp64_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint16_20%,MTL,A0,41.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint16_45%,MTL,A0,57.32,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint32_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_sint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint16_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint16_20%,MTL,A0,37.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint16_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint16_45%,MTL,A0,49.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint32_10%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint32_20%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint32_30%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU1_mul_uint32_45%,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+FPU0_sel_fp32_45%,MTL,A0,24.16,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_GA_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_GA_CGEN,MTL,A0,1.1,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_GA_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_Accumulator_READ,MTL,A0,4.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_Accumulator_WRITE,MTL,A0,4.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Read_10%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Read_20%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Read_30%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Read_45%,MTL,A0,13.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Write_10%,MTL,A0,6.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Write_20%,MTL,A0,7.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Write_30%,MTL,A0,8.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_GRF_Write_45%,MTL,A0,10.06,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_TC_CGDIS,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_TC_CGEN,MTL,A0,0.39,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_TC_DOPCGEN,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_TC_1Dispatch,MTL,A0,2.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_TC_2Dispatch,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_IDLE_CGDIS,MTL,A0,6.707,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_IDLE_CGEN,MTL,A0,0.24,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+2x_fast_2D_linear_aniso_BC1_UNORM,MTL,A0,1060.1,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+bilinear_sample_2D_linear_nearest_BC1_UNORM,MTL,A0,573.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+bilinear_sample_2D_linear_nearest_BC1_UNORM_SRGB,MTL,A0,897.32,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+bilinear_sample_2D_linear_nearest_R16_FLOAT,MTL,A0,592.55,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+bilinear_sample_2D_linear_nearest_R16G16B16A16_FLOAT,MTL,A0,933.99,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_ld_2D_R8G8B8A8_UNORM_SRGB,MTL,A0,451.31,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_sample_2D_nearest_nearest_BC1_UNORM,MTL,A0,364.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_sample_2D_nearest_nearest_BC1_UNORM_SRGB,MTL,A0,633.56,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_sample_2D_nearest_nearest_R16_FLOAT,MTL,A0,331.96,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_sample_2D_nearest_nearest_R16G16B16A16_FLOAT,MTL,A0,499.54,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_sample_2D_nearest_nearest_R8G8B8A8_UNORM_SRGB,MTL,A0,663.86,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+trilinear_fast_sample_2D_linear_linear_R8G8B8A8_UNORM,MTL,A0,362.62,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+trilinear_sample_2D_linear_linear_BC4_UNorm,MTL,A0,453.83,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+trilinear_sample_2D_linear_linear_BC1_UNorm_SRGB,MTL,A0,653.33,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+point_ld_2D_R10G10B10A2_UNorm,MTL,A0,289.2,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+SLM Write Hit,MTL,A0,263.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_NULL_BVH_SIMD8,MTL,A0,39.54,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_ALL_RAY_MISS_SIMD8,MTL,A0,44.48,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_NULL_BVH_SIMD16,MTL,A0,41.09,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_ALL_RAY_MISS_SIMD16,MTL,A0,47.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_BOX_SIMD8,MTL,A0,113.35,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_BOX_SIMD16,MTL,A0,126.7,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_QUAD_SIMD8,MTL,A0,95.04,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RT_QUAD_SIMD16,MTL,A0,116.97,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_MA_HDC_IN,MTL,A0,7.57,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_MA_TDL_IN,MTL,A0,34.45,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_MA_LSC_IN,MTL,A0,13.03,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_MA_SAMP_IN,MTL,A0,26.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_MA_OUT,MTL,A0,56.79,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_TDL_PSD_DISPATCH,MTL,A0,28.92,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_TDL_NONPSD_DISPATCH,MTL,A0,36.29,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_VFM,MTL,A0,9.5,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_VSFE,MTL,A0,31.84,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_VSBE,MTL,A0,50.63,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_TDG,MTL,A0,9.02,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SOL,MTL,A0,23.52,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SVG,MTL,A0,12.59,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_CS,MTL,A0,10.69,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_CCS,MTL,A0,5.78,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_SQIDI_IDLE_CGEN,MTL,A0,3.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_SQIDI_IDLE_CGDIS,MTL,A0,3.77,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_SQIDI_RC6_IDLE,MTL,A0,0,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSRDF,MTL,A0,245.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSWF,MTL,A0,269.17,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSRD32,MTL,A0,185.78,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSW32,MTL,A0,134.59,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSRDF_ENCRYPT,MTL,A0,412.51,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SQIDI_NSWF_ENCRYPT,MTL,A0,483.74,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_CL_NOMUSTCLIP,MTL,A0,147.9,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SFFE_NOTCULLED_NOTFASTCLIP,MTL,A0,102.16,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_SFBE,MTL,A0,180.89,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_WM_MSAA_PARTIALLYLIT,MTL,A0,149.07,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_WM_FLUSH,MTL,A0,3.66,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_WM_NOMSAA_PARTIALLYLIT,MTL,A0,195.71,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_GA_IDLE_CGEN,MTL,A0,8.8,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_GA_IDLE_CGDIS,MTL,A0,8.8,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_READ_FTLB_HIT,MTL,A0,214.75,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_READ_FTLB_MISS_STLB_HIT,MTL,A0,224.49,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_READ_FTLB_MISS_STLB_MISS,MTL,A0,231.94,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_WRITE_FTLB_HIT,MTL,A0,374.07,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_WRITE_FTLB_MISS_STLB_MISS,MTL,A0,383.82,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_GA_WRITE_FTLB_MISS_STLB_MISS,MTL,A0,383.82,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS1_RCC,MTL,A0,73.22956,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCC_CACHE_WRITE,MTL,A0,78.72328,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCC_ALLOC_MISSES,MTL,A0,59.26264,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCC_ALLOC_HITS,MTL,A0,52.29018,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCC_CACHE_READ,MTL,A0,82.30246,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_8PPC_FIX_BLD,MTL,A0,386.344,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_8PPC_FIX_WRT,MTL,A0,51.37714,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_16PPC_FIX_BLD,MTL,A0,304.2269,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_16PPC_FIX_WRT,MTL,A0,54.12646,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_4PPC_FIX_BLD,MTL,A0,363.4618,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_RCPBE_4PPC_FIX_WRT,MTL,A0,53.59313,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+RTREAD,MTL,A0,63.32797,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_CC_IDLE_CGEN,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS0_CC_IDLE_CGDIS,MTL,A0,3.65,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_CC_READ_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
+PS2_CC_WRITE_UNCOMPRESSED,MTL,A0,206.19,syn,1,Cdyn weight release from Aakash 20WW50 (SD 0.8 Milestone),,,
 ExtraPipe_DPAS_BFloat_10%,PVCDP,A0,118.76,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 ExtraPipe_DPAS_BFloat_20%,PVCDP,A0,155.53,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 ExtraPipe_DPAS_BFloat_30%,PVCDP,A0,177.51,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
@@ -9730,6 +9762,13 @@ FPU0_mad_fp32_45%,PVCDP,A0,59.95,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from
 FPU0_mad_fp64_20%,PVCDP,A0,57.22,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 FPU0_mad_fp64_30%,PVCDP,A0,74.38,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 FPU0_mad_fp64_45%,PVCDP,A0,82.51,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp32_10%,PVCDP,A0,43.3,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp32_20%,PVCDP,A0,49.91,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp32_30%,PVCDP,A0,56.12,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp32_45%,PVCDP,A0,59.95,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp64_20%,PVCDP,A0,57.22,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp64_30%,PVCDP,A0,74.38,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
+FPU2_mad_fp64_45%,PVCDP,A0,82.51,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 FPU1_mad_sint16_30%,PVCDP,A0,70.27,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 FPU1_mad_sint16_45%,PVCDP,A0,86.27,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,
 FPU1_mad_sint32_20%,PVCDP,A0,63.67,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant,,,

@@ -98,6 +98,7 @@ L3_Bank:
     PS2_CAM_L3_NODE: R * C
     PS2_CAM_L3_INFRA: R * C
     PS2_CAM_L3_FABRICS: R * C
+    PS2_CAM_NODEX: R * C
 
 FabricsSpine:
   SpineCompute:
@@ -108,7 +109,6 @@ Other:
     PS2_CAM_ROGT: R * C
     PS2_CAM_COMPUTE_ROGT: R * C
     PS2_CAM_OTHER_INFRA: R * C
-    PS2_CAM_NODEX: R * C
 
 GAM: 
  GAMFTLB:

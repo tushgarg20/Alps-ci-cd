@@ -37,7 +37,7 @@
 	num_DSSC_SLMBE = model.NumSlices * model.NumDss
 	num_HDC_HDCREQCMD = model.NumSlices * model.NumDss
 	num_Other_Others =  numEUs
-	num_Other_ROW = numEUs
+	num_Other_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
 
@@ -66,7 +66,6 @@
     #PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
-	PS2_ROW = EU_Utilization
     PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
@@ -168,7 +167,9 @@
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1 * Lsc.Banks)
-    
+    PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+    PS2_ROW_Idle = 1
+   
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
@@ -518,6 +519,7 @@
 #GA and GRF power states
          FPU_total_count = FPU0_total_count + FPU1_total_count
          PS2_GA_GRF_FLOOR = ( FPU_total_count ) / (.CrClk * numEUs * 8)
+         PS2_GA_SYN_FLOOR = ( FPU_total_count ) / (.CrClk * numEUs * 8)
          PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8)
          PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
          PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
@@ -525,12 +527,16 @@
          PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+
  
 #DPAS instructions
         
 #GRF power states - Read and Write
          PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
          PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8 )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
+
+#DPAS instructions
+        
 #Accumulator power states - Read and Write
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)
