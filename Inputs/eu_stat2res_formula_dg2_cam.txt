@@ -54,11 +54,11 @@
         DPASW_UInt8_Scaler = (DPAS_Depth == 8) ? 1.619 : 1
         DPASW_SInt8_Scaler = (DPAS_Depth == 8) ? 1.6538 : 1
         DPASW_BFloat_Scaler = (DPAS_Depth == 8) ? 1.3648 : 1
-        DPASW_SFloat_Scaler = (DPAS_Depth == 8) ? 1.3655 : 1
+        DPASW_Float_Scaler = (DPAS_Depth == 8) ? 1.3655 : 1
         DPAS_UInt8_Scaler = (DPAS_Depth == 8) ? 1.5978 : 1
         DPAS_SInt8_Scaler = (DPAS_Depth == 8) ? 1.6291 : 1
         DPAS_BFloat_Scaler = (DPAS_Depth == 8) ? 1.3381 : 1
-        DPAS_SFloat_Scaler = (DPAS_Depth == 8) ? 1.3178 : 1
+        DPAS_Float_Scaler = (DPAS_Depth == 8) ? 1.3178 : 1
         DPAS_UInt4_Scaler = (DPAS_Depth == 8) ? 1.7017 : 1
         DPAS_SInt4_Scaler = (DPAS_Depth == 8) ? 1.5899 : 1
        
