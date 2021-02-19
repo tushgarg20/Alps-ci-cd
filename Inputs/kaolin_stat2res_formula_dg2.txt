@@ -439,9 +439,9 @@
          PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
          PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
          PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
-         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
-         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs * 8)
+         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs * 8)
+         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs * 8)
          PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
 
