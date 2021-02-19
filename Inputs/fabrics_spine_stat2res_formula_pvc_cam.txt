@@ -6,11 +6,7 @@
         L3_Cache_Size                   =       D(knob.L3CacheSize)
         L3_Scaler                       =       (L3_Cache_Size == 8) ? 1 : 1.05 
         GADSS_Scaler                    =       D(knob.GADSS)
-        PS2_CAM_L3_BANK                  =       (D(L3_READ)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler
-        PS2_CAM_L3_NODE                  =       (D(L3_READ)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler
-        PS2_CAM_L3_INFRA            =       1 / L3_Scaler
-
-		
+        		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
         #PS2_CAM_SPINE                   =       1
