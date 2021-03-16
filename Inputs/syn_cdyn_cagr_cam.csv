@@ -2468,6 +2468,7 @@ L3_Bank,PVCDP,Xe3,1,Scler based on new L3 arch and inputs from L3 uArch team
 L3_Bank,Xe3,Xe3,1,Scler based on new L3 arch and inputs from L3 uArch team 
 Foveros,PVCDP,PVCDP,1,Scler based on 20ww37
 Foveros,PVCDP,Xe3,1,Scler based on 20ww37
+Foveros,Xe3,Xe3,1,Scler based on 20ww37
 GAM,PVCDP,PVCDP,1,Scler based on 20ww37
 GAM,PVCDP,Xe3,1,Scler based on 20ww37
 FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww20 

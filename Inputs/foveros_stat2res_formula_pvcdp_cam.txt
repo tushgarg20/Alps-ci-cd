@@ -6,10 +6,10 @@
         num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
         numEUs                          =       D(knob.numEUs) 
 	#num_Foveros_Compute		=       8 #D(knob.numComputeChiplets) 
-        num_Foveros_DSS                 =       numEUs
-        num_Foveros_Rambo               =       numEUs
-        num_Foveros_RamboDSS            =       numEUs
-        num_Foveros_Base                =       numEUs 
+        num_Foveros_DSS                 =       num_L3_Bank_LBI
+        num_Foveros_Rambo               =       num_L3_Bank_LBI
+        num_Foveros_RamboDSS            =       num_L3_Bank_LBI
+        num_Foveros_Base                =       num_L3_Bank_LBI 
         GADSS_Scaler                    =       D(knob.GADSS)
 		
 #Generic				
