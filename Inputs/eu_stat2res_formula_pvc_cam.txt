@@ -105,8 +105,8 @@
         ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
  
 #GRF, ACC, TC and GA related
-        PS2_GA_FPU3Src_SinglePipe =  ((FPU_total_count + INT_total_count) > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
-        PS2_GA_FPU2Src_SinglePipe = ((FPU_total_count + INT_total_count) > 0) ? (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
+        PS2_GA_FPU3Src_SinglePipe =  ((FPU_total_count + INT_total_count) > 0) ? (FPU3Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0 
+        PS2_GA_FPU2Src_SinglePipe = ((FPU_total_count + INT_total_count) > 0) ? (FPU2Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0  
         PS2_GA_ExtraPipe = D(GA_ExtraPipe) 
         PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
         PS2_GA_GRF_1READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
