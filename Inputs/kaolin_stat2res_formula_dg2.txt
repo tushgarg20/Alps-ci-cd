@@ -158,6 +158,7 @@
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+    PS2_L3Node_Idle = 1
 	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 
 	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
@@ -166,28 +167,29 @@
 	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
 #LSC
     .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))
-    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
-
-    PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
-    PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
-    PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1 * Lsc.Banks)
-    PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
+    PS2_LSC = D(SUM('Lsc\.\d+\.\d+\.\d+\.Input.active')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Idle = 1- PS2_LSC
+    PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1)
+    PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1)
+    PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1)
+    PS2_ROW = PS2_LSC
     PS2_ROW_Idle = 1
    
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
-    @SAMPLER_MAIN@ = (Point_LD | Point_Sample_L | Point_Else | Small_Trilinear | Small_Bilinear_Sample_L | Small_Bilinear_Else | Samp_16Bits_Trilinear_Fl
-    @SAMPLER_FETCH@ = (Fetch_Bypass | Fetch_Fast | Fetch_High | Fetch_Low) 
+    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Fl)
+    @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
     Total_Sampler_fetch = (D(SUM('pwr\.@SAMPLER_FETCH@')))
   
-    Sampler_main_active : D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
-    Sampler_fetch_active: D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
+    Sampler_main_active = D(SUM('Samp\.\d+\.\d+\.\d+\.SampInput.active')) /  (.CrClk * num_Sampler_Main)
+    Sampler_fetch_active= D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
     
-    PS0_Sampler: 1 - Sampler_main_active
+    PS0_Sampler= 1 - Sampler_main_active
     
     #Main path
     PS2_Sampler_Point_LD =  D('pwr\.Point_LD') * Sampler_main_active / Total_Sampler_main
@@ -455,13 +457,13 @@
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)
 
-
-    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)         
+GAM:
+    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gam\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gam\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)         
          
 
 

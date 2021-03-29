@@ -16,8 +16,6 @@ EU:
   Accumulator:
      PS2_Accumulator_READ: R * C
      PS2_Accumulator_WRITE: R * C
-  Infra:
-    PS2_EU_Infra: R * C
   FPU0:
      PS2_EU_FPU0:
       FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
@@ -155,7 +153,7 @@ EU:
       PS2_GA_ExtraPipe: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_SYN_FLOOR: R * C
   ExtraPipe:
-      PS2_EU_DPAS: R * C
+      #PS2_EU_DPAS: R * C
       ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_BFloat:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_SInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
@@ -168,6 +166,7 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 DPAS_toggle_rate: R
 Bypass_factor: R
+GT_BW_GBPS: R
 
 L3_Bank:
   LTCD_Data:

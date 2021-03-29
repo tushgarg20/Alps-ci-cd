@@ -214,10 +214,10 @@ EU:
       PS2_GA_1Read_FPU11_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_DPAS_dispatch : R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_ExtraPipe: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_ExtraPipe: R * C
       PS2_GA_SYN_FLOOR: R * C
   ExtraPipe:
-      PS2_EU_DPAS: R * C
+      #PS2_EU_DPAS: R * C
       ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_BFloat:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_SInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
@@ -230,6 +230,7 @@ FPU1_toggle_rate: R
 FPU0_toggle_rate: R
 DPAS_toggle_rate: R
 Bypass_factor: R
+GT_BW_GBPS: R
 
 L3_Bank:
   LTCD_Data:
@@ -265,7 +266,8 @@ Other:
     PS2_CAM_SPINE_RAMBO: R * C
 
   inf:
-    PS2_Infra_emu_const: R * C
+    PS2_chiplet_infra: R * C 
+    PS2_chiplet_infra_idle: R * C   
   NodeX:
     PS2_NodeX: R * C
 

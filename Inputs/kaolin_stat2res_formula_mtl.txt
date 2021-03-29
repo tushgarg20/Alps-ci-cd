@@ -47,10 +47,20 @@
 
 #EU utilization from Kaolin
 
-	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.MathCycle'))
-	Total_FpuCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.FpuCycle'))
+	@FPU_Cycles@ = (Fp16Cycle|Fp32Cycle|Fp64Cycle)
+	@INT_Cycles@ = (Int16Cycle|Int32Cycle)
+	@MATH_Cycles@ = (Math32Cycle)
+	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
+	Total_FpuCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
+
+        FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
+        FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
+        EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+        DPAS_total_count =  (D(SUM('pwr\.@ALLDPAS@')))
+        Total_instr_count = FPU0_total_count + FPU1_total_count + EM_total_count
+
 
 	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs * 0.5)
 	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)
@@ -163,20 +173,22 @@
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
     PS2_L1_Write_Hit = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) - D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))/(.CrClk * num_LSC_L1 * Lsc.Banks)
-    
+    PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+    PS2_ROW_Idle = 1
+   
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
     @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Fl)
-    @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
+    @SAMPLER_FETCH@ = (Fetch_Bypass| etch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
     Total_Sampler_fetch = (D(SUM('pwr\.@SAMPLER_FETCH@')))
   
-    Sampler_main_active = D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
+    Sampler_main_active = D(SUM('Samp\.\d+\.\d+\.\d+\.SampInput.active')) /  (.CrClk * num_Sampler_Main)
     Sampler_fetch_active= D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
     
-    PS0_Sampler = 1 - Sampler_main_active
+    PS0_Sampler= 1 - Sampler_main_active
     
     #Main path
     PS2_Sampler_Point_LD =  D('pwr\.Point_LD') * Sampler_main_active / Total_Sampler_main
@@ -256,27 +268,27 @@
          DPAS_total_count = (D(SUM('pwr\.@ALLDPAS@')) 
 
 #Toggle Rates
-         .avg_DPAS_Src0_toggle = D('pwr\.TrDpS0')/numEUs
-         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/numEUs
-         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/numEUs
-         .avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
-         .max_DPAS_toggle_rate = MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle, .avg_DPAS_Write_toggle)
-          DPAS_toggle_rate = (DPAS_Utilization > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * DPAS_Utilization * .CrClk)) : 0 
-         .avg_FPU0_Src0_toggle = D('pwr\.TrFpS0')/numEUs
-         .avg_FPU0_Src1_toggle = D('pwr\.TrFpS1')/numEUs
-         .avg_FPU0_Src2_toggle = D('pwr\.TrFpS2')/numEUs
-         .avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         .max_FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle, .avg_FPU0_Write_toggle)
-         FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/numEUs
-         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/numEUs
-         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/numEUs
-         .avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
-         .max_EM_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle, .avg_EM_Write_toggle)
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 256)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 256)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 256)
+         #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
+         FPU0_toggle_rate = 0.3 #MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*256)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*256)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*256)
+         #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
+         FPU1_toggle_rate = 0.3# MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
-         FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 2 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         GA_toggle_rate	=	FPU0_toggle_rate #Approximating GA toggle rate as FPU0 toggle rate
-
+         #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+#DPAS toggle rate
+        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*256)
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*256)
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*256)
+         #.avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
+         DPAS_toggle_rate = MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
+         #DPAS_toggle_rate = 	(PS2_EU_DPAS > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * PS2_EU_DPAS * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         GA_toggle_rate	= MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to max of compute pipe TRs
 #DPAS
         ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16))) / (.CrClk * numEUs)
