@@ -961,6 +961,7 @@ EU,Gen11LP,DG2,False,
 EU,Gen9LPClient,DG2,False
 EU,DG2,DG2,False
 EU,DG2,Xe2,False
+EU,Xe2,Xe2,False
 COLOR,Gen12HP,DG2,False
 COLOR,Gen12LP,DG2,False
 COLOR,Gen11LP,DG2,False,

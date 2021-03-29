@@ -1,20 +1,24 @@
 #Unit	GSIM residency			Comments
-#Instance Counts				
+#Instance Counts			
+        numL3Banks			=       D(knob.numL3Banks) #Dummy value
+	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices		
         .CrClk	=	D(MAX_CYCLES)
 	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
         num_GAM_SQIDI        =       D(knob.numSQIDI)
         L3_Cache_Size           =       D(knob.L3CacheSize)
         GADSS_Scaler            =       D(knob.GADSS)
-        L3_Scaler               =       (L3_Cache_Size >= 8) ? 1 : 1.05         
+        L3_Scaler               =       (L3_Cache_Size >= 8) ? 1 : 1.05
 #Generic				
-	PS2_CAM_BASE_GAM         =  (D(L3_READ)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64))*GADSS_Scaler
+	PS2_CAM_BASE_GAM         =  (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_BASE_GAM_INFRA   =  1
-        PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/512
+        PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/(32 * num_GAM_SQIDI)
         PS2_CAM_BASE_SQIDI_INFRA =  1
         PS2_CAM_BASE_COMP_INFRA  =  1
-        PS2_CAM_BASE_COMPRESSION =  (D(GTI_READ) + D(GTI_WRITE))/512
-        #PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/512
-        #PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/512
+        PS2_CAM_BASE_COMPRESSION =  (D(GTI_READ) + D(GTI_WRITE))/(32 * num_GAM_SQIDI)
+        #PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/(512 * Xe3_Scaler)
+        #PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/(512 * Xe3_Scaler)
         #PS2_CAM_GAM_INFRA        =  1 
         #PS2_CAM_SQIDI_INFRA      =  1 
-        #PS2_CAM_GA_SQIDI_RPT = (D(GTI_READ) + D(GTI_WRITE))/512 
+        #PS2_CAM_GA_SQIDI_RPT = (D(GTI_READ) + D(GTI_WRITE))/(512 * Xe3_Scaler)
+ 

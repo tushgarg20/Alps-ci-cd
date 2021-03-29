@@ -1,0 +1,28 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        numEUs	                        =	D(knob.numEUs) 	#This includes Slices & SubSlices
+	num_FabricsSpine_Fabrics	=       numEUs #Fabrics is a single unit
+	num_FabricsSpine_SpineCompute  	=       numEUs #Spine is a single unit
+	num_FabricsSpine_SpineBaseRambo =       numEUs #Spine is a single unit
+       	numL3Banks			=       D(knob.numL3Banks) #Dummy value
+	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices
+        L3_Cache_Size                   =       D(knob.L3CacheSize)
+        L3_Scaler                       =       (L3_Cache_Size == 8) ? 1 : 1.05 
+        GADSS_Scaler                    =       D(knob.GADSS)
+        		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)	
+        #PS2_CAM_SPINE                   =       1
+        #PS2_CAM_SPINE_COMPUTE           =       1
+        #PS2_CAM_SPINE_RAMBO             =       1
+        PS2_CAM_COMPUTE_SPINE            =       1
+        PS2_CAM_COMPUTE_SPINE_INFRA      =       1
+        PS2_CAM_COMPUTE_NONSPINE_INFRA   =       1
+        PS2_CAM_RAMBO_SPINE_INFRA        =       1
+        PS2_CAM_RAMBO_NONSPINE_INFRA     =       1
+        PS2_CAM_BASE_SPINE               =       1
+        PS2_CAM_BASE_NONSPINE            =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
+        PS2_CAM_BASE_NONSPINE_INFRA      =       1
+        PS2_CAM_COMPUTE_ARB              =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
+        PS2_CAM_COMPUTE_ARB_INFRA        =       1 

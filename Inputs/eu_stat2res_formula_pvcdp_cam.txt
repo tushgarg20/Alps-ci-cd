@@ -114,8 +114,8 @@
         ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
  
 #GRF, ACC, TC and GA related
-        PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
-        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
+        PS2_GA_FPU3Src_SinglePipe =  ((FPU_total_count + INT_total_count) > 0) ? (FPU3Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0 
+        PS2_GA_FPU2Src_SinglePipe = ((FPU_total_count + INT_total_count) > 0) ? (FPU2Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0  
         PS2_GA_ExtraPipe = D(GA_ExtraPipe) 
         PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
         PS2_GA_GRF_1READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
@@ -127,7 +127,7 @@
         PS2_Accumulator_WRITE = D(ACCUM_WRITE)/CrClocks
 #INFRA power
         SYST_Active = D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
-        PS2_EU_INFRA = (SYST_Active >= 0.1) ? 0 : 1 
-        PS2_EU_SYST_INFRA = (SYST_Active >= 0.1) ? 1 : 0  
+        PS2_EU_INFRA = 1 
+        PS2_EU_SYST_INFRA = SYST_Active 
         
         

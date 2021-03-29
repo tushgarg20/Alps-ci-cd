@@ -2455,6 +2455,7 @@ FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww16
 FabricsSpine,PVC,PVCDP,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,PVCDP,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,Xe3,1,Scaler based on 20ww20 
+FabricsSpine,Xe3,Xe3,1,Scaler based on 20ww20 
 LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
 LSC,PVCDP,Xe3,1,Scaler based on 20ww20 
 Other,PVCDP,PVCDP,1,Scaler based on 20ww37
@@ -2463,9 +2464,11 @@ ROW,PVCDP,PVCDP,1,Scler based on 20ww37
 ROW,PVCDP,Xe3,1,Scler based on 20ww37
 L3_Bank,PVCDP,PVCDP,1,Scler based on 20ww37
 L3_Bank,PVCDP,PVC2,1,Scler based on 20ww37
-L3_Bank,PVCDP,Xe3,0.85,Scler based on new L3 arch and inputs from L3 uArch team 
+L3_Bank,PVCDP,Xe3,1,Scler based on new L3 arch and inputs from L3 uArch team 
+L3_Bank,Xe3,Xe3,1,Scler based on new L3 arch and inputs from L3 uArch team 
 Foveros,PVCDP,PVCDP,1,Scler based on 20ww37
 Foveros,PVCDP,Xe3,1,Scler based on 20ww37
+Foveros,Xe3,Xe3,1,Scler based on 20ww37
 GAM,PVCDP,PVCDP,1,Scler based on 20ww37
 GAM,PVCDP,Xe3,1,Scler based on 20ww37
 FabricsSpine,PVCDP,PVC2,1,Scaler based on 20ww20 

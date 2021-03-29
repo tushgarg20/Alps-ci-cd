@@ -1404,8 +1404,9 @@ EU,Gen12LP,DG2,0.85733882
 EU,Gen12LP,Xe2,0.85733882
 EU,Gen12HP,DG2,0.85,to match with emualtion cdyn 
 EU,Gen12HP,Xe2,0.85,to match with emualtion cdyn 
-EU,DG2,DG2,0.85,to match with emualtion cdyn 
-EU,DG2,Xe2,1
+EU,DG2,DG2,1,to match with emualtion cdyn 
+EU,DG2,Xe2,1,to match with emualtion cdyn 
+EU,Xe2,Xe2,1
 EU,PVC,Xe2,1
 EU,PVCDP,Xe2,1
 EU,Gen9LPClient,MTL,0.85733882
@@ -1443,7 +1444,7 @@ GAM,Gen12LP,Gen12HP,1.1
 GAM,Gen12DG,Gen12HP,1
 GAM,Gen12HP,Gen12HP,1
 GAM,Gen12HP,DG2,1
-GAM,DG2,DG2,1.08
+GAM,DG2,DG2,1
 LSC,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet 
 ROW,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet
 GAM,Gen12HP,MTL,1
@@ -1523,7 +1524,7 @@ Other,Gen12LP,Gen12HP,1
 Other,Gen12DG,Gen12HP,1
 Other,Gen12HP,Gen12HP,1
 Other,Gen12HP,DG2,1
-Other,DG2,DG2,1.08
+Other,DG2,DG2,1
 Other,Gen12HP,MTL,1
 Other,DG2,MTL,1,
 RC,Gen10LP,Gen12HP,0.837
@@ -2374,8 +2375,8 @@ EU,DG2,Xe3,1
 EU,ADL,Xe3,1
 EU,PVCDP,Xe3,1
 L3_Bank,PVC,Xe3,1
-L3Node,PVC,Xe3,1
-Fabric,PVC,Xe3,1
+L3Node,PVC,Xe3,1.14
+Fabric,PVC,Xe3,1.25
 LSC,PVC,Xe3,1
 Other,Gen12LP,Xe3,1
 Other,PVC,Xe3,1
@@ -2396,34 +2397,26 @@ EU,Gen8SoC,Xe2,0.532718513
 EU,Gen9LPClient,Xe2,0.653320066
 EU,Gen9LPSoC,Xe2,0.665898142
 EU,Gen11,Xe2,0.739886824
-EU,Gen11LP,Xe2,0.79557723
-EU,Gen12LP,Xe2,0.941256261
 EU,Gen12DG,Xe2,0.941256261
-EU,Gen12HP,Xe2,0.8722
-EU,DG2,Xe2,0.888576
 EU,ADL,Xe2,0.888576
-L3_Bank,Gen12HP,Xe2,1
-L3_Bank,Xe2,Xe2,1
-L3Node,Gen12HP,Xe2,1
-L3Node,DG2,Xe2,1
-L3Node,Xe2,Xe2,1
-L3Node,PVC,Xe2,1
+L3_Bank,Gen12HP,Xe2,0.93, 7% reduction in L3 bank cdyn from the list of Xe2 HSDs.
+L3Node,Gen12HP,Xe2,1.08, 8% increase in L3 node cdyn from the list of Xe2 HSDs.
+L3Node,DG2,Xe2,1.08, 8% increase in L3 node cdyn from the list of Xe2 HSDs.
+L3Node,PVC,Xe2,1.08, 8% increase in L3 node cdyn from the list of Xe2 HSDs.
 Fabric,Gen12HP,Xe2,1
 Fabric,PVC,Xe2,1
 Other,Gen12LP,Xe2,1
 Other,Gen12HP,Xe2,1
 Other,DG2,Xe2,1
 Other,PVC,Xe2,1
-GAM,Gen12LP,Xe2,1
+GAM,Gen12LP,Xe2,0.85,15% reduction factor from list of HSD - cdyn impact assessment from kamal
 SQIDI,Gen12LP,Xe2,1
-FF,Gen12LP,Xe2,1
 FF,Gen11LP,Xe2,1
 COLOR,Gen12LP,Xe2,1
 Z,Gen12LP,Xe2,1
-Z,DG2,Xe2,0.82, process scaler from n7 to n5
 ROSS,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 ROSS,Gen11LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-Sampler,DG2,Xe2,0.82, process scaler from n7 to n5
+Sampler,DG2,Xe2,0.9,10% reduction factor from list of HSD - cdyn impact assessmet from Kamal. Discussed with Sampler architect Yoav. As per Yoav, a 10% estimate of CDYN reduction is the best bet for Wave 2.5
 Sampler,Gen12LP,Xe2,1
 LSC,DG2,Xe2,1
 DSSC,Gen12HP,MTL,1
@@ -2441,8 +2434,8 @@ FF,Gen11LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should r
 COLOR,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,DG2,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-FF,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-FF,Gen11LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen12LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Gen11LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 COLOR,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,DG2,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation

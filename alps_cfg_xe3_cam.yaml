@@ -6,10 +6,10 @@ Stat2Res Formula Files:
   - Inputs/sampler_stat2res_formula_tglhp_cam.txt
   - Inputs/other_stat2res_formula_pvc_cam.txt
   - Inputs/ross_stat2res_formula_tglhp_cam.txt
-  - Inputs/foveros_stat2res_formula_pvc_cam.txt
-  - Inputs/fabrics_spine_stat2res_formula_pvc_cam.txt
+  - Inputs/foveros_stat2res_formula_pvcdp_cam.txt
+  - Inputs/fabrics_spine_stat2res_formula_pvcdp_cam.txt
   - Inputs/lsc_stat2res_formula_pvc_cam.txt
   - Inputs/row_stat2res_formula_pvc_cam.txt
 
 ALPS Input File:
-  - inputs_pvcdp_cam.txt
+  - inputs_xe3_cam.txt

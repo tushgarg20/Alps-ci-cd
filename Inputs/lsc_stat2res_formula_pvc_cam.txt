@@ -2,7 +2,7 @@
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
 	numLSCs	        =       D(knob.numHDCs) 
-        num_LSC_LSC	=       numLSCs	
+        num_LSC_LSC	=       numLSCs
 #Generic				
 
 #SLM				
@@ -12,7 +12,7 @@
 
 
         #PS2_CAM_LSC_L1_CACHE = D(HDC_READ)/512 + D(HDC_WRITE)/512
-        PS2_CAM_COMPUTE_LSC  = D(HDC_READ)/512 + D(HDC_WRITE)/512
+        PS2_CAM_COMPUTE_LSC  = D(HDC_READ)/(8 * numLSCs) + D(HDC_WRITE)/( 8 * numLSCs)
         PS2_CAM_COMPUTE_LSC_INFRA  = 1 
         PS2_CAM_COMPUTE_HDC_INFRA  = 1 
         #PS2_CAM_LSC_SLM      = D(SLM_READ)/512 + D(SLM_WRITE)/512
