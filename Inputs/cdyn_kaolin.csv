@@ -9138,6 +9138,8 @@ PS2_Sampler_Fetch_High,DG2,A0,60.45346675,syn,0,approx cdyn weights for sampler 
 PS2_Sampler_Fetch_Low,DG2,A0,60.45346675,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_LSC_Read,PVC,A0,1444.1,syn,0,approximated cdyn weights for LSC from CSS,
 PS2_LSC_Write,PVC,A0,1300.9,syn,0,approximated cdyn weights for LSS from CSS,
+PS2_LSC,PVCDP,A0,604.67,syn,0,approximated cdyn weights for LSS from CSS,
+PS2_LSC_Idle,PVCDP,A0,121.90,syn,0,approximated cdyn weights for LSS from CSS,
 PS2_LSC,DG2,A0,418.8,syn,0,approximated cdyn weights for LSC from CSS,
 PS2_LSC_Idle,DG2,A0,11.4,syn,0,approximated cdyn weights for LSC from CSS,
 Foveros_compute,PVC,A0,91.54,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
