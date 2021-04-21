@@ -2,7 +2,8 @@
 #Instance Counts			
         numL3Banks			=       D(knob.numL3Banks) #Dummy value
 	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
-	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices		
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices
+        num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
         .CrClk	=	D(MAX_CYCLES)
 	num_GAM_GAMFTLB	     =       D(knob.numGAM)	
         num_GAM_SQIDI        =       D(knob.numSQIDI)
