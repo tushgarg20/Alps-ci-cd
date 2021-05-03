@@ -1,10 +1,15 @@
 #Unit	GSIM residency			Comments
-#Instance Counts				
-	num_Foveros_Compute		=       8 #D(knob.numComputeChiplets) 
-        num_Foveros_DSS                 =       8*num_Foveros_Compute #D(knob.numDSSCompute)
-        num_Foveros_Rambo               =       4
-        num_Foveros_RamboDSS            =       8*num_Foveros_Rambo
-        num_Foveros_Base                =       1
+#Instance Counts
+        numL3Banks			=       D(knob.numL3Banks) #Dummy value
+	num_L3_Slices			=       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices		=       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices
+        num_L3_Bank_LBI			=	num_L3_Slices * numL3Banks
+        numEUs                          =       D(knob.numEUs) 
+	#num_Foveros_Compute		=       8 #D(knob.numComputeChiplets) 
+        num_Foveros_DSS                 =       num_L3_Bank_LBI
+        num_Foveros_Rambo               =       num_L3_Bank_LBI
+        num_Foveros_RamboDSS            =       num_L3_Bank_LBI
+        num_Foveros_Base                =       num_L3_Bank_LBI 
         GADSS_Scaler                    =       D(knob.GADSS)
 		
 #Generic				
@@ -14,10 +19,11 @@
         #PS2_CAM_FOV_COMPUTE_INFRA       =       1   # Used to account the 4nF increase in Foveros Compute 
         #PS2_CAM_FOV_RAMBO_INFRA         =       1   # Used to account the 0.5 nF increase in Foveros Rambo
         #PS2_CAM_FOV_BASE_INFRA          =       1   #Used to account the 5.5nF increase in Foveros Base 
-        PS2_CAM_COMPUTE_FOVEROS          =      (D(L3_READ)  / (64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (64 * 64))*GADSS_Scaler
+        PS2_CAM_COMPUTE_FOVEROS          =      (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_COMPUTE_FOV_INFRA        =       1
-        PS2_CAM_RAMBO_FOVEROS            =       (D(L3_READ)  / (64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (64 * 64))*GADSS_Scaler
+        PS2_CAM_RAMBO_FOVEROS            =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_RAMBO_FOV_INFRA          =       1 
-        PS2_CAM_BASE_FOVEROS            =       (D(L3_READ)  / (64 * 64))*GADSS_Scaler + (D(L3_WRITE)  / (64 * 64))*GADSS_Scaler
+        PS2_CAM_BASE_FOVEROS            =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_BASE_FOV_INFRA          =       1 
+ 
  
