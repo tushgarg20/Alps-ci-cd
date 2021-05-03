@@ -1,4 +1,4 @@
-ALPS_formula_file = Inputs/alps_formula_xe3_kaolin.yml
+ALPS_formula_file = Inputs/alps_formula_pvcdp_kaolin.yml
 Cdyn = Inputs/cdyn_kaolin.csv
 GateCount = Inputs/gc.csv
 Process_Scaling_Factors = Inputs/process.csv

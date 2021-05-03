@@ -174,26 +174,26 @@
 
 
 #Toggle Rates
-         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 256)
-         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 256)
-         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 256)
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         FPU0_toggle_rate = 0.450 #MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
-         FPU11_toggle_rate = 	0.450 # FPU0_toggle_rate
+         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         FPU11_toggle_rate = 	FPU0_toggle_rate
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*256)
-         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*256)
-         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*256)
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512)
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
          FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
          #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 #DPAS toggle rate
-        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*256)
-         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*256)
-         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*256)
+        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*512)
          #.avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
-         DPAS_toggle_rate = 0.45 #MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
+         DPAS_toggle_rate = MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
          #DPAS_toggle_rate = 	(PS2_EU_DPAS > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * PS2_EU_DPAS * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
          GA_toggle_rate	= MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to max of compute pipe TRs 
  

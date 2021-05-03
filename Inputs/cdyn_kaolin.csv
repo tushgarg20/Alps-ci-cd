@@ -9116,6 +9116,7 @@ PS2_Fabric_Active,Gen12HP,A0,836,syn,0,approximated cdyn weights for L3,
 PS2_Sampler_SC,Gen12LP,A0,329,syn,1,
 PS2_Sampler_SC,DG2,A0,621.75,syn,1,
 PS0_Sampler,DG2,A0,4.176,syn,0,approx cdyn weights for sampler based on existing test cases,
+PS2_Sampler_Point_LD,DG2,A0,298.060448,syn,0,approx cdyn weights for sampler based on existing test cases
 PS2_Sampler_Point_Sample_L,DG2,A0,401.546457,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_Sampler_Point_Else,DG2,A0,339.371674,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_Sampler_Small_Trilinear,DG2,A0,391.472323,syn,0,approx cdyn weights for sampler based on existing test cases,

@@ -174,7 +174,7 @@
 
 
 #LSC
-    .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Miss')))
+    .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
     PS2_LSC_Read = (.temp_lsc_requests / (.CrClk * num_LSC_L1 * Lsc.Banks))/2
     PS2_LSC_Write = (.temp_lsc_requests / (.CrClk * num_LSC_L1 * Lsc.Banks))/2
     
@@ -231,24 +231,24 @@
          EM_total_count   = (D(SUM('pwr\.@TRANS@')))
 
 #Toggle Rates
-         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 256)
-         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 256)
-         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 256)
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         FPU0_toggle_rate = 0.450 #MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
-         FPU11_toggle_rate = 	0.450 # FPU0_toggle_rate
+         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         FPU11_toggle_rate = 	FPU0_toggle_rate
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*256)
-         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*256)
-         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*256)
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512)
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
          FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
          #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
 #DPAS toggle rate
-        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*256)
-         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*256)
-         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*256)
+        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*512)
          #.avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
          DPAS_toggle_rate = 0.45 #MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
          #DPAS_toggle_rate = 	(PS2_EU_DPAS > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * PS2_EU_DPAS * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
@@ -428,10 +428,10 @@
 #GA and GRF power states
          multiplier  = MAX(PS2_EU_FPU0, PS2_EU_DPAS)
          grf_flag = ((D(SUM('pwr\.GrfR'))) > 0) ? 1 : 0
-         PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 2 * multiplier 
-         PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 1.5 * multiplier
-         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 2 * multiplier
-         PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 2 * multiplier 
+         PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 0 * multiplier 
+         PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 0 * multiplier
+         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 0 * multiplier
+         PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 0 * multiplier 
          PS2_GA_1Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_1Read_FPU11_dispatch = instruction_ratio_11 * PS2_GA_1Read_FPU0_dispatch
          PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
@@ -441,8 +441,8 @@
        
 #Accumulator power states - Read and Write
         acc_flag = ((D(SUM('pwr\.AccR'))) > 0) ? 1 : 0
-        PS2_Accumulator_READ = (acc_flag > 0) ? (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs) : 1.5 * multiplier 
-        PS2_Accumulator_WRITE = (acc_flag > 0) ? (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) : 1 * multiplier
+        PS2_Accumulator_READ = (acc_flag > 0) ? (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs) : 0 * multiplier 
+        PS2_Accumulator_WRITE = (acc_flag > 0) ? (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) : 0 * multiplier
          #PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs) #1.5 * multiplier 
          #PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) #1 * multiplier 
 
