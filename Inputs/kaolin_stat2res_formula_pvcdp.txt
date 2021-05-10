@@ -13,6 +13,7 @@
     num_EU_FPU11	=	numEUs
 	num_EU_FPU1	=	numEUs	
 	num_EU_EM	=	numEUs
+	num_EU_TC = numEUs
 	num_EU_ExtraPipe = numEUs
     num_EU_GRF = numEUs
     num_EU_GA = numEUs
@@ -229,6 +230,7 @@
          FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
          FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
          EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+	 Total_instr_count = FPU0_total_count + FPU1_total_count
 
 #Toggle Rates
          .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
@@ -428,16 +430,17 @@
 #GA and GRF power states
          multiplier  = MAX(PS2_EU_FPU0, PS2_EU_DPAS)
          grf_flag = ((D(SUM('pwr\.GrfR'))) > 0) ? 1 : 0
-         PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 0 * multiplier 
-         PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 0 * multiplier
-         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8) : 0 * multiplier
-         PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8) : 0 * multiplier 
+         PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier 
+         PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier
+         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier
+         PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier 
          PS2_GA_1Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_1Read_FPU11_dispatch = instruction_ratio_11 * PS2_GA_1Read_FPU0_dispatch
          PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_1Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
-         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs)
-         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8) #Approximation. Need to replace with correct Instr count
+         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8)
+	 PS2_TC_1Dispatch = Total_instr_count / (.CrClk * numEUs * 8)
        
 #Accumulator power states - Read and Write
         acc_flag = ((D(SUM('pwr\.AccR'))) > 0) ? 1 : 0
