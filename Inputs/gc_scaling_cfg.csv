@@ -1645,6 +1645,7 @@ L3Node,Gen12HP,PVCDP,False
 L3Node,DG2,PVCDP,False
 L3Node,MTL,PVCDP,False
 L3Node,PVC,PVCDP,False
+L3Node,PVCDP,PVCDP,False
 L3_Bank,Gen9LPClient,PVCDP,False
 L3_Bank,Gen9LPSoC,PVCDP,False
 L3_Bank,Gen10LP,PVCDP,False
@@ -1654,6 +1655,7 @@ L3_Bank,Gen12HP,PVCDP,False
 L3_Bank,DG2,PVCDP,False
 L3_Bank,MTL,PVCDP,False
 L3_Bank,PVC,PVCDP,False
+L3_Bank,PVCDP,PVCDP,False
 Fabric,Gen9LPClient,PVCDP,False
 Fabric,Gen9LPSoC,PVCDP,False
 Fabric,Gen10LP,PVCDP,False
@@ -1663,3 +1665,4 @@ Fabric,Gen12HP,PVCDP,False
 Fabric,DG2,PVCDP,False
 Fabric,MTL,PVCDP,False
 Fabric,PVC,PVCDP,False
+Fabric,PVCDP,PVCDP,False
