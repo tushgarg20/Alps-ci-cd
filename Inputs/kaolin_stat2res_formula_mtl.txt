@@ -30,13 +30,13 @@
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_Sampler_Main = model.NumSlices * model.NumDss
 	num_Sampler_Fetch = model.NumSlices * model.NumDss
-	num_GAM_GAMFTLB = model.NumDss
+	num_GAM_GAMFTLB = model.NumSqidis
 	num_SQIDI_SQD = model.NumDss
 
 	num_DSSC_SLMBE = model.NumSlices * model.NumDss
 	num_HDC_HDCREQCMD = model.NumSlices * model.NumDss
-	num_Other_Others =  1
-	num_Other_ROW = numEUs
+	num_Other_Others =  numEUs
+	num_Other_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
 
@@ -72,7 +72,6 @@
     #PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
-	PS2_ROW = EU_Utilization
     PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
@@ -442,9 +441,12 @@
          PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
          PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
          PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
-         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
-         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs * 8)
+         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs * 8)
+         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs * 8)
+         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
+        PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
+
  
 #DPAS instructions
         
@@ -455,13 +457,13 @@
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)
 
-
-    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gam\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)         
+GAM:
+    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gam\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gam\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gam\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gam\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)         
          
 
 
