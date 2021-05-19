@@ -8,9 +8,10 @@ FPS: R
 
 EU:
   GRF:
-     PS2_GA_GRF_READ: R * LINEST[C,R[GA_toggle_rate]]
-     PS2_GA_GRF_WRITE: R * LINEST[C,R[GA_toggle_rate]] 
+     PS2_GA_GRF_Read: R * C
+     PS2_GA_GRF_Write: R * C
      PS2_GRF_SEND_PATH: R * C
+     PS2_GA_GRF_FLOOR: R * C
 
   Accumulator:
      PS2_Accumulator_READ: R * C
@@ -181,10 +182,7 @@ L3_Bank:
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
-Fabric:
-  Fabrics:
-    PS2_Fabric_Active: R * C
-
+    PS2_L3Node_Idle: R * C
 LSC:
   L1:
     PS2_L1_Read_Hit: R * C
@@ -200,7 +198,6 @@ Other:
     #PS2_ROGT: R * C
     #PS2_NODE: R * C
     #PS2_CC: R * C
-    PS2_BGF: R * C
     #PS2_GA_SQIDI_RPT: R * C
     #PS2_MEDIA: R * C
     #PS2_MDFI_GAM: R * C
@@ -212,6 +209,7 @@ Other:
   ROW:
     #PS2_PS: R * C
     PS2_ROW: R * C
+    PS2_ROW_Idle: R * C
   #COLOR:
     #PS2_COLOR: R * C
   NodeX:
