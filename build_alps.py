@@ -1023,25 +1023,25 @@ if (options.dump_gc):
 
 common_cfg = options.dest_config.lower()
 
-if common_cfg.find('pvcdp') > -1:
-    #Calculating Chiplet_Cdyn and Base_Cdyn
-    Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
-                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
-                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROSS']['total']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra_idle']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['Others']['PS2_CAM_SPINE_COMPUTE'])]
-    Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
-    Chiplet_Cdyn = round(Chiplet_Cdyn,3)
-
-    Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
-
-    Base_Cdyn = round(Base_Cdyn, 3)
-
-    gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
-    gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+#if common_cfg.find('pvcdp') > -1:
+#    #Calculating Chiplet_Cdyn and Base_Cdyn
+#    Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+#                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
+#                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROSS']['total']),
+#                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
+#                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle']),
+#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra']),
+#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra_idle']),
+#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['Others']['PS2_CAM_SPINE_COMPUTE'])]
+#    Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
+#    Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+#
+#    Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
+#
+#    Base_Cdyn = round(Base_Cdyn, 3)
+#
+#    gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+#    gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
 
 
