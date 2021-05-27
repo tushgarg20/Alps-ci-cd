@@ -2,7 +2,14 @@
 #Instance Counts				
         .CrClk	=	D(MAX_CYCLES)
         numEUs                 =     D(knob.numEUs)
-	num_Other_Others	  =  numEUs 
+        numL3Banks	       =       D(knob.numL3Banks) #Dummy value
+	num_L3_Slices	       =       D(knob.num_L3_Slices) #Dummy value, represents the number of slices in the GT	
+	num_L3_SubSlices       =       D(knob.num_L3_SubSlices) #Dummy value, repersents the number of subslices
+        L3_Cache_Size          =       D(knob.L3CacheSize)
+        L3_Scaler              =       (L3_Cache_Size == 8) ? 1 : 1.05 
+        GADSS_Scaler           =       D(knob.GADSS)
+        num_L3_Bank_LBI	       =       num_L3_Slices * numL3Banks
+	num_Other_Others       =       num_L3_Bank_LBI 
         num_Other_COLOR           =   D(knob.numCOLOR)
         L3_Cache_Size           =       D(knob.L3CacheSize)
         L3_Scaler               =       (L3_Cache_Size == 8) ? 1 : 1.05
