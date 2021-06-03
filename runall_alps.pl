@@ -37,6 +37,7 @@ my $xe3				= '';
 my $pvc_a21                     = '';
 my $pvc2                        = ''; 
 my $pvcdp                      = ''; 
+my $pvcxt                      = ''; 
 my $mtl                         = ''; 
 my $lnl                         = ''; 
 
@@ -75,6 +76,7 @@ Getopt::Long::GetOptions(
 	"pvc_scaled"		=> \$pvc_scaled,
 	"pvc2"		=> \$pvc2,
 	"pvcdp"	=> \$pvcdp,
+	"pvcxt"	=> \$pvcxt,
         "pvc_a21"       => \$pvc_a21 
 
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
@@ -109,6 +111,7 @@ if ($method){
 	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_cam.yaml" : $cfg_file;
 	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
 	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
