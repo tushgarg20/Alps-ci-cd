@@ -40,7 +40,7 @@
 	num_Other_Others =  numEUs
 	num_LSC_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
-	num_Other_inf = num_LSC_L1
+	num_EU_inf = numEUs
 
 		
 #Generic				

@@ -18,6 +18,9 @@ EU:
      PS2_Accumulator_WRITE: R * C
   TC:
      PS2_TC_1Dispatch: R * C
+  inf:
+    PS2_chiplet_infra: R * C 
+    PS2_chiplet_infra_idle: R * C      
   FPU0:
      PS2_EU_FPU0:
       FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
@@ -267,9 +270,7 @@ Other:
     PS2_CAM_SPINE_COMPUTE: R * C
     PS2_CAM_SPINE_RAMBO: R * C
 
-  inf:
-    PS2_chiplet_infra: R * C 
-    PS2_chiplet_infra_idle: R * C   
+  
   NodeX:
     PS2_NodeX: R * C
 
