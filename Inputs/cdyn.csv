@@ -9887,4 +9887,5 @@ PS2_CAM_BASE_SQIDI,PVCXT,C0,266.06,syn,0,Calculated as per new model in 21ww22 i
 PS2_CAM_BASE_COMP_INFRA,PVCXT,C0,0.67,syn,0,Calculated as per new model in 21ww22 indicator,,,
 PS2_CAM_BASE_COMPRESSION,PVCXT,C0,64.2,syn,0,Calculated as per new model in 21ww22 indicator,,,
 PS2_EU_INFRA,PVCXT,C0,11.22,syn,0,Calculated as per new model in 21ww22 indicator,,,
-PS2_EU_SYST_INFRA,PVCXT,C0,5.23,syn,0,Calculated as per new model in 21ww22 indicator,,,
+PS2_EU_SYST_INFRA,PVCK2xEU,C0,3.61,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xEU with a scaler of 0.69,,,
+PS2_EU_INFRA,PVCK22xEU,C0,7.74,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xEU with a scaler of 0.69 of EU,,,
