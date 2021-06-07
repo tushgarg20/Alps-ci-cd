@@ -86,6 +86,9 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='PVCXT':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT'] }
+  elif cfg =='PVCK2xEU':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xEU'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xEU'] }
   else:
     cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2']
@@ -157,6 +160,8 @@ elif common_cfg.find('pvcdp') > -1 :
     cfg ='PVCDP'   
 elif common_cfg.find('pvcxt') > -1 :
     cfg ='PVCXT'   
+elif common_cfg.find('pvck2xeu') > -1 :
+    cfg ='PVCK2xEU'   
 elif common_cfg.find('mtl') > -1 :
     cfg ='MTL'   
 elif common_cfg.find('tglhp_512') > -1 :
@@ -217,6 +222,8 @@ elif common_cfg.find('pvcdp') > -1 :
     cfg_gc = "PVCDP"
 elif common_cfg.find('pvcxt') > -1 :
     cfg_gc = "PVCXT"
+elif common_cfg.find('pvck2xeu') > -1 :
+    cfg_gc = "PVCK2xEU"
 elif common_cfg.find('mtl') > -1 :
     cfg_gc = "MTL"
 elif common_cfg.find('lnl') > -1 :
@@ -250,7 +257,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe3' or cfg == 'PVCXT'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCK2xEU'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
