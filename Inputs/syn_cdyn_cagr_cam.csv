@@ -1849,11 +1849,11 @@ EU,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04
 EU,PVC,Xe3,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
 EU,PVCDP,PVCDP,1
-EU,PVC,PVCXT,1
-EU,PVCDP,PVCXT,1
+EU,PVC,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVCDP,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCXT,1
-EU,PVC,PVCK2xEU,1
-EU,PVCDP,PVCK2xEU,1
+EU,PVC,PVCK2xEU,0.95, 5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVCDP,PVCK2xEU,0.95, 5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCK2xEU,1
 EU,PVCK2xEU,PVCK2xEU,1
 EU,PVCDP,Xe3,1

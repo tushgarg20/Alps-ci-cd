@@ -108,6 +108,7 @@ Other:
 FabricsSpine:
   SpineCompute:
     PS2_CAM_COMPUTE_SPINE_INFRA: R * C
+    PS2_CAM_COMPUTE_NONSPINE_INFRA: R * C
     PS2_CAM_COMPUTE_ARB: R * C
     PS2_CAM_COMPUTE_ARB_INFRA: R * C
   SpineBaseRambo:
