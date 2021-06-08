@@ -222,7 +222,7 @@ else:
         stat_parser_cmd += ['-i', formula_file]
 
     input_file = options.user_dir + '/' + cfg_data['ALPS Input File'][0]
-    build_alps_cmd += ['-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml ]
+    build_alps_cmd += ['-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml, '-m', options.method ]
     if(options.voltage):
         build_alps_cmd += ['-v', '%f' % (options.voltage)]
     if(options.sf_voltage):

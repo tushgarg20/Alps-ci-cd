@@ -42,7 +42,8 @@ parser.add_argument('--bcw',action="store_true",dest="dump_cw",default=False,
            help="Dump base cdyn weights [default: %sdefault]" % "%%")
 parser.add_argument('--ecw',action="store_true",dest="dump_ecw",default=False,
            help="Dump eff cdyn weights [default: %sdefault]" % "%%")
-
+parser.add_argument('-m','--method', dest="method",default=False,
+           help="run alps method [default: %sdefault]" % "%%")
 options = parser.parse_args()
 
 print ("**********************************")
@@ -61,7 +62,7 @@ C = {} ### Effective Cdyn
 # Returns the list of arch config precedence for a given arch config
 def cdyn_precedence_selector(cfg):
   if cfg == 'ADL':
-   cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'ADL' ], 'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','ADL']}
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'ADL' ], 'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','ADL']}
   elif cfg =='DG2':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2',] }
@@ -1037,25 +1038,23 @@ if (options.dump_gc):
 
 common_cfg = options.dest_config.lower()
 
-#if common_cfg.find('pvcdp') > -1:
-#    #Calculating Chiplet_Cdyn and Base_Cdyn
-#    Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
-#                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
-#                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROSS']['total']),
-#                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
-#                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle']),
-#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra']),
-#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['inf']['PS2_chiplet_infra_idle']),
-#                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['Others']['PS2_CAM_SPINE_COMPUTE'])]
-#    Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
-#    Chiplet_Cdyn = round(Chiplet_Cdyn,3)
-#
-#    Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
-#
-#    Base_Cdyn = round(Base_Cdyn, 3)
-#
-#    gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
-#    gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+if (common_cfg.find('pvcdp') > -1) and (options.method == 'kaolin'):
+    #Calculating Chiplet_Cdyn and Base_Cdyn
+    Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
+                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROSS']['total']),
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle']),
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['Other']['Others']['PS2_CAM_SPINE_COMPUTE'])]
+    Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
+    Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+
+    Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
+
+    Base_Cdyn = round(Base_Cdyn, 3)
+
+    gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+    gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
 
 
