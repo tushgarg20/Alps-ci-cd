@@ -277,7 +277,5 @@ FPU1,EU,DG2,DG2,1
 ExtraPipe,EU,DG2,DG2,1
 FPU0,EU,PVCDP,PVCK2xEU,0.95,1.9x scaler of CDYN weights from PVCXT to PVC Kicker
 FPU0,EU,PVCXT,PVCK2xEU,0.95,1.9x scaler of CDYN weights from PVCXT to PVC Kicker
-ExtraPipe,EU,PVCDP,PVCK2xEU,0.85,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
-ExtraPipe,EU,PVCXT,PVCK2xEU,0.85,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
 ExtraPipe,EU,PVCDP,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
 ExtraPipe,EU,PVCXT,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Kicker

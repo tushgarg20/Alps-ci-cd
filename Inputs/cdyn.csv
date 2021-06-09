@@ -9891,6 +9891,6 @@ PS2_EU_SYST_INFRA,PVCXT,C0,5.23,syn,0,Estimate of EU SYST infra CDYN based on 21
 PS2_EU_SYST_INFRA,PVCK2xEU,C0,2.38,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xEU with a scaler of 0.69 for 66% (EU % of gate count in Chiplet),,,
 PS2_EU_INFRA,PVCK2xEU,C0,5.11,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xEU with a scaler of 0.69 of EU for 66% (EU% of gate count in Chiplet),,,
 PS2_CAM_COMPUTE_NONSPINE_INFRA,PVCK2xEU,C0,5.08,syn,0,Calculated as per new model in 21ww22 indicator as 34% (non EU portion GC %) of average value of NonSpine Infra per EU ,,,
-PS2_EU_SYST_INFRA,PVCK2xSA,C0,2.19,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xSA with a scaler of 0.635 for 66% (EU % of gate count in Chiplet),,,
-PS2_EU_INFRA,PVCK2xSA,C0,4.7,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xSA with a scaler of 0.635 of EU for 66% (EU% of gate count in Chiplet),,,
+PS2_EU_SYST_INFRA,PVCK2xSA,C0,4.38,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xSA with a scaler of 1.27 (from Naveen) for 66% (EU % of gate count in Chiplet),,,
+PS2_EU_INFRA,PVCK2xSA,C0,9.41,syn,0,Calculated as per new model in 21ww22 indicator for PVC Kicker 2xSA with a scaler of 1.27 (from Naveen) of EU for 66% (EU% of gate count in Chiplet),,,
 PS2_CAM_COMPUTE_NONSPINE_INFRA,PVCK2xSA,C0,4.68,syn,0,Calculated as per new model in 21ww22 indicator as 34% (non EU portion GC %) of average value of NonSpine Infra per EU ,,,
