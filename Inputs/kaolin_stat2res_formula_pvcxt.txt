@@ -1,0 +1,536 @@
+#Unit	GSIM residency			Comments
+#Instance Counts
+
+	CrClocks	=	D(model.CrClock)	
+	FPS	=	(model.CrClock.num * 1000000) / D(model.CrClock)
+    num_Slices = model.NumSlices
+    num_DSS = model.NumSlices * model.NumDss
+    num_Z_HIZ = (model.NumSlices * model.NumZPipes)
+    num_COLOR_RCC = num_Z_HIZ
+	numEUs	=	( model.NumDss * model.NumEus * model.NumSlices * 2)
+	#numFGs = numEUs/(knob.S0.SS0.FG0.uEuCompute_0.EuFusionFactor)
+	num_EU_FPU0	=	numEUs	
+    num_EU_FPU11	=	numEUs
+	num_EU_FPU1	=	numEUs	
+	num_EU_EM	=	numEUs
+	num_EU_TC = numEUs
+	num_EU_ExtraPipe = numEUs
+    num_EU_GRF = numEUs
+    num_EU_GA = numEUs
+    num_EU_Accumulator = numEUs
+    num_EU_Infra = numEUs
+    num_FF_VFBE = num_Slices
+    num_ROSC_WMFE = num_Slices
+    num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
+    num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
+	num_L3_Bank_LTCD_Data = model.NumSlices * model.NumDss
+	num_L3Node_Node = model.NumSlices
+	num_Fabric_Fabrics = model.NumSlices
+    num_L3_Slices = model.NumSlices 
+    num_L3_Bank_Foveros = model.NumSlices * model.NumDss
+
+	num_Sampler_SC = model.NumSlices * model.NumDss
+	num_Sampler_Main = model.NumSlices * model.NumDss
+	num_Sampler_Fetch = model.NumSlices * model.NumDss
+	num_GAM_GAMFTLB = model.NumSqidis
+	num_SQIDI_SQ = model.NumDss
+
+	num_DSSC_SLMBE = model.NumSlices * model.NumDss
+	num_HDC_HDCREQCMD = model.NumSlices * model.NumDss
+	num_Other_Others =  num_L3_Bank_LTCD_Data
+	num_LSC_ROW = num_LSC_L1
+	num_Other_NodeX = num_L3Node_Node * 2
+	num_EU_inf = numEUs
+
+		
+#Generic				
+	 .CrClk	=	D(model.CrClock)	
+
+
+#EU utilization from Kaolin
+
+	@FPU_Cycles@ = (Fp16Cycle|Fp32Cycle|Fp64Cycle)
+	@INT_Cycles@ = (Int16Cycle|Int32Cycle)
+	@MATH_Cycles@ = (Math32Cycle)
+	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
+	Total_Fpu0Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
+	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
+    Total_Int_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@INT_Cycles@'))
+
+    Total_Fpu11Cycles = Total_ExFpuCycles + Total_ExLongCycles
+
+    instruction_ratio_11 = 1 #Total_Fpu11Cycles / Total_Fpu0Cycles
+    instruction_ratio_01 = 1 #Total_ExFpuCycles / Total_Fpu0Cycles
+    instruction_ratio_02 = 1 #Total_ExLongCycles / Total_Fpu0Cycles
+
+	FPU0_Utilization = (Total_Fpu0Cycles)/(.CrClk * numEUs * 0.5)
+	FPU1_Utilization = (Total_Int_Cycles)/(.CrClk * numEUs * 0.5)
+	PS2_EU_FPU0 =  FPU0_Utilization
+	PS2_EU_FPU1 =  FPU1_Utilization
+    PS2_EU_FPU11 = (Total_Fpu11Cycles)/(.CrClk * numEUs * 0.5)
+
+	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs * 0.5)
+	PS2_ROW = PS2_LSC_Read + PS2_LSC_Write
+	PS2_ROW_idle = 1
+    PS2_EU_Infra = 1
+
+
+#L3 utilization
+	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
+	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
+ 
+	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Bank_idle = 1
+	PS2_L3_Node_idle = 1
+	PS2_Fabric_Idle = 1
+
+	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
+
+#Foveros
+	
+	Foveros_compute = PS2_L3_Active
+	Foveros_compute_idle = 1
+	Foveros_rambo = PS2_L3_Active
+	Foveros_rambo_idle = 1
+	Foveros_base =  PS2_L3_Active
+	Foveros_base_idle = 1
+
+#HDC
+
+    #PS2_L1_Hit_Miss = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
+    PS2_HDC =  D(SUM('Hdc\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_HDC_HDCREQCMD)
+    #PS2_HDC = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
+    #PS2_HDC_WRITE = 
+    #PS2_HDC_INFRA = 
+
+# Sampler States : SC:
+    PS2_Sampler =  D(SUM('Samp\.\d+\.\d+\.\d+\.HdcIn')) /  (.CrClk * num_HDC_HDCREQCMD)
+    
+# Sampler States : SC:
+
+    PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
+    @SAMPLER_MAIN@ = (Point_LD | Point_Sample_L | Point_Else | Small_Trilinear | Small_Bilinear_Sample_L | Small_Bilinear_Else | Samp_16Bits_Trilinear_Fl)
+    @SAMPLER_FETCH@ = (Fetch_Bypass | Fetch_Fast | Fetch_High | Fetch_Low) 
+
+    Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
+    Total_Sampler_fetch = (D(SUM('pwr\.@SAMPLER_FETCH@')))
+  
+    Sampler_main_active : D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
+    Sampler_fetch_active: D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
+    
+    PS0_Sampler: 1 - Sampler_main_active
+    
+    #Main path
+    PS2_Sampler_Point_LD =  D('pwr\.Point_LD') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Point_Sample_L = D('pwr\.Point_Sample_L') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Point_Else = D('pwr\.Point_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Small_Trilinear = D('pwr\.Small_Trilinear') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Small_Bilinear_Sample_L = D('pwr\.Small_Bilinear_Sample_L') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Small_Bilinear_Else = D('pwr\.Small_Bilinear_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt = D('pwr\.Samp_16Bits_Trilinear_Float_64bpt') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Trilinear_Float_Else = D('pwr\.Samp_16Bits_Trilinear_Float_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt = D('pwr\.Samp_16Bits_Trilinear_Else_64bpt') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Trilinear_Else_Else = D('pwr\.Samp_16Bits_Trilinear_Else_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt = D('pwr\.Samp_16Bits_Bilinear_Float_64bpt') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Bilinear_Float_Else = D('pwr\.Samp_16Bits_Bilinear_Float_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt = D('pwr\.Samp_16Bits_Bilinear_Else_64bpt') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_Samp_16Bits_Bilinear_Else_Else = D('pwr\.Samp_16Bits_Bilinear_Else_Else') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_High_Aniso = D('pwr\.High_Aniso') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_High_Else_64bpt = D('pwr\.High_Else_64bpt') * Sampler_main_active / Total_Sampler_main
+    PS2_Sampler_High_Else_Else = D('pwr\.High_Else_Else') * Sampler_main_active / Total_Sampler_main
+    
+    #Fetch Path
+    PS2_Sampler_Fetch_Bypass = D('pwr\.Fetch_Bypass') * Sampler_fetch_active / Total_Sampler_fetch
+    PS2_Sampler_Fetch_Fast = D('pwr\.Fetch_Fast') * Sampler_fetch_active / Total_Sampler_fetch
+    PS2_Sampler_Fetch_High = D('pwr\.Fetch_High') * Sampler_fetch_active / Total_Sampler_fetch
+    PS2_Sampler_Fetch_Low = D('pwr\.Fetch_Low') * Sampler_fetch_active / Total_Sampler_fetch
+
+# Slm read and write util
+   PS2_SLMBE_READ =  D(SUM('Slm\.\d+\.\d+\.\d+\.Read')) / (.CrClk * num_DSSC_SLMBE)
+   PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
+   
+# GAM: GAMFTLB:
+    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_SQIDI_RPT = PS2_SQIDI
+    @RD_BW_PCLK@	=	64
+    @WR_BW_PCLK@	=	64
+   .bw_FPS	=	(model.CrClock.num * 1000000) / D(model.CrClock)
+    GT_RD_BW_GBPS	=	D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
+    GT_WR_BW_GBPS	=	D(SUM('Sqidi\.\d+\.\d+\.GamWrIn')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)  
+    GT_BW_GBPS	=	GT_RD_BW_GBPS + GT_WR_BW_GBPS
+
+
+    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+
+
+#LSC
+    .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
+    PS2_LSC_Read = (.temp_lsc_requests / (.CrClk * num_LSC_L1 * Lsc.Banks))/2
+    PS2_LSC_Write = (.temp_lsc_requests / (.CrClk * num_LSC_L1 * Lsc.Banks))/2
+    
+    PS2_LSC = PS2_LSC_Read + PS2_LSC_Write
+    PS2_LSC_Idle = 1
+    #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
+    #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
+
+#Chiplet Infra
+    PS2_chiplet_infra = PS2_LSC_Read + PS2_LSC_Write
+    PS2_chiplet_infra_idle = 1
+
+# Others
+	PS2_NodeX = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_Other_NodeX)
+	PS2_BGF = 1
+    PS2_CAM_SPINE= 1
+    PS2_CAM_SPINE_COMPUTE = 1
+    PS2_CAM_SPINE_RAMBO = 1
+    PS2_Infra_emu_const = 1
+
+#EU Stat2Res Equations for EU power states
+         @BYPASS@	=	(masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2)	
+	 @ALLINST@	=	(exec|masked|sgndiff|expdiff|nan|inf|zero|denorm|round|mpy_by_pwr2)	
+	 @HP@	=	(hf|w|uw)	
+	 @TRANS@ =(math)
+          @MAD@ 	=	(mad)	#separate out mac/sad/sada2 - diff properties
+	 @MADA@	=	(dp4|dph|dp3|dp2|line|frc|rndu|rndd|rnde|rndz|lzd)	#separate out mac/sad/sada2 - diff properties
+	 @MAC@	=	(mac|mach)	#separated mac/mach opcodes
+	 @SAD@ 	=	(sad2|sada2)	#seperated sad2/sada2 opcodes
+	 @MUL@	=	(mul)	
+	 @ADD@	=	(add|avg|not|and|or|xor|shr|shl|cmp|cmpn|f2h|h2f|bfrev|bfe|bfi1|bfi2|fbh|fbl|cbit|addc|subb|asr)	#added ASR for media workloads
+	 @MOV@	=	(mov|movi)	
+	 @SEL@	=	(sel|csel)	#club sel with mov - add control flow separately
+	 @CTL@	=	(jmpi|brd|if|brc|else|endif|case|while|break|cont|halt|call|return|fork|wait|nop) #club sel with mov - add control flow separately
+	 @TRANS@	=	(MathFp32|MathI32)	#Transcendentals
+         @DP4A@         =       (dp4a)  #Dp4 instructions
+         @DPAS@         =       (dpas|dpasw)  #Dp4 instructions
+         @ALLFPU0INST@  = (AddFp32|AddFpBy|MadFp32|MadFpBy|MovFp32|MulFp32|MulFpBy|SelFp32|SelFpBy|AddFp16|AddFp64|MadFp16|MadFp64|MovFp16|MovFp64|MulFp16|MulFp64|SelFp16|SelFp64|MacFp32|MacFpBy|MacFp16|MacFp64|AddI32|AddIBy|MadI32|MadIBy|MovI32|MulI32|MulIBy|SelI32|SelIBy|AddI16|AddI64|MadI16|MadI64|MovI16|MovI64|MulI16|MulI64|SelI16|SelI64|MacI32|MacI16|MacI64|MacIBy)  
+         @ALLFPU0INST@  = (AddFp32|MadFp32|MovFp32|MulFp32|SelFp32|AddFp16|AddFp64|MadFp16|MadFp64|MovFp16|MovFp64|MulFp16|MulFp64|SelFp16|SelFp64|MacFp32|MacFp16|MacFp64)  
+         @ALLFPU1INST@  = (AddI32|MadI32|MovI32|MulI32|SelI32|AddI16|AddI64|MadI16|MadI64|MovI16|MovI64|MulI16|MulI64|SelI16|SelI64|MacI32|MacI16|MacI64)  
+         @MADFPBYPASS@ = (MadFpBy16|MadFpBy32|MadFpBy64)
+         @MACFPBYPASS@ = (MacFpBy16|MacFpBy32|MacFpBy64)
+         @MULFPBYPASS@ = (MulFpBy16|MulFpBy32|MulFpBy64)
+         @ADDFPBYPASS@ = (AddFpBy16|AddFpBy32|AddFpBy64)
+         @SELFPBYPASS@ = (SelFpBy16|SelFpBy32|SelFpBy64)
+         @MADIBYPASS@ = (MadIBy16|MadIBy32|MadIBy64)
+         @MACIBYPASS@ = (MacIBy16|MacIBy32|MacIBy64)
+         @MULIBYPASS@ = (MulIBy16|MulIBy32|MulIBy64)
+         @ADDIBYPASS@ = (AddIBy16|AddIBy32|AddIBy64)
+         @SELIBYPASS@ = (SelIBy16|SelIBy32|SelIBy64)
+
+         FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
+         FPU1_total_count = (D(SUM('pwr\.@ALLFPU1INST@')))
+         EM_total_count   = (D(SUM('pwr\.@TRANS@')))
+	 Total_instr_count = FPU0_total_count + FPU1_total_count
+
+#Toggle Rates
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512)
+         #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
+         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         FPU11_toggle_rate = 	FPU0_toggle_rate
+         #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512)
+         #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
+         FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
+
+         #FPU1_toggle_rate	=	(FPU1_Utilization > 0) ?(.max_EM_toggle_rate / (32 * 8 * FPU1_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+#DPAS toggle rate
+        .avg_DPAS_Src0_toggle = (D('pwr\.TrDpS0'))/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src1_toggle = D('pwr\.TrDpS1')/(D('pwr\.TrDpSEvt')*512)
+         .avg_DPAS_Src2_toggle = D('pwr\.TrDpS2')/(D('pwr\.TrDpSEvt')*512)
+         #.avg_DPAS_Write_toggle = D('pwr\.TrDpR')/numEUs
+         DPAS_toggle_rate = 0.45 #MAX(.avg_DPAS_Src0_toggle, .avg_DPAS_Src1_toggle, .avg_DPAS_Src2_toggle)
+         #DPAS_toggle_rate = 	(PS2_EU_DPAS > 0) ? (.max_DPAS_toggle_rate / (32 * 8 * PS2_EU_DPAS * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
+         GA_toggle_rate	= MAX(FPU1_toggle_rate, FPU0_toggle_rate)	#Approximating GA toggle rate to max of compute pipe TRs 
+ 
+#FPU0 instructions
+         .temp_mad_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy32')) / (FPU0_total_count)):0
+         .temp_mad_fp32_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFp32'))  / (FPU0_total_count)):0
+         FPU0_mad_fp32 = .temp_mad_fp32_total - .temp_mad_fp32_bypass
+         .temp_add_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFpBy32')) / (FPU0_total_count)):0
+         .temp_add_fp32_total = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFp32'))  / (FPU0_total_count)):0
+         FPU0_add_fp32 = .temp_add_fp32_total - .temp_add_fp32_bypass
+         .temp_mul_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFpBy32')) / (FPU0_total_count)):0
+         .temp_mul_fp32_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFp32'))  / (FPU0_total_count)):0
+         FPU0_mul_fp32 = .temp_mul_fp32_total - .temp_mul_fp32_bypass
+         FPU0_mov_fp32 = (FPU0_total_count > 0)? (D(SUM('pwr\.MovFp32')) / (FPU0_total_count)):0
+         .temp_sel_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFpBy32')) / (FPU0_total_count)):0
+         .temp_add_fp32_total = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFp32'))  / (FPU0_total_count)):0
+         FPU0_sel_fp32 = .temp_sel_fp32_total - .temp_sel_fp32_bypass
+         .temp_mac_fp32_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFpBy32')) / (FPU0_total_count)):0
+         .temp_mac_fp32_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFp32'))  / (FPU0_total_count)):0
+         FPU0_mac_fp32 = .temp_mac_fp32_total - .temp_mac_fp32_bypass
+         #FPU0_mac_fp32 = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFp32')) / (FPU0_total_count)):0
+         FPU0_mad_floatbypass =  (FPU0_total_count > 0) ? (D(SUM('pwr\.@MADFPBYPASS@')) / (FPU0_total_count)):0
+         FPU0_mac_floatbypass =  (FPU0_total_count > 0) ? (D(SUM('pwr\.@MACFPBYPASS@')) / (FPU0_total_count)):0
+         FPU0_add_floatbypass =  (FPU0_total_count > 0) ? (D(SUM('pwr\.@ADDFPBYPASS@')) / (FPU0_total_count)):0
+         FPU0_mul_floatbypass =  (FPU0_total_count > 0) ? (D(SUM('pwr\.@MULFPBYPASS@')) / (FPU0_total_count)):0
+         FPU0_sel_floatbypass =  (FPU0_total_count > 0) ? (D(SUM('pwr\.@SELFPBYPASS@')) / (FPU0_total_count)):0
+         .temp_mad_fp16_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy16')) / (FPU0_total_count)):0
+         .temp_mad_fp16_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFp16'))  / (FPU0_total_count)):0
+         FPU0_mad_fp16 = .temp_mac_fp16_total - .temp_mac_fp16_bypass
+         .temp_add_fp16_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFpBy16')) / (FPU0_total_count)):0
+         .temp_add_fp16_total = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFp16'))  / (FPU0_total_count)):0
+         FPU0_add_fp16 = .temp_add_fp16_total - .temp_add_fp16_bypass
+         .temp_mul_fp16_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFpBy16')) / (FPU0_total_count)):0
+         .temp_mul_fp16_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFp16'))  / (FPU0_total_count)):0
+         FPU0_mul_fp16 = .temp_mul_fp16_total - .temp_mul_fp16_bypass
+         FPU0_mov_fp16 = (FPU0_total_count > 0) ? (D(SUM('pwr\.MovFp16')) / (FPU0_total_count)):0
+         .temp_sel_fp16_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFpBy16')) / (FPU0_total_count)):0
+         .temp_sel_fp16_total = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFp16'))  / (FPU0_total_count)):0
+         FPU0_sel_fp16 = .temp_sel_fp16_total - .temp_sel_fp16_bypass
+         .temp_mac_fp16_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFpBy16')) / (FPU0_total_count)):0
+         .temp_mac_fp16_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFp16'))  / (FPU0_total_count)):0
+         FPU0_mac_fp16 = .temp_mac_fp16_total - .temp_mac_fp16_bypass
+         .temp_mad_fp64_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFpBy64')) / (FPU0_total_count)):0
+         .temp_mad_fp64_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MadFp64'))  / (FPU0_total_count)):0
+         FPU0_mad_fp64 = .temp_mad_fp64_total - .temp_mad_fp64_bypass
+         .temp_add_fp64_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFpBy64')) / (FPU0_total_count)):0
+         .temp_add_fp64_total = (FPU0_total_count > 0)? (D(SUM('pwr\.AddFp64'))  / (FPU0_total_count)):0
+         FPU0_add_fp64 = .temp_add_fp64_total - .temp_add_fp64_bypass
+         .temp_mul_fp64_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFpBy64')) / (FPU0_total_count)):0
+         .temp_mul_fp64_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MulFp64'))  / (FPU0_total_count)):0
+         FPU0_mul_fp64 = .temp_mul_fp64_total - .temp_mul_fp64_bypass
+         FPU0_mov_fp64 = (FPU0_total_count > 0) ? (D(SUM('pwr\.MovFp64')) / (FPU0_total_count)):0
+         .temp_sel_fp64_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFpBy64')) / (FPU0_total_count)):0
+         .temp_sel_fp64_total = (FPU0_total_count > 0)? (D(SUM('pwr\.SelFp64'))  / (FPU0_total_count)):0
+         FPU0_sel_fp64 = .temp_sel_fp64_total - .temp_sel_fp64_bypass
+         .temp_mac_fp64_bypass = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFpBy64')) / (FPU0_total_count)):0
+         .temp_mac_fp64_total = (FPU0_total_count > 0)? (D(SUM('pwr\.MacFp64'))  / (FPU0_total_count)):0
+         FPU0_mac_fp64 = .temp_mac_fp64_total - .temp_mac_fp64_bypass
+#FPU11 instructions
+      FPU11_pln_fp32	      = instruction_ratio_01 * FPU0_pln_fp32
+      FPU11_mad_fp32	      = instruction_ratio_01 * FPU0_mad_fp32
+      FPU11_mul_fp32	      = instruction_ratio_01 * FPU0_mul_fp32
+      FPU11_add_fp32	      = instruction_ratio_01 * FPU0_add_fp32
+      FPU11_mov_fp32	      = instruction_ratio_01 * FPU0_mov_fp32
+      FPU11_sel_fp32	      = instruction_ratio_01 * FPU0_sel_fp32
+      FPU11_mac_fp32	      = instruction_ratio_01 * FPU0_mac_fp32
+      FPU11_sad_fp32	      = instruction_ratio_01 * FPU0_sad_fp32
+      FPU11_mad_fp64	      = instruction_ratio_02 * FPU0_mad_fp64
+      FPU11_mul_fp64	      = instruction_ratio_02 * FPU0_mul_fp64
+      FPU11_add_fp64	      = instruction_ratio_02 * FPU0_add_fp64
+      FPU11_mov_fp64	      = instruction_ratio_02 * FPU0_mov_fp64
+      FPU11_sel_fp64	      = instruction_ratio_02 * FPU0_sel_fp64
+      FPU11_mac_fp64	      = instruction_ratio_02 * FPU0_mac_fp64
+      FPU11_sad_fp64	      = instruction_ratio_02 * FPU0_sad_fp64
+      FPU11_pln_floatbypass	      = instruction_ratio_11 * FPU0_pln_floatbypass
+      FPU11_mad_floatbypass	      = instruction_ratio_11 * FPU0_mad_floatbypass
+      FPU11_mul_floatbypass	      = instruction_ratio_11 * FPU0_mul_floatbypass
+      FPU11_add_floatbypass	      = instruction_ratio_11 * FPU0_add_floatbypass
+      FPU11_mac_floatbypass	      = instruction_ratio_11 * FPU0_mac_floatbypass
+      FPU11_sad_floatbypass	      = instruction_ratio_11 * FPU0_sad_floatbypass
+      FPU11_mov_floatbypass	      = instruction_ratio_11 * FPU0_mov_floatbypass
+      FPU11_sel_floatbypass	      = instruction_ratio_11 * FPU0_sel_floatbypass
+#FPU1 instructions
+         .temp_mad_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy32')) / (FPU1_total_count)):0
+         .temp_mad_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI32'))  / (FPU1_total_count)):0
+         FPU1_mad_int32 = .temp_mad_int32_total - .temp_mad_int32_bypass
+         .temp_add_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.AddIBy32')) / (FPU1_total_count)):0
+         .temp_add_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.AddI32'))  / (FPU1_total_count)):0
+         FPU1_add_int32 = .temp_add_int32_total - .temp_add_int32_bypass
+         .temp_mul_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MulIBy32')) / (FPU1_total_count)):0
+         .temp_mul_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MulI32'))  / (FPU1_total_count)):0
+         FPU1_mul_int32 = .temp_mul_int32_total - .temp_mul_int32_bypass
+         FPU1_mov_int32 = (FPU1_total_count > 0)? (D(SUM('pwr\.MovI32')) / (FPU1_total_count)):0
+         .temp_sel_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.SelIBy32')) / (FPU1_total_count)):0
+         .temp_add_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.SelI32'))  / (FPU1_total_count)):0
+         FPU1_sel_int32 = .temp_sel_int32_total - .temp_sel_int32_bypass
+         .temp_mac_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MacIBy32')) / (FPU1_total_count)):0
+         .temp_mac_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI32'))  / (FPU1_total_count)):0
+         FPU1_mac_int32 = .temp_mac_int32_total - .temp_mac_int32_bypass
+         #FPU1_mac_int32 = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI32')) / (FPU1_total_count)):0
+         FPU1_mad_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@MADIBYPASS@')) / (FPU1_total_count)):0
+         FPU1_mac_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@MACIBYPASS@')) / (FPU1_total_count)):0
+         FPU1_add_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@ADDIBYPASS@')) / (FPU1_total_count)):0
+         FPU1_mul_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@MULIBYPASS@')) / (FPU1_total_count)):0
+         FPU1_sel_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@SELIBYPASS@')) / (FPU1_total_count)):0
+         .temp_mad_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy16')) / (FPU1_total_count)):0
+         .temp_mad_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI16'))  / (FPU1_total_count)):0
+         FPU1_mad_int16 = .temp_mac_int16_total - .temp_mac_int16_bypass
+         .temp_add_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.AddIBy16')) / (FPU1_total_count)):0
+         .temp_add_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.AddI16'))  / (FPU1_total_count)):0
+         FPU1_add_int16 = .temp_add_int16_total - .temp_add_int16_bypass
+         .temp_mul_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MulIBy16')) / (FPU1_total_count)):0
+         .temp_mul_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MulI16'))  / (FPU1_total_count)):0
+         FPU1_mul_int16 = .temp_mul_int16_total - .temp_mul_int16_bypass
+         FPU1_mov_int16 = (FPU1_total_count > 0) ? (D(SUM('pwr\.MovI16')) / (FPU1_total_count)):0
+         .temp_sel_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.SelIBy16')) / (FPU1_total_count)):0
+         .temp_sel_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.SelI16'))  / (FPU1_total_count)):0
+         FPU1_sel_int16 = .temp_sel_int16_total - .temp_sel_int16_bypass
+         .temp_mac_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MacIBy16')) / (FPU1_total_count)):0
+         .temp_mac_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI16'))  / (FPU1_total_count)):0
+         FPU1_mac_int16 = .temp_mac_int16_total - .temp_mac_int16_bypass
+         .temp_mad_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy64')) / (FPU1_total_count)):0
+         .temp_mad_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI64'))  / (FPU1_total_count)):0
+         FPU1_mad_int64 = .temp_mad_int64_total - .temp_mad_int64_bypass
+         .temp_add_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.AddIBy64')) / (FPU1_total_count)):0
+         .temp_add_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.AddI64'))  / (FPU1_total_count)):0
+         FPU1_add_int64 = .temp_add_int64_total - .temp_add_int64_bypass
+         .temp_mul_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MulIBy64')) / (FPU1_total_count)):0
+         .temp_mul_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MulI64'))  / (FPU1_total_count)):0
+         FPU1_mul_int64 = .temp_mul_int64_total - .temp_mul_int64_bypass
+         FPU1_mov_int64 = (FPU1_total_count > 0) ? (D(SUM('pwr\.MovI64')) / (FPU1_total_count)):0
+         .temp_sel_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.SelIBy64')) / (FPU1_total_count)):0
+         .temp_sel_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.SelI64'))  / (FPU1_total_count)):0
+         FPU1_sel_int64 = .temp_sel_int64_total - .temp_sel_int64_bypass
+         .temp_mac_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MacIBy64')) / (FPU1_total_count)):0
+         .temp_mac_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI64'))  / (FPU1_total_count)):0
+         FPU1_mac_int64 = .temp_mac_int64_total - .temp_mac_int64_bypass
+
+#EM math instructions
+         EM_transc_fp32 = (EM_total_count > 0) ? (D(SUM('pwr\.MathFp32'))) / (EM_total_count):0
+#Send instruction 
+         PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
+#DPAS
+        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysBFp  =  (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUB =  (D(SUM('pwr\.SysUB'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUV =  (D(SUM('pwr\.SysUV')) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUD  =  (D(SUM('pwr\.SysUD'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUQ  =  (D(SUM('pwr\.SysUQ' ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other'))) / (.CrClk * numEUs)
+
+        ExtraPipe_DPAS_Float = ExtraPipe_DPAS_DpasFp16
+        ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_DpasFp32
+	    ExtraPipe_DPAS_SInt8 = ExtraPipe_DPAS_DpasI32
+        PS2_GA_ExtraPipe = ExtraPipe_DPAS_BFloat + ExtraPipe_DPAS_SInt8 + ExtraPipe_DPAS_Float
+
+
+#GA and GRF power states
+         multiplier  = MAX(PS2_EU_FPU0, PS2_EU_DPAS)
+         grf_flag = ((D(SUM('pwr\.GrfR'))) > 0) ? 1 : 0
+         PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier 
+         PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier
+         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier
+         PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier 
+         PS2_GA_1Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
+         PS2_GA_1Read_FPU11_dispatch = instruction_ratio_11 * PS2_GA_1Read_FPU0_dispatch
+         PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
+         PS2_GA_1Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8) #Approximation. Need to replace with correct Instr count
+         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8)
+	 PS2_TC_1Dispatch = Total_instr_count / (.CrClk * numEUs * 8)
+       
+#Accumulator power states - Read and Write
+        acc_flag = ((D(SUM('pwr\.AccR'))) > 0) ? 1 : 0
+        PS2_Accumulator_READ = (acc_flag > 0) ? (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs) : 0 * multiplier 
+        PS2_Accumulator_WRITE = (acc_flag > 0) ? (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) : 0 * multiplier
+         #PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs) #1.5 * multiplier 
+         #PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) #1 * multiplier 
+
+
+#FF 
+    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
+    PS1_VFBE        = D(SUM('Vf\.\d+\.\d+\..*\.stall'))                 / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Vf\.\d+\.\d+\..*\.stall
+    PS2_TE_Enabled  = D(SUM('Te\.\d+\.\d+\.OutputDs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_VSFE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???
+    PS2_HS_Enabled  = D(SUM('Hs\.\d+\.\d+\.LookupHs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## (lookup for bypass later)
+    PS2_GS_Enabled  = D(SUM('Gs\.\d+\.\d+\.OutVtx.active'))             / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_TDS_Enabled = D(SUM('Tdl\.\d+\.\d+\.\d+\.ThDisp'))              / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##( check the arcitecture and apply the correction)
+    PS1_VF          = PS1_VFBE                                          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS1_VSFE        = D(SUM('Vs\.\d+\.\d+\.LookupVtx.full'))            / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS1_GS          = D(SUM('Gs\.\d+\.\d+\.OutVtx.full'))               / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS1_CS          = D(SUM('Rcs\.\d+\.ProcCmd.full'))                  / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_CL_NoMustclip           = D(SUM('Cl\.\d+\.\d+\.TA'))            / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_WM_MSAA_PARTIALLYLIT    = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_WM_FLUSH                = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_WM_NOMSAA_PARTIALLYLIT  = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_RASTERXBAR              = D(SUM('Sf\.\d+\.Input.active'))       / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+#ROSC
+    PS1_WMFE            = D(SUM('Wm\.\d+\.\d+\.Span.full'))             / (.CrClk * num_ROSC_WMFE)          #TODO: verify_num_instances
+
+#ROSS
+    PS2_TDL_PSDDISPATCH = D(SUM('Tdl\.\d+\.\d+\.\d+\.PsdThIn'))         / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_IC              = D(SUM('Ic\.\d+\.\d+\.\d+\..*\.active'))       / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##what is *?
+    PS2_MA_OUT          = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.EuOSBusIn'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##(HdcMsgOut, SlmMsgOut, DaprMsgOut, GwyMsgOut, SampMsgOut, RtaMsgOut)
+    PS1_PSD             = D(SUM('Hs\.\d+\.\d+\.TdgPhaseDispatch.full')) / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    #PS1_MA_IN           
+    PS1_TDL             = D(SUM('Tdl\.\d+\.\d+\.\d+\.Input.full'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS1_MA_OUT          = D(SUM('Mao\.\d+\.\d+\.\d+\.OSBus.full'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_IC_EBB_MISS     = D(SUM('Ic\.\d+\.\d+\.\d+\.Miss'))             / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS1_IC_Stall        = D(SUM('Ic\.\d+\.\d+\.\d+\.Request.full'))     / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_HDC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Hdc.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_TDL_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Tdl.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_LSC_IN       = D(SUM('Mai\.\d+\.\d+\.\d+\.Slm.active'))      / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_SAMP_IN      = D(SUM('Mai\.\d+\.\d+\.\d+\.Samp.active'))     / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_LSC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.SlmMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+    PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
+
+#COLOR
+    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    #BE
+    PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                                                     #TODO: verify_num_instances
+    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
+    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    
+#Z
+    PS1_HIZ                         = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS1_IZ                          = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS0_Z_IDLE                      = D(SUM('Hz\.\d+\.\d+\.\d+\.Alloc.idle'))                 / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_CLR                   = D(SUM('Hz\.\d+\.\d+\.\d+\.EvictReq'))                   / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_STC_CLR               = D(SUM('Iz\.\d+\.\d+\.\d+\.StcEvict'))                   / (.CrClk * num_Z_HIZ)          #TODO: verify stat#TODO: verify_num_instances
+    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT    = D(SUM('Hz\.\d+\.\d+\.\d+\.L1Hit'))                      / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT    = D(SUM('Hz\.\d+\.\d+\.\d+\.L1Miss'))                     / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_DEPTH_FAIL            = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_FAIL_IZ_PASS          = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_AMBIG_IZ_PASS         = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
+    PS2_Z_HIZ_AMBIG_IZ_FAIL         = PS2_Z_HIZ_DEPTH_FAIL - PS2_Z_HIZ_FAIL_IZ_PASS                                              #TODO: verify_num_instances
+
+#SQIDI
+    PS2_SQIDI_NSRDF         = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSWF          = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRD32        = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSW32         = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRDF_ENCRYPT = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances     
+    PS2_SQIDI_NSWF_ENCRYPT  = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+
+#Compression
+    PS2_CC_READ_4_1             = D(SUM('Gam\.\d+\.\d+\.Read4to1'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_READ_4_3             = D(SUM('Gam\.\d+\.\d+\.Read4to3'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_READ_UNCOMPRESSED    = D(SUM('Gam\.\d+\.\d+\.ReadUncomp'))                       / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_4_1            = D(SUM('Gam\.\d+\.\d+\.Write4to1'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+        
+         
+
+
+
+
