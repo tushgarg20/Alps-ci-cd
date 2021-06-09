@@ -137,6 +137,7 @@ if ($method){
 	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvck2xeu) ? $sdir . "alps_cfg_pvck2xeu_kaolin.yaml" : $cfg_file;
     }
 }
 
