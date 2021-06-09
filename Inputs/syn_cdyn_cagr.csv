@@ -2479,3 +2479,49 @@ FF,Gen11LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing
 COLOR,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,DG2,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+EU,Gen10LP,PVCXT,0.739886824
+EU,Gen8,PVCXT,0.532718513
+EU,Gen8SoC,PVCXT,0.532718513
+EU,Gen9LPClient,PVCXT,0.653320066
+EU,Gen9LPSoC,PVCXT,0.665898142
+EU,Gen11,PVCXT,0.739886824
+EU,Gen11LP,PVCXT,0.79557723
+EU,Gen12LP,PVCXT,0.941256261
+EU,Gen12DG,PVCXT,0.941256261
+EU,Gen12HP,PVCXT,0.8722
+EU,PVC,PVCXT,1
+EU,DG2,PVCXT,1
+EU,ADL,PVCXT,1
+EU,PVCDP,PVCXT,0.95,5% SD reduction from PVC-XT B0 to PVC-XT C0
+EU,PVCXT,PVCXT,1
+L3_Bank,PVC,PVCXT,1
+L3_Bank,PVCDP,PVCXT,1
+L3_Bank,PVCXT,PVCXT,1
+L3Node,PVC,PVCXT,1
+L3Node,PVCDP,PVCXT,1
+L3Node,PVCXT,PVCXT,1
+Fabric,PVC,PVCXT,1
+Fabric,PVCDP,PVCXT,1
+Fabric,PVCXT,PVCXT,1
+LSC,PVC,PVCXT,1
+LSC,PVCDP,PVCXT,0.95,5% SD reduction from PVC-XT B0 to PVC-XT C0
+LSC,PVCXT,PVCXT,1.0
+Other,Gen12LP,PVCXT,1
+Other,PVC,PVCXT,1
+Other,PVCDP,PVCXT,1
+Other,PVCXT,PVCXT,1
+GAM,Gen12LP,PVCXT,1
+GAM,PVCDP,PVCXT,1
+GAM,PVCXT,PVCXT,1
+SQIDI,Gen12LP,PVCXT,1
+SQIDI,PVCDP,PVCXT,1
+SQIDI,PVCXT,PVCXT,1
+FF,Gen12LP,PVCXT,1
+FF,Gen11LP,PVCXT,1
+COLOR,Gen12LP,PVCXT,1
+Z,Gen12LP,PVCXT,1
+Z,DG2,PVCXT,1
+ROSS,Gen12LP,PVCXT,1
+ROSS,Gen11LP,PVCXT,1
+Sampler,DG2,PVCXT,1
+Sampler,Gen12LP,PVCXT,1
