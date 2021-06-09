@@ -416,8 +416,9 @@ def get_eff_cdyn(cluster,unit,stat):
     except:
         gc_scalar_bool = 'True'
 
-    if(gc_scalar_bool == 'False'):
+    if(gc_scalar_bool == 'False' or gc_scalar_bool == 'True'): # by default putting gc scaler 1 as we are not doing any gatecount based scaling
         gc_sf = 1.0
+	
     eff_cdyn = base_cdyn*instances*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     e_cdyn = base_cdyn*gc_sf*process_sf*voltage_sf*stepping_sf*cdyn_cagr_sf
     if (options.dump_cw):
