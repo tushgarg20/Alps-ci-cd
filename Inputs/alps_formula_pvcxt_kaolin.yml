@@ -18,10 +18,10 @@ EU:
      PS2_Accumulator_WRITE: R * C
   TC:
      PS2_TC_1Dispatch: R * C
-  inf:
-    PS2_chiplet_infra: R * C 
-    PS2_chiplet_infra_idle: R * C
-    PS2_CAM_SPINE_COMPUTE: R * C     
+  euinf:
+    PS2_chiplet_eu_infra: R * C 
+    PS2_chiplet_eu_infra_idle: R * C
+    PS2_CAM_SPINE_COMPUTE: R * C  
   FPU0:
      PS2_EU_FPU0:
       FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
@@ -265,6 +265,9 @@ LSC:
     #PS2_PS: R * C
     PS2_ROW: R * C
     PS2_ROW_idle: R * C
+  inf:
+    PS2_chiplet_noneu_infra: R * C 
+    PS2_chiplet_noneu_infra_idle: R * C
 Other:
   Others: 
     PS2_CAM_SPINE: R * C

@@ -18,7 +18,7 @@
     num_EU_GRF = numEUs
     num_EU_GA = numEUs
     num_EU_Accumulator = numEUs
-    num_EU_Infra = numEUs
+    num_EU_euinf = numEUs
     num_FF_VFBE = num_Slices
     num_ROSC_WMFE = num_Slices
     num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
@@ -39,6 +39,7 @@
 	num_HDC_HDCREQCMD = model.NumSlices * model.NumDss
 	num_Other_Others =  num_L3_Bank_LTCD_Data
 	num_LSC_ROW = num_LSC_L1
+	num_LSC_inf = num_L3_Bank_LTCD_Data
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_EU_inf = numEUs
 
@@ -185,8 +186,11 @@
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
 
 #Chiplet Infra
-    PS2_chiplet_infra = PS2_LSC_Read + PS2_LSC_Write
-    PS2_chiplet_infra_idle = 1
+    PS2_chiplet_eu_infra = PS2_L3_Active
+    PS2_chiplet_eu_infra_idle = 1
+    
+    PS2_chiplet_noneu_infra = PS2_L3_Active
+    PS2_chiplet_noneu_infra_idle = 1
 
 # Others
 	PS2_NodeX = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_Other_NodeX)
