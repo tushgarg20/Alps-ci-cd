@@ -1,0 +1,13 @@
+Config,vr0,vr1
+dg2_8x4x16,120,NA
+xe2_4x10x16,150,NA
+xe2_5x4x16,75,NA
+xe2_7x4x16,105,NA
+pvc_16x4x16,718,91.485
+mtl_1x4x16,12.7512,NA
+mtl_2x4x16,25.5024,NA
+lnl_2x4x16,30.26,NA
+lnl_3x4x16,46.19,NA
+pvcxt_C0_gen12_16x4x16,718,91.485
+pvc-kicker-HBM2e_gen12_16x4x16,718,96.05925
+pvc-kicker-HBM3_gen12_16x4x16,718,96.05925

@@ -160,8 +160,8 @@ Gen11LP,MTL,1,1,
 Gen12LP,MTL,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen12DG,MTL,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
 Gen12HP,MTL,1,1,No scaler, pv push and 10dg scaler are already accounted in cdyn weights
-DG2,MTL,0.75,0.75, Scaler from DG2 to MTL (Process and feature scaler)
-MTL,MTL,1,1,
+DG2,MTL,0.71,0.71, Scaler from DG2 to MTL (Process and feature scaler), 5% scaler from SD0.8 to SD1.0
+MTL,MTL,0.95,0.95,
 Gen9LPClient,Xe3,1,1,
 Gen10LP,Xe3,1,1,
 Gen11LP,Xe3,1,1,
