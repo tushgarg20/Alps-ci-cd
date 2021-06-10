@@ -1408,7 +1408,7 @@ EU,Gen12HP,Xe2,0.85,to match with emualtion cdyn
 EU,DG2,DG2,1,to match with emualtion cdyn 
 EU,DG2,Xe2,1,to match with emualtion cdyn 
 EU,Xe2,Xe2,1.1460,Using PVC cdyn weights and hence the process scaler from PVC to DG2
-EU,PVC,Xe2,1
+EU,PVC,Xe2,1.1460,Using PVC cdyn weights and hence the process scaler from PVC to DG2
 EU,PVCDP,Xe2,1
 EU,Gen9LPClient,MTL,0.85733882
 EU,Gen10LP,MTL,0.85733882
