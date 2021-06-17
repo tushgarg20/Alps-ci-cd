@@ -36,6 +36,6 @@
         #PS2_CAM_GTDSS = ((D(L3_READ)  / (L3_Scaler  * 64 * 64)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * 64)))*GADSS_Scaler
         #PS2_CAM_GTDSS_INFRA = 1
         #PS2_CAM_REPEATER = 1
-        PS2_CAM_BASE_COMP_INFRA = 1
-        PS2_CAM_BASE_COMPRESSION = (D(GTI_READ) + D(GTI_WRITE))/512
         PS2_CAM_BASE_ROGT = 1
+        PS2_CAM_BASE_COMP_INFRA = 1
+        PS2_CAM_BASE_COMPRESSION = (D(GTI_READ) + D(GTI_WRITE))/1024  

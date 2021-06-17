@@ -13,10 +13,10 @@
 #Generic				
 	PS2_CAM_BASE_GAM         =  (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_BASE_GAM_INFRA   =  1
-        PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/(32 * num_GAM_SQIDI)
+        PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI)
         PS2_CAM_BASE_SQIDI_INFRA =  1
         PS2_CAM_BASE_COMP_INFRA  =  1
-        PS2_CAM_BASE_COMPRESSION =  (D(GTI_READ) + D(GTI_WRITE))/(32 * num_GAM_SQIDI)
+        PS2_CAM_BASE_COMPRESSION =  (D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI)
         #PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/(512 * Xe3_Scaler)
         #PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/(512 * Xe3_Scaler)
         #PS2_CAM_GAM_INFRA        =  1 
