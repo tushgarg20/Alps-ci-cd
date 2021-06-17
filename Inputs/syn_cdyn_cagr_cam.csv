@@ -2489,11 +2489,11 @@ FabricsSpine,PVCK2xSA,PVCK2xSA,1,Scaler based on 20ww20
 FabricsSpine,PVCDP,Xe3,1,Scaler based on 20ww20 
 FabricsSpine,Xe3,Xe3,1,Scaler based on 20ww20 
 LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
-LSC,PVCDP,PVCXT,1,Scaler based on 20ww20 
-LSC,PVCXT,PVCXT,1,Scaler based on 20ww20 
-LSC,PVCXT,PVCK2xEU,1,Scaler based on 20ww20 
+LSC,PVCDP,PVCXT,0.95,Scaler based on 20ww20 with a SD improvemnt of 5% 
+LSC,PVCXT,PVCXT,1,Scaler based on 20ww20, SD improvement of 5% 
+LSC,PVCXT,PVCK2xEU,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCK2xEU,PVCK2xEU,1,Scaler based on 20ww20 
-LSC,PVCXT,PVCK2xSA,1,Scaler based on 20ww20 
+LSC,PVCXT,PVCK2xSA,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCK2xSA,PVCK2xSA,1,Scaler based on 20ww20 
 LSC,PVCDP,Xe3,1,Scaler based on 20ww20 
 Other,PVCDP,PVCDP,1,Scaler based on 20ww37
@@ -2505,7 +2505,7 @@ Other,PVCXT,PVCK2xSA,1,Scaler based on 20ww37
 Other,PVCK2xSA,PVCK2xSA,1,Scaler based on 20ww37
 Other,PVCDP,Xe3,1,Scaler based on 20ww37
 ROW,PVCDP,PVCDP,1,Scler based on 20ww37
-ROW,PVCDP,PVCXT,1,Scler based on 20ww37
+ROW,PVCDP,PVCXT,0.95,Scler based on 20ww37 with a SD improvement of 5%
 ROW,PVCXT,PVCXT,1,Scler based on 20ww37
 ROW,PVCXT,PVCK2xEU,1,Scler based on 20ww37
 ROW,PVCK2xEU,PVCK2xEU,1,Scler based on 20ww37
