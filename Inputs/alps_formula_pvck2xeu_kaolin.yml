@@ -285,24 +285,3 @@ SQIDI:
     PS2_SQIDI_INFRA: R * C
     #PS2_SQIDI_RPT: R * C
 
-ROSS:
-  MA_TDL:
-    PS2_TDL_PSDDISPATCH: R * C
-    PS2_IC: R * C
-    PS2_MA_OUT: R * C
-    PS1_PSD: R * C
-    PS1_WMFE: R * C
-    PS1_TDL: R * C
-    PS1_MA_OUT: R * C
-    PS2_IC_EBB_MISS: R * C
-    PS1_IC_Stall: R * C
-    PS2_MA_HDC_IN: R * C
-    PS2_MA_TDL_IN: R * C
-    PS2_MA_LSC_IN: R * C
-    PS2_MA_SAMP_IN: R * C
-    PS2_MA_LSC_OUT: R * C
-    PS2_MA_HDC_OUT: R * C
-
-
-
-

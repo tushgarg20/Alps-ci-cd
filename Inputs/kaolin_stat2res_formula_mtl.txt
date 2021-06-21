@@ -114,6 +114,7 @@
 #COLOR
     PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_FIX_BLD = = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))
     PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
@@ -437,22 +438,22 @@
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #GA and GRF power states
-         PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs * 8)
-         PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs* 8)
-         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs * 8)
-         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs * 8)
-         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs * 8)
-         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
-        PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8 )
+         PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
+         PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
+         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
+         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
+         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
+         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs)
+        PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs )
 
  
 #DPAS instructions
         
 #GRF power states - Read and Write
-         PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs* 8) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
-         PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs * 8 )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
+         PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
+         PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
 #Accumulator power states - Read and Write
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)
