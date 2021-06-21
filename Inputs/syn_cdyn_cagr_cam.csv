@@ -1824,12 +1824,14 @@ EU,Gen11LP,PVC2,0.9
 EU,Gen12LP,PVC2,1
 EU,Gen11LP,PVCDP,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen12LP,PVCDP,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen11LP,PVCXT,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen12LP,PVCXT,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen11LP,PVCK2xEU,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen12LP,PVCK2xEU,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen11LP,PVCK2xSA,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
-EU,Gen12LP,PVCK2xSA,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen11LP,PVCXT,0.72, 0.84 process scaler for i10 to n5 process applies to EU plus 0.95x scaler from PVCDP to PVCXT,
+EU,Gen12LP,PVCXT,0.80, 0.84 process scaler for i10 to n5 process applies to EU plus 0.95x scaler from PVCDP to PVCXT,
+EU,Gen11LP,PVCXTTrend,0.72, 0.84 process scaler for i10 to n5 process applies to EU plus 0.95x scaler from PVCDP to PVCXT,
+EU,Gen12LP,PVCXTTrend,0.80, 0.84 process scaler for i10 to n5 process applies to EU plus 0.95x scaler from PVCDP to PVCXT,
+EU,Gen11LP,PVCK2xEU,0.72, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen12LP,PVCK2xEU,0.80, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen11LP,PVCK2xSA,0.72, 0.84 process scaler for i10 to n5 process applies to EU,
+EU,Gen12LP,PVCK2xSA,0.80, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen11LP,Xe3,0.756, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen12LP,Xe3,0.84, 0.84 process scaler for i10 to n5 process applies to EU,
 EU,Gen11LP,PVC_A21,0.99,Gen11 to PVC scaler of 0.9 multiplied by 1.1 for PVC to PVC_A21, from 20WW19.4 PVC_A21 Compute spreadsheet,
@@ -1840,9 +1842,10 @@ EU,Gen12HP,PVC,0.89, Process scaler of 0.89, no config or PV scalers
 EU,Gen12HP,PVC_A21,0.979, Process scaler of 0.89, no config or PV scalers, and PVC to PVC_A21 of 1.1 (20WW19.4), 
 EU,Gen12HP,PVC2,1, Process scaler of 0.84, no config or PV scalers
 EU,Gen12HP,PVCDP,0.84, Process scaler of 0.84, no config or PV scalers
-EU,Gen12HP,PVCXT,0.84, Process scaler of 0.84, no config or PV scalers
-EU,Gen12HP,PVCK2xEU,0.84, Process scaler of 0.84, no config or PV scalers
-EU,Gen12HP,PVCK2xSA,0.84, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCXT,0.80, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCXTTrend,0.80, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCK2xEU,0.80, Process scaler of 0.84, no config or PV scalers
+EU,Gen12HP,PVCK2xSA,0.80, Process scaler of 0.84, no config or PV scalers
 EU,Gen12HP,Xe3,0.84, Process scaler of 0.84, no config or PV scalers
 EU,PVC,PVC,0.93,Process scaler gap of 0.93 since PVC CDYN weights are A0 and incorporates only 4% of the 11% target
 EU,PVC,PVC_A21,1.1, pVC to PVC_A21 scaler of 1.1
@@ -1855,6 +1858,10 @@ EU,PVCDP,PVCDP,1
 EU,PVC,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCDP,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCXT,1
+EU,PVC,PVCXTTrend,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVCDP,PVCXTTrend,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVCXT,PVCXTTrend,1
+EU,PVCXTTrend,PVCXTTrend,1
 EU,PVC,PVCK2xEU,0.95, 5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCDP,PVCK2xEU,0.95, 5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCK2xEU,1
@@ -1867,6 +1874,7 @@ EU,PVCDP,Xe3,1
 EU,DG2,PVC,0.888576
 EU,DG2,PVCDP,0.888576
 EU,DG2,PVCXT,0.888576
+EU,DG2,PVCXTTrend,0.888576
 EU,DG2,PVCK2xEU,0.888576
 EU,DG2,PVCK2xSA,0.888576
 EU,DG2,Xe3,0.888576
@@ -2103,6 +2111,7 @@ EU,Gen9LPClient,PVC_A21,0.739071
 EU,Gen9LPClient,PVC2,0.739071
 EU,Gen9LPClient,PVCDP,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
 EU,Gen9LPClient,PVCXT,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
+EU,Gen9LPClient,PVCXTTrend,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
 EU,Gen9LPClient,PVCK2xEU,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
 EU,Gen9LPClient,PVCK2xSA,0.6213, accounting 0.84 process scaler (20WW20.1 sheet)
 EU,Gen9LPSoC,PVC_A21,0.7533
@@ -2482,23 +2491,36 @@ FabricsSpine,PVC,PVCDP,1,Scaler based on 20ww20
 FabricsSpine,PVCDP,PVCDP,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,PVCXT,1,Scaler based on 20ww20 
 FabricsSpine,PVCXT,PVCXT,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,PVCXTTrend,1,Scaler based on 20ww20 
+FabricsSpine,PVCXT,PVCXTTrend,1,Scaler based on 20ww20 
+FabricsSpine,PVCXTTrend,PVCXTTrend,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,PVCK2xEU,1,Scaler based on 20ww20 
 FabricsSpine,PVCXT,PVCK2xEU,1,Scaler based on 20ww20 
 FabricsSpine,PVCK2xEU,PVCK2xEU,1,Scaler based on 20ww20 
+FabricsSpine,PVCDP,PVCK2xSA,1,Scaler based on 20ww20 
 FabricsSpine,PVCXT,PVCK2xSA,1,Scaler based on 20ww20 
 FabricsSpine,PVCK2xSA,PVCK2xSA,1,Scaler based on 20ww20 
 FabricsSpine,PVCDP,Xe3,1,Scaler based on 20ww20 
 FabricsSpine,Xe3,Xe3,1,Scaler based on 20ww20 
 LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
-LSC,PVCDP,PVCXT,0.95,Scaler based on 20ww20 with a SD improvemnt of 5% 
+LSC,PVCDP,PVCXT,0.935,Scaler based on 20ww20 with a SD improvemnt of 5% plus 1.5% CDYN recovery (6.5% CDYn reduction from B0 as per 21ww222) 
 LSC,PVCXT,PVCXT,1,Scaler based on 20ww20, SD improvement of 5% 
+LSC,PVCDP,PVCXTTrend,0.95,Scaler based on 20ww20 with a SD improvemnt of 5% 
+LSC,PVCXT,PVCXTTrend,1,Scaler based on 20ww20, SD improvement of 5% 
+LSC,PVCXTTrend,PVCXTTrend,1,Scaler based on 20ww20, SD improvement of 5% 
+LSC,PVCDP,PVCK2xEU,0.935,Scaler based on 20ww20 with a SD improvemnt of 5% plus 1.5% CDYN recovery (6.5% CDYn reduction from B0 as per 21ww222) 
 LSC,PVCXT,PVCK2xEU,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCK2xEU,PVCK2xEU,1,Scaler based on 20ww20 
+LSC,PVCDP,PVCK2xSA,0.935,Scaler based on 20ww20 with a SD improvemnt of 5% plus 1.5% CDYN recovery (6.5% CDYn reduction from B0 as per 21ww222) 
 LSC,PVCXT,PVCK2xSA,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCK2xSA,PVCK2xSA,1,Scaler based on 20ww20 
 LSC,PVCDP,Xe3,1,Scaler based on 20ww20 
 Other,PVCDP,PVCDP,1,Scaler based on 20ww37
 Other,PVCDP,PVCXT,1,Scaler based on 20ww37
 Other,PVCXT,PVCXT,1,Scaler based on 20ww37
+Other,PVCDP,PVCXTTrend,1,Scaler based on 20ww37
+Other,PVCXT,PVCXTTrend,1,Scaler based on 20ww37
+Other,PVCXTTrend,PVCXTTrend,1,Scaler based on 20ww37
 Other,PVCXT,PVCK2xEU,1,Scaler based on 20ww37
 Other,PVCK2xEU,PVCK2xEU,1,Scaler based on 20ww37
 Other,PVCXT,PVCK2xSA,1,Scaler based on 20ww37
@@ -2507,14 +2529,22 @@ Other,PVCDP,Xe3,1,Scaler based on 20ww37
 ROW,PVCDP,PVCDP,1,Scler based on 20ww37
 ROW,PVCDP,PVCXT,0.95,Scler based on 20ww37 with a SD improvement of 5%
 ROW,PVCXT,PVCXT,1,Scler based on 20ww37
+ROW,PVCDP,PVCXTTrend,0.95,Scler based on 20ww37 with a SD improvement of 5%
+ROW,PVCXT,PVCXTTrend,1,Scler based on 20ww37
+ROW,PVCXTTrend,PVCXTTrend,1,Scler based on 20ww37
+ROW,PVCDP,PVCK2xEU,0.95,Scler based on 20ww37 with a SD improvement of 5%
 ROW,PVCXT,PVCK2xEU,1,Scler based on 20ww37
 ROW,PVCK2xEU,PVCK2xEU,1,Scler based on 20ww37
+ROW,PVCDP,PVCK2xSA,0.95,Scler based on 20ww37 with a SD improvement of 5%
 ROW,PVCXT,PVCK2xSA,1,Scler based on 20ww37
 ROW,PVCK2xSA,PVCK2xSA,1,Scler based on 20ww37
 ROW,PVCDP,Xe3,1,Scler based on 20ww37
 L3_Bank,PVCDP,PVCDP,1,Scler based on 20ww37
 L3_Bank,PVCDP,PVCXT,1,Scler based on 20ww37
 L3_Bank,PVCXT,PVCXT,1,Scler based on 20ww37
+L3_Bank,PVCDP,PVCXTTrend,1,Scler based on 20ww37
+L3_Bank,PVCXT,PVCXTTrend,1,Scler based on 20ww37
+L3_Bank,PVCXTTrend,PVCXTTrend,1,Scler based on 20ww37
 L3_Bank,PVCXT,PVCK2xEU,1,Scler based on 20ww37
 L3_Bank,PVCK2xEU,PVCK2xEU,1,Scler based on 20ww37
 L3_Bank,PVCXT,PVCK2xSA,1,Scler based on 20ww37
@@ -2525,6 +2555,9 @@ L3_Bank,Xe3,Xe3,1,Scler based on new L3 arch and inputs from L3 uArch team
 Foveros,PVCDP,PVCDP,1,Scler based on 20ww37
 Foveros,PVCDP,PVCXT,1,Scler based on 20ww37
 Foveros,PVCXT,PVCXT,1,Scler based on 20ww37
+Foveros,PVCDP,PVCXTTrend,1,Scler based on 20ww37
+Foveros,PVCXT,PVCXTTrend,1,Scler based on 20ww37
+Foveros,PVCXTTrend,PVCXTTrend,1,Scler based on 20ww37
 Foveros,PVCXT,PVCK2xEU,1,Scler based on 20ww37
 Foveros,PVCK2xEU,PVCK2xEU,1,Scler based on 20ww37
 Foveros,PVCXT,PVCK2xSA,1,Scler based on 20ww37
@@ -2534,6 +2567,8 @@ Foveros,Xe3,Xe3,1,Scler based on 20ww37
 GAM,PVCDP,PVCDP,1,Scler based on 20ww37
 GAM,PVCDP,PVCXT,1,Scler based on 20ww37
 GAM,PVCXT,PVCXT,1,Scler based on 20ww37
+GAM,PVCXT,PVCXTTrend,1,Scler based on 20ww37
+GAM,PVCXTTrend,PVCXTTrend,1,Scler based on 20ww37
 GAM,PVCXT,PVCK2xEU,1,Scler based on 20ww37
 GAM,PVCK2xEU,PVCK2xEU,1,Scler based on 20ww37
 GAM,PVCXT,PVCK2xSA,1,Scler based on 20ww37
