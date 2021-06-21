@@ -1,7 +1,8 @@
 #Unit	GSIM residency			Comments
 #Instance Counts
 
-	CrClocks	=	D(model.CrClock)	
+	CrClocks	=	D(model.CrClock)
+	BaseClocks = D(model.FabricClock)	
 	FPS	=	(model.CrClock.num * 1000000) / D(model.CrClock)
     num_Slices = model.NumSlices
     num_DSS = model.NumSlices * model.NumDss
@@ -80,17 +81,17 @@
 	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
 	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
  
-	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
 	PS2_L3_Bank_idle = 1
 	PS2_L3_Node_idle = 1
 	PS2_Fabric_Idle = 1
 
-	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
+	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (BaseClocks * num_L3_Bank_LTCD_Data) 
 
 #Foveros
 	
@@ -105,74 +106,30 @@
 
     #PS2_L1_Hit_Miss = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
     PS2_HDC =  D(SUM('Hdc\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_HDC_HDCREQCMD)
-    #PS2_HDC = D(SUM('Samp\.\d+\.\d+\.\d+\.L1Hit') + SUM('Samp.\d+\.\d+\.L1Miss'))/ (.CrClk * num_HDC_HDCREQCMD)
-    #PS2_HDC_WRITE = 
-    #PS2_HDC_INFRA = 
 
-# Sampler States : SC:
-    PS2_Sampler =  D(SUM('Samp\.\d+\.\d+\.\d+\.HdcIn')) /  (.CrClk * num_HDC_HDCREQCMD)
-    
-# Sampler States : SC:
-
-    PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
-    @SAMPLER_MAIN@ = (Point_LD | Point_Sample_L | Point_Else | Small_Trilinear | Small_Bilinear_Sample_L | Small_Bilinear_Else | Samp_16Bits_Trilinear_Fl)
-    @SAMPLER_FETCH@ = (Fetch_Bypass | Fetch_Fast | Fetch_High | Fetch_Low) 
-
-    Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
-    Total_Sampler_fetch = (D(SUM('pwr\.@SAMPLER_FETCH@')))
-  
-    Sampler_main_active : D(SUM('Samp\.\d+\.\d+\.\d+\.SampOutput.active')) /  (.CrClk * num_Sampler_Main)
-    Sampler_fetch_active: D(SUM('Samp\.\d+\.\d+\.\d+\.MemRequest.active')) /  (.CrClk * num_Sampler_Fetch)
-    
-    PS0_Sampler: 1 - Sampler_main_active
-    
-    #Main path
-    PS2_Sampler_Point_LD =  D('pwr\.Point_LD') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Point_Sample_L = D('pwr\.Point_Sample_L') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Point_Else = D('pwr\.Point_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Small_Trilinear = D('pwr\.Small_Trilinear') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Small_Bilinear_Sample_L = D('pwr\.Small_Bilinear_Sample_L') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Small_Bilinear_Else = D('pwr\.Small_Bilinear_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt = D('pwr\.Samp_16Bits_Trilinear_Float_64bpt') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Trilinear_Float_Else = D('pwr\.Samp_16Bits_Trilinear_Float_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt = D('pwr\.Samp_16Bits_Trilinear_Else_64bpt') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Trilinear_Else_Else = D('pwr\.Samp_16Bits_Trilinear_Else_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt = D('pwr\.Samp_16Bits_Bilinear_Float_64bpt') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Bilinear_Float_Else = D('pwr\.Samp_16Bits_Bilinear_Float_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt = D('pwr\.Samp_16Bits_Bilinear_Else_64bpt') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_Samp_16Bits_Bilinear_Else_Else = D('pwr\.Samp_16Bits_Bilinear_Else_Else') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_High_Aniso = D('pwr\.High_Aniso') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_High_Else_64bpt = D('pwr\.High_Else_64bpt') * Sampler_main_active / Total_Sampler_main
-    PS2_Sampler_High_Else_Else = D('pwr\.High_Else_Else') * Sampler_main_active / Total_Sampler_main
-    
-    #Fetch Path
-    PS2_Sampler_Fetch_Bypass = D('pwr\.Fetch_Bypass') * Sampler_fetch_active / Total_Sampler_fetch
-    PS2_Sampler_Fetch_Fast = D('pwr\.Fetch_Fast') * Sampler_fetch_active / Total_Sampler_fetch
-    PS2_Sampler_Fetch_High = D('pwr\.Fetch_High') * Sampler_fetch_active / Total_Sampler_fetch
-    PS2_Sampler_Fetch_Low = D('pwr\.Fetch_Low') * Sampler_fetch_active / Total_Sampler_fetch
 
 # Slm read and write util
    PS2_SLMBE_READ =  D(SUM('Slm\.\d+\.\d+\.\d+\.Read')) / (.CrClk * num_DSSC_SLMBE)
    PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
    
 # GAM: GAMFTLB:
-    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
     PS2_SQIDI_RPT = PS2_SQIDI
     @RD_BW_PCLK@	=	64
     @WR_BW_PCLK@	=	64
-   .bw_FPS	=	(model.CrClock.num * 1000000) / D(model.CrClock)
+   .bw_FPS	=	(model.FabricClock.num * 1000000) / BaseClocks
     GT_RD_BW_GBPS	=	D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)
     GT_WR_BW_GBPS	=	D(SUM('Sqidi\.\d+\.\d+\.GamWrIn')) * ((@RD_BW_PCLK@ * .bw_FPS)/1000000000)  
     GT_BW_GBPS	=	GT_RD_BW_GBPS + GT_WR_BW_GBPS
 
 
-    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_HIT =		            D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GA_READ_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_HIT = 		        D(SUM('Gamlet\.\d+\.\d+\.\d+\.FtlbHit'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_HIT = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbHit'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GA_WRITE_FTLB_MISS_STLB_MISS = 		D(SUM('Gamlet\.\d+\.\d+\.\d+\.StlbMiss'))/ (BaseClocks * num_GAM_GAMFTLB)
 
 
 #LSC
@@ -454,26 +411,6 @@
          #PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs) #1 * multiplier 
 
 
-#FF 
-    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
-    PS1_VFBE        = D(SUM('Vf\.\d+\.\d+\..*\.stall'))                 / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Vf\.\d+\.\d+\..*\.stall
-    PS2_TE_Enabled  = D(SUM('Te\.\d+\.\d+\.OutputDs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_VSFE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???
-    PS2_HS_Enabled  = D(SUM('Hs\.\d+\.\d+\.LookupHs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## (lookup for bypass later)
-    PS2_GS_Enabled  = D(SUM('Gs\.\d+\.\d+\.OutVtx.active'))             / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_TDS_Enabled = D(SUM('Tdl\.\d+\.\d+\.\d+\.ThDisp'))              / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##( check the arcitecture and apply the correction)
-    PS1_VF          = PS1_VFBE                                          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS1_VSFE        = D(SUM('Vs\.\d+\.\d+\.LookupVtx.full'))            / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS1_GS          = D(SUM('Gs\.\d+\.\d+\.OutVtx.full'))               / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS1_CS          = D(SUM('Rcs\.\d+\.ProcCmd.full'))                  / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_CL_NoMustclip           = D(SUM('Cl\.\d+\.\d+\.TA'))            / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_WM_MSAA_PARTIALLYLIT    = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_WM_FLUSH                = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_WM_NOMSAA_PARTIALLYLIT  = D(SUM('Wm\.\d+\.\d+\.Span.active'))   / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_RASTERXBAR              = D(SUM('Sf\.\d+\.Input.active'))       / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-#ROSC
-    PS1_WMFE            = D(SUM('Wm\.\d+\.\d+\.Span.full'))             / (.CrClk * num_ROSC_WMFE)          #TODO: verify_num_instances
-
 #ROSS
     PS2_TDL_PSDDISPATCH = D(SUM('Tdl\.\d+\.\d+\.\d+\.PsdThIn'))         / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
     PS2_IC              = D(SUM('Ic\.\d+\.\d+\.\d+\..*\.active'))       / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances##what is *?
@@ -491,47 +428,22 @@
     PS2_MA_LSC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.SlmMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
     PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
 
-#COLOR
-    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    #BE
-    PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                                                     #TODO: verify_num_instances
-    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
-    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    
-#Z
-    PS1_HIZ                         = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS1_IZ                          = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS0_Z_IDLE                      = D(SUM('Hz\.\d+\.\d+\.\d+\.Alloc.idle'))                 / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_CLR                   = D(SUM('Hz\.\d+\.\d+\.\d+\.EvictReq'))                   / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_STC_CLR               = D(SUM('Iz\.\d+\.\d+\.\d+\.StcEvict'))                   / (.CrClk * num_Z_HIZ)          #TODO: verify stat#TODO: verify_num_instances
-    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT    = D(SUM('Hz\.\d+\.\d+\.\d+\.L1Hit'))                      / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_PASS_HIZ_CACHE_FIT    = D(SUM('Hz\.\d+\.\d+\.\d+\.L1Miss'))                     / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_DEPTH_FAIL            = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_FAIL_IZ_PASS          = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_AMBIG_IZ_PASS         = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.active'))              / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
-    PS2_Z_HIZ_AMBIG_IZ_FAIL         = PS2_Z_HIZ_DEPTH_FAIL - PS2_Z_HIZ_FAIL_IZ_PASS                                              #TODO: verify_num_instances
 
 #SQIDI
-    PS2_SQIDI_NSRDF         = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSWF          = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSRD32        = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSW32         = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
-    PS2_SQIDI_NSRDF_ENCRYPT = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances     
-    PS2_SQIDI_NSWF_ENCRYPT  = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (.CrClk * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRDF         = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (BaseClocks * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSWF          = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (BaseClocks * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRD32        = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (BaseClocks* num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSW32         = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (BaseClocks * num_SQIDI_SQD)          #TODO: verify_num_instances
+    PS2_SQIDI_NSRDF_ENCRYPT = D(SUM('Sqidi\.\d+\.\d+\.GamRead.active'))                     / (BaseClocks * num_SQIDI_SQD)          #TODO: verify_num_instances     
+    PS2_SQIDI_NSWF_ENCRYPT  = D(SUM('Sqidi\.\d+\.\d+\.GamWrite.active'))                    / (BaseClocks * num_SQIDI_SQD)          #TODO: verify_num_instances
 
 #Compression
-    PS2_CC_READ_4_1             = D(SUM('Gam\.\d+\.\d+\.Read4to1'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_CC_READ_4_3             = D(SUM('Gam\.\d+\.\d+\.Read4to3'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_CC_READ_UNCOMPRESSED    = D(SUM('Gam\.\d+\.\d+\.ReadUncomp'))                       / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_CC_WRITE_4_1            = D(SUM('Gam\.\d+\.\d+\.Write4to1'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_READ_4_1             = D(SUM('Gam\.\d+\.\d+\.Read4to1'))                         / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_READ_4_3             = D(SUM('Gam\.\d+\.\d+\.Read4to3'))                         / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_READ_UNCOMPRESSED    = D(SUM('Gam\.\d+\.\d+\.ReadUncomp'))                       / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_4_1            = D(SUM('Gam\.\d+\.\d+\.Write4to1'))                        / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (BaseClocks * num_COLOR_RCC)          #TODO: verify_num_instances
         
          
 
