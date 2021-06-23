@@ -444,8 +444,8 @@
          PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
-         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs)
-        PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs * 8)
+         PS2_GA_SYN_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs * 8)
 
  
 #DPAS instructions
