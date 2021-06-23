@@ -436,8 +436,8 @@
          PS2_GA_1Read_FPU11_dispatch = instruction_ratio_11 * PS2_GA_1Read_FPU0_dispatch
          PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_1Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
-         PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs)
-         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs)
+         PS2_GA_SYN_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs)
        
 #Accumulator power states - Read and Write
         acc_flag = ((D(SUM('pwr\.AccR'))) > 0) ? 1 : 0

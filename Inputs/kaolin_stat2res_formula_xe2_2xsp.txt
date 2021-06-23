@@ -528,8 +528,8 @@
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #GA and GRF power states
          FPU_total_count = FPU0_total_count + FPU1_total_count
-         PS2_GA_GRF_FLOOR = ( FPU_total_count ) / (.CrClk * numEU)
-         PS2_GA_SYN_FLOOR = ( FPU_total_count ) / (.CrClk * numEUs)
+         PS2_GA_GRF_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #( FPU_total_count ) / (.CrClk * numEUs)
+         PS2_GA_SYN_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #( FPU_total_count ) / (.CrClk * numEUs)
          PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
          PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
          PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
