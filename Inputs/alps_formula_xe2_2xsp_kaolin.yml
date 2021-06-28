@@ -7,6 +7,8 @@ CrClocks: R
 FPS: R
 
 EU:
+  TC:
+     PS2_TC: R * C
   GRF:
      PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
      PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
