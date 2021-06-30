@@ -275,15 +275,17 @@ ExtraPipe,EU,Gen12HP,PVC_Scaled,1.15
 FPU0,EU,DG2,DG2,1
 FPU1,EU,DG2,DG2,1
 ExtraPipe,EU,DG2,DG2,1
-FPU0,EU,PVCDP,RLTB,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
-FPU2,EU,PVCDP,RLTB,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler
-FPU0,EU,PVCXT,RLTB,0.95,1.9x scaler of CDYN weights from PVCXT C0 to Rialto Bridge 
-ExtraPipe,EU,PVCDP,RLTB,0.834,0.792x scaler of CDYN weights from PVCXT B0 to Rialto Bridge, sans the EU level 0.95x scaler 
-ExtraPipe,EU,PVCXT,RLTB,0.834,0.792x scaler of CDYN weights from PVCXT  C0 to Rialto Bridge, sans the EU level 0.95x scaler 
-SpineCompute,FabricsSpine,PVCDP,RLTB,0.9,0.9x scaler at Chiplet level as per Jasons model
-SpineBaseRambo,FabricsSpine,PVCDP,RLTB,0.95,0.95x scaler at Base level as per Jasons model
-DSS,Foveros,PVCDP,RLTB,0.9,0.9x scaler at Chiplet level as per Jasons model
-RamboDSS,Foveros,PVCDP,RLTB,0.95,0.95x scaler at Base level as per Jasons model
-Base,Foveros,PVCDP,RLTB,0.95,0.95x scaler at Base level as per Jasons model
+FPU0,EU,PVCDP,RLTCONCEPT,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
+FPU1,EU,Gen11LP,RLTCONCEPT,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
+FPU1,EU,PVCDP,RLTCONCEPT,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
+FPU2,EU,PVCDP,RLTCONCEPT,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler
+FPU0,EU,PVCXT,RLTCONCEPT,0.95,1.9x scaler of CDYN weights from PVCXT C0 to Rialto Bridge 
+ExtraPipe,EU,PVCDP,RLTCONCEPT,0.834,0.792x scaler of CDYN weights from PVCXT B0 to Rialto Bridge, sans the EU level 0.95x scaler 
+ExtraPipe,EU,PVCXT,RLTCONCEPT,0.834,0.792x scaler of CDYN weights from PVCXT  C0 to Rialto Bridge, sans the EU level 0.95x scaler 
+SpineCompute,FabricsSpine,PVCDP,RLTCONCEPT,0.9,0.9x scaler at Chiplet level as per Jasons model
+SpineBaseRambo,FabricsSpine,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as per Jasons model
+DSS,Foveros,PVCDP,RLTCONCEPT,0.9,0.9x scaler at Chiplet level as per Jasons model
+RamboDSS,Foveros,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as per Jasons model
+Base,Foveros,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as per Jasons model
 ExtraPipe,EU,PVCDP,PVCK2xSA,1.9,1.9x scaler of CDYN weights from PVCXT to PVC Kicker
 ExtraPipe,EU,PVCXT,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
