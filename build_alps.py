@@ -90,9 +90,9 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='PVCXTTrend':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend'] }
-  elif cfg =='RLTB':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'RLTB'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'RLTB'] }
+  elif cfg =='RLTCONCEPT':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'RLTCONCEPT'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'RLTCONCEPT'] }
   elif cfg =='PVCK2xSA':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xSA'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xSA'] }
@@ -169,8 +169,8 @@ elif common_cfg.find('pvcxttrend') > -1 :
     cfg ='PVCXTTrend'   
 elif common_cfg.find('pvcxt') > -1 :
     cfg ='PVCXT'   
-elif common_cfg.find('rltb') > -1 :
-    cfg ='RLTB'   
+elif common_cfg.find('rltconcept') > -1 :
+    cfg ='RLTCONCEPT'   
 elif common_cfg.find('pvck2xsa') > -1 :
     cfg ='PVCK2xSA'   
 elif common_cfg.find('mtl') > -1 :
@@ -235,8 +235,8 @@ elif common_cfg.find('pvcxt') > -1 :
     cfg_gc = "PVCXT"
 elif common_cfg.find('pvcxttrend') > -1 :
     cfg_gc = "PVCXTTrend"
-elif common_cfg.find('rltb') > -1 :
-    cfg_gc = "RLTB"
+elif common_cfg.find('rltconcept') > -1 :
+    cfg_gc = "RLTCONCEPT"
 elif common_cfg.find('pvck2xsa') > -1 :
     cfg_gc = "PVCK2xSA"
 elif common_cfg.find('mtl') > -1 :
@@ -272,7 +272,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLTB' or cfg == 'PVCK2xSA'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLTCONCEPT' or cfg == 'PVCK2xSA'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -1053,7 +1053,7 @@ if (options.dump_gc):
 
 common_cfg = options.dest_config.lower()
 
-if (common_cfg.find('pvc') > -1) or (common_cfg.find('rltb') > -1):
+if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
     if (options.method == 'kaolin'):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
@@ -1070,7 +1070,7 @@ if (common_cfg.find('pvc') > -1) or (common_cfg.find('rltb') > -1):
         gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
         gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
-if (common_cfg.find('rltb') > -1) or (common_cfg.find('pvc') > -1):
+if (common_cfg.find('rlt') > -1) or (common_cfg.find('pvc') > -1):
     if (options.method == 'cam'):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
