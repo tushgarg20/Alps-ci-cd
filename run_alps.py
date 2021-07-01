@@ -94,8 +94,8 @@ else:
         filename = '%s/alps_cfg_pvcdp.yaml' % wd
     elif options.dest_config.find('pvcxt') > -1 :
         filename = '%s/alps_cfg_pvcxt.yaml' % wd
-    elif options.dest_config.find('rltb') > -1 :
-        filename = '%s/alps_cfg_rltb.yaml' % wd
+    elif options.dest_config.find('rltconcept') > -1 :
+        filename = '%s/alps_cfg_rltconcept.yaml' % wd
     elif options.dest_config.find('pvck2xsa') > -1 :
         filename = '%s/alps_cfg_pvck2xsa.yaml' % wd
     elif options.dest_config.find('tgl') > -1:
