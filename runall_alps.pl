@@ -120,7 +120,7 @@ if ($method){
 	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcxttrend) ? $sdir . "alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
-	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_rltb_cam.yaml" : $cfg_file;
+	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_rltconcept_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvck2xsa) ? $sdir . "alps_cfg_pvck2xsa_cam.yaml" : $cfg_file;
 	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
 	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_cam.yaml" : $cfg_file;
