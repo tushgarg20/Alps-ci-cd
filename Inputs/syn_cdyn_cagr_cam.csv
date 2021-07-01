@@ -1856,10 +1856,10 @@ EU,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04
 EU,PVC,Xe3,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 EU,PVCDP,PVC2,1.08,  Source of CDYn weights is i7, so scaling by 1/0.89, 0.84 process scaling in process_cam.csv compesnatory 1/1.04 for filler scaler
 EU,PVCDP,PVCDP,1
-EU,PVC,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVC,PVCXT,0.9277,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator plus PVC to PVCDP saving of 0.9766
 EU,PVCDP,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCXT,1
-EU,PVC,PVCXTTrend,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVC,PVCXTTrend,0.9277,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCDP,PVCXTTrend,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCXTTrend,1
 EU,PVCXTTrend,PVCXTTrend,1
@@ -1880,8 +1880,8 @@ EU,PVCK2xSA,PVCK2xSA,1
 EU,PVCDP,Xe3,1
 EU,DG2,PVC,0.888576
 EU,DG2,PVCDP,0.888576
-EU,DG2,PVCXT,0.888576
-EU,DG2,PVCXTTrend,0.888576
+EU,DG2,PVCXT,0.844, 5% SD scaler as well on top of PVCDP
+EU,DG2,PVCXTTrend,0.844, 5% SD scaler as well on top of PVCDP
 EU,DG2,PVCK2xEU,0.888576
 EU,DG2,RLTCONCEPT,0.7597
 EU,DG2,PVCK2xSA,0.888576
