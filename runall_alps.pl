@@ -40,6 +40,7 @@ my $pvcdp                       = '';
 my $pvcxt                       = ''; 
 my $pvcxttrend                  = ''; 
 my $rltconcept                  = ''; 
+my $rltb_ec_0_5                 = ''; 
 my $pvck2xsa                    = ''; 
 my $pvck2xeu                    = ''; 
 my $mtl                         = ''; 
@@ -83,6 +84,7 @@ Getopt::Long::GetOptions(
 	"pvcxt"	=> \$pvcxt,
 	"pvcxttrend"	=> \$pvcxttrend,
 	"rltconcept"	=> \$rltconcept,
+	"rltb_ec_0_5"	=> \$rltb_ec_0_5,
 	"pvck2xsa"	=> \$pvck2xsa,
         "pvc_a21"       => \$pvc_a21 
 
@@ -121,6 +123,7 @@ if ($method){
 	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcxttrend) ? $sdir . "alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
 	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_rltconcept_cam.yaml" : $cfg_file;
+	$cfg_file = ($rltb_ec_0_5) ? $sdir . "alps_cfg_rltb_ec_0_5_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvck2xsa) ? $sdir . "alps_cfg_pvck2xsa_cam.yaml" : $cfg_file;
 	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
 	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_cam.yaml" : $cfg_file;
