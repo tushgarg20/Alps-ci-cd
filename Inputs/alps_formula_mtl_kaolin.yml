@@ -177,19 +177,16 @@ Bypass_factor: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_L3_Read_Hit: R * C
-    PS2_L3_Write_Hit: R * C
-    PS2_L3_Read_Miss: R * C
-    PS2_L3_Write_Evict: R * C
+    PS2_L3_Active: R * C
+    PS2_L3_Idle: R * C
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
     PS2_L3Node_Idle: R * C
 LSC:
   L1:
-    PS2_L1_Read_Hit: R * C
-    PS2_L1_Read_Miss: R * C
-    PS2_L1_Write_Hit: R * C
+    PS2_LSC: R * C
+    PS2_LSC_Idle: R * C
 
 Other:
   Others: 
@@ -255,6 +252,7 @@ Sampler:
     #PS2_Sampler_Fetch_Low: R * C
  SC:
     PS2_Sampler_SC: R * C
+    PS2_Sampler_SC_Idle: R * C
 
 FF:
   VFBE:

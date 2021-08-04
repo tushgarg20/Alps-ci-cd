@@ -114,6 +114,7 @@
 #COLOR
     PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+\.Blend.active')) / (.CrClk * num_COLOR_RCC)
     PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
@@ -157,6 +158,7 @@
 	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
+    PS2_L3_Idle = 1
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3Node_Idle = 1
 	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
@@ -167,9 +169,12 @@
 	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
 #LSC
     .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
-    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
+    #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
+    #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Write\..*\.Req')) / (.CrClk * num_LSC_L1)
     PS2_LSC = D(SUM('Lsc\.\d+\.\d+\.\d+\.Input.active')) / (.CrClk * num_LSC_L1)
+
     PS2_LSC_Idle = 1- PS2_LSC
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) / (.CrClk * num_LSC_L1)
     PS2_L1_Read_Miss = D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_LSC_L1)
@@ -180,6 +185,7 @@
 # Sampler States : SC:
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
+    PS2_Sampler_SC_Idle = 1
     @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else)
     @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
@@ -273,7 +279,7 @@
          .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 256)
          .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 256)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
-         FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
+         FPU0_toggle_rate = 0.3 #MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
          .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*256)
          .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*256)
@@ -437,10 +443,14 @@
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #GA and GRF power states
-         PS2_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
-         PS2_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
-         PS2_GA_Syn_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
-         PS2_GA_Syn_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
+         .temp_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
+         .temp_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
+	 
+	 PS2_GA_GRF_Read = (.temp_GA_GRF_Read > 2) ? (.temp_GA_GRF_Read / 8) : .temp_GA_GRF_Read
+	 PS2_GA_GRF_Write = (.temp_GA_GRF_Write > 1) ? (.temp_GA_GRF_Write / 8) : .temp_GA_GRF_Write
+	 
+         PS2_GA_Syn_Read = PS2_GA_GRF_Read
+         PS2_GA_Syn_Write = PS2_GA_GRF_Write
          PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
@@ -451,8 +461,8 @@
 #DPAS instructions
         
 #GRF power states - Read and Write
-         PS2_GRF_READ =  (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) # temp hack, fulsim stats were 8x more than gsim when we correlated the stats
-         PS2_GRF_WRITE =  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs )  # temp hack, fulim stats were 8x more that gsim when we correlated the stats
+         PS2_GRF_READ =  PS2_GA_GRF_Read
+         PS2_GRF_WRITE =  PS2_GA_GRF_Write
 #Accumulator power states - Read and Write
          PS2_Accumulator_READ = (D(SUM('pwr\.AccR'))) / (.CrClk * numEUs)
          PS2_Accumulator_WRITE = (D(SUM('pwr\.AccW'))) / (.CrClk * numEUs)

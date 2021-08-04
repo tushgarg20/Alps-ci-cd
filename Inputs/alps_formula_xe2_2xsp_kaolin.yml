@@ -10,8 +10,8 @@ EU:
   TC:
      PS2_TC: R * C
   GRF:
-     PS2_GA_GRF_Read: R * LINEST[C,R[GA_toggle_rate]]
-     PS2_GA_GRF_Write: R * LINEST[C,R[GA_toggle_rate]] 
+     PS2_GA_GRF_Read: R * C
+     PS2_GA_GRF_Write: R * C
      PS2_GRF_SEND_PATH: R * C
      PS2_GA_GRF_FLOOR: R * C
 
@@ -253,9 +253,8 @@ L3Node:
     PS2_L3Node_Idle: R * C
 LSC:
   L1:
-    PS2_L1_Read_Hit: R * C
-    PS2_L1_Read_Miss: R * C
-    PS2_L1_Write_Hit: R * C
+    PS2_LSC: R * C
+    PS2_LSC_Idle: R * C
 
 Other:
   Others: 
@@ -321,6 +320,7 @@ Sampler:
     #PS2_Sampler_Fetch_Low: R * C
  SC:
     PS2_Sampler_SC: R * C
+    PS2_Sampler_SC_Idle: R * C
 
 FF:
   VFBE:
@@ -345,13 +345,14 @@ COLOR:
     PS1_RCC : R * C
     PS2_RCC_ALLOC_MISSES: R * C
     PS2_RCC_ALLOC_HITS: R * C
-    PS2_RCPBE_8PPC_FIX_BLD: R * C
-    PS2_RCPBE_8PPC_FIX_WRT: R * C
+    PS2_RCPBE_FIX_BLD: R * C
+    #PS2_RCPBE_8PPC_FIX_BLD: R * C
+    #PS2_RCPBE_8PPC_FIX_WRT: R * C
     PS2_RCC_CACHE_READ: R * C
-    PS2_RCPBE_16PPC_FIX_BLD: R * C
-    PS2_RCPBE_16PPC_WRT: R * C
-    PS2_RCPBE_4PPC_FLT_BLD: R * C
-    PS2_RCPBE_4PPC_WRT: R * C
+    #PS2_RCPBE_16PPC_FIX_BLD: R * C
+    #PS2_RCPBE_16PPC_WRT: R * C
+    #PS2_RCPBE_4PPC_FLT_BLD: R * C
+    #PS2_RCPBE_4PPC_WRT: R * C
     PS2_CC_READ_4_1: R * C
     PS2_CC_READ_4_3: R * C
     PS2_CC_READ_UNCOMPRESSED: R * C
