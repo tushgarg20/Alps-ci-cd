@@ -1415,8 +1415,8 @@ EU,Gen10LP,MTL,0.85733882
 EU,Gen11LP,MTL,0.85733882
 EU,Gen12LP,MTL,0.85733882
 EU,Gen12HP,MTL,0.85733882
-EU,DG2,MTL,0.9153,LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet,5% savings from Akash (20ww20)
-EU,MTL,MTL,1,
+EU,DG2,MTL,1,
+EU,MTL,MTL,1.2,
 Fabric,Gen11,Gen12HP,0.9
 Fabric,Gen10LP,Gen12HP,0.837
 Fabric,Gen11LP,Gen12HP,0.9
@@ -1447,6 +1447,7 @@ GAM,Gen12HP,Gen12HP,1
 GAM,Gen12HP,DG2,1
 GAM,DG2,DG2,1
 LSC,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet 
+LSC,MTL,MTL,1
 ROW,DG2,MTL,1,Newly added cluster based on 20ww31.1 sheet
 GAM,Gen12HP,MTL,1
 GAM,DG2,MTL,1
@@ -1488,6 +1489,7 @@ L3_Bank,Gen12HP,DG2,1
 L3_Bank,DG2,DG2,1
 L3_Bank,Gen12HP,MTL,1
 L3_Bank,DG2,MTL,0.9978,
+L3_Bank,MTL,MTL,1
 L3Node,Gen10LP,Gen12HP,0.837
 L3Node,Gen8,Gen12HP,0.60264
 L3Node,Gen8SoC,Gen12HP,0.60264
@@ -1500,6 +1502,7 @@ L3Node,Gen12DG,Gen12HP,1
 L3Node,Gen12HP,Gen12HP,1
 L3Node,Gen12HP,DG2,1
 L3Node,DG2,DG2,1
+L3Node,MTL,MTL,1
 Fabric,Gen12HP,DG2,1
 DSSC,Gen12LP,DG2,1
 DSSC,Gen12HP,DG2,1
@@ -1586,7 +1589,8 @@ Sampler,Gen12HP,Gen12HP,1
 Sampler,Gen12HP,DG2,1
 Sampler,DG2,DG2,1
 Sampler,Gen12HP,MTL,1
-Sampler,DG2,MTL,0.9,
+Sampler,DG2,MTL,1,
+Sampler,MTL,MTL,1,
 SQIDI,Gen11,Gen12HP,0.9
 SQIDI,Gen10LP,Gen12HP,0.78678
 SQIDI,Gen11LP,Gen12HP,0.9
