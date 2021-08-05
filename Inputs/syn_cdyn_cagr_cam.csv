@@ -1861,7 +1861,7 @@ EU,PVC,PVCXT,0.9277,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 
 EU,PVCDP,PVCXT,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
 EU,PVCXT,PVCXT,1
 EU,PVC,PVCXTTrend,0.9277,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
-EU,PVCDP,PVCXTTrend,0.95,5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
+EU,PVCDP,PVCXTTrend,1,PVC XT B0 to PVC XT C0 as per 21WW32 indicator
 EU,PVCXT,PVCXTTrend,1
 EU,PVCXTTrend,PVCXTTrend,1
 EU,PVC,PVCK2xEU,0.95, 5% SD improvement from PVC XT B0 to PVC XT C0 as per 21WW22 indicator
@@ -2529,7 +2529,7 @@ FabricsSpine,Xe3,Xe3,1,Scaler based on 20ww20
 LSC,PVCDP,PVCDP,1,Scaler based on 20ww20 
 LSC,PVCDP,PVCXT,0.935,Scaler based on 20ww20 with a SD improvemnt of 5% plus 1.5% CDYN recovery (6.5% CDYn reduction from B0 as per 21ww222) 
 LSC,PVCXT,PVCXT,1,Scaler based on 20ww20, SD improvement of 5% 
-LSC,PVCDP,PVCXTTrend,0.95,Scaler based on 20ww20 with a SD improvemnt of 5% 
+LSC,PVCDP,PVCXTTrend,1,Scaler based on 20ww20 
 LSC,PVCXT,PVCXTTrend,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCXTTrend,PVCXTTrend,1,Scaler based on 20ww20, SD improvement of 5% 
 LSC,PVCDP,RLTCONCEPT,0.9,Scaler based on 20ww20 with a SD improvemnt of 10% per Jason Concept model 
@@ -2561,7 +2561,7 @@ Other,PVCDP,Xe3,1,Scaler based on 20ww37
 ROW,PVCDP,PVCDP,1,Scler based on 20ww37
 ROW,PVCDP,PVCXT,0.95,Scler based on 20ww37 with a SD improvement of 5%
 ROW,PVCXT,PVCXT,1,Scler based on 20ww37
-ROW,PVCDP,PVCXTTrend,0.95,Scler based on 20ww37 with a SD improvement of 5%
+ROW,PVCDP,PVCXTTrend,1,Scler based on 20ww37
 ROW,PVCXT,PVCXTTrend,1,Scler based on 20ww37
 ROW,PVCXTTrend,PVCXTTrend,1,Scler based on 20ww37
 ROW,PVCDP,RLTCONCEPT,0.9,Scler based on 20ww37 with a SD improvement of 5% per Jason Rialto Concept model
