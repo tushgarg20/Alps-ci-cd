@@ -301,3 +301,7 @@ RamboDSS,Foveros,PVCDP,RLTB_EC_0_5,0.95,0.95x scaler at Base level as per Jasons
 Base,Foveros,PVCDP,RLTB_EC_0_5,0.95,0.95x scaler at Base level as per Jasons model
 ExtraPipe,EU,PVCDP,PVCK2xSA,1.9,1.9x scaler of CDYN weights from PVCXT to PVC Kicker
 ExtraPipe,EU,PVCXT,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
+GA,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GRF,EU,PVCDP,PVCXTTrend,0.9,10% CDYN reduction based on 21ww32 PVCXT C0 indicator
+TC,EU,PVCDP,PVCXTTrend,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
+ExtraPipe,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
