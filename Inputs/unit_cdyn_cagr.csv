@@ -290,3 +290,7 @@ GRF,EU,PVCDP,RLTB_EC_0_5,0.95
 EM,EU,PVCDP,RLTB_EC_0_5,0.95
 TC,EU,PVCDP,RLTB_EC_0_5,0.95
 Accumulator,EU,PVCDP,RLTB_EC_0_5,0.95
+GA,EU,PVCDP,PVCXTTrend,0.98,from 21ww32 pvc-xt+ indicator release
+GRF,EU,PVCDP,PVCXTTrend,0.9,from 21ww32 pvc-xt+ indicator release
+TC,EU,PVCDP,PVCXTTrend,0.95,from 21ww32 pvc-xt+ indicator release
+ExtraPipe,EU,PVCDP,PVCXTTrend,0.98,from 21ww32 pvc-xt+ indicator release
