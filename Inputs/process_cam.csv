@@ -233,6 +233,7 @@ PVCDP,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW
 PVCXT,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCXT,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCXT,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
+PVCXTTrend,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 PVCK2xEU,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 RLTCONCEPT,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
 RLTB_EC_0_5,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
