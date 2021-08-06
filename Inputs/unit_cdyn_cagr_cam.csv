@@ -287,21 +287,26 @@ SpineBaseRambo,FabricsSpine,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as 
 DSS,Foveros,PVCDP,RLTCONCEPT,0.9,0.9x scaler at Chiplet level as per Jasons model
 RamboDSS,Foveros,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as per Jasons model
 Base,Foveros,PVCDP,RLTCONCEPT,0.95,0.95x scaler at Base level as per Jasons model
-FPU0,EU,PVCDP,RLTB_EC_0_5,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
-FPU1,EU,Gen11LP,RLTB_EC_0_5,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
-FPU1,EU,PVCDP,RLTB_EC_0_5,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler 
-FPU2,EU,PVCDP,RLTB_EC_0_5,0.842, 0.8x scaler per EU of CDYN weights from PVCXT BO to Rialto Bridge, sans the EU level 0.95x scaler
-FPU0,EU,PVCXT,RLTB_EC_0_5,0.95,1.9x scaler of CDYN weights from PVCXT C0 to Rialto Bridge 
-ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.834,0.792x scaler of CDYN weights from PVCXT B0 to Rialto Bridge, sans the EU level 0.95x scaler 
-ExtraPipe,EU,PVCXT,RLTB_EC_0_5,0.834,0.792x scaler of CDYN weights from PVCXT  C0 to Rialto Bridge, sans the EU level 0.95x scaler 
-SpineCompute,FabricsSpine,PVCDP,RLTB_EC_0_5,0.9,0.9x scaler at Chiplet level as per Jasons model
-SpineBaseRambo,FabricsSpine,PVCDP,RLTB_EC_0_5,0.95,0.95x scaler at Base level as per Jasons model
-DSS,Foveros,PVCDP,RLTB_EC_0_5,0.9,0.9x scaler at Chiplet level as per Jasons model
-RamboDSS,Foveros,PVCDP,RLTB_EC_0_5,0.95,0.95x scaler at Base level as per Jasons model
-Base,Foveros,PVCDP,RLTB_EC_0_5,0.95,0.95x scaler at Base level as per Jasons model
+FPU0,EU,PVCDP,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD and FPU mad  
+FPU1,EU,Gen11LP,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD and FPU mad 
+FPU1,EU,PVCDP,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD 
+FPU2,EU,PVCDP,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD 
+FPU0,EU,PVCXT,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD
+ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.89,2% reduction from PVCXT B0 to PVCXT+ and 9% reduction from PVC XT+ to RLTB
+ExtraPipe,EU,PVCXT,RLTB_EC_0_5,0.89,2% reduction from PVCXT B0 to PVCXT+ and 9% reduction from PVC XT+ to RLTB
+ExtraPipe,EU,PVCXTTrend,RLTB_EC_0_5,0.91,PVCXT+ and 9% reduction from PVC XT+ to RLTB
+SpineCompute,FabricsSpine,PVCDP,RLTB_EC_0_5,1,no scaler as per 21ww32
+SpineBaseRambo,FabricsSpine,PVCDP,RLTB_EC_0_5,1,no scaler at Base level as per 21ww32 
+DSS,Foveros,PVCDP,RLTB_EC_0_5,1,0.9x scaler at Chiplet level as per Jasons model
+DSS,Foveros,PVCXTTrend,RLTB_EC_0_5,0.95,0.95x scaler at Chiplet level as per 21ww32 
+RamboDSS,Foveros,PVCDP,RLTB_EC_0_5,1,0.95x scaler at Base level as per Jasons model
+Base,Foveros,PVCDP,RLTB_EC_0_5,1,0.95x scaler at Base level as per Jasons model
 ExtraPipe,EU,PVCDP,PVCK2xSA,1.9,1.9x scaler of CDYN weights from PVCXT to PVC Kicker
 ExtraPipe,EU,PVCXT,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Kicker
 GA,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
 GRF,EU,PVCDP,PVCXTTrend,0.9,10% CDYN reduction based on 21ww32 PVCXT C0 indicator
 TC,EU,PVCDP,PVCXTTrend,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GA,EU,PVCDP,RLTB_EC_0_5,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GRF,EU,PVCDP,RLTB_EC_0_5,0.95,10% CDYN reduction based on 21ww32 PVCXT C0 indicator and 1.05x comp scaler as GRF does not have SD scaler
+TC,EU,PVCDP,RLTB_EC_0_5,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
 ExtraPipe,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
