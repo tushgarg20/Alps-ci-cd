@@ -9052,8 +9052,6 @@ PS2_CAM_SPINE_COMPUTE,PVCXT,C0,3.33,syn,0,
 PS2_CAM_SPINE_RAMBO,PVCXT,C0,6.47,syn,0,
 PS2_CAM_SPINE,RLTCONCEPT,A0,90.246,syn,0,From WW17 PVC-B0 and 5nF reduction to match with RLTB concept model
 PS2_CAM_SPINE_RAMBO,RLTCONCEPT,A0,6.44,syn,0,Approximated cdyn weight for Spine Rambo in ww45.5 analytical model,
-PS2_CAM_SPINE,RLTB_EC_0_5,A0,90.246,syn,0,From WW17 PVC-B0 and 5nF reduction to match with RLTB concept model
-PS2_CAM_SPINE_RAMBO,RLTB_EC_0_5,A0,6.44,syn,0,Approximated cdyn weight for Spine Rambo in ww45.5 analytical model,
 PS2_CAM_L3_FABRICS,PVC,A0,38703,syn,0,Approximated cdyn weight for L3 Fabrics related states in ww3002 analytical model,
 PS2_CAM_GTDSS,PVC,A0,2133.312,syn,0,Approximated cdyn weight for GTDSS related states in ww42.5 analytical model,
 PS2_CAM_GTDSS_INFRA,PVC,A0,64.8432,syn,0,Approximated cdyn weight for GTDSS Infra related states in ww42 analytical model,
@@ -9172,7 +9170,6 @@ Foveros_rambo_idle,PVCDP,A0,13,syn,1,Approximated Foverso compute cdyn weight fr
 Foveros_base,PVCDP,A0,130.60,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_base_idle,PVCDP,A0,149.25,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_base_idle,RLTCONCEPT,A0,67.02,syn,1,Approximated Foverso compute cdyn weight from WW17 indicator  and 5nF reduction to match RLTB concept,
-Foveros_base_idle,RLTB_EC_0_5,A0,67.02,syn,1,Approximated Foverso compute cdyn weight from WW17 indicator  and 5nF reduction to match RLTB concept,
 Foveros_compute,PVCXT,C0,112.55,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_compute_idle,PVCXT,C0,71.30,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_rambo,PVCXT,C0,6.15,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
@@ -9199,8 +9196,6 @@ PS2_Fabric_Active,PVCXT,C0,2430.81,syn,0,
 PS2_Fabric_Idle,PVCXT,C0,908,syn,0,
 PS2_Fabric_Active,RLTCONCEPT,A0,2352.96,syn,0,
 PS2_Fabric_Idle,RLTCONCEPT,A0,547.39,syn,0,from WW17 indicator and reduced by 5nF to match RLTB concept
-PS2_Fabric_Active,RLTB_EC_0_5,A0,2352.96,syn,0,
-PS2_Fabric_Idle,RLTB_EC_0_5,A0,547.39,syn,0,from WW17 indicator and reduced by 5nF to match RLTB concept
 PS2_ROW,PVC,A0,87.440625,syn,0,
 PS2_ROW_idle,PVC,A0,39.25625,syn,0,
 PS2_ROW,PVCDP,A0,138.16,syn,0,
@@ -9443,14 +9438,10 @@ PS2_chiplet_eu_infra,PVCXT,C0,11.91,syn,0,from pvc emualtion results - per EU cd
 PS2_chiplet_eu_infra_idle,PVCXT,C0,5.59,syn,0,from pvc emualtion results - per EU cdyn weight,
 PS2_chiplet_eu_infra,RLTCONCEPT,A0,8.21,syn,0,from pvc emualtion results - per EU cdyn weight,
 PS2_chiplet_eu_infra_idle,RLTCONCEPT,A0,3.86,syn,0,from pvc emualtion results - per EU cdyn weight,
-PS2_chiplet_eu_infra,RLTB_EC_0_5,A0,10.11,syn,0,from pvc emualtion results - per EU cdyn weight,
-PS2_chiplet_eu_infra_idle,RLTB_EC_0_5,A0,4.755,syn,0,from pvc emualtion results - per EU cdyn weight,
 PS2_chiplet_noneu_infra,PVCXT,C0,98.24,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_noneu_infra_idle,PVCXT,C0,46.08,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_noneu_infra,RLTCONCEPT,C0,135.57,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_noneu_infra_idle,RLTCONCEPT,C0,63.59,syn,0,from pvc emualtion results - per LSC cdyn weight,
-PS2_chiplet_noneu_infra,RLTB_EC_0_5,C0,167,syn,0,from pvc emualtion results - per LSC cdyn weight,
-PS2_chiplet_noneu_infra_idle,RLTB_EC_0_5,C0,78.33,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_GAM,PVCDP,A0,272.9,syn,0,
 PS2_GAM_INFRA,PVCDP,A0,37.71,syn,0,
 PS2_GAM,PVCXT,C0,267.28,syn,0,
@@ -10087,20 +10078,6 @@ PS2_GA_Syn_1Read_10%,Xe2,A0,2.4,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prasha
 PS2_GA_Syn_1Read_20%,Xe2,A0,3.06,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 PS2_GA_Syn_1Read_30%,Xe2,A0,4.35,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
 PS2_GA_Syn_1Read_45%,Xe2,A0,6.27,syn,1,PVC 20WW30 TAPEIN CDYN weights from Prashant,
-FPU0_mad_fp64_20%,RLTB_EC_0_5,A0,35.636616,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp64_30%,RLTB_EC_0_5,A0,46.323864,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux ,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp64_45%,RLTB_EC_0_5,A0,51.387228,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp64_20%,RLTB_EC_0_5,A0,29.034936,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp64_30%,RLTB_EC_0_5,A0,34.727328,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp64_45%,RLTB_EC_0_5,A0,38.314656,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 13.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp32_10%,RLTB_EC_0_5,A0,27.77886,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp32_20%,RLTB_EC_0_5,A0,32.5008,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp32_30%,RLTB_EC_0_5,A0,35.99064,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mad_fp32_45%,RLTB_EC_0_5,A0,38.28168,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp32_10%,RLTB_EC_0_5,A0,21.39858,syn,1,PVC XT 21WW03 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp32_20%,RLTB_EC_0_5,A0,24.8085,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp32_30%,RLTB_EC_0_5,A0,27.1395,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
-FPU0_mul_fp32_45%,RLTB_EC_0_5,A0,29.12418,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant with a 7.5% redux,0.8x FPU scaler and 0.9x SD scaler,
 PS2_chiplet_eu_infra,PVCXTTrend,C0,10.63919692,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_chiplet_eu_infra_idle,PVCXTTrend,C0,5.034383432,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_CAM_SPINE_COMPUTE,PVCXTTrend,C0,3.326967114,syn,1,Extracted from WW31 PVC-XT+ Indicator
@@ -10135,3 +10112,5 @@ FPU0_mad_fp32_45%,PVCXTTrend,C0,55.7556,syn,1,Scaler of 0.97x applied based on 2
 FPU0_mad_fp64_20%,PVCXTTrend,C0,53.2146,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 FPU0_mad_fp64_30%,PVCXTTrend,C0,69.1734,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 FPU0_mad_fp64_45%,PVCXTTrend,C0,76.7343,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
+PS2_CAM_SPINE,RLTB_EC_0_5,C0,131.196632,syn,1,3.2nF reduction from PVC-XT+
+Foveros_base_idle,RLTB_EC_0_5,C0,139.89,syn,1,2.3nF reduction from PVC-XT+
