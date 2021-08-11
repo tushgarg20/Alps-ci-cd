@@ -290,5 +290,6 @@ GRF,EU,PVCDP,RLTB_EC_0_5,0.9,from 21ww32 pvc-xt+ indicator release
 TC,EU,PVCDP,RLTB_EC_0_5,0.95,from 21ww32 pvc-xt+ indicator release
 ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.8918, 0.98 (pvcb0 to pvcxtc0)*0.91 (pvcxtc0 to rltb) from 21ww32 pvc-xt+ indicator release
 Foveros,L3_Bank,PVCXTTrend,RLTB_EC_0_5,1.11,11% increase in cdyn due to linkclk freq increase from 1.35 to 1.5x
+Foveros,L3_Bank,RLTB_EC_0_5,RLTB_EC_0_5,1.11,11% increase in cdyn due to linkclk freq increase from 1.35 to 1.5x
 euinf,EU,PVCXTTrend,RLTB_EC_0_5,0.85,1.7x spine and nospine cdyn due to increased chiplet gates
 inf,LSC,PVCXTTrend,RLTB_EC_0_5,0.85,1.7x spine and nospine cdyn due to increased chiplet gates
