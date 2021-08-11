@@ -10113,4 +10113,4 @@ FPU0_mad_fp64_20%,PVCXTTrend,C0,53.2146,syn,1,Scaler of 0.93x applied based on 2
 FPU0_mad_fp64_30%,PVCXTTrend,C0,69.1734,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 FPU0_mad_fp64_45%,PVCXTTrend,C0,76.7343,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 PS2_CAM_SPINE,RLTB_EC_0_5,C0,131.196632,syn,1,3.2nF reduction from PVC-XT+
-Foveros_base_idle,RLTB_EC_0_5,C0,139.89,syn,1,2.3nF reduction from PVC-XT+
+Foveros_base_idle,RLTB_EC_0_5,C0,143.4566,syn,1,2.3nF reduction from PVC-XT+
