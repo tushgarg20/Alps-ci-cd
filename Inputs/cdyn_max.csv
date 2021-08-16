@@ -14,3 +14,7 @@ pvc-kicker-HBM3_gen12_16x4x16,718,112
 pvcxt_C0_gen12_4x4x16,170.5,24.015
 pvc-kicker-HBM2e_gen12_4x4x16,179.5,28
 pvc-kicker-HBM3_gen12_4x4x16,179.5,28
+RLT-HBM2e-3p2_gen12_16x4x16,718,112
+RLT-HBM2e-3p6_gen12_16x4x16,718,112
+RLT-HBM2e-3p2_gen12_4x4x16,179.5,28
+RLT-HBM2e-3p6_gen12_16x4x16,179.5,28

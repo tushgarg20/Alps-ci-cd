@@ -9124,7 +9124,7 @@ PS2_L3_Active,Gen12HP,A0,315.2,syn,0,approximated cdyn weights for L3,
 PS2_L3Node_Active,Gen12HP,A0,519.5,syn,0,approximated cdyn weights for L3,
 PS2_Fabric_Active,Gen12HP,A0,836,syn,0,approximated cdyn weights for L3,
 PS2_Sampler_SC,Gen12LP,A0,329,syn,1,
-PS2_Sampler_SC,DG2,A0,621.75,syn,1,
+PS2_Sampler_SC,DG2,A0,497.4,syn,1,reduced by 20% to match emulation
 PS2_Sampler_SC,MTL,A0,266.125,syn,1,
 PS2_Sampler_SC_Idle,MTL,A0,38.6,syn,1,
 PS0_Sampler,DG2,A0,4.176,syn,0,approx cdyn weights for sampler based on existing test cases,
@@ -9155,8 +9155,8 @@ PS2_LSC,PVCDP,A0,1657.109,syn,0,approximated cdyn weights for LSS from CSS,
 PS2_LSC_Idle,PVCDP,A0,0,syn,0,approximated cdyn weights for LSS from CSS,
 PS2_LSC,PVCXT,C0,1682.50,syn,0,approximated cdyn weights for LSS from CSS,
 PS2_LSC_Idle,PVCXT,C0,19.07,syn,0,approximated cdyn weights for LSS from CSS,
-PS2_LSC,DG2,A0,418.8,syn,0,approximated cdyn weights for LSC from CSS,
-PS2_LSC_Idle,DG2,A0,11.4,syn,0,approximated cdyn weights for LSC from CSS,
+PS2_LSC,DG2,A0,122.916,syn,0,approximated cdyn weights for LSC from CSS,
+PS2_LSC_Idle,DG2,A0,17.36,syn,0,approximated cdyn weights for LSC from CSS,
 Foveros_compute,PVC,A0,91.54,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_compute_idle,PVC,A0,74.38,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
 Foveros_rambo,PVC,A0,20.17,syn,1,Approximated Foverso compute cdyn weight from compute sheet,
@@ -9423,10 +9423,14 @@ ExtraPipe_DPAS_UInt8_20%,PVC,B0,136.88,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights f
 ExtraPipe_DPAS_UInt8_30%,PVC,B0,151.63,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,
 ExtraPipe_DPAS_UInt8_45%,PVC,B0,173.8,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,
 PS2_EU_DPAS,PVC,A0,197,syn,0,
-PS2_infra,DG2,A0,25.11,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
+PS2_infra,DG2,A0,32.815,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
 PS2_infra,MTL,A0,22.35,syn,0,infra cdyn per EU from MTL 64 emulation for 3d wls,
 PS2_L3_Active,MTL,A0,509.25,syn,0,extracted from mtl emulation results
 PS2_L3_Idle,MTL,A0,0.003,syn,0,extracted from mtl emulation results
+PS2_L3_Active,DG2,A0,274.11,syn,0,extracted from mtl emulation results
+PS2_L3_Idle,DG2,A0,48.49,syn,0,extracted from mtl emulation results
+PS2_L3Node_Active,DG2,A0,320.48,syn,0,extracted from mtl emulation results
+PS2_L3Node_Idle,DG2,A0,100.16,syn,0,extracted from mtl emulation results
 PS2_L3Node_Active,MTL,A0,173.421,syn,0,extracted from mtl emulation results
 PS2_L3Node_Idle,MTL,A0,12.888,syn,0,extracted from mtl emulation results
 PS2_Infra_emu_const,PVC,A0,21.91,syn,0,from pvc emualtion results,
@@ -9835,8 +9839,8 @@ FPU11_sel_fp16_10%,Gen12LP,A0,20.34,syn,1,From Praneeth WW21_2018,
 FPU11_sel_fp16_16%,Gen12LP,A0,20.7468,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
 FPU11_sel_fp16_29%,Gen12LP,A0,21.5604,syn,1,"From Praneeth WW21_2018, extrapolated for TR at 1% per 3% TR increase",
 PS2_SPINE,DG2,A0,4.16,syn,1,
-PS2_ROW,DG2,A0,20,syn,1,
-PS2_ROW_Idle,DG2,A0,25,syn,1,
+PS2_ROW,DG2,A0,44.505,syn,1,
+PS2_ROW_Idle,DG2,A0,55.96,syn,1,
 FPU0_add_fp16_20%,PVC,B0,42.95,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,
 FPU0_add_fp16_30%,PVC,B0,47.83,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,
 FPU0_add_fp32_20%,PVC,B0,32.23,syn,1,PVC 21WW02 B0 TAPEIN CDYN weights from Prashant,
@@ -10114,3 +10118,10 @@ FPU0_mad_fp64_30%,PVCXTTrend,C0,69.1734,syn,1,Scaler of 0.93x applied based on 2
 FPU0_mad_fp64_45%,PVCXTTrend,C0,76.7343,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 PS2_CAM_SPINE,RLTB_EC_0_5,C0,131.196632,syn,1,3.2nF reduction from PVC-XT+
 Foveros_base_idle,RLTB_EC_0_5,C0,143.4566,syn,1,2.3nF reduction from PVC-XT+
+FPU0_mad_fp32_10%,RLTB_EC_0_5,C0,36.8983344,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp32_20%,RLTB_EC_0_5,C0,43.170432,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp32_30%,RLTB_EC_0_5,C0,47.8059456,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp32_45%,RLTB_EC_0_5,C0,50.8491072,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp64_20%,RLTB_EC_0_5,C0,47.0150991,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp64_30%,RLTB_EC_0_5,C0,61.1146989,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
+FPU0_mad_fp64_45%,RLTB_EC_0_5,C0,67.79475405,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant and 0.95 to account for SD scaler from PVC-XT+ to RLT
