@@ -243,10 +243,8 @@ Bypass_factor: R
 
 L3_Bank:
   LTCD_Data:
-    PS2_L3_Read_Hit: R * C
-    PS2_L3_Write_Hit: R * C
-    PS2_L3_Read_Miss: R * C
-    PS2_L3_Write_Evict: R * C
+    PS2_L3_Active: R * C
+    PS2_L3_Idle: R * C 
 L3Node:
   Node:
     PS2_L3Node_Active: R * C
