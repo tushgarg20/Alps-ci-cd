@@ -11,6 +11,7 @@ EU:
      PS2_GA_GRF_1Read_ECC: R * C
      PS2_GA_GRF_1Write_ECC: R * C
      PS2_GRF_SEND_PATH: R * C
+     PS2_GA_GRF_FLOOR: R * C
 
   Accumulator:
      PS2_Accumulator_READ: R * C
@@ -38,18 +39,18 @@ EU:
    
   FPU1: 
     PS2_EU_FPU1:
-      FPU1_mad_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mul_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_add_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mov_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_sel_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mac_int16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mad_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mul_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_add_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_sel_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mac_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mov_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
  
   FPU2:
     PS2_EU_FPU2:
@@ -73,9 +74,13 @@ EU:
 
   GA:
     PS2_GA:
-      PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_FPU2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_ExtraPipe: R * C
+      PS2_GA_Syn_Floor: R * C 
+      PS2_GA_Syn_1Read_ECC: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_1Write_ECC: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+
   TC:
     PS2_TC:
       PS2_TC_1Dispatch: R * C
