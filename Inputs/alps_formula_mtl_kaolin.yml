@@ -156,18 +156,13 @@ EU:
       PS2_GA_ExtraPipe: R * C
 
   ExtraPipe:
-      ExtraPipe_DPAS_BFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
-      ExtraPipe_DPAS_SFloat16:  R * LINEST[C,R[DPAS_toggle_rate]]
+      #PS2_EU_DPAS: R * C
+      ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]
+      ExtraPipe_DPAS_BFloat:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_SInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_SInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_UInt8:  R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_UInt4:  R * LINEST[C,R[DPAS_toggle_rate]]
-      ExtraPipe_DPAS_BFloat16_Bypass: R * C 
-      ExtraPipe_DPAS_SFloat16_Bypass: R * C
-      ExtraPipe_DPAS_SInt8_Bypass: R * C
-      ExtraPipe_DPAS_UInt8_Bypass: R * C
-      ExtraPipe_DPAS_SInt4_Bypass: R * C
-      ExtraPipe_DPAS_UInt4_Bypass: R * C
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R

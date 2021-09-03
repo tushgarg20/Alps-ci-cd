@@ -189,7 +189,7 @@
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
     PS2_Sampler_SC_Idle = 1
-    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else)
+    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float_64bpt|Samp_16Bits_Trilinear_Float_Else|Samp_16Bits_Trilinear_Else_Else|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float_64bpt|Samp_16Bits_Bilinear_Float_Else|Samp_16Bits_Bilinear_Else_64bpt|Samp_16Bits_Bilinear_Else_Else|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else_64bpt|High_Else_Else)
     @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
