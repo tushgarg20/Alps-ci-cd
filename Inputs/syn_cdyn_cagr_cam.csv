@@ -1364,6 +1364,7 @@ DSSC,Gen12LP,Gen12HP,1
 DSSC,Gen12DG,Gen12HP,1
 DSSC,Gen12HP,Gen12HP,1
 DSSC,Gen12HP,DG2,1
+DSSC,Gen12HP,Xe2_HPG,1
 DSSC,DG2,DG2,1
 #DSSC,DG2,DG2p5,1.5, Scaling by the resource size increase factor 768/512
 DSSC,DG2,DG2p5,1, Scaling by the resource size increase factor 768/512
@@ -1389,6 +1390,10 @@ EU,Gen9LPClient,DG2,0.85733882
 EU,Gen11LP,DG2,0.85733882
 EU,Gen12LP,DG2,0.85733882
 EU,Gen12HP,DG2,0.85733882
+EU,Gen9LPClient,Xe2_HPG,0.80558
+EU,Gen11LP,Xe2_HPG,0.80558
+EU,Gen12LP,Xe2_HPG,0.80558
+EU,Gen12HP,Xe2_HPG,0.80558
 #EU,DG2,DG2,0.85733882
 EU,DG2,DG2,0.9804,  Removed LOS scaler and divsion by 1.02 to compensate for config scaler in process.csv from 20ww15 DG2 Compute spreadsheet
 #EU,Gen9LPClient,DG2p5,1.286, 1.5 EU resource scaler for DG2 -> DG2p5,multipled with Gen9 to DG2 scaler
@@ -2646,3 +2651,17 @@ LSC,PVCDP,PVC2,1,Scaler based on 20ww37
 LSC,PVC,PVC2,1.1649, Scaler based on PVC,an additional scaler of 1/0.89 as CDYN weight is i7 (PVC), scaler = 1.0368*1/0.89 =1.1649 
 LSC,PVC,PVCDP,0.9766, n7->n5 scaler (1/0.89)*0.82 multipled by 1.06 as per 21WW04 
 LSC,PVC_A21,PVC_A21,1,Scaler based on 20ww37 
+EU,DG2,Xe2_HPG,0.9212,scaler based on 21ww36 Xe2 indicator from Atul
+FabricsSpine,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+L3_Bank,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+Other,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+LSC,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+ROW,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+GAM,DG2,Xe2_HPG,0.78,scaler based on 21ww36 Xe2 indicator from Atul
+EU,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+FabricsSpine,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+L3_Bank,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+Other,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+LSC,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+ROW,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul
+GAM,Xe2_HPG,Xe2_HPG,1,scaler based on 21ww36 Xe2 indicator from Atul

@@ -10,10 +10,10 @@
 	
 #Generic				
 	PS2_CAM_GAM              =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI)
-        PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
+        PS2_CAM_SQIDI            =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI)
         PS2_CAM_GAM_INFRA        =  numGTI/maxGTI 
         PS2_CAM_SQIDI_INFRA      =  numGTI/maxGTI
-        PS2_CAM_CC               =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
-       PS2_CAM_GA_SQIDI_RPT      =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI
+        PS2_CAM_CC               =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI)
+       PS2_CAM_GA_SQIDI_RPT      =  (D(GTI_READ) + D(GTI_WRITE))/(512 *numGTI/maxGTI)
 
 

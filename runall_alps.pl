@@ -32,6 +32,7 @@ my $tgldg			= '';
 my $pvc_scaled			= '';
 my $dg2			        = '';
 my $dg2p5			= '';
+my $xe2				= '';
 my $xe2_2xsp			= '';
 my $xe3				= '';
 my $pvc_a21                     = '';
@@ -74,6 +75,7 @@ Getopt::Long::GetOptions(
 	"tgldg"			=> \$tgldg,
 	"dg2"		=> \$dg2,
 	"dg2p5"		=> \$dg2p5,
+	"xe2"		=> \$xe2,
         "xe2_2xsp"     =>  \$xe2_2xsp,
 	"xe3"		=> \$xe3,
 	"mtl"		=> \$mtl,
@@ -134,6 +136,7 @@ if ($method){
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe2) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
     }else{
 	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
