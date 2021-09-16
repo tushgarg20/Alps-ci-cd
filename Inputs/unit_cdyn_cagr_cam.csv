@@ -294,7 +294,7 @@ FPU2,EU,PVCDP,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD
 FPU0,EU,PVCXT,RLTB_EC_0_5,1, as per 21ww32 no scaler other than SD
 ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.89,2% reduction from PVCXT B0 to PVCXT+ and 9% reduction from PVC XT+ to RLTB
 ExtraPipe,EU,PVCXT,RLTB_EC_0_5,0.89,2% reduction from PVCXT B0 to PVCXT+ and 9% reduction from PVC XT+ to RLTB
-ExtraPipe,EU,PVCXTTrend,RLTB_EC_0_5,0.91,PVCXT+ and 9% reduction from PVC XT+ to RLTB
+ExtraPipe,EU,PVCXTTrend,RLTB_EC_0_5,1,PVCXT+ and 9% reduction from PVC XT+ to RLTB, making it 1 for 21ww38 whatif study
 SpineCompute,FabricsSpine,PVCDP,RLTB_EC_0_5,1,no scaler as per 21ww32
 SpineBaseRambo,FabricsSpine,PVCDP,RLTB_EC_0_5,1,no scaler at Base level as per 21ww32 
 DSS,Foveros,PVCDP,RLTB_EC_0_5,1,0.9x scaler at Chiplet level as per Jasons model
