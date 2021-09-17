@@ -80,10 +80,12 @@
 #L3 utilization
 	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
 	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
+	L3_Rambo_Read_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+\.Read'))
+	L3_Rambo_Write_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+\.Write'))
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
-	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans + L3_Rambo_Read_Trans + L3_Rambo_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
 	PS2_L3_Bank_idle = 1
 	PS2_L3_Node_idle = 1
 	PS2_Fabric_Idle = 1
