@@ -53,6 +53,7 @@
 	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
 	Total_FpuCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
+	Total_IntCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@INT_Cycles@'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
 
         FPU0_total_count = (D(SUM('pwr\.@ALLFPU0INST@')))
@@ -63,7 +64,7 @@
 
 
 	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs * 0.5)
-	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)
+	FPU1_Utilization = (Total_IntCycles)/(.CrClk * numEUs * 0.5)
         DPAS_Utilization = (Total_SystCycles)/(.CrClk * numEUs * 0.5)
 	PS2_EU_FPU0 =  FPU0_Utilization
 	PS2_EU_FPU1 =  FPU1_Utilization

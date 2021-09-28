@@ -52,7 +52,7 @@
 #EU utilization from Kaolin
 
 	@FPU_Cycles@ = (Fp16Cycle|Fp32Cycle|Fp64Cycle)
-	@INT_Cycles@ = (Int16Cycle|Int32Cycle)
+	@INT_Cycles@ = (Int16Cycle|Int32Cycle|Int64Cycle)
 	@MATH_Cycles@ = (Math32Cycle)
 	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
 	Total_Fpu0Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
