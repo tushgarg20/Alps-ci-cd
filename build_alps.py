@@ -1089,12 +1089,8 @@ if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
                     float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
-	            float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROW']['total']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOVEROS']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOV_INFRA']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB_INFRA']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_SPINE_INFRA'])]
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle'])]
         Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
         Chiplet_Cdyn = round(Chiplet_Cdyn,3)
 
