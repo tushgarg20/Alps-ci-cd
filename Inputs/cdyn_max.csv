@@ -23,3 +23,7 @@ RLT-HBM2e-3p6_gen12_4x4x16,179.5,28
 PVC-C0_HBM2e-3p2_gen12_16x4x16,682,96.05925
 PVC-C0_HBM2e-3p6_gen12_16x4x16,682,96.05925
 RLT-HBM2e_gen12_4x4x16_gt-800_base,179.5,28
+rlt_10x8x8,718,112
+pvc_xtplus_8x8x8,682,96.05925
+pvc_xtplus_8x8x8_1600basecap,682,96.05925
+pvc_xtplus_2x8x8_1600basecap,170.5,24.015

@@ -33,7 +33,6 @@ my $pvc_scaled			= '';
 my $dg2			        = '';
 my $dg2p5			= '';
 my $xe2				= '';
-my $xe2_2xsp			= '';
 my $xe3				= '';
 my $pvc_a21                     = '';
 my $pvc2                        = ''; 
@@ -76,7 +75,6 @@ Getopt::Long::GetOptions(
 	"dg2"		=> \$dg2,
 	"dg2p5"		=> \$dg2p5,
 	"xe2"		=> \$xe2,
-        "xe2_2xsp"     =>  \$xe2_2xsp,
 	"xe3"		=> \$xe3,
 	"mtl"		=> \$mtl,
 	"lnl"		=> \$lnl,
@@ -142,7 +140,7 @@ if ($method){
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($dg2) ? $sdir . "alps_cfg_dg2_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($xe2_2xsp) ? $sdir . "alps_cfg_xe2_2xsp_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($xe2) ? $sdir . "alps_cfg_xe2_kaolin.yaml" : $cfg_file;
     	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_kaolin.yaml" : $cfg_file;

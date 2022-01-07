@@ -230,10 +230,9 @@
    PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
    
 # GAM: GAMFTLB:
-    PS2_GAM = (D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active')))/ (.CrClk * num_GAM_GAMFTLB)
-    PS2_SQIDI = (D(SUM('Gam\.\d+\.\d+\.Read\.active')  + SUM('Gam\.\d+\.\d+\.Write\.active')))/ (.CrClk * num_SQIDI_SQD)
+    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
+    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (.CrClk * num_GAM_GAMFTLB)
     PS2_SQIDI_RPT = PS2_SQIDI
-
 # Others
 	PS2_SPINE =  1
 	PS2_NodeX = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_Other_NodeX)
