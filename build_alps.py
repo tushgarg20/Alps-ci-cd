@@ -261,8 +261,6 @@ elif common_cfg.find('dg2p5') > -1 :
 elif common_cfg.find('xe3') > -1 :
     cfg_gc = "Xe3"
 elif common_cfg.find('xe2') > -1 :
-    cfg_gc = "Xe2_HPG"
-elif common_cfg.find('xe2_2xsp') > -1 :
     cfg_gc = "Xe2"
 elif common_cfg.find('dg2') > -1 :
     cfg_gc = "DG2"
