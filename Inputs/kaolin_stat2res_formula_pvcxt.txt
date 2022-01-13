@@ -52,7 +52,7 @@
 #EU utilization from Kaolin
 
 	@FPU_Cycles@ = (Fp16Cycle|Fp32Cycle|Fp64Cycle)
-	@INT_Cycles@ = (Int16Cycle|Int32Cycle)
+	@INT_Cycles@ = (Int16Cycle|Int32Cycle|Int64Cycle)
 	@MATH_Cycles@ = (Math32Cycle)
 	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
 	Total_Fpu0Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
@@ -301,20 +301,20 @@
 #FPU1 instructions
          .temp_mad_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy32')) / (FPU1_total_count)):0
          .temp_mad_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI32'))  / (FPU1_total_count)):0
-         FPU1_mad_int32 = .temp_mad_int32_total - .temp_mad_int32_bypass
+         FPU1_mad_uint32 = .temp_mad_int32_total - .temp_mad_int32_bypass
          .temp_add_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.AddIBy32')) / (FPU1_total_count)):0
          .temp_add_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.AddI32'))  / (FPU1_total_count)):0
-         FPU1_add_int32 = .temp_add_int32_total - .temp_add_int32_bypass
+         FPU1_add_uint32 = .temp_add_int32_total - .temp_add_int32_bypass
          .temp_mul_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MulIBy32')) / (FPU1_total_count)):0
          .temp_mul_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MulI32'))  / (FPU1_total_count)):0
-         FPU1_mul_int32 = .temp_mul_int32_total - .temp_mul_int32_bypass
-         FPU1_mov_int32 = (FPU1_total_count > 0)? (D(SUM('pwr\.MovI32')) / (FPU1_total_count)):0
+         FPU1_mul_uint32 = .temp_mul_int32_total - .temp_mul_int32_bypass
+         FPU1_mov_uint32 = (FPU1_total_count > 0)? (D(SUM('pwr\.MovI32')) / (FPU1_total_count)):0
          .temp_sel_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.SelIBy32')) / (FPU1_total_count)):0
          .temp_add_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.SelI32'))  / (FPU1_total_count)):0
-         FPU1_sel_int32 = .temp_sel_int32_total - .temp_sel_int32_bypass
+         FPU1_sel_uint32 = .temp_sel_int32_total - .temp_sel_int32_bypass
          .temp_mac_int32_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MacIBy32')) / (FPU1_total_count)):0
          .temp_mac_int32_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI32'))  / (FPU1_total_count)):0
-         FPU1_mac_int32 = .temp_mac_int32_total - .temp_mac_int32_bypass
+         FPU1_mac_uint32 = .temp_mac_int32_total - .temp_mac_int32_bypass
          #FPU1_mac_int32 = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI32')) / (FPU1_total_count)):0
          FPU1_mad_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@MADIBYPASS@')) / (FPU1_total_count)):0
          FPU1_mac_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@MACIBYPASS@')) / (FPU1_total_count)):0
@@ -323,20 +323,20 @@
          FPU1_sel_intbypass =  (FPU1_total_count > 0) ? (D(SUM('pwr\.@SELIBYPASS@')) / (FPU1_total_count)):0
          .temp_mad_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy16')) / (FPU1_total_count)):0
          .temp_mad_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI16'))  / (FPU1_total_count)):0
-         FPU1_mad_int16 = .temp_mac_int16_total - .temp_mac_int16_bypass
+         FPU1_mad_uint16 = .temp_mac_int16_total - .temp_mac_int16_bypass
          .temp_add_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.AddIBy16')) / (FPU1_total_count)):0
          .temp_add_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.AddI16'))  / (FPU1_total_count)):0
-         FPU1_add_int16 = .temp_add_int16_total - .temp_add_int16_bypass
+         FPU1_add_uint16 = .temp_add_int16_total - .temp_add_int16_bypass
          .temp_mul_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MulIBy16')) / (FPU1_total_count)):0
          .temp_mul_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MulI16'))  / (FPU1_total_count)):0
-         FPU1_mul_int16 = .temp_mul_int16_total - .temp_mul_int16_bypass
-         FPU1_mov_int16 = (FPU1_total_count > 0) ? (D(SUM('pwr\.MovI16')) / (FPU1_total_count)):0
+         FPU1_mul_uint16 = .temp_mul_int16_total - .temp_mul_int16_bypass
+         FPU1_mov_uint16 = (FPU1_total_count > 0) ? (D(SUM('pwr\.MovI16')) / (FPU1_total_count)):0
          .temp_sel_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.SelIBy16')) / (FPU1_total_count)):0
          .temp_sel_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.SelI16'))  / (FPU1_total_count)):0
-         FPU1_sel_int16 = .temp_sel_int16_total - .temp_sel_int16_bypass
+         FPU1_sel_uint16 = .temp_sel_int16_total - .temp_sel_int16_bypass
          .temp_mac_int16_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MacIBy16')) / (FPU1_total_count)):0
          .temp_mac_int16_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MacI16'))  / (FPU1_total_count)):0
-         FPU1_mac_int16 = .temp_mac_int16_total - .temp_mac_int16_bypass
+         FPU1_mac_uint16 = .temp_mac_int16_total - .temp_mac_int16_bypass
          .temp_mad_int64_bypass = (FPU1_total_count > 0)? (D(SUM('pwr\.MadIBy64')) / (FPU1_total_count)):0
          .temp_mad_int64_total = (FPU1_total_count > 0)? (D(SUM('pwr\.MadI64'))  / (FPU1_total_count)):0
          FPU1_mad_int64 = .temp_mad_int64_total - .temp_mad_int64_bypass

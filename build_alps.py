@@ -69,9 +69,6 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='Xe2':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2'] }
-  elif cfg =='Xe2_HPG':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2_HPG'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2_HPG'] }
   elif cfg =='DG2p5':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'DG2p5',],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','DG2p5',] }
@@ -200,8 +197,6 @@ elif common_cfg.find('lnl') > -1 :
 elif common_cfg.find('xe3') > -1 :
     cfg ='Xe3'
 elif common_cfg.find('xe2') > -1 :
-    cfg ='Xe2_HPG'
-elif common_cfg.find('xe2_2xsp') > -1 :
     cfg ='Xe2'
 elif common_cfg.find('dg2') > -1 :
     cfg ='DG2'
@@ -266,8 +261,6 @@ elif common_cfg.find('dg2p5') > -1 :
 elif common_cfg.find('xe3') > -1 :
     cfg_gc = "Xe3"
 elif common_cfg.find('xe2') > -1 :
-    cfg_gc = "Xe2_HPG"
-elif common_cfg.find('xe2_2xsp') > -1 :
     cfg_gc = "Xe2"
 elif common_cfg.find('dg2') > -1 :
     cfg_gc = "DG2"
@@ -1089,12 +1082,8 @@ if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
                     float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
-	            float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROW']['total']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOVEROS']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOV_INFRA']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB']),
-                    float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB_INFRA']),
-	            float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_SPINE_INFRA'])]
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute']),
+                    float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_compute_idle'])]
         Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
         Chiplet_Cdyn = round(Chiplet_Cdyn,3)
 

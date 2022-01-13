@@ -27,9 +27,6 @@
         PS2_CAM_COMPUTE_NONSPINE_INFRA   =       1 
         PS2_CAM_COMPUTE_SYST_NONSPINE_INFRA   =  (SYS_Util > 0.1) ? 1: 0 
         PS2_CAM_RAMBO_SPINE_INFRA        =       1
-        PS2_CAM_RAMBO_NONSPINE_INFRA     =       1
         PS2_CAM_BASE_SPINE               =       1
-        PS2_CAM_BASE_NONSPINE            =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
-        PS2_CAM_BASE_NONSPINE_INFRA      =       1
         PS2_CAM_COMPUTE_ARB              =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
         PS2_CAM_COMPUTE_ARB_INFRA        =       1 

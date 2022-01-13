@@ -871,7 +871,6 @@ L3_Bank,DG2,ADL,False
 L3_Bank,Gen12HP,DG2,False
 L3_Bank,DG2,DG2,False
 L3_Bank,DG2,Xe2,False
-L3_Bank,DG2,Xe2_HPG,False
 L3_Bank,Gen12HP,MTL,False
 L3_Bank,DG2,MTL,False
 L3_Bank,DG2,LNL,False
@@ -888,7 +887,6 @@ GAM,DG2,ADL,False
 GAM,Gen12HP,DG2,False
 GAM,DG2,DG2,False
 GAM,DG2,Xe2,False
-GAM,DG2,Xe2_HPG,False
 GAM,Gen12HP,MTL,False
 GAM,DG2,MTL,False
 GAM,DG2,LNL,False
@@ -899,20 +897,16 @@ ROW,DG2,MTL,False
 ROW,DG2,LNL,False
 ROW,DG2,DG2p5,False
 ROW,DG2,Xe2,False
-ROW,DG2,Xe2_HPG,False
 LSC,DG2,DG2,False
 LSC,DG2,DG2p5,False
 LSC,DG2,MTL,False
 LSC,DG2,LNL,False
 LSC,DG2,Xe2,False
-LSC,DG2,Xe2_HPG,False
 FabricsSpine,DG2,DG2,False
 FabricsSpine,DG2,DG2p5,False
 FabricsSpine,DG2,MTL,False
 FabricsSpine,DG2,LNL,False
 FabricsSpine,DG2,Xe2,False
-FabricsSpine,DG2,Xe2_HPG,False
-FabricsSpine,Xe2_HPG,Xe2_HPG,False
 Sampler,Gen9LPClient,ADL,False
 Sampler,Gen9LPSoC,ADL,False
 Sampler,Gen10LP,ADL,False
@@ -924,8 +918,6 @@ Sampler,Gen11LP,ADL,False
 Sampler,Gen12HP,DG2,False
 Sampler,DG2,DG2,False
 Sampler,DG2,Xe2,False
-Sampler,DG2,Xe2_HPG,False
-Sampler,Xe2_HPG,Xe2_HPG,False
 Sampler,Gen12HP,MTL,False
 Sampler,DG2,MTL,False
 Sampler,DG2,LNL,False
@@ -983,8 +975,6 @@ DSSC,ADL,ADL,False
 DSSC,Gen12HP,DG2,False
 DSSC,DG2,DG2,False
 DSSC,DG2,Xe2,False
-DSSC,DG2,Xe2_HPG,False
-DSSC,Xe2_HPG,Xe2_HPG,False
 DSSC,Gen12HP,MTL,False
 DSSC,DG2,MTL,False
 DSSC,DG2,LNL,False
@@ -1005,8 +995,6 @@ HDC,DG2,ADL,False
 HDC,Gen12HP,DG2,False
 HDC,DG2,DG2,False
 HDC,DG2,Xe2,False
-HDC,DG2,Xe2_HPG,False
-HDC,Xe2_HPG,Xe2_HPG,False
 HDC,Gen12HP,MTL,False
 HDC,DG2,MTL,False
 HDC,DG2,LNL,False
@@ -1051,8 +1039,6 @@ Other,DG2,ADL,False
 Other,Gen12HP,DG2,False
 Other,DG2,DG2,False
 Other,DG2,Xe2,False
-Other,DG2,Xe2_HPG,False
-Other,Xe2_HPG,Xe2_HPG,False
 Other,Gen12HP,MTL,False
 Other,DG2,MTL,False
 Other,DG2,LNL,False
@@ -1069,9 +1055,7 @@ EU,Gen11LP,DG2,False,
 EU,Gen9LPClient,DG2,False
 EU,DG2,DG2,False
 EU,DG2,Xe2,False
-EU,DG2,Xe2_HPG,False
 EU,Xe2,Xe2,False
-EU,Xe2_HPG,Xe2_HPG,False
 COLOR,Gen12HP,DG2,False
 COLOR,Gen12LP,DG2,False
 COLOR,Gen11LP,DG2,False,
@@ -1500,8 +1484,6 @@ COLOR,Gen11LP,Xe2,False
 COLOR,Gen12LP,Xe2,False
 COLOR,Gen12HP,Xe2,False
 COLOR,DG2,Xe2,False
-COLOR,DG2,Xe2_HPG,False
-COLOR,Xe2_HPG,Xe2_HPG,False
 COLOR,MTL,Xe2,False
 COLOR,PVC,Xe2,False
 FF,Gen9LPClient,Xe2,False
@@ -1584,7 +1566,6 @@ L3Node,Gen12LP,Xe2,False
 L3Node,Gen12HP,Xe2,False
 L3Node,DG2,Xe2,False
 L3Node,Xe2,Xe2,False
-L3Node,Xe2_HPG,Xe2_HPG,False
 L3Node,MTL,Xe2,False
 L3Node,PVC,Xe2,False
 L3_Bank,Gen9LPClient,Xe2,False
@@ -1594,9 +1575,7 @@ L3_Bank,Gen11LP,Xe2,False
 L3_Bank,Gen12LP,Xe2,False
 L3_Bank,Gen12HP,Xe2,False
 L3_Bank,Xe2,Xe2,False
-L3_Bank,Xe2_HPG,Xe2_HPG,False
 L3_Bank,DG2,Xe2,False
-L3_Bank,DG2,Xe2_HPG,False
 L3_Bank,MTL,Xe2,False
 L3_Bank,PVC,Xe2,False
 Fabric,Gen9LPClient,Xe2,False

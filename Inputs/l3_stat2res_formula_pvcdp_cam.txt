@@ -33,4 +33,9 @@
         PS2_CAM_BASE_L3_NODE_INFRA        =       1  
         PS2_CAM_RAMBO_L3_BANK_INFRA       =       1  
         PS2_CAM_RAMBO_L3_BANK             =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
+        PS2_CAM_BASE_NONSPINE            =       (D(L3_READ)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))*GADSS_Scaler
+        PS2_CAM_BASE_NONSPINE_INFRA      =       1
+        PS2_CAM_RAMBO_NONSPINE_INFRA     =       1
+
+
 
