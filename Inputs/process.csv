@@ -211,12 +211,12 @@ Gen10LP,RLTB_EC_0_5,1,1,
 Gen11LP,RLTB_EC_0_5,1,1,
 Gen12LP,RLTB_EC_0_5,1,1,
 Gen12HP,RLTB_EC_0_5,1,1,
-DG2,RLTB_EC_0_5,1,1,
-PVC,RLTB_EC_0_5,1,1,
-PVCDP,RLTB_EC_0_5,1,1,
-PVCXT,RLTB_EC_0_5,1,1,
-PVCXTTrend,RLTB_EC_0_5,1,1,
-RLTB_EC_0_5,RLTB_EC_0_5,1,1,
+DG2,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+PVC,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+PVCDP,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+PVCXT,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+PVCXTTrend,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+RLTB_EC_0_5,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
 Gen9LPClient,PVCXTTrend,1,1,
 Gen10LP,PVCXTTrend,1,1,
 Gen11LP,PVCXTTrend,1,1,

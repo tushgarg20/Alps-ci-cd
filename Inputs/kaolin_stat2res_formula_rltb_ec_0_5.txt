@@ -24,11 +24,11 @@
     num_ROSC_WMFE = num_Slices
     num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
     num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
-	num_L3_Bank_LTCD_Data = model.NumSlices * model.NumDss
-	num_L3Node_Node = model.NumSlices
-	num_Fabric_Fabrics = model.NumSlices
+	num_L3_Bank_LTCD_Data = 64 #model.NumSlices * model.NumDss
+	num_L3Node_Node = 16 #model.NumSlices
+	num_Fabric_Fabrics = 16 #model.NumSlices
     num_L3_Slices = model.NumSlices 
-    num_L3_Bank_Foveros = model.NumSlices * model.NumDss
+    num_L3_Bank_Foveros = 64 #model.NumSlices * model.NumDss
 
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_Sampler_Main = model.NumSlices * model.NumDss
@@ -115,8 +115,8 @@
    PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
    
 # GAM: GAMFTLB:
-    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
-    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GAM = D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')  + SUM('Sqidi\.\d+\.\d+\.GamWrIn'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_SQIDI = D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')  + SUM('Sqidi\.\d+\.\d+\.GamWrIn'))/ (BaseClocks * num_GAM_GAMFTLB)
     PS2_SQIDI_RPT = PS2_SQIDI
     @RD_BW_PCLK@	=	64
     @WR_BW_PCLK@	=	64

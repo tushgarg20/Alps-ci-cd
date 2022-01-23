@@ -381,7 +381,7 @@ def get_eff_cdyn(cluster,unit,stat):
         else:
             ref_gc = 1
     if(cdyn_type == 'syn'):
-        print(base_cfg, cfg)
+        #print(base_cfg, cfg)
         process_sf = process_hash[base_cfg][cfg]['syn']
     else:
         process_sf = process_hash[base_cfg][cfg]['ebb']
@@ -403,7 +403,7 @@ def get_eff_cdyn(cluster,unit,stat):
         unit_scalar = float (unit_cdyn_cagr_hash[unit][cluster][base_cfg][cfg])
     except:
         unit_scalar = 1
-    print (cluster,base_cfg,cfg,unit_scalar)
+    #print (cluster,base_cfg,cfg,unit_scalar)
     cdyn_cagr_sf = cdyn_cagr_hash[cdyn_type][cluster][base_cfg][cfg] * unit_scalar
     instances = 0
     newproduct_gc = 1
