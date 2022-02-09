@@ -306,7 +306,19 @@ ExtraPipe,EU,PVCXT,PVCK2xSA,1.7,1.7x scaler of CDYN weights from PVCXT to PVC Ki
 GA,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
 GRF,EU,PVCDP,PVCXTTrend,0.9,10% CDYN reduction based on 21ww32 PVCXT C0 indicator
 TC,EU,PVCDP,PVCXTTrend,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GA,EU,PVCDP,RLT1,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GRF,EU,PVCDP,RLT1,0.9,10% CDYN reduction based on 21ww32 PVCXT C0 indicator
+TC,EU,PVCDP,RLT1,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GA,EU,PVCXTTrend,RLT1,1,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
+GRF,EU,PVCXTTrend,RLT1,1,10% CDYN reduction based on 21ww32 PVCXT C0 indicator
+TC,EU,PVCXTTrend,RLT1,1,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
 GA,EU,PVCDP,RLTB_EC_0_5,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
 GRF,EU,PVCDP,RLTB_EC_0_5,0.95,10% CDYN reduction based on 21ww32 PVCXT C0 indicator and 1.05x comp scaler as GRF does not have SD scaler
 TC,EU,PVCDP,RLTB_EC_0_5,0.95,5% CDYN reduction based on 21ww32 PVCXT C0 indicator
 ExtraPipe,EU,PVCDP,PVCXTTrend,0.98,2% CDYN reduction based on 21ww32 PVCXT C0 indicator
+ExtraPipe,EU,PVCDP,RLT1,0.9,2% CDYN reduction based on 21ww32 PVCXT C0 indicator and 10% reduction for RLT (21ww46) wrt PVCXTTrend and 2% increase for DPAS ACc(22ww04)
+ExtraPipe,EU,PVCXTTrend,RLT1,0.918,10% reduction for RLT (21ww46) wrt PVCXTTrend for BNA4, and 2% increase for DPAS ACC Buffers (22ww04)
+FPU0,EU,PVCDP,RLT1,1,7.5% reduction for RLT (21ww46) wrt PVCXTTrend, removed in 21ww51
+FPU0,EU,PVCXTTrend,RLT1,1,7.5% reduction for RLT (21ww46) wrt PVCXTTrend, removed in 21ww51
+FPU1,EU,PVCDP,RLT1,1,7.5% reduction for RLT (21ww46) wrt PVCXTTrend, removed in 21ww51
+FPU1,EU,PVCXTTrend,RLT1,1,7.5% reduction for RLT (21ww46) wrt PVCXTTrend, removed in 21ww51
