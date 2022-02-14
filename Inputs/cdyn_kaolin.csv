@@ -9441,8 +9441,10 @@ PS2_chiplet_infra,PVCDP,A0,20.62,syn,0,from pvc emualtion results - per LSC cdyn
 PS2_chiplet_infra_idle,PVCDP,A0,8.41,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_eu_infra,PVCXT,C0,11.91,syn,0,from pvc emualtion results - per EU cdyn weight,
 PS2_chiplet_eu_infra_idle,PVCXT,C0,5.59,syn,0,from pvc emualtion results - per EU cdyn weight,
-PS2_chiplet_eu_infra,RLTCONCEPT,A0,8.21,syn,0,from pvc emualtion results - per EU cdyn weight,
-PS2_chiplet_eu_infra_idle,RLTCONCEPT,A0,3.86,syn,0,from pvc emualtion results - per EU cdyn weight,
+PS2_chiplet_eu_infra,PVCXTTrend,C0,10.63919692,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_chiplet_eu_infra_idle,PVCXTTrend,C0,5.034383432,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_chiplet_eu_infra,RLTCONCEPT,A0,12.128,syn,0,from pvc emualtion results - per EU cdyn weight,
+PS2_chiplet_eu_infra_idle,RLTCONCEPT,A0,5.739,syn,0,from pvc emualtion results - per EU cdyn weight,
 PS2_chiplet_noneu_infra,PVCXT,C0,98.24,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_noneu_infra_idle,PVCXT,C0,46.08,syn,0,from pvc emualtion results - per LSC cdyn weight,
 PS2_chiplet_noneu_infra,RLTCONCEPT,C0,135.57,syn,0,from pvc emualtion results - per LSC cdyn weight,
@@ -10022,9 +10024,8 @@ PS2_DPAS_Infra,PVCDP,A0,1.47,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Pra
 PS2_FPU_Infra,PVCDP,A0,3.84,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,,,,
 ExtraPipe_DPAS_BFloat16_bypass,PVCDP,A0,56.66,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,,,,
 ExtraPipe_DPAS_Float16_bypass,PVCDP,A0,58.94,syn,1,PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,,,,
-PS2_chiplet_eu_infra,PVCXTTrend,C0,10.63919692,syn,1,Extracted from WW31 PVC-XT+ Indicator
-PS2_chiplet_eu_infra_idle,PVCXTTrend,C0,5.034383432,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_CAM_SPINE_COMPUTE,PVCXTTrend,C0,3.326967114,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_CAM_SPINE_COMPUTE,RLTB_EC_0_5,C0,3.19388,syn,1,
 PS2_L3_Active,PVCXTTrend,C0,376.7120902,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_L3_Bank_idle,PVCXTTrend,C0,28.01939268,syn,1,Extracted from WW31 PVC-XT+ Indicator
 Foveros_compute,PVCXTTrend,C0,112.5538869,syn,1,Extracted from WW31 PVC-XT+ Indicator
@@ -10034,26 +10035,27 @@ Foveros_rambo_idle,PVCXTTrend,C0,15.09901507,syn,1,Extracted from WW31 PVC-XT+ I
 Foveros_base,PVCXTTrend,C0,149.9339363,syn,1,Extracted from WW31 PVC-XT+ Indicator
 Foveros_base_idle,PVCXTTrend,C0,175.8317295,syn,1,Extracted from WW31 PVC-XT+ Indicator
 Foveros_compute,RLTB_EC_0_5,C0,112.5538869,syn,1,Extracted from WW31 PVC-XT+ Indicator
-Foveros_compute_idle,RLTB_EC_0_5,C0,48.68,syn,1,Extracted from WW31 PVC-XT+ Indicator
-Foveros_rambo,RLTB_EC_0_5,C0,7.636587005,syn,1,Extracted from WW31 PVC-XT+ Indicator
-Foveros_rambo_idle,RLTB_EC_0_5,C0,11.26,syn,1,Extracted from WW31 PVC-XT+ Indicator
+Foveros_compute_idle,RLTB_EC_0_5,C0,35.64,syn,1,0.5 of pvcxttrend
+Foveros_rambo,RLTB_EC_0_5,C0,0.7636587005,syn,1,No rambo in RLT. Using 10% of PVCxttrend
+Foveros_rambo_idle,RLTB_EC_0_5,C0,1.126,syn,1,No rambo in RLT. Using 10% of PVCxttrend
 Foveros_base,RLTB_EC_0_5,C0,149.9339363,syn,1,Extracted from WW31 PVC-XT+ Indicator
-Foveros_base_idle,RLTB_EC_0_5,C0,125.02,syn,1,Extracted from WW31 PVC-XT+ Indicator
+Foveros_base_idle,RLTB_EC_0_5,C0,87.91,syn,1,0.5 of pvcxttrend
 PS2_L3Node_Active,PVCXTTrend,C0,1311.342242,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_L3_Node_idle,PVCXTTrend,C0,137.6842799,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_L3Node_Active,RLTB_EC_0_5,C0,1272,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_L3_Node_idle,RLTB_EC_0_5,C0,130.8,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_Fabric_Active,PVCXTTrend,C0,2430.802694,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_Fabric_Idle,PVCXTTrend,C0,907.9804315,syn,1,Extracted from WW31 PVC-XT+ Indicator
-PS2_Fabric_Active,RLTB_EC_0_5,C0,2187.72,syn,1,Extracted from WW31 PVC-XT+ Indicator
-PS2_Fabric_Idle,RLTB_EC_0_5,C0,817.182,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_Fabric_Active,RLTB_EC_0_5,C0,2370.03,syn,1, 0.975 scaler to account for l3 node mirroring
+PS2_Fabric_Idle,RLTB_EC_0_5,C0,882.91,syn,1,0.84 scaler wrt to PVC-xt trend from ww03 cs
 PS2_LSC,PVCXTTrend,C0,1354.816514,syn,1,Extracted from WW31 PVC-XT+ Indicator
-PS2_LSC_Idle,PVCXTTrend,C0,0,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_LSC_Idle,PVCXTTrend,C0,12.4,syn,1,Idle cdyn from Atul/Kamal
 PS2_ROW,PVCXTTrend,C0,214.14,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_ROW_idle,PVCXTTrend,C0,3.40,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_chiplet_noneu_infra,PVCXTTrend,C0,87.69277464,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_chiplet_noneu_infra_idle,PVCXTTrend,C0,41.49552405,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_CAM_SPINE,PVCXTTrend,C0,181.196632,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_CAM_SPINE,RLTB_EC_0_5,C0,117.45,syn,1,MTL Foveros - Compensator elimnated 3nF, Link spine @ 1xclk - 0.8 nF
 PS2_CAM_SPINE_RAMBO,PVCXTTrend,C0,6.4696875,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_GAM,PVCXTTrend,C0,133.638615,syn,1,Extracted from WW31 PVC-XT+ Indicator
 PS2_GAM_INFRA,PVCXTTrend,C0,19.55716762,syn,1,Extracted from WW31 PVC-XT+ Indicator

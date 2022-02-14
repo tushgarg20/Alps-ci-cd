@@ -289,11 +289,14 @@ GRF,EU,PVC,PVCXTTrend,0.9,from 21ww32 pvc-xt+ indicator release
 TC,EU,PVCDP,PVCXTTrend,0.95,from 21ww32 pvc-xt+ indicator release
 TC,EU,PVC,PVCXTTrend,0.95,from 21ww32 pvc-xt+ indicator release
 ExtraPipe,EU,PVCDP,PVCXTTrend,0.98,from 21ww32 pvc-xt+ indicator release
-GA,EU,PVCDP,RLTB_EC_0_5,0.98,from 21ww32 pvc-xt+ indicator release
-GA,EU,PVC,RLTB_EC_0_5,0.98,from 21ww32 pvc-xt+ indicator release
+GA,EU,PVCDP,RLTB_EC_0_5,0.93,0.95 is from 22ww07 indicator
+GA,EU,PVC,RLTB_EC_0_5,0.93,0.95 is from 22ww07 indicator
 GRF,EU,PVCDP,RLTB_EC_0_5,0.9,from 21ww32 pvc-xt+ indicator release
 GRF,EU,Gen12LP,RLTB_EC_0_5,0.9,from 21ww32 pvc-xt+ indicator release
 GRF,EU,PVC,RLTB_EC_0_5,0.9,from 21ww32 pvc-xt+ indicator release
 TC,EU,PVCDP,RLTB_EC_0_5,0.95,from 21ww32 pvc-xt+ indicator release
 TC,EU,PVC,RLTB_EC_0_5,0.95,from 21ww32 pvc-xt+ indicator release
-ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.882,from 21ww32 pvc-xt+ indicator release
+ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.899,0.98*0.9*1.02
+Foveros,L3_Bank,RLTB_EC_0_5,RLT_EC_0_5,0.9,22WW07 indicator
+Node,L3Node,RLTB_EC_0_5,RLT_EC_0_5,0.95,22WW07 indicator
+L1,LSC,RLTB_EC_0_5,RLT_EC_0_5,0.95,22WW07 indicator

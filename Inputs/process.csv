@@ -146,10 +146,10 @@ Gen12HP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv 
 ADL,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
 DG2,DG2,1,1,
 DG2,ADL,1,1,Scale factors not available
-PVC,Xe2,1,1,Scale factors not available
-Xe2,Xe2,1,1,Scale factoes not available
+PVC,Xe2,1.03,1.03,Scale factors not available
+Xe2,Xe2,1.03,1.03,Scale factoes not available
 Gen12HP,DG2,1,1,Scale factors not available
-Gen12HP,Xe2,1,1,Scale factors not available
+Gen12HP,Xe2,1.03,1.03,Scale factors not available
 Gen12LP,DG2,1,1,Scale factors not available
 Gen11LP,DG2,1,1,Scale factors not available
 Gen9LPClient,DG2,1,1,Scale factors not available
@@ -170,15 +170,15 @@ Gen12HP,Xe3,1,1,
 DG2,Xe3,1,1,
 PVC,Xe3,1,1,
 PVCDP,Xe3,1,1,
-Gen9LPClient,Xe2,1,1,
-Gen10LP,Xe2,1,1,
-Gen11LP,Xe2,1,1,
-Gen12LP,Xe2,1,1,
-DG2,Xe2,1,1,
-DG2,ADL,1,1,
-PVC,Xe2,1,1,
+Gen9LPClient,Xe2,1.03,1.03,correction factor
+Gen10LP,Xe2,1.03,1.03,correction factor
+Gen11LP,Xe2,1.03,1.03,correction factor
+Gen12LP,Xe2,1.03,1.03,correction factor
+DG2,Xe2,1.03,1.03,correction factor
+DG2,ADL,1,1,correction factor
+PVC,Xe2,1.03,1.03,correction factor
 Gen12HP,DG2,1,1,
-Xe2,Xe2,1,1,
+Xe2,Xe2,1.03,1.03,correction factor
 Gen9LPClient,PVCDP,1,1,
 Gen10LP,PVCDP,1,1,
 Gen11LP,PVCDP,1,1,
@@ -211,12 +211,12 @@ Gen10LP,RLTB_EC_0_5,1,1,
 Gen11LP,RLTB_EC_0_5,1,1,
 Gen12LP,RLTB_EC_0_5,1,1,
 Gen12HP,RLTB_EC_0_5,1,1,
-DG2,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
-PVC,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
-PVCDP,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
-PVCXT,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
-PVCXTTrend,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
-RLTB_EC_0_5,RLTB_EC_0_5,0.985,0.985, ubump pitch reduction
+DG2,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+PVC,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+PVCDP,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+PVCXT,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+PVCXTTrend,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+RLTB_EC_0_5,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
 Gen9LPClient,PVCXTTrend,1,1,
 Gen10LP,PVCXTTrend,1,1,
 Gen11LP,PVCXTTrend,1,1,

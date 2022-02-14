@@ -4,31 +4,31 @@
 	CrClocks	=	D(model.CrClock)
 	BaseClocks = D(model.FabricClock)	
 	FPS	=	(model.CrClock.num * 1000000) / D(model.CrClock)
-    num_Slices = model.NumSlices
-    num_DSS = model.NumSlices * model.NumDss
-    num_Z_HIZ = (model.NumSlices * model.NumZPipes)
-    num_COLOR_RCC = num_Z_HIZ
+    	num_Slices = model.NumSlices
+    	num_DSS = model.NumSlices * model.NumDss
+    	num_Z_HIZ = (model.NumSlices * model.NumZPipes)
+    	num_COLOR_RCC = num_Z_HIZ
 	numEUs	=	( model.NumDss * model.NumEus * model.NumSlices * 2)
 	#numFGs = numEUs/(knob.S0.SS0.FG0.uEuCompute_0.EuFusionFactor)
 	num_EU_FPU0	=	numEUs	
-    num_EU_FPU11	=	numEUs
+    	num_EU_FPU11	=	numEUs
 	num_EU_FPU1	=	numEUs	
 	num_EU_EM	=	numEUs
 	num_EU_TC = numEUs
 	num_EU_ExtraPipe = numEUs
-    num_EU_GRF = numEUs
-    num_EU_GA = numEUs
-    num_EU_Accumulator = numEUs
-    num_EU_euinf = numEUs
-    num_FF_VFBE = num_Slices
-    num_ROSC_WMFE = num_Slices
-    num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
-    num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
-	num_L3_Bank_LTCD_Data = 64 #model.NumSlices * model.NumDss
-	num_L3Node_Node = 16 #model.NumSlices
-	num_Fabric_Fabrics = 16 #model.NumSlices
-    num_L3_Slices = model.NumSlices 
-    num_L3_Bank_Foveros = 64 #model.NumSlices * model.NumDss
+    	num_EU_GRF = numEUs
+    	num_EU_GA = numEUs
+    	num_EU_Accumulator = numEUs
+    	num_EU_euinf = numEUs
+    	num_FF_VFBE = num_Slices
+    	num_ROSC_WMFE = num_Slices
+    	num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
+    	num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
+	num_L3_Bank_LTCD_Data = model.L3Banks * model.NumNodes
+	num_L3Node_Node = model.NumNodes
+	num_Fabric_Fabrics = model.NumNodes
+    	num_L3_Slices = model.NumSlices 
+    	num_L3_Bank_Foveros = num_L3_Bank_LTCD_Data
 
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_Sampler_Main = model.NumSlices * model.NumDss
@@ -196,16 +196,16 @@
 	 Total_instr_count = FPU0_total_count + FPU1_total_count
 
 #Toggle Rates
-         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
-         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512)
-         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src0_toggle = ((D('pwr\.TrFpS0')) > 0) ? (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512) : 0
+         .avg_FPU0_Src1_toggle = ((D('pwr\.TrFpS1')) > 0) ? (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512) : 0
+         .avg_FPU0_Src2_toggle = ((D('pwr\.TrFpS2')) > 0) ? (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512) : 0
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
          FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
          FPU11_toggle_rate = 	FPU0_toggle_rate
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512)
-         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512)
-         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src0_toggle = ((D('pwr\.TrEmS0')) > 0) ? D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512) : 0
+         .avg_EM_Src1_toggle = ((D('pwr\.TrEmS1')) > 0) ? D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512) : 0
+         .avg_EM_Src2_toggle = ((D('pwr\.TrEmS2')) > 0) ? D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512) : 0
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
          FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
