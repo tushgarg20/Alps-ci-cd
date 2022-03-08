@@ -1,263 +1,390 @@
-Source,Destination,Scaling_Factor_Syn,Scaling_Factor_EBB,
-Gen9LPClient,Gen9.5LP,1,1,
-Gen9.5LP,Gen9.5LP,1,1,
-Gen10LP,Gen11,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen10LP,Gen10LP,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen10LP,Gen7,NA,NA,
-Gen10LP,Gen7.5,NA,NA,
-Gen10LP,Gen8,NA,NA,
-Gen10LP,Gen8SoC,NA,NA,
-Gen10LP,Gen9LPClient,NA,NA,
-Gen10LP,Gen9LPSoC,NA,NA,
-Gen10LPSoC,Gen10LPSoC,1.03,1.03,Including Star RC bug factor of 1.03
-Gen7,Gen7,1,1,
-Gen7,Gen7.5,1,1,
-Gen7,Gen8,0.7857,0.7857,
-Gen7,Gen8SoC,0.70713,0.70713,
-Gen7,Gen9LPClient,0.73117242,0.73117242,
-Gen7,Gen9LPSoC,0.70713,0.70713,
-Gen7.5,Gen11,0.557299619,0.557299619,Including Star RC bug factor of 1.03
-Gen7.5,Gen7,NA,NA,
-Gen7.5,Gen7.5,1,1,
-Gen7.5,Gen8,0.7857,0.7857,
-Gen7.5,Gen8SoC,0.70713,0.70713,
-Gen7.5,Gen9LPClient,0.73117242,0.73117242,
-Gen7.5,Gen9LPSoC,0.70713,0.70713,
-Gen8,Gen11,NA,NA,
-Gen8,Gen7,NA,NA,
-Gen8,Gen7.5,NA,NA,
-Gen8,Gen8,1,1,
-Gen8,Gen8SoC,0.934846989,0.934846989,0.947/1.013
-Gen8,Gen9LPClient,0.965,0.965,
-Gen8,Gen9LPSoC,NA,NA,
-Gen8SoC,Gen11,NA,NA,
-Gen8SoC,Gen7,NA,NA,
-Gen8SoC,Gen7.5,NA,NA,
-Gen8SoC,Gen8,NA,NA,
-Gen8SoC,Gen8SoC,1,1,
-Gen8SoC,Gen9LPClient,NA,NA,
-Gen8SoC,Gen9LPSoC,1,1,
-Gen9LPClient,Gen11,0.6077,0.6077,Including Star RC bug factor of 1.03
-Gen9LPClient,Gen10LP,0.6077,0.6077,Including Star RC bug factor of 1.03
-Gen9LPClient,Gen7,NA,NA,
-Gen9LPClient,Gen7.5,NA,NA,
-Gen9LPClient,Gen8,NA,NA,
-Gen9LPClient,Gen8SoC,NA,NA,
-Gen9LPClient,Gen9LPClient,1,1,
-Gen9LPClient,Gen9LPSoC,0.92,0.92,
-Gen9LPClient,Gen10LPSoC,0.64684,0.66641,(1/0.965)*(1/0.9832)*(0.596):ebb 3%higher -Including Star RC bug factor of 1.03
-Gen9LPSoC,Gen11,0.660970516,0.680799633,ebb 3% higher - Including Star RC bug factor of 1.03 
-Gen9LPSoC,Gen10LP,0.660970516,0.680799633,ebb 3% higher - Including Star RC bug factor of 1.03 
-Gen9LPSoC,Gen7,NA,NA,
-Gen9LPSoC,Gen7.5,NA,NA,
-Gen9LPSoC,Gen8,NA,NA,
-Gen9LPSoC,Gen8SoC,NA,NA,
-Gen9LPSoC,Gen9LPClient,NA,NA,
-Gen9LPSoC,Gen9LPSoC,1,1,
-Gen9LPSoC,Gen10LPSoC,0.663860514,0.683776329,ebb 3% higher - Including Star RC bug factor of 1.03 
-Gen11,Gen11,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen10LP,1.03,1.03,Including Star RC bug factor of 1.03
-Gen11,Gen7,NA,NA,
-Gen11,Gen7.5,NA,NA,
-Gen11,Gen8,NA,NA,
-Gen11,Gen8SoC,NA,NA,
-Gen11,Gen9LPClient,NA,NA,
-Gen11,Gen9LPSoC,1,1,
-Gen11,Gen10LPSoC,0.663860514,0.683776329,ebb 3% higher - Including Star RC bug factor of 1.03 
-Gen10LP,Gen11LP,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen11LP,1,1,
-Gen11LP,Gen11LP,1,1,
-Gen9LPClient,Gen11LP,0.6077,0.6077,Including Star RC bug factor of 1.03
-Gen9LPSoC,Gen11LP,0.660970516,0.680799633,ebb 3% higher - Including Star RC bug factor of 1.03 
-Gen10LP,Gen12LP,0.9991,0.9991,Including Star RC bug factor of 1.03
-Gen11,Gen12LP,1,1,
-Gen11LP,Gen12LP,1,1,
-Gen9LPClient,Gen12LP,0.6077,0.6077,Including Star RC bug factor of 1.03
-Gen9LPSoC,Gen12LP,0.660970516,0.680799633,Including Star RC bug factor of 1.03
-Gen12LP,Gen12LP,1,1,
-Gen11LP,Gen11,1,1,
-Gen9LPClient,Gen12HP_512,0.730085918,0.730085918,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen9LPSoC,Gen12HP_512,0.79408469,0.817907233,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11,Gen12HP_512,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen10LP,Gen12HP_512,1.200310747,1.200310747,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11LP,Gen12HP_512,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12LP,Gen12HP_512,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12DG,Gen12HP_512,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen9LPClient,Gen12HP_384,0.730085918,0.730085918,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen9LPSoC,Gen12HP_384,0.79408469,0.817907233,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11,Gen12HP_384,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen10LP,Gen12HP_384,1.200310747,1.200310747,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen11LP,Gen12HP_384,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12LP,Gen12HP_384,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen12DG,Gen12HP_384,1.201392,1.201392,8% scaler to account for PV_Push and 3% scaler to account for SD pv push. 8% scaler to account for 10DG library
-Gen10LP,Gen12HP,1.16535024,1.16535024,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen11,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen11LP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen9LPClient,Gen12HP,0.70882128,0.70882128,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen9LPSoC,Gen12HP,0.77095601,0.794084692,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen12LP,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen12DG,Gen12HP,1.1664,1.1664,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library
-Gen12HP,Gen12HP,1,1,No scaler, pv push and 10dg scaler are already accounted in cdyn weights
-Gen10LP,Gen12DG,1.0700361,1.0700361,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen11,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen11LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen9LPClient,Gen12DG,0.6508467,0.6508467,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen9LPSoC,Gen12DG,0.707899423,0.729136407,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen12LP,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen12DG,Gen12DG,1.071,1.071,1.05 * 1.02 to account for SD+12DG60 library and  removal of Octaflops (due to non usage of HVT transistors)
-Gen9LPClient,PVC_Scaled,0.606042194,0.606042194,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen9LPSoC,PVC_Scaled,0.659167389,0.678942412,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen11,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen10LP,PVC_Scaled,0.996374455,0.996374455,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen11LP,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen12LP,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen12DG,PVC_Scaled,0.997272,0.997272,8% scaler to account for PV_Push and no scaler for SD pv push. 8% scaler to account for 10DG library. 0.855 Scaler to account for new process in PVC
-Gen12HP,PVC_Scaled,0.855,0.855,0.855 Scaler to account for new process in PVC
-Gen10LP,PVC,1.16535024,1.16535024,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11,PVC,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVC,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen9LPClient,PVC,0.70882128,0.70882128,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen9LPSoC,PVC,0.77095601,0.794084692,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVC,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12DG,PVC,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVC,1,1,n7 scaling factors are accounted in sys_cdyn_cgr.csv for Chiplet components
-DG2,PVC,1,1,
-ADL,PVC,1,1,
-Gen10LP,PVC_A21,1.16535024,1.16535024,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen9LPClient,PVC_A21,0.70882128,0.70882128,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen9LPSoC,PVC_A21,0.77095601,0.794084692,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12DG,PVC_A21,1.1664,1.1664,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVC_A21,1,1,n7 scaling factors are accounted in sys_cdyn_cgr.csv for Chiplet components
-DG2,PVC_A21,1,1,
-ADL,PVC_A21,1,1,
-Gen10LP,ADL,0.955803002,0.955803002,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen11,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen11LP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen9LPClient,ADL,0.581364713,0.581364713,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen9LPSoC,ADL,0.632326698,0.6512965,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen12LP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen12DG,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-Gen12HP,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-ADL,ADL,0.956664,0.956664,2% and 3% scaler to accont for Eu and NonEU sd pv push.8% scaler to account for 10DG library. 0.86 scaler to account for new process (i7 scalers)
-DG2,DG2,1.0506,1.0506,2% config scaler and 3% process scaler based on 20ww31.1 sheet, 
-DG2,DG2p5,0.9,0.9,Process scalar applied in Blizzard, 10% CDYN optimization at GT level for all Compute WLs as per Wave 2.5 opt Plan from Kamal 20ww42, 
-DG2p5,DG2p5,1,1,Process scalar applied to CDYNMAX, 
-DG2,MTL,0.9145,0.9145,2% config scaler multiplied by 0.92 as 8% reduction at GT level for optimization is the target,2.55% savings based on 20ww22 weekly CDYN indicator (Akash) 
-DG2,LNL,1,1,Scale factors not available
-LNL,LNL,1,1,Scale factors not available
-MTL,MTL,1,1,Scale factors not available
-DG2,ADL,1,1,Scale factors not available
-Gen12HP,DG2,1.1664,1.1664,Scale factors not available
-Gen12LP,DG2,1,1,Scale factors not available
-Gen11LP,DG2,1,1,Scale factors not available
-Gen9LPClient,DG2,1,1,Scale factors not available
-Gen12HP,DG2p5,1.1664,1.1664,Scale factors not available
-Gen12LP,DG2p5,1,1,Scale factors not available
-Gen11LP,DG2p5,1,1,Scale factors not available
-Gen9LPClient,DG2p5,1,1,Scale factors not available
-Gen12HP,MTL,1.049,1.049, Gen12HP->DG2 scaler multiplied with 0.9 for target scaler for MTL,
-Gen12LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
-Gen11LP,MTL,0.9,0.9,Target scaler of 0.9 for MTL
-Gen9LPClient,MTL,0.9,0.9,Target scaler of 0.9 for MTL
-Gen12HP,LNL,1.049,1.049, Gen12HP->DG2 scaler multiplied with 0.9 for target scaler for LNL,
-Gen12LP,LNL,0.9,0.9,Target scaler of 0.9 for LNL
-Gen11LP,LNL,0.9,0.9,Target scaler of 0.9 for LNL
-Gen9LPClient,LNL,0.9,0.9,Target scaler of 0.9 for LNL
-PVC,PVC,1,1,Process scaler from compute spreadsheet 20ww37
-PVC,PVC_A21,1,1,Process scaler from compute spreadsheet 20ww37
-Gen9LPClient,PVC2,0.595392,0.595392,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 for n7 to n5
-Gen11LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5
-Gen12LP,PVC2,0.98,0.98,8% scaler to account for PV_Push and 8% scaler to account for 10DG library,0.84 n7 to n5 
-Gen12HP,PVC2,0.84,0.84,Process scaler from n7 to n5 process, no config/filler scalers
-PVC,PVC2,0.8736,0.8736,Process scaler from n7 to n5 process,ATS->PVC scale accounted in syn_cdyn_cagr_cam.csv plus config/fille scalers
-PVC2,PVC2,0.8736,0.8736,Process scaler from n7 to n5 process,ATS->PVC scale accounted in syn_cdyn_cagr_cam.csv plus config/filler scalers
-Gen9LPClient,PVCDP,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVCDP,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVCDP,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,PVCXT,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVCXT,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVCXT,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVCXT,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,PVCXTTrend,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVCXTTrend,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVCXTTrend,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVCXTTrend,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,RLT1,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,RLT1,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,RLT1,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,RLT1,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-Gen9LPClient,PVCK2xEU,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVCK2xEU,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVCK2xEU,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVCK2xEU,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,RLTCONCEPT,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,RLTCONCEPT,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,RLTCONCEPT,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,RLTCONCEPT,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,RLTB_EC_0_5,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,RLTB_EC_0_5,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,RLTB_EC_0_5,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,RLTB_EC_0_5,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,PVCK2xSA,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,PVCK2xSA,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,PVCK2xSA,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,PVCK2xSA,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-Gen9LPClient,Xe3,0.7088,0.7088,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen11LP,Xe3,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12LP,Xe3,1.1666,1.1666,8% scaler to account for PV_Push and 8% scaler to account for 10DG library
-Gen12HP,Xe3,1,1, Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv 
-DG2,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,PVCXT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,PVCXTTrend,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,RLT1,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,PVCK2xSA,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,Xe3,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-DG2,PVC2,0.8736,0.8736,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCDP,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,PVCXT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCXT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,PVCXT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,PVCXTTrend,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCXTTrend,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,PVCXTTrend,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXTTrend,PVCXTTrend,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,RLT1,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,RLT1,1,1,ubump pitch reduction estimate from 21ww46 from Kamal 1% at GT level,removed in 21ww51
-PVCXT,RLT1,1,1,ubump pitch reduction estimate from 21ww46 from Kamal 1% at GT level, removed in 21ww51
-PVCXTTrend,RLT1,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-RLT1,RLT1,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXTTrend,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCK2xEU,PVCK2xEU,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-RLTCONCEPT,RLTCONCEPT,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-RLTB_EC_0_5,RLTB_EC_0_5,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVC,PVCK2xSA,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVCK2xSA,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCXT,PVCK2xSA,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCK2xSA,PVCK2xSA,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,PVC2,0.8736,0.8736,Process scaler from PVCDP to PVC2
-PVC,Xe3,1,1,Process scaler from n7 to n5 process applicable to EU, ROW and LSC, so applied in syn_cdyn_cagr_cam.csv
-PVCDP,Xe3,1,1,Process scaler not available 
-Xe3,Xe3,1,1,Process scaler not available 
-DG2,Xe2,1,1,Process scaler not available 
-Xe2,Xe2,1,1,Process scaler not available 
-Gen12HP,Xe2,1.1664,1.1664,Scale factors not available
-Gen12LP,Xe2,1,1,Scale factors not available
-Gen11LP,Xe2,1,1,Scale factors not available
-Gen9LPClient,Xe2,1,1,Scale factors not available
+Source,Destination,Scaling_Factor_Syn,Scaling_Factor_EBB
+Gen9LPClient,Gen9.5LP,1.0,1.0
+Gen9.5LP,Gen9.5LP,1.0,1.0
+Gen10LP,Gen11,0.9991,0.9991
+Gen10LP,Gen10LP,0.9991,0.9991
+Gen10LP,Gen7,NA,NA
+Gen10LP,Gen7.5,NA,NA
+Gen10LP,Gen8,NA,NA
+Gen10LP,Gen8SoC,NA,NA
+Gen10LP,Gen9LPClient,NA,NA
+Gen10LP,Gen9LPSoC,NA,NA
+Gen10LPSoC,Gen10LPSoC,1.03,1.03
+Gen7,Gen7,1.0,1.0
+Gen7,Gen7.5,1.0,1.0
+Gen7,Gen8,0.7857,0.7857
+Gen7,Gen8SoC,0.70713,0.70713
+Gen7,Gen9LPClient,0.73117242,0.73117242
+Gen7,Gen9LPSoC,0.70713,0.70713
+Gen7.5,Gen11,0.557299619,0.557299619
+Gen7.5,Gen7,NA,NA
+Gen7.5,Gen7.5,1.0,1.0
+Gen7.5,Gen8,0.7857,0.7857
+Gen7.5,Gen8SoC,0.70713,0.70713
+Gen7.5,Gen9LPClient,0.73117242,0.73117242
+Gen7.5,Gen9LPSoC,0.70713,0.70713
+Gen8,Gen11,NA,NA
+Gen8,Gen7,NA,NA
+Gen8,Gen7.5,NA,NA
+Gen8,Gen8,1.0,1.0
+Gen8,Gen8SoC,0.9348469890000001,0.9348469890000001
+Gen8,Gen9LPClient,0.965,0.965
+Gen8,Gen9LPSoC,NA,NA
+Gen8SoC,Gen11,NA,NA
+Gen8SoC,Gen7,NA,NA
+Gen8SoC,Gen7.5,NA,NA
+Gen8SoC,Gen8,NA,NA
+Gen8SoC,Gen8SoC,1.0,1.0
+Gen8SoC,Gen9LPClient,NA,NA
+Gen8SoC,Gen9LPSoC,1.0,1.0
+Gen9LPClient,Gen11,0.6077,0.6077
+Gen9LPClient,Gen10LP,0.6077,0.6077
+Gen9LPClient,Gen7,NA,NA
+Gen9LPClient,Gen7.5,NA,NA
+Gen9LPClient,Gen8,NA,NA
+Gen9LPClient,Gen8SoC,NA,NA
+Gen9LPClient,Gen9LPClient,1.0,1.0
+Gen9LPClient,Gen9LPSoC,0.92,0.92
+Gen9LPClient,Gen10LPSoC,0.64684,0.64684
+Gen9LPSoC,Gen11,0.660970516,0.660970516
+Gen9LPSoC,Gen10LP,0.660970516,0.660970516
+Gen9LPSoC,Gen7,NA,NA
+Gen9LPSoC,Gen7.5,NA,NA
+Gen9LPSoC,Gen8,NA,NA
+Gen9LPSoC,Gen8SoC,NA,NA
+Gen9LPSoC,Gen9LPClient,NA,NA
+Gen9LPSoC,Gen9LPSoC,1.0,1.0
+Gen9LPSoC,Gen10LPSoC,0.663860514,0.663860514
+Gen11,Gen11,0.9991,0.9991
+Gen11,Gen10LP,1.03,1.03
+Gen11,Gen7,NA,NA
+Gen11,Gen7.5,NA,NA
+Gen11,Gen8,NA,NA
+Gen11,Gen8SoC,NA,NA
+Gen11,Gen9LPClient,NA,NA
+Gen11,Gen9LPSoC,1.0,1.0
+Gen11,Gen10LPSoC,0.663860514,0.663860514
+Gen10LP,Gen11LP,0.9991,0.9991
+Gen11,Gen11LP,1.0,1.0
+Gen11LP,Gen11LP,1.0,1.0
+Gen9LPClient,Gen11LP,0.6077,0.6077
+Gen9LPSoC,Gen11LP,0.660970516,0.660970516
+Gen10LP,Gen12LP,0.9991,0.9991
+Gen11,Gen12LP,1.0,1.0
+Gen11LP,Gen12LP,1.0,1.0
+Gen9LPClient,Gen12LP,0.6077,0.6077
+Gen9LPSoC,Gen12LP,0.660970516,0.660970516
+Gen12LP,Gen12LP,1.0,1.0
+Gen11LP,Gen11,1.0,1.0
+Gen9LPClient,Gen12HP_512,0.730085918,0.730085918
+Gen9LPSoC,Gen12HP_512,0.79408469,0.79408469
+Gen11,Gen12HP_512,1.201392,1.201392
+Gen10LP,Gen12HP_512,1.200310747,1.200310747
+Gen11LP,Gen12HP_512,1.201392,1.201392
+Gen12LP,Gen12HP_512,1.201392,1.201392
+Gen12DG,Gen12HP_512,1.201392,1.201392
+Gen9LPClient,Gen12HP_384,0.730085918,0.730085918
+Gen9LPSoC,Gen12HP_384,0.79408469,0.79408469
+Gen11,Gen12HP_384,1.201392,1.201392
+Gen10LP,Gen12HP_384,1.200310747,1.200310747
+Gen11LP,Gen12HP_384,1.201392,1.201392
+Gen12LP,Gen12HP_384,1.201392,1.201392
+Gen12DG,Gen12HP_384,1.201392,1.201392
+Gen10LP,Gen12HP,1.16535024,1.16535024
+Gen11,Gen12HP,1.1664,1.1664
+Gen11LP,Gen12HP,1.1664,1.1664
+Gen9LPClient,Gen12HP,0.70882128,0.70882128
+Gen9LPSoC,Gen12HP,0.77095601,0.77095601
+Gen12LP,Gen12HP,1.1664,1.1664
+Gen12DG,Gen12HP,1.1664,1.1664
+Gen12HP,Gen12HP,1.0,1.0
+Gen10LP,Gen12DG,1.0700361,1.0700361
+Gen11,Gen12DG,1.071,1.071
+Gen11LP,Gen12DG,1.071,1.071
+Gen9LPClient,Gen12DG,0.6508467,0.6508467
+Gen9LPSoC,Gen12DG,0.707899423,0.707899423
+Gen12LP,Gen12DG,1.071,1.071
+Gen12DG,Gen12DG,1.071,1.071
+Gen9LPClient,PVC_Scaled,0.606042194,0.606042194
+Gen9LPSoC,PVC_Scaled,0.6591673889999999,0.6591673889999999
+Gen11,PVC_Scaled,0.9972719999999999,0.9972719999999999
+Gen10LP,PVC_Scaled,0.996374455,0.996374455
+Gen11LP,PVC_Scaled,0.9972719999999999,0.9972719999999999
+Gen12LP,PVC_Scaled,0.9972719999999999,0.9972719999999999
+Gen12DG,PVC_Scaled,0.9972719999999999,0.9972719999999999
+Gen12HP,PVC_Scaled,0.855,0.855
+Gen10LP,PVC,1.16535024,1.16535024
+Gen11,PVC,1.1664,1.1664
+Gen11LP,PVC,1.1664,1.1664
+Gen9LPClient,PVC,0.70882128,0.70882128
+Gen9LPSoC,PVC,0.77095601,0.77095601
+Gen12LP,PVC,1.1664,1.1664
+Gen12DG,PVC,1.1664,1.1664
+Gen12HP,PVC,1.0,1.0
+DG2,PVC,1.0,1.0
+ADL,PVC,1.0,1.0
+Gen10LP,PVC_A21,1.16535024,1.16535024
+Gen11,PVC_A21,1.1664,1.1664
+Gen11LP,PVC_A21,1.1664,1.1664
+Gen9LPClient,PVC_A21,0.70882128,0.70882128
+Gen9LPSoC,PVC_A21,0.77095601,0.77095601
+Gen12LP,PVC_A21,1.1664,1.1664
+Gen12DG,PVC_A21,1.1664,1.1664
+Gen12HP,PVC_A21,1.0,1.0
+DG2,PVC_A21,1.0,1.0
+ADL,PVC_A21,1.0,1.0
+Gen10LP,ADL,0.955803002,0.955803002
+Gen11,ADL,0.956664,0.956664
+Gen11LP,ADL,0.956664,0.956664
+Gen9LPClient,ADL,0.5813647129999999,0.5813647129999999
+Gen9LPSoC,ADL,0.632326698,0.632326698
+Gen12LP,ADL,0.956664,0.956664
+Gen12DG,ADL,0.956664,0.956664
+Gen12HP,ADL,0.956664,0.956664
+ADL,ADL,0.956664,0.956664
+DG2,DG2,0.9,0.9,DG2 A0 to DG2 B0 scaler added for Emu correlation 22ww10 
+DG2,DG2p5,0.9,0.9
+DG2p5,DG2p5,1.0,1.0
+DG2,MTL,0.9145,0.9145
+DG2,LNL,1.0,1.0
+LNL,LNL,1.0,1.0
+MTL,MTL,1.0,1.0
+DG2,ADL,1.0,1.0
+Gen12HP,DG2,1.1664,1.1664
+Gen12LP,DG2,1.0,1.0
+Gen11LP,DG2,1.0,1.0
+Gen9LPClient,DG2,1.0,1.0
+Gen12HP,DG2p5,1.1664,1.1664
+Gen12LP,DG2p5,1.0,1.0
+Gen11LP,DG2p5,1.0,1.0
+Gen9LPClient,DG2p5,1.0,1.0
+Gen12HP,MTL,1.0490000000000002,1.0490000000000002
+Gen12LP,MTL,0.9,0.9
+Gen11LP,MTL,0.9,0.9
+Gen9LPClient,MTL,0.9,0.9
+Gen12HP,LNL,1.0490000000000002,1.0490000000000002
+Gen12LP,LNL,0.9,0.9
+Gen11LP,LNL,0.9,0.9
+Gen9LPClient,LNL,0.9,0.9
+PVC,PVC,1.0,1.0
+PVC,PVC_A21,1.0,1.0
+Gen9LPClient,PVC2,0.595392,0.595392
+Gen11LP,PVC2,0.98,0.98
+Gen12LP,PVC2,0.98,0.98
+Gen12HP,PVC2,0.84,0.84
+PVC,PVC2,0.8736,0.8736
+PVC2,PVC2,0.8736,0.8736
+Gen9LPClient,PVCDP,0.7088,0.7088
+Gen11LP,PVCDP,1.1666,1.1666
+Gen12LP,PVCDP,1.1666,1.1666
+Gen12HP,PVCDP,1.0,1.0
+Gen9LPClient,PVCXT,0.7088,0.7088
+Gen11LP,PVCXT,1.1666,1.1666
+Gen12LP,PVCXT,1.1666,1.1666
+Gen12HP,PVCXT,1.0,1.0
+Gen9LPClient,PVCXTTrend,0.7088,0.7088
+Gen11LP,PVCXTTrend,1.1666,1.1666
+Gen12LP,PVCXTTrend,1.1666,1.1666
+Gen12HP,PVCXTTrend,1.0,1.0
+Gen9LPClient,RLT1,0.7088,0.7088
+Gen11LP,RLT1,1.1666,1.1666
+Gen12LP,RLT1,1.1666,1.1666
+Gen12HP,RLT1,1.0,1.0
+Gen9LPClient,PVCK2xEU,0.7088,0.7088
+Gen11LP,PVCK2xEU,1.1666,1.1666
+Gen12LP,PVCK2xEU,1.1666,1.1666
+Gen12HP,PVCK2xEU,1.0,1.0
+Gen9LPClient,RLTCONCEPT,0.7088,0.7088
+Gen11LP,RLTCONCEPT,1.1666,1.1666
+Gen12LP,RLTCONCEPT,1.1666,1.1666
+Gen12HP,RLTCONCEPT,1.0,1.0
+Gen9LPClient,RLTB_EC_0_5,0.7088,0.7088
+Gen11LP,RLTB_EC_0_5,1.1666,1.1666
+Gen12LP,RLTB_EC_0_5,1.1666,1.1666
+Gen12HP,RLTB_EC_0_5,1.0,1.0
+Gen9LPClient,PVCK2xSA,0.7088,0.7088
+Gen11LP,PVCK2xSA,1.1666,1.1666
+Gen12LP,PVCK2xSA,1.1666,1.1666
+Gen12HP,PVCK2xSA,1.0,1.0
+Gen9LPClient,Xe3,0.7088,0.7088
+Gen11LP,Xe3,1.1666,1.1666
+Gen12LP,Xe3,1.1666,1.1666
+Gen12HP,Xe3,1.0,1.0
+DG2,PVCDP,1.0,1.0
+DG2,PVCXT,1.0,1.0
+DG2,PVCXTTrend,1.0,1.0
+DG2,RLT1,1.0,1.0
+DG2,PVCK2xEU,1.0,1.0
+DG2,RLTCONCEPT,1.0,1.0
+DG2,RLTB_EC_0_5,1.0,1.0
+DG2,PVCK2xSA,1.0,1.0
+DG2,Xe3,1.0,1.0
+DG2,PVC2,0.8736,0.8736
+PVC,PVCDP,1.0,1.0
+PVCDP,PVCDP,1.0,1.0
+PVC,PVCXT,1.0,1.0
+PVCDP,PVCXT,1.0,1.0
+PVCXT,PVCXT,1.0,1.0
+PVC,PVCXTTrend,1.0,1.0
+PVCDP,PVCXTTrend,1.0,1.0
+PVCXT,PVCXTTrend,1.0,1.0
+PVCXTTrend,PVCXTTrend,1.0,1.0
+PVC,RLT1,1.0,1.0
+PVCDP,RLT1,1.0,1.0
+PVCXT,RLT1,1.0,1.0
+PVCXTTrend,RLT1,1.0,1.0
+RLT1,RLT1,1.0,1.0
+PVC,PVCK2xEU,1.0,1.0
+PVC,RLTCONCEPT,1.0,1.0
+PVC,RLTB_EC_0_5,1.0,1.0
+PVCDP,PVCK2xEU,1.0,1.0
+PVCDP,RLTCONCEPT,1.0,1.0
+PVCDP,RLTB_EC_0_5,1.0,1.0
+PVCXT,PVCK2xEU,1.0,1.0
+PVCXT,RLTCONCEPT,1.0,1.0
+PVCXT,RLTB_EC_0_5,1.0,1.0
+PVCXTTrend,RLTB_EC_0_5,1.0,1.0
+PVCK2xEU,PVCK2xEU,1.0,1.0
+RLTCONCEPT,RLTCONCEPT,1.0,1.0
+RLTB_EC_0_5,RLTB_EC_0_5,1.0,1.0
+PVC,PVCK2xSA,1.0,1.0
+PVCDP,PVCK2xSA,1.0,1.0
+PVCXT,PVCK2xSA,1.0,1.0
+PVCK2xSA,PVCK2xSA,1.0,1.0
+PVCDP,PVC2,0.8736,0.8736
+PVC,Xe3,1.0,1.0
+PVCDP,Xe3,1.0,1.0
+Xe3,Xe3,1.0,1.0
+DG2,Xe2,0.73,0.73, DG2 A0 to DG2 B0, DG2 B0 to Xe2 process and design (0.85) and DG2 B0 to Xe2 software and kernels (0.95)
+Xe2,Xe2,1.0,1.0
+Gen12HP,Xe2,1.1664,1.1664
+Gen12LP,Xe2,1.0,1.0
+Gen11LP,Xe2,1.0,1.0
+Gen9LPClient,Xe2,1.0,1.0
+PVC2,xe3_xpc,1.0,1.0
+PVCDP,xe3_xpc,0.8736,0.8736
+PVC,xe3_xpc,0.8736,0.8736
+DG2,xe3_xpc,0.8736,0.8736
+Gen12HP,xe3_xpc,0.84,0.84
+Gen12LP,xe3_xpc,0.98,0.98
+Gen11LP,xe3_xpc,0.98,0.98
+Gen9LPClient,xe3_xpc,0.595392,0.595392
+PVC_A21,xe3_xpc,1.0,1.0
+PVC,xe3_xpc,1.0,1.0
+DG2,xe3_xpc,1.0,1.0
+Gen12HP,xe3_xpc,1.0,1.0
+Gen12DG,xe3_xpc,1.1664,1.1664
+Gen12LP,xe3_xpc,1.1664,1.1664
+Gen11,xe3_xpc,1.1664,1.1664
+Gen11LP,xe3_xpc,1.1664,1.1664
+Gen10LP,xe3_xpc,1.16535024,1.16535024
+Gen9LPClient,xe3_xpc,0.70882128,0.70882128
+PVC_Scaled,xe3_xpc,1.0,1.0
+Gen12HP,xe3_xpc,0.855,0.855
+Gen12DG,xe3_xpc,0.9972719999999999,0.9972719999999999
+Gen12LP,xe3_xpc,0.9972719999999999,0.9972719999999999
+Gen11,xe3_xpc,0.9972719999999999,0.9972719999999999
+Gen11LP,xe3_xpc,0.9972719999999999,0.9972719999999999
+Gen10LP,xe3_xpc,0.996374455,0.996374455
+Gen9LPClient,xe3_xpc,0.606042194,0.606042194
+Gen12HP_384,xe3_xpc,1.0,1.0
+Gen12LP,xe3_xpc,1.201392,1.201392
+Gen11,xe3_xpc,1.201392,1.201392
+Gen11LP,xe3_xpc,1.201392,1.201392
+Gen10LP,xe3_xpc,1.200310747,1.200310747
+Gen9LPClient,xe3_xpc,0.730085918,0.730085918
+Gen12HP_512,xe3_xpc,1.0,1.0
+Gen12LP,xe3_xpc,1.201392,1.201392
+Gen11,xe3_xpc,1.201392,1.201392
+Gen11LP,xe3_xpc,1.201392,1.201392
+Gen10LP,xe3_xpc,1.200310747,1.200310747
+Gen9LPClient,xe3_xpc,0.730085918,0.730085918
+Gen11halo,xe3_xpc,1.0,1.0
+Gen9.5LP,xe3_xpc,1.0,1.0
+Gen9LPClient,xe3_xpc,1.0,1.0
+Gen8,xe3_xpc,1.0,1.0
+Gen7.5,xe3_xpc,0.7857,0.7857
+Gen7,xe3_xpc,0.7857,0.7857
+PVC2,Xe3_XPC,1.0,1.0
+PVCDP,Xe3_XPC,0.8736,0.8736
+PVC,Xe3_XPC,0.8736,0.8736
+DG2,Xe3_XPC,0.8736,0.8736
+Gen12HP,Xe3_XPC,0.84,0.84
+Gen12LP,Xe3_XPC,0.98,0.98
+Gen11LP,Xe3_XPC,0.98,0.98
+Gen9LPClient,Xe3_XPC,0.595392,0.595392
+PVC_A21,Xe3_XPC,1.0,1.0
+PVC,Xe3_XPC,1.0,1.0
+DG2,Xe3_XPC,1.0,1.0
+Gen12HP,Xe3_XPC,1.0,1.0
+Gen12DG,Xe3_XPC,1.1664,1.1664
+Gen12LP,Xe3_XPC,1.1664,1.1664
+Gen11,Xe3_XPC,1.1664,1.1664
+Gen11LP,Xe3_XPC,1.1664,1.1664
+Gen10LP,Xe3_XPC,1.16535024,1.16535024
+Gen9LPClient,Xe3_XPC,0.70882128,0.70882128
+PVC_Scaled,Xe3_XPC,1.0,1.0
+Gen12HP,Xe3_XPC,0.855,0.855
+Gen12DG,Xe3_XPC,0.9972719999999999,0.9972719999999999
+Gen12LP,Xe3_XPC,0.9972719999999999,0.9972719999999999
+Gen11,Xe3_XPC,0.9972719999999999,0.9972719999999999
+Gen11LP,Xe3_XPC,0.9972719999999999,0.9972719999999999
+Gen10LP,Xe3_XPC,0.996374455,0.996374455
+Gen9LPClient,Xe3_XPC,0.606042194,0.606042194
+Gen12HP_384,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.201392,1.201392
+Gen11,Xe3_XPC,1.201392,1.201392
+Gen11LP,Xe3_XPC,1.201392,1.201392
+Gen10LP,Xe3_XPC,1.200310747,1.200310747
+Gen9LPClient,Xe3_XPC,0.730085918,0.730085918
+Gen12HP_512,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.201392,1.201392
+Gen11,Xe3_XPC,1.201392,1.201392
+Gen11LP,Xe3_XPC,1.201392,1.201392
+Gen10LP,Xe3_XPC,1.200310747,1.200310747
+Gen9LPClient,Xe3_XPC,0.730085918,0.730085918
+Gen11halo,Xe3_XPC,1.0,1.0
+Gen9.5LP,Xe3_XPC,1.0,1.0
+Gen9LPClient,Xe3_XPC,1.0,1.0
+Gen8,Xe3_XPC,1.0,1.0
+Gen7.5,Xe3_XPC,0.7857,0.7857
+Gen7,Xe3_XPC,0.7857,0.7857
+Xe3_XPC,Xe3_XPC,1.0,1.0
+RLT1,Xe3_XPC,1.0,1.0
+PVCXTTrend,Xe3_XPC,1.0,1.0
+PVCXT,Xe3_XPC,1.0,1.0
+PVCDP,Xe3_XPC,1.0,1.0
+PVC,Xe3_XPC,1.0,1.0
+DG2,Xe3_XPC,1.0,1.0
+Gen12HP,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.1666,1.1666
+Gen11LP,Xe3_XPC,1.1666,1.1666
+Gen9LPClient,Xe3_XPC,0.7088,0.7088
+Gen12DG,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.071,1.071
+Gen11,Xe3_XPC,1.071,1.071
+Gen11LP,Xe3_XPC,1.071,1.071
+Gen10LP,Xe3_XPC,1.0700361,1.0700361
+Gen9LPSoC,Xe3_XPC,0.707899423,0.707899423
+Gen9LPClient,Xe3_XPC,0.6508467,0.6508467
+Gen12HP_384,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.201392,1.201392
+Gen11,Xe3_XPC,1.201392,1.201392
+Gen11LP,Xe3_XPC,1.201392,1.201392
+Gen10LP,Xe3_XPC,1.200310747,1.200310747
+Gen9LPSoC,Xe3_XPC,0.79408469,0.79408469
+Gen9LPClient,Xe3_XPC,0.730085918,0.730085918
+Gen12HP_512,Xe3_XPC,1.0,1.0
+Gen12LP,Xe3_XPC,1.201392,1.201392
+Gen11,Xe3_XPC,1.201392,1.201392
+Gen11LP,Xe3_XPC,1.201392,1.201392
+Gen10LP,Xe3_XPC,1.200310747,1.200310747
+Gen9LPSoC,Xe3_XPC,0.79408469,0.79408469
+Gen9LPClient,Xe3_XPC,0.730085918,0.730085918
+Gen10LPSoC,Xe3_XPC,1.0,1.0
+Gen9LPSoC,Xe3_XPC,0.663860514,0.663860514
+Gen9LPClient,Xe3_XPC,0.64684,0.64684
+Gen8SoC,Xe3_XPC,1.0,1.0
+Gen8,Xe3_XPC,0.9348469890000001,0.9348469890000001
+Gen7.5,Xe3_XPC,0.70713,0.70713
+Gen7,Xe3_XPC,0.70713,0.70713
