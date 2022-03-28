@@ -33,7 +33,8 @@
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
 	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@')) + D(SUM('FPU_DP4A'))
         #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
-        INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
+        INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))	
+        DPAS_total_count = D(SUM('SYS_@SYS_TYPE@'))
         FPU3Src_total_count = D(SUM('@FPU@_@3Src_INST@_@TYPE@@ALLDTYPE@'))  + D(SUM('FPU_DP4A'))
         FPU2Src_total_count = D(SUM('@FPU@_@2Src_INST@_@TYPE@@ALLDTYPE@'))		
 #FPU and DPAS opcodes
@@ -125,14 +126,21 @@
         ExtraPipe_DPAS_UInt4 = (Sign_Flag == 0) ? Sparse * DPAS_UInt4_Scaler * D(SYS_INT4)/CrClocks : 0
  
 #GRF, ACC, TC and GA related
-        PS2_GA_FPU3Src_SinglePipe =  (FPU_total_count > 0) ? Sparse * (FPU3Src_total_count / FPU_total_count) * D(GA_FPU) : 0 
-        PS2_GA_FPU2Src_SinglePipe = (FPU_total_count > 0) ? Sparse * (FPU2Src_total_count / FPU_total_count) * D(GA_FPU) : 0  
-        PS2_GA_ExtraPipe = D(GA_ExtraPipe) * Sparse 
+        #PS2_GA_FPU3Src_SinglePipe =  ((FPU_total_count + INT_total_count) > 0) ? (FPU3Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0 
+        #PS2_GA_FPU2Src_SinglePipe = ((FPU_total_count + INT_total_count) > 0) ? (FPU2Src_total_count / (FPU_total_count + INT_total_count)) * D(GA_FPU) : 0  
+        #PS2_GA_ExtraPipe = D(GA_ExtraPipe) 
         PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
-        PS2_GRF_READ = (ECC_Flag == 0) ? (Sparse * D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
-        PS2_GRF_WRITE = (ECC_Flag == 0) ? (Sparse *D(GRF_WRITE)/CrClocks) : 0
-        PS2_GRF_READ_ECC = (ECC_Flag > 0) ? (Sparse *D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
-        PS2_GRF_WRITE_ECC = (ECC_Flag > 0) ? (Sparse *D(GRF_WRITE)/CrClocks) : 0
+        PS2_GA_GRF_1READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
+        PS2_GA_GRF_1WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_GA_GRF_1Read = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
+        PS2_GA_GRF_1Write = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_GA_Syn_1Read =  (D(GRF_READ)/CrClocks)
+        PS2_GA_Syn_1Write = (D(GRF_WRITE)/CrClocks)
+        PS2_GA_Syn_FLOOR = (DPAS_total_count + FPU_total_count/8 + INT_total_count/8 + FPU2_total_count/8)/CrClocks 
+        PS2_GA_GRF_Floor = (DPAS_total_count + FPU_total_count/8 + INT_total_count/8 + FPU2_total_count/8)/CrClocks 
+        PS2_GA_1Read_FPU0_dispatch = (FPU_total_count  > 0) ? (FPU_total_count / (FPU_total_count +  FPU2_total_count + INT_total_count)) * D(GA_FPU) : 0 
+        PS2_GA_1Read_FPU1_dispatch = (INT_total_count  > 0) ? (INT_total_count / (FPU_total_count +  FPU2_total_count + INT_total_count)) * D(GA_FPU) : 0 
+        PS2_GA_1Read_DPAS_dispatch = D(GA_ExtraPipe)
         PS2_TC_1Dispatch = Sparse *D(TC)
         PS2_Accumulator_READ = Sparse *D(ACCUM_READ)/CrClocks
         PS2_Accumulator_WRITE = Sparse *D(ACCUM_WRITE)/CrClocks

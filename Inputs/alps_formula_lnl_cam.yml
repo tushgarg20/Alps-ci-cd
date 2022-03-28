@@ -8,12 +8,10 @@ FPS: R
 
 EU:
   GRF:
-     PS2_GRF_READ: R * C
-     PS2_GRF_WRITE: R * C
-     PS2_GRF_READ_ECC: R * C
-     PS2_GRF_WRITE_ECC: R * C
+     PS2_GA_GRF_1Read: R * C
+     PS2_GA_GRF_1Write: R * C
      PS2_GRF_SEND_PATH: R * C
- 
+     PS2_GA_GRF_Floor: R * C
   Accumulator:
      PS2_Accumulator_READ: R * C
      PS2_Accumulator_WRITE: R * C
@@ -75,9 +73,12 @@ EU:
 
   GA:
     PS2_GA:
-      PS2_GA_FPU3Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_FPU2Src_SinglePipe: R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_ExtraPipe: R * C
+      PS2_GA_Syn_FLOOR: R * C 
+      PS2_GA_Syn_1Read: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_1Write: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_1Read_DPAS_dispatch: R * LINEST[C,R[GA_toggle_rate]]
   TC:
     PS2_TC:
       PS2_TC_1Dispatch: R * C
@@ -114,12 +115,18 @@ GAM:
  GAMFTLB:
     PS2_CAM_GAM: R * C
     PS2_CAM_GAM_INFRA: R * C
+ SQIDI:
+    PS2_CAM_SQIDI: R * C
+    PS2_CAM_SQIDI_INFRA: R * C
+    PS2_CAM_CC: R * C
+    PS2_GA_SQIDI_RPT: R * C 
 
 LSC:
    LSC:
     PS2_CAM_LSC_L1_CACHE: R * C
     PS2_CAM_LSC_SLM: R * C
     PS0_CAM_LSC: R * C
+
 
 ROW:
    ROW:

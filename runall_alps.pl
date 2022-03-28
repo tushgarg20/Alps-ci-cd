@@ -32,6 +32,7 @@ my $tgldg			= '';
 my $pvc_scaled			= '';
 my $dg2			        = '';
 my $dg2p5			= '';
+my $xe2_plan			= '';
 my $xe2				= '';
 my $xe3				= '';
 my $pvc_a21                     = '';
@@ -47,6 +48,7 @@ my $pvck2xsa                    = '';
 my $pvck2xeu                    = ''; 
 my $mtl                         = ''; 
 my $lnl                         = ''; 
+my $ptl                         = ''; 
 
 
 
@@ -76,10 +78,12 @@ Getopt::Long::GetOptions(
 	"tgldg"			=> \$tgldg,
 	"dg2"		=> \$dg2,
 	"dg2p5"		=> \$dg2p5,
+	"xe2_plan"	=> \$xe2_plan,
 	"xe2"		=> \$xe2,
 	"xe3"		=> \$xe3,
 	"mtl"		=> \$mtl,
 	"lnl"		=> \$lnl,
+	"ptl"		=> \$ptl,
 	"pvc_scaled"		=> \$pvc_scaled,
 	"pvc2"		=> \$pvc2,
 	"pvcdp"	=> \$pvcdp,
@@ -133,6 +137,7 @@ if ($method){
 	$cfg_file = ($pvck2xsa) ? $sdir . "alps_cfg_pvck2xsa_cam.yaml" : $cfg_file;
 	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
 	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_cam.yaml" : $cfg_file;
+	$cfg_file = ($ptl) ? $sdir . "alps_cfg_ptl_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
 	$cfg_file = ($dg2) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
 	$cfg_file = ( $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
@@ -140,6 +145,7 @@ if ($method){
 	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
 	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe2_plan) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe2) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
     }else{
 	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
