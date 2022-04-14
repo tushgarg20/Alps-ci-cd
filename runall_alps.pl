@@ -160,6 +160,7 @@ if ($method){
 	$cfg_file = ($pvcxttrend) ? $sdir . "alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_pvck2xeu_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($rltb_ec_0_5) ? $sdir . "alps_cfg_rltb_ec_0_5_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_kaolin.yaml" : $cfg_file;
     }
 }
 

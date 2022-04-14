@@ -157,7 +157,10 @@
 #L3 utilization
 	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
 	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
- 
+	
+ 	PS2_L3_Read = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3_Idle = 1
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
@@ -173,8 +176,11 @@
     #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
     PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Write\..*\.Req')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.(Write|WriteNoResp)\..*\.Req')) / (.CrClk * num_LSC_L1)
     PS2_LSC = PS2_LSC_Read + PS2_LSC_Write
+    PS2_SLM_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.SLM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
+    PS2_SLM_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.SLM\.(Write|WriteNoResp)\..*\.Req')) / (.CrClk * num_LSC_L1)
+
 
     PS2_LSC_Idle = 1- PS2_LSC
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) / (.CrClk * num_LSC_L1)
@@ -187,7 +193,7 @@
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
     PS2_Sampler_SC_Idle = 1
-    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float_64bpt|Samp_16Bits_Trilinear_Float_Else|Samp_16Bits_Trilinear_Else_Else|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float_64bpt|Samp_16Bits_Bilinear_Float_Else|Samp_16Bits_Bilinear_Else_64bpt|Samp_16Bits_Bilinear_Else_Else|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else_64bpt|High_Else_Else)
+    @SAMPLER_MAIN@ = (Samp_16Bits_Trilinear_Else_64bpt|Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float_64bpt|Samp_16Bits_Trilinear_Float_Else|Samp_16Bits_Trilinear_Else_Else|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float_64bpt|Samp_16Bits_Bilinear_Float_Else|Samp_16Bits_Bilinear_Else_64bpt|Samp_16Bits_Bilinear_Else_Else|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else_64bpt|High_Else_Else)
     @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))
@@ -450,14 +456,14 @@
          .temp_GA_GRF_Read = (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs)
          .temp_GA_GRF_Write = (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs)
 	 
-	 PS2_GA_GRF_Read = (.temp_GA_GRF_Read > 2) ? (.temp_GA_GRF_Read / 8) : .temp_GA_GRF_Read
-	 PS2_GA_GRF_Write = (.temp_GA_GRF_Write > 1) ? (.temp_GA_GRF_Write / 8) : .temp_GA_GRF_Write
+	 PS2_GA_GRF_1Read = (.temp_GA_GRF_Read > 2) ? (.temp_GA_GRF_Read / 8) : .temp_GA_GRF_Read
+	 PS2_GA_GRF_1Write = (.temp_GA_GRF_Write > 1) ? (.temp_GA_GRF_Write / 8) : .temp_GA_GRF_Write
 	 
-         PS2_GA_Syn_Read = PS2_GA_GRF_Read
-         PS2_GA_Syn_Write = PS2_GA_GRF_Write
-         PS2_GA_Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
-         PS2_GA_Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
-         PS2_GA_Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
+         PS2_GA_Syn_1Read = PS2_GA_GRF_1Read
+         PS2_GA_Syn_1Write = PS2_GA_GRF_1Write
+         PS2_GA_1Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
+         PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
+         PS2_GA_1Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
          PS2_GA_GRF_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs)
         PS2_GA_SYN_FLOOR = PS2_EU_FPU0 + PS2_EU_FPU1 #Total_instr_count  / (.CrClk * numEUs )
 

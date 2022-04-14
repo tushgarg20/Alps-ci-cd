@@ -9111,6 +9111,7 @@ PS2_GTDSS_INFRA,Gen12LP,A0,1,syn,1,
 PS2_PS,Gen12LP,A0,1,syn,1,
 PS2_COLOR,Gen12LP,A0,1,syn,1,
 PS2_GAM,Gen12LP,A0,302,syn,1,
+PS2_GAM,LNL,A0,273.55,syn,1,
 PS2_SQIDI,Gen12LP,A0,312,syn,1,
 PS2_Sampler,Gen12LP,A0,329,syn,1,
 PS2_HDC,Gen12LP,A0,347.19,syn,1,
@@ -9426,6 +9427,7 @@ PS2_EU_DPAS,PVC,A0,197,syn,0,
 PS2_infra,DG2,A0,32.815,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
 PS2_infra,Xe2,A0,25.59,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
 PS2_infra,MTL,A0,22.35,syn,0,infra cdyn per EU from MTL 64 emulation for 3d wls,
+PS2_infra,LNL,A0,19.06,syn,0,infra cdyn per EU from MTL 64 emulation for 3d wls,
 PS2_L3_Active,MTL,A0,509.25,syn,0,extracted from mtl emulation results
 PS2_L3_Idle,MTL,A0,0.003,syn,0,extracted from mtl emulation results
 PS2_L3_Active,DG2,A0,274.11,syn,0,extracted from mtl emulation results
@@ -10180,3 +10182,108 @@ PS2_GA_Syn_Read_45%,Xe2,A0,5.9418165,syn,1,Xe2 cdyn weight release based on PreS
 FPU0_mad_fp32_20%,Xe2,A0,39.22,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
 FPU0_mad_fp32_30%,Xe2,A0,46.094178,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
 FPU0_mad_fp32_45%,Xe2,A0,49.3099455,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_add_fp16_10%,LNL,A0,22.89,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp16_20%,LNL,A0,26.49,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp16_30%,LNL,A0,28.46,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp16_45%,LNL,A0,32.10,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp32_10%,LNL,A0,20.30,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp32_20%,LNL,A0,23.21,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp32_30%,LNL,A0,24.71,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_add_fp32_45%,LNL,A0,28.61,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint16_10%,LNL,A0,27.67,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint16_20%,LNL,A0,32.24,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint16_30%,LNL,A0,33.98,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint16_45%,LNL,A0,37.48,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint32_10%,LNL,A0,17.86,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint32_20%,LNL,A0,22.14,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint32_30%,LNL,A0,25.29,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_add_sint32_45%,LNL,A0,28.53,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp16_10%,LNL,A0,27.94,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp16_20%,LNL,A0,32.24,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp16_30%,LNL,A0,36.27,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp16_45%,LNL,A0,37.74,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp32_10%,LNL,A0,27.80,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp32_20%,LNL,A0,32.51,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp32_30%,LNL,A0,35.33,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mad_fp32_45%,LNL,A0,37.48,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint16_10%,LNL,A0,47.28,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint16_20%,LNL,A0,52.65,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint16_30%,LNL,A0,57.35,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint16_45%,LNL,A0,59.23,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint32_10%,LNL,A0,40.70,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint32_20%,LNL,A0,45.53,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint32_30%,LNL,A0,49.70,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mad_sint32_45%,LNL,A0,54.40,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mov_fp16_45%,LNL,A0,11.07,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mov_fp32_45%,LNL,A0,11.03,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mov_sint16_45%,LNL,A0,9.75,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mov_sint32_45%,LNL,A0,8.84,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp16_10%,LNL,A0,23.13,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp16_20%,LNL,A0,25.25,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp16_30%,LNL,A0,27.78,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp16_45%,LNL,A0,29.95,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp32_10%,LNL,A0,22.81,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp32_20%,LNL,A0,26.17,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp32_30%,LNL,A0,28.21,syn,1,LNL Cdyn weights release 22WW11.3
+FPU0_mul_fp32_45%,LNL,A0,29.95,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_sint16_10%,LNL,A0,45.40,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_sint16_20%,LNL,A0,51.58,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_sint16_30%,LNL,A0,55.21,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_sint16_45%,LNL,A0,56.55,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_uint16_10%,LNL,A0,40.83,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_uint16_20%,LNL,A0,46.21,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_uint16_30%,LNL,A0,50.24,syn,1,LNL Cdyn weights release 22WW11.3
+FPU1_mul_uint16_45%,LNL,A0,55.07,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Read_10%,LNL,A0,8.63905625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Read_20%,LNL,A0,8.63905625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Read_30%,LNL,A0,8.63905625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Read_45%,LNL,A0,8.63905625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Read,LNL,A0,8.63905625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Write_10%,LNL,A0,4.302250013,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Write_20%,LNL,A0,4.872427725,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Write_30%,LNL,A0,5.494439775,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Write_45%,LNL,A0,6.323789175,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_GRF_1Write,LNL,A0,6.323789175,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU0_dispatch_10%,LNL,A0,1.034263075,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU0_dispatch_20%,LNL,A0,1.428266975,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU0_dispatch_30%,LNL,A0,1.835697925,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU0_dispatch_45%,LNL,A0,2.4222262,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU1_dispatch_10%,LNL,A0,1.97897465,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU1_dispatch_20%,LNL,A0,2.50282255,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU1_dispatch_30%,LNL,A0,2.99084985,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_1Read_FPU1_dispatch_45%,LNL,A0,3.680356675,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Read_10%,LNL,A0,10.47557898,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Read_20%,LNL,A0,11.0545141,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Read_30%,LNL,A0,11.35,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Read_45%,LNL,A0,12.3171108,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Write_10%,LNL,A0,3.035619925,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Write_20%,LNL,A0,3.254561425,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Write_30%,LNL,A0,3.16591225,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_GA_Syn_1Write_45%,LNL,A0,3.309631625,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_LSC_Read,LNL,A0,655.196,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_LSC_Write,LNL,A0,581.349,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_LSC_Idle,LNL,A0,150,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_SLM_Read,LNL,A0,679.574,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_SLM_Write,LNL,A0,623.005,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_L3_Read,LNL,A0,319.053,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_L3_Write,LNL,A0,406.84,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Point_LD,LNL,A0,229.4,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Point_Sample_L,LNL,A0,200.77,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Point_Else,LNL,A0,271.62674,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Small_Bilinear_Sample_L,LNL,A0,372.34216,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Small_Bilinear_Else,LNL,A0,437.37,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Small_Trilinear,LNL,A0,297.01,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt,LNL,A0,631.2512901,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Bilinear_Float_Else,LNL,A0,413.7572576,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt,LNL,A0,631.2512901,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Bilinear_Else_Else,LNL,A0,413.7572576,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt,LNL,A0,740.72043,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Trilinear_Float_Else,LNL,A0,316.2964274,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt,LNL,A0,297.9004128,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Samp_16Bits_Trilinear_Else_Else,LNL,A0,313.9859785,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_High_Aniso,LNL,A0,521.4,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_High_Else_Else,LNL,A0,521.4,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Fetch_Bypass,LNL,A0,4.49,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Fetch_Low,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Fetch_Fast,LNL,A0,23.32,syn,1,LNL Cdyn weights release 22WW11.3
+PS2_Sampler_Fetch_High,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW11.3
