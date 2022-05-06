@@ -29,6 +29,5 @@
         PS2_CAM_L3_BANK                  =    (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))
         PS2_CAM_L3_NODE                  =   (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))
         PS2_CAM_L3_INFRA            =       1 / L3_Scaler
-        PS2_CAM_L3_FABRICS              =   (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) 
-        PS2_CAM_NODEX                   =   (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) 
-
+        PS2_CAM_ARB                 =  (D(L3_READ)  / (L3_Scaler  * 64 * num_L3_Bank_LBI)) + (D(L3_WRITE)  / (L3_Scaler  * num_L3_Bank_LBI * 64))
+        PS2_CAM_ARB_INFRA           =   1
