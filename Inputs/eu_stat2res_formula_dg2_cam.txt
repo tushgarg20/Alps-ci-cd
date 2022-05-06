@@ -132,8 +132,8 @@
         PS2_GRF_READ_suppressed = D(GRF_READ_suppressed)/CrClocks
         PS2_GA_GRF_1READ = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
         PS2_GA_GRF_1WRITE = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
-        PS2_GA_GRF_1Read = (ECC_Flag > 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
-        PS2_GA_GRF_1Write = (ECC_Flag > 0) ? (D(GRF_WRITE)/CrClocks) : 0
+        PS2_GA_GRF_1Read = (ECC_Flag == 0) ? (D(GRF_READ)/CrClocks) - PS2_GRF_READ_suppressed : 0
+        PS2_GA_GRF_1Write = (ECC_Flag == 0) ? (D(GRF_WRITE)/CrClocks) : 0
         PS2_GA_Syn_1Read =  (D(GRF_READ)/CrClocks)
         PS2_GA_Syn_1Write = (D(GRF_WRITE)/CrClocks)
         PS2_GA_Syn_FLOOR = (DPAS_total_count + FPU_total_count/8 + INT_total_count/8 + FPU2_total_count/8)/CrClocks 

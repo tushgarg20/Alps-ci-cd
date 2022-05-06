@@ -9016,8 +9016,8 @@ PS2_CAM_L3,Gen12LP,A0,514.05,syn,1,L3 Read Cdyn/Txn calculated analytically from
 PS2_CAM_L3,Gen12HP,A0,513.9375,syn,1,L3 Read Cdyn/Txn calculated analytically from ww3002 spreadsheet
 PS2_CAM_L3,ADL,A0,668.556,syn,1,L3 Read Cdyn/Txn calculated analytically from ww1902 spreadsheet
 PS2_CAM_L3,DG2,A0,481.2938,syn,1,L3 Read Cdyn/Txn calculated analytically from 20ww16 spreadsheet
-PS2_CAM_L3_BANK,DG2,A0,356.6608,syn,1,L3 Read Cdyn/Txn calculated analytically from 20ww30.1 spreadsheet
-PS2_CAM_L3_NODE,DG2,A0,109.4589,syn,1,L3 Read Cdyn/Txn calculated analytically from 20ww30.1 spreadsheet
+PS2_CAM_L3_BANK,DG2,A0,342.91,syn,1,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_L3_NODE,DG2,A0,77.73,syn,1,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 #PS2_CAM_L3,PVC,A0,823.2,syn,1,L3 Read Cdyn/Txn calculated analytically from ww1902 spreadsheet
 #PS2_CAM_L3,PVC,A0,592.39,syn,1,L3 Read Cdyn/Txn calculated analytically from ww45.5 spreadsheet
 PS2_CAM_L3,PVC,A0,808.6388,syn,1,L3 Read Cdyn/Txn calculated analytically from 20ww9.4 spreadsheet
@@ -9046,19 +9046,19 @@ PS2_CAM_HDC_READ,Gen12LP,A0,206.1917,syn,1047726.68,Using Gen12LP numbers from w
 PS2_CAM_HDC_WRITE,Gen12LP,A0,206.1917,syn,1047726.68,Using Gen12LP numbers from ww2205 spreadsheet
 PS2_CAM_HDC_READ,Gen12HP,A0,190.9182,syn,1047726.68,Using Gen12LP numbers from ww2205 spreadsheet
 PS2_CAM_HDC_WRITE,Gen12HP,A0,190.9182,syn,1047726.68,Using Gen12LP numbers from ww2205 spreadsheet
-PS2_CAM_HDC_READ,DG2,A0,294.62,syn,1047726.68,Using numbers from 20ww15 DG2 spreadsheet
-PS2_CAM_HDC_WRITE,DG2,A0,294.62,syn,1047726.68,Using numbers from 20ww15 DG2 spreadsheet
+PS2_CAM_HDC_READ,DG2,A0,294.62,syn,1,Using numbers from 20ww15 DG2 spreadsheet
+PS2_CAM_HDC_WRITE,DG2,A0,294.62,syn,1,Using numbers from 20ww15 DG2 spreadsheet
 PS2_CAM_HDC_READ,PVC,A0,249.587,syn,1047726.68,Using numbers from ww51.2 PVC spreadsheet using Emulation GEMMS data
 PS2_CAM_HDC_WRITE,PVC,A0,249.587,syn,1047726.68,Using numbers from ww51.2 PVC spreadsheet using Emulation GEMMS data
 PS2_CAM_GAM,Gen12LP,A0,132.56,syn,1047726.68,Using Gen12LP numbers from ww1902 spreadsheet
 PS2_CAM_GAM,ADL,A0,154.75,syn,1047726.68,Using Gen12LP numbers from ww1902 spreadsheet
 PS2_CAM_GAM,Gen12HP,A0,434,syn,1047726.68,Using Gen12LP numbers from ww3002 spreadsheet
-PS2_CAM_GAM,DG2,A0,545.84,syn,1047726.68,from 20ww30.1 spreadsheet
+PS2_CAM_GAM,DG2,A0,68.89,syn,1,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 #PS2_CAM_GAM,PVC,A0,158.6175,syn,1047726.68,Using Gen12LP numbers from ww1902 spreadsheet
 PS2_CAM_GAM,PVC,A0,317.128,syn,1047726.68,Using numbers from 20ww19.4 spreadsheet
 PS2_CAM_SQIDI,Gen12LP,A0,402.6,syn,1047726.68,Using Gen12LP numbers from ww3002 spreadsheet
 PS2_CAM_SQIDI,Gen12HP,A0,402.6,syn,1047726.68,Using Gen12LP numbers from ww3002 spreadsheet
-PS2_CAM_SQIDI,DG2,A0,285.2181,syn,1047726.68,Using DG2 numbers from 20ww30.1 spreadsheet
+PS2_CAM_SQIDI,DG2,A0,1143.32,syn,1,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_SQIDI,PVC,A0,163.0156,syn,1047726.68,Using numbers from 20ww19.4 spreadsheet
 PS2_CAM_SQIDI,ADL,A0,180.515,syn,1047726.68,Using Gen12LP numbers from ww1902 spreadsheet
 PS2_BGF,Gen12HP,A0,400,syn,0,Infra cdyn weight from PAC team
@@ -9088,7 +9088,6 @@ PS2_CAM_GEOM,DG2,A0,1266.38,syn,0,GEOM from 20ww16 spreadsheet analytical model
 PS2_CAM_ARB,Gen12HP,A0,346.4166,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_ARB,PVC,A0,690.8333,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_ARB,ADL,A0,64.99,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
-PS2_CAM_ARB,DG2,A0,520.51,syn,0,ARB from 20ww16 spreadsheet analytical model
 PS2_CAM_POSH,ADL,A0,30.6,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 #PS2_CAM_POSH,Gen12HP,A0,192.1998,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 #PS2_CAM_POSH,PVC,A0,192.1998,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
@@ -9096,8 +9095,8 @@ PS2_CAM_POSH,Gen12HP,A0,345.3704,syn,0,Sampler L1 Cache from ww1902 spreadsheet 
 PS2_CAM_POSH,PVC,A0,345.3704,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_POSH,DG2,A0,595.83,syn,0,POSH from 20ww16 spreadsheet analytical model
 PS2_CAM_ROW,Gen12HP,A0,62.08019,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
-PS2_CAM_ROW,DG2,A0,327.4407,syn,0,ROW for ML from 20ww31.1 spreadsheet analytical model
-PS2_CAM_ROW_INFRA,DG2,A0,11.1297,syn,0,ROW IDLE for ML from 20ww31.1 spreadsheet analytical model
+PS2_CAM_ROW,DG2,A0,48.67,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_ROW_INFRA,DG2,A0,59.46,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_ROW_GEMM,DG2,A0,113.6018,syn,0,ROW for GEMM from 20ww31.1 spreadsheet analytical model
 #PS2_CAM_ROW,PVC,A0,331.2753,syn,0, ROW CDYN wt from 20ww09.4 spreadsheet analytical model
 #PS2_CAM_ROW_GEMM,PVC,A0,167.29864,syn,0, ROW CDYN wt from 20ww9.4 spreadsheet analytical model for SGEMM and DGEMM
@@ -9117,7 +9116,7 @@ PS2_CAM_Z,ADL,A0,10.39,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical
 PS2_CAM_L3_INFRA,Gen12LP,A0,15.6875,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
 PS2_CAM_L3_INFRA,Gen12HP,A0,15.6875,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
 PS2_CAM_L3_INFRA,ADL,A0,15.6875,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
-PS2_CAM_L3_INFRA,DG2,A0,20.6682,syn,0,L3 IDLE from 20ww30.1 spreadsheet analytical model
+PS2_CAM_L3_INFRA,DG2,A0,31.87,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_L3_INFRA,PVC,A0,138.67,syn,0,L3 Infra CDYN wt. calculated accounting for 4nF increase ( 1nf in L3 Node and 3 nf in Fabric) based on 20ww31 biweekly indicator
 #PS2_CAM_L3_NODEX,PVC,A0,13.265,syn,0,Nodex CDYN weight from 20ww9.4 spreadsheet analytical model
 PS2_CAM_L3_NODEX,PVC,A0,41.2498,syn,0,Nodex CDYN weight from 20ww19.4 spreadsheet analytical model
@@ -9130,7 +9129,7 @@ PS2_CAM_SC_INFRA,DG2,A0,27.1368,syn,0,Sampler IDLE from 20ww16 spreadsheet analy
 PS2_CAM_HDC_INFRA,Gen12LP,A0,5.38667,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_HDC_INFRA,Gen12HP,A0,5.38667,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_HDC_INFRA,PVC,A0,2.6933,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
-PS2_CAM_HDC_INFRA,DG2,A0,8.5095,syn,0,HDC IDLE CDYN from 20ww16 spreadsheet analytical model
+PS2_CAM_HDC_INFRA,DG2,A0,2.855,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 #PS2_CAM_SLM_INFRA,Gen12HP,A0,11.1164,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 #PS2_CAM_SLM_INFRA,PVC,A0,11.1164,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_SLM_INFRA,Gen12LP,A0,6.5766,syn,0,Sampler L1 Cache from ww22.5 spreadsheet analytical model
@@ -9142,12 +9141,12 @@ PS2_CAM_SQIDI_INFRA,Gen12LP,A0,15.25,syn,0,Sampler L1 Cache from ww3002 spreadsh
 PS2_CAM_SQIDI_INFRA,Gen12HP,A0,15.25,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
 PS2_CAM_SQIDI_INFRA,PVC,A0,14.1998,syn,0,SQIDI inf from 20ww13.5 spreadsheet analytical model
 PS2_CAM_SQIDI_INFRA,ADL,A0,24.485,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
-PS2_CAM_SQIDI_INFRA,DG2,A0,183.368,syn,0,SQIDI infra from 20ww30.1 spreadsheet analytical model
+PS2_CAM_SQIDI_INFRA,DG2,A0,48.37,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_GAM_INFRA,ADL,A0,19.56,syn,0,Sampler L1 Cache from ww1902 spreadsheet analytical model
 PS2_CAM_GAM_INFRA,Gen12LP,A0,32.8,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
 PS2_CAM_GAM_INFRA,Gen12HP,A0,32.32,syn,0,Sampler L1 Cache from ww3002 spreadsheet analytical model
 PS2_CAM_GAM_INFRA,PVC,A0,30.7833,syn,0,GAM infra from 20ww13.5 spreadsheet analytical model
-PS2_CAM_GAM_INFRA,DG2,A0,61.5667,syn,0,GAM infra from 20ww13.5 spreadsheet analytical model
+PS2_CAM_GAM_INFRA,DG2,A0,59.97,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 #PS2_CAM_NODE,Gen12HP,A0,322,syn,0,Node from ww1504 compute spreadsheet for PVC and Gen12HP
 PS2_CAM_NODE,Gen12HP,A0,961.4722,syn,0,Node from ww1504 compute spreadsheet for PVC and Gen12HP
 PS2_CAM_NODE,DG2,A0,321.4694,syn,0,Node from ww1504 compute spreadsheet for PVC and Gen12HP
@@ -9168,7 +9167,7 @@ PS2_CAM_MDFI_GAM,Gen12HP,A0,879.6296,syn,0,GA-SQIDI_RPT from ww1504 compute spre
 PS2_CAM_NODEX,DG2,A0,51.389,syn,0,Nodex from 20ww16 compute spreadsheet for DG2 scaled ny number of L3 Banks or numDSS
 PS2_CAM_OTHER_INFRA,Gen12HP,A0,623.2,syn,0,GA-SQIDI_RPT and MDFI_GAM infra components
 PS2_CAM_OTHER_INFRA,PVC,A0,489.4,syn,0,Other Cluster infra components other than GTDSS infra -- 20ww9.4
-PS2_CAM_OTHER_INFRA,DG2,A0,594.9,syn,0,Other infra components
+PS2_CAM_OTHER_INFRA,DG2,A0,16236.16,syn,0,updated 22ww18 based on infra calculation of DG2 Emu data from LTS_Compute_Sheet (minus EU and Spine infra)
 PS2_CAM_L3NODE_RING,DG2,A0,3071.806,syn,0, L3 Fabrics from 20ww16 compute spreadsheet for DG2
 #PS2_CAM_L3NODE_RING,Gen12HP,A0,6095.407,syn,0,GA-SQIDI_RPT from ww1504 compute spreadsheet for PVC and Gen12HP
 #PS2_CAM_L3NODE_RING,PVC,A0,8531.619,syn,0,GA-SQIDI_RPT from ww1504 compute spreadsheet for PVC and Gen12HP
@@ -9178,7 +9177,7 @@ PS2_CAM_ROGT,Gen12LP,A0,1220.34,syn,0,Approximated cdyn weight for rest of GT us
 PS2_CAM_ROGT,ADL,A0,690.7,syn,0,Approximated cdyn weight for rest of GT using spreadsheet analytical model
 PS2_CAM_ROGT,Gen12HP,A0,1949.074,syn,0,Approximated cdyn weight for rest of GT using spreadsheet analytical model
 PS2_CAM_SPINE,Gen12HP,A0,1108.33,syn,0,Approximated cdyn weight for Spine related states in ww3002 analytical model
-PS2_CAM_SPINE,DG2,A0,1660,syn,0,Approximated cdyn weight for Spine related states in 20ww3002 analytical model
+PS2_CAM_SPINE,DG2,A0,1420,syn,0,Approximated based on DG2 128 EMulation model for GEMMS 
 PS2_CAM_L3_FABRICS,Gen12HP,A0,11200,syn,0,Approximated cdyn weight for L3 Fabrics related states in ww3002 analytical model
 PS2_CAM_GTDSS,Gen12HP,A0,962.5926,syn,0,Approximated cdyn weight for GTDSS related states in ww3002 analytical model
 PS2_CAM_GTDSS_INFRA,Gen12HP,A0,31.6,syn,0,Approximated cdyn weight for GTDSS Infra related states in ww3002 analytical model
@@ -9196,7 +9195,7 @@ PS2_CAM_L3_FABRICS,DG2,A0,90.721,syn,0,Approximated cdyn weight for L3 Fabrics f
 PS2_CAM_GTDSS,PVC,A0,2074.38263,syn,0,Approximated cdyn weight for GTDSS related states in 20ww19.4 analytical model with a process scaler of 0.89
 PS2_CAM_GTDSS_INFRA,PVC,A0,56.248,syn,0,Approximated cdyn weight for GTDSS Infra related states in 20ww13.5 analytical model with a process scalar of 0.89
 PS2_CAM_ROGT,DG2,A0,5930.23,syn,0,Approximated cdyn weight for rest of GT using spreadsheet 20ww31.1 analytical model
-PS2_CAM_COMPUTE_ROGT,DG2,A0,2325.5242,syn,0,Approximated cdyn weight for rest of GT using spreadsheet 20ww31.1 for XeNN removing all 3D
+PS2_CAM_COMPUTE_ROGT,DG2,A0,1637.4,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_FOV_COMPUTE,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 based on Fatemeh inputs
 PS2_CAM_FOV_RAMBO,PVC,A0,112.5,syn,0,Foveros link CDYN weight - updated ww24 based on Fatemeh inputs
 PS2_CAM_FOV_COMPUTE_INFRA,PVC,A0,124.395,syn,0, 1 nF increase as per 20ww27
@@ -9211,7 +9210,7 @@ PS2_CAM_LSC_INFRA,PVC,A0,30.04,syn,0,LSC Infra CDYN weight 2nF estimate from 20w
 PS2_CAM_REPEATER,PVC,A0,296,syn,0,Repeater CDYN increased by 3Nf in 20ww31
 PS2_CAM_LSC_L1_CACHE,DG2,A0,500.5,syn,0,LSC L1 Avg. CDYN weight across Read/Write Hit/Miss - updated 2020 ww34 based on Turbo updates
 PS2_CAM_LSC_SLM,DG2,A0,406.4,syn,0,LSC SLM Avg. CDYN weight across Read/Write - updated 2020 ww34 based on Turbo updates
-PS0_CAM_LSC,DG2,A0,14.3,syn,0,LSC Idle CDYN weight - updated 2020 ww30.1
+PS0_CAM_LSC,DG2,A0,124.9,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_Local_Nodex_to_Bank,Gen12HP,A0,120,syn,0,approximated cdyn weights for Node
 PS2_Cross_Fabric_to_Bank,Gen12HP,A0,442.9,syn,0,approximated cdyn weights for Fabric
 PS2_L3_Active,Gen12HP,A0,315.2,syn,0,approximated cdyn weights for L3
@@ -10130,121 +10129,126 @@ PS2_Sampler_Fetch_Bypass,LNL,A0,4.49,syn,1,LNL Cdyn weights release 22WW11.3
 PS2_Sampler_Fetch_Low,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW11.3
 PS2_Sampler_Fetch_Fast,LNL,A0,23.32,syn,1,LNL Cdyn weights release 22WW11.3
 PS2_Sampler_Fetch_High,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW11.3
-PS2_Sampler_Point_LD,Xe2,A0,283.682444,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Point_Sample_L,Xe2,A0,242.10915099999997,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Point_Else,Xe2,A0,339.533425,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Small_Bilinear_Sample_L,Xe2,A0,448.605012,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Small_Bilinear_Else,Xe2,A0,496.255761,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Small_Trilinear,Xe2,A0,362.210072,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt,Xe2,A0,760.543723,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Bilinear_Float_Else,Xe2,A0,498.50272,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt,Xe2,A0,760.543723,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Bilinear_Else_Else,Xe2,A0,498.50272,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt,Xe2,A0,740.72043,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Trilinear_Float_Else,Xe2,A0,410.774581,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt,Xe2,A0,386.883653,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Samp_16Bits_Trilinear_Else_Else,Xe2,A0,407.773998,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_High_Aniso,Xe2,A0,591.074366,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_High_Else_Else,Xe2,A0,591.074366,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Fetch_Bypass,Xe2,A0,448.605012,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Fetch_Low,Xe2,A0,740.72043,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Fetch_Fast,Xe2,A0,591.074366,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_Sampler_Fetch_High,Xe2,A0,740.72043,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_L3_Bank_Read,Xe2,A0,234.14,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_L3_Bank_Write,Xe2,A0,213.39,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_L3_Bank_Read_Miss,Xe2,A0,250.46,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_LSC_Read,Xe2,A0,433.21,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_LSC_Write,Xe2,A0,305.88,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_LSC_Idle,Xe2,A0,78.93,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_SLM_Read,Xe2,A0,398.5,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_SLM_Write,Xe2,A0,281.4,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_DPAS_CGDIS,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_DPAS_CGEN,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_DPAS_DOPCGEN,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_BFloat_10%,Xe2,A0,76.7889075,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_BFloat_20%,Xe2,A0,95.02833050000001,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_BFloat_30%,Xe2,A0,107.642655,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_BFloat_45%,Xe2,A0,122.472124,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SFloat_10%,Xe2,A0,84.5016295,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SFloat_20%,Xe2,A0,108.525042,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SFloat_30%,Xe2,A0,122.285486,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SFloat_45%,Xe2,A0,131.6168485,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt4_10%,Xe2,A0,59.939816500000006,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt4_20%,Xe2,A0,69.70071300000001,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt4_30%,Xe2,A0,80.3857345,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt8_10%,Xe2,A0,62.0808725,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt8_20%,Xe2,A0,78.6043315,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt8_30%,Xe2,A0,88.750036,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_SInt8_45%,Xe2,A0,98.9786455,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt4_10%,Xe2,A0,49.5153545,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt4_20%,Xe2,A0,58.155243500000005,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt4_30%,Xe2,A0,64.2458185,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt4_45%,Xe2,A0,72.266925,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt8_10%,Xe2,A0,61.023840500000006,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt8_20%,Xe2,A0,72.6193125,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt8_30%,Xe2,A0,79.590024,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-ExtraPipe_DPAS_UInt8_45%,Xe2,A0,88.557875,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_FPU_CGDIS,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_FPU_CGEN,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS0_FPU_DOPCGEN,Xe2,A0,0.0,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_add_fp16_30%,Xe2,A0,38.003589,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_add_fp32_20%,Xe2,A0,27.32,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_add_fp32_30%,Xe2,A0,31.320984499999998,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_add_fp32_45%,Xe2,A0,36.682046500000006,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_sint16_45%,Xe2,A0,37.33,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_sint32_20%,Xe2,A0,21.9768565,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_sint32_30%,Xe2,A0,31.782814000000002,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_sint32_45%,Xe2,A0,36.2966965,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_uint16_45%,Xe2,A0,27.99,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_uint32_20%,Xe2,A0,22.95,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_uint32_30%,Xe2,A0,27.736803499999997,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_add_uint32_45%,Xe2,A0,31.0974745,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_cmp_fp32_45%,Xe2,A0,25.2721845,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_sel_fp32_45%,Xe2,A0,25.525554999999997,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp16_20%,Xe2,A0,40.03,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp16_30%,Xe2,A0,48.332506,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp16_45%,Xe2,A0,51.415383,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_sint16_30%,Xe2,A0,53.79,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_sint16_45%,Xe2,A0,61.62855,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_sint32_20%,Xe2,A0,46.267709499999995,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_sint32_30%,Xe2,A0,52.4578805,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_sint32_45%,Xe2,A0,62.340976,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_uint16_30%,Xe2,A0,49.21,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_uint16_45%,Xe2,A0,55.017842,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_uint32_30%,Xe2,A0,46.9,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mad_uint32_45%,Xe2,A0,53.617564,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mov_fp16_45%,Xe2,A0,11.319933,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mov_fp32_45%,Xe2,A0,12.870421499999999,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mul_fp16_30%,Xe2,A0,32.38,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mul_fp16_45%,Xe2,A0,37.353840000000005,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mul_fp32_20%,Xe2,A0,30.04,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mul_fp32_30%,Xe2,A0,34.62359,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mul_fp32_45%,Xe2,A0,37.3475505,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mul_sint16_30%,Xe2,A0,53.79,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mul_sint16_45%,Xe2,A0,61.62855,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mul_uint16_30%,Xe2,A0,49.21,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU1_mul_uint16_45%,Xe2,A0,55.017842,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Read_10%,Xe2,A0,8.69,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Read_20%,Xe2,A0,8.69,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Read_30%,Xe2,A0,8.69,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Read_45%,Xe2,A0,8.69,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Write_10%,Xe2,A0,4.33,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Write_20%,Xe2,A0,4.9,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Write_30%,Xe2,A0,5.52,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_GRF_Write_45%,Xe2,A0,6.36,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU0_dispatch_10%,Xe2,A0,1.240195833,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU0_dispatch_20%,Xe2,A0,1.577919667,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU0_dispatch_30%,Xe2,A0,1.9118403330000002,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU0_dispatch_45%,Xe2,A0,2.4523008330000002,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU1_dispatch_10%,Xe2,A0,2.526061,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU1_dispatch_20%,Xe2,A0,3.2097900000000004,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU1_dispatch_30%,Xe2,A0,3.868703,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Read_FPU1_dispatch_45%,Xe2,A0,4.762266,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_SYN_FLOOR,Xe2,A0,5.7063495,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Syn_Read_10%,Xe2,A0,5.382075,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Syn_Read_20%,Xe2,A0,5.8325945,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Syn_Read_30%,Xe2,A0,5.192124,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-PS2_GA_Syn_Read_45%,Xe2,A0,5.9418165,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp32_20%,Xe2,A0,39.22,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp32_30%,Xe2,A0,46.094178,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
-FPU0_mad_fp32_45%,Xe2,A0,49.309945500000005,syn,1.0,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Point_LD,Xe2,A0,283.682444,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Point_Sample_L,Xe2,A0,242.109151,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Point_Else,Xe2,A0,339.533425,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Small_Bilinear_Sample_L,Xe2,A0,448.605012,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Small_Bilinear_Else,Xe2,A0,496.255761,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Small_Trilinear,Xe2,A0,362.210072,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Bilinear_Float_64bpt,Xe2,A0,760.543723,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Bilinear_Float_Else,Xe2,A0,498.50272,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Bilinear_Else_64bpt,Xe2,A0,760.543723,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Bilinear_Else_Else,Xe2,A0,498.50272,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Trilinear_Float_64bpt,Xe2,A0,740.72043,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Trilinear_Float_Else,Xe2,A0,410.774581,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Trilinear_Else_64bpt,Xe2,A0,386.883653,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Samp_16Bits_Trilinear_Else_Else,Xe2,A0,407.773998,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_High_Aniso,Xe2,A0,591.074366,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_High_Else_Else,Xe2,A0,591.074366,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Fetch_Bypass,Xe2,A0,448.605012,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Fetch_Low,Xe2,A0,740.72043,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Fetch_Fast,Xe2,A0,591.074366,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_Sampler_Fetch_High,Xe2,A0,740.72043,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_L3_Bank_Read,Xe2,A0,234.14,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_L3_Bank_Write,Xe2,A0,213.39,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_L3_Bank_Read_Miss,Xe2,A0,250.46,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_LSC_Read,Xe2,A0,433.21,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_LSC_Write,Xe2,A0,305.88,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_LSC_Idle,Xe2,A0,78.93,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_SLM_Read,Xe2,A0,398.5,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_SLM_Write,Xe2,A0,281.4,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_DPAS_CGDIS,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_DPAS_CGEN,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_DPAS_DOPCGEN,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_BFloat_10%,Xe2,A0,76.7889075,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_BFloat_20%,Xe2,A0,95.0283305,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_BFloat_30%,Xe2,A0,107.642655,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_BFloat_45%,Xe2,A0,122.472124,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SFloat_10%,Xe2,A0,84.5016295,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SFloat_20%,Xe2,A0,108.525042,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SFloat_30%,Xe2,A0,122.285486,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SFloat_45%,Xe2,A0,131.6168485,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt4_10%,Xe2,A0,59.9398165,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt4_20%,Xe2,A0,69.700713,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt4_30%,Xe2,A0,80.3857345,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt8_10%,Xe2,A0,62.0808725,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt8_20%,Xe2,A0,78.6043315,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt8_30%,Xe2,A0,88.750036,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_SInt8_45%,Xe2,A0,98.9786455,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt4_10%,Xe2,A0,49.5153545,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt4_20%,Xe2,A0,58.1552435,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt4_30%,Xe2,A0,64.2458185,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt4_45%,Xe2,A0,72.266925,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt8_10%,Xe2,A0,61.0238405,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt8_20%,Xe2,A0,72.6193125,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt8_30%,Xe2,A0,79.590024,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+ExtraPipe_DPAS_UInt8_45%,Xe2,A0,88.557875,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_FPU_CGDIS,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_FPU_CGEN,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS0_FPU_DOPCGEN,Xe2,A0,0,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_add_fp16_30%,Xe2,A0,38.003589,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_add_fp32_20%,Xe2,A0,27.32,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_add_fp32_30%,Xe2,A0,31.3209845,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_add_fp32_45%,Xe2,A0,36.6820465,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_sint16_45%,Xe2,A0,37.33,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_sint32_20%,Xe2,A0,21.9768565,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_sint32_30%,Xe2,A0,31.782814,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_sint32_45%,Xe2,A0,36.2966965,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_uint16_45%,Xe2,A0,27.99,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_uint32_20%,Xe2,A0,22.95,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_uint32_30%,Xe2,A0,27.7368035,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_add_uint32_45%,Xe2,A0,31.0974745,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_cmp_fp32_45%,Xe2,A0,25.2721845,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_sel_fp32_45%,Xe2,A0,25.525555,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp16_20%,Xe2,A0,40.03,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp16_30%,Xe2,A0,48.332506,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp16_45%,Xe2,A0,51.415383,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_sint16_30%,Xe2,A0,53.79,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_sint16_45%,Xe2,A0,61.62855,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_sint32_20%,Xe2,A0,46.2677095,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_sint32_30%,Xe2,A0,52.4578805,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_sint32_45%,Xe2,A0,62.340976,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_uint16_30%,Xe2,A0,49.21,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_uint16_45%,Xe2,A0,55.017842,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_uint32_30%,Xe2,A0,46.9,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mad_uint32_45%,Xe2,A0,53.617564,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mov_fp16_45%,Xe2,A0,11.319933,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mov_fp32_45%,Xe2,A0,12.8704215,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mul_fp16_30%,Xe2,A0,32.38,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mul_fp16_45%,Xe2,A0,37.35384,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mul_fp32_20%,Xe2,A0,30.04,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mul_fp32_30%,Xe2,A0,34.62359,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mul_fp32_45%,Xe2,A0,37.3475505,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mul_sint16_30%,Xe2,A0,53.79,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mul_sint16_45%,Xe2,A0,61.62855,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mul_uint16_30%,Xe2,A0,49.21,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU1_mul_uint16_45%,Xe2,A0,55.017842,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Read_10%,Xe2,A0,8.69,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Read_20%,Xe2,A0,8.69,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Read_30%,Xe2,A0,8.69,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Read_45%,Xe2,A0,8.69,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Write_10%,Xe2,A0,4.33,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Write_20%,Xe2,A0,4.9,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Write_30%,Xe2,A0,5.52,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_GRF_Write_45%,Xe2,A0,6.36,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU0_dispatch_10%,Xe2,A0,1.240195833,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU0_dispatch_20%,Xe2,A0,1.577919667,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU0_dispatch_30%,Xe2,A0,1.911840333,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU0_dispatch_45%,Xe2,A0,2.452300833,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU1_dispatch_10%,Xe2,A0,2.526061,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU1_dispatch_20%,Xe2,A0,3.20979,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU1_dispatch_30%,Xe2,A0,3.868703,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Read_FPU1_dispatch_45%,Xe2,A0,4.762266,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_SYN_FLOOR,Xe2,A0,5.7063495,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Syn_Read_10%,Xe2,A0,5.382075,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Syn_Read_20%,Xe2,A0,5.8325945,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Syn_Read_30%,Xe2,A0,5.192124,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_GA_Syn_Read_45%,Xe2,A0,5.9418165,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp32_20%,Xe2,A0,39.22,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp32_30%,Xe2,A0,46.094178,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+FPU0_mad_fp32_45%,Xe2,A0,49.3099455,syn,1,Xe2 cdyn weight release based on PreSD0.8 (21WW49.3)
+PS2_CAM_LSC,DG2,A0,323.72,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_COMPRESSION,DG2,A0,198.3,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_COMP_INFRA,DG2,A0,10.89,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_ARB,DG2,A0,92.82,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+PS2_CAM_ARB_INFRA,DG2,A0,2.95,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
