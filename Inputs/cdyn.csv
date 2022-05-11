@@ -10252,3 +10252,27 @@ PS2_CAM_COMPRESSION,DG2,A0,198.3,syn,0,Updated 22ww18 based on DG2 128 Emulation
 PS2_CAM_COMP_INFRA,DG2,A0,10.89,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_ARB,DG2,A0,92.82,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
 PS2_CAM_ARB_INFRA,DG2,A0,2.95,syn,0,Updated 22ww18 based on DG2 128 Emulation data used in LTS_Compute_Sheet
+ExtraPipe_DPAS_BFloat_10%,LNL,A0,70.01,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_BFloat_20%,LNL,A0,96.71,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_BFloat_30%,LNL,A0,110.32,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_BFloat_45%,LNL,A0,120.75,syn,1,Derived from Durgesh/Volley measurement on Xe2 scaled with 0.8 for 20% improvement for BNA4 and scaled by (1/0.84) for N7 process and 1.07x for compensating the 0.93 scaler at GT level in Blizzard
+ExtraPipe_DPAS_Float_10%,LNL,A0,71.77,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_Float_20%,LNL,A0,92.11,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_Float_30%,LNL,A0,109.65,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_Float_45%,LNL,A0,125.35,syn,1,Derived from Durgesh/Volley measurement on Xe2 scaled with 0.8 for 20% improvement for BNA4 and scaled by (1/0.84) for N7 process and 1.07x for compensating the 0.93 scaler at GT level in Blizzard
+ExtraPipe_DPAS_SInt4_10%,LNL,A0,52.94,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_SInt4_20%,LNL,A0,67.98,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_SInt4_30%,LNL,A0,73.45,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_SInt4_45%,LNL,A0,86.86,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_SInt8_10%,LNL,A0,52.59,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_SInt8_20%,LNL,A0,66.31,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_SInt8_30%,LNL,A0,72.43,syn,1,Derived from the 45% TR value by proportional scaling use of same ratios for scaling as in DG2
+ExtraPipe_DPAS_SInt8_45%,LNL,A0,83.05,syn,1,Derived from Durgesh/Volley measurement on Xe2 scaled with 0.8 for 20% improvement for BNA4 and scaled by (1/0.84) for N7 process and 1.07x for compensating the 0.93 scaler at GT level in Blizzard
+ExtraPipe_DPAS_UInt4_10%,LNL,A0,44.21,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt4_20%,LNL,A0,52.47,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt4_30%,LNL,A0,58.95,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt4_45%,LNL,A0,64.8,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt8_10%,LNL,A0,50.24,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt8_20%,LNL,A0,67.16,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt8_30%,LNL,A0,72.19,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_UInt8_45%,LNL,A0,79.19,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"

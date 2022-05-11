@@ -15,5 +15,7 @@
 
 #Generic
         PS2_CAM_ROGT          = (computeFlag == 0) ? numGTI/maxGTI : 0 
-        PS2_CAM_COMPUTE_ROGT  = (computeFlag == 1) ? numGTI/maxGTI : 0 
-        PS2_CAM_OTHER_INFRA = numGTI/maxGTI  
+        PS2_CAM_COMPUTE_ROGT  =  numGTI/maxGTI
+        PS2_CAM_OTHER_INFRA = (numGTI/maxGTI)*(numEUs/512)  
+        PS2_CAM_COMP_INFRA = 1
+        PS2_CAM_COMPRESSION = (D(GTI_READ) + D(GTI_WRITE))/ 512 
