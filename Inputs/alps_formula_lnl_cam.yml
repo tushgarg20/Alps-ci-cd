@@ -82,10 +82,6 @@ EU:
   TC:
     PS2_TC:
       PS2_TC_1Dispatch: R * C
-
-  INFRA:
-    PS2_EU_INFRA: R * C
-    PS2_EU_SYST_INFRA: R * C
     
 GA_toggle_rate: R
 FPU1_toggle_rate: R
@@ -98,8 +94,8 @@ L3_Bank:
     PS2_CAM_L3_BANK: R * C
     PS2_CAM_L3_NODE: R * C
     PS2_CAM_L3_INFRA: R * C
-    PS2_CAM_L3_FABRICS: R * C
-    PS2_CAM_NODEX: R * C
+    PS2_CAM_ARB: R * C
+    PS2_CAM_ARB_INFRA: R * C
 
 FabricsSpine:
   SpineCompute:
@@ -107,9 +103,10 @@ FabricsSpine:
 
 Other:
   Others: 
-    PS2_CAM_ROGT: R * C
     PS2_CAM_COMPUTE_ROGT: R * C
     PS2_CAM_OTHER_INFRA: R * C
+    PS2_CAM_COMPRESSION: R * C
+    PS2_CAM_COMP_INFRA: R * C
 
 GAM: 
  GAMFTLB:
@@ -118,18 +115,13 @@ GAM:
  SQIDI:
     PS2_CAM_SQIDI: R * C
     PS2_CAM_SQIDI_INFRA: R * C
-    PS2_CAM_CC: R * C
-    PS2_GA_SQIDI_RPT: R * C 
 
 LSC:
    LSC:
-    PS2_CAM_LSC_L1_CACHE: R * C
-    PS2_CAM_LSC_SLM: R * C
+    PS2_CAM_LSC: R * C
     PS0_CAM_LSC: R * C
-
 
 ROW:
    ROW:
     PS2_CAM_ROW: R * C
-    PS2_CAM_ROW_GEMM: R * C
     PS2_CAM_ROW_INFRA: R * C
