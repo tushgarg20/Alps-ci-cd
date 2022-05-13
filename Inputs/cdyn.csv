@@ -10276,3 +10276,15 @@ ExtraPipe_DPAS_UInt8_10%,LNL,A0,50.24,syn,1,"Derived from DG2 with a 0.77 scaler
 ExtraPipe_DPAS_UInt8_20%,LNL,A0,67.16,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
 ExtraPipe_DPAS_UInt8_30%,LNL,A0,72.19,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
 ExtraPipe_DPAS_UInt8_45%,LNL,A0,79.19,syn,1,"Derived from DG2 with a 0.77 scaler , refer LNL_configs.xlsx"
+ExtraPipe_DPAS_BFloat_10%,Xe2_BNA4_Plan,A0,50.14,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_BFloat_20%,Xe2_BNA4_Plan,A0,69.28,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_BFloat_30%,Xe2_BNA4_Plan,A0,79.03,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_BFloat_45%,Xe2_BNA4_Plan,A0,86.5,syn,1,Durgesh/Volley estimate CDYN 22ww20 with an additional 27% reduction for BNA4
+ExtraPipe_DPAS_Float_10%,Xe2_BNA4_Plan,A0,51.62,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_Float_20%,Xe2_BNA4_Plan,A0,66.25,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_Float_30%,Xe2_BNA4_Plan,A0,78.86,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_Float_45%,Xe2_BNA4_Plan,A0,90.15,syn,1,Durgesh/Volley estimate CDYN 22ww20 with an additional 27% reduction for BNA4
+ExtraPipe_DPAS_SInt8_10%,Xe2_BNA4_Plan,A0,37.68,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_SInt8_20%,Xe2_BNA4_Plan,A0,47.51,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_SInt8_30%,Xe2_BNA4_Plan,A0,51.89,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20
+ExtraPipe_DPAS_SInt8_45%,Xe2_BNA4_Plan,A0,59.5,syn,1,Durgesh/Volley estimate CDYN 22ww20 with an additional 27% reduction for BNA4
