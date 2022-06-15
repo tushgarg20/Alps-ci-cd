@@ -109,61 +109,61 @@ die "Illegal output directory specification: $odir!!" unless -e $odir and -d $od
 if ($runLocal) {warn "--pool and --qslot options will be ignored\n";}
 
 my $script = ($runLocal) ? $sdir . "run_alps.py" : $sdir . "run_alps_nb.py";
-my $cfg_file = ($annealing) ? $sdir . "alps_cfg_annealing.yaml" : $sdir . "alps_cfg.yaml";
-$cfg_file = ($cnl) ? $sdir . "alps_cfg_cnl.yaml" : $cfg_file;
-$cfg_file = ($icl) ? $sdir . "alps_cfg_icl.yaml" : $cfg_file;
-$cfg_file = ($icllp) ? $sdir . "alps_cfg_icllp.yaml" : $cfg_file;
-$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl.yaml" : $cfg_file;
-$cfg_file = ($adl) ? $sdir . "alps_cfg_adl.yaml" : $cfg_file;
-$cfg_file = ($reduced && $tgl) ? $sdir . "alps_cfg_tgl_reduced.yaml" : $cfg_file;
-$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp.yaml" : $cfg_file;
-$cfg_file = ($tglhp_512) ? $sdir . "alps_cfg_tglhp_512.yaml" : $cfg_file;
-$cfg_file = ($tglhp_384) ? $sdir . "alps_cfg_tglhp_384.yaml" : $cfg_file;
-$cfg_file = ($tgldg) ? $sdir . "alps_cfg_tgldg.yaml" : $cfg_file;
-$cfg_file = ($pvc_scaled) ? $sdir . "alps_cfg_pvc_scaled.yaml" : $cfg_file;
-$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc.yaml" : $cfg_file;
-$cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_a21.yaml" : $cfg_file;
+my $cfg_file = ($annealing) ? $sdir . "cfg/" ."alps_cfg_annealing.yaml" : $sdir . "cfg/" ."alps_cfg.yaml";
+$cfg_file = ($cnl) ? $sdir . "cfg/" ."alps_cfg_cnl.yaml" : $cfg_file;
+$cfg_file = ($icl) ? $sdir . "cfg/" ."alps_cfg_icl.yaml" : $cfg_file;
+$cfg_file = ($icllp) ? $sdir . "cfg/" ."alps_cfg_icllp.yaml" : $cfg_file;
+$cfg_file = ($tgl) ? $sdir . "cfg/" ."alps_cfg_tgl.yaml" : $cfg_file;
+$cfg_file = ($adl) ? $sdir . "cfg/" ."alps_cfg_adl.yaml" : $cfg_file;
+$cfg_file = ($reduced && $tgl) ? $sdir . "cfg/" ."alps_cfg_tgl_reduced.yaml" : $cfg_file;
+$cfg_file = ($tglhp) ? $sdir . "cfg/" ."alps_cfg_tglhp.yaml" : $cfg_file;
+$cfg_file = ($tglhp_512) ? $sdir . "cfg/" ."alps_cfg_tglhp_512.yaml" : $cfg_file;
+$cfg_file = ($tglhp_384) ? $sdir . "cfg/" ."alps_cfg_tglhp_384.yaml" : $cfg_file;
+$cfg_file = ($tgldg) ? $sdir . "cfg/" ."alps_cfg_tgldg.yaml" : $cfg_file;
+$cfg_file = ($pvc_scaled) ? $sdir . "cfg/" ."alps_cfg_pvc_scaled.yaml" : $cfg_file;
+$cfg_file = ($pvc) ? $sdir . "cfg/" ."alps_cfg_pvc.yaml" : $cfg_file;
+$cfg_file = ($pvc_a21) ? $sdir . "cfg/" ."alps_cfg_pvc_a21.yaml" : $cfg_file;
 
 
 if ($method){
     if ($method eq "cam"){
-	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvc2) ? $sdir . "alps_cfg_pvc2_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvcxttrend) ? $sdir . "alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
-	$cfg_file = ($rlt1) ? $sdir . "alps_cfg_rlt1_cam.yaml" : $cfg_file;
-	$cfg_file = ($xe3_xpc) ? $sdir . "alps_cfg_xe3_xpc_cam.yaml" : $cfg_file;
-	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_rltconcept_cam.yaml" : $cfg_file;
-	$cfg_file = ($rltb_ec_0_5) ? $sdir . "alps_cfg_rltb_ec_0_5_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvck2xsa) ? $sdir . "alps_cfg_pvck2xsa_cam.yaml" : $cfg_file;
-	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_cam.yaml" : $cfg_file;
-	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_cam.yaml" : $cfg_file;
-	$cfg_file = ($ptl) ? $sdir . "alps_cfg_ptl_cam.yaml" : $cfg_file;
-	$cfg_file = ($pvc_a21) ? $sdir . "alps_cfg_pvc_cam.yaml" : $cfg_file;
-	$cfg_file = ($dg2) ? $sdir . "alps_cfg_tgldg2_cam.yaml" : $cfg_file;
-	$cfg_file = ( $tglhp) ? $sdir . "alps_cfg_tglhp_cam.yaml" : $cfg_file;
-	$cfg_file = ($dg2p5) ? $sdir . "alps_cfg_dg2p5_cam.yaml" : $cfg_file;
-	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_cam.yaml" : $cfg_file;
-	$cfg_file = ($adl) ? $sdir . "alps_cfg_adl_cam.yaml" : $cfg_file;
-	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_cam.yaml" : $cfg_file;
-	$cfg_file = ($xe2_plan) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
-	$cfg_file = ($xe2_bna4_plan) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
-	$cfg_file = ($xe2) ? $sdir . "alps_cfg_xe2_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvc) ? $sdir . "cfg/" ."alps_cfg_pvc_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvc2) ? $sdir . "cfg/" ."alps_cfg_pvc2_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvcdp) ? $sdir . "cfg/" ."alps_cfg_pvcdp_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvcxt) ? $sdir . "cfg/" ."alps_cfg_pvcxt_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvcxttrend) ? $sdir . "cfg/" ."alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
+	$cfg_file = ($rlt1) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe3_xpc) ? $sdir . "cfg/" ."alps_cfg_xe3_xpc_cam.yaml" : $cfg_file;
+	$cfg_file = ($rltconcept) ? $sdir . "cfg/" ."alps_cfg_rltconcept_cam.yaml" : $cfg_file;
+	$cfg_file = ($rltb_ec_0_5) ? $sdir . "cfg/" ."alps_cfg_rltb_ec_0_5_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvck2xsa) ? $sdir . "cfg/" ."alps_cfg_pvck2xsa_cam.yaml" : $cfg_file;
+	$cfg_file = ($mtl) ? $sdir . "cfg/" ."alps_cfg_mtl_cam.yaml" : $cfg_file;
+	$cfg_file = ($lnl) ? $sdir . "cfg/" ."alps_cfg_lnl_cam.yaml" : $cfg_file;
+	$cfg_file = ($ptl) ? $sdir . "cfg/" ."alps_cfg_ptl_cam.yaml" : $cfg_file;
+	$cfg_file = ($pvc_a21) ? $sdir . "cfg/" ."alps_cfg_pvc_cam.yaml" : $cfg_file;
+	$cfg_file = ($dg2) ? $sdir . "cfg/" ."alps_cfg_tgldg2_cam.yaml" : $cfg_file;
+	$cfg_file = ( $tglhp) ? $sdir . "cfg/" ."alps_cfg_tglhp_cam.yaml" : $cfg_file;
+	$cfg_file = ($dg2p5) ? $sdir . "cfg/" ."alps_cfg_dg2p5_cam.yaml" : $cfg_file;
+	$cfg_file = ($tgl) ? $sdir . "cfg/" ."alps_cfg_tgl_cam.yaml" : $cfg_file;
+	$cfg_file = ($adl) ? $sdir . "cfg/" ."alps_cfg_adl_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe3) ? $sdir . "cfg/" ."alps_cfg_xe3_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe2_plan) ? $sdir . "cfg/" ."alps_cfg_xe2_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe2_bna4_plan) ? $sdir . "cfg/" ."alps_cfg_xe2_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe2) ? $sdir . "cfg/" ."alps_cfg_xe2_cam.yaml" : $cfg_file;
     }else{
-	$cfg_file = ($tglhp) ? $sdir . "alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($tgl) ? $sdir . "alps_cfg_tgl_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($pvc) ? $sdir . "alps_cfg_pvc_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($dg2) ? $sdir . "alps_cfg_dg2_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($xe2) ? $sdir . "alps_cfg_xe2_kaolin.yaml" : $cfg_file;
-    	$cfg_file = ($mtl) ? $sdir . "alps_cfg_mtl_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($xe3) ? $sdir . "alps_cfg_xe3_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($pvcdp) ? $sdir . "alps_cfg_pvcdp_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($pvcxt) ? $sdir . "alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($pvcxttrend) ? $sdir . "alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($rltconcept) ? $sdir . "alps_cfg_pvck2xeu_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($rltb_ec_0_5) ? $sdir . "alps_cfg_rltb_ec_0_5_kaolin.yaml" : $cfg_file;
-	$cfg_file = ($lnl) ? $sdir . "alps_cfg_lnl_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($tglhp) ? $sdir . "cfg/" ."alps_cfg_tglhp_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($tgl) ? $sdir . "cfg/" ."alps_cfg_tgl_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvc) ? $sdir . "cfg/" ."alps_cfg_pvc_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($dg2) ? $sdir . "cfg/" ."alps_cfg_dg2_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($xe2) ? $sdir . "cfg/" ."alps_cfg_xe2_kaolin.yaml" : $cfg_file;
+    	$cfg_file = ($mtl) ? $sdir . "cfg/" ."alps_cfg_mtl_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($xe3) ? $sdir . "cfg/" ."alps_cfg_xe3_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvcdp) ? $sdir . "cfg/" ."alps_cfg_pvcdp_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvcxt) ? $sdir . "cfg/" ."alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($pvcxttrend) ? $sdir . "cfg/" ."alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($rltconcept) ? $sdir . "cfg/" ."alps_cfg_pvck2xeu_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($rltb_ec_0_5) ? $sdir . "cfg/" ."alps_cfg_rltb_ec_0_5_kaolin.yaml" : $cfg_file;
+	$cfg_file = ($lnl) ? $sdir . "cfg/" ."alps_cfg_lnl_kaolin.yaml" : $cfg_file;
     }
 }
 
