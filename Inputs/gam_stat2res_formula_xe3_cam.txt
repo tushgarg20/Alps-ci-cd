@@ -1,0 +1,12 @@
+#Unit	GSIM residency			Comments
+        .CrClk	=	D(MAX_CYCLES)
+        num_GAM_SQIDI        =       D(knob.numSQIDI)
+#Generic				
+        PS2_CAM_BASE_SQIDI       =  (D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI)
+        PS2_CAM_BASE_SQIDI_INFRA =  1
+        PS2_CAM_BASE_COMP_INFRA  =  1
+        PS2_CAM_BASE_COMPRESSION =  (D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI)
+        PS2_CAM_BASE_HM       =  4*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI)
+        PS2_CAM_BASE_HM_INFRA =  4 
+        
+ 

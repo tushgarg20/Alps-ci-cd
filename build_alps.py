@@ -111,6 +111,13 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='Xe3_XPC':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_XPC'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_XPC'] }
+  elif cfg =='Xe3_FCS_SW':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS', 'Xe3_FCS_SW'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_FCS', 'Xe3_FCS_SW'] }
+
+  elif cfg =='Xe3_FCS':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_FCS'] }
   elif cfg =='RLTCONCEPT':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'RLTCONCEPT'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'RLTCONCEPT'] }
@@ -192,7 +199,11 @@ elif common_cfg.find('pvcdp') > -1 :
 elif common_cfg.find('pvcxttrend') > -1 :
     cfg ='PVCXTTrend'
 elif common_cfg.find('rlt1') > -1 :
-    cfg ='RLT1'  
+    cfg ='RLT1' 
+elif common_cfg.find('xe3_fcs_sw') > -1 :
+    cfg ='Xe3_FCS_SW'   
+elif common_cfg.find('xe3_fcs') > -1 :
+    cfg ='Xe3_FCS'    
 elif common_cfg.find('xe3_xpc') > -1 :
     cfg ='Xe3_XPC'    
 elif common_cfg.find('pvcxt') > -1 :
@@ -275,6 +286,10 @@ elif common_cfg.find('pvcxttrend') > -1 :
     cfg_gc = "PVCXTTrend"
 elif common_cfg.find('rlt1') > -1 :
     cfg_gc = "RLT1"
+elif common_cfg.find('xe3_fcs') > -1 :
+    cfg_gc = "Xe3_FCS"
+elif common_cfg.find('xe3_fcs_sw') > -1 :
+    cfg_gc = "Xe3_FCS_SW"
 elif common_cfg.find('xe3_xpc') > -1 :
     cfg_gc = "Xe3_XPC"
 elif common_cfg.find('rltconcept') > -1 :
@@ -324,7 +339,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe2_BNA4_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'Xe3_XPC' or cfg == 'RLTCONCEPT' or cfg == 'PVCK2xSA' or cfg == 'RLTB_EC_0_5' or cfg == 'Xe2_HPG'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe2_BNA4_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'Xe3_FCS' or cfg == 'Xe3_FCS_SW' or cfg == 'Xe3_XPC' or cfg == 'RLTCONCEPT' or cfg == 'PVCK2xSA' or cfg == 'RLTB_EC_0_5' or cfg == 'Xe2_HPG'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -902,7 +917,7 @@ key_stats['key_stats']['Operating Voltage'] = operating_voltage
 key_stats['key_stats']['Voltage dependent Cdyn Scaling Factor'] = voltage_cdyn_scaling_factor
 
 for path in output_list:
-    #print(path)
+    print(path)
     path[-1] = eval_formula(path)
     d = output_yaml_data['ALPS Model(pF)']['GT']
     cdyn_d = output_cdyn_data['GT']
@@ -1160,6 +1175,56 @@ if (common_cfg.find('rlt') > -1) or (common_cfg.find('pvc') > -1):
 
         gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
         gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+
+if (common_cfg == 'xe3_fcs'):
+    if (options.method == 'cam'):
+        #Calculating Chiplet_Cdyn and Base_Cdyn
+        Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROW']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['CSC']['total']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOVEROS']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOV_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_SPINE_INFRA'])]
+        Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
+        Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+
+        Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
+
+        Base_Cdyn = round(Base_Cdyn, 3)
+
+        gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+        gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+
+if (common_cfg == 'xe3_fcs_sw'):
+    if (options.method == 'cam'):
+        #Calculating Chiplet_Cdyn and Base_Cdyn
+        Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROW']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['CSC']['total']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOVEROS']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOV_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_SPINE_INFRA'])]
+        Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
+        Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+
+        SW_Die_Cdyn = [float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['SWDie']['PS2_CAM_SW_DIE_FOVEROS']),
+                       float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['SWDie']['PS2_CAM_SW_DIE_FOV_INFRA'])]
+        SW_Die_Cdyn = sum(SW_Die_Cdyn) / 1000
+        SW_Die_Cdyn = round(SW_Die_Cdyn,3)
+
+        Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn - SW_Die_Cdyn
+
+        Base_Cdyn = round(Base_Cdyn, 3)
+
+        gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+        gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+        gt_cdyn['Total_SW_Die_Cdyn(nF)'] = SW_Die_Cdyn
 
 ####################################
 # Generating output YAML file
