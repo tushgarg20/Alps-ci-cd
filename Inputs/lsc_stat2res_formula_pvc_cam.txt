@@ -7,12 +7,13 @@
 
 #SLM				
 	.temp_fe_per_be	=	knob.SLM.BE.numIoRows
-	num_DSSC_SLMBE	=       D(knob.numDSSC)	
-	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC_SLMBE
+	num_DSSC	=       D(knob.numDSSC)	
+	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC
 
 
         #PS2_CAM_LSC_L1_CACHE = D(HDC_READ)/512 + D(HDC_WRITE)/512
-        PS2_CAM_COMPUTE_LSC  = D(HDC_READ)/(8 * numLSCs) + D(HDC_WRITE)/( 8 * numLSCs)
+        #BW from CAM/Archbench is per DSS for LSC 512 B Read and 256 B per Write
+        PS2_CAM_COMPUTE_LSC  = D(HDC_READ)/512  + D(HDC_WRITE)/ 256 
         PS2_CAM_COMPUTE_LSC_INFRA  = 1 
         PS2_CAM_COMPUTE_HDC_INFRA  = 1 
         #PS2_CAM_LSC_SLM      = D(SLM_READ)/512 + D(SLM_WRITE)/512
