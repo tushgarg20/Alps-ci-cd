@@ -11,5 +11,5 @@
 #Generic
         #PS2_CAM_ROW        =  SYS_Utilization
         #PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0
-        PS2_CAM_COMPUTE_ROW   = D(HDC_READ)/(8 * num_ROW_ROW) + D(HDC_WRITE)/(8 * num_ROW_ROW)
+        PS2_CAM_COMPUTE_ROW   = D(HDC_READ)/512 + D(HDC_WRITE)/256
         PS2_CAM_COMPUTE_ROW_INFRA = 1

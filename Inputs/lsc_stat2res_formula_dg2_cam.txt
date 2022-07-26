@@ -14,5 +14,5 @@
         PS2_CAM_LSC_L1_CACHE = D(HDC_READ)/256 + D(HDC_WRITE)/256
         PS2_CAM_LSC_SLM      = D(SLM_READ)/256 + D(SLM_WRITE)/256
         PS0_CAM_LSC          = 1
-        PS2_CAM_LSC          = D(HDC_READ)/(8*numLSCs) + D(HDC_WRITE)/(8*numLSCs)
+        PS2_CAM_LSC          = D(HDC_READ)/256 + D(HDC_WRITE)/128
         PS2_CAM_HDC_INFRA    = 1

@@ -9,6 +9,6 @@
         EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
 
 #Generic
-        PS2_CAM_ROW        =  D(HDC_READ)/(8*numLSCs) + D(HDC_WRITE)/(8*numLSCs)
+        PS2_CAM_ROW        =  D(HDC_READ)/256 + D(HDC_WRITE)/128
         PS2_CAM_ROW_GEMM   =  (SYS_Utilization < 0.1) ? D(FPU0_UTILIZATION):0
         PS2_CAM_ROW_INFRA  =  1
