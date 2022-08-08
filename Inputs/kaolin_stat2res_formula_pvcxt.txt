@@ -24,11 +24,11 @@
     num_ROSC_WMFE = num_Slices
     num_ROSS_MA_TDL = num_DSS * 4 #numEURows = 4
     num_LSC_L1 = model.NumSlices * model.NumDss  # temporary hack
-	num_L3_Bank_LTCD_Data = model.NumSlices * model.NumDss
-	num_L3Node_Node = model.NumSlices
-	num_Fabric_Fabrics = model.NumSlices
-    num_L3_Slices = model.NumSlices 
-    num_L3_Bank_Foveros = model.NumSlices * model.NumDss
+	num_L3_Bank_LTCD_Data = model.L3Banks * model.NumNodes
+	num_L3Node_Node = model.NumNodes
+	num_Fabric_Fabrics = model.NumNodes
+    	num_L3_Slices = model.NumSlices 
+    	num_L3_Bank_Foveros = num_L3_Bank_LTCD_Data
 
 	num_Sampler_SC = model.NumSlices * model.NumDss
 	num_Sampler_Main = model.NumSlices * model.NumDss
