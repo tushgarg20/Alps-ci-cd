@@ -175,7 +175,7 @@
     #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
     PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Write\..*\.Req')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.URB\.Write(NoResp)?\..*\.Req')) / (.CrClk * num_LSC_L1)
     PS2_LSC = PS2_LSC_Read + PS2_LSC_Write
 
     PS2_LSC_Idle = 1- PS2_LSC

@@ -170,6 +170,10 @@ FPU0_toggle_rate: R
 DPAS_toggle_rate: R
 Bypass_factor: R
 
+RT:
+  RTA:
+    PS2_RT: R * C
+
 L3_Bank:
   LTCD_Data:
     PS2_L3_Active: R * C

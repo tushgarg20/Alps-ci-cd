@@ -251,7 +251,8 @@ L3Node:
     PS2_L3Node_Idle: R * C
 LSC:
   L1:
-    PS2_LSC: R * C
+    PS2_LSC_Read: R * C
+    PS2_LSC_Write: R * C
     PS2_LSC_Idle: R * C
 
 Other:

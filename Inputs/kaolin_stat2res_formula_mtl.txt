@@ -39,7 +39,7 @@
 	num_Other_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
-
+        num_RT_RTA = model.NumSlices * model.NumDss
 		
 #Generic				
 	 .CrClk	=	D(model.CrClock)	
@@ -74,6 +74,9 @@
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
     PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
+
+#RT
+    PS2_RT = D(SUM('Rta\.\d+\.\d+\.\d+\.RtfReq'))/ (.CrClk * num_RT_RTA)
 
 #FF 
     PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
