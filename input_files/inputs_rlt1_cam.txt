@@ -1,4 +1,4 @@
-ALPS_formula_file = Inputs/alps_formula_pvcxt_cam.yml
+ALPS_formula_file = Inputs/alps_formula_rlt1_cam.yml
 Cdyn = Inputs/cdyn.csv
 GateCount = Inputs/gc.csv
 Process_Scaling_Factors = Inputs/process_cam.csv
