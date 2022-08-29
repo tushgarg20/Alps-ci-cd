@@ -97,6 +97,8 @@ Bypass_factor: R
 
 CSC:
   L2:
+   PS2_CAM_L2_0.5MB: R * C
+   PS2_CAM_L2_0.5MB_INFRA: R * C
    PS2_CAM_L2_1MB: R * C
    PS2_CAM_L2_1MB_INFRA: R * C
    PS2_CAM_L2_2MB: R * C

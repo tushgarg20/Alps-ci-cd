@@ -1289,14 +1289,16 @@ ExtraPipe_DPAS_SInt8_10%,Xe2_BNA4_Plan,A0,37.68,syn,1,Scaled CDYN wt based on 45
 ExtraPipe_DPAS_SInt8_20%,Xe2_BNA4_Plan,A0,47.51,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20,
 ExtraPipe_DPAS_SInt8_30%,Xe2_BNA4_Plan,A0,51.89,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20,
 ExtraPipe_DPAS_SInt8_45%,Xe2_BNA4_Plan,A0,59.5,syn,1,Durgesh/Volley estimate CDYN 22ww20 with an additional 27% reduction for BNA4,
+PS2_CAM_L2_0.5MB,Xe3_FCS,A0,465.386,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
 PS2_CAM_L2_1MB,Xe3_FCS,A0,489.88,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 1MB L2 size, per bank
+PS2_CAM_L2_0.5MB_INFRA,Xe3_FCS,A0,33.212,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
 PS2_CAM_L2_1MB_INFRA,Xe3_FCS,A0,34.96,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 1MB L2 size, per bank
 PS2_CAM_L2_2MB,Xe3_FCS,A0,533.49,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 2MB L2 size, per bank
 PS2_CAM_L2_2MB_INFRA,Xe3_FCS,A0,38.98,syn,1,Amit's 22ww27 indicator release with trendline estimates for given WLs for 2MB L2 size, per bank
 PS2_CAM_L2_4MB,Xe3_FCS,A0,891.22,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 4MB L2 size, per bank
 PS2_CAM_L2_4MB_INFRA,Xe3_FCS,A0,42.37,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 4MB L2 size, per bank
-PS2_CAM_Xe2_TLB,Xe3_FCS,A0,736.46,syn,1,Amit's 22ww27 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
-PS2_CAM_Xe2_TLB_INFRA,Xe3_FCS,A0,338.8,syn,1,Amit's 22ww27 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
+PS2_CAM_Xe2_TLB,Xe3_FCS,A0,1472.92,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
+PS2_CAM_Xe2_TLB_INFRA,Xe3_FCS,A0,537.82,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
 PS2_CAM_Node_Fabric,Xe3_FCS,A0,1025.19,syn,1,Amit's 22ww27 indicator release for given WLs averaged per 16/20/24 bank cases, cdyn wt calculated per L2  node
 PS2_CAM_Node_Fabric_INFRA,Xe3_FCS,A0,125.89,syn,1,Amit's 22ww27 indicator release for given WLs averaged per 16/20/24 bank cases, cdyn wt calculated per L2 node 
 PS2_CAM_COMPUTE_FOV_INFRA,Xe3_FCS,C0,71.3,syn,0,Calculated from latest PVCXT (21ww22) with a bankcount speficic scaler given in Amit's 22ww27 Xe3 indicator,

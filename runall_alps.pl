@@ -42,6 +42,7 @@ my $pvcdp                       = '';
 my $pvcxt                       = ''; 
 my $pvcxttrend                  = '';
 my $rlt1                        = ''; 
+my $rlt_plan                    = ''; 
 my $xe3_xpc                     = ''; 
 my $rltconcept                  = ''; 
 my $rltb_ec_0_5                 = ''; 
@@ -98,6 +99,7 @@ Getopt::Long::GetOptions(
 	"pvcxt"	=> \$pvcxt,
 	"pvcxttrend"	=> \$pvcxttrend,
         "rlt1"          => \$rlt1,
+        "rlt_plan"      => \$rlt_plan,
         "xe3_xpc"       => \$xe3_xpc,
 	"rltconcept"	=> \$rltconcept,
 	"rltb_ec_0_5"	=> \$rltb_ec_0_5,
@@ -139,6 +141,7 @@ if ($method){
 	$cfg_file = ($pvcxt) ? $sdir . "cfg/" ."alps_cfg_pvcxt_cam.yaml" : $cfg_file;
 	$cfg_file = ($pvcxttrend) ? $sdir . "cfg/" ."alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
 	$cfg_file = ($rlt1) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
+	$cfg_file = ($rlt_plan) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_sw) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_sw_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_xpc) ? $sdir . "cfg/" ."alps_cfg_xe3_xpc_cam.yaml" : $cfg_file;

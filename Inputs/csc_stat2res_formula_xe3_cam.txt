@@ -8,12 +8,15 @@
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
+        L2_0.5MB_Flag                   =       (L2_Cache_Size == 0.5) ? 1 : 0
         L2_1MB_Flag                     =       (L2_Cache_Size == 1) ? 1 : 0
         L2_2MB_Flag                     =       (L2_Cache_Size == 2) ? 1 : 0
         L2_4MB_Flag                     =       (L2_Cache_Size == 4) ? 1 : 0
+        PS2_CAM_L2_0.5MB           =       L2_0.5MB_Flag * (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))
         PS2_CAM_L2_1MB             =       L2_1MB_Flag * (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))
         PS2_CAM_L2_2MB             =       L2_2MB_Flag * (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))
         PS2_CAM_L2_4MB             =       L2_4MB_Flag * (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))
+        PS2_CAM_L2_0.5MB_INFRA     =       L2_0.5MB_Flag * 1
         PS2_CAM_L2_1MB_INFRA       =       L2_1MB_Flag * 1
         PS2_CAM_L2_2MB_INFRA       =       L2_2MB_Flag * 1 
         PS2_CAM_L2_4MB_INFRA       =       L2_4MB_Flag * 1
