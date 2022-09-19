@@ -104,14 +104,14 @@
         PS2_EU_FPU1   = INT_total_count/CrClocks
         EM_transc_fp32 = D(EM_math)/CrClocks
         ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
-        #ExtraPipe_DPAS_Float8 =  D(SYS_FP8)/CrClocks / DPAS_Scaler
+        ExtraPipe_DPAS_Float8 =  D(SYS_FP8)/CrClocks / DPAS_Scaler
         ExtraPipe_DPAS_TFloat32 =  D(SYS_TF32)/CrClocks / DPAS_Scaler
         ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
         ExtraPipe_DPAS_SInt8 = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
-        #ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
-        #ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
-        #ExtraPipe_DPASW_SInt8 = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
-        #ExtraPipe_DPASW_UInt8 = (Sign_Flag == 0) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_SInt8 = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_UInt8 = (Sign_Flag == 0) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
         ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
         ExtraPipe_DPAS_BF8 =  D(SYS_BF8)/CrClocks  / DPAS_Scaler
         ExtraPipe_DPAS_HF8 =  D(SYS_HF8)/CrClocks  / DPAS_Scaler

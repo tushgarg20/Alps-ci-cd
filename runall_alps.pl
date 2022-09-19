@@ -6,36 +6,36 @@ use POSIX;
 ##################################################
 # Knobs and Cmdline Processing
 ##################################################
-my $tracelist		= "";
-my $odir			= "";
-my $cmp				= '';
-my $sdir			= "";
-my $arch			= '';
-my $method			= '';
-my $pool			= '';
-my $qslot			= '';
-my $runLocal			= '';
-my $annealing		= '';
-my $cnl				= '';
-my $icl				= '';
-my $icllp			= '';
-my $tgl				= '';
-my $adl				= '';
-my $reduced			= '';
-my $tglhp_512			= '';
-my $tglhp_384			= '';
-my $tglhp			= '';
-my $cam 			= '';
-my $pvc				= '';
-my $kaolin			= '';
-my $tgldg			= '';
-my $pvc_scaled			= '';
-my $dg2			        = '';
-my $dg2p5			= '';
-my $xe2_plan			= '';
-my $xe2_bna4_plan		= '';
-my $xe2				= '';
-my $xe3				= '';
+my $tracelist					= "";
+my $odir						= "";
+my $cmp							= '';
+my $sdir						= "";
+my $arch						= '';
+my $method						= '';
+my $pool						= '';
+my $qslot						= '';
+my $runLocal					= '';
+my $annealing					= '';
+my $cnl							= '';
+my $icl							= '';
+my $icllp						= '';
+my $tgl							= '';
+my $adl							= '';
+my $reduced						= '';
+my $tglhp_512					= '';
+my $tglhp_384					= '';
+my $tglhp						= '';
+my $cam 						= '';
+my $pvc							= '';
+my $kaolin						= '';
+my $tgldg						= '';
+my $pvc_scaled					= '';
+my $dg2			       			= '';
+my $dg2p5						= '';
+my $xe2_plan					= '';
+my $xe2_bna4_plan				= '';
+my $xe2							= '';
+my $xe3							= '';
 my $pvc_a21                     = '';
 my $pvc2                        = ''; 
 my $pvcdp                       = ''; 
@@ -61,7 +61,7 @@ Getopt::Long::GetOptions(
     "input|i=s"		=> \$tracelist,
 	"sdir|s=s"		=> \$sdir,
 	"odir|o=s"		=> \$odir,
-	"compressed"		=> \$cmp,
+	"compressed"	=> \$cmp,
 	"arch|a=s"		=> \$arch,
 	"method|m=s"	=> \$method,
 	"pool|p=s"		=> \$pool,
@@ -73,38 +73,38 @@ Getopt::Long::GetOptions(
 	"icllp"			=> \$icllp,
 	"tgl"			=> \$tgl,
 	"adl"			=> \$adl,
-        "reduced"		=> \$reduced,
+    "reduced"		=> \$reduced,
 	"tglhp"			=> \$tglhp,
-        "pvc"			=> \$pvc,
-	"cam"		=> \$cam,
+    "pvc"			=> \$pvc,
+	"cam"			=> \$cam,
 	"kaolin"		=> \$kaolin,
 	"tglhp_512"		=> \$tglhp_512,
 	"tglhp_384"		=> \$tglhp_384,
 	"tgldg"			=> \$tgldg,
-	"dg2"		=> \$dg2,
-	"dg2p5"		=> \$dg2p5,
-	"xe2_plan"	=> \$xe2_plan,
+	"dg2"			=> \$dg2,
+	"dg2p5"			=> \$dg2p5,
+	"xe2_plan"		=> \$xe2_plan,
 	"xe2_bna4_plan"	=> \$xe2_bna4_plan,
-	"xe2"		=> \$xe2,
-	"xe3"		=> \$xe3,
-	"xe3_fcs"	=> \$xe3_fcs,
+	"xe2"			=> \$xe2,
+	"xe3"			=> \$xe3,
+	"xe3_fcs"		=> \$xe3_fcs,
 	"xe3_fcs_sw"	=> \$xe3_fcs_sw,
-	"mtl"		=> \$mtl,
-	"lnl"		=> \$lnl,
-	"ptl"		=> \$ptl,
-	"cpl"		=> \$cpl,
-	"pvc_scaled"		=> \$pvc_scaled,
-	"pvc2"		=> \$pvc2,
-	"pvcdp"	=> \$pvcdp,
-	"pvcxt"	=> \$pvcxt,
+	"mtl"			=> \$mtl,
+	"lnl"			=> \$lnl,
+	"ptl"			=> \$ptl,
+	"cpl"			=> \$cpl,
+	"pvc_scaled"	=> \$pvc_scaled,
+	"pvc2"			=> \$pvc2,
+	"pvcdp"			=> \$pvcdp,
+	"pvcxt"			=> \$pvcxt,
 	"pvcxttrend"	=> \$pvcxttrend,
-        "rlt1"          => \$rlt1,
-        "rlt_plan"      => \$rlt_plan,
-        "xe3_xpc"       => \$xe3_xpc,
+    "rlt1"      	=> \$rlt1,
+    "rlt_plan"  	=> \$rlt_plan,
+    "xe3_xpc"   	=> \$xe3_xpc,
 	"rltconcept"	=> \$rltconcept,
 	"rltb_ec_0_5"	=> \$rltb_ec_0_5,
-	"pvck2xsa"	=> \$pvck2xsa,
-        "pvc_a21"       => \$pvc_a21 
+	"pvck2xsa"		=> \$pvck2xsa,
+    "pvc_a21"       => \$pvc_a21 
 
 ) or Pod::Usage::pod2usage(-exitstatus => 1, -verbose =>1);
 
@@ -168,7 +168,7 @@ if ($method){
 	$cfg_file = ($pvc) ? $sdir . "cfg/" ."alps_cfg_pvc_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($dg2) ? $sdir . "cfg/" ."alps_cfg_dg2_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($xe2) ? $sdir . "cfg/" ."alps_cfg_xe2_kaolin.yaml" : $cfg_file;
-    	$cfg_file = ($mtl) ? $sdir . "cfg/" ."alps_cfg_mtl_kaolin.yaml" : $cfg_file;
+    $cfg_file = ($mtl) ? $sdir . "cfg/" ."alps_cfg_mtl_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($xe3) ? $sdir . "cfg/" ."alps_cfg_xe3_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvcdp) ? $sdir . "cfg/" ."alps_cfg_pvcdp_kaolin.yaml" : $cfg_file;
 	$cfg_file = ($pvcxt) ? $sdir . "cfg/" ."alps_cfg_pvcxt_kaolin.yaml" : $cfg_file;
