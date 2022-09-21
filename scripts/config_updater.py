@@ -42,7 +42,7 @@ def precedence(cfg):
         return ['DG2','PVC', 'PVCDP', 'RLTCONCEPT']
     elif cfg == 'RLTB_EC_0_5':
         return ['DG2','PVC','PVCDP','PVCXT','PVCXTTrend','RLTB_EC_0_5']
-    elif cfg == 'Xe3_FCS'
+    elif cfg == 'Xe3_FCS':
         return ['DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS']
     elif cfg == 'Xe3_FCS_SW':
         return ['DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS_SW']
