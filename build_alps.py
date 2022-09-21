@@ -1127,6 +1127,29 @@ if (options.dump_gc):
 
 common_cfg = options.dest_config.lower()
 
+
+if (common_cfg == 'rlt1') or (common_cfg == 'rlt_plan'):
+    if (options.method == 'cam'):
+        #Calculating Chiplet_Cdyn and Base_Cdyn
+        Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),
+	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['ROW']['total']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOVEROS']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['Foveros']['DSS']['PS2_CAM_COMPUTE_FOV_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_ARB_INFRA']),
+	float(output_yaml_data['ALPS Model(pF)']['GT']['FabricsSpine']['SpineCompute']['PS2_CAM_COMPUTE_SPINE_INFRA'])]
+        Chiplet_Cdyn = sum(Chiplet_Cdyn) / 1000
+        Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+
+        Base_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - Chiplet_Cdyn
+
+        Base_Cdyn = round(Base_Cdyn, 3)
+
+        gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+        gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+
+
 if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
     if options.method == 'kaolin':
         if (common_cfg.find('pvc') > -1):
@@ -1161,7 +1184,7 @@ if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
             gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
             gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
-if (common_cfg.find('rlt') > -1) or (common_cfg.find('pvc') > -1):
+if (common_cfg.find('pvc') > -1):
     if (options.method == 'cam'):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
