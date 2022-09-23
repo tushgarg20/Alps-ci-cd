@@ -182,23 +182,30 @@ if ($method){
 my $class = '8G&&nosusp&&SLES11';
 
 open(FILE,"<$tracelist") or die "Can't open $tracelist\n";
+
+
+
 while(my $line = <FILE>){
-	$line =~ s/\r//g; chomp($line);
-	my $wl = ($cmp) ? (split/\.stat\.gz/,$line)[0] : (split/\.stat/,$line)[0];
-	my $prefix = $wl;
-	if ($runLocal) {
-		print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
-        if ($method) {
-			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
-		}else  {
-			system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-                }
-	} else {
-        if ($method)  {	
-				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
-        } else {
-				system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-                }
+        if (rindex($line, ".stat.gz") > -1){
+	    $line =~ s/\r//g; chomp($line);
+	    my $wl = ($cmp) ? (split/\.stat\.gz/,$line)[0] : (split/\.stat/,$line)[0];
+	    my $prefix = $wl;
+	    if ($runLocal) {
+		    print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
+                    if ($method) {
+			    system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
+		    }else  {
+			    system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+                    }
+	    } else {
+        	 if ($method)  {	
+				    system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
+        	  } else {
+				    system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+                    }
+	       } 
+	} else{
+		die "tracelist file doesn't contain *stat.gz files"
 	}
 	#print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir\n";
 }

@@ -54,6 +54,15 @@ parser.add_option("--compile",action="store_true",dest="compile",default=False,
 
 (options,args) = parser.parse_args()
 
+
+try:
+    if( (options.voltage and type(options.voltage) is not float ) or (options.sf_votage and type(options.sf_voltage) is not float) 
+    or (options.alps_config and not (options.alps_config.endswith(".yml")))):
+        sys.exit("please check inputs!!")
+except:
+    print("")
+#exit here
+	
 wd = ''
 filename = ''
 if not options.run_local:
