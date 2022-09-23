@@ -49,13 +49,19 @@ parser.add_option("--compile",action="store_true",dest="compile",default=False,
 
 (options,args) = parser.parse_args()
 
-
+def is_float(value):
+    try:
+        float(value)
+        return True
+    except:
+        return False
 try:
-    if( (options.voltage and type(options.voltage) is not float ) or (options.sf_votage and type(options.sf_voltage) is not float) 
+    if( (options.voltage and is_float(options.voltage) == False ) or (options.sf_votage and is_float(options.sf_voltage) == False) 
     or (options.alps_config and not (options.alps_config.endswith(".yml")))):
         sys.exit("please check inputs!!")
 except:
     print("")
+
 
 wd = ''
 filename = ''
