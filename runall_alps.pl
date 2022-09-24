@@ -194,15 +194,15 @@ while(my $line = <FILE>){
 		    print "python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir"."\n";
                     if ($method) {
 			    system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
-		    }else  {
-			    system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-                    }
+		    }#else  {
+			    #system("python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
+                    #}
 	    } else {
         	 if ($method)  {	
 				    system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir -m $method");
-        	  } else {
+        	  } #else {
 				    system("nbjob run --target $pool --qslot $qslot --class \'$class\'  python $script -w $wl -p $prefix -o $odir -c $cfg_file -a $arch -l -d $sdir");
-                    }
+                    #}
 	       } 
 	} else{
 		die "tracelist file doesn't contain *stat.gz files"

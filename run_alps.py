@@ -248,7 +248,7 @@ else:
     if(options.run_debug):
         build_alps_cmd += ['--debug']
 
-if not options.build_alps_only:
+'''if not options.build_alps_only:
     try:
         env_vars = os.environ
         env_vars['LD_LIBRARY_PATH'] = '/p/gat/tools/boost/1.43.0/gcc4.3/lib64/'
@@ -264,7 +264,7 @@ if not options.build_alps_only:
 
     if ExitCode > 1:
         print ("StatParser failed with exitcode : ", ExitCode)
-        exit(ExitCode) 
+        exit(ExitCode)''' 
 
 #Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
 #Open the residency file if the configuration is not CAM and write the values
