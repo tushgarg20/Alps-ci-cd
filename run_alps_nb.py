@@ -94,9 +94,9 @@ if not options.quiet:
 
 
 stat = options.output_dir + '/' + options.prefix + '.stat.gz'
-flag = os.path.isfile(stat)
-if(not flag):
-    stat = options.output_dir + '/' + options.prefix + '.stat'
+#flag = os.path.isfile(stat)
+#if(not flag):
+    #stat = options.output_dir + '/' + options.prefix + '.stat'
 res = options.output_dir + '/' + options.wl_name + '.res.csv'
 log = options.output_dir + '/' + options.wl_name + '.res.log.txt'
 #stat = options.output_dir + '/' + options.prefix + '.stat'
@@ -117,10 +117,10 @@ print ("Scripts Location:",os.path.abspath(wd),file=alps_log)
 print ("Git Tag:",tag,file=alps_log)
 print ("",file=alps_log)
 print ("Output Directory:",os.path.abspath(options.output_dir),file=alps_log)
-print ("StatFile: {0}.stat".format(options.prefix),file=alps_log)
-print ("ResidencyFile: {0}_res.csv".format(options.wl_name),file=alps_log)
-print ("ALPS Model: alps_{0}.yaml".format(options.wl_name),file=alps_log)
-print ("Destination Architecture: {0}".format(options.dest_config),file=alps_log)
+#print ("StatFile: {0}.stat".format(options.prefix),file=alps_log)
+#print ("ResidencyFile: {0}_res.csv".format(options.wl_name),file=alps_log)
+#print ("ALPS Model: alps_{0}.yaml".format(options.wl_name),file=alps_log)
+#print ("Destination Architecture: {0}".format(options.dest_config),file=alps_log)
 print ("",file=alps_log)
 print("Command Line -->",file=alps_log)
 print (" ".join(sys.argv),file=alps_log)
@@ -152,7 +152,7 @@ else:
                 print ('Error: StatParser compile failed to open subprocess')
 
             if ExitCode > 1:
-                print ("StatParser compile failed with exitcode : ", ExitCode)
+                #print ("StatParser compile failed with exitcode : ", ExitCode)
                 exit(ExitCode) 
 
             try:
@@ -164,7 +164,7 @@ else:
                 print ('Error: StatParser compile failed to open subprocess')
 
             if ExitCode > 1:
-                print ("StatParser compile failed with exitcode : ", ExitCode)
+                #print ("StatParser compile failed with exitcode : ", ExitCode)
                 exit(ExitCode)  
 
     stat_parser_script = options.user_dir + '/StatParser/StatParser'
@@ -181,7 +181,7 @@ else:
     if(options.run_debug):
         build_alps_cmd += ['--debug']
 
-'''if not options.build_alps_only:
+if not options.build_alps_only:
     try:
         env_vars = os.environ
         env_vars['LD_LIBRARY_PATH'] = '/p/gat/tools/boost/1.43.0/gcc4.3/lib64/'
@@ -193,11 +193,11 @@ else:
 
     if ExitCode > 1:
         print ("StatParser failed with exitcode : ", ExitCode)
-        exit(ExitCode)''' 
+        exit(ExitCode)
 
 #Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
 #Open the residency file if the configuration is not CAM and write the values
-if not options.method:
+'''if not options.method:
   f = open(res, "a+")
   swizzle_count = [0,0,0]
   scalar_count = [0,0,0]
@@ -227,11 +227,11 @@ if not options.method:
   raw_mov_patterns = []   
   raw_mov_count, raw_mov_patterns, raw_mov_percentage = op.raw_mov_count_estimator(stat)
   f.write("FPU0_raw_mov,%f\n" % raw_mov_percentage)
-  f.close()
+  f.close()'''
 
 
 try:
-    print(build_alps_cmd)
+    #print(build_alps_cmd)
     process = subprocess.Popen(build_alps_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
     output = process.communicate()[0]
     ExitCode = process.wait()
@@ -239,5 +239,5 @@ except Exception:
     print ('Error: build_alps failed to open subprocess')
 
 if ExitCode > 1:
-    print ("build_alps failed with exitcode : ", ExitCode) 
+    #print ("build_alps failed with exitcode : ", ExitCode) 
     exit(ExitCode) 
