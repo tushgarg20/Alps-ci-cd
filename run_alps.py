@@ -264,7 +264,7 @@ if not options.build_alps_only:
         print ('Error: StatParser failed to open subprocess')
 
     if ExitCode > 1:
-        print ("StatParser failed with exitcode : ", ExitCode)
+        #print ("StatParser failed with exitcode : ", ExitCode)
         exit(ExitCode)
 
 #Update the res.csv file with addiional power states based on the Stat analysis for opcode/datatype s/w and swizzle/scalar operations
