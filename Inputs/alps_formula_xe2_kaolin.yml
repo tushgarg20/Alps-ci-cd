@@ -257,30 +257,14 @@ LSC:
 
 Other:
   Others: 
-    #PS2_GEOM: R * C
-    #PS2_ARB: R * C
-    #PS2_POSH: R * C
-    #PS2_Z: R * C
-    #PS2_ROGT: R * C
-    #PS2_NODE: R * C
-    #PS2_CC: R * C
-    #PS2_GA_SQIDI_RPT: R * C
-    #PS2_MEDIA: R * C
-    #PS2_MDFI_GAM: R * C
-    #PS2_L3_FABRICS: R * C
-    #PS2_OTHER_INFRA: R * C
     PS2_SPINE: R * C
-    #PS2_GTDSS: R * C
-    #PS2_GTDSS_INFRA: R * C
   ROW:
-    #PS2_PS: R * C
     PS2_ROW: R * C
     PS2_ROW_Idle: R * C
-  #COLOR:
-    #PS2_COLOR: R * C
   NodeX:
     PS2_NodeX: R * C
-  Infra:
+Infra:
+  inf:
     PS2_infra: R * C
 
 GAM: 
@@ -323,41 +307,43 @@ Sampler:
 
 FF:
   VFBE:
-    PS2_VFBE        : R * C 
-    PS1_VFBE        : R * C 
-    PS2_TE_Enabled  : R * C 
-    PS2_VSFE        : R * C 
-    PS2_HS_Enabled  : R * C 
-    PS2_GS_Enabled  : R * C 
-    PS2_TDS_Enabled : R * C 
-    PS1_VF: R * C
-    PS1_VSFE        : R * C 
-    PS1_GS: R * C 
-    PS1_CS: R * C 
-    PS2_CL_NoMustclip : R * C 
-    PS2_WM_MSAA_PARTIALLYLIT    : R * C 
-    PS2_WM_FLUSH      : R * C 
-    PS2_WM_NOMSAA_PARTIALLYLIT  : R * C 
-    PS2_RASTERXBAR    : R * C 
+    PS2_FF : R * C
+    #PS2_VFBE        : R * C 
+    #PS1_VFBE        : R * C 
+    #PS2_TE_Enabled  : R * C 
+    #PS2_VSFE        : R * C 
+    #PS2_HS_Enabled  : R * C 
+    #PS2_GS_Enabled  : R * C 
+    #PS2_TDS_Enabled : R * C 
+    #PS1_VF: R * C
+    #PS1_VSFE        : R * C 
+    #PS1_GS: R * C 
+    #PS1_CS: R * C 
+    #PS2_CL_NoMustclip : R * C 
+    #PS2_WM_MSAA_PARTIALLYLIT    : R * C 
+    #PS2_WM_FLUSH      : R * C 
+    #PS2_WM_NOMSAA_PARTIALLYLIT  : R * C 
+    #PS2_RASTERXBAR    : R * C 
 COLOR:
   RCC:
-    PS1_RCC : R * C
-    PS2_RCC_ALLOC_MISSES: R * C
-    PS2_RCC_ALLOC_HITS: R * C
-    PS2_RCPBE_FIX_BLD: R * C
-    #PS2_RCPBE_8PPC_FIX_BLD: R * C
-    #PS2_RCPBE_8PPC_FIX_WRT: R * C
-    PS2_RCC_CACHE_READ: R * C
-    #PS2_RCPBE_16PPC_FIX_BLD: R * C
-    #PS2_RCPBE_16PPC_WRT: R * C
-    #PS2_RCPBE_4PPC_FLT_BLD: R * C
-    #PS2_RCPBE_4PPC_WRT: R * C
-    PS2_CC_READ_4_1: R * C
-    PS2_CC_READ_4_3: R * C
-    PS2_CC_READ_UNCOMPRESSED: R * C
-    PS2_CC_WRITE_4_1: R * C
-    PS2_CC_WRITE_4_3: R * C
-    PS2_CC_WRITE_UNCOMPRESSED: R * C
+    PS2_COLOR: R * C
+    #PS1_RCC : R * C
+    #PS2_RCC_ALLOC_MISSES: R * C
+    #PS2_RCC_ALLOC_HITS: R * C
+    #PS2_RCPBE_FIX_BLD: R * C
+    ##PS2_RCPBE_8PPC_FIX_BLD: R * C
+    ##PS2_RCPBE_8PPC_FIX_WRT: R * C
+    #PS2_RCC_CACHE_READ: R * C
+    ##PS2_RCPBE_16PPC_FIX_BLD: R * C
+    ##PS2_RCPBE_16PPC_WRT: R * C
+    ##PS2_RCPBE_4PPC_FLT_BLD: R * C
+    ##PS2_RCPBE_4PPC_WRT: R * C
+    #PS2_CC_READ_4_1: R * C
+    #PS2_CC_READ_4_3: R * C
+    #PS2_CC_READ_UNCOMPRESSED: R * C
+    #PS2_CC_WRITE_4_1: R * C
+    #PS2_CC_WRITE_4_3: R * C
+    #PS2_CC_WRITE_UNCOMPRESSED: R * C
 Z:
   HIZ:
     PS1_HIZ: R * C

@@ -116,18 +116,18 @@
     PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
 
 #COLOR
-    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+\.Blend.active')) / (.CrClk * num_COLOR_RCC)
-    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active')) / (.CrClk * num_COLOR_RCC)
+    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     #BE
     PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                                                     #TODO: verify_num_instances
-    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
-    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
+    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     
 #Z
     PS1_HIZ                         = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
@@ -158,8 +158,8 @@
     PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
 #L3 utilization
-	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
-	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
+	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Read')) 
+	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write'))
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3_Idle = 1
@@ -167,10 +167,10 @@
     PS2_L3Node_Idle = 1
 	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 
-	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
+	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
 #LSC
     .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
     #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)

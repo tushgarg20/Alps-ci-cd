@@ -40,6 +40,7 @@
 	num_Other_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
+	num_Infra_inf = numEUs
 
 		
 #Generic				
@@ -53,6 +54,8 @@
 	@MATH_Cycles@ = (Math32Cycle)
 	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
 	Total_FpuCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
+	Total_IntCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@INT_Cycles@'))
+	Total_FPU1_Cycles = Total_MathCycles + Total_IntCycles
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
 
@@ -64,26 +67,29 @@
 
 
 	FPU0_Utilization = (Total_FpuCycles)/(.CrClk * numEUs * 0.5)
-    FPU11_Utilization = (Total_Fpu11Cycles)/(.CrClk * numEUs * 0.5)
-	FPU1_Utilization = (Total_MathCycles)/(.CrClk * numEUs * 0.5)
-    DPAS_Utilization = (Total_SystCycles)/(.CrClk * numEUs * 0.5)
+    	FPU11_Utilization = (Total_Fpu11Cycles)/(.CrClk * numEUs * 0.5)
+	FPU1_Utilization = (Total_FPU1_Cycles)/(.CrClk * numEUs * 0.5)
+    	DPAS_Utilization = (Total_SystCycles)/(.CrClk * numEUs * 0.5)
 	PS2_EU_FPU0 =  FPU0_Utilization
 	PS2_EU_FPU1 =  FPU1_Utilization
-    PS2_EU_FPU11 = FPU11_Utilization
+    	PS2_EU_FPU11 = FPU11_Utilization
 
-    PS1_EU_FPU0 = Total_Fpu0_Stall_Cycles / (.CrClk * numEUs)
-    #PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
+    	PS1_EU_FPU0 = Total_Fpu0_Stall_Cycles / (.CrClk * numEUs)
+    	#PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
-    PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
+    	PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
-    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
+    PS2_FF          = D(SUM('Vs\.\d+\.\d+\.VfVtxIn'))         / (.CrClk * num_FF_VFBE) 
+    PS2_VFBE        = D(SUM('Vs\.\d+\.\d+\.VfVtxIn'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
     PS1_VFBE        = D(SUM('Vf\.\d+\.\d+\..*\.stall'))                 / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Vf\.\d+\.\d+\..*\.stall
     PS2_TE_Enabled  = D(SUM('Te\.\d+\.\d+\.OutputDs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
-    PS2_VSFE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???
+    
+    PS2_VSFE        = D(SUM('Vs\.\d+\.\d+\.LookupVtx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???
+    
     PS2_HS_Enabled  = D(SUM('Hs\.\d+\.\d+\.LookupHs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## (lookup for bypass later)
-    PS2_GS_Enabled  = D(SUM('Gs\.\d+\.\d+\.OutVtx.active'))             / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
+    PS2_GS_Enabled  = D(SUM('Cl\.\d+\.\d+\.Input.active'))             / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_TDS_Enabled = D(SUM('Tdl\.\d+\.\d+\.\d+\.ThDisp'))              / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##( check the arcitecture and apply the correction)
     PS1_VF          = PS1_VFBE                                          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS1_VSFE        = D(SUM('Vs\.\d+\.\d+\.LookupVtx.full'))            / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
@@ -115,10 +121,11 @@
     PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
 
 #COLOR
+
     PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+\.Blend.active')) / (.CrClk * num_COLOR_RCC)
-    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     #BE
@@ -128,6 +135,9 @@
     PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     
+
+    PS2_COLOR                   = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES
+
 #Z
     PS1_HIZ                         = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
     PS1_IZ                          = D(SUM('Iz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
@@ -157,8 +167,8 @@
     PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
 #L3 utilization
-	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
-	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
+	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Read')) 
+	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write'))
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3_Idle = 1

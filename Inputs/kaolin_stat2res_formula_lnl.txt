@@ -39,7 +39,7 @@
 	num_Other_ROW = num_LSC_L1
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
-
+        num_RT_RTA = model.NumSlices * model.NumDss
 		
 #Generic				
 	 .CrClk	=	D(model.CrClock)	
@@ -74,6 +74,9 @@
 
 	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
     PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
+
+#RT
+    PS2_RT = D(SUM('Rta\.\d+\.\d+\.\d+\.RtfReq'))/ (.CrClk * num_RT_RTA)
 
 #FF 
     PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
@@ -113,18 +116,18 @@
     PS2_MA_HDC_OUT      = D(SUM('Mao\.\d+\.\d+\.\d+\.\d+\.HdcMsgOut'))  / (.CrClk * num_ROSS_MA_TDL)          #TODO: verify_num_instances
 
 #COLOR
-    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+\.Blend.active')) / (.CrClk * num_COLOR_RCC)
-    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS1_RCC                     = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccInUse'))                         / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCC_ALLOC_MISSES        = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccMiss'))                          / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_FIX_BLD =  D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active')) / (.CrClk * num_COLOR_RCC)
+    PS2_RCC_ALLOC_HITS          = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.RccHit'))                           / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_BLD      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_8PPC_FIX_WRT      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     #BE
     PS2_RCC_CACHE_READ          = PS2_RCC_ALLOC_HITS + PS2_RCC_ALLOC_MISSES                                                     #TODO: verify_num_instances
-    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
-    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
-    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_16PPC_FIX_BLD     = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances    
+    PS2_RCPBE_16PPC_WRT         = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_FLT_BLD      = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
+    PS2_RCPBE_4PPC_WRT          = D(SUM('Pbe\.\d+\.\d+(.\d+)?\.Blend.active'))                     / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     
 #Z
     PS1_HIZ                         = D(SUM('Hz\.\d+\.\d+\.\d+\.Output.full'))                / (.CrClk * num_Z_HIZ)          #TODO: verify_num_instances
@@ -155,28 +158,27 @@
     PS2_CC_WRITE_4_3            = D(SUM('Gam\.\d+\.\d+\.Write4to3'))                        / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
     PS2_CC_WRITE_UNCOMPRESSED   = D(SUM('Gam\.\d+\.\d+\.WriteUncomp'))                      / (.CrClk * num_COLOR_RCC)          #TODO: verify_num_instances
 #L3 utilization
-	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
-	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
-	
- 	PS2_L3_Read = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	
+	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Read')) 
+	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write'))
+	PS2_L3_Read = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Read')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
+ 
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3_Idle = 1
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
     PS2_L3Node_Idle = 1
 	PS2_Fabric_Active = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_L3_Bank_LTCD_Data)
 
-	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
+	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Write')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.Miss')) / (.CrClk * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+(.\d+)?\.EvictReq')) / (.CrClk * num_L3_Bank_LTCD_Data) 
 #LSC
     .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
     #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
     PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.(Write|WriteNoResp)\..*\.Req')) / (.CrClk * num_LSC_L1)
+    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Write\..*\.Req')) / (.CrClk * num_LSC_L1)
     PS2_LSC = PS2_LSC_Read + PS2_LSC_Write
     PS2_SLM_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.SLM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
     PS2_SLM_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.SLM\.(Write|WriteNoResp)\..*\.Req')) / (.CrClk * num_LSC_L1)
@@ -193,7 +195,7 @@
 
     PS2_Sampler_SC =  D(SUM('Samp\.\d+\.\d+\.\d+\.ScRequests')) /  (.CrClk * num_HDC_HDCREQCMD)
     PS2_Sampler_SC_Idle = 1
-    @SAMPLER_MAIN@ = (Samp_16Bits_Trilinear_Else_64bpt|Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float_64bpt|Samp_16Bits_Trilinear_Float_Else|Samp_16Bits_Trilinear_Else_Else|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float_64bpt|Samp_16Bits_Bilinear_Float_Else|Samp_16Bits_Bilinear_Else_64bpt|Samp_16Bits_Bilinear_Else_Else|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else_64bpt|High_Else_Else)
+    @SAMPLER_MAIN@ = (Point_LD|Point_Sample_L|Point_Else|Small_Trilinear|Small_Bilinear_Sample_L|Small_Bilinear_Else|Samp_16Bits_Trilinear_Float_64bpt|Samp_16Bits_Trilinear_Float_Else|Samp_16Bits_Trilinear_Else_Else|Samp_16Bits_Trilinear_Else|Samp_16Bits_Bilinear_Float_64bpt|Samp_16Bits_Bilinear_Float_Else|Samp_16Bits_Bilinear_Else_64bpt|Samp_16Bits_Bilinear_Else_Else|Samp_16Bits_Bilinear_Else|High_Aniso|High_Else_64bpt|High_Else_Else)
     @SAMPLER_FETCH@ = (Fetch_Bypass|Fetch_Fast|Fetch_High|Fetch_Low) 
 
     Total_Sampler_main = (D(SUM('pwr\.@SAMPLER_MAIN@')))

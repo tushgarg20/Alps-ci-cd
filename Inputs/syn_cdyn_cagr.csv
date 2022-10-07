@@ -1365,28 +1365,18 @@ DSSC,Gen12DG,Gen12HP,1
 DSSC,Gen12HP,Gen12HP,1
 DSSC,Gen12HP,DG2,1
 DSSC,DG2,DG2,1
-DSSC,Gen12HP,MTL,1
-DSSC,DG2,MTL,1
-DSSC,MTL,MTL,1
 L3Node,Gen12HP,MTL,1
 L3Node,DG2,MTL,1
 Fabric,Gen12HP,MTL,1
 Other,Gen12LP,MTL,1
 FF,Gen12LP,MTL,1
 FF,Gen11LP,MTL,1
-FF,MTL,MTL,1
-COLOR,Gen12LP,MTL,1
-COLOR,MTL,MTL,1
-Z,Gen12LP,MTL,1
-Z,DG2,MTL,1
-ROSS,Gen12LP,MTL,1 
-ROSS,Gen11LP,MTL,1 
-ROSS,MTL,MTL,1
 GAM,Gen12LP,MTL,1
 SQIDI,Gen12LP,MTL,1
 Sampler,Gen12LP,MTL,1
 Sampler,Gen12HP,MTL,1
-Sampler,MTL,MTL,1
+Sampler,DG2,MTL,1,
+Sampler,MTL,MTL,1,
 L3Node,Gen12HP,LNL,1
 L3Node,DG2,LNL,1
 L3Node,MTL,LNL,1
@@ -1399,8 +1389,6 @@ Other,DG2,MTL,1
 Other,MTL,LNL,1
 Other,DG2,LNL,1
 Other,LNL,LNL,1
-FF,Gen12LP,LNL,1
-FF,Gen11LP,LNL,1
 COLOR,Gen12LP,LNL,1
 COLOR,MTL,LNL,1
 COLOR,LNL,LNL,1
@@ -1625,9 +1613,6 @@ Sampler,Gen12DG,Gen12HP,1
 Sampler,Gen12HP,Gen12HP,1
 Sampler,Gen12HP,DG2,1
 Sampler,DG2,DG2,1
-Sampler,Gen12HP,MTL,1
-Sampler,DG2,MTL,1,
-Sampler,MTL,MTL,1,
 SQIDI,Gen11,Gen12HP,0.9
 SQIDI,Gen10LP,Gen12HP,0.78678
 SQIDI,Gen11LP,Gen12HP,0.9
@@ -2500,6 +2485,7 @@ Other,Gen12HP,Xe2,1
 Other,DG2,Xe2,0.78,Feature scaler based on ww35 xe2 indicator release from atul
 Other,PVC,Xe2,1
 Other,Xe2,Xe2,1
+Infra,Xe2,Xe2,1
 GAM,Gen12LP,Xe2,1,
 SQIDI,Gen12LP,Xe2,1
 FF,Gen11LP,Xe2,1
@@ -2532,7 +2518,9 @@ Z,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should re
 Z,DG2,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 FF,Gen12LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 FF,Gen11LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+FF,Xe2,Xe2,1
 COLOR,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
+COLOR,Xe2,Xe2,1
 Z,Gen12LP,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,DG2,Xe2,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 EU,Gen10LP,PVCXT,0.739886824
