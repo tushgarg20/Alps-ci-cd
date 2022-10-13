@@ -1299,8 +1299,8 @@ PS2_CAM_L2_4MB,Xe3_FCS,A0,891.22,syn,1,Amit's 22ww28 indicator release with tren
 PS2_CAM_L2_4MB_INFRA,Xe3_FCS,A0,42.37,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 4MB L2 size, per bank
 PS2_CAM_Xe2_TLB,Xe3_FCS,A0,1472.92,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
 PS2_CAM_Xe2_TLB_INFRA,Xe3_FCS,A0,537.82,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
-PS2_CAM_Node_Fabric,Xe3_FCS,A0,1025.19,syn,1,Amit's 22ww27 indicator release for given WLs averaged per 16/20/24 bank cases, cdyn wt calculated per L2  node
-PS2_CAM_Node_Fabric_INFRA,Xe3_FCS,A0,125.89,syn,1,Amit's 22ww27 indicator release for given WLs averaged per 16/20/24 bank cases, cdyn wt calculated per L2 node 
+PS2_CAM_Node_Fabric,Xe3_FCS,A0,922.671,syn,1,Amit's 22ww41 indicator release for given WLs averaged per 16/20/24 bank cases , cdyn wt calculated per L2  node
+PS2_CAM_Node_Fabric_INFRA,Xe3_FCS,A0,113.301,syn,1,Amit's 22ww41 indicator release for given WLs averaged per 16/20/24 bank cases, cdyn wt calculated per L2 node 
 PS2_CAM_COMPUTE_FOV_INFRA,Xe3_FCS,C0,71.3,syn,0,Calculated from latest PVCXT (21ww22) with a bankcount speficic scaler given in Amit's 22ww27 Xe3 indicator,
 PS2_CAM_COMPUTE_FOVEROS,Xe3_FCS,C0,112.5,syn,0,Calculated from latest PVCXT (21ww22) with a bankcount specific scaler given in Amit's 22ww27 Xe3 indicator,
 PS2_CAM_BASE_FOV_INFRA,Xe3_FCS,C0,213.9,syn,0,Calculated from latest PVCXT (21ww22) with a  bankcount specific*3x scaler given in Amit's 22ww27 Xe3 indicator,
