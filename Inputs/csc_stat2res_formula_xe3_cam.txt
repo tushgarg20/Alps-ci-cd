@@ -8,7 +8,7 @@
 		
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)	
-        L2_0.5MB_Flag                   =       (L2_Cache_Size == 0.5) ? 1 : 0
+        L2_0.5MB_Flag                   =       (L2_Cache_Size < 0.5) ? 1 : 0
         L2_1MB_Flag                     =       (L2_Cache_Size == 1) ? 1 : 0
         L2_2MB_Flag                     =       (L2_Cache_Size == 2) ? 1 : 0
         L2_4MB_Flag                     =       (L2_Cache_Size == 4) ? 1 : 0
@@ -21,7 +21,7 @@
         PS2_CAM_L2_2MB_INFRA       =       L2_2MB_Flag * 1 
         PS2_CAM_L2_4MB_INFRA       =       L2_4MB_Flag * 1
         PS2_CAM_Xe2_TLB                 =       (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))  
-        PS2_CAM_Xe2_TLB_INFRA           =       1 
+        PS2_CAM_Xe2_TLB_INFRA           =       0 #Accounted in Chiplet NonSpine Infra 
         PS2_CAM_Node_Fabric             =       (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64)) 
         PS2_CAM_Node_Fabric_INFRA       =       1
 

@@ -1,0 +1,10 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+        numEUs                 =     D(knob.numEUs)
+	num_Other_Others       =     1 
+      
+#Generic				
+        PS2_CAM_BASE_BLITTER = 1
+        PS2_CAM_BASE_CS = 1
+        PS2_CAM_BASE_GUC = 1
