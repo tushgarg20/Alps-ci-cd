@@ -53,6 +53,7 @@ my $lnl                         = '';
 my $ptl                         = ''; 
 my $cpl                         = ''; 
 my $xe3_fcs                     = ''; 
+my $xe3_fcs_msc                 = ''; 
 my $xe3_fcs_los                 = ''; 
 my $xe3_fcs_sw                  = ''; 
 
@@ -89,6 +90,7 @@ Getopt::Long::GetOptions(
 	"xe2"			=> \$xe2,
 	"xe3"			=> \$xe3,
 	"xe3_fcs"		=> \$xe3_fcs,
+	"xe3_fcs_msc"		=> \$xe3_fcs_msc,
 	"xe3_fcs_los"		=> \$xe3_fcs_los,
 	"xe3_fcs_sw"	=> \$xe3_fcs_sw,
 	"mtl"			=> \$mtl,
@@ -145,6 +147,7 @@ if ($method){
 	$cfg_file = ($rlt1) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
 	$cfg_file = ($rlt_plan) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe3_fcs_msc) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_msc_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_los) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_los_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_sw) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_sw_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_xpc) ? $sdir . "cfg/" ."alps_cfg_xe3_xpc_cam.yaml" : $cfg_file;
