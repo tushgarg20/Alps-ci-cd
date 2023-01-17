@@ -130,7 +130,7 @@ EU,PVCDP,RLTCONCEPT,0.855
 EU,PVCXT,RLTCONCEPT,1
 EU,RLTCONCEPT,RLTCONCEPT,1
 EU,DG2,RLTCONCEPT,0.7597
-EU,DG2,Xe2,0.9
+EU,DG2,Xe2,1
 EU,Xe2,Xe2,1
 EU,Xe2_Plan,Xe2_BNA4_Plan,1
 EU,DG2,Xe2_BNA4_Plan,0.9
@@ -139,9 +139,8 @@ EU,Xe2_BNA4_Plan,Xe2_BNA4_Plan,1
 EU,Xe2_Plan,Xe2_BNA4_Plan,1
 EU,DG2,Xe2_Plan,0.9
 EU,Xe2_Plan,Xe2_Plan,1
-EU,PVC,Xe3,0.9766
-EU,PVCDP,Xe3,1
-EU,DG2,Xe3,0.888576
+EU,DG2,Xe3,1
+EU,Xe2,Xe3,1
 EU,PVC,Xe3_FCS,0.9277
 EU,PVCDP,Xe3_FCS,1
 EU,PVCXT,Xe3_FCS,1
@@ -242,6 +241,8 @@ FabricsSpine,Xe2_Plan,Xe2_BNA4_Plan,1
 FabricsSpine,DG2,Xe2_Plan,1
 FabricsSpine,Xe2_Plan,Xe2_Plan,1
 FabricsSpine,PVCDP,Xe3,1
+FabricsSpine,DG2,Xe3,1
+FabricsSpine,Xe2,Xe3,1
 FabricsSpine,Xe3,Xe3,1
 FabricsSpine,PVCDP,Xe3_FCS,1
 FabricsSpine,PVCXT,Xe3_FCS,1
@@ -387,6 +388,9 @@ GAM,DG2,Xe2_Plan,1
 GAM,Xe2_Plan,Xe2_Plan,1
 GAM,PVC,Xe3,1
 GAM,PVCDP,Xe3,1
+GAM,DG2,Xe3,1
+GAM,Xe2,Xe3,1
+GAM,Xe3,Xe3,1
 GAM,PVCXT,Xe3_FCS,0.84
 GAM,PVCXTTrend,Xe3_FCS,0.84
 GAM,RLT_Plan,Xe3_FCS,1
@@ -489,6 +493,8 @@ L3_Bank,DG2,Xe2_Plan,1
 L3_Bank,Xe2_Plan,Xe2_Plan,1
 L3_Bank,PVC,Xe3,1
 L3_Bank,PVCDP,Xe3,1
+L3_Bank,DG2,Xe3,1
+L3_Bank,Xe2,Xe3,1
 L3_Bank,Xe3,Xe3,1
 L3_Bank,Xe3_XPC,Xe3_XPC,2
 L3_Bank,RLT1,Xe3_XPC,2
@@ -555,6 +561,9 @@ LSC,Xe2_Plan,Xe2_BNA4_Plan,1
 LSC,DG2,Xe2_Plan,1
 LSC,Xe2_Plan,Xe2_Plan,1
 LSC,PVCDP,Xe3,1
+LSC,DG2,Xe3,1
+LSC,Xe2,Xe3,1
+LSC,Xe3,Xe3,1
 LSC,PVCDP,Xe3_FCS,1
 LSC,PVCXT,Xe3_FCS,1
 LSC,PVCXTTrend,Xe3_FCS,1
@@ -645,7 +654,9 @@ Other,Xe2_Plan,Xe2_BNA4_Plan,1
 Other,DG2,Xe2_Plan,1
 Other,Xe2_Plan,Xe2_Plan,1
 Other,PVC,Xe3,1
-Other,PVCDP,Xe3,1
+Other,DG2,Xe3,1
+Other,Xe2,Xe3,1
+Other,Xe3,Xe3,1
 Other,PVCDP,Xe3_FCS,1
 Other,PVCXT,Xe3_FCS,1
 Other,PVCXTTrend,Xe3_FCS,1
@@ -742,6 +753,9 @@ ROW,DG2,Xe2_Plan,1
 ROW,Xe2_Plan,Xe2_Plan,1
 ROW,PVC,Xe3,0.9766
 ROW,PVCDP,Xe3,1
+ROW,DG2,Xe3,1
+ROW,Xe2,Xe3,1
+ROW,Xe3,Xe3,1
 ROW,PVCDP,Xe3_FCS,1
 ROW,PVCXT,Xe3_FCS,1
 ROW,PVCXTTrend,Xe3_FCS,1

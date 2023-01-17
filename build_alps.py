@@ -94,8 +94,8 @@ def cdyn_precedence_selector(cfg):
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'MTL','LNL', 'PTL' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2', 'MTL', 'LNL','PTL'] }
   elif cfg =='Xe3':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'Xe3' ],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'Xe3'] }
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2','Xe3' ],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2','Xe3'] }
   elif cfg =='PVCDP':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP'] }
@@ -215,6 +215,8 @@ elif common_cfg.find('rlt_plan') > -1 :
     cfg ='RLT_Plan' 
 elif common_cfg.find('rlt1') > -1 :
     cfg ='RLT1'
+elif common_cfg.find('xe3') > -1 :
+    cfg ='Xe3'
 elif common_cfg.find('xe3_fcs_los') > -1 :
     cfg ='Xe3_FCS_LOS'   
 elif common_cfg.find('xe3_fcs_msc') > -1 :
@@ -253,8 +255,6 @@ elif common_cfg.find('ptl') > -1 :
     cfg ='PTL'
 elif common_cfg.find('cpl') > -1 :
     cfg ='CPL'
-elif common_cfg.find('xe3') > -1 :
-    cfg ='Xe3'
 elif common_cfg.find('xe2_bna4_plan') > -1 :
     cfg ='Xe2_BNA4_Plan'
 elif common_cfg.find('xe2_plan') > -1 :

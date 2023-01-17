@@ -14,8 +14,8 @@
         computeFlag         = D(knob.computeonly)
 
 #Generic
-        PS2_CAM_ROGT          = 1 / numEUs 
+        PS2_CAM_ROGT          = 1 /numEUs 
         PS2_CAM_COMPUTE_ROGT  = 1 /numEUs 
-        PS2_CAM_OTHER_INFRA = 0.66 #Since this INFRA doesn't scale linearly with EUs  
+        PS2_CAM_OTHER_INFRA = 1  
         PS2_CAM_DSSM_INFRA = 1
         PS2_CAM_COMPRESSION = (D(GTI_READ) + D(GTI_WRITE))/ (512*numEUs) 
