@@ -1,0 +1,18 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	numLSCs	        =       D(knob.numHDCs) 
+        num_LSC_LSC	=       numLSCs
+#Generic				
+
+#SLM				
+	.temp_fe_per_be	=	knob.SLM.BE.numIoRows
+	num_DSSC	=       D(knob.numDSSC)	
+	num_DSSC_SLMFE	=	.temp_fe_per_be * num_DSSC
+
+
+        #BW from CAM/Archbench is per DSS for LSC 512 B Read and 256 B per Write
+        PS2_CAM_COMPUTE_LSC  = D(HDC_READ)/512  + D(HDC_WRITE)/ 256 
+        PS2_CAM_COMPUTE_LSC_INFRA  = 1 
+        PS2_CAM_COMPUTE_HDC_INFRA  = 1 
+        PS2_CAM_COMPUTE_RT         = 1

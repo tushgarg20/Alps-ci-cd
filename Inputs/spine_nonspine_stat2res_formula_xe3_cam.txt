@@ -1,0 +1,19 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        numEUs	                        =	D(knob.numEUs) 	#This includes Slices & SubSlices
+	num_SpineNonSpine_SpineCompute  =       numEUs #Spine is a single unit
+	num_SpineNonSpine_SpineBase     =       D(knob.numCSCs) #Spine & NonSpine in Base should be based on L2 Banks 
+        @SYS_TYPE@ = (INT|FLOAT)
+        CrClocks	=	D(MAX_CYCLES)
+        SYS_Util = D(SUM('@SYS@_@SYS_TYPE@')) / CrClocks 
+
+        		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)	
+        PS2_CAM_COMPUTE_SPINE            =       1
+        PS2_CAM_COMPUTE_SPINE_INFRA      =       1
+        PS2_CAM_COMPUTE_NONSPINE         =       1 
+        PS2_CAM_COMPUTE_SYST_NONSPINE    =  (SYS_Util > 0.1) ? 1: 0 
+        PS2_CAM_BASE_SPINE               =      0 #22ww43 indicator has zero CDYN 
+        PS2_CAM_COMPUTE_ARB              =       (D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64))
+        PS2_CAM_COMPUTE_ARB_INFRA        =       1 

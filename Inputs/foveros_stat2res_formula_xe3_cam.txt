@@ -9,9 +9,10 @@
 #Generic				
 	.CrClk				=	D(MAX_CYCLES)
         CapperBit_Scaler                =       0.2881*(D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64)) + 1.0095 #Cap/Bit scaler modulated by L3 BW as per 22ww28 GEMMS   
-        Scaler                          =       (numFoveros == 128) ? 1.86*CapperBit_Scaler : 0.62*(numFoveros /64 )*CapperBit_Scaler #Divisor is the num of banks in 16 bank/tile case
-        PS2_CAM_BASE_FOVEROS            =       4*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler #HA BW hack = 4*GTI BW (22ww27.4) 
-        PS2_CAM_BASE_FOV_INFRA          =       Scaler 
-        PS2_CAM_COMPUTE_FOVEROS         =       4*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler #HA BW hack = 4*GT1 BW (22ww27.4) 
-        PS2_CAM_COMPUTE_FOV_INFRA       =       Scaler
+        Scaler_Active                   =       (numFoveros == 128) ? 1.355*CapperBit_Scaler : 0.62*(numFoveros /64 )*CapperBit_Scaler #Divisor is the num of banks in 16 bank/tile case #Scalar_Active depends on CapperBit_Scaler
+	Scaler_Infra                    =       (numFoveros == 128) ? 1.355 : 0.62*(numFoveros /64 ) #Divisor is the num of banks in 16 bank/tile case #Scalar_Infra doesn't depend on CapperBit_Scaler
+        PS2_CAM_BASE_FOVEROS            =       4*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler_Active #HA BW hack = 4*GTI BW (22ww27.4) 
+        PS2_CAM_BASE_FOV_INFRA          =       Scaler_Infra 
+        PS2_CAM_COMPUTE_FOVEROS         =       4*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler_Active #HA BW hack = 4*GT1 BW (22ww27.4) 
+        PS2_CAM_COMPUTE_FOV_INFRA       =       Scaler_Infra
 

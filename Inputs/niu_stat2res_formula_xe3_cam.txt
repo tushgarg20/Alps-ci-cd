@@ -1,0 +1,18 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+	numNIU			        =       D(knob.numCSCs) #Compute side caches
+	num_NIU_Compute		        =	numNIU / 8 #numNIUBundles = numNIUs per CT / 2
+	num_NIU_Base     		=	numNIU / 8 #numNIUBundles = numNIUs per CT / 2
+        L2_Cache_Size                   =       D(knob.L2CacheSize)
+        num_GAM_SQIDI                   =       D(knob.numSQIDI)
+		
+#Generic				
+	.CrClk				=	D(MAX_CYCLES)
+        CapperBit_Scaler                =       0.2881*(D(L2_READ)  / (num_CSC_L2 * 64) + D(L2_WRITE)  / ( num_CSC_L2 * 64)) + 1.0095 #Cap/Bit scaler modulated by L3 BW as per 22ww28 GEMMS   
+        Scaler_Active                   =       CapperBit_Scaler 
+        Scaler_Infra                    =       1  #No cap/bit scaler
+        PS2_CAM_BASE_NIU            =       2*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler_Active #HA BW hack = 2*GTI BW (22ww44) 
+        PS2_CAM_BASE_NIU_INFRA          =       Scaler_Infra 
+        PS2_CAM_COMPUTE_NIU         =       2*(D(GTI_READ) + D(GTI_WRITE))/(64 * num_GAM_SQIDI) * Scaler_Active #HA BW hack = 2*GT1 BW (22ww44) 
+        PS2_CAM_COMPUTE_NIU_INFRA       =       Scaler_Infra
+

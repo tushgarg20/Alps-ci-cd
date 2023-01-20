@@ -1,0 +1,21 @@
+#Unit	GSIM residency			Comments
+#Instance Counts				
+        .CrClk	=	D(MAX_CYCLES)
+	num_Other_Others	  =   D(knob.numEUs)
+        num_Other_ROW              =   D(knob.numROW)
+        num_Other_COLOR           =   D(knob.numCOLOR)
+        @SYS@                   =     (SYS|SYSW)
+        @SYS_TYPE@              =     (INT|FLOAT|INT4) 
+        SYS_Utilization          =    D(SUM('@SYS@_@SYS_TYPE@'))/CrClocks
+        EU_Utilization          =   (SYS_Utilization == 0) ? D(FPU0_UTILIZATION): SYS_Utilization 
+        numEUs                  = D(knob.numEUs)
+        maxGTI                  = D(knob.numMaxGTI)
+        numGTI                  = D(knob.numGTI) 
+        computeFlag         = D(knob.computeonly)
+
+#Generic
+        PS2_CAM_ROGT          = 1 /numEUs 
+        PS2_CAM_COMPUTE_ROGT  = 1 /numEUs 
+        PS2_CAM_OTHER_INFRA = 1  
+        PS2_CAM_DSSM_INFRA = 1
+        PS2_CAM_COMPRESSION = (D(GTI_READ) + D(GTI_WRITE))/ (512*numEUs) 

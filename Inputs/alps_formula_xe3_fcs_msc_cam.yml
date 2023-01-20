@@ -114,6 +114,15 @@ CSC:
    PS2_CAM_Node_Fabric: R * C
    PS2_CAM_Node_Fabric_INFRA: R * C
 
+MSC:
+  MSC:
+    PS2_CAM_BASE_L3_BANK: R * C
+    PS2_CAM_BASE_L3_NODE: R * C
+    PS2_CAM_BASE_L3_BANK_INFRA: R * C
+    PS2_CAM_BASE_L3_NODE_INFRA: R * C
+    PS2_CAM_BASE_NONSPINE_INFRA: R * C
+
+
 Other:
   Others: 
     PS2_CAM_BASE_BLITTER: R * C
