@@ -175,7 +175,7 @@ else:
         stat_parser_cmd += ['-i', formula_file]
 
     input_file = options.user_dir + '/' + "input_files/" + cfg_data['ALPS Input File'][0]
-    build_alps_cmd = ['python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml, '-m', options.method ]
+    build_alps_cmd = ['python', build_alps_script, '-i', input_file, '-r', res, '-a', options.dest_config, '-o', yaml, '-m', options.method, '--ecw' ]
     if(options.tg_file):
         build_alps_cmd += ['-t', '%s/%s' % (options.output_dir, options.tg_file), '-z', '%s/alps_Timegraph.txt' % options.output_dir]
     if(options.run_debug):

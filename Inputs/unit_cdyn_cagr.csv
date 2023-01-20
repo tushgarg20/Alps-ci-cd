@@ -300,3 +300,7 @@ ExtraPipe,EU,PVCDP,RLTB_EC_0_5,0.899,0.98*0.9*1.02
 Foveros,L3_Bank,RLTB_EC_0_5,RLT_EC_0_5,0.9,22WW07 indicator
 Node,L3Node,RLTB_EC_0_5,RLT_EC_0_5,0.95,22WW07 indicator
 L1,LSC,RLTB_EC_0_5,RLT_EC_0_5,0.95,22WW07 indicator
+GA,EU,PVCDP,Xe3_FCS,0.85,0.85 to account for evo eu
+GA,EU,PVC,Xe3_FCS,0.85,0.85 to account for evo eu
+TC,EU,PVCDP,Xe3_FCS,1.01,1% to account for xe3 hsd
+TC,EU,PVC,Xe3_FCS,1.01,1% to account for xe3 hsd

@@ -77,7 +77,7 @@
     	PS1_EU_FPU0 = Total_Fpu0_Stall_Cycles / (.CrClk * numEUs)
     	#PS0_EU_FPU0 = 1 - (PS2_EU_FPU0 + PS1_EU_FPU0)
 
-	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs)
+	PS2_EU_DPAS =  D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))/ (.CrClk * numEUs * 0.5)
     	PS2_TC      = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\..*Inst'))      / (.CrClk * num_EU_TC)
 
 #FF 
@@ -334,32 +334,37 @@
         #  GA_toggle_rate	=	FPU0_toggle_rate #Approximating GA toggle rate as FPU0 toggle rate
 
 #DPAS
-        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysBFp  =  (D(SUM('pwr\.SysBFp ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW    ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUB   =  (D(SUM('pwr\.SysUB  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUV   =  (D(SUM('pwr\.SysUV  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUD   =  (D(SUM('pwr\.SysUD  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUQ   =  (D(SUM('pwr\.SysUQ  ))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_DpasI32 =  (D(SUM('pwr\.DpasI32'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_DpasI16 =  (D(SUM('pwr\.DpasI16'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_DpasFp64 =  (D(SUM('pwr\.DpasFp64'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysBFp =  (D(SUM('pwr\.SysBFp'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysFp_all =  (D(SUM('pwr\.SysFp_all'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysB =  (D(SUM('pwr\.SysB'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysV =  (D(SUM('pwr\.SysV'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysW =  (D(SUM('pwr\.SysW'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysD =  (D(SUM('pwr\.SysD'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysQ =  (D(SUM('pwr\.SysQ'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUB =  (D(SUM('pwr\.SysUB'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUV =  (D(SUM('pwr\.SysUV')) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUW =  (D(SUM('pwr\.SysUW'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUD =  (D(SUM('pwr\.SysUD'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUQ =  (D(SUM('pwr\.SysUQ'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all'))) / (.CrClk * numFGs)
+        ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other'))) / (.CrClk * numFGs)
+
+        ExtraPipe_DPAS_Float = ExtraPipe_DPAS_DpasFp16
+        ExtraPipe_DPAS_BFloat = ExtraPipe_DPAS_DpasFp32
+	    ExtraPipe_DPAS_SInt8 = ExtraPipe_DPAS_DpasI32
+        PS2_GA_ExtraPipe = ExtraPipe_DPAS_BFloat + ExtraPipe_DPAS_SInt8 + ExtraPipe_DPAS_Float
+
         
-        ExtraPipe_DPAS_BFloat16	=	ExtraPipe_DPAS_DpasFp16
 
 
 

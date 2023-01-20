@@ -2388,38 +2388,6 @@ FabricsSpine,PVC_A21,PVC_A21,1.16,Scaler for filler/clock push/config
 LSC,PVC,PVC,1.07,Scaler for filler/clock push/config
 LSC,PVC_A21,PVC_A21,1.07,Scaler for filler/clock push/config
 LSC,DG2,DG2,1
-EU,Gen10LP,Xe3,0.739886824
-EU,Gen8,Xe3,0.532718513
-EU,Gen8SoC,Xe3,0.532718513
-EU,Gen9LPClient,Xe3,0.653320066
-EU,Gen9LPSoC,Xe3,0.665898142
-EU,Gen11,Xe3,0.739886824
-EU,Gen11LP,Xe3,0.79557723
-EU,Gen12LP,Xe3,0.941256261
-EU,Gen12DG,Xe3,0.941256261
-EU,Gen12HP,Xe3,0.8722
-EU,PVC,Xe3,1
-EU,DG2,Xe3,1
-EU,ADL,Xe3,1
-EU,PVCDP,Xe3,1
-L3_Bank,PVC,Xe3,1
-L3Node,PVC,Xe3,1.14
-Fabric,PVC,Xe3,1.25
-LSC,PVC,Xe3,1
-LSC,PVCDP,Xe3,1
-Other,Gen12LP,Xe3,1
-Other,PVC,Xe3,1
-GAM,Gen12LP,Xe3,1
-SQIDI,Gen12LP,Xe3,1
-FF,Gen12LP,Xe3,1
-FF,Gen11LP,Xe3,1
-COLOR,Gen12LP,Xe3,1
-Z,Gen12LP,Xe3,1
-Z,DG2,Xe3,1
-ROSS,Gen12LP,Xe3,1
-ROSS,Gen11LP,Xe3,1
-Sampler,DG2,Xe3,1
-Sampler,Gen12LP,Xe3,1
 EU,Gen10LP,PVCDP,0.739886824
 EU,Gen8,PVCDP,0.532718513
 EU,Gen8SoC,PVCDP,0.532718513
@@ -2496,6 +2464,53 @@ Sampler,Gen12LP,Xe2,1
 Sampler,Xe2,Xe2,1,
 LSC,DG2,Xe2,0.78,Feature scaler based on ww35 xe2 indicator release from atul
 LSC,Xe2,Xe2,1,
+EU,Gen11LP,Xe3,0.85733882
+EU,Gen10LP,Xe3,0.739886824
+EU,Gen8,Xe3,0.532718513
+EU,Gen8SoC,Xe3,0.532718513
+EU,Gen9LPClient,Xe3,0.653320066
+EU,Gen9LPSoC,Xe3,0.665898142
+EU,Gen11,Xe3,0.739886824
+EU,Gen11LP,Xe3,0.739886824
+EU,Gen12LP,Xe3,0.739886824
+EU,Gen12DG,Xe3,0.941256261
+EU,Gen12HP,Xe3,1
+EU,ADL,Xe3,0.888576
+EU,DG2,Xe3,0.94
+EU,Xe2,Xe3,1
+L3_Bank,Gen12HP,Xe3,1
+L3_Bank,DG2,Xe3,0.78
+L3_Bank,Xe2,Xe3,1
+L3Node,Gen12HP,Xe3,1
+L3Node,DG2,Xe3,0.78
+L3Node,PVC,Xe3,1
+L3Node,Xe2,Xe3,1
+Fabric,Gen12HP,Xe3,1
+Fabric,PVC,Xe3,1
+Other,Gen12LP,Xe3,1
+Other,Gen12HP,Xe3,1
+Other,DG2,Xe3,0.78
+Other,PVC,Xe3,1
+Other,Xe2,Xe3,1
+Infra,Xe2,Xe3,1
+Infra,Xe3,Xe3,1
+GAM,Gen12LP,Xe3,1
+SQIDI,Gen12LP,Xe3,1
+FF,Gen11LP,Xe3,1
+COLOR,Gen12LP,Xe3,1
+Z,Gen12LP,Xe3,1
+Sampler,DG2,Xe3,0.78
+Sampler,Gen12LP,Xe3,1
+Sampler,Xe2,Xe3,1
+LSC,DG2,Xe3,0.78
+LSC,Xe2,Xe3,1
+FF,Gen12LP,Xe3,1.6
+FF,Gen11LP,Xe3,1.6
+FF,Xe2,Xe3,1
+COLOR,Gen12LP,Xe3,2
+COLOR,Xe2,Xe3,1
+Z,Gen12LP,Xe3,2
+Z,DG2,Xe3,2
 DSSC,Gen12HP,MTL,1
 DSSC,DG2,MTL,1
 DSSC,MTL,MTL,1
@@ -2511,11 +2526,6 @@ FF,Gen11LP,LNL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should r
 FF,MTL,LNL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,Gen12LP,LNL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 Z,DG2,LNL,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-FF,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-FF,Gen11LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-COLOR,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-Z,Gen12LP,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
-Z,DG2,Xe3,2,Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 FF,Gen12LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 FF,Gen11LP,Xe2,1.6,20% reduction ot FF level from list of HSDs (Xe2). Increasing the 3D specific cluster cdyn by 2x temp. We should remove this as and we implement the remaining stats in fulsim/kaolin. This is based on DG2 vs Emu correlation
 FF,Xe2,Xe2,1
@@ -2694,3 +2704,55 @@ SQIDI,Gen12LP,RLTB_EC_0_5,1
 SQIDI,PVCDP,RLTB_EC_0_5,1
 SQIDI,PVCXTTrend,RLTB_EC_0_5,1
 SQIDI,RLTB_EC_0_5,RLTB_EC_0_5,1
+EU,Gen10LP,Xe3_FCS,0.739886824
+EU,Gen8,Xe3_FCS,0.532718513
+EU,Gen8SoC,Xe3_FCS,0.532718513
+EU,Gen9LPClient,Xe3_FCS,0.653320066
+EU,Gen9LPSoC,Xe3_FCS,0.665898142
+EU,Gen11,Xe3_FCS,0.739886824
+EU,Gen11LP,Xe3_FCS,0.79557723
+EU,Gen12LP,Xe3_FCS,0.941256261
+EU,Gen12DG,Xe3_FCS,0.941256261
+EU,Gen12HP,Xe3_FCS,0.8722
+EU,PVC,Xe3_FCS,1
+EU,DG2,Xe3_FCS,1
+EU,ADL,Xe3_FCS,1
+EU,PVCDP,Xe3_FCS,1
+EU,PVCXTTrend,Xe3_FCS,1
+EU,RLTB_EC_0_5,Xe3_FCS,1
+EU,Xe3_FCS,Xe3_FCS,1
+L3_Bank,PVC,Xe3_FCS,1
+L3_Bank,PVCDP,Xe3_FCS,1
+L3_Bank,PVCXTTrend,Xe3_FCS,1
+L3_Bank,RLTB_EC_0_5,Xe3_FCS,1
+L3_Bank,Xe3_FCS,Xe3_FCS,1
+L3Node,PVC,Xe3_FCS,1
+L3Node,PVCDP,Xe3_FCS,1
+L3Node,PVCXTTrend,Xe3_FCS,1
+L3Node,RLTB_EC_0_5,Xe3_FCS,1
+L3Node,Xe3_FCS,Xe3_FCS,1
+Fabric,PVC,Xe3_FCS,1
+Fabric,PVCDP,Xe3_FCS,1
+Fabric,PVCXTTrend,Xe3_FCS,1
+Fabric,Xe3_FCS,Xe3_FCS,1
+Fabric,RLTB_EC_0_5,Xe3_FCS,1
+LSC,PVC,Xe3_FCS,1
+LSC,PVCDP,Xe3_FCS,1
+LSC,PVCXTTrend,Xe3_FCS,1
+LSC,RLTB_EC_0_5,Xe3_FCS,1
+LSC,Xe3_FCS,Xe3_FCS,1
+Other,Gen12LP,Xe3_FCS,1
+Other,PVC,Xe3_FCS,1
+Other,PVCDP,Xe3_FCS,1
+Other,PVCXTTrend,Xe3_FCS,1
+Other,RLTB_EC_0_5,Xe3_FCS,1
+Other,Xe3_FCS,Xe3_FCS,1
+GAM,Gen12LP,Xe3_FCS,1
+GAM,PVCDP,Xe3_FCS,1
+GAM,PVCXTTrend,Xe3_FCS,1
+GAM,Xe3_FCS,Xe3_FCS,1
+SQIDI,Gen12LP,Xe3_FCS,1
+SQIDI,PVCDP,Xe3_FCS,1
+SQIDI,PVCXTTrend,Xe3_FCS,1
+SQIDI,RLTB_EC_0_5,Xe3_FCS,1
+SQIDI,Xe3_FCS,Xe3_FCS,1

@@ -185,9 +185,13 @@ for res_location in os.listdir():
         #L3 Bank
         alpsResFile['PS2_L3_Active'] = (df['L3_Read_Trans'] + df['L3_Write_Trans']) / (NumSlices * NumDss * tginterval)
         alpsResFile['PS2_L3_Idle'] = 1
-        #L3 Node
+        #L3 Node and Fabric
+        alpsResFile['PS2_Fabric_Active'] = alpsResFile['PS2_L3_Active']
+        alpsResFile['PS2_Fabric_Idle'] = 1
+	
         alpsResFile['PS2_L3Node_Active'] = alpsResFile['PS2_L3_Active']
         alpsResFile['PS2_L3Node_Idle'] = 1
+        alpsResFile['PS2_L3_Node_idle'] = 1
         #LSC
         alpsResFile['PS2_LSC'] = (df['Lsc.Active']) / (NumBanks * NumDss * NumSlices * tginterval)
         alpsResFile['PS2_LSC_Idle'] = 1
@@ -198,6 +202,7 @@ for res_location in os.listdir():
         #Other
         alpsResFile['PS2_ROW'] = alpsResFile['PS2_LSC']
         alpsResFile['PS2_ROW_Idle'] = 1
+        alpsResFile['PS2_ROW_idle'] = 1
         alpsResFile['PS2_NodeX'] = (df['L3_Read_Trans'] + df['L3_Write_Trans']) / (tginterval * NumSlices * 2)
         alpsResFile['PS2_BGF'] = 1
         alpsResFile['PS2_CAM_SPINE'] = 1
@@ -211,6 +216,7 @@ for res_location in os.listdir():
         alpsResFile['PS2_GAM'] = (df['readbuf'] + df['WriteBuf']) / (tginterval * NumSlices)
         #SQUIDI
         alpsResFile['PS2_SQIDI'] = alpsResFile['PS2_GAM']
+        alpsResFile['PS2_SQIDI_INFRA'] = alpsResFile['PS2_GAM']
         alpsResFile['PS2_SQIDI_RPT'] = alpsResFile['PS2_SQIDI']
         #Sampler
         alpsResFile['PS2_Sampler_SC'] = df['sc_requests'] / (tginterval * NumDss * NumSlices)
