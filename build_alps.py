@@ -1202,6 +1202,30 @@ if (common_cfg.find('pvc') > -1) or (common_cfg.find('rlt') > -1):
             gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
             gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
+if (common_cfg == 'xe3_fcs'):
+    if options.method == 'kaolin':
+        if (common_cfg.find('xe3_fcs') > -1):
+	    #Calculating Chiplet_Cdyn and Base_Cdyn
+            Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
+                    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total'])]
+            L2_cdyn = [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['L3_Bank']['total']),
+		    float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['L3Node']['total'])]
+            Foveros_base = float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_base']) + float(output_yaml_data['ALPS Model(pF)']['GT']['L3_Bank']['Foveros']['Foveros_base_idle'])
+            
+            
+            L2_cdyn = (sum(L2_cdyn) / 1000) - (Foveros_base/1000)
+            L2_cdyn =  round(L2_cdyn,3)
+            Base_Cdyn = (Foveros_base/1000) + float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['Other']['total'])/1000
+
+            Base_Cdyn = round(Base_Cdyn, 3)
+
+            Chiplet_Cdyn = float(gt_cdyn['Total_GT_Cdyn(nF)']) - L2_cdyn - Base_Cdyn
+            Chiplet_Cdyn = round(Chiplet_Cdyn,3)
+	    
+            gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
+            gt_cdyn['Total_l2_cdyn(nF)'] = L2_cdyn
+            gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
+
 if (common_cfg.find('pvc') > -1):
     if (options.method == 'cam'):
         #Calculating Chiplet_Cdyn and Base_Cdyn
