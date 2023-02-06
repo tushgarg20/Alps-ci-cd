@@ -10046,10 +10046,10 @@ PS2_GA_Syn_Read_10%,Xe2,A0,6.078850833,syn,1,Xe2 cdyn weight release based on SD
 PS2_GA_Syn_Read_20%,Xe2,A0,5.390845833,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 PS2_GA_Syn_Read_30%,Xe2,A0,5.137669167,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 PS2_GA_Syn_Read_45%,Xe2,A0,5.319289167,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
-PS2_GA_Syn_FPU_Write_10%,Xe2,A0,3.218935,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
-PS2_GA_Syn_FPU_Write_20%,Xe2,A0,3.14793,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
-PS2_GA_Syn_FPU_Write_30%,Xe2,A0,3.28994,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
-PS2_GA_Syn_FPU_Write_45%,Xe2,A0,3.26627,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
+PS2_GA_Syn_Write_10%,Xe2,A0,3.218935,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
+PS2_GA_Syn_Write_20%,Xe2,A0,3.14793,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
+PS2_GA_Syn_Write_30%,Xe2,A0,3.28994,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
+PS2_GA_Syn_Write_45%,Xe2,A0,3.26627,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 FPU0_mad_fp32_10%,Xe2,A0,34.289531,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 FPU0_mad_fp32_20%,Xe2,A0,38.117551,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 FPU0_mad_fp32_30%,Xe2,A0,41.257732,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
@@ -10168,3 +10168,33 @@ PS2_Sampler_Fetch_Fast,LNL,A0,23.32,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_Sampler_Fetch_High,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_COLOR,Xe2,A0,395.07,syn,1,cdyn weights extracted from xe2 emu
 PS2_FF,Xe2,A0,4259.956,syn,1,cdyn weights extracted from xe2 emu
+PS2_L3_Active,Xe3_FCS,A0,521.57,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
+PS2_L3_Bank_idle,Xe3_FCS,A0,19.12,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
+Foveros_compute,Xe3_FCS,A0,74.77,syn,1,csc cdyn weights from compute sheet
+Foveros_compute_idle,Xe3_FCS,A0,45.31,syn,1,csc cdyn weights from compute sheet
+Foveros_base,Xe3_FCS,A0,89.01,syn,1,compute foveros * 0.84, n5 to 10fv
+Foveros_base_idle,Xe3_FCS,A0,53.94,syn,1,compute foveros * 0.84, n5 to 10fv
+PS2_Xe_TLB,Xe3_FCS,A0,1692.8,syn,1,csc cws from cs increased by 15% as harish will reduce by 15% to account for RLT target
+PS2_Xe_TLB_infra,Xe3_FCS,A0,0,syn,1,csc cws from cs increased by 15% as harish will reduce by 15% to account for RLT target
+PS2_L3Node_Fabric_Active,Xe3_FCS,A0,12754,syn,1,csc cws from cs increased by 15% as harish will reduce by 15% to account for RLT target
+PS2_L3Node_Fabric_idle,Xe3_FCS,A0,331.69,syn,1,csc cws from cs increased by 15% as harish will reduce by 15% to account for RLT target
+PS2_Base_Spine,Xe3_FCS,A0,0,syn,1,
+PS2_Base_NonSpine,Xe3_FCS,A0,0,syn,1,
+PS2_GUC,Xe3_FCS,A0,5,syn,1,
+PS2_CS,Xe3_FCS,A0,20,syn,1,
+PS2_Blitter,Xe3_FCS,A0,60,syn,1,
+PS2_chiplet_spine,Xe3_FCS,A0,6995,syn,1, average of all gemms
+PS2_chiplet_nonspine,Xe3_FCS,A0,22717,syn,1,average of sgemm and dgemm
+FPU0_mad_fp32_10%,PVCXTTrend,C0,39.244,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
+FPU0_mad_fp32_20%,PVCXTTrend,C0,45.91,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
+FPU0_mad_fp32_30%,PVCXTTrend,C0,50.83,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
+FPU0_mad_fp32_45%,PVCXTTrend,C0,54.08,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
+PS2_LSC,Xe3_FCS,C0,650.311,syn,1,cdyn weights reduced to half to account for half the BW comapred to RLT, applied 0.96 scaler to account for reduced LSC cache size
+PS2_ROW,Xe3_FCS,C0,107.07,syn,1,Extracted from WW31 PVC-XT+ Indicator
+PS2_SSF_ALU,PVCDP,A0,1062.42,syn,1, pvcdp bfloat 45% * 2* 4 *0.75
+PS2_SSF_Grf_Reads,PVCXTTrend,A0,333,syn,1, xe2 lsc read
+PS2_SSF_Grf_Writes,PVCXTTrend,A0,501,syn,1, xe2 lsc write
+PS2_DSSM_Infra,Xe3,A0,13.68,syn,1,from dg2 emulation data
+PS2_GSC_Infra,Xe3,A0,4.4299,syn,1,from dg2 emulation data
+PS2_MSlice_Infra,Xe3,A0,2.3539,syn,1,from dg2 emulation data
+PS2_SQGAM_Infra,Xe3,A0,1.96,syn,1,from dg2 emulation data
