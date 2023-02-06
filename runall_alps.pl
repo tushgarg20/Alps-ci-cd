@@ -43,6 +43,7 @@ my $pvcxt                       = '';
 my $pvcxttrend                  = '';
 my $rlt1                        = ''; 
 my $rlt_plan                    = ''; 
+my $rlt_plus                    = ''; 
 my $xe3_xpc                     = ''; 
 my $rltconcept                  = ''; 
 my $rltb_ec_0_5                 = ''; 
@@ -55,6 +56,7 @@ my $cpl                         = '';
 my $xe3_fcs                     = ''; 
 my $xe3_fcs_msc                 = ''; 
 my $xe3_fcs_los                 = ''; 
+my $xe3_fcs_sys2                = ''; 
 my $xe3_fcs_sw                  = ''; 
 
 
@@ -92,6 +94,7 @@ Getopt::Long::GetOptions(
 	"xe3_fcs"		=> \$xe3_fcs,
 	"xe3_fcs_msc"		=> \$xe3_fcs_msc,
 	"xe3_fcs_los"		=> \$xe3_fcs_los,
+	"xe3_fcs_sys2"		=> \$xe3_fcs_sys2,
 	"xe3_fcs_sw"	=> \$xe3_fcs_sw,
 	"mtl"			=> \$mtl,
 	"lnl"			=> \$lnl,
@@ -104,6 +107,7 @@ Getopt::Long::GetOptions(
 	"pvcxttrend"	=> \$pvcxttrend,
     "rlt1"      	=> \$rlt1,
     "rlt_plan"  	=> \$rlt_plan,
+    "rlt_plus"  	=> \$rlt_plus,
     "xe3_xpc"   	=> \$xe3_xpc,
 	"rltconcept"	=> \$rltconcept,
 	"rltb_ec_0_5"	=> \$rltb_ec_0_5,
@@ -146,9 +150,11 @@ if ($method){
 	$cfg_file = ($pvcxttrend) ? $sdir . "cfg/" ."alps_cfg_pvcxttrend_cam.yaml" : $cfg_file;
 	$cfg_file = ($rlt1) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
 	$cfg_file = ($rlt_plan) ? $sdir . "cfg/" ."alps_cfg_rlt1_cam.yaml" : $cfg_file;
+	$cfg_file = ($rlt_plus) ? $sdir . "cfg/" ."alps_cfg_rlt_plus_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_msc) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_msc_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_los) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_los_cam.yaml" : $cfg_file;
+	$cfg_file = ($xe3_fcs_sys2) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_sys2_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_fcs_sw) ? $sdir . "cfg/" ."alps_cfg_xe3_fcs_sw_cam.yaml" : $cfg_file;
 	$cfg_file = ($xe3_xpc) ? $sdir . "cfg/" ."alps_cfg_xe3_xpc_cam.yaml" : $cfg_file;
 	$cfg_file = ($cpl) ? $sdir . "cfg/" ."alps_cfg_cpl_cam.yaml" : $cfg_file;

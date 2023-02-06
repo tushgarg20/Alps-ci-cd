@@ -11,6 +11,7 @@ EU:
      PS2_GA_GRF_1Read_ECC: R * C
      PS2_GA_GRF_1Write_ECC: R * C
      PS2_GRF_SEND_PATH: R * C
+     PS2_GA_GRF_FLOOR: R * C
 
   Accumulator:
      PS2_Accumulator_READ: R * C
@@ -38,18 +39,18 @@ EU:
    
   FPU1: 
     PS2_EU_FPU1:
-      FPU1_mad_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mul_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_add_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mov_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_sel_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mac_sint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mad_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mul_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_add_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_sel_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mac_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
-      FPU1_mov_sint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_uint16: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mad_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mul_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_add_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_sel_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mac_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
+      FPU1_mov_uint32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
  
   FPU2:
     PS2_EU_FPU2:
@@ -61,7 +62,7 @@ EU:
 
   ExtraPipe:
       ExtraPipe_DPAS_Float: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
-      # ExtraPipe_DPAS_Float8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
+      #ExtraPipe_DPAS_Float8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_TFloat32: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
       ExtraPipe_DPAS_BFloat: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]] 
       ExtraPipe_DPAS_SInt8: R[Bypass_factor] * R * LINEST[C,R[DPAS_toggle_rate]]
@@ -96,54 +97,56 @@ FPU0_toggle_rate: R
 DPAS_toggle_rate: R
 Bypass_factor: R
 
-
-CSC:
-  L2:
-   PS2_CAM_L2_0.5MB: R * C
-   PS2_CAM_L2_0.5MB_INFRA: R * C
-   PS2_CAM_L2_1MB: R * C
-   PS2_CAM_L2_1MB_INFRA: R * C
-   PS2_CAM_L2_2MB: R * C
-   PS2_CAM_L2_2MB_INFRA: R * C 
-   PS2_CAM_L2_4MB: R * C
-   PS2_CAM_L2_4MB_INFRA: R * C 
-  Xe2_TLB:
-   PS2_CAM_Xe2_TLB: R * C
-   PS2_CAM_Xe2_TLB_INFRA: R * C
-  Node_Fabric:
-   PS2_CAM_Node_Fabric: R * C
-   PS2_CAM_Node_Fabric_INFRA: R * C
+L3_Bank:
+  LTCD_Data:
+    PS2_CAM_BASE_L3_BANK: R * C
+    PS2_CAM_BASE_L3_NODE: R * C
+    PS2_CAM_BASE_L3_BANK_INFRA: R * C
+    PS2_CAM_BASE_L3_NODE_INFRA: R * C
+    PS2_CAM_RAMBO_L3_BANK: R * C
+    PS2_CAM_RAMBO_L3_BANK_INFRA: R * C
+    PS2_CAM_RAMBO_NONSPINE_INFRA: R * C
+    PS2_CAM_BASE_NONSPINE: R * C
+    PS2_CAM_BASE_NONSPINE_INFRA: R * C
 
 Other:
   Others: 
-    PS2_CAM_BASE_BLITTER: R * C
-    PS2_CAM_BASE_CS: R * C
-    PS2_CAM_BASE_GUC: R * C
+    PS2_CAM_BASE_ROGT: R * C
+    PS2_CAM_BASE_COMPRESSION: R * C
+    PS2_CAM_BASE_COMP_INFRA: R * C
 
-SpineNonSpine:
+FabricsSpine:
   SpineCompute:
     PS2_CAM_COMPUTE_SPINE_INFRA: R * C
-    PS2_CAM_COMPUTE_NONSPINE: R * C
-    PS2_CAM_COMPUTE_SYST_NONSPINE: R * C
     PS2_CAM_COMPUTE_ARB: R * C
     PS2_CAM_COMPUTE_ARB_INFRA: R * C
-  SpineBase:
+  SpineBaseRambo:
+    PS2_CAM_RAMBO_SPINE_INFRA: R * C
     PS2_CAM_BASE_SPINE: R * C
 
-NIU:
-  Compute:
-    PS2_CAM_COMPUTE_NIU: R * C
-    PS2_CAM_COMPUTE_NIU_INFRA: R * C
+Foveros:
+  DSS:
+    PS2_CAM_COMPUTE_FOVEROS: R * C
+    PS2_CAM_COMPUTE_FOV_INFRA: R * C
+  RamboDSS:
+    PS2_CAM_RAMBO_FOVEROS: R * C
+    PS2_CAM_RAMBO_FOV_INFRA: R * C
   Base:
-    PS2_CAM_BASE_NIU: R * C
-    PS2_CAM_BASE_NIU_INFRA: R * C
+    PS2_CAM_BASE_FOVEROS: R * C
+    PS2_CAM_BASE_FOV_INFRA: R * C
+
+GAM: 
+ GAMFTLB:
+    PS2_CAM_BASE_GAM: R * C
+    PS2_CAM_BASE_GAM_INFRA: R * C
+ SQIDI:
+    PS2_CAM_BASE_SQIDI: R * C
+    PS2_CAM_BASE_SQIDI_INFRA: R * C
 
 LSC:
    LSC:
     PS2_CAM_COMPUTE_LSC: R * C
     PS2_CAM_COMPUTE_LSC_INFRA: R * C
-    PS2_CAM_COMPUTE_HDC_INFRA: R * C
-    PS2_CAM_COMPUTE_RT: R * C
 
 ROW:
    ROW:
