@@ -41,7 +41,7 @@
 	num_Other_NodeX = num_L3Node_Node * 2
 	num_Other_Infra = numEUs
 	num_Infra_inf = numEUs
-
+        num_LSC_Banks = Lsc.Banks
 		
 #Generic				
 	 .CrClk	=	D(model.CrClock)	
@@ -55,7 +55,7 @@
 	Total_MathCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@MATH_Cycles@'))
 	Total_FpuCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@FPU_Cycles@'))
 	Total_IntCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.@INT_Cycles@'))
-	Total_FPU1_Cycles = Total_MathCycles + Total_IntCycles
+	Total_FPU1_Cycles = Total_IntCycles
 	Total_SystCycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.SystCycle'))
     Total_Fpu0_Stall_Cycles = D(SUM('Eu\.\d+\.\d+\.\d+\.\d+\.Exec.idle'))                           
 
@@ -184,9 +184,9 @@
     .temp_lsc_requests = (D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) + D(SUM('Lsc\.\d+\.\d+\.\d+\.Miss')))
     #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Read')) / (.CrClk * num_LSC_L1)
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
-    PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.URB\.Write(NoResp)?\..*\.Req')) / (.CrClk * num_LSC_L1)
-    PS2_LSC = PS2_LSC_Read + PS2_LSC_Write
+    PS2_LSC = D(SUM('Lsc\.\d+\.\d+\.\d+\.Arb.active')) / (.CrClk * num_DSS * num_LSC_Banks)
+    #PS2_LSC_Read = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Read\..*\.Req')) / (.CrClk * num_LSC_L1)
+    #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.UGM\.Write\..*\.Req')) / (.CrClk * num_LSC_L1)
 
     PS2_LSC_Idle = 1- PS2_LSC
     PS2_L1_Read_Hit  = D(SUM('Lsc\.\d+\.\d+\.\d+\.Hit')) / (.CrClk * num_LSC_L1)
@@ -543,7 +543,8 @@
          FPU1_mac_int64 = .temp_mac_int64_total - .temp_mac_int64_bypass
 
 #EM math instructions
-         EM_transc_fp32 = (EM_total_count > 0) ? (D(SUM('pwr\.MathFp32'))) / (EM_total_count):0
+         #EM_transc_fp32 = (EM_total_count > 0) ? (D(SUM('pwr\.MathFp32'))) / (EM_total_count):0
+	 EM_transc_fp32 = Total_MathCycles  /(.CrClk * numEUs * 0.5)
 #Send instruction 
          PS2_GRF_SEND_PATH = (D(SUM('pwr\.SndI32'))) / (.CrClk * numEUs)
 #GA and GRF power states

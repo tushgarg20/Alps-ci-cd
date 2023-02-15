@@ -10059,6 +10059,7 @@ PS2_DPAS_Infra,Xe2,A0,0.62,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW18)
 PS2_FPU_Infra,Xe2,A0,3.23,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW18)
 PS2_LSC_Read,Xe2,A0,333.6335,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 PS2_LSC_Write,Xe2,A0,501.427,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
+PS2_LSC,Xe2,A0,417.52,syn,1,average of read and write cdyn weights
 PS2_LSC_Idle,Xe2,A0,59.86,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 PS2_SLM_Read,Xe2,A0,342.9815,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
 PS2_SLM_Write,Xe2,A0,568.015,syn,1,Xe2 cdyn weight release based on SD0.8 (22WW32)
@@ -10167,7 +10168,7 @@ PS2_Sampler_Fetch_Low,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_Sampler_Fetch_Fast,LNL,A0,23.32,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_Sampler_Fetch_High,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_COLOR,Xe2,A0,395.07,syn,1,cdyn weights extracted from xe2 emu
-PS2_FF,Xe2,A0,4259.956,syn,1,cdyn weights extracted from xe2 emu
+PS2_FF,Xe2,A0,2129,syn,1,cdyn weights extracted from xe2 emu
 PS2_L3_Active,Xe3_FCS,A0,521.57,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
 PS2_L3_Bank_idle,Xe3_FCS,A0,19.12,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
 Foveros_compute,Xe3_FCS,A0,74.77,syn,1,csc cdyn weights from compute sheet
@@ -10183,8 +10184,8 @@ PS2_Base_NonSpine,Xe3_FCS,A0,0,syn,1,
 PS2_GUC,Xe3_FCS,A0,5,syn,1,
 PS2_CS,Xe3_FCS,A0,20,syn,1,
 PS2_Blitter,Xe3_FCS,A0,60,syn,1,
-PS2_chiplet_spine,Xe3_FCS,A0,6995,syn,1, average of all gemms
-PS2_chiplet_nonspine,Xe3_FCS,A0,22717,syn,1,average of sgemm and dgemm
+PS2_chiplet_spine,Xe3_FCS,A0,5791.78,syn,1, average of all gemms
+PS2_chiplet_nonspine,Xe3_FCS,A0,19650,syn,1,average of sgemm and dgemm
 FPU0_mad_fp32_10%,PVCXTTrend,C0,39.244,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 FPU0_mad_fp32_20%,PVCXTTrend,C0,45.91,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
 FPU0_mad_fp32_30%,PVCXTTrend,C0,50.83,syn,1,Scaler of 0.97x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant
