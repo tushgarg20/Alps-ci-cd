@@ -32,7 +32,7 @@
         @ALLDTYPE@ = (16|32|64)
         @TYPE@ = (fp|int)
         @SYS@ = (SYS|SYSW)
-        @SYS_TYPE@ = (INT|FLOAT)
+        @SYS_TYPE@ = (INT|FLOAT|BF8|HF8|TF32)
 	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
 	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
 	FPU2_total_count = D(SUM('FPU2_@ALLINST@_fp@ALLDTYPE@'))
