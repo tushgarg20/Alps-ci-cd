@@ -8951,6 +8951,8 @@ PS2_Sampler_SC,Gen12LP,A0,329,syn,1,
 PS2_Sampler_SC,DG2,A0,497.4,syn,1,reduced by 20% to match emulation
 PS2_Sampler_SC,MTL,A0,266.125,syn,1,
 PS2_Sampler_SC_Idle,MTL,A0,38.6,syn,1,
+PS2_Sampler_SC,Xe2,A0,483.79,syn,1, trend line approach
+PS2_Sampler_SC_Idle,Xe2,A0,3.90,syn,1, trend line approach
 PS0_Sampler,DG2,A0,4.176,syn,0,approx cdyn weights for sampler based on existing test cases,
 PS2_Sampler_Point_LD,DG2,A0,298.060448,syn,0,approx cdyn weights for sampler based on existing test cases
 PS2_Sampler_Point_Sample_L,DG2,A0,401.546457,syn,0,approx cdyn weights for sampler based on existing test cases,
