@@ -181,8 +181,7 @@ L3Node:
     PS2_L3Node_Idle: R * C
 LSC:
   L1:
-    PS2_LSC_Read: R * C
-    PS2_LSC_Write: R * C
+    PS2_LSC: R * C
     PS2_LSC_Idle: R * C
 Other:
   Others: 
@@ -252,22 +251,23 @@ Sampler:
 
 FF:
   VFBE:
-    PS2_VFBE        : R * C 
-    PS1_VFBE        : R * C 
-    PS2_TE_Enabled  : R * C 
-    PS2_VSFE        : R * C 
-    PS2_HS_Enabled  : R * C 
-    PS2_GS_Enabled  : R * C 
-    PS2_TDS_Enabled : R * C 
-    PS1_VF: R * C
-    PS1_VSFE        : R * C 
-    PS1_GS: R * C 
-    PS1_CS: R * C 
-    PS2_CL_NoMustclip : R * C 
-    PS2_WM_MSAA_PARTIALLYLIT    : R * C 
-    PS2_WM_FLUSH      : R * C 
-    PS2_WM_NOMSAA_PARTIALLYLIT  : R * C 
-    PS2_RASTERXBAR    : R * C 
+    PS2_FF        : R * C 
+    PS2_FF_Idle   : R * C
+    #PS1_VFBE        : R * C 
+    #PS2_TE_Enabled  : R * C 
+    #PS2_VSFE        : R * C 
+    #PS2_HS_Enabled  : R * C 
+    #PS2_GS_Enabled  : R * C 
+    #PS2_TDS_Enabled : R * C 
+    #PS1_VF: R * C
+    #PS1_VSFE        : R * C 
+    #PS1_GS: R * C 
+    #PS1_CS: R * C 
+    #PS2_CL_NoMustclip : R * C 
+    #PS2_WM_MSAA_PARTIALLYLIT    : R * C 
+    #PS2_WM_FLUSH      : R * C 
+    #PS2_WM_NOMSAA_PARTIALLYLIT  : R * C 
+    #PS2_RASTERXBAR    : R * C 
 COLOR:
   RCC:
     PS1_RCC : R * C

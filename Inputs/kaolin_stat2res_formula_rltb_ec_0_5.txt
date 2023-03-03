@@ -78,10 +78,10 @@
 
 
 #L3 utilization
-	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Read')) 
-	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+\.Write'))
-	L3_Rambo_Read_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+\.Read'))
-	L3_Rambo_Write_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+\.Write'))
+	L3_Read_Trans = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.Read')) 
+	L3_Write_Trans = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.Write'))
+	L3_Rambo_Read_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+(\.\d+)?\.Read'))
+	L3_Rambo_Write_Trans = D(SUM('L3Rambo\.\d+\.\d+\.\d+(\.\d+)?\.Write'))
  
 	PS2_L3_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
 	PS2_L3Node_Active = (L3_Read_Trans + L3_Write_Trans) / (BaseClocks * num_L3_Bank_LTCD_Data)
@@ -90,10 +90,10 @@
 	PS2_L3_Node_idle = 1
 	PS2_Fabric_Idle = 1
 
-	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (BaseClocks * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+\.Write')) / (BaseClocks * num_L3_Bank_LTCD_Data)
-	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+\.Miss')) / (BaseClocks * num_L3_Bank_LTCD_Data)
-	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+\.EvictReq')) / (BaseClocks * num_L3_Bank_LTCD_Data) 
+	PS2_L3_Read_Hit = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.Hit') - SUM('L3\.\d+\.\d+\.Write'))/ (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Hit = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.Write')) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Read_Miss = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.Miss')) / (BaseClocks * num_L3_Bank_LTCD_Data)
+	PS2_L3_Write_Evict = D(SUM('L3\.\d+\.\d+\.\d+(\.\d+)?\.EvictReq')) / (BaseClocks * num_L3_Bank_LTCD_Data) 
 
 #Foveros
 	
@@ -115,8 +115,8 @@
    PS2_SLMBE_WRITE = D(SUM('Slm\.\d+\.\d+\.\d+\.Write')) / (.CrClk * num_DSSC_SLMBE)
    
 # GAM: GAMFTLB:
-    PS2_GAM = D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')  + SUM('Sqidi\.\d+\.\d+\.GamWrIn'))/ (BaseClocks * num_GAM_GAMFTLB)
-    PS2_SQIDI = D(SUM('Sqidi\.\d+\.\d+\.GamRdIn')  + SUM('Sqidi\.\d+\.\d+\.GamWrIn'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_GAM = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
+    PS2_SQIDI = D(SUM('Gam\.\d+\.\d+\.\d+\.ReadBuf')  + SUM('Gam\.\d+\.\d+\.\d+\.WriteBuf'))/ (BaseClocks * num_GAM_GAMFTLB)
     PS2_SQIDI_RPT = PS2_SQIDI
     @RD_BW_PCLK@	=	64
     @WR_BW_PCLK@	=	64
@@ -145,11 +145,10 @@
     #PS2_LSC_Write = D(SUM('Lsc\.\d+\.\d+\.\d+\.L1Write')) / (.CrClk * num_LSC_L1 * Lsc.Banks)
 
 #Chiplet Infra
-    PS2_chiplet_eu_infra = PS2_L3_Active
-    PS2_chiplet_eu_infra_idle = 1
-    
-    PS2_chiplet_noneu_infra = PS2_L3_Active
-    PS2_chiplet_noneu_infra_idle = 1
+
+    PS2_Chiplet_NonSpine = PS2_LSC
+    PS2_Chiplet_NonSpine_idle = 1
+    PS2_Chiplet_Spine = 1
 
 # Others
 	PS2_NodeX = (L3_Read_Trans + L3_Write_Trans) / (.CrClk * num_Other_NodeX)
@@ -196,16 +195,16 @@
 	 Total_instr_count = FPU0_total_count + FPU1_total_count
 
 #Toggle Rates
-         .avg_FPU0_Src0_toggle = ((D('pwr\.TrFpS0')) > 0) ? (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512) : 0
-         .avg_FPU0_Src1_toggle = ((D('pwr\.TrFpS1')) > 0) ? (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512) : 0
-         .avg_FPU0_Src2_toggle = ((D('pwr\.TrFpS2')) > 0) ? (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512) : 0
+         .avg_FPU0_Src0_toggle = (D('pwr\.TrFpS0')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src1_toggle = (D('pwr\.TrFpS1')) / (D('pwr\.TrSEvt') * 512)
+         .avg_FPU0_Src2_toggle = (D('pwr\.TrFpS2')) / (D('pwr\.TrSEvt') * 512)
          #.avg_FPU0_Write_toggle = D('pwr\.TrFpR')/numEUs
          FPU0_toggle_rate = MAX(.avg_FPU0_Src0_toggle, .avg_FPU0_Src1_toggle, .avg_FPU0_Src2_toggle)
          FPU11_toggle_rate = 	FPU0_toggle_rate
          #FPU0_toggle_rate = 	(FPU0_Utilization > 0) ? (.max_FPU0_toggle_rate / (32 * 8 * FPU0_Utilization * .CrClk)) : 0	#Source bus width is 32 * 4 lanes = 128 bits, use Active EU clocks for toggles
-         .avg_EM_Src0_toggle = ((D('pwr\.TrEmS0')) > 0) ? D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512) : 0
-         .avg_EM_Src1_toggle = ((D('pwr\.TrEmS1')) > 0) ? D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512) : 0
-         .avg_EM_Src2_toggle = ((D('pwr\.TrEmS2')) > 0) ? D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512) : 0
+         .avg_EM_Src0_toggle = D('pwr\.TrEmS0')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src1_toggle = D('pwr\.TrEmS1')/(D('pwr\.TrSEvt')*512)
+         .avg_EM_Src2_toggle = D('pwr\.TrEmS2')/(D('pwr\.TrSEvt')*512)
          #.avg_EM_Write_toggle = D('pwr\.TrEmR')/numEUs
          FPU1_toggle_rate = MAX(.avg_EM_Src0_toggle, .avg_EM_Src1_toggle, .avg_EM_Src2_toggle)
 
@@ -365,7 +364,7 @@
         ExtraPipe_DPAS_DpasFp32 =  (D(SUM('pwr\.DpasFp32'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_DpasFp16 =  (D(SUM('pwr\.DpasFp16'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysFp =  (D(SUM('pwr\.SysFp'))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysBFp  =  (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysBFp =  (D(SUM('pwr\.SysBFp'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysDFp =  (D(SUM('pwr\.SysDFp'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysHFp =  (D(SUM('pwr\.SysHFp'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysQFp =  (D(SUM('pwr\.SysQFp'))) / (.CrClk * numEUs)
@@ -378,9 +377,9 @@
         ExtraPipe_DPAS_SysI_all =  (D(SUM('pwr\.SysI_all'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysUB =  (D(SUM('pwr\.SysUB'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysUV =  (D(SUM('pwr\.SysUV')) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUW  =  (D(SUM('pwr\.SysUW'))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUD  =  (D(SUM('pwr\.SysUD'))) / (.CrClk * numEUs)
-        ExtraPipe_DPAS_SysUQ  =  (D(SUM('pwr\.SysUQ' ))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUW =  (D(SUM('pwr\.SysUW'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUD=  (D(SUM('pwr\.SysUD'))) / (.CrClk * numEUs)
+        ExtraPipe_DPAS_SysUQ=  (D(SUM('pwr\.SysUQ'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_SysUI_all =  (D(SUM('pwr\.SysUI_all'))) / (.CrClk * numEUs)
         ExtraPipe_DPAS_Sys_Other =  (D(SUM('pwr\.Sys_Other'))) / (.CrClk * numEUs)
 
@@ -395,14 +394,14 @@
          grf_flag = ((D(SUM('pwr\.GrfR'))) > 0) ? 1 : 0
          PS2_GA_GRF_1Read_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier 
          PS2_GA_GRF_1Write_ECC =  (grf_flag > 0) ?  (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier
-         PS2_GA_Syn_1Read =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier
+         PS2_GA_Syn_1Read_ECC =  (grf_flag > 0) ? (D(SUM('pwr\.GrfR'))) / (.CrClk * numEUs) : 0 * multiplier
          PS2_GA_Syn_FPU_1Write_ECC = (grf_flag > 0) ? (D(SUM('pwr\.GrfW'))) / (.CrClk * numEUs) : 0 * multiplier 
          PS2_GA_1Read_FPU0_dispatch = (D(SUM('pwr\.GaDispF0'))) / (.CrClk * numEUs)
          PS2_GA_1Read_FPU11_dispatch = instruction_ratio_11 * PS2_GA_1Read_FPU0_dispatch
          PS2_GA_1Read_FPU1_dispatch = (D(SUM('pwr\.GaDispF1'))) / (.CrClk * numEUs)
          PS2_GA_1Read_DPAS_dispatch = (D(SUM('pwr\.GaDispDp'))) / (.CrClk * numEUs)
          PS2_GA_GRF_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8) #Approximation. Need to replace with correct Instr count
-         PS2_GA_SYN_FLOOR = Total_instr_count  / (.CrClk * numEUs * 8)
+         PS2_GA_Syn_Floor = Total_instr_count  / (.CrClk * numEUs * 8)
 	 PS2_TC_1Dispatch = Total_instr_count / (.CrClk * numEUs * 8)
        
 #Accumulator power states - Read and Write

@@ -217,17 +217,17 @@ PVC,RLTCONCEPT,1,1,
 PVCDP,RLTCONCEPT,1,1,
 PVCXT,RLTCONCEPT,1,1,
 RLTCONCEPT,RLTCONCEPT,1,1,
-Gen9LPClient,RLTB_EC_0_5,1,1,
-Gen10LP,RLTB_EC_0_5,1,1,
-Gen11LP,RLTB_EC_0_5,1,1,
-Gen12LP,RLTB_EC_0_5,1,1,
-Gen12HP,RLTB_EC_0_5,1,1,
-DG2,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
-PVC,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
-PVCDP,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
-PVCXT,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
-PVCXTTrend,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
-RLTB_EC_0_5,RLTB_EC_0_5,0.99,0.99,global chiplet and base cdyn reduction factor
+Gen9LPClient,RLT1,1,1,
+Gen10LP,RLT1,1,1,
+Gen11LP,RLT1,1,1,
+Gen12LP,RLT1,1,1,
+Gen12HP,RLT1,1,1,
+DG2,RLT1,0.85,0.85,cdyn reduction target fron pvcxt to rlt
+PVC,RLT1,0.85,0.85,cdyn reduction target fron pvcxt to rlt
+PVCDP,RLT1,0.85,0.85,cdyn reduction target fron pvcxt to rlt
+PVCXT,RLT1,0.85,0.85,cdyn reduction target fron pvcxt to rlt
+PVCXTTrend,RLT1,0.85,0.85,cdyn reduction target fron pvcxt to rlt
+RLT1,RLT1,1,1,
 Gen9LPClient,PVCXTTrend,1,1,
 Gen10LP,PVCXTTrend,1,1,
 Gen11LP,PVCXTTrend,1,1,
@@ -247,5 +247,5 @@ PVC,Xe3_FCS,1,1,
 PVCDP,Xe3_FCS,1,1,
 PVCXT,Xe3_FCS,1,1,
 PVCXTTrend,Xe3_FCS,1,1,
-RLTB_EC_0_5,Xe3_FCS,1,1,
+RLT1,Xe3_FCS,1,1,
 Xe3_FCS,Xe3_FCS,1,1,

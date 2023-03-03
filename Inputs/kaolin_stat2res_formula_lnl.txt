@@ -79,7 +79,9 @@
     PS2_RT = D(SUM('Rta\.\d+\.\d+\.\d+\.RtfReq'))/ (.CrClk * num_RT_RTA)
 
 #FF 
-    PS2_VFBE        = D(SUM('Vf\.\d+\.\d+\.LookupAttr.active'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
+    PS2_FF          = D(SUM('Vs\.\d+\.\d+\.VfVtxIn'))         / (.CrClk * num_FF_VFBE) 
+    PS2_FF_Idle = 1
+    PS2_VFBE        = D(SUM('Vs\.\d+\.\d+\.VfVtxIn'))         / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances## is rFF a typo?
     PS1_VFBE        = D(SUM('Vf\.\d+\.\d+\..*\.stall'))                 / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Vf\.\d+\.\d+\..*\.stall
     PS2_TE_Enabled  = D(SUM('Te\.\d+\.\d+\.OutputDs.active'))           / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances
     PS2_VSFE        = D(SUM('Vf\.\d+\.\d+\.LookupIdx.active'))          / (.CrClk * num_FF_VFBE)          #TODO: verify_num_instances##Same as PS2_VFBEn???

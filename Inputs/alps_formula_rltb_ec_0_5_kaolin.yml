@@ -19,9 +19,9 @@ EU:
   TC:
      PS2_TC_1Dispatch: R * C
   euinf:
-    PS2_chiplet_eu_infra: R * C 
-    PS2_chiplet_eu_infra_idle: R * C
-    PS2_CAM_SPINE_COMPUTE: R * C  
+    PS2_Chiplet_NonSpine: R * C 
+    PS2_Chiplet_NonSpine_idle: R * C
+    PS2_Chiplet_Spine: R * C  
   FPU0:
      PS2_EU_FPU0:
       FPU0_mad_fp16: R[PS2_EU_FPU0] * R * LINEST[C,R[FPU0_toggle_rate]]
@@ -166,14 +166,14 @@ EU:
       EM_transc_fp32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
       EM_transc_int32: R[PS2_EU_FPU1] * R * LINEST[C,R[FPU1_toggle_rate]]
   GA:
-      PS2_GA_Syn_1Read: R * LINEST[C,R[GA_toggle_rate]]
+      PS2_GA_Syn_1Read_ECC: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_Syn_FPU_1Write_ECC: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_FPU0_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_FPU11_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_FPU1_dispatch: R * LINEST[C,R[GA_toggle_rate]]
       PS2_GA_1Read_DPAS_dispatch : R * LINEST[C,R[GA_toggle_rate]]
-      PS2_GA_ExtraPipe: R * C
-      PS2_GA_SYN_FLOOR: R * C
+      #PS2_GA_ExtraPipe: R * C
+      PS2_GA_Syn_Floor: R * C
   ExtraPipe:
       #PS2_EU_DPAS: R * C
       ExtraPipe_DPAS_Float:  R * LINEST[C,R[DPAS_toggle_rate]]
@@ -217,9 +217,6 @@ LSC:
     #PS2_PS: R * C
     PS2_ROW: R * C
     PS2_ROW_idle: R * C
-  inf:
-    PS2_chiplet_noneu_infra: R * C 
-    PS2_chiplet_noneu_infra_idle: R * C
 Other:
   Others: 
     PS2_CAM_SPINE: R * C
