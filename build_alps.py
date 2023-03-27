@@ -61,9 +61,7 @@ C = {} ### Effective Cdyn
 # Input: cfg - the name of the arch cfg e.g: Gen12HP, PVC etc
 # Returns the list of arch config precedence for a given arch config
 def cdyn_precedence_selector(cfg):
-  if cfg == 'ADL':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'ADL' ], 'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','ADL']}
-  elif cfg =='DG2':
+  if cfg =='DG2':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2',] }
   elif cfg =='Xe2':
@@ -72,15 +70,6 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='Xe2_Plan':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2_Plan'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2_Plan'] }
-  elif cfg =='Xe2_BNA4_Plan':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2_Plan', 'Xe2_BNA4_Plan'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2_Plan', 'Xe2_BNA4_Plan'] }
-  elif cfg =='Xe2_HPG':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','Xe2'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','Xe2'] }
-  elif cfg =='DG2p5':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'DG2p5',],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','DG2p5',] }
   elif cfg =='MTL':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','MTL' ],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','MTL'] }
@@ -130,23 +119,13 @@ def cdyn_precedence_selector(cfg):
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT_Plan', 'Xe3_FCS', 'Xe3_FCS_MSC'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT_Plan', 'Xe3_FCS', 'Xe3_FCS_MSC'] }
 
-  elif cfg =='Xe3_FCS_SW':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT_Plan', 'Xe3_FCS', 'Xe3_FCS_SW'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT_Plan', 'Xe3_FCS', 'Xe3_FCS_SW'] }
-
   elif cfg =='Xe3_FCS':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT_Plan', 'Xe3_FCS'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT_Plan', 'Xe3_FCS'] }
 
-  elif cfg =='RLTCONCEPT':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'RLTCONCEPT'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'RLTCONCEPT'] }
-  elif cfg =='RLTB_EC_0_5':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC','PVCDP', 'PVCXT','PVCXTTrend', 'RLTB_EC_0_5'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC','PVCDP','PVCXT','PVCXTTrend','RLTB_EC_0_5'] }
-  elif cfg =='PVCK2xSA':
-      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xSA'],
-        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCK2xSA'] }
+  elif cfg =='Xe3_FCS_Baseline':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline'] }
   else:
     cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2']
@@ -230,8 +209,8 @@ elif common_cfg.find('xe3_fcs_sys2') > -1 :
     cfg ='Xe3_FCS_SYS2'   
 elif common_cfg.find('xe3_fcs_msc') > -1 :
     cfg ='Xe3_FCS_MSC'   
-elif common_cfg.find('xe3_fcs_sw') > -1 :
-    cfg ='Xe3_FCS_SW'   
+elif common_cfg.find('xe3_fcs_baseline') > -1 :
+    cfg ='Xe3_FCS_Baseline'   
 elif common_cfg.find('xe3_fcs') > -1 :
     cfg ='Xe3_FCS'    
 elif common_cfg.find('xe3_xpc') > -1 :
@@ -240,12 +219,6 @@ elif common_cfg.find('xe3') > -1 :
     cfg ='Xe3'
 elif common_cfg.find('pvcxt') > -1 :
     cfg ='PVCXT'   
-elif common_cfg.find('rltconcept') > -1 :
-    cfg ='RLTCONCEPT'   
-elif common_cfg.find('rltb_ec_0_5') > -1 :
-    cfg ='RLTB_EC_0_5'   
-elif common_cfg.find('pvck2xsa') > -1 :
-    cfg ='PVCK2xSA'   
 elif common_cfg.find('mtl') > -1 :
     cfg ='MTL'   
 elif common_cfg.find('tglhp_512') > -1 :
@@ -258,24 +231,18 @@ elif common_cfg.find('pvc') > -1 :
     cfg ='PVC'
 elif common_cfg.find('tgldg') > -1 :
     cfg ='Gen12DG'
-elif common_cfg.find('dg2p5') > -1 :
-    cfg ='DG2p5'
 elif common_cfg.find('lnl') > -1 :
     cfg ='LNL'
 elif common_cfg.find('ptl') > -1 :
     cfg ='PTL'
 elif common_cfg.find('cpl') > -1 :
     cfg ='CPL'
-elif common_cfg.find('xe2_bna4_plan') > -1 :
-    cfg ='Xe2_BNA4_Plan'
 elif common_cfg.find('xe2_plan') > -1 :
     cfg ='Xe2_Plan'
 elif common_cfg.find('dg2') > -1 :
     cfg ='DG2'
 elif common_cfg.find('tgllp') > -1 :
     cfg ='Gen12LP'
-elif common_cfg.find('adl') > -1 :
-    cfg ='ADL'
 elif common_cfg.find('xe2') > -1 :
     cfg ='Xe2'
 elif common_cfg.find('tgl') > -1 :
@@ -320,6 +287,8 @@ elif common_cfg.find('rlt_plus') > -1 :
     cfg_gc = "RLT_Plus"
 elif common_cfg.find('rlt1') > -1 :
     cfg_gc = "RLT1"
+elif common_cfg.find('xe3_fcs_baseline') > -1 :
+    cfg_gc = "Xe3_FCS_Baseline"
 elif common_cfg.find('xe3_fcs') > -1 :
     cfg_gc = "Xe3_FCS"
 elif common_cfg.find('xe3_fcs_msc') > -1 :
@@ -328,16 +297,8 @@ elif common_cfg.find('xe3_fcs_los') > -1 :
     cfg_gc = "Xe3_FCS_LOS"
 elif common_cfg.find('xe3_fcs_sys2') > -1 :
     cfg_gc = "Xe3_FCS_SYS2"
-elif common_cfg.find('xe3_fcs_sw') > -1 :
-    cfg_gc = "Xe3_FCS_SW"
 elif common_cfg.find('xe3_xpc') > -1 :
     cfg_gc = "Xe3_XPC"
-elif common_cfg.find('rltconcept') > -1 :
-    cfg_gc = "RLTCONCEPT"
-elif common_cfg.find('rltb_ec_0_5') > -1 :
-    cfg_gc = "RLTB_EC_0_5"
-elif common_cfg.find('pvck2xsa') > -1 :
-    cfg_gc = "PVCK2xSA"
 elif common_cfg.find('mtl') > -1 :
     cfg_gc = "MTL"
 elif common_cfg.find('lnl') > -1 :
@@ -352,20 +313,14 @@ elif common_cfg.find('tgl') > -1 :
     cfg_gc = "Gen12LP"
 elif common_cfg.find('tgldg') > -1 :
     cfg_gc = "Gen12LP"
-elif common_cfg.find('dg2p5') > -1 :
-    cfg_gc = "DG2p5"
 elif common_cfg.find('xe3') > -1 :
     cfg_gc = "Xe3"
-elif common_cfg.find('xe2_bna4_plan') > -1 :
-    cfg_gc = "Xe2_BNA4_Plan"
 elif common_cfg.find('xe2_plan') > -1 :
     cfg_gc = "Xe2_Plan"
 elif common_cfg.find('xe2') > -1 :
     cfg_gc = "Xe2"
 elif common_cfg.find('dg2') > -1 :
     cfg_gc = "DG2"
-elif common_cfg.find('adl') > -1 :
-    cfg_gc = "ADL"
 elif common_cfg.find('glv') > -1 :
     cfg_gc = "Gen9LPglv"
 else:
@@ -379,7 +334,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'ADL' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg == 'DG2p5' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe2_BNA4_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'RLT_Plan' or cfg == 'RLT_Plus' or cfg == 'Xe3_FCS' or cfg == 'Xe3_FCS_LOS' or  cfg == 'Xe3_FCS_SYS2' or cfg == 'Xe3_FCS_MSC' or cfg == 'Xe3_FCS_SW' or cfg == 'Xe3_XPC' or cfg == 'RLTCONCEPT' or cfg == 'PVCK2xSA' or cfg == 'RLTB_EC_0_5' or cfg == 'Xe2_HPG'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'RLT_Plan' or cfg == 'RLT_Plus' or cfg == 'Xe3_FCS' or cfg == 'Xe3_FCS_LOS' or  cfg == 'Xe3_FCS_SYS2' or cfg == 'Xe3_FCS_MSC' or cfg == 'Xe3_XPC' or cfg == 'Xe3_FCS_Baseline'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
