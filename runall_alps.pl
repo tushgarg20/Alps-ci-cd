@@ -51,7 +51,7 @@ my $xe3_fcs_baseline            = '';
 my $xe3_fcs_msc                 = ''; 
 my $xe3_fcs_los                 = ''; 
 my $xe3_fcs_sys2                = ''; 
-my $xe3_fcs_ai                  = ''; 
+my $xe3_fs_ai                  = ''; 
 
 
 

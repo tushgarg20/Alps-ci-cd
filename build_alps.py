@@ -126,6 +126,10 @@ def cdyn_precedence_selector(cfg):
   elif cfg =='Xe3_FCS_Baseline':
       cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline'] }
+  elif cfg =='Xe3_FS_AI':
+      cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend', 'RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline', 'Xe3_FS_AI'],
+        	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP','DG2','PVC', 'PVCDP', 'PVCXT', 'PVCXTTrend','RLT1', 'Xe3_FCS', 'Xe3_FCS_Baseline', 'Xe3_FS_AI'] }
+
   else:
     cdyn_precedence_hash = {'client': ['Gen7','Gen7.5','Gen8','Gen9LPClient','Gen9.5LP','Gen10LP','Gen11LP','Gen11','Gen11halo','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2', 'PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2'],
         	                'lp': ['Gen7','Gen7.5','Gen8','Gen8SoC','Gen9LPClient','Gen9LPSoC','Gen10LP','Gen10LPSoC','Gen11LP','Gen11','Gen12LP','Gen12HP_512','Gen12HP_384','Gen12DG','Gen12HP', 'DG2','PVC_Scaled','PVC','PVC_A21','PVCDP','PVC2']
@@ -213,6 +217,8 @@ elif common_cfg.find('xe3_fcs_baseline') > -1 :
     cfg ='Xe3_FCS_Baseline'   
 elif common_cfg.find('xe3_fcs') > -1 :
     cfg ='Xe3_FCS'    
+elif common_cfg.find('xe3_fs_ai') > -1 :
+    cfg ='Xe3_FS_AI'    
 elif common_cfg.find('xe3_xpc') > -1 :
     cfg ='Xe3_XPC'    
 elif common_cfg.find('xe3') > -1 :
@@ -289,6 +295,8 @@ elif common_cfg.find('rlt1') > -1 :
     cfg_gc = "RLT1"
 elif common_cfg.find('xe3_fcs_baseline') > -1 :
     cfg_gc = "Xe3_FCS_Baseline"
+elif common_cfg.find('xe3_fs_ai') > -1 :
+    cfg_gc = "Xe3_FS_AI"
 elif common_cfg.find('xe3_fcs') > -1 :
     cfg_gc = "Xe3_FCS"
 elif common_cfg.find('xe3_fcs_msc') > -1 :
@@ -334,7 +342,7 @@ print("",file=lf)
 
 #Select the appropriate CDYN selector list 
 cdyn_precedence_hash = cdyn_precedence_selector(cfg)
-if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'RLT_Plan' or cfg == 'RLT_Plus' or cfg == 'Xe3_FCS' or cfg == 'Xe3_FCS_LOS' or  cfg == 'Xe3_FCS_SYS2' or cfg == 'Xe3_FCS_MSC' or cfg == 'Xe3_XPC' or cfg == 'Xe3_FCS_Baseline'):
+if(cfg == 'Gen8' or cfg == 'Gen9LPClient' or cfg == 'Gen9.5LP' or cfg == 'Gen10LP' or cfg == 'Gen11' or cfg == 'Gen11LP' or cfg == 'Gen12LP' or cfg == 'Gen12DG' or cfg == 'Gen12HP' or cfg =='PVC'or cfg == 'DG2' or cfg =='PVC2' or cfg =='MTL'or cfg == 'LNL'or cfg =='PTL' or cfg == 'CPL' or cfg =='PVCDP' or cfg == 'Xe2' or cfg == 'Xe2_Plan' or cfg == 'Xe3' or cfg == 'PVCXT' or cfg == 'PVCXTTrend' or cfg == 'RLT1' or cfg == 'RLT_Plan' or cfg == 'RLT_Plus' or cfg == 'Xe3_FCS' or cfg == 'Xe3_FCS_LOS' or  cfg == 'Xe3_FCS_SYS2' or cfg == 'Xe3_FCS_MSC' or cfg == 'Xe3_XPC' or cfg == 'Xe3_FCS_Baseline' or cfg == 'Xe3_FS_AI'):
     cdyn_precedence = cdyn_precedence_hash['client']
 else:
     cdyn_precedence = cdyn_precedence_hash['lp']
@@ -1217,8 +1225,8 @@ if (common_cfg.find('pvc') > -1):
         gt_cdyn['Total_Chiplet_Cdyn(nF)'] = Chiplet_Cdyn
         gt_cdyn['Total_Base_Cdyn(nF)'] = Base_Cdyn
 
-if (common_cfg == 'xe3_fcs') or (common_cfg == 'xe3_fcs_los') or (common_cfg == 'xe3_fcs_sys2'):
-    if (options.method == 'cam'):
+if (common_cfg == 'xe3_fcs') or (common_cfg == 'xe3_fcs_los') or (common_cfg == 'xe3_fcs_sys2') or (common_cfg == 'xe3_fs_ai'):
+    if (options.method == 'cam '):
         #Calculating Chiplet_Cdyn and Base_Cdyn
         Chiplet_Cdyn =  [float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['EU']['total']),
 	float(cluster_cdyn_numbers['cluster_cdyn_numbers(pF)']['LSC']['total']),

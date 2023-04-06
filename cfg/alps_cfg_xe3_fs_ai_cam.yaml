@@ -1,0 +1,12 @@
+Stat2Res Formula Files:
+  - Inputs/csc_stat2res_formula_xe3_cam.txt
+  - Inputs/eu_stat2res_formula_xe3_fcs_cam.txt
+  - Inputs/mma_stat2res_formula_xe3_fs_ai_cam.txt
+  - Inputs/niu_stat2res_formula_xe3_cam.txt
+  - Inputs/other_stat2res_formula_xe3_cam.txt
+  - Inputs/spine_nonspine_stat2res_formula_xe3_cam.txt
+  - Inputs/lsc_stat2res_formula_xe3_fcs_cam.txt
+  - Inputs/row_stat2res_formula_pvc_cam.txt
+
+ALPS Input File:
+  - inputs_xe3_fs_ai_cam.txt

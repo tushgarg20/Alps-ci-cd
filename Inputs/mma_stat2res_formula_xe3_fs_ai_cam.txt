@@ -1,0 +1,42 @@
+        numMMAs = D(knob.numMMAs)
+        num_MMA_DPAS = numMMAs
+        CrClocks =  D(MAX_CYCLES)
+#Generic definitions
+        @FPU@ = FPU
+        @ALLINST@ = (mad|mul|mov|mac|sel|add)
+        @3Src_INST@ = (mad|mac)
+        @2Src_INST@ = (mul|add|sel|mov)
+        @ALLDTYPE@ = (16|32|64)
+        @TYPE@ = (fp|int)
+        @SYS@ = (SYS|SYSW)
+        @SYS_TYPE@ = (INT|FLOAT|BF8|HF8)
+	#FPU_total_count = D(SUM('FPU0_@ALLINST@_fp@ALLDTYPE@'))
+	FPU_total_count = D(SUM('FPU_@ALLINST@_fp@ALLDTYPE@'))
+	FPU2_total_count = D(SUM('FPU2_@ALLINST@_fp@ALLDTYPE@'))
+        #INT_total_count = D(SUM('FPU1_@ALLINST@_@TYPE@@ALLDTYPE@'))		
+        INT_total_count = D(SUM('FPU_@ALLINST@_int@ALLDTYPE@'))		
+        DPAS_total_count = D(SUM('SYS_@SYS_TYPE@'))
+        DPAS_Bypass_percent = D(SYS_BYPASS)
+        Sign_Flag = D(knob.DPAS_SignedOp) 
+        BF_Flag  = D(knob.DPAS_BF16)
+        Bypass_factor = 1 - 0.42*DPAS_Bypass_percent
+        DPAS_Depth = D(knob.DPAS_Depth)
+        MMA_Depth = D(knob.MMA_Depth)
+        MMA_Width = D(knob.MMA_Width)
+        DPAS_Scaler = (8 / MMA_Depth)*(8 / MMA_Width)
+
+        ExtraPipe_DPAS_Float = (BF_Flag == 0) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPAS_Float8 =  D(SYS_FP8)/CrClocks / DPAS_Scaler
+        ExtraPipe_DPAS_TFloat32 =  D(SYS_TF32)/CrClocks / DPAS_Scaler
+        ExtraPipe_DPAS_BFloat = (BF_Flag == 1) ? D(SYS_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPAS_SInt8 = (Sign_Flag == 1) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_Float = (BF_Flag == 0) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_BFloat = (BF_Flag == 1) ? D(SYSW_FLOAT)/CrClocks / DPAS_Scaler : 0
+        ExtraPipe_DPASW_SInt8 = (Sign_Flag == 1) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPASW_UInt8 = (Sign_Flag == 0) ? D(SYSW_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPAS_UInt8 = (Sign_Flag == 0) ? D(SYS_INT)/CrClocks  / DPAS_Scaler : 0
+        ExtraPipe_DPAS_BF8 =  D(SYS_BF8)/CrClocks  / DPAS_Scaler
+        ExtraPipe_DPAS_HF8 =  D(SYS_HF8)/CrClocks  / DPAS_Scaler
+
+
+
