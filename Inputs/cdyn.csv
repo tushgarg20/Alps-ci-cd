@@ -990,9 +990,9 @@ FPU0_add_fp64_10%,PVCXTTrend,C0,22.1619,syn,1,Scaler of 0.93x applied based on 2
 FPU0_add_fp64_20%,PVCXTTrend,C0,30.1413,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,
 FPU0_add_fp64_30%,PVCXTTrend,C0,38.6043,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,
 FPU0_add_fp64_45%,PVCXTTrend,C0,43.4682,syn,1,Scaler of 0.93x applied based on 21ww32 indicator on PVC XT 21WW19 A0 TAPEIN CDYN weights from Prashant,
-PS2_CAM_COMPUTE_SPINE_INFRA,RLT1,A0,3.16,syn,1,"Calculated as per new model in 22ww04 indicator, with 0.8x scaler wrt PVCXTTrend for 1x lnkclk",
-PS2_CAM_COMPUTE_NONSPINE_INFRA,RLT1,A0,1.624,syn,1,"Calculated as per new model in 22ww04 indicator, with 0.95x scaler wrt PVCXTTrend for CGE fixes",
-PS2_CAM_COMPUTE_SYST_NONSPINE_INFRA,RLT1,A0,2.394,syn,1,"Calculated as per new model in 22ww04 indicator, with 0.95x scaler wrt PVCXTTrend for CGE fixes",
+PS2_CAM_COMPUTE_SPINE_INFRA,RLT1,A0,3.16,syn,1,Calculated as per RLT emulation data 23ww04,
+PS2_CAM_COMPUTE_NONSPINE_INFRA,RLT1,A0,7.81,syn,1,Calculated as per new model in 23ww04 RLT Emulation,
+PS2_CAM_COMPUTE_SYST_NONSPINE_INFRA,RLT1,A0,6.25,syn,1,Calculated as per new model in 23ww04 RLT Emulation,
 PS2_CAM_RAMBO_FOVEROS,RLT1,A0,0.764,syn,1,"Calculated as per 22ww04 indicator, with 0.1x scaler wrt to PVCXTTrend",
 PS2_CAM_BASE_SPINE,RLT1,A0,122.47,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
 PS2_CAM_BASE_NONSPINE,RLT1,A0,141.34,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
@@ -1267,9 +1267,9 @@ ExtraPipe_DPAS_SInt8_10%,Xe2_BNA4_Plan,A0,37.68,syn,1,Scaled CDYN wt based on 45
 ExtraPipe_DPAS_SInt8_20%,Xe2_BNA4_Plan,A0,47.51,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20,
 ExtraPipe_DPAS_SInt8_30%,Xe2_BNA4_Plan,A0,51.89,syn,1,Scaled CDYN wt based on 45% TR CDYN weight provided by Durgesh/Volley 22ww20,
 ExtraPipe_DPAS_SInt8_45%,Xe2_BNA4_Plan,A0,59.5,syn,1,Durgesh/Volley estimate CDYN 22ww20 with an additional 27% reduction for BNA4,
-PS2_CAM_L2_0.5MB,Xe3_FCS,A0,465.386,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
+PS2_CAM_L2_0.5MB,Xe3_FCS,A0,617.75,syn,1,RLT Emu 23ww04 based indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
 PS2_CAM_L2_1MB,Xe3_FCS,A0,489.88,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 1MB L2 size, per bank
-PS2_CAM_L2_0.5MB_INFRA,Xe3_FCS,A0,33.212,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
+PS2_CAM_L2_0.5MB_INFRA,Xe3_FCS,A0,7.87,syn,1,RLT Emu 23ww04 based indicator release with trendline estimates for given WLs for 0.5MB L2 size, per bank
 PS2_CAM_L2_1MB_INFRA,Xe3_FCS,A0,34.96,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 1MB L2 size, per bank
 PS2_CAM_L2_2MB,Xe3_FCS,A0,533.49,syn,1,Amit's 22ww28 indicator release with trendline estimates for given WLs for 2MB L2 size, per bank
 PS2_CAM_L2_2MB_INFRA,Xe3_FCS,A0,38.98,syn,1,Amit's 22ww27 indicator release with trendline estimates for given WLs for 2MB L2 size, per bank
@@ -1279,10 +1279,10 @@ PS2_CAM_Xe2_TLB,Xe3_FCS,A0,1472.92,syn,1,Amit's 22ww34 indicator release with tr
 PS2_CAM_Xe2_TLB_INFRA,Xe3_FCS,A0,537.82,syn,1,Amit's 22ww34 indicator release with trendline estimates for given WLs, cdyn wt calculated per CT 
 PS2_CAM_Node_Fabric,Xe3_FCS,A0,4398.24,syn,1,Amit's 22ww45.4 indicator release for given WLs averaged per 16/20/24 bank cases , calculated per L2  node in all chiplets
 PS2_CAM_Node_Fabric_INFRA,Xe3_FCS,A0,453.2,syn,1,Amit's 22ww45.4 indicator release for given WLs avg per 16/20/24 bank cases, calculated per L2 node in all chiplets
-PS2_CAM_COMPUTE_NIU_INFRA,Xe3_FCS,C0,386.35,syn,0,Calculated from latest PVCXT (21ww22) scaled to RLT instance count(*64/20) and then by wirecount scaler (2032/1200),
-PS2_CAM_COMPUTE_NIU,Xe3_FCS,C0,609.6,syn,0,Calculated from latest PVCXT (21ww22) scaled to RLT instance count(*64/20) and then by wirecount scaler (2032/1200),
-PS2_CAM_BASE_NIU_INFRA,Xe3_FCS,C0,460.05,syn,0,Calculated from latest PVCXT (21ww22) scaled to RLT instance count(*64/20) and then by wirecount scaler (2032/1200) div by 0.84 for 10fv,
-PS2_CAM_BASE_NIU,Xe3_FCS,C0,725.89,syn,0,Calculated from latest PVCXT (21ww22) scaled to RLT instance count(*64/20) and then by wirecount scaler (2032/1200) div by 0.84 for 10fv,
+PS2_CAM_COMPUTE_NIU_INFRA,Xe3_FCS,C0,608.29,syn,0,RLT Emulation data Foveros Chiplet and then by wirecount scaler of 1.36,
+PS2_CAM_COMPUTE_NIU,Xe3_FCS,C0,473.2,syn,0,RLT Emulation data Foveros Chiplet and then by wirecount scaler of 1.36,
+PS2_CAM_BASE_NIU_INFRA,Xe3_FCS,C0,1097.34,syn,0,RLT Emu data 23ww04 multiplied by wirecountscaler of 1.36,
+PS2_CAM_BASE_NIU,Xe3_FCS,C0,551.7,syn,0,RLT Emu data 23ww04 multiplied by wirecountscaler of 1.36,
 PS2_CAM_BASE_HM_INFRA,Xe3_FCS,C0,18.09,syn,0,Calculated from latest PVCXT (21ww22) with a 2x scaler given in Amit's 22ww27 Xe3 indicator sclaed to N5 process,
 PS2_CAM_BASE_HM,Xe3_FCS,C0,446.95,syn,0,Calculated from latest PVCXT (21ww22) with a 2x scaler given in Amit's 22ww27 Xe3 indicator scaled to N5 process,
 PS2_CAM_BASE_SPINE,Xe3_FCS,C0,152.21,syn,0,Calculated as per new model in 21ww22 indicator with a process scaler to n5 0.84,
@@ -1358,8 +1358,8 @@ FPU0_mad_fp32_10%,Xe3_FCS_LOS,A0,33.36,syn,1,"PVC XT 21WW19 A0 TAPEIN CDYN weigh
 FPU0_mad_fp32_20%,Xe3_FCS_LOS,A0,39.02,syn,1,"PVC XT 21WW19 A0 TAPEIN CDYN weights, PVCXT->PVCXTTrend = 0.97x, PVCXT->RLT Plan = 0.85x and , RLT Plan->Xe3 FCS LOS = 0.97x (Amit 22ww42 indicator)",
 FPU0_mad_fp32_30%,Xe3_FCS_LOS,A0,43.21,syn,1,"PVC XT 21WW19 A0 TAPEIN CDYN weights, PVCXT->PVCXTTrend = 0.97x, PVCXT->RLT Plan = 0.85x and , RLT Plan->Xe3 FCS LOS = 0.97x (Amit 22ww42 indicator)",
 FPU1_mad_fp32_45%,Xe3_FCS_LOS,A0,45.97,syn,1,"PVC XT 21WW19 A0 TAPEIN CDYN weights, PVCXT->PVCXTTrend = 0.97x, PVCXT->RLT Plan = 0.85x and , RLT Plan->Xe3 FCS LOS = 0.97x (Amit 22ww42 indicator)",
-PS2_CAM_COMPUTE_NONSPINE,Xe3_FCS,A0,10.05,syn,0,Calculated as an approximation based on 22ww43 indicator,
-PS2_CAM_COMPUTE_SYST_NONSPINE,Xe3_FCS,A0,4.68,syn,0,Calculated as an approximation based on 22ww43 indicator,
+PS2_CAM_COMPUTE_NONSPINE,Xe3_FCS,A0,14395,syn,0,Calculated based on 23ww04 indicator but as a single entity with 1.44 area scaler,
+PS2_CAM_COMPUTE_SYST_NONSPINE,Xe3_FCS,A0,11520,syn,0,Calculated based on 23ww04 indicator but as a single entity with 1.44 area scaler,
 PS2_CAM_BASE_BLITTER,Xe3_FCS,A0,20,syn,0,22ww43 indicator sheet for GEMMS,
 PS2_CAM_BASE_CS,Xe3_FCS,A0,20,syn,0,22ww43 indicator sheet for GEMMS,
 PS2_CAM_BASE_GUC,Xe3_FCS,A0,5,syn,0,22ww43 indicator sheet for GEMMS,
@@ -1608,19 +1608,21 @@ PS2_CAM_BASE_L3_BANK_INFRA,RLT1,A0,35.07,syn,0,Calculated as per RLT GEMMs emula
 PS2_CAM_BASE_L3_NODE,RLT1,A0,604.11,syn,1,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
 PS2_CAM_BASE_L3_NODE_INFRA,RLT1,A0,0,syn,0,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
 PS2_CAM_BASE_ROGT,RLT1,A0,2.11,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_LSC,RLT1,A0,1387.34,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_LSC_INFRA,RLT1,A0,39.57,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_ROW,RLT1,A0,54.71,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_ROW_INFRA,RLT1,A0,44.69,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
+PS2_CAM_COMPUTE_LSC,RLT1,A0,1184.34,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
+PS2_CAM_COMPUTE_LSC_INFRA,RLT1,A0,54.4,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
+PS2_CAM_COMPUTE_ROW,RLT1,A0,73.56,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
+PS2_CAM_COMPUTE_ROW_INFRA,RLT1,A0,39.06,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
 PS2_CAM_BASE_GAM,RLT1,A0,237.45,syn,0,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
 PS2_CAM_BASE_GAM_INFRA,RLT1,A0,343.13,syn,0,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
 PS2_CAM_COMPUTE_FOVEROS,RLT1,A0,70.95,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
 PS2_CAM_COMPUTE_FOV_INFRA,RLT1,A0,58.39,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
 PS2_CAM_BASE_FOVEROS,RLT1,A0,82.23,syn,0,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
 PS2_CAM_BASE_FOV_INFRA,RLT1,A0,60.6,syn,0,Calculated as per RLT GEMMs emulation data 23ww07 with a 1.15x scaler as Emu is not accounting some CDYN,
-PS2_CAM_COMPUTE_SPINE_INFRA,RLT1,A0,3.16,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_ARB,RLT1,A0,1.95,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
-PS2_CAM_COMPUTE_ARB_INFRA,RLT1,A0,0.08,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
+PS2_CAM_COMPUTE_ARB,RLT1,A0,1.42,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
+PS2_CAM_COMPUTE_ARB_INFRA,RLT1,A0,0.116,syn,0,Calculated as per RLT GEMMs emulation data 23ww04 ,
 PS2_CAM_RAMBO_SPINE_INFRA,RLT1,A0,6.44,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
 PS2_EU_INFRA,RLT1,A0,5.57,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
 PS2_EU_SYST_INFRA,RLT1,A0,3.67,syn,0,Calculated as per RLT GEMMs emulation data 23ww07,
+PS2_CAM_COMPUTE_SPINE_INFRA,Xe3_FCS,A0,5829.6,syn,1,Calculated based on 23ww04 indicator but as a single entity with 1.44 area scaler,
+PS2_CAM_COMPUTE_ARB,Xe3_FCS,A0,2908.16,syn,0,Calculated based on 23ww04 indicator but as a single entity with 1.44 area scaler,
+PS2_CAM_COMPUTE_ARB_INFRA,Xe3_FCS,A0,237.568,syn,0,Calculated based on 23ww04 indicator but as a single entity with 1.44 area scaler,

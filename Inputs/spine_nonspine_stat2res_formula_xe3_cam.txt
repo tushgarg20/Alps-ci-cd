@@ -1,7 +1,7 @@
 #Unit	GSIM residency			Comments
 #Instance Counts				
         numEUs	                        =	D(knob.numEUs) 	#This includes Slices & SubSlices
-	num_SpineNonSpine_SpineCompute  =       numEUs #Spine is a single unit
+	num_SpineNonSpine_SpineCompute  =       1 #Spine is a single unit
 	num_SpineNonSpine_SpineBase     =       D(knob.numCSCs) #Spine & NonSpine in Base should be based on L2 Banks 
         @SYS_TYPE@ = (INT|FLOAT)
         CrClocks	=	D(MAX_CYCLES)
