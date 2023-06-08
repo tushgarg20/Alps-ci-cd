@@ -9252,7 +9252,7 @@ PS2_EU_DPAS,PVC,A0,197,syn,0,
 PS2_infra,DG2,A0,32.815,syn,0,infra cdyn per EU from dg2 128 emulation for 3d wls,
 PS2_infra,Xe2,A0,25.82,syn,0,infra cdyn per EU based xe2 emu results,
 PS2_infra,MTL,A0,22.35,syn,0,infra cdyn per EU from MTL 64 emulation for 3d wls,
-PS2_infra,LNL,A0,19.06,syn,0,infra cdyn per EU from MTL 64 emulation for 3d wls,
+PS2_infra,LNL,A0,17.18,syn,0,infra cdyn + some others component per EU from LNL emu,
 PS2_L3_Active,MTL,A0,509.25,syn,0,extracted from mtl emulation results
 PS2_L3_Idle,MTL,A0,0.003,syn,0,extracted from mtl emulation results
 PS2_L3_Active,DG2,A0,274.11,syn,0,extracted from mtl emulation results
@@ -10144,8 +10144,8 @@ PS2_GA_Syn_1Write_30%,LNL,A0,2.92,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_GA_Syn_1Write_45%,LNL,A0,3.03,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_LSC_Read,LNL,A0,260,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_LSC_Write,LNL,A0,371,syn,1,LNL Cdyn weights release 22WW30.3,
-PS2_LSC,LNL,A0,1020.53,syn,1,Updated based on LNL Emu
-PS2_LSC_Idle,LNL,A0,21.616,syn,1,Updated based on LNL Emu
+PS2_LSC,LNL,A0,907.13,syn,1,Updated based on LNL Emu
+PS2_LSC_Idle,LNL,A0,22.76,syn,1,Updated based on LNL Emu
 PS2_SLM_Read,LNL,A0,268,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_SLM_Write,LNL,A0,419,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_L3_Read,LNL,A0,290,syn,1,LNL Cdyn weights release 22WW30.3,
@@ -10171,7 +10171,8 @@ PS2_Sampler_Fetch_Low,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_Sampler_Fetch_Fast,LNL,A0,23.32,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_Sampler_Fetch_High,LNL,A0,251.19,syn,1,LNL Cdyn weights release 22WW30.3,
 PS2_COLOR,Xe2,A0,395.07,syn,1,cdyn weights extracted from xe2 emu
-PS2_FF,Xe2,A0,2129,syn,1,cdyn weights extracted from xe2 emu
+PS2_FF,Xe2,A0,219,syn,1,cdyn weights extracted from xe2 emu
+PS2_FF_Idle,Xe2,A0,270,syn,1,cdyn weights extracted from xe2 emu
 PS2_L3_Active,Xe3_FCS,A0,521.57,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
 PS2_L3_Bank_idle,Xe3_FCS,A0,19.12,syn,1,csc cdyn weights from compute sheet increased by 15% as harish will reduce by 15% to account for RLT target
 Foveros_compute,Xe3_FCS,A0,74.77,syn,1,csc cdyn weights from compute sheet
@@ -10425,5 +10426,5 @@ PS2_LSC,RLT1,A0,1301.83,syn,1,extrated from rlt gemms emulation results
 PS2_LSC_Idle,RLT1,A0,43.875,syn,1,extrated from rlt gemms emulation results
 PS2_ROW,RLT1,A0,46.297,syn,1,extrated from rlt gemms emulation results
 PS2_ROW_Idle,RLT1,A0,45.109,syn,1,extrated from rlt gemms emulation results
-PS2_FF,LNL,A0,1345.6,syn,1,extracted from lnl emu
-PS2_FF_Idle,LNL,A0,242.93,syn,1,extracted from lnl emu
+PS2_FF,LNL,A0,1000.3,syn,1,extracted from lnl emu
+PS2_FF_Idle,LNL,A0,198.75,syn,1,extracted from lnl emu

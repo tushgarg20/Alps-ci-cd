@@ -162,15 +162,15 @@ Gen12DG,MTL,0.625,0.625, Process and design scalers 0.82*0.82*0.93
 Gen12HP,MTL,1,1,No scaler, pv push and 10dg scaler are already accounted in cdyn weights
 DG2,MTL,0.76,0.76, Scaler from DG2 to MTL (Process and feature scaler)
 MTL,MTL,1,1,
-Gen9LPClient,LNL,0.8843,0.8843, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-Gen10LP,LNL,0.8843,0.8843, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-Gen11LP,LNL,0.8843,0.8843, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-Gen12LP,LNL,0.5526,0.5526, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-Gen12DG,LNL,0.5526,0.5526, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-Gen12HP,LNL,0.88,0.88, mlt to lnl scalers on top of mtl scalers above, emu vs kaolin miscorr 1.13
-DG2,LNL,0.666,0.666, Scaler from DG2 to MTL (Process and feature scaler), emu vs kaolin miscorr 1.13
-MTL,LNL,0.8843,0.8843, Process scaler, design and ebb scaler scaler 0.82, 0.93 and 1.025 respectively, emu vs kaolin miscorr 1.13
-LNL,LNL,1.13,1.13,emu vs kaolin miscorr 1.13
+Gen9LPClient,LNL,0.7825,0.7825, 
+Gen10LP,LNL,0.7825,0.7825, 
+Gen11LP,LNL,0.7825,0.7825, 
+Gen12LP,LNL,0.5526,0.5526, 
+Gen12DG,LNL,0.5526,0.5526, 
+Gen12HP,LNL,0.88,0.88, 
+DG2,LNL,0.589,0.589, Scaler from DG2 to MTL (Process and feature scaler)
+MTL,LNL,0.7825,0.7825, Process scaler, design and ebb scaler scaler 0.82, 0.93 and 1.025 respectively
+LNL,LNL,1,1,emu vs kaolin miscorr 1.13
 Gen9LPClient,Xe3,1.03,1.03,
 Gen10LP,Xe3,1.03,1.03,
 Gen11LP,Xe3,1.03,1.03,
