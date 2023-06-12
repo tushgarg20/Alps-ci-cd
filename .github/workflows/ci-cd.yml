@@ -15,4 +15,4 @@ jobs:
         with:
           python-version: '3.12.0-beta.2'
       - run: |
-          py -m pip install --upgrade pip
+          python -m pip install --upgrade pip
