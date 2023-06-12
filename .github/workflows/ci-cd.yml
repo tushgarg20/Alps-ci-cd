@@ -13,6 +13,6 @@ jobs:
       - run: bats -v
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.7.5'
+          python-version: '3.12.0-beta.2'
       - run: |
           py -m pip install --upgrade pip
